@@ -2,7 +2,7 @@
 
 # Create Kubernetes
 ## clone kubernetes blueprint from market place to your project (1pic)
-[https://github.com/panlm/panlm.github.io/tree/master/img/1.png|alt=octocat]
+[https://github.com/panlm/panlm.github.io/tree/master/img/1.png]
 
 
 
