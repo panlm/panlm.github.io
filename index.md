@@ -1,8 +1,8 @@
 
-# homepage
-[Kubernetes](kubernetes.md)
+# blog
+[kubernetes](kubernetes.md)
 
-![image1](img/1.png)
 
-[[https://github.com/panlm/panlm.github.io/blob/master/img/1.png]]
-
+# resource
+* https://help.github.com/articles/basic-writing-and-formatting-syntax/
+* https://guides.github.com/features/mastering-markdown/
