@@ -3,6 +3,8 @@
 # Create Kubernetes
 ## clone kubernetes blueprint from market place to your project (1pic)
 ![kubernetes1](https://panlm.github.io/kubernetes/1.png)
+![kubernetes1](/kubernetes/1.png){:height="50%" width="50%"}
+
 
 * CLUSTER_SUBNET -- pod network in k8s
 * SERVICE_SUBNET -- service network in k8s
