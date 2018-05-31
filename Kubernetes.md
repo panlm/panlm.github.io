@@ -2,7 +2,7 @@
 
 # Create Kubernetes
 ## clone kubernetes blueprint from market place to your project (1pic)
-![img1](https://github.com/panlm/panlm.github.io/blob/master/img/1.png)
+![img1](https://panlm.github.io/img/1.png)
 
 * CLUSTER_SUBNET -- pod network in k8s
 * SERVICE_SUBNET -- service network in k8s
@@ -14,30 +14,30 @@
 
 
 ## edit credentials
-![img2](https://github.com/panlm/panlm.github.io/tree/master/img/2.png)
+![img2](https://panlm.github.io/img/2.png)
 
 edit default user, add private key to CENTOS.
 
 
 ## vm configurations
-![img3](https://panlm.github.io/img/1.png)
-![img4](img/img4.png)
-![img5](img/img5.png)
+![img3](https://panlm.github.io/img/3.png)
+![img4](https://panlm.github.io/img/4.png)
+![img5](https://panlm.github.io/img/5.png)
 
 ## edit task - configure minion
-![img6](img/img6.png)
+![img6](https://panlm.github.io/img/6.png)
 
 
 ## other configure
-![img7](img/img7.png)
+![img7](https://panlm.github.io/img/7.png)
 
 
 ## launch and have a cup of coffee :)
-![img8](img/img8.png)
+![img8](https://panlm.github.io/img/8.png)
 
 
 
 
 # Kubernetes Operation
-![img9](img/img9.png)
+![img9](https://panlm.github.io/img/9.png)
 
