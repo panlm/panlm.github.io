@@ -15,30 +15,30 @@
 
 
 ## edit credentials
-![kubernetes2](https://panlm.github.io/kubernetes/2.png)
+![kubernetes2](/kubernetes/2.png){:height="50%" width="50%"}
 
 edit default user, add private key to CENTOS.
 
 
 ## vm configurations
-![kubernetes3](https://panlm.github.io/kubernetes/3.png)
-![kubernetes4](https://panlm.github.io/kubernetes/4.png)
-![kubernetes5](https://panlm.github.io/kubernetes/5.png)
+![kubernetes3](/kubernetes/3.png){:height="50%" width="50%"}
+![kubernetes4](/kubernetes/4.png){:height="50%" width="50%"}
+![kubernetes5](/kubernetes/5.png){:height="50%" width="50%"}
 
 ## edit task - configure minion
-![kubernetes6](https://panlm.github.io/kubernetes/6.png)
+![kubernetes6](/kubernetes/6.png){:height="50%" width="50%"}
 
 
 ## other configure
-![kubernetes7](https://panlm.github.io/kubernetes/7.png)
+![kubernetes7](/kubernetes/7.png){:height="50%" width="50%"}
 
 
 ## launch and have a cup of coffee :)
-![kubernetes8](https://panlm.github.io/kubernetes/8.png)
+![kubernetes8](/kubernetes/8.png){:height="50%" width="50%"}
 
 
 
 
 # Kubernetes Operation
-![kubernetes9](https://panlm.github.io/kubernetes/9.png)
+![kubernetes9](/kubernetes/9.png){:height="50%" width="50%"}
 
