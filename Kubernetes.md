@@ -2,15 +2,15 @@
 
 # Create Kubernetes
 ## clone kubernetes blueprint from market place to your project (1pic)
-![img1](img/img1.png)
+![img1](https://github.com/panlm/panlm.github.io/blob/master/img/1.png)
 
-CLUSTER_SUBNET -- pod network in k8s
-SERVICE_SUBNET -- service network in k8s
-KUBE_CLUSTER_DNS -- no idea
-PRISM_CLUSTER_IP / PRISM_DATA_SERVICE_IP -- nutanix cluster info
-PRISM_USERNAME / PRISM_PASSWORD -- credentials for nutanix prism
-CONTAINER_NAME -- where your VMs will located
-INSTANCE_PUBLIC_KEY -- public key for user who will login VM to execute all tasks
+* CLUSTER_SUBNET -- pod network in k8s
+* SERVICE_SUBNET -- service network in k8s
+* KUBE_CLUSTER_DNS -- no idea
+* PRISM_CLUSTER_IP / PRISM_DATA_SERVICE_IP -- nutanix cluster info
+* PRISM_USERNAME / PRISM_PASSWORD -- credentials for nutanix prism
+* CONTAINER_NAME -- where your VMs will located
+* INSTANCE_PUBLIC_KEY -- public key for user who will login VM to execute all tasks
 
 
 ## edit credentials
