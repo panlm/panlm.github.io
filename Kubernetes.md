@@ -20,7 +20,7 @@ edit default user, add private key to CENTOS.
 
 
 ## vm configurations
-![img3](img/img3.png)
+![img3](https://panlm.github.io/img/1.png)
 ![img4](img/img4.png)
 ![img5](img/img5.png)
 
