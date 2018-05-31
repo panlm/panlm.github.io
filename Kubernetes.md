@@ -14,7 +14,7 @@
 
 
 ## edit credentials
-![img2](img/img2.png)
+![img2](https://github.com/panlm/panlm.github.io/tree/master/img/2.png)
 
 edit default user, add private key to CENTOS.
 
