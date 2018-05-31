@@ -1,3 +1,6 @@
 
 # homepage
-[Kubernetes.md]
+[Kubernetes](kubernetes.md)
+
+[image1](img/1.png)
+
