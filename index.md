@@ -1,3 +1,3 @@
 
 # homepage
-[[Kubernetes.md]]
+[Kubernetes.md]
