@@ -25,6 +25,6 @@
 
 
 # centos
-* [](cloud-init)
-* [](necessary-pkg-centos)
-
+* [cloud-init](cloud-init)
+* [some packages](necessary-pkg-centos)
+* [mapping-internal-external](mapping-internal-external)

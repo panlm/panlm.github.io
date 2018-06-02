@@ -13,6 +13,8 @@ runcmd:
 - chmod 555 /
 - augtool --autosave "set /files/etc/ssh/sshd_config/PermitRootLogin yes"
 - augtool --autosave "set /files/etc/ssh/sshd_config/PasswordAuthentication yes"
+- augtool --autosave "set /files/etc/ssh/ssh_config/Host/StrictHostKeyChecking no"
+- augtool --autosave "set /files/etc/ssh/ssh_config/Host/CheckHostIp no"
 users:
   - name: centos
     ssh-authorized-keys:
@@ -29,8 +31,8 @@ users:
 
 # reference
 - augeas
-    https://blog.whe.me/post/cloud-init-configurations.html
-    http://frederic-wou.net/augeas-instaalion-on-centos-7-1/
+    - https://blog.whe.me/post/cloud-init-configurations.html
+    - http://frederic-wou.net/augeas-instaalion-on-centos-7-1/
 
 
 
