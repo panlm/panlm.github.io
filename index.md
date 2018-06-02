@@ -21,3 +21,10 @@
 
 # cloudinit
 * http://cloudinit.readthedocs.io/en/latest/topics/examples.html
+
+
+
+# centos
+* [](cloud-init)
+* [](necessary-pkg-centos)
+
