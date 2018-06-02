@@ -41,3 +41,18 @@ edit default user, add private key to CENTOS.
 # Kubernetes Operation
 ![kubernetes9](/kubernetes/9.png){:height="50%" width="50%"}
 
+
+# Reference
+* http://murat1985.github.io/kubernetes/cni/consul/2016/05/26/cni-consul.html
+* https://blog.laputa.io/kubernetes-flannel-networking-6a1cb1f8ec7c
+* https://blog.csdn.net/xingwangc2014/article/details/51204224
+* http://dockone.io/article/618
+
+## 理解kubernetes网络
+- [POD Network](https://medium.com/google-cloud/understanding-kubernetes-networking-pods-7117dd28727)
+- [Service Network](https://medium.com/google-cloud/understanding-kubernetes-networking-services-f0cb48e4cc82)
+- [NodePort, LB, Ingress](https://medium.com/google-cloud/understanding-kubernetes-networking-ingress-1bc341c84078)
+
+
+
+
