@@ -1,6 +1,6 @@
 
 
-```
+```conf
 #cloud-config
 disable_root: False
 ssh_enabled: True
@@ -20,7 +20,7 @@ users:
     sudo: ['ALL=(ALL) NOPASSWD:ALL']
 ```
 
-```
+```conf
 # following line is identical
 # ssh_pwauth: True
 # runcmd:
