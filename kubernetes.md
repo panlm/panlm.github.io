@@ -1,7 +1,7 @@
 
 
 ## Create Kubernetes Environment
-###### clone kubernetes blueprint from market place to your project
+#### clone kubernetes blueprint from market place to your project
 ![kubernetes1](/kubernetes/1.png){:height="50%" width="50%"}
 
 * CLUSTER_SUBNET -- pod network in k8s
@@ -13,13 +13,13 @@
 * INSTANCE_PUBLIC_KEY -- public key for user who will login VM to execute all tasks
 
 
-** edit credentials **
+### edit credentials
 ![kubernetes2](/kubernetes/2.png){:height="50%" width="50%"}
 
 edit default user, add private key to CENTOS.
 
 
-### vm configurations
+## vm configurations
 ![kubernetes3](/kubernetes/3.png){:height="50%" width="50%"}
 ![kubernetes4](/kubernetes/4.png){:height="50%" width="50%"}
 ![kubernetes5](/kubernetes/5.png){:height="50%" width="50%"}
