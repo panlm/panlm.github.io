@@ -2,7 +2,7 @@
 
 ### Create Kubernetes Environment
 #### clone kubernetes blueprint from market place to your project
-![kubernetes1](/kubernetes/1.png){:height="50%" width="50%"}
+![kubernetes1](/kubernetes/1.png){:height="75%" width="75%"}
 
 * CLUSTER_SUBNET -- pod network in k8s
 * SERVICE_SUBNET -- service network in k8s
@@ -14,32 +14,32 @@
 
 
 #### edit credentials
-![kubernetes2](/kubernetes/2.png){:height="50%" width="50%"}
+![kubernetes2](/kubernetes/2.png){:height="75%" width="75%"}
 
 edit default user, add private key to CENTOS.
 
 
 #### vm configurations
-![kubernetes3](/kubernetes/3.png){:height="50%" width="50%"}
-![kubernetes4](/kubernetes/4.png){:height="50%" width="50%"}
-![kubernetes5](/kubernetes/5.png){:height="50%" width="50%"}
+![kubernetes3](/kubernetes/3.png){:height="75%" width="75%"}
+![kubernetes4](/kubernetes/4.png){:height="75%" width="75%"}
+![kubernetes5](/kubernetes/5.png){:height="75%" width="75%"}
 
 #### edit task - configure minion
-![kubernetes6](/kubernetes/6.png){:height="50%" width="50%"}
+![kubernetes6](/kubernetes/6.png){:height="75%" width="75%"}
 
 
 #### other configure
-![kubernetes7](/kubernetes/7.png){:height="50%" width="50%"}
+![kubernetes7](/kubernetes/7.png){:height="75%" width="75%"}
 
 
 #### launch and have a cup of coffee :)
-![kubernetes8](/kubernetes/8.png){:height="50%" width="50%"}
+![kubernetes8](/kubernetes/8.png){:height="75%" width="75%"}
 
 
 
 
 ### Kubernetes Operation
-![kubernetes9](/kubernetes/9.png){:height="50%" width="50%"}
+![kubernetes9](/kubernetes/9.png){:height="75%" width="75%"}
 
 ```kubectl get no```
 
