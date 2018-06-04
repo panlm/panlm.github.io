@@ -1,6 +1,6 @@
 
 
-## Create Kubernetes Environment
+### Create Kubernetes Environment
 #### clone kubernetes blueprint from market place to your project
 ![kubernetes1](/kubernetes/1.png){:height="50%" width="50%"}
 
@@ -13,32 +13,32 @@
 * INSTANCE_PUBLIC_KEY -- public key for user who will login VM to execute all tasks
 
 
-### edit credentials
+#### edit credentials
 ![kubernetes2](/kubernetes/2.png){:height="50%" width="50%"}
 
 edit default user, add private key to CENTOS.
 
 
-## vm configurations
+#### vm configurations
 ![kubernetes3](/kubernetes/3.png){:height="50%" width="50%"}
 ![kubernetes4](/kubernetes/4.png){:height="50%" width="50%"}
 ![kubernetes5](/kubernetes/5.png){:height="50%" width="50%"}
 
-### edit task - configure minion
+#### edit task - configure minion
 ![kubernetes6](/kubernetes/6.png){:height="50%" width="50%"}
 
 
-### other configure
+#### other configure
 ![kubernetes7](/kubernetes/7.png){:height="50%" width="50%"}
 
 
-### launch and have a cup of coffee :)
+#### launch and have a cup of coffee :)
 ![kubernetes8](/kubernetes/8.png){:height="50%" width="50%"}
 
 
 
 
-## Kubernetes Operation
+### Kubernetes Operation
 ![kubernetes9](/kubernetes/9.png){:height="50%" width="50%"}
 
 ```kubectl get no```
@@ -49,7 +49,7 @@ edit default user, add private key to CENTOS.
 
 
 
-## deply container
+#### deply container
 ```yml
 apiVersion: v1
 kind: ReplicationController
@@ -70,7 +70,7 @@ spec:
 ```
 
 
-## deply service
+#### deply service
 ```yml
 kind: Service
 apiVersion: v1
@@ -86,7 +86,7 @@ spec:
     targetPort: 80
 ```
 
-## access applications
+#### access applications
 
 
 ## Reference
