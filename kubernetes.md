@@ -42,9 +42,13 @@ edit default user, add private key to CENTOS.
 ![kubernetes9](/kubernetes/9.png){:height="50%" width="50%"}
 
 ```kubectl get no```
+
 ```kubectl get svc```
+
 ```kubectl describe no```
+
 ```kubectl describe po```
+
 ```kubectl describe svc```
 
 
