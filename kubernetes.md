@@ -101,16 +101,23 @@ spec:
 * https://blog.csdn.net/xingwangc2014/article/details/51204224
 * http://dockone.io/article/618
 * ingress
-** https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-controllers
-** https://kubernetes.github.io/ingress-nginx/deploy/
-** https://www.weave.works/blog/kubernetes-beginners-guide/
-** https://docs.google.com/document/d/14Zy5NGDzpntkej1BliQB7jb5q7E3IuVnr3vk9LHyEGw/edit
+  * https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-controllers
+  * https://kubernetes.github.io/ingress-nginx/deploy/
+  * https://www.weave.works/blog/kubernetes-beginners-guide/
+  * https://docs.google.com/document/d/14Zy5NGDzpntkej1BliQB7jb5q7E3IuVnr3vk9LHyEGw/edit
 
 
 ## 理解kubernetes网络
 - [POD Network](https://medium.com/google-cloud/understanding-kubernetes-networking-pods-7117dd28727)
 - [Service Network](https://medium.com/google-cloud/understanding-kubernetes-networking-services-f0cb48e4cc82)
 - [NodePort, LB, Ingress](https://medium.com/google-cloud/understanding-kubernetes-networking-ingress-1bc341c84078)
+  - https://help.github.com/articles/basic-writing-and-formatting-syntax/
+  - network testing
+    - [x] proxy + cluster ip
+    - [ ] nodeport
+    - [ ] load balance
+    - [ ] ingress
+
 
 
 

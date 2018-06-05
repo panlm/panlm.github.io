@@ -14,3 +14,9 @@
 * [some packages](necessary-pkg-centos)
 * [mapping-internal-external](mapping-internal-external)
 * [iptables](iptables)
+
+
+
+# Keep reading
+* openshift
+* nsx-t
