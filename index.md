@@ -9,9 +9,6 @@
 # calm 
 * https://github.com/RtpChris/Next18Demos
 
-# cloudinit
-* http://cloudinit.readthedocs.io/en/latest/topics/examples.html
-
 # centos
 * [cloud-init](cloud-init)
 * [some packages](necessary-pkg-centos)

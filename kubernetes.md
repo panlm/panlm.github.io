@@ -100,6 +100,12 @@ spec:
 * https://blog.laputa.io/kubernetes-flannel-networking-6a1cb1f8ec7c
 * https://blog.csdn.net/xingwangc2014/article/details/51204224
 * http://dockone.io/article/618
+* ingress
+** https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-controllers
+** https://kubernetes.github.io/ingress-nginx/deploy/
+** https://www.weave.works/blog/kubernetes-beginners-guide/
+** https://docs.google.com/document/d/14Zy5NGDzpntkej1BliQB7jb5q7E3IuVnr3vk9LHyEGw/edit
+
 
 ## 理解kubernetes网络
 - [POD Network](https://medium.com/google-cloud/understanding-kubernetes-networking-pods-7117dd28727)
