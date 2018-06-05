@@ -112,7 +112,7 @@ spec:
   - https://www.weave.works/blog/kubernetes-beginners-guide/
   - [nutanix acs 2.0](https://docs.google.com/document/d/14Zy5NGDzpntkej1BliQB7jb5q7E3IuVnr3vk9LHyEGw/edit)
   - [introduce nsx and kubernetes](http://www.routetocloud.com/2017/10/introduction-to-nsx-and-kubernetes/)
-  - [Kubernetes NodePort vs LoadBalancer vs Ingress? When should I use what?](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
+  - [Kubernetes NodePort vs LoadBalancer vs Ingress? When should I use what?](https://help.github.com/articles/basic-writing-and-formatting-syntax/) :+1:
   - network testing
     - [x] proxy + cluster ip
     - [ ] nodeport

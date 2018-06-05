@@ -1,7 +1,7 @@
 
-# resource
-Visit https://help.github.com/articles/basic-writing-and-formatting-syntax/
-visit https://guides.github.com/features/mastering-markdown/
+# markdown
+* [basic format](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
+* [advanced format](https://guides.github.com/features/mastering-markdown/)
 
 # kubernetes
 * [kubernetes](kubernetes.md)
