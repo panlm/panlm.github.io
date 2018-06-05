@@ -9,7 +9,8 @@
 # calm 
 * https://github.com/RtpChris/Next18Demos
 
-# centos
+# Linux
 * [cloud-init](cloud-init)
 * [some packages](necessary-pkg-centos)
 * [mapping-internal-external](mapping-internal-external)
+* [iptables](iptables)
