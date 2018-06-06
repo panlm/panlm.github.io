@@ -53,7 +53,26 @@ edit default user, add private key to CENTOS.
 
 
 
-## deply container
+## deply sample application
+
+## deply service
+
+
+
+```yml
+  type: NodePort
+```
+
+
+```yml
+  type: ClusterIP
+```
+
+> kubectl create -f nginx-service.xml
+
+## access sample application
+### using kube-proxy
+nginx-2.xml
 ```yml
 apiVersion: v1
 kind: ReplicationController
@@ -72,16 +91,16 @@ spec:
         ports:
         - containerPort: 80
 ```
+> kubectl create -f nginx-2.xml
 
-
-## deply service
+nginx-service-2.xml
 ```yml
 kind: Service
 apiVersion: v1
 metadata:
-  name: nginx-service
+  name: nginx-service-clusterip
 spec:
-  type: NodePort
+  type: ClusterIP
   selector:
     app: nginx-2
   ports:
@@ -89,10 +108,104 @@ spec:
     port: 80
     targetPort: 80
 ```
+> kubectl create -f nginx-service-2.xml
 
-## access applications
+
+```bash
+kubectl proxy --port=8081 --address=0.0.0.0 --accept-hosts='.*'
+```
+and access: http://10.21.104.184:8081/api/v1/proxy/namespaces/default/services/nginx-service:80/
+
+
+### using nodeport
+nginx-3.xml
+```yml
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: rc-nginx-3
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: nginx-3
+    spec:
+      containers:
+      - name: nginx-3
+        image: nginx
+        ports:
+        - containerPort: 80
+```
+> kubectl create -f nginx-3.xml
+
+nginx-service-3.xml
+```yml
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx-service-nodeport
+spec:
+  type: NodePort
+  selector:
+    app: nginx-3
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+```
+> kubectl create -f nginx-service-3.xml
+
+```bash
+kubectl get svc
+```
+and access: http://host-ip:port
+
+
+### using load balance
 ```yml
 ```
+
+
+### using ingress
+nginx-4.xml
+```yml
+apiVersion: v1
+kind: ReplicationController
+metadata:
+  name: rc-nginx-4
+spec:
+  replicas: 2
+  template:
+    metadata:
+      labels:
+        app: nginx-4
+    spec:
+      containers:
+      - name: nginx-4
+        image: nginx
+        ports:
+        - containerPort: 80
+```
+> kubectl create -f nginx-4.xml
+
+nginx-service-4.xml
+```yml
+kind: Service
+apiVersion: v1
+metadata:
+  name: nginx-service-ingress
+spec:
+  type: NodePort
+  selector:
+    app: nginx-4
+  ports:
+  - protocol: TCP
+    port: 80
+    targetPort: 80
+```
+> kubectl create -f nginx-service-4.xml
+
 
 
 # Reference
@@ -110,9 +223,10 @@ spec:
   - https://kubernetes.io/docs/concepts/services-networking/ingress/#ingress-controllers
   - https://kubernetes.github.io/ingress-nginx/deploy/
   - https://www.weave.works/blog/kubernetes-beginners-guide/
+  - https://kubernetes.io/docs/concepts/cluster-administration/networking/
   - [nutanix acs 2.0](https://docs.google.com/document/d/14Zy5NGDzpntkej1BliQB7jb5q7E3IuVnr3vk9LHyEGw/edit)
   - [introduce nsx and kubernetes](http://www.routetocloud.com/2017/10/introduction-to-nsx-and-kubernetes/)
-  - [Kubernetes NodePort vs LoadBalancer vs Ingress? When should I use what?](https://help.github.com/articles/basic-writing-and-formatting-syntax/) :+1:
+  - [Kubernetes NodePort vs LoadBalancer vs Ingress? When should I use what?](https://medium.com/google-cloud/kubernetes-nodeport-vs-loadbalancer-vs-ingress-when-should-i-use-what-922f010849e0) :+1:
   - network testing
     - [x] proxy + cluster ip
     - [ ] nodeport
