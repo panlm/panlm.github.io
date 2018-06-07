@@ -15,7 +15,8 @@
 * [mapping-internal-external](mapping-internal-external)
 * [iptables](iptables)
 
-
+# openstack
+* [ovm for suse soc](https://docs.google.com/document/d/1ubcUh5q2sqiAPyZJbr72MNIzAHb6pKN_zaMr6mzvyv8/edit#)
 
 # Keep reading
 * openshift
