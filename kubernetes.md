@@ -53,11 +53,9 @@ edit default user, add private key to CENTOS.
 
 
 
-## deply sample application
+## Deply Sample Application
 
-## deply service
-
-
+## Deply Service
 
 ```yml
   type: NodePort
@@ -70,8 +68,8 @@ edit default user, add private key to CENTOS.
 
 > kubectl create -f nginx-service.xml
 
-## access sample application
-### using kube-proxy
+## Access Sample Application
+### Using kube-proxy
 nginx-2.xml
 ```yml
 apiVersion: v1
@@ -117,7 +115,7 @@ kubectl proxy --port=8081 --address=0.0.0.0 --accept-hosts='.*'
 and access: http://10.21.104.184:8081/api/v1/proxy/namespaces/default/services/nginx-service:80/
 
 
-### using nodeport
+### [x] Using Nodeport
 nginx-3.xml
 ```yml
 apiVersion: v1
@@ -162,12 +160,12 @@ kubectl get svc
 and access: http://host-ip:port
 
 
-### using load balance
+### Using Load Balance
 ```yml
 ```
 
 
-### using ingress
+### [x] Using Ingress
 #### create app1, app2, backend, ingress controller, configmap, rbca, ingress rules, etc.
 ```bash
 # create app deployment & service
@@ -494,9 +492,9 @@ kubectl create -f nginx-ingress-controller-service.yaml -n=ingress
 ```
 
 #### access app1, app2, nginx status, etc.
-http://test.akomljen.com:30000/app1
-http://test.akomljen.com:30000/app2
-http://test.akomljen.com:32000/nginx_status
+* http://test.akomljen.com:30000/app1
+* http://test.akomljen.com:30000/app2
+* http://test.akomljen.com:32000/nginx_status
 
 before access it, you could mapping domain name to real ip address with /etc/hosts
 
@@ -526,7 +524,7 @@ reference [HERE](https://akomljen.com/kubernetes-nginx-ingress-controller/)
     - [ ] proxy + cluster ip
     - [x] nodeport
     - [ ] load balance
-    - [ ] ingress
+    - [x] ingress
 
 
 
