@@ -3,6 +3,7 @@
 
 @import "{{ site.theme }}";
 
+// here for numbering heading in body
 body {
     counter-reset: h1
 }
@@ -57,6 +58,7 @@ h6:before {
     content: counter(h1) "." counter(h2) "." counter(h3) "." counter(h4) ". " counter(h5) ". " counter(h6) ". "
 }
 
+// here for fonts in content
 nav {
     width: 230px;
     position: fixed;
@@ -98,7 +100,7 @@ nav {
         }
 
         &.tag-h3 {
-            font-size: 1.0em;
+            font-size: 0.8em;
             font-style: italic;
         }
 
