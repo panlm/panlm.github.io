@@ -18,7 +18,6 @@
 
 edit default user, add private key to CENTOS.
 
-
 ## vm configurations
 ![kubernetes3](/kubernetes/3.png){:height="75%" width="75%"}
 ![kubernetes4](/kubernetes/4.png){:height="75%" width="75%"}
@@ -27,49 +26,29 @@ edit default user, add private key to CENTOS.
 ## edit task - configure minion
 ![kubernetes6](/kubernetes/6.png){:height="75%" width="75%"}
 
-
 ## other configure
 ![kubernetes7](/kubernetes/7.png){:height="75%" width="75%"}
-
 
 ## launch and have a cup of coffee :)
 ![kubernetes8](/kubernetes/8.png){:height="75%" width="75%"}
 
 
-
-
 # Kubernetes Operation
 ![kubernetes9](/kubernetes/9.png){:height="75%" width="75%"}
 
-```kubectl get no```
-
-```kubectl get svc```
-
-```kubectl describe no```
-
-```kubectl describe po```
-
-```kubectl describe svc```
-
-
-
-## Deply Sample Application
-
-## Deply Service
-
-```yml
-  type: NodePort
+some basic kubectl commands:
+```
+# kubectl get no
+# kubectl get svc
+# kubectl describe no
+# kubectl describe po
+# kubectl describe svc
+# kubectl create -f nginx-service.xml
 ```
 
 
-```yml
-  type: ClusterIP
-```
-
-> kubectl create -f nginx-service.xml
-
-## Access Sample Application
-### Using kube-proxy
+## Application Deployment
+### [ ] Using kube-proxy
 nginx-2.xml
 ```yml
 apiVersion: v1
@@ -160,7 +139,7 @@ kubectl get svc
 and access: http://host-ip:port
 
 
-### Using Load Balance
+### [ ] Using Load Balance
 ```yml
 ```
 
@@ -169,7 +148,7 @@ and access: http://host-ip:port
 #### create app1, app2, backend, ingress controller, configmap, rbca, ingress rules, etc.
 ```bash
 # create app deployment & service
-cat > app-deployment.yaml <<EOF
+cat > app-deployment.yaml <<-EOF
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -210,7 +189,7 @@ spec:
         ports:
         - containerPort: 80
 EOF
-cat > app-service.yaml <<EOF
+cat > app-service.yaml <<-EOF
 apiVersion: v1
 kind: Service
 metadata:
@@ -238,12 +217,11 @@ EOF
 kubectl create -f app-deployment.yaml -f app-service.yaml
 
 # create nginx ingress controller
-
 # create dedicate namespace
 kubectl create namespace ingress
 
 # create backend deployment & service
-cat > default-backend-deployment.yaml <<EOF
+cat > default-backend-deployment.yaml <<-EOF
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -276,7 +254,7 @@ spec:
             cpu: 10m
             memory: 20Mi
 EOF
-cat > default-backend-service.yaml <<EOF
+cat > default-backend-service.yaml <<-EOF
 apiVersion: v1
 kind: Service
 metadata:
@@ -292,7 +270,7 @@ EOF
 kubectl create -f default-backend-deployment.yaml -f default-backend-service.yaml -n=ingress
 
 # create configmap
-cat > nginx-ingress-controller-config-map.yaml <<EOF
+cat > nginx-ingress-controller-config-map.yaml <<-EOF
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -305,7 +283,7 @@ EOF
 kubectl create -f nginx-ingress-controller-config-map.yaml -n=ingress
 
 # create controller deployment
-cat > nginx-ingress-controller-deployment.yaml <<EOF
+cat > nginx-ingress-controller-deployment.yaml <<-EOF
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -356,7 +334,7 @@ spec:
 EOF
 
 # create RBCA
-cat > nginx-ingress-controller-roles.yaml <<EOF
+cat > nginx-ingress-controller-roles.yaml <<-EOF
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -431,14 +409,14 @@ kubectl create -f nginx-ingress-controller-roles.yaml -n=ingress
 kubectl create -f nginx-ingress-controller-deployment.yaml -n=ingress
 
 # create ingress rules
-cat > nginx-ingress.yaml <<EOF
+cat > nginx-ingress.yaml <<-EOF
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: nginx-ingress
 spec:
   rules:
-  - host: test.akomljen.com
+  - host: test.domain.com    # you could leave empty here for *
     http:
       paths:
       - backend:
@@ -446,7 +424,7 @@ spec:
           servicePort: 18080
         path: /nginx_status
 EOF
-cat > app-ingress.yaml <<EOF
+cat > app-ingress.yaml <<-EOF
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -455,7 +433,7 @@ metadata:
   name: app-ingress
 spec:
   rules:
-  - host: test.akomljen.com
+  - host: test.domain.com    # you could leave empty here for *
     http:
       paths:
       - backend:
@@ -471,7 +449,7 @@ kubectl create -f nginx-ingress.yaml -n=ingress
 kubectl create -f app-ingress.yaml
 
 # expose nginx ingress controller
-cat > nginx-ingress-controller-service.yaml <<EOF
+cat > nginx-ingress-controller-service.yaml <<-EOF
 apiVersion: v1
 kind: Service
 metadata:
@@ -492,9 +470,9 @@ kubectl create -f nginx-ingress-controller-service.yaml -n=ingress
 ```
 
 #### access app1, app2, nginx status, etc.
-* http://test.akomljen.com:30000/app1
-* http://test.akomljen.com:30000/app2
-* http://test.akomljen.com:32000/nginx_status
+* http://test.domain.com:30000/app1
+* http://test.domain.com:30000/app2
+* http://test.domain.com:32000/nginx_status
 
 before access it, you could mapping domain name to real ip address with /etc/hosts
 
@@ -506,7 +484,6 @@ reference [HERE](https://akomljen.com/kubernetes-nginx-ingress-controller/)
 * https://blog.laputa.io/kubernetes-flannel-networking-6a1cb1f8ec7c
 * https://blog.csdn.net/xingwangc2014/article/details/51204224
 * http://dockone.io/article/618
-* ingress
 
 
 ## 理解kubernetes网络
