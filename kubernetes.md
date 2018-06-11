@@ -32,11 +32,8 @@ edit default user, add private key to CENTOS.
 ## launch and have a cup of coffee :)
 ![kubernetes8](/kubernetes/8.png){:height="75%" width="75%"}
 
-
 # Kubernetes Operation
-![kubernetes9](/kubernetes/9.png){:height="75%" width="75%"}
-
-some basic kubectl commands:
+## some basic kubectl commands:
 ```
 # kubectl get no
 # kubectl get svc
@@ -45,7 +42,6 @@ some basic kubectl commands:
 # kubectl describe svc
 # kubectl create -f nginx-service.xml
 ```
-
 
 ## Application Deployment
 ### [ ] Using kube-proxy
