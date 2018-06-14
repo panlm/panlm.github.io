@@ -506,3 +506,7 @@ reference [HERE](https://akomljen.com/kubernetes-nginx-ingress-controller/)
 - [difference between replicator controller, replicator factor, deployment in k8s](https://www.mirantis.com/blog/kubernetes-replication-controller-replica-set-and-deployments-understanding-replication-options/)
 
 
+- https://hackernoon.com/setting-up-nginx-ingress-on-kubernetes-2b733d8d2f45
+- https://medium.com/@cashisclay/kubernetes-ingress-82aa960f658e
+- https://akomljen.com/kubernetes-nginx-ingress-controller/
+- 
