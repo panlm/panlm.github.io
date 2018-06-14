@@ -131,7 +131,7 @@ oracle soft nofile 1024
 oracle hard nofile 65536
 ```
 12. /etc/rc.local
-```bash
+```sh
 #please disable these line, because of the incompatible between UEK and vmxnet3
 #/sbin/ethtool -G eth0 rx 4096 tx 4096
 #/sbin/ethtool -G eth1 rx 4096 tx 4096
@@ -140,4 +140,26 @@ for disk in sda sdb sdc sdd sde sdf; do
     echo 1024 > /sys/block/$disk/queue/max_sectors_kb
     echo $disk " max_sectors_kb set to 1024"
 done
+```
+13. oracle user
+```sh
+groupadd dba
+groupadd oinstall
+groupadd asmdba
+groupadd asmadmin
+groupadd asmoper
+
+useradd -g oinstall -G dba,asmdba oracle
+useradd -g oinstall -G asmdba,asmadmin,asmoper,dba grid
+
+mkdir -p /u01/app/grid
+mkdir -p /u01/app/11.2.0/grid
+mkdir -p /u01/app/oracle
+chown -R grid:oinstall /u01
+chown -R oracle:oinstall /u01/app/oracle
+```
+setting password for grid & oracle
+```sh
+passwd grid
+passwd oracle
 ```
