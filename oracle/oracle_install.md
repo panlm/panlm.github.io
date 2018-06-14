@@ -264,8 +264,9 @@ https://willsnotes.wordpress.com/2010/10/13/linux-rhel-5-configuring-multipathin
 ```
 
 
-# Database Installation
-## installing Grid
+# Database Installation (for RAC)
+## Oracle RAC
+### installing Grid
 ![pic2](/oracle/pic2.png)
 
 ![pic3](/oracle/pic3.png)
@@ -286,13 +287,12 @@ Create a "CRS" asm diskgroup when install, using quorum disk.
 
 ![pic8](/oracle/pic8.png)
 
+### installing oracle
 
 
-
-
-## installing oracle
-
-
+## Single Node Oracle Database
+### installing Grid
+### installing oracle
 
 
 
