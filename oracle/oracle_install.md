@@ -245,17 +245,17 @@ ls -al /dev/asm*
 ```
 
 * refer to: 
-https://oracle-base.com/articles/linux/udev-scsi-rules-configuration-in-oracle-linux
-https://www.centos.org/docs/5/html/5.2/Virtualization/sect-Virtualization-Virtualized_block_devices-Configuring_persistent_storage_in_a_Red_Hat_Enterprise_Linux_5_environment.html
+  * https://oracle-base.com/articles/linux/udev-scsi-rules-configuration-in-oracle-linux
+  * https://www.centos.org/docs/5/html/5.2/Virtualization/sect-Virtualization-Virtualized_block_devices-Configuring_persistent_storage_in_a_Red_Hat_Enterprise_Linux_5_environment.html
 
 
 ### multipath
 ```
 ```
 * reference
-http://www.zhongweicheng.com/?p=1612
-http://www.zhongweicheng.com/?p=1608
-https://willsnotes.wordpress.com/2010/10/13/linux-rhel-5-configuring-multipathing-with-dm-multipath/
+  * http://www.zhongweicheng.com/?p=1612
+  * http://www.zhongweicheng.com/?p=1608
+  * https://willsnotes.wordpress.com/2010/10/13/linux-rhel-5-configuring-multipathing-with-dm-multipath/
 
 
 ### multi writer
@@ -263,8 +263,8 @@ https://willsnotes.wordpress.com/2010/10/13/linux-rhel-5-configuring-multipathin
 ```
 
 
-# Database Installation (for RAC)
-## Oracle RAC
+# Database Installation
+## Two Nodes Oracle RAC
 ### installing Grid
 ![pic2](/oracle/pic2.png)
 
@@ -289,7 +289,7 @@ Create a "CRS" asm diskgroup when install, using quorum disk.
 ### installing oracle
 
 
-## Single Node Oracle Database
+## Single Node Oracle
 ### installing Grid
 ### installing oracle
 
