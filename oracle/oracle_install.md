@@ -266,23 +266,25 @@ https://willsnotes.wordpress.com/2010/10/13/linux-rhel-5-configuring-multipathin
 
 # Database Installation
 ## installing Grid
-![pic2](oracle/pic2.png)
+![pic2](/oracle/pic2.png)
 
-![pic3](oracle/pic3.png)
+![pic3](/oracle/pic3.png)
+
 choose typical installation
 
-![pic4](oracle/pic4.png)
+![pic4](/oracle/pic4.png)
+
 click setup and test
 
-![pic5](oracle/pic5.png)
+![pic5](/oracle/pic5.png)
 password is oracle, select asmadmin (same with the groupname you defined in 99-oracle-rawdevices.rules)
 
-![pic6](oracle/pic6.png)
+![pic6](/oracle/pic6.png)
 Create a "CRS" asm diskgroup when install, using quorum disk.
 
-![pic7](oracle/pic7.png)
+![pic7](/oracle/pic7.png)
 
-![pic8](oracle/pic8.png)
+![pic8](/oracle/pic8.png)
 
 
 
