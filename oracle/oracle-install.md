@@ -1,8 +1,7 @@
 
 
-# Database Installation
-## Two Nodes Oracle RAC
-### installing Grid
+# Two Nodes Oracle RAC
+## installing Grid
 ![pic2](/oracle/pic2.png)
 
 ![pic3](/oracle/pic3.png)
@@ -23,7 +22,7 @@ Create a "CRS" asm diskgroup when install, using quorum disk.
 
 ![pic8](/oracle/pic8.png)
 
-### installing oracle
+## installing oracle
 ![pic11](/oracle/pic11.png)
 ![pic12](/oracle/pic12.png)
 ![pic13](/oracle/pic13.png)
@@ -33,12 +32,12 @@ Create a "CRS" asm diskgroup when install, using quorum disk.
 ![pic17](/oracle/pic17.png)
 ![pic18](/oracle/pic18.png)
 
-## Single Node Oracle
-### installing Grid
+# Single Node Oracle
+## installing Grid
 ```
 ```
 
-### installing oracle
+## installing oracle
 ```
 ```
 
