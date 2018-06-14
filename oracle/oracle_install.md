@@ -47,8 +47,9 @@ NETMASK=255.255.255.0
 IPV6INIT=no
 USERCTL=no
 ```
-7.  hosts and resolv.conf
-/etc/hosts
+
+* hosts and resolv.conf
+> /etc/hosts
 ```
 172.32.230.83 rac1 
 172.32.230.84 rac2 
@@ -57,16 +58,19 @@ USERCTL=no
 192.168.99.1 rac1-priv
 192.168.99.2 rac2-priv
 ```
-/etc/resolv.conf
+
+> /etc/resolv.conf
 ```
 search
 nameserver 10.6.11.120
 ```
-add scan ip to DNS server, such as:
+
+> add scan ip to DNS server, such as:
 ```
 rac-scan   172.32.230.87/88/89
 ```
-8. yum setting
+
+* yum setting
 copy install cd to special directory (/pub/cdrom)
 ```conf
 [cdrom]
