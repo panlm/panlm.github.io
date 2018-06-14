@@ -19,8 +19,9 @@ ln -sf /dev/null 70-persistent-net.rules
 * NIC coalescing
 ```
 ```
-6. assign ip address
-eth0
+
+* assign ip address
+> eth0
 ```conf
 DEVICE=eth0
 TYPE=Ethernet
@@ -33,7 +34,8 @@ GATEWAY=172.32.230.193
 IPV6INIT=no
 USERCTL=no
 ```
-eth1 (for RAC internal connection)
+
+> eth1 (for RAC internal connection)
 ```conf
 DEVICE=eth1
 TYPE=Ethernet
