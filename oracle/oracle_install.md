@@ -68,8 +68,10 @@ nameserver 10.6.11.120
 rac-scan   172.32.230.87/88/89
 ```
 
+### install packages
 * yum setting
-copy install cd to special directory (/pub/cdrom)
+  * copy install cd to special directory (/pub/cdrom)
+  * create yum file in /etc/yum.repos.d/
 ```conf
 [cdrom]
 name=cdrom
@@ -78,14 +80,16 @@ enabled=1
 gpgcheck=0
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
 ```
-9. install packages
+
+* install packages
 ```bash
 yum -y install gcc gcc-c++
 yum -y install compat-gcc-34-3.4.6 compat-libstdc++-33-3.2.3 libaio libaio-devel
 yum -y install elfutils-libelf-devel compat-libcap1
 ```
-10. sysctl.conf
-add following lines to /etc/sysctl.conf to reduce swapping
+
+### kernel settinghs
+* add following lines to /etc/sysctl.conf to reduce swapping
 ```conf
 vm.overcommit_memory = 1
 vm.dirty_background_ratio = 5
@@ -95,14 +99,16 @@ vm.dirty_writeback_centisecs = 100
 vm.swappiness = 0
 net.ipv4.conf.eth1.rp_filter = 2
 ```
-huge page settings ([LINK HERE](http://blog.csdn.net/tianlesoftware/article/details/8536435))
+
+* huge page settings ([LINK HERE](http://blog.csdn.net/tianlesoftware/article/details/8536435))
 ```conf
 vm.nr_hugepages = 3500   # 2MB each page (30000)
 ```
 reboot and check /proc/meminfo |grep HugePages
 !!! don't let hugepage to exhaust all memory
 #don’t use hugeapge, it maybe eat up your memory, and swap in/out storm.
->some settings for your reference
+
+> some settings for your reference
 ```conf
 kernel.shmmni = 4096
 kernel.sem = 250 32000 100 128
@@ -114,7 +120,8 @@ net.core.rmem_max = 4194304
 net.core.wmem_default = 262144
 net.core.wmem_max = 1048576
 ```
-11. /etc/security/limit.conf
+
+* /etc/security/limit.conf
 change default value:
 ```conf
 oracle   soft   memlock    50000000
@@ -136,7 +143,9 @@ oracle hard nproc 16384
 oracle soft nofile 1024
 oracle hard nofile 65536
 ```
-12. /etc/rc.local
+
+### boot file
+* /etc/rc.local
 ```sh
 #please disable these line, because of the incompatible between UEK and vmxnet3
 #/sbin/ethtool -G eth0 rx 4096 tx 4096
@@ -147,7 +156,9 @@ for disk in sda sdb sdc sdd sde sdf; do
     echo $disk " max_sectors_kb set to 1024"
 done
 ```
-13. oracle user
+
+### user settings
+* oracle users
 ```sh
 groupadd dba
 groupadd oinstall
@@ -164,8 +175,11 @@ mkdir -p /u01/app/oracle
 chown -R grid:oinstall /u01
 chown -R oracle:oinstall /u01/app/oracle
 ```
-setting password for grid & oracle
+
+* setting password for grid & oracle
 ```sh
 passwd grid
 passwd oracle
 ```
+
+
