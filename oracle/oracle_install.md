@@ -163,10 +163,8 @@ groupadd oinstall
 groupadd asmdba
 groupadd asmadmin
 groupadd asmoper
-
 useradd -g oinstall -G dba,asmdba oracle
 useradd -g oinstall -G asmdba,asmadmin,asmoper,dba grid
-
 mkdir -p /u01/app/grid
 mkdir -p /u01/app/11.2.0/grid
 mkdir -p /u01/app/oracle
@@ -179,5 +177,126 @@ chown -R oracle:oinstall /u01/app/oracle
 passwd grid
 passwd oracle
 ```
+
+* profile for grid
+```bash
+ORACLE_BASE=/u01/app/grid; export ORACLE_BASE
+ORACLE_HOME=/u01/app/11.2.0/grid; export ORACLE_HOME
+ORACLE_SID=+ASM1; export ORACLE_SID
+PATH=$ORACLE_HOME/bin:$PATH; export PATH
+```
+
+* profile for oracle
+```bash
+ORACLE_BASE=/u01/app/oracle; export ORACLE_BASE
+ORACLE_HOME=$ORACLE_BASE/product/11.2.0/dbhome_1; export ORACLE_HOME
+LD_LIBRARY_PATH=$ORACLE_HOME/lib:/lib:/usr/lib; export LD_LIBRARY_PATH
+CLASSPATH=$ORACLE_HOME/JRE:$ORACLE_HOME/jlib:$ORACLE_HOME/rdbms/jlib; export CLASSPATH
+ORACLE_SID=unitepos1  ; export ORACLE_SID
+PATH=$ORACLE_HOME/bin:$PATH; export PATH
+```
+
+### prepare raw disk
+* Add following to VM’s vmx file
+```
+disk.EnableUUID = "TRUE"
+```
+
+* add following to scsi_id.config
+```
+echo "options=-g" >> /etc/scsi_id.config
+```
+
+> Oracle Linux 5 
+```
+# scsi_id -g -s /block/sd?
+```
+> Oracle Linux 6/7, CentOS 6/7
+```
+# scsi_id -g -u -d /dev/sd?
+```
+
+* add ASM disks to OS, get disk name, such as sdb, sdc, sdd, etc
+```sh
+for i in b c d ; do
+    /sbin/scsi_id -g -u -d /dev/sd$i
+done
+36000c295d0f74f996c7da9f53628b241
+36000c298f8ce5da326f6752e20d1b452
+36000c29a2f64c4089fe3964592096a33
+```
+> sample rules file
+```
+/etc/udev/rules.d/99-oracle-asmdevices.rules
+KERNEL=="sd?1", BUS=="scsi", PROGRAM=="/sbin/scsi_id -g -u -d /dev/$parent", RESULT=="36000c295d0f74f996c7da9f53628b241", NAME="asm-disk1", OWNER="grid", GROUP="asmadmin", MODE="0660"
+KERNEL=="sd?1", BUS=="scsi", PROGRAM=="/sbin/scsi_id -g -u -d /dev/$parent", RESULT=="36000c298f8ce5da326f6752e20d1b452", NAME="asm-disk2", OWNER="grid", GROUP="asmadmin", MODE="0660"
+KERNEL=="sd?1", BUS=="scsi", PROGRAM=="/sbin/scsi_id -g -u -d /dev/$parent", RESULT=="36000c29a2f64c4089fe3964592096a33", NAME="asm-disk3", OWNER="grid", GROUP="asmadmin", MODE="0660"
+```
+> If you have lots of disks, maybe you should change ? to *
+```
+KERNEL=="sd*1", BUS=="scsi", PROGRAM=="/sbin/scsi_id -g -u -d /dev/$parent", RESULT=="36000c29fd0e9d9a6f4e161bd82450aec", NAME="asm-scsi1-0", OWNER="grid", GROUP="asmadmin", MODE="0660"
+```
+
+* reboot or run as followings
+```
+/sbin/udevadm test /block/sdb/sdb1 
+/sbin/udevadm control --reload-rules 
+/sbin/start_udev
+ls -al /dev/asm*
+```
+
+* refer to: 
+https://oracle-base.com/articles/linux/udev-scsi-rules-configuration-in-oracle-linux
+https://www.centos.org/docs/5/html/5.2/Virtualization/sect-Virtualization-Virtualized_block_devices-Configuring_persistent_storage_in_a_Red_Hat_Enterprise_Linux_5_environment.html
+
+
+### multipath
+```
+```
+* reference
+http://www.zhongweicheng.com/?p=1612
+http://www.zhongweicheng.com/?p=1608
+https://willsnotes.wordpress.com/2010/10/13/linux-rhel-5-configuring-multipathing-with-dm-multipath/
+
+
+### multi writer
+```
+```
+
+
+# Database Installation
+## installing Grid
+![pic2](oracle/pic2.png)
+
+![pic3](oracle/pic3.png)
+choose typical installation
+
+![pic4](oracle/pic4.png)
+click setup and test
+
+![pic5](oracle/pic5.png)
+password is oracle, select asmadmin (same with the groupname you defined in 99-oracle-rawdevices.rules)
+
+![pic6](oracle/pic6.png)
+Create a "CRS" asm diskgroup when install, using quorum disk.
+
+![pic7](oracle/pic7.png)
+
+![pic8](oracle/pic8.png)
+
+
+
+
+
+## installing oracle
+
+
+
+
+
+
+
+
+
 
 
