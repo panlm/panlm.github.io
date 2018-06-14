@@ -4,6 +4,7 @@
 # 虚拟机配置
 ## VM config in vsphere
 
+
 ## VM OS config
 ### basic
 * install centos 6.8, select `base` in installation
@@ -34,7 +35,6 @@ GATEWAY=172.32.230.193
 IPV6INIT=no
 USERCTL=no
 ```
-
 > eth1 (for RAC internal connection)
 ```conf
 DEVICE=eth1
@@ -58,13 +58,11 @@ USERCTL=no
 192.168.99.1 rac1-priv
 192.168.99.2 rac2-priv
 ```
-
 > /etc/resolv.conf
 ```
 search
 nameserver 10.6.11.120
 ```
-
 > add scan ip to DNS server, such as:
 ```
 rac-scan   172.32.230.87/88/89
