@@ -20,7 +20,10 @@
 * [ovm for suse soc](https://docs.google.com/document/d/1ubcUh5q2sqiAPyZJbr72MNIzAHb6pKN_zaMr6mzvyv8/edit#)
 
 # BCA
-* [oracle install guide](oracle/oracle_install)
+* Oracle 11gR2 on CentOS 6.8 (Nutanix BP)
+    * [OS Configuration](oracle/os-config)
+    * [Database Installation](oracle/oracle-install)
+    * [Create Database](oracle/create-database)
 
 # nutanix
 * [esx command after foundation](nic-cmd)
