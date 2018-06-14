@@ -149,7 +149,6 @@ oracle hard nofile 65536
 #please disable these line, because of the incompatible between UEK and vmxnet3
 #/sbin/ethtool -G eth0 rx 4096 tx 4096
 #/sbin/ethtool -G eth1 rx 4096 tx 4096
-
 for disk in sda sdb sdc sdd sde sdf; do
     echo 1024 > /sys/block/$disk/queue/max_sectors_kb
     echo $disk " max_sectors_kb set to 1024"
