@@ -104,10 +104,9 @@ net.ipv4.conf.eth1.rp_filter = 2
 ```conf
 vm.nr_hugepages = 3500   # 2MB each page (30000)
 ```
-reboot and check /proc/meminfo |grep HugePages
+> reboot and check /proc/meminfo |grep HugePages
 !!! don't let hugepage to exhaust all memory
 #don’t use hugeapge, it maybe eat up your memory, and swap in/out storm.
-
 > some settings for your reference
 ```conf
 kernel.shmmni = 4096
@@ -145,7 +144,7 @@ oracle hard nofile 65536
 ```
 
 ### boot file
-* /etc/rc.local
+* add lines to /etc/rc.local: 
 ```sh
 #please disable these line, because of the incompatible between UEK and vmxnet3
 #/sbin/ethtool -G eth0 rx 4096 tx 4096
