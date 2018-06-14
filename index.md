@@ -22,6 +22,9 @@
 # BCA
 * [oracle install guide](oracle/oracle_install)
 
+# nutanix
+* [esx command after foundation](nic-cmd)
+
 # Keep reading
 * openshift
 * nsx-t

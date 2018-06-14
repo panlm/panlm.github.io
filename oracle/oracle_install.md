@@ -5,16 +5,18 @@
 ## VM config in vsphere
 
 ## VM OS config
-1. install centos 6.8, select `base` in installation
-2. disable selinux & iptables
-3. disable nic discovery rules
+### basic
+* install centos 6.8, select `base` in installation
+* disable selinux & iptables
+* disable nic discovery rules
 ```
 cd /etc/udev/rules.d
 rm -f 70-persistent-net.rules
 ln -sf /dev/null 70-persistent-net.rules
 ```
-4. install vmware-tool
-5. NIC coalescing
+
+* install vmware-tool
+* NIC coalescing
 ```
 ```
 6. assign ip address
