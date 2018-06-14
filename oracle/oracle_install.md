@@ -179,7 +179,7 @@ passwd oracle
 ```
 
 * profile for grid
-```bash
+```sh
 ORACLE_BASE=/u01/app/grid; export ORACLE_BASE
 ORACLE_HOME=/u01/app/11.2.0/grid; export ORACLE_HOME
 ORACLE_SID=+ASM1; export ORACLE_SID
@@ -187,7 +187,7 @@ PATH=$ORACLE_HOME/bin:$PATH; export PATH
 ```
 
 * profile for oracle
-```bash
+```sh
 ORACLE_BASE=/u01/app/oracle; export ORACLE_BASE
 ORACLE_HOME=$ORACLE_BASE/product/11.2.0/dbhome_1; export ORACLE_HOME
 LD_LIBRARY_PATH=$ORACLE_HOME/lib:/lib:/usr/lib; export LD_LIBRARY_PATH
@@ -198,22 +198,22 @@ PATH=$ORACLE_HOME/bin:$PATH; export PATH
 
 ### prepare raw disk
 * Add following to VM’s vmx file
-```
+```conf
 disk.EnableUUID = "TRUE"
 ```
 
 * add following to scsi_id.config
-```
+```sh
 echo "options=-g" >> /etc/scsi_id.config
 ```
 
 > Oracle Linux 5 
-```
-# scsi_id -g -s /block/sd?
+```sh
+scsi_id -g -s /block/sd?
 ```
 > Oracle Linux 6/7, CentOS 6/7
-```
-# scsi_id -g -u -d /dev/sd?
+```sh
+scsi_id -g -u -d /dev/sd?
 ```
 
 * add ASM disks to OS, get disk name, such as sdb, sdc, sdd, etc
@@ -225,20 +225,19 @@ done
 36000c298f8ce5da326f6752e20d1b452
 36000c29a2f64c4089fe3964592096a33
 ```
-> sample rules file
-```
-/etc/udev/rules.d/99-oracle-asmdevices.rules
+> sample rules file: /etc/udev/rules.d/99-oracle-asmdevices.rules
+```conf
 KERNEL=="sd?1", BUS=="scsi", PROGRAM=="/sbin/scsi_id -g -u -d /dev/$parent", RESULT=="36000c295d0f74f996c7da9f53628b241", NAME="asm-disk1", OWNER="grid", GROUP="asmadmin", MODE="0660"
 KERNEL=="sd?1", BUS=="scsi", PROGRAM=="/sbin/scsi_id -g -u -d /dev/$parent", RESULT=="36000c298f8ce5da326f6752e20d1b452", NAME="asm-disk2", OWNER="grid", GROUP="asmadmin", MODE="0660"
 KERNEL=="sd?1", BUS=="scsi", PROGRAM=="/sbin/scsi_id -g -u -d /dev/$parent", RESULT=="36000c29a2f64c4089fe3964592096a33", NAME="asm-disk3", OWNER="grid", GROUP="asmadmin", MODE="0660"
 ```
 > If you have lots of disks, maybe you should change ? to *
-```
+```conf
 KERNEL=="sd*1", BUS=="scsi", PROGRAM=="/sbin/scsi_id -g -u -d /dev/$parent", RESULT=="36000c29fd0e9d9a6f4e161bd82450aec", NAME="asm-scsi1-0", OWNER="grid", GROUP="asmadmin", MODE="0660"
 ```
 
 * reboot or run as followings
-```
+```sh
 /sbin/udevadm test /block/sdb/sdb1 
 /sbin/udevadm control --reload-rules 
 /sbin/start_udev
