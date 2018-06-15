@@ -1,28 +1,27 @@
 
 
 
-# 虚拟机配置
-## VM config in vsphere
+# VM config in vsphere
 
 
-## VM OS config
-### basic
-* install centos 6.8, select `base` in installation
-* disable selinux & iptables
-* disable nic discovery rules
+# VM OS config
+## basic
+* (mandatory) install centos 6.8, select `base` in installation
+* (mandatory) disable selinux & iptables
+* (optional) disable nic discovery rules
 ```
 cd /etc/udev/rules.d
 rm -f 70-persistent-net.rules
 ln -sf /dev/null 70-persistent-net.rules
 ```
 
-* install vmware-tool
-* NIC coalescing
+* (mandatory) install vmware-tool
+* (optional) NIC coalescing
 ```
 ```
 
-* assign ip address
-> eth0
+* (mandatory for rac) assign ip address
+ > eth0
 ```conf
 DEVICE=eth0
 TYPE=Ethernet
@@ -35,7 +34,7 @@ GATEWAY=172.32.230.193
 IPV6INIT=no
 USERCTL=no
 ```
-> eth1 (for RAC internal connection)
+ > eth1 (for RAC internal connection)
 ```conf
 DEVICE=eth1
 TYPE=Ethernet
@@ -48,8 +47,8 @@ IPV6INIT=no
 USERCTL=no
 ```
 
-* hosts and resolv.conf
-> /etc/hosts
+* (mandatory for rac) hosts and resolv.conf
+ > /etc/hosts
 ```
 172.32.230.83 rac1 
 172.32.230.84 rac2 
@@ -58,18 +57,18 @@ USERCTL=no
 192.168.99.1 rac1-priv
 192.168.99.2 rac2-priv
 ```
-> /etc/resolv.conf
+ > /etc/resolv.conf
 ```
 search
 nameserver 10.6.11.120
 ```
-> add scan ip to DNS server, such as:
+ > add scan ip to DNS server, such as:
 ```
 rac-scan   172.32.230.87/88/89
 ```
 
-### install packages
-* yum setting
+## install packages
+* (mandatory) yum setting
   * copy install cd to special directory (/pub/cdrom)
   * create yum file in /etc/yum.repos.d/
 ```conf
@@ -81,15 +80,15 @@ gpgcheck=0
 gpgkey=file:///etc/pki/rpm-gpg/RPM-GPG-KEY-redhat-release
 ```
 
-* install packages
+* (mandatory) install packages
 ```bash
 yum -y install gcc gcc-c++
 yum -y install compat-gcc-34-3.4.6 compat-libstdc++-33-3.2.3 libaio libaio-devel
 yum -y install elfutils-libelf-devel compat-libcap1
 ```
 
-### kernel settinghs
-* add following lines to /etc/sysctl.conf to reduce swapping
+## kernel settinghs
+* (mandatory) add following lines to /etc/sysctl.conf to reduce swapping
 ```conf
 vm.overcommit_memory = 1
 vm.dirty_background_ratio = 5
@@ -100,14 +99,14 @@ vm.swappiness = 0
 net.ipv4.conf.eth1.rp_filter = 2
 ```
 
-* huge page settings ([LINK HERE](http://blog.csdn.net/tianlesoftware/article/details/8536435))
+* (optional) huge page settings ([LINK HERE](http://blog.csdn.net/tianlesoftware/article/details/8536435))
 ```conf
 vm.nr_hugepages = 3500   # 2MB each page (30000)
 ```
-> reboot and check /proc/meminfo |grep HugePages
-!!! don't let hugepage to exhaust all memory
-#don’t use hugeapge, it maybe eat up your memory, and swap in/out storm.
-> some settings for your reference
+reboot and check `/proc/meminfo |grep HugePages`
+  > !!! don't let hugepage to exhaust all memory
+  > #don’t use hugeapge, it maybe eat up your memory, and swap in/out storm.
+  > some settings for your reference
 ```conf
 kernel.shmmni = 4096
 kernel.sem = 250 32000 100 128
@@ -120,7 +119,7 @@ net.core.wmem_default = 262144
 net.core.wmem_max = 1048576
 ```
 
-* /etc/security/limit.conf
+* (mandatory) /etc/security/limit.conf
 change default value:
 ```conf
 oracle   soft   memlock    50000000
@@ -131,7 +130,7 @@ to:
 oracle   soft   memlock    15000000
 oracle   hard   memlock    15000000
 ```
-> some settings for your reference
+  > some settings for your reference
 ```conf
 grid soft nproc 2047
 grid hard nproc 16384
@@ -143,8 +142,8 @@ oracle soft nofile 1024
 oracle hard nofile 65536
 ```
 
-### boot file
-* add lines to /etc/rc.local: 
+## boot file
+* (mandatory) add lines to /etc/rc.local: 
 ```sh
 #please disable these line, because of the incompatible between UEK and vmxnet3
 #/sbin/ethtool -G eth0 rx 4096 tx 4096
@@ -155,8 +154,8 @@ for disk in sda sdb sdc sdd sde sdf; do
 done
 ```
 
-### user settings
-* oracle users
+## user settings
+* (mandatory) oracle users
 ```sh
 groupadd dba
 groupadd oinstall
@@ -172,13 +171,13 @@ chown -R grid:oinstall /u01
 chown -R oracle:oinstall /u01/app/oracle
 ```
 
-* setting password for grid & oracle
+* (mandatory) setting password for grid & oracle
 ```sh
 passwd grid
 passwd oracle
 ```
 
-* profile for grid
+* (mandatory) profile for grid
 ```sh
 ORACLE_BASE=/u01/app/grid; export ORACLE_BASE
 ORACLE_HOME=/u01/app/11.2.0/grid; export ORACLE_HOME
@@ -186,7 +185,7 @@ ORACLE_SID=+ASM1; export ORACLE_SID
 PATH=$ORACLE_HOME/bin:$PATH; export PATH
 ```
 
-* profile for oracle
+* (mandatory) profile for oracle
 ```sh
 ORACLE_BASE=/u01/app/oracle; export ORACLE_BASE
 ORACLE_HOME=$ORACLE_BASE/product/11.2.0/dbhome_1; export ORACLE_HOME
@@ -196,27 +195,27 @@ ORACLE_SID=unitepos1  ; export ORACLE_SID
 PATH=$ORACLE_HOME/bin:$PATH; export PATH
 ```
 
-### prepare raw disk
-* Add following to VM’s vmx file
+## prepare raw disk
+* (mandatory) Add following to VM’s vmx file
 ```conf
 disk.EnableUUID = "TRUE"
 ```
 
-* add following to scsi_id.config
+* (optional) add following to scsi_id.config
 ```sh
 echo "options=-g" >> /etc/scsi_id.config
 ```
 
-> Oracle Linux 5 
+  > Oracle Linux 5 
 ```sh
 scsi_id -g -s /block/sd?
 ```
-> Oracle Linux 6/7, CentOS 6/7
+  > Oracle Linux 6/7, CentOS 6/7
 ```sh
 scsi_id -g -u -d /dev/sd?
 ```
 
-* add ASM disks to OS, get disk name, such as sdb, sdc, sdd, etc
+* (mandatory) add ASM disks to OS, get disk name, such as sdb, sdc, sdd, etc
 ```sh
 for i in b c d ; do
     /sbin/scsi_id -g -u -d /dev/sd$i
@@ -225,18 +224,18 @@ done
 36000c298f8ce5da326f6752e20d1b452
 36000c29a2f64c4089fe3964592096a33
 ```
-> sample rules file: /etc/udev/rules.d/99-oracle-asmdevices.rules
+  > sample rules file: /etc/udev/rules.d/99-oracle-asmdevices.rules
 ```conf
 KERNEL=="sd?1", BUS=="scsi", PROGRAM=="/sbin/scsi_id -g -u -d /dev/$parent", RESULT=="36000c295d0f74f996c7da9f53628b241", NAME="asm-disk1", OWNER="grid", GROUP="asmadmin", MODE="0660"
 KERNEL=="sd?1", BUS=="scsi", PROGRAM=="/sbin/scsi_id -g -u -d /dev/$parent", RESULT=="36000c298f8ce5da326f6752e20d1b452", NAME="asm-disk2", OWNER="grid", GROUP="asmadmin", MODE="0660"
 KERNEL=="sd?1", BUS=="scsi", PROGRAM=="/sbin/scsi_id -g -u -d /dev/$parent", RESULT=="36000c29a2f64c4089fe3964592096a33", NAME="asm-disk3", OWNER="grid", GROUP="asmadmin", MODE="0660"
 ```
-> If you have lots of disks, maybe you should change ? to *
+    > If you have lots of disks, maybe you should change ? to *
 ```conf
 KERNEL=="sd*1", BUS=="scsi", PROGRAM=="/sbin/scsi_id -g -u -d /dev/$parent", RESULT=="36000c29fd0e9d9a6f4e161bd82450aec", NAME="asm-scsi1-0", OWNER="grid", GROUP="asmadmin", MODE="0660"
 ```
 
-* reboot or run as followings
+* (mandatory) reboot or run as followings
 ```sh
 /sbin/udevadm test /block/sdb/sdb1 
 /sbin/udevadm control --reload-rules 
@@ -249,7 +248,7 @@ ls -al /dev/asm*
   * https://www.centos.org/docs/5/html/5.2/Virtualization/sect-Virtualization-Virtualized_block_devices-Configuring_persistent_storage_in_a_Red_Hat_Enterprise_Linux_5_environment.html
 
 
-### multipath
+## (optional) multipath
 ```
 ```
 * reference
@@ -258,7 +257,12 @@ ls -al /dev/asm*
   * https://willsnotes.wordpress.com/2010/10/13/linux-rhel-5-configuring-multipathing-with-dm-multipath/
 
 
-### multi writer
+## multi writer
+* (mandatory for rac) enable multi write
+```
+```
+
+* (mandatory for rac) disable shadow-clone in nutanix cluster
 ```
 ```
 
