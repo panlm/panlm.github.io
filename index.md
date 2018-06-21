@@ -17,7 +17,8 @@
 * [iptables](iptables)
 
 # openstack
-* [ovm for suse soc](https://docs.google.com/document/d/1ubcUh5q2sqiAPyZJbr72MNIzAHb6pKN_zaMr6mzvyv8/edit#)
+* [ovm for suse soc(google doc)](https://docs.google.com/document/d/1ubcUh5q2sqiAPyZJbr72MNIzAHb6pKN_zaMr6mzvyv8/edit#)
+* 
 
 # BCA
 * Oracle 11gR2 on CentOS 6.8 (Nutanix BP)
@@ -31,3 +32,5 @@
 # Keep reading
 * openshift
 * nsx-t
+
+
