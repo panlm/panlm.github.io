@@ -1,7 +1,7 @@
 
-** Thanks  *ZhangCunLei*  for reviewing this doc! **
+**Thanks  _ZhangCunLei_  for reviewing this doc!**
 
-__ Last update: 22 Jun, 2018 __
+*Last update: 22 Jun, 2018*
 
 # VM config in vsphere
 ## Add more disks to VM
