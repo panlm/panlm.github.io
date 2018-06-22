@@ -1,5 +1,5 @@
 
-# create database
+# Create Database
 ```
 dbca
 ```
@@ -54,24 +54,42 @@ ask customer to confirm language settings (character set)
 ![pic40](/oracle/pic40.png)
 
 
-# Create Database (From CunLei)
+# Create Database (From CunLei, Thanks)
 ![v01.png](/oracle/cunlei/v01.png)
+
 ![v02.png](/oracle/cunlei/v02.png)
+
 ![v03.png](/oracle/cunlei/v03.png)
+
 ![v04.png](/oracle/cunlei/v04.png)
+
 ![v05.png](/oracle/cunlei/v05.png)
+
 ![v06.png](/oracle/cunlei/v06.png)
+
 ![v07.png](/oracle/cunlei/v07.png)
+
 ![v08.png](/oracle/cunlei/v08.png)
+
 ![v09.png](/oracle/cunlei/v09.png)
+
 ![v10.png](/oracle/cunlei/v10.png)
+
 ![v11.png](/oracle/cunlei/v11.png)
+
 ![v12.png](/oracle/cunlei/v12.png)
+
 ![v13.png](/oracle/cunlei/v13.png)
+
 ![v14.png](/oracle/cunlei/v14.png)
+
 ![v15.png](/oracle/cunlei/v15.png)
+
 ![v16.png](/oracle/cunlei/v16.png)
+
 ![v17.png](/oracle/cunlei/v17.png)
+
 ![v18.png](/oracle/cunlei/v18.png)
+
 ![v19.png](/oracle/cunlei/v19.png)
 

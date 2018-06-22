@@ -32,7 +32,7 @@ Create a "CRS" asm diskgroup when install, using quorum disk.
 ![pic17](/oracle/pic17.png)
 ![pic18](/oracle/pic18.png)
 
-# Single Node Oracle
+# Single Node Oracle (From CunLei, Thanks)
 ## installing Grid
 ![s01.png](/oracle/cunlei/s01.png)
 ![s02.png](/oracle/cunlei/s02.png)
@@ -56,7 +56,10 @@ using `asmca` to create additional asm diskgroup.
 set AU (Allocated Unit) = 1 MB for each diskgroup
 
 ![t01.png](/oracle/cunlei/t01.png)
+
 ![t02.png](/oracle/cunlei/t02.png)
+选择External方式，针对所有非仲裁的数据DiskGroup。仲裁DiskGroup建议使用High。
+
 ![t03.png](/oracle/cunlei/t03.png)
 
 ## installing oracle

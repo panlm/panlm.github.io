@@ -5,6 +5,3 @@
     * [Database Installation](oracle/oracle-install)
     * [Create Database](oracle/create-database)
 
-
-
-
