@@ -1,5 +1,5 @@
 
-Thanks @ZhangCunLei for reviewing this doc :+1:
+Thanks @ZhangCunLei :thumbsup: for reviewing this doc :+1:
 
 # VM config in vsphere
 ## Add more disks to VM
