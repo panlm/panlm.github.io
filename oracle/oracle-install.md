@@ -93,7 +93,11 @@ run following and re-run root.sh
 
 
 
-*Author: Leiming.Pan@nutanix.com*
 
+
+
+---
+
+*Author: Leiming.Pan@nutanix.com*<br/>
 *Last update: 22 Jun, 2018*
 

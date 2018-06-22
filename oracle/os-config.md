@@ -272,6 +272,14 @@ ls -al /dev/asm*
 ```
 ```
 
+
+
+
+
+
+
+
+
 ---
 
 *Author: Leiming.Pan@nutanix.com*<br/>

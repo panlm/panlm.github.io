@@ -95,7 +95,15 @@ ask customer to confirm language settings (character set)
 ![v19.png](/oracle/cunlei/v19.png)
 
 
-*Author: Leiming.Pan@nutanix.com*
 
+
+
+
+
+---
+
+*Author: Leiming.Pan@nutanix.com*<br/>
 *Last update: 22 Jun, 2018*
+
+
 
