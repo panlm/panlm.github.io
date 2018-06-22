@@ -34,7 +34,7 @@ Create a "CRS" asm diskgroup when install, using quorum disk.
 ![pic17](/oracle/pic17.png)
 ![pic18](/oracle/pic18.png)
 
-# Single Node Oracle (From CunLei, Thanks)
+# Single Node Oracle (From CunLei)
 ## installing Grid
 ![s01.png](/oracle/cunlei/s01.png)
 ![s02.png](/oracle/cunlei/s02.png)

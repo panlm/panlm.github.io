@@ -4,7 +4,7 @@
 * [advanced format](https://guides.github.com/features/mastering-markdown/)
 
 # kubernetes
-* [kubernetes](kubernetes.md)
+* [kubernetes](kubernetes/kubernetes.md)
 
 # calm 
 * https://github.com/RtpChris/Next18Demos

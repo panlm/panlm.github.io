@@ -57,7 +57,7 @@ ask customer to confirm language settings (character set)
 ![pic40](/oracle/pic40.png)
 
 
-# Create Database (From CunLei, Thanks)
+# Create Database (From CunLei)
 ![v01.png](/oracle/cunlei/v01.png)
 
 ![v02.png](/oracle/cunlei/v02.png)
