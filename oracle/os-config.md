@@ -1,8 +1,11 @@
 
-
+Thanks @ZhangCunLei for reviewing this doc :+1:
 
 # VM config in vsphere
+## Add more disks to VM
+add disks under different iscsi controller, for example 3 data file disks in iscsi1; 3 redo disks in iscsi2; 3 archive log disks in iscsi3; put quotum disk in iscsi0
 
+![os1](/oracle/os1.png)
 
 # VM OS config
 ## basic
@@ -148,6 +151,8 @@ oracle hard nofile 65536
 #please disable these line, because of the incompatible between UEK and vmxnet3
 #/sbin/ethtool -G eth0 rx 4096 tx 4096
 #/sbin/ethtool -G eth1 rx 4096 tx 4096
+
+#if you have more disks, please add them as following
 for disk in sda sdb sdc sdd sde sdf; do
     echo 1024 > /sys/block/$disk/queue/max_sectors_kb
     echo $disk " max_sectors_kb set to 1024"
@@ -196,7 +201,7 @@ PATH=$ORACLE_HOME/bin:$PATH; export PATH
 ```
 
 ## prepare raw disk
-* (mandatory) Add following to VM’s vmx file
+* (mandatory) Add following to VM’s vmx file, and remove vm from inventory and add it back again.
 ```conf
 disk.EnableUUID = "TRUE"
 ```
@@ -230,7 +235,7 @@ KERNEL=="sd?1", BUS=="scsi", PROGRAM=="/sbin/scsi_id -g -u -d /dev/$parent", RES
 KERNEL=="sd?1", BUS=="scsi", PROGRAM=="/sbin/scsi_id -g -u -d /dev/$parent", RESULT=="36000c298f8ce5da326f6752e20d1b452", NAME="asm-disk2", OWNER="grid", GROUP="asmadmin", MODE="0660"
 KERNEL=="sd?1", BUS=="scsi", PROGRAM=="/sbin/scsi_id -g -u -d /dev/$parent", RESULT=="36000c29a2f64c4089fe3964592096a33", NAME="asm-disk3", OWNER="grid", GROUP="asmadmin", MODE="0660"
 ```
-    > If you have lots of disks, maybe you should change ? to *
+    > If you have lots of disks, maybe you should change `?` to `*`
 ```conf
 KERNEL=="sd*1", BUS=="scsi", PROGRAM=="/sbin/scsi_id -g -u -d /dev/$parent", RESULT=="36000c29fd0e9d9a6f4e161bd82450aec", NAME="asm-scsi1-0", OWNER="grid", GROUP="asmadmin", MODE="0660"
 ```
@@ -257,12 +262,12 @@ ls -al /dev/asm*
   * https://willsnotes.wordpress.com/2010/10/13/linux-rhel-5-configuring-multipathing-with-dm-multipath/
 
 
-## multi writer
-* (mandatory for rac) enable multi write
+## (mandatory for rac) multi writer
+* enable multi write
 ```
 ```
 
-* (mandatory for rac) disable shadow-clone in nutanix cluster
+* disable shadow-clone in nutanix cluster
 ```
 ```
 
