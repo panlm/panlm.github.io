@@ -1,7 +1,8 @@
 
 **Thanks  _CunLei.Zhang@nutanix.com_  for reviewing this doc!**
 
-*Author: _Leiming.Pan@nutanix.com_*
+*Author: Leiming.Pan@nutanix.com*
+
 *Last update: 22 Jun, 2018*
 
 # VM config in vsphere
