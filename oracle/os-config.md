@@ -3,7 +3,8 @@
 
 # VM config in vsphere
 ## Add more disks to VM
-add disks under different iscsi controller, for example 3 data file disks in iscsi1; 3 redo disks in iscsi2; 3 archive log disks in iscsi3; put quotum disk in iscsi0
+add disks under different iscsi controller, <br/>
+for example 3 data file disks in iscsi1; 3 redo disks in iscsi2; 3 archive log disks in iscsi3; put quotum disk in iscsi0
 
 ![os1](/oracle/os1.png)
 
@@ -271,9 +272,8 @@ ls -al /dev/asm*
 ```
 ```
 
+---
 
-
-*Author: Leiming.Pan@nutanix.com*
-
+*Author: Leiming.Pan@nutanix.com*<br/>
 *Last update: 22 Jun, 2018*
 
