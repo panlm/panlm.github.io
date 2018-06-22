@@ -1,5 +1,7 @@
 **Thanks  _CunLei.Zhang@nutanix.com_  for reviewing this doc!**
 
+---
+
 # Two Nodes Oracle RAC
 ## installing Grid
 ![pic2](/oracle/pic2.png)

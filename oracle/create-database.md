@@ -1,5 +1,7 @@
 **Thanks  _CunLei.Zhang@nutanix.com_  for reviewing this doc!**
 
+---
+
 # Create Database
 ```
 dbca
@@ -93,11 +95,6 @@ ask customer to confirm language settings (character set)
 ![v18.png](/oracle/cunlei/v18.png)
 
 ![v19.png](/oracle/cunlei/v19.png)
-
-
-
-
-
 
 
 ---

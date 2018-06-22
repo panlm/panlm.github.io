@@ -1,6 +1,8 @@
 
 **Thanks  _CunLei.Zhang@nutanix.com_  for reviewing this doc!**
 
+---
+
 # VM config in vsphere
 ## Add more disks to VM
 add disks under different iscsi controller, <br/>
