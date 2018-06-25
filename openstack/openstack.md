@@ -21,7 +21,26 @@ rsync -avP /mnt/ /srv/tftpboot/suse-12.2/x86_64/repos/Cloud/
 umount /mnt
 ```
 
+* setup IP address manually
+    * address
+    * gateway
+    * dns
 
+* crowbar settings
+![pic1](/openstack/1.png)
+
+![pic2](/openstack/2.png)
+
+> chapter 7.5.5 in deploy guide pdf
+
+* init crowbar
+```sh
+systemctl start crowbar-init
+crowbarctl database -U crowbar -P crowbar create
+```
+check log from `/var/log/crowbar/crowbar_init.log`
+
+* Web UI
 
 
 
