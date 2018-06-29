@@ -16,6 +16,8 @@ rsync -avP /mnt/ /srv/tftpboot/suse-12.2/x86_64/repos/Cloud/
 umount /mnt
 ```
 
+* snapshot your vm before network configuration, due to some settings could not be changed after initiated. 
+ 
 * setup IP address manually
     * address
     * gateway
@@ -26,7 +28,19 @@ umount /mnt
 
 ![pic2](/openstack/2.png)
 
+![pic3](/openstack/3.png)
+
+![pic4](/openstack/4.png)
+
+![pic5](/openstack/5.png)
+
+![pic6](/openstack/6.png)
+
 > chapter 7.5.5 in deploy guide pdf
+
+* common error
+![error1](/openstack/error1.png)
+![error2](/openstack/error2.png)
 
 * init crowbar
 ```sh
@@ -35,10 +49,22 @@ crowbarctl database -U crowbar -P crowbar create
 ```
 check log from `/var/log/crowbar/crowbar_init.log`
 
-* Web UI
+* Install from Web UI
+![inst1](/openstack/inst1.png)
 
+```
+systemctl start postgresql
+systemctl start crowbar
+```
 
+![inst2](/openstack/inst2.png)
 
+check log from `/var/log/crowbar/install.log`
 
+![inst3](/openstack/inst3.png)
+
+default username and password is `crowbar` and `crowbar`
+
+![inst4](/openstack/inst4.png)
 
 
