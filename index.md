@@ -12,14 +12,14 @@
 
 
 # Private Cloud
-## calm 
+## Calm 
 * https://github.com/RtpChris/Next18Demos
 * https://github.com/nutanixworkshops
 
-## kubernetes
+## Kubernetes
 * [kubernetes](kubernetes/kubernetes.md)
 
-## openstack
+## Openstack
 * [ovm for suse soc(google doc)](https://docs.google.com/document/d/1ubcUh5q2sqiAPyZJbr72MNIzAHb6pKN_zaMr6mzvyv8/edit#)
 * [suse cloud 7 integration](openstack/openstack)
 
@@ -32,7 +32,7 @@
     * [Create Database](oracle/create-database)
 
 ## SQL Server
-* [Splitting SQL Datafile](mssql/mssql)
+* [SQL on ABS](mssql/mssql_on_abs)
 
 
 # nutanix

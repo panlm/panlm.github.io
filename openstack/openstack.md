@@ -1,7 +1,3 @@
-
-
-
-
 * disable firewall
 ```bash
 systemctl stop SuSEfirewall2
