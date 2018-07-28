@@ -9,6 +9,7 @@
 * [some packages](necessary-pkg-centos)
 * [mapping-internal-external](mapping-internal-external)
 * [iptables](iptables)
+* [Hyper threading](http://fibrevillage.com/sysadmin/155-how-to-tell-if-cpu-hyperthreading-enabled-on-linux)
 
 
 # Private Cloud

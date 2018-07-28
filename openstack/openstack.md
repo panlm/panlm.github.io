@@ -49,7 +49,7 @@ crowbarctl database -U crowbar -P crowbar create
 ```
 check log from `/var/log/crowbar/crowbar_init.log`
 
-* Install from Web UI
+* Install Admin Node from Web UI
 ![inst1](/openstack/inst1.png)
 
 ```
@@ -66,5 +66,68 @@ check log from `/var/log/crowbar/install.log`
 default username and password is `crowbar` and `crowbar`
 
 ![inst4](/openstack/inst4.png)
+
+* add all package to repo on crowbar admin node
+
+* set ipmi
+![ipmi](/openstack/ipmi.png)
+
+* set NFS Server separatly
+    * disable firewall
+    * enable ```nfsserver```
+```
+systemctl start nfsserver
+systemctl enable nfsserver
+```
+    * create directory ```mkdir /sharepostgres /sharerabbitmq```
+    * config ```/etc/exports```
+```
+/sharepostgres 10.132.128.0/255.255.128.0(rw,async,no_root_squash,no_subtree_check)
+/sharerabbitmq 10.132.128.0/255.255.128.0(rw,async,no_root_squash,no_subtree_check)
+```
+
+
+* PXE Openstack Nodes
+
+
+
+* Convert Existed SUSE Linux to Openstack Node
+  * update SLES12-SP2-Pool repo
+```
+scp -rp SLES12-SP2-Pool root@10.132.251.172:/srv/tftpboot/suse-12.2/x86_64/repos/
+```
+  * run script
+```
+wget http://10.132.249.10:8091/suse-12.2/x86_64/crowbar_register
+chmod a+x crowbar_register
+./crowbar_register
+```
+  * enable all available repos
+![repo](/openstack/repo.png)
+  * enable openstack components - Pacemaker
+![open1](/openstack/open1.png)
+![open2](/openstack/open2.png)
+![open3](/openstack/open3.png)
+  * enable openstack components - Database
+    * create nfs for database failover (on crowbar admin server, the config file will be recover soon, so save it and exportfs)
+```bash
+mkdir /sharedb
+chmod 777 /sharedb
+echo '/sharedb 10.132.128.0/255.255.128.0(rw,async,no_root_squash,no_subtree_check)' >> /etc/exports
+exportfs -av
+```
+    * enable database using pgsql
+![open4](/openstack/open4.png)
+![open5](/openstack/open5.png)
+  * enable openstack components - RabbitMQ
+ 
+
+
+
+
+
+
+
+
 
 

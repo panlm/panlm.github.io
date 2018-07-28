@@ -156,10 +156,21 @@ oracle hard nofile 65536
 #/sbin/ethtool -G eth1 rx 4096 tx 4096
 
 #if you have more disks, please add them as following
-for disk in sda sdb sdc sdd sde sdf; do
-    echo 1024 > /sys/block/$disk/queue/max_sectors_kb
-    echo $disk " max_sectors_kb set to 1024"
+#for disk in sda sdb sdc sdd sde sdf; do
+lsscsi | grep NUTANIX | awk '{print $NF}' | awk -F"/" '{print $NF}' | grep -v "-" | while read disk ; do
+    echo 1024 > /sys/block/${disk}/queue/max_sectors_kb
+    echo ${disk} " max_sectors_kb set to 1024"
+    echo noop > /sys/block/${disk}/queue/scheduler
+    echo ${disk} " scheduler set to noop"
 done
+```
+* (mandatory and verifying needed) or using `/etc/udev/rules.d/71-block-max-sectors.rules`
+```
+ACTION=="add|change", SUBSYSTEM=="block", RUN+="/bin/sh -c '/bin/echo 1024 > /sys%p/queue/max_sectors_kb'"
+```
+or
+```
+ACTION=="add", SUBSYSTEMS=="scsi", ATTRS{vendor}=="NUTANIX ", ATTRS{model}=="VDISK", RUN+="/bin/sh -c 'echo 1024 >/sys$DEVPATH/queue/max_sectors_kb'"
 ```
 
 ## user settings
