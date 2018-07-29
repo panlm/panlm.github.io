@@ -78,54 +78,56 @@ default username and password is `crowbar` and `crowbar`
 * set NFS Server separatly
     * disable firewall
     * enable ```nfsserver```
-```
-systemctl start nfsserver
-systemctl enable nfsserver
-```
+    ```
+    systemctl start nfsserver
+    systemctl enable nfsserver
+    ```
     * create directory ```mkdir /sharepostgres /sharerabbitmq```
     * config ```/etc/exports```
-```
-/sharepostgres 10.132.128.0/255.255.128.0(rw,async,no_root_squash,no_subtree_check)
-/sharerabbitmq 10.132.128.0/255.255.128.0(rw,async,no_root_squash,no_subtree_check)
-```
+    ```
+    /sharepostgres 10.132.128.0/255.255.128.0(rw,async,no_root_squash,no_subtree_check)
+    /sharerabbitmq 10.132.128.0/255.255.128.0(rw,async,no_root_squash,no_subtree_check)
+    ```
 
 * PXE Openstack Nodes
 
 * Convert Existed SUSE Linux to Openstack Node
   * update SLES12-SP2-Pool repo
-```
-scp -rp SLES12-SP2-Pool root@10.132.251.172:/srv/tftpboot/suse-12.2/x86_64/repos/
-```
+  ```
+  scp -rp SLES12-SP2-Pool root@10.132.251.172:/srv/tftpboot/suse-12.2/x86_64/repos/
+  ```
   * run script
-```
-wget http://10.132.249.10:8091/suse-12.2/x86_64/crowbar_register
-chmod a+x crowbar_register
-./crowbar_register
-```
+  ```
+  wget http://10.132.249.10:8091/suse-12.2/x86_64/crowbar_register
+  chmod a+x crowbar_register
+  ./crowbar_register
+  ```
   * enable all available repos
-![repo](/openstack/repo.png)
+  ![repo](/openstack/repo.png)
   * enable openstack components - Pacemaker
-![open1](/openstack/open1.png)
-![open2](/openstack/open2.png)
-![open3](/openstack/open3.png)
+  ![open1](/openstack/open1.png)
+  ![open2](/openstack/open2.png)
+  ![open3](/openstack/open3.png)
   * enable openstack components - Database
     * using nfs we created before to put database. Don't using nfs on admin node, due to the config file will be replaced by chef. 
     * enable database using pgsql
-![open4](/openstack/open4.png)
-![open5](/openstack/open5.png)
+    ![open4](/openstack/open4.png)
+    ![open5](/openstack/open5.png)
+    > you could create it on [x] cluster or [x] single node
   * enable openstack components - RabbitMQ
     * using nfs we created before. 
-    * enable RabbitMQ
-![open6](/openstack/open6.png)
+    * enable RabbitMQ on cluster only
+    ![open6](/openstack/open6.png)
   * enable openstack components - Keystone
-![open7](/openstack/open7.png)
-![open8](/openstack/open8.png)
-  > you could create it on [x] cluster or [] single node
+  ![open7](/openstack/open7.png)
+  ![open8](/openstack/open8.png)
+  > you could create it on cluster only
   * enable openstack components - Glance
-![open9](/openstack/open9.png)
-![open10](/openstack/open10.png)
-![open11](/openstack/open11.png)
-![open12](/openstack/open12.png)
+  ![open9](/openstack/open9.png)
+  ![open10](/openstack/open10.png)
+  ![open11](/openstack/open11.png)
+  ![open12](/openstack/open12.png)
+  > you could create it on [ ] cluster or [x] single node
 
  
 
