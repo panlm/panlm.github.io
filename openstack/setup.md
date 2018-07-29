@@ -42,20 +42,20 @@ umount /mnt
 
 # crowbar initial
 * crowbar settings
-default network settings
-![pic1](/openstack/1.png)<br/>
-network mode
-![pic2](/openstack/2.png)<br/>
-repos
-![pic3](/openstack/3.png)<br/>
-my environment
-![pic4](/openstack/4.png)<br/>
-admin network detail
-![pic5](/openstack/5.png)<br/>
-bmc network detail
-![pic6](/openstack/6.png)<br/>
-bmc_vlan network detail 
-![pic7](/openstack/7.png)<br/>
+<br/>default network settings
+![pic1](/openstack/1.png)
+<br/>network mode
+![pic2](/openstack/2.png)
+<br/>repos
+![pic3](/openstack/3.png)
+<br/>my environment
+![pic4](/openstack/4.png)
+<br/>admin network detail
+![pic5](/openstack/5.png)
+<br/>bmc network detail
+![pic6](/openstack/6.png)
+<br/>bmc_vlan network detail 
+![pic7](/openstack/7.png)
 > chapter 7.5.5 in deploy guide pdf
 
 * common error
