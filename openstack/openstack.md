@@ -1,3 +1,4 @@
+# OS configuration
 * disable firewall
 ```bash
 systemctl stop SuSEfirewall2
@@ -23,6 +24,7 @@ umount /mnt
     * gateway
     * dns
 
+# crowbar initial
 * crowbar settings
 ![pic1](/openstack/1.png)
 
@@ -67,6 +69,7 @@ default username and password is `crowbar` and `crowbar`
 
 ![inst4](/openstack/inst4.png)
 
+# Prepare to setup openstack
 * add all package to repo on crowbar admin node
 
 * set ipmi
@@ -86,10 +89,7 @@ systemctl enable nfsserver
 /sharerabbitmq 10.132.128.0/255.255.128.0(rw,async,no_root_squash,no_subtree_check)
 ```
 
-
 * PXE Openstack Nodes
-
-
 
 * Convert Existed SUSE Linux to Openstack Node
   * update SLES12-SP2-Pool repo
@@ -109,17 +109,24 @@ chmod a+x crowbar_register
 ![open2](/openstack/open2.png)
 ![open3](/openstack/open3.png)
   * enable openstack components - Database
-    * create nfs for database failover (on crowbar admin server, the config file will be recover soon, so save it and exportfs)
-```bash
-mkdir /sharedb
-chmod 777 /sharedb
-echo '/sharedb 10.132.128.0/255.255.128.0(rw,async,no_root_squash,no_subtree_check)' >> /etc/exports
-exportfs -av
-```
+    * using nfs we created before to put database. Don't using nfs on admin node, due to the config file will be replaced by chef. 
     * enable database using pgsql
 ![open4](/openstack/open4.png)
 ![open5](/openstack/open5.png)
   * enable openstack components - RabbitMQ
+    * using nfs we created before. 
+    * enable RabbitMQ
+![open6](/openstack/open6.png)
+  * enable openstack components - Keystone
+![open7](/openstack/open7.png)
+![open8](/openstack/open8.png)
+  > you could create it on [x] cluster or [] single node
+  * enable openstack components - Glance
+![open9](/openstack/open9.png)
+![open10](/openstack/open10.png)
+![open11](/openstack/open11.png)
+![open12](/openstack/open12.png)
+
  
 
 
