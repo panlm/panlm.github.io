@@ -24,19 +24,43 @@ umount /mnt
   * gateway
   * dns
 
+* update packages
+  * copy update packages to ```/srv/tftpboot/suse-12.2/x86_64/repos/```
+  * add repos
+  ```
+  cd /srv/tftpboot/suse-12.2/x86_64/repos/
+  zypper addrepo -n suse-12.2-pool -p 98 $PWD/SLES12-SP2-Pool SLES12-SP2-Pool
+  zypper addrepo -n suse-12.2-updates -p 98 $PWD/SLES12-SP2-Updates SLES12-SP2-Updates
+  zypper addrepo -n cloud7-pool -p 98 $PWD/SUSE-OpenStack-Cloud-7-Pool SUSE-OpenStack-Cloud-7-Pool
+  zypper addrepo -n cloud7-updates -p 98 $PWD/SUSE-OpenStack-Cloud-7-Updates SUSE-OpenStack-Cloud-7-Updates
+  ```
+  * update system
+  ```
+  zypper update
+  reboot
+  ```
+
 # crowbar initial
 * crowbar settings
-![pic1](/openstack/1.png)
-![pic2](/openstack/2.png)
-![pic3](/openstack/3.png)
-![pic4](/openstack/4.png)
-![pic5](/openstack/5.png)
-![pic6](/openstack/6.png)
+default network settings
+![pic1](/openstack/1.png)<br/>
+network mode
+![pic2](/openstack/2.png)<br/>
+repos
+![pic3](/openstack/3.png)<br/>
+my environment
+![pic4](/openstack/4.png)<br/>
+admin network detail
+![pic5](/openstack/5.png)<br/>
+bmc network detail
+![pic6](/openstack/6.png)<br/>
+bmc_vlan network detail 
+![pic7](/openstack/7.png)<br/>
 > chapter 7.5.5 in deploy guide pdf
 
 * common error
-![error1](/openstack/error1.png)
-![error2](/openstack/error2.png)
+![error1](/openstack/error1.png)<br/>
+![error2](/openstack/error2.png)<br/>
 
 * init crowbar
 ```sh
@@ -46,7 +70,7 @@ crowbarctl database -U crowbar -P crowbar create
 check log from `/var/log/crowbar/crowbar_init.log`
 
 * Install Admin Node from Web UI
-![inst1](/openstack/inst1.png)
+![inst1](/openstack/inst1.png)<br/>
 
 ```
 systemctl start postgresql
