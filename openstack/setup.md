@@ -113,7 +113,7 @@ default username and password is `crowbar` and `crowbar`
     * enable database using pgsql
     ![open4](/openstack/open4.png)
     ![open5](/openstack/open5.png)
-    > you could create it on [x] cluster or [x] single node
+    you could create it on [x] cluster or [x] single node
   * enable openstack components - RabbitMQ
     * using nfs we created before. 
     * enable RabbitMQ on cluster only
@@ -121,13 +121,13 @@ default username and password is `crowbar` and `crowbar`
   * enable openstack components - Keystone
   ![open7](/openstack/open7.png)
   ![open8](/openstack/open8.png)
-  > you could create it on cluster only
+  you could create it on cluster only
   * enable openstack components - Glance
   ![open9](/openstack/open9.png)
   ![open10](/openstack/open10.png)
   ![open11](/openstack/open11.png)
   ![open12](/openstack/open12.png)
-  > you could create it on [ ] cluster or [x] single node
+  you could create it on [ ] cluster or [x] single node
 
  
 
