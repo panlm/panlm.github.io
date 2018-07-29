@@ -20,24 +20,18 @@ umount /mnt
 * snapshot your vm before network configuration, due to some settings could not be changed after initiated. 
  
 * setup IP address manually
-    * address
-    * gateway
-    * dns
+  * address
+  * gateway
+  * dns
 
 # crowbar initial
 * crowbar settings
 ![pic1](/openstack/1.png)
-
 ![pic2](/openstack/2.png)
-
 ![pic3](/openstack/3.png)
-
 ![pic4](/openstack/4.png)
-
 ![pic5](/openstack/5.png)
-
 ![pic6](/openstack/6.png)
-
 > chapter 7.5.5 in deploy guide pdf
 
 * common error
@@ -76,18 +70,18 @@ default username and password is `crowbar` and `crowbar`
 ![ipmi](/openstack/ipmi.png)
 
 * set NFS Server separatly
-    * disable firewall
-    * enable ```nfsserver```
-    ```
-    systemctl start nfsserver
-    systemctl enable nfsserver
-    ```
-    * create directory ```mkdir /sharepostgres /sharerabbitmq```
-    * config ```/etc/exports```
-    ```
-    /sharepostgres 10.132.128.0/255.255.128.0(rw,async,no_root_squash,no_subtree_check)
-    /sharerabbitmq 10.132.128.0/255.255.128.0(rw,async,no_root_squash,no_subtree_check)
-    ```
+  * disable firewall
+  * enable ```nfsserver```
+  ```
+  systemctl start nfsserver
+  systemctl enable nfsserver
+  ```
+  * create directory ```mkdir /sharepostgres /sharerabbitmq```
+  * config ```/etc/exports```
+  ```
+  /sharepostgres 10.132.128.0/255.255.128.0(rw,async,no_root_squash,no_subtree_check)
+  /sharerabbitmq 10.132.128.0/255.255.128.0(rw,async,no_root_squash,no_subtree_check)
+  ```
 
 * PXE Openstack Nodes
 
@@ -102,41 +96,33 @@ default username and password is `crowbar` and `crowbar`
   chmod a+x crowbar_register
   ./crowbar_register
   ```
-  * enable all available repos
-  ![repo](/openstack/repo.png)
-  * enable openstack components - Pacemaker
-  ![open1](/openstack/open1.png)
-  ![open2](/openstack/open2.png)
-  ![open3](/openstack/open3.png)
-  * enable openstack components - Database
-    * using nfs we created before to put database. Don't using nfs on admin node, due to the config file will be replaced by chef. 
-    * enable database using pgsql
-    ![open4](/openstack/open4.png)
-    ![open5](/openstack/open5.png)
-    you could create it on [x] cluster or [x] single node
-  * enable openstack components - RabbitMQ
-    * using nfs we created before. 
-    * enable RabbitMQ on cluster only
-    ![open6](/openstack/open6.png)
-  * enable openstack components - Keystone
-  ![open7](/openstack/open7.png)
-  ![open8](/openstack/open8.png)
-  you could create it on cluster only
-  * enable openstack components - Glance
-  ![open9](/openstack/open9.png)
-  ![open10](/openstack/open10.png)
-  ![open11](/openstack/open11.png)
-  ![open12](/openstack/open12.png)
-  you could create it on [ ] cluster or [x] single node
 
- 
+* enable all available repos
+![repo](/openstack/repo.png)
 
-
-
-
-
-
-
-
-
+# Setup openstack
+* enable openstack components - Pacemaker
+![open1](/openstack/open1.png)
+![open2](/openstack/open2.png)
+![open3](/openstack/open3.png)
+* enable openstack components - Database
+  * using nfs we created before to put database. Don't using nfs on admin node, due to the config file will be replaced by chef. 
+  * enable database using pgsql
+  ![open4](/openstack/open4.png)
+  ![open5](/openstack/open5.png)
+  you could create it on [x] cluster or [x] single node
+* enable openstack components - RabbitMQ
+  * using nfs we created before. 
+  * enable RabbitMQ on cluster only
+  ![open6](/openstack/open6.png)
+* enable openstack components - Keystone
+![open7](/openstack/open7.png)
+![open8](/openstack/open8.png)
+you could create it on cluster only
+* enable openstack components - Glance
+![open9](/openstack/open9.png)
+![open10](/openstack/open10.png)
+![open11](/openstack/open11.png)
+![open12](/openstack/open12.png)
+you could create it on [ ] cluster or [x] single node
 
