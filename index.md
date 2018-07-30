@@ -23,6 +23,7 @@
 ## Openstack
 * [ovm for suse soc(google doc)](https://docs.google.com/document/d/1ubcUh5q2sqiAPyZJbr72MNIzAHb6pKN_zaMr6mzvyv8/edit#)
 * [suse cloud 7 setup](openstack/setup)
+* [suse cloud 7 troubleshooting](openstack/troubleshooting)
 * [suse cloud 7 integration](openstack/integrate)
 
 

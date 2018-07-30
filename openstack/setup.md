@@ -25,7 +25,7 @@ umount /mnt
   * dns
 
 * update packages
-  * copy update packages to ```/srv/tftpboot/suse-12.2/x86_64/repos/```
+  * copy all update packages to ```/srv/tftpboot/suse-12.2/x86_64/repos/```
   * add repos
   ```
   cd /srv/tftpboot/suse-12.2/x86_64/repos/
@@ -43,56 +43,74 @@ umount /mnt
 # crowbar initial
 * crowbar settings
 <br/>default network settings
-![pic1](/openstack/1.png)
+![net1](/openstack/net1.png)
 <br/>network mode
-![pic2](/openstack/2.png)
+![net2](/openstack/net2.png)
 <br/>repos
-![pic3](/openstack/3.png)
+![net3](/openstack/net3.png)
 <br/>my environment
-![pic4](/openstack/4.png)
-<br/>admin network detail
-![pic5](/openstack/5.png)
-<br/>bmc network detail
-![pic6](/openstack/6.png)
-<br/>bmc_vlan network detail 
-![pic7](/openstack/7.png)
+![net4](/openstack/net4.png)
+<br/>network detail - admin
+![net5](/openstack/net5.png)
+<br/>network detail - bmc
+![net6](/openstack/net6.png)
+<br/>network detail - bmc_vlan
+![net7](/openstack/net7.png)
+<br/>network detail - nova_floating
+![net8](/openstack/net8.png)
+<br/>network detail - public
+![net9](/openstack/net9.png)
+<br/>network detail - storage
+![net10](/openstack/net10.png)
 > chapter 7.5.5 in deploy guide pdf
 
 * common error
-![error1](/openstack/error1.png)<br/>
-![error2](/openstack/error2.png)<br/>
+![error1](/openstack/error1.png)
+![error2](/openstack/error2.png)
 
 * init crowbar
 ```sh
 systemctl start crowbar-init
 crowbarctl database -U crowbar -P crowbar create
 ```
-check log from `/var/log/crowbar/crowbar_init.log`
+<br/>check log from `/var/log/crowbar/crowbar_init.log`
 
 * Install Admin Node from Web UI
-![inst1](/openstack/inst1.png)<br/>
+![inst1](/openstack/inst1.png)
+<br/>Start installation, and check log from `/var/log/crowbar/install.log`
+![inst2](/openstack/inst2.png)
+<br/>default username and password is `crowbar` and `crowbar`
+![inst3](/openstack/inst3.png)
+![inst4](/openstack/inst4.png)
 
+* if you reboot the admin node, double check service as following
 ```
 systemctl start postgresql
 systemctl start crowbar
 ```
 
-![inst2](/openstack/inst2.png)
-
-check log from `/var/log/crowbar/install.log`
-
-![inst3](/openstack/inst3.png)
-
-default username and password is `crowbar` and `crowbar`
-
-![inst4](/openstack/inst4.png)
-
 # Prepare to setup openstack
-* add all package to repo on crowbar admin node
+## Admin node
+* enable all available repos
+![repo](/openstack/repo.png)
 
-* set ipmi
-![ipmi](/openstack/ipmi.png)
+* prepare for STONITH
+  * for physical machine, set "Enable BMC" to True
+  ![ipmi1](/openstack/ipmi1.png)
+  ![ipmi2](/openstack/ipmi2.png)
+  ![ipmi3](/openstack/ipmi3.png)
+  * for virtual machine, set "Enable BMC" to False and setup SBD as following
+    * create shared block device for quorum
+    * install sbd on each vm which will be added to pacemaker cluster
+    ```
+    zypper install sbd
+    ```
+    * initiate the block device
+    ```
+    sbd -d /dev/sdb create
+    ```
 
+## 3-party nfs node
 * set NFS Server separatly
   * disable firewall
   * enable ```nfsserver```
@@ -107,13 +125,17 @@ default username and password is `crowbar` and `crowbar`
   /sharerabbitmq 10.132.128.0/255.255.128.0(rw,async,no_root_squash,no_subtree_check)
   ```
 
+## New PXE node
 * PXE Openstack Nodes
 
+## Existed SLES node
 * Convert Existed SUSE Linux to Openstack Node
-  * update SLES12-SP2-Pool repo
+  * update SLES12-SP2-Pool repo (ignore this step if you clone vm from admin node)
   ```
   scp -rp SLES12-SP2-Pool root@10.132.251.172:/srv/tftpboot/suse-12.2/x86_64/repos/
   ```
+  * delete some repos if you clond vm from admin node (repos with pri=98 is added manually.)
+  ![repos](/openstack/repos.png)
   * run script
   ```
   wget http://10.132.249.10:8091/suse-12.2/x86_64/crowbar_register
@@ -121,32 +143,43 @@ default username and password is `crowbar` and `crowbar`
   ./crowbar_register
   ```
 
-* enable all available repos
-![repo](/openstack/repo.png)
-
-# Setup openstack
+# Setup Openstack
 * enable openstack components - Pacemaker
-![open1](/openstack/open1.png)
-![open2](/openstack/open2.png)
-![open3](/openstack/open3.png)
+  * for physical machine
+  <br/>set STONITH to IPMI
+  ![pacemaker1](/openstack/pacemaker1.png)
+  ![pacemaker2](/openstack/pacemaker2.png)
+  ![pacemaker3](/openstack/pacemaker3.png)
+  ![pacemaker4](/openstack/pacemaker4.png)
+  * for virtual machine
+  <br/>set STONITH to SBD, using 'generic' watchdog
+  ![sbd1](/openstack/sbd1.png)
+  <br/>set stable disk path
+  ![sbd2](/openstack/sbd2.png)
+  ![sbd3](/openstack/sbd3.png)
+  ![sbd4](/openstack/sbd4.png)
+
 * enable openstack components - Database
-  * using nfs we created before to put database. Don't using nfs on admin node, due to the config file will be replaced by chef. 
+  * using nfs server we created before to put database. Don't using nfs on admin node, due to the config file will be replaced by chef. 
   * enable database using pgsql
-  ![open4](/openstack/open4.png)
-  ![open5](/openstack/open5.png)
-  you could create it on [x] cluster or [x] single node
+  ![db1](/openstack/db1.png)
+  ![db2](/openstack/db2.png)
+  <br/>you could create database on [x] cluster or [x] single node
+
 * enable openstack components - RabbitMQ
-  * using nfs we created before. 
-  * enable RabbitMQ on cluster only
+  * using nfs server we created before.
+  <br/>you could create RabbitMQ on cluster only
   ![open6](/openstack/open6.png)
+
 * enable openstack components - Keystone
 ![open7](/openstack/open7.png)
 ![open8](/openstack/open8.png)
-you could create it on cluster only
+<br/>you could create it on cluster only
+
 * enable openstack components - Glance
 ![open9](/openstack/open9.png)
 ![open10](/openstack/open10.png)
 ![open11](/openstack/open11.png)
 ![open12](/openstack/open12.png)
-you could create it on [ ] cluster or [x] single node
+<br/>you could create it on [ ] cluster or [x] single node
 
