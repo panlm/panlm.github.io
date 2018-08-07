@@ -31,7 +31,7 @@ umount /mnt
 
 * snapshot your vm before network configuration, due to some settings could not be changed after initiated. 
 
-* assign 2 nic to this vm and ensure eth0 is ```0x03``` and eth1 is ```0x04```, otherwize you need to remove nic from vm and attach them again
+* assign 2 nic to this vm and ensure ```eth0``` is ```0x03``` and ```eth1``` is ```0x04```, otherwize you need to remove nic from vm and attach them again
 ![local-nic1](/openstack/local-nic1.png)
 
 * setup network, using ```yast lan```
@@ -40,7 +40,6 @@ umount /mnt
   * dns: 10.132.70.1
   * add full qualify hostname to ```/etc/hosts```
   ![local-nic2](/openstack/local-nic2.png)
-  
 
 * update packages
   * copy all update packages to ```/srv/tftpboot/suse-12.2/x86_64/repos/```
@@ -68,25 +67,43 @@ umount /mnt
 # crowbar initial
 * crowbar settings
 <br/>default network settings
-![net1](/openstack/net1.png)
+![crowbar-net-default](/openstack/crowbar-net-default.png)
 <br/>network mode
-![net2](/openstack/net2.png)
+![crowbar-net-mode](/openstack/crowbar-net-mode.png)
 <br/>repos
 ![net3](/openstack/net3.png)
-<br/>my environment
-![net4](/openstack/net4.png)
+<br/>network - admin
+![crowbar-net-admin](/openstack/crowbar-net-admin.png)
 <br/>network detail - admin
-![net5](/openstack/net5.png)
+![crowbar-net-admin-detail](/openstack/crowbar-net-admin-detail.png)
+<br/>network - bmc
+![crowbar-net-bmc](/openstack/crowbar-net-bmc.png)
 <br/>network detail - bmc
-![net6](/openstack/net6.png)
+![crowbar-net-bmc-detail](/openstack/crowbar-net-bmc-detail.png)
+<br/>network - bmc_vlan
+![crowbar-net-bmc_vlan](/openstack/crowbar-net-bmc_vlan.png)
 <br/>network detail - bmc_vlan
-![net7](/openstack/net7.png)
+![crowbar-net-bmc_vlan-detail](/openstack/crowbar-net-bmc_vlan-detail.png)
+<br/>network - nova_fixed
+![crowbar-net-nova_fixed](/openstack/crowbar-net-nova_fixed.png)
+<br/>network detail - nova_fixed
+![crowbar-net-nova_fixed-detail](/openstack/crowbar-net-nova_fixed-detail.png)
+<br/>network - nova_floating
+![crowbar-net-nova_floating](/openstack/crowbar-net-nova_floating.png)
 <br/>network detail - nova_floating
-![net8](/openstack/net8.png)
+![crowbar-net-nova_floating-detail](/openstack/crowbar-net-nova_floating-detail.png)
+<br/>network - os_sdn
+![crowbar-net-os_sdn](/openstack/crowbar-net-os_sdn.png)
+<br/>network detail - os_sdn
+![crowbar-net-os_sdn-detail](/openstack/crowbar-net-os_sdn-detail.png)
+<br/>network - public
+![crowbar-net-public](/openstack/crowbar-net-public.png)
 <br/>network detail - public
-![net9](/openstack/net9.png)
+![crowbar-net-public-detail](/openstack/crowbar-net-public-detail.png)
+<br/>network - storage
+![crowbar-net-storage](/openstack/crowbar-net-storage.png)
 <br/>network detail - storage
-![net10](/openstack/net10.png)
+![crowbar-net-storage-detail](/openstack/crowbar-net-storage-detail.png)
 > chapter 7.5.5 in deploy guide pdf
 
 * common error
