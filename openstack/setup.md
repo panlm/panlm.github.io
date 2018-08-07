@@ -1,3 +1,15 @@
+# network
+public 10.132.68.x
+admin 172.16.1.1
+admin dhcp 172.16.10.10-200
+
+1. new vm
+2. copy repo to vm
+3. create repo
+4. zypper update
+5. 
+
+
 # OS configuration
 * disable firewall
 ```bash
@@ -18,11 +30,17 @@ umount /mnt
 ```
 
 * snapshot your vm before network configuration, due to some settings could not be changed after initiated. 
- 
-* setup IP address manually
-  * address
-  * gateway
-  * dns
+
+* assign 2 nic to this vm and ensure eth0 is ```0x03``` and eth1 is ```0x04```, otherwize you need to remove nic from vm and attach them again
+![local-nic1](/openstack/local-nic1.png)
+
+* setup network, using ```yast lan```
+  * address: eth0 --> 172.16.1.10, eth1 --> 10.132.249.10
+  * gateway: 10.132.128.4
+  * dns: 10.132.70.1
+  * add full qualify hostname to ```/etc/hosts```
+  ![local-nic2](/openstack/local-nic2.png)
+  
 
 * update packages
   * copy all update packages to ```/srv/tftpboot/suse-12.2/x86_64/repos/```
@@ -38,6 +56,13 @@ umount /mnt
   ```
   zypper update
   reboot
+  ```
+  * remove repos
+  ```
+  zypper removerepo suse-12.2-pool
+  zypper removerepo suse-12.2-updates
+  zypper removerepo cloud7-pool
+  zypper removerepo cloud7-updates
   ```
 
 # crowbar initial
@@ -69,7 +94,9 @@ umount /mnt
 ![error2](/openstack/error2.png)
 
 * init crowbar
+<br/>enable internet access (maybe)
 ```sh
+systemctl start postgresql
 systemctl start crowbar-init
 crowbarctl database -U crowbar -P crowbar create
 ```
@@ -169,7 +196,8 @@ systemctl start crowbar
 * enable openstack components - RabbitMQ
   * using nfs server we created before.
   <br/>you could create RabbitMQ on cluster only
-  ![open6](/openstack/open6.png)
+  ![rabbitmq1](/openstack/rabbitmq1.png)
+  ![rabbitmq2](/openstack/rabbitmq2.png)
 
 * enable openstack components - Keystone
 ![open7](/openstack/open7.png)
