@@ -71,7 +71,7 @@ umount /mnt
 <br/>network mode
 ![crowbar-net-mode](/openstack/crowbar-net-mode.png)
 <br/>repos
-![net3](/openstack/net3.png)
+![crowbar-net-repos](/openstack/crowbar-net-repos.png)
 <br/>network - admin
 ![crowbar-net-admin](/openstack/crowbar-net-admin.png)
 <br/>network detail - admin
