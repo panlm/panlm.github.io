@@ -185,7 +185,6 @@ spec:
         ports:
         - containerPort: 80
 ```
-
 * app-service.yaml
 ```yaml
 apiVersion: v1
