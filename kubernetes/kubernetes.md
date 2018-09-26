@@ -187,7 +187,8 @@ spec:
 ```
 
 * app-service.yaml
-  ```yaml
+
+```yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -212,6 +213,7 @@ spec:
   selector:
     app: app2
 ```
+
 > kubectl create -f app-deployment.yaml -f app-service.yaml
 
 * create nginx ingress controller, create dedicate namespace
@@ -252,7 +254,9 @@ spec:
             cpu: 10m
             memory: 20Mi
 ```
+
 * default-backend-service.yaml
+
 ```yaml
 apiVersion: v1
 kind: Service
