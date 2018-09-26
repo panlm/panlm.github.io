@@ -187,7 +187,7 @@ spec:
 ```
 
 * app-service.yaml
-```yaml
+  ```yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -472,7 +472,6 @@ spec:
     app: nginx-ingress-lb
 ```
 > kubectl create -f nginx-ingress-controller-service.yaml -n=ingress
-
 
 #### access app1, app2, nginx status, etc.
 * http://test.domain.com:30000/app1
