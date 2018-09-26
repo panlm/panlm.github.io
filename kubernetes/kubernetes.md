@@ -136,15 +136,15 @@ and access: http://host-ip:port
 
 
 ### [ ] Using Load Balance
-```yml
+```yaml
 ```
 
 
 ### [x] Using Ingress
 #### create app1, app2, backend, ingress controller, configmap, rbca, ingress rules, etc.
 * create app deployment & service
-  ```bash
-cat > app-deployment.yaml <<-EOF
+  * app-deployment.yaml
+  ```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -184,9 +184,9 @@ spec:
           value: app2
         ports:
         - containerPort: 80
-EOF
-
-cat > app-service.yaml <<-EOF
+```
+  * app-service.yaml
+  ```yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -210,10 +210,8 @@ spec:
     targetPort: 80
   selector:
     app: app2
-EOF
-
-kubectl create -f app-deployment.yaml -f app-service.yaml
 ```
+> kubectl create -f app-deployment.yaml -f app-service.yaml
 
 * create nginx ingress controller, create dedicate namespace
 ```
