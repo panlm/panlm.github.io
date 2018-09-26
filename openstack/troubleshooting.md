@@ -3,6 +3,10 @@
 <br/>login this node and run
 ```
 systemctl start crowbar_join
-````
+```
+
+# common error
+![error1](/openstack/error1.png)
+![error2](/openstack/error2.png)
 
 

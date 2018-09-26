@@ -142,8 +142,8 @@ and access: http://host-ip:port
 
 ### [x] Using Ingress
 #### create app1, app2, backend, ingress controller, configmap, rbca, ingress rules, etc.
-```bash
-# create app deployment & service
+* create app deployment & service
+  ```bash
 cat > app-deployment.yaml <<-EOF
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -185,6 +185,7 @@ spec:
         ports:
         - containerPort: 80
 EOF
+
 cat > app-service.yaml <<-EOF
 apiVersion: v1
 kind: Service
@@ -210,13 +211,17 @@ spec:
   selector:
     app: app2
 EOF
+
 kubectl create -f app-deployment.yaml -f app-service.yaml
+```
 
-# create nginx ingress controller
-# create dedicate namespace
+* create nginx ingress controller, create dedicate namespace
+```
 kubectl create namespace ingress
+```
 
-# create backend deployment & service
+* create backend deployment & service
+```
 cat > default-backend-deployment.yaml <<-EOF
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -250,6 +255,7 @@ spec:
             cpu: 10m
             memory: 20Mi
 EOF
+
 cat > default-backend-service.yaml <<-EOF
 apiVersion: v1
 kind: Service
@@ -263,9 +269,12 @@ spec:
   selector:
     app: default-backend
 EOF
-kubectl create -f default-backend-deployment.yaml -f default-backend-service.yaml -n=ingress
 
-# create configmap
+kubectl create -f default-backend-deployment.yaml -f default-backend-service.yaml -n=ingress
+```
+
+* create configmap
+```
 cat > nginx-ingress-controller-config-map.yaml <<-EOF
 apiVersion: v1
 kind: ConfigMap
@@ -276,9 +285,12 @@ metadata:
 data:
   enable-vts-status: 'true'
 EOF
-kubectl create -f nginx-ingress-controller-config-map.yaml -n=ingress
 
-# create controller deployment
+kubectl create -f nginx-ingress-controller-config-map.yaml -n=ingress
+```
+
+* create controller deployment
+```
 cat > nginx-ingress-controller-deployment.yaml <<-EOF
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -328,8 +340,10 @@ spec:
             - containerPort: 80
             - containerPort: 18080
 EOF
+```
 
-# create RBCA
+* create RBCA
+```
 cat > nginx-ingress-controller-roles.yaml <<-EOF
 apiVersion: v1
 kind: ServiceAccount
@@ -401,10 +415,13 @@ subjects:
   name: nginx
   namespace: ingress
 EOF
+
 kubectl create -f nginx-ingress-controller-roles.yaml -n=ingress
 kubectl create -f nginx-ingress-controller-deployment.yaml -n=ingress
+```
 
-# create ingress rules
+* create ingress rules
+```
 cat > nginx-ingress.yaml <<-EOF
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -420,6 +437,7 @@ spec:
           servicePort: 18080
         path: /nginx_status
 EOF
+
 cat > app-ingress.yaml <<-EOF
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -441,10 +459,13 @@ spec:
           servicePort: 80
         path: /app2
 EOF
+
 kubectl create -f nginx-ingress.yaml -n=ingress
 kubectl create -f app-ingress.yaml
+```
 
-# expose nginx ingress controller
+* expose nginx ingress controller
+```
 cat > nginx-ingress-controller-service.yaml <<-EOF
 apiVersion: v1
 kind: Service
@@ -462,6 +483,7 @@ spec:
   selector:
     app: nginx-ingress-lb
 EOF
+
 kubectl create -f nginx-ingress-controller-service.yaml -n=ingress
 ```
 

@@ -106,10 +106,6 @@ umount /mnt
 ![crowbar-net-storage-detail](/openstack/crowbar-net-storage-detail.png)
 > chapter 7.5.5 in deploy guide pdf
 
-* common error
-![error1](/openstack/error1.png)
-![error2](/openstack/error2.png)
-
 * init crowbar
 <br/>enable internet access (maybe)
 ```sh
