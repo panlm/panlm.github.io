@@ -186,7 +186,8 @@ spec:
         ports:
         - containerPort: 80
 ```
-* app-service.yaml
+
+app-service.yaml
 ```yaml
 apiVersion: v1
 kind: Service
@@ -215,11 +216,12 @@ spec:
 
 > kubectl create -f app-deployment.yaml -f app-service.yaml
 
-* create nginx ingress controller, create dedicate namespace
+create nginx ingress controller, create dedicate namespace
 > kubectl create namespace ingress
 
-* create backend deployment & service
-* default-backend-deployment.yaml
+create backend deployment & service
+
+default-backend-deployment.yaml
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -254,7 +256,7 @@ spec:
             memory: 20Mi
 ```
 
-* default-backend-service.yaml
+default-backend-service.yaml
 ```yaml
 apiVersion: v1
 kind: Service
@@ -268,11 +270,11 @@ spec:
   selector:
     app: default-backend
 ```
-
 > kubectl create -f default-backend-deployment.yaml -f default-backend-service.yaml -n=ingress
 
-* create configmap
-* nginx-ingress-controller-config-map.yaml
+create configmap
+
+nginx-ingress-controller-config-map.yaml
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -283,11 +285,11 @@ metadata:
 data:
   enable-vts-status: 'true'
 ```
-
 > kubectl create -f nginx-ingress-controller-config-map.yaml -n=ingress
 
-* create controller deployment
-* nginx-ingress-controller-deployment.yaml
+create controller deployment
+
+nginx-ingress-controller-deployment.yaml
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -338,8 +340,9 @@ spec:
             - containerPort: 18080
 ```
 
-* create RBCA
-* nginx-ingress-controller-roles.yaml
+create RBCA
+
+nginx-ingress-controller-roles.yaml
 ```yaml
 apiVersion: v1
 kind: ServiceAccount
@@ -411,12 +414,12 @@ subjects:
   name: nginx
   namespace: ingress
 ```
-
 > kubectl create -f nginx-ingress-controller-roles.yaml -n=ingress
 > kubectl create -f nginx-ingress-controller-deployment.yaml -n=ingress
 
-* create ingress rules
-* nginx-ingress.yaml
+create ingress rules
+
+nginx-ingress.yaml
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -433,7 +436,7 @@ spec:
         path: /nginx_status
 ```
 
-* app-ingress.yaml
+app-ingress.yaml
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -455,12 +458,12 @@ spec:
           servicePort: 80
         path: /app2
 ```
-
 > kubectl create -f nginx-ingress.yaml -n=ingress
 > kubectl create -f app-ingress.yaml
 
-* expose nginx ingress controller
-* nginx-ingress-controller-service.yaml
+expose nginx ingress controller
+
+nginx-ingress-controller-service.yaml
 ```yaml
 apiVersion: v1
 kind: Service
@@ -478,7 +481,6 @@ spec:
   selector:
     app: nginx-ingress-lb
 ```
-
 > kubectl create -f nginx-ingress-controller-service.yaml -n=ingress
 
 #### access app1, app2, nginx status, etc.
