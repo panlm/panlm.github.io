@@ -142,8 +142,9 @@ and access: http://host-ip:port
 
 ### [x] Using Ingress
 #### create app1, app2, backend, ingress controller, configmap, rbca, ingress rules, etc.
-* create app deployment & service
-* app-deployment.yaml
+create app deployment & service
+
+app-deployment.yaml
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
