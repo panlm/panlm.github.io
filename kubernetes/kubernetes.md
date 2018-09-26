@@ -144,7 +144,7 @@ and access: http://host-ip:port
 #### create app1, app2, backend, ingress controller, configmap, rbca, ingress rules, etc.
 * create app deployment & service
   * app-deployment.yaml
-  ```yaml
+```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -186,7 +186,7 @@ spec:
         - containerPort: 80
 ```
   * app-service.yaml
-  ```yaml
+```yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -214,13 +214,11 @@ spec:
 > kubectl create -f app-deployment.yaml -f app-service.yaml
 
 * create nginx ingress controller, create dedicate namespace
-```
-kubectl create namespace ingress
-```
+> kubectl create namespace ingress
 
 * create backend deployment & service
-```
-cat > default-backend-deployment.yaml <<-EOF
+  * default-backend-deployment.yaml
+```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -252,9 +250,9 @@ spec:
           requests:
             cpu: 10m
             memory: 20Mi
-EOF
-
-cat > default-backend-service.yaml <<-EOF
+```
+  * default-backend-service.yaml
+```yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -266,10 +264,9 @@ spec:
     targetPort: 8080
   selector:
     app: default-backend
-EOF
-
-kubectl create -f default-backend-deployment.yaml -f default-backend-service.yaml -n=ingress
 ```
+> kubectl create -f default-backend-deployment.yaml -f default-backend-service.yaml -n=ingress
+
 
 * create configmap
 ```
