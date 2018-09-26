@@ -144,7 +144,6 @@ and access: http://host-ip:port
 #### create app1, app2, backend, ingress controller, configmap, rbca, ingress rules, etc.
 * create app deployment & service
 * app-deployment.yaml
-
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -186,7 +185,8 @@ spec:
         ports:
         - containerPort: 80
 ```
-  * app-service.yaml
+
+* app-service.yaml
 ```yaml
 apiVersion: v1
 kind: Service
@@ -218,7 +218,7 @@ spec:
 > kubectl create namespace ingress
 
 * create backend deployment & service
-  * default-backend-deployment.yaml
+* default-backend-deployment.yaml
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -252,7 +252,7 @@ spec:
             cpu: 10m
             memory: 20Mi
 ```
-  * default-backend-service.yaml
+* default-backend-service.yaml
 ```yaml
 apiVersion: v1
 kind: Service
@@ -269,7 +269,7 @@ spec:
 > kubectl create -f default-backend-deployment.yaml -f default-backend-service.yaml -n=ingress
 
 * create configmap
-  * nginx-ingress-controller-config-map.yaml
+* nginx-ingress-controller-config-map.yaml
 ```yaml
 apiVersion: v1
 kind: ConfigMap
@@ -283,7 +283,7 @@ data:
 > kubectl create -f nginx-ingress-controller-config-map.yaml -n=ingress
 
 * create controller deployment
-  * nginx-ingress-controller-deployment.yaml
+* nginx-ingress-controller-deployment.yaml
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -335,7 +335,7 @@ spec:
 ```
 
 * create RBCA
-  * nginx-ingress-controller-roles.yaml
+* nginx-ingress-controller-roles.yaml
 ```yaml
 apiVersion: v1
 kind: ServiceAccount
@@ -411,7 +411,7 @@ subjects:
 > kubectl create -f nginx-ingress-controller-deployment.yaml -n=ingress
 
 * create ingress rules
-  * nginx-ingress.yaml
+* nginx-ingress.yaml
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -427,7 +427,7 @@ spec:
           servicePort: 18080
         path: /nginx_status
 ```
-  * app-ingress.yaml
+* app-ingress.yaml
 ```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
@@ -453,7 +453,7 @@ spec:
 > kubectl create -f app-ingress.yaml
 
 * expose nginx ingress controller
-  * nginx-ingress-controller-service.yaml
+* nginx-ingress-controller-service.yaml
 ```yaml
 apiVersion: v1
 kind: Service
