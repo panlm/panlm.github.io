@@ -141,7 +141,7 @@ and access: http://host-ip:port
 
 
 ### [x] Using Ingress
-* create app1, app2, backend, ingress controller, configmap, rbca, ingress rules, etc.
+#### create app1, app2, backend, ingress controller, configmap, rbca, ingress rules, etc.
 * create app deployment & service
   * app-deployment.yaml
 ```yaml
@@ -410,8 +410,8 @@ subjects:
 > kubectl create -f nginx-ingress-controller-deployment.yaml -n=ingress
 
 * create ingress rules
-```
-cat > nginx-ingress.yaml <<-EOF
+  * nginx-ingress.yaml
+```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -425,9 +425,9 @@ spec:
           serviceName: nginx-ingress
           servicePort: 18080
         path: /nginx_status
-EOF
-
-cat > app-ingress.yaml <<-EOF
+```
+  * app-ingress.yaml
+```yaml
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -447,15 +447,13 @@ spec:
           serviceName: appsvc2
           servicePort: 80
         path: /app2
-EOF
-
-kubectl create -f nginx-ingress.yaml -n=ingress
-kubectl create -f app-ingress.yaml
 ```
+> kubectl create -f nginx-ingress.yaml -n=ingress
+> kubectl create -f app-ingress.yaml
 
 * expose nginx ingress controller
-```
-cat > nginx-ingress-controller-service.yaml <<-EOF
+  * nginx-ingress-controller-service.yaml
+```yaml
 apiVersion: v1
 kind: Service
 metadata:
@@ -471,10 +469,9 @@ spec:
       name: http-mgmt
   selector:
     app: nginx-ingress-lb
-EOF
-
-kubectl create -f nginx-ingress-controller-service.yaml -n=ingress
 ```
+> kubectl create -f nginx-ingress-controller-service.yaml -n=ingress
+
 
 #### access app1, app2, nginx status, etc.
 * http://test.domain.com:30000/app1
