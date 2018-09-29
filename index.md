@@ -3,11 +3,18 @@
 * [basic format](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
 * [advanced format](https://guides.github.com/features/mastering-markdown/)
 
-# 常用材料
+# Presale Material
 * [Gartner魔力象限图](presale/Gartner Magic Quadrant for Hyperconverged Infrastructure 2018.pdf)
+* 方案
+    * VDI方案
+    * Server方案
+* PPT
+    * 产品介绍PPT 链接:https://pan.baidu.com/s/1BBMCZyRyYB3BdYp1Ivhfuw 密码:k22z
+    * 东方证券案例 链接: https://pan.baidu.com/s/17doaZz_3LRqhZTvf8iaGwg 提取码: uqp2
+    * 海通证券案例 链接: https://pan.baidu.com/s/1AvKfYdTdXcpILnHSxVET9A 提取码: m551 
 
-
-# Linux
+# Technical Guy
+## Linux
 * [cloud-init](cloud-init)
 * [some packages](necessary-pkg-centos)
 * [mapping-internal-external](mapping-internal-external)
@@ -15,15 +22,15 @@
 * [Hyper threading](http://fibrevillage.com/sysadmin/155-how-to-tell-if-cpu-hyperthreading-enabled-on-linux)
 
 
-# Private Cloud
-## Calm 
+## Private Cloud
+### Calm 
 * https://github.com/RtpChris/Next18Demos
 * https://github.com/nutanixworkshops
 
-## Kubernetes
+### Kubernetes
 * [kubernetes](kubernetes/kubernetes.md)
 
-## Openstack
+### Openstack
 * [ovm for suse soc(google doc)](https://docs.google.com/document/d/1ubcUh5q2sqiAPyZJbr72MNIzAHb6pKN_zaMr6mzvyv8/edit#)
 * [suse cloud 7 setup](openstack/setup)
 * [suse cloud 7 troubleshooting](openstack/troubleshooting)
@@ -37,14 +44,14 @@
     * [Database Installation](oracle/oracle-install)
     * [Create Database](oracle/create-database)
 
-## SQL Server
+### SQL Server
 * [SQL on ABS](mssql/mssql_on_abs)
 
 
-# nutanix
+## nutanix
 * [esx command after foundation](nic-cmd)
 
-# Keep reading
+## Keep reading
 * openshift
 * nsx-t
 
