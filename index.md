@@ -4,7 +4,7 @@
 * [advanced format](https://guides.github.com/features/mastering-markdown/)
 
 # 常用材料
-* Gartner魔力象限图(presale/Gartner Magic Quadrant for Hyperconverged Infrastructure 2018.pdf)
+* [Gartner魔力象限图](presale/Gartner Magic Quadrant for Hyperconverged Infrastructure 2018.pdf)
 
 
 # Linux
