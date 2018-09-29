@@ -3,6 +3,9 @@
 * [basic format](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
 * [advanced format](https://guides.github.com/features/mastering-markdown/)
 
+# 常用材料
+* Gartner魔力象限图(presale/Gartner Magic Quadrant for Hyperconverged Infrastructure 2018.pdf)
+
 
 # Linux
 * [cloud-init](cloud-init)
