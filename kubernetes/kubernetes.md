@@ -25,6 +25,8 @@ edit default user, add private key to CENTOS.
 
 ## edit task - configure minion
 ![kubernetes6](/kubernetes/6.png){:height="75%" width="75%"}
+* add environment to docker system script, to ensure download images through proxy
+```Environment=\"HTTP_PROXY=http://10.132.71.38:1080/\"```
 
 ## other configure
 ![kubernetes7](/kubernetes/7.png){:height="75%" width="75%"}
@@ -145,7 +147,8 @@ and access: http://host-ip:port
 create app deployment & service
 
 app-deployment.yaml
-```yaml
+```yml
+cat > app-deployment.yaml <<EOF
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -185,10 +188,12 @@ spec:
           value: app2
         ports:
         - containerPort: 80
+EOF
 ```
 
 app-service.yaml
 ```yaml
+cat > app-service.yaml <<EOF
 apiVersion: v1
 kind: Service
 metadata:
@@ -212,17 +217,19 @@ spec:
     targetPort: 80
   selector:
     app: app2
+EOF
 ```
 
-> kubectl create -f app-deployment.yaml -f app-service.yaml
+> ```kubectl create -f app-deployment.yaml -f app-service.yaml```
 
 create nginx ingress controller, create dedicate namespace
-> kubectl create namespace ingress
+> ```kubectl create namespace ingress```
 
 create backend deployment & service
 
 default-backend-deployment.yaml
 ```yaml
+cat > default-backend-deployment.yaml <<EOF
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -254,10 +261,12 @@ spec:
           requests:
             cpu: 10m
             memory: 20Mi
+EOF
 ```
 
 default-backend-service.yaml
 ```yaml
+cat > default-backend-service.yaml <<EOF
 apiVersion: v1
 kind: Service
 metadata:
@@ -269,13 +278,16 @@ spec:
     targetPort: 8080
   selector:
     app: default-backend
+EOF
 ```
-> kubectl create -f default-backend-deployment.yaml -f default-backend-service.yaml -n=ingress
+
+> ```kubectl create -f default-backend-deployment.yaml -f default-backend-service.yaml -n=ingress```
 
 create configmap
 
 nginx-ingress-controller-config-map.yaml
 ```yaml
+cat > nginx-ingress-controller-config-map.yaml <<EOF
 apiVersion: v1
 kind: ConfigMap
 metadata:
@@ -284,13 +296,16 @@ metadata:
     app: nginx-ingress-lb
 data:
   enable-vts-status: 'true'
+EOF
 ```
-> kubectl create -f nginx-ingress-controller-config-map.yaml -n=ingress
+
+> ```kubectl create -f nginx-ingress-controller-config-map.yaml -n=ingress```
 
 create controller deployment
 
 nginx-ingress-controller-deployment.yaml
 ```yaml
+cat > nginx-ingress-controller-deployment.yaml <<EOF
 apiVersion: extensions/v1beta1
 kind: Deployment
 metadata:
@@ -338,12 +353,14 @@ spec:
           ports:
             - containerPort: 80
             - containerPort: 18080
+EOF
 ```
 
 create RBCA
 
 nginx-ingress-controller-roles.yaml
 ```yaml
+cat > nginx-ingress-controller-roles.yaml <<EOF
 apiVersion: v1
 kind: ServiceAccount
 metadata:
@@ -413,31 +430,35 @@ subjects:
 - kind: ServiceAccount
   name: nginx
   namespace: ingress
+EOF
 ```
-> kubectl create -f nginx-ingress-controller-roles.yaml -n=ingress
-> kubectl create -f nginx-ingress-controller-deployment.yaml -n=ingress
+> ```kubectl create -f nginx-ingress-controller-roles.yaml -n=ingress```
+> ```kubectl create -f nginx-ingress-controller-deployment.yaml -n=ingress```
 
 create ingress rules
 
 nginx-ingress.yaml
 ```yaml
+cat > nginx-ingress.yaml <<EOF
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
   name: nginx-ingress
 spec:
   rules:
-  - host: test.domain.com    # you could leave empty here for *
+  - host: test.akomljen.com    # you could leave empty here for *
     http:
       paths:
       - backend:
           serviceName: nginx-ingress
           servicePort: 18080
         path: /nginx_status
+EOF
 ```
 
 app-ingress.yaml
 ```yaml
+cat > app-ingress.yaml <<EOF
 apiVersion: extensions/v1beta1
 kind: Ingress
 metadata:
@@ -446,7 +467,7 @@ metadata:
   name: app-ingress
 spec:
   rules:
-  - host: test.domain.com    # you could leave empty here for *
+  - host: test.akomljen.com    # you could leave empty here for *
     http:
       paths:
       - backend:
@@ -457,6 +478,7 @@ spec:
           serviceName: appsvc2
           servicePort: 80
         path: /app2
+EOF
 ```
 > kubectl create -f nginx-ingress.yaml -n=ingress
 > kubectl create -f app-ingress.yaml
@@ -465,6 +487,7 @@ expose nginx ingress controller
 
 nginx-ingress-controller-service.yaml
 ```yaml
+cat > nginx-ingress-controller-service.yaml <<EOF
 apiVersion: v1
 kind: Service
 metadata:
@@ -480,8 +503,9 @@ spec:
       name: http-mgmt
   selector:
     app: nginx-ingress-lb
+EOF
 ```
-> kubectl create -f nginx-ingress-controller-service.yaml -n=ingress
+> ```kubectl create -f nginx-ingress-controller-service.yaml -n=ingress```
 
 #### access app1, app2, nginx status, etc.
 * http://test.domain.com:30000/app1
