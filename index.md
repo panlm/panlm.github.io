@@ -29,6 +29,7 @@
 
 ### Kubernetes
 * [kubernetes](kubernetes/kubernetes.md)
+* [kubernetes](kubernetes/kube-dns.md)
 
 ### Openstack
 * [ovm for suse soc(google doc)](https://docs.google.com/document/d/1ubcUh5q2sqiAPyZJbr72MNIzAHb6pKN_zaMr6mzvyv8/edit#)
