@@ -11,11 +11,17 @@ sudo sed -i '/ExecStart=/c\\ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H 
 cp /usr/lib/systemd/system/docker.service /tmp
 sudo sed -i '/\[Service\]/c\\[Service]\nEnvironment=\"HTTP_PROXY=http://10.132.71.38:1080/\"' /usr/lib/systemd/system/docker.service
 ```
-![kube-1.10.5-1](/kubernetes/kube-1.10.5-1.png){:height="75%" width="75%"}
+![kube-1.10.5-1](/kubernetes/kube-1.10.5-1.png){:height="85%" width="85%"}
 
 * add more waiting time (line 22)
-![kube-1.10.5-2](/kubernetes/kube-1.10.5-2.png){:height="75%" width="75%"}
+![kube-1.10.5-2](/kubernetes/kube-1.10.5-2.png){:height="85%" width="85%"}
 
 * update HELM script, add using http proxy when helm init
-![kube-1.10.5-3](/kubernetes/kube-1.10.5-3.png){:height="75%" width="75%"}
+```bash
+printf -v no_proxy '%s,' 10.132.{250..251}.{1..255}
+export no_proxy=${no_proxy}localhost
+echo $no_proxy
+http_proxy=http://10.132.71.38:1080/ no_proxy=${no_proxy} helm init --service-account helm
+```
+![kube-1.10.5-3](/kubernetes/kube-1.10.5-3.png){:height="85%" width="85%"}
 
