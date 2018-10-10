@@ -1,4 +1,3 @@
-
 # markdown
 * [basic format](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
 * [advanced format](https://guides.github.com/features/mastering-markdown/)
@@ -20,7 +19,6 @@
 * [mapping-internal-external](mapping-internal-external)
 * [iptables](iptables)
 * [Hyper threading](http://fibrevillage.com/sysadmin/155-how-to-tell-if-cpu-hyperthreading-enabled-on-linux)
-
 
 ## Private Cloud
 ### Calm 
