@@ -1,0 +1,20 @@
+# Create Kubernetes Environment
+* clone k8s 2.0 blueprint to your project
+* update credentials
+* update vm image
+* update vm nic
+* download some file to local and comment curl line in 'package install' task
+* add environemnt to docker service
+```bash
+sudo sed -i '/ExecStart=/c\\ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock' /usr/lib/systemd/system/docker.service
+cp /usr/lib/systemd/system/docker.service /tmp
+sudo sed -i '/\[Service\]/c\\[Service]\nEnvironment=\"HTTP_PROXY=http://10.132.71.38:1080/\"' /usr/lib/systemd/system/docker.service
+```
+![kube-1.10.5-1](/kubernetes/kube-1.10.5-1.png){:height="75%" width="75%"}
+
+* add more waiting time (line 22)
+![kube-1.10.5-2](/kubernetes/kube-1.10.5-2.png){:height="75%" width="75%"}
+
+* update HELM script, add using http proxy when helm init
+![kube-1.10.5-3](/kubernetes/kube-1.10.5-3.png){:height="75%" width="75%"}
+

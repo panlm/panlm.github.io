@@ -28,8 +28,9 @@
 * https://github.com/nutanixworkshops
 
 ### Kubernetes
-* [kubernetes](kubernetes/kubernetes.md)
-* [kubernetes](kubernetes/kube-dns.md)
+* [kube-1.7.7](kubernetes/kubernetes.md)
+* [kube-dns](kubernetes/kube-dns.md)
+* [kube-1.10.5](kubernetes/kube-1.10.5.md)
 
 ### Openstack
 * [ovm for suse soc(google doc)](https://docs.google.com/document/d/1ubcUh5q2sqiAPyZJbr72MNIzAHb6pKN_zaMr6mzvyv8/edit#)
