@@ -1,6 +1,7 @@
 # Create Kubernetes Environment
 * clone k8s 2.0 blueprint to your project
 * update credentials
+* update variable public key 
 * update vm image
 * update vm nic
 * download some file to local and comment curl line in 'package install' task
