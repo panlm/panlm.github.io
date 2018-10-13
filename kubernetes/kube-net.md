@@ -1,13 +1,14 @@
 # Summary
 ## Flannel
 * pod network
-    * ![kube-net-1](/kubernetes/kube-net-1.png){:height="65%" width="65%"}
+<br/>![kube-net-1](/kubernetes/kube-net-1.png){:height="65%" width="65%"}
+
 * service network
-    * ![kube-net-2](/kubernetes/kube-net-2.png){:height="65%" width="65%"}
-    * ![kube-net-3](/kubernetes/kube-net-3.png){:height="65%" width="65%"}
-    * ![kube-net-4](/kubernetes/kube-net-4.png){:height="65%" width="65%"}
-    * ![kube-net-5](/kubernetes/kube-net-5.png){:height="65%" width="65%"}
-    * ![kube-net-6](/kubernetes/kube-net-6.png){:height="65%" width="65%"}
+<br/>![kube-net-2](/kubernetes/kube-net-2.png){:height="65%" width="65%"}
+<br/>![kube-net-3](/kubernetes/kube-net-3.png){:height="65%" width="65%"}
+<br/>![kube-net-4](/kubernetes/kube-net-4.png){:height="65%" width="65%"}
+<br/>![kube-net-5](/kubernetes/kube-net-5.png){:height="65%" width="65%"}
+<br/>![kube-net-6](/kubernetes/kube-net-6.png){:height="65%" width="65%"}
 
 
 
