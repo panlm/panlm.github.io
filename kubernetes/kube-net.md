@@ -20,6 +20,13 @@
 
 - [NodePort, LB, Ingress](https://medium.com/google-cloud/understanding-kubernetes-networking-ingress-1bc341c84078)
 
+![kube-net-7](/kubernetes/kube-net-7.png){:height="65%" width="65%"}
+
+![kube-net-8](/kubernetes/kube-net-8.png){:height="65%" width="65%"}
+
+![kube-net-9](/kubernetes/kube-net-9.png){:height="65%" width="65%"}
+
+![kube-net-10](/kubernetes/kube-net-10.png){:height="65%" width="65%"}
 
 ## Calico
 
