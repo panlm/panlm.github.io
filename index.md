@@ -28,6 +28,7 @@
 ### Kubernetes
 * [kubernetes](kubernetes/kubernetes.md)
 * [kube-oper](kubernetes/kube-oper.md)
+* [kube-net](kubernetes/kube-net.md)
 * [kube-dns](kubernetes/kube-dns.md)
 * [kube-1.7.7 (blueprint 1.0.0)](kubernetes/kube-1.7.7.md)
 * [kube-1.10.5 (blueprint 2.0.0)](kubernetes/kube-1.10.5.md)
