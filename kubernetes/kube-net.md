@@ -29,6 +29,7 @@
 ![kube-net-10](/kubernetes/kube-net-10.png){:height="65%" width="65%"}
 
 ## Calico
+- [Data Path](https://docs.projectcalico.org/v3.2/reference/architecture/data-path)
 
   In the Calico approach, IP packets to or from a workload are routed and firewalled by the Linux routing table and iptables infrastructure on the workload’s host. For a workload that is sending packets, Calico ensures that the host is always returned as the next hop MAC address regardless of whatever routing the workload itself might configure. For packets addressed to a workload, the last IP hop is that from the destination workload’s host to the workload itself.
 

@@ -10,6 +10,14 @@
 ```
 ![kube-oper-1](/kubernetes/kube-oper-1.png){:height="75%" width="75%"}
 
+## kubernetes dashboard
+* on master node, running kubectl to handle authentication with apiserver:<br/>
+```kubectl proxy --address 0.0.0.0 --accept-hosts '.*'```
+
+* open URL from browser:<br/>
+```https://<master-ip>:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/```
+
+
 ## Application Deployment
 ### [ ] Using kube-proxy
 nginx-2.xml

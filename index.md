@@ -14,6 +14,7 @@
 
 # Technical Guy
 ## Linux
+* [linux](linux/linux.md)
 * [cloud-init](cloud-init)
 * [some packages](necessary-pkg-centos)
 * [mapping-internal-external](mapping-internal-external)
