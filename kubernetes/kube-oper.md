@@ -15,7 +15,7 @@
 ```kubectl proxy --address 0.0.0.0 --accept-hosts '.*'```
 
 * open URL from browser:<br/>
-```https://<master-ip>:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/```
+```http://<master-ip>:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/```
 
 
 ## Application Deployment
