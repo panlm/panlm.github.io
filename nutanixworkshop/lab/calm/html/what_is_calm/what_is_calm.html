@@ -1,0 +1,433 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>What Is Calm</title>
+    <link rel="stylesheet" href="../static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Selling Calm" href="../selling_calm/selling_calm.html" />
+    <link rel="prev" title="Getting Started" href="../index.html" />
+
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  </head><body>
+
+  <div id="navbar" class="navbar-inverse navbar-default ">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><span><img src="../static/NutanixWorkshops.svg"></span>
+           </a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html"> <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><p class="caption"><span class="caption-text">Nutanix Calm</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">What Is Calm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-the-state-of-things-today">What is the State of Things Today</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#managing-apps-is-increasingly-challenging">Managing Apps Is Increasingly Challenging</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#how-does-nutanix-solve-this-problem">How Does Nutanix Solve This Problem</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#foundation-for-enterprise-cloud">Foundation For Enterprise Cloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#delivering-the-enterprise-cloud-vision">Delivering the Enterprise Cloud Vision</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#delivering-the-enterprise-cloud-vision-multi-cloud">Delivering the Enterprise Cloud Vision: Multi-Cloud</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#calm-application-lifecycle-automation">Calm: Application Lifecycle Automation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints-capture-all-elements-of-the-application">Blueprints Capture All Elements of the Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#make-sense-of-complexity-in-a-visual-way">Make Sense of Complexity in a Visual Way</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints-are-flexible-and-open">Blueprints Are Flexible and Open</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints-are-used-for-lifecycle-management">Blueprints Are Used for Lifecycle Management</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#calm-self-service-and-governance">Calm: Self-Service and Governance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nutanix-marketplace-empowers-self-service">Nutanix Marketplace Empowers Self-Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deploy-in-one-click">Deploy in One-Click</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#end-to-end-audits-and-governance">End-to-End Audits and Governance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#calm-hybrid-cloud-management">Calm: Hybrid Cloud Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hybrid-cloud-management">Hybrid Cloud Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deploy-across-clouds-based-on-need">Deploy across Clouds Based on Need</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#automate-empower-relax">Automate. Empower. Relax</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#takeaways">Takeaways</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../selling_calm/selling_calm.html">Selling Calm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../selling_calm/selling_calm.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../selling_calm/selling_calm.html#what-to-look-for-target-persona">What to Look For, Target Persona</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../selling_calm/selling_calm.html#datacenter-and-infrastructure-teams">Datacenter and Infrastructure Teams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../selling_calm/selling_calm.html#devops-application-and-dev-teams">DevOps, Application and Dev Teams</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../selling_calm/selling_calm.html#it-team-focus-areas">IT Team Focus Areas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../selling_calm/selling_calm.html#infra-ops-focused">Infra &amp; Ops Focused</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../selling_calm/selling_calm.html#dev-and-devops-focused">Dev and DevOps Focused</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../selling_calm/selling_calm.html#strategic-cloud-architect">Strategic – Cloud Architect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../selling_calm/selling_calm.html#calm-addresses-both-it-automation-and-cloud-management-platforms-needs">Calm Addresses Both IT Automation and Cloud Management Platforms Needs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Nutanix Calm Lab</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../calm_enable/calm_enable.html">Calm: Enable</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calm_enable/calm_enable.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_enable/calm_enable.html#enabling-app-management">Enabling App Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_enable/calm_enable.html#adding-active-directory">Adding Active Directory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../calm_mysql_blueprint/calm_mysql_blueprint.html">Calm: MySQL Blueprint</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calm_mysql_blueprint/calm_mysql_blueprint.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_mysql_blueprint/calm_mysql_blueprint.html#creating-blueprint-mysql">Creating Blueprint (MySQL)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../calm_mysql_blueprint/calm_mysql_blueprint.html#creating-blueprint">Creating Blueprint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_mysql_blueprint/calm_mysql_blueprint.html#setting-variables">Setting Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_mysql_blueprint/calm_mysql_blueprint.html#adding-a-downloadable-image">Adding a Downloadable Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_mysql_blueprint/calm_mysql_blueprint.html#adding-db-service">Adding DB Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_mysql_blueprint/calm_mysql_blueprint.html#launching-the-blueprint">Launching the Blueprint</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_mysql_blueprint/calm_mysql_blueprint.html#takeaways">Takeaways</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../calm_lamp_blueprint/calm_lamp_blueprint.html">Calm: LAMP Blueprint</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calm_lamp_blueprint/calm_lamp_blueprint.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_lamp_blueprint/calm_lamp_blueprint.html#calm-blueprint-lamp">Calm Blueprint (LAMP)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../calm_lamp_blueprint/calm_lamp_blueprint.html#creating-the-web-server">Creating the Web Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_lamp_blueprint/calm_lamp_blueprint.html#adding-dependencies">Adding Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_lamp_blueprint/calm_lamp_blueprint.html#adding-replicas">Adding Replicas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_lamp_blueprint/calm_lamp_blueprint.html#creating-the-load-balancer">Creating the Load Balancer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_lamp_blueprint/calm_lamp_blueprint.html#takeaways">Takeaways</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html">Calm: Marketplace</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#calm-marketplace-part-1">Calm Marketplace Part 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#publishing-blueprints-from-marketplace-manager">Publishing Blueprints from Marketplace Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#cloning-blueprints-from-marketplace">Cloning Blueprints from Marketplace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#editing-cloned-blueprint">Editing Cloned Blueprint</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#calm-marketplace-part-2">Calm Marketplace Part 2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#publishing-blueprints">Publishing Blueprints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#approving-blueprints">Approving Blueprints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#configuring-project-environment">Configuring Project Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#launching-blueprint-from-the-marketplace">Launching Blueprint from the Marketplace</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#takeaways">Takeaways</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/glossary.html">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/glossary.html#term">Term</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/glossary.html#another-term">Another Term</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/glossary.html#yet-another-term">Yet Another Term</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><p class="caption"><span class="caption-text">Nutanix Calm</span></p>
+<ul class="current">
+<li class="toctree-l1 current"><a class="current reference internal" href="#">What Is Calm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#what-is-the-state-of-things-today">What is the State of Things Today</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#managing-apps-is-increasingly-challenging">Managing Apps Is Increasingly Challenging</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#how-does-nutanix-solve-this-problem">How Does Nutanix Solve This Problem</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#foundation-for-enterprise-cloud">Foundation For Enterprise Cloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#delivering-the-enterprise-cloud-vision">Delivering the Enterprise Cloud Vision</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#delivering-the-enterprise-cloud-vision-multi-cloud">Delivering the Enterprise Cloud Vision: Multi-Cloud</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#calm-application-lifecycle-automation">Calm: Application Lifecycle Automation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints-capture-all-elements-of-the-application">Blueprints Capture All Elements of the Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#make-sense-of-complexity-in-a-visual-way">Make Sense of Complexity in a Visual Way</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints-are-flexible-and-open">Blueprints Are Flexible and Open</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#blueprints-are-used-for-lifecycle-management">Blueprints Are Used for Lifecycle Management</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#calm-self-service-and-governance">Calm: Self-Service and Governance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#nutanix-marketplace-empowers-self-service">Nutanix Marketplace Empowers Self-Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deploy-in-one-click">Deploy in One-Click</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#end-to-end-audits-and-governance">End-to-End Audits and Governance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#calm-hybrid-cloud-management">Calm: Hybrid Cloud Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#hybrid-cloud-management">Hybrid Cloud Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deploy-across-clouds-based-on-need">Deploy across Clouds Based on Need</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#automate-empower-relax">Automate. Empower. Relax</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#takeaways">Takeaways</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../selling_calm/selling_calm.html">Selling Calm</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Nutanix Calm Lab</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../calm_enable/calm_enable.html">Calm: Enable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calm_mysql_blueprint/calm_mysql_blueprint.html">Calm: MySQL Blueprint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calm_lamp_blueprint/calm_lamp_blueprint.html">Calm: LAMP Blueprint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html">Calm: Marketplace</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/glossary.html">Glossary</a></li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="what-is-calm">
+<span id="id1"></span><h1>What Is Calm<a class="headerlink" href="#what-is-calm" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+<p>Calm provides advanced application-level orchestration that transforms how IT teams manage applications and support the business. Fully integrated into the Nutanix platform, Calm delivers a powerful, common management framework that can be simultaneously leveraged by multiple IT teams to rapidly create and deliver applications.</p>
+<p>By approaching applications as complete entities, not just virtual machines (VMs), Calm automates how applications are created, consumed and governed. Calm delivers simple, repeatable and automated management of applications across a variety of environments, including private and public clouds.</p>
+</div>
+<div class="section" id="what-is-the-state-of-things-today">
+<h2>What is the State of Things Today<a class="headerlink" href="#what-is-the-state-of-things-today" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="managing-apps-is-increasingly-challenging">
+<h3>Managing Apps Is Increasingly Challenging<a class="headerlink" href="#managing-apps-is-increasingly-challenging" title="Permalink to this headline">¶</a></h3>
+<div class="figure">
+<img alt="../images/what_is_calm_01.png" src="../images/what_is_calm_01.png" />
+</div>
+</div>
+</div>
+<div class="section" id="how-does-nutanix-solve-this-problem">
+<h2>How Does Nutanix Solve This Problem<a class="headerlink" href="#how-does-nutanix-solve-this-problem" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="foundation-for-enterprise-cloud">
+<h3>Foundation For Enterprise Cloud<a class="headerlink" href="#foundation-for-enterprise-cloud" title="Permalink to this headline">¶</a></h3>
+<p>Nutanix provides the foundation for your Enterprise cloud.</p>
+<div class="figure">
+<img alt="../images/what_is_calm_02.png" src="../images/what_is_calm_02.png" />
+</div>
+</div>
+<div class="section" id="delivering-the-enterprise-cloud-vision">
+<h3>Delivering the Enterprise Cloud Vision<a class="headerlink" href="#delivering-the-enterprise-cloud-vision" title="Permalink to this headline">¶</a></h3>
+<p>Application Automation</p>
+<ul class="simple">
+<li>App-centric orchestration and lifecycle management</li>
+<li>Policy-based governance</li>
+<li>Self-Service provisioning</li>
+</ul>
+<div class="figure">
+<img alt="../images/what_is_calm_03.png" src="../images/what_is_calm_03.png" />
+</div>
+</div>
+<div class="section" id="delivering-the-enterprise-cloud-vision-multi-cloud">
+<h3>Delivering the Enterprise Cloud Vision: Multi-Cloud<a class="headerlink" href="#delivering-the-enterprise-cloud-vision-multi-cloud" title="Permalink to this headline">¶</a></h3>
+<p>Multi-Cloud Management</p>
+<ul class="simple">
+<li>Abstract applications from cloud infrastructure</li>
+<li>Deploy and manage applications on any cloud</li>
+<li>Visibility and control of public cloud consumption</li>
+</ul>
+<div class="figure">
+<img alt="../images/what_is_calm_05.png" src="../images/what_is_calm_05.png" />
+</div>
+</div>
+</div>
+<div class="section" id="calm-application-lifecycle-automation">
+<h2>Calm: Application Lifecycle Automation<a class="headerlink" href="#calm-application-lifecycle-automation" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="blueprints-capture-all-elements-of-the-application">
+<h3>Blueprints Capture All Elements of the Application<a class="headerlink" href="#blueprints-capture-all-elements-of-the-application" title="Permalink to this headline">¶</a></h3>
+<div class="figure">
+<img alt="../images/what_is_calm_07.png" src="../images/what_is_calm_07.png" />
+</div>
+</div>
+<div class="section" id="make-sense-of-complexity-in-a-visual-way">
+<h3>Make Sense of Complexity in a Visual Way<a class="headerlink" href="#make-sense-of-complexity-in-a-visual-way" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Capture organizational knowledge</li>
+<li>Streamline provisioning and lifecycle tasks</li>
+<li>Easy to understand dependencies</li>
+</ul>
+<div class="figure">
+<img alt="../images/what_is_calm_08.png" src="../images/what_is_calm_08.png" />
+</div>
+</div>
+<div class="section" id="blueprints-are-flexible-and-open">
+<h3>Blueprints Are Flexible and Open<a class="headerlink" href="#blueprints-are-flexible-and-open" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Utilize existing Bash or Powershell scripts</li>
+<li>Call any external service using REST API</li>
+</ul>
+<div class="figure">
+<img alt="../images/what_is_calm_09.png" src="../images/what_is_calm_09.png" />
+</div>
+</div>
+<div class="section" id="blueprints-are-used-for-lifecycle-management">
+<h3>Blueprints Are Used for Lifecycle Management<a class="headerlink" href="#blueprints-are-used-for-lifecycle-management" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Automate <strong>routine</strong> application management operations</li>
+<li>Reduce errors, delays and downtime</li>
+</ul>
+<div class="figure">
+<img alt="../images/what_is_calm_10.png" src="../images/what_is_calm_10.png" />
+</div>
+</div>
+</div>
+<div class="section" id="calm-self-service-and-governance">
+<h2>Calm: Self-Service and Governance<a class="headerlink" href="#calm-self-service-and-governance" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="nutanix-marketplace-empowers-self-service">
+<h3>Nutanix Marketplace Empowers Self-Service<a class="headerlink" href="#nutanix-marketplace-empowers-self-service" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>One-Click App Provisioning</li>
+<li>Pre-integrated blueprints</li>
+<li>Self-service based on user role and group</li>
+</ul>
+<div class="figure">
+<img alt="../images/what_is_calm_11.png" src="../images/what_is_calm_11.png" />
+</div>
+</div>
+<div class="section" id="deploy-in-one-click">
+<h3>Deploy in One-Click<a class="headerlink" href="#deploy-in-one-click" title="Permalink to this headline">¶</a></h3>
+<div class="figure">
+<img alt="../images/what_is_calm_12.png" src="../images/what_is_calm_12.png" />
+</div>
+</div>
+<div class="section" id="end-to-end-audits-and-governance">
+<h3>End-to-End Audits and Governance<a class="headerlink" href="#end-to-end-audits-and-governance" title="Permalink to this headline">¶</a></h3>
+<div class="figure">
+<img alt="../images/what_is_calm_13.png" src="../images/what_is_calm_13.png" />
+</div>
+</div>
+</div>
+<div class="section" id="calm-hybrid-cloud-management">
+<h2>Calm: Hybrid Cloud Management<a class="headerlink" href="#calm-hybrid-cloud-management" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="hybrid-cloud-management">
+<h3>Hybrid Cloud Management<a class="headerlink" href="#hybrid-cloud-management" title="Permalink to this headline">¶</a></h3>
+<div class="figure">
+<img alt="../images/what_is_calm_14.png" src="../images/what_is_calm_14.png" />
+</div>
+</div>
+<div class="section" id="deploy-across-clouds-based-on-need">
+<h3>Deploy across Clouds Based on Need<a class="headerlink" href="#deploy-across-clouds-based-on-need" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Cloud destination is configured once, then used with any blueprint</li>
+</ul>
+<div class="figure">
+<img alt="../images/what_is_calm_15.png" src="../images/what_is_calm_15.png" />
+</div>
+</div>
+<div class="section" id="automate-empower-relax">
+<h3>Automate. Empower. Relax<a class="headerlink" href="#automate-empower-relax" title="Permalink to this headline">¶</a></h3>
+<div class="figure">
+<img alt="../images/what_is_calm_16.png" src="../images/what_is_calm_16.png" />
+</div>
+</div>
+</div>
+<div class="section" id="takeaways">
+<h2>Takeaways<a class="headerlink" href="#takeaways" title="Permalink to this headline">¶</a></h2>
+<p>Calms Native Capabilities:</p>
+<ul class="simple">
+<li><strong>Application Lifecycle Management:</strong> Fully automate the provisioning, scaling, and deletion of both traditional multi-tiered applications and modern distributed services using pre-integrated blueprints that make management of applications in private and public clouds extremely simple.</li>
+<li><strong>Customizable Blueprints:</strong> Simplify the set-up and management of custom enterprise applications by incorporating all elements of each app, including relevant VMs, configurations and related binaries, into an easy-to-use-blueprint that is managed by the infrastructure team. IT teams can eliminate the hours and days currently devoted to routine application management.</li>
+<li><strong>Nutanix Marketplace:</strong> Blueprints can be published directly to end users through the Nutanix Marketplace, giving application owners and developers the ability to request IT services that can then be instantly provisioned.</li>
+<li><strong>Governance:</strong> Calm maintains control with role-based governance that limits user operations based on permissions. Additionally, all activities and changes are centrally logged for end-to-end traceability, aiding security teams with key compliance initiatives.</li>
+<li><strong>Hybrid Cloud Management:</strong> Automate the provisioning of Hybrid Cloud architectures, scaling both multi-tiered and distributed applications across different cloud environments, including AWS. Calm shows the overall utilization and true cost of your public cloud consumption at a glance so that decisions are based on business needs and budget requirements.</li>
+</ul>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../sources/what_is_calm/what_is_calm.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2018 Nutanix.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

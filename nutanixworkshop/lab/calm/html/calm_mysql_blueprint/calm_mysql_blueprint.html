@@ -1,0 +1,544 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Calm: MySQL Blueprint</title>
+    <link rel="stylesheet" href="../static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Calm: LAMP Blueprint" href="../calm_lamp_blueprint/calm_lamp_blueprint.html" />
+    <link rel="prev" title="Calm: Enable" href="../calm_enable/calm_enable.html" />
+
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  </head><body>
+
+  <div id="navbar" class="navbar-inverse navbar-default ">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><span><img src="../static/NutanixWorkshops.svg"></span>
+           </a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html"> <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><p class="caption"><span class="caption-text">Nutanix Calm</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../what_is_calm/what_is_calm.html">What Is Calm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../what_is_calm/what_is_calm.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../what_is_calm/what_is_calm.html#what-is-the-state-of-things-today">What is the State of Things Today</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#managing-apps-is-increasingly-challenging">Managing Apps Is Increasingly Challenging</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../what_is_calm/what_is_calm.html#how-does-nutanix-solve-this-problem">How Does Nutanix Solve This Problem</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#foundation-for-enterprise-cloud">Foundation For Enterprise Cloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#delivering-the-enterprise-cloud-vision">Delivering the Enterprise Cloud Vision</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#delivering-the-enterprise-cloud-vision-multi-cloud">Delivering the Enterprise Cloud Vision: Multi-Cloud</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../what_is_calm/what_is_calm.html#calm-application-lifecycle-automation">Calm: Application Lifecycle Automation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#blueprints-capture-all-elements-of-the-application">Blueprints Capture All Elements of the Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#make-sense-of-complexity-in-a-visual-way">Make Sense of Complexity in a Visual Way</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#blueprints-are-flexible-and-open">Blueprints Are Flexible and Open</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#blueprints-are-used-for-lifecycle-management">Blueprints Are Used for Lifecycle Management</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../what_is_calm/what_is_calm.html#calm-self-service-and-governance">Calm: Self-Service and Governance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#nutanix-marketplace-empowers-self-service">Nutanix Marketplace Empowers Self-Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#deploy-in-one-click">Deploy in One-Click</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#end-to-end-audits-and-governance">End-to-End Audits and Governance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../what_is_calm/what_is_calm.html#calm-hybrid-cloud-management">Calm: Hybrid Cloud Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#hybrid-cloud-management">Hybrid Cloud Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#deploy-across-clouds-based-on-need">Deploy across Clouds Based on Need</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#automate-empower-relax">Automate. Empower. Relax</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../what_is_calm/what_is_calm.html#takeaways">Takeaways</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../selling_calm/selling_calm.html">Selling Calm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../selling_calm/selling_calm.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../selling_calm/selling_calm.html#what-to-look-for-target-persona">What to Look For, Target Persona</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../selling_calm/selling_calm.html#datacenter-and-infrastructure-teams">Datacenter and Infrastructure Teams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../selling_calm/selling_calm.html#devops-application-and-dev-teams">DevOps, Application and Dev Teams</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../selling_calm/selling_calm.html#it-team-focus-areas">IT Team Focus Areas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../selling_calm/selling_calm.html#infra-ops-focused">Infra &amp; Ops Focused</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../selling_calm/selling_calm.html#dev-and-devops-focused">Dev and DevOps Focused</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../selling_calm/selling_calm.html#strategic-cloud-architect">Strategic – Cloud Architect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../selling_calm/selling_calm.html#calm-addresses-both-it-automation-and-cloud-management-platforms-needs">Calm Addresses Both IT Automation and Cloud Management Platforms Needs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Nutanix Calm Lab</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../calm_enable/calm_enable.html">Calm: Enable</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calm_enable/calm_enable.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_enable/calm_enable.html#enabling-app-management">Enabling App Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_enable/calm_enable.html#adding-active-directory">Adding Active Directory</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Calm: MySQL Blueprint</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-blueprint-mysql">Creating Blueprint (MySQL)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-blueprint">Creating Blueprint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-variables">Setting Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-downloadable-image">Adding a Downloadable Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-db-service">Adding DB Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#launching-the-blueprint">Launching the Blueprint</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#takeaways">Takeaways</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../calm_lamp_blueprint/calm_lamp_blueprint.html">Calm: LAMP Blueprint</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calm_lamp_blueprint/calm_lamp_blueprint.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_lamp_blueprint/calm_lamp_blueprint.html#calm-blueprint-lamp">Calm Blueprint (LAMP)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../calm_lamp_blueprint/calm_lamp_blueprint.html#creating-the-web-server">Creating the Web Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_lamp_blueprint/calm_lamp_blueprint.html#adding-dependencies">Adding Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_lamp_blueprint/calm_lamp_blueprint.html#adding-replicas">Adding Replicas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_lamp_blueprint/calm_lamp_blueprint.html#creating-the-load-balancer">Creating the Load Balancer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_lamp_blueprint/calm_lamp_blueprint.html#takeaways">Takeaways</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html">Calm: Marketplace</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#calm-marketplace-part-1">Calm Marketplace Part 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#publishing-blueprints-from-marketplace-manager">Publishing Blueprints from Marketplace Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#cloning-blueprints-from-marketplace">Cloning Blueprints from Marketplace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#editing-cloned-blueprint">Editing Cloned Blueprint</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#calm-marketplace-part-2">Calm Marketplace Part 2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#publishing-blueprints">Publishing Blueprints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#approving-blueprints">Approving Blueprints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#configuring-project-environment">Configuring Project Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#launching-blueprint-from-the-marketplace">Launching Blueprint from the Marketplace</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#takeaways">Takeaways</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/glossary.html">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/glossary.html#term">Term</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/glossary.html#another-term">Another Term</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/glossary.html#yet-another-term">Yet Another Term</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><p class="caption"><span class="caption-text">Nutanix Calm</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../what_is_calm/what_is_calm.html">What Is Calm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../selling_calm/selling_calm.html">Selling Calm</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Nutanix Calm Lab</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../calm_enable/calm_enable.html">Calm: Enable</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Calm: MySQL Blueprint</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#creating-blueprint-mysql">Creating Blueprint (MySQL)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#creating-blueprint">Creating Blueprint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#setting-variables">Setting Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-a-downloadable-image">Adding a Downloadable Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#adding-db-service">Adding DB Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#launching-the-blueprint">Launching the Blueprint</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#takeaways">Takeaways</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../calm_lamp_blueprint/calm_lamp_blueprint.html">Calm: LAMP Blueprint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html">Calm: Marketplace</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/glossary.html">Glossary</a></li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="calm-mysql-blueprint">
+<span id="id1"></span><h1>Calm: MySQL Blueprint<a class="headerlink" href="#calm-mysql-blueprint" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="creating-blueprint-mysql">
+<h2>Creating Blueprint (MySQL)<a class="headerlink" href="#creating-blueprint-mysql" title="Permalink to this headline">¶</a></h2>
+<p>In this exercise you will explore the basics of Nutanix Calm by building and deploying a Blueprint that installs and configures a single service, MySQL, on a CentOS image.</p>
+<p>Depending on how comfortable you are with SSH Keys, in this lab you’ll have two options:</p>
+<blockquote>
+<div><ul class="simple">
+<li><strong>Cloud Track</strong> - We’ll use a Cloud based CentOS image which does not allow password based authentication, instead it relies on <em>SSH keys</em>.  Most Public Clouds authenticate in this manner.  If you’re comfortable with SSH keys, we recommend you follow this track.</li>
+<li><strong>Local Track</strong> - We’ll use a local CentOS image which allows password based authentication.  If you’ve never used SSH keys before, we recommend you follow this track.</li>
+</ul>
+</div></blockquote>
+<div class="section" id="creating-blueprint">
+<h3>Creating Blueprint<a class="headerlink" href="#creating-blueprint" title="Permalink to this headline">¶</a></h3>
+<p>From <strong>Prism Central &gt; Apps</strong> (<strong>Prism Central &gt; Calm</strong> if you’re running 5.8.1 or later), select <strong>Blueprints</strong> from the sidebar and click <strong>+ Create Application Blueprint</strong>.</p>
+<p>Specify <strong>CalmIntro&lt;INITIALS&gt;</strong> in the <strong>Blueprint Name</strong> field.
+Enter a <strong>Description</strong> in the Description field.
+Select <strong>Calm</strong> from the <strong>Project</strong> drop down menu and click <strong>Proceed</strong>.</p>
+<p>Click <strong>Proceed</strong> to continue.</p>
+<p>Click <strong>Credentials &gt;</strong> <em class="fa fa-plus-circle"></em> and depending on which track you’re on, do <em>one</em> of the two following steps:</p>
+<p><strong>Cloud Track</strong>:</p>
+<ul class="simple">
+<li><strong>Credential Name</strong> - CENTOS</li>
+<li><strong>Username</strong> - centos</li>
+<li><strong>Secret</strong> - Key</li>
+<li><strong>Key</strong> - Paste in your private key from the previous lesson</li>
+</ul>
+<div class="figure">
+<img alt="../images/keycredential.png" src="../images/keycredential.png" />
+</div>
+<p><strong>Local Track</strong>:</p>
+<ul class="simple">
+<li><strong>Credential Name</strong> - CENTOS</li>
+<li><strong>Username</strong> - root</li>
+<li><strong>Secret</strong> - Password</li>
+<li><strong>Password</strong> - nutanix/4u</li>
+</ul>
+<div class="figure">
+<img alt="../images/passcredential.png" src="../images/passcredential.png" />
+</div>
+<p>Click <strong>Save</strong>, and then <strong>Back</strong>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Credentials are unique to each Blueprint.
+Each Blueprint requires a minimum of 1 Credential.</p>
+</div>
+<p>Click <strong>Save</strong> to save your Blueprint.</p>
+</div>
+<div class="section" id="setting-variables">
+<h3>Setting Variables<a class="headerlink" href="#setting-variables" title="Permalink to this headline">¶</a></h3>
+<p>Variables allow extensibility of Blueprints, meaning a single Blueprint can be used for multiple purposes and environments depending on the configuration of its variables. Variables can either be static values saved as part of the Blueprint or they can be specified at <strong>Runtime</strong> (when the Blueprint is launched). By default, variables are stored in plaintext and visible in the Configuration Pane. Setting a variable as <strong>Secret</strong> will mask the value and is ideal for variables such as passwords.</p>
+<p>Variables can be used in scripts executed against objects using the <strong>&#64;&#64;{variable_name}&#64;&#64;</strong> construct. Calm will expand and replace the variable with the appropriate value before sending to the VM.</p>
+<p>In the <strong>Configuration Pane</strong> under <strong>Variable List</strong>, fill out the following fields:</p>
+<table border="1" class="docutils">
+<colgroup>
+<col width="27%" />
+<col width="60%" />
+<col width="13%" />
+</colgroup>
+<tbody valign="top">
+<tr class="row-odd"><td><strong>Variable Name</strong></td>
+<td><strong>Value</strong></td>
+<td><strong>Secret</strong></td>
+</tr>
+<tr class="row-even"><td>Mysql_user</td>
+<td>root</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>Mysql_password</td>
+<td>nutanix/4u</td>
+<td>X</td>
+</tr>
+<tr class="row-even"><td>Database_name</td>
+<td>homestead</td>
+<td>&#160;</td>
+</tr>
+<tr class="row-odd"><td>INSTANCE_PUBLIC_KEY</td>
+<td>Only required for the <strong>Cloud Track</strong>.
+Paste in your public key from the previous lesson.</td>
+<td>&#160;</td>
+</tr>
+</tbody>
+</table>
+<div class="figure">
+<img alt="../images/variables.png" src="../images/variables.png" />
+</div>
+<p>Click <strong>Save</strong>.</p>
+</div>
+<div class="section" id="adding-a-downloadable-image">
+<h3>Adding a Downloadable Image<a class="headerlink" href="#adding-a-downloadable-image" title="Permalink to this headline">¶</a></h3>
+<p>All VMs in AHV are based off of a disk image.  You have the option of selecting an image that’s already managed by Prism Central (<strong>Local Track</strong>), or specifying a Downloadable Image via a URI (<strong>Cloud Track</strong>).  If the latter is chosen, during the application deployment Prism Central will automatically download and create the image specified.  If an image with the same URI already exists on the cluster, it will skip the download and use that instead.</p>
+<p>If you’re on the <strong>Cloud Track</strong>, then follow these steps.  If you’re on the <strong>Local Track</strong>, skip to the next section (<strong>Adding DB Service</strong>).  Near the top, click <strong>Configuration &gt; Downloadable Image Configuration</strong> <em class="fa fa-plus-circle"></em> and fill out the following fields:</p>
+<ul class="simple">
+<li><strong>Package Name</strong> - CentOS_7_Cloud</li>
+<li><strong>Description</strong> - CentOS 7 Cloud Image</li>
+<li><strong>Image Name</strong> - CentOS_7_Cloud</li>
+<li><strong>Image Type</strong> - Disk Image</li>
+<li><strong>Architecture</strong> - X86_64</li>
+<li><strong>Source URI</strong> - <a class="reference external" href="http://download.nutanix.com/calm/CentOS-7-x86_64-GenericCloud.qcow2">http://download.nutanix.com/calm/CentOS-7-x86_64-GenericCloud.qcow2</a></li>
+<li><strong>Product Name</strong> - CentOS</li>
+<li><strong>Product Version</strong> - 7</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This Cloud based image is the same that’s used for the majority of the Nutanix Pre-Seeded Application Blueprints.</p>
+</div>
+<div class="figure">
+<img alt="../images/image_config.png" src="../images/image_config.png" />
+</div>
+<p>Click <strong>Back</strong> and then <strong>Save</strong>.</p>
+</div>
+<div class="section" id="adding-db-service">
+<h3>Adding DB Service<a class="headerlink" href="#adding-db-service" title="Permalink to this headline">¶</a></h3>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Application Overview - The pane within the Blueprint Editor used to create and manage Blueprint Layers. Blueprint Layers consist of Services, Application Profiles, and Actions.</p>
+</div>
+<p>In <strong>Application Overview &gt; Services</strong>, click <em class="fa fa-plus-circle"></em>.</p>
+<p>Note <strong>Service1</strong> appears in the <strong>Workspace</strong> and the <strong>Configuration Pane</strong> reflects the configuration of the selected Service.</p>
+<p>Fill out the following fields:</p>
+<ul class="simple">
+<li><strong>Service Name</strong> - MySQL</li>
+<li><strong>Name</strong> - MySQLAHV</li>
+</ul>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This defines the name of the substrate within Calm. Names can only contain alphanumeric characters, spaces, and underscores.</p>
+</div>
+<ul>
+<li><p class="first"><strong>Cloud</strong> - Nutanix</p>
+</li>
+<li><p class="first"><strong>OS</strong> - Linux</p>
+</li>
+<li><p class="first"><strong>VM Name</strong> - MYSQL-&#64;&#64;{calm_array_index}&#64;&#64;-&#64;&#64;{calm_time}&#64;&#64;</p>
+</li>
+<li><p class="first"><strong>Image</strong></p>
+<ul class="simple">
+<li><strong>Cloud Track</strong> - CentOS_7_Cloud</li>
+<li><strong>Local Track</strong> - CentOS</li>
+</ul>
+</li>
+<li><p class="first"><strong>Device Type</strong> - Disk</p>
+</li>
+<li><p class="first"><strong>Device Bus</strong> - SCSI</p>
+</li>
+<li><p class="first">Select <strong>Bootable</strong></p>
+</li>
+<li><p class="first"><strong>vCPUs</strong> - 2</p>
+</li>
+<li><p class="first"><strong>Cores per vCPU</strong> - 1</p>
+</li>
+<li><p class="first"><strong>Memory (GiB)</strong> - 4</p>
+</li>
+<li><p class="first"><strong>Guest Customization</strong> - Depending on your track:</p>
+<ul>
+<li><p class="first"><strong>Cloud Track</strong> - Select Guest Customization</p>
+<ul>
+<li><p class="first">Leave <strong>Cloud-init</strong> selected and paste in the following script</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#cloud-config</span>
+users:
+  - name: centos
+    ssh-authorized-keys:
+      - @@<span class="o">{</span>INSTANCE_PUBLIC_KEY<span class="o">}</span>@@
+    sudo: <span class="o">[</span><span class="s1">&#39;ALL=(ALL) NOPASSWD:ALL&#39;</span><span class="o">]</span>
+</pre></div>
+</div>
+</li>
+</ul>
+</li>
+<li><p class="first"><strong>Local Track</strong> - Leave Guest Customization Unselected</p>
+</li>
+</ul>
+</li>
+<li><p class="first">Select <em class="fa fa-plus-circle"></em> under <strong>Network Adapters (NICs)</strong></p>
+</li>
+<li><p class="first"><strong>NIC</strong> - Primary</p>
+</li>
+<li><p class="first"><strong>Credential</strong> - CENTOS</p>
+</li>
+</ul>
+<p>Click <strong>Save</strong> and ensure no errors or warnings pop-up.  If they do, resolve the issue, and <strong>Save</strong> again.</p>
+<p>With the MySQL service icon selected in the workspace window, scroll to the top of the <strong>Configuration Panel</strong>, click <strong>Package</strong>.  Name the Package as <strong>MYSQL_PACKAGE</strong>, and then click the <strong>Configure install</strong> button.</p>
+<p>On the Blueprint Canvas section, a <strong>Package Install</strong> field will pop up next to the MySQL Service tile:</p>
+<div class="figure">
+<img alt="../images/package_install.png" src="../images/package_install.png" />
+</div>
+<p>Click on the <strong>+ Task</strong> button, and fill out the following fields on the <strong>Configuration Panel</strong> on the right:</p>
+<ul class="simple">
+<li><strong>Name Task</strong> - Install_sql</li>
+<li><strong>Type</strong> - Execute</li>
+<li><strong>Script Type</strong> - Shell</li>
+<li><strong>Credential</strong> - CENTOS</li>
+</ul>
+<p>Copy and paste the following script into the <strong>Script</strong> field:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="nb">set</span> -ex
+
+sudo yum install -y <span class="s2">&quot;http://repo.mysql.com/mysql-community-release-el7-5.noarch.rpm&quot;</span>
+sudo yum update -y
+sudo setenforce <span class="m">0</span>
+sudo sed -i <span class="s1">&#39;s/enforcing/disabled/g&#39;</span> /etc/selinux/config /etc/selinux/config
+sudo systemctl stop firewalld <span class="o">||</span> <span class="nb">true</span>
+sudo systemctl disable firewalld <span class="o">||</span> <span class="nb">true</span>
+sudo yum install -y mysql-community-server.x86_64
+
+sudo /bin/systemctl start mysqld
+sudo /bin/systemctl <span class="nb">enable</span> mysqld
+
+<span class="c1">#Mysql secure installation</span>
+mysql -u root<span class="s">&lt;&lt;-EOF</span>
+
+<span class="s">UPDATE mysql.user SET Password=PASSWORD(&#39;@@{Mysql_password}@@&#39;) WHERE User=&#39;@@{Mysql_user}@@&#39;;</span>
+<span class="s">DELETE FROM mysql.user WHERE User=&#39;@@{Mysql_user}@@&#39; AND Host NOT IN (&#39;localhost&#39;, &#39;127.0.0.1&#39;, &#39;::1&#39;);</span>
+<span class="s">DELETE FROM mysql.user WHERE User=&#39;&#39;;</span>
+<span class="s">DELETE FROM mysql.db WHERE Db=&#39;test&#39; OR Db=&#39;test\_%&#39;;</span>
+
+<span class="s">FLUSH PRIVILEGES;</span>
+<span class="s">EOF</span>
+
+mysql -u @@<span class="o">{</span>Mysql_user<span class="o">}</span>@@ -p@@<span class="o">{</span>Mysql_password<span class="o">}</span>@@ <span class="s">&lt;&lt;-EOF</span>
+<span class="s">CREATE DATABASE @@{Database_name}@@;</span>
+<span class="s">GRANT ALL PRIVILEGES ON homestead.* TO &#39;@@{Database_name}@@&#39;@&#39;%&#39; identified by &#39;secret&#39;;</span>
+
+<span class="s">FLUSH PRIVILEGES;</span>
+<span class="s">EOF</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You can click the <strong>Pop Out</strong> icon on the script field for a larger window to view/edit scripts.
+Looking at the script you can see the package will install MySQL, configure the credentials and create a database based on the variables specified earlier in the exercise.</p>
+</div>
+<p>Select the MySQL service icon in the workspace window again and scroll to the top of the <strong>Configuration Panel</strong>, click <strong>Package</strong>.</p>
+<ul class="simple">
+<li><strong>Click</strong> - Configure Uninstall</li>
+<li><strong>Click</strong> - + Task</li>
+<li><strong>Name Task</strong> - Uninstall_sql</li>
+<li><strong>Type</strong> - Execute</li>
+<li><strong>Script Type</strong> - Shell</li>
+<li><strong>Credential</strong> - CENTOS</li>
+</ul>
+<p>Copy and paste the following script into the <strong>Script</strong> field:</p>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="ch">#!/bin/bash</span>
+<span class="nb">echo</span> <span class="s2">&quot;Goodbye!&quot;</span>
+</pre></div>
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">The uninstall script can be used for removing packages, updating network services like DHCP and DNS, removing entries from Active Directory, etc. It is not being used for this simple example.</p>
+</div>
+<p>Click <strong>Save</strong>. You will be prompted with specific errors if there are validation issues such as missing fields or unacceptable characters.</p>
+</div>
+<div class="section" id="launching-the-blueprint">
+<h3>Launching the Blueprint<a class="headerlink" href="#launching-the-blueprint" title="Permalink to this headline">¶</a></h3>
+<p>From the toolbar at the top of the Blueprint Editor, click <strong>Launch</strong>.</p>
+<p>In the <strong>Name of the Application</strong> field, specify a unique name (e.g. CalmMySQL*&lt;INITIALS&gt;*-1).</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">A single Blueprint can be launched multiple times within the same environment but each instance requires a unique <strong>Application Name</strong> in Calm.</p>
+</div>
+<p>Click <strong>Create</strong>.</p>
+<p>You will be taken directly to the <strong>Applications</strong> page to monitor the provisioning of your Blueprint.</p>
+<p>Select <strong>Audit &gt; Create</strong> to view the progress of your application. After <strong>MySQLAHV - Check Login</strong> is complete, select <strong>PackageInstallTask</strong> to view the real time output of your installation script.</p>
+<p>Note the status changes to <strong>Running</strong> after the Blueprint has been successfully provisioned.</p>
+<div class="figure">
+<img alt="https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab1/image25.png" src="https://s3.amazonaws.com/s3.nutanixworkshops.com/calm/lab1/image25.png" />
+</div>
+</div>
+</div>
+<div class="section" id="takeaways">
+<h2>Takeaways<a class="headerlink" href="#takeaways" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>The Blueprint Editor provides a simple UI for modeling potentially complex applications.</li>
+<li>Blueprints are tied to SSP Projects which can be used to enforce quotas and role based access control.</li>
+<li>Having a Blueprint install and configure binaries means no longer creating specific images for individual applications. Instead the application can be modified through changes to the Blueprint or installation script, both of which can be stored in source code repositories.</li>
+<li>Variables allow another dimension of customizing an application without having to edit the underlying Blueprint.</li>
+<li>There are multiple ways of authenticating to a VM (keys or passwords), which is dependent upon the source image.</li>
+<li>Application status can be monitored in real time.</li>
+</ul>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../sources/calm_mysql_blueprint/calm_mysql_blueprint.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2018 Nutanix.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

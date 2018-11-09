@@ -1,0 +1,876 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Nutanix Terminology</title>
+    <link rel="stylesheet" href="../static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="What Is Calm" href="../what_is_calm/what_is_calm.html" />
+    <link rel="prev" title="What is Nutanix" href="../what_is_nutanix/what_is_nutanix.html" />
+
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  </head><body>
+
+  <div id="navbar" class="navbar-inverse navbar-default ">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><span><img src="../static/NutanixWorkshops.svg"></span>
+           </a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html"> <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><p class="caption"><span class="caption-text">Technology Overview</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../what_is_nutanix/what_is_nutanix.html">What is Nutanix</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../what_is_nutanix/what_is_nutanix.html#what-is-nutanix-enterprise-os">What is Nutanix Enterprise OS?</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_nutanix/what_is_nutanix.html#streamlining-the-datacenter">Streamlining The Datacenter</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_nutanix/what_is_nutanix.html#nutanix-web-scale-architecture">Nutanix Web-Scale Architecture</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_nutanix/what_is_nutanix.html#the-nutanix-solution">The Nutanix Solution</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_nutanix/what_is_nutanix.html#prism-central-management">Prism Central Management</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Nutanix Terminology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#nutanix-hci">Nutanix HCI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#physical-infrastructure">Physical Infrastructure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storage-pools-and-containers">Storage Pools and Containers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#nutanix-storage">Nutanix Storage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tunable-redundancy">Tunable Redundancy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nutanix-ec-x-erasure-coding">Nutanix EC-X (Erasure Coding)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deduplication">Deduplication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compression">Compression</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-locality">Data Locality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#intelligent-tiering">Intelligent Tiering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cvm-auto-pathing">CVM Auto-Pathing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vmotion-drs-or-live-migration">vMotion/DRS or Live Migration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#nutanix-vm-mobility">Nutanix VM Mobility</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#acropolis-dynamic-scheduling-ads">Acropolis Dynamic Scheduling (ADS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#host-high-availability">Host High Availability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#affinity-rules-host">Affinity Rules - Host</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#affinity-rules-vm">Affinity Rules - VM</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#nutanix-networking">Nutanix Networking</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ahv-software-defined-networking">AHV – Software Defined Networking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flow-microsegmentation">Flow (Microsegmentation)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flow-scenario-environment-zoning-with-isolation">Flow Scenario – Environment Zoning with Isolation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#nutanix-image-management">Nutanix Image Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#image-service">Image service</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Nutanix Calm</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../what_is_calm/what_is_calm.html">What Is Calm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../what_is_calm/what_is_calm.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../what_is_calm/what_is_calm.html#what-is-the-state-of-things-today">What is the State of Things Today</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#managing-apps-is-increasingly-challenging">Managing Apps Is Increasingly Challenging</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../what_is_calm/what_is_calm.html#how-does-nutanix-solve-this-problem">How Does Nutanix Solve This Problem</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#foundation-for-enterprise-cloud">Foundation For Enterprise Cloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#delivering-the-enterprise-cloud-vision">Delivering the Enterprise Cloud Vision</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#delivering-the-enterprise-cloud-vision-multi-cloud">Delivering the Enterprise Cloud Vision: Multi-Cloud</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../what_is_calm/what_is_calm.html#calm-application-lifecycle-automation">Calm: Application Lifecycle Automation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#blueprints-capture-all-elements-of-the-application">Blueprints Capture All Elements of the Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#make-sense-of-complexity-in-a-visual-way">Make Sense of Complexity in a Visual Way</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#blueprints-are-flexible-and-open">Blueprints Are Flexible and Open</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#blueprints-are-used-for-lifecycle-management">Blueprints Are Used for Lifecycle Management</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../what_is_calm/what_is_calm.html#calm-self-service-and-governance">Calm: Self-Service and Governance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#nutanix-marketplace-empowers-self-service">Nutanix Marketplace Empowers Self-Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#deploy-in-one-click">Deploy in One-Click</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#end-to-end-audits-and-governance">End-to-End Audits and Governance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../what_is_calm/what_is_calm.html#calm-hybrid-cloud-management">Calm: Hybrid Cloud Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#hybrid-cloud-management">Hybrid Cloud Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#deploy-across-clouds-based-on-need">Deploy across Clouds Based on Need</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#automate-empower-relax">Automate. Empower. Relax</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../what_is_calm/what_is_calm.html#takeaways">Takeaways</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../selling_calm/selling_calm.html">Selling Calm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../selling_calm/selling_calm.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../selling_calm/selling_calm.html#what-to-look-for-target-persona">What to Look For, Target Persona</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../selling_calm/selling_calm.html#datacenter-and-infrastructure-teams">Datacenter and Infrastructure Teams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../selling_calm/selling_calm.html#devops-application-and-dev-teams">DevOps, Application and Dev Teams</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../selling_calm/selling_calm.html#it-team-focus-areas">IT Team Focus Areas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../selling_calm/selling_calm.html#infra-ops-focused">Infra &amp; Ops Focused</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../selling_calm/selling_calm.html#dev-and-devops-focused">Dev and DevOps Focused</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../selling_calm/selling_calm.html#strategic-cloud-architect">Strategic – Cloud Architect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../selling_calm/selling_calm.html#calm-addresses-both-it-automation-and-cloud-management-platforms-needs">Calm Addresses Both IT Automation and Cloud Management Platforms Needs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Nutanix Calm Lab</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../calm_projects/calm_projects.html">Calm: Projects</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calm_projects/calm_projects.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_projects/calm_projects.html#creating-a-project">Creating A Project</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_projects/calm_projects.html#takeaways">Takeaways</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../calm_sshkey_creation/calm_sshkey_creation.html">Calm: SSH Key Creation</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calm_sshkey_creation/calm_sshkey_creation.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_sshkey_creation/calm_sshkey_creation.html#macos-linux">MacOS / Linux</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../calm_sshkey_creation/calm_sshkey_creation.html#ssh-key-creation">SSH Key Creation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_sshkey_creation/calm_sshkey_creation.html#accessing-the-private-key">Accessing the Private Key</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_sshkey_creation/calm_sshkey_creation.html#accessing-the-public-key">Accessing the Public Key</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_sshkey_creation/calm_sshkey_creation.html#windows">Windows</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../calm_sshkey_creation/calm_sshkey_creation.html#id1">SSH Key Creation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_sshkey_creation/calm_sshkey_creation.html#id2">Accessing the Private Key</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_sshkey_creation/calm_sshkey_creation.html#id3">Accessing the Public Key</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_sshkey_creation/calm_sshkey_creation.html#takeaways">Takeaways</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../calm_mysql_blueprint/calm_mysql_blueprint.html">Calm: MySQL Blueprint</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calm_mysql_blueprint/calm_mysql_blueprint.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_mysql_blueprint/calm_mysql_blueprint.html#creating-blueprint-mysql">Creating Blueprint (MySQL)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../calm_mysql_blueprint/calm_mysql_blueprint.html#creating-blueprint">Creating Blueprint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_mysql_blueprint/calm_mysql_blueprint.html#setting-variables">Setting Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_mysql_blueprint/calm_mysql_blueprint.html#adding-a-downloadable-image">Adding a Downloadable Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_mysql_blueprint/calm_mysql_blueprint.html#adding-db-service">Adding DB Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_mysql_blueprint/calm_mysql_blueprint.html#launching-the-blueprint">Launching the Blueprint</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_mysql_blueprint/calm_mysql_blueprint.html#takeaways">Takeaways</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../calm_3twa_blueprint/calm_3twa_blueprint.html">Calm: 3TWA Blueprint</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calm_3twa_blueprint/calm_3twa_blueprint.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_3twa_blueprint/calm_3twa_blueprint.html#calm-blueprint-3twa">Calm Blueprint (3TWA)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../calm_3twa_blueprint/calm_3twa_blueprint.html#creating-the-web-server">Creating the Web Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_3twa_blueprint/calm_3twa_blueprint.html#adding-dependencies">Adding Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_3twa_blueprint/calm_3twa_blueprint.html#adding-replicas">Adding Replicas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_3twa_blueprint/calm_3twa_blueprint.html#creating-the-load-balancer">Creating the Load Balancer</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_3twa_blueprint/calm_3twa_blueprint.html#scale-out">Scale Out</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_3twa_blueprint/calm_3twa_blueprint.html#scale-in">Scale In</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_3twa_blueprint/calm_3twa_blueprint.html#launching-and-managing-the-application">Launching and Managing the Application</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_3twa_blueprint/calm_3twa_blueprint.html#takeaways">Takeaways</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../calm_windows_blueprint/calm_windows_blueprint.html">Calm: Windows Blueprint</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calm_windows_blueprint/calm_windows_blueprint.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_windows_blueprint/calm_windows_blueprint.html#creating-blueprint-windows">Creating Blueprint (Windows)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../calm_windows_blueprint/calm_windows_blueprint.html#creating-blueprint">Creating Blueprint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_windows_blueprint/calm_windows_blueprint.html#setting-variables">Setting Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_windows_blueprint/calm_windows_blueprint.html#adding-windows-service">Adding Windows Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_windows_blueprint/calm_windows_blueprint.html#package-install">Package Install</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_windows_blueprint/calm_windows_blueprint.html#package-uninstall">Package Uninstall</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_windows_blueprint/calm_windows_blueprint.html#blueprint-launch-and-verification">Blueprint Launch and Verification</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../calm_windows_blueprint/calm_windows_blueprint.html#launching-the-blueprint">Launching the Blueprint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_windows_blueprint/calm_windows_blueprint.html#verification">Verification</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_windows_blueprint/calm_windows_blueprint.html#takeaways">Takeaways</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html">Calm: Marketplace</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#calm-marketplace-part-1">Calm Marketplace Part 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#publishing-blueprints-from-marketplace-manager">Publishing Blueprints from Marketplace Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#cloning-blueprints-from-marketplace">Cloning Blueprints from Marketplace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#editing-cloned-blueprint">Editing Cloned Blueprint</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#calm-marketplace-part-2">Calm Marketplace Part 2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#publishing-blueprints">Publishing Blueprints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#approving-blueprints">Approving Blueprints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#configuring-project-environment">Configuring Project Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#launching-blueprint-from-the-marketplace">Launching Blueprint from the Marketplace</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html#takeaways">Takeaways</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Optional Flow Lab</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../what_is_flow/what_is_flow.html">What Is Flow</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../what_is_flow/what_is_flow.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../what_is_flow/what_is_flow.html#what-is-the-state-of-things-today">What is the State of Things Today</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_flow/what_is_flow.html#why-microsegmentation">Why Microsegmentation?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_flow/what_is_flow.html#securing-hci-with-flow-microsegmentation">Securing HCI with Flow + Microsegmentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_flow/what_is_flow.html#flow-under-the-hood">Flow: Under the hood</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_flow/what_is_flow.html#why-flow">Why Flow?</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_flow/what_is_flow.html#use-case-app-segmentation">Use Case: App Segmentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_flow/what_is_flow.html#use-case-vdi-microsegmentation">Use Case: VDI Microsegmentation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_flow/what_is_flow.html#use-case-network-security-automation">Use Case: Network &amp; Security Automation</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_flow/what_is_flow.html#isolation-policy">Isolation Policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_flow/what_is_flow.html#application-security-policy">Application Security Policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_flow/what_is_flow.html#quarantine-policy">Quarantine Policy</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../flow_enable/flow_enable.html">Flow: Enable and Lab Setup</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../flow_enable/flow_enable.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flow_enable/flow_enable.html#enabling-microsegmentation">Enabling Microsegmentation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flow_enable/flow_enable.html#create-five-vms">Create Five VMs</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../flow_enable/flow_enable.html#clone-the-other-four-vms">Clone the other four VMs:</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../flow_enable/flow_enable.html#takeaways">Takeaways</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../flow_quarantine_vm/flow_quarantine_vm.html">Flow: Quarantine VM</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../flow_quarantine_vm/flow_quarantine_vm.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flow_quarantine_vm/flow_quarantine_vm.html#quarantine-a-vm-and-explore-the-quarantine-policy">Quarantine a VM and Explore the Quarantine Policy</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../flow_quarantine_vm/flow_quarantine_vm.html#confirm-communication-between-flow-abc-1-and-flow-abc-2">Confirm Communication between flow-abc-1 and flow-abc-2</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../flow_quarantine_vm/flow_quarantine_vm.html#quarantine-a-vm-and-edit-the-quarantine-policy">Quarantine a VM and Edit The Quarantine Policy</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../flow_quarantine_vm/flow_quarantine_vm.html#takeaways">Takeaways</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../flow_isolate_environments/flow_isolate_environments.html">Flow: Isolate Environments</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../flow_isolate_environments/flow_isolate_environments.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flow_isolate_environments/flow_isolate_environments.html#isolate-environments-with-flow">Isolate Environments with Flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../flow_isolate_environments/flow_isolate_environments.html#create-a-new-category">Create a New Category</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../flow_isolate_environments/flow_isolate_environments.html#create-a-new-security-policy">Create a New Security Policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../flow_isolate_environments/flow_isolate_environments.html#apply-the-new-security-policy">Apply the New Security Policy</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../flow_isolate_environments/flow_isolate_environments.html#confirm-communication-is-possible-before-applying-the-categories-to-the-vms">Confirm communication is possible before applying the categories to the VMs</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../flow_isolate_environments/flow_isolate_environments.html#assign-a-category-to-the-vms-flow-abc-3-and-flow-abc-4">Assign a category to the VMs flow-abc-3 and flow-abc-4</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../flow_isolate_environments/flow_isolate_environments.html#confirm-communication-is-not-possible-after-applying-the-categories-to-the-vms">Confirm communication is NOT possible after applying the categories to the VMs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../flow_isolate_environments/flow_isolate_environments.html#takeaways">Takeaways</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../flow_secure_app/flow_secure_app.html">Flow: Secure App</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../flow_secure_app/flow_secure_app.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flow_secure_app/flow_secure_app.html#secure-applications-with-microsegmentation">Secure Applications with Microsegmentation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../flow_secure_app/flow_secure_app.html#create-and-assign-categories">Create and Assign Categories</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../flow_secure_app/flow_secure_app.html#update-apptype-with-new-category-value-app-abc">Update <strong>AppType</strong> with New Category Value <strong>app-abc</strong></a></li>
+<li class="toctree-l4"><a class="reference internal" href="../flow_secure_app/flow_secure_app.html#assign-vm-flow-abc-5-to-the-category-apptype-app-abc">Assign VM <strong>flow-abc-5</strong> to the category <strong>AppType: app-abc</strong>.</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../flow_secure_app/flow_secure_app.html#assign-vm-flow-abc-1-the-default-category-environment-dev">Assign VM <strong>flow-abc-1</strong> the default category <strong>Environment: Dev</strong></a></li>
+</ul>
+</li>
+<li class="toctree-l3"><a class="reference internal" href="../flow_secure_app/flow_secure_app.html#secure-the-application-vm">Secure the Application VM</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../flow_secure_app/flow_secure_app.html#create-a-new-security-policy-to-protect-the-app-abc-application">Create a new security policy to protect the <strong>app-abc</strong> application.</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../flow_secure_app/flow_secure_app.html#takeaways">Takeaways</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../flow_visualization/flow_visualization.html">Flow: Visualization</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../flow_visualization/flow_visualization.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../flow_visualization/flow_visualization.html#id2">Flow Visualization</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../flow_visualization/flow_visualization.html#add-flows-to-a-policy-using-flow-visualization">Add Flows to a Policy Using Flow Visualization</a><ul>
+<li class="toctree-l4"><a class="reference internal" href="../flow_visualization/flow_visualization.html#view-the-detected-traffic-flows-from-environment-dev">View the detected traffic flows from Environment: Dev</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../flow_visualization/flow_visualization.html#add-the-detected-flow-to-the-security-policy">Add The Detected Flow to The Security Policy</a></li>
+<li class="toctree-l4"><a class="reference internal" href="../flow_visualization/flow_visualization.html#move-policy-from-monitoring-mode-to-applied-mode">Move Policy from <strong>Monitoring</strong> Mode to <strong>Applied</strong> Mode</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../flow_visualization/flow_visualization.html#takeaways">Takeaways</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Optional Labs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../calm_enable/calm_enable.html">Calm: Enable</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calm_enable/calm_enable.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_enable/calm_enable.html#enabling-app-management">Enabling App Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_enable/calm_enable.html#adding-active-directory">Adding Active Directory</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/glossary.html">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/glossary.html#nutanix-core">Nutanix Core</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/glossary.html#aos">AOS</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/glossary.html#pulse">Pulse</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/glossary.html#prism-element">Prism Element</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/glossary.html#prism-central">Prism Central</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/glossary.html#node">Node</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/glossary.html#block">Block</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/glossary.html#storage-pool">Storage Pool</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/glossary.html#storage-container">Storage Container</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/glossary.html#anatomy-of-a-read-i-o">Anatomy of a Read I/O</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/glossary.html#anatomy-of-a-write-i-o">Anatomy of a Write I/O</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/glossary.html#nutanix-flow">Nutanix flow</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/glossary.html#application-security-policy">Application Security Policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/glossary.html#isolation-environment-policy">Isolation Environment Policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/glossary.html#quarantine-policy">Quarantine Policy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/glossary.html#apptier">AppTier</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/glossary.html#apptype">AppType</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/glossary.html#environment">Environment</a></li>
+</ul>
+</li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/basics.html">Calm Basics</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/basics.html#accessing-calm">Accessing Calm</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/basics.html#tabbed-navigation">Tabbed Navigation</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/basics.html#blueprint-editor">Blueprint Editor</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/basics.html#glossary">Glossary</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/basics.html#blueprint">Blueprint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/basics.html#application">Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/basics.html#id2">Blueprint Editor</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/basics.html#application-overview">Application Overview</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/basics.html#service">Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/basics.html#action">Action</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/basics.html#application-profile">Application Profile</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/basics.html#dependency">Dependency</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/basics.html#macro">Macro</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/basics.html#project">Project</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../appendix/basics.html#marketplace">Marketplace</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><p class="caption"><span class="caption-text">Technology Overview</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../what_is_nutanix/what_is_nutanix.html">What is Nutanix</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Nutanix Terminology</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#nutanix-hci">Nutanix HCI</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#physical-infrastructure">Physical Infrastructure</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#storage-pools-and-containers">Storage Pools and Containers</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#nutanix-storage">Nutanix Storage</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#tunable-redundancy">Tunable Redundancy</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#nutanix-ec-x-erasure-coding">Nutanix EC-X (Erasure Coding)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#deduplication">Deduplication</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#compression">Compression</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#data-locality">Data Locality</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#intelligent-tiering">Intelligent Tiering</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cvm-auto-pathing">CVM Auto-Pathing</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#vmotion-drs-or-live-migration">vMotion/DRS or Live Migration</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#nutanix-vm-mobility">Nutanix VM Mobility</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#acropolis-dynamic-scheduling-ads">Acropolis Dynamic Scheduling (ADS)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#host-high-availability">Host High Availability</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#affinity-rules-host">Affinity Rules - Host</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#affinity-rules-vm">Affinity Rules - VM</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#nutanix-networking">Nutanix Networking</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#ahv-software-defined-networking">AHV – Software Defined Networking</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flow-microsegmentation">Flow (Microsegmentation)</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#flow-scenario-environment-zoning-with-isolation">Flow Scenario – Environment Zoning with Isolation</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#nutanix-image-management">Nutanix Image Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#image-service">Image service</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Nutanix Calm</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../what_is_calm/what_is_calm.html">What Is Calm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../selling_calm/selling_calm.html">Selling Calm</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Nutanix Calm Lab</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../calm_projects/calm_projects.html">Calm: Projects</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calm_sshkey_creation/calm_sshkey_creation.html">Calm: SSH Key Creation</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calm_mysql_blueprint/calm_mysql_blueprint.html">Calm: MySQL Blueprint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calm_3twa_blueprint/calm_3twa_blueprint.html">Calm: 3TWA Blueprint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calm_windows_blueprint/calm_windows_blueprint.html">Calm: Windows Blueprint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html">Calm: Marketplace</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Optional Flow Lab</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../what_is_flow/what_is_flow.html">What Is Flow</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../flow_enable/flow_enable.html">Flow: Enable and Lab Setup</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../flow_quarantine_vm/flow_quarantine_vm.html">Flow: Quarantine VM</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../flow_isolate_environments/flow_isolate_environments.html">Flow: Isolate Environments</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../flow_secure_app/flow_secure_app.html">Flow: Secure App</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../flow_visualization/flow_visualization.html">Flow: Visualization</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Optional Labs</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../calm_enable/calm_enable.html">Calm: Enable</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/glossary.html">Glossary</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/basics.html">Calm Basics</a></li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="nutanix-terminology">
+<span id="id1"></span><h1>Nutanix Terminology<a class="headerlink" href="#nutanix-terminology" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="nutanix-hci">
+<h2>Nutanix HCI<a class="headerlink" href="#nutanix-hci" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="physical-infrastructure">
+<h3>Physical Infrastructure<a class="headerlink" href="#physical-infrastructure" title="Permalink to this headline">¶</a></h3>
+<p>A Nutanix cluster is made up of Nodes and Blocks.</p>
+<div class="figure">
+<img alt="../images/nutanix_terminology_01.png" src="../images/nutanix_terminology_01.png" />
+</div>
+</div>
+<div class="section" id="storage-pools-and-containers">
+<h3>Storage Pools and Containers<a class="headerlink" href="#storage-pools-and-containers" title="Permalink to this headline">¶</a></h3>
+<p>Nutanix presents the physical disks as one <strong>Storage Pool</strong>, that can be divided into one or more <strong>Containers</strong>.</p>
+<div class="figure">
+<img alt="../images/nutanix_terminology_02.png" src="../images/nutanix_terminology_02.png" />
+</div>
+</div>
+</div>
+<div class="section" id="nutanix-storage">
+<h2>Nutanix Storage<a class="headerlink" href="#nutanix-storage" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="tunable-redundancy">
+<h3>Tunable Redundancy<a class="headerlink" href="#tunable-redundancy" title="Permalink to this headline">¶</a></h3>
+<p>What is it?</p>
+<ul class="simple">
+<li>Configure&nbsp;different levels of fault tolerance for different applications dynamically</li>
+<li>Works with EC-X for capacity savings</li>
+</ul>
+<p>Points of differentiation:</p>
+<ul class="simple">
+<li>Software-defined. No prior understanding of storage required</li>
+<li>RF-3 offers protection against two simultaneous disk, node and NIC failures</li>
+<li>Switch between RF-2 and RF-3</li>
+<li>Replication set at the container level</li>
+</ul>
+<div class="figure">
+<img alt="../images/nutanix_terminology_03.png" src="../images/nutanix_terminology_03.png" />
+</div>
+</div>
+<div class="section" id="nutanix-ec-x-erasure-coding">
+<h3>Nutanix EC-X (Erasure Coding)<a class="headerlink" href="#nutanix-ec-x-erasure-coding" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>No overhead to the active write path</li>
+<li>Background job</li>
+<li>Only cold data is subject to EC-X</li>
+<li>Lower rebuild times (equal or better than RF2)</li>
+<li>Patent pending algorithm</li>
+</ul>
+<div class="figure">
+<img alt="../images/nutanix_terminology_04.png" src="../images/nutanix_terminology_04.png" />
+</div>
+</div>
+<div class="section" id="deduplication">
+<h3>Deduplication<a class="headerlink" href="#deduplication" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Inline fingerprinting with post-process deduplication</li>
+<li>Distributed across all nodes – true scale-out</li>
+<li>Global deduplication across entire cluster</li>
+<li>SHA-1 fingerprinting offloaded to Intel processors for greater efficiency</li>
+<li>100% software-defined</li>
+<li>Strong hash allows dedupe to happen based on metadata match</li>
+</ul>
+<div class="figure">
+<img alt="../images/nutanix_terminology_05.png" src="../images/nutanix_terminology_05.png" />
+</div>
+</div>
+<div class="section" id="compression">
+<h3>Compression<a class="headerlink" href="#compression" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Inline and post-process compression</li>
+<li>Inline: Data compressed as it’s written</li>
+<li>MapReduce: Data compressed after “cold” data is migrated to lower-performance storage tiers</li>
+<li>No impact to normal IO path</li>
+<li>Ideal for random batch workloads</li>
+<li>Uses LZH4c algorithm (AOS 5+)</li>
+</ul>
+</div>
+<div class="section" id="data-locality">
+<h3>Data Locality<a class="headerlink" href="#data-locality" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Keep data on the same node as VM</li>
+<li>All read operations localized on same node</li>
+<li>ILM transparently moves remote data to local controller</li>
+<li>Reduces network chattiness significantly</li>
+<li>Data follows VM during vMotion/Live Migration</li>
+</ul>
+<div class="figure">
+<img alt="../images/nutanix_terminology_06.png" src="../images/nutanix_terminology_06.png" />
+</div>
+</div>
+<div class="section" id="intelligent-tiering">
+<h3>Intelligent Tiering<a class="headerlink" href="#intelligent-tiering" title="Permalink to this headline">¶</a></h3>
+<p>Automatic Performance Optimization</p>
+<ul class="simple">
+<li>Leverage multiple tiers of storage</li>
+<li>Continuously monitors data access patterns</li>
+<li>Optimally places data for best performance</li>
+<li>No user intervention required</li>
+</ul>
+<p>Hot Data - SSD</p>
+<ul class="simple">
+<li>Random data</li>
+<li>Persistent tier</li>
+<li>Maximum performance</li>
+</ul>
+<p>Cold Data - HDD</p>
+<ul class="simple">
+<li>Sequential data</li>
+<li>Highest capacity</li>
+<li>Most economical</li>
+</ul>
+<div class="figure">
+<img alt="../images/nutanix_terminology_07.png" src="../images/nutanix_terminology_07.png" />
+</div>
+</div>
+<div class="section" id="cvm-auto-pathing">
+<h3>CVM Auto-Pathing<a class="headerlink" href="#cvm-auto-pathing" title="Permalink to this headline">¶</a></h3>
+<p>What is it?</p>
+<ul class="simple">
+<li>Continue to access data through CVM failures</li>
+<li>Hypervisor routing is updated automatically to use another CVM</li>
+</ul>
+<p>Benefits</p>
+<ul class="simple">
+<li>High availability during software upgrades and failures</li>
+</ul>
+<div class="figure">
+<img alt="../images/nutanix_terminology_10.png" src="../images/nutanix_terminology_10.png" />
+</div>
+</div>
+<div class="section" id="vmotion-drs-or-live-migration">
+<h3>vMotion/DRS or Live Migration<a class="headerlink" href="#vmotion-drs-or-live-migration" title="Permalink to this headline">¶</a></h3>
+<p>Seamless VM Migration</p>
+<ul class="simple">
+<li>Metadata service can access data from anywhere</li>
+<li>Locality improves over time</li>
+</ul>
+<div class="figure">
+<img alt="../images/nutanix_terminology_11.png" src="../images/nutanix_terminology_11.png" />
+</div>
+</div>
+</div>
+<div class="section" id="nutanix-vm-mobility">
+<h2>Nutanix VM Mobility<a class="headerlink" href="#nutanix-vm-mobility" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="acropolis-dynamic-scheduling-ads">
+<h3>Acropolis Dynamic Scheduling (ADS)<a class="headerlink" href="#acropolis-dynamic-scheduling-ads" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Automatic Detection, and remediation of CPU and storage hot-spots</li>
+<li>Initial VM Placement</li>
+<li><dl class="first docutils">
+<dt>Following anomalies are detected:</dt>
+<dd><ul class="first last">
+<li>CPU hot spots</li>
+<li>Storage controller hot spots</li>
+<li>Affinity rule violation</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>If anomalies are found, re-mediation by:</dt>
+<dd><ul class="first last">
+<li>Live migration of VMs</li>
+<li>ABS iSCSI session re-direction</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="figure">
+<img alt="../images/nutanix_terminology_12.png" src="../images/nutanix_terminology_12.png" />
+</div>
+</div>
+<div class="section" id="host-high-availability">
+<h3>Host High Availability<a class="headerlink" href="#host-high-availability" title="Permalink to this headline">¶</a></h3>
+<p>What it does</p>
+<ul class="simple">
+<li>Auto restart user VMs after host failure</li>
+<li>Policy enabled through Prism</li>
+<li><dl class="first docutils">
+<dt>AHV picks the best admission control policy:</dt>
+<dd><ul class="first last">
+<li>Reserved segments (default)</li>
+<li>Reserved host</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<p>Benefits</p>
+<ul class="simple">
+<li>Always-on VMs</li>
+<li>Reduced administrative overhead</li>
+</ul>
+<div class="figure">
+<img alt="../images/nutanix_terminology_13.png" src="../images/nutanix_terminology_13.png" />
+</div>
+</div>
+<div class="section" id="affinity-rules-host">
+<h3>Affinity Rules - Host<a class="headerlink" href="#affinity-rules-host" title="Permalink to this headline">¶</a></h3>
+<p>VM-Host Affinity:</p>
+<ul class="simple">
+<li>Place and always keep a powered ON VM on selected group of hosts</li>
+</ul>
+<p>Use Cases:</p>
+<ul class="simple">
+<li>SW License Compliance</li>
+<li>Security / Governance</li>
+<li>Hardware Segmentation</li>
+</ul>
+<p>“Must” rule - never violated by:</p>
+<ul class="simple">
+<li>Initial placement</li>
+<li>HA</li>
+<li>Host maintenance mode</li>
+<li>ADS</li>
+<li>Manual live migration</li>
+</ul>
+<div class="figure">
+<img alt="../images/nutanix_terminology_14.png" src="../images/nutanix_terminology_14.png" />
+</div>
+</div>
+<div class="section" id="affinity-rules-vm">
+<h3>Affinity Rules - VM<a class="headerlink" href="#affinity-rules-vm" title="Permalink to this headline">¶</a></h3>
+<p>VM-VM Anti-affinity:</p>
+<ul class="simple">
+<li>Place and always keep a group of powered ON VMs on different hosts.</li>
+</ul>
+<p>Use Cases:</p>
+<ul class="simple">
+<li>VM HA fault domain separation (e.g. SQL cluster)</li>
+<li>Manual Hot Spot avoidance</li>
+</ul>
+<p>“Should” rule – best effort but can be violated.</p>
+<div class="figure">
+<img alt="../images/nutanix_terminology_15.png" src="../images/nutanix_terminology_15.png" />
+</div>
+</div>
+</div>
+<div class="section" id="nutanix-networking">
+<h2>Nutanix Networking<a class="headerlink" href="#nutanix-networking" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="ahv-software-defined-networking">
+<h3>AHV – Software Defined Networking<a class="headerlink" href="#ahv-software-defined-networking" title="Permalink to this headline">¶</a></h3>
+<p>Fully distributed networking, based on open standards, simplifies deployment and ensures configuration consistency.</p>
+<ul class="simple">
+<li>Based on Open vSwitch</li>
+<li>Fully distributed to all nodes</li>
+<li>Virtual Networks w/vLANs</li>
+<li>IP Address Management (DHCP)</li>
+<li><dl class="first docutils">
+<dt>Bond / Link Aggregation</dt>
+<dd><ul class="first last">
+<li>Active / Backup</li>
+<li>Source-NIC Load Balancing</li>
+<li>LACP</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li>Each bridge has a bond, backed by one or more uplinks</li>
+</ul>
+<div class="figure">
+<img alt="../images/nutanix_terminology_16.png" src="../images/nutanix_terminology_16.png" />
+</div>
+</div>
+<div class="section" id="flow-microsegmentation">
+<h3>Flow (Microsegmentation)<a class="headerlink" href="#flow-microsegmentation" title="Permalink to this headline">¶</a></h3>
+<p>Regain Visibility and Control Inside Your Datacenter</p>
+<ul class="simple">
+<li>All networking native in AHV (nothing to install)</li>
+<li><dl class="first docutils">
+<dt>Logical grouping via Categories in Prism Central</dt>
+<dd><ul class="first last">
+<li>Categories group VM or Applications</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Security policies map to categories</dt>
+<dd><ul class="first last">
+<li>Management of category membership simplifies process</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Rules pushed from PC -&gt; CVM -&gt; AHV -&gt; OVS</dt>
+<dd><ul class="first last">
+<li>AHV host OVS enforces rules</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>Rules logical enforced at VM (vNIC) level</dt>
+<dd><ul class="first last">
+<li>Firewall in front of every VM</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="figure">
+<img alt="../images/nutanix_terminology_17.png" src="../images/nutanix_terminology_17.png" />
+</div>
+</div>
+<div class="section" id="flow-scenario-environment-zoning-with-isolation">
+<h3>Flow Scenario – Environment Zoning with Isolation<a class="headerlink" href="#flow-scenario-environment-zoning-with-isolation" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Isolating environments simplified through one-click policies.</li>
+<li>Predefined categories for environment-type makes policy writing easy - simply add VMs to the desired category</li>
+<li>Moving workloads across environments is simply swapping the categories from Dev to Prod</li>
+</ul>
+<div class="figure">
+<img alt="../images/nutanix_terminology_18.png" src="../images/nutanix_terminology_18.png" />
+</div>
+</div>
+</div>
+<div class="section" id="nutanix-image-management">
+<h2>Nutanix Image Management<a class="headerlink" href="#nutanix-image-management" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="image-service">
+<h3>Image service<a class="headerlink" href="#image-service" title="Permalink to this headline">¶</a></h3>
+<ul class="simple">
+<li>Managed catalog of disk images (RAW &amp; ISO)</li>
+<li>Leverage existing images with AHV</li>
+<li>Image management through PE or PC</li>
+<li>Inline conversion to Acropolis DSF</li>
+<li><dl class="first docutils">
+<dt>Broad Format support:</dt>
+<dd><ul class="first last">
+<li>qcow</li>
+<li>qcow2</li>
+<li>vmdk</li>
+<li>VHD</li>
+<li>VHDx</li>
+<li>RAW</li>
+<li>ISO</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+<div class="figure">
+<img alt="../images/nutanix_terminology_19.png" src="../images/nutanix_terminology_19.png" />
+</div>
+</div>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../sources/nutanix_terminology/nutanix_terminology.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2018 Nutanix.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>

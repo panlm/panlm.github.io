@@ -1,0 +1,488 @@
+
+<!DOCTYPE html>
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <title>Calm: Marketplace</title>
+    <link rel="stylesheet" href="../static/bootstrap-sphinx.css" type="text/css" />
+    <link rel="stylesheet" href="../static/pygments.css" type="text/css" />
+    <script type="text/javascript" id="documentation_options" data-url_root="../" src="../static/documentation_options.js"></script>
+    <script type="text/javascript" src="../static/jquery.js"></script>
+    <script type="text/javascript" src="../static/underscore.js"></script>
+    <script type="text/javascript" src="../static/doctools.js"></script>
+    <script async="async" type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.1/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
+    <script type="text/javascript" src="../static/js/jquery-1.11.0.min.js"></script>
+    <script type="text/javascript" src="../static/js/jquery-fix.js"></script>
+    <script type="text/javascript" src="../static/bootstrap-3.3.7/js/bootstrap.min.js"></script>
+    <script type="text/javascript" src="../static/bootstrap-sphinx.js"></script>
+    <link rel="shortcut icon" href="../static/favicon.ico"/>
+    <link rel="index" title="Index" href="../genindex.html" />
+    <link rel="search" title="Search" href="../search.html" />
+    <link rel="next" title="Glossary" href="../appendix/glossary.html" />
+    <link rel="prev" title="Calm: LAMP Blueprint" href="../calm_lamp_blueprint/calm_lamp_blueprint.html" />
+
+<meta charset='utf-8'>
+<meta http-equiv='X-UA-Compatible' content='IE=edge,chrome=1'>
+<meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1'>
+<meta name="apple-mobile-web-app-capable" content="yes">
+
+<link href="http://netdna.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  </head><body>
+
+  <div id="navbar" class="navbar-inverse navbar-default ">
+    <div class="container">
+      <div class="navbar-header">
+        <!-- .btn-navbar is used as the toggle for collapsed navbar content -->
+        <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".nav-collapse">
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+          <span class="icon-bar"></span>
+        </button>
+        <a class="navbar-brand" href="../index.html"><span><img src="../static/NutanixWorkshops.svg"></span>
+           </a>
+        <span class="navbar-text navbar-version pull-left"><b></b></span>
+      </div>
+
+        <div class="collapse navbar-collapse nav-collapse">
+          <ul class="nav navbar-nav">
+            
+            
+              <li class="dropdown globaltoc-container">
+  <a role="button"
+     id="dLabelGlobalToc"
+     data-toggle="dropdown"
+     data-target="#"
+     href="../index.html"> <b class="caret"></b></a>
+  <ul class="dropdown-menu globaltoc"
+      role="menu"
+      aria-labelledby="dLabelGlobalToc"><p class="caption"><span class="caption-text">Nutanix Calm</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../what_is_calm/what_is_calm.html">What Is Calm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../what_is_calm/what_is_calm.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../what_is_calm/what_is_calm.html#what-is-the-state-of-things-today">What is the State of Things Today</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#managing-apps-is-increasingly-challenging">Managing Apps Is Increasingly Challenging</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../what_is_calm/what_is_calm.html#how-does-nutanix-solve-this-problem">How Does Nutanix Solve This Problem</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#foundation-for-enterprise-cloud">Foundation For Enterprise Cloud</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#delivering-the-enterprise-cloud-vision">Delivering the Enterprise Cloud Vision</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#delivering-the-enterprise-cloud-vision-multi-cloud">Delivering the Enterprise Cloud Vision: Multi-Cloud</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../what_is_calm/what_is_calm.html#calm-application-lifecycle-automation">Calm: Application Lifecycle Automation</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#blueprints-capture-all-elements-of-the-application">Blueprints Capture All Elements of the Application</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#make-sense-of-complexity-in-a-visual-way">Make Sense of Complexity in a Visual Way</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#blueprints-are-flexible-and-open">Blueprints Are Flexible and Open</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#blueprints-are-used-for-lifecycle-management">Blueprints Are Used for Lifecycle Management</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../what_is_calm/what_is_calm.html#calm-self-service-and-governance">Calm: Self-Service and Governance</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#nutanix-marketplace-empowers-self-service">Nutanix Marketplace Empowers Self-Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#deploy-in-one-click">Deploy in One-Click</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#end-to-end-audits-and-governance">End-to-End Audits and Governance</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../what_is_calm/what_is_calm.html#calm-hybrid-cloud-management">Calm: Hybrid Cloud Management</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#hybrid-cloud-management">Hybrid Cloud Management</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#deploy-across-clouds-based-on-need">Deploy across Clouds Based on Need</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../what_is_calm/what_is_calm.html#automate-empower-relax">Automate. Empower. Relax</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../what_is_calm/what_is_calm.html#takeaways">Takeaways</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../selling_calm/selling_calm.html">Selling Calm</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../selling_calm/selling_calm.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../selling_calm/selling_calm.html#what-to-look-for-target-persona">What to Look For, Target Persona</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../selling_calm/selling_calm.html#datacenter-and-infrastructure-teams">Datacenter and Infrastructure Teams</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../selling_calm/selling_calm.html#devops-application-and-dev-teams">DevOps, Application and Dev Teams</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../selling_calm/selling_calm.html#it-team-focus-areas">IT Team Focus Areas</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../selling_calm/selling_calm.html#infra-ops-focused">Infra &amp; Ops Focused</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../selling_calm/selling_calm.html#dev-and-devops-focused">Dev and DevOps Focused</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../selling_calm/selling_calm.html#strategic-cloud-architect">Strategic – Cloud Architect</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../selling_calm/selling_calm.html#calm-addresses-both-it-automation-and-cloud-management-platforms-needs">Calm Addresses Both IT Automation and Cloud Management Platforms Needs</a></li>
+</ul>
+</li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Nutanix Calm Lab</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../calm_enable/calm_enable.html">Calm: Enable</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calm_enable/calm_enable.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_enable/calm_enable.html#enabling-app-management">Enabling App Management</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_enable/calm_enable.html#adding-active-directory">Adding Active Directory</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../calm_mysql_blueprint/calm_mysql_blueprint.html">Calm: MySQL Blueprint</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calm_mysql_blueprint/calm_mysql_blueprint.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_mysql_blueprint/calm_mysql_blueprint.html#creating-blueprint-mysql">Creating Blueprint (MySQL)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../calm_mysql_blueprint/calm_mysql_blueprint.html#creating-blueprint">Creating Blueprint</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_mysql_blueprint/calm_mysql_blueprint.html#setting-variables">Setting Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_mysql_blueprint/calm_mysql_blueprint.html#adding-a-downloadable-image">Adding a Downloadable Image</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_mysql_blueprint/calm_mysql_blueprint.html#adding-db-service">Adding DB Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_mysql_blueprint/calm_mysql_blueprint.html#launching-the-blueprint">Launching the Blueprint</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_mysql_blueprint/calm_mysql_blueprint.html#takeaways">Takeaways</a></li>
+</ul>
+</li>
+<li class="toctree-l1"><a class="reference internal" href="../calm_lamp_blueprint/calm_lamp_blueprint.html">Calm: LAMP Blueprint</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../calm_lamp_blueprint/calm_lamp_blueprint.html#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_lamp_blueprint/calm_lamp_blueprint.html#calm-blueprint-lamp">Calm Blueprint (LAMP)</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="../calm_lamp_blueprint/calm_lamp_blueprint.html#creating-the-web-server">Creating the Web Server</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_lamp_blueprint/calm_lamp_blueprint.html#adding-dependencies">Adding Dependencies</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_lamp_blueprint/calm_lamp_blueprint.html#adding-replicas">Adding Replicas</a></li>
+<li class="toctree-l3"><a class="reference internal" href="../calm_lamp_blueprint/calm_lamp_blueprint.html#creating-the-load-balancer">Creating the Load Balancer</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="../calm_lamp_blueprint/calm_lamp_blueprint.html#takeaways">Takeaways</a></li>
+</ul>
+</li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Calm: Marketplace</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#calm-marketplace-part-1">Calm Marketplace Part 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#publishing-blueprints-from-marketplace-manager">Publishing Blueprints from Marketplace Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cloning-blueprints-from-marketplace">Cloning Blueprints from Marketplace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#editing-cloned-blueprint">Editing Cloned Blueprint</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#calm-marketplace-part-2">Calm Marketplace Part 2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#publishing-blueprints">Publishing Blueprints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#approving-blueprints">Approving Blueprints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-project-environment">Configuring Project Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#launching-blueprint-from-the-marketplace">Launching Blueprint from the Marketplace</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#takeaways">Takeaways</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/glossary.html">Glossary</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/glossary.html#term">Term</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/glossary.html#another-term">Another Term</a></li>
+<li class="toctree-l2"><a class="reference internal" href="../appendix/glossary.html#yet-another-term">Yet Another Term</a></li>
+</ul>
+</li>
+</ul>
+</ul>
+</li>
+              
+            
+            
+            
+            
+            
+          </ul>
+
+          
+            
+<form class="navbar-form navbar-right" action="../search.html" method="get">
+ <div class="form-group">
+  <input type="text" name="q" class="form-control" placeholder="Search" />
+ </div>
+  <input type="hidden" name="check_keywords" value="yes" />
+  <input type="hidden" name="area" value="default" />
+</form>
+          
+        </div>
+    </div>
+  </div>
+
+<div class="container">
+  <div class="row">
+      <div class="col-md-3">
+        <div id="sidebar" class="bs-sidenav" role="complementary"><p class="caption"><span class="caption-text">Nutanix Calm</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../what_is_calm/what_is_calm.html">What Is Calm</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../selling_calm/selling_calm.html">Selling Calm</a></li>
+</ul>
+<p class="caption"><span class="caption-text">Nutanix Calm Lab</span></p>
+<ul class="current">
+<li class="toctree-l1"><a class="reference internal" href="../calm_enable/calm_enable.html">Calm: Enable</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calm_mysql_blueprint/calm_mysql_blueprint.html">Calm: MySQL Blueprint</a></li>
+<li class="toctree-l1"><a class="reference internal" href="../calm_lamp_blueprint/calm_lamp_blueprint.html">Calm: LAMP Blueprint</a></li>
+<li class="toctree-l1 current"><a class="current reference internal" href="#">Calm: Marketplace</a><ul>
+<li class="toctree-l2"><a class="reference internal" href="#overview">Overview</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#calm-marketplace-part-1">Calm Marketplace Part 1</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#publishing-blueprints-from-marketplace-manager">Publishing Blueprints from Marketplace Manager</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#cloning-blueprints-from-marketplace">Cloning Blueprints from Marketplace</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#editing-cloned-blueprint">Editing Cloned Blueprint</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#calm-marketplace-part-2">Calm Marketplace Part 2</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#publishing-blueprints">Publishing Blueprints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#approving-blueprints">Approving Blueprints</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#configuring-project-environment">Configuring Project Environment</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#launching-blueprint-from-the-marketplace">Launching Blueprint from the Marketplace</a></li>
+</ul>
+</li>
+<li class="toctree-l2"><a class="reference internal" href="#takeaways">Takeaways</a></li>
+</ul>
+</li>
+</ul>
+<p class="caption"><span class="caption-text">Appendix</span></p>
+<ul>
+<li class="toctree-l1"><a class="reference internal" href="../appendix/glossary.html">Glossary</a></li>
+</ul>
+
+        </div>
+      </div>
+    <div class="col-md-9 content">
+      
+  <div class="section" id="calm-marketplace">
+<span id="id1"></span><h1>Calm: Marketplace<a class="headerlink" href="#calm-marketplace" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="overview">
+<h2>Overview<a class="headerlink" href="#overview" title="Permalink to this headline">¶</a></h2>
+</div>
+<div class="section" id="calm-marketplace-part-1">
+<h2>Calm Marketplace Part 1<a class="headerlink" href="#calm-marketplace-part-1" title="Permalink to this headline">¶</a></h2>
+<p>In this exercise you will learn how to manage Calm Blueprints within the Nutanix Marketplace. As part of the exercise you will publish a pre-configured Blueprint to the local Marketplace, clone the Blueprint from the Marketplace for editing, and launch the application.</p>
+<div class="section" id="publishing-blueprints-from-marketplace-manager">
+<h3>Publishing Blueprints from Marketplace Manager<a class="headerlink" href="#publishing-blueprints-from-marketplace-manager" title="Permalink to this headline">¶</a></h3>
+<p>By default, Calm comes pre-seeded with validated Blueprints for multiple open source and enterprise applications. Marketplace Manager acts as a staging area for publishing default and user-created Blueprints to your local Marketplace. The Marketplace acts as an application store, providing end users with a catalog of available applications.</p>
+<p>From <strong>Prism Central &gt; Apps</strong>, select <img alt="mktmgr-icon" src="../images/marketplacemanager_icon.png" /> <strong>Marketplace Manager</strong> from the sidebar.</p>
+<p>Under <strong>Marketplace Blueprints</strong>, select <strong>Mongo</strong>.</p>
+<p>The Blueprint description contains key information including licensing, hardware requirements, OS, supported platforms, and limitations.</p>
+<p>Select the <strong>Calm</strong> project from the right-hand side drop down and Click <strong>Publish</strong>.</p>
+<div class="figure">
+<img alt="../images/marketplace_p1_1.png" src="../images/marketplace_p1_1.png" />
+</div>
+<p>Wait for the Blueprint <strong>Status</strong> to appear as <strong>Published</strong>.</p>
+<div class="figure">
+<img alt="../images/marketplace_p1_2.png" src="../images/marketplace_p1_2.png" />
+</div>
+<p>Under <strong>Projects Shared With</strong>, select the <strong>Calm</strong> Project and click <strong>Apply</strong>.</p>
+<div class="figure">
+<img alt="../images/marketplace_p1_3.png" src="../images/marketplace_p1_3.png" />
+</div>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">If the <strong>Projects Shared With</strong> drop down menu is unavailable, refresh your browser.</p>
+</div>
+</div>
+<div class="section" id="cloning-blueprints-from-marketplace">
+<h3>Cloning Blueprints from Marketplace<a class="headerlink" href="#cloning-blueprints-from-marketplace" title="Permalink to this headline">¶</a></h3>
+<p>From <strong>Prism Central &gt; Apps</strong>, select <img alt="mkt-icon" src="../images/marketplace_icon.png" /> <strong>Marketplace</strong> from the sidebar. All Blueprints published in Marketplace Manager are visible here.</p>
+<div class="figure">
+<img alt="../images/marketplace_p1_4.png" src="../images/marketplace_p1_4.png" />
+</div>
+<p>Select the <strong>Mongo</strong> Blueprint and click <strong>Clone</strong>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">Selecting <strong>Actions Included</strong> for a Blueprint will display the actions that have been implemented for a given Blueprint, such as Create, Start, Stop, Delete, Update, Scale Up, Scale Down, etc.</p>
+</div>
+<div class="figure">
+<img alt="../images/marketplace_p1_5.png" src="../images/marketplace_p1_5.png" />
+</div>
+<p>Fill out the following fields and click <strong>Clone</strong>:</p>
+<ul class="simple">
+<li><strong>Blueprint Name</strong> - MongoDB*&lt;INITIALS&gt;*</li>
+<li><strong>Project</strong> - Calm</li>
+</ul>
+</div>
+<div class="section" id="editing-cloned-blueprint">
+<h3>Editing Cloned Blueprint<a class="headerlink" href="#editing-cloned-blueprint" title="Permalink to this headline">¶</a></h3>
+<p>Select <img alt="bp-icon" src="../images/blueprints_icon.png" /> <strong>Blueprints</strong> from the sidebar and click your <strong>MongoDB&lt;INITIALS&gt;</strong> Blueprint to open the Blueprint Editor.</p>
+<div class="figure">
+<img alt="../images/marketplace_p1_6.png" src="../images/marketplace_p1_6.png" />
+</div>
+<p>Click <em class="fa fa-exclamation-circle"></em> to review the list of errors that would prevent a successful deployment of the Blueprint.</p>
+<div class="figure">
+<img alt="../images/marketplace_p1_7.png" src="../images/marketplace_p1_7.png" />
+</div>
+<p>Click <strong>Credentials</strong> and select <strong>CENTOS (Default)</strong>.</p>
+<p>Fill out the following fields and click <strong>Back</strong>:</p>
+<ul class="simple">
+<li><strong>Username</strong> - root</li>
+<li><strong>Secret</strong> - Password</li>
+<li><strong>Password</strong> - nutanix/4u</li>
+</ul>
+<p>Select the <strong>Mongo_ConfigSet</strong> Service and make the following changes in the <strong>Configuration Pane</strong>:</p>
+<ul class="simple">
+<li>Update the <strong>VM Configuration &gt; Image</strong> to <strong>CentOS</strong>.</li>
+<li>Update the <strong>Network Adapters &gt; NIC</strong> to <strong>Primary</strong>.</li>
+<li>Update the <strong>Connection &gt; Credential</strong> to <strong>CENTOS</strong>.</li>
+<li>Uncheck <strong>Guest Customization</strong></li>
+</ul>
+<p>Repeat these steps for the <strong>Mongo_Router</strong> and <strong>Mongo_ReplicaSet</strong> Services.</p>
+<p>Click <strong>Save</strong>.</p>
+<p>Click <strong>Launch</strong>. Specify a unique <strong>Application Name</strong> (e.g. MongoDB*&lt;INITIALS&gt;*-1) and click <strong>Create</strong>.</p>
+<div class="figure">
+<img alt="../images/marketplace_p1_8.png" src="../images/marketplace_p1_8.png" />
+</div>
+</div>
+</div>
+<div class="section" id="calm-marketplace-part-2">
+<h2>Calm Marketplace Part 2<a class="headerlink" href="#calm-marketplace-part-2" title="Permalink to this headline">¶</a></h2>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">This exercise assumes you have a Blueprint available from a previous exercise.</p>
+</div>
+<p>In this exercise you will learn how to manage Calm Blueprints within the Nutanix Marketplace. As part of the exercise you will publish a Blueprint from the Blueprint Editor, use Marketplace Manager to approve, assign roles and projects, and publish to the Marketplace. Finally you will edit a project environment so your Blueprint can be launched directly from the Marketplace.</p>
+<div class="section" id="publishing-blueprints">
+<h3>Publishing Blueprints<a class="headerlink" href="#publishing-blueprints" title="Permalink to this headline">¶</a></h3>
+<p>From <strong>Prism Central &gt; Apps</strong>, select <img alt="bp-icon" src="../images/blueprints_icon.png" /> <strong>Blueprints</strong> from the sidebar.</p>
+<p>Open any <strong>Active</strong> Blueprint by clicking on its <strong>Name</strong>.</p>
+<div class="figure">
+<img alt="../images/marketplace_p2_1.png" src="../images/marketplace_p2_1.png" />
+</div>
+<p>Click <strong>Publish</strong>.</p>
+<div class="figure">
+<img alt="../images/marketplace_p2_2.png" src="../images/marketplace_p2_2.png" />
+</div>
+<p>Provide the following details:
+- <strong>Name</strong> (e.g. Blueprint Name <em>&lt;INITIALS&gt;</em>)
+- <strong>Publish as a</strong> - New Marketplace blueprint
+- <strong>Initial Version</strong> - 1.0.0
+- <strong>Description</strong> - Finished MySQL app</p>
+<p>Click <strong>Submit for Approval</strong>.</p>
+<div class="figure">
+<img alt="../images/marketplace_p2_3.png" src="../images/marketplace_p2_3.png" />
+</div>
+</div>
+<div class="section" id="approving-blueprints">
+<h3>Approving Blueprints<a class="headerlink" href="#approving-blueprints" title="Permalink to this headline">¶</a></h3>
+<p>From <strong>Prism Central &gt; Apps</strong>, select <img alt="mktmgr-icon" src="../images/marketplacemanager_icon.png" /> <strong>Marketplace Manager</strong> from the sidebar.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">You must be logged in as a Cluster Admin user to access the Marketplace Manager.</p>
+</div>
+<p>Note your Blueprint does not appear in the list of <strong>Marketplace Items</strong>.</p>
+<p>Select the <strong>Approval Pending</strong> tab.</p>
+<div class="figure">
+<img alt="../images/marketplace_p2_4.png" src="../images/marketplace_p2_4.png" />
+</div>
+<p>Select your <strong>Pending</strong> Blueprint.</p>
+<div class="figure">
+<img alt="../images/marketplace_p2_5.png" src="../images/marketplace_p2_5.png" />
+</div>
+<p>Review the available actions:</p>
+<ul class="simple">
+<li><strong>Reject</strong> - Prevents  Blueprint from being launched or published in the Marketplace. The Blueprint will need to be submitted again after being rejected before it can be published.</li>
+<li><strong>Approve</strong> - Approves the Blueprint for publication to the Marketplace.</li>
+<li><strong>Launch</strong> - Launches the Blueprint as an application, similar to launching from the Blueprint Editor.</li>
+</ul>
+<p>Click <strong>Approve</strong>.</p>
+<p>Once the application has been successfully approved, it will appear under the <strong>Marketplace Blueprints</strong> tabs. Find it and assign the appropriate <strong>Category</strong> and <strong>Project Shared With</strong>. Click <strong>Apply</strong>.</p>
+<div class="figure">
+<img alt="../images/marketplace_p2_6.png" src="../images/marketplace_p2_6.png" />
+</div>
+<p>Select select your Blueprint from the <strong>Marketplace Blueprints</strong> tab and click <strong>Publish</strong>.</p>
+<p>Verify the Blueprint’s <strong>Status</strong> is now shown as <strong>Published</strong>.</p>
+<div class="figure">
+<img alt="../images/marketplace_p2_7.png" src="../images/marketplace_p2_7.png" />
+</div>
+<p>From <strong>Prism Central &gt; Apps</strong>, select <img alt="mkt-icon" src="../images/marketplace_icon.png" /> <strong>Marketplace</strong> from the sidebar. Verify your Blueprint is available for launching as an application.</p>
+<div class="figure">
+<img alt="../images/marketplace_p2_8.png" src="../images/marketplace_p2_8.png" />
+</div>
+</div>
+<div class="section" id="configuring-project-environment">
+<h3>Configuring Project Environment<a class="headerlink" href="#configuring-project-environment" title="Permalink to this headline">¶</a></h3>
+<p>To launch a Blueprint directly from the Marketplace, we need to ensure our Project has all of the requisite environment details to satisfy the Blueprint.</p>
+<p>From <strong>Prism Central &gt; Apps</strong>, select <img alt="proj-icon" src="../images/projects_icon.png" /> <strong>Projects</strong> from the sidebar.</p>
+<p>Select the Project <strong>Name</strong> associated with your Blueprint at the time of publishing (e.g. the <strong>Calm</strong> Project that was assigned as <strong>Project Shared With</strong>).</p>
+<div class="figure">
+<img alt="../images/marketplace_p2_9.png" src="../images/marketplace_p2_9.png" />
+</div>
+<p>Select the <strong>Environment</strong> tab.</p>
+<p>Under <strong>Credential</strong>, click <em class="fa fa-plus-circle"></em> and depending on which track you’re on, do <em>one</em> of the two following steps to add a new credential:</p>
+<p><strong>Cloud Track</strong>:
+- <strong>Credential Name</strong> - CENTOS
+- <strong>Username</strong> - centos
+- <strong>Secret</strong> - Key
+- <strong>Key</strong> - Paste in your private key from the previous lesson <strong>Calm: SSH Key Creation</strong></p>
+<p><strong>Local Track</strong>:
+- <strong>Credential Name</strong> - CENTOS
+- <strong>Username</strong> - root
+- <strong>Secret</strong> - Password
+- <strong>Password</strong> - nutanix/4u
+- Select <strong>Use as default</strong></p>
+<p>Under <strong>VM Configuration</strong>
+- select <strong>AHV on NUTANIX</strong>.
+- <strong>VM Name</strong> - add prefix “default” to the name
+- <strong>Image</strong> - CentOS
+- <strong>vCPUs</strong> - 2
+- <strong>Cores per vCPU</strong> - 1
+- <strong>Memory</strong> - 4GiB
+.. figure:: images/marketplace_p2_010.png</p>
+<p>Under <strong>Network Adapters (NICs)</strong>, click <em class="fa fa-plus-circle"></em> and select <strong>Primary</strong>.</p>
+<div class="figure">
+<img alt="../images/marketplace_p2_10.png" src="../images/marketplace_p2_10.png" />
+</div>
+<p>Click <strong>Save</strong>.</p>
+</div>
+<div class="section" id="launching-blueprint-from-the-marketplace">
+<h3>Launching Blueprint from the Marketplace<a class="headerlink" href="#launching-blueprint-from-the-marketplace" title="Permalink to this headline">¶</a></h3>
+<p>From <strong>Prism Central &gt; Apps</strong>, select <img alt="mkt-icon" src="../images/marketplace_icon.png" /> <strong>Marketplace</strong> from the sidebar.</p>
+<div class="figure">
+<img alt="../images/marketplace_p2_11.png" src="../images/marketplace_p2_11.png" />
+</div>
+<p>Select the Blueprint published as part of this exercise and click <strong>Launch</strong>.</p>
+<div class="figure">
+<img alt="../images/marketplace_p2_12.png" src="../images/marketplace_p2_12.png" />
+</div>
+<p>Select the <strong>Calm</strong> Project and click <strong>Launch</strong>.</p>
+<div class="figure">
+<img alt="../images/marketplace_p2_13.png" src="../images/marketplace_p2_13.png" />
+</div>
+<p>Specify a unique <strong>Application Name</strong> (e.g. Marketplace*&lt;INITIALS&gt;*) and click <strong>Create</strong>.</p>
+<div class="admonition note">
+<p class="first admonition-title">Note</p>
+<p class="last">To see the configured <strong>Environment</strong> details, expand the <strong>VM Configurations</strong> entities.</p>
+</div>
+<div class="figure">
+<img alt="../images/marketplace_p2_14.png" src="../images/marketplace_p2_14.png" />
+</div>
+<p>Monitor the provisioning of the Blueprint until complete.</p>
+<div class="figure">
+<img alt="../images/marketplace_p2_15.png" src="../images/marketplace_p2_15.png" />
+</div>
+</div>
+</div>
+<div class="section" id="takeaways">
+<h2>Takeaways<a class="headerlink" href="#takeaways" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li>By using pre-seeded Blueprints from the Nutanix Marketplace, users can quickly try out new applications.</li>
+<li>Marketplace Blueprints can be cloned and modified to suit a user’s needs. For example, the pre-seeded LAMP Blueprint could be a starting point for a developer looking to swap PHP for a Go application server.</li>
+<li>Marketplace Blueprints can use local disk images or automatically download associated disk images. Users can create their own keys and slipstream them into Blueprints (via cloud-init) to control access.</li>
+<li>Developers can publish Blueprints to the Marketplace for fast and easy consumption by users.</li>
+<li>Blueprints can be launched directly from the Marketplace with no additional configuration from users, delivering a public cloud-like SaaS experience for end users.</li>
+<li>Administrators have control over what Blueprints are published to the Marketplace and which projects have access to published Blueprints.</li>
+</ul>
+</div>
+</div>
+
+
+    </div>
+      
+  </div>
+</div>
+<footer class="footer">
+  <div class="container">
+    <p class="pull-right">
+      <a href="#">Back to top</a>
+      
+        <br/>
+        
+<div id="sourcelink">
+  <a href="../sources/calm_marketplace/calm_marketplace.rst.txt"
+     rel="nofollow">Source</a>
+</div>
+      
+    </p>
+    <p>
+        &copy; Copyright 2018 Nutanix.<br/>
+    </p>
+  </div>
+</footer>
+  </body>
+</html>
