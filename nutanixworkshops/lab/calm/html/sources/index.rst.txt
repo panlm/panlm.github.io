@@ -20,6 +20,7 @@
   calm_mysql_blueprint/calm_mysql_blueprint
   calm_lamp_blueprint/calm_lamp_blueprint
   calm_marketplace/calm_marketplace
+  calm_kubernetes_blueprint/calm_kubernetes_blueprint
 
 .. toctree::
   :maxdepth: 2
