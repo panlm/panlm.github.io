@@ -2,6 +2,10 @@
 * [basic format](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
 * [advanced format](https://guides.github.com/features/mastering-markdown/)
 
+# rST
+* [link1](http://docutils.sourceforge.net/docs/user/rst/quickref.html#example-foldin)
+* [link2](http://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#ref-role)
+
 # NutanixWorkshops
 * [calm](nutanixworkshops/lab/calm/html/index.html)
 * [partnercalmworkshop](nutanixworkshops/lab/partnercalmworkshop/html/index.html)
@@ -25,8 +29,9 @@
 * [kube-oper](kubernetes/kube-oper.md)
 * [kube-net](kubernetes/kube-net.md)
 * [kube-dns](kubernetes/kube-dns.md)
-* [kube-1.7.7 (blueprint 1.0.0)](kubernetes/kube-1.7.7.md)
-* [kube-1.10.5 (blueprint 2.0.0)](kubernetes/kube-1.10.5.md)
+* merge to nutanixworkshops
+    * [kube-1.7.7 (blueprint 1.0.0)](kubernetes/kube-1.7.7.md)
+    * [kube-1.10.5 (blueprint 2.0.0)](kubernetes/kube-1.10.5.md)
 
 ### Openstack
 * [ovm for suse soc(google doc)](https://docs.google.com/document/d/1ubcUh5q2sqiAPyZJbr72MNIzAHb6pKN_zaMr6mzvyv8/edit#)

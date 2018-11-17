@@ -163,8 +163,16 @@
 </ul>
 </li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Calm: Kubernetes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#using-kubernetes-bp-v1-0-0">Using Kubernetes BP v1.0.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-kubernetes-bp-v2-0-0">Using Kubernetes BP v2.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-kubernetes-bp-v1-0-0">Using Kubernetes BP v1.0.0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#variables">Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#credentials">Credentials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#service">Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task">Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other">Other</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#launch">Launch</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -216,8 +224,16 @@
 <li class="toctree-l1"><a class="reference internal" href="../calm_lamp_blueprint/calm_lamp_blueprint.html">Calm: LAMP Blueprint</a></li>
 <li class="toctree-l1"><a class="reference internal" href="../calm_marketplace/calm_marketplace.html">Calm: Marketplace</a></li>
 <li class="toctree-l1 current"><a class="current reference internal" href="#">Calm: Kubernetes</a><ul>
-<li class="toctree-l2"><a class="reference internal" href="#using-kubernetes-bp-v1-0-0">Using Kubernetes BP v1.0.0</a></li>
 <li class="toctree-l2"><a class="reference internal" href="#using-kubernetes-bp-v2-0-0">Using Kubernetes BP v2.0.0</a></li>
+<li class="toctree-l2"><a class="reference internal" href="#using-kubernetes-bp-v1-0-0">Using Kubernetes BP v1.0.0</a><ul>
+<li class="toctree-l3"><a class="reference internal" href="#variables">Variables</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#credentials">Credentials</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#service">Service</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#task">Task</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#other">Other</a></li>
+<li class="toctree-l3"><a class="reference internal" href="#launch">Launch</a></li>
+</ul>
+</li>
 </ul>
 </li>
 </ul>
@@ -232,76 +248,271 @@
       
   <div class="section" id="calm-kubernetes">
 <span id="calm-kubernetes-blueprint"></span><h1>Calm: Kubernetes<a class="headerlink" href="#calm-kubernetes" title="Permalink to this headline">¶</a></h1>
+<div class="section" id="using-kubernetes-bp-v2-0-0">
+<h2>Using Kubernetes BP v2.0.0<a class="headerlink" href="#using-kubernetes-bp-v2-0-0" title="Permalink to this headline">¶</a></h2>
+<ul>
+<li><p class="first">Clone k8s 2.0 blueprint to your project</p>
+</li>
+<li><dl class="first docutils">
+<dt>Update variables</dt>
+<dd><table border="1" class="colwidths-given first last docutils">
+<colgroup>
+<col width="43%" />
+<col width="57%" />
+</colgroup>
+<thead valign="bottom">
+<tr class="row-odd"><th class="head">Name</th>
+<th class="head">Value</th>
+</tr>
+</thead>
+<tbody valign="top">
+<tr class="row-even"><td>KUBE_CLUSTER_NAME</td>
+<td><code class="docutils literal notranslate"><span class="pre">kube-calm</span></code></td>
+</tr>
+<tr class="row-odd"><td>KUBE_IMAGE_TAG</td>
+<td><code class="docutils literal notranslate"><span class="pre">v1.10.5_coreos.0</span></code></td>
+</tr>
+<tr class="row-even"><td>DOCKER_VERSION</td>
+<td><code class="docutils literal notranslate"><span class="pre">17.03.2.ce</span></code></td>
+</tr>
+<tr class="row-odd"><td>KUBE_CLUSTER_SUBNET</td>
+<td><code class="docutils literal notranslate"><span class="pre">10.200.0.0/16</span></code></td>
+</tr>
+<tr class="row-even"><td>KUBE_SERVICE_SUBNET</td>
+<td><code class="docutils literal notranslate"><span class="pre">10.32.0.0/24</span></code></td>
+</tr>
+<tr class="row-odd"><td>KUBE_DNS_IP</td>
+<td><code class="docutils literal notranslate"><span class="pre">10.32.0.10</span></code></td>
+</tr>
+<tr class="row-even"><td>PE_CLUSTER_IP</td>
+<td><code class="docutils literal notranslate"><span class="pre">10.132.68.55</span></code>, based on your env</td>
+</tr>
+<tr class="row-odd"><td>PE_DATA_SERVICE_IP</td>
+<td><code class="docutils literal notranslate"><span class="pre">10.132.68.56</span></code>, based on your env</td>
+</tr>
+<tr class="row-even"><td>PE_USERNAME</td>
+<td><code class="docutils literal notranslate"><span class="pre">admin</span></code>, based on your env</td>
+</tr>
+<tr class="row-odd"><td>PE_PASSWORD</td>
+<td><code class="docutils literal notranslate"><span class="pre">***</span></code>, based on your env</td>
+</tr>
+<tr class="row-even"><td>PE_CONTAINER_NAME</td>
+<td><code class="docutils literal notranslate"><span class="pre">SelfServiceContainer</span></code></td>
+</tr>
+<tr class="row-odd"><td>INSTANCE_PUBLIC_KEY</td>
+<td><code class="docutils literal notranslate"><span class="pre">***</span></code>, based on your key</td>
+</tr>
+</tbody>
+</table>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>update credentials</dt>
+<dd><a class="first last reference internal image-reference" href="../images/kube-1.10.5-01.png"><img alt="../images/kube-1.10.5-01.png" src="../images/kube-1.10.5-01.png" style="width: 50%;" /></a>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>customized vm image based on default image (<a class="reference external" href="http://download.nutanix.com/calm/CentOS-7-x86_64-GenericCloud.qcow2">http://download.nutanix.com/calm/CentOS-7-x86_64-GenericCloud.qcow2</a>)</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>download some package to /home/centos (sample), due to network limitation in some region</dt>
+<dd><div class="first last highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="c1">#part1</span>
+<span class="nv">ETCD_VERSION</span><span class="o">=</span><span class="s2">&quot;v3.2.24&quot;</span>
+<span class="nv">KUBE_IMAGE_TAG</span><span class="o">=</span><span class="s2">&quot;v1.10.5_coreos.0&quot;</span>
+<span class="nv">VERSION</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span> <span class="s2">&quot;</span><span class="si">${</span><span class="nv">KUBELET_IMAGE_TAG</span><span class="si">}</span><span class="s2">&quot;</span> <span class="p">|</span> tr <span class="s2">&quot;_&quot;</span> <span class="s2">&quot; &quot;</span> <span class="p">|</span> awk <span class="s1">&#39;{print $1}&#39;</span><span class="k">)</span>
+wget -q <span class="s2">&quot;https://github.com/coreos/etcd/releases/download/</span><span class="si">${</span><span class="nv">ETCD_VERSION</span><span class="si">}</span><span class="s2">/etcd-</span><span class="si">${</span><span class="nv">ETCD_VERSION</span><span class="si">}</span><span class="s2">-linux-amd64.tar.gz&quot;</span>
+wget -q https://github.com/containernetworking/plugins/releases/download/v0.6.0/cni-plugins-amd64-v0.6.0.tgz
+wget -q https://storage.googleapis.com/kubernetes-release/release/<span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span>/bin/linux/amd64/kubelet
+<span class="c1">#part2</span>
+wget -q https://pkg.cfssl.org/R1.2/cfssl_linux-amd64 https://pkg.cfssl.org/R1.2/cfssljson_linux-amd64
+wget -q https://storage.googleapis.com/kubernetes-release/release/<span class="si">${</span><span class="nv">VERSION</span><span class="si">}</span>/bin/linux/amd64/kubectl
+wget -q <span class="s2">&quot;https://storage.googleapis.com/kubernetes-helm/helm-v2.8.2-linux-amd64.tar.gz&quot;</span>
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>yum update</dt>
+<dd><div class="first last highlight-bash notranslate"><div class="highlight"><pre><span></span>yum -y update
+</pre></div>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>clean vm</dt>
+<dd><ul class="first last simple">
+<li>remove MAC entry in /etc/sysconfig/network-scripts/ifcfg-eth0</li>
+<li>cp /dev/null /etc/udev/rules.d/70-persistent-net.rules</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>create image from this vm</dt>
+<dd><ul class="first last simple">
+<li>using <code class="docutils literal notranslate"><span class="pre">acli</span> <span class="pre">vm.get</span> <span class="pre">vm_name</span></code> to get vmdisk uuid of scsi 0</li>
+<li>confirm file existed `` nfs_ls -l /SelfServiceContainer/.acropolis/vmdisk/vmdisk_uuid ``</li>
+<li>login to PC - explorer - image - add image - url: <code class="docutils literal notranslate"><span class="pre">nfs://cvm_ip//SelfServiceContainer/.acropolis/vmdisk/vmdisk_uuid</span></code></li>
+<li>input image name as you needed</li>
+</ul>
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>comment lines in ‘package install’ task (master &amp; minion), because we have download it before</dt>
+<dd><ul class="first last">
+<li><dl class="first docutils">
+<dt>on master - part1</dt>
+<dd><img alt="../images/kube-1.10.5-02.png" class="first last" src="../images/kube-1.10.5-02.png" />
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>on master - part2, helm version is <code class="docutils literal notranslate"><span class="pre">2.8.2</span></code></dt>
+<dd><img alt="../images/kube-1.10.5-03.png" class="first last" src="../images/kube-1.10.5-03.png" />
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>on minion</dt>
+<dd><img alt="../images/kube-1.10.5-04.png" class="first last" src="../images/kube-1.10.5-04.png" />
+</dd>
+</dl>
+</li>
+</ul>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>add environemnt to docker service (master &amp; minion), my proxy ip address is <code class="docutils literal notranslate"><span class="pre">10.132.71.38</span></code></dt>
+<dd><div class="first highlight-bash notranslate"><div class="highlight"><pre><span></span>sudo sed -i <span class="s1">&#39;/ExecStart=/c\\ExecStart=/usr/bin/dockerd -H tcp://0.0.0.0:2375 -H unix:///var/run/docker.sock&#39;</span> /usr/lib/systemd/system/docker.service
+<span class="c1">#add following lines</span>
+cp /usr/lib/systemd/system/docker.service /tmp
+sudo sed -i <span class="s1">&#39;/\[Service\]/c\\[Service]\nEnvironment=\&quot;HTTP_PROXY=http://10.132.71.38:1080/\&quot;&#39;</span> /usr/lib/systemd/system/docker.service
+</pre></div>
+</div>
+<div class="last figure">
+<img alt="../images/kube-1.10.5-05.png" src="../images/kube-1.10.5-05.png" />
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>update vm image &amp; cpu/memory (master &amp; minion)</dt>
+<dd><div class="first last figure">
+<a class="reference internal image-reference" href="../images/kube-1.10.5-06.png"><img alt="../images/kube-1.10.5-06.png" src="../images/kube-1.10.5-06.png" style="width: 50%;" /></a>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>update vm nic (master &amp; minion)</dt>
+<dd><div class="first last figure">
+<a class="reference internal image-reference" href="../images/kube-1.10.5-07.png"><img alt="../images/kube-1.10.5-07.png" src="../images/kube-1.10.5-07.png" style="width: 50%;" /></a>
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>add more waiting time (line 22: change <code class="docutils literal notranslate"><span class="pre">5</span></code> to <code class="docutils literal notranslate"><span class="pre">15</span></code>), due to download through proxy is slower than normal.</dt>
+<dd><div class="first last figure">
+<img alt="../images/kube-1.10.5-08.png" src="../images/kube-1.10.5-08.png" />
+</div>
+</dd>
+</dl>
+</li>
+<li><dl class="first docutils">
+<dt>update HELM script, add using http proxy (10.132.71.38) when helm init</dt>
+<dd><div class="first highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nb">printf</span> -v no_proxy <span class="s1">&#39;%s,&#39;</span> <span class="m">10</span>.132.249.<span class="o">{</span><span class="m">1</span>..255<span class="o">}</span>
+<span class="nb">export</span> <span class="nv">no_proxy</span><span class="o">=</span><span class="si">${</span><span class="nv">no_proxy</span><span class="si">}</span>localhost
+<span class="nb">echo</span> <span class="nv">$no_proxy</span>
+<span class="nv">http_proxy</span><span class="o">=</span>http://10.132.71.38:1080/ <span class="nv">no_proxy</span><span class="o">=</span><span class="si">${</span><span class="nv">no_proxy</span><span class="si">}</span> helm init --service-account helm
+</pre></div>
+</div>
+<div class="last figure">
+<img alt="../images/kube-1.10.5-09.png" src="../images/kube-1.10.5-09.png" />
+</div>
+</dd>
+</dl>
+</li>
+<li><p class="first">login to controller0 to execute <code class="docutils literal notranslate"><span class="pre">kubectl</span> <span class="pre">get</span> <span class="pre">no</span></code></p>
+</li>
+</ul>
+<p>download blueprint <a class="reference download internal" download="" href="../downloads/6991ae7d90f16631f4d15bd3ec108cd8/k8s-bp-2.0.json"><code class="xref download docutils literal notranslate"><span class="pre">HERE</span></code></a></p>
+</div>
 <div class="section" id="using-kubernetes-bp-v1-0-0">
 <h2>Using Kubernetes BP v1.0.0<a class="headerlink" href="#using-kubernetes-bp-v1-0-0" title="Permalink to this headline">¶</a></h2>
-<p>Clone kubernetes blueprint v1.0.0 from market place to your project, edit variables to suite your environment.</p>
+<div class="section" id="variables">
+<h3>Variables<a class="headerlink" href="#variables" title="Permalink to this headline">¶</a></h3>
+<p>Clone kubernetes blueprint v1.0.0 from market place to your project,
+edit variables to suite your environment.</p>
 <div class="figure">
 <a class="reference internal image-reference" href="../images/kube-1.7.7-1.png"><img alt="../images/kube-1.7.7-1.png" src="../images/kube-1.7.7-1.png" style="width: 70%;" /></a>
 </div>
-<p>Edit credentials, edit default user, add private key to CENTOS.</p>
+</div>
+<div class="section" id="credentials">
+<h3>Credentials<a class="headerlink" href="#credentials" title="Permalink to this headline">¶</a></h3>
+<p>Edit default user, add private key to CENTOS.
+This user will be created with cloud-init script and transfer public key to authorized_keys file (see images above)
+you need put the private key in here (see image below)</p>
 <div class="figure">
 <a class="reference internal image-reference" href="../images/kube-1.7.7-2.png"><img alt="../images/kube-1.7.7-2.png" src="../images/kube-1.7.7-2.png" style="width: 50%;" /></a>
 </div>
-<p>vm configurations</p>
+</div>
+<div class="section" id="service">
+<h3>Service<a class="headerlink" href="#service" title="Permalink to this headline">¶</a></h3>
+<p>this image is based on default nutanix image (<a class="reference external" href="http://download.nutanix.com/calm/CentOS-7-x86_64-GenericCloud.qcow2">http://download.nutanix.com/calm/CentOS-7-x86_64-GenericCloud.qcow2</a>).
+I just download some packages i needed first due to network issue in China.</p>
 <div class="figure">
 <a class="reference internal image-reference" href="../images/kube-1.7.7-3.png"><img alt="../images/kube-1.7.7-3.png" src="../images/kube-1.7.7-3.png" style="width: 70%;" /></a>
 </div>
+<p>Choose a network with IPAM enabled or has DHCP server in that segment</p>
 <div class="figure">
 <a class="reference internal image-reference" href="../images/kube-1.7.7-4.png"><img alt="../images/kube-1.7.7-4.png" src="../images/kube-1.7.7-4.png" style="width: 70%;" /></a>
 </div>
+<p>Choose default user for login check-in</p>
 <div class="figure">
 <a class="reference internal image-reference" href="../images/kube-1.7.7-5.png"><img alt="../images/kube-1.7.7-5.png" src="../images/kube-1.7.7-5.png" style="width: 70%;" /></a>
 </div>
-<p>Edit task - configure minion</p>
-<p>add environment to docker system script, to ensure download images through proxy, especially when your demo environment in C_H_I_N_A</p>
+</div>
+<div class="section" id="task">
+<h3>Task<a class="headerlink" href="#task" title="Permalink to this headline">¶</a></h3>
+<p>Edit task in minion (K8SM)</p>
+<ul class="simple">
+<li>comment all wget packages due to we have download them in advance</li>
+<li>add environment to docker system script, to ensure download images through proxy, especially when your demo environment in C_H_I_N_A</li>
+</ul>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">Environment</span><span class="o">=</span><span class="se">\&quot;</span><span class="nv">HTTP_PROXY</span><span class="o">=</span>http://10.132.71.38:1080/<span class="se">\&quot;</span>
 </pre></div>
 </div>
 <div class="figure">
 <img alt="../images/kube-1.7.7-6.png" src="../images/kube-1.7.7-6.png" />
 </div>
+<p>Edit task in controller (K8SC)</p>
 <ul class="simple">
-<li>other configure</li>
+<li>comment all wget packages due to we have download them in advance</li>
 </ul>
+</div>
+<div class="section" id="other">
+<h3>Other<a class="headerlink" href="#other" title="Permalink to this headline">¶</a></h3>
 <div class="figure">
 <img alt="../images/kube-1.7.7-7.png" src="../images/kube-1.7.7-7.png" />
 </div>
-<ul class="simple">
-<li>launch and have a cup of coffee :)</li>
-</ul>
+</div>
+<div class="section" id="launch">
+<h3>Launch<a class="headerlink" href="#launch" title="Permalink to this headline">¶</a></h3>
 <div class="figure">
 <img alt="../images/kube-1.7.7-8.png" src="../images/kube-1.7.7-8.png" />
 </div>
 </div>
-<div class="section" id="using-kubernetes-bp-v2-0-0">
-<h2>Using Kubernetes BP v2.0.0<a class="headerlink" href="#using-kubernetes-bp-v2-0-0" title="Permalink to this headline">¶</a></h2>
-<ul class="simple">
-<li>clone k8s 2.0 blueprint to your project</li>
-<li>update credentials</li>
-<li>update variable public key</li>
-<li>update vm image (master &amp; minion)</li>
-<li>update vm nic (master &amp; minion)</li>
-<li>download some file to local and comment curl line in ‘package install’ task (master &amp; minion)</li>
-<li>add environemnt to docker service (master &amp; minion)</li>
-</ul>
-<div class="figure">
-<img alt="../images/kube-1.10.5-1.png" src="../images/kube-1.10.5-1.png" />
-</div>
-<ul class="simple">
-<li>add more waiting time (line 22)</li>
-</ul>
-<div class="figure">
-<img alt="../images/kube-1.10.5-2.png" src="../images/kube-1.10.5-2.png" />
-</div>
-<ul class="simple">
-<li>update HELM script, add using http proxy when helm init</li>
-</ul>
-<div class="figure">
-<img alt="../images/kube-1.10.5-3.png" src="../images/kube-1.10.5-3.png" />
-</div>
-<ul class="simple">
-<li>login to controller0 to execute <code class="docutils literal notranslate"><span class="pre">kubectl</span></code></li>
-</ul>
 </div>
 </div>
 
