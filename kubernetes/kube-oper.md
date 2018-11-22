@@ -10,15 +10,97 @@
 ```
 ![kube-oper-1](/kubernetes/kube-oper-1.png){:height="75%" width="75%"}
 
+
 ## kubernetes dashboard
+### access 1
 * on master node, running kubectl to handle authentication with apiserver:<br/>
 ```kubectl proxy --address 0.0.0.0 --accept-hosts '.*'```
-
 * open URL from browser:<br/>
 ```http://<master-ip>:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/```
 
+### access 2
+* check /etc/kubernetes/addons/dashboard.yml file to find nodeport of it's service
+* access any work node with that port to open dashboard UI
 
-## Application Deployment
+
+## simplest POD
+```yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod
+  labels:
+    app: myapp
+  annotations:
+spec:
+  containers:
+  - name: myapp-container
+    image: busybox
+    command: ['sh', '-c', 'echo The app is running! && sleep 3600']
+```
+
+
+## simplest POD with persistent storage
+```yml
+apiVersion: v1
+kind: Pod
+metadata:
+  name: myapp-pod-with-stg
+  labels:
+    app: myapp
+  annotations:
+spec:
+  containers:
+  - name: myapp-nginx
+    image: nginx
+    ports:
+      - name: web
+        containerPort: 80
+    volumeMounts:
+      - name: abs
+        mountPath: "/usr/share/nginx/html"
+  volumes:
+  - name: abs
+    persistentVolumeClaim:
+      claimName: ntnx-pvc-demo
+```
+
+## PVC/PV/SC
+```yml
+apiVersion: v1
+kind: PersistentVolumeClaim
+metadata:
+  name: ntnx-pvc-demo         # pvc name (for pod refer)
+spec:
+  storageClassName: silver    # your storage class name
+  resources:
+    requests:
+      storage: 1Gi
+  accessModes:
+    - ReadWriteMany
+```
+
+## simplest deployment
+```yml
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  name: app3
+spec:
+  replicas: 3
+  template:
+    metadata:
+      labels:
+        app: app3
+    spec:
+      containers:
+      - name: app3
+        image: busybox
+        command: ['sh', '-c', 'echo The app is running! && sleep 3600']
+```
+
+
+# Application Deployment
 ### [ ] Using kube-proxy
 nginx-2.xml
 ```yml

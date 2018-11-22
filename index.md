@@ -2,13 +2,9 @@
 * [basic format](https://help.github.com/articles/basic-writing-and-formatting-syntax/)
 * [advanced format](https://guides.github.com/features/mastering-markdown/)
 
-# rST
-* [link1](http://docutils.sourceforge.net/docs/user/rst/quickref.html#example-foldin)
-* [link2](http://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#ref-role)
-
-# NutanixWorkshops
-* [calm](nutanixworkshops/lab/calm/html/index.html)
-* [partnercalmworkshop](nutanixworkshops/lab/partnercalmworkshop/html/index.html)
+# reStructuredText
+* [format1](http://docutils.sourceforge.net/docs/user/rst/quickref.html#example-foldin)
+* [format2](http://www.sphinx-doc.org/en/master/usage/restructuredtext/roles.html#ref-role)
 
 # Technical Guy
 ## Linux
