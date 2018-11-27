@@ -28,14 +28,9 @@
 
 # customized
 ## requirement
-I want to push common images to local harbor server for quick access.              
-these images come from different site, such as gcr.io, docker.io, quay.io.            
-common solution is setup one docker node and get all these images and re-tag them and push to harbor.           
-others host need to get these images with a different name, such as `<myhaber>/<mylibrary>/<image_name>;<version>`
+I want to push common images to local harbor server for quick access. These images come from different site, such as gcr.io, docker.io, quay.io. Common solution is setup one docker node and get all these images and re-tag them and push to harbor. Others host need to get these images with a different name, such as `<myhaber>/<mylibrary>/<image_name>;<version>`    
 
-my thought is point these domain to local ip address, host could get these images without change anything.
-big problem is server certification, so in this chapter, i create a server certification and put Altname in it.    
-if you connenct harbar server with another domain name, it also could get certification.
+my thought is if these domain are point to one local ip address, host could get these images without change anything. Big problem is server certification, so in this chapter, i create a server certification and put Altname in it. If you connenct harbar server with another domain name, it also could get certification.
 
 ## solution
 * create certifications
@@ -114,7 +109,7 @@ ln -sf harbor.com docker.io
 * test on docker host
     * add lines to `/etc/hosts`
         ```
-        10.132.250.203 harbor harbor.com quay.io k8s.gcr.io gcr.io docker.io
+        10.132.250.203 harbor harbor.com quay.io docker.io gcr.io k8s.gcr.io
         ```
     * try login
         ```
@@ -124,3 +119,4 @@ ln -sf harbor.com docker.io
         ...
         ```
 
+!!! docker.io could not work with this way 
