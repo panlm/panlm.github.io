@@ -13,17 +13,20 @@
 
 ## kubernetes dashboard
 ### access 1
+
 * on master node, running kubectl to handle authentication with apiserver:<br/>
 ```kubectl proxy --address 0.0.0.0 --accept-hosts '.*'```
 * open URL from browser:<br/>
 ```http://<master-ip>:8001/api/v1/namespaces/kube-system/services/https:kubernetes-dashboard:/proxy/```
 
 ### access 2
+
 * check /etc/kubernetes/addons/dashboard.yml file to find nodeport of it's service
 * access any work node with that port to open dashboard UI
 
 
 ## simplest POD
+
 ```yml
 apiVersion: v1
 kind: Pod
@@ -41,6 +44,7 @@ spec:
 
 
 ## simplest POD with persistent storage
+
 ```yml
 apiVersion: v1
 kind: Pod
@@ -66,6 +70,7 @@ spec:
 ```
 
 ## PVC/PV/SC
+
 ```yml
 apiVersion: v1
 kind: PersistentVolumeClaim
@@ -81,6 +86,7 @@ spec:
 ```
 
 ## simplest deployment
+
 ```yml
 apiVersion: extensions/v1beta1
 kind: Deployment
@@ -102,6 +108,7 @@ spec:
 
 # Application Deployment
 ### [ ] Using kube-proxy
+
 nginx-2.xml
 ```yml
 apiVersion: v1
@@ -148,7 +155,9 @@ and access: http://10.21.104.184:8081/api/v1/proxy/namespaces/default/services/n
 
 
 ### [x] Using Nodeport
+
 nginx-3.xml
+
 ```yml
 apiVersion: v1
 kind: ReplicationController
@@ -170,6 +179,7 @@ spec:
 > kubectl create -f nginx-3.xml
 
 nginx-service-3.xml
+
 ```yml
 kind: Service
 apiVersion: v1
@@ -193,15 +203,18 @@ and access: http://host-ip:port
 
 
 ### [ ] Using Load Balance
+
 ```yaml
 ```
 
 
 ### [x] Using Ingress
 #### create app1, app2, backend, ingress controller, configmap, rbca, ingress rules, etc.
+
 create app deployment & service
 
 app-deployment.yaml
+
 ```yml
 cat > app-deployment.yaml <<EOF
 apiVersion: extensions/v1beta1
@@ -283,6 +296,7 @@ create nginx ingress controller, create dedicate namespace
 create backend deployment & service
 
 default-backend-deployment.yaml
+
 ```yaml
 cat > default-backend-deployment.yaml <<EOF
 apiVersion: extensions/v1beta1
@@ -320,6 +334,7 @@ EOF
 ```
 
 default-backend-service.yaml
+
 ```yaml
 cat > default-backend-service.yaml <<EOF
 apiVersion: v1
@@ -341,6 +356,7 @@ EOF
 create configmap
 
 nginx-ingress-controller-config-map.yaml
+
 ```yaml
 cat > nginx-ingress-controller-config-map.yaml <<EOF
 apiVersion: v1
@@ -359,6 +375,7 @@ EOF
 create controller deployment
 
 nginx-ingress-controller-deployment.yaml
+
 ```yaml
 cat > nginx-ingress-controller-deployment.yaml <<EOF
 apiVersion: extensions/v1beta1
@@ -414,6 +431,7 @@ EOF
 create RBCA
 
 nginx-ingress-controller-roles.yaml
+
 ```yaml
 cat > nginx-ingress-controller-roles.yaml <<EOF
 apiVersion: v1
@@ -487,12 +505,14 @@ subjects:
   namespace: ingress
 EOF
 ```
+
 > ```kubectl create -f nginx-ingress-controller-roles.yaml -n=ingress```
 > ```kubectl create -f nginx-ingress-controller-deployment.yaml -n=ingress```
 
 create ingress rules
 
 nginx-ingress.yaml
+
 ```yaml
 cat > nginx-ingress.yaml <<EOF
 apiVersion: extensions/v1beta1
@@ -512,6 +532,7 @@ EOF
 ```
 
 app-ingress.yaml
+
 ```yaml
 cat > app-ingress.yaml <<EOF
 apiVersion: extensions/v1beta1
@@ -535,12 +556,14 @@ spec:
         path: /app2
 EOF
 ```
+
 > kubectl create -f nginx-ingress.yaml -n=ingress
 > kubectl create -f app-ingress.yaml
 
 expose nginx ingress controller
 
 nginx-ingress-controller-service.yaml
+
 ```yaml
 cat > nginx-ingress-controller-service.yaml <<EOF
 apiVersion: v1
@@ -563,6 +586,7 @@ EOF
 > ```kubectl create -f nginx-ingress-controller-service.yaml -n=ingress```
 
 #### access app1, app2, nginx status, etc.
+
 * http://test.domain.com:30000/app1
 * http://test.domain.com:30000/app2
 * http://test.domain.com:32000/nginx_status

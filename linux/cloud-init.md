@@ -1,5 +1,6 @@
 
 # sample
+
 ```conf
 #cloud-config
 disable_root: False
@@ -30,6 +31,7 @@ users:
 ```
 
 # reference
+
 - augeas
     - https://blog.whe.me/post/cloud-init-configurations.html
     - http://frederic-wou.net/augeas-instaalion-on-centos-7-1/

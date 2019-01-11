@@ -21,8 +21,8 @@
 * [kube-net](kubernetes/kube-net.md)
 * [kube-dns](kubernetes/kube-dns.md)
 * merge to nutanixworkshops
-    * [kube-1.7.7 (blueprint 1.0.0)](kubernetes/kube-1.7.7.md)
-    * [kube-1.10.5 (blueprint 2.0.0)](kubernetes/kube-1.10.5.md)
+  * [kube-1.7.7 (blueprint 1.0.0)](kubernetes/kube-1.7.7.md)
+  * [kube-1.10.5 (blueprint 2.0.0)](kubernetes/kube-1.10.5.md)
 
 ### [harbor](kubernetes/harbor.md)
 
@@ -36,9 +36,9 @@
 # BCA
 ## Oracle
 * Oracle 11gR2 on CentOS 6.8 (Nutanix BP)
-    * [OS Configuration](oracle/os-config)
-    * [Database Installation](oracle/oracle-install)
-    * [Create Database](oracle/create-database)
+  * [OS Configuration](oracle/os-config)
+  * [Database Installation](oracle/oracle-install)
+  * [Create Database](oracle/create-database)
 
 ## SQL Server
 * [SQL on ABS](mssql/mssql_on_abs.md)
@@ -48,7 +48,6 @@
 # Keep reading
 * openshift
 * nsx-t
-
 
 
 

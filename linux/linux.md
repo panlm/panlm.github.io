@@ -1,4 +1,5 @@
 # 相关内容
+
 * [cloud-init](cloud-init)
 * [some packages](necessary-pkg-centos)
 * [iptables](iptables)

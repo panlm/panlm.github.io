@@ -11,7 +11,9 @@ admin dhcp 172.16.10.10-200
 
 
 # OS configuration
+
 * disable firewall
+
 ```bash
 systemctl stop SuSEfirewall2
 systemctl stop SuSEfirewall2_init
@@ -20,6 +22,7 @@ systemctl disable SuSEfirewall2_init
 ```
 
 * cp media to local
+
 ```bash
 mount SLE-12-SP2-Server-DVD-x86_64-GM-DVD1.iso /mnt
 rsync -avP /mnt/ /srv/tftpboot/suse-12.2/x86_64/install/
@@ -44,25 +47,25 @@ umount /mnt
 * update packages
   * copy all update packages to ```/srv/tftpboot/suse-12.2/x86_64/repos/```
   * add repos
-  ```
-  cd /srv/tftpboot/suse-12.2/x86_64/repos/
-  zypper addrepo -n suse-12.2-pool -p 98 $PWD/SLES12-SP2-Pool SLES12-SP2-Pool
-  zypper addrepo -n suse-12.2-updates -p 98 $PWD/SLES12-SP2-Updates SLES12-SP2-Updates
-  zypper addrepo -n cloud7-pool -p 98 $PWD/SUSE-OpenStack-Cloud-7-Pool SUSE-OpenStack-Cloud-7-Pool
-  zypper addrepo -n cloud7-updates -p 98 $PWD/SUSE-OpenStack-Cloud-7-Updates SUSE-OpenStack-Cloud-7-Updates
-  ```
+    ```
+    cd /srv/tftpboot/suse-12.2/x86_64/repos/
+    zypper addrepo -n suse-12.2-pool -p 98 $PWD/SLES12-SP2-Pool SLES12-SP2-Pool
+    zypper addrepo -n suse-12.2-updates -p 98 $PWD/SLES12-SP2-Updates SLES12-SP2-Updates
+    zypper addrepo -n cloud7-pool -p 98 $PWD/SUSE-OpenStack-Cloud-7-Pool SUSE-OpenStack-Cloud-7-Pool
+    zypper addrepo -n cloud7-updates -p 98 $PWD/SUSE-OpenStack-Cloud-7-Updates SUSE-OpenStack-Cloud-7-Updates
+    ```
   * update system
-  ```
-  zypper update
-  reboot
-  ```
+    ```
+    zypper update
+    reboot
+    ```
   * remove repos
-  ```
-  zypper removerepo suse-12.2-pool
-  zypper removerepo suse-12.2-updates
-  zypper removerepo cloud7-pool
-  zypper removerepo cloud7-updates
-  ```
+    ```
+    zypper removerepo suse-12.2-pool
+    zypper removerepo suse-12.2-updates
+    zypper removerepo cloud7-pool
+    zypper removerepo cloud7-updates
+    ```
 
 # crowbar initial
 * crowbar settings
@@ -124,6 +127,7 @@ crowbarctl database -U crowbar -P crowbar create
 ![inst4](/openstack/inst4.png)
 
 * if you reboot the admin node, double check service as following
+
 ```
 systemctl start postgresql
 systemctl start crowbar
