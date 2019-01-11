@@ -4,12 +4,12 @@
 * refer the [Guide](https://github.com/goharbor/harbor/blob/master/docs/installation_guide.md), and enable SSH access ([HERE](https://github.com/goharbor/harbor/blob/master/docs/configure_https.md))
 * reconfig / start / stop 
 
-    ```bash
-    vi harbor.cfg
-    ./prepare
-    docker-composer down -v
-    docker-composer up -d
-    ```
+  ```bash
+  vi harbor.cfg
+  ./prepare
+  docker-composer down -v
+  docker-composer up -d
+  ```
 
 # push image
 
@@ -43,52 +43,52 @@ my thought is if these domain are point to one local ip address, host could get 
 
 * create certifications
 
-    ```bash
-    #!/bin/bash
-    set -x
+  ```bash
+  #!/bin/bash
+  set -x
 
-    openssl genrsa -out ca.key 4096
-    openssl req -x509 -new -nodes -sha512 -days 3650 \
-        -subj "/C=TW/ST=Taipei/L=Taipei/O=example/OU=Personal/CN=myca.com" \
-        -key ca.key \
-        -out ca.crt
+  openssl genrsa -out ca.key 4096
+  openssl req -x509 -new -nodes -sha512 -days 3650 \
+      -subj "/C=TW/ST=Taipei/L=Taipei/O=example/OU=Personal/CN=myca.com" \
+      -key ca.key \
+      -out ca.crt
 
-    for i in harbor.com ; do
-        openssl genrsa -out $i.key 4096
-        openssl req -sha512 -new \
-            -subj "/C=TW/ST=Taipei/L=Taipei/O=example/OU=Personal/CN=$i" \
-            -key $i.key \
-            -out $i.csr
-        cat > v3-$i.ext <<-EOF
-    authorityKeyIdentifier=keyid,issuer
-    basicConstraints=CA:FALSE
-    keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
-    extendedKeyUsage = serverAuth
-    subjectAltName = @alt_names
+  for i in harbor.com ; do
+      openssl genrsa -out $i.key 4096
+      openssl req -sha512 -new \
+          -subj "/C=TW/ST=Taipei/L=Taipei/O=example/OU=Personal/CN=$i" \
+          -key $i.key \
+          -out $i.csr
+      cat > v3-$i.ext <<-EOF
+  authorityKeyIdentifier=keyid,issuer
+  basicConstraints=CA:FALSE
+  keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
+  extendedKeyUsage = serverAuth
+  subjectAltName = @alt_names
 
-    [alt_names]
-    DNS.1=$i
-    DNS.2=${i%.*}
-    DNS.3=quay.io
-    DNS.4=k8s.gcr.io
-    DNS.5=gcr.io
-    DNS.6=docker.io
-    EOF
-        openssl x509 -req -sha512 -days 3650 \
-            -extfile v3-$i.ext \
-            -CA ca.crt -CAkey ca.key -CAcreateserial \
-            -in $i.csr \
-            -out $i.crt
-        openssl x509 -inform PEM -in $i.crt -out $i.cert
-    done
-    ```
+  [alt_names]
+  DNS.1=$i
+  DNS.2=${i%.*}
+  DNS.3=quay.io
+  DNS.4=k8s.gcr.io
+  DNS.5=gcr.io
+  DNS.6=docker.io
+  EOF
+      openssl x509 -req -sha512 -days 3650 \
+          -extfile v3-$i.ext \
+          -CA ca.crt -CAkey ca.key -CAcreateserial \
+          -in $i.csr \
+          -out $i.crt
+      openssl x509 -inform PEM -in $i.crt -out $i.cert
+  done
+  ```
 
 * stop harbor
 
-    ```
-    cd harbar installation directory
-    docker-composer down -v
-    ```
+  ```
+  cd harbar installation directory
+  docker-composer down -v
+  ```
 
 * copy server certification to harber /data/cert directory
 
