@@ -16,21 +16,22 @@
 * ensure no proxy settings used by docker `/usr/lib/systemd/system/docker.service`
 * put harbor certification files to `/etc/docker/certs.d/hostname.com/` (refer [HERE](https://github.com/goharbor/harbor/blob/master/docs/configure_https.md))
 
-    * hostname.com.cert 
-    * hostname.com.key
-    * ca.key
+  * hostname.com.cert 
+  * hostname.com.key
+  * ca.key
   
 * docker login harbor.com (option)
 * tag image which one you want to push
 
-    ```
-    docker tag <image-id> harbor.com/library/image_name:image_version
-    ```
+  ```
+  docker tag <image-id> harbor.com/library/image_name:image_version
+  ```
 
 * push image
-    ```
-    docker push
-    ```
+
+  ```
+  docker push
+  ```
 
 # customized
 ## requirement
@@ -92,49 +93,49 @@ my thought is if these domain are point to one local ip address, host could get 
 
 * copy server certification to harber /data/cert directory
 
-    ```
-    cp harbor.com.[crt|key] /data/cert
-    ```
+  ```
+  cp harbor.com.[crt|key] /data/cert
+  ```
 
 * start harbor
 
-    ```
-    ./prepare
-    docker-composer up -d
-    ```
+  ```
+  ./prepare
+  docker-composer up -d
+  ```
 
 * copy ca & server certifications to docker node
 
-    ```
-    scp ca.crt /etc/docker/certs.d/harbor.com/
-    scp harbor.com.[crt|key] /etc/docker/certs.d/harbor.com/
-    ```
+  ```
+  scp ca.crt /etc/docker/certs.d/harbor.com/
+  scp harbor.com.[crt|key] /etc/docker/certs.d/harbor.com/
+  ```
 
 * create link point to harbor.co
 
-    ```
-    cd /etc/docker/certs.d/
-    ln -sf harbor.com quay.io
-    ln -sf harbor.com k8s.gcr.io
-    ln -sf harbor.com gcr.io
-    ln -sf harbor.com docker.io
-    ```
+  ```
+  cd /etc/docker/certs.d/
+  ln -sf harbor.com quay.io
+  ln -sf harbor.com k8s.gcr.io
+  ln -sf harbor.com gcr.io
+  ln -sf harbor.com docker.io
+  ```
 
 * test on docker host
 
-    * add lines to `/etc/hosts`
-  
-        ```
-        10.132.250.203 harbor harbor.com quay.io docker.io gcr.io k8s.gcr.io
-        ```
+  * add lines to `/etc/hosts`
 
-    * try login
+    ```
+    10.132.250.203 harbor harbor.com quay.io docker.io gcr.io k8s.gcr.io
+    ```
 
-        ```
-        docker login harbor.com
-        docker login quay.io
-        docker login k8s.gcr.io
-        ...
-        ```
+  * try login
+
+    ```
+    docker login harbor.com
+    docker login quay.io
+    docker login k8s.gcr.io
+    ...
+    ```
 
 !!! docker.io could not work with this way 
