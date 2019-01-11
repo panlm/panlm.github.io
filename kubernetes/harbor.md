@@ -44,88 +44,92 @@ my thought is if these domain are point to one local ip address, host could get 
 * create certifications
 
     ```bash
-#!/bin/bash
-set -x
+    #!/bin/bash
+    set -x
 
-openssl genrsa -out ca.key 4096
-openssl req -x509 -new -nodes -sha512 -days 3650 \
-    -subj "/C=TW/ST=Taipei/L=Taipei/O=example/OU=Personal/CN=myca.com" \
-    -key ca.key \
-    -out ca.crt
+    openssl genrsa -out ca.key 4096
+    openssl req -x509 -new -nodes -sha512 -days 3650 \
+        -subj "/C=TW/ST=Taipei/L=Taipei/O=example/OU=Personal/CN=myca.com" \
+        -key ca.key \
+        -out ca.crt
 
-for i in harbor.com ; do
-    openssl genrsa -out $i.key 4096
-    openssl req -sha512 -new \
-        -subj "/C=TW/ST=Taipei/L=Taipei/O=example/OU=Personal/CN=$i" \
-        -key $i.key \
-        -out $i.csr
-    cat > v3-$i.ext <<-EOF
-authorityKeyIdentifier=keyid,issuer
-basicConstraints=CA:FALSE
-keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
-extendedKeyUsage = serverAuth
-subjectAltName = @alt_names
+    for i in harbor.com ; do
+        openssl genrsa -out $i.key 4096
+        openssl req -sha512 -new \
+            -subj "/C=TW/ST=Taipei/L=Taipei/O=example/OU=Personal/CN=$i" \
+            -key $i.key \
+            -out $i.csr
+        cat > v3-$i.ext <<-EOF
+    authorityKeyIdentifier=keyid,issuer
+    basicConstraints=CA:FALSE
+    keyUsage = digitalSignature, nonRepudiation, keyEncipherment, dataEncipherment
+    extendedKeyUsage = serverAuth
+    subjectAltName = @alt_names
 
-[alt_names]
-DNS.1=$i
-DNS.2=${i%.*}
-DNS.3=quay.io
-DNS.4=k8s.gcr.io
-DNS.5=gcr.io
-DNS.6=docker.io
-EOF
-    openssl x509 -req -sha512 -days 3650 \
-        -extfile v3-$i.ext \
-        -CA ca.crt -CAkey ca.key -CAcreateserial \
-        -in $i.csr \
-        -out $i.crt
-    openssl x509 -inform PEM -in $i.crt -out $i.cert
-done
+    [alt_names]
+    DNS.1=$i
+    DNS.2=${i%.*}
+    DNS.3=quay.io
+    DNS.4=k8s.gcr.io
+    DNS.5=gcr.io
+    DNS.6=docker.io
+    EOF
+        openssl x509 -req -sha512 -days 3650 \
+            -extfile v3-$i.ext \
+            -CA ca.crt -CAkey ca.key -CAcreateserial \
+            -in $i.csr \
+            -out $i.crt
+        openssl x509 -inform PEM -in $i.crt -out $i.cert
+    done
     ```
 
 * stop harbor
 
-```
-cd harbar installation directory
-docker-composer down -v
-```
+    ```
+    cd harbar installation directory
+    docker-composer down -v
+    ```
 
 * copy server certification to harber /data/cert directory
 
-```
-cp harbor.com.[crt|key] /data/cert
-```
+    ```
+    cp harbor.com.[crt|key] /data/cert
+    ```
 
 * start harbor
 
-```
-./prepare
-docker-composer up -d
-```
+    ```
+    ./prepare
+    docker-composer up -d
+    ```
 
 * copy ca & server certifications to docker node
 
-```
-scp ca.crt /etc/docker/certs.d/harbor.com/
-scp harbor.com.[crt|key] /etc/docker/certs.d/harbor.com/
-```
+    ```
+    scp ca.crt /etc/docker/certs.d/harbor.com/
+    scp harbor.com.[crt|key] /etc/docker/certs.d/harbor.com/
+    ```
 
 * create link point to harbor.co
 
-```
-cd /etc/docker/certs.d/
-ln -sf harbor.com quay.io
-ln -sf harbor.com k8s.gcr.io
-ln -sf harbor.com gcr.io
-ln -sf harbor.com docker.io
-```
+    ```
+    cd /etc/docker/certs.d/
+    ln -sf harbor.com quay.io
+    ln -sf harbor.com k8s.gcr.io
+    ln -sf harbor.com gcr.io
+    ln -sf harbor.com docker.io
+    ```
 
 * test on docker host
+
     * add lines to `/etc/hosts`
+  
         ```
         10.132.250.203 harbor harbor.com quay.io docker.io gcr.io k8s.gcr.io
         ```
+
     * try login
+
         ```
         docker login harbor.com
         docker login quay.io
