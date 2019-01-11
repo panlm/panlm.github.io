@@ -43,7 +43,7 @@ my thought is if these domain are point to one local ip address, host could get 
 
 * create certifications
 
-```bash
+    ```bash
 #!/bin/bash
 set -x
 
@@ -81,7 +81,7 @@ EOF
         -out $i.crt
     openssl x509 -inform PEM -in $i.crt -out $i.cert
 done
-```
+    ```
 
 * stop harbor
 
