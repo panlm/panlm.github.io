@@ -16,6 +16,7 @@ tags:
 ## hosted on github page
 - https://gohugo.io/hosting-and-deployment/hosting-on-github/
 
+![github-page-howto-1.png](github-page-howto-1.png)
 
 
 
