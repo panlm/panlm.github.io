@@ -1,5 +1,5 @@
 ---
-title: "Create EKS Cluster"
+title: "EKS Cluster"
 chapter: true
 weight: 110
 ---
