@@ -1,8 +1,8 @@
-baseURL = "https://panlm.github.io"
+baseURL = "https://panlm.github.io/aws-labs"
 languageCode = "en-US"
 defaultContentLanguage = "en" # Modify to change the default language/version of the site
 
-title = "AWS Modernization Workshop Sample"
+title = "AWS Labs by panlm"
 theme = "hugo-theme-learn"
 metaDataFormat = "yaml"
 defaultContentLanguageInSubdir= "false"
