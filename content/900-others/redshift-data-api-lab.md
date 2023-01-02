@@ -22,7 +22,7 @@ max_depth: 3
 ## 使用场景
 Amazon Redshift 数据 API 使您能够使用所有类型的传统、云原生和容器化、基于 Web 服务的无服务器应用程序和事件驱动的应用程序轻松访问来自 Amazon Redshift 的数据。
 
-![1-redshift-data-api-lab-2.jpeg](1-redshift-data-api-lab-2.jpeg)
+![redshift-data-api-lab-2.jpeg](redshift-data-api-lab-2.jpeg)
 
 Amazon Redshift Data API 不能替代 JDBC 和 ODBC 驱动程序，适用于不需要与集群建立持久连接的用例。它适用于以下用例：
 
@@ -54,7 +54,7 @@ wget 'https://github.com/panlm/aws-labs/raw/main/redshift-data-api/redshift-imme
 - [postman example](https://github.com/aws-samples/getting-started-with-amazon-redshift-data-api/tree/main/use-cases/rest-api-with-redshift-data-api)
     
 ### list database
-![1-redshift-data-api-lab-1.png](1-redshift-data-api-lab-1.png)
+![redshift-data-api-lab-1.png](redshift-data-api-lab-1.png)
 
 post url: `https://redshift-data.us-east-2.amazonaws.com/`
 
