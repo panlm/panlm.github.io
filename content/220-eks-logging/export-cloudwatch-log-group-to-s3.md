@@ -1,6 +1,6 @@
 ---
 title: "export-cloudwatch-log-group-to-s3"
-chapter: false
+chapter: true
 weight: 2
 created: 2022-08-17 21:19:15.620
 last_modified: 2022-08-17 21:19:15.620

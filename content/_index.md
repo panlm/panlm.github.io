@@ -7,6 +7,13 @@ last_modified: 2022-10-10 13:39:08.529
 
 # HOME
 
+{{% children depth="2" showhidden="false" %}}
+
+
+
+
+---
+
 ## eks infra
 ### cluster
 * [Prepare Cloud9 environment before eks lab](110-eks-cluster/setup-cloud9-for-eks)
@@ -40,7 +47,7 @@ last_modified: 2022-10-10 13:39:08.529
 * [Process CloudWatch logs sent to S3 through Kinesis Firehose](220-eks-logging/stream-k8s-control-panel-logs-to-s3)
 * [export-cloudwatch-log-group-to-s3](220-eks-logging/export-cloudwatch-log-group-to-s3)
 
-## others
+## aws others
 * [Redshift Data API Lab](900-others/redshift-data-api-lab)
 * [File Gateway Lab](900-others/file-storage-gateway-lab)
 
