@@ -13,15 +13,15 @@ title: compatible github md format
 
 ## eks
 
-* [Prepare Cloud9 environment before eks lab](110-eks-cluster/setup-cloud9-for-eks.md)
-* [Create eks cluster with public access](110-eks-cluster/eks-public-access-cluster.md)
-* [Create eks cluster with private access](110-eks-cluster/eks-private-access-cluster.md)
-* [Prepare vpc if you needed to](110-eks-cluster/create-standard-vpc-for-lab.md)
+* [Prepare Cloud9 environment before eks lab](110-eks-cluster/setup-cloud9-for-eks.html)
+* [Create eks cluster with public access](110-eks-cluster/eks-public-access-cluster.html)
+* [Create eks cluster with private access](110-eks-cluster/eks-private-access-cluster.html)
+* [Prepare vpc if you needed to](110-eks-cluster/create-standard-vpc-for-lab.html)
 
 ### network
-* [aws load balancer controller](130-eks-network/aws-load-balancer-controller.md)
-* [security group on pod](130-eks-network/enable-sg-on-pod.md)
-* [externaldns for route53](130-eks-network/externaldns-for-route53.md)
+* [aws load balancer controller](130-eks-network/aws-load-balancer-controller)
+* [security group on pod](130-eks-network/enable-sg-on-pod)
+* [externaldns for route53](130-eks-network/externaldns-for-route53)
 
 ### devops
 * [argocd](260-eks-gitops/argocd-lab.md)
