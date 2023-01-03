@@ -403,13 +403,13 @@ aws glue create-crawler --name ${crawler_name} \
 ```
 
 #### using ui
-![[stream-k8s-control-panel-logs-to-s3-21.png]]
+![](stream-k8s-control-panel-logs-to-s3-21.png)
 
-![[stream-k8s-control-panel-logs-to-s3-22.png]]
+![](stream-k8s-control-panel-logs-to-s3-22.png)
 
-![[stream-k8s-control-panel-logs-to-s3-23.png]]
+![](stream-k8s-control-panel-logs-to-s3-23.png)
 
-![[stream-k8s-control-panel-logs-to-s3-24.png]]
+![](stream-k8s-control-panel-logs-to-s3-24.png)
 
 
 ### databrew
@@ -523,24 +523,24 @@ aws glue start-crawler --name ${crawler_name_2}
 #### using ui
 - import recipe
     - [download](https://github.com/panlm/aws-labs/raw/main/eks-cloudwatch-log-firehose-s3/cwl-recipe.json)
-![[stream-k8s-control-panel-logs-to-s3-31.png]]
+![](stream-k8s-control-panel-logs-to-s3-31.png)
 
 - create dataset from s3 or glue catalog
-![[stream-k8s-control-panel-logs-to-s3-32.png]]
+![](stream-k8s-control-panel-logs-to-s3-32.png)
 
 - create project from this dataset and using existed recipe
-![[stream-k8s-control-panel-logs-to-s3-33.png]]
+![](stream-k8s-control-panel-logs-to-s3-33.png)
 
-![[stream-k8s-control-panel-logs-to-s3-34.png]]
+![](stream-k8s-control-panel-logs-to-s3-34.png)
 
 - create job as you need
 
 ### athena
 this table is created by firehose
-![[stream-k8s-control-panel-logs-to-s3-41.png]]
+![](stream-k8s-control-panel-logs-to-s3-41.png)
 
 this table is created by databrew job
-![[stream-k8s-control-panel-logs-to-s3-42.png]]
+![](stream-k8s-control-panel-logs-to-s3-42.png)
 
 ## conclusion
 满足客户需求，基于目前s3中保存的原始数据，并且可以进行字段拆分等二次处理，未来可以使用aws databrew进行更复杂的处理
