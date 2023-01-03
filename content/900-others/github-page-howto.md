@@ -13,6 +13,12 @@ tags:
 ## build local
 - https://aws-samples.github.io/aws-modernization-workshop-sample/20_build/1_setup/
 
+```sh
+git submodule init
+git submodule update
+```
+
+
 ## hosted on github page
 - https://gohugo.io/hosting-and-deployment/hosting-on-github/
 
