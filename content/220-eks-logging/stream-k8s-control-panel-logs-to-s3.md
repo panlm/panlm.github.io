@@ -63,7 +63,7 @@ aws s3 mb s3://${athena_bucket_name}
 - 创建函数所需角色
 - 下载定制代码
     - [[cloudwatch-to-firehose-python]]
-    - [download](https://github.com/panlm/aws-labs/raw/main/eks-cloudwatch-log-firehose-s3/lambda_function.py)
+    - [download](lambda_function.py)
 - 创建函数并获取arn
 
 ```sh
@@ -522,7 +522,7 @@ aws glue start-crawler --name ${crawler_name_2}
 
 #### using ui
 - import recipe
-    - [download](https://github.com/panlm/aws-labs/raw/main/eks-cloudwatch-log-firehose-s3/cwl-recipe.json)
+    - [download](cwl-recipe.json)
 ![](stream-k8s-control-panel-logs-to-s3-31.png)
 
 - create dataset from s3 or glue catalog

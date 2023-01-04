@@ -19,7 +19,7 @@ title: This is a github note
 ```toc
 ```
 
-## need a cloud9 instance in your region
+## spin up a cloud9 instance in your region
 - click [here](https://us-east-2.console.aws.amazon.com/cloudshell) to run cloud shell and execute code block, and go to your region and open cloud9
 
 ```sh
@@ -54,6 +54,8 @@ else
 fi
 
 ```
+
+![](setup-cloud9-for-eks-1.png)
 
 ## install in cloud9 
 1. resize disk - [[cloud9-resize-instance-volume-script]]

@@ -26,14 +26,13 @@ python3.8 · kinesis-firehose · cloudwatch-logs · splunk
 
 ![[lambda_function.py]]
 
-download from here
-https://github.com/panlm/aws-labs/raw/main/eks-cloudwatch-log-firehose-s3/lambda_function.py
+download from [here](lambda_function.py)
 
 ## 3-party python lib
+
 ![[package.zip]]
 
-download from here
-https://github.com/panlm/aws-labs/raw/main/eks-cloudwatch-log-firehose-s3/package.zip
+download from [here](package.zip)
 
 ## layer version
 - [[lambda-cmd#add layer to lambda]]

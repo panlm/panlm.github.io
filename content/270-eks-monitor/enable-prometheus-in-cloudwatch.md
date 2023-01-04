@@ -16,8 +16,8 @@ title: This is a github note
 ```
 
 # enable-prometheus-in-cloudwatch
+
 ## enable
-1. service account
 ```sh
 cluster_name=ekscluster1
 eksctl create iamserviceaccount \

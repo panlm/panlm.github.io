@@ -1,5 +1,6 @@
 ---
 title: "file-storage-gateway-lab"
+description: "create file storage gateway from cli"
 chapter: true
 weight: 2
 created: 2022-09-16 13:40:22.702
@@ -33,12 +34,16 @@ aws s3api put-object --bucket ${BUCKET_NAME} \
 
 ## create fgw instance
 ```sh
+# ensure this key existed
 KEY_NAME=awskey
 
 IMAGE_ID=$(aws ec2 describe-images --region ${AWS_REGION}  \
   --filters Name=name,Values='aws-storage-gateway-*'  \
   --query 'Images[*].[ImageId,CreationDate,Name]' --output text \
   |sort -k2 -r |head -n 1 |awk '{print $1}')
+# another way to get IMAGE_ID
+# aws ssm get-parameter --name /aws/service/storagegateway/ami/FILE_S3/latest
+
 # cloud 9 subnet
 INST_ID=$(curl http://169.254.169.254/1.0/meta-data/instance-id 2>/dev/null)
 SUBNET_ID=$(aws ec2 describe-instances --instance-ids ${INST_ID} --query 'Reservations[0].Instances[0].SubnetId' --output text)
@@ -64,8 +69,23 @@ FGW_INST_ID=$(aws ec2 run-instances --region ${AWS_REGION} --key-name ${KEY_NAME
   --subnet-id ${SUBNET_ID} --security-group-ids ${FGW_SG_ID} \
   --query Instances[*].InstanceId --output text )
 
+# wait instance spin up
+tmpfile=/tmp/instance-status-$$
+while true ; do
+  aws ec2 describe-instance-status \
+  --instance-ids ${FGW_INST_ID} |tee ${tmpfile}
+  inst_stat=$(cat $tmpfile |jq -r '.InstanceStatuses[0].InstanceStatus.Status')
+  sys_stat=$(cat $tmpfile |jq -r '.InstanceStatuses[0].SystemStatus.Status')
+  if [[ ${inst_stat} == "ok" &&  ${sys_stat} == "ok" ]]; then
+    break
+  else
+    sleep 30
+  fi
+done
+
 # get instance ip
 INST_IP=$(aws ec2 describe-instances --instance-ids ${FGW_INST_ID} --query 'Reservations[0].Instances[0].PublicIpAddress' --output text)
+INST_PRIV_IP=$(aws ec2 describe-instances --instance-ids ${FGW_INST_ID} --query 'Reservations[0].Instances[0].PrivateIpAddress' --output text)
 
 ACTIVATION_KEY=$(wget "${INST_IP}/?activationRegion=${AWS_REGION}" 2>&1 | \
 grep -i location | \
@@ -80,20 +100,20 @@ FGW_ARN=$(aws storagegateway activate-gateway \
 --activation-key  ${ACTIVATION_KEY} \
 --query 'GatewayARN' --output text)
 
+# aws storagegateway list-gateways --query 'Gateways[?GatewayARN==`'${FGW_ARN}'`].GatewayOperationalState' --output text
+
+# HostEnvironment --> EC2
+aws storagegateway list-gateways --query 'Gateways[?GatewayARN==`'${FGW_ARN}'`]' --output json
+
 while true ; do
-  echo 'check file gw status ... '
+aws storagegateway describe-gateway-information \
+--gateway-arn ${FGW_ARN}
+if [[ $? -eq 0 ]]; then
+  break
+else
   sleep 30
-  FGW_STATUS=$(aws storagegateway list-gateways --query 'Gateways[?GatewayARN==`'${FGW_ARN}'`].GatewayOperationalState' --output text)
-  echo ${FGW_STATUS}
-  if [[ ${FGW_STATUS} == 'ACTIVE' ]]; then
-    break
-  fi
+fi
 done
-
-# aws storagegateway describe-gateway-information \
-#   --gateway-arn ${FGW_ARN}
-
-sleep 120 
 
 DISK_IDS=$(aws storagegateway list-local-disks \
 --gateway-arn ${FGW_ARN} \
@@ -152,6 +172,7 @@ fgw_role_arn=$(aws iam get-role --role-name ${fgw_role_name} --query 'Role.Arn' 
 
 - create file share
 ```sh
+# ensure client list is correct
 client_token=$(echo $RANDOM |md5sum |tr -d ' -')
 aws storagegateway create-nfs-file-share \
 --client-token ${client_token} \
@@ -168,8 +189,12 @@ fs_arn=$(aws storagegateway list-file-shares --gateway-arn ${FGW_ARN} \
 --query 'FileShareInfoList[0].FileShareARN' \
 --output text)
 
+echo "On Linux:"
+echo "mount -t nfs -o nolock,hard ${INST_PRIV_IP}:/${BUCKET_NAME}-${PREFIX_NAME} /mnt_point "
+
 ```
 
-
-
+## more
+- using s3 gateway endpoint to enhance security of data transferring
+- [[Private integration of your Kubernetes Cluster with Amazon S3 File Gateway]]
 

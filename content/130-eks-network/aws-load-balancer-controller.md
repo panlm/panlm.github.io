@@ -31,6 +31,10 @@ title: This is a github note
 ## install
 - [refer](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/deploy/installation/)
 
+{{% notice note %}}
+this note covered by flux-lab
+{{% /notice %}}
+
 ```sh
 cluster_name=ekscluster1
 export AWS_DEFAULT_REGION=us-east-2

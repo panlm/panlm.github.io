@@ -1,5 +1,6 @@
 ---
 title: "eks-public-access-cluster"
+description: "create public access eks cluster"
 chapter: true
 weight: 2
 created: 2022-05-21 12:43:38.021
@@ -20,11 +21,12 @@ title: This is a github note
 - [[setup-cloud9-for-eks]] or using your local environment
 
 ## cluster yaml
-- dont put `subnets`/`sharedNodeSecurityGroup` in your `vpc` section. eksctl will create a clean vpc for you
-- dont use `privateCluster` section, you could make cluster api server endpoint `public` or `public and private`
+- don't put `subnets`/`sharedNodeSecurityGroup` in your `vpc` section. eksctl will create a clean vpc for you
+- don't use `privateCluster` section, you could make cluster api server endpoint `public` or `public and private`
 - you still could put your group node in private subnet for security consideration
 - recommend for most of poc environment
 
+get newest ami id for your node group
 ```sh
 # get optimized eks ami id for your version & region
 AWS_REGION=us-east-2
@@ -33,7 +35,12 @@ aws ssm get-parameter --name /aws/service/eks/optimized-ami/${EKS_VERSION}/amazo
 
 ```
 
-`c1.yaml`
+create config file for creating cluster
+```sh
+touch c1.yaml
+```
+
+copy and paste following to `c1.yaml`, update `ami` if needed.
 ```yaml
 ---
 apiVersion: eksctl.io/v1alpha5
@@ -92,7 +99,7 @@ nodeGroups:
   ssh:
     enableSsm: true
   privateNetworking: true
-  ami: "ami-0f49ec39b0f6fff05"
+  ami: "ami-03fc1b405779966cc"
   amiFamily: AmazonLinux2
   overrideBootstrapCommand: |
     #!/bin/bash
@@ -138,6 +145,7 @@ iam:
 
 ```
 
+create cluster
 ```sh
 eksctl create cluster -f c1.yaml
 ```

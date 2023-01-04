@@ -16,7 +16,7 @@ title: This is a github note
 [refer](https://docs.aws.amazon.com/zh_cn/AmazonCloudWatch/latest/logs/S3ExportTasks.html#S3Permissions)
 
 导出日志格式文件类似：
-![[export-cloudwatch-log-group-to-s3-1.png]]
+![](export-cloudwatch-log-group-to-s3-1.png)
 
 ## create bucket and policy
 ```sh
@@ -87,3 +87,5 @@ done
 - 可以省略 `log-stream-name-prefix` 参数，导出所有日志，考虑日志如何进行二次处理
 - k8s控制日志包含类似前缀，比如 `kube-apiserver-audit-xxx` 和 `kube-apiserver-xxxx` ，并且前者是json格式日志，后者是行日志，如何进行区分导出到不同 prefix 路径，或者导出后如何进行二次处理
 - 导出消息格式问题待解决 [[athena-sample-query#file format when export cwl to s3]]
+
+

@@ -1,12 +1,11 @@
 ---
 title: "flux"
 chapter: true
-weight: 1
+weight: 10
 created: 2022-04-06 19:28:05.118
 last_modified: 2022-09-14 08:40:30.375
 tags: 
 - aws/container/eks 
-- gitops 
 - gitops/weaveworks/flux
 ---
 

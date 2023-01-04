@@ -1,12 +1,12 @@
 ---
 title: "eks-private-access-cluster"
+description: "create private access eks cluster"
 chapter: true
 weight: 3
 created: 2022-03-24 11:20:13.594
 last_modified: 2022-04-11 09:14:41.892
 tags: 
 - aws/container/eks 
-- awscorp/marykay/poc-pcf-eks
 ---
 
 ```ad-attention
@@ -17,7 +17,7 @@ title: This is a github note
 # eks-private-access-cluster
 ## prep bastion
 - 创建vpc和cloud9 
-    - [[create-standard-vpc-for-lab]]
+    - [create-standard-vpc-for-lab](create-standard-vpc-for-lab)
 
 ## prep cloud9
 - 安装必要的软件 

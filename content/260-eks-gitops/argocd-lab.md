@@ -1,11 +1,10 @@
 ---
 title: "argocd"
 chapter: true
-weight: 2
+weight: 20
 created: 2022-08-07 19:24:34.481
 last_modified: 2022-08-07 19:24:34.481
 tags: 
-- gitops 
 - gitops/argo 
 ---
 
