@@ -2,7 +2,7 @@
 title: "setup-cloud9-for-eks"
 description: "prep your lab environment with cloud9"
 chapter: true
-weight: 1
+weight: 10
 created: 2022-05-21 12:46:05.435
 last_modified: 2022-11-20 11:28:25.928
 tags: 

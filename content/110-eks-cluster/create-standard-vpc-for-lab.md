@@ -1,7 +1,7 @@
 ---
 title: "create-standard-vpc-for-lab"
 chapter: true
-weight: 4
+weight: 40
 created: 2022-04-10 22:12:29.404
 last_modified: 2022-04-10 22:12:29.404
 tags: 

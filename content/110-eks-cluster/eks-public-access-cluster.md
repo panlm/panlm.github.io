@@ -2,7 +2,7 @@
 title: "eks-public-access-cluster"
 description: "create public access eks cluster"
 chapter: true
-weight: 2
+weight: 20
 created: 2022-05-21 12:43:38.021
 last_modified: 2022-11-20 11:28:30.221
 tags: 

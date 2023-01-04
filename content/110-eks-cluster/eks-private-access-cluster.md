@@ -2,7 +2,7 @@
 title: "eks-private-access-cluster"
 description: "create private access eks cluster"
 chapter: true
-weight: 3
+weight: 30
 created: 2022-03-24 11:20:13.594
 last_modified: 2022-04-11 09:14:41.892
 tags: 
