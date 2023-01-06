@@ -66,6 +66,9 @@ fi
 # set size as your expectation, otherwize 100g as default volume size
 # size=200
 
+# your default region 
+export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
+
 # install others
 sudo yum -y install jq gettext bash-completion moreutils wget
 
@@ -144,12 +147,11 @@ wget -O aws-iam-authenticator https://github.com/kubernetes-sigs/aws-iam-authent
 chmod +x ./aws-iam-authenticator
 sudo mv ./aws-iam-authenticator /usr/local/bin/
 
-# option
-# install jwt-cli
+# option install jwt-cli
 # https://github.com/mike-engel/jwt-cli/blob/main/README.md
-sudo yum -y install cargo
-cargo install jwt-cli
-sudo ln -sf ~/.cargo/bin/jwt /usr/local/bin/jwt
+# sudo yum -y install cargo
+# cargo install jwt-cli
+# sudo ln -sf ~/.cargo/bin/jwt /usr/local/bin/jwt
 
 # install flux & fluxctl
 curl -s https://fluxcd.io/install.sh | sudo bash

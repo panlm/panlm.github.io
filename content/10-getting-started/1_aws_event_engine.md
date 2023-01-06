@@ -30,6 +30,6 @@ Use a single region for the duration of this workshop. This workshop supports th
 
 - us-east-2 (US East - Ohio)
 
-Please select `US Eest - Ohio` in the top right corner.
+Please select `US East - Ohio` in the top right corner.
 
 ![Step 3](/images/getting_started/c9-step3.png)

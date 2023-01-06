@@ -19,9 +19,9 @@ title: This is a github note
 
 ## enable
 ```sh
-cluster_name=ekscluster1
+CLUSTER_NAME=ekscluster1
 eksctl create iamserviceaccount \
-  --cluster $cluster_name \
+  --cluster ${CLUSTER_NAME} \
   --namespace amazon-cloudwatch \
   --name cwagent-prometheus \
   --attach-policy-arn  arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy \

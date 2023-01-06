@@ -19,12 +19,12 @@ title: This is a github note
 1. replace 2 service accounts with [CloudWatchAgentServerPolicy](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Container-Insights-prerequisites.htm)
 ```sh
 CLUSTER_NAME=ekscluster1
+export AWS_DEFAULT_REGION=us-east-2
 eksctl utils associate-iam-oidc-provider --cluster ${CLUSTER_NAME} --approve
 
 ```
 
 ```sh
-CLUSTER_NAME=ekscluster1
 eksctl create iamserviceaccount \
     --name cloudwatch-agent \
     --namespace amazon-cloudwatch \
@@ -45,8 +45,6 @@ eksctl create iamserviceaccount \
 
 2. [enable](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Container-Insights-setup-EKS-quickstart.html) 
 ```sh
-CLUSTER_NAME=ekscluster1
-AWS_REGION=us-east-2
 FluentBitHttpPort='2020'
 FluentBitReadFromHead='On'
 [[ ${FluentBitReadFromHead} = 'On' ]] && FluentBitReadFromTail='Off'|| FluentBitReadFromTail='On'
@@ -58,7 +56,7 @@ curl -o $output https://raw.githubusercontent.com/aws-samples/amazon-cloudwatch-
 sed -i 's;amazon/cloudwatch-agent;public.ecr.aws/cloudwatch-agent/cloudwatch-agent;' $output
 #sed -i 's;amazon/aws-for-fluent-bit:2.10.0;public.ecr.aws/aws-observability/aws-for-fluent-bit:2.28.0;' $output
 
-cat $output | sed 's/{{cluster_name}}/'${CLUSTER_NAME}'/;s/{{region_name}}/'${AWS_REGION}'/;s/{{http_server_toggle}}/"'${FluentBitHttpServer}'"/;s/{{http_server_port}}/"'${FluentBitHttpPort}'"/;s/{{read_from_head}}/"'${FluentBitReadFromHead}'"/;s/{{read_from_tail}}/"'${FluentBitReadFromTail}'"/' | kubectl apply -f - 
+cat $output | sed 's/{{cluster_name}}/'${CLUSTER_NAME}'/;s/{{region_name}}/'${AWS_DEFAULT_REGION}'/;s/{{http_server_toggle}}/"'${FluentBitHttpServer}'"/;s/{{http_server_port}}/"'${FluentBitHttpPort}'"/;s/{{read_from_head}}/"'${FluentBitReadFromHead}'"/;s/{{read_from_tail}}/"'${FluentBitReadFromTail}'"/' | kubectl apply -f - 
 
 k get po -n amazon-cloudwatch
 

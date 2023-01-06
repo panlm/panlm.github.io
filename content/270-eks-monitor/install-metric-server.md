@@ -21,13 +21,12 @@ this note covered by flux-lab
 # install-metric-server
 
 ## from yaml
-https://docs.aws.amazon.com/zh_cn/eks/latest/userguide/metrics-server.html
+- https://docs.aws.amazon.com/zh_cn/eks/latest/userguide/metrics-server.html
 
 ```sh
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 
 kubectl get deployment metrics-server -n kube-system
-
 ```
 
 ## from helm
