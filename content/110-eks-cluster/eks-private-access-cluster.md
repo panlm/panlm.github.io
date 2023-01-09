@@ -74,11 +74,11 @@ aws ec2 describe-instance-attribute --instance-id $INST_ID --attribute groupSet
 ## prep config
 
 ```sh
-export ACCOUNT_ID=$(aws sts get-caller-identity --output text --query Account)
-export AWS_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
-export INST_ID=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.instanceId')
-export VPC_ID=$(aws ec2 describe-instances --instance-ids ${INST_ID} --region ${AWS_REGION} |jq -r '.Reservations[0].Instances[0].VpcId')
-export AZS=($(aws ec2 describe-availability-zones --query 'AvailabilityZones[].ZoneName' --output text --region $AWS_REGION))
+ACCOUNT_ID=$(aws sts get-caller-identity --output text --query Account)
+AWS_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
+INST_ID=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.instanceId')
+VPC_ID=$(aws ec2 describe-instances --instance-ids ${INST_ID} --region ${AWS_REGION} |jq -r '.Reservations[0].Instances[0].VpcId')
+AZS=($(aws ec2 describe-availability-zones --query 'AvailabilityZones[].ZoneName' --output text --region $AWS_REGION))
 
 echo "export VPC_ID=${VPC_ID}" 
 echo "export AWS_REGION=${AWS_REGION}"
@@ -120,7 +120,11 @@ fi )
 
 
 ## cluster yaml
-`cluster1.yaml`
+
+```sh
+touch cluster1.yaml
+```
+
 ```yaml
 ---
 apiVersion: eksctl.io/v1alpha5
@@ -192,14 +196,17 @@ iam:
   withOIDC: true
 
 addons:
-- name: vpc-cni # no version is specified so it deploys the default version
+- name: vpc-cni 
+  version: latest
+- name: coredns
+  version: latest # auto discovers the latest available
+- name: kube-proxy
   version: latest
 
 ```
 
 ```sh
 eksctl create cluster -f cluster1.yaml
-
 ```
 
 ```sh
