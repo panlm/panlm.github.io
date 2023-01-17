@@ -67,9 +67,6 @@ fi
 # set size as your expectation, otherwize 100g as default volume size
 # size=200
 
-# your default region 
-export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
-
 # install others
 sudo yum -y install jq gettext bash-completion moreutils wget
 
@@ -81,6 +78,9 @@ sudo ./aws/install --update
 # install ssm session plugin
 curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm" -o "session-manager-plugin.rpm"
 sudo yum install -y session-manager-plugin.rpm
+
+# your default region 
+export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
 
 if [[ -c /dev/nvme0 ]]; then
   wget -qO- https://github.com/amazonlinux/amazon-ec2-utils/raw/main/ebsnvme-id >/tmp/ebsnvme-id
