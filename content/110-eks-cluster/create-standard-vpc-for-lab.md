@@ -25,7 +25,7 @@ title: using cloudshell
 AWS_REGION=us-east-1
 BUCKET_NAME=$(aws s3 mb s3://panlm-$RANDOM-$RANDOM |awk '{print $2}')
 
-wget -O aws-vpc.template.yaml https://github.com/panlm/quickstart-aws-vpc/raw/main/templates/aws-vpc.template.yaml
+wget -O aws-vpc.template.yaml https://github.com/panlm/panlm.github.io/raw/main/content/110-eks-cluster/aws-vpc.template.yaml
 aws s3 cp aws-vpc.template.yaml s3://${BUCKET_NAME}/
 
 STACK_NAME=stack1-$RANDOM
@@ -72,15 +72,18 @@ echo "${C9_URL}")
 ```
 
 - no s3 endpoint
-- security group named eks-shared-sg
+- security group named eks-shared-sg (only it self)
+- security group named normal-sg ( icmp/80/443 for all )
 - tag subnet 
     - `kubernetes.io/role/internal-elb` = `1`
     - `kubernetes.io/role/elb` = `1`
     - (option) `kubernetes.io/cluster/<vpc_name>` = `shared`
 - verified in china region
+- add tgw subnet and associate tgw route table with `0.0.0.0/0` to tgw
+- add `10.0.0.0/8` route to public/private1A/private2A route table
 
 ## refer
 - [[cloudformation-cli]]
-
+- [quickstart-aws-vpc](https://aws-quickstart.github.io/quickstart-aws-vpc/)
 
 
