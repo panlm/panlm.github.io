@@ -22,26 +22,44 @@ title: using cloudshell
 ```
 
 ```sh
-AWS_REGION=us-east-1
+AWS_REGION=cn-north-1
 BUCKET_NAME=$(aws s3 mb s3://panlm-$RANDOM-$RANDOM |awk '{print $2}')
+
+# first 2 AZs
+# separator `\,` is necessary for ParameterValue in cloudformation
+AZS=($(aws ec2 describe-availability-zones --query 'AvailabilityZones[].ZoneName' --output text |xargs -n 1 |sed -n '1,2p' |xargs |sed 's/ /\\,/g'))
 
 wget -O aws-vpc.template.yaml https://github.com/panlm/panlm.github.io/raw/main/content/110-eks-cluster/aws-vpc.template.yaml
 aws s3 cp aws-vpc.template.yaml s3://${BUCKET_NAME}/
 
-STACK_NAME=stack1-$RANDOM
-CIDR="10.1"
+STACK_NAME=aws-vpc-$(date +%H%M%S)
+CIDR="10.130"
 aws cloudformation create-stack --stack-name ${STACK_NAME} \
-  --parameters ParameterKey=AvailabilityZones,ParameterValue="${AWS_REGION}a\,${AWS_REGION}b" \
+  --parameters ParameterKey=AvailabilityZones,ParameterValue="${AZS}" \
   ParameterKey=VPCCIDR,ParameterValue="${CIDR}.0.0/16" \
   ParameterKey=NumberOfAZs,ParameterValue=2 \
-  ParameterKey=PublicSubnet1CIDR,ParameterValue="${CIDR}.1.0/24" \
-  ParameterKey=PublicSubnet2CIDR,ParameterValue="${CIDR}.2.0/24" \
-  ParameterKey=PrivateSubnet1ACIDR,ParameterValue="${CIDR}.3.0/24" \
-  ParameterKey=PrivateSubnet1BCIDR,ParameterValue="${CIDR}.4.0/24" \
-  ParameterKey=PrivateSubnet2ACIDR,ParameterValue="${CIDR}.5.0/24" \
-  ParameterKey=PrivateSubnet2BCIDR,ParameterValue="${CIDR}.6.0/24" \
-  --template-url https://${BUCKET_NAME}.s3.amazonaws.com/aws-vpc.template.yaml \
+  ParameterKey=PublicSubnet1CIDR,ParameterValue="${CIDR}.128.0/24" \
+  ParameterKey=PublicSubnet2CIDR,ParameterValue="${CIDR}.129.0/24" \
+  ParameterKey=PublicSubnet3CIDR,ParameterValue="${CIDR}.130.0/24" \
+  ParameterKey=PublicSubnet4CIDR,ParameterValue="${CIDR}.131.0/24" \
+  ParameterKey=PrivateSubnet1ACIDR,ParameterValue="${CIDR}.0.0/19" \
+  ParameterKey=PrivateSubnet2ACIDR,ParameterValue="${CIDR}.32.0/19" \
+  ParameterKey=PrivateSubnet3ACIDR,ParameterValue="${CIDR}.64.0/19" \
+  ParameterKey=PrivateSubnet4ACIDR,ParameterValue="${CIDR}.96.0/19" \
+  ParameterKey=CreateTgwSubnets,ParameterValue="true" \
+  ParameterKey=TgwSubnet1CIDR,ParameterValue="${CIDR}.132.0/24" \
+  ParameterKey=TgwSubnet2CIDR,ParameterValue="${CIDR}.133.0/24" \
+  ParameterKey=TgwSubnet3CIDR,ParameterValue="${CIDR}.134.0/24" \
+  ParameterKey=TgwSubnet4CIDR,ParameterValue="${CIDR}.135.0/24" \
+  ParameterKey=CreateTgwAttachment,ParameterValue="false" \
+  ParameterKey=TransitGatewayId,ParameterValue="tgw-0ec1b74b7d8dcea74" \
+  --template-url https://${BUCKET_NAME}.s3.${AWS_REGION}.amazonaws.com.cn/aws-vpc.template.yaml \
   --region ${AWS_REGION}
+
+# global region
+# https://${BUCKET_NAME}.s3.amazonaws.com/aws-vpc.template.yaml
+# china region
+# https://${BUCKET_NAME}.s3.${AWS_REGION}.amazonaws.com.cn/aws-vpc.template.yaml
 
 # until get CREATE_COMPLETE
 while true ; do
