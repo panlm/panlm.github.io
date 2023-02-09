@@ -14,6 +14,8 @@ title: This is a github note
 
 ```
 
+# create-standard-vpc-for-lab
+
 ## using cloudformation template 
 
 ```ad-note
@@ -32,8 +34,9 @@ AZS=($(aws ec2 describe-availability-zones --query 'AvailabilityZones[].ZoneName
 wget -O aws-vpc.template.yaml https://github.com/panlm/panlm.github.io/raw/main/content/110-eks-cluster/aws-vpc.template.yaml
 aws s3 cp aws-vpc.template.yaml s3://${BUCKET_NAME}/
 
-STACK_NAME=aws-vpc-$(date +%H%M%S)
-CIDR="10.130"
+
+CIDR="10.128"
+STACK_NAME=aws-vpc-${CIDR##*.}-$(date +%Y%m%d-%H%M%S)
 aws cloudformation create-stack --stack-name ${STACK_NAME} \
   --parameters ParameterKey=AvailabilityZones,ParameterValue="${AZS}" \
   ParameterKey=VPCCIDR,ParameterValue="${CIDR}.0.0/16" \
@@ -51,8 +54,11 @@ aws cloudformation create-stack --stack-name ${STACK_NAME} \
   ParameterKey=TgwSubnet2CIDR,ParameterValue="${CIDR}.133.0/24" \
   ParameterKey=TgwSubnet3CIDR,ParameterValue="${CIDR}.134.0/24" \
   ParameterKey=TgwSubnet4CIDR,ParameterValue="${CIDR}.135.0/24" \
-  ParameterKey=CreateTgwAttachment,ParameterValue="false" \
+  ParameterKey=CreateTgwAttachment,ParameterValue="true" \
   ParameterKey=TransitGatewayId,ParameterValue="tgw-0ec1b74b7d8dcea74" \
+  ParameterKey=CreatePublicSubnets,ParameterValue="false" \
+  ParameterKey=CreatePrivateSubnets,ParameterValue="true" \
+  ParameterKey=CreateNATGateways,ParameterValue="false" \
   --template-url https://${BUCKET_NAME}.s3.${AWS_REGION}.amazonaws.com.cn/aws-vpc.template.yaml \
   --region ${AWS_REGION}
 

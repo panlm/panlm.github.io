@@ -26,7 +26,7 @@ title: This is a github note
 - you still could put your group node in private subnet for security consideration
 - recommend for most of poc environment
 
-get newest ami id for your node group
+get newest ami id for your node group, for GPU or Graviton instance ([link](https://docs.aws.amazon.com/eks/latest/userguide/retrieve-ami-id.html))
 ```sh
 # get optimized eks ami id for your version & region
 AWS_REGION=us-east-2

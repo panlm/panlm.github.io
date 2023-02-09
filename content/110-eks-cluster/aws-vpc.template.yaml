@@ -614,6 +614,10 @@ Conditions:
   TgwAttachment&PrivateSubnetsCondition: !And
     - !Condition TgwAttachmentCondition
     - !Condition PrivateSubnetsCondition
+  TgwAttachment&NatGatewaysCondition: !And
+    - !Condition TgwAttachmentCondition
+    - !Condition PrivateSubnetsCondition
+    - !Equals [!Ref CreateNATGateways, 'false']
   PrivateSubnetATag1Condition: !Not [!Equals [!Ref PrivateSubnetATag1, '']]
   PrivateSubnetATag2Condition: !Not [!Equals [!Ref PrivateSubnetATag2, '']]
   PrivateSubnetATag3Condition: !Not [!Equals [!Ref PrivateSubnetATag3, '']]
@@ -1018,6 +1022,14 @@ Resources:
       RouteTableId: !Ref PrivateSubnet1ARouteTable
       DestinationCidrBlock: 10.0.0.0/8
       TransitGatewayId: !Ref TransitGatewayId
+  PrivateSubnet1ARouteTGWNoNAT:
+    Condition: TgwAttachment&NatGatewaysCondition
+    DependsOn: TGWAttachment1
+    Type: AWS::EC2::Route
+    Properties:
+      RouteTableId: !Ref PrivateSubnet1ARouteTable
+      DestinationCidrBlock: 0.0.0.0/0
+      TransitGatewayId: !Ref TransitGatewayId
   PrivateSubnet1ARouteTableAssociation:
     Condition: PrivateSubnetsCondition
     Type: AWS::EC2::SubnetRouteTableAssociation
@@ -1048,6 +1060,14 @@ Resources:
     Properties:
       RouteTableId: !Ref PrivateSubnet2ARouteTable
       DestinationCidrBlock: 10.0.0.0/8
+      TransitGatewayId: !Ref TransitGatewayId
+  PrivateSubnet2ARouteTGWNoNAT:
+    Condition: TgwAttachment&NatGatewaysCondition
+    DependsOn: TGWAttachment1
+    Type: AWS::EC2::Route
+    Properties:
+      RouteTableId: !Ref PrivateSubnet2ARouteTable
+      DestinationCidrBlock: 0.0.0.0/0
       TransitGatewayId: !Ref TransitGatewayId
   PrivateSubnet2ARouteTableAssociation:
     Condition: PrivateSubnetsCondition
