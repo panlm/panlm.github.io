@@ -58,6 +58,17 @@ fi
 
 ![](setup-cloud9-for-eks-1.png)
 
+## using internal proxy or not
+```sh
+cat >> ~/.bash_profile <<-EOF
+export http_proxy=http://10.101.1.55:998
+export https_proxy=http://10.101.1.55:998
+export NO_PROXY=169.254.169.254,10.0.0.0/8,172.16.0.0/16,192.168.0.0/16
+EOF
+source ~/.bash_profile
+
+```
+
 ## install in cloud9 
 1. resize disk - [[cloud9-resize-instance-volume-script]]
 2. disable temporary credential from settings and delete `aws_session_token=` line in `~/.aws/credentials`
@@ -155,7 +166,7 @@ sudo mv ./aws-iam-authenticator /usr/local/bin/
 # sudo ln -sf ~/.cargo/bin/jwt /usr/local/bin/jwt
 
 # install flux & fluxctl
-curl -s https://fluxcd.io/install.sh | sudo bash
+curl -s https://fluxcd.io/install.sh | sudo -E bash
 flux -v
 . <(flux completion bash)
 

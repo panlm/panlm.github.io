@@ -29,9 +29,10 @@ sudo yum -y install jq gettext bash-completion moreutils wget
 - 创建安全组 eks-shared-sg，inbound规则是自己 (needed if your cluster is private only mode )
 ```sh
 # export VPC_ID=vpc-xxxxxxxx
+# export AWS_REGION=cn-north-1
 AWS_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
 INST_ID=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.instanceId')
-VPC_ID=$(aws ec2 describe-instances --instance-ids ${INST_ID} |jq -r '.Reservations[0].Instances[0].VpcId')
+VPC_ID=$(aws ec2 describe-instances --instance-ids ${INST_ID} --region ${AWS_REGION} |jq -r '.Reservations[0].Instances[0].VpcId')
 
 SG_NAME=eks-shared-sg
 SG_ID=$(aws ec2 describe-security-groups --region $AWS_REGION \
@@ -75,9 +76,6 @@ aws ec2 describe-instance-attribute --instance-id $INST_ID --attribute groupSet
 
 ```sh
 ACCOUNT_ID=$(aws sts get-caller-identity --output text --query Account)
-AWS_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
-INST_ID=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.instanceId')
-VPC_ID=$(aws ec2 describe-instances --instance-ids ${INST_ID} --region ${AWS_REGION} |jq -r '.Reservations[0].Instances[0].VpcId')
 AZS=($(aws ec2 describe-availability-zones --query 'AvailabilityZones[].ZoneName' --output text --region $AWS_REGION))
 
 echo "export VPC_ID=${VPC_ID}" 
@@ -91,7 +89,7 @@ echo '  subnets:'
 echo '    private:'
 for i in ${AZS[@]} ; do
     subnetid=$(aws ec2 describe-subnets \
-    --filter "Name=availability-zone,Values=$i" "Name=vpc-id,Values=$VPC_ID" \
+    --filter "Name=availability-zone,Values=$i" "Name=vpc-id,Values=$VPC_ID" "Name=tag-key,Values=kubernetes.io/role/internal-elb" \
     --query 'Subnets[?MapPublicIpOnLaunch==`false`].SubnetId' --output text)
     if [[ ! -z $subnetid ]]; then
         echo "      ${i}:"
@@ -125,6 +123,8 @@ fi )
 touch cluster1.yaml
 ```
 
+commercial region sample config, 
+check appendix for china region sample config
 ```yaml
 ---
 apiVersion: eksctl.io/v1alpha5
@@ -246,4 +246,60 @@ eksctl utils write-kubeconfig --cluster ekscluster1
 - [[eks-nodegroup]]
 - [[eksctl-sample-priv-addons]]
 
+## appendix - china region sample
+
+```yaml
+---
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: ekscluster131 # MODIFY cluster name
+  region: "cn-north-1" # MODIFY region
+  version: "1.24" # MODIFY version
+
+# REPLACE THIS CODE BLOCK
+vpc:
+  subnets:
+    private:
+      us-east-2a:
+        id: subnet-xxxxxxxx
+      us-east-2b:
+        id: subnet-xxxxxxxx
+    public:
+      us-east-2a:
+        id: subnet-xxxxxxxx
+      us-east-2b:
+        id: subnet-xxxxxxxx
+  sharedNodeSecurityGroup: sg-xxxxxxxx
+
+cloudWatch:
+  clusterLogging:
+    enableTypes: ["*"]
+
+# secretsEncryption:
+#   keyARN: ${MASTER_ARN}
+
+managedNodeGroups:
+- name: mng1
+  minSize: 2
+  maxSize: 5
+  desiredCapacity: 2
+  instanceType: m5.large
+  ssh:
+    enableSsm: true
+  privateNetworking: true
+
+iam:
+  withOIDC: true
+
+addons:
+- name: vpc-cni 
+  version: latest
+- name: coredns
+  version: latest # auto discovers the latest available
+- name: kube-proxy
+  version: latest
+
+```
 

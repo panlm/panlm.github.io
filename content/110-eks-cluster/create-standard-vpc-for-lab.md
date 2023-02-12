@@ -17,15 +17,15 @@ title: This is a github note
 # create-standard-vpc-for-lab
 
 ## using cloudformation template 
-
-```ad-note
-title: using cloudshell
-
-```
+- search `cloud9` in marketplace, and launch instance from it
+- assign `AdministratorAccess` to instance profile
 
 ```sh
 AWS_REGION=cn-north-1
-BUCKET_NAME=$(aws s3 mb s3://panlm-$RANDOM-$RANDOM |awk '{print $2}')
+export AWS_DEFAULT_REGION=${AWS_REGION}
+UNIQ_STR=$(date +%Y%m%d-%H%M%S)
+BUCKET_NAME=$(aws s3 mb s3://panlm-${UNIQ_STR} |awk '{print $2}')
+
 
 # first 2 AZs
 # separator `\,` is necessary for ParameterValue in cloudformation
@@ -34,8 +34,20 @@ AZS=($(aws ec2 describe-availability-zones --query 'AvailabilityZones[].ZoneName
 wget -O aws-vpc.template.yaml https://github.com/panlm/panlm.github.io/raw/main/content/110-eks-cluster/aws-vpc.template.yaml
 aws s3 cp aws-vpc.template.yaml s3://${BUCKET_NAME}/
 
+# new vpc will connect with TGW, if TGW existed
+TGW_ID=tgw-0ec1b74b7d8dcea74
+TGW_NUMBER=$(aws ec2 describe-transit-gateways \
+--filter Name=transit-gateway-id,Values=${TGW_ID} \
+|jq -r '.TransitGateways | length')
+if [[ ${TGW_NUMBER} -eq 1 ]]; then
+  TGW_ATTACH=true
+else
+  TGW_ATTACH=false
+fi
+# do not create public subnet & igw
+CREATE_PUB_SUB=false
 
-CIDR="10.128"
+CIDR="10.131"
 STACK_NAME=aws-vpc-${CIDR##*.}-$(date +%Y%m%d-%H%M%S)
 aws cloudformation create-stack --stack-name ${STACK_NAME} \
   --parameters ParameterKey=AvailabilityZones,ParameterValue="${AZS}" \
@@ -54,18 +66,16 @@ aws cloudformation create-stack --stack-name ${STACK_NAME} \
   ParameterKey=TgwSubnet2CIDR,ParameterValue="${CIDR}.133.0/24" \
   ParameterKey=TgwSubnet3CIDR,ParameterValue="${CIDR}.134.0/24" \
   ParameterKey=TgwSubnet4CIDR,ParameterValue="${CIDR}.135.0/24" \
-  ParameterKey=CreateTgwAttachment,ParameterValue="true" \
-  ParameterKey=TransitGatewayId,ParameterValue="tgw-0ec1b74b7d8dcea74" \
-  ParameterKey=CreatePublicSubnets,ParameterValue="false" \
+  ParameterKey=CreateTgwAttachment,ParameterValue="${TGW_ATTACH}" \
+  ParameterKey=TransitGatewayId,ParameterValue="${TGW_ID}" \
+  ParameterKey=CreatePublicSubnets,ParameterValue="${CREATE_PUB_SUB}" \
   ParameterKey=CreatePrivateSubnets,ParameterValue="true" \
   ParameterKey=CreateNATGateways,ParameterValue="false" \
   --template-url https://${BUCKET_NAME}.s3.${AWS_REGION}.amazonaws.com.cn/aws-vpc.template.yaml \
   --region ${AWS_REGION}
 
-# global region
-# https://${BUCKET_NAME}.s3.amazonaws.com/aws-vpc.template.yaml
-# china region
-# https://${BUCKET_NAME}.s3.${AWS_REGION}.amazonaws.com.cn/aws-vpc.template.yaml
+# global region: amazonaws.com
+# china region: amazonaws.com.cn
 
 # until get CREATE_COMPLETE
 while true ; do
@@ -107,7 +117,7 @@ echo "${C9_URL}")
 - add `10.0.0.0/8` route to public/private1A/private2A route table
 
 ## refer
-- [[cloudformation-cli]]
-- [quickstart-aws-vpc](https://aws-quickstart.github.io/quickstart-aws-vpc/)
+- [[cloudformation-cli]] 
+- [quickstart-aws-vpc](https://aws-quickstart.github.io/quickstart-aws-vpc/) 
 
 

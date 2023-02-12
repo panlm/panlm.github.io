@@ -45,12 +45,14 @@ eksctl utils associate-iam-oidc-provider \
 #curl -o iam_policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.1/docs/install/iam_policy.json
 
 git clone https://github.com/kubernetes-sigs/aws-load-balancer-controller.git
-cp aws-load-balancer-controller/docs/install/iam_policy.json .
+IAM_POLICY_TEMPLATE=iam_policy.json # not china region
+# IAM_POLICY_TEMPLATE=iam_policy_cn.json # china region
+cp aws-load-balancer-controller/docs/install/${IAM_POLICY_TEMPLATE} .
 
-policy_name=AWSLoadBalancerControllerIAMPolicy-$RANDOM
+policy_name=AWSLoadBalancerControllerIAMPolicy-`date +%m%d%H%M`
 policy_arn=$(aws iam create-policy \
   --policy-name ${policy_name}  \
-  --policy-document file://iam_policy.json \
+  --policy-document file://${IAM_POLICY_TEMPLATE} \
   --query 'Policy.Arn' \
   --output text)
 
