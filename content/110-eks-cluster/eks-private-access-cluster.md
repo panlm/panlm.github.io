@@ -27,6 +27,7 @@ sudo yum -y install jq gettext bash-completion moreutils wget
 ```
 
 - 创建安全组 eks-shared-sg，inbound规则是自己 (needed if your cluster is private only mode )
+
 ```sh
 # export VPC_ID=vpc-xxxxxxxx
 # export AWS_REGION=cn-north-1
@@ -72,8 +73,9 @@ aws ec2 describe-instance-attribute --instance-id $INST_ID --attribute groupSet
 - if you create private only cluster in vpc which you have created with public/private eks endpoint, using the **Shared SG** of the previous cluster
 
 ---
+📚
 ## prep config
-
+- 创建完自定义 vpc 后，直接执行下面代码
 ```sh
 ACCOUNT_ID=$(aws sts get-caller-identity --output text --query Account)
 AZS=($(aws ec2 describe-availability-zones --query 'AvailabilityZones[].ZoneName' --output text --region $AWS_REGION))

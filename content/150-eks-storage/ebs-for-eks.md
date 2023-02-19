@@ -44,7 +44,7 @@ POLICY_ARN=$(aws iam list-policies \
   --query 'Policies[?PolicyName==`AmazonEBSCSIDriverPolicy`].Arn' \
   --output text --region ${AWS_REGION} )
 # check detail permission in this policy
-aws iam get-policy-version --policy-arn ${POLICY_ARN} --version-id v1
+# aws iam get-policy-version --policy-arn ${POLICY_ARN} --version-id v1
 
 # get vpc id
 VPC_ID=$(aws eks describe-cluster \
