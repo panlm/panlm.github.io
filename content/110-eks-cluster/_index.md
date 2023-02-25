@@ -1,6 +1,6 @@
 ---
 title: "EKS Cluster"
-description: ""
+description: "EKS 集群创建相关实验"
 chapter: true
 weight: 110
 ---

@@ -1,6 +1,6 @@
 ---
 title: "Getting Started"
-description: " "
+description: "开始"
 chapter: true
 weight: 10
 pre: "<b>0. </b>"
