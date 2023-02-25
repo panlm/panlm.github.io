@@ -43,8 +43,8 @@ kubectl get pods -n kube-system
 POLICY_ARN=$(aws iam list-policies \
   --query 'Policies[?PolicyName==`AmazonEBSCSIDriverPolicy`].Arn' \
   --output text --region ${AWS_REGION} )
-# check detail permission in this policy
-# aws iam get-policy-version --policy-arn ${POLICY_ARN} --version-id v1
+# check detail permission in this policy (need --no-cli-pager)
+# aws iam get-policy-version --policy-arn ${POLICY_ARN} --version-id v1 --no-cli-pager
 
 # get vpc id
 VPC_ID=$(aws eks describe-cluster \

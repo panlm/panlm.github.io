@@ -1,11 +1,14 @@
 ---
 title: "cloudwatch-to-firehose-python"
-chapter: false
+chapter: true
 weight: 3
 created: 2022-10-02 11:52:39.497
 last_modified: 2022-10-02 11:52:39.497
 tags: 
 - aws/serverless/lambda
+- aws/mgmt/cloudwatch 
+- aws/analytics/kinesis/firehose 
+- python 
 ---
 
 # cloudwatch-to-firehose-python

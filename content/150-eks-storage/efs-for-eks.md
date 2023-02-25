@@ -19,7 +19,7 @@ title: This is a github note
 - [[efs-on-eks-mini-priviledge]]
 - [Introducing Amazon EFS CSI dynamic provisioning](https://aws.amazon.com/blogs/containers/introducing-efs-csi-dynamic-provisioning/)
 
-## create efs
+## create efs 📚
 ```sh
 CLUSTER_NAME=eks0630
 AWS_REGION=cn-northwest-1
