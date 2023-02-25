@@ -1,5 +1,6 @@
 ---
 title: "Getting Started"
+description: ""
 chapter: true
 weight: 10
 pre: "<b>0. </b>"

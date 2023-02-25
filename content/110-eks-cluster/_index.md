@@ -1,5 +1,6 @@
 ---
 title: "EKS Cluster"
+description: ""
 chapter: true
 weight: 110
 ---
