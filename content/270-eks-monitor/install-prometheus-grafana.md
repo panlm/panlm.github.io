@@ -1,5 +1,5 @@
 ---
-title: 
+title: install-prometheus-grafana
 created: 2023-02-18 21:31:31.678
 last_modified: 2023-02-18 21:31:31.678
 tags: 
@@ -17,7 +17,9 @@ title: This is a github note
 [link](https://archive.eksworkshop.com/intermediate/240_monitoring/prereqs/) 
 
 ## prep
-- [[ebs-for-eks]]
+- [[ebs-for-eks]]  or
+- [ebs-for-eks.md]({{< ref "ebs-for-eks.md" >}}) 
+
 
 ## install prometheus
 ```sh

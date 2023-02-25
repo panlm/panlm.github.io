@@ -21,6 +21,8 @@ AWS_REGION=us-east-2
 ```
 
 ![[efs-cmd#create efs 📚]]
+or [efs-cmd.md]({{< ref "efs-cmd.md" >}}) 
+
 mount nfs to instance ([link](https://aws.amazon.com/premiumsupport/knowledge-center/elastic-beanstalk-mount-efs-volumes/))
 
 ```sh
