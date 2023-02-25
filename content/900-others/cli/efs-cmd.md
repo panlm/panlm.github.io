@@ -1,5 +1,6 @@
 ---
 title: efs-cmd
+description: efs related commands
 created: 2023-02-24 08:03:38.967
 last_modified: 2023-02-24 08:03:38.967
 tags: 
@@ -15,8 +16,8 @@ title: This is a github note
 
 ## create efs 📚
 ```sh
-CLUSTER_NAME=eks0630
-AWS_REGION=us-east-2
+CLUSTER_NAME=${CLUSTER_NAME:-eks0630}
+AWS_REGION=${AWS_REGION:-us-east-2}
 
 VPC_ID=$(aws ec2 describe-vpcs --filter Name=is-default,Values=true --query 'Vpcs[0].VpcId' --output text)
 VPC_CIDR=$(aws ec2 describe-vpcs --vpc-ids ${VPC_ID} \

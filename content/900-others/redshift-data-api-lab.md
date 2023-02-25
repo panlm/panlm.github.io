@@ -1,5 +1,6 @@
 ---
 title: "redshift-data-api-lab"
+description: "Amazon Redshift 数据 API 使您能够使用所有类型的传统、云原生和容器化、基于 Web 服务的无服务器应用程序和事件驱动的应用程序轻松访问来自 Amazon Redshift 的数据"
 chapter: true
 weight: 1
 created: 2022-03-01 11:23:18.633

@@ -70,7 +70,7 @@ source ~/.bash_profile
 ```
 
 ## install in cloud9 
-1. resize disk - [[cloud9-resize-instance-volume-script]]
+1. resize disk ([[cloud9-resize-instance-volume-script]])
 2. disable temporary credential from settings and delete `aws_session_token=` line in `~/.aws/credentials`
 3. install general dependencies
 4. resize cloud9 disk

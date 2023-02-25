@@ -1,5 +1,6 @@
 ---
 title: "github-page-howto"
+description: "github-page-howto"
 chapter: true
 weight: 999
 created: 2023-01-02 13:55:05.242
