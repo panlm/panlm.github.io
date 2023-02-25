@@ -1,5 +1,6 @@
 ---
 title: "ebs-for-eks"
+description: "使用 ebs 作为 pod 持久化存储 "
 chapter: true
 weight: 2
 created: 2022-06-24 14:41:33.643

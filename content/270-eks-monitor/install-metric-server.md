@@ -1,5 +1,6 @@
 ---
 title: "install-metric-server"
+description: "EKS 集群中安装 metric server"
 chapter: true
 weight: 1
 created: 2022-07-04 13:54:12.092

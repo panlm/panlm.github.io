@@ -1,5 +1,6 @@
 ---
 title: "automated-canary-deployment-using-flagger"
+description: "自动化 canary 部署"
 chapter: true
 weight: 30
 created: 2023-01-08 14:36:17.163

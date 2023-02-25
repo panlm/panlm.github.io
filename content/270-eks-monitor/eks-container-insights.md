@@ -1,5 +1,6 @@
 ---
 title: "eks-container-insights"
+description: "启用 EKS 的 container insight 功能"
 chapter: true
 weight: 2
 created: 2022-02-22 08:08:35.714

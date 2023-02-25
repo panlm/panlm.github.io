@@ -1,5 +1,6 @@
 ---
 title: "create-standard-vpc-for-lab"
+description: "创建实验环境所需要的 vpc ，并且支持直接 attach 到 tgw 方便网络访问"
 chapter: true
 weight: 40
 created: 2022-04-10 22:12:29.404

@@ -1,5 +1,6 @@
 ---
 title: "eks-fargate"
+description: "在 eks 集群中使用 fargate"
 chapter: true
 weight: 1
 created: 2022-06-25 09:17:05.835

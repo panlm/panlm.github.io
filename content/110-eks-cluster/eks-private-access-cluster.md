@@ -1,6 +1,6 @@
 ---
 title: "eks-private-access-cluster"
-description: "create private access eks cluster"
+description: "在已有 vpc 中创建私有访问的 eks 集群"
 chapter: true
 weight: 30
 created: 2022-03-24 11:20:13.594

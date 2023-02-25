@@ -8,5 +8,5 @@ last_modified: 2023-01-02 13:15:16.974
 
 # EKS Fargate
 
-{{% children showhidden="false" %}}
+{{% children showhidden="false" description="true" %}}
 

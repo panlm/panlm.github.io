@@ -1,6 +1,6 @@
 ---
 title: "setup-cloud9-for-eks"
-description: "prep your lab environment with cloud9"
+description: "使用 cloud9 作为实验环境"
 chapter: true
 weight: 10
 created: 2022-05-21 12:46:05.435

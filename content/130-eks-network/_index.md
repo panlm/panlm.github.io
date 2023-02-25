@@ -8,4 +8,4 @@ last_modified: 2023-01-02 13:15:16.974
 
 # EKS Network
 
-{{% children depth="99" showhidden="false" %}}
+{{% children depth="99" showhidden="false" description="true" %}}

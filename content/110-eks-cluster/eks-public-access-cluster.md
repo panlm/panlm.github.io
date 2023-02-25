@@ -1,6 +1,6 @@
 ---
 title: "eks-public-access-cluster"
-description: "create public access eks cluster"
+description: "创建共有访问的 eks 集群"
 chapter: true
 weight: 20
 created: 2022-05-21 12:43:38.021

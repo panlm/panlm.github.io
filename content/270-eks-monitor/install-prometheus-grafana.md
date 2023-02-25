@@ -1,5 +1,6 @@
 ---
 title: install-prometheus-grafana
+description: "安装 grafana 和 prometheus"
 created: 2023-02-18 21:31:31.678
 last_modified: 2023-02-18 21:31:31.678
 tags: 

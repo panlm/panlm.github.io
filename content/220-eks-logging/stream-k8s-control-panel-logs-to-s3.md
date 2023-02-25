@@ -1,5 +1,6 @@
 ---
 title: "stream-k8s-control-panel-logs-to-s3"
+description: "目前eks控制平面日志只支持发送到cloudwatch，且在同一个log group中有5种类型6种前缀的log stream的日志，不利于统一查询。且只有audit日志是json格式其他均是单行日志，且字段各不相同。本解决方案提供思路统一保存日志供后续分析处理"
 chapter: true
 weight: 1
 created: 2022-10-02 08:37:27.387

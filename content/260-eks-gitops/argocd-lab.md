@@ -1,5 +1,6 @@
 ---
 title: "argocd"
+description: "argocd"
 chapter: true
 weight: 20
 created: 2022-08-07 19:24:34.481

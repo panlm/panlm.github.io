@@ -1,5 +1,6 @@
 ---
 title: "export-cloudwatch-log-group-to-s3"
+description: "导出 cloudwatch 日志到 s3"
 chapter: true
 weight: 2
 created: 2022-08-17 21:19:15.620

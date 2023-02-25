@@ -1,5 +1,6 @@
 ---
 title: "cloudwatch-to-firehose-python"
+description: "在 firehose 上，处理从 cloudwatch 发送来的日志"
 chapter: true
 weight: 3
 created: 2022-10-02 11:52:39.497

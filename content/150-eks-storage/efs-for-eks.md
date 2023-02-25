@@ -1,5 +1,6 @@
 ---
 title: "efs-for-eks"
+description: "使用 efs 作为 pod 持久化存储"
 chapter: true
 weight: 1
 created: 2022-05-23 09:57:50.932

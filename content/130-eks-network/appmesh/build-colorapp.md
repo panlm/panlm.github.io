@@ -1,5 +1,6 @@
 ---
 title: "build-colorapp"
+description: "创建 color 应用"
 chapter: true
 weight: 20
 created: 2023-01-09 14:13:56.452

@@ -1,5 +1,6 @@
 ---
 title: "appmesh-workshop-eks"
+description: "appmesh workshop"
 chapter: true
 weight: 10
 created: 2023-01-06 12:22:19.360

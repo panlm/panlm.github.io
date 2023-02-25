@@ -1,5 +1,6 @@
 ---
 title: "enable-prometheus-in-cloudwatch"
+description: "将 EKS 集群的 prometheus 数据汇总到 cloudwatch"
 chapter: true
 weight: 3
 created: 2022-03-22 15:56:53.271

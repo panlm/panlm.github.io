@@ -1,5 +1,6 @@
 ---
 title: "externaldns-for-route53"
+description: "使用 externaldns 组件"
 chapter: true
 weight: 3
 created: 2022-08-04 13:24:34.806

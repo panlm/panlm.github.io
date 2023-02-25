@@ -1,5 +1,6 @@
 ---
 title: grafana-install-lab
+description: "安装 grafana 在 EC2 、 beanstalk 和 EKS"
 created: 2023-02-25 08:35:55.725
 last_modified: 2023-02-25 08:35:55.725
 tags: 

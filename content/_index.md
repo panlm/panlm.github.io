@@ -7,7 +7,7 @@ last_modified: 2022-10-10 13:39:08.529
 
 # HOME
 
-{{% children depth="99" showhidden="false" %}}
+{{% children depth="99" showhidden="false" description="true" %}}
 
 
 
