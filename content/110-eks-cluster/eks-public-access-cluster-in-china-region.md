@@ -21,8 +21,7 @@ tags:
 4. pre-config
 ![[eks-private-access-cluster#^h86u1r]]
 
-or hugo code:
-{{< ref "eks-private-access-cluster#prep config" >}}
+or [hugo-link]({{< ref "eks-private-access-cluster#prep config" >}}) 
 
 5. cluster config
 
