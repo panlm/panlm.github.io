@@ -15,6 +15,7 @@ title: This is a github note
 ```
 
 # eks-private-access-cluster
+
 ## prep bastion
 - 创建vpc和cloud9 
     - [create-standard-vpc-for-lab](create-standard-vpc-for-lab)
@@ -72,9 +73,8 @@ aws ec2 describe-instance-attribute --instance-id $INST_ID --attribute groupSet
 
 - if you create private only cluster in vpc which you have created with public/private eks endpoint, using the **Shared SG** of the previous cluster
 
----
-📚
-## prep config
+
+## prep-config
 - 创建完自定义 vpc 后，直接执行下面代码
 ```sh
 ACCOUNT_ID=$(aws sts get-caller-identity --output text --query Account)

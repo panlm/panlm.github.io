@@ -17,8 +17,7 @@ title: This is a github note
 
 # create-standard-vpc-for-lab
 
-📚
-## using cloudformation template 
+## using-cloudformation-template 
 - search `cloud9` in marketplace, and launch instance from it
 - assign `AdministratorAccess` to instance profile
 
@@ -92,8 +91,7 @@ done
 
 ```
 
-📚
-## get vpc id
+## get-vpc-id
 ```sh
 VPC_ID=$(aws cloudformation --region ${AWS_REGION} describe-stacks --stack-name ${STACK_NAME} --query 'Stacks[0].Outputs[?OutputKey==`VPCID`].OutputValue' --output text)
 ```
