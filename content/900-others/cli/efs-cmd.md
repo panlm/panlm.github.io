@@ -14,7 +14,8 @@ title: This is a github note
 
 # efs-cmd
 
-## create efs 📚
+## create efs
+
 ```sh
 CLUSTER_NAME=${CLUSTER_NAME:-eks0630}
 AWS_REGION=${AWS_REGION:-us-east-2}
@@ -49,7 +50,9 @@ done
 
 ```
 
-another example
-[[efs-for-eks#create efs 📚]]
+^d4lka9
+
+another example: [[efs-for-eks#^mgh326]] 
+
 
 

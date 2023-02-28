@@ -114,6 +114,8 @@ fi )
 
 ```
 
+^h86u1r
+
 - output will be used in next step
 - ensure you have no s3 endpoint in your target vpc 
     - you could have ssm/ssmmessages endpoint
@@ -126,7 +128,7 @@ touch cluster1.yaml
 ```
 
 commercial region sample config, 
-check appendix for china region sample config
+check [[eks-public-access-cluster-in-china-region#^8ir6w8|here]] for china region sample config
 ```yaml
 ---
 apiVersion: eksctl.io/v1alpha5
@@ -247,61 +249,4 @@ eksctl utils write-kubeconfig --cluster ekscluster1
 - [[eks-public-access-cluster]]
 - [[eks-nodegroup]]
 - [[eksctl-sample-priv-addons]]
-
-## appendix - china region sample
-
-```yaml
----
-apiVersion: eksctl.io/v1alpha5
-kind: ClusterConfig
-
-metadata:
-  name: ekscluster131 # MODIFY cluster name
-  region: "cn-north-1" # MODIFY region
-  version: "1.24" # MODIFY version
-
-# REPLACE THIS CODE BLOCK
-vpc:
-  subnets:
-    private:
-      us-east-2a:
-        id: subnet-xxxxxxxx
-      us-east-2b:
-        id: subnet-xxxxxxxx
-    public:
-      us-east-2a:
-        id: subnet-xxxxxxxx
-      us-east-2b:
-        id: subnet-xxxxxxxx
-  sharedNodeSecurityGroup: sg-xxxxxxxx
-
-cloudWatch:
-  clusterLogging:
-    enableTypes: ["*"]
-
-# secretsEncryption:
-#   keyARN: ${MASTER_ARN}
-
-managedNodeGroups:
-- name: mng1
-  minSize: 2
-  maxSize: 5
-  desiredCapacity: 2
-  instanceType: m5.large
-  ssh:
-    enableSsm: true
-  privateNetworking: true
-
-iam:
-  withOIDC: true
-
-addons:
-- name: vpc-cni 
-  version: latest
-- name: coredns
-  version: latest # auto discovers the latest available
-- name: kube-proxy
-  version: latest
-
-```
 

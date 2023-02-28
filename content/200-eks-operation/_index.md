@@ -1,5 +1,6 @@
 ---
 title: "EKS Operations"
+description: "第三章：EKS 运维"
 chapter: false
 weight: 200
 pre: "<b>3. </b>"

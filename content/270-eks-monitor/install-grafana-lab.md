@@ -1,6 +1,6 @@
 ---
 title: grafana-install-lab
-description: "安装 grafana 在 EC2 、 beanstalk 和 EKS"
+description: "在 EC2 / beanstalk / EKS 上安装 grafana "
 created: 2023-02-25 08:35:55.725
 last_modified: 2023-02-25 08:35:55.725
 tags: 
@@ -21,8 +21,9 @@ CLUSTER_NAME=efs0225
 AWS_REGION=us-east-2
 ```
 
-![[efs-cmd#create efs 📚]]
-or [efs-cmd.md]({{< ref "efs-cmd.md" >}}) 
+![[efs-cmd#^d4lka9]]
+
+or huge line: [efs-cmd.md]({{< ref "efs-cmd.md" >}}) 
 
 mount nfs to instance ([link](https://aws.amazon.com/premiumsupport/knowledge-center/elastic-beanstalk-mount-efs-volumes/))
 
@@ -147,6 +148,5 @@ cat >Dockerrun.aws.json <<-EOF
 }
 EOF
 ```
-
 
 

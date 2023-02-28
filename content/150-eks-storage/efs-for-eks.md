@@ -20,7 +20,8 @@ title: This is a github note
 - [[efs-on-eks-mini-priviledge]]
 - [Introducing Amazon EFS CSI dynamic provisioning](https://aws.amazon.com/blogs/containers/introducing-efs-csi-dynamic-provisioning/)
 
-## create efs 📚
+## create efs 
+
 ```sh
 CLUSTER_NAME=eks0630
 AWS_REGION=cn-northwest-1
@@ -56,6 +57,8 @@ for i in ${PRIV_SUBNETS[@]} ; do
 done
 
 ```
+
+^mgh326
 
 ## install from github
 直接安装不额外配置权限的话，只能验证静态制备

@@ -1,5 +1,6 @@
 ---
 title: "EKS Infra"
+description: "第二章：EKS 基础资源"
 chapter: false
 weight: 100
 pre: "<b>2. </b>"

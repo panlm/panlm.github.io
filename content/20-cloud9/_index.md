@@ -1,6 +1,6 @@
 ---
 title: "Cloud9 Setup"
-description: "使用 Cloud9"
+description: "第一章：使用 Cloud9"
 chapter: false
 weight: 20
 pre: "<b>1. </b>"
