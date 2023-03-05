@@ -65,7 +65,7 @@ if you just use one pod, reference appendix
 ```sh
 wget -O /tmp/efs-mount.config 'https://github.com/awsdocs/elastic-beanstalk-samples/raw/main/configuration-files/aws-provided/instance-configuration/storage-efs-mountfilesystem.config'
 # regexp different between egrep & sed
-# using '\s*' to instead
+# using '\s*' to instead will be better
 cat /tmp/efs-mount.config |egrep '^\s+FILE_SYSTEM_ID: '
 sed -i '/^\s\+FILE_SYSTEM_ID: /s/:.*$/: '"${FILESYSTEM_ID}"'/' /tmp/efs-mount.config
 cp /tmp/efs-mount.config .ebextensions/

@@ -20,7 +20,7 @@ title: This is a github note
 ```toc
 ```
 
-## spin up a cloud9 instance in your region
+## spin-up-a-cloud9-instance-in-your-region
 - click [here](https://us-east-2.console.aws.amazon.com/cloudshell) to run cloud shell and execute code block, and go to your region and open cloud9
 
 ```sh
@@ -29,21 +29,24 @@ datestring=$(date +%Y%m%d-%H%M)
 name=${name:=cloud9-$datestring}
 export AWS_DEFAULT_REGION=us-east-2 # need put each command
 
-DEFAULT_VPC=$(aws ec2 describe-vpcs \
+# VPC_ID=<your vpc id> 
+# ensure you have public subnet in it
+DEFAULT_VPC_ID=$(aws ec2 describe-vpcs \
   --filter Name=is-default,Values=true \
   --query 'Vpcs[0].VpcId' --output text \
   --region ${AWS_DEFAULT_REGION})
+VPC_ID=${VPC_ID:=$DEFAULT_VPC_ID}
 
-if [[ ! -z ${DEFAULT_VPC} ]]; then
+if [[ ! -z ${VPC_ID} ]]; then
   FIRST_SUBNET=$(aws ec2 describe-subnets \
-    --filters "Name=vpc-id,Values=${DEFAULT_VPC}" \
-    --query "Subnets[?AvailabilityZone=='"${AWS_DEFAULT_REGION}a"'].SubnetId" \
+    --filters "Name=vpc-id,Values=${VPC_ID}" \
+    --query 'Subnets[?(AvailabilityZone==`'"${AWS_DEFAULT_REGION}a"'` && MapPublicIpOnLaunch==`true`)].SubnetId' \
     --output text \
     --region ${AWS_DEFAULT_REGION})
   aws cloud9 create-environment-ec2 \
     --name ${name} \
     --image-id amazonlinux-2-x86_64 \
-    --instance-type m5.2xlarge \
+    --instance-type m5.xlarge \
     --subnet-id ${FIRST_SUBNET} \
     --automatic-stop-time-minutes 10080 \
     --region ${AWS_DEFAULT_REGION} |tee /tmp/$$
@@ -55,6 +58,8 @@ else
 fi
 
 ```
+
+^xzcvy9
 
 ![](setup-cloud9-for-eks-1.png)
 

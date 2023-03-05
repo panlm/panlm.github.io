@@ -27,14 +27,17 @@ export AWS_DEFAULT_REGION=${AWS_REGION}
 UNIQ_STR=$(date +%Y%m%d-%H%M%S)
 BUCKET_NAME=$(aws s3 mb s3://panlm-${UNIQ_STR} |awk '{print $2}')
 
+wget -O aws-vpc.template.yaml https://github.com/panlm/panlm.github.io/raw/main/content/110-eks-cluster/aws-vpc.template.yaml
+aws s3 cp aws-vpc.template.yaml s3://${BUCKET_NAME}/
 
 # first 2 AZs
 # separator `\,` is necessary for ParameterValue in cloudformation
 TWOAZS=($(aws ec2 describe-availability-zones --query 'AvailabilityZones[].ZoneName' --output text |xargs -n 1 |sed -n '1,2p' |xargs |sed 's/ /\\,/g'))
 
-wget -O aws-vpc.template.yaml https://github.com/panlm/panlm.github.io/raw/main/content/110-eks-cluster/aws-vpc.template.yaml
-aws s3 cp aws-vpc.template.yaml s3://${BUCKET_NAME}/
+```
 
+if you create vpc in china region, you could put your existed tgw id here for attach automatically.
+```sh
 # new vpc will connect with TGW, if TGW existed
 TGW_ID=tgw-0ec1b74b7d8dcea74
 TGW_NUMBER=$(aws ec2 describe-transit-gateways \
@@ -48,8 +51,26 @@ fi
 # do not create public subnet & igw
 CREATE_PUB_SUB=false
 
+```
+
+you could create vpc without tgw
+```sh
+TGW_ATTACH=false
+CREATE_PUB_SUB=true
+```
+
+create your vpc with specific CIDR
+```sh
 CIDR="10.130"
-STACK_NAME=aws-vpc-${CIDR##*.}-$(date +%Y%m%d-%H%M%S)
+
+STACK_NAME=aws-vpc-${CIDR##*.}-${UNIQ_STR}
+# global region: amazonaws.com
+# china region: amazonaws.com.cn
+if [[ ${AWS_REGION%%-*} == "cn" ]]; then
+  SUFFIX=".cn"
+else
+  SUFFIX=""
+fi
 aws cloudformation create-stack --stack-name ${STACK_NAME} \
   --parameters ParameterKey=AvailabilityZones,ParameterValue="${TWOAZS}" \
   ParameterKey=VPCCIDR,ParameterValue="${CIDR}.0.0/16" \
@@ -72,11 +93,8 @@ aws cloudformation create-stack --stack-name ${STACK_NAME} \
   ParameterKey=CreatePublicSubnets,ParameterValue="${CREATE_PUB_SUB}" \
   ParameterKey=CreatePrivateSubnets,ParameterValue="true" \
   ParameterKey=CreateNATGateways,ParameterValue="false" \
-  --template-url https://${BUCKET_NAME}.s3.${AWS_REGION}.amazonaws.com.cn/aws-vpc.template.yaml \
+  --template-url https://${BUCKET_NAME}.s3.${AWS_REGION}.amazonaws.com${SUFFIX}/aws-vpc.template.yaml \
   --region ${AWS_REGION}
-
-# global region: amazonaws.com
-# china region: amazonaws.com.cn
 
 # until get CREATE_COMPLETE
 while true ; do
@@ -94,24 +112,47 @@ done
 ## get-vpc-id
 ```sh
 VPC_ID=$(aws cloudformation --region ${AWS_REGION} describe-stacks --stack-name ${STACK_NAME} --query 'Stacks[0].Outputs[?OutputKey==`VPCID`].OutputValue' --output text)
+
+# PublicSubnet1ID=$(aws cloudformation --region ${AWS_REGION} describe-stacks --stack-name ${STACK_NAME} --query 'Stacks[0].Outputs[?OutputKey==`PublicSubnet1ID`].OutputValue' --output text)
+
 ```
 
 ## (option) create cloud9 in target subnet 
+refer: [[setup-cloud9-for-eks#^xzcvy9]] or [hugo-link]({{< ref "setup-cloud9-for-eks#spin-up-a-cloud9-instance-in-your-region" >}}) 
+
 ```sh
-PublicSubnet1ID=$(aws cloudformation --region ${AWS_REGION} describe-stacks --stack-name ${STACK_NAME} --query 'Stacks[0].Outputs[?OutputKey==`PublicSubnet1ID`].OutputValue' --output text)
+# name=<give your cloud9 a name>
+datestring=$(date +%Y%m%d-%H%M)
+name=${name:=cloud9-$datestring}
+export AWS_DEFAULT_REGION=us-east-2 # need put each command
 
-OWNER_ARN=$(aws sts get-caller-identity  --query 'Arn'  --output text)
-ENV_ID=$(aws cloud9 create-environment-ec2 \
---name ${STACK_NAME} \
---instance-type t3.small \
---subnet-id ${PublicSubnet1ID} \
---automatic-stop-time-minutes 10080 \
---owner-arn ${OWNER_ARN} \
---query 'environmentId' --output text )
+# VPC_ID=<your vpc id> 
+# ensure you have public subnet in it
+DEFAULT_VPC_ID=$(aws ec2 describe-vpcs \
+  --filter Name=is-default,Values=true \
+  --query 'Vpcs[0].VpcId' --output text \
+  --region ${AWS_DEFAULT_REGION})
+VPC_ID=${VPC_ID:=$DEFAULT_VPC_ID}
 
-(C9_URL=https://${AWS_REGION}.console.aws.amazon.com/cloud9/ide/${ENV_ID}
-echo "open cloud9 url:"
-echo "${C9_URL}")
+if [[ ! -z ${VPC_ID} ]]; then
+  FIRST_SUBNET=$(aws ec2 describe-subnets \
+    --filters "Name=vpc-id,Values=${VPC_ID}" \
+    --query 'Subnets[?(AvailabilityZone==`'"${AWS_DEFAULT_REGION}a"'` && MapPublicIpOnLaunch==`true`)].SubnetId' \
+    --output text \
+    --region ${AWS_DEFAULT_REGION})
+  aws cloud9 create-environment-ec2 \
+    --name ${name} \
+    --image-id amazonlinux-2-x86_64 \
+    --instance-type m5.xlarge \
+    --subnet-id ${FIRST_SUBNET} \
+    --automatic-stop-time-minutes 10080 \
+    --region ${AWS_DEFAULT_REGION} |tee /tmp/$$
+  echo "Open URL to access your Cloud9 Environment:"
+  C9_ID=$(cat /tmp/$$ |jq -r '.environmentId')
+  echo "https://${AWS_DEFAULT_REGION}.console.aws.amazon.com/cloud9/ide/${C9_ID}"
+else
+  echo "you have no default vpc in $AWS_DEFAULT_REGION"
+fi
 
 ```
 
