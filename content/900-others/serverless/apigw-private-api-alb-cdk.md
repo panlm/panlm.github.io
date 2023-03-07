@@ -1,12 +1,17 @@
 ---
 title: apigw-private-api-alb-cdk
 description: 通过 alb 访问 private 的例子
+chapter: true
 created: 2023-03-07 22:09:46.587
 last_modified: 2023-03-07 22:09:46.587
 tags: 
 - aws/serverless/api-gateway 
 - aws/mgmt/cdk 
 ---
+```ad-attention
+title: This is a github note
+
+```
 # AWS CDK Private API and Application Load Balancer Demo
 
 https://github.com/markilott/aws-cdk-internal-private-api-demo
