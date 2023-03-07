@@ -36,7 +36,7 @@ TWOAZS=($(aws ec2 describe-availability-zones --query 'AvailabilityZones[].ZoneN
 
 ```
 
-if you create vpc in china region, you could put your existed tgw id here for attach automatically.
+(option 1) if you create vpc in china region, you could put your existed tgw id here for attach automatically.
 ```sh
 # new vpc will connect with TGW, if TGW existed
 TGW_ID=tgw-0ec1b74b7d8dcea74
@@ -53,7 +53,7 @@ CREATE_PUB_SUB=false
 
 ```
 
-you could create vpc without tgw
+(option 2) you could create vpc without tgw
 ```sh
 TGW_ATTACH=false
 CREATE_PUB_SUB=true
@@ -61,7 +61,7 @@ CREATE_PUB_SUB=true
 
 create your vpc with specific CIDR
 ```sh
-CIDR="10.130"
+CIDR="10.129"
 
 STACK_NAME=aws-vpc-${CIDR##*.}-${UNIQ_STR}
 # global region: amazonaws.com

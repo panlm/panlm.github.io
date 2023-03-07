@@ -47,7 +47,7 @@ if [[ ! -z ${VPC_ID} ]]; then
     --name ${name} \
     --image-id amazonlinux-2-x86_64 \
     --instance-type m5.xlarge \
-    --subnet-id ${FIRST_SUBNET} \
+    --subnet-id ${FIRST_SUBNET%% *} \
     --automatic-stop-time-minutes 10080 \
     --region ${AWS_DEFAULT_REGION} |tee /tmp/$$
   echo "Open URL to access your Cloud9 Environment:"
