@@ -1,6 +1,6 @@
 ---
 title: ssm-cmd
-description: "{{ replace .Name "-" " " | title }}"
+description: ssm-cmd
 chapter: true
 created: 2022-12-06 14:58:34.056
 last_modified: 2022-12-06 14:58:34.056

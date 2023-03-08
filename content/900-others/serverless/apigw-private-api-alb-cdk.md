@@ -1,5 +1,5 @@
 ---
-title: "{{ replace .Name "-" " " | title }}"
+title: apigw-private-api-alb-cdk
 description: 通过 alb 访问 private 的例子
 chapter: true
 created: 2023-03-07 22:09:46.587
