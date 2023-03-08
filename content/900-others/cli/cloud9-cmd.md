@@ -1,6 +1,6 @@
 ---
 title: cloud9-cmd
-description: 
+description: cloud9 related commands
 chapter: true
 created: 2022-07-01 09:18:29.572
 last_modified: 2022-07-01 09:18:29.572
