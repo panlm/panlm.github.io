@@ -1,12 +1,16 @@
 ---
 title: ssm-cmd
-description: ssm-cmd
+description: 常用命令 
 chapter: true
 created: 2022-12-06 14:58:34.056
 last_modified: 2022-12-06 14:58:34.056
 tags: 
 - aws/mgmt/systems-manager 
 ---
+```ad-attention
+title: This is a github note
+
+```
 # ssm-cmd
 
 ## ssm agent

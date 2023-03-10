@@ -1,6 +1,6 @@
 ---
 title: efs-cmd
-description: efs related commands
+description: 常用命令 
 chapter: true
 created: 2023-02-24 08:03:38.967
 last_modified: 2023-02-24 08:03:38.967

@@ -1,6 +1,7 @@
 ---
 title: apigw-custom-domain-name
 description: 为私有 api 创建定制域名
+chapter: true
 created: 2023-03-07 23:01:19.519
 last_modified: 2023-03-07 23:01:19.519
 tags: 
