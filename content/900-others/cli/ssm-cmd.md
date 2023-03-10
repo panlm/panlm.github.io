@@ -5,6 +5,7 @@ chapter: true
 created: 2022-12-06 14:58:34.056
 last_modified: 2022-12-06 14:58:34.056
 tags: 
+- aws/cli 
 - aws/mgmt/systems-manager 
 ---
 ```ad-attention
@@ -45,8 +46,9 @@ done
 
 ```
 
-📚
-## filter-inventory
+
+## filter-inventory-📚
+
 ```sh
 aws ssm get-inventory --filter Key="Custom:DiskUtilization.Size(GB)",Values=100,Type=Equal
 

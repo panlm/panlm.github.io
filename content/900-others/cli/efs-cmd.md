@@ -1,6 +1,6 @@
 ---
 title: efs-cmd
-description: 常用命令 
+description: 1/ 在默认 vpc 中创建 efs 
 chapter: true
 created: 2023-02-24 08:03:38.967
 last_modified: 2023-02-24 08:03:38.967
@@ -16,6 +16,7 @@ title: This is a github note
 
 ## create efs
 
+在默认 vpc 中创建 efs
 ```sh
 CLUSTER_NAME=${CLUSTER_NAME:-eks0630}
 AWS_REGION=${AWS_REGION:-us-east-2}

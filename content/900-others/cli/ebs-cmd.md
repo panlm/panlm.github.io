@@ -1,11 +1,11 @@
 ---
 title: ebs-cmd
-description: ""
+description: "1/ 转换 gp2 到 gp3 ; 2/ 获取指定 volume 每次 snapshot 占用的 block 数量"
 chapter: true
 created: 2023-02-18 11:53:13.625
 last_modified: 2023-02-18 11:53:13.625
 tags: 
-- aws/compute/ec2 
+- aws/cli 
 - aws/storage/ebs 
 ---
 ```ad-attention
@@ -13,9 +13,6 @@ title: This is a github note
 
 ```
 # ebs-cmd
-
-> ## Excerpt
-> 1/ 转换 gp2 到 gp3 ； 2/ 获取指定 volume 每次 snapshot 占用的 block 数量
 
 ## create ebs volume
 
