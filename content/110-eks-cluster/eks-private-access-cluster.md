@@ -19,12 +19,12 @@ title: This is a github note
 ## prep bastion
 - 创建vpc和cloud9 
     - [create-standard-vpc-for-lab](create-standard-vpc-for-lab)
-    - {{< ref "create-standard-vpc-for-lab" >}}
+    - [hugo link]({{< ref "create-standard-vpc-for-lab" >}})
 
 ## prep cloud9
 - 安装必要的软件 
     - [[setup-cloud9-for-eks]]
-    - {{< ref "setup-cloud9-for-eks" >}}
+    - [hugo link]({{< ref "setup-cloud9-for-eks" >}})
 ```sh
 sudo yum -y install jq gettext bash-completion moreutils wget
 ```
