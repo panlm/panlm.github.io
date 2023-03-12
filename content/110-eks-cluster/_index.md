@@ -7,5 +7,5 @@ weight: 110
 
 # Create EKS Cluster
 
-{{% children showhidden="false" description="true" %}}
+{{% children showhidden="false" description="true" /%}}
 

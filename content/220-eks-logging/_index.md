@@ -9,6 +9,6 @@ last_modified: 2023-01-02 13:04:57.636
 
 # EKS Audit Logging
 
-{{% children showhidden="false" description="true" %}}
+{{% children showhidden="false" description="true" /%}}
 
 
