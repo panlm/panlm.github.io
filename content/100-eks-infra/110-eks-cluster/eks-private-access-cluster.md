@@ -18,19 +18,16 @@ title: This is a github note
 
 ## prep bastion
 - 创建vpc和cloud9 
-    - [create-standard-vpc-for-lab](create-standard-vpc-for-lab)
-    - [hugo link]({{< ref "create-standard-vpc-for-lab" >}})
+    - [[create-standard-vpc-for-lab]] or [hugo link]({{< ref "create-standard-vpc-for-lab" >}})
 
 ## prep cloud9
 - 安装必要的软件 
-    - [[setup-cloud9-for-eks]]
-    - [hugo link]({{< ref "setup-cloud9-for-eks" >}})
+    - [[setup-cloud9-for-eks]] or [hugo link]({{< ref "setup-cloud9-for-eks" >}})
 ```sh
 sudo yum -y install jq gettext bash-completion moreutils wget
 ```
 
 - 创建安全组 eks-shared-sg，inbound规则是自己 (needed if your cluster is private only mode )
-
 ```sh
 # export VPC_ID=vpc-xxxxxxxx
 # export AWS_REGION=cn-north-1
