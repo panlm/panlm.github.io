@@ -81,7 +81,7 @@ kubectl -n appmesh-system get all
 ~~[[eksctl-cmd#appmesh-access]]~~
 
 ## flagger
-[automated-canary-deployment-using-flagger](automated-canary-deployment-using-flagger)
+[automated-canary-deployment-using-flagger](automated-canary-deployment-using-flagger.md)
 
 
 

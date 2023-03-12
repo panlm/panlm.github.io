@@ -87,7 +87,7 @@ kubectl apply -f namespace.yaml
 ```
 
 **Step 3.** Create a Kubernetes Deployment object.
-- [build-colorapp](build-colorapp)
+- [build-colorapp](build-colorapp.md)
 
 ```sh
 IMAGE_URL=694242712155.dkr.ecr.us-east-2.amazonaws.com/sample/colorapp:v1
