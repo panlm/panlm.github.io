@@ -18,7 +18,19 @@ https://github.com/markilott/aws-cdk-internal-private-api-demo
 
 ![[Pasted image 20230307221003.png]]
 
-`config/index.ts`
+## prep
+- 创建 host zone 可以被你的域名解析到 （在上游 route53 添加 NS 记录）
+- 不要创建 api gateway 的 endpoint
+
+## lab setup
+- clone repo
+- execute
+```sh
+npm install
+cdk bootstrap
+```
+
+- edit `config/index.ts`
 ```ts
 export const options = {
     vpcAttr: {
@@ -30,16 +42,19 @@ export const options = {
     createCertificate: true,
     certificateArn: '',
     dnsAttr: {
-        zoneName: 'api.aws.panlm.xyz',
-        hostedZoneId: 'Z0717xxxxxxVFVJxxxxxx',
+        zoneName: 'api0312.aws.panlm.xyz',
+        hostedZoneId: 'Z036xxxxxxPMWxxxxxxOP',
     },
-    albHostname: 'alb-test',
+    albHostname: 'test-alb',
     apiPath1: 'test-api1',
     apiPath2: 'test-api2',
 };
-
 ```
 
+- deploy
+```sh
+cdk deploy --all
+```
 
 
 
