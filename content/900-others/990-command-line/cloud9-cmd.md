@@ -13,16 +13,13 @@ title: This is a github note
 
 ```
 # cloud9-cmd
-
-![[setup-cloud9-for-eks#spin-up-a-cloud9-instance-in-your-region]]
+![[setup-cloud9-for-eks#spin-up-a-cloud9-instance-in-your-region]] or [hugo link]({{< ref "create-standard-vpc-for-lab#spin-up-a-cloud9-instance-in-your-region" >}})
 
 
 ```sh
 aws cloud9 describe-environments
 
 ```
-
-
 
 
 
@@ -67,7 +64,7 @@ if [[ ! -z ${DEFAULT_VPC} ]]; then
 
 fi
 
-An error occurred (ValidationException) when calling the CreateEnvironmentEC2 operation: 1 validation error detected: Value 'arn:aws:iam::861006941173:role/adminrole' at 'ownerArn' failed to satisfy constraint: Member must satisfy regular expression pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):(iam|sts)::\d+:(root|(user\/[\w+=/:,.@-]{1,64}|federated-user\/[\w+=/:,.@-]{2,32}|assumed-role\/[\w+=:,.@-]{1,64}\/[\w+=,.@-]{1,64}))$
+An error occurred (ValidationException) when calling the CreateEnvironmentEC2 operation: 1 validation error detected: Value 'arn:aws:iam::861xxxxxx173:role/adminrole' at 'ownerArn' failed to satisfy constraint: Member must satisfy regular expression pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):(iam|sts)::\d+:(root|(user\/[\w+=/:,.@-]{1,64}|federated-user\/[\w+=/:,.@-]{2,32}|assumed-role\/[\w+=:,.@-]{1,64}\/[\w+=,.@-]{1,64}))$
 
 
 ```

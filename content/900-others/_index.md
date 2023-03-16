@@ -1,9 +1,9 @@
 ---
 title: "AWS Others"
-description: "第四章：其他实验"
+description: "第五章：其他实验"
 chapter: true
 weight: 900
-pre: "<b>4. </b>"
+pre: "<b>5. </b>"
 created: 2023-01-02 13:15:16.974
 last_modified: 2023-01-02 13:15:16.974
 ---

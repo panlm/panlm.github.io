@@ -91,6 +91,13 @@ curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip
 echo A |unzip awscliv2.zip
 sudo ./aws/install --update
 
+# remove existed aws
+if [[ $? -eq 0 ]]; then
+  sudo yum remove -y awscli
+  source ~/.bash_profile
+  aws --version
+fi
+
 # install ssm session plugin
 curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm" -o "session-manager-plugin.rpm"
 sudo yum install -y session-manager-plugin.rpm

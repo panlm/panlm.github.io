@@ -16,16 +16,20 @@ title: This is a github note
 ```
 
 # externaldns-for-route53
-[link](https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/aws.md)
+[link](https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/aws.md) 
 
 ## install
 ```sh
 EKS_CLUSTER_NAME=ekscluster1
-EXTERNALDNS_NS=default
+EXTERNALDNS_NS=externaldns
 AWS_REGION=us-east-2
-DOMAIN_NAME=external.panlm.xyz
+DOMAIN_NAME=api0315.aws.panlm.xyz
 
-cat >policy.json <<-EOF
+# create namespace if it does not yet exist
+kubectl get namespaces | grep -q $EXTERNALDNS_NS || \
+  kubectl create namespace $EXTERNALDNS_NS
+
+cat >externaldns-policy.json <<-EOF
 {
   "Version": "2012-10-17",
   "Statement": [
@@ -53,7 +57,7 @@ cat >policy.json <<-EOF
 EOF
 
 POLICY_NAME=AllowExternalDNSUpdates-${RANDOM}
-aws iam create-policy --policy-name ${POLICY_NAME} --policy-document file://policy.json
+aws iam create-policy --policy-name ${POLICY_NAME} --policy-document file://externaldns-policy.json
 
 # example: arn:aws:iam::XXXXXXXXXXXX:policy/AllowExternalDNSUpdates
 export POLICY_ARN=$(aws iam list-policies \
@@ -70,10 +74,18 @@ eksctl create iamserviceaccount \
 ```
 
 ```sh
+echo ${EXTERNALDNS_NS}
 echo ${DOMAIN_NAME}
 echo ${AWS_REGION}
 
 envsubst >externaldns-with-rbac.yaml <<-EOF
+# comment out sa if it was previously created
+# apiVersion: v1
+# kind: ServiceAccount
+# metadata:
+#   name: external-dns
+#   labels:
+#     app.kubernetes.io/name: external-dns
 ---
 apiVersion: rbac.authorization.k8s.io/v1
 kind: ClusterRole
@@ -102,7 +114,7 @@ roleRef:
 subjects:
   - kind: ServiceAccount
     name: external-dns
-    namespace: default # change to desired namespace: externaldns, kube-addons
+    namespace: ${EXTERNALDNS_NS} # change to desired namespace: externaldns, kube-addons
 ---
 apiVersion: apps/v1
 kind: Deployment
@@ -124,14 +136,14 @@ spec:
       serviceAccountName: external-dns
       containers:
         - name: external-dns
-          image: k8s.gcr.io/external-dns/external-dns:v0.12.2
+          image: registry.k8s.io/external-dns/external-dns:v0.13.2
           args:
             - --source=service
             - --source=ingress
             - --domain-filter=${DOMAIN_NAME} # will make ExternalDNS see only the hosted zones matching provided domain, omit to process all available hosted zones
             - --provider=aws
             - --policy=upsert-only # would prevent ExternalDNS from deleting any records, omit to enable full synchronization
-#            - --aws-zone-type=public # only look at public hosted zones (valid values are public, private or no value for both)
+            - --aws-zone-type=public # only look at public hosted zones (valid values are public, private or no value for both)
             - --registry=txt
             - --txt-owner-id=external-dns
           env:
@@ -156,7 +168,7 @@ kubectl create --filename externaldns-with-rbac.yaml \
 ```
 
 ## setup hosted zone
-[[route53-subdomian]]
+[[route53-subdomian]] 
 
 ```sh
 aws route53 create-hosted-zone --name "${DOMAIN_NAME}." \

@@ -20,17 +20,17 @@ title: This is a github note
 - https://github.com/kubernetes-sigs/aws-load-balancer-controller
 - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/how-it-works/
 
-![[Pasted image 20220531150851.png|500]]
+![aws-load-balancer-controller-png-1.png](aws-load-balancer-controller-png-1.png)
 
 ## workshop
-- [[awslbc-ingress-lab-echoserver]]
+- [[awslbc-ingress-lab-echoserver#install-echoserver-📚]]
 - https://www.eksworkshop.com/beginner/180_fargate/prerequisites-for-alb/
 - 常用ingress的相关配置 ([[awslbc-ingress-settings]])
 - 使用已有ingress的相关配置 ([[awslbc-ingress-settings-ingress-group]])
 - pod rediness gate ([link](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/deploy/pod_readiness_gate/))
 
 ## install
-- [refer](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/deploy/installation/)
+- [refer](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/deploy/installation/) 
 
 {{% notice note %}}
 this note covered by flux-lab
@@ -44,8 +44,8 @@ eksctl utils associate-iam-oidc-provider \
   --approve
 
 #curl -o iam_policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.1/docs/install/iam_policy.json
-
 git clone https://github.com/kubernetes-sigs/aws-load-balancer-controller.git
+
 # aws commercial region
 IAM_POLICY_TEMPLATE=iam_policy.json 
 # aws china region
@@ -81,6 +81,7 @@ helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
   --set serviceAccount.name=aws-load-balancer-controller 
 
 kubectl get deployment -n kube-system aws-load-balancer-controller
+
 ```
 
 [[awslbc-ingress-controller-lab-issue]]
@@ -124,6 +125,6 @@ REGISTRY=602401143452.dkr.ecr.us-east-1.amazonaws.com
 
 
 ## slide
-![[Pasted image 20220630150510.png]]
+![[aws-load-balancer-controller-png-2.png]]
 
 
