@@ -16,22 +16,23 @@ title: This is a github note
 
 https://github.com/markilott/aws-cdk-internal-private-api-demo
 
-![[Pasted image 20230307221003.png]]
+![apigw-private-api-alb-cdk-png-1.png](apigw-private-api-alb-cdk-png-1.png)
 
 ## prep
 - 创建 host zone 可以被你的域名解析到 （在上游 route53 添加 NS 记录）
-- 不要创建 api gateway 的 endpoint
+- 创建新vpc，不要创建 api gateway 的 endpoint
+- 创建 cloud9 在新 vpc
 
 ## lab setup
 - clone repo
-- execute
+- execute in repo folder
 ```sh
 npm install
 cdk bootstrap
 ```
 
 - edit `config/index.ts`
-```ts
+```js
 export const options = {
     vpcAttr: {
         customVpcId: '',
@@ -42,7 +43,7 @@ export const options = {
     createCertificate: true,
     certificateArn: '',
     dnsAttr: {
-        zoneName: 'api0312.aws.panlm.xyz',
+        zoneName: 'apixxxx.aws.panlm.xyz',
         hostedZoneId: 'Z036xxxxxxPMWxxxxxxOP',
     },
     albHostname: 'test-alb',
@@ -55,6 +56,11 @@ export const options = {
 ```sh
 cdk deploy --all
 ```
+
+## data flow
+![apigw-private-api-alb-cdk-png-2.png](apigw-private-api-alb-cdk-png-2.png)
+
+![apigw-private-api-alb-cdk-png-3.png](apigw-private-api-alb-cdk-png-3.png)
 
 
 

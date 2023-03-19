@@ -24,8 +24,8 @@ title: This is a github note
     - 如果该 api 是私有的，定制域名 alias 到 apigw 上，则将访问禁止 `Forbidden` 。
 
 ## for regional api 
-- 如果该 api 是 regional ，定制域名 alias 到 apigw 上，参照 [[apigw-regional-api-access-from-vpc]]
-
+- 如果该 api 是 regional ，创建定制域名，记录下定制域名配置中的`API Gateway domain name`，不是apigw stage url 中的域名，参照 [[apigw-regional-api-access-from-vpc]]
+- 浏览器将显示证书有效
 
 
 

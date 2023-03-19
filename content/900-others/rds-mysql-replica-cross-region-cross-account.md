@@ -124,15 +124,13 @@ aws rds create-db-instance                          \
 # --storage-encrypted
 
 # get rds status util `available`
-while true ; do
-status=$(aws rds describe-db-instances                \
+status=""
+until [[ ${status} == "available" ]]; do
+status=$(aws rds describe-db-instances       \
   --db-instance-identifier ${RDS_NAME}       \
   --query "DBInstances[].DBInstanceStatus"   \
   --output text)
-echo $status
-if [[ $status == "available" ]]; then
-  break
-fi
+echo ${status}
 sleep 60
 done
 
@@ -167,15 +165,13 @@ aws rds create-db-instance-read-replica \
   --source-db-instance-identifier ${RDS_ARN}
 
 # get rds status util `available`
-while true ; do
-status=$(aws rds describe-db-instances                \
+status=""
+until [[ ${status} == "available" ]]; do
+status=$(aws rds describe-db-instances            \
   --db-instance-identifier ${RDS_REP1_NAME}       \
-  --query "DBInstances[].DBInstanceStatus"   \
+  --query "DBInstances[].DBInstanceStatus"        \
   --output text)
-echo $status
-if [[ $status == "available" ]]; then
-  break
-fi
+echo ${status}
 sleep 60
 done
 
@@ -313,12 +309,15 @@ aws rds copy-db-snapshot \
 - 等待复制快照操作完成
 ```sh
 # get snapshot status util `available`
-aws rds describe-db-snapshots \
---db-snapshot-identifier ${LOCAL_SNAP_NAME} \
---query 'DBSnapshots[].Status' \
---output text
-
-# ########### wait ###########
+status=""
+until [[ ${status} == "available" ]]; do
+status=$(aws rds describe-db-snapshots        \
+  --db-snapshot-identifier ${LOCAL_SNAP_NAME} \
+  --query 'DBSnapshots[].Status'              \
+  --output text)
+echo ${status}
+sleep 60
+done
 
 ```
 
@@ -348,12 +347,15 @@ aws rds restore-db-instance-from-db-snapshot \
   --publicly-accessible   
 
 # get rds status util `available`
-aws rds describe-db-instances                \
+status=""
+until [[ ${status} == "available" ]]; do
+status=$(aws rds describe-db-instances       \
   --db-instance-identifier ${RDS_NAME}       \
   --query "DBInstances[].DBInstanceStatus"   \
-  --output text
-
-# ########### wait ###########
+  --output text)
+echo ${status}
+sleep 60
+done
 
 TARGET_RDS_HOSTNAME=$(aws rds describe-db-instances    \
   --db-instance-identifier ${RDS_NAME}     \
@@ -440,10 +442,6 @@ Query OK, 0 rows affected (0.00 sec)
 mysql> 
 
 ```
-
-
-!
-
 
 
 
