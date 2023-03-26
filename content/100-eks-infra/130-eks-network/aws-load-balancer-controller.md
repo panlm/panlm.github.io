@@ -37,10 +37,10 @@ this note covered by flux-lab
 {{% /notice %}}
 
 ```sh
-cluster_name=ekscluster1
+CLUSTER_NAME=ekscluster1
 export AWS_DEFAULT_REGION=us-east-2
 eksctl utils associate-iam-oidc-provider \
-  --cluster ${cluster_name} \
+  --cluster ${CLUSTER_NAME} \
   --approve
 
 #curl -o iam_policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.1/docs/install/iam_policy.json
@@ -60,7 +60,7 @@ policy_arn=$(aws iam create-policy \
   --output text)
 
 eksctl create iamserviceaccount \
-  --cluster=${cluster_name} \
+  --cluster=${CLUSTER_NAME} \
   --namespace=kube-system \
   --name=aws-load-balancer-controller \
   --role-name=${policy_name} \
@@ -76,7 +76,7 @@ helm repo update
 # and another solved issue is here: [[ingress-controller-lab-issue]]
 helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
   -n kube-system \
-  --set clusterName=${cluster_name} \
+  --set clusterName=${CLUSTER_NAME} \
   --set serviceAccount.create=false \
   --set serviceAccount.name=aws-load-balancer-controller 
 
@@ -92,7 +92,7 @@ kubectl get deployment -n kube-system aws-load-balancer-controller
 helm upgrade -i aws-load-balancer-controller \
     eks/aws-load-balancer-controller \
     -n kube-system \
-    --set clusterName=${cluster_name} \
+    --set clusterName=${CLUSTER_NAME} \
     --set serviceAccount.create=false \
     --set serviceAccount.name=aws-load-balancer-controller \
     --set image.repository=961992271922.dkr.ecr.cn-northwest-1.amazonaws.com.cn/amazon/aws-load-balancer-controller \

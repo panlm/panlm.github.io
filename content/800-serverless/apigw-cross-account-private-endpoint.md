@@ -24,7 +24,7 @@ title: This is a github note
 
 ## API gateway service Account
 ### access-control-with-cidr
-not works. 下面禁止语句既不能禁止本账号`10.1.0.0/16`段访问api，也不能禁止跨账号`10.3.0.0/16`段访问API
+works. 
 
 ```json
 {
@@ -36,8 +36,8 @@ not works. 下面禁止语句既不能禁止本账号`10.1.0.0/16`段访问api�
             "Action": "execute-api:Invoke",
             "Resource": "execute-api:/*/*/*",
             "Condition": {
-                "IpAddress": {
-                    "aws:SourceIp": "10.0.0.0/8"
+                "NotIpAddress": {
+                    "aws:SourceIp": "10.251.0.0/16"
                 }
             }
         },
@@ -111,7 +111,8 @@ works
 ### deploy
 - redeploy after you change `Resource Policy`
 
-
+## refer
+https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-authorization-flow.html
 
 
 

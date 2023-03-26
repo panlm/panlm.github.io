@@ -92,7 +92,10 @@ aws iam add-role-to-instance-profile --instance-profile-name ${ROLE_NAME} --role
 ```
 
 ### create role for firehose
-- [[stream-k8s-control-panel-logs-to-s3]]
+- [[stream-k8s-control-panel-logs-to-s3#lambda]]
+
+### create role for api gateway
+- [[apigw-cmd#create-apigw-role-📚]]
 
 ## assume another role
 ```sh
@@ -113,8 +116,13 @@ export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-iden
 ```
 
 
+
 ## reference
 ?
 - [如何提供对 Amazon S3 存储桶中的对象的跨账户访问权限](https://aws.amazon.com/cn/premiumsupport/knowledge-center/cross-account-access-s3/)
 - [策略评估逻辑](https://docs.aws.amazon.com/zh_cn/IAM/latest/UserGuide/reference_policies_evaluation-logic.html)
+- https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_multi-value-conditions.html
+
+
+
 

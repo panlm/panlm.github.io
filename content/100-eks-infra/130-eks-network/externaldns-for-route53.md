@@ -20,7 +20,7 @@ title: This is a github note
 
 ## install
 ```sh
-EKS_CLUSTER_NAME=ekscluster1
+CLUSTER_NAME=ekscluster1
 EXTERNALDNS_NS=externaldns
 AWS_REGION=us-east-2
 DOMAIN_NAME=api0315.aws.panlm.xyz
@@ -64,7 +64,7 @@ export POLICY_ARN=$(aws iam list-policies \
  --query 'Policies[?PolicyName==`'"${POLICY_NAME}"'`].Arn' --output text)
 
 eksctl create iamserviceaccount \
-  --cluster $EKS_CLUSTER_NAME \
+  --cluster ${CLUSTER_NAME} \
   --name "external-dns" \
   --namespace ${EXTERNALDNS_NS:-"default"} \
   --override-existing-serviceaccounts \
@@ -167,10 +167,12 @@ kubectl create --filename externaldns-with-rbac.yaml \
 
 ```
 
-## setup hosted zone
+## setup-hosted-zone-📚
 [[route53-subdomian]] 
 
 ```sh
+echo ${DOMAIN_NAME}
+
 aws route53 create-hosted-zone --name "${DOMAIN_NAME}." \
   --caller-reference "external-dns-test-$(date +%s)"
 
@@ -181,7 +183,7 @@ aws route53 list-resource-record-sets --output text \
   --hosted-zone-id $ZONE_ID --query \
   "ResourceRecordSets[?Type == 'NS'].ResourceRecords[*].Value | []" | tr '\t' '\n'
 
-# using output as value to add NS record on your domain registrar
+# using output as value to add NS record on your upstream domain registrar
 
 ```
 

@@ -23,9 +23,19 @@ title: This is a github note
 - 在 route53 中，将定制域名 alias 到 vpce 的 dns 上，访问可以成功，因为从该 vpce 访问 api 是被允许的
     - 如果该 api 是私有的，定制域名 alias 到 apigw 上，则将访问禁止 `Forbidden` 。
 
+
 ## for regional api 
 - 如果该 api 是 regional ，创建定制域名，记录下定制域名配置中的`API Gateway domain name`，不是apigw stage url 中的域名，参照 [[apigw-regional-api-access-from-vpc]]
 - 浏览器将显示证书有效
 
+
+## refer
+
+```embed
+title: 'Troubleshoot wrong certificate returned for API Gateway custom domain names'
+image: 'https://a0.awsstatic.com/libra-css/images/logos/aws_logo_smile_1200x630.png'
+description: 'Last updated: 2023-01-19'
+url: 'https://aws.amazon.com/premiumsupport/knowledge-center/api-gateway-domain-certificate/'
+```
 
 

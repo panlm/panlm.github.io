@@ -45,7 +45,7 @@ https://xxx.execute-api.us-east-2.amazonaws.com/prod/
 
 ## alb ip
 如果 alb 在 api gateway 前端，将获取到 alb 的内网地址，如下场景：
-- [apigw-private-api-alb-cdk](apigw-private-api-alb-cdk.md)
+- [apigw-private-api-alb-cdk.md](apigw-private-api-alb-cdk.md)
 
 ## refer
 https://dev.classmethod.jp/articles/api-gateway-client-ip/

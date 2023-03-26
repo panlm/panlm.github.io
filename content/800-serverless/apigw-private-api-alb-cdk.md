@@ -25,26 +25,20 @@ https://github.com/markilott/aws-cdk-internal-private-api-demo
 
 ## lab setup
 - clone repo
-- execute in repo folder
-```sh
-npm install
-cdk bootstrap
-```
-
 - edit `config/index.ts`
 ```js
 export const options = {
     vpcAttr: {
-        customVpcId: '',
+        customVpcId: 'vpc-0a7669751edab2d45',
         // These are the AWS default VPC subnets. Update to your own CIDR's if using a custom VPC
-        subnetCidr1: '172.31.128.0/20',
-        subnetCidr2: '172.31.144.0/20',
+        subnetCidr1: '10.251.192.0/24',
+        subnetCidr2: '10.251.193.0/24',
     },
-    createCertificate: true,
-    certificateArn: '',
+    createCertificate: false,
+    certificateArn: 'arn:aws:acm:us-east-2:7933xxxx2775:certificate/cc5xxxx07fc3',
     dnsAttr: {
-        zoneName: 'apixxxx.aws.panlm.xyz',
-        hostedZoneId: 'Z036xxxxxxPMWxxxxxxOP',
+        zoneName: 'api0320.aws.panlm.xyz',
+        hostedZoneId: 'Z0xxxx73xxxxYEARSVSP',
     },
     albHostname: 'test-alb',
     apiPath1: 'test-api1',
@@ -54,12 +48,15 @@ export const options = {
 
 - deploy
 ```sh
-cdk deploy --all
+npm install
+cdk bootstrap
+cdk deploy --all --require-approval never
 ```
 
-## data flow
+## data-flow-📚
 ![apigw-private-api-alb-cdk-png-2.png](apigw-private-api-alb-cdk-png-2.png)
 
+## target group settings
 ![apigw-private-api-alb-cdk-png-3.png](apigw-private-api-alb-cdk-png-3.png)
 
 
