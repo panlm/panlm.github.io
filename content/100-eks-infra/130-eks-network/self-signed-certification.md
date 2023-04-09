@@ -14,12 +14,23 @@ title: This is a github note
 ```
 # acm-self-signed-certification
 
+- [[#option 1 - acm issue|option 1 - acm issue]]
+- [[#option 2 - has certificate chain|option 2 - has certificate chain]]
+	- [[#option 2 - has certificate chain#option 2.1 - has certificate chain (with intermediate)|option 2.1 - has certificate chain (with intermediate)]]
+		- [[#option 2.1 - has certificate chain (with intermediate)#refer|refer]]
+	- [[#option 2 - has certificate chain#option 2.2 - has certificate chain (root only)|option 2.2 - has certificate chain (root only)]]
+		- [[#option 2.2 - has certificate chain (root only)#refer|refer]]
+- [[#option 3 - no certificate chain|option 3 - no certificate chain]]
+
+
 ## option 1 - acm issue 
 - works for api gateway and alb
 - [[acm-issue-certification]]
 
 
-## option 2.1 - has certificate chain (with intermediate)
+## option 2 - has certificate chain
+
+### option 2.1 - has certificate chain (with intermediate)
 - works for api gateway and alb
 - http endpoint in integration request need this kind certificate, and also set `insecureSkipVerification` to `false`
 
@@ -80,12 +91,12 @@ openssl x509 -inform PEM -in ../myrootca/pki/ca.crt >mycert-chain-root.pem
 # rest of pems are certificate chain (last one should be root ca)
 ```
 
-### refer
+#### refer
 - https://wavecn.com/content.php?id=334
 - https://docs.aws.amazon.com/acm/latest/userguide/import-certificate-format.html
 
 
-## option 2.2 - has certificate chain (root only)
+### option 2.2 - has certificate chain (root only)
 - works for api gateway and alb
 - http endpoint in integration request need this kind certificate, and also set `insecureSkipVerification` to `false`
 
@@ -118,15 +129,9 @@ openssl x509 -inform PEM -in pki/ca.crt >my-server-chain.pem
 
 ```
 
-### refer
+#### refer
 - [How To Set Up and Configure a Certificate Authority (CA) On Ubuntu 20.04 | DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-set-up-and-configure-a-certificate-authority-ca-on-ubuntu-20-04)
 - https://github.com/OpenVPN/easy-rsa/blob/master/README.quickstart.md
-- https://aws.amazon.com/premiumsupport/knowledge-center/api-gateway-ssl-certificate-errors/
-
-```
-Execution failed due to configuration error: PKIX path building failed:
-sun.security.provider.certpath.SunCertPathBuilderException: unable to find valid certification path to requested target
-```
 
 
 ## option 3 - no certificate chain

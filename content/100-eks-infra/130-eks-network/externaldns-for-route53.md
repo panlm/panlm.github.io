@@ -16,9 +16,18 @@ title: This is a github note
 ```
 
 # externaldns-for-route53
+
+- [[#install-📚|install-📚]]
+- [[#setup-hosted-zone-📚|setup-hosted-zone-📚]]
+	- [[#setup-hosted-zone-📚#private hosted zone|private hosted zone]]
+- [[#verify|verify]]
+	- [[#verify#service sample|service sample]]
+	- [[#verify#ingress sample|ingress sample]]
+
+
+## install-📚
 [link](https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/aws.md) 
 
-## install
 ```sh
 CLUSTER_NAME=ekscluster1
 EXTERNALDNS_NS=externaldns
@@ -190,7 +199,8 @@ aws route53 list-resource-record-sets --output text \
 ### private hosted zone
 you also could create private hosted zone and associate to your vpc. plugin will insert/update record in your private hosted zone. ([link](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-private.html))
 
-## verify - service sample
+## verify
+### service sample
 ```sh
 envsubst >nginx.yaml <<-EOF
 apiVersion: v1
@@ -246,8 +256,10 @@ curl nginx.${DOMAIN_NAME}.
 
 ```
 
-## verify - ingress sample
+### ingress sample
 ```sh
+CERTIFICATE_ARN=
+
 envsubst >nginx-ingress.yaml <<-EOF
 ---
 apiVersion: networking.k8s.io/v1
@@ -258,6 +270,9 @@ metadata:
     alb.ingress.kubernetes.io/scheme: internet-facing
     alb.ingress.kubernetes.io/tags: Environment=dev,Team=test,Application=nginx
     alb.ingress.kubernetes.io/target-type: ip
+    alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
+    alb.ingress.kubernetes.io/ssl-redirect: '443'
+    alb.ingress.kubernetes.io/certificate-arn: ${CERTIFICATE_ARN}
 spec:
   ingressClassName: alb
   rules:

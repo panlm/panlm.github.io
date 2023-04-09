@@ -169,7 +169,7 @@ fi
 - add `10.0.0.0/8` route to public/private1A/private2A route table
 
 ## refer
-- [[cloudformation-cli]] 
+- [[cloudformation-cmd]] 
 - [quickstart-aws-vpc](https://aws-quickstart.github.io/quickstart-aws-vpc/) 
 
 

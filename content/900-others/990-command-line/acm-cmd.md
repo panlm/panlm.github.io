@@ -15,11 +15,12 @@ title: This is a github note
 ```
 # acm-cmd
 
-## create certificate
+## create-certificate-📚
 ```sh
 aws acm request-certificate \
---domain-name '*.api0320.aws.panlm.xyz' \
---validation-method DNS
+--domain-name '*.api0409.aws.panlm.xyz' \
+--validation-method DNS \
+--query 'CertificateArn'
 
 ```
 

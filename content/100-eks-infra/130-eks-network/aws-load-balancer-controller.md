@@ -16,6 +16,15 @@ title: This is a github note
 ```
 
 # aws-load-balancer-controller
+
+- [[#github|github]]
+- [[#workshop|workshop]]
+- [[#install-📚|install-📚]]
+	- [[#install-📚#in china region|in china region]]
+- [[#blog|blog]]
+- [[#slide|slide]]
+
+
 ## github
 - https://github.com/kubernetes-sigs/aws-load-balancer-controller
 - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/how-it-works/
@@ -29,7 +38,7 @@ title: This is a github note
 - 使用已有ingress的相关配置 ([[awslbc-ingress-settings-ingress-group]])
 - pod rediness gate ([link](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/deploy/pod_readiness_gate/))
 
-## install
+## install-📚
 - [refer](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/deploy/installation/) 
 
 {{% notice note %}}
@@ -43,8 +52,12 @@ eksctl utils associate-iam-oidc-provider \
   --cluster ${CLUSTER_NAME} \
   --approve
 
-#curl -o iam_policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.1/docs/install/iam_policy.json
+# curl -o iam_policy.json https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/v2.4.1/docs/install/iam_policy.json
 git clone https://github.com/kubernetes-sigs/aws-load-balancer-controller.git
+
+# check iamserviceaccount has been create by eksctl
+aws cloudformation describe-stacks --stack-name eksctl-${CLUSTER_NAME}-addon-iamserviceaccount-kube-system-aws-load-balancer-controller 2>&1 1>/dev/null
+if [[ $? -ne 0 ]]; then
 
 # aws commercial region
 IAM_POLICY_TEMPLATE=iam_policy.json 
@@ -67,6 +80,9 @@ eksctl create iamserviceaccount \
   --attach-policy-arn=${policy_arn} \
   --override-existing-serviceaccounts \
   --approve
+
+# check iamserviceaccount has been create by eksctl
+fi
 
 helm repo add eks https://aws.github.io/eks-charts
 helm repo update
