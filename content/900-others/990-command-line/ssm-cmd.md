@@ -5,7 +5,7 @@ chapter: true
 created: 2022-12-06 14:58:34.056
 last_modified: 2022-12-06 14:58:34.056
 tags: 
-- aws/cli 
+- aws/cmd 
 - aws/mgmt/systems-manager 
 ---
 ```ad-attention

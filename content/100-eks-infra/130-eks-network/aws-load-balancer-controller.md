@@ -48,6 +48,7 @@ this note covered by flux-lab
 ```sh
 CLUSTER_NAME=ekscluster1
 export AWS_DEFAULT_REGION=us-east-2
+
 eksctl utils associate-iam-oidc-provider \
   --cluster ${CLUSTER_NAME} \
   --approve

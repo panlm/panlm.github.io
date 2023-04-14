@@ -5,7 +5,7 @@ chapter: true
 created: 2023-02-18 11:53:13.625
 last_modified: 2023-02-18 11:53:13.625
 tags: 
-- aws/cli 
+- aws/cmd 
 - aws/storage/ebs 
 ---
 ```ad-attention

@@ -6,7 +6,7 @@ created: 2022-07-01 09:18:29.572
 last_modified: 2022-07-01 09:18:29.572
 tags: 
 - aws/cloud9 
-- aws/cli 
+- aws/cmd 
 ---
 ```ad-attention
 title: This is a github note

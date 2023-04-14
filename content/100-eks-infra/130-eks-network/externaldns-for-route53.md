@@ -30,9 +30,9 @@ title: This is a github note
 
 ```sh
 CLUSTER_NAME=ekscluster1
-EXTERNALDNS_NS=externaldns
 AWS_REGION=us-east-2
-DOMAIN_NAME=api0315.aws.panlm.xyz
+DOMAIN_NAME=api0413.aws.panlm.xyz
+EXTERNALDNS_NS=externaldns
 
 # create namespace if it does not yet exist
 kubectl get namespaces | grep -q $EXTERNALDNS_NS || \
@@ -250,7 +250,7 @@ aws route53 list-resource-record-sets --output json --hosted-zone-id $ZONE_ID \
 aws route53 list-resource-record-sets --output json --hosted-zone-id $ZONE_ID \
   --query "ResourceRecordSets[?Name == 'nginx.${DOMAIN_NAME}.']|[?Type == 'TXT']"
 
-dig +short nginx.${DOMAIN_NAME}.
+dig +short nginx.${DOMAIN_NAME}. A
 
 curl nginx.${DOMAIN_NAME}.
 
@@ -258,7 +258,7 @@ curl nginx.${DOMAIN_NAME}.
 
 ### ingress sample
 ```sh
-CERTIFICATE_ARN=
+echo ${CERTIFICATE_ARN}
 
 envsubst >nginx-ingress.yaml <<-EOF
 ---
@@ -296,12 +296,11 @@ kubectl create --filename nginx-ingress.yaml
 aws route53 list-resource-record-sets --output json --hosted-zone-id $ZONE_ID \
   --query "ResourceRecordSets[?Name == 'server.${DOMAIN_NAME}.']"
 
-dig +short server.${DOMAIN_NAME}.
+dig +short server.${DOMAIN_NAME}. A
 
 curl server.${DOMAIN_NAME}.
 
 ```
-
 
 
 

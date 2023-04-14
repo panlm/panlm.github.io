@@ -23,13 +23,13 @@ https://github.com/markilott/aws-cdk-internal-private-api-demo
 - 创建新vpc，不要创建 api gateway 的 endpoint
 - 创建 cloud9 在新 vpc
 
-## lab setup
+## lab-setup-📚
 - clone repo
 - edit `config/index.ts`
 ```js
 export const options = {
     vpcAttr: {
-        customVpcId: 'vpc-0a7669751edab2d45',
+        customVpcId: 'vpc-0a766975xxxxxxd45',
         // These are the AWS default VPC subnets. Update to your own CIDR's if using a custom VPC
         subnetCidr1: '10.251.192.0/24',
         subnetCidr2: '10.251.193.0/24',

@@ -14,7 +14,8 @@ title: This is a github note
 # route53-cmd
 
 - [[#insert TXT record with multi values|insert TXT record with multi values]]
-- [[#create-hosted-zone|create-hosted-zone]]
+- [[#create-hosted-zone-📚|create-hosted-zone-📚]]
+- [[#create cname record|create cname record]]
 - [[#refer|refer]]
 
 
@@ -55,7 +56,12 @@ aws route53 change-resource-record-sets \
 
 ![[externaldns-for-route53#setup-hosted-zone-📚]]
 
+## create cname record
 
+![[POC-apigw#^d0liwm]]
+
+refer: [link](https://repost.aws/knowledge-center/simple-resource-record-route53-cli) 
+sample: [[acm-cmd#create-certificate-📚]]
 
 ## refer
 
