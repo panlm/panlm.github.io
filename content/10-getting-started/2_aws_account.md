@@ -1,9 +1,10 @@
-+++
-title = "AWS Account"
-description = "AWS 账号"
-chapter = false
-weight = 2
-+++
+---
+title: "AWS Account"
+description: "AWS 账号"
+chapter: false
+weight: 2
+---
+
 {{% notice warning %}}
 You are responsible for the cost of the AWS services used while running this workshop in your AWS account.
 {{% /notice %}}
