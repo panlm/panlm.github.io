@@ -15,7 +15,7 @@ tags:
 2. create vpc
 ![[create-standard-vpc-for-lab#using-cloudformation-template]]
 
-or [hugo-link]({{< ref "create-standard-vpc-for-lab#using-cloudformation-template" >}}) 
+or [hugo-link]({{< ref "../../20-cloud9/create-standard-vpc-for-lab#using-cloudformation-template" >}})  
 
 3. get vpc id
 ![[create-standard-vpc-for-lab#get-vpc-id]]
