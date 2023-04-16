@@ -20,7 +20,7 @@ Click [here]({{< ref "2_aws_account.md" >}}) if you are running this individuall
 {{% /notice %}}
 
 
-- [1_aws_event_engine.md]({{< ref "1_aws_event_engine.md" >}}) 
-- [2_aws_account.md]({{< ref "2_aws_account.md" >}}) 
+- [1_aws_event_engine.md]({{< ref . "1_aws_event_engine.md" >}}) 
+- [2_aws_account.md]({{< ref . "2_aws_account.md" >}}) 
 
 
