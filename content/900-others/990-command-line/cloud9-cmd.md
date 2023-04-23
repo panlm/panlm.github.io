@@ -13,14 +13,23 @@ title: This is a github note
 
 ```
 # cloud9-cmd
-![[setup-cloud9-for-eks#spin-up-a-cloud9-instance-in-your-region]] or [hugo link]({{< ref "create-standard-vpc-for-lab#spin-up-a-cloud9-instance-in-your-region" >}})
+## spin-up-a-cloud9-instance-in-your-region
 
+![[setup-cloud9-for-eks#^xzcvy9]]
+
+refer: [[setup-cloud9-for-eks#spin-up-a-cloud9-instance-in-your-region]] or [hugo link]({{< ref "create-standard-vpc-for-lab#spin-up-a-cloud9-instance-in-your-region" >}}) 
 
 ```sh
 aws cloud9 describe-environments
 
 ```
 
+## disable aws credential management
+
+```sh
+aws cloud9 update-environment  --environment-id $C9_PID --managed-credentials-action DISABLE
+rm -vf ${HOME}/.aws/credentials
+```
 
 
 ## old
@@ -68,6 +77,15 @@ An error occurred (ValidationException) when calling the CreateEnvironmentEC2 op
 
 
 ```
+
+
+## Turn off AWS managed temporary credentials 
+[LINK](https://docs.aws.amazon.com/cloud9/latest/user-guide/security-iam.html#auth-and-access-control-temporary-managed-credentials)
+
+If you turn off AWS managed temporary credentials, by default the environment cannot access any AWS services, regardless of the AWS entity who makes the request. If you can't or don't want to turn on AWS managed temporary credentials for an environment, but you still need the environment to access AWS services, consider the following alternatives:
+
+- Attach an instance profile to the Amazon EC2 instance that connects to the environment. For instructions, see [Create and Use an Instance Profile to Manage Temporary Credentials](https://docs.aws.amazon.com/cloud9/latest/user-guide/credentials.html#credentials-temporary).
+- Store your permanent AWS access credentials in the environment, for example, by setting special environment variables or by running the `aws configure` command. For instructions, see [Create and store permanent access credentials in an Environment](https://docs.aws.amazon.com/cloud9/latest/user-guide/credentials.html#credentials-permanent-create).
 
 
 

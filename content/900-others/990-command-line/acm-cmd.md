@@ -16,6 +16,7 @@ title: This is a github note
 # acm-cmd
 
 ## create-certificate-📚
+
 - 创建并通过 dns 验证证书
 ```sh
 echo ${DOMAIN_NAME}
@@ -65,6 +66,7 @@ aws route53 list-resource-record-sets \
 ```
 
 ## create certificate with pca  cross account
+
 ```sh
 PCA_ARN=arn:aws:acm-pca:us-east-2:xxxxxx:certificate-authority/xxxxxx
 aws acm request-certificate \

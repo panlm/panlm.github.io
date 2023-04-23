@@ -10,7 +10,6 @@ tags:
 ---
 ```ad-attention
 title: This is a github note
-
 ```
 # AWS CDK Private API and Application Load Balancer Demo
 

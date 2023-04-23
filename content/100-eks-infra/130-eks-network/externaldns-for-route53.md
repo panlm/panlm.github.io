@@ -17,22 +17,19 @@ title: This is a github note
 
 # externaldns-for-route53
 
-- [[#install-📚|install-📚]]
-- [[#setup-hosted-zone-📚|setup-hosted-zone-📚]]
-	- [[#setup-hosted-zone-📚#private hosted zone|private hosted zone]]
-- [[#verify|verify]]
-	- [[#verify#service sample|service sample]]
-	- [[#verify#ingress sample|ingress sample]]
-
+```toc
+```
 
 ## install-📚
 [link](https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/aws.md) 
 
+- create service account
 ```sh
 CLUSTER_NAME=ekscluster1
 AWS_REGION=us-east-2
 DOMAIN_NAME=api0413.aws.panlm.xyz
 EXTERNALDNS_NS=externaldns
+export AWS_PAGER=""
 
 # create namespace if it does not yet exist
 kubectl get namespaces | grep -q $EXTERNALDNS_NS || \
@@ -82,6 +79,7 @@ eksctl create iamserviceaccount \
 
 ```
 
+- install externaldns with existed service account
 ```sh
 echo ${EXTERNALDNS_NS}
 echo ${DOMAIN_NAME}
@@ -177,8 +175,7 @@ kubectl create --filename externaldns-with-rbac.yaml \
 ```
 
 ## setup-hosted-zone-📚
-[[route53-subdomian]] 
-
+- create hosted zone, and add NS records to upstream domain registrar
 ```sh
 echo ${DOMAIN_NAME}
 
@@ -196,19 +193,30 @@ aws route53 list-resource-record-sets --output text \
 
 ```
 
+refer: [[route53-subdomian]] 
+
 ### private hosted zone
 you also could create private hosted zone and associate to your vpc. plugin will insert/update record in your private hosted zone. ([link](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-private.html))
 
 ## verify
-### service sample
+
+- create namespace
 ```sh
-envsubst >nginx.yaml <<-EOF
+NS=verify
+kubectl create ns ${NS}
+```
+
+### service sample
+- create nlb (no more clb, 20230423) with service definition
+```sh
+envsubst >verify-nginx.yaml <<-EOF
 apiVersion: v1
 kind: Service
 metadata:
   name: nginx
   annotations:
     external-dns.alpha.kubernetes.io/hostname: nginx.${DOMAIN_NAME}
+    service.beta.kubernetes.io/aws-load-balancer-scheme: "internet-facing"
 spec:
   type: LoadBalancer
   ports:
@@ -239,10 +247,11 @@ spec:
           name: http
 EOF
 
-kubectl create --filename nginx.yaml
+kubectl create --filename verify-nginx.yaml -n ${NS:-default}
 
 ```
 
+- wait nlb available and execute
 ```sh
 aws route53 list-resource-record-sets --output json --hosted-zone-id $ZONE_ID \
   --query "ResourceRecordSets[?Name == 'nginx.${DOMAIN_NAME}.']|[?Type == 'A']"
@@ -252,15 +261,16 @@ aws route53 list-resource-record-sets --output json --hosted-zone-id $ZONE_ID \
 
 dig +short nginx.${DOMAIN_NAME}. A
 
-curl nginx.${DOMAIN_NAME}.
+curl http://nginx.${DOMAIN_NAME}
 
 ```
 
 ### ingress sample
+- ensure certificate is existed and create alb 
 ```sh
 echo ${CERTIFICATE_ARN}
 
-envsubst >nginx-ingress.yaml <<-EOF
+envsubst >verify-nginx-ingress.yaml <<-EOF
 ---
 apiVersion: networking.k8s.io/v1
 kind: Ingress
@@ -288,20 +298,20 @@ spec:
             pathType: Prefix
 EOF
 
-kubectl create --filename nginx-ingress.yaml
+kubectl create --filename verify-nginx-ingress.yaml -n ${NS:-default}
 
 ```
 
+- wait alb available and execute
 ```sh
 aws route53 list-resource-record-sets --output json --hosted-zone-id $ZONE_ID \
   --query "ResourceRecordSets[?Name == 'server.${DOMAIN_NAME}.']"
 
 dig +short server.${DOMAIN_NAME}. A
 
-curl server.${DOMAIN_NAME}.
+curl https://server.${DOMAIN_NAME}
 
 ```
-
 
 
 

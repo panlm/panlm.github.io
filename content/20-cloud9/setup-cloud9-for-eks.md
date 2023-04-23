@@ -21,8 +21,8 @@ title: This is a github note
 ```
 
 ## spin-up-a-cloud9-instance-in-your-region
-- click [here](https://us-east-2.console.aws.amazon.com/cloudshell) to run cloud shell and execute code block, and go to your region and open cloud9
 
+-  点击[这里](https://us-east-2.console.aws.amazon.com/cloudshell) 运行 cloudshell，执行代码块创建 cloud9 测试环境
 ```sh
 # name=<give your cloud9 a name>
 datestring=$(date +%Y%m%d-%H%M)
@@ -61,9 +61,12 @@ fi
 
 ^xzcvy9
 
+- 点击输出的 URL 链接，打开 cloud9 测试环境
 ![](setup-cloud9-for-eks-1.png)
 
 ## using internal proxy or not
+
+- 如果你不需要使用代理服务器下载软件包，跳过执行下面代码
 ```sh
 cat >> ~/.bash_profile <<-EOF
 export http_proxy=http://10.101.1.55:998
@@ -75,10 +78,10 @@ source ~/.bash_profile
 ```
 
 ## install in cloud9 
-1. resize disk ([[cloud9-resize-instance-volume-script]])
-2. disable temporary credential from settings and delete `aws_session_token=` line in `~/.aws/credentials`
-3. install general dependencies
-4. resize cloud9 disk
+
+- 下面代码块包含一些基本设置，包括：
+	- 安装常用的软件
+	 - 修改 cloud9 磁盘大小 ([link](https://docs.aws.amazon.com/cloud9/latest/user-guide/move-environment.html#move-environment-resize))
 ```sh
 # set size as your expectation, otherwize 100g as default volume size
 # size=200
@@ -128,7 +131,7 @@ fi
 
 ```
 
-5. install eks related dependencies
+- 安装 eks 相关的常用软件
 ```sh
 # install kubectl with +/- 1 cluster version 1.23.15 / 1.22.17 / 1.24.9 / 1.25.5
 # sudo curl --location -o /usr/local/bin/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -190,13 +193,13 @@ flux -v
 
 ```
 
-6. disable cloud9 aws credential management
-7. 分配管理员role到instance。（直接执行下列步骤可能遇到权限不够的告警）。
-- 如果你有workshop的Credentials，直接先复制粘贴到命令行，再执行下列步骤
-- 或者如果自己账号的cloud9，先用 `aws configure` 配置aksk
-
+- 直接执行下面代码块可能遇到权限不够的告警，需要：
+	- 如果你有 workshop 的 Credentials ，直接先复制粘贴到命令行，再执行下列步骤；
+	- 或者，如果自己账号的 cloud9，先用环境变量方式保证有足够权限的 aksk
+	- 下面代码块包括：
+		- 禁用 cloud9 中的 credential 管理，从 `~/.aws/credentials` 中删除 `aws_session_token=` 行
+		- 分配管理员权限 role 到 cloud9 instance。
 ```sh
-
 aws cloud9 update-environment  --environment-id $C9_PID --managed-credentials-action DISABLE
 rm -vf ${HOME}/.aws/credentials
 
@@ -260,7 +263,7 @@ fi
 
 ```
 
-8. 在 cloud9 中，重新打开一个 terminal 窗口，并验证权限符合预期。如果权限又问题，请手工移除 instance profile ，再 assign 。
+- 在 cloud9 中，重新打开一个 terminal 窗口，并验证权限符合预期。上面代码块将创建一个 instance profile ，并将关联名为 `adminrole-xxx` 的 role，或者在 cloud9 现有的 role 上关联 `AdministratorAccess` role policy。
 ```sh
 aws sts get-caller-identity
 
@@ -268,16 +271,8 @@ aws sts get-caller-identity
 
 
 ## reference
+
 - https://docs.amazonaws.cn/en_us/eks/latest/userguide/install-aws-iam-authenticator.html
 - [[switch-role-to-create-dedicate-cloud9]]
-
-## Turn off AWS managed temporary credentials 
-[LINK](https://docs.aws.amazon.com/cloud9/latest/user-guide/security-iam.html#auth-and-access-control-temporary-managed-credentials)
-
-If you turn off AWS managed temporary credentials, by default the environment cannot access any AWS services, regardless of the AWS entity who makes the request. If you can't or don't want to turn on AWS managed temporary credentials for an environment, but you still need the environment to access AWS services, consider the following alternatives:
-
-- Attach an instance profile to the Amazon EC2 instance that connects to the environment. For instructions, see [Create and Use an Instance Profile to Manage Temporary Credentials](https://docs.aws.amazon.com/cloud9/latest/user-guide/credentials.html#credentials-temporary).
-- Store your permanent AWS access credentials in the environment, for example, by setting special environment variables or by running the `aws configure` command. For instructions, see [Create and store permanent access credentials in an Environment](https://docs.aws.amazon.com/cloud9/latest/user-guide/credentials.html#credentials-permanent-create).
-
 
 

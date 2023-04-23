@@ -17,21 +17,18 @@ title: This is a github note
 
 # aws-load-balancer-controller
 
-- [[#github|github]]
-- [[#workshop|workshop]]
-- [[#install-📚|install-📚]]
-	- [[#install-📚#in china region|in china region]]
-- [[#blog|blog]]
-- [[#slide|slide]]
-
+```toc
+```
 
 ## github
+
 - https://github.com/kubernetes-sigs/aws-load-balancer-controller
 - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/how-it-works/
 
 ![aws-load-balancer-controller-png-1.png](aws-load-balancer-controller-png-1.png)
 
 ## workshop
+
 - [[awslbc-ingress-lab-echoserver#install-echoserver-📚]]
 - https://www.eksworkshop.com/beginner/180_fargate/prerequisites-for-alb/
 - 常用ingress的相关配置 ([[awslbc-ingress-settings]])
@@ -48,6 +45,7 @@ this note covered by flux-lab
 ```sh
 CLUSTER_NAME=ekscluster1
 export AWS_DEFAULT_REGION=us-east-2
+export AWS_PAGER=""
 
 eksctl utils associate-iam-oidc-provider \
   --cluster ${CLUSTER_NAME} \
@@ -103,7 +101,8 @@ kubectl get deployment -n kube-system aws-load-balancer-controller
 
 [[awslbc-ingress-controller-lab-issue]]
 
-### in china region
+## install-in-china-region
+
 ```sh
 # using china region ecr url
 helm upgrade -i aws-load-balancer-controller \
@@ -137,11 +136,13 @@ REGISTRY=602401143452.dkr.ecr.us-east-1.amazonaws.com
 
 
 ## blog
+
 - [[How To Expose Multiple Applications on Amazon EKS Using a Single Application Load Balancer]]
 - [[Expose Amazon EKS pods through cross-account load balancer]]
 
 
-## slide
+## refer
+
 ![[aws-load-balancer-controller-png-2.png]]
 
 
