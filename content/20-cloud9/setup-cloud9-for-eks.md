@@ -195,10 +195,10 @@ flux -v
 
 - 直接执行下面代码块可能遇到权限不够的告警，需要：
 	- 如果你有 workshop 的 Credentials ，直接先复制粘贴到命令行，再执行下列步骤；
-	- 或者，如果自己账号的 cloud9，先用环境变量方式保证有足够权限的 aksk
+	- 或者，如果自己账号的 cloud9，先用环境变量方式（`AWS_ACCESS_KEY_ID` 和 `AWS_SECRET_ACCESS_KEY`）保证有足够权限执行
 	- 下面代码块包括：
 		- 禁用 cloud9 中的 credential 管理，从 `~/.aws/credentials` 中删除 `aws_session_token=` 行
-		- 分配管理员权限 role 到 cloud9 instance。
+		- 分配管理员权限 role 到 cloud9 instance
 ```sh
 aws cloud9 update-environment  --environment-id $C9_PID --managed-credentials-action DISABLE
 rm -vf ${HOME}/.aws/credentials

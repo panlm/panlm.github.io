@@ -206,7 +206,8 @@ NS=verify
 kubectl create ns ${NS}
 ```
 
-### service sample
+***service sample***
+
 - create nlb (no more clb, 20230423) with service definition
 ```sh
 envsubst >verify-nginx.yaml <<-EOF
@@ -265,7 +266,8 @@ curl http://nginx.${DOMAIN_NAME}
 
 ```
 
-### ingress sample
+***ingress sample***
+
 - ensure certificate is existed and create alb 
 ```sh
 echo ${CERTIFICATE_ARN}

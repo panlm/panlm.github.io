@@ -42,12 +42,14 @@ aws ssm get-parameter --name /aws/service/eks/optimized-ami/${EKS_VERSION}/amazo
 ```
 
 ### create-eks-cluster
-- create config file for creating cluster
+- 创建空配置文件
 ```sh
 touch c1.yaml
 ```
 
-- copy and paste following to `c1.yaml`, update `ami` if needed.
+- 复制粘贴下面代码到 `c1.yaml`，如果需要的话，从上面章节获取到最新的 `ami` 并更新到配置文件中
+	- 注意集群名称
+	- 注意创建的 AZ 符合你所在的区域
 ```yaml
 ---
 apiVersion: eksctl.io/v1alpha5
@@ -155,9 +157,11 @@ iam:
 - create cluster
 ```sh
 eksctl create cluster -f c1.yaml
+
 ```
 
 ## access eks cluster from web console
+- 将实验环境对应的 `TeamRole` 角色作为集群管理员，方便使用 web 页面查看 eks 集群
 ```sh
 CLUSTER_NAME=ekscluster1
 ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)

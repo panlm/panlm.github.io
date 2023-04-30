@@ -32,7 +32,7 @@ title: This is a github note
 
 ### option 2.1 - has certificate chain (with intermediate)
 - works for api gateway and alb
-- http endpoint in integration request need this kind certificate, and also set `insecureSkipVerification` to `false`
+- http endpoint in integration request need this kind certificate, and also set `insecureSkipVerification` to `true`
 
 ```sh
 mkdir myrootca
@@ -98,7 +98,7 @@ openssl x509 -inform PEM -in ../myrootca/pki/ca.crt >mycert-chain-root.pem
 
 ### option 2.2 - has certificate chain (root only)
 - works for api gateway and alb
-- http endpoint in integration request need this kind certificate, and also set `insecureSkipVerification` to `false`
+- http endpoint in integration request need this kind certificate, and also set `insecureSkipVerification` to `true`
 
 ```sh
 mkdir mycert
