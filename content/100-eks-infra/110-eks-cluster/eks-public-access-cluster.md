@@ -49,7 +49,8 @@ touch c1.yaml
 
 - 复制粘贴下面代码到 `c1.yaml`，如果需要的话，从上面章节获取到最新的 `ami` 并更新到配置文件中
 	- 注意集群名称
-	- 注意创建的 AZ 符合你所在的区域
+	- 注意使用的 AZ 符合你所在的区域
+	- 确保你使用 ami 有效，如果你在其他 region 创建集群，请使用上面命令获取该 region 对应的 ami
 ```yaml
 ---
 apiVersion: eksctl.io/v1alpha5
@@ -154,10 +155,9 @@ iam:
 
 ```
 
-- create cluster
+- 创建集群，预计需要 20 分钟
 ```sh
 eksctl create cluster -f c1.yaml
-
 ```
 
 ## access eks cluster from web console

@@ -17,7 +17,7 @@ title: This is a github note
 
 ## create-certificate-📚
 
-- 创建并通过 dns 验证证书
+- 创建并通过添加 dns 记录验证证书
 ```sh
 echo ${DOMAIN_NAME}
 # DOMAIN_NAME=api0413.aws.panlm.xyz
@@ -62,6 +62,15 @@ aws route53 change-resource-record-sets \
 aws route53 list-resource-record-sets \
 --hosted-zone-id ${ZONE_ID} \
 --query "ResourceRecordSets[?Name == '${CERT_CNAME_NAME}']"
+
+```
+
+- 等待状态转变成 SUCCESS
+```sh
+# wait ValidationStatus to SUCCESS
+aws acm describe-certificate \
+--certificate-arn ${CERTIFICATE_ARN} \
+--query 'Certificate.DomainValidationOptions[0]' 
 
 ```
 
