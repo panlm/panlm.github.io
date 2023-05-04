@@ -31,16 +31,6 @@ title: This is a github note
 - you still could put your group node in private subnet for security consideration
 - recommend for most of poc environment
 
-### get-newest-ami
-- get newest ami id for your node group, for GPU or Graviton instance ([link](https://docs.aws.amazon.com/eks/latest/userguide/retrieve-ami-id.html))
-```sh
-# get optimized eks ami id for your version & region
-AWS_REGION=us-east-2
-EKS_VERSION=1.24
-aws ssm get-parameter --name /aws/service/eks/optimized-ami/${EKS_VERSION}/amazon-linux-2/recommended/image_id --region ${AWS_REGION} --query "Parameter.Value" --output text
-
-```
-
 ### create-eks-cluster
 - 创建空配置文件
 ```sh
@@ -50,7 +40,7 @@ touch c1.yaml
 - 复制粘贴下面代码到 `c1.yaml`，如果需要的话，从上面章节获取到最新的 `ami` 并更新到配置文件中
 	- 注意集群名称
 	- 注意使用的 AZ 符合你所在的区域
-	- 确保你使用 ami 有效，如果你在其他 region 创建集群，请使用上面命令获取该 region 对应的 ami
+
 ```yaml
 ---
 apiVersion: eksctl.io/v1alpha5
@@ -92,29 +82,13 @@ cloudWatch:
 
 managedNodeGroups:
 - name: managed-ng
-  minSize: 1
+  minSize: 2
   maxSize: 5
-  desiredCapacity: 1
+  desiredCapacity: 2
   instanceType: m5.large
   ssh:
     enableSsm: true
   privateNetworking: true
-
-nodeGroups:
-- name: ng1
-  minSize: 1
-  maxSize: 5
-  desiredCapacity: 1
-  instanceType: m5.large
-  ssh:
-    enableSsm: true
-  privateNetworking: true
-  ami: "ami-03fc1b405779966cc"
-  amiFamily: AmazonLinux2
-  overrideBootstrapCommand: |
-    #!/bin/bash
-    source /var/lib/cloud/scripts/eksctl/bootstrap.helper.sh
-    /etc/eks/bootstrap.sh ${CLUSTER_NAME} --container-runtime containerd --kubelet-extra-args "--node-labels=${NODE_LABELS}"
 
 addons:
 - name: vpc-cni 
@@ -159,6 +133,38 @@ iam:
 ```sh
 eksctl create cluster -f c1.yaml
 ```
+
+### get-newest-ami
+- get newest ami id for your node group, for GPU or Graviton instance ([link](https://docs.aws.amazon.com/eks/latest/userguide/retrieve-ami-id.html))
+```sh
+# get optimized eks ami id for your version & region
+AWS_REGION=us-east-2
+EKS_VERSION=1.24
+aws ssm get-parameter --name /aws/service/eks/optimized-ami/${EKS_VERSION}/amazon-linux-2/recommended/image_id --region ${AWS_REGION} --query "Parameter.Value" --output text
+
+```
+
+### config sample -- self-managed node
+- 如果需要使用自管节点组，添加如下配置，且使用 ami 有效，如果你在其他 region 创建集群，请使用上面命令获取该 region 对应的 ami
+```yaml
+nodeGroups:
+- name: ng1
+  minSize: 1
+  maxSize: 5
+  desiredCapacity: 1
+  instanceType: m5.large
+  ssh:
+    enableSsm: true
+  privateNetworking: true
+  ami: "ami-03fc1b405779966cc"
+  amiFamily: AmazonLinux2
+  overrideBootstrapCommand: |
+    #!/bin/bash
+    source /var/lib/cloud/scripts/eksctl/bootstrap.helper.sh
+    /etc/eks/bootstrap.sh ${CLUSTER_NAME} --container-runtime containerd --kubelet-extra-args "--node-labels=${NODE_LABELS}"
+
+```
+
 
 ## access eks cluster from web console
 - 将实验环境对应的 `TeamRole` 角色作为集群管理员，方便使用 web 页面查看 eks 集群

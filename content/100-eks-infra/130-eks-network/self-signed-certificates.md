@@ -1,5 +1,5 @@
 ---
-title: acm-self-signed-certification
+title: self-signed-certificates
 description: 使用自签名证书，用根证书签发或者中间证书签发用于 api gateway
 chapter: true
 created: 2022-05-17 15:49:16.687
@@ -12,25 +12,14 @@ tags:
 title: This is a github note
 
 ```
-# acm-self-signed-certification
+# self-signed-certificates
 
-- [[#option 1 - acm issue|option 1 - acm issue]]
-- [[#option 2 - has certificate chain|option 2 - has certificate chain]]
-	- [[#option 2 - has certificate chain#option 2.1 - has certificate chain (with intermediate)|option 2.1 - has certificate chain (with intermediate)]]
-		- [[#option 2.1 - has certificate chain (with intermediate)#refer|refer]]
-	- [[#option 2 - has certificate chain#option 2.2 - has certificate chain (root only)|option 2.2 - has certificate chain (root only)]]
-		- [[#option 2.2 - has certificate chain (root only)#refer|refer]]
-- [[#option 3 - no certificate chain|option 3 - no certificate chain]]
+```toc
+```
 
+## 1. has certificate chain
 
-## option 1 - acm issue 
-- works for api gateway and alb
-- [[acm-issue-certification]]
-
-
-## option 2 - has certificate chain
-
-### option 2.1 - has certificate chain (with intermediate)
+### 1.1. has certificate chain (with intermediate)
 - works for api gateway and alb
 - http endpoint in integration request need this kind certificate, and also set `insecureSkipVerification` to `true`
 
@@ -96,7 +85,7 @@ openssl x509 -inform PEM -in ../myrootca/pki/ca.crt >mycert-chain-root.pem
 - https://docs.aws.amazon.com/acm/latest/userguide/import-certificate-format.html
 
 
-### option 2.2 - has certificate chain (root only)
+### 1.2. has certificate chain (root only)
 - works for api gateway and alb
 - http endpoint in integration request need this kind certificate, and also set `insecureSkipVerification` to `true`
 
@@ -134,10 +123,10 @@ openssl x509 -inform PEM -in pki/ca.crt >my-server-chain.pem
 - https://github.com/OpenVPN/easy-rsa/blob/master/README.quickstart.md
 
 
-## option 3 - no certificate chain
+## 2. no certificate chain
 - works for alb, not for api gateway
 
-1. create self-signed certification
+1. create self-signed certificate
 ```sh
 openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout privateKey.key -out certificate.crt
 
@@ -149,16 +138,20 @@ openssl rsa -in privateKey.key -text > private.pem
 openssl x509 -inform PEM -in certificate.crt > public.pem
 
 ```
-2. import certification (2 pem files) to ACM in your region
+2. import certificate (2 pem files) to ACM in your region
 3. add following to ingress yaml and apply it
 ```yaml
 alb.ingress.kubernetes.io/listen-ports: '[{"HTTP": 80}, {"HTTPS": 443}]'
 alb.ingress.kubernetes.io/ssl-redirect: '443'
 alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:xxxxxx:certificate/xxxxxx
 ```
-4. add certification to local keychain (1 crt file) / just type `thisisunsafe`
+4. add certificate to local keychain (1 crt file) / just type `thisisunsafe`
 5. access URL
 
 
 
+## refer
+
+- works for api gateway and alb
+- [[acm-issue-certificates]]
 

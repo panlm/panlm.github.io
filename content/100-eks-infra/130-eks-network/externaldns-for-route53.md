@@ -23,7 +23,10 @@ title: This is a github note
 ## install-📚
 [link](https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/aws.md) 
 
-- create service account
+- 创建所需要的服务账号
+	- 确保 EKS 集群名称正确
+	- 确保使用正确的 Region
+	- 确保域名匹配所需
 ```sh
 CLUSTER_NAME=ekscluster1
 AWS_REGION=us-east-2
@@ -79,7 +82,7 @@ eksctl create iamserviceaccount \
 
 ```
 
-- install externaldns with existed service account
+- 使用上述服务账号安装 ExternalDNS
 ```sh
 echo ${EXTERNALDNS_NS}
 echo ${DOMAIN_NAME}
@@ -175,7 +178,7 @@ kubectl create --filename externaldns-with-rbac.yaml \
 ```
 
 ## setup-hosted-zone-📚
-- create hosted zone, and add NS records to upstream domain registrar
+-  执行下面命令创建 Hosted Zone， 然后手工添加 NS 记录到上游的域名服务器 domain registrar 中
 ```sh
 echo ${DOMAIN_NAME}
 
@@ -189,7 +192,10 @@ aws route53 list-resource-record-sets --output text \
   --hosted-zone-id $ZONE_ID --query \
   "ResourceRecordSets[?Type == 'NS'].ResourceRecords[*].Value | []" | tr '\t' '\n'
 
-# using output as value to add NS record on your upstream domain registrar
+###
+# copy above output  
+# add NS record on your upstream domain registrar
+###
 
 ```
 
