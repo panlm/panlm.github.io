@@ -32,41 +32,37 @@ title: This is a github note
 - recommend for most of poc environment
 
 ### create-eks-cluster
-- 创建空配置文件
+- 将在下面区域创建 EKS 集群
 ```sh
-touch c1.yaml
+export CLUSTER_NAME=ekscluster1
+export EKS_VERSION=1.24
+export AWS_REGION=us-east-2
+export AWS_DEFAULT_REGION=${AWS_REGION}
+
 ```
 
-- 复制粘贴下面代码到 `c1.yaml`，如果需要的话，从上面章节获取到最新的 `ami` 并更新到配置文件中
+- 执行下面代码创建配置文件 `c1.yaml`
 	- 注意集群名称
 	- 注意使用的 AZ 符合你所在的区域
 
-```yaml
+```sh
+AZS=($(aws ec2 describe-availability-zones \
+--query 'AvailabilityZones[].ZoneName' --output text |awk '{print $1,$2}'))
+export AZ0=${AZS[0]}
+export AZ1=${AZS[1]}
+
+cat >$$.yaml <<-'EOF'
 ---
 apiVersion: eksctl.io/v1alpha5
 kind: ClusterConfig
 
 metadata:
-  name: ekscluster1 # MODIFY cluster name, have another one in nodeGroup section
-  region: "us-east-2" # MODIFY region
-  version: "1.24" # MODIFY version
+  name: "${CLUSTER_NAME}"
+  region: "${AWS_REGION}"
+  version: "${EKS_VERSION}"
 
-availabilityZones: ["us-east-2a", "us-east-2b", "us-east-2c"]
+availabilityZones: ["${AZ0}", "${AZ1}"]
 
-# REPLACE THIS CODE BLOCK
-# vpc:
-#   subnets:
-#     private:
-#       us-east-2a:
-#         id: subnet-xxxxxxxx
-#       us-east-2b:
-#         id: subnet-xxxxxxxx
-#     public:
-#       us-east-2a:
-#         id: subnet-xxxxxxxx
-#       us-east-2b:
-#         id: subnet-xxxxxxxx
-#   sharedNodeSecurityGroup: sg-xxxxxxxx
 vpc:
   cidr: "10.251.0.0/16"
   clusterEndpoints:
@@ -94,7 +90,7 @@ addons:
 - name: vpc-cni 
   version: latest
 - name: coredns
-  version: latest # auto discovers the latest available
+  version: latest 
 - name: kube-proxy
   version: latest
 
@@ -126,27 +122,26 @@ iam:
       namespace: amazon-cloudwatch
     attachPolicyARNs:
     - "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
+EOF
+cat $$.yaml |envsubst '$CLUSTER_NAME $AWS_REGION $AZ0 $AZ1 $EKS_VERSION' > c1.yaml
 
 ```
 
 - 创建集群，预计需要 20 分钟
 ```sh
 eksctl create cluster -f c1.yaml
+
 ```
 
 ### get-newest-ami
-- get newest ami id for your node group, for GPU or Graviton instance ([link](https://docs.aws.amazon.com/eks/latest/userguide/retrieve-ami-id.html))
+- get newest ami id for your self-managed node group, for GPU or Graviton instance ([link](https://docs.aws.amazon.com/eks/latest/userguide/retrieve-ami-id.html))
 ```sh
-# get optimized eks ami id for your version & region
-AWS_REGION=us-east-2
-EKS_VERSION=1.24
-aws ssm get-parameter --name /aws/service/eks/optimized-ami/${EKS_VERSION}/amazon-linux-2/recommended/image_id --region ${AWS_REGION} --query "Parameter.Value" --output text
+echo ${AWS_REGION}
+echo ${EKS_VERSION}
 
-```
+export AMI=$(aws ssm get-parameter --name /aws/service/eks/optimized-ami/${EKS_VERSION}/amazon-linux-2/recommended/image_id --region ${AWS_REGION} --query "Parameter.Value" --output text)
 
-### config sample -- self-managed node
-- 如果需要使用自管节点组，添加如下配置，且使用 ami 有效，如果你在其他 region 创建集群，请使用上面命令获取该 region 对应的 ami
-```yaml
+cat  <<-'EOF' |envsubst '$AMI' |tee -a c1.yaml
 nodeGroups:
 - name: ng1
   minSize: 1
@@ -156,12 +151,13 @@ nodeGroups:
   ssh:
     enableSsm: true
   privateNetworking: true
-  ami: "ami-03fc1b405779966cc"
+  ami: "${AMI}"
   amiFamily: AmazonLinux2
   overrideBootstrapCommand: |
     #!/bin/bash
     source /var/lib/cloud/scripts/eksctl/bootstrap.helper.sh
     /etc/eks/bootstrap.sh ${CLUSTER_NAME} --container-runtime containerd --kubelet-extra-args "--node-labels=${NODE_LABELS}"
+EOF
 
 ```
 
@@ -169,7 +165,8 @@ nodeGroups:
 ## access eks cluster from web console
 - 将实验环境对应的 `TeamRole` 角色作为集群管理员，方便使用 web 页面查看 eks 集群
 ```sh
-CLUSTER_NAME=ekscluster1
+echo ${CLUSTER_NAME}
+
 ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
 AWS_REGION=us-east-2
 eksctl create iamidentitymapping \

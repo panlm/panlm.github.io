@@ -27,8 +27,6 @@ title: This is a github note
 # name=<give your cloud9 a name>
 datestring=$(date +%Y%m%d-%H%M)
 name=${name:=cloud9-$datestring}
-AWS_REGION=us-east-2
-export AWS_DEFAULT_REGION=${AWS_REGION} # need put each command
 
 # VPC_ID=<your vpc id> 
 # ensure you have public subnet in it
