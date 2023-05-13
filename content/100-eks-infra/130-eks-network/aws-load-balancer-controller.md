@@ -143,6 +143,6 @@ REGISTRY=602401143452.dkr.ecr.us-east-1.amazonaws.com
 
 ## refer
 
-![[aws-load-balancer-controller-png-2.png]]
+![aws-load-balancer-controller-png-2.png](aws-load-balancer-controller-png-2.png)
 
 

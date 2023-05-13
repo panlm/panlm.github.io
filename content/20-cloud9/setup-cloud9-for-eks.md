@@ -45,7 +45,7 @@ if [[ ! -z ${VPC_ID} ]]; then
   aws cloud9 create-environment-ec2 \
     --name ${name} \
     --image-id amazonlinux-2-x86_64 \
-    --instance-type m5.xlarge \
+    --instance-type m5.large \
     --subnet-id ${FIRST_SUBNET%% *} \
     --automatic-stop-time-minutes 10080 \
     --region ${AWS_DEFAULT_REGION} |tee /tmp/$$

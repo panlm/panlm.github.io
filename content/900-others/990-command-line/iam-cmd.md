@@ -14,6 +14,9 @@ title: This is a github note
 ```
 # iam cmd
 
+```toc
+```
+
 ## get role arn by name
 ```sh
 aws iam get-role --role-name ${role_name} --query 'Role.Arn' --output text

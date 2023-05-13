@@ -12,7 +12,9 @@ tags:
 title: This is a github note
 
 ```
+
 # cloud9-cmd
+
 ## spin-up-a-cloud9-instance-in-your-region
 
 ![[setup-cloud9-for-eks#^xzcvy9]]
@@ -31,6 +33,30 @@ aws cloud9 update-environment  --environment-id $C9_PID --managed-credentials-ac
 rm -vf ${HOME}/.aws/credentials
 ```
 
+## get subnet id and vpc id from cloud9 instance
+
+```sh
+# get cloud9 vpc
+C9_INST_ID=$(curl http://169.254.169.254/1.0/meta-data/instance-id 2>/dev/null)
+C9_VPC_ID=$(aws ec2 describe-instances \
+--instance-ids ${C9_INST_ID} \
+--query 'Reservations[0].Instances[0].VpcId' --output text)
+
+# get public subnet for external alb
+C9_SUBNETS_ID=$(aws ec2 describe-subnets \
+--filter "Name=vpc-id,Values=${C9_VPC_ID}" \
+--query 'Subnets[?MapPublicIpOnLaunch==`true`].SubnetId' \
+--output text)
+
+# get default security group 
+C9_DEFAULT_SG_ID=$(aws ec2 describe-security-groups \
+--filter Name=vpc-id,Values=${C9_VPC_ID} \
+--query "SecurityGroups[?GroupName == 'default'].GroupId" \
+--output text)
+
+```
+
+^wxvp2s
 
 ## old
 
