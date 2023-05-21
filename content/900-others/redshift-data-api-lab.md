@@ -16,10 +16,16 @@ title: This is a github note
 
 # redshift-data-api-lab
 
-```toc
-min_depth: 2
-max_depth: 3
-```
+- [使用场景](#%E4%BD%BF%E7%94%A8%E5%9C%BA%E6%99%AF)
+- [初始化 redshift 集群](#%E5%88%9D%E5%A7%8B%E5%8C%96-redshift-%E9%9B%86%E7%BE%A4)
+- [rest-api lab](#rest-api-lab)
+	- [list database](#list-database)
+	- [list tables](#list-tables)
+	- [execute statement](#execute-statement)
+- [command line lab](#command-line-lab)
+- [reference](#reference)
+	- [broken](#broken)
+
 
 ## 使用场景
 Amazon Redshift 数据 API 使您能够使用所有类型的传统、云原生和容器化、基于 Web 服务的无服务器应用程序和事件驱动的应用程序轻松访问来自 Amazon Redshift 的数据。

@@ -11,6 +11,10 @@ tags:
 
 # how to put workshop on github 
 
+- [build local](#build-local)
+- [hosted on github page](#hosted-on-github-page)
+
+
 ## build local
 - https://aws-samples.github.io/aws-modernization-workshop-sample/20_build/1_setup/
 

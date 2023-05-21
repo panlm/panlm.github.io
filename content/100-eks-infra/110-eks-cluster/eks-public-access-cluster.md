@@ -16,8 +16,15 @@ title: This is a github note
 
 # eks-public-access-cluster
 
-```toc
-```
+- [prep](#prep)
+- [cluster yaml](#cluster-yaml)
+	- [create-eks-cluster](#create-eks-cluster)
+	- [get-newest-ami](#get-newest-ami)
+- [access eks cluster from web console](#access-eks-cluster-from-web-console)
+- [default tags on subnet](#default-tags-on-subnet)
+- [network topo preview](#network-topo-preview)
+- [refer](#refer)
+
 
 ## prep
 
@@ -38,10 +45,12 @@ export CLUSTER_NAME=ekscluster1
 export EKS_VERSION=1.24
 export AWS_REGION=us-east-2
 export AWS_DEFAULT_REGION=${AWS_REGION}
+CLUSTER_NUM=$(eksctl get cluster |wc -l)
+export CIDR="10.25${CLUSTER_NUM}.0.0/16"
 
 ```
 
-- 执行下面代码创建配置文件 `c1.yaml`
+- 执行下面代码创建配置文件 
 	- 注意集群名称
 	- 注意使用的 AZ 符合你所在的区域
 
@@ -64,7 +73,7 @@ metadata:
 availabilityZones: ["${AZ0}", "${AZ1}"]
 
 vpc:
-  cidr: "10.251.0.0/16"
+  cidr: "${CIDR}"
   clusterEndpoints:
     privateAccess: true
     publicAccess: true
@@ -123,13 +132,13 @@ iam:
     attachPolicyARNs:
     - "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
 EOF
-cat $$.yaml |envsubst '$CLUSTER_NAME $AWS_REGION $AZ0 $AZ1 $EKS_VERSION' > c1.yaml
+cat $$.yaml |envsubst '$CLUSTER_NAME $AWS_REGION $AZ0 $AZ1 $EKS_VERSION $CIDR ' > cluster-${CLUSTER_NAME}.yaml
 
 ```
 
 - 创建集群，预计需要 20 分钟
 ```sh
-eksctl create cluster -f c1.yaml
+eksctl create cluster -f cluster-${CLUSTER_NAME}.yaml
 
 ```
 

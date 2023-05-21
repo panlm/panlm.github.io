@@ -17,8 +17,11 @@ title: This is a github note
 
 # setup-cloud9-for-eks
 
-```toc
-```
+- [spin-up-a-cloud9-instance-in-your-region](#spin-up-a-cloud9-instance-in-your-region)
+- [using internal proxy or not](#using-internal-proxy-or-not)
+- [install in cloud9](#install-in-cloud9)
+- [reference](#reference)
+
 
 ## spin-up-a-cloud9-instance-in-your-region
 

@@ -15,8 +15,14 @@ title: This is a github note
 ```
 
 # file-gateway-lab
-```toc
-```
+
+- [prepare](#prepare)
+- [create s3 bucket](#create-s3-bucket)
+- [create fgw instance](#create-fgw-instance)
+- [create-nfs-share-📚](#create-nfs-share-)
+- [more](#more)
+
+
 ## prepare
 - create a cloud9 desktop for this lab
 - ensure you have enough privilege to create resources

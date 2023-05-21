@@ -29,6 +29,27 @@ flux bootstrap github \
 
 ```
 
+another sample
+```sh
+flux bootstrap github \
+    --owner=panlm \
+    --repository=eks-cluster-upgrades-workshop \
+    --branch=main \
+    --personal \
+    --path=gitops/clusters/cluster-demo
+    
+```
+
+```conf
+      owner: "panlm"
+      repository: "eks-cluster-upgrades-workshop"
+      private: "true"
+      branch: "main"
+      namespace: "flux-system"
+      path: "gitops/clusters/cluster-demo"
+
+```
+
 ## lab
 ```sh
 flux get all
