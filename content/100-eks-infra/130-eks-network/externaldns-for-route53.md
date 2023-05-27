@@ -17,8 +17,11 @@ title: This is a github note
 
 # externaldns-for-route53
 
-```toc
-```
+- [install-📚](#install-)
+- [setup-hosted-zone-📚](#setup-hosted-zone-)
+	- [private hosted zone](#private-hosted-zone)
+- [verify](#verify)
+
 
 ## install-📚
 [link](https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/aws.md) 

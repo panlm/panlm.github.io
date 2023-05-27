@@ -17,8 +17,13 @@ title: This is a github note
 
 # aws-load-balancer-controller
 
-```toc
-```
+- [github](#github)
+- [workshop](#workshop)
+- [install-📚](#install-)
+- [install-in-china-region](#install-in-china-region)
+- [blog](#blog)
+- [refer](#refer)
+
 
 ## github
 

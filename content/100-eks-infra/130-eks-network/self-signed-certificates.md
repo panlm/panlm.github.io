@@ -8,14 +8,22 @@ tags:
 - aws/security/acm 
 - aws/container/eks 
 ---
+
 ```ad-attention
 title: This is a github note
 
 ```
+
 # self-signed-certificates
 
-```toc
-```
+- [1. has certificate chain](#1-has-certificate-chain)
+	- [1.1. has certificate chain (with intermediate)](#11-has-certificate-chain-with-intermediate)
+		- [refer](#refer)
+	- [1.2. has certificate chain (root only)](#12-has-certificate-chain-root-only)
+		- [refer](#refer)
+- [2. no certificate chain](#2-no-certificate-chain)
+- [refer](#refer)
+
 
 ## 1. has certificate chain
 

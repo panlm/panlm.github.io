@@ -8,15 +8,17 @@ tags:
 - aws/cmd 
 - aws/storage/efs 
 ---
+
 ```ad-attention
 title: This is a github note
 
 ```
+
 # efs-cmd
 
 ## create efs
 
-在默认 vpc 中创建 efs
+- 在默认 vpc 中创建 efs
 ```sh
 CLUSTER_NAME=${CLUSTER_NAME:-eks0630}
 AWS_REGION=${AWS_REGION:-us-east-2}

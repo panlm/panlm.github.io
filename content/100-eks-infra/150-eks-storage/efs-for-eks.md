@@ -16,15 +16,36 @@ title: This is a github note
 ```
 
 # efs-for-eks
+
+- [link](#link)
+- [create efs](#create-efs)
+- [install from github](#install-from-github)
+	- [uninstall efs-csi](#uninstall-efs-csi)
+- [install from helm](#install-from-helm)
+	- [node role (alternative)](#node-role-alternative)
+	- [sa role](#sa-role)
+	- [install](#install)
+	- [uninstall](#uninstall)
+- [verify](#verify)
+	- [static provisioning](#static-provisioning)
+	- [dynamic provisioning with efs access point](#dynamic-provisioning-with-efs-access-point)
+- [check log](#check-log)
+- [reference](#reference)
+	- [redeploy deployment and daemonset](#redeploy-deployment-and-daemonset)
+
+
+## link
+
 - [efs workshop](https://www.eksworkshop.com/beginner/190_efs/launching-efs/)
 - [[efs-on-eks-mini-priviledge]]
 - [Introducing Amazon EFS CSI dynamic provisioning](https://aws.amazon.com/blogs/containers/introducing-efs-csi-dynamic-provisioning/)
 
+
 ## create efs 
 
 ```sh
-CLUSTER_NAME=eks0630
-AWS_REGION=cn-northwest-1
+echo ${CLUSTER_NAME:=ekscluster1}
+echo ${AWS_REGION:=cn-northwest-1}
 
 VPC_ID=$(aws eks describe-cluster \
   --name ${CLUSTER_NAME} --region ${AWS_REGION} \
@@ -85,6 +106,8 @@ kubectl kustomize |kubectl delete -f -
 
 
 ## install from helm
+[link](https://github.com/kubernetes-sigs/aws-efs-csi-driver/blob/master/docs/README.md#installation)
+
 ### node role (alternative)
 ```sh
 wget -O iam-policy.json 'https://github.com/kubernetes-sigs/aws-efs-csi-driver/raw/master/docs/iam-policy-example.json'
@@ -101,10 +124,9 @@ echo ${POLICY_ARN}
 ```
 
 ### sa role
-[blog](https://aws.amazon.com/blogs/containers/introducing-efs-csi-dynamic-provisioning/)
 ```sh
 
-# do steps in **node role** part
+# do steps in **node role** chapter
 
 CLUSTER_NAME=eks0630
 AWS_REGION=cn-northwest-1
@@ -132,8 +154,11 @@ helm repo update
 # get url for your region 
 # https://docs.aws.amazon.com/eks/latest/userguide/add-ons-images.html
 # add `.cn` postfix for china region
-# REGISTRY=602401143452.dkr.ecr.us-east-1.amazonaws.com
-REGISTRY=961992271922.dkr.ecr.cn-northwest-1.amazonaws.com.cn
+if [[ ${AWS_REGION%%-*} == "cn" ]]; then 
+  REGISTRY=961992271922.dkr.ecr.cn-northwest-1.amazonaws.com.cn
+else 
+  REGISTRY=602401143452.dkr.ecr.us-east-1.amazonaws.com
+fi
 helm upgrade -i aws-efs-csi-driver aws-efs-csi-driver/aws-efs-csi-driver \
   --namespace kube-system \
   --set image.repository=${REGISTRY}/eks/aws-efs-csi-driver \
@@ -148,12 +173,14 @@ find registry url from [[eks-container-image-registries-url-by-region]]
 helm uninstall aws-efs-csi-driver -n kube-system
 ```
 
-
-## static provisioning
+## verify
+### static provisioning
 [link](https://github.com/kubernetes-sigs/aws-efs-csi-driver/tree/master/examples/kubernetes/multiple_pods)
 using static provision with mount, no access point needed, so no additional iam policy
 
 ```sh
+echo ${FILESYSTEM_ID}
+
 cat > storageclass.yaml <<-EOF
 kind: StorageClass
 apiVersion: storage.k8s.io/v1
@@ -241,11 +268,13 @@ kubectl apply -f pod.yaml
 
 ```
 
-## dynamic provisioning with efs access point 
+### dynamic provisioning with efs access point 
 [link](https://github.com/kubernetes-sigs/aws-efs-csi-driver/tree/master/examples/kubernetes/dynamic_provisioning)
 need additional iam policy, execute `node role` part, or reinstall with irsa
 
 ```sh
+echo ${FILESYSTEM_ID}
+
 # ensure volumeHandle has been replaced by your efs filesystem id
 envsubst > ./dy-storageclass.yaml <<-EOF
 kind: StorageClass

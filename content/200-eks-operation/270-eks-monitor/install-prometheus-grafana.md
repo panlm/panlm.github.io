@@ -1,6 +1,7 @@
 ---
 title: install-prometheus-grafana
 description: "安装 grafana 和 prometheus"
+chapter: true
 created: 2023-02-18 21:31:31.678
 last_modified: 2023-02-18 21:31:31.678
 tags: 
@@ -8,6 +9,7 @@ tags:
 - prometheus 
 - aws/container/eks 
 ---
+
 ```ad-attention
 title: This is a github note
 
@@ -16,12 +18,19 @@ title: This is a github note
 # install-prometheus-grafana
 [link](https://archive.eksworkshop.com/intermediate/240_monitoring/prereqs/) 
 
+- [prep](#prep)
+- [install prometheus](#install-prometheus)
+- [install grafana](#install-grafana)
+
+
 ## prep
+
 - [[ebs-for-eks]]  or
 - [ebs-for-eks.md]({{< ref "ebs-for-eks.md" >}}) 
 
 
 ## install prometheus
+
 ```sh
 kubectl create namespace prometheus
 
@@ -63,7 +72,8 @@ kubectl get all -n grafana
 
 ```
 
-
-
+### dashboard
+- cluster monitoring dashboard: **3119**
+- pod monitoring dashboard: **6417**
 
 

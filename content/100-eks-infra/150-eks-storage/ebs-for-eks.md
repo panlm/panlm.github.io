@@ -17,10 +17,22 @@ title: This is a github note
 
 # ebs-for-eks
 
+- [install](#install)
+	- [ebs-csi](#ebs-csi)
+	- [assign policy to node](#assign-policy-to-node)
+- [verify](#verify)
+	- [cross az pod definition](#cross-az-pod-definition)
+- [check log](#check-log)
+	- [ebs-csi-pod has 6 container](#ebs-csi-pod-has-6-container)
+
+
 ## install
+
+### ebs-csi
 ```sh
-export AWS_REGION=cn-northwest-1
-export CLUSTER_NAME=eks0630
+echo ${CLUSTER_NAME:=ekscluster1}
+echo ${AWS_REGION:=us-east-2}
+
 git clone https://github.com/kubernetes-sigs/aws-ebs-csi-driver.git
 kubectl apply -k aws-ebs-csi-driver/deploy/kubernetes/overlays/stable
 
@@ -29,7 +41,7 @@ kubectl get pods -n kube-system
 
 ```
 
-## assign policy to node
+### assign policy to node
 ```sh
 # # (option) using customer managed policy
 # aws iam create-policy \
@@ -71,8 +83,10 @@ done
 
 ```
 
+
 ## verify
-```
+
+```sh
 kubectl apply -f aws-ebs-csi-driver/examples/kubernetes/dynamic-provisioning/manifests/
 
 ```
@@ -114,6 +128,7 @@ spec:
 
 
 ## check log
+
 ```sh
 k logs -f deploy/ebs-csi-controller csi-provisioner -n kube-system 
 
