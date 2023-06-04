@@ -14,8 +14,16 @@ title: This is a github note
 ```
 # ssm-cmd
 
-```toc
-```
+- [ssm agent](#ssm-agent)
+- [start-session](#start-session)
+	- [prot-forward](#prot-forward)
+	- [prot-forward-to-remote-host](#prot-forward-to-remote-host)
+- [send-command](#send-command)
+- [create document and run it](#create-document-and-run-it)
+- [filter-inventory-📚](#filter-inventory-)
+- [get parameter](#get-parameter)
+- [join domain sample](#join-domain-sample)
+- [create ssm vpc endpoint](#create-ssm-vpc-endpoint)
 
 ## ssm agent
 ```sh

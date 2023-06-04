@@ -29,7 +29,7 @@ flux bootstrap github \
 
 ```
 
-another sample
+### another sample
 ```sh
 flux bootstrap github \
     --owner=panlm \

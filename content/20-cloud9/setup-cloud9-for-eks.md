@@ -29,7 +29,7 @@ title: This is a github note
 ```sh
 # name=<give your cloud9 a name>
 datestring=$(date +%Y%m%d-%H%M)
-name=${name:=cloud9-$datestring}
+echo ${name:=cloud9-$datestring}
 
 # VPC_ID=<your vpc id> 
 # ensure you have public subnet in it
