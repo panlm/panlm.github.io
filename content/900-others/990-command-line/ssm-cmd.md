@@ -39,9 +39,10 @@ aws ssm start-session --target  i-xxxxxx --region us-east-2
 [blog](https://aws.amazon.com/blogs/aws/new-port-forwarding-using-aws-system-manager-sessions-manager/)
 
 ```sh
-aws ssm start-session --target i-xxxxxxxx \
+INST_ID=
+aws ssm start-session --target ${INST_ID} \
 --document-name AWS-StartPortForwardingSession \
---parameters '{"portNumber":["81"],"localPortNumber":["9999"]}' 
+--parameters '{"localPortNumber":["9999"],"portNumber":["81"]}' 
 
 # target 81 
 # local 9999
@@ -51,12 +52,14 @@ aws ssm start-session --target i-xxxxxxxx \
 
 ### prot-forward-to-remote-host
 ```sh
-aws ssm start-session --target i-xxxxxxxx \
+INST_ID=
+REMOTE_HOST=
+aws ssm start-session --target ${INST_ID} \
 --document-name AWS-StartPortForwardingSessionToRemoteHost \
 --parameters '{
-"portNumber":["80"],
 "localPortNumber":["9999"],
-"host":["internal-k8s.us-east-2.elb.amazonaws.com"]
+"host":["'"${REMOTE_HOST}"'"],
+"portNumber":["443"]
 }' 
 
 ```

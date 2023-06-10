@@ -109,6 +109,7 @@ kubectl kustomize |kubectl delete -f -
 [link](https://github.com/kubernetes-sigs/aws-efs-csi-driver/blob/master/docs/README.md#installation)
 
 ### node role (alternative)
+- you will got error in creating pod:  `User: arn:aws:sts::xxx:assumed-role/eksctl-ekscluster1-nodegroup-mana-NodeInstanceRole-1LTHOM1WRDBIS/i-xxx is not authorized to perform: elasticfilesystem:DescribeMountTargets on the specified resource`, if you miss this step
 ```sh
 wget -O iam-policy.json 'https://github.com/kubernetes-sigs/aws-efs-csi-driver/raw/master/docs/iam-policy-example.json'
 # cp aws-efs-csi-driver/docs/iam-policy-example.json iam-policy.json

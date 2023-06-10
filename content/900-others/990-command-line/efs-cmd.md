@@ -16,6 +16,11 @@ title: This is a github note
 
 # efs-cmd
 
+```toc
+min_depth: 2
+max_depth: 4
+```
+
 ## create efs
 
 - 在默认 vpc 中创建 efs
@@ -58,4 +63,8 @@ done
 another example: [[efs-for-eks#^mgh326]] 
 
 
+
+
+## refer
+- https://repost.aws/knowledge-center/efs-mount-automount-unmount-steps
 
