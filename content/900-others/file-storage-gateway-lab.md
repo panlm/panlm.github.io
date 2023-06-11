@@ -2,7 +2,7 @@
 title: "file-storage-gateway-lab"
 description: "create file storage gateway from cli"
 chapter: true
-weight: 20
+weight: 20220916
 created: 2022-09-16 13:40:22.702
 last_modified: 2022-10-10 15:44:52.519
 tags: 

@@ -2,6 +2,7 @@
 title: rds-mysql-replica-cross-region-cross-account
 description: 用于 1) 跨账号复制 RDS 数据库; 2) 或者将数据库转换成加密存储
 chapter: true
+weight: 20221011
 created: 2022-10-11 20:25:32.965
 last_modified: 2023-03-16 07:28:23.137
 tags: 

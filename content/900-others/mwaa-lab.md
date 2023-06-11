@@ -1,7 +1,8 @@
 ---
-title: mwaa-cmd
-description: mwaa-cmd
+title: mwaa-lab
+description: 在中国区使用 mwaa 服务
 chapter: true
+weight: 20230609
 created: 2023-06-09 22:25:25.533
 last_modified: 2023-06-09 22:25:25.533
 tags: 
@@ -11,12 +12,12 @@ tags:
 title: This is a github note
 
 ```
-# mwaa-cmd
+# mwaa-lab
 
-```toc
-min_depth: 2
-max_depth: 4
-```
+- [prepare endpoint for your private network](#prepare-endpoint-for-your-private-network)
+	- [命令行](#%E5%91%BD%E4%BB%A4%E8%A1%8C)
+	- [cloudformation 模版](#cloudformation-%E6%A8%A1%E7%89%88)
+- [create mwaa environment](#create-mwaa-environment)
 
 ## prepare endpoint for your private network
 
@@ -119,11 +120,14 @@ aws ec2 create-vpc-endpoint --vpc-id ${VPC_ID} \
 
 ## create mwaa environment
 
-![mwaa-cmd-png-1.png](mwaa-cmd-png-1.png)
+选择之前命令行中指定的 vpc 和 子网
+![mwaa-lab-png-1.png](mwaa-lab-png-1.png)
 
-![mwaa-cmd-png-2.png](mwaa-cmd-png-2.png)
+使用私有网络暴露 web 服务器，后续可以通过 ssh tunnel 或者 ssm tunnel 方式远程访问
+![mwaa-lab-png-2.png](mwaa-lab-png-2.png)
 
-![mwaa-cmd-png-3.png](mwaa-cmd-png-3.png)
+同时选择 “创建新安全组” 和 “之前命令行创建的安全组（用于 interface endpoint）”
+![mwaa-lab-png-3.png](mwaa-lab-png-3.png)
 
 
 
