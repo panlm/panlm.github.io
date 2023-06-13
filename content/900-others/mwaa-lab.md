@@ -56,6 +56,7 @@ aws ec2 authorize-security-group-ingress \
   --port -1 \
   --source-group ${SECURITY_GROUP_ID}
 
+# china region endpoint services needed by mwaa in private env
 CN_SERVICE_LIST="
 cn.com.amazonaws.${AWS_REGION}.monitoring
 cn.com.amazonaws.${AWS_REGION}.ecr.dkr
@@ -67,6 +68,7 @@ cn.com.amazonaws.${AWS_REGION}.airflow.api
 cn.com.amazonaws.${AWS_REGION}.airflow.env	
 "
 
+# global region endpoint services needed by mwaa in private env
 SERVICE_LIST="
 com.amazonaws.${AWS_REGION}.monitoring
 com.amazonaws.${AWS_REGION}.ecr.dkr
@@ -84,6 +86,7 @@ if [[ $? -eq 0 ]]; then
     SERVICE_LIST=${CN_SERVICE_LIST}
 fi
 
+# create interface endpoint
 for i in ${SERVICE_LIST}; do
 aws ec2 create-vpc-endpoint \
     --vpc-id ${VPC_ID} \
@@ -106,6 +109,7 @@ envsubst >s3-gw-endpoint-policy.json <<-EOF
 }
 EOF
 
+# create s3 gateway endpoint
 aws ec2 create-vpc-endpoint --vpc-id ${VPC_ID} \
 --service-name com.amazonaws.${AWS_REGION}.s3 \
 --route-table-ids ${ROUTE_TABLE_STRING} \

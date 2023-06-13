@@ -62,5 +62,6 @@ cdk deploy --all --require-approval never
 
 
 
-
+## refer
+- https://georgemao.medium.com/enabling-private-apis-with-custom-domain-names-aws-api-gateway-df1b62b0ba7c
 
