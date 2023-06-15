@@ -42,7 +42,7 @@ aws ssm start-session --target  i-xxxxxx --region us-east-2
 INST_ID=
 aws ssm start-session --target ${INST_ID} \
 --document-name AWS-StartPortForwardingSession \
---parameters '{"localPortNumber":["9999"],"portNumber":["81"]}' 
+--parameters '{"localPortNumber":["9999"],"portNumber":["80"]}' 
 
 # target 81 
 # local 9999

@@ -15,6 +15,13 @@ title: This is a github note
 
 # apigw-custom-domain-name
 
+- [for private api](#for-private-api)
+	- [route 53 to customer domain name](#route-53-to-customer-domain-name)
+	- [refer](#refer)
+- [for regional api](#for-regional-api)
+	- [route 53 to customer domain name](#route-53-to-customer-domain-name)
+	- [refer](#refer)
+
 ## for private api 
 - 在 acm 中发布证书 `*.api.aws.panlm.xyz`
 - 在与 API 同区域中创建 route53 的 public host zone `api.aws.panlm.xyz`
@@ -27,13 +34,38 @@ title: This is a github note
 - 需要使用 alb 或者 nlb over tls 消除证书 issue （[link](https://github.com/aws-samples/serverless-samples/tree/main/apigw-private-custom-domain-name)）
 - ![png-on-github](https://github.com/aws-samples/serverless-samples/blob/main/apigw-private-custom-domain-name/assets/apigw_pcdn_nlb_200.png)
 
+### route 53 to customer domain name
+
+|          | enable endpoint private dns name | disable endpoint private dns name |
+| -------- | -------------------------------- | --------------------------------- |
+| alias    | {"message":"Forbidden"}          | {"message":"Forbidden"}           |
+| cname    | certificate issue                | {"message":"Forbidden"}           |
+| api name | certificate issue                | Could not resolve host            |
+| vpce     | certificate issue                | certificate issue                 |
+
+certificate issue: "no alternative certificate subject name matches target host name"
+
+### refer
+- https://github.com/aws-samples/serverless-patterns/tree/main/public-alb-private-api-terraform
+
 ## for regional api 
-- 如果该 api 是 regional ，创建定制域名，记录下定制域名配置中的 `API Gateway domain name`，不是apigw stage url 中的域名，参照 [[apigw-regional-api-access-from-vpc]]
-- 使用 route53 alias 将定制域名指向 `API Gateway domain name`
-- 浏览器将显示证书有效
+- 如果该 api 是 regional ，创建定制域名，记录下定制域名配置中的 `API Gateway domain name`，不是 api stage 页面中的域名，参照 [[apigw-regional-api-access-from-vpc]]
+- 使用 route53 alias（或 cname） 将定制域名指向 `API Gateway domain name`
+- 访问定制域名，浏览器将显示证书有效
+- 如果定制域名指向 api 的 url （在 api stage 页面中），将遇到证书验证不通过的问题
+
+### route 53 to customer domain name
+
+|          | regional api      |
+| -------- | ----------------- |
+| alias    | success           |
+| cname    | success           | 
+| api name | certificate issue |
 
 
-## refer
+### refer
 - https://aws.amazon.com/premiumsupport/knowledge-center/api-gateway-domain-certificate/
+- https://serverlessland.com/repos/apigw-private-custom-domain-name
+
 
 
