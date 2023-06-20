@@ -16,6 +16,10 @@ title: This is a github note
 ```
 
 # eks-container-insights
+
+- [enable](#enable)
+- [check pod / deployment log](#check-pod--deployment-log)
+
 ## enable 
 1. replace 2 service accounts with [CloudWatchAgentServerPolicy](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Container-Insights-prerequisites.htm)
 ```sh

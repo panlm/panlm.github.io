@@ -16,21 +16,49 @@ title: This is a github note
 ```
 
 # install-prometheus-grafana
-[link](https://archive.eksworkshop.com/intermediate/240_monitoring/prereqs/) 
 
 - [prep](#prep)
-- [install prometheus](#install-prometheus)
-- [install grafana](#install-grafana)
-
+- [install-prometheus-operator (prefer)](#install-prometheus-operator-prefer)
+	- [forward to local](#forward-to-local)
+- [install prometheus and grafana (optional)](#install-prometheus-and-grafana-optional)
+- [refer](#refer)
 
 ## prep
 
 - [[ebs-for-eks]]  or
 - [ebs-for-eks.md]({{< ref "ebs-for-eks.md" >}}) 
 
+## install-prometheus-operator (prefer)
+[link](https://blog.devgenius.io/step-by-step-guide-to-setting-up-prometheus-operator-in-your-kubernetes-cluster-7167a8228877)
 
-## install prometheus
+![install-prometheus-grafana-png-1.png](install-prometheus-grafana-png-1.png)
 
+```sh
+DEPLOY_NAME=prom-operator-run-abc
+helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
+helm repo update
+helm install ${DEPLOY_NAME} prometheus-community/kube-prometheus-stack
+
+```
+
+### forward to local
+```sh
+k get svc/${DEPLOY_NAME}-grafana
+k port-forward svc/${DEPLOY_NAME}-grafana 3000:80
+
+INST_ID=<cloud9_inst_id>
+aws ssm start-session --target ${INST_ID} --document-name AWS-StartPortForwardingSession --parameters '{"localPortNumber":["3000"],"portNumber":["3000"]}'
+
+###
+# access local 3000 with 
+# admin / prom-operator
+###
+
+```
+
+
+## install prometheus and grafana (optional)
+- install prometheus
 ```sh
 kubectl create namespace prometheus
 
@@ -45,7 +73,7 @@ kubectl get all -n prometheus
 
 ```
 
-## install grafana
+- install grafana
 ```sh
 cat > ./grafana.yaml <<-EOF
 datasources:
@@ -72,8 +100,13 @@ kubectl get all -n grafana
 
 ```
 
-### dashboard
-- cluster monitoring dashboard: **3119**
-- pod monitoring dashboard: **6417**
+- dashboard
+	- cluster monitoring dashboard: **3119**
+	- pod monitoring dashboard: **6417**
+
+
+## refer
+[link](https://archive.eksworkshop.com/intermediate/240_monitoring/prereqs/) 
+
 
 

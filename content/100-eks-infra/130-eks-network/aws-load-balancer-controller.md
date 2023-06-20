@@ -47,6 +47,7 @@ title: This is a github note
 this note covered by flux-lab
 {{% /notice %}}
 
+- 安装 aws load balancer controller
 ```sh
 CLUSTER_NAME=ekscluster1
 export AWS_DEFAULT_REGION=us-east-2

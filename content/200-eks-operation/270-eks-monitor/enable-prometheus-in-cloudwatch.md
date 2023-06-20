@@ -10,12 +10,16 @@ tags:
 - aws/mgmt/cloudwatch 
 - prometheus 
 ---
+
 ```ad-attention
 title: This is a github note
 
 ```
 
 # enable-prometheus-in-cloudwatch
+
+- [enable](#enable)
+- [reference](#reference)
 
 ## enable
 ```sh
