@@ -15,6 +15,13 @@ title: This is a github note
 
 # grafana-installation-lab
 
+- [summary](#summary)
+- [grafana container on beanstalk](#grafana-container-on-beanstalk)
+- [grafana in ec2](#grafana-in-ec2)
+- [grafana on eks](#grafana-on-eks)
+- [appendix - single pod in beanstalk](#appendix---single-pod-in-beanstalk)
+
+## summary
 Grafana 作为开源软件可以自由部署，1）在 ec2 中手动部署，除了 OS 和软件层面配置之外，不可避免需要一些额外的配置工作，包括 vpc 、 elb 安全组等；2）当然也有些解决方案将 Grafana 部署在 eks 集群上以解决高可用性问题，但如果只是希望简单使用可能会有点杀鸡用牛刀的感觉；3）本文描述了用 aws elastic beanstalk 提供一站式快速部署 Grafana，并且使用 efs 实现 grafana内部配置的持久化
 
 ## grafana container on beanstalk
@@ -26,7 +33,7 @@ AWS_REGION=us-east-2
 
 ![[efs-cmd#^d4lka9]]
 
-or huge line: [efs-cmd.md]({{< ref "efs-cmd.md" >}}) 
+or huge link: [efs-cmd.md]({{< ref "efs-cmd.md" >}}) 
 
 mount nfs to instance ([link](https://aws.amazon.com/premiumsupport/knowledge-center/elastic-beanstalk-mount-efs-volumes/))
 

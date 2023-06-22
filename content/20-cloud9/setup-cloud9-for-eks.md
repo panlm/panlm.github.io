@@ -177,6 +177,13 @@ wget -O aws-iam-authenticator https://github.com/kubernetes-sigs/aws-iam-authent
 chmod +x ./aws-iam-authenticator
 sudo mv ./aws-iam-authenticator /usr/local/bin/
 
+# install kubectl convert plugin
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl-convert"
+curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl-convert.sha256"
+echo "$(cat kubectl-convert.sha256) kubectl-convert" | sha256sum --check
+sudo install -o root -g root -m 0755 kubectl-convert /usr/local/bin/kubectl-convert
+rm kubectl-convert kubectl-convert.sha256
+
 # option install jwt-cli
 # https://github.com/mike-engel/jwt-cli/blob/main/README.md
 # sudo yum -y install cargo

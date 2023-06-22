@@ -1,5 +1,5 @@
 ---
-title: install-prometheus-grafana
+title: install-prometheus-grafana-on-eks
 description: "安装 grafana 和 prometheus"
 chapter: true
 created: 2023-02-18 21:31:31.678
@@ -25,8 +25,7 @@ title: This is a github note
 
 ## prep
 
-- [[ebs-for-eks]]  or
-- [ebs-for-eks.md]({{< ref "ebs-for-eks.md" >}}) 
+- [[ebs-for-eks]]  or huge link: [ebs-for-eks.md]({{< ref "ebs-for-eks.md" >}}) 
 
 ## install-prometheus-operator (prefer)
 [link](https://blog.devgenius.io/step-by-step-guide-to-setting-up-prometheus-operator-in-your-kubernetes-cluster-7167a8228877)
