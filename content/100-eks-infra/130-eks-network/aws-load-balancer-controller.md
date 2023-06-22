@@ -24,7 +24,6 @@ title: This is a github note
 - [blog](#blog)
 - [refer](#refer)
 
-
 ## github
 
 - https://github.com/kubernetes-sigs/aws-load-balancer-controller
@@ -50,7 +49,8 @@ this note covered by flux-lab
 - 安装 aws load balancer controller
 ```sh
 CLUSTER_NAME=ekscluster1
-export AWS_DEFAULT_REGION=us-east-2
+AWS_REGION=us-east-2
+export AWS_DEFAULT_REGION=${AWS_REGION}
 export AWS_PAGER=""
 
 eksctl utils associate-iam-oidc-provider \
@@ -64,10 +64,13 @@ git clone https://github.com/kubernetes-sigs/aws-load-balancer-controller.git
 aws cloudformation describe-stacks --stack-name eksctl-${CLUSTER_NAME}-addon-iamserviceaccount-kube-system-aws-load-balancer-controller 2>&1 1>/dev/null
 if [[ $? -ne 0 ]]; then
 
-# aws commercial region
-IAM_POLICY_TEMPLATE=iam_policy.json 
-# aws china region
-# IAM_POLICY_TEMPLATE=iam_policy_cn.json 
+if [[ ${AWS_REGION%%-*} == "cn" ]]; then 
+  # aws china region
+  IAM_POLICY_TEMPLATE=iam_policy_cn.json 
+else
+  # aws commercial region
+  IAM_POLICY_TEMPLATE=iam_policy.json 
+fi
 cp aws-load-balancer-controller/docs/install/${IAM_POLICY_TEMPLATE} .
 
 policy_name=AWSLoadBalancerControllerIAMPolicy-`date +%m%d%H%M`
@@ -95,11 +98,24 @@ helm repo update
 # following helm cmd will fail if you use 3.9.0 version
 # downgrade to helm 3.8.2
 # and another solved issue is here: [[ingress-controller-lab-issue]]
-helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
-  -n kube-system \
-  --set clusterName=${CLUSTER_NAME} \
-  --set serviceAccount.create=false \
-  --set serviceAccount.name=aws-load-balancer-controller 
+if [[ ${AWS_REGION%%-*} == "cn" ]]; then 
+  # aws china region
+  helm upgrade -i aws-load-balancer-controller eks/aws-load-balancer-controller \
+	-n kube-system \
+	--set clusterName=${CLUSTER_NAME} \
+	--set serviceAccount.create=false \
+	--set serviceAccount.name=aws-load-balancer-controller \
+	--set image.repository=961992271922.dkr.ecr.cn-northwest-1.amazonaws.com.cn/amazon/aws-load-balancer-controller \
+	# --set region=${AWS_DEFAULT_REGION} \
+	# --set vpcId=${VPC_ID} 
+else
+  # aws commercial region
+  helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
+	-n kube-system \
+	--set clusterName=${CLUSTER_NAME} \
+	--set serviceAccount.create=false \
+	--set serviceAccount.name=aws-load-balancer-controller 
+fi
 
 kubectl get deployment -n kube-system aws-load-balancer-controller
 

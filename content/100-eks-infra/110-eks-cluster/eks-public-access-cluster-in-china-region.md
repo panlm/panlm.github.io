@@ -13,14 +13,14 @@ tags:
 
 1. create cloud9
 2. create vpc
-![[create-standard-vpc-for-lab#using-cloudformation-template]]
+![[create-standard-vpc-for-lab-in-china-region#using-cloudformation-template]]
 
-or [hugo-link]({{< ref "../../20-cloud9/create-standard-vpc-for-lab#using-cloudformation-template" >}})  
+or [hugo-link]({{< ref "../../20-cloud9/create-standard-vpc-for-lab-in-china-region#using-cloudformation-template" >}})  
 
 3. get vpc id
-![[create-standard-vpc-for-lab#get-vpc-id]]
+![[create-standard-vpc-for-lab-in-china-region#get-vpc-id]]
 
-or [hugo-link]({{< ref "create-standard-vpc-for-lab#get-vpc-id" >}})
+or [hugo-link]({{< ref "create-standard-vpc-for-lab-in-china-region#get-vpc-id" >}})
 
 4. pre-config
 ![[eks-private-access-cluster#^h86u1r]]

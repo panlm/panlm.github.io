@@ -16,9 +16,20 @@ title: This is a github note
 
 # eks-private-access-cluster
 
+- [prep bastion](#prep-bastion)
+- [prep cloud9](#prep-cloud9)
+- [prep-config](#prep-config)
+- [cluster yaml](#cluster-yaml)
+- [access cluster](#access-cluster)
+- [issue about kubectl](#issue-about-kubectl)
+	- [solve 1](#solve-1)
+	- [solve 2](#solve-2)
+- [network topo preview](#network-topo-preview)
+- [reference](#reference)
+
 ## prep bastion
 - 创建vpc和cloud9 
-    - [[create-standard-vpc-for-lab]] or [hugo link]({{< ref "create-standard-vpc-for-lab" >}})
+    - [[create-standard-vpc-for-lab-in-china-region]] or [hugo link]({{< ref "create-standard-vpc-for-lab-in-china-region" >}})
 
 ## prep cloud9
 - 安装必要的软件 
