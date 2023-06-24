@@ -150,7 +150,7 @@ echo ${EKS_VERSION}
 
 export AMI=$(aws ssm get-parameter --name /aws/service/eks/optimized-ami/${EKS_VERSION}/amazon-linux-2/recommended/image_id --region ${AWS_REGION} --query "Parameter.Value" --output text)
 
-cat  <<-'EOF' |envsubst '$AMI' |tee -a c1.yaml
+cat  <<-'EOF' |envsubst '$AMI' |tee -a cluster-${CLUSTER_NAME}.yaml
 nodeGroups:
 - name: ng1
   minSize: 1

@@ -16,6 +16,15 @@ title: This is a github note
 ```
 
 # flux-lab
+
+- [bootstrap v2](#bootstrap-v2)
+	- [another sample](#another-sample)
+- [lab](#lab)
+	- [generate yaml](#generate-yaml)
+- [helm v1 (alternative)](#helm-v1-alternative)
+- [dependencies](#dependencies)
+- [others](#others)
+
 ## bootstrap v2
 ```sh
 export GITHUB_TOKEN=ghp_xxxxxx
@@ -54,6 +63,8 @@ flux bootstrap github \
 ```sh
 flux get all
 
+# before delete ns
+flux uninstall --dry-run -n flux-system
 ```
 
 ### generate yaml

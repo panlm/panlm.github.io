@@ -177,6 +177,9 @@ wget -O aws-iam-authenticator https://github.com/kubernetes-sigs/aws-iam-authent
 chmod +x ./aws-iam-authenticator
 sudo mv ./aws-iam-authenticator /usr/local/bin/
 
+# install kube-no-trouble
+sh -c "$(curl -sSL https://git.io/install-kubent)"
+
 # install kubectl convert plugin
 curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl-convert"
 curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl-convert.sha256"
@@ -214,30 +217,43 @@ rm -vf ${HOME}/.aws/credentials
 
 # ---
 
-AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
+export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
 C9_INST_ID=$(curl 169.254.169.254/latest/meta-data/instance-id)
 ROLE_NAME=adminrole-$RANDOM
 MY_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
-envsubst > trust.json <<-EOF
+
+cat > ec2.json <<-EOF
 {
-    "Version": "2012-10-17",
-    "Statement": [
-        {
-            "Effect": "Allow",
-            "Principal": {
-                "Service": "ec2.amazonaws.com"
-            },
-            "Action": "sts:AssumeRole"
-        },{
-            "Effect": "Allow",
-            "Principal": {
-                "AWS": "arn:aws:iam::${MY_ACCOUNT_ID}:role/TeamRole"
-            },
-            "Action": "sts:AssumeRole"
-        }
-    ]
+    "Effect": "Allow",
+    "Principal": {
+        "Service": "ec2.amazonaws.com"
+    },
+    "Action": "sts:AssumeRole"
 }
 EOF
+STATEMENT_LIST=ec2.json
+
+for i in WSParticipantRole WSOpsRole TeamRole OpsRole ; do
+  aws iam get-role --role-name $i >/dev/null 2>&1
+  if [[ $? -eq 0 ]]; then
+    envsubst >$i.json <<-EOF
+{
+  "Effect": "Allow",
+  "Principal": {
+    "AWS": "arn:aws:iam::${MY_ACCOUNT_ID}:role/$i"
+  },
+  "Action": "sts:AssumeRole"
+}
+EOF
+    STATEMENT_LIST=$(echo ${STATEMENT_LIST} "$i.json")
+  fi
+done
+
+jq -n '{Version: "2012-10-17", Statement: [inputs]}' ${STATEMENT_LIST} > trust.json
+echo ${STATEMENT_LIST}
+rm -f ${STATEMENT_LIST}
+
+# create role
 aws iam create-role --role-name ${ROLE_NAME} \
   --assume-role-policy-document file://trust.json
 aws iam attach-role-policy --role-name ${ROLE_NAME} \
@@ -275,7 +291,6 @@ fi
 - 在 cloud9 中，重新打开一个 terminal 窗口，并验证权限符合预期。上面代码块将创建一个 instance profile ，并将关联名为 `adminrole-xxx` 的 role，或者在 cloud9 现有的 role 上关联 `AdministratorAccess` role policy。
 ```sh
 aws sts get-caller-identity
-
 ```
 
 
