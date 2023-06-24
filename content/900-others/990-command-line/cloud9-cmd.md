@@ -19,7 +19,7 @@ title: This is a github note
 
 ![[setup-cloud9-for-eks#^xzcvy9]]
 
-refer: [[setup-cloud9-for-eks#spin-up-a-cloud9-instance-in-your-region]] or [hugo link]({{< ref "create-standard-vpc-for-lab#spin-up-a-cloud9-instance-in-your-region" >}}) 
+refer: [[setup-cloud9-for-eks#spin-up-a-cloud9-instance-in-your-region]] 
 
 ```sh
 aws cloud9 describe-environments
