@@ -15,15 +15,28 @@ title: This is a github note
 ```
 
 # argocd-lab
+
+- [install](#install)
+- [add helm](#add-helm)
+- [install aws-lb-controller](#install-aws-lb-controller)
+	- [with argocd UI](#with-argocd-ui)
+	- [with argocd cli](#with-argocd-cli)
+- [install echoserver with argocd](#install-echoserver-with-argocd)
+- [install 2048 game](#install-2048-game)
+- [refer](#refer)
+
 ## install
 [link](https://github.com/argoproj/argo-cd)
 
 ```sh
 kubectl create namespace argocd
 kubectl apply -n argocd -f https://raw.githubusercontent.com/argoproj/argo-cd/v2.4.8/manifests/install.yaml
+
+# install argocd binary
 sudo curl --silent --location -o /usr/local/bin/argocd https://github.com/argoproj/argo-cd/releases/download/v2.4.8/argocd-linux-amd64
 sudo chmod +x /usr/local/bin/argocd
 
+# connect to argo server
 kubectl patch svc argocd-server -n argocd -p '{"spec": {"type": "LoadBalancer"}}'
 export ARGOCD_SERVER=`kubectl get svc argocd-server -n argocd -o json | jq --raw-output '.status.loadBalancer.ingress[0].hostname'`
 echo $ARGOCD_SERVER
@@ -128,3 +141,6 @@ argocd app create game2048 --repo https://github.com/panlm/aws-eks-example.git -
 argocd app sync apps
 ```
 
+
+## refer
+- [[argocd-cmd]]

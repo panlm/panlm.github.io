@@ -135,9 +135,10 @@ fi
 
 - 安装 eks 相关的常用软件
 ```sh
-# install kubectl with +/- 1 cluster version 1.23.15 / 1.22.17 / 1.24.9 / 1.25.5
+# install kubectl with +/- 1 cluster version 1.23.15 / 1.22.17 / 1.24.15 / 1.25.11
+# refer: https://kubernetes.io/releases/
 # sudo curl --location -o /usr/local/bin/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-sudo curl --silent --location -o /usr/local/bin/kubectl "https://storage.googleapis.com/kubernetes-release/release/v1.24.9/bin/linux/amd64/kubectl"
+sudo curl --silent --location -o /usr/local/bin/kubectl "https://storage.googleapis.com/kubernetes-release/release/v1.25.11/bin/linux/amd64/kubectl"
 
 # 1.22.x version of kubectl
 # sudo curl --silent --location -o /usr/local/bin/kubectl "https://storage.googleapis.com/kubernetes-release/release/v1.22.11/bin/linux/amd64/kubectl"
@@ -216,7 +217,7 @@ aws cloud9 update-environment  --environment-id $C9_PID --managed-credentials-ac
 rm -vf ${HOME}/.aws/credentials
 
 # ---
-
+export AWS_PAGER=""
 export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
 C9_INST_ID=$(curl 169.254.169.254/latest/meta-data/instance-id)
 ROLE_NAME=adminrole-$RANDOM

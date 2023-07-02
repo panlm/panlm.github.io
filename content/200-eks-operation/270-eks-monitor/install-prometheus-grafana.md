@@ -41,10 +41,15 @@ helm install ${DEPLOY_NAME} prometheus-community/kube-prometheus-stack
 ```
 
 ### forward to local
+- port forward to cloud9
 ```sh
 k get svc/${DEPLOY_NAME}-grafana
 k port-forward svc/${DEPLOY_NAME}-grafana 3000:80
 
+```
+- access from your laptop
+```sh
+# you need AKSK environment variables
 INST_ID=<cloud9_inst_id>
 aws ssm start-session --target ${INST_ID} --document-name AWS-StartPortForwardingSession --parameters '{"localPortNumber":["3000"],"portNumber":["3000"]}'
 
