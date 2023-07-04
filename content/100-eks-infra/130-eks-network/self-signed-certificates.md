@@ -2,6 +2,7 @@
 title: self-signed-certificates
 description: 使用自签名证书，用根证书签发或者中间证书签发用于 api gateway
 chapter: true
+weight: 2
 created: 2022-05-17 15:49:16.687
 last_modified: 2023-03-23 01:33:16.924
 tags: 

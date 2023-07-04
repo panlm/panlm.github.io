@@ -2,7 +2,7 @@
 title: "appmesh"
 description: "EKS Appmesh 相关实验"
 chapter: true
-weight: 4
+weight: 5
 created: 2023-01-02 13:15:16.974
 last_modified: 2023-01-02 13:15:16.974
 ---

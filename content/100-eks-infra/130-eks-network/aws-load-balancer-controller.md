@@ -2,7 +2,7 @@
 title: "aws-load-balancer-controller"
 description: "使用 aws 负载均衡控制器"
 chapter: true
-weight: 2
+weight: 1
 created: 2022-05-21 13:18:53.303
 last_modified: 2022-06-15 08:48:49.763
 tags: 

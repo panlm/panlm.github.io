@@ -2,7 +2,7 @@
 title: "enable-sg-on-pod"
 description: "启用 pod 安全组"
 chapter: true
-weight: 1
+weight: 4
 created: 2022-06-15 09:40:23.381
 last_modified: 2022-06-15 09:40:23.381
 tags: 
