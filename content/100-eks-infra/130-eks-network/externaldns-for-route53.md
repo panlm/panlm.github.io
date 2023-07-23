@@ -26,10 +26,10 @@ title: This is a github note
 ## install-📚
 [link](https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/aws.md) 
 
-- 创建所需要的服务账号
-	- 确保 EKS 集群名称正确
-	- 确保使用正确的 Region
-	- 确保域名匹配所需
+- 创建所需要的服务账号 (create service account)
+	- 确保 EKS 集群名称正确 (ensure eks cluster name is correct)
+	- 确保使用正确的 Region (ensure region is correct)
+	- 确保域名匹配所需 (ensure domain name is correct)
 ```sh
 CLUSTER_NAME=ekscluster1
 AWS_REGION=us-east-2
@@ -85,7 +85,7 @@ eksctl create iamserviceaccount \
 
 ```
 
-- 使用上述服务账号安装 ExternalDNS
+- 使用上述服务账号安装 ExternalDNS (install ExternalDNS with existed SA)
 ```sh
 echo ${EXTERNALDNS_NS}
 echo ${DOMAIN_NAME}
@@ -180,8 +180,10 @@ kubectl create --filename externaldns-with-rbac.yaml \
 
 ```
 
+
 ## setup-hosted-zone-📚
--  执行下面命令创建 Hosted Zone， 然后手工添加 NS 记录到上游的域名服务器 domain registrar 中
+
+-  执行下面命令创建 Hosted Zone， 然后手工添加 NS 记录到上游的域名服务器 domain registrar 中 (create hosted zone, and then add NS records to upstream domain registrar)
 ```sh
 echo ${DOMAIN_NAME}
 
@@ -198,6 +200,7 @@ aws route53 list-resource-record-sets --output text \
 ###
 # copy above output  
 # add NS record on your upstream domain registrar
+# set TTL to 172800
 ###
 
 ```
@@ -206,6 +209,7 @@ refer: [[route53-subdomian]]
 
 ### private hosted zone
 you also could create private hosted zone and associate to your vpc. plugin will insert/update record in your private hosted zone. ([link](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-private.html))
+
 
 ## verify
 

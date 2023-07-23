@@ -15,6 +15,39 @@ title: This is a github note
 ```
 
 # enable-sg-on-pod
+
+- [useful-env-sg-on-pod](#useful-env-sg-on-pod)
+- [workshop](#workshop)
+
+## useful-env-sg-on-pod
+
+*considerations*
+https://docs.amazonaws.cn/en_us/eks/latest/userguide/security-groups-for-pods.html
+
+![enable-sg-on-pod-png-1.png](enable-sg-on-pod-png-1.png)
+
+[[upgrade-vpc-cni]]
+
+![enable-sg-on-pod-png-2.png](enable-sg-on-pod-png-2.png)
+
+第一个参数允许pod 挂sg
+第二个参数允许有sg的pod同时遵守network policy控制
+第三个参数snat disable，允许跨vpc保留pod ip，不会转成primary eni ip ([[eks-external-snat]])
+
+```sh
+kubectl -n kube-system set env daemonset aws-node ENABLE_POD_ENI=true
+kubectl -n kube-system set env daemonset aws-node POD_SECURITY_GROUP_ENFORCING_MODE=standard
+kubectl -n kube-system set env daemonset aws-node AWS_VPC_K8S_CNI_EXTERNALSNAT=true
+kubectl -n kube-system rollout status ds aws-node
+
+```
+
+more explanation for ENV on vpc cni github
+- https://github.com/aws/amazon-vpc-cni-k8s/blob/master/README.md#:~:text=recycle%20the%20instance.-,POD_SECURITY_GROUP_ENFORCING_MODE,-(v1.11.0%2B)
+
+
+
+## workshop
 https://www.eksworkshop.com/beginner/115_sg-per-pod/
 
 - create SG
@@ -212,6 +245,8 @@ spec:
 EoF
 
 ```
+
+
 
 
 

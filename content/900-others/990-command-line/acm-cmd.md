@@ -7,17 +7,22 @@ last_modified: 2023-03-15 11:58:12.994
 tags: 
 - aws/cmd 
 - aws/security/acm 
-- todo 
 ---
+
 ```ad-attention
 title: This is a github note
 
 ```
+
 # acm-cmd
+
+- [create-certificate-📚](#create-certificate-)
+- [create certificate with pca  cross account](#create-certificate-with-pca--cross-account)
+
 
 ## create-certificate-📚
 
-- 创建并通过添加 dns 记录验证证书
+- 创建并通过添加 dns 记录验证证书 (create certificate with DNS verification)
 ```sh
 echo ${DOMAIN_NAME}
 # DOMAIN_NAME=api0413.aws.panlm.xyz
@@ -65,7 +70,7 @@ aws route53 list-resource-record-sets \
 
 ```
 
-- 等待状态转变成 SUCCESS
+- 等待状态转变成 SUCCESS (wait ValidationStatus to SUCCESS)
 ```sh
 # wait ValidationStatus to SUCCESS
 aws acm describe-certificate \
@@ -73,6 +78,7 @@ aws acm describe-certificate \
 --query 'Certificate.DomainValidationOptions[0]' 
 
 ```
+
 
 ## create certificate with pca  cross account
 

@@ -16,10 +16,8 @@ title: This is a github note
 
 # efs-cmd
 
-```toc
-min_depth: 2
-max_depth: 4
-```
+- [create efs](#create-efs)
+- [refer](#refer)
 
 ## create efs
 

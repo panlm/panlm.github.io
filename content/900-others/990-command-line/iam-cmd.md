@@ -8,14 +8,25 @@ tags:
 - aws/security/iam 
 - aws/cmd 
 ---
+
 ```ad-attention
 title: This is a github note
 
 ```
+
 # iam cmd
 
-```toc
-```
+- [get role arn by name](#get-role-arn-by-name)
+- [get policy arn](#get-policy-arn)
+- [create user](#create-user)
+- [attach role policy](#attach-role-policy)
+- [create role](#create-role)
+	- [create role for ec2](#create-role-for-ec2)
+	- [create role for firehose](#create-role-for-firehose)
+	- [create role for api gateway](#create-role-for-api-gateway)
+- [assume another role](#assume-another-role)
+- [reference](#reference)
+
 
 ## get role arn by name
 ```sh

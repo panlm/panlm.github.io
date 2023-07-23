@@ -46,7 +46,7 @@ title: This is a github note
 this note covered by flux-lab
 {{% /notice %}}
 
-- 安装 aws load balancer controller
+- Install AWS Load Balancer Controller
 ```sh
 CLUSTER_NAME=ekscluster1
 AWS_REGION=us-east-2

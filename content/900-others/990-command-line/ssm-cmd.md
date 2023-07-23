@@ -8,10 +8,12 @@ tags:
 - aws/cmd 
 - aws/mgmt/systems-manager 
 ---
+
 ```ad-attention
 title: This is a github note
 
 ```
+
 # ssm-cmd
 
 - [ssm agent](#ssm-agent)

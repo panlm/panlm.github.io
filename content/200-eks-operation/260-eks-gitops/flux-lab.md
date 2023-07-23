@@ -24,6 +24,7 @@ title: This is a github note
 - [helm v1 (alternative)](#helm-v1-alternative)
 - [dependencies](#dependencies)
 - [others](#others)
+	- [workshop](#workshop)
 
 ## bootstrap v2
 ```sh
@@ -127,6 +128,9 @@ got error:
 try to find `build details` in `image-codepipeline` `build project`
 modify `buildspec`
 remove `sudo` before `apt-key add`
+
+### workshop
+- [Accelerate software development lifecycles with GitOps](https://catalog.us-east-1.prod.workshops.aws/workshops/20f7b273-ed55-411f-8c9c-4dc9e5ff8677/en-US)
 
 
 

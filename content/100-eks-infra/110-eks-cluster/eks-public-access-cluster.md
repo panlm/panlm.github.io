@@ -39,21 +39,23 @@ title: This is a github note
 - recommend for most of poc environment
 
 ### create-eks-cluster
-- 将在下面区域创建 EKS 集群
+
+- 将在下面区域创建 EKS 集群 (prepare to create eks cluster)
 ```sh
+export AWS_PAGER=""
+export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
+export AWS_REGION=${AWS_DEFAULT_REGION}
+
 export CLUSTER_NAME=ekscluster1
 export EKS_VERSION=1.24
-export AWS_REGION=us-east-2
-export AWS_DEFAULT_REGION=${AWS_REGION}
 CLUSTER_NUM=$(eksctl get cluster |wc -l)
 export CIDR="10.25${CLUSTER_NUM}.0.0/16"
 
 ```
 
-- 执行下面代码创建配置文件 
+- 执行下面代码创建配置文件 (create eks cluster)
 	- 注意集群名称
 	- 注意使用的 AZ 符合你所在的区域
-
 ```sh
 AZS=($(aws ec2 describe-availability-zones \
 --query 'AvailabilityZones[].ZoneName' --output text |awk '{print $1,$2}'))
@@ -136,13 +138,14 @@ cat $$.yaml |envsubst '$CLUSTER_NAME $AWS_REGION $AZ0 $AZ1 $EKS_VERSION $CIDR ' 
 
 ```
 
-- 创建集群，预计需要 20 分钟
+- 创建集群，预计需要 20 分钟 (wait about 20 mins)
 ```sh
 eksctl create cluster -f cluster-${CLUSTER_NAME}.yaml
 
 ```
 
 ### get-newest-ami
+
 - get newest ami id for your self-managed node group, for GPU or Graviton instance ([link](https://docs.aws.amazon.com/eks/latest/userguide/retrieve-ami-id.html))
 ```sh
 echo ${AWS_REGION}
@@ -172,6 +175,7 @@ EOF
 
 
 ## access eks cluster from web console
+
 - 将实验环境对应的 `TeamRole` 角色作为集群管理员，方便使用 web 页面查看 eks 集群
 ```sh
 echo ${CLUSTER_NAME}
@@ -188,12 +192,15 @@ eksctl create iamidentitymapping \
 ```
 
 ## default tags on subnet
+
 - [[eksctl-default-tags-on-subnet]]
 
 ## network topo preview
+
 - [[TC-security-group-for-eks-deepdive]]
 
 ## refer
+
 - [[eks-private-access-cluster]]
 - [[eks-nodegroup]]
 
