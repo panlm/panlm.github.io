@@ -65,6 +65,19 @@ FILESYSTEM_ID=$(aws efs create-file-system \
   --region ${AWS_REGION} |jq -r '.FileSystemId' )
 echo ${FILESYSTEM_ID}
 
+while true ; do
+aws efs describe-file-systems \
+--file-system-id ${FILESYSTEM_ID} \
+--query 'FileSystems[].LifeCycleState' \
+--output text |grep -q available
+if [[ $? -eq 0 ]]; then
+  break
+else
+  echo "wait..."
+  sleep 10
+fi  
+done
+
 # create mount target
 TAG=tag:kubernetes.io/role/internal-elb
 SUBNETS=($(aws eks describe-cluster --name ${CLUSTER_NAME} \

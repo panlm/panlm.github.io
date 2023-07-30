@@ -14,7 +14,13 @@ tags:
 
 # cloudwatch-to-firehose-python
 
+```toc
+min_depth: 2
+max_depth: 4
+```
+
 ## create
+
 source from here
 1. create from blueprint `Process CloudWatch logs sent to Kinesis Firehose`
 ```
@@ -24,7 +30,6 @@ An Amazon Kinesis Firehose stream processor that extracts individual log events 
 
 python3.8 · kinesis-firehose · cloudwatch-logs · splunk
 ```
-
 
 ## revision
 
@@ -39,6 +44,7 @@ download from [here](lambda_function.py)
 download from [here](package.zip)
 
 ## layer version
+
 - [[lambda-cmd#add layer to lambda]]
 
 
