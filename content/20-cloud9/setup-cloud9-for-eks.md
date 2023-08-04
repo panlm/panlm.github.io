@@ -85,6 +85,7 @@ source ~/.bash_profile
 	- 安装常用的软件
 	 - 修改 cloud9 磁盘大小 ([link](https://docs.aws.amazon.com/cloud9/latest/user-guide/move-environment.html#move-environment-resize))
 ```sh
+###-SCRIPT-PART-ONE-BEGIN-###
 # set size as your expectation, otherwize 100g as default volume size
 # size=200
 
@@ -130,19 +131,15 @@ if [[ $? -eq 1 ]]; then
   ROOT_PART=$(df |grep -w / |awk '{print $1}')
   sudo resize2fs ${ROOT_PART}
 fi
-
+###-SCRIPT-PART-ONE-END-###
 ```
 
 - 安装 eks 相关的常用软件 (install some eks related tools)
 ```sh
-# install kubectl with +/- 1 cluster version 1.23.15 / 1.22.17 / 1.24.15 / 1.25.11
+# install kubectl with +/- 1 cluster version 1.25.12 / 1.26.7 / 1.27.4
 # refer: https://kubernetes.io/releases/
 # sudo curl --location -o /usr/local/bin/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-sudo curl --silent --location -o /usr/local/bin/kubectl "https://storage.googleapis.com/kubernetes-release/release/v1.25.11/bin/linux/amd64/kubectl"
-
-# 1.22.x version of kubectl
-# sudo curl --silent --location -o /usr/local/bin/kubectl "https://storage.googleapis.com/kubernetes-release/release/v1.22.11/bin/linux/amd64/kubectl"
-
+sudo curl --silent --location -o /usr/local/bin/kubectl "https://storage.googleapis.com/kubernetes-release/release/v1.25.12/bin/linux/amd64/kubectl"
 sudo chmod +x /usr/local/bin/kubectl
 
 kubectl completion bash >>  ~/.bash_completion
