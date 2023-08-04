@@ -21,6 +21,9 @@ title: This is a github note
 - [workshop](#workshop)
 - [install-📚](#install-)
 - [install-in-china-region](#install-in-china-region)
+- [upgrade](#upgrade)
+	- [Supported Kubernetes versions](#supported-kubernetes-versions)
+	- [check version](#check-version)
 - [blog](#blog)
 - [refer](#refer)
 
@@ -157,6 +160,22 @@ REGISTRY=602401143452.dkr.ecr.us-east-1.amazonaws.com
 ```
 
 
+## upgrade
+
+- [Migrate v1 to v2](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.5/deploy/upgrade/migrate_v1_v2/) 
+
+### Supported Kubernetes versions
+
+- AWS Load Balancer Controller v2.0.0~v2.1.3 requires Kubernetes 1.15+
+- AWS Load Balancer Controller v2.2.0~v2.3.1 requires Kubernetes 1.16-1.21
+- AWS Load Balancer Controller v2.4.0+ requires Kubernetes 1.19+
+- AWS Load Balancer Controller v2.5.0+ requires Kubernetes 1.22+
+
+### check version
+```sh
+helm list -n kube-system
+
+```
 ## blog
 
 - [[How To Expose Multiple Applications on Amazon EKS Using a Single Application Load Balancer]]
