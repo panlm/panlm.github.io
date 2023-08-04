@@ -36,14 +36,17 @@ title: This is a github note
 - [[kube-no-trouble]]
 - [[pluto-cmd]]
 - [[eksup]]
-- 检查第三方插件 ([link](eks-cluster-addons-list.md))
+- 检查第三方插件 ([link](eks-cluster-addons-list.md) or  [hugo]({{< ref "eks-cluster-addons-list" >}})) 
+
 2: 升级核心addon （如果目标版本和 addon 有兼容问题则先升级，否则在升级完管理节点后升级）
 - coredns: 
 	- 托管dns addon ([[managed-coredns]])
 	- 自管dns addon ([[self-managed-coredns]])
 - aws-node: [[upgrade-vpc-cni]] 
 - kube-proxy: [[eks-addons-kube-proxy]]
+
 3: 升级eks控制平面
+
 4: 升级eks管理节点
 - 托管节点的更新 [LINK](https://docs.aws.amazon.com/zh_cn/eks/latest/userguide/update-managed-node-group.html) 
 	- [[ssm-document-eks-node-upgrade]] 
