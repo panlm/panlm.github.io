@@ -2,7 +2,7 @@
 title: eks-addons-coredns
 description: eks-addons-coredns
 chapter: true
-weight: 12
+weight: 22
 created: 2023-07-31 08:53:12.492
 last_modified: 2023-07-31 08:53:12.492
 tags: 

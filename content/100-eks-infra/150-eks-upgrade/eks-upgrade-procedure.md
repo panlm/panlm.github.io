@@ -33,9 +33,9 @@ title: This is a github note
 ## 流程 
 
 1: 检查应用配置文件兼容性
-- [[kube-no-trouble]]
-- [[pluto-cmd]]
-- [[eksup]]
+- kube-no-trouble ([link](kube-no-trouble.md) or [hugo](kube-no-trouble))
+- pluto ([link](pluto.md) or [hugo](pluto))
+- eksup ([link](eksup.md) or [hugo](eksup))
 - 检查第三方插件 ([link](eks-cluster-addons-list.md) or  [hugo]({{< ref "eks-cluster-addons-list" >}})) 
 
 2: 升级核心addon （如果目标版本和 addon 有兼容问题则先升级，否则在升级完管理节点后升级）

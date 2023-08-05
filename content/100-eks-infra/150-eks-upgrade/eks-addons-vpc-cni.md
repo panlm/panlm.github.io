@@ -2,7 +2,7 @@
 title: eks-addons-vpc-cni
 description: eks-addons-vpc-cni
 chapter: true
-weight: 13
+weight: 23
 created: 2023-07-31 08:44:28.400
 last_modified: 2023-07-31 08:44:28.400
 tags: 
