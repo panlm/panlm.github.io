@@ -12,10 +12,49 @@ tags:
 
 # quick-setup-cloud9-script
 
+- [spin-up-a-cloud9-instance-in-your-region](#spin-up-a-cloud9-instance-in-your-region)
 - [script-part-one-two](#script-part-one-two)
 - [script-part-three](#script-part-three)
 - [open new tab for verify](#open-new-tab-for-verify)
 
+
+## spin-up-a-cloud9-instance-in-your-region
+
+-  点击[这里](https://console.aws.amazon.com/cloudshell) 运行 cloudshell，执行代码块创建 cloud9 测试环境 (open cloudshell, and then execute following code to create cloud9 environment)
+```sh
+# name=<give your cloud9 a name>
+datestring=$(date +%Y%m%d-%H%M)
+echo ${name:=cloud9-$datestring}
+
+# VPC_ID=<your vpc id> 
+# ensure you have public subnet in it
+DEFAULT_VPC_ID=$(aws ec2 describe-vpcs \
+  --filter Name=is-default,Values=true \
+  --query 'Vpcs[0].VpcId' --output text \
+  --region ${AWS_DEFAULT_REGION})
+VPC_ID=${VPC_ID:=$DEFAULT_VPC_ID}
+
+if [[ ! -z ${VPC_ID} ]]; then
+  FIRST_SUBNET=$(aws ec2 describe-subnets \
+    --filters "Name=vpc-id,Values=${VPC_ID}" \
+    --query 'Subnets[?(AvailabilityZone==`'"${AWS_DEFAULT_REGION}a"'` && MapPublicIpOnLaunch==`true`)].SubnetId' \
+    --output text \
+    --region ${AWS_DEFAULT_REGION})
+  aws cloud9 create-environment-ec2 \
+    --name ${name} \
+    --image-id amazonlinux-2-x86_64 \
+    --instance-type m5.large \
+    --subnet-id ${FIRST_SUBNET%% *} \
+    --automatic-stop-time-minutes 10080 \
+    --region ${AWS_DEFAULT_REGION} |tee /tmp/$$
+  echo "Open URL to access your Cloud9 Environment:"
+  C9_ID=$(cat /tmp/$$ |jq -r '.environmentId')
+  echo "https://${AWS_DEFAULT_REGION}.console.aws.amazon.com/cloud9/ide/${C9_ID}"
+else
+  echo "you have no default vpc in $AWS_DEFAULT_REGION"
+fi
+
+```
 
 ## script-part-one-two
 
@@ -28,9 +67,9 @@ tags:
 TMPFILE=$(mktemp)
 curl --location -o $TMPFILE https://github.com/panlm/panlm.github.io/raw/main/content/20-cloud9/setup-cloud9-for-eks.md
 for i in ONE TWO ; do
-cat $TMPFILE |awk "/###-SCRIPT-PART-${i}-BEGIN-###/,/###-SCRIPT-PART-${i}-END-###/ {print}" > $TMPFILE-$i.sh
+cat $TMPFILE |awk '/###-SCRIPT-PART-'"${i}"'-BEGIN-###/,/###-SCRIPT-PART-'"${i}"'-END-###/ {print}' > $TMPFILE-$i.sh
 chmod a+x $TMPFILE-$i.sh
-sh $TMPFILE-$i.sh
+$TMPFILE-$i.sh
 done
 
 ```
@@ -48,7 +87,7 @@ done
 i=THREE
 cat $TMPFILE |awk "/###-SCRIPT-PART-${i}-BEGIN-###/,/###-SCRIPT-PART-${i}-END-###/ {print}" > $TMPFILE-$i.sh
 chmod a+x $TMPFILE-$i.sh
-sh $TMPFILE-$i.sh
+$TMPFILE-$i.sh
 
 ```
 
