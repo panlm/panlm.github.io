@@ -136,6 +136,7 @@ fi
 
 - 安装 eks 相关的常用软件 (install some eks related tools)
 ```sh
+###-SCRIPT-PART-TWO-BEGIN-###
 # install kubectl with +/- 1 cluster version 1.25.12 / 1.26.7 / 1.27.4
 # refer: https://kubernetes.io/releases/
 # sudo curl --location -o /usr/local/bin/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -198,7 +199,7 @@ flux -v
 # sudo chmod 755 /usr/local/bin/fluxctl
 # fluxctl version
 # fluxctl identity --k8s-fwd-ns flux
-
+###-SCRIPT-PART-TWO-END-###
 ```
 
 - 直接执行下面代码块可能遇到权限不够的告警，需要：
@@ -208,6 +209,7 @@ flux -v
 		- 禁用 cloud9 中的 credential 管理，从 `~/.aws/credentials` 中删除 `aws_session_token=` 行
 		- 分配管理员权限 role 到 cloud9 instance
 ```sh
+###-SCRIPT-PART-THREE-BEGIN-###
 aws cloud9 update-environment  --environment-id $C9_PID --managed-credentials-action DISABLE
 rm -vf ${HOME}/.aws/credentials
 
@@ -281,7 +283,7 @@ else
   aws iam attach-role-policy --role-name ${existed_role_name} \
     --policy-arn "arn:aws:iam::aws:policy/AdministratorAccess"
 fi
-
+###-SCRIPT-PART-THREE-END-###
 ```
 
 - 在 cloud9 中，重新打开一个 terminal 窗口，并验证权限符合预期。上面代码块将创建一个 instance profile ，并将关联名为 `adminrole-xxx` 的 role，或者在 cloud9 现有的 role 上关联 `AdministratorAccess` role policy。(open new tab to verify you have new role, `adminrole-xxx`, on your cloud9)
