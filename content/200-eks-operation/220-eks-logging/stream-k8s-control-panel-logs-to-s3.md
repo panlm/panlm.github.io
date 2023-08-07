@@ -564,7 +564,7 @@ this table is created by databrew job
 满足客户需求，基于目前s3中保存的原始数据，并且可以进行字段拆分等二次处理，未来可以使用aws databrew进行更复杂的处理
 
 ## alternative 
-- [export-cloudwatch-log-group-to-s3](export-cloudwatch-log-group-to-s3.md)
+- export-cloudwatch-log-group-to-s3 ([link](export-cloudwatch-log-group-to-s3.md) or [hugo](export-cloudwatch-log-group-to-s3))
 
 ## reference
 - https://aws.amazon.com/blogs/architecture/stream-amazon-cloudwatch-logs-to-a-centralized-account-for-audit-and-analysis/
