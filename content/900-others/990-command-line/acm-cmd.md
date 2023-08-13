@@ -2,6 +2,7 @@
 title: acm-cmd
 description: 常用命令 
 chapter: true
+hidden: true
 created: 2023-03-15 11:58:12.994
 last_modified: 2023-03-15 11:58:12.994
 tags: 

@@ -2,6 +2,7 @@
 title: route53-cmd
 description: 常用命令 
 chapter: true
+hidden: true
 created: 2022-09-20 09:02:35.112
 last_modified: 2022-09-20 09:02:35.112
 tags: 

@@ -2,7 +2,7 @@
 title: kube-no-trouble
 description: kube-no-trouble
 chapter: true
-weight: 11
+weight: 111
 created: 2023-06-23 11:18:10.512
 last_modified: 2023-06-23 11:18:10.512
 tags: 

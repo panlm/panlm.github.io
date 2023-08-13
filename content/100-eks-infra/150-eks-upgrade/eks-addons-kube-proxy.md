@@ -2,7 +2,7 @@
 title: eks-addons-kube-proxy
 description: eks-addons-kube-proxy
 chapter: true
-weight: 24
+weight: 124
 created: 2023-07-31 14:05:39.381
 last_modified: 2023-07-31 14:05:39.381
 tags: 

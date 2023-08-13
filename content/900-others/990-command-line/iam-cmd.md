@@ -2,6 +2,7 @@
 title: iam-cmd
 description: "常用命令"
 chapter: true
+hidden: true
 created: '2021-07-18T01:04:47.248Z'
 modified: '2021-12-07T01:23:23.127Z'
 tags: 

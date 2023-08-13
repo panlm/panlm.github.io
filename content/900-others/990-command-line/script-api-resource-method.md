@@ -2,6 +2,7 @@
 title: script-api-resource-method
 description: 每个 api 的每个 resource 的每个 method 都需要单独通过命令行启用“tlsConfig/insecureSkipVerification”，通过这个脚本简化工作
 chapter: true
+hidden: false
 created: 2023-04-05 21:49:56.309
 last_modified: 2023-04-05 21:49:56.309
 tags: 

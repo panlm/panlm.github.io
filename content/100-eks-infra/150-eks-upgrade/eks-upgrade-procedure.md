@@ -2,7 +2,7 @@
 title: "eks-upgrade-procedure"
 description: "eks 集群升级"
 chapter: true
-weight: 1
+weight: 101
 created: 2022-03-29 10:30:16.649
 last_modified: 2022-03-29 10:30:16.649
 tags: 

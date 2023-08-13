@@ -2,7 +2,7 @@
 title: "eks-cluster-addons-list"
 description: "EKS 常用插件清单"
 chapter: true
-weight: 20
+weight: 120
 created: 2022-07-20 09:00:03.399
 last_modified: 2022-07-20 09:00:03.399
 tags: 
