@@ -27,7 +27,7 @@ title: This is a github note
 	- eks-addons-vpc-cni ([link](eks-addons-vpc-cni.md) or [hugo](eks-addons-vpc-cni))
 	- eks-addons-kube-proxy ([link](eks-addons-kube-proxy.md) or [hugo](eks-addons-kube-proxy))
 - 第三方插件
-	- aws-load-balancer-controller ([link](aws-load-balancer-controller.md) or [hugo]({{< ref "aws-load-balancer-controller" >}}) )
+	- aws-load-balancer-controller ([link](aws-load-balancer-controller.md) or [hugo]({{< ref "aws-load-balancer-controller" >}}))
 	 - tigera-operator for [[calico]]  
 	- [[cert-manager]] 
 	- [[splunk-otel-collector]] 
