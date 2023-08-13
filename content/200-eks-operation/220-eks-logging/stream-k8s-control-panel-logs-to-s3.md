@@ -41,6 +41,7 @@ title: This is a github note
 
 
 ## background
+
 目前eks控制平面日志只支持发送到cloudwatch，且在同一个log group中有5种类型6种前缀的log stream的日志，不利于统一查询。且只有audit日志是json格式其他均是单行日志，且字段各不相同。
 
 - kube-apiserver-audit
@@ -51,6 +52,7 @@ title: This is a github note
 - cloud-controller-manager
 
 ## requirement
+
 客户需求：
 1. 简单 - 已有splunk日志平台，不希望使用opensearch等其他日志平台，保证运维简化
 2. 实时 - 需要有方法将日志近实时地发送到S3，可以通过splunk进行查询和实时告警。export cloudwatch 日志的方式，实时性无法满足，且同样需要额外实现export端点续导的问题
@@ -58,16 +60,21 @@ title: This is a github note
 4. 成本和安全 - 成本控制，高安全性，支持多账号
 
 ## architecture
+
 ![](stream-k8s-control-panel-logs-to-s3-1.png)
 
-## lab
+## 搭建实验环境
+
 ### eks cluster
+
 - need an  eks cluster and enable log to cloudwatch
 
 ### s3
 - 创建s3桶
 
 ```sh
+export AWS_PAGER=""
+
 bucket_name=centrallog-$RANDOM
 s3_prefix="CentralizedAccountLogs"
 aws s3 mb s3://${bucket_name}
@@ -79,9 +86,9 @@ aws s3 mb s3://${athena_bucket_name}
 
 ### lambda
 - 创建函数所需角色
-- 下载定制代码
-    - [[cloudwatch-to-firehose-python]]
-    - [download](lambda_function.py)
+- 下载定制 lambda 代码 和 layer （参见cloudwatch-to-firehose-python ([link](cloudwatch-to-firehose-python.md) or [hugo](cloudwatch-to-firehose-python))）
+    - [lambda_function.py](lambda_function.py)
+    - [package.zip](package.zip)
 - 创建函数并获取arn
 
 ```sh
@@ -95,7 +102,7 @@ aws iam attach-role-policy --role-name ${lambda_role_name} --policy-arn arn:aws:
 lambda_role_arn=$(aws iam get-role --role-name ${lambda_role_name} |jq -r '.Role.Arn')
 
 # download code and create lambda
-wget -O lambda_function.py https://github.com/panlm/aws-labs/raw/main/eks-cloudwatch-log-firehose-s3/lambda_function.py
+# wget -O lambda_function.py https://github.com/panlm/aws-labs/raw/main/eks-cloudwatch-log-firehose-s3/lambda_function.py
 zip lambda_function.zip ./lambda_function.py
 
 sleep 10
@@ -112,7 +119,7 @@ lambda_arn=$(aws lambda get-function \
 --query 'Configuration.FunctionArn' --output text)
 
 # download package and create lambda layer
-wget -O package.zip https://github.com/panlm/aws-labs/raw/main/eks-cloudwatch-log-firehose-s3/package.zip
+# wget -O package.zip https://github.com/panlm/aws-labs/raw/main/eks-cloudwatch-log-firehose-s3/package.zip
 
 aws lambda publish-layer-version --layer-name layer_flatten_json --description "flatten_json" --zip-file fileb://package.zip --compatible-runtimes python3.8
 layer_arn=$(aws lambda list-layer-versions --layer-name layer_flatten_json \
@@ -432,6 +439,8 @@ aws glue create-crawler --name ${crawler_name} \
 
 ### databrew
 #### using cli
+- download recipe first
+	- [cwl-recipe.json](cwl-recipe.json)
 ```sh
 databrew_name=cwl-$RANDOM
 databrew_output=parquet-$RANDOM
@@ -443,10 +452,10 @@ aws databrew create-dataset \
 --format-options "Json={MultiLine=false}" \
 --input "S3InputDefinition={Bucket=${bucket_name},Key=${s3_prefix}/}"
 
-wget -O cwl.json 'https://github.com/panlm/aws-labs/raw/main/eks-cloudwatch-log-firehose-s3/cwl-recipe.json'
+# wget -O cwl-recipe.json 'https://github.com/panlm/aws-labs/raw/main/eks-cloudwatch-log-firehose-s3/cwl-recipe.json'
 aws databrew create-recipe \
 --name ${databrew_name} \
---steps file://cwl.json
+--steps file://cwl-recipe.json
 
 aws databrew publish-recipe \
 --name ${databrew_name}

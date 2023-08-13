@@ -78,7 +78,7 @@ kubectl -n appmesh-system get all
 ## ensure node role
 - ensure node role has `AWSAppMeshEnvoyAccess` policy
 
-~~[[eksctl-cmd#appmesh-access]]~~
+~~[[eksctl-cmd#appmesh-access-📚]]~~
 
 ## flagger
 [automated-canary-deployment-using-flagger](automated-canary-deployment-using-flagger.md)
