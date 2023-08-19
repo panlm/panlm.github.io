@@ -27,6 +27,7 @@ title: This is a github note
 
 
 ## install
+https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/docs/install.md
 
 ### ebs-csi
 ```sh

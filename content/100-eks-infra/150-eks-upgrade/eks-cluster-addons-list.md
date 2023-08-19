@@ -26,18 +26,20 @@ title: This is a github note
 	- eks-addons-coredns ([link](eks-addons-coredns.md) or [hugo](eks-addons-coredns))
 	- eks-addons-vpc-cni ([link](eks-addons-vpc-cni.md) or [hugo](eks-addons-vpc-cni))
 	- eks-addons-kube-proxy ([link](eks-addons-kube-proxy.md) or [hugo](eks-addons-kube-proxy))
+
 - 第三方插件
 	- aws-load-balancer-controller ([link](aws-load-balancer-controller.md) or [hugo]({{< ref "aws-load-balancer-controller" >}}))
-	 - tigera-operator for [[calico]]  
-	- [[cert-manager]] 
+	- metrics-server ([link](metrics-server.md) or [hugo]({{< ref metrics-server >}}))
+	- cluster-autoscaler ([link](cluster-autoscaler.md) or [hugo]({{< ref cluster-autoscaler >}}))
+	- tigera-operator for [[calico]]  
+	- cert-manager ([link](cert-manager.md) or [hugo](cert-manager))
 	- [[splunk-otel-collector]] 
-	- [[cluster-autoscaler]] 
-	- [[metrics-server]] 
+
 - 其他插件
 	- [[externaldns-for-route53|externaldns]] 
-	- cloudwatch-agent / [[aws-for-fluent-bit|fluentbit]] 
 	- [[efs-for-eks|efs-csi-driver]] 
 	- [[ebs-for-eks|ebs-csi-driver]] 
+	- cloudwatch-agent / [[aws-for-fluent-bit|fluentbit]] 
 	- [[k8s-dashboard-on-eks|kubernetes-dashboard]] 
 	- [[install-prometheus-grafana|prometheus operator]] / grafana operator
 	- [[cni-metrics-helper]] 

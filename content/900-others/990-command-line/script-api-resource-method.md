@@ -14,6 +14,12 @@ title: This is a github note
 
 ```
 
+```ad-attention
+title: Obseleted
+
+newest version is [here](https://github.com/panlm/blog-private-api-gateway-dataflow#appendix)
+```
+
 # script-api-resource-method
 
 每个 api 的每个 resource 的每个 method 都需要单独通过命令行启用“tlsConfig/insecureSkipVerification”，通过这个脚本简化工作

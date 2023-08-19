@@ -1,5 +1,5 @@
 ---
-title: "install-metrics-server"
+title: "metrics-server"
 description: "EKS 集群中安装 metrics server"
 chapter: true
 weight: 1

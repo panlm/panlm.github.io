@@ -74,13 +74,18 @@ title: This is a github note
 
 ```sh
 export AWS_PAGER=""
+export AWS_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
+export AWS_DEFAULT_REGION=${AWS_REGION}
+export AWS_ACCOUNT_ID=$(aws sts get-caller-identity \
+--query "Account" --output text)
 
-bucket_name=centrallog-$RANDOM
-s3_prefix="CentralizedAccountLogs"
-aws s3 mb s3://${bucket_name}
+UNIQ=$(date +%Y%m%d%H%M)
+BUCKET_NAME=centrallog-$UNIQ
+S3_PREFIX="CentralizedAccountLogs"
+aws s3 mb s3://${BUCKET_NAME}
 
-athena_bucket_name=athena-$RANDOM
-aws s3 mb s3://${athena_bucket_name}
+ATHENA_BUCKET_NAME=athena-$UNIQ
+aws s3 mb s3://${ATHENA_BUCKET_NAME}
 
 ```
 
@@ -92,14 +97,44 @@ aws s3 mb s3://${athena_bucket_name}
 - 创建函数并获取arn
 
 ```sh
-lambda_name=${bucket_name}
+echo ${AWS_REGION} ${UNIQ}
+LAMBDA_NAME=firehose-lambda-${UNIQ}
+
+if [[ ${AWS_REGION%%-*} == "cn" ]]; then
+  ARN_PREFIX="aws-cn"
+else
+  ARN_PREFIX="aws"
+fi
 
 # create lambda role
-lambda_role_name=lambda-ex-$RANDOM
-aws iam create-role --role-name ${lambda_role_name} --assume-role-policy-document '{"Version": "2012-10-17","Statement": [{ "Effect": "Allow", "Principal": {"Service": "lambda.amazonaws.com"}, "Action": "sts:AssumeRole"}]}'
-aws iam attach-role-policy --role-name ${lambda_role_name} --policy-arn arn:aws:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
-aws iam attach-role-policy --role-name ${lambda_role_name} --policy-arn arn:aws:iam::aws:policy/service-role/AWSLambdaKinesisExecutionRole
-lambda_role_arn=$(aws iam get-role --role-name ${lambda_role_name} |jq -r '.Role.Arn')
+LAMBDA_ROLE_NAME=${LAMBDA_NAME}-role-${UNIQ}
+echo '{"Version": "2012-10-17","Statement": [{ "Effect": "Allow", "Principal": {"Service": "lambda.amazonaws.com"}, "Action": "sts:AssumeRole"}]}' |tee lambda-role-trust-policy.json
+aws iam create-role --role-name ${LAMBDA_ROLE_NAME} --assume-role-policy-document file://lambda-role-trust-policy.json
+
+envsubst >lambda-role-policy.json <<-EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "firehose:PutRecord",
+                "firehose:PutRecordBatch"
+            ],
+            "Effect": "Allow",
+            "Resource": "arn:${ARN_PREFIX}:firehose:${AWS_REGION}:${AWS_ACCOUNT_ID}:deliverystream/*"
+        }
+    ]
+}
+EOF
+
+LAMBDA_POLICY_ARN=$(aws iam create-policy \
+--policy-name ${LAMBDA_ROLE_NAME} \
+--policy-document file://lambda-role-policy.json |jq -r '.Policy.Arn')
+
+aws iam attach-role-policy --role-name ${LAMBDA_ROLE_NAME} --policy-arn ${LAMBDA_POLICY_ARN}
+aws iam attach-role-policy --role-name ${LAMBDA_ROLE_NAME} --policy-arn arn:${ARN_PREFIX}:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
+aws iam attach-role-policy --role-name ${LAMBDA_ROLE_NAME} --policy-arn arn:${ARN_PREFIX}:iam::aws:policy/service-role/AWSLambdaKinesisExecutionRole
+LAMBDA_ROLE_ARN=$(aws iam get-role --role-name ${LAMBDA_ROLE_NAME} |jq -r '.Role.Arn')
 
 # download code and create lambda
 # wget -O lambda_function.py https://github.com/panlm/aws-labs/raw/main/eks-cloudwatch-log-firehose-s3/lambda_function.py
@@ -107,27 +142,32 @@ zip lambda_function.zip ./lambda_function.py
 
 sleep 10
 aws lambda create-function \
-    --function-name ${lambda_name} \
-    --runtime python3.8 \
-    --timeout 60 \
-    --zip-file fileb://lambda_function.zip \
-    --handler lambda_function.lambda_handler \
-    --role ${lambda_role_arn}
+	--function-name ${LAMBDA_NAME} \
+	--runtime python3.8 \
+	--timeout 60 \
+	--zip-file fileb://lambda_function.zip \
+	--handler lambda_function.lambda_handler \
+	--role ${LAMBDA_ROLE_ARN}
 
-lambda_arn=$(aws lambda get-function \
---function-name ${lambda_name} \
---query 'Configuration.FunctionArn' --output text)
+LAMBDA_ARN=$(aws lambda get-function \
+	--function-name ${LAMBDA_NAME} \
+	--query 'Configuration.FunctionArn' --output text)
 
 # download package and create lambda layer
 # wget -O package.zip https://github.com/panlm/aws-labs/raw/main/eks-cloudwatch-log-firehose-s3/package.zip
 
-aws lambda publish-layer-version --layer-name layer_flatten_json --description "flatten_json" --zip-file fileb://package.zip --compatible-runtimes python3.8
-layer_arn=$(aws lambda list-layer-versions --layer-name layer_flatten_json \
---query 'LayerVersions[0].LayerVersionArn' --output text)
+aws lambda publish-layer-version \
+	--layer-name layer_flatten_json \
+	--description "flatten_json" \
+	--zip-file fileb://package.zip \
+	--compatible-runtimes python3.8
+LAYER_ARN=$(aws lambda list-layer-versions \
+	--layer-name layer_flatten_json \
+	--query 'LayerVersions[0].LayerVersionArn' --output text)
 
 # add layer to lambda
-aws lambda update-function-configuration --function-name ${lambda_name} \
---layers ${layer_arn}
+aws lambda update-function-configuration --function-name ${LAMBDA_NAME} \
+--layers ${LAYER_ARN}
 
 ```
 
@@ -137,12 +177,9 @@ aws lambda update-function-configuration --function-name ${lambda_name} \
 - 获取arn
 
 ```sh
-aws_region=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
-firehose_name=${bucket_name}
-role_name=${bucket_name}-$RANDOM
-aws_account_id=$(aws sts get-caller-identity --query "Account" --output text)
-firehose_name=${bucket_name}
-lambda_name=${bucket_name}
+FIREHOSE_NAME=firehose-${UNIQ}
+FIREHOSE_ROLE_NAME=${FIREHOSE_NAME}-role-${UNIQ}
+echo "LAMBDA_NAME:"${LAMBDA_NAME} "LAMBDA_ARN:"${LAMBDA_ARN} "AWS_REGION:"${AWS_REGION} "ARN_PREFIX:"${ARN_PREFIX} "AWS_ACCOUNT_ID:"${AWS_ACCOUNT_ID} "BUCKET_NAME:"${BUCKET_NAME} "S3_PREFIX:"${S3_PREFIX}
 
 echo '{
     "Version": "2012-10-17",
@@ -155,28 +192,14 @@ echo '{
             "Action": "sts:AssumeRole"
         }
     ]
-}' |tee role-trust-policy.json
-aws iam create-role --role-name ${role_name} \
-  --assume-role-policy-document file://role-trust-policy.json
+}' |tee firehose-role-trust-policy.json
+aws iam create-role --role-name ${FIREHOSE_ROLE_NAME} \
+  --assume-role-policy-document file://firehose-role-trust-policy.json
 
-envsubst >role-policy.json <<-EOF
+envsubst >firehose-role-policy.json <<-EOF
 {
     "Version": "2012-10-17",
     "Statement": [
-        {
-            "Sid": "",
-            "Effect": "Allow",
-            "Action": [
-                "glue:GetTable",
-                "glue:GetTableVersion",
-                "glue:GetTableVersions"
-            ],
-            "Resource": [
-                "arn:aws:glue:${aws_region}:${aws_account_id}:catalog",
-                "arn:aws:glue:${aws_region}:${aws_account_id}:database/%FIREHOSE_POLICY_TEMPLATE_PLACEHOLDER%",
-                "arn:aws:glue:${aws_region}:${aws_account_id}:table/%FIREHOSE_POLICY_TEMPLATE_PLACEHOLDER%/%FIREHOSE_POLICY_TEMPLATE_PLACEHOLDER%"
-            ]
-        },
         {
             "Sid": "",
             "Effect": "Allow",
@@ -189,8 +212,8 @@ envsubst >role-policy.json <<-EOF
                 "s3:PutObject"
             ],
             "Resource": [
-                "arn:aws:s3:::${bucket_name}",
-                "arn:aws:s3:::${bucket_name}/*"
+                "arn:${ARN_PREFIX}:s3:::${BUCKET_NAME}",
+                "arn:${ARN_PREFIX}:s3:::${BUCKET_NAME}/*"
             ]
         },
         {
@@ -200,28 +223,7 @@ envsubst >role-policy.json <<-EOF
                 "lambda:InvokeFunction",
                 "lambda:GetFunctionConfiguration"
             ],
-            "Resource": "arn:aws:lambda:${aws_region}:${aws_account_id}:function:%FIREHOSE_POLICY_TEMPLATE_PLACEHOLDER%"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "kms:GenerateDataKey",
-                "kms:Decrypt"
-            ],
-            "Resource": [
-                "arn:aws:kms:${aws_region}:${aws_account_id}:key/%FIREHOSE_POLICY_TEMPLATE_PLACEHOLDER%"
-            ],
-            "Condition": {
-                "StringEquals": {
-                    "kms:ViaService": "s3.${aws_region}.amazonaws.com"
-                },
-                "StringLike": {
-                    "kms:EncryptionContext:aws:s3:arn": [
-                        "arn:aws:s3:::%FIREHOSE_POLICY_TEMPLATE_PLACEHOLDER%/*",
-                        "arn:aws:s3:::%FIREHOSE_POLICY_TEMPLATE_PLACEHOLDER%"
-                    ]
-                }
-            }
+            "Resource": "arn:${ARN_PREFIX}:lambda:${AWS_REGION}:${AWS_ACCOUNT_ID}:function:%FIREHOSE_POLICY_TEMPLATE_PLACEHOLDER%"
         },
         {
             "Sid": "",
@@ -230,69 +232,44 @@ envsubst >role-policy.json <<-EOF
                 "logs:PutLogEvents"
             ],
             "Resource": [
-                "arn:aws:logs:${aws_region}:${aws_account_id}:log-group:/aws/kinesisfirehose/${firehose_name}:log-stream:*",
-                "arn:aws:logs:${aws_region}:${aws_account_id}:log-group:%FIREHOSE_POLICY_TEMPLATE_PLACEHOLDER%:log-stream:*"
+                "arn:${ARN_PREFIX}:logs:${AWS_REGION}:${AWS_ACCOUNT_ID}:log-group:/aws/kinesisfirehose/${FIREHOSE_NAME}:log-stream:*",
+                "arn:${ARN_PREFIX}:logs:${AWS_REGION}:${AWS_ACCOUNT_ID}:log-group:%FIREHOSE_POLICY_TEMPLATE_PLACEHOLDER%:log-stream:*"
             ]
-        },
-        {
-            "Sid": "",
-            "Effect": "Allow",
-            "Action": [
-                "kinesis:DescribeStream",
-                "kinesis:GetShardIterator",
-                "kinesis:GetRecords",
-                "kinesis:ListShards"
-            ],
-            "Resource": "arn:aws:kinesis:${aws_region}:${aws_account_id}:stream/%FIREHOSE_POLICY_TEMPLATE_PLACEHOLDER%"
-        },
-        {
-            "Effect": "Allow",
-            "Action": [
-                "kms:Decrypt"
-            ],
-            "Resource": [
-                "arn:aws:kms:${aws_region}:${aws_account_id}:key/%FIREHOSE_POLICY_TEMPLATE_PLACEHOLDER%"
-            ],
-            "Condition": {
-                "StringEquals": {
-                    "kms:ViaService": "kinesis.${aws_region}.amazonaws.com"
-                },
-                "StringLike": {
-                    "kms:EncryptionContext:aws:kinesis:arn": "arn:aws:kinesis:${aws_region}:${aws_account_id}:stream/%FIREHOSE_POLICY_TEMPLATE_PLACEHOLDER%"
-                }
-            }
         }
     ]
 }
 EOF
 
-sed -i '/:function:/s/%FIREHOSE_POLICY_TEMPLATE_PLACEHOLDER%/'"${lambda_name}"':$LATEST/' role-policy.json
+sed -i '/:function:/s/%FIREHOSE_POLICY_TEMPLATE_PLACEHOLDER%/'"${LAMBDA_NAME}"':$LATEST/' firehose-role-policy.json
 
-policy_arn=$(aws iam create-policy \
---policy-name ${role_name} \
---policy-document file://role-policy.json |jq -r '.Policy.Arn')
+FIREHOSE_POLICY_ARN=$(aws iam create-policy \
+--policy-name ${FIREHOSE_ROLE_NAME} \
+--policy-document file://firehose-role-policy.json |jq -r '.Policy.Arn')
 
-aws iam attach-role-policy --role-name ${role_name} \
-  --policy-arn ${policy_arn}
-aws iam list-attached-role-policies --role-name ${role_name}
+aws iam attach-role-policy \
+--role-name ${FIREHOSE_ROLE_NAME} \
+--policy-arn ${FIREHOSE_POLICY_ARN}
+aws iam list-attached-role-policies --role-name ${FIREHOSE_ROLE_NAME}
 
-role_arn=$(aws iam get-role --role-name ${role_name} |jq -r '.Role.Arn')
+FIREHOSE_ROLE_ARN=$(aws iam get-role --role-name ${FIREHOSE_ROLE_NAME} |jq -r '.Role.Arn')
 
 sleep 10
 aws firehose create-delivery-stream \
---delivery-stream-name ${firehose_name} \
+--delivery-stream-name ${FIREHOSE_NAME} \
 --delivery-stream-type "DirectPut" \
---extended-s3-destination-configuration "RoleARN=${role_arn},BucketARN=arn:aws:s3:::${bucket_name},Prefix=${s3_prefix}/,ErrorOutputPrefix=${s3_prefix}_failed/,BufferingHints={SizeInMBs=2,IntervalInSeconds=120},CompressionFormat=GZIP,EncryptionConfiguration={NoEncryptionConfig=NoEncryption},CloudWatchLoggingOptions={Enabled=true,LogGroupName=${role_name},LogStreamName=${role_name}},ProcessingConfiguration={Enabled=true,Processors=[{Type=Lambda,Parameters=[{ParameterName=LambdaArn,ParameterValue=${lambda_arn}:\$LATEST},{ParameterName=BufferSizeInMBs,ParameterValue=1},{ParameterName=BufferIntervalInSeconds,ParameterValue=60}]}]}"
+--extended-s3-destination-configuration "RoleARN=${FIREHOSE_ROLE_ARN},BucketARN=arn:aws:s3:::${BUCKET_NAME},Prefix=${S3_PREFIX}/,ErrorOutputPrefix=${S3_PREFIX}_failed/,BufferingHints={SizeInMBs=2,IntervalInSeconds=120},CompressionFormat=GZIP,EncryptionConfiguration={NoEncryptionConfig=NoEncryption},CloudWatchLoggingOptions={Enabled=true,LogGroupName=${FIREHOSE_ROLE_NAME},LogStreamName=${FIREHOSE_ROLE_NAME}},ProcessingConfiguration={Enabled=true,Processors=[{Type=Lambda,Parameters=[{ParameterName=LambdaArn,ParameterValue=${LAMBDA_ARN}:\$LATEST},{ParameterName=BufferSizeInMBs,ParameterValue=1},{ParameterName=BufferIntervalInSeconds,ParameterValue=60}]}]}"
 
-# no data transform
+# no lambda for data transform
 # --s3-destination-configuration "RoleARN=${role_arn},BucketARN=arn:aws:s3:::${bucket_name},Prefix=CentralizedAccountLogs/,ErrorOutputPrefix=CentralizedAccountLogs_failed/,BufferingHints={SizeInMBs=1,IntervalInSeconds=60},CompressionFormat=UNCOMPRESSED,EncryptionConfiguration={NoEncryptionConfig=NoEncryption},CloudWatchLoggingOptions={Enabled=true,LogGroupName=${role_name},LogStreamName=${role_name}}"
 
-firehose_arn=$(aws firehose describe-delivery-stream --delivery-stream-name ${firehose_name} --query "DeliveryStreamDescription.DeliveryStreamARN" --output text)
+FIREHOSE_ARN=$(aws firehose describe-delivery-stream \
+--delivery-stream-name ${FIREHOSE_NAME} \
+--query "DeliveryStreamDescription.DeliveryStreamARN" --output text)
 
 while true ; do
-  firehose_status=$(aws firehose describe-delivery-stream --delivery-stream-name ${firehose_name} --query "DeliveryStreamDescription.DeliveryStreamStatus" --output text)
-  echo ${firehose_status}
-  if [[ ${firehose_status} == "ACTIVE" ]]; then
+  FIREHOSE_STATUS=$(aws firehose describe-delivery-stream --delivery-stream-name ${FIREHOSE_NAME} --query "DeliveryStreamDescription.DeliveryStreamStatus" --output text)
+  echo ${FIREHOSE_STATUS}
+  if [[ ${FIREHOSE_STATUS} == "ACTIVE" ]]; then
     break
   fi
   sleep 10
@@ -305,9 +282,14 @@ done
 - 创建cwl所需角色来访问firehose
 
 ```sh
-cwl_role_name=cwl-firehose-role-$RANDOM
-aws_region=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
-aws_account_id=$(aws sts get-caller-identity --query "Account" --output text)
+CWL_ROLE_NAME=cwl-firehose-role-$UNIQ
+echo "AWS_REGION:"${AWS_REGION} "AWS_ACCOUNT_ID:"${AWS_ACCOUNT_ID} "ARN_PREFIX:"${ARN_PREFIX}
+
+if [[ ${AWS_REGION%%-*} == "cn" ]]; then
+  DN_SUFFIX="com.cn"
+else
+  DN_SUFFIX="com"
+fi
 
 envsubst > cwl-role-trust-policy.json <<-EOF
 {
@@ -316,14 +298,14 @@ envsubst > cwl-role-trust-policy.json <<-EOF
     {
       "Effect": "Allow",
       "Principal": {
-        "Service": "logs.${aws_region}.amazonaws.com"
+        "Service": "logs.${AWS_REGION}.amazonaws.${DN_SUFFIX}"
       },
       "Action": "sts:AssumeRole"
     }
   ]
 }
 EOF
-aws iam create-role --role-name ${cwl_role_name} \
+aws iam create-role --role-name ${CWL_ROLE_NAME} \
   --assume-role-policy-document file://cwl-role-trust-policy.json
 
 envsubst > cwl-role-policy.json <<-EOF
@@ -336,36 +318,39 @@ envsubst > cwl-role-policy.json <<-EOF
                 "firehose:PutRecordBatch"
             ],
             "Effect": "Allow",
-            "Resource": "arn:aws:firehose:${aws_region}:${aws_account_id}:deliverystream/*"
+            "Resource": "arn:${ARN_PREFIX}:firehose:${AWS_REGION}:${AWS_ACCOUNT_ID}:deliverystream/*"
         }
     ]
 }
 EOF
-cwl_policy_arn=$(aws iam create-policy \
---policy-name ${cwl_role_name} \
+CWL_POLICY_ARN=$(aws iam create-policy \
+--policy-name ${CWL_ROLE_NAME} \
 --policy-document file://cwl-role-policy.json |jq -r '.Policy.Arn')
-aws iam attach-role-policy --role-name ${cwl_role_name} \
-  --policy-arn ${cwl_policy_arn}
-aws iam list-attached-role-policies --role-name ${cwl_role_name}
+aws iam attach-role-policy --role-name ${CWL_ROLE_NAME} \
+  --policy-arn ${CWL_POLICY_ARN}
+aws iam list-attached-role-policies --role-name ${CWL_ROLE_NAME}
 
-cwl_role_arn=$(aws iam get-role --role-name ${cwl_role_name} |jq -r '.Role.Arn')
+CWL_ROLE_ARN=$(aws iam get-role --role-name ${CWL_ROLE_NAME} |jq -r '.Role.Arn')
 
 ```
 
-- 注册firehose到eks集群到log group
+- 注册 firehose 到 eks 集群的 log group 上
 
 ```sh
-log_group_name=/aws/eks/ekscluster1/cluster
+CLUSTER_NAME=ekscluster1
+LOG_GROUP_NAME=/aws/eks/${CLUSTER_NAME}/cluster
+
+echo ${CWL_ROLE_ARN} ${FIREHOSE_ARN}
 
 aws logs create-log-group \
---log-group-name ${log_group_name}
+--log-group-name ${LOG_GROUP_NAME}
 
 aws logs put-subscription-filter \
---log-group-name ${log_group_name} \
---filter-name "other" \
+--log-group-name ${LOG_GROUP_NAME} \
+--filter-name "to-firehose" \
 --filter-pattern "" \
---destination-arn ${firehose_arn} \
---role-arn ${cwl_role_arn}
+--destination-arn ${FIREHOSE_ARN} \
+--role-arn ${CWL_ROLE_ARN}
 
 ```
 
@@ -577,14 +562,12 @@ this table is created by databrew job
 
 ## reference
 - https://aws.amazon.com/blogs/architecture/stream-amazon-cloudwatch-logs-to-a-centralized-account-for-audit-and-analysis/
-    - https://github.com/aws-samples/amazon-cloudwatch-log-centralizer
+	- https://github.com/aws-samples/amazon-cloudwatch-log-centralizer
 - https://aws.amazon.com/premiumsupport/knowledge-center/kinesis-firehose-cloudwatch-logs/
 - https://www.chaossearch.io/blog/cloudwatch2s3-an-easy-way-to-get-your-logs-to-aws-s3
 - [[eks-control-panel-log-cwl-firehose-opensearch]]
 - [[cloudwatch-firehose-splunk]]
 - [[eks-loggroup-description]]
-
-
-
+- https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/SubscriptionFilters.html#FirehoseExample
 
 

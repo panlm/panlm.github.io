@@ -18,6 +18,7 @@ title: This is a github note
 # cert-manager
 
 - [install](#install)
+	- [helm](#helm)
 - [newest version v1.12.3 (2023/07)](#newest-version-v1123-202307)
 
 
@@ -32,6 +33,10 @@ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/latest/do
 # https://github.com/cert-manager/cert-manager/releases/download/${CM_VERSION}/cert-manager.yaml
 
 ```
+
+### helm
+- install with helm
+https://cert-manager.io/docs/installation/helm/
 
 ## newest version v1.12.3 (2023/07)
 
