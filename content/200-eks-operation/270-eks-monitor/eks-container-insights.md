@@ -58,7 +58,9 @@ FluentBitReadFromHead='On'
 output=cwqs-1.yaml
 curl -o $output https://raw.githubusercontent.com/aws-samples/amazon-cloudwatch-container-insights/latest/k8s-deployment-manifest-templates/deployment-mode/daemonset/container-insights-monitoring/quickstart/cwagent-fluent-bit-quickstart.yaml 
 
-sed -i 's;amazon/cloudwatch-agent;public.ecr.aws/cloudwatch-agent/cloudwatch-agent;' $output
+# no more this line from 230819
+# sed -i 's;amazon/cloudwatch-agent;public.ecr.aws/cloudwatch-agent/cloudwatch-agent;' $output
+
 #sed -i 's;amazon/aws-for-fluent-bit:2.10.0;public.ecr.aws/aws-observability/aws-for-fluent-bit:2.28.0;' $output
 
 cat $output | sed 's/{{cluster_name}}/'${CLUSTER_NAME}'/;s/{{region_name}}/'${AWS_DEFAULT_REGION}'/;s/{{http_server_toggle}}/"'${FluentBitHttpServer}'"/;s/{{http_server_port}}/"'${FluentBitHttpPort}'"/;s/{{read_from_head}}/"'${FluentBitReadFromHead}'"/;s/{{read_from_tail}}/"'${FluentBitReadFromTail}'"/' | kubectl apply -f - 

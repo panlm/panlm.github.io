@@ -112,6 +112,11 @@ aws iam add-role-to-instance-profile --instance-profile-name ${ROLE_NAME} --role
 ### create role for api gateway
 - [[apigw-cmd#create-apigw-role-📚]]
 
+### create service-linked role
+```sh
+aws iam create-service-linked-role --aws-service-name SERVICE-NAME.amazonaws.com
+```
+
 ## assume another role
 ```sh
 account_id=$(aws sts get-caller-identity \

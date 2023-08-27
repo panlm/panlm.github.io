@@ -217,7 +217,7 @@ rm -vf ${HOME}/.aws/credentials
 export AWS_PAGER=""
 export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
 C9_INST_ID=$(curl 169.254.169.254/latest/meta-data/instance-id)
-ROLE_NAME=adminrole-$RANDOM
+ROLE_NAME=adminrole-$(TZ=CST-8 date +%Y%m%d-%H%M%S)
 MY_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
 
 cat > ec2.json <<-EOF

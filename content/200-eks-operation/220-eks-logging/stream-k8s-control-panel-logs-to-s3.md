@@ -42,7 +42,7 @@ title: This is a github note
 
 ## background
 
-目前eks控制平面日志只支持发送到cloudwatch，且在同一个log group中有5种类型6种前缀的log stream的日志，不利于统一查询。且只有audit日志是json格式其他均是单行日志，且字段各不相同。
+目前 eks 控制平面日志只支持发送到 cloudwatch，且在同一个 log group 中有 5 种类型 6种前缀的 log stream 的日志，不利于统一查询。且只有 audit 日志是 json 格式其他均是单行日志，且字段各不相同。
 
 - kube-apiserver-audit
 - kube-apiserver
@@ -54,8 +54,8 @@ title: This is a github note
 ## requirement
 
 客户需求：
-1. 简单 - 已有splunk日志平台，不希望使用opensearch等其他日志平台，保证运维简化
-2. 实时 - 需要有方法将日志近实时地发送到S3，可以通过splunk进行查询和实时告警。export cloudwatch 日志的方式，实时性无法满足，且同样需要额外实现export端点续导的问题
+1. 简单 - 已有 splunk 日志平台，不希望使用 opensearch 等其他日志平台，保证运维简化
+2. 实时 - 需要有方法将日志近实时地发送到S3，可以通过 splunk 进行查询和实时告警。export cloudwatch 日志的方式，实时性无法满足，且同样需要额外实现 export 端点续导的问题
 3. 二次处理 - 未来可以实现对日志进行查询及关键字段提取方便进行分析和告警
 4. 成本和安全 - 成本控制，高安全性，支持多账号
 
@@ -568,6 +568,13 @@ this table is created by databrew job
 - [[eks-control-panel-log-cwl-firehose-opensearch]]
 - [[cloudwatch-firehose-splunk]]
 - [[eks-loggroup-description]]
-- https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/SubscriptionFilters.html#FirehoseExample
+- Subscription filters with Amazon Kinesis Data Firehose
+	- https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/SubscriptionFilters.html#FirehoseExample
+	- https://docs.amazonaws.cn/en_us/AmazonCloudWatch/latest/logs/SubscriptionFilters.html#FirehoseExample
+- Validated IAM Service Principal List
+	- https://gist.github.com/shortjared/4c1e3fe52bdfa47522cfe5b41e5d6f22
+	- https://github.com/henrysher/aws-china-iam-service-principal-list
+
+
 
 
