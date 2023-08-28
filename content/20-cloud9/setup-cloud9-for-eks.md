@@ -86,7 +86,9 @@ source ~/.bash_profile
 	 - 修改 cloud9 磁盘大小 ([link](https://docs.aws.amazon.com/cloud9/latest/user-guide/move-environment.html#move-environment-resize))
 ```sh
 ###-SCRIPT-PART-ONE-BEGIN-###
+echo "###"
 echo "SCRIPT-PART-ONE-BEGIN"
+echo "###"
 # set size as your expectation, otherwize 100g as default volume size
 # size=200
 
@@ -133,14 +135,20 @@ if [[ $? -eq 1 ]]; then
   sudo resize2fs ${ROOT_PART}
 fi
 
+echo "###"
 echo "SCRIPT-PART-ONE-END"
+echo "###"
 ###-SCRIPT-PART-ONE-END-###
 ```
 
 - 安装 eks 相关的常用软件 (install some eks related tools)
 ```sh
 ###-SCRIPT-PART-TWO-BEGIN-###
+echo "###"
 echo "SCRIPT-PART-TWO-BEGIN"
+echo "###"
+
+mv -f ~/.bash_completion ~/.bash_completion.$(date +%N)
 # install kubectl with +/- 1 cluster version 1.25.12 / 1.26.7 / 1.27.4
 # refer: https://kubernetes.io/releases/
 # sudo curl --location -o /usr/local/bin/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
@@ -197,14 +205,16 @@ rm kubectl-convert kubectl-convert.sha256
 # install flux & fluxctl
 curl -s https://fluxcd.io/install.sh | sudo -E bash
 flux -v
-# . <(flux completion bash)
+. <(flux completion bash)
 
 # sudo wget -O /usr/local/bin/fluxctl $(curl https://api.github.com/repos/fluxcd/flux/releases/latest | jq -r ".assets[] | select(.name | test(\"linux_amd64\")) | .browser_download_url")
 # sudo chmod 755 /usr/local/bin/fluxctl
 # fluxctl version
 # fluxctl identity --k8s-fwd-ns flux
 
+echo "###"
 echo "SCRIPT-PART-TWO-END"
+echo "###"
 ###-SCRIPT-PART-TWO-END-###
 ```
 
