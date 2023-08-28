@@ -33,6 +33,14 @@ title: This is a github note
 sudo yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm
 ```
 
+## test connect available or not
+
+```sh
+aws ssm get-connection-status \
+--target i-xxxx8c8d
+
+```
+
 ## start-session
 ```sh
 aws ssm start-session --target  i-xxxxxx --region us-east-2
