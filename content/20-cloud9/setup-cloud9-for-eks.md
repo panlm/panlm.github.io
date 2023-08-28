@@ -197,7 +197,7 @@ rm kubectl-convert kubectl-convert.sha256
 # install flux & fluxctl
 curl -s https://fluxcd.io/install.sh | sudo -E bash
 flux -v
-. <(flux completion bash)
+# . <(flux completion bash)
 
 # sudo wget -O /usr/local/bin/fluxctl $(curl https://api.github.com/repos/fluxcd/flux/releases/latest | jq -r ".assets[] | select(.name | test(\"linux_amd64\")) | .browser_download_url")
 # sudo chmod 755 /usr/local/bin/fluxctl
