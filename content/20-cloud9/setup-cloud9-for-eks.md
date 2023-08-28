@@ -148,6 +148,7 @@ echo "###"
 echo "SCRIPT-PART-TWO-BEGIN"
 echo "###"
 
+set -x
 mv -f ~/.bash_completion ~/.bash_completion.$(date +%N)
 # install kubectl with +/- 1 cluster version 1.25.12 / 1.26.7 / 1.27.4
 # refer: https://kubernetes.io/releases/
