@@ -148,7 +148,6 @@ echo "###"
 echo "SCRIPT-PART-TWO-BEGIN"
 echo "###"
 
-set -x
 mv -f ~/.bash_completion ~/.bash_completion.$(date +%N)
 # install kubectl with +/- 1 cluster version 1.25.12 / 1.26.7 / 1.27.4
 # refer: https://kubernetes.io/releases/
@@ -227,6 +226,10 @@ echo "###"
 		- 分配管理员权限 role 到 cloud9 instance
 ```sh
 ###-SCRIPT-PART-THREE-BEGIN-###
+echo "###"
+echo "SCRIPT-PART-THREE-BEGIN"
+echo "###"
+
 aws cloud9 update-environment  --environment-id $C9_PID --managed-credentials-action DISABLE
 rm -vf ${HOME}/.aws/credentials
 
@@ -300,6 +303,10 @@ else
   aws iam attach-role-policy --role-name ${existed_role_name} \
     --policy-arn "arn:aws:iam::aws:policy/AdministratorAccess"
 fi
+
+echo "###"
+echo "SCRIPT-PART-THREE-END"
+echo "###"
 ###-SCRIPT-PART-THREE-END-###
 ```
 
