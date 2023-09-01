@@ -20,6 +20,7 @@ title: This is a github note
 - [prep cloud9](#prep-cloud9)
 - [prep-config](#prep-config)
 - [cluster yaml](#cluster-yaml)
+	- [endpoint](#endpoint)
 - [access cluster](#access-cluster)
 - [issue about kubectl](#issue-about-kubectl)
 	- [solve 1](#solve-1)
@@ -29,7 +30,13 @@ title: This is a github note
 
 ## prep bastion
 - 创建vpc和cloud9 
-    - [[create-standard-vpc-for-lab-in-china-region]] or [hugo link]({{< ref "create-standard-vpc-for-lab-in-china-region" >}})
+    - [[create-standard-vpc-for-lab-in-china-region]] or [hugo link]({{< ref "create-standard-vpc-for-lab-in-china-region" >}}) 
+    - 如果只需要创建托管节点组，私有子网路由表可以没有指向 nat 的路由
+    - 如果需要创建自管节点组，私有子网路由表需要有指向 nat 的路由，否则节点加集群失败，或者提前创建 eks endpoint。
+```
+Connect timeout on endpoint URL: "https://eks.us-east-1.amazonaws.com/clusters/ekscluster-name"
+Exited with error on line 351
+```
 
 ## prep cloud9
 - 安装必要的软件 
@@ -147,7 +154,7 @@ kind: ClusterConfig
 metadata:
   name: ekscluster-privonly # MODIFY cluster name
   region: "us-east-2" # MODIFY region
-  version: "1.21" # MODIFY version
+  version: "1.24" # MODIFY version
 
 # full private cluster
 privateCluster:
@@ -225,11 +232,26 @@ eksctl create cluster -f cluster1.yaml
 
 ```sh
 # get optimized eks ami id for your version & region
-EKS_VERSION=1.21
+EKS_VERSION=1.24
 # AWS_REGION=us-east-2
 aws ssm get-parameter --name /aws/service/eks/optimized-ami/${EKS_VERSION}/amazon-linux-2/recommended/image_id --region ${AWS_REGION} --query "Parameter.Value" --output text
 
 ```
+
+### endpoint
+`skipEndpointCreation: false`
+集群创建完成后将自动创建以下 endpoint
+- logs
+- s3 (gw)
+- sts
+- ecr.api
+- ec2
+- ecr.dkr
+你可以自己创建以下 endpoint
+- ssm
+- ssmmessages
+如果你要创建自管节点组，需要提前创建以下 endpoint
+- eks
 
 ## access cluster
 [[create-kubeconfig-manually]]
