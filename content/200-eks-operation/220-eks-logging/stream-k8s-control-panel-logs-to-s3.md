@@ -67,7 +67,7 @@ title: This is a github note
 
 ### eks cluster
 
-- need an  eks cluster and enable log to cloudwatch
+- need an EKS cluster and enable log to cloudwatch
 
 ### s3
 - 创建s3桶

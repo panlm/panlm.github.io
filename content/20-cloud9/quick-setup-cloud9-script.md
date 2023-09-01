@@ -18,10 +18,10 @@ title: This is a github note
 # quick-setup-cloud9-script
 
 - [spin-up-a-cloud9-instance-in-your-region](#spin-up-a-cloud9-instance-in-your-region)
-	- [stay in cloudshell to initiate cloud9](#stay-in-cloudshell-to-initiate-cloud9)
-	- [login cloud9 to initiate](#login-cloud9-to-initiate)
-		- [script-part-one-two](#script-part-one-two)
-		- [script-part-three](#script-part-three)
+	- [(prefer) stay in cloudshell to initiate cloud9](#prefer-stay-in-cloudshell-to-initiate-cloud9)
+	- [(alternative) login cloud9 to initiate](#alternative-login-cloud9-to-initiate)
+		- [(alternative) script-part-one-two](#alternative-script-part-one-two)
+		- [(alternative) script-part-three](#alternative-script-part-three)
 	- [open new tab for verify](#open-new-tab-for-verify)
 
 
@@ -63,7 +63,7 @@ fi
 
 ```
 
-### stay in cloudshell to initiate cloud9
+### (prefer) stay in cloudshell to initiate cloud9
 
 ```sh
 export AWS_PAGER=""
@@ -142,6 +142,7 @@ fi
 
 # wait ssm could connect to this instance (5 mins)
 while true ; do
+	sleep 60
 	CONN_STAT=$(aws ssm get-connection-status \
 	--target ${C9_INST_ID} \
 	--query "Status" --output text)
@@ -149,7 +150,6 @@ while true ; do
 	if [[ ${CONN_STAT} == 'connected' ]]; then
 	  break
 	fi
-	sleep 60
 done
 
 cat >$$.json <<-'EOF'
@@ -166,11 +166,11 @@ cat >$$.json <<-'EOF'
     "curl --location -o $TMPFILE https://github.com/panlm/panlm.github.io/raw/main/content/20-cloud9/setup-cloud9-for-eks.md",
     "cat $TMPFILE |awk '/###-SCRIPT-PART-ONE-BEGIN-###/,/###-SCRIPT-PART-ONE-END-###/ {print}' > $TMPFILE-ONE.sh",
     "chmod a+x $TMPFILE-ONE.sh",
-    "bash -x $TMPFILE-ONE.sh 2>&1",
+    "bash $TMPFILE-ONE.sh 2>&1",
     "",
     "cat $TMPFILE |awk '/###-SCRIPT-PART-TWO-BEGIN-###/,/###-SCRIPT-PART-TWO-END-###/ {print}' > $TMPFILE-TWO.sh",
     "chmod a+x $TMPFILE-TWO.sh",
-    "bash -x $TMPFILE-TWO.sh 2>&1",
+    "bash $TMPFILE-TWO.sh 2>&1",
 		""
   ]
 }
@@ -187,7 +187,11 @@ aws ssm send-command \
 --parameters file://$$.json \
 --timeout-seconds 600 \
 --max-concurrency "50" --max-errors "0"  \
---cloud-watch-output-config CloudWatchLogGroupName=${LOGGROUP_NAME},CloudWatchOutputEnabled=true
+--cloud-watch-output-config CloudWatchLogGroupName=${LOGGROUP_NAME},CloudWatchOutputEnabled=true |tee -a ssm-$$.json
+
+# wait to Success
+COMMAND_ID=$(cat ssm-$$.json |jq -r '.Command.CommandId')
+watch -g -n 10 aws ssm get-command-invocation --command-id ${COMMAND_ID} --instance-id ${C9_INST_ID} --query 'Status' --output text
 
 # disable managed credential and login cloud9
 aws cloud9 update-environment  --environment-id $C9_ID --managed-credentials-action DISABLE
@@ -196,8 +200,8 @@ echo "https://${AWS_DEFAULT_REGION}.console.aws.amazon.com/cloud9/ide/${C9_ID}"
 ```
 
 
-### login cloud9 to initiate
-#### script-part-one-two
+### (alternative) login cloud9 to initiate
+#### (alternative) script-part-one-two
 
 - 下面代码块包含一些基本设置，包括：(execute this code block to install tools for your lab, and resize ebs of cloud9)
 	- 安装常用的软件
@@ -216,7 +220,7 @@ done
 ```
 
 
-#### script-part-three
+#### (alternative) script-part-three
 
 - 直接执行下面代码块可能遇到权限不够的告警，需要：
 	- 如果你有 workshop 的 Credentials ，直接先复制粘贴到命令行，再执行下列步骤；(copy and paste your workshop's credential to CLI and then execute this code block)

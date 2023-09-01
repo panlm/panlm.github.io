@@ -20,10 +20,9 @@ title: This is a github note
 - [refer](#refer)
 
 ## client ip 
-- create function nodejs 12x
+- create function nodejs 18x
 ```js
-console.log('Loading function');
-exports.handler = function(event, context) {
+export const handler = async (event,context) => {
     console.log('Received event:', JSON.stringify(event, null, 2));
     context.succeed(event);
 };
@@ -31,7 +30,7 @@ exports.handler = function(event, context) {
 
 - create rest api 
 - create `POST` method and integration request to lambda
-- add `mapping templates`, content-type is `application/json`,  content as following:
+- in `method execution`, add `mapping templates`, content-type is `application/json`,  content as following:
 ```json
 {
   "sourceIp" : "$context.identity.sourceIp",
