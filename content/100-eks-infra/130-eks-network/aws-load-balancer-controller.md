@@ -24,6 +24,7 @@ title: This is a github note
 - [upgrade](#upgrade)
 	- [Supported Kubernetes versions](#supported-kubernetes-versions)
 	- [check version](#check-version)
+- [in private cluster](#in-private-cluster)
 - [blog](#blog)
 - [refer](#refer)
 
@@ -176,6 +177,13 @@ REGISTRY=602401143452.dkr.ecr.us-east-1.amazonaws.com
 helm list -n kube-system
 
 ```
+
+
+## in private cluster
+
+如果节点组无法访问公网，则创建 ingress 时感觉很慢，约 5-6 分钟才能看到 alb，分析日志看到，创建 alb 过程中会访问 `shield` 和 `wafv2` 等服务时超时导致
+
+
 ## blog
 
 - [[How To Expose Multiple Applications on Amazon EKS Using a Single Application Load Balancer]]

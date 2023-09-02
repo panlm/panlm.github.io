@@ -29,6 +29,7 @@ title: This is a github note
 - [reference](#reference)
 
 ## prep bastion
+
 - 创建vpc和cloud9 
     - [[create-standard-vpc-for-lab-in-china-region]] or [hugo link]({{< ref "create-standard-vpc-for-lab-in-china-region" >}}) 
     - 如果只需要创建托管节点组，私有子网路由表可以没有指向 nat 的路由
@@ -39,6 +40,7 @@ Exited with error on line 351
 ```
 
 ## prep cloud9
+
 - 安装必要的软件 
     - [[setup-cloud9-for-eks]] or [hugo link]({{< ref "setup-cloud9-for-eks" >}})
 ```sh
@@ -92,6 +94,7 @@ aws ec2 describe-instance-attribute --instance-id $INST_ID --attribute groupSet
 
 
 ## prep-config
+
 - 创建完自定义 vpc 后，直接执行下面代码
 ```sh
 ACCOUNT_ID=$(aws sts get-caller-identity --output text --query Account)
@@ -144,8 +147,8 @@ fi )
 touch cluster1.yaml
 ```
 
-commercial region sample config, 
-check [[eks-public-access-cluster-in-china-region#^8ir6w8|here]] for china region sample config
+- commercial region sample config
+	- check [[eks-public-access-cluster-in-china-region#^8ir6w8|here]] for china region sample config
 ```yaml
 ---
 apiVersion: eksctl.io/v1alpha5
@@ -239,28 +242,35 @@ aws ssm get-parameter --name /aws/service/eks/optimized-ami/${EKS_VERSION}/amazo
 ```
 
 ### endpoint
-`skipEndpointCreation: false`
-集群创建完成后将自动创建以下 endpoint
-- logs
-- s3 (gw)
-- sts
-- ecr.api
-- ec2
-- ecr.dkr
-你可以自己创建以下 endpoint
-- ssm
-- ssmmessages
-如果你要创建自管节点组，需要提前创建以下 endpoint
-- eks
+- 设置 `skipEndpointCreation: false`，集群创建完成后将自动创建以下 endpoint，并且绑定 `sharedNodeSecurityGroup` 中指定的安全组
+	- logs
+	- s3 (gw)
+	- sts
+	- ecr.api
+	- ec2
+	- ecr.dkr
+- 你可以自己创建以下 endpoint，并且绑定安全组允许 80 443 访问
+	- ssm
+	- ssmmessages
+- 另外还需要提前创建以下 endpoint，并且绑定安全组
+	- eks （使用自管节点组时需要）
+	- elasticfilesystem （使用 efs 时需要）
+	- elasticloadbalancing （使用 aws lb controller时需要）
+	- kms （待验证）
+	- ebs （待验证）
+
 
 ## access cluster
+
 [[create-kubeconfig-manually]]
 [[recover-access-eks]]
 [[token-different]]
 
+
 ## issue about kubectl
+
 ### solve 1
-download aws-iam-authenticator, and then run write-kubeconfig command
+- download aws-iam-authenticator, and then run write-kubeconfig command
 it will using aws-iam-authenticator instead of aws to create kubeconfig
 - `aws eks update-kubeconfig` default using aws
 - `eksctl utils write-kubeconfig` default using aws-iam-authenticator if you have installed
@@ -276,6 +286,7 @@ eksctl utils write-kubeconfig --cluster ekscluster1
 
 ## network topo preview
 - [[TC-security-group-for-eks-deepdive]]
+
 
 ## reference
 - [[eks-public-access-cluster]]
