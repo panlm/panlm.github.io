@@ -151,5 +151,7 @@ helm list -n kube-system
 ```
 
 
+## compatibility and upgrade
 
+https://github.com/kubernetes-sigs/metrics-server#compatibility-matrix
 

@@ -182,6 +182,15 @@ helm upgrade -i aws-efs-csi-driver aws-efs-csi-driver/aws-efs-csi-driver \
 ```
 find registry url from [[eks-container-image-registries-url-by-region]]
 
+#### for private cluster 
+[doc](https://github.com/kubernetes-sigs/aws-efs-csi-driver/blob/master/docs/README.md#installation)
+
+```sh
+--set sidecars.livenessProbe.image.repository=602401143452.dkr.ecr.region-code.amazonaws.com/eks/livenessprobe \
+--set sidecars.node-driver-registrar.image.repository=602401143452.dkr.ecr.region-code.amazonaws.com/eks/csi-node-driver-registrar \
+--set sidecars.csiProvisioner.image.repository=602401143452.dkr.ecr.region-code.amazonaws.com/eks/csi-provisioner
+```
+
 ### uninstall
 ```sh
 helm uninstall aws-efs-csi-driver -n kube-system

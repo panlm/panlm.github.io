@@ -24,6 +24,8 @@ title: This is a github note
 
 
 ## workshop
+
+- [中文升级 workshop](https://catalog.us-east-1.prod.workshops.aws/workshops/2b3af041-8716-4fde-ab3b-408a1036ec7d/zh-CN/30-worker-nodes-upgrade/33-create-new-node-group)
 - [[eks-upgrade-lab]]
 	- https://eks-upgrades-workshop.netlify.app/
 - [Workshop](https://www.eksworkshop.com/intermediate/320_eks_upgrades/) 
@@ -53,6 +55,9 @@ title: This is a github note
 - 自管节点的更新 [LINK](https://docs.aws.amazon.com/zh_cn/eks/latest/userguide/update-workers.html) 
 
 
+## others
+- [[mm-eks-upgrade-workshop-walkley]]
+
 ## deck
 
 ![eks-upgrade-procedure-png-1.png](eks-upgrade-procedure-png-1.png)
@@ -64,7 +69,7 @@ title: This is a github note
 - [amazon-eks-版本管理策略与升级流程](https://aws.amazon.com/cn/blogs/china/amazon-eks-version-management-strategy-and-upgrade-process/) 
 - [Automate Amazon EKS upgrades with infrastructure as code](https://aws.amazon.com/blogs/opensource/automate-amazon-eks-upgrades-with-infrastructure-as-code/) 
 - [[GCR Resilience Series - EKS Resilience]]
-
+- https://kubernetes.io/releases/version-skew-policy/
 
 
 ### 参考文档

@@ -20,8 +20,8 @@ title: This is a github note
 - [spin-up-a-cloud9-instance-in-your-region](#spin-up-a-cloud9-instance-in-your-region)
 	- [(prefer) stay in cloudshell to initiate cloud9](#prefer-stay-in-cloudshell-to-initiate-cloud9)
 	- [(alternative) login cloud9 to initiate](#alternative-login-cloud9-to-initiate)
-		- [(alternative) script-part-one-two](#alternative-script-part-one-two)
-		- [(alternative) script-part-three](#alternative-script-part-three)
+		- [script-part-one-two](#script-part-one-two)
+		- [script-part-three](#script-part-three)
 	- [open new tab for verify](#open-new-tab-for-verify)
 
 
@@ -30,7 +30,7 @@ title: This is a github note
 -  点击[这里](https://console.aws.amazon.com/cloudshell) 运行 cloudshell，执行代码块创建 cloud9 测试环境 (open cloudshell, and then execute following code to create cloud9 environment)
 ```sh
 # name=<give your cloud9 a name>
-datestring=$(date +%Y%m%d-%H%M)
+datestring=$(TZ=CST-8 date +%Y%m%d-%H%M)
 echo ${name:=cloud9-$datestring}
 
 # VPC_ID=<your vpc id> 
@@ -66,11 +66,14 @@ fi
 ### (prefer) stay in cloudshell to initiate cloud9
 
 ```sh
+echo ${C9_ID}
+echo ${name}
+
 export AWS_PAGER=""
 C9_INST_ID=$(aws ec2 describe-instances \
---filters "Name=tag:Name,Values=aws-cloud9-${name}-${C9_ID}" \
---query "Reservations[].Instances[].InstanceId" \
---output text)
+  --filters "Name=tag:Name,Values=aws-cloud9-${name}-${C9_ID}" \
+  --query "Reservations[].Instances[].InstanceId" \
+  --output text)
 MY_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
 ROLE_NAME=ec2-admin-role-$(TZ=CST-8 date +%Y%m%d-%H%M%S)
 
@@ -201,7 +204,7 @@ echo "https://${AWS_DEFAULT_REGION}.console.aws.amazon.com/cloud9/ide/${C9_ID}"
 
 
 ### (alternative) login cloud9 to initiate
-#### (alternative) script-part-one-two
+#### script-part-one-two
 
 - 下面代码块包含一些基本设置，包括：(execute this code block to install tools for your lab, and resize ebs of cloud9)
 	- 安装常用的软件
@@ -220,7 +223,7 @@ done
 ```
 
 
-#### (alternative) script-part-three
+#### script-part-three
 
 - 直接执行下面代码块可能遇到权限不够的告警，需要：
 	- 如果你有 workshop 的 Credentials ，直接先复制粘贴到命令行，再执行下列步骤；(copy and paste your workshop's credential to CLI and then execute this code block)
