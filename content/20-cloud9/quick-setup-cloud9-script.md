@@ -58,7 +58,7 @@ if [[ ! -z ${VPC_ID} ]]; then
   C9_ID=$(cat /tmp/$$ |jq -r '.environmentId')
   echo "https://${AWS_DEFAULT_REGION}.console.aws.amazon.com/cloud9/ide/${C9_ID}"
 else
-  echo "you have no default vpc in $AWS_DEFAULT_REGION"
+  echo "you have no default vpc in ${AWS_DEFAULT_REGION}"
 fi
 
 ```
@@ -70,12 +70,11 @@ echo ${C9_ID}
 echo ${name}
 
 export AWS_PAGER=""
-C9_INST_ID=$(aws ec2 describe-instances \
-  --filters "Name=tag:Name,Values=aws-cloud9-${name}-${C9_ID}" \
-  --query "Reservations[].Instances[].InstanceId" \
-  --output text)
+C9_INST_ID=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=aws-cloud9-${name}-${C9_ID}" --query "Reservations[].Instances[].InstanceId" --output text)
 MY_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
 ROLE_NAME=ec2-admin-role-$(TZ=CST-8 date +%Y%m%d-%H%M%S)
+
+echo ${C9_INST_ID}
 
 sudo yum install -y gettext
 
