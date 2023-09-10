@@ -61,6 +61,11 @@ else
   echo "you have no default vpc in ${AWS_DEFAULT_REGION}"
 fi
 
+# wait instance could be see from ec2 :D
+watch -g -n 2 aws ec2 describe-instances \
+--filters "Name=tag:Name,Values=aws-cloud9-${name}-${C9_ID}" \
+--query "Reservations[].Instances[].InstanceId" --output text
+
 ```
 
 ### (prefer) stay in cloudshell to initiate cloud9
@@ -70,7 +75,9 @@ echo ${C9_ID}
 echo ${name}
 
 export AWS_PAGER=""
-C9_INST_ID=$(aws ec2 describe-instances --filters "Name=tag:Name,Values=aws-cloud9-${name}-${C9_ID}" --query "Reservations[].Instances[].InstanceId" --output text)
+C9_INST_ID=$(aws ec2 describe-instances \
+--filters "Name=tag:Name,Values=aws-cloud9-${name}-${C9_ID}" \
+--query "Reservations[].Instances[].InstanceId" --output text)
 MY_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
 ROLE_NAME=ec2-admin-role-$(TZ=CST-8 date +%Y%m%d-%H%M%S)
 
