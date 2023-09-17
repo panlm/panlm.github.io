@@ -109,8 +109,8 @@ if [[ $? -eq 0 ]]; then
 fi
 
 # install ssm session plugin
-curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm" -o "session-manager-plugin.rpm"
-sudo yum install -y session-manager-plugin.rpm
+curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm" -o "/tmp/session-manager-plugin.rpm"
+sudo yum install -y /tmp/session-manager-plugin.rpm
 
 # your default region 
 export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
@@ -155,9 +155,9 @@ mv -f ~/.bash_completion ~/.bash_completion.$(date +%N)
 sudo curl --silent --location -o /usr/local/bin/kubectl "https://storage.googleapis.com/kubernetes-release/release/v1.25.12/bin/linux/amd64/kubectl"
 sudo chmod +x /usr/local/bin/kubectl
 
-kubectl completion bash >>  ~/.bash_completion
-. /etc/profile.d/bash_completion.sh
-. ~/.bash_completion
+/usr/local/bin/kubectl completion bash >>  ~/.bash_completion
+source /etc/profile.d/bash_completion.sh
+source ~/.bash_completion
 alias k=kubectl 
 complete -F __start_kubectl k
 echo "alias k=kubectl" >> ~/.bashrc
@@ -169,9 +169,9 @@ echo "complete -F __start_kubectl k" >> ~/.bashrc
 # https://eksctl.io/announcements/nodegroup-override-announcement/
 curl --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
 sudo mv -v /tmp/eksctl /usr/local/bin
-eksctl completion bash >> ~/.bash_completion
-. /etc/profile.d/bash_completion.sh
-. ~/.bash_completion
+/usr/local/bin/eksctl completion bash >> ~/.bash_completion
+source /etc/profile.d/bash_completion.sh
+source ~/.bash_completion
 
 # helm newest version (3.10.3)
 curl -sSL https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
@@ -179,22 +179,22 @@ curl -sSL https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 
 # wget https://get.helm.sh/helm-v3.8.2-linux-amd64.tar.gz
 # tar xf helm-v3.8.2-linux-amd64.tar.gz
 # sudo mv linux-amd64/helm /usr/local/bin/helm
-helm version --short
+/usr/local/bin/helm version --short
 
 # install aws-iam-authenticator 0.5.12 
-wget -O aws-iam-authenticator https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v0.5.12/aws-iam-authenticator_0.5.12_linux_amd64
-chmod +x ./aws-iam-authenticator
-sudo mv ./aws-iam-authenticator /usr/local/bin/
+wget -O /tmp/aws-iam-authenticator https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v0.5.12/aws-iam-authenticator_0.5.12_linux_amd64
+chmod +x /tmp/aws-iam-authenticator
+sudo mv /tmp/aws-iam-authenticator /usr/local/bin/
 
 # install kube-no-trouble
 sh -c "$(curl -sSL https://git.io/install-kubent)"
 
 # install kubectl convert plugin
-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl-convert"
-curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl-convert.sha256"
-echo "$(cat kubectl-convert.sha256) kubectl-convert" | sha256sum --check
-sudo install -o root -g root -m 0755 kubectl-convert /usr/local/bin/kubectl-convert
-rm kubectl-convert kubectl-convert.sha256
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl-convert" -o /tmp/kubectl-convert
+curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl-convert.sha256" -o /tmp/kubectl-convert.sha256
+echo "$(cat /tmp/kubectl-convert.sha256) /tmp/kubectl-convert" | sha256sum --check
+sudo install -o root -g root -m 0755 /tmp/kubectl-convert /usr/local/bin/kubectl-convert
+rm /tmp/kubectl-convert /tmp/kubectl-convert.sha256
 
 # option install jwt-cli
 # https://github.com/mike-engel/jwt-cli/blob/main/README.md
@@ -204,8 +204,8 @@ rm kubectl-convert kubectl-convert.sha256
 
 # install flux & fluxctl
 curl -s https://fluxcd.io/install.sh | sudo -E bash
-flux -v
-. <(flux completion bash)
+/usr/local/bin/flux -v
+source <(/usr/local/bin/flux completion bash)
 
 # sudo wget -O /usr/local/bin/fluxctl $(curl https://api.github.com/repos/fluxcd/flux/releases/latest | jq -r ".assets[] | select(.name | test(\"linux_amd64\")) | .browser_download_url")
 # sudo chmod 755 /usr/local/bin/fluxctl
