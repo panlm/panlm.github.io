@@ -175,11 +175,11 @@ cat >$$.json <<-'EOF'
     "curl --location -o $TMPFILE https://github.com/panlm/panlm.github.io/raw/main/content/20-cloud9/setup-cloud9-for-eks.md",
     "cat $TMPFILE |awk '/###-SCRIPT-PART-ONE-BEGIN-###/,/###-SCRIPT-PART-ONE-END-###/ {print}' > $TMPFILE-ONE.sh",
     "chmod a+x $TMPFILE-ONE.sh",
-    "sudo -u ec2-user bash -x $TMPFILE-ONE.sh 2>&1",
+    "sudo -u ec2-user bash $TMPFILE-ONE.sh 2>&1",
     "",
     "cat $TMPFILE |awk '/###-SCRIPT-PART-TWO-BEGIN-###/,/###-SCRIPT-PART-TWO-END-###/ {print}' > $TMPFILE-TWO.sh",
     "chmod a+x $TMPFILE-TWO.sh",
-    "sudo -u ec2-user bash -x $TMPFILE-TWO.sh 2>&1",
+    "sudo -u ec2-user bash $TMPFILE-TWO.sh 2>&1",
 		""
   ]
 }

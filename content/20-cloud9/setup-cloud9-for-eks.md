@@ -167,7 +167,7 @@ echo "complete -F __start_kubectl k" >> ~/.bashrc
 # consider install eksctl version 0.89.0
 # if you have older version yaml 
 # https://eksctl.io/announcements/nodegroup-override-announcement/
-curl --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+curl -L "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
 sudo mv -v /tmp/eksctl /usr/local/bin
 /usr/local/bin/eksctl completion bash >> ~/.bash_completion
 source /etc/profile.d/bash_completion.sh
@@ -190,8 +190,8 @@ sudo mv /tmp/aws-iam-authenticator /usr/local/bin/
 sh -c "$(curl -sSL https://git.io/install-kubent)"
 
 # install kubectl convert plugin
-curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl-convert" -o /tmp/kubectl-convert
-curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl-convert.sha256" -o /tmp/kubectl-convert.sha256
+curl -LO "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl-convert" --output-dir /tmp
+curl -LO "https://dl.k8s.io/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl-convert.sha256" --output-dir /tmp
 echo "$(cat /tmp/kubectl-convert.sha256) /tmp/kubectl-convert" | sha256sum --check
 sudo install -o root -g root -m 0755 /tmp/kubectl-convert /usr/local/bin/kubectl-convert
 rm /tmp/kubectl-convert /tmp/kubectl-convert.sha256
