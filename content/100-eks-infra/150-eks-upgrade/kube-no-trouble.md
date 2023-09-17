@@ -28,5 +28,9 @@ sh -c "$(curl -sSL https://git.io/install-kubent)"
 ```
 
 
+### windows
+
+https://github.com/doitintl/kube-no-trouble/releases/download/nightly-0.7.0-53-g4fa4920/kubent-nightly-0.7.0-53-g4fa4920-windows-amd64.tar.gz
+
 
 

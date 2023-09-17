@@ -25,7 +25,10 @@ title: This is a github note
 	- [create role for ec2](#create-role-for-ec2)
 	- [create role for firehose](#create-role-for-firehose)
 	- [create role for api gateway](#create-role-for-api-gateway)
+	- [create role for account](#create-role-for-account)
+	- [create service-linked role](#create-service-linked-role)
 - [assume another role](#assume-another-role)
+	- [assume in credentials file](#assume-in-credentials-file)
 - [reference](#reference)
 
 
@@ -112,6 +115,11 @@ aws iam add-role-to-instance-profile --instance-profile-name ${ROLE_NAME} --role
 ### create role for api gateway
 - [[apigw-cmd#create-apigw-role-📚]]
 
+
+### create role for account
+- [[assume-tool]]
+
+
 ### create service-linked role
 ```sh
 aws iam create-service-linked-role --aws-service-name SERVICE-NAME.amazonaws.com
@@ -135,6 +143,18 @@ export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-iden
 
 ```
 
+### assume in credentials file
+https://docs.aws.amazon.com/sdkref/latest/guide/feature-assume-role-credentials.html
+```txt
+[profile A]
+source_profile = B
+role_arn =  arn:aws:iam::123456789012:role/RoleA
+                
+[profile B]
+aws_access_key_id=AKIAIOSFODNN7EXAMPLE
+aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+
+```
 
 
 ## reference
