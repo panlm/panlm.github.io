@@ -40,7 +40,7 @@ aws sts get-caller-identity
 ```
 
 ```sh
-ACCOUNT_ID=$(GRANTED_QUIET=true assume panlm --exec "aws sts get-caller-identity" |jq -r '.Account')
+ACCOUNT_ID=$(GRANTED_QUIET=true . assume panlm --exec "aws sts get-caller-identity" |jq -r '.Account')
 ROLE_NAME=adminrole-$(TZ=EAT-8 date +%Y%m%d-%H%M%S)
 envsubst > /tmp/${ROLE_NAME}-trust.json <<-EOF
 {

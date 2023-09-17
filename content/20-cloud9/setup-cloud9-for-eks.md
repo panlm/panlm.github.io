@@ -96,9 +96,9 @@ echo "###"
 sudo yum -y install jq gettext bash-completion moreutils wget
 
 # install awscli
-curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o "awscliv2.zip"
-echo A |unzip awscliv2.zip
-sudo ./aws/install --update
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o /tmp/awscliv2.zip
+echo A |unzip /tmp/awscliv2.zip -d /tmp
+sudo /tmp/aws/install --update
 echo "complete -C '/usr/local/bin/aws_completer' aws" >> ~/.bash_profile
 
 # remove existed aws
