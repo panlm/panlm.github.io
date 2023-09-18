@@ -41,7 +41,7 @@ aws sts get-caller-identity
 
 ```sh
 ACCOUNT_ID=$(GRANTED_QUIET=true . assume panlm --exec "aws sts get-caller-identity" |jq -r '.Account')
-ROLE_NAME=adminrole-$(TZ=EAT-8 date +%Y%m%d-%H%M%S)
+ROLE_NAME=WSAdminRole
 envsubst > /tmp/${ROLE_NAME}-trust.json <<-EOF
 {
     "Version": "2012-10-17",
@@ -58,7 +58,8 @@ envsubst > /tmp/${ROLE_NAME}-trust.json <<-EOF
 }
 EOF
 aws iam create-role --role-name ${ROLE_NAME} \
-  --assume-role-policy-document file:///tmp/${ROLE_NAME}-trust.json |tee /tmp/${ROLE_NAME}-role.json
+  --assume-role-policy-document file:///tmp/${ROLE_NAME}-trust.json \
+  --max-session-duration 43200 |tee /tmp/${ROLE_NAME}-role.json
 aws iam attach-role-policy --role-name ${ROLE_NAME} \
   --policy-arn "arn:aws:iam::aws:policy/AdministratorAccess"
 ROLE_ARN=$(cat /tmp/${ROLE_NAME}-role.json |jq -r '.Role.Arn')
@@ -67,6 +68,7 @@ CREDENTIAL_ENTITY_NAME="0-ws-${WS_NAME}"
 echo '['"$CREDENTIAL_ENTITY_NAME"']' >> ~/.aws/credentials
 echo 'role_arn='${ROLE_ARN} >> ~/.aws/credentials
 echo 'source_profile=panlm' >> ~/.aws/credentials
+echo 'role_session_name=granted' >> ~/.aws/credentials
 echo ${CREDENTIAL_ENTITY_NAME}
 export AWS_DEFAULT_REGION=us-east-1
 

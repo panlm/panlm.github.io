@@ -135,11 +135,11 @@ if [[ ${instance_profile_arn} == "None" ]]; then
 	sleep 10
 	# attach role to it
 	aws iam add-role-to-instance-profile --instance-profile-name ${ROLE_NAME} --role-name ${ROLE_NAME}
-	sleep 10
-	# attach instance profile to ec2
-	aws ec2 associate-iam-instance-profile \
-		--iam-instance-profile Name=${ROLE_NAME} \
-		--instance-id ${C9_INST_ID}
+  sleep 10
+  # attach instance profile to ec2
+  aws ec2 associate-iam-instance-profile \
+    --iam-instance-profile Name=${ROLE_NAME} \
+    --instance-id ${C9_INST_ID}
 else
   existed_role_name=$(aws iam get-instance-profile \
     --instance-profile-name ${instance_profile_arn##*/} \
@@ -148,6 +148,13 @@ else
   aws iam attach-role-policy --role-name ${existed_role_name} \
     --policy-arn "arn:aws:iam::aws:policy/AdministratorAccess"
 fi
+
+for i in WSOpsRole/Ops WSParticipantRole/Participant; do
+aws cloud9 create-environment-membership \
+--environment-id ${C9_ID} \
+--user-arn arn:aws:sts::${MY_ACCOUNT_ID}:assumed-role/${i} \
+--permissions read-write
+done
 
 # wait ssm could connect to this instance (5 mins)
 while true ; do
