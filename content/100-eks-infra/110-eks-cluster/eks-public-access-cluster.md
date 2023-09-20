@@ -182,12 +182,15 @@ echo ${CLUSTER_NAME}
 
 ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
 AWS_REGION=us-east-2
+
+for i in TeamRole WSOpsRole WSParticipantRole WSAdminRole ; do
 eksctl create iamidentitymapping \
   --cluster ${CLUSTER_NAME} \
-  --arn arn:aws:iam::${ACCOUNT_ID}:role/TeamRole \
+  --arn arn:aws:iam::${ACCOUNT_ID}:role/${i} \
   --username cluster-admin \
   --group system:masters \
   --region ${AWS_REGION}
+done
 
 ```
 

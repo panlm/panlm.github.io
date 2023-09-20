@@ -36,35 +36,35 @@ echo ${name:=cloud9-$datestring}
 # VPC_ID=<your vpc id> 
 # ensure you have public subnet in it
 DEFAULT_VPC_ID=$(aws ec2 describe-vpcs \
-  --filter Name=is-default,Values=true \
-  --query 'Vpcs[0].VpcId' --output text \
-  --region ${AWS_DEFAULT_REGION})
+    --filter Name=is-default,Values=true \
+    --query 'Vpcs[0].VpcId' --output text \
+    --region ${AWS_DEFAULT_REGION})
 VPC_ID=${VPC_ID:=$DEFAULT_VPC_ID}
 
 if [[ ! -z ${VPC_ID} ]]; then
-  FIRST_SUBNET=$(aws ec2 describe-subnets \
-    --filters "Name=vpc-id,Values=${VPC_ID}" \
-    --query 'Subnets[?(AvailabilityZone==`'"${AWS_DEFAULT_REGION}a"'` && MapPublicIpOnLaunch==`true`)].SubnetId' \
-    --output text \
-    --region ${AWS_DEFAULT_REGION})
-  aws cloud9 create-environment-ec2 \
-    --name ${name} \
-    --image-id amazonlinux-2-x86_64 \
-    --instance-type m5.large \
-    --subnet-id ${FIRST_SUBNET%% *} \
-    --automatic-stop-time-minutes 10080 \
-    --region ${AWS_DEFAULT_REGION} |tee /tmp/$$
-  echo "Open URL to access your Cloud9 Environment:"
-  C9_ID=$(cat /tmp/$$ |jq -r '.environmentId')
-  echo "https://${AWS_DEFAULT_REGION}.console.aws.amazon.com/cloud9/ide/${C9_ID}"
+    FIRST_SUBNET=$(aws ec2 describe-subnets \
+        --filters "Name=vpc-id,Values=${VPC_ID}" \
+        --query 'Subnets[?(AvailabilityZone==`'"${AWS_DEFAULT_REGION}a"'` && MapPublicIpOnLaunch==`true`)].SubnetId' \
+        --output text \
+        --region ${AWS_DEFAULT_REGION})
+    aws cloud9 create-environment-ec2 \
+        --name ${name} \
+        --image-id amazonlinux-2-x86_64 \
+        --instance-type m5.large \
+        --subnet-id ${FIRST_SUBNET%% *} \
+        --automatic-stop-time-minutes 10080 \
+        --region ${AWS_DEFAULT_REGION} |tee /tmp/$$
+    echo "Open URL to access your Cloud9 Environment:"
+    C9_ID=$(cat /tmp/$$ |jq -r '.environmentId')
+    echo "https://${AWS_DEFAULT_REGION}.console.aws.amazon.com/cloud9/ide/${C9_ID}"
 else
-  echo "you have no default vpc in ${AWS_DEFAULT_REGION}"
+    echo "you have no default vpc in ${AWS_DEFAULT_REGION}"
 fi
 
 # wait instance could be see from ec2 :D
 watch -g -n 2 aws ec2 describe-instances \
---filters "Name=tag:Name,Values=aws-cloud9-${name}-${C9_ID}" \
---query "Reservations[].Instances[].InstanceId" --output text
+    --filters "Name=tag:Name,Values=aws-cloud9-${name}-${C9_ID}" \
+    --query "Reservations[].Instances[].InstanceId" --output text
 
 ```
 
@@ -76,12 +76,10 @@ echo ${name}
 
 export AWS_PAGER=""
 C9_INST_ID=$(aws ec2 describe-instances \
---filters "Name=tag:Name,Values=aws-cloud9-${name}-${C9_ID}" \
---query "Reservations[].Instances[].InstanceId" --output text)
+    --filters "Name=tag:Name,Values=aws-cloud9-${name}-${C9_ID}" \
+    --query "Reservations[].Instances[].InstanceId" --output text)
 MY_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
 ROLE_NAME=ec2-admin-role-$(TZ=CST-8 date +%Y%m%d-%H%M%S)
-
-echo ${C9_INST_ID}
 
 sudo yum install -y gettext
 
@@ -98,19 +96,19 @@ EOF
 STATEMENT_LIST=ec2.json
 
 for i in WSParticipantRole WSOpsRole TeamRole OpsRole ; do
-  aws iam get-role --role-name $i >/dev/null 2>&1
-  if [[ $? -eq 0 ]]; then
-    envsubst >$i.json <<-EOF
+    aws iam get-role --role-name $i >/dev/null 2>&1
+    if [[ $? -eq 0 ]]; then
+        envsubst >$i.json <<-EOF
 {
-  "Effect": "Allow",
-  "Principal": {
-    "AWS": "arn:aws:iam::${MY_ACCOUNT_ID}:role/$i"
-  },
-  "Action": "sts:AssumeRole"
+    "Effect": "Allow",
+    "Principal": {
+        "AWS": "arn:aws:iam::${MY_ACCOUNT_ID}:role/$i"
+    },
+    "Action": "sts:AssumeRole"
 }
 EOF
-    STATEMENT_LIST=$(echo ${STATEMENT_LIST} "$i.json")
-  fi
+        STATEMENT_LIST=$(echo ${STATEMENT_LIST} "$i.json")
+    fi
 done
 
 jq -n '{Version: "2012-10-17", Statement: [inputs]}' ${STATEMENT_LIST} > trust.json
@@ -119,53 +117,53 @@ rm -f ${STATEMENT_LIST}
 
 # create role
 aws iam create-role --role-name ${ROLE_NAME} \
-  --assume-role-policy-document file://trust.json
+    --assume-role-policy-document file://trust.json
 aws iam attach-role-policy --role-name ${ROLE_NAME} \
-  --policy-arn "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+    --policy-arn "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 aws iam attach-role-policy --role-name ${ROLE_NAME} \
-  --policy-arn "arn:aws:iam::aws:policy/AdministratorAccess"
+    --policy-arn "arn:aws:iam::aws:policy/AdministratorAccess"
 
 instance_profile_arn=$(aws ec2 describe-iam-instance-profile-associations \
-  --filter Name=instance-id,Values=$C9_INST_ID \
-  --query IamInstanceProfileAssociations[0].IamInstanceProfile.Arn \
-  --output text)
-if [[ ${instance_profile_arn} == "None" ]]; then
-	# create one
-	aws iam create-instance-profile --instance-profile-name ${ROLE_NAME} |tee /tmp/inst-profile-$$.1
-	sleep 10
-	# attach role to it
-	aws iam add-role-to-instance-profile --instance-profile-name ${ROLE_NAME} --role-name ${ROLE_NAME}
-  sleep 10
-  # attach instance profile to ec2
-  aws ec2 associate-iam-instance-profile \
-    --iam-instance-profile Name=${ROLE_NAME} \
-    --instance-id ${C9_INST_ID}
-else
-  existed_role_name=$(aws iam get-instance-profile \
-    --instance-profile-name ${instance_profile_arn##*/} \
-    --query 'InstanceProfile.Roles[0].RoleName' \
+    --filter Name=instance-id,Values=$C9_INST_ID \
+    --query IamInstanceProfileAssociations[0].IamInstanceProfile.Arn \
     --output text)
-  aws iam attach-role-policy --role-name ${existed_role_name} \
-    --policy-arn "arn:aws:iam::aws:policy/AdministratorAccess"
+if [[ ${instance_profile_arn} == "None" ]]; then
+    # create one
+    aws iam create-instance-profile --instance-profile-name ${ROLE_NAME} |tee /tmp/inst-profile-$$.1
+    sleep 10
+    # attach role to it
+    aws iam add-role-to-instance-profile --instance-profile-name ${ROLE_NAME} --role-name ${ROLE_NAME}
+    sleep 10
+    # attach instance profile to ec2
+    aws ec2 associate-iam-instance-profile \
+        --iam-instance-profile Name=${ROLE_NAME} \
+        --instance-id ${C9_INST_ID}
+else
+    existed_role_name=$(aws iam get-instance-profile \
+        --instance-profile-name ${instance_profile_arn##*/} \
+        --query 'InstanceProfile.Roles[0].RoleName' \
+        --output text)
+    aws iam attach-role-policy --role-name ${existed_role_name} \
+        --policy-arn "arn:aws:iam::aws:policy/AdministratorAccess"
 fi
 
 for i in WSOpsRole/Ops WSParticipantRole/Participant; do
-aws cloud9 create-environment-membership \
---environment-id ${C9_ID} \
---user-arn arn:aws:sts::${MY_ACCOUNT_ID}:assumed-role/${i} \
---permissions read-write
+    aws cloud9 create-environment-membership \
+        --environment-id ${C9_ID} \
+        --user-arn arn:aws:sts::${MY_ACCOUNT_ID}:assumed-role/${i} \
+        --permissions read-write
 done
 
 # wait ssm could connect to this instance (5 mins)
 while true ; do
-	sleep 60
-	CONN_STAT=$(aws ssm get-connection-status \
-	--target ${C9_INST_ID} \
-	--query "Status" --output text)
-	echo ${CONN_STAT}
-	if [[ ${CONN_STAT} == 'connected' ]]; then
-	  break
-	fi
+    sleep 60
+    CONN_STAT=$(aws ssm get-connection-status \
+    --target ${C9_INST_ID} \
+    --query "Status" --output text)
+    echo ${CONN_STAT}
+    if [[ ${CONN_STAT} == 'connected' ]]; then
+        break
+    fi
 done
 
 cat >$$.json <<-'EOF'
@@ -194,16 +192,16 @@ EOF
 
 LOGGROUP_NAME=ssm-runshellscript-log-$RANDOM
 aws logs create-log-group \
---log-group-name ${LOGGROUP_NAME}
+    --log-group-name ${LOGGROUP_NAME}
 
 aws ssm send-command \
---document-name "AWS-RunShellScript" \
---document-version "1" \
---targets '[{"Key":"InstanceIds","Values":["'${C9_INST_ID}'"]}]' \
---parameters file://$$.json \
---timeout-seconds 600 \
---max-concurrency "50" --max-errors "0"  \
---cloud-watch-output-config CloudWatchLogGroupName=${LOGGROUP_NAME},CloudWatchOutputEnabled=true |tee -a ssm-$$.json
+    --document-name "AWS-RunShellScript" \
+    --document-version "1" \
+    --targets '[{"Key":"InstanceIds","Values":["'${C9_INST_ID}'"]}]' \
+    --parameters file://$$.json \
+    --timeout-seconds 600 \
+    --max-concurrency "50" --max-errors "0"  \
+    --cloud-watch-output-config CloudWatchLogGroupName=${LOGGROUP_NAME},CloudWatchOutputEnabled=true |tee -a ssm-$$.json
 
 # wait to Success
 COMMAND_ID=$(cat ssm-$$.json |jq -r '.Command.CommandId')

@@ -18,16 +18,18 @@ title: This is a github note
 # install-prometheus-grafana
 
 - [prep](#prep)
-- [install-prometheus-operator (prefer)](#install-prometheus-operator-prefer)
+- [(Prefer) install-prometheus-operator](#prefer-install-prometheus-operator)
 	- [forward to local](#forward-to-local)
-- [install prometheus and grafana (optional)](#install-prometheus-and-grafana-optional)
+	- [install exporter on 2nd eks cluster](#install-exporter-on-2nd-eks-cluster)
+- [(Optional) install prometheus and grafana](#optional-install-prometheus-and-grafana)
 - [refer](#refer)
+
 
 ## prep
 
 - [[ebs-for-eks]]  or huge link: [ebs-for-eks.md]({{< ref "ebs-for-eks.md" >}}) 
 
-## install-prometheus-operator (prefer)
+## (Prefer) install-prometheus-operator
 [link](https://blog.devgenius.io/step-by-step-guide-to-setting-up-prometheus-operator-in-your-kubernetes-cluster-7167a8228877)
 
 ![install-prometheus-grafana-png-1.png](install-prometheus-grafana-png-1.png)
@@ -44,7 +46,7 @@ helm install ${DEPLOY_NAME} prometheus-community/kube-prometheus-stack
 - port forward to cloud9
 ```sh
 k get svc/${DEPLOY_NAME}-grafana
-k port-forward svc/${DEPLOY_NAME}-grafana 3000:80
+k port-forward svc/${DEPLOY_NAME}-grafana 3000:80 --address='0.0.0.0'
 
 ```
 - access from your laptop
@@ -60,8 +62,14 @@ aws ssm start-session --target ${INST_ID} --document-name AWS-StartPortForwardin
 
 ```
 
+### install exporter on 2nd eks cluster
+```sh
 
-## install prometheus and grafana (optional)
+```
+
+
+## (Optional) install prometheus and grafana
+
 - install prometheus
 ```sh
 kubectl create namespace prometheus
