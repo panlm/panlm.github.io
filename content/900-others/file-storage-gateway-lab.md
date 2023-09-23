@@ -24,10 +24,12 @@ title: This is a github note
 
 
 ## prepare
+
 - create a cloud9 desktop for this lab
 - ensure you have enough privilege to create resources
 
 ## create s3 bucket
+
 ```sh
 AWS_REGION=us-east-1
 BUCKET_NAME=fgwlab-$RANDOM
@@ -39,6 +41,7 @@ aws s3api put-object --bucket ${BUCKET_NAME} \
 ```
 
 ## create fgw instance
+
 ```sh
 # ensure this key existed
 KEY_NAME=awskey
@@ -112,13 +115,13 @@ FGW_ARN=$(aws storagegateway activate-gateway \
 aws storagegateway list-gateways --query 'Gateways[?GatewayARN==`'${FGW_ARN}'`]' --output json
 
 while true ; do
-aws storagegateway describe-gateway-information \
---gateway-arn ${FGW_ARN}
-if [[ $? -eq 0 ]]; then
-  break
-else
-  sleep 30
-fi
+    aws storagegateway describe-gateway-information \
+    --gateway-arn ${FGW_ARN}
+    if [[ $? -eq 0 ]]; then
+        break
+    else
+        sleep 30
+    fi
 done
 
 DISK_IDS=$(aws storagegateway list-local-disks \
@@ -132,6 +135,7 @@ aws storagegateway add-cache \
 ```
 
 ## create-nfs-share-📚
+
 - create iam role
 ```sh
 account_id=$(aws sts get-caller-identity --query "Account" --output text)
@@ -201,6 +205,12 @@ echo "mount -t nfs -o nolock,hard ${INST_PRIV_IP}:/${BUCKET_NAME}-${PREFIX_NAME}
 ```
 
 ## more
+
+- https://aws.amazon.com/blogs/storage/mounting-amazon-s3-to-an-amazon-ec2-instance-using-a-private-connection-to-s3-file-gateway/
 - using s3 gateway endpoint to enhance security of data transferring
-- [[Private integration of your Kubernetes Cluster with Amazon S3 File Gateway]]
+    - https://aws.amazon.com/blogs/architecture/connect-amazon-s3-file-gateway-using-aws-privatelink-for-amazon-s3/
+
+
+
+
 

@@ -47,7 +47,7 @@ export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-iden
 export AWS_REGION=${AWS_DEFAULT_REGION}
 
 export CLUSTER_NAME=ekscluster1
-export EKS_VERSION=1.24
+export EKS_VERSION=1.25
 CLUSTER_NUM=$(eksctl get cluster |wc -l)
 export CIDR="10.25${CLUSTER_NUM}.0.0/16"
 
@@ -89,12 +89,10 @@ cloudWatch:
 
 managedNodeGroups:
 - name: managed-ng
-  minSize: 2
+  minSize: 1
   maxSize: 5
   desiredCapacity: 2
   instanceType: m5.large
-  ssh:
-    enableSsm: true
   privateNetworking: true
 
 addons:
@@ -168,10 +166,11 @@ nodeGroups:
   overrideBootstrapCommand: |
     #!/bin/bash
     source /var/lib/cloud/scripts/eksctl/bootstrap.helper.sh
-    /etc/eks/bootstrap.sh ${CLUSTER_NAME} --container-runtime containerd --kubelet-extra-args "--node-labels=${NODE_LABELS}"
+    /etc/eks/bootstrap.sh ${CLUSTER_NAME} --container-runtime containerd --kubelet-extra-args "--node-labels=${NODE_LABELS} --max-pods=110"
 EOF
 
 ```
+- 托管节点没有 `/var/lib/cloud/scripts/eksctl/bootstrap.helper.sh` 脚本，导致当使用定制 ami 并且 extra args 中 NODE_LABELS 参数丢失。(refer [link](https://eksctl.io/announcements/nodegroup-override-announcement/))
 
 
 ## access eks cluster from web console
@@ -194,13 +193,16 @@ done
 
 ```
 
+
 ## default tags on subnet
 
 - [[eksctl-default-tags-on-subnet]]
 
+
 ## network topo preview
 
 - [[TC-security-group-for-eks-deepdive]]
+
 
 ## refer
 

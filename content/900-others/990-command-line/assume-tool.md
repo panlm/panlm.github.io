@@ -30,6 +30,7 @@ title: This is a github note
 - create aws credential entities
 
 ```sh
+assume panlm
 
 echo ${AWS_ACCESS_KEY_ID} 
 echo ${AWS_SECRET_ACCESS_KEY}

@@ -22,11 +22,19 @@ title: This is a github note
 ## github
 https://github.com/doitintl/kube-no-trouble
 
-install
+### install
+
 ```sh
 sh -c "$(curl -sSL https://git.io/install-kubent)"
 ```
 
+
+### check target version 1.25
+
+```sh
+kubent -t 1.25
+
+```
 
 ### windows
 

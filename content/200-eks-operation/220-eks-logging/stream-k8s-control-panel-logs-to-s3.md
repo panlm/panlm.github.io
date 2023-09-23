@@ -562,19 +562,19 @@ this table is created by databrew job
 
 ## reference
 - https://aws.amazon.com/blogs/architecture/stream-amazon-cloudwatch-logs-to-a-centralized-account-for-audit-and-analysis/
-	- https://github.com/aws-samples/amazon-cloudwatch-log-centralizer
+    - https://github.com/aws-samples/amazon-cloudwatch-log-centralizer
 - https://aws.amazon.com/premiumsupport/knowledge-center/kinesis-firehose-cloudwatch-logs/
 - https://www.chaossearch.io/blog/cloudwatch2s3-an-easy-way-to-get-your-logs-to-aws-s3
 - [[eks-control-panel-log-cwl-firehose-opensearch]]
 - [[cloudwatch-firehose-splunk]]
 - [[eks-loggroup-description]]
 - Subscription filters with Amazon Kinesis Data Firehose
-	- https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/SubscriptionFilters.html#FirehoseExample
-	- https://docs.amazonaws.cn/en_us/AmazonCloudWatch/latest/logs/SubscriptionFilters.html#FirehoseExample
+    - https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/SubscriptionFilters.html#FirehoseExample
+    - https://docs.amazonaws.cn/en_us/AmazonCloudWatch/latest/logs/SubscriptionFilters.html#FirehoseExample
 - Validated IAM Service Principal List
-	- https://gist.github.com/shortjared/4c1e3fe52bdfa47522cfe5b41e5d6f22
-	- https://github.com/henrysher/aws-china-iam-service-principal-list
-
+    - https://gist.github.com/shortjared/4c1e3fe52bdfa47522cfe5b41e5d6f22
+    - https://github.com/henrysher/aws-china-iam-service-principal-list
+    - https://github.com/aws/aws-cdk/issues/1282#issuecomment-444513107
 
 
 
