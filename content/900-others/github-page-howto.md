@@ -30,4 +30,13 @@ git submodule update
 ![github-page-howto-1.png](github-page-howto-1.png)
 
 
+## remove custom domain
+
+- remove `static/CNAME` file
+    - this file include line: `aws-labs.panlm.xyz`
+- remove customm domain from github `Pages` page
+- rename repo name to `git-ghpages`
+- change in `config.toml`
+    - `baseURL` --> `https://panlm.github.io/git-ghpages/`
+
 
