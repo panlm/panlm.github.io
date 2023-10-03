@@ -1,3 +1,6 @@
-# access url: aws-labs.panlm.xyz
-# or access url: https://panlm.github.io/
+
+# we move to: https://panlm.github.io/git-ob/
+## obseleted url: https://panlm.github.io/git-ghpages/
+
+
 
