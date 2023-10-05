@@ -17,9 +17,6 @@ title: This is a github note
 
 # eks-fargate-lab
 
-```toc
-```
-
 ## 环境准备
 
 - 登录你的实验环境 ([LINK](https://dashboard.eventengine.run/login))，并且打开 `AWS Console` 

@@ -15,11 +15,6 @@ title: This is a github note
 
 # build colorapp
 
-- [v1](#v1)
-- [v2](#v2)
-- [refer](#refer)
-
-
 ## v1
 ```sh
 export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document |jq -r '.region')
