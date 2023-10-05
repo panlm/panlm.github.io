@@ -1,6 +1,6 @@
 
-# we move to: https://panlm.github.io/git-ob/
-## obseleted url: https://panlm.github.io/git-ghpages/
+# access url: https://panlm.github.io/git-ghpages/
+## we move back from obsidian github publisher plugin
 
 
 
