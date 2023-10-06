@@ -1,13 +1,13 @@
 ---
-title: "eks-cluster-addons-list"
-description: "EKS 常用插件清单"
+title: eks-cluster-addons-list
+description: EKS 常用插件清单
 chapter: true
 weight: 120
 created: 2022-07-20 09:00:03.399
-last_modified: 2022-07-20 09:00:03.399
-tags: 
-- aws/container/eks 
-- kubernetes 
+last_modified: 2023-10-06 08:15:13.033
+tags:
+  - aws/container/eks
+  - kubernetes
 ---
 
 ```ad-attention
@@ -23,9 +23,9 @@ title: This is a github note
 ## list
 
 - 托管集群插件
-	- eks-addons-coredns ([link](eks-addons-coredns.md) or [hugo](eks-addons-coredns))
-	- eks-addons-vpc-cni ([link](eks-addons-vpc-cni.md) or [hugo](eks-addons-vpc-cni))
-	- eks-addons-kube-proxy ([link](eks-addons-kube-proxy.md) or [hugo](eks-addons-kube-proxy))
+	- eks-addons-coredns ([link](eks-addons-coredns.md) or or [hugo]({{< ref eks-addons-coredns >}}))
+	- eks-addons-vpc-cni ([link](eks-addons-vpc-cni.md) or or [hugo]({{< ref eks-addons-vpc-cni >}}))
+	- eks-addons-kube-proxy ([link](eks-addons-kube-proxy.md) or or [hugo]({{< ref eks-addons-kube-proxy >}}))
 
 - 第三方插件
 	- aws-load-balancer-controller ([link](aws-load-balancer-controller.md) or [hugo]({{< ref "aws-load-balancer-controller" >}}))
