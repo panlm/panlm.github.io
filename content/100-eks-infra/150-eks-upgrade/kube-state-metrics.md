@@ -4,7 +4,6 @@ description: kube-state-metrics
 chapter: true
 created: 2023-08-01 08:46:22.190
 last_modified: 2023-08-01 08:46:22.190
-share: true
 tags:
   - kubernetes
 ---

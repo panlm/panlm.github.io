@@ -1,13 +1,13 @@
 ---
-title: "eks-fargate"
-description: "在 eks 集群中使用 fargate"
+title: eks-fargate
+description: 在 eks 集群中使用 fargate
 chapter: true
 weight: 1
 created: 2022-06-25 09:17:05.835
-last_modified: 2022-10-18 08:05:07.741
-tags: 
-- aws/container/eks 
-- aws/container/fargate 
+last_modified: 2023-10-05 12:14:09.500
+tags:
+  - aws/container/eks
+  - aws/container/fargate
 ---
 
 ```ad-attention
@@ -16,6 +16,13 @@ title: This is a github note
 ```
 
 # eks-fargate-lab
+
+- [[#环境准备|环境准备]]
+- [[#create fargate profile|create fargate profile]]
+- [[#install aws load balancer controller|install aws load balancer controller]]
+- [[#deploy game 2048|deploy game 2048]]
+- [[#other fargate labs|other fargate labs]]
+
 
 ## 环境准备
 

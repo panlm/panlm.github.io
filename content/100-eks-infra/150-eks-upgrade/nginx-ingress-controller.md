@@ -3,7 +3,6 @@ title: nginx-ingress-controller
 description: nginx-ingress-controller
 created: 2023-02-11 13:55:31.445
 last_modified: 2023-02-11 13:55:31.445
-share: true
 tags:
   - kubernetes/ingress
 ---
