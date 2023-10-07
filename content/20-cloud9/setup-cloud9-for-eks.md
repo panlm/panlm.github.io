@@ -1,13 +1,13 @@
 ---
-title: "setup-cloud9-for-eks"
-description: "使用 cloud9 作为实验环境"
+title: setup-cloud9-for-eks
+description: 使用 cloud9 作为实验环境
 chapter: true
 weight: 10
 created: 2022-05-21 12:46:05.435
-last_modified: 2022-11-20 11:28:25.928
-tags: 
-- aws/container/eks
-- aws/cloud9
+last_modified: 2023-10-07 11:23:17.757
+tags:
+  - aws/container/eks
+  - aws/cloud9
 ---
 
 ```ad-attention
@@ -18,8 +18,8 @@ title: This is a github note
 # setup-cloud9-for-eks
 
 - [spin-up-a-cloud9-instance-in-your-region](#spin-up-a-cloud9-instance-in-your-region)
-- [using internal proxy or not](#using-internal-proxy-or-not)
-- [install in cloud9](#install-in-cloud9)
+- [using internal proxy or not](#using%20internal%20proxy%20or%20not)
+- [install in cloud9](#install%20in%20cloud9)
 - [reference](#reference)
 
 
@@ -82,8 +82,8 @@ source ~/.bash_profile
 ## install in cloud9 
 
 - 下面代码块包含一些基本设置，包括：(execute this code block to install tools for your lab, and resize ebs of cloud9)
-	- 安装常用的软件
-	 - 修改 cloud9 磁盘大小 ([link](https://docs.aws.amazon.com/cloud9/latest/user-guide/move-environment.html#move-environment-resize))
+    - 安装更新常用的软件
+    - 修改 cloud9 磁盘大小 ([link](https://docs.aws.amazon.com/cloud9/latest/user-guide/move-environment.html#move-environment-resize))
 ```sh
 ###-SCRIPT-PART-ONE-BEGIN-###
 echo "###"
@@ -115,6 +115,7 @@ sudo yum install -y /tmp/session-manager-plugin.rpm
 # your default region 
 export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
 
+# change root volume size
 if [[ -c /dev/nvme0 ]]; then
   wget -qO- https://github.com/amazonlinux/amazon-ec2-utils/raw/main/ebsnvme-id >/tmp/ebsnvme-id
   VOLUME_ID=$(sudo python3 /tmp/ebsnvme-id -v /dev/nvme0 |awk '{print $NF}')
@@ -149,10 +150,10 @@ echo "SCRIPT-PART-TWO-BEGIN"
 echo "###"
 
 mv -f ~/.bash_completion ~/.bash_completion.$(date +%N)
-# install kubectl with +/- 1 cluster version 1.25.12 / 1.26.7 / 1.27.4
+# install kubectl with +/- 1 cluster version 1.25.14 / 1.26.9 / 1.27.6
 # refer: https://kubernetes.io/releases/
 # sudo curl --location -o /usr/local/bin/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-sudo curl --silent --location -o /usr/local/bin/kubectl "https://storage.googleapis.com/kubernetes-release/release/v1.25.12/bin/linux/amd64/kubectl"
+sudo curl --silent --location -o /usr/local/bin/kubectl "https://storage.googleapis.com/kubernetes-release/release/v1.25.14/bin/linux/amd64/kubectl"
 sudo chmod +x /usr/local/bin/kubectl
 
 /usr/local/bin/kubectl completion bash >>  ~/.bash_completion
@@ -167,9 +168,16 @@ echo "complete -F __start_kubectl k" >> ~/.bashrc
 # consider install eksctl version 0.89.0
 # if you have older version yaml 
 # https://eksctl.io/announcements/nodegroup-override-announcement/
-curl -L "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+curl -L "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp/
 sudo mv -v /tmp/eksctl /usr/local/bin
 /usr/local/bin/eksctl completion bash >> ~/.bash_completion
+source /etc/profile.d/bash_completion.sh
+source ~/.bash_completion
+
+# install eksdemo
+curl -L "https://github.com/awslabs/eksdemo/releases/latest/download/eksdemo_$(uname -s)_$(uname -p).tar.gz" |tar xz -C /tmp/
+sudo mv -v /tmp/eksdemo /usr/local/bin
+/usr/local/bin/eksdemo completion bash >> ~/.bash_completion
 source /etc/profile.d/bash_completion.sh
 source ~/.bash_completion
 
@@ -181,8 +189,8 @@ curl -sSL https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 
 # sudo mv linux-amd64/helm /usr/local/bin/helm
 /usr/local/bin/helm version --short
 
-# install aws-iam-authenticator 0.5.12 
-wget -O /tmp/aws-iam-authenticator https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v0.5.12/aws-iam-authenticator_0.5.12_linux_amd64
+# install aws-iam-authenticator 0.6.11 (2023/10) 
+wget -O /tmp/aws-iam-authenticator https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v0.6.11/aws-iam-authenticator_0.6.11_linux_amd64
 chmod +x /tmp/aws-iam-authenticator
 sudo mv /tmp/aws-iam-authenticator /usr/local/bin/
 

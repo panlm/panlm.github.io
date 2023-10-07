@@ -1,13 +1,13 @@
 ---
 title: quick-setup-cloud9-script
 description: 简化运行脚本
-weight: 21
+weight: 5
 chapter: true
 created: 2023-08-04 15:56:59.747
-last_modified: 2023-08-04 15:56:59.747
-tags: 
-- aws/cloud9 
-- aws/container/eks 
+last_modified: 2023-10-06 22:35:44.659
+tags:
+  - aws/cloud9
+  - aws/container/eks
 ---
 
 ```ad-attention
@@ -18,16 +18,20 @@ title: This is a github note
 # quick-setup-cloud9-script
 
 - [spin-up-a-cloud9-instance-in-your-region](#spin-up-a-cloud9-instance-in-your-region)
-	- [(prefer) stay in cloudshell to initiate cloud9](#prefer-stay-in-cloudshell-to-initiate-cloud9)
-	- [(alternative) login cloud9 to initiate](#alternative-login-cloud9-to-initiate)
+	- [(prefer) stay in cloudshell to initiate cloud9](#(prefer)%20stay%20in%20cloudshell%20to%20initiate%20cloud9)
+	- [(alternative) login cloud9 to initiate](#(alternative)%20login%20cloud9%20to%20initiate)
 		- [script-part-one-two](#script-part-one-two)
 		- [script-part-three](#script-part-three)
-	- [open new tab for verify](#open-new-tab-for-verify)
+- [open new tab for verify](#open%20new%20tab%20for%20verify)
+- [refer](#refer)
 
 
 ## spin-up-a-cloud9-instance-in-your-region
 
 -  点击[这里](https://console.aws.amazon.com/cloudshell) 运行 cloudshell，执行代码块创建 cloud9 测试环境 (open cloudshell, and then execute following code to create cloud9 environment)
+    - 通过 `name` 自定义 cloud9 的名称，如果不指定将自动创建
+    - cloud9 将创建在默认 vpc 中第一个公有子网中
+    - 等待实例创建完成并获取到 instance_id
 ```sh
 # name=<give your cloud9 a name>
 datestring=$(TZ=CST-8 date +%Y%m%d-%H%M)
@@ -70,6 +74,13 @@ watch -g -n 2 aws ec2 describe-instances \
 
 ### (prefer) stay in cloudshell to initiate cloud9
 
+- 下面代码将完成：
+    - 创建角色名为 `ec2-admin-role-*`，添加管理员权限，且允许 4 个其他角色 assume
+    - 如果 cloud9 的实例已经有关联的 role，则将 role 添加管理员权限，如果没有则赋予新建的角色
+    - 允许 cloud9 的实例被其他 2 个角色使用
+    - 等待 cloud9 可以被 ssm 访问
+    - 创建日志组，并使用 ssm 执行初始化脚本
+    - 显示登录 cloud9 的 URL
 ```sh
 echo ${C9_ID}
 echo ${name}
@@ -190,7 +201,7 @@ cat >$$.json <<-'EOF'
 }
 EOF
 
-LOGGROUP_NAME=ssm-runshellscript-log-$RANDOM
+LOGGROUP_NAME=ssm-runshellscript-log-$(TZ=CST-8 date +%Y%m%d-%H%M)
 aws logs create-log-group \
     --log-group-name ${LOGGROUP_NAME}
 
@@ -226,9 +237,9 @@ echo "https://${AWS_DEFAULT_REGION}.console.aws.amazon.com/cloud9/ide/${C9_ID}"
 TMPFILE=$(mktemp)
 curl --location -o $TMPFILE https://github.com/panlm/panlm.github.io/raw/main/content/20-cloud9/setup-cloud9-for-eks.md
 for i in ONE TWO ; do
-cat $TMPFILE |awk '/###-SCRIPT-PART-'"${i}"'-BEGIN-###/,/###-SCRIPT-PART-'"${i}"'-END-###/ {print}' > $TMPFILE-$i.sh
-chmod a+x $TMPFILE-$i.sh
-$TMPFILE-$i.sh
+    cat $TMPFILE |awk '/###-SCRIPT-PART-'"${i}"'-BEGIN-###/,/###-SCRIPT-PART-'"${i}"'-END-###/ {print}' > $TMPFILE-$i.sh
+    chmod a+x $TMPFILE-$i.sh
+    sudo -u ec2-user bash $TMPFILE-$i.sh 2>&1
 done
 
 ```
@@ -247,16 +258,21 @@ done
 i=THREE
 cat $TMPFILE |awk "/###-SCRIPT-PART-${i}-BEGIN-###/,/###-SCRIPT-PART-${i}-END-###/ {print}" > $TMPFILE-$i.sh
 chmod a+x $TMPFILE-$i.sh
-$TMPFILE-$i.sh
+sudo -u ec2-user bash $TMPFILE-$i.sh 2>&1
 
 ```
 
-### open new tab for verify
+## open new tab for verify
 
 - 在 cloud9 中，重新打开一个 terminal 窗口，并验证权限符合预期。上面代码块将创建一个 instance profile ，并将关联名为 `adminrole-xxx` 的 role，或者在 cloud9 现有的 role 上关联 `AdministratorAccess` role policy。(open new tab to verify you have new role, `adminrole-xxx`, on your cloud9)
 
 ```sh
 aws sts get-caller-identity
 ```
+
+
+## refer
+- open console from local [[assume-tool]] (or [hugo]({{< ref assume-tool >}}))
+
 
 

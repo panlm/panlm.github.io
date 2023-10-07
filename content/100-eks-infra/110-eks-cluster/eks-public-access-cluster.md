@@ -1,12 +1,12 @@
 ---
-title: "eks-public-access-cluster"
-description: "创建公有访问的 eks 集群"
+title: eks-public-access-cluster
+description: 创建公有访问的 eks 集群
 chapter: true
 weight: 20
 created: 2022-05-21 12:43:38.021
-last_modified: 2022-11-20 11:28:30.221
-tags: 
-- aws/container/eks
+last_modified: 2023-10-07 11:01:30.125
+tags:
+  - aws/container/eks
 ---
 
 ```ad-attention
