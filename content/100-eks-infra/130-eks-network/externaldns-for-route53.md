@@ -1,13 +1,13 @@
 ---
-title: "externaldns-for-route53"
-description: "使用 externaldns 组件"
+title: externaldns-for-route53
+description: 使用 externaldns 组件
 chapter: true
 weight: 2
 created: 2022-08-04 13:24:34.806
-last_modified: 2022-08-04 13:24:34.806
-tags: 
-- kubernetes 
-- aws/network/route53 
+last_modified: 2023-10-09 15:37:46.987
+tags:
+  - kubernetes
+  - aws/network/route53
 ---
 
 ```ad-attention
@@ -17,15 +17,47 @@ title: This is a github note
 
 # externaldns-for-route53
 
-- [install-📚](#install-)
-- [setup-hosted-zone-📚](#setup-hosted-zone-)
-	- [private hosted zone](#private-hosted-zone)
+- [setup-hosted-zone-📚](#setup-hosted-zone-%F0%9F%93%9A)
+	- [private hosted zone](#private%20hosted%20zone)
+- [install-📚](#install-%F0%9F%93%9A)
+- [install with eksdemo](#install%20with%20eksdemo)
 - [verify](#verify)
 
 
-## install-📚
-[link](https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/aws.md) 
+## setup-hosted-zone-📚
 
+-  执行下面命令创建 Hosted Zone， 然后手工添加 NS 记录到上游的域名服务器 domain registrar 中 (create hosted zone, and then add NS records to upstream domain registrar)
+```sh
+echo ${DOMAIN_NAME}
+
+aws route53 create-hosted-zone --name "${DOMAIN_NAME}." \
+  --caller-reference "external-dns-test-$(date +%s)"
+
+ZONE_ID=$(aws route53 list-hosted-zones-by-name --output json \
+  --dns-name "${DOMAIN_NAME}." --query HostedZones[0].Id --out text)
+
+aws route53 list-resource-record-sets --output text \
+  --hosted-zone-id $ZONE_ID --query \
+  "ResourceRecordSets[?Type == 'NS'].ResourceRecords[*].Value | []" | tr '\t' '\n'
+
+###
+# copy above output  
+# add NS record on your upstream domain registrar
+# set TTL to 172800
+###
+
+```
+
+^fgvqjb
+
+refer: [[route53-subdomian]] 
+
+### private hosted zone
+you also could create private hosted zone and associate to your vpc. plugin will insert/update record in your private hosted zone. ([link](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-private.html))
+
+
+## install-📚
+- https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/aws.md
 - 创建所需要的服务账号 (create service account)
 	- 确保 EKS 集群名称正确 (ensure eks cluster name is correct)
 	- 确保使用正确的 Region (ensure region is correct)
@@ -181,35 +213,15 @@ kubectl create --filename externaldns-with-rbac.yaml \
 ```
 
 
-## setup-hosted-zone-📚
-
--  执行下面命令创建 Hosted Zone， 然后手工添加 NS 记录到上游的域名服务器 domain registrar 中 (create hosted zone, and then add NS records to upstream domain registrar)
+## install with eksdemo
+- https://github.com/awslabs/eksdemo/blob/main/docs/install-edns.md
 ```sh
-echo ${DOMAIN_NAME}
-
-aws route53 create-hosted-zone --name "${DOMAIN_NAME}." \
-  --caller-reference "external-dns-test-$(date +%s)"
-
-ZONE_ID=$(aws route53 list-hosted-zones-by-name --output json \
-  --dns-name "${DOMAIN_NAME}." --query HostedZones[0].Id --out text)
-
-aws route53 list-resource-record-sets --output text \
-  --hosted-zone-id $ZONE_ID --query \
-  "ResourceRecordSets[?Type == 'NS'].ResourceRecords[*].Value | []" | tr '\t' '\n'
-
-###
-# copy above output  
-# add NS record on your upstream domain registrar
-# set TTL to 172800
-###
+echo ${CLUSTER_NAME}
+echo ${AWS_REGION}
+eksdemo install external-dns -c ${CLUSTER_NAME} --region ${AWS_REGION}
 
 ```
-
-refer: [[route53-subdomian]] 
-
-### private hosted zone
-you also could create private hosted zone and associate to your vpc. plugin will insert/update record in your private hosted zone. ([link](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-private.html))
-
+^a2vlmo
 
 ## verify
 

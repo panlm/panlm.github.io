@@ -4,10 +4,10 @@ description: assume 工具，可以以另一个账号角色，快速打开 web c
 chapter: true
 hidden: false
 created: 2023-09-15 09:40:01.442
-last_modified: 2023-09-15 09:40:01.442
+last_modified: 2023-10-09 11:21:19.498
 tags:
-- cmd 
-- aws/security/iam 
+  - cmd
+  - aws/security/iam
 ---
 
 ```ad-attention
@@ -17,10 +17,10 @@ title: This is a github note
 
 # assume-tool
 
-- [create role for account](#create-role-for-account)
+- [modify role for account to assume](#modify%20role%20for%20account%20to%20assume)
+- [create role for account to assume](#create%20role%20for%20account%20to%20assume)
 - [install](#install)
 - [refer](#refer)
-
 
 
 ## modify role for account to assume
@@ -36,13 +36,12 @@ echo ${AWS_ACCESS_KEY_ID}
 echo ${AWS_SECRET_ACCESS_KEY}
 echo ${AWS_SESSION_TOKEN}
 
-echo ${WS_NAME:=$(TZ=EAT-8 date +%Y%m%d)}
-
 aws sts get-caller-identity
 
 ```
 
 ```sh
+echo ${WS_NAME:=$(TZ=EAT-8 date +%Y%m%d)}
 ACCOUNT_ID=$(GRANTED_QUIET=true . assume panlm --exec "aws sts get-caller-identity" |jq -r '.Account')
 ROLE_NAME="WSParticipantRole"
 

@@ -1,13 +1,13 @@
 ---
-title: "aws-load-balancer-controller"
-description: "使用 aws 负载均衡控制器"
+title: aws-load-balancer-controller
+description: 使用 aws 负载均衡控制器
 chapter: true
 weight: 1
 created: 2022-05-21 13:18:53.303
-last_modified: 2022-06-15 08:48:49.763
-tags: 
-- aws/container/eks 
-- kubernetes/ingress 
+last_modified: 2023-10-09 15:38:39.428
+tags:
+  - aws/container/eks
+  - kubernetes/ingress
 ---
 
 ```ad-attention
@@ -19,12 +19,13 @@ title: This is a github note
 
 - [github](#github)
 - [workshop](#workshop)
-- [install-📚](#install-)
+- [install-📚](#install-%F0%9F%93%9A)
+- [install using eksdemo](#install%20using%20eksdemo)
 - [install-in-china-region](#install-in-china-region)
 - [upgrade](#upgrade)
-	- [Supported Kubernetes versions](#supported-kubernetes-versions)
-	- [check version](#check-version)
-- [in private cluster](#in-private-cluster)
+	- [Supported Kubernetes versions](#Supported%20Kubernetes%20versions)
+	- [check version](#check%20version)
+- [in private cluster](#in%20private%20cluster)
 - [blog](#blog)
 - [refer](#refer)
 
@@ -44,7 +45,7 @@ title: This is a github note
 - pod rediness gate ([link](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/deploy/pod_readiness_gate/))
 
 ## install-📚
-- [refer](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/deploy/installation/) 
+- https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/deploy/installation/
 
 {{% notice note %}}
 this note covered by flux-lab
@@ -126,6 +127,16 @@ kubectl get deployment -n kube-system aws-load-balancer-controller
 ```
 
 [[awslbc-ingress-controller-lab-issue]]
+
+## install using eksdemo
+- https://github.com/awslabs/eksdemo/blob/main/docs/install-awslb.md
+```sh
+echo ${CLUSTER_NAME}
+echo ${AWS_REGION}
+eksdemo install aws-lb-controller -c ${CLUSTER_NAME} --region ${AWS_REGION}
+
+```
+^yddjq0
 
 ## install-in-china-region
 

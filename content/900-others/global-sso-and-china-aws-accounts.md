@@ -5,7 +5,7 @@ chapter: true
 hidden: false
 weight: 202309
 created: 2023-09-26 11:04:50.392
-last_modified: 2023-10-06 09:38:57.177
+last_modified: 2023-10-08 08:59:12.572
 tags:
   - aws/security/identity-center
 ---
@@ -46,7 +46,7 @@ title: This is a github note
 
 - assign user to application and login
     - find login url from sso dashboard or reset user's password
-![global-sso-and-china-aws-accounts-png-5.png](global-sso-and-china-aws-accounts-png-5.png)
+![global-sso-and-china-aws-accounts-png-5.png|400](global-sso-and-china-aws-accounts-png-5.png)
 
 
 

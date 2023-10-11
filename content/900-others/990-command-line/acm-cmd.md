@@ -1,13 +1,13 @@
 ---
 title: acm-cmd
-description: 常用命令 
+description: 常用命令
 chapter: true
 hidden: true
 created: 2023-03-15 11:58:12.994
-last_modified: 2023-03-15 11:58:12.994
-tags: 
-- aws/cmd 
-- aws/security/acm 
+last_modified: 2023-10-09 15:39:34.897
+tags:
+  - aws/cmd
+  - aws/security/acm
 ---
 
 ```ad-attention
@@ -17,8 +17,9 @@ title: This is a github note
 
 # acm-cmd
 
-- [create-certificate-📚](#create-certificate-)
-- [create certificate with pca  cross account](#create-certificate-with-pca--cross-account)
+- [create-certificate-📚](#create-certificate-%F0%9F%93%9A)
+- [create certificate with eksdemo](#create%20certificate%20with%20eksdemo)
+- [create certificate with pca  cross account](#create%20certificate%20with%20pca%20%20cross%20account)
 
 
 ## create-certificate-📚
@@ -80,6 +81,19 @@ aws acm describe-certificate \
 
 ```
 
+## create certificate with eksdemo
+- https://github.com/awslabs/eksdemo/blob/main/docs/create-acm-cert.md
+```sh
+echo ${DOMAIN_NAME}
+echo ${AWS_REGION}
+
+eksdemo create acm-certificate "*.${DOMAIN_NAME}" --region ${AWS_REGION}
+# eksdemo get hosted-zone
+# eksdemo get dns-records -z poc1009.aws.panlm.xyz
+# eksdemo get acm-certificate
+
+```
+^kresvp
 
 ## create certificate with pca  cross account
 
@@ -93,6 +107,12 @@ aws acm request-certificate \
 ```
 
 
+## list certificate by domain name
 
+```sh
+echo $DOMAIN_NAME
+CERTIFICATE_ARN=$(aws acm list-certificates --query 'CertificateSummaryList[?DomainName==`*.'"${DOMAIN_NAME}"'`].CertificateArn' --output text)
+
+```
 
 

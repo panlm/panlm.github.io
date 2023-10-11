@@ -1,12 +1,12 @@
 ---
-title: pluto 
+title: pluto
 description: pluto
 chapter: true
 weight: 112
 created: 2023-05-18 09:40:00.214
-last_modified: 2023-05-18 09:40:00.214
-tags: 
-- kubernetes 
+last_modified: 2023-10-07 21:30:27.389
+tags:
+  - kubernetes
 ---
 
 ```ad-attention
@@ -35,7 +35,7 @@ pluto detect-helm -o wide
 
 ## install
 ### asdf
-[link](https://asdf-vm.com/guide/getting-started.html#_1-install-dependencies)
+- https://asdf-vm.com/guide/getting-started.html#_1-install-dependencies
 ```sh
 git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.11.3
 echo '. "$HOME/.asdf/asdf.sh"' >> ~/.bash_profile
@@ -44,7 +44,7 @@ source ~/.bash_profile
 ```
 
 ### pluto
-[link](https://pluto.docs.fairwinds.com/installation/#asdf)
+- https://pluto.docs.fairwinds.com/installation/#asdf
 ```sh
 asdf plugin-add pluto
 lastest_version=$(asdf list-all pluto |tail -n 1)
