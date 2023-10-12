@@ -4,7 +4,7 @@ description: eks 集群升级
 chapter: true
 weight: 101
 created: 2022-03-29 10:30:16.649
-last_modified: 2023-10-06 08:17:05.479
+last_modified: 2023-10-11 17:16:31.827
 tags:
   - aws/container/eks
 ---
@@ -63,6 +63,15 @@ title: This is a github note
 ![eks-upgrade-procedure-png-1.png](eks-upgrade-procedure-png-1.png)
 
 ![eks-upgrade-procedure-png-2.png](eks-upgrade-procedure-png-2.png)
+
+
+## docs history
+
+- for release 1.22 
+    - https://github.com/awsdocs/amazon-eks-user-guide/blob/cb60bb7b2b78220f2f8809bbd640ec4d0fbcb5eb/doc_source/kubernetes-versions.md
+- for release 1.21 and before
+    - https://github.com/awsdocs/amazon-eks-user-guide/blob/a7e7162191efbfdb256ffeb4ec26757c7f3cc7b3/doc_source/kubernetes-versions.md
+
 
 ## refer
 - [Amazon EKS 集群升级指南](https://aws.amazon.com/cn/blogs/china/amazon-eks-cluster-upgrade-guide/) 

@@ -4,7 +4,7 @@ description: cross-region-reverse-proxy-with-nlb-cloudfront
 chapter: true
 hidden: false
 created: 2023-10-09 11:23:34.877
-last_modified: 2023-10-11 11:46:39.314
+last_modified: 2023-10-12 08:45:10.955
 tags:
   - aws/network/nlb
   - aws/network/cloudfront
@@ -156,7 +156,8 @@ curl https://abc.${CN_DOMAIN_NAME}/ip
 - [[iptables]]
 - [[fake-waf-on-ec2-forwarding-https]]
 - https://scalingo.com/blog/iptables
-
+- using alb + nginx as reverse proxy 
+    - [[Extend Your Web Application Deployment to the China Region Using AWS Direct Connect]]
 
 
 

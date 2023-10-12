@@ -4,7 +4,7 @@ description: 使用 cloud9 作为实验环境
 chapter: true
 weight: 10
 created: 2022-05-21 12:46:05.435
-last_modified: 2023-10-07 11:23:17.757
+last_modified: 2023-10-12 12:22:37.663
 tags:
   - aws/container/eks
   - aws/cloud9
@@ -64,7 +64,11 @@ fi
 ^xzcvy9
 
 - 点击输出的 URL 链接，打开 cloud9 测试环境 (click the URL at the bottom to open cloud9 environment)
-![](setup-cloud9-for-eks-1.png)
+
+[setup-cloud9-for-eks-1.png](../attachments/setup-cloud9-for-eks-1.png)
+[[../attachments/setup-cloud9-for-eks-1.png]]
+
+![setup-cloud9-for-eks-1.png](../attachments/setup-cloud9-for-eks-1.png)
 
 ## using internal proxy or not
 
