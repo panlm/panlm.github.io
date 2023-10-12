@@ -4,7 +4,7 @@ description: 简化运行脚本
 weight: 5
 chapter: true
 created: 2023-08-04 15:56:59.747
-last_modified: 2023-10-12 13:03:56.464
+last_modified: 2023-10-12 13:20:44.410
 tags:
   - aws/cloud9
   - aws/container/eks
@@ -274,5 +274,15 @@ aws sts get-caller-identity
 ## refer
 - open console from local [[assume-tool]] (or [hugo]({{< ref assume-tool >}})) ([../900-others/990-command-line/assume-tool](../900-others/990-command-line/assume-tool.md)
 
+[../900-others/990-command-line/assume-tool|assume-tool](../900-others/990-command-line/assume-tool%7Cassume-tool.md)
 
+[assume-tool](../900-others/990-command-line/assume-tool.md)
+
+![assume-tool#^b98085](../900-others/990-command-line/assume-tool.md#^b98085)
+
+[[../900-others/990-command-line/assume-tool#^0de4c9|assume-tool]]
+[[../900-others/990-command-line/assume-tool#^b98085]]
+
+
+[[git/git-ghpages/20-cloud9/quick-setup-cloud9-script#^yg9ttr]]
 

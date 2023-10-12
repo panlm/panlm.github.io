@@ -1,10 +1,10 @@
 ---
-title: assume-tool
+title: assume-tool.md
 description: assume 工具，可以以另一个账号角色，快速打开 web console，或者执行命令
 chapter: true
 hidden: false
 created: 2023-09-15 09:40:01.442
-last_modified: 2023-10-09 11:21:19.498
+last_modified: 2023-10-12 13:21:59.251
 tags:
   - cmd
   - aws/security/iam
@@ -65,6 +65,8 @@ echo ${CREDENTIAL_ENTITY_NAME}
 
 ```
 
+^b98085
+
 
 ## create role for account to assume
 
@@ -94,6 +96,8 @@ aws iam attach-role-policy --role-name ${ROLE_NAME} \
 ROLE_ARN=$(cat /tmp/${ROLE_NAME}-role.json |jq -r '.Role.Arn')
 
 ```
+
+^0de4c9
 
 
 
