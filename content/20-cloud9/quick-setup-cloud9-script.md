@@ -4,7 +4,7 @@ description: 简化运行脚本
 weight: 5
 chapter: true
 created: 2023-08-04 15:56:59.747
-last_modified: 2023-10-06 22:35:44.659
+last_modified: 2023-10-12 12:57:41.185
 tags:
   - aws/cloud9
   - aws/container/eks
@@ -272,7 +272,7 @@ aws sts get-caller-identity
 
 
 ## refer
-- open console from local [[assume-tool]] (or [hugo]({{< ref assume-tool >}}))
+- open console from local [[assume-tool]] (or [hugo]({{< ref assume-tool >}})) ([[../900-others/990-command-line/assume-tool|assume-tool]])
 
 
 
