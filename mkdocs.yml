@@ -1,0 +1,137 @@
+site_name: panlm
+#site_description: A cool description of your site
+#site_url: https://panlm.github.io/git-ob/ # Change this to your site URL
+
+theme:
+    name: material
+    #logo: assets/meta/AWS_Logo.png #favicons.png
+    #favicon: assets/meta/AWS_Logo.png #favicons.png
+    #custom_dir: overrides
+    font:
+        text: Ubuntu
+        code: Ubuntu Mono
+    #language: en
+
+    palette:
+    # Light mode
+    - media: "(prefers-color-scheme: light)"
+      scheme: default
+      primary: teal
+      accent: light blue
+      toggle:
+        icon: material/toggle-switch-off-outline
+        name: Switch to dark mode
+
+    # Dark mode
+    - media: "(prefers-color-scheme: dark)"
+      scheme: slate
+      primary: blue
+      accent: indigo
+      toggle:
+        icon: material/toggle-switch
+        name: Switch to light mode
+    features:
+        - navigation.indexes
+        - navigation.top
+        - navigation.tabs
+        - navigation.tabs.sticky
+        #- navigation.expand
+        - search.suggest
+        - search.highlight
+        - toc.follow
+        - content.code.copy
+
+        
+# Extensions
+markdown_extensions:
+  - footnotes
+  - nl2br
+  - attr_list
+  - sane_lists
+  - meta
+  - smarty
+  - tables
+  - mdx_breakless_lists
+  - def_list
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.details
+  - pymdownx.magiclink
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.highlight:
+      use_pygments: true
+      anchor_linenums: true
+  - pymdownx.tasklist:
+       custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - admonition
+  - toc:
+      permalink: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+# Extensions
+markdown_extensions:
+  - footnotes
+  - nl2br
+  - attr_list
+  - sane_lists
+  - meta
+  - smarty
+  - tables
+  - mdx_breakless_lists
+  - def_list
+  - pymdownx.arithmatex:
+      generic: true
+  - pymdownx.details
+  - pymdownx.magiclink
+  - pymdownx.critic
+  - pymdownx.caret
+  - pymdownx.keys
+  - pymdownx.mark
+  - pymdownx.tilde
+  - pymdownx.highlight:
+      use_pygments: true
+      anchor_linenums: true
+  - pymdownx.tasklist:
+       custom_checkbox: true
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
+  - admonition
+  - toc:
+      permalink: true
+  - pymdownx.inlinehilite
+  - pymdownx.snippets
+  - pymdownx.superfences:
+      custom_fences:
+        - name: mermaid
+          class: mermaid
+          format: !!python/name:pymdownx.superfences.fence_code_format
+
+plugins:
+  - search
+  - meta-descriptions
+  - git-revision-date-localized:
+      type: date
+      fallback_to_build_date: true
+      locale: fr
+      custom_format: "%A %d %B %Y"
+      enable_creation_date: true
+  - ezlinks:
+        wikilinks: true
+  - awesome-pages
+  - tags:
+      tags_file: tags.md
+
