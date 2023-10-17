@@ -9,7 +9,7 @@ tags:
 - aws/container/eks 
 - aws/analytics/kinesis/firehose 
 - aws/storage/s3 
-- aws/analytics/databrew
+- aws/analytics/glue/databrew
 ---
 
 ```ad-attention
