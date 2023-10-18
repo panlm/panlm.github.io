@@ -17,13 +17,6 @@ title: This is a github note
 
 # externaldns-for-route53
 
-- [setup-hosted-zone-📚](#setup-hosted-zone-%F0%9F%93%9A)
-	- [private hosted zone](#private%20hosted%20zone)
-- [install-📚](#install-%F0%9F%93%9A)
-- [install with eksdemo](#install%20with%20eksdemo)
-- [verify](#verify)
-
-
 ## setup-hosted-zone-
 
 -  执行下面命令创建 Hosted Zone， 然后手工添加 NS 记录到上游的域名服务器 domain registrar 中 (create hosted zone, and then add NS records to upstream domain registrar)

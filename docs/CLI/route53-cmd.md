@@ -1,8 +1,6 @@
 ---
-title: route53-cmd
+title: route53
 description: 常用命令 
-chapter: true
-hidden: true
 created: 2022-09-20 09:02:35.112
 last_modified: 2022-09-20 09:02:35.112
 tags: 
@@ -15,12 +13,6 @@ title: This is a github note
 ```
 
 # route53-cmd
-
-- [[#insert TXT record with multi values|insert TXT record with multi values]]
-- [[#create-hosted-zone-📚|create-hosted-zone-📚]]
-- [[#create cname record|create cname record]]
-- [[#refer|refer]]
-
 
 ## insert TXT record with multi values
 
@@ -55,7 +47,7 @@ aws route53 change-resource-record-sets \
 
 ```
 
-## create-hosted-zone-📚
+## create-hosted-zone-
 
 ![[../EKS/infra/network/externaldns-for-route53#^fgvqjb]]
 

@@ -3,14 +3,14 @@ last_modified: 2023-10-17 17:32:04.243
 ---
 # Welcome to panlm docs
 
-## start from
+## 1 start from
 
 - [[cloud9/quick-setup-cloud9-script|quick-setup-cloud9-script]]
 
 
-## topics 
+## 2 topics 
 
-### cloud9
+### 2.1 cloud9
 
 ```expander
 (path:git/git-mkdocs/cloud9 file:.md)
@@ -21,7 +21,7 @@ last_modified: 2023-10-17 17:32:04.243
 - [[create-standard-vpc-for-lab-in-china-region]]: 创建实验环境所需要的 vpc ，并且支持直接 attach 到 tgw 方便网络访问
 <-->
 
-### eks
+### 2.2 eks
 
 ```expander
 (path:git/git-mkdocs/eks file:.md)
@@ -69,7 +69,7 @@ last_modified: 2023-10-17 17:32:04.243
 - [[appmesh-workshop-eks]]: appmesh workshop
 <-->
 
-### database and data analytics
+### 2.3 database and data analytics
 
 ```expander
 (file:.md (path:git/git-mkdocs/data-analytics))
@@ -80,7 +80,7 @@ last_modified: 2023-10-17 17:32:04.243
 - [[mwaa-lab]]: 在中国区使用 mwaa 服务
 <-->
 
-### serverless
+### 2.4 serverless
 
 ```expander
 (file:.md (path:git/git-mkdocs/serverless))
@@ -93,7 +93,7 @@ last_modified: 2023-10-17 17:32:04.243
 - [[apigw-cross-account-private-endpoint]]: 跨账号访问私有api
 <-->
 
-### others
+### 2.5 others
 
 ```expander
 (file:.md -file:tags.md (path:git/git-mkdocs -path:git/git-mkdocs/eks -path:git/git-mkdocs/cloud9 -path:git/git-mkdocs/serverless -path:git/git-mkdocs/data-analytics ))
@@ -116,7 +116,7 @@ last_modified: 2023-10-17 17:32:04.243
 - [[acm-cmd]]: 常用命令
 <-->
 
-## powered by
+## 3 powered by
 
 - For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 

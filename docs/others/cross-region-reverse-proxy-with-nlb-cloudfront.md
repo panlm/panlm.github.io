@@ -39,8 +39,8 @@ refer: [[git/git-mkdocs/EKS/infra/network/externaldns-for-route53#setup-hosted-z
 
 ### eks cluster
 
-- eks (refer: [[eksdemo-cmd#create-eks-cluster-]])
-- addons (refer: [[eksdemo-cmd#addons-]])
+- eks (refer: [[../CLI/eksdemo-cmd#create-eks-cluster-]])
+- addons (refer: [[../CLI/eksdemo-cmd#addons-]])
     - externaldns
     - aws load balancer controller
     - certificate
