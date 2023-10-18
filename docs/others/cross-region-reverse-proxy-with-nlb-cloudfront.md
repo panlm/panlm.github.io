@@ -1,8 +1,6 @@
 ---
 title: cross-region-reverse-proxy-with-nlb-cloudfront
-description: cross-region-reverse-proxy-with-nlb-cloudfront
-chapter: true
-hidden: false
+description: 跨区域的 Layer 4 反向代理，并使用 nlb + cloudfront，考察证书使用需求
 created: 2023-10-09 11:23:34.877
 last_modified: 2023-10-12 08:45:10.955
 tags:
@@ -37,28 +35,16 @@ CN_DOMAIN_NAME=poc1010.aws.panlm.xyz # for china region
 
 ![[../EKS/infra/network/externaldns-for-route53#^fgvqjb]]
 
-refer: [[../EKS/infra/network/externaldns-for-route53#^fgvqjb]]
+refer: [[git/git-mkdocs/EKS/infra/network/externaldns-for-route53#setup-hosted-zone-]]
 
 ### eks cluster
 
-- one eks cluster
-
-### addons 
-
-- externaldns
-![[../EKS/infra/network/externaldns-for-route53#^a2vlmo]]
-
-refer: [[../EKS/infra/network/externaldns-for-route53#^a2vlmo]]
-
-- aws load balancer controller
-![[../EKS/infra/network/aws-load-balancer-controller#^yddjq0]]
-
-refer: [[../EKS/infra/network/aws-load-balancer-controller#^yddjq0]]
-
-- 2 certificates, one for each domain name in original region
-![[../CLI/acm-cmd#^kresvp]]
-
-refer: [[../CLI/acm-cmd#^kresvp]]
+- eks (refer: [[eksdemo-cmd#create-eks-cluster-]])
+- addons (refer: [[eksdemo-cmd#addons-]])
+    - externaldns
+    - aws load balancer controller
+    - certificate
+- httpbin app
 
 ### httpbin
 

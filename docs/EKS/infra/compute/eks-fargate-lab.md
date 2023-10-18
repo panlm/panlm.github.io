@@ -17,13 +17,6 @@ title: This is a github note
 
 # eks-fargate-lab
 
-- [[#环境准备|环境准备]]
-- [[#create fargate profile|create fargate profile]]
-- [[#install aws load balancer controller|install aws load balancer controller]]
-- [[#deploy game 2048|deploy game 2048]]
-- [[#other fargate labs|other fargate labs]]
-
-
 ## 环境准备
 
 - 登录你的实验环境 ([LINK](https://dashboard.eventengine.run/login))，并且打开 `AWS Console` 

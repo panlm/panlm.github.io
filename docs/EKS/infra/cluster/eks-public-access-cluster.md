@@ -16,16 +16,6 @@ title: This is a github note
 
 # eks-public-access-cluster
 
-- [prep](#prep)
-- [cluster yaml](#cluster-yaml)
-	- [create-eks-cluster](#create-eks-cluster)
-	- [get-newest-ami](#get-newest-ami)
-- [access eks cluster from web console](#access-eks-cluster-from-web-console)
-- [default tags on subnet](#default-tags-on-subnet)
-- [network topo preview](#network-topo-preview)
-- [refer](#refer)
-
-
 ## prep
 
 - do not need to create vpc in advance

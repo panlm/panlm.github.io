@@ -81,7 +81,8 @@ aws acm describe-certificate \
 
 ```
 
-## create certificate with eksdemo
+## create-certificate-with-eksdemo-
+
 - https://github.com/awslabs/eksdemo/blob/main/docs/create-acm-cert.md
 ```sh
 echo ${DOMAIN_NAME}

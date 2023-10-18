@@ -1,14 +1,19 @@
 ---
-title: "eks-public-access-cluster-in-china-region"
-description: "在中国区域，创建共有访问的 eks 集群"
+title: eks-public-access-cluster-in-china-region
+description: 在中国区域，创建共有访问的 eks 集群
 chapter: true
 weight: 50
 created: 2023-02-19 21:55:37.905
 last_modified: 2023-02-19 21:55:37.905
-tags: 
-- aws/container/eks
-- aws/china 
+tags:
+  - aws/container/eks
+  - aws/china
 ---
+
+```ad-attention
+title: This is a github note
+```
+
 # eks-public-access-cluster-in-china-region
 
 1. create cloud9

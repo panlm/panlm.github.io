@@ -73,74 +73,49 @@ last_modified: 2023-10-17 17:32:04.243
 
 ```expander
 (file:.md (path:git/git-mkdocs/data-analytics))
-- [[$filename]]
-    - $frontmatter:description
+- [[$filename]]: $frontmatter:description
 ```
-- [[rds-mysql-replica-cross-region-cross-account]]
-    - 用于 1) 跨账号复制 RDS 数据库; 2) 或者将数据库转换成加密存储
-- [[mwaa-lab]]
-    - 在中国区使用 mwaa 服务
-- [[redshift-data-api-lab]]
-    - Amazon Redshift 数据 API 使您能够使用所有类型的传统、云原生和容器化、基于 Web 服务的无服务器应用程序和事件驱动的应用程序轻松访问来自 Amazon Redshift 的数据
+- [[redshift-data-api-lab]]: Amazon Redshift 数据 API 使您能够使用所有类型的传统、云原生和容器化、基于 Web 服务的无服务器应用程序和事件驱动的应用程序轻松访问来自 Amazon Redshift 的数据
+- [[rds-mysql-replica-cross-region-cross-account]]: 用于 1) 跨账号复制 RDS 数据库; 2) 或者将数据库转换成加密存储
+- [[mwaa-lab]]: 在中国区使用 mwaa 服务
 <-->
 
 ### serverless
 
 ```expander
 (file:.md (path:git/git-mkdocs/serverless))
-- [[$filename]]
-    - $frontmatter:description
+- [[$filename]]: $frontmatter:description
 ```
-- [[apigw-regional-api-access-from-vpc]]
-    - apigw-regional-api-access-from-vpc
-- [[apigw-private-api-alb-cdk]]
-    - 通过 alb 访问 private api 的例子
-- [[apigw-get-sourceip]]
-    - 获取客户端源地址
-- [[apigw-custom-domain-name]]
-    - 为私有 api 创建定制域名
-- [[apigw-cross-account-private-endpoint]]
-    - 跨账号访问私有api
+- [[apigw-regional-api-access-from-vpc]]: apigw-regional-api-access-from-vpc
+- [[apigw-private-api-alb-cdk]]: 通过 alb 访问 private api 的例子
+- [[apigw-get-sourceip]]: 获取客户端源地址
+- [[apigw-custom-domain-name]]: 为私有 api 创建定制域名
+- [[apigw-cross-account-private-endpoint]]: 跨账号访问私有api
 <-->
 
 ### others
 
 ```expander
-(file:.md (path:git/git-mkdocs -path:git/git-mkdocs/eks -path:git/git-mkdocs/cloud9 -path:git/git-mkdocs/serverless -path:git/git-mkdocs/data-analytics ))
-- [[$filename]]
-    - $frontmatter:description
+(file:.md -file:tags.md (path:git/git-mkdocs -path:git/git-mkdocs/eks -path:git/git-mkdocs/cloud9 -path:git/git-mkdocs/serverless -path:git/git-mkdocs/data-analytics ))
+- [[$filename]]: $frontmatter:description
 ```
-- [[cloudformation-cmd]]
-    - 常用命令
-- [[cross-region-reverse-proxy-with-nlb-cloudfront]]
-    - cross-region-reverse-proxy-with-nlb-cloudfront
-- [[efs-cmd]]
-    - 1/ 在默认 vpc 中创建 efs
-- [[iam-cmd]]
-    - 常用命令
-- [[route53-cmd]]
-    - 常用命令
-- [[ssm-cmd]]
-    - 常用命令
-- [[cloud9-cmd]]
-    - cloud9 related commands
-- [[tags]]
-    - 
-- [[assume-tool]]
-    - assume 工具，可以以另一个账号角色，快速打开 web console，或者执行命令
-- [[acm-cmd]]
-    - 常用命令
-- [[global-sso-and-china-aws-accounts]]
-    - 使用 global sso 登录中国区域 aws 账号
-- [[github-page-howto]]
-    - github-page-howto
-- [[file-storage-gateway-lab]]
-    - create file storage gateway from cli
-- [[script-api-resource-method]]
-    - 每个 api 的每个 resource 的每个 method 都需要单独通过命令行启用“tlsConfig/insecureSkipVerification”，通过这个脚本简化工作
-- [[ebs-cmd]]
-    - 1/ 转换 gp2 到 gp3 ; 2/ 获取指定 volume 每次 snapshot 占用的 block 数量 ; 3/ 创建两种不同类型的 dlm 策略
+- [[s3-cmd]]: 
+- [[script-api-resource-method]]: 每个 api 的每个 resource 的每个 method 都需要单独通过命令行启用“tlsConfig/insecureSkipVerification”，通过这个脚本简化工作
+- [[global-sso-and-china-aws-accounts]]: 使用 global sso 登录中国区域 aws 账号
+- [[github-page-howto]]: github-page-howto
+- [[file-storage-gateway-lab]]: create file storage gateway from cli
+- [[cross-region-reverse-proxy-with-nlb-cloudfront]]: cross-region-reverse-proxy-with-nlb-cloudfront
+- [[ssm-cmd]]: 常用命令
+- [[route53-cmd]]: 常用命令
+- [[iam-cmd]]: 常用命令
+- [[efs-cmd]]: 1/ 在默认 vpc 中创建 efs
+- [[ebs-cmd]]: 1/ 转换 gp2 到 gp3 ; 2/ 获取指定 volume 每次 snapshot 占用的 block 数量 ; 3/ 创建两种不同类型的 dlm 策略
+- [[cloudformation-cmd]]: 常用命令
+- [[cloud9-cmd]]: cloud9 related commands
+- [[assume-tool]]: assume 工具，可以以另一个账号角色，快速打开 web console，或者执行命令
+- [[acm-cmd]]: 常用命令
 <-->
+
 ## powered by
 
 - For full documentation visit [mkdocs.org](https://www.mkdocs.org).

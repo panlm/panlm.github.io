@@ -128,7 +128,7 @@ kubectl get deployment -n kube-system aws-load-balancer-controller
 
 [[awslbc-ingress-controller-lab-issue]]
 
-## install using eksdemo
+## install-with-eksdemo-
 - https://github.com/awslabs/eksdemo/blob/main/docs/install-awslb.md
 ```sh
 echo ${CLUSTER_NAME}

@@ -24,7 +24,7 @@ title: This is a github note
 - [verify](#verify)
 
 
-## setup-hosted-zone-📚
+## setup-hosted-zone-
 
 -  执行下面命令创建 Hosted Zone， 然后手工添加 NS 记录到上游的域名服务器 domain registrar 中 (create hosted zone, and then add NS records to upstream domain registrar)
 ```sh
@@ -213,7 +213,8 @@ kubectl create --filename externaldns-with-rbac.yaml \
 ```
 
 
-## install with eksdemo
+## install-with-eksdemo-
+
 - https://github.com/awslabs/eksdemo/blob/main/docs/install-edns.md
 ```sh
 echo ${CLUSTER_NAME}
