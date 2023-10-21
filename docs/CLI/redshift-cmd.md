@@ -1,7 +1,7 @@
 ---
 title: redshift
 created: 2022-11-23 23:18:21.581
-last_modified: 2022-11-23 23:18:21.581
+last_modified: 2023-10-21 11:21:12.123
 tags:
   - aws/database/redshift
 ---
@@ -15,9 +15,9 @@ title: This is a github note
 
 ## setup
 
-![[git/git-mkdocs/data-analytics/redshift-data-api-lab#初始化-redshift-集群]]
+![[git/git-mkdocs/data-analytics/redshift-data-api-lab#初始化-redshift-集群-]]
 
-refer: [[git/git-mkdocs/data-analytics/redshift-data-api-lab#初始化-redshift-集群]]
+refer: [[git/git-mkdocs/data-analytics/redshift-data-api-lab#初始化-redshift-集群-]]
 
 ## unload
 

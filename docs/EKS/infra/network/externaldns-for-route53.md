@@ -49,7 +49,7 @@ refer: [[route53-subdomian]]
 you also could create private hosted zone and associate to your vpc. plugin will insert/update record in your private hosted zone. ([link](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-private.html))
 
 
-## install-📚
+## install-
 - https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/aws.md
 - 创建所需要的服务账号 (create service account)
 	- 确保 EKS 集群名称正确 (ensure eks cluster name is correct)

@@ -17,17 +17,6 @@ title: This is a github note
 
 # ssm-cmd
 
-- [ssm agent](#ssm-agent)
-- [start-session](#start-session)
-	- [prot-forward](#prot-forward)
-	- [prot-forward-to-remote-host](#prot-forward-to-remote-host)
-- [send-command](#send-command)
-- [create document and run it](#create-document-and-run-it)
-- [filter-inventory-📚](#filter-inventory-)
-- [get parameter](#get-parameter)
-- [join domain sample](#join-domain-sample)
-- [create ssm vpc endpoint](#create-ssm-vpc-endpoint)
-
 ## ssm agent
 ```sh
 sudo yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm
@@ -47,7 +36,7 @@ aws ssm start-session --target  i-xxxxxx --region us-east-2
 ```
 
 ### prot-forward
-[blog](https://aws.amazon.com/blogs/aws/new-port-forwarding-using-aws-system-manager-sessions-manager/)
+- https://aws.amazon.com/blogs/aws/new-port-forwarding-using-aws-system-manager-sessions-manager/
 
 ```sh
 INST_ID=
@@ -62,6 +51,7 @@ aws ssm start-session --target ${INST_ID} \
 ```
 
 ### prot-forward-to-remote-host
+
 ```sh
 INST_ID=
 REMOTE_HOST=
@@ -77,9 +67,11 @@ aws ssm start-session --target ${INST_ID} \
 
 
 ## send-command
+
 - [[ssm-document-runshell]]
 
 ## create document and run it
+
 https://aws.amazon.com/blogs/mt/amazon-ec2-systems-manager-documents-support-for-cross-platform-documents-and-multiple-steps-of-the-same-type/
 
 ```sh
@@ -98,7 +90,7 @@ done
 ```
 
 
-## filter-inventory-📚
+## filter-inventory-
 
 ```sh
 aws ssm get-inventory --filter Key="Custom:DiskUtilization.Size(GB)",Values=100,Type=Equal

@@ -1,6 +1,8 @@
 ---
-last_modified: 2023-10-17 17:32:04.243
+last_modified: 2023-10-21 11:27:54.741
+number headings: first-level 2, max 3, 1.1, auto
 ---
+
 # Welcome to panlm docs
 
 ## 1 start from
@@ -99,24 +101,34 @@ last_modified: 2023-10-17 17:32:04.243
 (file:.md -file:tags.md (path:git/git-mkdocs -path:git/git-mkdocs/eks -path:git/git-mkdocs/cloud9 -path:git/git-mkdocs/serverless -path:git/git-mkdocs/data-analytics ))
 - [[$filename]]: $frontmatter:description
 ```
+- [[ssm-cmd]]: 常用命令
+- [[acm-cmd]]: 常用命令
+- [[route53-cmd]]: 常用命令
+- [[redshift-cmd]]: 
+- [[assume-tool]]: assume 工具，可以以另一个账号角色，快速打开 web console，或者执行命令
+- [[cloud9-cmd]]: cloud9 related commands
+- [[cloudformation-cmd]]: 常用命令
+- [[efs-cmd]]: 1/ 在默认 vpc 中创建 efs
 - [[s3-cmd]]: 
+- [[iam-cmd]]: 常用命令
+- [[cross-region-reverse-proxy-with-nlb-cloudfront]]: 跨区域的 Layer 4 反向代理，并使用 nlb + cloudfront，考察证书使用需求
+- [[eksdemo-cmd]]: 使用 eksdemo 快速搭建 eks 集群以及其他所需组件
 - [[script-api-resource-method]]: 每个 api 的每个 resource 的每个 method 都需要单独通过命令行启用“tlsConfig/insecureSkipVerification”，通过这个脚本简化工作
 - [[global-sso-and-china-aws-accounts]]: 使用 global sso 登录中国区域 aws 账号
 - [[github-page-howto]]: github-page-howto
 - [[file-storage-gateway-lab]]: create file storage gateway from cli
-- [[cross-region-reverse-proxy-with-nlb-cloudfront]]: cross-region-reverse-proxy-with-nlb-cloudfront
-- [[ssm-cmd]]: 常用命令
-- [[route53-cmd]]: 常用命令
-- [[iam-cmd]]: 常用命令
-- [[efs-cmd]]: 1/ 在默认 vpc 中创建 efs
 - [[ebs-cmd]]: 1/ 转换 gp2 到 gp3 ; 2/ 获取指定 volume 每次 snapshot 占用的 block 数量 ; 3/ 创建两种不同类型的 dlm 策略
-- [[cloudformation-cmd]]: 常用命令
-- [[cloud9-cmd]]: cloud9 related commands
-- [[assume-tool]]: assume 工具，可以以另一个账号角色，快速打开 web console，或者执行命令
-- [[acm-cmd]]: 常用命令
 <-->
 
-## 3 powered by
+## 3 my blog
+
+- https://github.com/panlm/blog-private-api-gateway-dataflow
+
+
+
+
+
+## 4 powered by
 
 - For full documentation visit [mkdocs.org](https://www.mkdocs.org).
 

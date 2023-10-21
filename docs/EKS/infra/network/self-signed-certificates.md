@@ -4,10 +4,10 @@ description: 使用自签名证书，用根证书签发或者中间证书签发�
 chapter: true
 weight: 2
 created: 2022-05-17 15:49:16.687
-last_modified: 2023-03-23 01:33:16.924
-tags: 
-- aws/security/acm 
-- aws/container/eks 
+last_modified: 2023-10-21 11:50:40.440
+tags:
+  - aws/security/acm
+  - aws/container/eks
 ---
 
 ```ad-attention
@@ -17,18 +17,11 @@ title: This is a github note
 
 # self-signed-certificates
 
-- [1. has certificate chain](#1-has-certificate-chain)
-	- [1.1. has certificate chain (with intermediate)](#11-has-certificate-chain-with-intermediate)
-		- [refer](#refer)
-	- [1.2. has certificate chain (root only)](#12-has-certificate-chain-root-only)
-		- [refer](#refer)
-- [2. no certificate chain](#2-no-certificate-chain)
-- [refer](#refer)
 
+## 1 has certificate chain
 
-## 1. has certificate chain
+### 1.1 has certificate chain (with intermediate)
 
-### 1.1. has certificate chain (with intermediate)
 - works for api gateway and alb
 - http endpoint in integration request need this kind certificate, and also set `insecureSkipVerification` to `true`
 
@@ -90,11 +83,13 @@ openssl x509 -inform PEM -in ../myrootca/pki/ca.crt >mycert-chain-root.pem
 ```
 
 #### refer
+
 - https://wavecn.com/content.php?id=334
 - https://docs.aws.amazon.com/acm/latest/userguide/import-certificate-format.html
 
 
-### 1.2. has certificate chain (root only)
+### 1.2 has certificate chain (root only)
+
 - works for api gateway and alb
 - http endpoint in integration request need this kind certificate, and also set `insecureSkipVerification` to `true`
 
@@ -128,11 +123,12 @@ openssl x509 -inform PEM -in pki/ca.crt >my-server-chain.pem
 ```
 
 #### refer
+
 - [How To Set Up and Configure a Certificate Authority (CA) On Ubuntu 20.04 | DigitalOcean](https://www.digitalocean.com/community/tutorials/how-to-set-up-and-configure-a-certificate-authority-ca-on-ubuntu-20-04)
 - https://github.com/OpenVPN/easy-rsa/blob/master/README.quickstart.md
 
 
-## 2. no certificate chain
+## 2-no-certificate-chain-
 - works for alb, not for api gateway
 
 1. create self-signed certificate

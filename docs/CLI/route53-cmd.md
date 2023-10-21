@@ -58,7 +58,7 @@ refer: [[git/git-mkdocs/EKS/infra/network/externaldns-for-route53#setup-hosted-z
 ![[POC-apigw#^d0liwm]]
 
 refer: [link](https://repost.aws/knowledge-center/simple-resource-record-route53-cli) 
-sample: [[acm-cmd#create-certificate-📚]]
+sample: [[acm-cmd#create-certificate-]]
 
 ## refer
 

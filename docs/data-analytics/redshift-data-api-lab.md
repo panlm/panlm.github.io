@@ -4,7 +4,7 @@ description: Amazon Redshift 数据 API 使您能够使用所有类型的传统�
 chapter: true
 weight: 20220301
 created: 2022-03-01 11:23:18.633
-last_modified: 2023-10-15 10:40:12.904
+last_modified: 2023-10-21 11:21:20.255
 tags:
   - aws/database/redshift
 ---
@@ -32,7 +32,7 @@ Amazon Redshift Data API 不能替代 JDBC 和 ODBC 驱动程序，适用于不�
 - 使用 Amazon EventBridge 和 Lambda 构建事件驱动的应用程序。
 - 调度 SQL 脚本以简化物化视图的数据加载、卸载和刷新。
 
-## 初始化-redshift-集群
+## 初始化-redshift-集群-
 
 - 创建 redshift 集群 ([link](https://catalog.us-east-1.prod.workshops.aws/workshops/9f29cdba-66c0-445e-8cbb-28a092cb5ba7/en-US/lab1#cloud-formation)), or open this [cloudformation template](redshift-immersion.yaml) directly, or download from below URL
     - 创建 vpc 加 2 个公有子网，并且创建 public access 的 redshift 集群

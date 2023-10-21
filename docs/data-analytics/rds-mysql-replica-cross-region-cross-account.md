@@ -1,12 +1,10 @@
 ---
 title: rds-mysql-replica-cross-region-cross-account
 description: 用于 1) 跨账号复制 RDS 数据库; 2) 或者将数据库转换成加密存储
-chapter: true
-weight: 20221011
 created: 2022-10-11 20:25:32.965
-last_modified: 2023-03-16 07:28:23.137
-tags: 
-- aws/database/rds 
+last_modified: 2023-10-21 11:17:42.435
+tags:
+  - aws/database/rds
 ---
 
 ```ad-attention
@@ -33,7 +31,7 @@ title: This is a github note
 - 将未加密数据库转换成加密存储
 
 ## create rds mysql 
-### prep
+### prep-
 
 - 准备测试环境，建议使用 cloud9 进行操作，并且安装下面软件
 - 如果跨账号复制的测试环境，你需要同样的 cloud9 在另一个环境中，并且安装下面软件
@@ -57,7 +55,7 @@ AWS_REGION=$(curl 2>/dev/null http://169.254.169.254/latest/dynamic/instance-ide
 
 ```
 
-### subnet group 
+### subnet-group-
 
 - 如果跨账号复制的测试环境，该步骤需要在另一个账号中被重复执行
 ```sh
@@ -277,6 +275,8 @@ aws rds modify-db-snapshot-attribute \
 - 如果是跨账号复制，则该步骤执行在另一个账号中，需要先进行一些环境准备工作
 ![[rds-mysql-replica-cross-region-cross-account#^z60dbq]]
 
+refer: [[git/git-mkdocs/data-analytics/rds-mysql-replica-cross-region-cross-account#prep-]]
+
 ### check snapshot
 
 - 将源账号的环境变量复制到现有账号的命令行窗口方便执行后续操作
@@ -347,6 +347,8 @@ RDS_NAME=db1-restore
 
 - 如果是跨账号，需要重新创建 subnet group
 ![[rds-mysql-replica-cross-region-cross-account#^rav4er]]
+
+refer: [[git/git-mkdocs/data-analytics/rds-mysql-replica-cross-region-cross-account#subnet-group-]]
 
 ### restore db
 
@@ -428,11 +430,13 @@ SHOW SLAVE STATUS\G
 
 
 ## refer
+
 - https://aws.amazon.com/premiumsupport/knowledge-center/rds-mysql-cross-region-replica/
 - https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/mysql_rds_set_external_master.html
 - https://aws.amazon.com/premiumsupport/knowledge-center/share-encrypted-rds-snapshot-kms-key/
 
 ## issue
+
 ### host error in mysql.user
 
 ```

@@ -17,12 +17,7 @@ title: This is a github note
 
 # acm-cmd
 
-- [create-certificate-📚](#create-certificate-%F0%9F%93%9A)
-- [create certificate with eksdemo](#create%20certificate%20with%20eksdemo)
-- [create certificate with pca  cross account](#create%20certificate%20with%20pca%20%20cross%20account)
-
-
-## create-certificate-📚
+## create-certificate-
 
 - 创建并通过添加 dns 记录验证证书 (create certificate with DNS verification)
 ```sh

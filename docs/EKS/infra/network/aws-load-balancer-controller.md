@@ -34,7 +34,7 @@ title: This is a github note
 - https://github.com/kubernetes-sigs/aws-load-balancer-controller
 - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/how-it-works/
 
-![aws-load-balancer-controller-png-1.png](aws-load-balancer-controller-png-1.png)
+![aws-load-balancer-controller-png-1.png](../../../git-attachment/aws-load-balancer-controller-png-1.png)
 
 ## workshop
 
@@ -44,12 +44,8 @@ title: This is a github note
 - 使用已有ingress的相关配置 ([[awslbc-ingress-settings-ingress-group]])
 - pod rediness gate ([link](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/deploy/pod_readiness_gate/))
 
-## install-📚
+## install-
 - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/deploy/installation/
-
-{{% notice note %}}
-this note covered by flux-lab
-{{% /notice %}}
 
 - Install AWS Load Balancer Controller
 ```sh
@@ -203,6 +199,6 @@ helm list -n kube-system
 
 ## refer
 
-![aws-load-balancer-controller-png-2.png](aws-load-balancer-controller-png-2.png)
+![aws-load-balancer-controller-png-2.png](../../../git-attachment/aws-load-balancer-controller-png-2.png)
 
 
