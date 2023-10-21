@@ -19,7 +19,7 @@ title: This is a github note
 ## prep
 
 - do not need to create vpc in advance
-- [[../../../1.cloud9/setup-cloud9-for-eks]] or using your local environment
+- [[../../../cloud9/setup-cloud9-for-eks]] or using your local environment
 
 ## cluster yaml
 

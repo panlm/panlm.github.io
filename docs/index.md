@@ -7,7 +7,7 @@ number headings: first-level 2, max 3, 1.1, auto
 
 ## 1 start from
 
-- [[1.cloud9/quick-setup-cloud9-script|quick-setup-cloud9-script]]
+- [[cloud9/quick-setup-cloud9-script|quick-setup-cloud9-script]]
 
 
 ## 2 topics 
@@ -18,9 +18,9 @@ number headings: first-level 2, max 3, 1.1, auto
 (path:git/git-mkdocs/cloud9 file:.md)
 - [[$filename]]: $frontmatter:description
 ```
-- [[1.cloud9/setup-cloud9-for-eks]]: 使用 cloud9 作为实验环境
-- [[1.cloud9/quick-setup-cloud9-script]]: 简化运行脚本
-- [[1.cloud9/create-standard-vpc-for-lab-in-china-region]]: 创建实验环境所需要的 vpc ，并且支持直接 attach 到 tgw 方便网络访问
+- [[cloud9/setup-cloud9-for-eks]]: 使用 cloud9 作为实验环境
+- [[cloud9/quick-setup-cloud9-script]]: 简化运行脚本
+- [[cloud9/create-standard-vpc-for-lab-in-china-region]]: 创建实验环境所需要的 vpc ，并且支持直接 attach 到 tgw 方便网络访问
 <-->
 
 ### 2.2 eks
