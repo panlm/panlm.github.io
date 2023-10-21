@@ -1,9 +1,8 @@
 ---
-title: quick setup cloud9 script
+title: 1 quick setup cloud9 script
 description: 简化运行脚本
-weight: 10
 created: 2023-08-04 15:56:59.747
-last_modified: 2023-10-21 13:22:12.955
+last_modified: 2023-10-21 13:27:10.253
 tags:
   - aws/cloud9
   - aws/container/eks
