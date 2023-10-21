@@ -1,8 +1,6 @@
 ---
 title: 1 quick setup cloud9 script
 description: 简化运行脚本
-weight: 5
-chapter: true
 created: 2023-08-04 15:56:59.747
 last_modified: 2023-10-21 12:42:43.725
 tags:

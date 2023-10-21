@@ -19,7 +19,7 @@ title: This is a github note
 ## prep bastion
 
 - 创建vpc和cloud9 
-    - [[../../../cloud9/create-standard-vpc-for-lab-in-china-region]] or [hugo link]({{< ref "create-standard-vpc-for-lab-in-china-region" >}}) 
+    - [[../../../1.cloud9/create-standard-vpc-for-lab-in-china-region]] or [hugo link]({{< ref "create-standard-vpc-for-lab-in-china-region" >}}) 
     - 如果只需要创建托管节点组，私有子网路由表可以没有指向 nat 的路由
     - 如果需要创建自管节点组，私有子网路由表需要有指向 nat 的路由，否则节点加集群失败，或者提前创建 eks endpoint。
 ```
@@ -30,7 +30,7 @@ Exited with error on line 351
 ## prep cloud9
 
 - 安装必要的软件 
-    - [[../../../cloud9/setup-cloud9-for-eks]] or [hugo link]({{< ref "setup-cloud9-for-eks" >}})
+    - [[../../../1.cloud9/setup-cloud9-for-eks]] or [hugo link]({{< ref "setup-cloud9-for-eks" >}})
 ```sh
 sudo yum -y install jq gettext bash-completion moreutils wget
 ```

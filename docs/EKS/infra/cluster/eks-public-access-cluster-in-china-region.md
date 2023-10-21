@@ -18,12 +18,12 @@ title: This is a github note
 
 1. create cloud9
 2. create vpc
-![[../../../cloud9/create-standard-vpc-for-lab-in-china-region#using-cloudformation-template]]
+![[../../../1.cloud9/create-standard-vpc-for-lab-in-china-region#using-cloudformation-template]]
 
 or [hugo-link]({{< ref "../../20-cloud9/create-standard-vpc-for-lab-in-china-region#using-cloudformation-template" >}})  
 
 3. get vpc id
-![[../../../cloud9/create-standard-vpc-for-lab-in-china-region#get-vpc-id]]
+![[../../../1.cloud9/create-standard-vpc-for-lab-in-china-region#get-vpc-id]]
 
 or [hugo-link]({{< ref "create-standard-vpc-for-lab-in-china-region#get-vpc-id" >}})
 

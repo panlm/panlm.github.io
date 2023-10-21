@@ -19,9 +19,9 @@ title: This is a github note
 
 ## spin-up-a-cloud9-instance-in-your-region
 
-![[../cloud9/setup-cloud9-for-eks#^xzcvy9]]
+![[../1.cloud9/setup-cloud9-for-eks#^xzcvy9]]
 
-refer: [[../cloud9/setup-cloud9-for-eks#spin-up-a-cloud9-instance-in-your-region]] 
+refer: [[../1.cloud9/setup-cloud9-for-eks#spin-up-a-cloud9-instance-in-your-region]] 
 
 ```sh
 aws cloud9 describe-environments
