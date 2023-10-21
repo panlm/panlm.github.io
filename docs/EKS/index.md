@@ -1,5 +1,5 @@
 ---
-last_modified: 2023-10-21 12:05:42.814
+last_modified: 2023-10-21 12:11:20.472
 number headings: first-level 2, max 3, 1.1, auto
 ---
 
@@ -11,12 +11,12 @@ number headings: first-level 2, max 3, 1.1, auto
 
 ```expander
 (path:git/git-mkdocs/eks/infra/cluster file:.md)
-- [[$filename]]: $frontmatter:description
+-  [[$filename]]: $frontmatter:description
 ```
-- [[eks-public-access-cluster]]: 创建公有访问的 eks 集群
-- [[eks-private-access-cluster]]: 在已有 vpc 中创建私有访问的 eks 集群
-- [[eks-public-access-cluster-in-china-region]]: 在中国区域，创建共有访问的 eks 集群
-- [[eks-terraform-cluster]]: 使用 terraform 创建 eks 集群
+-  [[eks-public-access-cluster]]: 创建公有访问的 eks 集群
+-  [[eks-private-access-cluster]]: 在已有 vpc 中创建私有访问的 eks 集群
+-  [[eks-public-access-cluster-in-china-region]]: 在中国区域，创建共有访问的 eks 集群
+-  [[eks-terraform-cluster]]: 使用 terraform 创建 eks 集群
 <-->
 
 ### 1.2 compute
