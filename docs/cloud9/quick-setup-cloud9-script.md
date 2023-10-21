@@ -4,7 +4,7 @@ description: 简化运行脚本
 weight: 5
 chapter: true
 created: 2023-08-04 15:56:59.747
-last_modified: 2023-10-21 12:39:04.756
+last_modified: 2023-10-21 12:42:43.725
 tags:
   - aws/cloud9
   - aws/container/eks
@@ -15,7 +15,7 @@ title: This is a github note
 
 ```
 
-# quick-setup-cloud9-script
+# 1 quick setup cloud9 script
 
 ## spin-up-a-cloud9-instance-in-your-region
 

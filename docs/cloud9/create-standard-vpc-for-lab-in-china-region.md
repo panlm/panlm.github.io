@@ -15,7 +15,7 @@ title: This is a github note
 
 ```
 
-# create-standard-vpc-for-lab-in-china-region
+# 3 create standard vpc for lab in china region
 
 ## using-cloudformation-template
 

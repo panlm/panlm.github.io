@@ -4,7 +4,7 @@ description: 使用 cloud9 作为实验环境
 chapter: true
 weight: 10
 created: 2022-05-21 12:46:05.435
-last_modified: 2023-10-21 12:39:13.921
+last_modified: 2023-10-21 12:42:53.316
 tags:
   - aws/container/eks
   - aws/cloud9
@@ -15,7 +15,7 @@ title: This is a github note
 
 ```
 
-# setup-cloud9-for-eks
+# 2 setup cloud9 for eks
 
 ## spin-up-a-cloud9-instance-in-your-region
 
