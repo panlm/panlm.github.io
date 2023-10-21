@@ -1,5 +1,5 @@
 ---
-last_modified: 2023-10-21 11:27:54.741
+last_modified: 2023-10-21 12:05:56.798
 number headings: first-level 2, max 3, 1.1, auto
 ---
 
@@ -24,6 +24,8 @@ number headings: first-level 2, max 3, 1.1, auto
 <-->
 
 ### 2.2 eks
+
+refer: [[EKS/index]]
 
 ```expander
 (path:git/git-mkdocs/eks file:.md)
