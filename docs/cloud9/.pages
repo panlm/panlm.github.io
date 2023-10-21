@@ -1,4 +1,1 @@
-nav:
-  - quick-setup-cloud9-script.md
-  - setup-cloud9-for-eks.md
-  - create-standard-vpc-for-lab-in-china-region.md
+order_by: weight
