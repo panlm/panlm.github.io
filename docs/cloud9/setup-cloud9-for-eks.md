@@ -59,7 +59,7 @@ fi
 
 - 点击输出的 URL 链接，打开 cloud9 测试环境 (click the URL at the bottom to open cloud9 environment)
 
-![setup-cloud9-for-eks-1.png](../attachments/setup-cloud9-for-eks-1.png)
+![setup-cloud9-for-eks-1.png](../git-attachment/setup-cloud9-for-eks-1.png)
 
 ## using internal proxy or not
 

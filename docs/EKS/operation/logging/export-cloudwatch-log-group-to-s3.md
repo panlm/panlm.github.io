@@ -19,7 +19,7 @@ title: This is a github note
 [refer](https://docs.aws.amazon.com/zh_cn/AmazonCloudWatch/latest/logs/S3ExportTasks.html#S3Permissions)
 
 导出日志格式文件类似：
-![](export-cloudwatch-log-group-to-s3-1.png)
+![](../../../git-attachment/export-cloudwatch-log-group-to-s3-1.png)
 
 ## create bucket and policy
 ```sh

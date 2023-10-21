@@ -18,17 +18,20 @@ title: This is a github note
 # iam cmd
 
 ## get role arn by name
+
 ```sh
 aws iam get-role --role-name ${role_name} --query 'Role.Arn' --output text
 ```
 
 ## get policy arn
+
 ```sh
 aws iam list-policies --query 'Policies[*].[PolicyName,Arn]' --output text |grep CloudWatchAgentServerPolicy
 aws iam get-policy --policy-arn arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy
 ```
 
 ## create user 
+
 ```sh
 aws iam create-user --user-name cwagent-onprem
 # attach user policy
@@ -38,9 +41,11 @@ aws iam create-access-key --user-name cwagent-onprem
 ```
 
 ## attach role policy
+
 [[../others/file-storage-gateway-lab#create-nfs-share-📚]]
 
 ## create role
+
 ```shell
 ROLE_NAME=example-role1
 echo '{
@@ -68,6 +73,7 @@ role_arn=$(aws iam get-role --role-name ${ROLE_NAME} |jq -r '.Role.Arn')
 ```
 
 ### create role for ec2
+
 ```sh
 ROLE_NAME=adminrole-$RANDOM
 cat > trust.json <<-EOF
@@ -95,22 +101,27 @@ aws iam add-role-to-instance-profile --instance-profile-name ${ROLE_NAME} --role
 ```
 
 ### create role for firehose
+
 - [[../EKS/operation/logging/stream-k8s-control-panel-logs-to-s3#lambda]]
 
 ### create role for api gateway
-- [[apigw-cmd#create-apigw-role-📚]]
+
+- [[apigw-cmd#create-apigw-role-]]
 
 
 ### create role for account
+
 - [[assume-tool]]
 
 
 ### create service-linked role
+
 ```sh
 aws iam create-service-linked-role --aws-service-name SERVICE-NAME.amazonaws.com
 ```
 
 ## assume another role
+
 ```sh
 account_id=$(aws sts get-caller-identity \
   --query 'Account' --output text)
@@ -129,6 +140,7 @@ export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-iden
 ```
 
 ### assume in credentials file
+
 https://docs.aws.amazon.com/sdkref/latest/guide/feature-assume-role-credentials.html
 ```txt
 [profile A]

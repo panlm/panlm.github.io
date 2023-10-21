@@ -1,5 +1,5 @@
 ---
-title: cloud9-cmd
+title: cloud9
 description: cloud9 related commands
 chapter: true
 hidden: true
@@ -16,13 +16,6 @@ title: This is a github note
 ```
 
 # cloud9-cmd
-
-- [spin-up-a-cloud9-instance-in-your-region](#spin-up-a-cloud9-instance-in-your-region)
-- [disable aws credential management](#disable-aws-credential-management)
-- [get subnet id and vpc id from cloud9 instance](#get-subnet-id-and-vpc-id-from-cloud9-instance)
-- [old](#old)
-- [Turn off AWS managed temporary credentials](#turn-off-aws-managed-temporary-credentials)
-
 
 ## spin-up-a-cloud9-instance-in-your-region
 

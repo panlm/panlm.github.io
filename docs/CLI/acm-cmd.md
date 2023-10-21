@@ -1,5 +1,5 @@
 ---
-title: acm-cmd
+title: acm
 description: 常用命令
 chapter: true
 hidden: true

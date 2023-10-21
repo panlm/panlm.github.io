@@ -1,13 +1,13 @@
 ---
-title: "eks-container-insights"
-description: "启用 EKS 的 container insight 功能"
+title: eks-container-insights
+description: 启用 EKS 的 container insight 功能
 chapter: true
 weight: 2
 created: 2022-02-22 08:08:35.714
-last_modified: 2022-06-23 15:43:53.895
-tags: 
-- aws/container/eks 
-- aws/mgmt/cloudwatch 
+last_modified: 2023-10-20 09:58:22.653
+tags:
+  - aws/container/eks
+  - aws/mgmt/cloudwatch
 ---
 
 ```ad-attention
@@ -17,10 +17,9 @@ title: This is a github note
 
 # eks-container-insights
 
-- [enable](#enable)
-- [check pod / deployment log](#check-pod--deployment-log)
+## install
+### from CLI
 
-## enable 
 1. replace 2 service accounts with [CloudWatchAgentServerPolicy](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Container-Insights-prerequisites.htm)
 ```sh
 CLUSTER_NAME=ekscluster1
@@ -48,7 +47,7 @@ eksctl create iamserviceaccount \
 
 ```
 
-2. [enable](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Container-Insights-setup-EKS-quickstart.html) 
+2. https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Container-Insights-setup-EKS-quickstart.html
 ```sh
 FluentBitHttpPort='2020'
 FluentBitReadFromHead='On'
@@ -73,6 +72,13 @@ if you do 2 before 1, than need
 - delete pods which use these service account
 - check cloudtrail for "AccessDeny" events
 
+### using chart
+
+- https://github.com/aws/eks-charts/blob/master/stable/aws-for-fluent-bit/README.md
+- [[../upgrade/aws-for-fluent-bit]]
+
 ## check pod / deployment log
-- [workshop](https://www.eksworkshop.com/intermediate/250_cloudwatch_container_insights/viewlogs/)
+
+- https://www.eksworkshop.com/intermediate/250_cloudwatch_container_insights/viewlogs/
+
 

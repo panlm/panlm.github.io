@@ -1,5 +1,5 @@
 ---
-title: ssm-cmd
+title: ssm
 description: 常用命令 
 chapter: true
 hidden: true

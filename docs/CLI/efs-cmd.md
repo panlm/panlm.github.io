@@ -1,5 +1,5 @@
 ---
-title: efs-cmd
+title: efs
 description: 1/ 在默认 vpc 中创建 efs 
 chapter: true
 hidden: true

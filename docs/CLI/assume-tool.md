@@ -4,7 +4,7 @@ description: assume 工具，可以以另一个账号角色，快速打开 web c
 chapter: true
 hidden: false
 created: 2023-09-15 09:40:01.442
-last_modified: 2023-10-12 13:24:53.654
+last_modified: 2023-10-19 13:53:05.578
 tags:
   - cmd
   - aws/security/iam
@@ -16,12 +16,6 @@ title: This is a github note
 ```
 
 # assume-tool
-
-- [modify role for account to assume](#modify%20role%20for%20account%20to%20assume)
-- [create role for account to assume](#create%20role%20for%20account%20to%20assume)
-- [install](#install)
-- [refer](#refer)
-
 
 ## modify role for account to assume
 
@@ -42,7 +36,7 @@ aws sts get-caller-identity
 
 ```sh
 echo ${WS_NAME:=$(TZ=EAT-8 date +%Y%m%d)}
-ACCOUNT_ID=$(GRANTED_QUIET=true . assume panlm --exec "aws sts get-caller-identity" |jq -r '.Account')
+ACCOUNT_ID=$(GRANTED_QUIET=true . assume panlm --exec "aws sts get-caller-identity --profile panlm" |jq -r '.Account')
 ROLE_NAME="WSParticipantRole"
 
 TEMP=$(mktemp)
@@ -102,8 +96,10 @@ ROLE_ARN=$(cat /tmp/${ROLE_NAME}-role.json |jq -r '.Role.Arn')
 
 
 ## install
-https://docs.commonfate.io/granted/getting-started#installing-the-cli
+
+- https://docs.commonfate.io/granted/getting-started#installing-the-cli
 
 ## refer
-https://docs.commonfate.io/granted/introduction
+
+- https://docs.commonfate.io/granted/introduction
 

@@ -16,8 +16,6 @@ title: This is a github note
 
 # enable-sg-on-pod
 
-- [useful-env-sg-on-pod](#useful-env-sg-on-pod)
-- [workshop](#workshop)
 
 ## useful-env-sg-on-pod
 
