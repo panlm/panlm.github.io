@@ -1,0 +1,4 @@
+nav:
+  - eks-cluster-addons-list.md
+  - ... | eks-addons*.md
+  - ...

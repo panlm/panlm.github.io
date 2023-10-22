@@ -1,13 +1,13 @@
 ---
-title: "appmesh-workshop-eks"
-description: "appmesh workshop"
+title: appmesh-workshop-eks
+description: appmesh workshop
 chapter: true
 weight: 10
 created: 2023-01-06 12:22:19.360
-last_modified: 2023-01-06 12:22:19.360
-tags: 
-- aws/container/appmesh 
-- aws/container/eks 
+last_modified: 2023-10-22 12:36:03.337
+tags:
+  - aws/container/appmesh
+  - aws/container/eks
 ---
 
 ```ad-attention
@@ -78,7 +78,7 @@ kubectl -n appmesh-system get all
 ## ensure node role
 - ensure node role has `AWSAppMeshEnvoyAccess` policy
 
-~~[[eksctl-cmd#appmesh-access-📚]]~~
+~~[[../../../../CLI/eksctl-cmd#appmesh-access-]]~~
 
 ## flagger
 [automated-canary-deployment-using-flagger](automated-canary-deployment-using-flagger.md)

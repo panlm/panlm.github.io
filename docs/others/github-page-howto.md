@@ -27,7 +27,7 @@ git submodule update
 ## hosted on github page
 - https://gohugo.io/hosting-and-deployment/hosting-on-github/
 
-![github-page-howto-1.png](github-page-howto-1.png)
+![github-page-howto-1.png](../git-attachment/github-page-howto-1.png)
 
 
 ## remove custom domain
@@ -39,4 +39,5 @@ git submodule update
 - change in `config.toml`
     - `baseURL` --> `https://panlm.github.io/git-ghpages/`
 
-
+## awesome pages plugin
+- https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin

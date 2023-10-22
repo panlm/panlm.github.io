@@ -19,7 +19,7 @@ title: This is a github note
 
 - original region in global on right hand side
 - china region on left hand side
-![cross-region-reverse-proxy-with-nlb-cloudfront-png-1.png](cross-region-reverse-proxy-with-nlb-cloudfront-png-1.png)
+![cross-region-reverse-proxy-with-nlb-cloudfront-png-1.png](../git-attachment/cross-region-reverse-proxy-with-nlb-cloudfront-png-1.png)
 
 
 ## prepare application on eks
@@ -116,11 +116,11 @@ curl https://test.${CN_DOMAIN_NAME}/ip
 curl https://abc.${CN_DOMAIN_NAME}/ip
 ```
 
-![cross-region-reverse-proxy-with-nlb-cloudfront-png-2.png](cross-region-reverse-proxy-with-nlb-cloudfront-png-2.png)
+![cross-region-reverse-proxy-with-nlb-cloudfront-png-2.png](../git-attachment/cross-region-reverse-proxy-with-nlb-cloudfront-png-2.png)
 
-![cross-region-reverse-proxy-with-nlb-cloudfront-png-3.png](cross-region-reverse-proxy-with-nlb-cloudfront-png-3.png)
+![cross-region-reverse-proxy-with-nlb-cloudfront-png-3.png](../git-attachment/cross-region-reverse-proxy-with-nlb-cloudfront-png-3.png)
 
-![cross-region-reverse-proxy-with-nlb-cloudfront-png-4.png](cross-region-reverse-proxy-with-nlb-cloudfront-png-4.png)
+![cross-region-reverse-proxy-with-nlb-cloudfront-png-4.png](../git-attachment/cross-region-reverse-proxy-with-nlb-cloudfront-png-4.png)
 
 - no CORS needed
 

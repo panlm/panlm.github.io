@@ -4,7 +4,7 @@ site_name: panlm
 
 theme:
     name: material
-    #logo: assets/meta/AWS_Logo.png #favicons.png
+    logo: git-attachment/AWS_Logo.png #favicons.png
     #favicon: assets/meta/AWS_Logo.png #favicons.png
     #custom_dir: overrides
     font:

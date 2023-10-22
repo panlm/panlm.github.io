@@ -2,7 +2,7 @@
 title: setup cloud9 for eks
 description: 使用 cloud9 作为实验环境
 created: 2022-05-21 12:46:05.435
-last_modified: 2023-10-21 13:27:13.997
+last_modified: 2023-10-22 12:34:12.226
 tags:
   - aws/container/eks
   - aws/cloud9
@@ -72,7 +72,7 @@ source ~/.bash_profile
 
 ```
 
-## install in cloud9 
+## install in cloud9- 
 
 - 下面代码块包含一些基本设置，包括：(execute this code block to install tools for your lab, and resize ebs of cloud9)
     - 安装更新常用的软件

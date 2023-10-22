@@ -1,0 +1,58 @@
+---
+title: rescue-ec2-instance
+description: 
+created: 2023-01-20 10:54:51.597
+last_modified: 2023-10-22 12:41:09.801
+tags:
+  - aws/compute/ec2
+---
+
+```ad-attention
+title: This is a github note
+```
+
+# rescue-ec2-instance
+
+- https://aws.amazon.com/premiumsupport/knowledge-center/ec2-instance-boot-issues/
+
+![[../git-attachment/rescue-ec2-instance-png-1.png]]
+
+
+![[../git-attachment/rescue-ec2-instance-png-2.png]]
+
+
+## ssh to rescue
+
+```sh
+sudo su -
+
+lsblk
+rescuedev=/dev/xvdf1
+
+rescuemnt=/mnt
+mkdir -p $rescuemnt
+mount $rescuedev $rescuemnt
+for i in proc sys dev run; do mount --bind /$i $rescuemnt/$i ; done
+chroot $rescuemnt
+```
+
+refer: [[git/git-mkdocs/CLI/cmd#xfs-mount-]]
+
+## umount
+
+```sh
+exit
+
+umount $rescuemnt/{proc,sys,dev,run,}
+
+```
+
+
+![[../git-attachment/rescue-ec2-instance-png-3.png]]
+
+
+## refer
+
+automation runbook
+- https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-ec2rescue.html
+

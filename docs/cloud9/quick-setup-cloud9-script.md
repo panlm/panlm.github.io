@@ -261,9 +261,7 @@ aws sts get-caller-identity
 
 
 ## refer
-- open console from local [[../CLI/assume-tool]] (or chapter [[git/git-mkdocs/CLI/assume-tool#modify role for account to assume-]])
-
-
+- open console from local [[../CLI/assume-tool]] 
 
 
 

@@ -1,0 +1,177 @@
+---
+title: eksctl
+description: 常用命令
+created: 2022-03-09 21:30:00.815
+last_modified: 2023-10-22 12:35:54.654
+tags:
+  - aws/container/eks
+---
+
+```ad-attention
+title: This is a github note
+```
+
+# eksctl-cmd
+
+
+## install
+
+```sh
+# install eksctl
+# consider install eksctl version 0.89.0
+# if you have older version yaml 
+# https://eksctl.io/announcements/nodegroup-override-announcement/
+curl --location "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp
+sudo mv -v /tmp/eksctl /usr/local/bin
+eksctl completion bash >> ~/.bash_completion
+. /etc/profile.d/bash_completion.sh
+. ~/.bash_completion
+```
+
+refer: [[git/git-mkdocs/cloud9/setup-cloud9-for-eks#install in cloud9-]]
+
+
+## iamidentitymapping
+
+```sh
+eksctl get iamidentitymapping \
+--cluster ekscluster1 \
+--region us-east-2
+
+eksctl create iamidentitymapping \
+--cluster ekscluster1 \
+--region us-east-2 \
+--arn arn:aws:iam::xxxx:role/eksadmin \
+--group system:masters \
+--username admin 
+
+```
+
+## create windows self-managed node group
+
+```sh
+cluster_name=myeksctl
+region_name=ap-southeast-1
+eksctl create nodegroup   \
+  --region $region_name   \
+  --cluster $cluster_name   \
+  --name nodegroup-win-1   \
+  --node-type m5.xlarge   \
+  --nodes 1   \
+  --nodes-min 1   \
+  --nodes-max 2 \
+  --node-ami-family WindowsServer2019FullContainer \
+  --managed=false
+```
+
+```sh
+cluster_name=myeksctl
+region_name=ap-southeast-1
+eksctl create nodegroup   \
+  --region $region_name   \
+  --cluster $cluster_name   \
+  --name nodegroup-br-1   \
+  --node-type m5.xlarge   \
+  --nodes 1   \
+  --nodes-min 1   \
+  --nodes-max 2 \
+  --node-ami-family Bottlerocket
+```
+
+
+## create nodegroup
+
+```sh
+cluster_name=ekscluster2
+region_name=us-east-1
+eksctl create nodegroup   \
+  --region $region_name   \
+  --cluster $cluster_name   \
+  --name mng-a   \
+  --node-type m5.large   \
+  --nodes 2   \
+  --node-private-networking \
+  --subnet-ids subnet-aaa,subnet-bbb
+
+```
+
+
+## scale nodegroup
+
+```sh
+CLUSTER_NAME=ekscluster1
+NODEGROUP_NAME=managed-ng
+AWS_REGION=us-east-2
+
+eksctl scale nodegroup \
+--cluster=${CLUSTER_NAME} \
+--region ${AWS_REGION} \
+--nodes=3 \
+${NODEGROUP_NAME}
+
+```
+
+## appmesh cluster
+
+```sh
+eksctl create cluster \
+--name appmeshtest \
+--nodes-min 2 \
+--nodes-max 3 \
+--nodes 2 \
+--auto-kubeconfig \
+--full-ecr-access \
+--appmesh-access
+
+```
+
+### appmesh-access-
+
+`--appmesh-access` will apply customer inline policy for appmesh
+
+```
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Action": [
+                "servicediscovery:CreateService",
+                "servicediscovery:DeleteService",
+                "servicediscovery:GetService",
+                "servicediscovery:GetInstance",
+                "servicediscovery:RegisterInstance",
+                "servicediscovery:DeregisterInstance",
+                "servicediscovery:ListInstances",
+                "servicediscovery:ListNamespaces",
+                "servicediscovery:ListServices",
+                "servicediscovery:GetInstancesHealthStatus",
+                "servicediscovery:UpdateInstanceCustomHealthStatus",
+                "servicediscovery:GetOperation",
+                "route53:GetHealthCheck",
+                "route53:CreateHealthCheck",
+                "route53:UpdateHealthCheck",
+                "route53:ChangeResourceRecordSets",
+                "route53:DeleteHealthCheck",
+                "appmesh:*"
+            ],
+            "Resource": "*",
+            "Effect": "Allow"
+        }
+    ]
+}
+```
+
+
+### full-ecr-access
+
+`--full-ecr-access` will apply ECR power user policy to node
+
+and others
+![[Pasted image 20230107214341.png]]
+
+
+## refer
+- https://eksctl.io/usage/minimum-iam-policies/
+
+
+

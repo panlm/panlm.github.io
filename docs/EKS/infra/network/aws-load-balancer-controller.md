@@ -4,7 +4,7 @@ description: 使用 aws 负载均衡控制器
 chapter: true
 weight: 1
 created: 2022-05-21 13:18:53.303
-last_modified: 2023-10-09 15:38:39.428
+last_modified: 2023-10-22 12:47:03.103
 tags:
   - aws/container/eks
   - kubernetes/ingress
@@ -38,7 +38,7 @@ title: This is a github note
 
 ## workshop
 
-- [[awslbc-ingress-lab-echoserver#install-echoserver-📚]]
+- [[awslbc-ingress-lab-echoserver#install echoserver-]]
 - https://www.eksworkshop.com/beginner/180_fargate/prerequisites-for-alb/
 - 常用ingress的相关配置 ([[awslbc-ingress-settings]])
 - 使用已有ingress的相关配置 ([[awslbc-ingress-settings-ingress-group]])

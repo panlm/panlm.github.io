@@ -40,6 +40,6 @@ https://cert-manager.io/docs/installation/helm/
 
 ## newest version v1.12.3 (2023/07)
 
-![cert-manager-png-1.png](cert-manager-png-1.png)
+![cert-manager-png-1.png](../../../git-attachment/cert-manager-png-1.png)
 
 

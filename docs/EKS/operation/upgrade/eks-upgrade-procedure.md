@@ -60,9 +60,9 @@ title: This is a github note
 
 ## deck
 
-![eks-upgrade-procedure-png-1.png](eks-upgrade-procedure-png-1.png)
+![eks-upgrade-procedure-png-1.png](../../../git-attachment/eks-upgrade-procedure-png-1.png)
 
-![eks-upgrade-procedure-png-2.png](eks-upgrade-procedure-png-2.png)
+![eks-upgrade-procedure-png-2.png](../../../git-attachment/eks-upgrade-procedure-png-2.png)
 
 
 ## docs history

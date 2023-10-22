@@ -30,11 +30,11 @@ title: This is a github note
 - [doc](https://docs.aws.amazon.com/eks/latest/userguide/managing-vpc-cni.html) 
 
 minor version
-![eks-addons-vpc-cni-png-1.png](eks-addons-vpc-cni-png-1.png)
+![eks-addons-vpc-cni-png-1.png](../../../git-attachment/eks-addons-vpc-cni-png-1.png)
 
 latest version 
 20230731 update: 1.13.3-eksbuild.1
-![eks-addons-vpc-cni-png-2.png](eks-addons-vpc-cni-png-2.png)
+![eks-addons-vpc-cni-png-2.png](../../../git-attachment/eks-addons-vpc-cni-png-2.png)
 
 
 <mark style="background: #FFB86CA6;">Upgrading (or downgrading) the VPC CNI version should result in no downtime</mark>. Existing pods should not be affected and will not lose network connectivity. New pods will be in pending state until the VPC CNI is fully initialized and can assign pod IP addresses. In v1.12.0+, VPC CNI state is restored via an on-disk file: `/var/run/aws-node/ipam.json`. In lower versions, state is restored via calls to container runtime.

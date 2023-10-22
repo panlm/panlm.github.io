@@ -1,0 +1,202 @@
+---
+title: cmd
+description: 常用命令
+created: 2023-01-03 12:05:10.533
+last_modified: 2023-10-22 12:39:08.843
+tags:
+  - cmd
+  - linux
+---
+
+```ad-attention
+title: This is a github note
+```
+
+# cmd
+
+## sed
+
+```sh
+file=file.md
+gsed -i 's/^!\[\[\([^]]\+\)\]\]/![](\1)/' ${file}
+# change 
+# ![[stream-k8s-control-panel-logs-to-s3-21.png]]
+# to 
+# ![](stream-k8s-control-panel-logs-to-s3-21.png)
+```
+
+
+## ec2-instance-selector
+
+```sh
+brew tap aws/tap
+brew install ec2-instance-selector
+```
+
+```sh
+ec2-instance-selector -c 4 -m 16 -r us-east-2 -a arm64
+```
+
+
+## lsblk
+```
+lsblk -o name,mountpoint,label,size,uuid
+```
+
+
+## ip forward-
+
+```sh
+echo 'net.ipv4.ip_forward = 1
+net.ipv4.conf.default.rp_filter = 0
+net.ipv4.conf.default.accept_source_route = 0
+' |tee -a /etc/sysctl.conf
+sysctl -p
+```
+
+
+## iptables
+### MASQUERADE-
+```sh
+iptables -t nat -A POSTROUTING  -j MASQUERADE
+```
+
+### iptables
+
+```sh
+yum install iptables-services -y;
+
+# Start and configure iptables:
+systemctl enable iptables;
+systemctl start iptables;
+
+
+# Configuration below allows allows all traffic:
+# Set the default policies for each of the built-in chains to ACCEPT:
+iptables -P INPUT ACCEPT;
+iptables -P FORWARD ACCEPT;
+iptables -P OUTPUT ACCEPT;
+
+# Flush the nat and mangle tables, flush all chains (-F), and delete all non-default chains (-X):
+iptables -t nat -F;
+iptables -t mangle -F;
+iptables -F;
+iptables -X;
+
+# Configure nat table to hairpin traffic back to GWLB:
+iptables -t nat -A PREROUTING -p udp -s $gwlb_ip -d $instance_ip -i eth0 -j DNAT --to-destination $gwlb_ip:6081;
+iptables -t nat -A POSTROUTING -p udp --dport 6081 -s $gwlb_ip -d $gwlb_ip -o eth0 -j MASQUERADE;
+
+# Save iptables:
+service iptables save;
+
+```
+
+## xfs
+### xfs-mount-
+```sh
+mount -t xfs -o nouuid /dev/nvme1n1 /mnt
+```
+
+### get uuid
+```sh
+xfs_db -c uuid /dev/nvme1n1
+```
+
+## tcp setting - TIME_WIAT
+
+```sh
+net.ipv4.tcp_fin_timeout = 30
+net.ipv4.ip_local_port_range = 15000 65000
+net.ipv4.tcp_tw_recycle = 1
+net.ipv4.tcp_tw_reuse = 1
+
+net.ipv4.ip_forward=1
+net.ipv4.conf.all.accept_source_route = 1
+
+```
+
+## xtop
+
+- top
+- htop
+- [[atop]]
+- iftop
+```
+iftop -t -s 10 > output
+```
+
+## sponge & tee & redirect to same file
+
+sponge  reads  standard input and writes it out to the specified file. Unlike a shell redirect, sponge soaks up all its input before opening the output file. This allows constructing pipelines that read from and write to the same file.
+
+
+
+## network monitor
+
+https://www.tecmint.com/linux-network-bandwidth-monitoring-tools/
+
+### iperf
+
+[KB](https://aws.amazon.com/premiumsupport/knowledge-center/network-throughput-benchmark-linux-ec2/)
+```sh
+sudo iperf -s
+```
+
+```sh
+iperf -c 172.31.30.41 --parallel 40 -i 1 -t 2
+```
+
+## traffic control
+
+```sh
+yum install iproute-tc
+
+```
+
+[[tc-traffic-control]]
+
+## ip address calc
+
+```sh
+yum -y install sipcalc --enablerepo=epel
+```
+
+```sh
+brew install sipcalc 
+```
+
+
+## curl
+
+- [[curl-sample-1]]
+- badssl.com
+
+```sh
+curl -s -w '%{http_code}' -o /dev/null "https://httpbin.org/status/302"
+
+```
+
+
+## others
+- [[web-press-testing-tool]]
+- [[httpbin.org]]
+- [[badssl.com]]
+
+
+## history
+
+```bash
+bash                        # open a new session.
+unset HISTFILE              # avoid recording commands to file.
+commands not recorded
+.
+.
+exit
+
+```
+
+^kau0s5
+
+
+

@@ -29,7 +29,7 @@ title: This is a github note
 - [doc](https://docs.aws.amazon.com/eks/latest/userguide/managing-coredns.html) 
 
 latest version
-![eks-addons-coredns-png-1.png](eks-addons-coredns-png-1.png)
+![eks-addons-coredns-png-1.png](../../../git-attachment/eks-addons-coredns-png-1.png)
 
 To improve the stability and availability of the CoreDNS Deployment, versions `v1.9.3-eksbuild.5` and later and `v1.10.1-eksbuild.2` are deployed with a `PodDisruptionBudget`. If you've deployed an existing `PodDisruptionBudget`, your upgrade to these versions might fail. If the upgrade fails, completing one of the following tasks should resolve the issue:
 - When doing the upgrade of the Amazon EKS add-on, choose to override the existing settings as your conflict resolution option. 
