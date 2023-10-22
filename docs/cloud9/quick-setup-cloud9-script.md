@@ -1,8 +1,8 @@
 ---
-title: 1 quick setup cloud9 script
+title: quick setup cloud9 script
 description: 简化运行脚本
 created: 2023-08-04 15:56:59.747
-last_modified: 2023-10-21 13:27:10.253
+last_modified: 2023-10-22 11:26:19.018
 tags:
   - aws/cloud9
   - aws/container/eks
@@ -261,7 +261,7 @@ aws sts get-caller-identity
 
 
 ## refer
-- open console from local [[../CLI/assume-tool]] (or [hugo]({{< ref assume-tool >}}))
+- open console from local [[../CLI/assume-tool]] (or chapter [[git/git-mkdocs/CLI/assume-tool#modify role for account to assume -]])
 
 
 

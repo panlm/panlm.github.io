@@ -4,7 +4,7 @@ description: assume 工具，可以以另一个账号角色，快速打开 web c
 chapter: true
 hidden: false
 created: 2023-09-15 09:40:01.442
-last_modified: 2023-10-19 13:53:05.578
+last_modified: 2023-10-22 11:26:05.532
 tags:
   - cmd
   - aws/security/iam
@@ -17,7 +17,7 @@ title: This is a github note
 
 # assume-tool
 
-## modify role for account to assume
+## modify role for account to assume - 
 
 - login from macbook CLI
 - modify existed role for login - WSParticipantRole

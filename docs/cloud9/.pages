@@ -1,1 +1,3 @@
-order_by: title
+nav:
+  - quick-setup-cloud9-script.md
+  - ...
