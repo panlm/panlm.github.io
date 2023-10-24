@@ -76,12 +76,12 @@ eksctl create iamserviceaccount \
 
 ```
 
-![[Pasted image 20220807201104.png]]
-![[Pasted image 20220807201116.png]]
-![[Pasted image 20220807201128.png]]
-![[Pasted image 20220807201157.png]]
-![[Pasted image 20220807201215.png]]
-![[Pasted image 20220807201250.png]]
+![[../../../git-attachment/argocd-lab-png-1.png]]
+![[../../../git-attachment/argocd-lab-png-2.png]]
+![[../../../git-attachment/argocd-lab-png-3.png]]
+![[../../../git-attachment/argocd-lab-png-4.png]]
+![[../../../git-attachment/argocd-lab-png-5.png]]
+![[../../../git-attachment/argocd-lab-png-6.png]]
 
 最高可选版本 chart version 1.4.3 
 
@@ -129,7 +129,7 @@ argocd app create echoserver --repo https://github.com/panlm/aws-eks-example.git
 argocd app sync apps
 ```
 
-![[Pasted image 20220807210217.png]]
+![[../../../git-attachment/argocd-lab-png-7.png]]
 
 clone to your github 
 - modify ingress file to update hostname

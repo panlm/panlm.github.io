@@ -1,13 +1,11 @@
 ---
-title: "efs-for-eks"
-description: "使用 efs 作为 pod 持久化存储"
-chapter: true
-weight: 1
+title: efs-for-eks
+description: 使用 efs 作为 pod 持久化存储
 created: 2022-05-23 09:57:50.932
-last_modified: 2022-05-23 09:57:50.932
-tags: 
-- aws/storage/efs 
-- aws/container/eks 
+last_modified: 2023-10-23 13:07:02.986
+tags:
+  - aws/storage/efs
+  - aws/container/eks
 ---
 
 ```ad-attention
@@ -16,22 +14,6 @@ title: This is a github note
 ```
 
 # efs-for-eks
-
-- [link](#link)
-- [create efs](#create-efs)
-- [install from github](#install-from-github)
-	- [uninstall efs-csi](#uninstall-efs-csi)
-- [install from helm](#install-from-helm)
-	- [node role (alternative)](#node-role-alternative)
-	- [sa role](#sa-role)
-	- [install](#install)
-	- [uninstall](#uninstall)
-- [verify](#verify)
-	- [static provisioning](#static-provisioning)
-	- [dynamic provisioning with efs access point](#dynamic-provisioning-with-efs-access-point)
-- [check log](#check-log)
-- [reference](#reference)
-	- [redeploy deployment and daemonset](#redeploy-deployment-and-daemonset)
 
 
 ## link

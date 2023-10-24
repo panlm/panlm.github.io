@@ -1,10 +1,8 @@
 ---
 title: iam
 description: 常用命令
-chapter: true
-hidden: true
 created: 2021-07-18T01:04:47.248Z
-modified: 2021-12-07T01:23:23.127Z
+last_modified: 2023-10-22 17:23:02.544
 tags:
   - aws/security/iam
   - aws/cmd
@@ -42,7 +40,7 @@ aws iam create-access-key --user-name cwagent-onprem
 
 ## attach role policy
 
-[[../others/file-storage-gateway-lab#create-nfs-share-📚]]
+- [[../others/file-storage-gateway-lab#create nfs share-]]
 
 ## create role
 
@@ -155,7 +153,7 @@ aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 
 
 ## reference
-?
+
 - [如何提供对 Amazon S3 存储桶中的对象的跨账户访问权限](https://aws.amazon.com/cn/premiumsupport/knowledge-center/cross-account-access-s3/)
 - [策略评估逻辑](https://docs.aws.amazon.com/zh_cn/IAM/latest/UserGuide/reference_policies_evaluation-logic.html)
 - https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_multi-value-conditions.html

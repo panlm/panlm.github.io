@@ -4,10 +4,10 @@ description: cloud9 related commands
 chapter: true
 hidden: true
 created: 2022-07-01 09:18:29.572
-last_modified: 2022-07-01 09:18:29.572
-tags: 
-- aws/cloud9 
-- aws/cmd 
+last_modified: 2023-10-23 12:44:57.070
+tags:
+  - aws/cloud9
+  - aws/cmd
 ---
 
 ```ad-attention
@@ -97,7 +97,7 @@ if [[ ! -z ${DEFAULT_VPC} ]]; then
     --instance-type t3.small \
     --subnet-id ${FIRST_SUBNET} \
     --automatic-stop-time-minutes 10080 \
-    --owner-arn arn:aws:iam::861006941173:role/adminrole \
+    --owner-arn arn:aws:iam::123456789012:role/adminrole \
 
 fi
 

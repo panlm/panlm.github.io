@@ -3,9 +3,9 @@ title: grafana-install-lab
 description: "在 EC2 / beanstalk / EKS 上安装 grafana "
 chapter: true
 created: 2023-02-25 08:35:55.725
-last_modified: 2023-02-25 08:35:55.725
-tags: 
-- grafana 
+last_modified: 2023-10-23 12:46:03.063
+tags:
+  - grafana
 ---
 
 ```ad-attention
@@ -96,7 +96,7 @@ eb create ${ENV_NAME}
 eb appversion -c
 
 ## deploy using new appver
-eb create --version app-230224_093654655107 app2-env-3
+eb create --version app-230224_123456789012 app2-env-3
 
 ## swap ?
 eb swap

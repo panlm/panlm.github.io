@@ -2,7 +2,7 @@
 title: s3
 description: 
 created: 2021-07-10 02:23:54.765
-last_modified: 2022-11-20 13:30:05.680
+last_modified: 2023-10-22 20:59:25.361
 tags:
   - aws/storage/s3
   - aws/cmd
@@ -61,6 +61,28 @@ aws s3api put-object \
 --key ${folder_name}/
 
 ```
+
+
+## head object 
+
+```sh
+aws s3api head-object --bucket lcf-1350 --key stop_sensor_data.sh
+
+# sample output: 
+{
+    "AcceptRanges": "bytes",
+    "Expiration": "expiry-date=\"Thu, 02 Nov 2023 00:00:00 GMT\", rule-id=\"rule1\"",
+    "LastModified": "2023-10-22T09:41:20+00:00",
+    "ContentLength": 162,
+    "ETag": "\"65c759947d7b4e98624fa5bec23e0df0\"",
+    "ContentType": "text/x-sh",
+    "ServerSideEncryption": "AES256",
+    "Metadata": {}
+}
+```
+- ETag, is md5
+- Expiration, when you has rule for this object
+- LastModified, only timestamp
 
 ## get object 
 

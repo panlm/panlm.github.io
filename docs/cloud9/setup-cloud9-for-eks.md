@@ -2,7 +2,7 @@
 title: setup cloud9 for eks
 description: 使用 cloud9 作为实验环境
 created: 2022-05-21 12:46:05.435
-last_modified: 2023-10-22 12:34:12.226
+last_modified: 2023-10-22 17:21:21.557
 tags:
   - aws/container/eks
   - aws/cloud9

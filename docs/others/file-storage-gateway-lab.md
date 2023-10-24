@@ -1,12 +1,12 @@
 ---
-title: "file-storage-gateway-lab"
-description: "create file storage gateway from cli"
+title: file-storage-gateway-lab
+description: create file storage gateway from cli
 chapter: true
 weight: 20220916
 created: 2022-09-16 13:40:22.702
-last_modified: 2022-10-10 15:44:52.519
-tags: 
-- aws/storage/storage-gateway
+last_modified: 2023-10-22 17:23:10.993
+tags:
+  - aws/storage/storage-gateway
 ---
 
 ```ad-attention
@@ -15,13 +15,6 @@ title: This is a github note
 ```
 
 # file-gateway-lab
-
-- [prepare](#prepare)
-- [create s3 bucket](#create-s3-bucket)
-- [create fgw instance](#create-fgw-instance)
-- [create-nfs-share-📚](#create-nfs-share-)
-- [more](#more)
-
 
 ## prepare
 
@@ -134,7 +127,7 @@ aws storagegateway add-cache \
 
 ```
 
-## create-nfs-share-📚
+## create nfs share-
 
 - create iam role
 ```sh

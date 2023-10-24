@@ -2,7 +2,7 @@
 title: quick setup cloud9 script
 description: 简化运行脚本
 created: 2023-08-04 15:56:59.747
-last_modified: 2023-10-22 11:26:19.018
+last_modified: 2023-10-22 17:01:00.006
 tags:
   - aws/cloud9
   - aws/container/eks
@@ -63,7 +63,9 @@ watch -g -n 2 aws ec2 describe-instances \
 
 ### (prefer) stay in cloudshell to initiate cloud9
 
-- 下面代码将完成：
+- 代码将从 GitHub 下载：
+    - https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/setup-cloud9-for-eks.md
+- 代码将完成：
     - 创建角色名为 `ec2-admin-role-*`，添加管理员权限，且允许 4 个其他角色 assume
     - 如果 cloud9 的实例已经有关联的 role，则将 role 添加管理员权限，如果没有则赋予新建的角色
     - 允许 cloud9 的实例被其他 2 个角色使用
@@ -166,6 +168,9 @@ while true ; do
     fi
 done
 
+# script source location:
+# https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/setup-cloud9-for-eks.md
+
 cat >$$.json <<-'EOF'
 {
   "workingDirectory": [
@@ -177,7 +182,7 @@ cat >$$.json <<-'EOF'
   "commands": [
     "",
     "TMPFILE=$(mktemp)",
-    "curl --location -o $TMPFILE https://github.com/panlm/panlm.github.io/raw/main/content/20-cloud9/setup-cloud9-for-eks.md",
+    "curl --location -o $TMPFILE https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/setup-cloud9-for-eks.md",
     "cat $TMPFILE |awk '/###-SCRIPT-PART-ONE-BEGIN-###/,/###-SCRIPT-PART-ONE-END-###/ {print}' > $TMPFILE-ONE.sh",
     "chmod a+x $TMPFILE-ONE.sh",
     "sudo -u ec2-user bash $TMPFILE-ONE.sh 2>&1",
@@ -185,7 +190,7 @@ cat >$$.json <<-'EOF'
     "cat $TMPFILE |awk '/###-SCRIPT-PART-TWO-BEGIN-###/,/###-SCRIPT-PART-TWO-END-###/ {print}' > $TMPFILE-TWO.sh",
     "chmod a+x $TMPFILE-TWO.sh",
     "sudo -u ec2-user bash $TMPFILE-TWO.sh 2>&1",
-		""
+    ""
   ]
 }
 EOF
@@ -215,6 +220,10 @@ echo "https://${AWS_DEFAULT_REGION}.console.aws.amazon.com/cloud9/ide/${C9_ID}"
 
 
 ### (alternative) login cloud9 to initiate
+
+- 代码将从 GitHub 下载：
+    - https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/setup-cloud9-for-eks.md
+
 #### script-part-one-two
 
 - 下面代码块包含一些基本设置，包括：(execute this code block to install tools for your lab, and resize ebs of cloud9)
@@ -224,7 +233,7 @@ echo "https://${AWS_DEFAULT_REGION}.console.aws.amazon.com/cloud9/ide/${C9_ID}"
 
 ```sh
 TMPFILE=$(mktemp)
-curl --location -o $TMPFILE https://github.com/panlm/panlm.github.io/raw/main/content/20-cloud9/setup-cloud9-for-eks.md
+curl --location -o $TMPFILE https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/setup-cloud9-for-eks.md
 for i in ONE TWO ; do
     cat $TMPFILE |awk '/###-SCRIPT-PART-'"${i}"'-BEGIN-###/,/###-SCRIPT-PART-'"${i}"'-END-###/ {print}' > $TMPFILE-$i.sh
     chmod a+x $TMPFILE-$i.sh

@@ -1,4 +1,5 @@
 nav:
+  - eks-upgrade-procedure.md
   - eks-cluster-addons-list.md
   - ... | eks-addons*.md
   - ...

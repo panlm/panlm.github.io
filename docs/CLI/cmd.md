@@ -2,7 +2,7 @@
 title: cmd
 description: 常用命令
 created: 2023-01-03 12:05:10.533
-last_modified: 2023-10-22 12:39:08.843
+last_modified: 2023-10-23 09:49:34.045
 tags:
   - cmd
   - linux
@@ -55,7 +55,7 @@ sysctl -p
 ```
 
 
-## iptables
+## iptables-
 ### MASQUERADE-
 ```sh
 iptables -t nat -A POSTROUTING  -j MASQUERADE
