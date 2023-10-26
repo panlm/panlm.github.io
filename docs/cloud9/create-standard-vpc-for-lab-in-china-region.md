@@ -172,7 +172,7 @@ fi
 
 ## refer
 
-- [[../CLI/cloudformation-cmd]] 
+- [[../CLI/awscli/cloudformation-cmd]] 
 - [quickstart-aws-vpc](https://aws-quickstart.github.io/quickstart-aws-vpc/) 
 
 

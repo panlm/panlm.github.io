@@ -40,7 +40,7 @@ aws iam create-access-key --user-name cwagent-onprem
 
 ## attach role policy
 
-- [[../others/file-storage-gateway-lab#create nfs share-]]
+- [[../../others/file-storage-gateway-lab#create nfs share-]]
 
 ## create role
 
@@ -100,7 +100,7 @@ aws iam add-role-to-instance-profile --instance-profile-name ${ROLE_NAME} --role
 
 ### create role for firehose
 
-- [[../EKS/operation/logging/stream-k8s-control-panel-logs-to-s3#lambda]]
+- [[../../EKS/operation/logging/stream-k8s-control-panel-logs-to-s3#lambda]]
 
 ### create role for api gateway
 
@@ -109,7 +109,7 @@ aws iam add-role-to-instance-profile --instance-profile-name ${ROLE_NAME} --role
 
 ### create role for account
 
-- [[assume-tool]]
+- [[../linux/assume-tool]]
 
 
 ### create service-linked role

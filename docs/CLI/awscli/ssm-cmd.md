@@ -1,13 +1,13 @@
 ---
 title: ssm
-description: 常用命令 
+description: 常用命令
 chapter: true
 hidden: true
 created: 2022-12-06 14:58:34.056
-last_modified: 2022-12-06 14:58:34.056
-tags: 
-- aws/cmd 
-- aws/mgmt/systems-manager 
+last_modified: 2023-10-24 22:35:03.160
+tags:
+  - aws/cmd
+  - aws/mgmt/systems-manager
 ---
 
 ```ad-attention
@@ -101,7 +101,7 @@ aws ssm get-inventory --filter Key=Custom:DiskUtilization.Use%,Values=60,Type=Gr
 
 
 ## get parameter
-- [[../EKS/infra/cluster/eks-public-access-cluster]]
+- [[../../EKS/infra/cluster/eks-public-access-cluster]]
 - [[ssm-public-parameters]]
 
 

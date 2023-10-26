@@ -1,8 +1,8 @@
 ---
-title: cmd
+title: linux-cmd
 description: 常用命令
 created: 2023-01-03 12:05:10.533
-last_modified: 2023-10-23 09:49:34.045
+last_modified: 2023-10-24 23:03:41.361
 tags:
   - cmd
   - linux
@@ -178,12 +178,6 @@ curl -s -w '%{http_code}' -o /dev/null "https://httpbin.org/status/302"
 ```
 
 
-## others
-- [[web-press-testing-tool]]
-- [[httpbin.org]]
-- [[badssl.com]]
-
-
 ## history
 
 ```bash
@@ -196,7 +190,30 @@ exit
 
 ```
 
-^kau0s5
+## rsync 
+
+### notable folder
+
+```bash
+rsync -narv --delete /home/ubuntu/.notable /home/ubuntu/OneDrive/CrossSync/
+
+```
+
+### work-notes
+
+```sh
+bash
+export HISTSIZE=0
+
+rsync -avr --delete ./work-notes stevenpan@10.68.69.100:/Users/stevenpan/Documents/
+
+```
+
+
+## others
+- [[web-press-testing-tool]]
+- [[httpbin.org]]
+- [[badssl.com]]
 
 
 

@@ -1,8 +1,8 @@
 ---
-title: directory-service
-description: 
+title: directory service
+description: 常用命令
 created: 2023-03-24 21:46:35.822
-last_modified: 2023-10-22 17:18:42.355
+last_modified: 2023-10-24 22:35:04.637
 tags:
   - aws/mgmt/directory-service
   - aws/cmd

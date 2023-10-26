@@ -49,7 +49,7 @@ aws route53 change-resource-record-sets \
 
 ## create-hosted-zone-
 
-![[../EKS/infra/network/externaldns-for-route53#^fgvqjb]]
+![[../../EKS/infra/network/externaldns-for-route53#^fgvqjb]]
 
 refer: [[git/git-mkdocs/EKS/infra/network/externaldns-for-route53#setup-hosted-zone-]]
 

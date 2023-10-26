@@ -270,7 +270,7 @@ aws sts get-caller-identity
 
 
 ## refer
-- open console from local [[../CLI/assume-tool]] 
+- open console from local [[../CLI/linux/assume-tool]] 
 
 
 

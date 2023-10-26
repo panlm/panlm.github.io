@@ -39,8 +39,8 @@ refer: [[git/git-mkdocs/EKS/infra/network/externaldns-for-route53#setup-hosted-z
 
 ### eks cluster
 
-- eks (refer: [[../CLI/eksdemo-cmd#create-eks-cluster-]])
-- addons (refer: [[../CLI/eksdemo-cmd#addons-]])
+- eks (refer: [[../CLI/linux/eksdemo#create-eks-cluster-]])
+- addons (refer: [[../CLI/linux/eksdemo#addons-]])
     - externaldns
     - aws load balancer controller
     - certificate
@@ -131,7 +131,7 @@ curl https://abc.${CN_DOMAIN_NAME}/ip
 
 ### refer
 
-- [[iptables]]
+- [[../CLI/linux/iptables]]
 - [[fake-waf-on-ec2-forwarding-https]]
 - https://scalingo.com/blog/iptables
 - using alb + nginx as reverse proxy 

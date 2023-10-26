@@ -166,8 +166,8 @@ eksctl create cluster \
 
 `--full-ecr-access` will apply ECR power user policy to node
 
-and others
-![[Pasted image 20230107214341.png]]
+- and others
+![[../../git-attachment/eksctl-cmd-png-1.png]]
 
 
 ## refer
