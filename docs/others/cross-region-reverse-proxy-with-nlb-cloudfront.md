@@ -2,7 +2,7 @@
 title: cross-region-reverse-proxy-with-nlb-cloudfront
 description: 跨区域的 Layer 4 反向代理，并使用 nlb + cloudfront，考察证书使用需求
 created: 2023-10-09 11:23:34.877
-last_modified: 2023-10-28 20:47:18.917
+last_modified: 2023-10-29 13:02:20.842
 tags:
   - aws/network/nlb
   - aws/network/cloudfront
@@ -13,7 +13,7 @@ tags:
 title: This is a github note
 ```
 
-# poc-accelerate-cross-region
+# cross-region-reverse-proxy-with-nlb-cloudfront
 
 ## diagram
 
@@ -39,8 +39,8 @@ refer: [[git/git-mkdocs/EKS/infra/network/externaldns-for-route53#setup hosted z
 
 ### eks cluster
 
-- eks (refer: [[../CLI/linux/eksdemo#create eks cluster-]])
-- addons (refer: [[../CLI/linux/eksdemo#addons-]])
+- create eks cluster (refer: [[../CLI/linux/eksdemo#create eks cluster-]])
+- install addons (refer: [[../CLI/linux/eksdemo#addons-]])
     - externaldns
     - aws load balancer controller
     - certificate
@@ -79,7 +79,9 @@ curl -L http://nlbtoalb.${DOMAIN_NAME}/anything
 ## reverse proxy in china region-
 
 - setup 2 EC2 instances [[fake-waf-on-ec2-forwarding-https#Layer 4 forwarding with iptables]] ([github](https://github.com/panlm/blog-private-api-gateway-dataflow/blob/main/fake-waf-on-ec2-forwarding-https.md#layer-4-forwarding-with-iptables))
-- forward request to NLB-1's public IP addresses. if your have 3 destination IPs, using 0.33/0.5 in first 2 rules and keep last one always been hit
+- forward request to NLB-1's public IP addresses. 
+    - We have 2 destination IPs, using probability 50% in first rule and keep 2nd rule always been hit.
+    - If your have 3 destination IPs, using 0.33/0.5 in first 2 rules and keep last one always been hit.
 ```sh
 instance_ip=172.31.17.223 # instance internal ip address
 next_ip=3.115.136.123 # one ip address of vpce domain name
@@ -108,6 +110,7 @@ curl https://test.${CN_DOMAIN_NAME}/ip
 ## cloudfront in front of NLB-2
 
 - create certificate for cn domain name for cloudfront
+    - 如果不使用 cloudfront 则不需要创建证书
 - create origin to NLB-2 
     - using aws default domain name 
     - or NLB-2's domain name (`test.${CN_DOMAIN_NAME}`)

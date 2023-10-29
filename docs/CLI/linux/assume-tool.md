@@ -17,7 +17,6 @@ title: This is a github note
 
 # assume-tool
 
-
 ## create role for account to assume
 
 ```sh

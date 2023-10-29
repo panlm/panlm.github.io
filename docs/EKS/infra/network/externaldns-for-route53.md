@@ -4,7 +4,7 @@ description: 使用 externaldns 组件
 chapter: true
 weight: 2
 created: 2022-08-04 13:24:34.806
-last_modified: 2023-10-26 22:14:03.358
+last_modified: 2023-10-29 13:06:52.438
 tags:
   - kubernetes
   - aws/network/route53
@@ -17,7 +17,7 @@ title: This is a github note
 
 # externaldns-for-route53
 
-## setup hosted zone-
+## setup-hosted-zone-
 
 -  执行下面命令创建 Hosted Zone， 然后手工添加 NS 记录到上游的域名服务器 domain registrar 中 (create hosted zone, and then add NS records to upstream domain registrar)
 ```sh
