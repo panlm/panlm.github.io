@@ -1,0 +1,4054 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="用于 1) 跨账号复制 RDS 数据库; 2) 或者将数据库转换成加密存储">
+      
+      
+      
+      
+        <link rel="prev" href="../mwaa-lab/">
+      
+      
+        <link rel="next" href="../redshift-data-api-lab/">
+      
+      
+      <link rel="icon" href="../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.7">
+    
+    
+      
+        <title>rds-mysql-replica-cross-region-cross-account - panlm</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.4b4a2bd9.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,700,700i%7CUbuntu+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Ubuntu";--md-code-font:"Ubuntu Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-8C6HW94JT3"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-8C6HW94JT3",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-8C6HW94JT3",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="light-blue">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#rds-mysql-replica-cross-region-cross-account" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="panlm" class="md-header__button md-logo" aria-label="panlm" data-md-component="logo">
+      
+  <img src="../../git-attachment/AWS_Logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            panlm
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              rds-mysql-replica-cross-region-cross-account
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+    
+  
+  Welcome to panlm docs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../cloud9/quick-setup-cloud9-script/" class="md-tabs__link">
+          
+  
+    
+  
+  Cloud9
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../EKS/" class="md-tabs__link">
+          
+  
+    
+  
+  EKS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../mwaa-lab/" class="md-tabs__link">
+          
+  
+    
+  
+  Database and Analytics
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../serverless/apigw-cross-account-private-endpoint/" class="md-tabs__link">
+          
+  
+    
+  
+  Serverless
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../others/cross-region-reverse-proxy-with-nlb-cloudfront/" class="md-tabs__link">
+          
+  
+    
+  
+  Others
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../CLI/linux/linux-cmd/" class="md-tabs__link">
+          
+  
+    
+  
+  CLI
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../tags/" class="md-tabs__link">
+        
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="panlm" class="md-nav__button md-logo" aria-label="panlm" data-md-component="logo">
+      
+  <img src="../../git-attachment/AWS_Logo.png" alt="logo">
+
+    </a>
+    panlm
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome to panlm docs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Cloud9
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Cloud9
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud9/quick-setup-cloud9-script/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    quick setup cloud9 script
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud9/setup-cloud9-for-eks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    setup cloud9 for eks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud9/create-standard-vpc-for-lab-in-china-region/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    create standard vpc for lab in china region
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../EKS/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    EKS
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            EKS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Infra
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Infra
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_1" id="__nav_3_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Cluster
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Cluster
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/infra/cluster/eks-private-access-cluster/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-private-access-cluster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/infra/cluster/eks-public-access-cluster-in-china-region/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-public-access-cluster-in-china-region
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/infra/cluster/eks-public-access-cluster/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-public-access-cluster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/infra/cluster/eks-terraform-cluster/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-terraform-cluster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Compute
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Compute
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/infra/compute/eks-fargate-lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-fargate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_3" id="__nav_3_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Network
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Network
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/infra/network/aws-load-balancer-controller/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    aws-load-balancer-controller
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/infra/network/eks-custom-network/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-custom-network
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/infra/network/enable-sg-on-pod/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    enable-sg-on-pod
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/infra/network/externaldns-for-route53/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    externaldns-for-route53
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/infra/network/nginx-ingress-controller-community-ver/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nginx-ingress-controller-community-ver
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/infra/network/self-signed-certificates/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    self-signed-certificates
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_3_7" id="__nav_3_2_3_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Appmesh
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_2_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            Appmesh
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/infra/network/appmesh/appmesh-workshop-eks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    appmesh-workshop-eks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/infra/network/appmesh/automated-canary-deployment-using-flagger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    automated-canary-deployment-using-flagger
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/infra/network/appmesh/build-colorapp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    build-colorapp
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_4" id="__nav_3_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Storage
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Storage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/infra/storage/ebs-for-eks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ebs-for-eks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/infra/storage/efs-for-eks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    efs-for-eks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Operation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Operation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_1" id="__nav_3_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gitops
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Gitops
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/operation/gitops/argocd-lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    argocd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/operation/gitops/flux-lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    flux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2" id="__nav_3_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Logging
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Logging
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/operation/logging/cloudwatch-to-firehose-python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cloudwatch-to-firehose-python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/operation/logging/export-cloudwatch-log-group-to-s3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    export-cloudwatch-log-group-to-s3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/operation/logging/stream-k8s-control-panel-logs-to-s3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    stream-k8s-control-panel-logs-to-s3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_3" id="__nav_3_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Monitor
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Monitor
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/operation/monitor/cluster-autoscaler/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cluster-autoscaler
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/operation/monitor/eks-container-insights/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-container-insights
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/operation/monitor/enable-prometheus-in-cloudwatch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    enable-prometheus-in-cloudwatch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/operation/monitor/install-grafana-lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    grafana-install-lab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/operation/monitor/install-prometheus-grafana/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    install-prometheus-grafana-on-eks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/operation/monitor/metrics-server/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    metrics-server
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_4" id="__nav_3_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Upgrade
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Upgrade
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/operation/upgrade/eks-upgrade-procedure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-upgrade-procedure
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/operation/upgrade/eks-cluster-addons-list/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-cluster-addons-list
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/operation/upgrade/eks-addons-coredns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-addons-coredns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/operation/upgrade/eks-addons-kube-proxy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-addons-kube-proxy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/operation/upgrade/eks-addons-vpc-cni/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-addons-vpc-cni
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/operation/upgrade/aws-for-fluent-bit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    aws-for-fluent-bit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/operation/upgrade/cert-manager/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cert-manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/operation/upgrade/cni-metrics-helper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cni-metrics-helper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/operation/upgrade/eksup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eksup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/operation/upgrade/kube-no-trouble/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    kube-no-trouble
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/operation/upgrade/kube-state-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    kube-state-metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/operation/upgrade/nginx-ingress-controller-nginx-ver/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nginx-ingress-controller-nginx-ver
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/operation/upgrade/nginx-ingress-controller/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nginx-ingress-controller
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../EKS/operation/upgrade/pluto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    pluto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Database and Analytics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Database and Analytics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../mwaa-lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    mwaa-lab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    rds-mysql-replica-cross-region-cross-account
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    rds-mysql-replica-cross-region-cross-account
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    概述
+  </a>
+  
+    <nav class="md-nav" aria-label="概述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    场景
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-rds-mysql" class="md-nav__link">
+    create rds mysql
+  </a>
+  
+    <nav class="md-nav" aria-label="create rds mysql">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prep-" class="md-nav__link">
+    prep-
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subnet-group-" class="md-nav__link">
+    subnet-group-
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-rds-mysql-cont" class="md-nav__link">
+    create rds mysql (cont.)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-read-replica" class="md-nav__link">
+    create read replica
+  </a>
+  
+    <nav class="md-nav" aria-label="create read replica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on-master" class="md-nav__link">
+    on master
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#on-slave" class="md-nav__link">
+    on slave
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-snapshot-on-replica" class="md-nav__link">
+    create snapshot on replica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#share-snapshot" class="md-nav__link">
+    share snapshot
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#copy-snapshot-local" class="md-nav__link">
+    copy snapshot local
+  </a>
+  
+    <nav class="md-nav" aria-label="copy snapshot local">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-snapshot" class="md-nav__link">
+    check snapshot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copy-without-kms" class="md-nav__link">
+    copy without kms
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copy-with-kms-option" class="md-nav__link">
+    copy with kms (option)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wait-snapshot-complete" class="md-nav__link">
+    wait snapshot complete
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restore" class="md-nav__link">
+    restore
+  </a>
+  
+    <nav class="md-nav" aria-label="restore">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prep" class="md-nav__link">
+    prep
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subnet-group" class="md-nav__link">
+    subnet group
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restore-db" class="md-nav__link">
+    restore db
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#on-target" class="md-nav__link">
+    on target
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#refer" class="md-nav__link">
+    refer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#issue" class="md-nav__link">
+    issue
+  </a>
+  
+    <nav class="md-nav" aria-label="issue">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#host-error-in-mysqluser" class="md-nav__link">
+    host error in mysql.user
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../redshift-data-api-lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    redshift-data-api-lab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Serverless
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Serverless
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../serverless/apigw-cross-account-private-endpoint/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    apigw-cross-account-private-endpoint
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../serverless/apigw-custom-domain-name/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    apigw-custom-domain-name
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../serverless/apigw-get-sourceip/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    apigw-get-sourceip
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../serverless/apigw-private-api-alb-cdk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    apigw-private-api-alb-cdk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../serverless/apigw-regional-api-access-from-vpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    apigw-regional-api-access-from-vpc
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Others
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Others
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/cross-region-reverse-proxy-with-nlb-cloudfront/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cross-region-reverse-proxy-with-nlb-cloudfront
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/file-storage-gateway-lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    file-storage-gateway-lab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/global-sso-and-china-aws-accounts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    global-sso-and-china-aws-accounts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/rescue-ec2-instance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    rescue-ec2-instance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/script-api-resource-method/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    script-api-resource-method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/github-page-howto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    github-page-howto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    CLI
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            CLI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Linux Commands
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            Linux Commands
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CLI/linux/linux-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    linux-cmd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CLI/linux/assume-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    assume-tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CLI/linux/eksctl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eksctl
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CLI/linux/eksdemo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eksdemo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CLI/linux/iptables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    iptables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    AWS CLI
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            AWS CLI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CLI/awscli/acm-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    acm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CLI/awscli/apigw-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    api-gateway
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CLI/awscli/cloud9-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cloud9
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CLI/awscli/cloudformation-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cloudformation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CLI/awscli/cloudwatch-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cloudwatch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CLI/awscli/directory-service-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    directory service
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CLI/awscli/ebs-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ebs-cmd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CLI/awscli/efs-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    efs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CLI/awscli/iam-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    iam
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CLI/awscli/redshift-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    redshift
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CLI/awscli/route53-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    route53
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CLI/awscli/s3-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    s3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CLI/awscli/ssm-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ssm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CLI/lab-create-cloudwatch-dashboard-cpu-metric/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    create-dashboard-for-instance-cpu-matrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../tags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tags
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    概述
+  </a>
+  
+    <nav class="md-nav" aria-label="概述">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    场景
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-rds-mysql" class="md-nav__link">
+    create rds mysql
+  </a>
+  
+    <nav class="md-nav" aria-label="create rds mysql">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prep-" class="md-nav__link">
+    prep-
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subnet-group-" class="md-nav__link">
+    subnet-group-
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-rds-mysql-cont" class="md-nav__link">
+    create rds mysql (cont.)
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-read-replica" class="md-nav__link">
+    create read replica
+  </a>
+  
+    <nav class="md-nav" aria-label="create read replica">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#on-master" class="md-nav__link">
+    on master
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#on-slave" class="md-nav__link">
+    on slave
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-snapshot-on-replica" class="md-nav__link">
+    create snapshot on replica
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#share-snapshot" class="md-nav__link">
+    share snapshot
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#copy-snapshot-local" class="md-nav__link">
+    copy snapshot local
+  </a>
+  
+    <nav class="md-nav" aria-label="copy snapshot local">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-snapshot" class="md-nav__link">
+    check snapshot
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copy-without-kms" class="md-nav__link">
+    copy without kms
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#copy-with-kms-option" class="md-nav__link">
+    copy with kms (option)
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#wait-snapshot-complete" class="md-nav__link">
+    wait snapshot complete
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#restore" class="md-nav__link">
+    restore
+  </a>
+  
+    <nav class="md-nav" aria-label="restore">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prep" class="md-nav__link">
+    prep
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#subnet-group" class="md-nav__link">
+    subnet group
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#restore-db" class="md-nav__link">
+    restore db
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#on-target" class="md-nav__link">
+    on target
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#refer" class="md-nav__link">
+    refer
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#issue" class="md-nav__link">
+    issue
+  </a>
+  
+    <nav class="md-nav" aria-label="issue">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#host-error-in-mysqluser" class="md-nav__link">
+    host error in mysql.user
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+<nav class="md-tags" >
+  
+    
+    
+    
+      <a href="../../tags/#awsdatabaserds" class="md-tag">aws/database/rds</a>
+    
+  
+</nav>
+
+
+
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>title: This is a github note
+</code></pre></div>
+<h1 id="rds-mysql-replica-cross-region-cross-account">rds-mysql-replica-cross-region-cross-account<a class="headerlink" href="#rds-mysql-replica-cross-region-cross-account" title="Permanent link">&para;</a></h1>
+<h2 id="_1">概述<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>本地 RDS-A ，希望能创建一个跨账号的 RDS-B 作为读副本</p>
+<ul>
+<li>先创建 RDS-A</li>
+<li>创建本地 Replica</li>
+<li>快照该 Replica</li>
+<li>共享快照到另一个账号</li>
+<li>在另一个账号中将快照复制一份<ul>
+<li>此时可以使用kms，如果源库没有加密</li>
+</ul>
+</li>
+<li>从复制出来的快照恢复数据库</li>
+</ul>
+<h3 id="_2">场景<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<ul>
+<li>跨账号创建读副本的 rds 数据库</li>
+<li>将未加密数据库转换成加密存储</li>
+</ul>
+<h2 id="create-rds-mysql">create rds mysql<a class="headerlink" href="#create-rds-mysql" title="Permanent link">&para;</a></h2>
+<h3 id="prep-">prep-<a class="headerlink" href="#prep-" title="Permanent link">&para;</a></h3>
+<ul>
+<li>准备测试环境，建议使用 cloud9 进行操作，并且安装下面软件</li>
+<li>如果跨账号复制的测试环境，你需要同样的 cloud9 在另一个环境中，并且安装下面软件<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>jq<span class="w"> </span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>rpm<span class="w"> </span>-Uvh<span class="w"> </span>https://repo.mysql.com/mysql80-community-release-el7.rpm
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mysql-community-client<span class="w"> </span>--enablerepo<span class="o">=</span>mysql80-community
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PAGER</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+</code></pre></div></li>
+</ul>
+<p>^z60dbq</p>
+<ul>
+<li>获取 cloud9 所在子网，测试会使用该网络<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># cloud 9 subnet</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nv">RDS_NAME</span><span class="o">=</span>db1
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nv">INST_ID</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>http://169.254.169.254/1.0/meta-data/instance-id<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="k">)</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nv">VPC_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span>--instance-ids<span class="w"> </span><span class="si">${</span><span class="nv">INST_ID</span><span class="si">}</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Reservations[0].Instances[0].VpcId&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nv">AWS_REGION</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span>http://169.254.169.254/latest/dynamic/instance-identity/document<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.region&#39;</span><span class="k">)</span>
+</code></pre></div></li>
+</ul>
+<h3 id="subnet-group-">subnet-group-<a class="headerlink" href="#subnet-group-" title="Permanent link">&para;</a></h3>
+<ul>
+<li>如果跨账号复制的测试环境，该步骤需要在另一个账号中被重复执行<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">SG_NAME</span><span class="o">=</span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span>-<span class="si">${</span><span class="nv">RANDOM</span><span class="si">}</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>aws<span class="w"> </span>ec2<span class="w"> </span>create-security-group<span class="w">  </span><span class="se">\</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span>--description<span class="w"> </span><span class="si">${</span><span class="nv">SG_NAME</span><span class="si">}</span><span class="w">     </span><span class="se">\</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span>--group-name<span class="w"> </span><span class="si">${</span><span class="nv">SG_NAME</span><span class="si">}</span><span class="w">      </span><span class="se">\</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span>--vpc-id<span class="w"> </span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="nv">RDS_SG</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-security-groups<span class="w">      </span><span class="se">\</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span>--filters<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>group-name,Values<span class="o">=</span><span class="si">${</span><span class="nv">SG_NAME</span><span class="si">}</span><span class="w">         </span><span class="se">\</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">            </span><span class="nv">Name</span><span class="o">=</span>vpc-id,Values<span class="o">=</span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span><span class="w">              </span><span class="se">\</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;SecurityGroups[0].GroupId&quot;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;RDS security group ID: </span><span class="si">${</span><span class="nv">RDS_SG</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>aws<span class="w"> </span>ec2<span class="w"> </span>authorize-security-group-ingress<span class="w">  </span><span class="se">\</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">  </span>--group-id<span class="w"> </span><span class="si">${</span><span class="nv">RDS_SG</span><span class="si">}</span><span class="w">                    </span><span class="se">\</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">  </span>--protocol<span class="w"> </span>tcp<span class="w">                          </span><span class="se">\</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">  </span>--port<span class="w"> </span><span class="m">3306</span><span class="w">                             </span><span class="se">\</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">  </span>--cidr<span class="w"> </span><span class="s1">&#39;0.0.0.0/0&#39;</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="nv">PUBLIC_SUBNETS_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-subnets<span class="w">        </span><span class="se">\</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">  </span>--filters<span class="w"> </span><span class="s2">&quot;Name=vpc-id,Values=</span><span class="nv">$VPC_ID</span><span class="s2">&quot;</span><span class="w">                   </span><span class="se">\</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">&#39;Subnets[?MapPublicIpOnLaunch==`true`].SubnetId&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">  </span>--output<span class="w"> </span>json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-c<span class="w"> </span>.<span class="k">)</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="c1"># create a db subnet group</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>aws<span class="w"> </span>rds<span class="w"> </span>create-db-subnet-group<span class="w">               </span><span class="se">\</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">  </span>--db-subnet-group-name<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">         </span><span class="se">\</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">  </span>--db-subnet-group-description<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">  </span><span class="se">\</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="w">  </span>--subnet-ids<span class="w"> </span><span class="si">${</span><span class="nv">PUBLIC_SUBNETS_ID</span><span class="si">}</span><span class="w"> </span>
+</code></pre></div></li>
+</ul>
+<p>^rav4er</p>
+<h3 id="create-rds-mysql-cont">create rds mysql (cont.)<a class="headerlink" href="#create-rds-mysql-cont" title="Permanent link">&para;</a></h3>
+<ul>
+<li>创建 rds 数据库</li>
+<li>密码保存在 <code>~/rds_password</code> 中<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># generate a password for RDS</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">RDS_PASSWORD</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>date<span class="w"> </span><span class="p">|</span><span class="w"> </span>md5sum<span class="w">  </span><span class="p">|</span>cut<span class="w"> </span>-f1<span class="w"> </span>-d<span class="s1">&#39; &#39;</span><span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">RDS_PASSWORD</span><span class="si">}</span><span class="w">  </span>&gt;<span class="w"> </span>~/rds_password
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># install supported oldest mysql version </span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nv">ENGINE_VER</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-engine-versions<span class="w"> </span>--engine<span class="w"> </span>mysql<span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;DBEngineVersions[].EngineVersion&quot;</span><span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>-Eo<span class="w"> </span><span class="s1">&#39;5\.7\.[0-9]+&#39;</span><span class="w"> </span><span class="p">|</span>sort<span class="w"> </span><span class="p">|</span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="k">)</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1"># create RDS MySQL instance</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1"># INSTANCE_TYPE=db.m5.xlarge</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1"># STORAGE_SIZE=5000</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>aws<span class="w"> </span>rds<span class="w"> </span>create-db-instance<span class="w">                          </span><span class="se">\</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">              </span><span class="se">\</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">  </span>--db-name<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">                             </span><span class="se">\</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">  </span>--db-instance-class<span class="w"> </span><span class="si">${</span><span class="nv">INSTANCE_TYPE</span><span class="k">:-</span><span class="nv">db</span><span class="p">.m5.large</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">  </span>--engine<span class="w"> </span>mysql<span class="w">                                    </span><span class="se">\</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">  </span>--engine-version<span class="w"> </span><span class="si">${</span><span class="nv">ENGINE_VER</span><span class="si">}</span><span class="w">                    </span><span class="se">\</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">  </span>--db-subnet-group-name<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">                </span><span class="se">\</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">  </span>--vpc-security-group-ids<span class="w"> </span><span class="si">${</span><span class="nv">RDS_SG</span><span class="si">}</span><span class="w">                </span><span class="se">\</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">  </span>--master-username<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">                     </span><span class="se">\</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">  </span>--publicly-accessible<span class="w">                             </span><span class="se">\</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">  </span>--master-user-password<span class="w"> </span><span class="si">${</span><span class="nv">RDS_PASSWORD</span><span class="si">}</span><span class="w">            </span><span class="se">\</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">  </span>--backup-retention-period<span class="w"> </span><span class="m">1</span><span class="w">                       </span><span class="se">\</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">  </span>--allocated-storage<span class="w"> </span><span class="si">${</span><span class="nv">STORAGE_SIZE</span><span class="k">:-</span><span class="nv">50</span><span class="si">}</span><span class="w"> </span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="c1"># --storage-encrypted</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="c1"># get rds status util `available`</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="nv">status</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="k">until</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${</span><span class="nv">status</span><span class="si">}</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;available&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="nv">status</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-instances<span class="w">       </span><span class="se">\</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">       </span><span class="se">\</span>
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;DBInstances[].DBInstanceStatus&quot;</span><span class="w">   </span><span class="se">\</span>
+<a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">status</span><span class="si">}</span>
+<a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a>sleep<span class="w"> </span><span class="m">60</span>
+<a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a><span class="k">done</span>
+<a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a>
+<a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a><span class="nv">RDS_HOSTNAME</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-instances<span class="w">    </span><span class="se">\</span>
+<a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">     </span><span class="se">\</span>
+<a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;DBInstances[].Endpoint.Address&quot;</span><span class="w">    </span><span class="se">\</span>
+<a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a>
+<a id="__codelineno-4-43" name="__codelineno-4-43" href="#__codelineno-4-43"></a><span class="nv">RDS_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-instances<span class="w">    </span><span class="se">\</span>
+<a id="__codelineno-4-44" name="__codelineno-4-44" href="#__codelineno-4-44"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">     </span><span class="se">\</span>
+<a id="__codelineno-4-45" name="__codelineno-4-45" href="#__codelineno-4-45"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;DBInstances[].DBInstanceArn&quot;</span><span class="w">    </span><span class="se">\</span>
+<a id="__codelineno-4-46" name="__codelineno-4-46" href="#__codelineno-4-46"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
+</code></pre></div></li>
+</ul>
+<h2 id="create-read-replica">create read replica<a class="headerlink" href="#create-read-replica" title="Permanent link">&para;</a></h2>
+<ul>
+<li>创建读副本<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">RDS_REP1_NAME</span><span class="o">=</span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span>-rep1<span class="w"> </span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># # enable auto backup if you miss it in creation</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># aws rds modify-db-instance \</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1">#   --db-instance-identifier ${RDS_NAME} \</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="c1">#   --backup-retention-period 1  \</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1">#   --apply-immediately</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="c1"># create read replica</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>aws<span class="w"> </span>rds<span class="w"> </span>create-db-instance-read-replica<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_REP1_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">  </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">  </span>--source-region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">  </span>--source-db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_ARN</span><span class="si">}</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="c1"># get rds status util `available`</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="nv">status</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="k">until</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${</span><span class="nv">status</span><span class="si">}</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;available&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="nv">status</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-instances<span class="w">            </span><span class="se">\</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_REP1_NAME</span><span class="si">}</span><span class="w">       </span><span class="se">\</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;DBInstances[].DBInstanceStatus&quot;</span><span class="w">        </span><span class="se">\</span>
+<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">status</span><span class="si">}</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>sleep<span class="w"> </span><span class="m">60</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="k">done</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="nv">RDS_REP1_HOSTNAME</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-instances<span class="w">    </span><span class="se">\</span>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_REP1_NAME</span><span class="si">}</span><span class="w">     </span><span class="se">\</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;DBInstances[].Endpoint.Address&quot;</span><span class="w">    </span><span class="se">\</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
+</code></pre></div></li>
+</ul>
+<h3 id="on-master">on master<a class="headerlink" href="#on-master" title="Permanent link">&para;</a></h3>
+<ul>
+<li>在主库中创建复制用户</li>
+<li>配置 binlog 的保留周期，需要在此期间完成远程读副本创建并且恢复复制<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">echo</span><span class="w"> </span>mysql<span class="w"> </span>-h<span class="si">${</span><span class="nv">RDS_HOSTNAME</span><span class="si">}</span><span class="w"> </span>-u<span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w"> </span>-p<span class="si">${</span><span class="nv">RDS_PASSWORD</span><span class="si">}</span>
+</code></pre></div></li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">call</span><span class="w"> </span><span class="n">mysql</span><span class="p">.</span><span class="n">rds_set_configuration</span><span class="p">(</span><span class="s1">&#39;binlog retention hours&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="p">);</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;repl_user&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;repl_password&#39;</span><span class="p">;</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">GRANT</span><span class="w"> </span><span class="n">REPLICATION</span><span class="w"> </span><span class="n">CLIENT</span><span class="p">,</span><span class="w"> </span><span class="n">REPLICATION</span><span class="w"> </span><span class="n">SLAVE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;repl_user&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span><span class="p">;</span>
+</code></pre></div>
+<p>^gycsd4</p>
+<h3 id="on-slave">on slave<a class="headerlink" href="#on-slave" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">echo</span><span class="w"> </span>mysql<span class="w"> </span>-h<span class="si">${</span><span class="nv">RDS_REP1_HOSTNAME</span><span class="si">}</span><span class="w"> </span>-u<span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w"> </span>-p<span class="si">${</span><span class="nv">RDS_PASSWORD</span><span class="si">}</span>
+</code></pre></div>
+<ul>
+<li>
+<p>检查复制状态<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">SHOW</span><span class="w"> </span><span class="n">SLAVE</span><span class="w"> </span><span class="n">STATUS</span><span class="err">\</span><span class="k">G</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>当下面值为 0 时，可以中断复制</p>
+<blockquote>
+<p>Seconds_Behind_Master: 0</p>
+</blockquote>
+</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">call</span><span class="w"> </span><span class="n">mysql</span><span class="p">.</span><span class="n">rds_stop_replication</span><span class="p">();</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">SHOW</span><span class="w"> </span><span class="n">SLAVE</span><span class="w"> </span><span class="n">STATUS</span><span class="err">\</span><span class="k">G</span>
+</code></pre></div>
+<ul>
+<li>中断复制，并且记录断点，在后续恢复复制时使用</li>
+</ul>
+<blockquote>
+<p>Relay_Master_Log_File: mysql-bin-changelog.000009<br />
+Exec_Master_Log_Pos: 154</p>
+</blockquote>
+<p>^gjmipb</p>
+<h2 id="create-snapshot-on-replica">create snapshot on replica<a class="headerlink" href="#create-snapshot-on-replica" title="Permanent link">&para;</a></h2>
+<ul>
+<li>创建快照<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nv">RDS_REP1_SNAP_NAME</span><span class="o">=</span><span class="si">${</span><span class="nv">RDS_REP1_NAME</span><span class="si">}</span>-snap-1
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>aws<span class="w"> </span>rds<span class="w"> </span>create-db-snapshot<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>--db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_REP1_SNAP_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_REP1_NAME</span><span class="si">}</span>
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="nv">SHARED_SNAP_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-snapshots<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>--db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_REP1_SNAP_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>--query<span class="w"> </span><span class="s1">&#39;DBSnapshots[].DBSnapshotArn&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>
+<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;SHARED_SNAP_ARN=</span><span class="si">${</span><span class="nv">SHARED_SNAP_ARN</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>
+<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="c1"># get snapshot status util `available`</span>
+<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="k">while</span><span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="nv">status</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-snapshots<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>--db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_REP1_SNAP_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>--query<span class="w"> </span><span class="s1">&#39;DBSnapshots[].Status&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$status</span>
+<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$status</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;available&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="w">  </span><span class="k">break</span>
+<a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a><span class="k">fi</span>
+<a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a>sleep<span class="w"> </span><span class="m">60</span>
+<a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a><span class="k">done</span>
+</code></pre></div></li>
+</ul>
+<h2 id="share-snapshot">share snapshot<a class="headerlink" href="#share-snapshot" title="Permanent link">&para;</a></h2>
+<ul>
+<li>跨账号共享快照</li>
+<li>输入目标账号 ID<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>aws<span class="w"> </span>rds<span class="w"> </span>modify-db-snapshot-attribute<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span>--db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_REP1_SNAP_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span>--attribute-name<span class="w"> </span>restore<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">    </span>--values-to-add<span class="w"> </span>&lt;target_account_id&gt;
+</code></pre></div></li>
+</ul>
+<h2 id="copy-snapshot-local">copy snapshot local<a class="headerlink" href="#copy-snapshot-local" title="Permanent link">&para;</a></h2>
+<ul>
+<li>如果是跨账号复制，则该步骤执行在另一个账号中，需要先进行一些环境准备工作<br />
+<img alt="rds-mysql-replica-cross-region-cross-account" src="./#^z60dbq" title="rds-mysql-replica-cross-region-cross-account" /></li>
+</ul>
+<p>refer: <a href="./#prep-" title="git/git-mkdocs/data-analytics/rds-mysql-replica-cross-region-cross-account">git/git-mkdocs/data-analytics/rds-mysql-replica-cross-region-cross-account</a></p>
+<h3 id="check-snapshot">check snapshot<a class="headerlink" href="#check-snapshot" title="Permanent link">&para;</a></h3>
+<ul>
+<li>将源账号的环境变量复制到现有账号的命令行窗口方便执行后续操作<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nv">SHARED_SNAP_ARN</span><span class="o">=</span>???
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nv">LOCAL_SNAP_NAME</span><span class="o">=</span>local-snap-<span class="nv">$RANDOM</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># get shared snapshot</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-snapshots<span class="w"> </span>--include-shared<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>--db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">SHARED_SNAP_ARN</span><span class="si">}</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="c1"># ensure `SnapshotType` is `shared`</span>
+</code></pre></div></li>
+</ul>
+<h3 id="copy-without-kms">copy without kms<a class="headerlink" href="#copy-without-kms" title="Permanent link">&para;</a></h3>
+<ul>
+<li>复制快照到本账号，且不修改原有数据库未加密状态<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>aws<span class="w"> </span>rds<span class="w"> </span>copy-db-snapshot<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>--source-db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">SHARED_SNAP_ARN</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>--target-db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">LOCAL_SNAP_NAME</span><span class="si">}</span>
+</code></pre></div></li>
+</ul>
+<h3 id="copy-with-kms-option">copy with kms (option)<a class="headerlink" href="#copy-with-kms-option" title="Permanent link">&para;</a></h3>
+<ul>
+<li>（可选）复制快照到本账号，且修改原有数据库未加密状态为加密状态</li>
+<li>提前创建所需要的CMK，或者指定KMS<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># KEY_ARN=???</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nv">KEY_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>kms<span class="w"> </span>create-key<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.KeyMetadata.Arn&#39;</span><span class="k">)</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>aws<span class="w"> </span>rds<span class="w"> </span>copy-db-snapshot<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>--source-db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">SHARED_SNAP_ARN</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>--target-db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">LOCAL_SNAP_NAME</span><span class="si">}</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>--kms-key-id<span class="w"> </span><span class="si">${</span><span class="nv">KEY_ARN</span><span class="si">}</span>
+</code></pre></div></li>
+</ul>
+<h3 id="wait-snapshot-complete">wait snapshot complete<a class="headerlink" href="#wait-snapshot-complete" title="Permanent link">&para;</a></h3>
+<ul>
+<li>等待复制快照操作完成<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># get snapshot status util `available`</span>
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="nv">status</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="k">until</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${</span><span class="nv">status</span><span class="si">}</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;available&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="nv">status</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-snapshots<span class="w">        </span><span class="se">\</span>
+<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">  </span>--db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">LOCAL_SNAP_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">&#39;DBSnapshots[].Status&#39;</span><span class="w">              </span><span class="se">\</span>
+<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">status</span><span class="si">}</span>
+<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>sleep<span class="w"> </span><span class="m">60</span>
+<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="k">done</span>
+</code></pre></div></li>
+</ul>
+<h2 id="restore">restore<a class="headerlink" href="#restore" title="Permanent link">&para;</a></h2>
+<h3 id="prep">prep<a class="headerlink" href="#prep" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nv">VPC_ID</span><span class="o">=</span>vpc-0c6e8c75ad4af1ee5
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nv">RDS_NAME</span><span class="o">=</span>db1-restore
+</code></pre></div>
+<h3 id="subnet-group">subnet group<a class="headerlink" href="#subnet-group" title="Permanent link">&para;</a></h3>
+<ul>
+<li>如果是跨账号，需要重新创建 subnet group<br />
+<img alt="rds-mysql-replica-cross-region-cross-account" src="./#^rav4er" title="rds-mysql-replica-cross-region-cross-account" /></li>
+</ul>
+<p>refer: <a href="./#subnet-group-" title="git/git-mkdocs/data-analytics/rds-mysql-replica-cross-region-cross-account">git/git-mkdocs/data-analytics/rds-mysql-replica-cross-region-cross-account</a></p>
+<h3 id="restore-db">restore db<a class="headerlink" href="#restore-db" title="Permanent link">&para;</a></h3>
+<ul>
+<li>从复制的快照恢复数据库<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># restore RDS MySQL instance</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>aws<span class="w"> </span>rds<span class="w"> </span>restore-db-instance-from-db-snapshot<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">  </span>--db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">LOCAL_SNAP_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">     </span><span class="se">\</span>
+<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="w">  </span>--db-instance-class<span class="w"> </span>db.t3.micro<span class="w">          </span><span class="se">\</span>
+<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">  </span>--engine<span class="w"> </span>mysql<span class="w">                           </span><span class="se">\</span>
+<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="w">  </span>--db-subnet-group-name<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">       </span><span class="se">\</span>
+<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="w">  </span>--vpc-security-group-ids<span class="w"> </span><span class="si">${</span><span class="nv">RDS_SG</span><span class="si">}</span><span class="w">       </span><span class="se">\</span>
+<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="w">  </span>--publicly-accessible<span class="w">   </span>
+<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>
+<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="c1"># get rds status util `available`</span>
+<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="nv">status</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a><span class="k">until</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${</span><span class="nv">status</span><span class="si">}</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;available&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="nv">status</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-instances<span class="w">       </span><span class="se">\</span>
+<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">       </span><span class="se">\</span>
+<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;DBInstances[].DBInstanceStatus&quot;</span><span class="w">   </span><span class="se">\</span>
+<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">status</span><span class="si">}</span>
+<a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a>sleep<span class="w"> </span><span class="m">60</span>
+<a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a><span class="k">done</span>
+<a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a>
+<a id="__codelineno-18-22" name="__codelineno-18-22" href="#__codelineno-18-22"></a><span class="nv">TARGET_RDS_HOSTNAME</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-instances<span class="w">    </span><span class="se">\</span>
+<a id="__codelineno-18-23" name="__codelineno-18-23" href="#__codelineno-18-23"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">     </span><span class="se">\</span>
+<a id="__codelineno-18-24" name="__codelineno-18-24" href="#__codelineno-18-24"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;DBInstances[].Endpoint.Address&quot;</span><span class="w">    </span><span class="se">\</span>
+<a id="__codelineno-18-25" name="__codelineno-18-25" href="#__codelineno-18-25"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
+</code></pre></div></li>
+</ul>
+<h3 id="on-target">on target<a class="headerlink" href="#on-target" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>连接到恢复后的 rds 数据库，注意用户名为源账号主库，密码在源账号 <code>~/rds_password</code> 中<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># user should be origin db1 </span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="c1"># pass should be saved in ~/rds_password</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="nb">echo</span><span class="w"> </span>mysql<span class="w"> </span>-h<span class="si">${</span><span class="nv">TARGET_RDS_HOSTNAME</span><span class="si">}</span><span class="w"> </span>-u<span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w"> </span>-p<span class="si">${</span><span class="nv">RDS_PASSWORD</span><span class="si">}</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>修改下面语句，并且执行</p>
+</li>
+<li>源账号主库dns</li>
+<li>确认复制用户的用户名和密码 (<a href="./#^gycsd4" title="^gycsd4">^gycsd4</a>)</li>
+<li>
+<p>确认之前记录的断点 (<a href="./#^gjmipb" title="^gjmipb">^gjmipb</a>) <br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">CALL</span><span class="w"> </span><span class="n">mysql</span><span class="p">.</span><span class="n">rds_set_external_master</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">  </span><span class="s1">&#39;db1.ckzqxxxxxxrg.us-east-2.rds.amazonaws.com&#39;</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="mi">3306</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;repl_user&#39;</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;repl_password&#39;</span>
+<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;mysql-bin-changelog.000009&#39;</span>
+<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="mi">154</span>
+<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="mi">0</span>
+<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="w">  </span><span class="p">);</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>确认恢复复制操作成功<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">CALL</span><span class="w"> </span><span class="n">mysql</span><span class="p">.</span><span class="n">rds_start_replication</span><span class="p">();</span>
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="k">SHOW</span><span class="w"> </span><span class="n">SLAVE</span><span class="w"> </span><span class="n">STATUS</span><span class="err">\</span><span class="k">G</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>如果恢复复制操作成功将出现下面输出<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>+-------------------------+
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>| Message                 |
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>+-------------------------+
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>| Slave running normally. |
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>+-------------------------+
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>1 row in set (1.01 sec)
+</code></pre></div></p>
+</li>
+</ul>
+<h2 id="refer">refer<a class="headerlink" href="#refer" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://aws.amazon.com/premiumsupport/knowledge-center/rds-mysql-cross-region-replica/">https://aws.amazon.com/premiumsupport/knowledge-center/rds-mysql-cross-region-replica/</a></li>
+<li><a href="https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/mysql_rds_set_external_master.html">https://docs.aws.amazon.com/AmazonRDS/latest/UserGuide/mysql_rds_set_external_master.html</a></li>
+<li><a href="https://aws.amazon.com/premiumsupport/knowledge-center/share-encrypted-rds-snapshot-kms-key/">https://aws.amazon.com/premiumsupport/knowledge-center/share-encrypted-rds-snapshot-kms-key/</a></li>
+</ul>
+<h2 id="issue">issue<a class="headerlink" href="#issue" title="Permanent link">&para;</a></h2>
+<h3 id="host-error-in-mysqluser">host error in mysql.user<a class="headerlink" href="#host-error-in-mysqluser" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>mysql&gt; select user,host from mysql.user;
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>+------------------+-----------+
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>| user             | host      |
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>+------------------+-----------+
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>| rdsrepladmin     | %         |
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>| rdsworkshop      | %         |
+<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>| repl_user        | *         |
+<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>| mysql.infoschema | localhost |
+<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>| mysql.session    | localhost |
+<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>| mysql.sys        | localhost |
+<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>| rdsadmin         | localhost |
+<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>+------------------+-----------+
+<a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>7 rows in set (0.00 sec)
+<a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>
+<a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>mysql&gt; update mysql.user set host=&#39;%&#39; where user=&#39;repl_user&#39;;
+<a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>Query OK, 1 row affected (0.01 sec)
+<a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>Rows matched: 1  Changed: 1  Warnings: 0
+<a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>
+<a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a>mysql&gt; flush privileges;
+<a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a>Query OK, 0 rows affected (0.00 sec)
+<a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a>
+<a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a>mysql&gt; 
+</code></pre></div>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 29, 2023</span>
+      
+        <br>
+        Created:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 29, 2023</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "toc.follow", "content.code.copy"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+    
+  </body>
+</html>

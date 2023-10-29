@@ -1,0 +1,4125 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+      
+      
+      
+        <link rel="prev" href="../CLI/lab-create-cloudwatch-dashboard-cpu-metric/">
+      
+      
+      
+      <link rel="icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.7">
+    
+    
+      
+        <title>Tags - panlm</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/main.4b4a2bd9.min.css">
+      
+        
+        <link rel="stylesheet" href="../assets/stylesheets/palette.356b1318.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,700,700i%7CUbuntu+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Ubuntu";--md-code-font:"Ubuntu Mono"}</style>
+      
+    
+    
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-8C6HW94JT3"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-8C6HW94JT3",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-8C6HW94JT3",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="light-blue">
+  
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#awsanalytics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href=".." title="panlm" class="md-header__button md-logo" aria-label="panlm" data-md-component="logo">
+      
+  <img src="../git-attachment/AWS_Logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            panlm
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Tags
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href=".." class="md-tabs__link">
+        
+  
+    
+  
+  Welcome to panlm docs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../cloud9/quick-setup-cloud9-script/" class="md-tabs__link">
+          
+  
+    
+  
+  Cloud9
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../EKS/" class="md-tabs__link">
+          
+  
+    
+  
+  EKS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../data-analytics/mwaa-lab/" class="md-tabs__link">
+          
+  
+    
+  
+  Database and Analytics
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../serverless/apigw-cross-account-private-endpoint/" class="md-tabs__link">
+          
+  
+    
+  
+  Serverless
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../others/cross-region-reverse-proxy-with-nlb-cloudfront/" class="md-tabs__link">
+          
+  
+    
+  
+  Others
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../CLI/linux/linux-cmd/" class="md-tabs__link">
+          
+  
+    
+  
+  CLI
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="./" class="md-tabs__link">
+        
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href=".." title="panlm" class="md-nav__button md-logo" aria-label="panlm" data-md-component="logo">
+      
+  <img src="../git-attachment/AWS_Logo.png" alt="logo">
+
+    </a>
+    panlm
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+    <li class="md-nav__item">
+      <a href=".." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome to panlm docs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Cloud9
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Cloud9
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud9/quick-setup-cloud9-script/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    quick setup cloud9 script
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud9/setup-cloud9-for-eks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    setup cloud9 for eks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloud9/create-standard-vpc-for-lab-in-china-region/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    create standard vpc for lab in china region
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../EKS/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    EKS
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            EKS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Infra
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Infra
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_1" id="__nav_3_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Cluster
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Cluster
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/infra/cluster/eks-private-access-cluster/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-private-access-cluster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/infra/cluster/eks-public-access-cluster-in-china-region/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-public-access-cluster-in-china-region
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/infra/cluster/eks-public-access-cluster/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-public-access-cluster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/infra/cluster/eks-terraform-cluster/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-terraform-cluster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Compute
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_2">
+            <span class="md-nav__icon md-icon"></span>
+            Compute
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/infra/compute/eks-fargate-lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-fargate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_3" id="__nav_3_2_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Network
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_3">
+            <span class="md-nav__icon md-icon"></span>
+            Network
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/infra/network/aws-load-balancer-controller/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    aws-load-balancer-controller
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/infra/network/eks-custom-network/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-custom-network
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/infra/network/enable-sg-on-pod/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    enable-sg-on-pod
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/infra/network/externaldns-for-route53/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    externaldns-for-route53
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/infra/network/nginx-ingress-controller-community-ver/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nginx-ingress-controller-community-ver
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/infra/network/self-signed-certificates/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    self-signed-certificates
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_3_7" id="__nav_3_2_3_7_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Appmesh
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_2_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_3_7">
+            <span class="md-nav__icon md-icon"></span>
+            Appmesh
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/infra/network/appmesh/appmesh-workshop-eks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    appmesh-workshop-eks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/infra/network/appmesh/automated-canary-deployment-using-flagger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    automated-canary-deployment-using-flagger
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/infra/network/appmesh/build-colorapp/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    build-colorapp
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_4" id="__nav_3_2_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Storage
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_4">
+            <span class="md-nav__icon md-icon"></span>
+            Storage
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/infra/storage/ebs-for-eks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ebs-for-eks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/infra/storage/efs-for-eks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    efs-for-eks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Operation
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Operation
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_1" id="__nav_3_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gitops
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Gitops
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/operation/gitops/argocd-lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    argocd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/operation/gitops/flux-lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    flux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_2" id="__nav_3_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Logging
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Logging
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/operation/logging/cloudwatch-to-firehose-python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cloudwatch-to-firehose-python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/operation/logging/export-cloudwatch-log-group-to-s3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    export-cloudwatch-log-group-to-s3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/operation/logging/stream-k8s-control-panel-logs-to-s3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    stream-k8s-control-panel-logs-to-s3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_3" id="__nav_3_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Monitor
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Monitor
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/operation/monitor/cluster-autoscaler/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cluster-autoscaler
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/operation/monitor/eks-container-insights/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-container-insights
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/operation/monitor/enable-prometheus-in-cloudwatch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    enable-prometheus-in-cloudwatch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/operation/monitor/install-grafana-lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    grafana-install-lab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/operation/monitor/install-prometheus-grafana/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    install-prometheus-grafana-on-eks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/operation/monitor/metrics-server/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    metrics-server
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3_4" id="__nav_3_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Upgrade
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Upgrade
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/operation/upgrade/eks-upgrade-procedure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-upgrade-procedure
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/operation/upgrade/eks-cluster-addons-list/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-cluster-addons-list
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/operation/upgrade/eks-addons-coredns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-addons-coredns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/operation/upgrade/eks-addons-kube-proxy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-addons-kube-proxy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/operation/upgrade/eks-addons-vpc-cni/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-addons-vpc-cni
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/operation/upgrade/aws-for-fluent-bit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    aws-for-fluent-bit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/operation/upgrade/cert-manager/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cert-manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/operation/upgrade/cni-metrics-helper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cni-metrics-helper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/operation/upgrade/eksup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eksup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/operation/upgrade/kube-no-trouble/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    kube-no-trouble
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/operation/upgrade/kube-state-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    kube-state-metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/operation/upgrade/nginx-ingress-controller-nginx-ver/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nginx-ingress-controller-nginx-ver
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/operation/upgrade/nginx-ingress-controller/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nginx-ingress-controller
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../EKS/operation/upgrade/pluto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    pluto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Database and Analytics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Database and Analytics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-analytics/mwaa-lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    mwaa-lab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-analytics/rds-mysql-replica-cross-region-cross-account/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    rds-mysql-replica-cross-region-cross-account
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-analytics/redshift-data-api-lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    redshift-data-api-lab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Serverless
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Serverless
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../serverless/apigw-cross-account-private-endpoint/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    apigw-cross-account-private-endpoint
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../serverless/apigw-custom-domain-name/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    apigw-custom-domain-name
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../serverless/apigw-get-sourceip/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    apigw-get-sourceip
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../serverless/apigw-private-api-alb-cdk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    apigw-private-api-alb-cdk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../serverless/apigw-regional-api-access-from-vpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    apigw-regional-api-access-from-vpc
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Others
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Others
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../others/cross-region-reverse-proxy-with-nlb-cloudfront/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cross-region-reverse-proxy-with-nlb-cloudfront
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../others/file-storage-gateway-lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    file-storage-gateway-lab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../others/global-sso-and-china-aws-accounts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    global-sso-and-china-aws-accounts
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../others/rescue-ec2-instance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    rescue-ec2-instance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../others/script-api-resource-method/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    script-api-resource-method
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../others/github-page-howto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    github-page-howto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    CLI
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            CLI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Linux Commands
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            Linux Commands
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CLI/linux/linux-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    linux-cmd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CLI/linux/assume-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    assume-tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CLI/linux/eksctl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eksctl
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CLI/linux/eksdemo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eksdemo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CLI/linux/iptables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    iptables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    AWS CLI
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            AWS CLI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CLI/awscli/acm-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    acm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CLI/awscli/apigw-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    api-gateway
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CLI/awscli/cloud9-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cloud9
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CLI/awscli/cloudformation-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cloudformation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CLI/awscli/cloudwatch-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cloudwatch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CLI/awscli/directory-service-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    directory service
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CLI/awscli/ebs-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ebs-cmd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CLI/awscli/efs-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    efs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CLI/awscli/iam-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    iam
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CLI/awscli/redshift-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    redshift
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CLI/awscli/route53-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    route53
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CLI/awscli/s3-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    s3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CLI/awscli/ssm-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ssm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../CLI/lab-create-cloudwatch-dashboard-cpu-metric/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    create-dashboard-for-instance-cpu-matrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Tags
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Tags
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#awsanalytics" class="md-nav__link">
+    aws/analytics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsanalyticsgluedatabrew" class="md-nav__link">
+    aws/analytics/glue/databrew
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsanalyticskinesisfirehose" class="md-nav__link">
+    aws/analytics/kinesis/firehose
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awschina" class="md-nav__link">
+    aws/china
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awscloud9" class="md-nav__link">
+    aws/cloud9
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awscmd" class="md-nav__link">
+    aws/cmd
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awscomputeec2" class="md-nav__link">
+    aws/compute/ec2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awscontainerappmesh" class="md-nav__link">
+    aws/container/appmesh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awscontainereks" class="md-nav__link">
+    aws/container/eks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awscontainerfargate" class="md-nav__link">
+    aws/container/fargate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsdatabaserds" class="md-nav__link">
+    aws/database/rds
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsdatabaseredshift" class="md-nav__link">
+    aws/database/redshift
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsmgmtcdk" class="md-nav__link">
+    aws/mgmt/cdk
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsmgmtcloudformation" class="md-nav__link">
+    aws/mgmt/cloudformation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsmgmtcloudwatch" class="md-nav__link">
+    aws/mgmt/cloudwatch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsmgmtdirectory-service" class="md-nav__link">
+    aws/mgmt/directory-service
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsmgmtsystems-manager" class="md-nav__link">
+    aws/mgmt/systems-manager
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsnetworkcloudfront" class="md-nav__link">
+    aws/network/cloudfront
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsnetworknlb" class="md-nav__link">
+    aws/network/nlb
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsnetworkroute53" class="md-nav__link">
+    aws/network/route53
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsnetworksecurity-group" class="md-nav__link">
+    aws/network/security-group
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsnetworkvpc" class="md-nav__link">
+    aws/network/vpc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awssecurityacm" class="md-nav__link">
+    aws/security/acm
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awssecurityiam" class="md-nav__link">
+    aws/security/iam
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awssecurityidentity-center" class="md-nav__link">
+    aws/security/identity-center
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsserverlessapi-gateway" class="md-nav__link">
+    aws/serverless/api-gateway
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsserverlesslambda" class="md-nav__link">
+    aws/serverless/lambda
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsstorageebs" class="md-nav__link">
+    aws/storage/ebs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsstorageefs" class="md-nav__link">
+    aws/storage/efs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsstorages3" class="md-nav__link">
+    aws/storage/s3
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsstoragestorage-gateway" class="md-nav__link">
+    aws/storage/storage-gateway
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cmd" class="md-nav__link">
+    cmd
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    docker
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flagger" class="md-nav__link">
+    flagger
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github" class="md-nav__link">
+    github
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gitopsargo" class="md-nav__link">
+    gitops/argo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gitopsweaveworksflux" class="md-nav__link">
+    gitops/weaveworks/flux
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grafana" class="md-nav__link">
+    grafana
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kubernetes" class="md-nav__link">
+    kubernetes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kubernetescni" class="md-nav__link">
+    kubernetes/cni
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kubernetesingress" class="md-nav__link">
+    kubernetes/ingress
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    linux
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nginx" class="md-nav__link">
+    nginx
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prometheus" class="md-nav__link">
+    prometheus
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    python
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terraform" class="md-nav__link">
+    terraform
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#awsanalytics" class="md-nav__link">
+    aws/analytics
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsanalyticsgluedatabrew" class="md-nav__link">
+    aws/analytics/glue/databrew
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsanalyticskinesisfirehose" class="md-nav__link">
+    aws/analytics/kinesis/firehose
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awschina" class="md-nav__link">
+    aws/china
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awscloud9" class="md-nav__link">
+    aws/cloud9
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awscmd" class="md-nav__link">
+    aws/cmd
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awscomputeec2" class="md-nav__link">
+    aws/compute/ec2
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awscontainerappmesh" class="md-nav__link">
+    aws/container/appmesh
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awscontainereks" class="md-nav__link">
+    aws/container/eks
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awscontainerfargate" class="md-nav__link">
+    aws/container/fargate
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsdatabaserds" class="md-nav__link">
+    aws/database/rds
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsdatabaseredshift" class="md-nav__link">
+    aws/database/redshift
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsmgmtcdk" class="md-nav__link">
+    aws/mgmt/cdk
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsmgmtcloudformation" class="md-nav__link">
+    aws/mgmt/cloudformation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsmgmtcloudwatch" class="md-nav__link">
+    aws/mgmt/cloudwatch
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsmgmtdirectory-service" class="md-nav__link">
+    aws/mgmt/directory-service
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsmgmtsystems-manager" class="md-nav__link">
+    aws/mgmt/systems-manager
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsnetworkcloudfront" class="md-nav__link">
+    aws/network/cloudfront
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsnetworknlb" class="md-nav__link">
+    aws/network/nlb
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsnetworkroute53" class="md-nav__link">
+    aws/network/route53
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsnetworksecurity-group" class="md-nav__link">
+    aws/network/security-group
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsnetworkvpc" class="md-nav__link">
+    aws/network/vpc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awssecurityacm" class="md-nav__link">
+    aws/security/acm
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awssecurityiam" class="md-nav__link">
+    aws/security/iam
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awssecurityidentity-center" class="md-nav__link">
+    aws/security/identity-center
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsserverlessapi-gateway" class="md-nav__link">
+    aws/serverless/api-gateway
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsserverlesslambda" class="md-nav__link">
+    aws/serverless/lambda
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsstorageebs" class="md-nav__link">
+    aws/storage/ebs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsstorageefs" class="md-nav__link">
+    aws/storage/efs
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsstorages3" class="md-nav__link">
+    aws/storage/s3
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#awsstoragestorage-gateway" class="md-nav__link">
+    aws/storage/storage-gateway
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cmd" class="md-nav__link">
+    cmd
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker" class="md-nav__link">
+    docker
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#flagger" class="md-nav__link">
+    flagger
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github" class="md-nav__link">
+    github
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gitopsargo" class="md-nav__link">
+    gitops/argo
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#gitopsweaveworksflux" class="md-nav__link">
+    gitops/weaveworks/flux
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#grafana" class="md-nav__link">
+    grafana
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kubernetes" class="md-nav__link">
+    kubernetes
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kubernetescni" class="md-nav__link">
+    kubernetes/cni
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#kubernetesingress" class="md-nav__link">
+    kubernetes/ingress
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#linux" class="md-nav__link">
+    linux
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#nginx" class="md-nav__link">
+    nginx
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#prometheus" class="md-nav__link">
+    prometheus
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#python" class="md-nav__link">
+    python
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#terraform" class="md-nav__link">
+    terraform
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+
+
+  <h1>Tags</h1>
+
+<h2 id="awsanalytics"><span class="md-tag">aws/analytics</span><a class="headerlink" href="#awsanalytics" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../data-analytics/mwaa-lab/">mwaa-lab</a></li>
+</ul>
+<h2 id="awsanalyticsgluedatabrew"><span class="md-tag">aws/analytics/glue/databrew</span><a class="headerlink" href="#awsanalyticsgluedatabrew" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../EKS/operation/logging/stream-k8s-control-panel-logs-to-s3/">stream-k8s-control-panel-logs-to-s3</a></li>
+</ul>
+<h2 id="awsanalyticskinesisfirehose"><span class="md-tag">aws/analytics/kinesis/firehose</span><a class="headerlink" href="#awsanalyticskinesisfirehose" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../EKS/operation/logging/cloudwatch-to-firehose-python/">cloudwatch-to-firehose-python</a></li>
+<li><a href="../EKS/operation/logging/stream-k8s-control-panel-logs-to-s3/">stream-k8s-control-panel-logs-to-s3</a></li>
+</ul>
+<h2 id="awschina"><span class="md-tag">aws/china</span><a class="headerlink" href="#awschina" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../EKS/infra/cluster/eks-public-access-cluster-in-china-region/">eks-public-access-cluster-in-china-region</a></li>
+<li><a href="../others/cross-region-reverse-proxy-with-nlb-cloudfront/">cross-region-reverse-proxy-with-nlb-cloudfront</a></li>
+</ul>
+<h2 id="awscloud9"><span class="md-tag">aws/cloud9</span><a class="headerlink" href="#awscloud9" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../CLI/awscli/cloud9-cmd/">cloud9</a></li>
+<li><a href="../cloud9/quick-setup-cloud9-script/">quick setup cloud9 script</a></li>
+<li><a href="../cloud9/setup-cloud9-for-eks/">setup cloud9 for eks</a></li>
+</ul>
+<h2 id="awscmd"><span class="md-tag">aws/cmd</span><a class="headerlink" href="#awscmd" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../CLI/awscli/acm-cmd/">acm</a></li>
+<li><a href="../CLI/awscli/apigw-cmd/">api-gateway</a></li>
+<li><a href="../CLI/awscli/cloud9-cmd/">cloud9</a></li>
+<li><a href="../CLI/awscli/cloudformation-cmd/">cloudformation</a></li>
+<li><a href="../CLI/awscli/directory-service-cmd/">directory service</a></li>
+<li><a href="../CLI/awscli/ebs-cmd/">ebs-cmd</a></li>
+<li><a href="../CLI/awscli/efs-cmd/">efs</a></li>
+<li><a href="../CLI/awscli/iam-cmd/">iam</a></li>
+<li><a href="../CLI/awscli/s3-cmd/">s3</a></li>
+<li><a href="../CLI/awscli/ssm-cmd/">ssm</a></li>
+<li><a href="../CLI/linux/eksdemo/">eksdemo</a></li>
+</ul>
+<h2 id="awscomputeec2"><span class="md-tag">aws/compute/ec2</span><a class="headerlink" href="#awscomputeec2" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../others/rescue-ec2-instance/">rescue-ec2-instance</a></li>
+</ul>
+<h2 id="awscontainerappmesh"><span class="md-tag">aws/container/appmesh</span><a class="headerlink" href="#awscontainerappmesh" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../EKS/infra/network/appmesh/appmesh-workshop-eks/">appmesh-workshop-eks</a></li>
+<li><a href="../EKS/infra/network/appmesh/automated-canary-deployment-using-flagger/">automated-canary-deployment-using-flagger</a></li>
+</ul>
+<h2 id="awscontainereks"><span class="md-tag">aws/container/eks</span><a class="headerlink" href="#awscontainereks" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../CLI/linux/eksctl/">eksctl</a></li>
+<li><a href="../CLI/linux/eksdemo/">eksdemo</a></li>
+<li><a href="../EKS/infra/cluster/eks-private-access-cluster/">eks-private-access-cluster</a></li>
+<li><a href="../EKS/infra/cluster/eks-public-access-cluster-in-china-region/">eks-public-access-cluster-in-china-region</a></li>
+<li><a href="../EKS/infra/cluster/eks-public-access-cluster/">eks-public-access-cluster</a></li>
+<li><a href="../EKS/infra/cluster/eks-terraform-cluster/">eks-terraform-cluster</a></li>
+<li><a href="../EKS/infra/compute/eks-fargate-lab/">eks-fargate</a></li>
+<li><a href="../EKS/infra/network/aws-load-balancer-controller/">aws-load-balancer-controller</a></li>
+<li><a href="../EKS/infra/network/eks-custom-network/">eks-custom-network</a></li>
+<li><a href="../EKS/infra/network/enable-sg-on-pod/">enable-sg-on-pod</a></li>
+<li><a href="../EKS/infra/network/nginx-ingress-controller-community-ver/">nginx-ingress-controller-community-ver</a></li>
+<li><a href="../EKS/infra/network/self-signed-certificates/">self-signed-certificates</a></li>
+<li><a href="../EKS/infra/network/appmesh/appmesh-workshop-eks/">appmesh-workshop-eks</a></li>
+<li><a href="../EKS/infra/network/appmesh/automated-canary-deployment-using-flagger/">automated-canary-deployment-using-flagger</a></li>
+<li><a href="../EKS/infra/storage/ebs-for-eks/">ebs-for-eks</a></li>
+<li><a href="../EKS/infra/storage/efs-for-eks/">efs-for-eks</a></li>
+<li><a href="../EKS/operation/gitops/flux-lab/">flux</a></li>
+<li><a href="../EKS/operation/logging/stream-k8s-control-panel-logs-to-s3/">stream-k8s-control-panel-logs-to-s3</a></li>
+<li><a href="../EKS/operation/monitor/cluster-autoscaler/">cluster-autoscaler</a></li>
+<li><a href="../EKS/operation/monitor/eks-container-insights/">eks-container-insights</a></li>
+<li><a href="../EKS/operation/monitor/enable-prometheus-in-cloudwatch/">enable-prometheus-in-cloudwatch</a></li>
+<li><a href="../EKS/operation/monitor/install-prometheus-grafana/">install-prometheus-grafana-on-eks</a></li>
+<li><a href="../EKS/operation/monitor/metrics-server/">metrics-server</a></li>
+<li><a href="../EKS/operation/upgrade/aws-for-fluent-bit/">aws-for-fluent-bit</a></li>
+<li><a href="../EKS/operation/upgrade/cert-manager/">cert-manager</a></li>
+<li><a href="../EKS/operation/upgrade/cni-metrics-helper/">cni-metrics-helper</a></li>
+<li><a href="../EKS/operation/upgrade/eks-addons-coredns/">eks-addons-coredns</a></li>
+<li><a href="../EKS/operation/upgrade/eks-addons-kube-proxy/">eks-addons-kube-proxy</a></li>
+<li><a href="../EKS/operation/upgrade/eks-addons-vpc-cni/">eks-addons-vpc-cni</a></li>
+<li><a href="../EKS/operation/upgrade/eks-cluster-addons-list/">eks-cluster-addons-list</a></li>
+<li><a href="../EKS/operation/upgrade/eks-upgrade-procedure/">eks-upgrade-procedure</a></li>
+<li><a href="../EKS/operation/upgrade/eksup/">eksup</a></li>
+<li><a href="../EKS/operation/upgrade/nginx-ingress-controller-nginx-ver/">nginx-ingress-controller-nginx-ver</a></li>
+<li><a href="../cloud9/quick-setup-cloud9-script/">quick setup cloud9 script</a></li>
+<li><a href="../cloud9/setup-cloud9-for-eks/">setup cloud9 for eks</a></li>
+</ul>
+<h2 id="awscontainerfargate"><span class="md-tag">aws/container/fargate</span><a class="headerlink" href="#awscontainerfargate" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../EKS/infra/compute/eks-fargate-lab/">eks-fargate</a></li>
+</ul>
+<h2 id="awsdatabaserds"><span class="md-tag">aws/database/rds</span><a class="headerlink" href="#awsdatabaserds" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../data-analytics/rds-mysql-replica-cross-region-cross-account/">rds-mysql-replica-cross-region-cross-account</a></li>
+</ul>
+<h2 id="awsdatabaseredshift"><span class="md-tag">aws/database/redshift</span><a class="headerlink" href="#awsdatabaseredshift" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../CLI/awscli/redshift-cmd/">redshift</a></li>
+<li><a href="../data-analytics/redshift-data-api-lab/">redshift-data-api-lab</a></li>
+</ul>
+<h2 id="awsmgmtcdk"><span class="md-tag">aws/mgmt/cdk</span><a class="headerlink" href="#awsmgmtcdk" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../serverless/apigw-private-api-alb-cdk/">apigw-private-api-alb-cdk</a></li>
+</ul>
+<h2 id="awsmgmtcloudformation"><span class="md-tag">aws/mgmt/cloudformation</span><a class="headerlink" href="#awsmgmtcloudformation" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../CLI/awscli/cloudformation-cmd/">cloudformation</a></li>
+<li><a href="../cloud9/create-standard-vpc-for-lab-in-china-region/">create standard vpc for lab in china region</a></li>
+</ul>
+<h2 id="awsmgmtcloudwatch"><span class="md-tag">aws/mgmt/cloudwatch</span><a class="headerlink" href="#awsmgmtcloudwatch" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../CLI/lab-create-cloudwatch-dashboard-cpu-metric/">create-dashboard-for-instance-cpu-matrics</a></li>
+<li><a href="../CLI/awscli/cloudwatch-cmd/">cloudwatch</a></li>
+<li><a href="../EKS/operation/logging/cloudwatch-to-firehose-python/">cloudwatch-to-firehose-python</a></li>
+<li><a href="../EKS/operation/logging/export-cloudwatch-log-group-to-s3/">export-cloudwatch-log-group-to-s3</a></li>
+<li><a href="../EKS/operation/monitor/eks-container-insights/">eks-container-insights</a></li>
+<li><a href="../EKS/operation/monitor/enable-prometheus-in-cloudwatch/">enable-prometheus-in-cloudwatch</a></li>
+</ul>
+<h2 id="awsmgmtdirectory-service"><span class="md-tag">aws/mgmt/directory-service</span><a class="headerlink" href="#awsmgmtdirectory-service" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../CLI/awscli/directory-service-cmd/">directory service</a></li>
+</ul>
+<h2 id="awsmgmtsystems-manager"><span class="md-tag">aws/mgmt/systems-manager</span><a class="headerlink" href="#awsmgmtsystems-manager" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../CLI/awscli/ssm-cmd/">ssm</a></li>
+</ul>
+<h2 id="awsnetworkcloudfront"><span class="md-tag">aws/network/cloudfront</span><a class="headerlink" href="#awsnetworkcloudfront" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../others/cross-region-reverse-proxy-with-nlb-cloudfront/">cross-region-reverse-proxy-with-nlb-cloudfront</a></li>
+</ul>
+<h2 id="awsnetworknlb"><span class="md-tag">aws/network/nlb</span><a class="headerlink" href="#awsnetworknlb" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../others/cross-region-reverse-proxy-with-nlb-cloudfront/">cross-region-reverse-proxy-with-nlb-cloudfront</a></li>
+</ul>
+<h2 id="awsnetworkroute53"><span class="md-tag">aws/network/route53</span><a class="headerlink" href="#awsnetworkroute53" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../CLI/awscli/route53-cmd/">route53</a></li>
+<li><a href="../EKS/infra/network/externaldns-for-route53/">externaldns-for-route53</a></li>
+</ul>
+<h2 id="awsnetworksecurity-group"><span class="md-tag">aws/network/security-group</span><a class="headerlink" href="#awsnetworksecurity-group" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../EKS/infra/network/enable-sg-on-pod/">enable-sg-on-pod</a></li>
+</ul>
+<h2 id="awsnetworkvpc"><span class="md-tag">aws/network/vpc</span><a class="headerlink" href="#awsnetworkvpc" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../cloud9/create-standard-vpc-for-lab-in-china-region/">create standard vpc for lab in china region</a></li>
+</ul>
+<h2 id="awssecurityacm"><span class="md-tag">aws/security/acm</span><a class="headerlink" href="#awssecurityacm" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../CLI/awscli/acm-cmd/">acm</a></li>
+<li><a href="../EKS/infra/network/self-signed-certificates/">self-signed-certificates</a></li>
+</ul>
+<h2 id="awssecurityiam"><span class="md-tag">aws/security/iam</span><a class="headerlink" href="#awssecurityiam" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../CLI/awscli/iam-cmd/">iam</a></li>
+<li><a href="../CLI/linux/assume-tool/">assume-tool</a></li>
+</ul>
+<h2 id="awssecurityidentity-center"><span class="md-tag">aws/security/identity-center</span><a class="headerlink" href="#awssecurityidentity-center" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../others/global-sso-and-china-aws-accounts/">global-sso-and-china-aws-accounts</a></li>
+</ul>
+<h2 id="awsserverlessapi-gateway"><span class="md-tag">aws/serverless/api-gateway</span><a class="headerlink" href="#awsserverlessapi-gateway" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../others/script-api-resource-method/">script-api-resource-method</a></li>
+<li><a href="../serverless/apigw-cross-account-private-endpoint/">apigw-cross-account-private-endpoint</a></li>
+<li><a href="../serverless/apigw-custom-domain-name/">apigw-custom-domain-name</a></li>
+<li><a href="../serverless/apigw-get-sourceip/">apigw-get-sourceip</a></li>
+<li><a href="../serverless/apigw-private-api-alb-cdk/">apigw-private-api-alb-cdk</a></li>
+<li><a href="../serverless/apigw-regional-api-access-from-vpc/">apigw-regional-api-access-from-vpc</a></li>
+</ul>
+<h2 id="awsserverlesslambda"><span class="md-tag">aws/serverless/lambda</span><a class="headerlink" href="#awsserverlesslambda" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../EKS/operation/logging/cloudwatch-to-firehose-python/">cloudwatch-to-firehose-python</a></li>
+</ul>
+<h2 id="awsstorageebs"><span class="md-tag">aws/storage/ebs</span><a class="headerlink" href="#awsstorageebs" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../CLI/awscli/ebs-cmd/">ebs-cmd</a></li>
+<li><a href="../EKS/infra/storage/ebs-for-eks/">ebs-for-eks</a></li>
+</ul>
+<h2 id="awsstorageefs"><span class="md-tag">aws/storage/efs</span><a class="headerlink" href="#awsstorageefs" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../CLI/awscli/efs-cmd/">efs</a></li>
+<li><a href="../EKS/infra/storage/efs-for-eks/">efs-for-eks</a></li>
+</ul>
+<h2 id="awsstorages3"><span class="md-tag">aws/storage/s3</span><a class="headerlink" href="#awsstorages3" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../CLI/awscli/s3-cmd/">s3</a></li>
+<li><a href="../EKS/operation/logging/export-cloudwatch-log-group-to-s3/">export-cloudwatch-log-group-to-s3</a></li>
+<li><a href="../EKS/operation/logging/stream-k8s-control-panel-logs-to-s3/">stream-k8s-control-panel-logs-to-s3</a></li>
+</ul>
+<h2 id="awsstoragestorage-gateway"><span class="md-tag">aws/storage/storage-gateway</span><a class="headerlink" href="#awsstoragestorage-gateway" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../others/file-storage-gateway-lab/">file-storage-gateway-lab</a></li>
+</ul>
+<h2 id="cmd"><span class="md-tag">cmd</span><a class="headerlink" href="#cmd" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../CLI/awscli/apigw-cmd/">api-gateway</a></li>
+<li><a href="../CLI/linux/assume-tool/">assume-tool</a></li>
+<li><a href="../CLI/linux/iptables/">iptables</a></li>
+<li><a href="../CLI/linux/linux-cmd/">linux-cmd</a></li>
+</ul>
+<h2 id="docker"><span class="md-tag">docker</span><a class="headerlink" href="#docker" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../EKS/infra/network/appmesh/build-colorapp/">build-colorapp</a></li>
+</ul>
+<h2 id="flagger"><span class="md-tag">flagger</span><a class="headerlink" href="#flagger" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../EKS/infra/network/appmesh/automated-canary-deployment-using-flagger/">automated-canary-deployment-using-flagger</a></li>
+</ul>
+<h2 id="github"><span class="md-tag">github</span><a class="headerlink" href="#github" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../others/github-page-howto/">github-page-howto</a></li>
+</ul>
+<h2 id="gitopsargo"><span class="md-tag">gitops/argo</span><a class="headerlink" href="#gitopsargo" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../EKS/operation/gitops/argocd-lab/">argocd</a></li>
+</ul>
+<h2 id="gitopsweaveworksflux"><span class="md-tag">gitops/weaveworks/flux</span><a class="headerlink" href="#gitopsweaveworksflux" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../EKS/operation/gitops/flux-lab/">flux</a></li>
+</ul>
+<h2 id="grafana"><span class="md-tag">grafana</span><a class="headerlink" href="#grafana" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../EKS/operation/monitor/install-grafana-lab/">grafana-install-lab</a></li>
+<li><a href="../EKS/operation/monitor/install-prometheus-grafana/">install-prometheus-grafana-on-eks</a></li>
+</ul>
+<h2 id="kubernetes"><span class="md-tag">kubernetes</span><a class="headerlink" href="#kubernetes" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../EKS/infra/network/externaldns-for-route53/">externaldns-for-route53</a></li>
+<li><a href="../EKS/operation/monitor/cluster-autoscaler/">cluster-autoscaler</a></li>
+<li><a href="../EKS/operation/monitor/metrics-server/">metrics-server</a></li>
+<li><a href="../EKS/operation/upgrade/aws-for-fluent-bit/">aws-for-fluent-bit</a></li>
+<li><a href="../EKS/operation/upgrade/cert-manager/">cert-manager</a></li>
+<li><a href="../EKS/operation/upgrade/eks-cluster-addons-list/">eks-cluster-addons-list</a></li>
+<li><a href="../EKS/operation/upgrade/eksup/">eksup</a></li>
+<li><a href="../EKS/operation/upgrade/kube-no-trouble/">kube-no-trouble</a></li>
+<li><a href="../EKS/operation/upgrade/kube-state-metrics/">kube-state-metrics</a></li>
+<li><a href="../EKS/operation/upgrade/pluto/">pluto</a></li>
+</ul>
+<h2 id="kubernetescni"><span class="md-tag">kubernetes/cni</span><a class="headerlink" href="#kubernetescni" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../EKS/infra/network/eks-custom-network/">eks-custom-network</a></li>
+</ul>
+<h2 id="kubernetesingress"><span class="md-tag">kubernetes/ingress</span><a class="headerlink" href="#kubernetesingress" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../EKS/infra/network/aws-load-balancer-controller/">aws-load-balancer-controller</a></li>
+<li><a href="../EKS/infra/network/nginx-ingress-controller-community-ver/">nginx-ingress-controller-community-ver</a></li>
+<li><a href="../EKS/operation/upgrade/nginx-ingress-controller-nginx-ver/">nginx-ingress-controller-nginx-ver</a></li>
+<li><a href="../EKS/operation/upgrade/nginx-ingress-controller/">nginx-ingress-controller</a></li>
+</ul>
+<h2 id="linux"><span class="md-tag">linux</span><a class="headerlink" href="#linux" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../CLI/linux/iptables/">iptables</a></li>
+<li><a href="../CLI/linux/linux-cmd/">linux-cmd</a></li>
+</ul>
+<h2 id="nginx"><span class="md-tag">nginx</span><a class="headerlink" href="#nginx" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../EKS/infra/network/nginx-ingress-controller-community-ver/">nginx-ingress-controller-community-ver</a></li>
+<li><a href="../EKS/operation/upgrade/nginx-ingress-controller-nginx-ver/">nginx-ingress-controller-nginx-ver</a></li>
+</ul>
+<h2 id="prometheus"><span class="md-tag">prometheus</span><a class="headerlink" href="#prometheus" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../EKS/operation/monitor/enable-prometheus-in-cloudwatch/">enable-prometheus-in-cloudwatch</a></li>
+<li><a href="../EKS/operation/monitor/install-prometheus-grafana/">install-prometheus-grafana-on-eks</a></li>
+</ul>
+<h2 id="python"><span class="md-tag">python</span><a class="headerlink" href="#python" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../EKS/operation/logging/cloudwatch-to-firehose-python/">cloudwatch-to-firehose-python</a></li>
+</ul>
+<h2 id="terraform"><span class="md-tag">terraform</span><a class="headerlink" href="#terraform" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../EKS/infra/cluster/eks-terraform-cluster/">eks-terraform-cluster</a></li>
+</ul>
+
+  <hr>
+<div class="md-source-file">
+  <small>
+    
+      Last update:
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 29, 2023</span>
+      
+        <br>
+        Created:
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 29, 2023</span>
+      
+    
+  </small>
+</div>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "toc.follow", "content.code.copy"], "search": "../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+    
+  </body>
+</html>
