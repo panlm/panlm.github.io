@@ -6,11 +6,11 @@ theme:
     name: material
     logo: git-attachment/AWS_Logo.png #favicons.png
     #favicon: assets/meta/AWS_Logo.png #favicons.png
-    #custom_dir: overrides
+    custom_dir: overrides
     font:
         text: Ubuntu
         code: Ubuntu Mono
-    #language: en
+    language: en
 
     palette:
     # Light mode
@@ -90,11 +90,11 @@ plugins:
       locale: en
       custom_format: "%A %d %B %Y"
       enable_creation_date: true
-      fallback_to_build_date: false
+      #fallback_to_build_date: false
       exclude:
         - index.md
-      enabled: true
-      strict: true
+      #enabled: true
+      #strict: true
   - ezlinks:
         wikilinks: true
   - awesome-pages
