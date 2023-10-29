@@ -125,10 +125,13 @@ plugins:
   - meta-descriptions
   - git-revision-date-localized:
       type: date
-      fallback_to_build_date: true
-      locale: fr
+      timezone: Asia/Shanghai
+      fallback_to_build_date: false
+      locale: en
       custom_format: "%A %d %B %Y"
       enable_creation_date: true
+      exclude:
+        - index.md
   - ezlinks:
         wikilinks: true
   - awesome-pages

@@ -2,14 +2,14 @@ mkdocs
 mkdocs-material
 mkdocs-ezlinked-plugin
 mkdocs-awesome-pages-plugin
+mkdocs-git-revision-date-localized-plugin
+mkdocs-custom-tags-attributes
 mdx_breakless_lists
 mkdocs-preview-links-plugin
 mkdocs-embed-file-plugins
 mkdocs_custom_fences
-mkdocs-git-revision-date-localized-plugin
 mkdocs-encryptcontent-plugin
 mkdocs-callouts
-mkdocs-custom-tags-attributes
 mkdocs-meta-descriptions-plugin
 #obsidiantools
 #pyvis

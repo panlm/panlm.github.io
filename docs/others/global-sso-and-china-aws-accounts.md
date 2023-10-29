@@ -1,23 +1,14 @@
 ---
 title: global-sso-and-china-aws-accounts
 description: 使用 global sso 登录中国区域 aws 账号
-chapter: true
-hidden: false
-weight: 202309
 created: 2023-09-26 11:04:50.392
 last_modified: 2023-10-08 08:59:12.572
 tags:
   - aws/security/identity-center
 ---
-
-```ad-attention
-title: This is a github note
-```
+> [!WARNING] This is a github note
 
 # global-sso-and-china-aws-accounts
-
-- [setup](#setup)
-- [refer](#refer)
 
 ## setup
 

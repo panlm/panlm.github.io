@@ -1,12 +1,12 @@
 ---
-title: "eks-private-access-cluster"
-description: "在已有 vpc 中创建私有访问的 eks 集群"
+title: eks-private-access-cluster
+description: 在已有 vpc 中创建私有访问的 eks 集群
 chapter: true
 weight: 30
 created: 2022-03-24 11:20:13.594
-last_modified: 2022-04-11 09:14:41.892
-tags: 
-- aws/container/eks 
+last_modified: 2023-10-29 13:42:37.699
+tags:
+  - aws/container/eks
 ---
 
 ```ad-attention
@@ -81,7 +81,7 @@ aws ec2 describe-instance-attribute --instance-id $INST_ID --attribute groupSet
 - if you create private only cluster in vpc which you have created with public/private eks endpoint, using the **Shared SG** of the previous cluster
 
 
-## prep-config
+## prep-config-
 
 - 创建完自定义 vpc 后，直接执行下面代码
 ```sh

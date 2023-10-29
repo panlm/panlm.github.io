@@ -1,21 +1,16 @@
 ---
-title: "github-page-howto"
-description: "github-page-howto"
-chapter: true
-weight: 99999999
+title: github-page-howto
+description: github-page-howto
 created: 2023-01-02 13:55:05.242
-last_modified: 2023-01-02 13:55:05.242
-tags: 
-- github 
+last_modified: 2023-10-29 13:33:58.032
+tags:
+  - github
 ---
-
+> [!WARNING] This is a github note
 # how to put workshop on github 
 
-- [build local](#build-local)
-- [hosted on github page](#hosted-on-github-page)
-
-
 ## build local
+
 - https://aws-samples.github.io/aws-modernization-workshop-sample/20_build/1_setup/
 
 ```sh
@@ -25,6 +20,7 @@ git submodule update
 
 
 ## hosted on github page
+
 - https://gohugo.io/hosting-and-deployment/hosting-on-github/
 
 ![github-page-howto-1.png](../git-attachment/github-page-howto-1.png)
@@ -40,4 +36,18 @@ git submodule update
     - `baseURL` --> `https://panlm.github.io/git-ghpages/`
 
 ## awesome pages plugin
+
 - https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin
+
+
+## highlight block
+
+> [!WARNING] This is a github note
+
+> [!IMPORTANT]  
+> Crucial information necessary for users to succeed.
+
+> [!NOTE]  
+> Critical content demanding immediate user attention due to potential risks.
+
+

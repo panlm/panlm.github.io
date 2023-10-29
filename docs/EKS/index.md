@@ -1,14 +1,9 @@
 ---
-last_modified: 2023-10-29 13:17:53.056
+last_modified: 2023-10-29 13:21:38.256
 number headings: first-level 2, max 3, 1.1, auto
 ---
 
-[!WARNING] This is a github note
-
-```ad-attention
-title: This is a github note
-[!WARNING] This is a github note
-```
+> [!WARNING] This is a github note
 
 # EKS
 

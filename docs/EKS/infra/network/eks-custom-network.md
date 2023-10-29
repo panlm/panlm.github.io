@@ -5,23 +5,15 @@ chapter: true
 hidden: false
 weight: 5
 created: 2023-08-21 17:56:37.517
-last_modified: 2023-08-21 17:56:37.517
-tags: 
-- aws/container/eks 
-- kubernetes/cni 
+last_modified: 2023-10-29 13:24:49.648
+tags:
+  - aws/container/eks
+  - kubernetes/cni
 ---
 
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # eks-custom-network-lab
-
-- [link](#link)
-- [lab](#lab)
-- [run pod on specific node](#run-pod-on-specific-node)
-
 
 ## link
 
@@ -34,7 +26,7 @@ title: This is a github note
 - The nodes are configured in public subnets and you want the pods to be placed in private subnets using a NAT Gateway
 
 
-## lab
+## lab-
 https://docs.aws.amazon.com/zh_cn/eks/latest/userguide/cni-custom-network.html
 
 - prep cidr / subnet id 

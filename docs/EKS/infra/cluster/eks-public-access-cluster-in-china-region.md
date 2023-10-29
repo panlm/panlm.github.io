@@ -1,39 +1,34 @@
 ---
 title: eks-public-access-cluster-in-china-region
 description: 在中国区域，创建共有访问的 eks 集群
-chapter: true
-weight: 50
 created: 2023-02-19 21:55:37.905
-last_modified: 2023-02-19 21:55:37.905
+last_modified: 2023-10-29 13:43:16.346
 tags:
   - aws/container/eks
   - aws/china
 ---
 
-```ad-attention
-title: This is a github note
-```
+> [!WARNING] This is a github note
 
 # eks-public-access-cluster-in-china-region
 
 1. create cloud9
 2. create vpc
-![[../../../cloud9/create-standard-vpc-for-lab-in-china-region#using-cloudformation-template]]
+![[../../../cloud9/create-standard-vpc-for-lab-in-china-region#using-cloudformation-template-]]
 
-or [hugo-link]({{< ref "../../20-cloud9/create-standard-vpc-for-lab-in-china-region#using-cloudformation-template" >}})  
+- refer: [[git/git-mkdocs/cloud9/create-standard-vpc-for-lab-in-china-region#using-cloudformation-template-]]
 
 3. get vpc id
-![[../../../cloud9/create-standard-vpc-for-lab-in-china-region#get-vpc-id]]
+![[../../../cloud9/create-standard-vpc-for-lab-in-china-region#get-vpc-id-]]
 
-or [hugo-link]({{< ref "create-standard-vpc-for-lab-in-china-region#get-vpc-id" >}})
+- refer: [[git/git-mkdocs/cloud9/create-standard-vpc-for-lab-in-china-region#get-vpc-id-]]
 
 4. pre-config
 ![[eks-private-access-cluster#^h86u1r]]
 
-or [hugo-link]({{< ref "eks-private-access-cluster#prep-config" >}}) 
+- refer: [[git/git-mkdocs/EKS/infra/cluster/eks-private-access-cluster#prep-config-]]
 
 5. cluster config
-
 ```yaml
 ---
 apiVersion: eksctl.io/v1alpha5
