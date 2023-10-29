@@ -3,7 +3,7 @@ title: eksdemo
 description: 使用 eksdemo 快速搭建 eks 集群以及其他所需组件
 chapter: true
 created: 2023-07-15 09:44:34.470
-last_modified: 2023-07-15 09:44:34.470
+last_modified: 2023-10-28 20:22:30.668
 tags:
   - aws/container/eks
   - aws/cmd
@@ -19,7 +19,7 @@ sudo mv -v /tmp/eksdemo /usr/local/bin
 
 ```
 
-## create-eks-cluster-
+## create eks cluster-
 
 ```sh
 CLUSTER_NAME=ekscluster2

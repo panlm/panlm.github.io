@@ -2,7 +2,7 @@
 title: setup cloud9 for eks
 description: 使用 cloud9 作为实验环境
 created: 2022-05-21 12:46:05.435
-last_modified: 2023-10-22 17:21:21.557
+last_modified: 2023-10-26 15:04:35.289
 tags:
   - aws/container/eks
   - aws/cloud9
@@ -91,7 +91,7 @@ sudo yum -y install jq gettext bash-completion moreutils wget
 # install awscli
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o /tmp/awscliv2.zip
 echo A |unzip /tmp/awscliv2.zip -d /tmp
-sudo /tmp/aws/install --update
+sudo /tmp/aws/install --update 2>&1 >/tmp/awscli-install.log
 echo "complete -C '/usr/local/bin/aws_completer' aws" >> ~/.bash_profile
 
 # remove existed aws

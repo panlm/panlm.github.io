@@ -2,11 +2,15 @@
 title: iptables
 description: iptables
 created: 2023-07-17 11:42:00.257
-last_modified: 2023-10-23 09:49:46.335
+last_modified: 2023-10-26 22:16:30.085
 tags:
   - cmd
   - linux
 ---
+
+```ad-attention
+title: This is a github note
+```
 
 # iptables
 
@@ -14,10 +18,11 @@ tags:
 
 - [[git/git-mkdocs/CLI/linux/linux-cmd#iptables-]]
 - [[fake-waf-on-ec2-forwarding-https#Layer 4 forwarding with iptables-]]
-- [[git/git-mkdocs/others/cross-region-reverse-proxy-with-nlb-cloudfront]]
+- [[git/git-mkdocs/others/cross-region-reverse-proxy-with-nlb-cloudfront#reverse proxy in china region-]]
 
 
 ## doc
+
 - https://www.frozentux.net/iptables-tutorial/cn/iptables-tutorial-cn-1.1.19.html#TRAVERSINGOFTABLES
 - https://www.digitalocean.com/community/tutorials/a-deep-dive-into-iptables-and-netfilter-architecture#iptables-and-connection-tracking
 

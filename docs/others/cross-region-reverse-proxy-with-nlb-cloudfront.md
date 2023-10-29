@@ -2,7 +2,7 @@
 title: cross-region-reverse-proxy-with-nlb-cloudfront
 description: 跨区域的 Layer 4 反向代理，并使用 nlb + cloudfront，考察证书使用需求
 created: 2023-10-09 11:23:34.877
-last_modified: 2023-10-12 08:45:10.955
+last_modified: 2023-10-28 20:47:18.917
 tags:
   - aws/network/nlb
   - aws/network/cloudfront
@@ -35,11 +35,11 @@ CN_DOMAIN_NAME=poc1010.aws.panlm.xyz # for china region
 
 ![[../EKS/infra/network/externaldns-for-route53#^fgvqjb]]
 
-refer: [[git/git-mkdocs/EKS/infra/network/externaldns-for-route53#setup-hosted-zone-]]
+refer: [[git/git-mkdocs/EKS/infra/network/externaldns-for-route53#setup hosted zone-]]
 
 ### eks cluster
 
-- eks (refer: [[../CLI/linux/eksdemo#create-eks-cluster-]])
+- eks (refer: [[../CLI/linux/eksdemo#create eks cluster-]])
 - addons (refer: [[../CLI/linux/eksdemo#addons-]])
     - externaldns
     - aws load balancer controller
@@ -76,7 +76,7 @@ curl -L http://nlbtoalb.${DOMAIN_NAME}/anything
 ```
 - both could access application successfully
 
-## reverse proxy in china region
+## reverse proxy in china region-
 
 - setup 2 EC2 instances [[fake-waf-on-ec2-forwarding-https#Layer 4 forwarding with iptables]] ([github](https://github.com/panlm/blog-private-api-gateway-dataflow/blob/main/fake-waf-on-ec2-forwarding-https.md#layer-4-forwarding-with-iptables))
 - forward request to NLB-1's public IP addresses. if your have 3 destination IPs, using 0.33/0.5 in first 2 rules and keep last one always been hit
@@ -133,10 +133,9 @@ curl https://abc.${CN_DOMAIN_NAME}/ip
 
 - [[../CLI/linux/iptables]]
 - [[fake-waf-on-ec2-forwarding-https]]
-- https://scalingo.com/blog/iptables
 - using alb + nginx as reverse proxy 
     - [[Extend Your Web Application Deployment to the China Region Using AWS Direct Connect]]
-
+- https://scalingo.com/blog/iptables
 
 
 
