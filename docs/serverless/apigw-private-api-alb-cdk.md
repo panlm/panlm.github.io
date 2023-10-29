@@ -3,10 +3,10 @@ title: apigw-private-api-alb-cdk
 description: 通过 alb 访问 private api 的例子
 chapter: true
 created: 2023-03-07 22:09:46.587
-last_modified: 2023-03-07 22:09:46.587
-tags: 
-- aws/serverless/api-gateway 
-- aws/mgmt/cdk 
+last_modified: 2023-10-29 13:16:27.936
+tags:
+  - aws/serverless/api-gateway
+  - aws/mgmt/cdk
 ---
 
 ```ad-attention
