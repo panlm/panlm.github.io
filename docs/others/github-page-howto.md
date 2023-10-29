@@ -2,11 +2,12 @@
 title: github-page-howto
 description: github-page-howto
 created: 2023-01-02 13:55:05.242
-last_modified: 2023-10-29 13:33:58.032
+last_modified: 2023-10-29 14:07:27.610
 tags:
   - github
 ---
-> [!WARNING] This is a github note
+> [!WARNING]
+> This is a github note
 # how to put workshop on github 
 
 ## build local
@@ -42,7 +43,8 @@ git submodule update
 
 ## highlight block
 
-> [!WARNING] This is a github note
+> [!WARNING] github
+> This is a github note
 
 > [!IMPORTANT]  
 > Crucial information necessary for users to succeed.

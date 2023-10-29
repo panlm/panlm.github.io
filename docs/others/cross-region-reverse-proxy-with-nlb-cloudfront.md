@@ -8,10 +8,8 @@ tags:
   - aws/network/cloudfront
   - aws/china
 ---
-
-```ad-attention
-title: This is a github note
-```
+> [!WARNING]
+> This is a github note
 
 # cross-region-reverse-proxy-with-nlb-cloudfront
 
