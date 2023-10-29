@@ -10,7 +10,7 @@ tags:
 ---
 
 > [!WARNING] 
-> !!! warning "This is a github note"
+> This is a github note
 
 # cross-region-reverse-proxy-with-nlb-cloudfront
 

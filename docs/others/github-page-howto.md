@@ -2,11 +2,12 @@
 title: github-page-howto
 description: github-page-howto
 created: 2023-01-02 13:55:05.242
-last_modified: 2023-10-29 14:28:47.732
+last_modified: 2023-10-29 20:13:46.593
 tags:
   - github
 ---
-!!! warning "This is a github note"
+
+> [!WARNING] This is a github note
 
 # how to put workshop on github 
 
@@ -55,7 +56,15 @@ git submodule update
 
 ### in material mkdocs
 
+- https://squidfunk.github.io/mkdocs-material/reference/admonitions/
 ```
 !!! warning "This is a github note"
 ```
+
+## plugins for mkdocs
+
+- https://github.com/mkdocs/catalog
+
+
+
 
