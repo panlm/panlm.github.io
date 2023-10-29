@@ -2,14 +2,16 @@
 title: cross-region-reverse-proxy-with-nlb-cloudfront
 description: 跨区域的 Layer 4 反向代理，并使用 nlb + cloudfront，考察证书使用需求
 created: 2023-10-09 11:23:34.877
-last_modified: 2023-10-29 13:02:20.842
+last_modified: 2023-10-29 14:25:00.136
 tags:
   - aws/network/nlb
   - aws/network/cloudfront
   - aws/china
 ---
-> [!WARNING]
-> This is a github note
+
+```ad-warning
+!!! warning "This is a github note"
+```
 
 # cross-region-reverse-proxy-with-nlb-cloudfront
 
