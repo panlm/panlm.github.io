@@ -4,24 +4,13 @@ description: eks 集群升级
 chapter: true
 weight: 101
 created: 2022-03-29 10:30:16.649
-last_modified: 2023-10-11 17:16:31.827
+last_modified: 2023-10-29 20:43:20.670
 tags:
   - aws/container/eks
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # eks-upgrade-procedure
-
-- [workshop](#workshop)
-- [流程](#%E6%B5%81%E7%A8%8B)
-- [deck](#deck)
-- [refer](#refer)
-	- [参考文档](#%E5%8F%82%E8%80%83%E6%96%87%E6%A1%A3)
-
 
 ## workshop
 
@@ -35,10 +24,10 @@ title: This is a github note
 ## 流程 
 
 1: 检查应用配置文件兼容性
-- kube-no-trouble ([link](kube-no-trouble.md) or or [hugo]({{< ref kube-no-trouble >}}))
-- pluto ([link](pluto.md) or or [hugo]({{< ref pluto >}}))
-- eksup ([link](eksup.md) or or [hugo]({{< ref eksup >}}))
-- 检查第三方插件 ([link](eks-cluster-addons-list.md) or or [hugo]({{< ref eks-cluster-addons-list >}})) 
+- [[kube-no-trouble]] 
+- [[pluto]] 
+- [[eksup]] 
+- 检查第三方插件 ([[eks-cluster-addons-list]])
 
 2: 升级核心addon （如果目标版本和 addon 有兼容问题则先升级，否则在升级完管理节点后升级）
 - coredns: 
@@ -56,6 +45,7 @@ title: This is a github note
 
 
 ## others
+
 - [[mm-eks-upgrade-workshop-walkley]]
 
 ## deck
@@ -74,6 +64,7 @@ title: This is a github note
 
 
 ## refer
+
 - [Amazon EKS 集群升级指南](https://aws.amazon.com/cn/blogs/china/amazon-eks-cluster-upgrade-guide/) 
 - [amazon-eks-版本管理策略与升级流程](https://aws.amazon.com/cn/blogs/china/amazon-eks-version-management-strategy-and-upgrade-process/) 
 - [Automate Amazon EKS upgrades with infrastructure as code](https://aws.amazon.com/blogs/opensource/automate-amazon-eks-upgrades-with-infrastructure-as-code/) 
