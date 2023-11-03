@@ -48,6 +48,8 @@
       
     
     
+      <link rel="stylesheet" href="../../css/timeago.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -2796,6 +2798,8 @@
       
         
       
+        
+      
     
     
     
@@ -2857,6 +2861,26 @@
   
   <span class="md-ellipsis">
     assume-tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CLI/linux/docker-image-sample/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    docker-image-customized
   </span>
   
 
@@ -2941,6 +2965,8 @@
   
     
     
+      
+        
       
         
       
@@ -3129,6 +3155,26 @@
   
   <span class="md-ellipsis">
     ebs-cmd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CLI/awscli/ecs-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ecs
   </span>
   
 
@@ -3568,8 +3614,9 @@
 
 
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>title: This is a github note
-</code></pre></div>
+<blockquote>
+<p>[!WARNING] This is a github note</p>
+</blockquote>
 <h1 id="rds-mysql-replica-cross-region-cross-account">rds-mysql-replica-cross-region-cross-account<a class="headerlink" href="#rds-mysql-replica-cross-region-cross-account" title="Permanent link">&para;</a></h1>
 <h2 id="_1">概述<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>本地 RDS-A ，希望能创建一个跨账号的 RDS-B 作为读副本</p>
@@ -3594,55 +3641,55 @@
 <ul>
 <li>准备测试环境，建议使用 cloud9 进行操作，并且安装下面软件</li>
 <li>如果跨账号复制的测试环境，你需要同样的 cloud9 在另一个环境中，并且安装下面软件<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>jq<span class="w"> </span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>rpm<span class="w"> </span>-Uvh<span class="w"> </span>https://repo.mysql.com/mysql80-community-release-el7.rpm
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mysql-community-client<span class="w"> </span>--enablerepo<span class="o">=</span>mysql80-community
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PAGER</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>jq<span class="w"> </span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>rpm<span class="w"> </span>-Uvh<span class="w"> </span>https://repo.mysql.com/mysql80-community-release-el7.rpm
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>mysql-community-client<span class="w"> </span>--enablerepo<span class="o">=</span>mysql80-community
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PAGER</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
 </code></pre></div></li>
 </ul>
 <p>^z60dbq</p>
 <ul>
 <li>获取 cloud9 所在子网，测试会使用该网络<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># cloud 9 subnet</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nv">RDS_NAME</span><span class="o">=</span>db1
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nv">INST_ID</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>http://169.254.169.254/1.0/meta-data/instance-id<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="k">)</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nv">VPC_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span>--instance-ids<span class="w"> </span><span class="si">${</span><span class="nv">INST_ID</span><span class="si">}</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Reservations[0].Instances[0].VpcId&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nv">AWS_REGION</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span>http://169.254.169.254/latest/dynamic/instance-identity/document<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.region&#39;</span><span class="k">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># cloud 9 subnet</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">RDS_NAME</span><span class="o">=</span>db1
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nv">INST_ID</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>http://169.254.169.254/1.0/meta-data/instance-id<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="k">)</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nv">VPC_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span>--instance-ids<span class="w"> </span><span class="si">${</span><span class="nv">INST_ID</span><span class="si">}</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Reservations[0].Instances[0].VpcId&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nv">AWS_REGION</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span>http://169.254.169.254/latest/dynamic/instance-identity/document<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.region&#39;</span><span class="k">)</span>
 </code></pre></div></li>
 </ul>
 <h3 id="subnet-group-">subnet-group-<a class="headerlink" href="#subnet-group-" title="Permanent link">&para;</a></h3>
 <ul>
 <li>如果跨账号复制的测试环境，该步骤需要在另一个账号中被重复执行<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">SG_NAME</span><span class="o">=</span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span>-<span class="si">${</span><span class="nv">RANDOM</span><span class="si">}</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>aws<span class="w"> </span>ec2<span class="w"> </span>create-security-group<span class="w">  </span><span class="se">\</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span>--description<span class="w"> </span><span class="si">${</span><span class="nv">SG_NAME</span><span class="si">}</span><span class="w">     </span><span class="se">\</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span>--group-name<span class="w"> </span><span class="si">${</span><span class="nv">SG_NAME</span><span class="si">}</span><span class="w">      </span><span class="se">\</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span>--vpc-id<span class="w"> </span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="nv">RDS_SG</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-security-groups<span class="w">      </span><span class="se">\</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span>--filters<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>group-name,Values<span class="o">=</span><span class="si">${</span><span class="nv">SG_NAME</span><span class="si">}</span><span class="w">         </span><span class="se">\</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">            </span><span class="nv">Name</span><span class="o">=</span>vpc-id,Values<span class="o">=</span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span><span class="w">              </span><span class="se">\</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;SecurityGroups[0].GroupId&quot;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;RDS security group ID: </span><span class="si">${</span><span class="nv">RDS_SG</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>aws<span class="w"> </span>ec2<span class="w"> </span>authorize-security-group-ingress<span class="w">  </span><span class="se">\</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">  </span>--group-id<span class="w"> </span><span class="si">${</span><span class="nv">RDS_SG</span><span class="si">}</span><span class="w">                    </span><span class="se">\</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">  </span>--protocol<span class="w"> </span>tcp<span class="w">                          </span><span class="se">\</span>
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">  </span>--port<span class="w"> </span><span class="m">3306</span><span class="w">                             </span><span class="se">\</span>
-<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">  </span>--cidr<span class="w"> </span><span class="s1">&#39;0.0.0.0/0&#39;</span>
-<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a>
-<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="nv">PUBLIC_SUBNETS_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-subnets<span class="w">        </span><span class="se">\</span>
-<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">  </span>--filters<span class="w"> </span><span class="s2">&quot;Name=vpc-id,Values=</span><span class="nv">$VPC_ID</span><span class="s2">&quot;</span><span class="w">                   </span><span class="se">\</span>
-<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">&#39;Subnets[?MapPublicIpOnLaunch==`true`].SubnetId&#39;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">  </span>--output<span class="w"> </span>json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-c<span class="w"> </span>.<span class="k">)</span>
-<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>
-<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="c1"># create a db subnet group</span>
-<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>aws<span class="w"> </span>rds<span class="w"> </span>create-db-subnet-group<span class="w">               </span><span class="se">\</span>
-<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">  </span>--db-subnet-group-name<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">         </span><span class="se">\</span>
-<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">  </span>--db-subnet-group-description<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">  </span><span class="se">\</span>
-<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="w">  </span>--subnet-ids<span class="w"> </span><span class="si">${</span><span class="nv">PUBLIC_SUBNETS_ID</span><span class="si">}</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">SG_NAME</span><span class="o">=</span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span>-<span class="si">${</span><span class="nv">RANDOM</span><span class="si">}</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>aws<span class="w"> </span>ec2<span class="w"> </span>create-security-group<span class="w">  </span><span class="se">\</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span>--description<span class="w"> </span><span class="si">${</span><span class="nv">SG_NAME</span><span class="si">}</span><span class="w">     </span><span class="se">\</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span>--group-name<span class="w"> </span><span class="si">${</span><span class="nv">SG_NAME</span><span class="si">}</span><span class="w">      </span><span class="se">\</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span>--vpc-id<span class="w"> </span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="nv">RDS_SG</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-security-groups<span class="w">      </span><span class="se">\</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span>--filters<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>group-name,Values<span class="o">=</span><span class="si">${</span><span class="nv">SG_NAME</span><span class="si">}</span><span class="w">         </span><span class="se">\</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">            </span><span class="nv">Name</span><span class="o">=</span>vpc-id,Values<span class="o">=</span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span><span class="w">              </span><span class="se">\</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;SecurityGroups[0].GroupId&quot;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;RDS security group ID: </span><span class="si">${</span><span class="nv">RDS_SG</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>aws<span class="w"> </span>ec2<span class="w"> </span>authorize-security-group-ingress<span class="w">  </span><span class="se">\</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">  </span>--group-id<span class="w"> </span><span class="si">${</span><span class="nv">RDS_SG</span><span class="si">}</span><span class="w">                    </span><span class="se">\</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">  </span>--protocol<span class="w"> </span>tcp<span class="w">                          </span><span class="se">\</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">  </span>--port<span class="w"> </span><span class="m">3306</span><span class="w">                             </span><span class="se">\</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">  </span>--cidr<span class="w"> </span><span class="s1">&#39;0.0.0.0/0&#39;</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="nv">PUBLIC_SUBNETS_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-subnets<span class="w">        </span><span class="se">\</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">  </span>--filters<span class="w"> </span><span class="s2">&quot;Name=vpc-id,Values=</span><span class="nv">$VPC_ID</span><span class="s2">&quot;</span><span class="w">                   </span><span class="se">\</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">&#39;Subnets[?MapPublicIpOnLaunch==`true`].SubnetId&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">  </span>--output<span class="w"> </span>json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-c<span class="w"> </span>.<span class="k">)</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="c1"># create a db subnet group</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>aws<span class="w"> </span>rds<span class="w"> </span>create-db-subnet-group<span class="w">               </span><span class="se">\</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">  </span>--db-subnet-group-name<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">         </span><span class="se">\</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">  </span>--db-subnet-group-description<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">  </span><span class="se">\</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">  </span>--subnet-ids<span class="w"> </span><span class="si">${</span><span class="nv">PUBLIC_SUBNETS_ID</span><span class="si">}</span><span class="w"> </span>
 </code></pre></div></li>
 </ul>
 <p>^rav4er</p>
@@ -3650,108 +3697,108 @@
 <ul>
 <li>创建 rds 数据库</li>
 <li>密码保存在 <code>~/rds_password</code> 中<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># generate a password for RDS</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">RDS_PASSWORD</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>date<span class="w"> </span><span class="p">|</span><span class="w"> </span>md5sum<span class="w">  </span><span class="p">|</span>cut<span class="w"> </span>-f1<span class="w"> </span>-d<span class="s1">&#39; &#39;</span><span class="k">)</span><span class="s2">&quot;</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">RDS_PASSWORD</span><span class="si">}</span><span class="w">  </span>&gt;<span class="w"> </span>~/rds_password
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># install supported oldest mysql version </span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nv">ENGINE_VER</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-engine-versions<span class="w"> </span>--engine<span class="w"> </span>mysql<span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;DBEngineVersions[].EngineVersion&quot;</span><span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>-Eo<span class="w"> </span><span class="s1">&#39;5\.7\.[0-9]+&#39;</span><span class="w"> </span><span class="p">|</span>sort<span class="w"> </span><span class="p">|</span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="k">)</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1"># create RDS MySQL instance</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1"># INSTANCE_TYPE=db.m5.xlarge</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1"># STORAGE_SIZE=5000</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>aws<span class="w"> </span>rds<span class="w"> </span>create-db-instance<span class="w">                          </span><span class="se">\</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">              </span><span class="se">\</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">  </span>--db-name<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">                             </span><span class="se">\</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">  </span>--db-instance-class<span class="w"> </span><span class="si">${</span><span class="nv">INSTANCE_TYPE</span><span class="k">:-</span><span class="nv">db</span><span class="p">.m5.large</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">  </span>--engine<span class="w"> </span>mysql<span class="w">                                    </span><span class="se">\</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">  </span>--engine-version<span class="w"> </span><span class="si">${</span><span class="nv">ENGINE_VER</span><span class="si">}</span><span class="w">                    </span><span class="se">\</span>
-<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">  </span>--db-subnet-group-name<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">                </span><span class="se">\</span>
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">  </span>--vpc-security-group-ids<span class="w"> </span><span class="si">${</span><span class="nv">RDS_SG</span><span class="si">}</span><span class="w">                </span><span class="se">\</span>
-<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">  </span>--master-username<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">                     </span><span class="se">\</span>
-<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">  </span>--publicly-accessible<span class="w">                             </span><span class="se">\</span>
-<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">  </span>--master-user-password<span class="w"> </span><span class="si">${</span><span class="nv">RDS_PASSWORD</span><span class="si">}</span><span class="w">            </span><span class="se">\</span>
-<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">  </span>--backup-retention-period<span class="w"> </span><span class="m">1</span><span class="w">                       </span><span class="se">\</span>
-<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">  </span>--allocated-storage<span class="w"> </span><span class="si">${</span><span class="nv">STORAGE_SIZE</span><span class="k">:-</span><span class="nv">50</span><span class="si">}</span><span class="w"> </span>
-<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>
-<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="c1"># --storage-encrypted</span>
-<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>
-<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="c1"># get rds status util `available`</span>
-<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="nv">status</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="k">until</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${</span><span class="nv">status</span><span class="si">}</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;available&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="nv">status</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-instances<span class="w">       </span><span class="se">\</span>
-<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">       </span><span class="se">\</span>
-<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;DBInstances[].DBInstanceStatus&quot;</span><span class="w">   </span><span class="se">\</span>
-<a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">status</span><span class="si">}</span>
-<a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a>sleep<span class="w"> </span><span class="m">60</span>
-<a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a><span class="k">done</span>
-<a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a>
-<a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a><span class="nv">RDS_HOSTNAME</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-instances<span class="w">    </span><span class="se">\</span>
-<a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">     </span><span class="se">\</span>
-<a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;DBInstances[].Endpoint.Address&quot;</span><span class="w">    </span><span class="se">\</span>
-<a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a>
-<a id="__codelineno-4-43" name="__codelineno-4-43" href="#__codelineno-4-43"></a><span class="nv">RDS_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-instances<span class="w">    </span><span class="se">\</span>
-<a id="__codelineno-4-44" name="__codelineno-4-44" href="#__codelineno-4-44"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">     </span><span class="se">\</span>
-<a id="__codelineno-4-45" name="__codelineno-4-45" href="#__codelineno-4-45"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;DBInstances[].DBInstanceArn&quot;</span><span class="w">    </span><span class="se">\</span>
-<a id="__codelineno-4-46" name="__codelineno-4-46" href="#__codelineno-4-46"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># generate a password for RDS</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">RDS_PASSWORD</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>date<span class="w"> </span><span class="p">|</span><span class="w"> </span>md5sum<span class="w">  </span><span class="p">|</span>cut<span class="w"> </span>-f1<span class="w"> </span>-d<span class="s1">&#39; &#39;</span><span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">RDS_PASSWORD</span><span class="si">}</span><span class="w">  </span>&gt;<span class="w"> </span>~/rds_password
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># install supported oldest mysql version </span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nv">ENGINE_VER</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-engine-versions<span class="w"> </span>--engine<span class="w"> </span>mysql<span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;DBEngineVersions[].EngineVersion&quot;</span><span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>-Eo<span class="w"> </span><span class="s1">&#39;5\.7\.[0-9]+&#39;</span><span class="w"> </span><span class="p">|</span>sort<span class="w"> </span><span class="p">|</span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="k">)</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1"># create RDS MySQL instance</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="c1"># INSTANCE_TYPE=db.m5.xlarge</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="c1"># STORAGE_SIZE=5000</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>aws<span class="w"> </span>rds<span class="w"> </span>create-db-instance<span class="w">                          </span><span class="se">\</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">              </span><span class="se">\</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">  </span>--db-name<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">                             </span><span class="se">\</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">  </span>--db-instance-class<span class="w"> </span><span class="si">${</span><span class="nv">INSTANCE_TYPE</span><span class="k">:-</span><span class="nv">db</span><span class="p">.m5.large</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">  </span>--engine<span class="w"> </span>mysql<span class="w">                                    </span><span class="se">\</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">  </span>--engine-version<span class="w"> </span><span class="si">${</span><span class="nv">ENGINE_VER</span><span class="si">}</span><span class="w">                    </span><span class="se">\</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">  </span>--db-subnet-group-name<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">                </span><span class="se">\</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">  </span>--vpc-security-group-ids<span class="w"> </span><span class="si">${</span><span class="nv">RDS_SG</span><span class="si">}</span><span class="w">                </span><span class="se">\</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">  </span>--master-username<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">                     </span><span class="se">\</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">  </span>--publicly-accessible<span class="w">                             </span><span class="se">\</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">  </span>--master-user-password<span class="w"> </span><span class="si">${</span><span class="nv">RDS_PASSWORD</span><span class="si">}</span><span class="w">            </span><span class="se">\</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">  </span>--backup-retention-period<span class="w"> </span><span class="m">1</span><span class="w">                       </span><span class="se">\</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">  </span>--allocated-storage<span class="w"> </span><span class="si">${</span><span class="nv">STORAGE_SIZE</span><span class="k">:-</span><span class="nv">50</span><span class="si">}</span><span class="w"> </span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="c1"># --storage-encrypted</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="c1"># get rds status util `available`</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="nv">status</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="k">until</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${</span><span class="nv">status</span><span class="si">}</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;available&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="nv">status</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-instances<span class="w">       </span><span class="se">\</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">       </span><span class="se">\</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;DBInstances[].DBInstanceStatus&quot;</span><span class="w">   </span><span class="se">\</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">status</span><span class="si">}</span>
+<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a>sleep<span class="w"> </span><span class="m">60</span>
+<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a><span class="k">done</span>
+<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a>
+<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a><span class="nv">RDS_HOSTNAME</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-instances<span class="w">    </span><span class="se">\</span>
+<a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">     </span><span class="se">\</span>
+<a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;DBInstances[].Endpoint.Address&quot;</span><span class="w">    </span><span class="se">\</span>
+<a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a>
+<a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a><span class="nv">RDS_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-instances<span class="w">    </span><span class="se">\</span>
+<a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">     </span><span class="se">\</span>
+<a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;DBInstances[].DBInstanceArn&quot;</span><span class="w">    </span><span class="se">\</span>
+<a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
 </code></pre></div></li>
 </ul>
 <h2 id="create-read-replica">create read replica<a class="headerlink" href="#create-read-replica" title="Permanent link">&para;</a></h2>
 <ul>
 <li>创建读副本<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">RDS_REP1_NAME</span><span class="o">=</span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span>-rep1<span class="w"> </span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># # enable auto backup if you miss it in creation</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="c1"># aws rds modify-db-instance \</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1">#   --db-instance-identifier ${RDS_NAME} \</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="c1">#   --backup-retention-period 1  \</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1">#   --apply-immediately</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="c1"># create read replica</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>aws<span class="w"> </span>rds<span class="w"> </span>create-db-instance-read-replica<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_REP1_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">  </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">  </span>--source-region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">  </span>--source-db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_ARN</span><span class="si">}</span>
-<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
-<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="c1"># get rds status util `available`</span>
-<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="nv">status</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="k">until</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${</span><span class="nv">status</span><span class="si">}</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;available&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="nv">status</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-instances<span class="w">            </span><span class="se">\</span>
-<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_REP1_NAME</span><span class="si">}</span><span class="w">       </span><span class="se">\</span>
-<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;DBInstances[].DBInstanceStatus&quot;</span><span class="w">        </span><span class="se">\</span>
-<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">status</span><span class="si">}</span>
-<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>sleep<span class="w"> </span><span class="m">60</span>
-<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="k">done</span>
-<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>
-<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="nv">RDS_REP1_HOSTNAME</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-instances<span class="w">    </span><span class="se">\</span>
-<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_REP1_NAME</span><span class="si">}</span><span class="w">     </span><span class="se">\</span>
-<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;DBInstances[].Endpoint.Address&quot;</span><span class="w">    </span><span class="se">\</span>
-<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">RDS_REP1_NAME</span><span class="o">=</span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span>-rep1<span class="w"> </span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># # enable auto backup if you miss it in creation</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># aws rds modify-db-instance \</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1">#   --db-instance-identifier ${RDS_NAME} \</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1">#   --backup-retention-period 1  \</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1">#   --apply-immediately</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1"># create read replica</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>aws<span class="w"> </span>rds<span class="w"> </span>create-db-instance-read-replica<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_REP1_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">  </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">  </span>--source-region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">  </span>--source-db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_ARN</span><span class="si">}</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="c1"># get rds status util `available`</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="nv">status</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="k">until</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${</span><span class="nv">status</span><span class="si">}</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;available&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="nv">status</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-instances<span class="w">            </span><span class="se">\</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_REP1_NAME</span><span class="si">}</span><span class="w">       </span><span class="se">\</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;DBInstances[].DBInstanceStatus&quot;</span><span class="w">        </span><span class="se">\</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">status</span><span class="si">}</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a>sleep<span class="w"> </span><span class="m">60</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="k">done</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="nv">RDS_REP1_HOSTNAME</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-instances<span class="w">    </span><span class="se">\</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_REP1_NAME</span><span class="si">}</span><span class="w">     </span><span class="se">\</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;DBInstances[].Endpoint.Address&quot;</span><span class="w">    </span><span class="se">\</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
 </code></pre></div></li>
 </ul>
 <h3 id="on-master">on master<a class="headerlink" href="#on-master" title="Permanent link">&para;</a></h3>
 <ul>
 <li>在主库中创建复制用户</li>
 <li>配置 binlog 的保留周期，需要在此期间完成远程读副本创建并且恢复复制<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">echo</span><span class="w"> </span>mysql<span class="w"> </span>-h<span class="si">${</span><span class="nv">RDS_HOSTNAME</span><span class="si">}</span><span class="w"> </span>-u<span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w"> </span>-p<span class="si">${</span><span class="nv">RDS_PASSWORD</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">echo</span><span class="w"> </span>mysql<span class="w"> </span>-h<span class="si">${</span><span class="nv">RDS_HOSTNAME</span><span class="si">}</span><span class="w"> </span>-u<span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w"> </span>-p<span class="si">${</span><span class="nv">RDS_PASSWORD</span><span class="si">}</span>
 </code></pre></div></li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">call</span><span class="w"> </span><span class="n">mysql</span><span class="p">.</span><span class="n">rds_set_configuration</span><span class="p">(</span><span class="s1">&#39;binlog retention hours&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="p">);</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;repl_user&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;repl_password&#39;</span><span class="p">;</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">GRANT</span><span class="w"> </span><span class="n">REPLICATION</span><span class="w"> </span><span class="n">CLIENT</span><span class="p">,</span><span class="w"> </span><span class="n">REPLICATION</span><span class="w"> </span><span class="n">SLAVE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;repl_user&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="k">call</span><span class="w"> </span><span class="n">mysql</span><span class="p">.</span><span class="n">rds_set_configuration</span><span class="p">(</span><span class="s1">&#39;binlog retention hours&#39;</span><span class="p">,</span><span class="w"> </span><span class="mi">24</span><span class="p">);</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">CREATE</span><span class="w"> </span><span class="k">USER</span><span class="w"> </span><span class="s1">&#39;repl_user&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span><span class="w"> </span><span class="n">IDENTIFIED</span><span class="w"> </span><span class="k">BY</span><span class="w"> </span><span class="s1">&#39;repl_password&#39;</span><span class="p">;</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="k">GRANT</span><span class="w"> </span><span class="n">REPLICATION</span><span class="w"> </span><span class="n">CLIENT</span><span class="p">,</span><span class="w"> </span><span class="n">REPLICATION</span><span class="w"> </span><span class="n">SLAVE</span><span class="w"> </span><span class="k">ON</span><span class="w"> </span><span class="o">*</span><span class="p">.</span><span class="o">*</span><span class="w"> </span><span class="k">TO</span><span class="w"> </span><span class="s1">&#39;repl_user&#39;</span><span class="o">@</span><span class="s1">&#39;%&#39;</span><span class="p">;</span>
 </code></pre></div>
 <p>^gycsd4</p>
 <h3 id="on-slave">on slave<a class="headerlink" href="#on-slave" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">echo</span><span class="w"> </span>mysql<span class="w"> </span>-h<span class="si">${</span><span class="nv">RDS_REP1_HOSTNAME</span><span class="si">}</span><span class="w"> </span>-u<span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w"> </span>-p<span class="si">${</span><span class="nv">RDS_PASSWORD</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">echo</span><span class="w"> </span>mysql<span class="w"> </span>-h<span class="si">${</span><span class="nv">RDS_REP1_HOSTNAME</span><span class="si">}</span><span class="w"> </span>-u<span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w"> </span>-p<span class="si">${</span><span class="nv">RDS_PASSWORD</span><span class="si">}</span>
 </code></pre></div>
 <ul>
 <li>
 <p>检查复制状态<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">SHOW</span><span class="w"> </span><span class="n">SLAVE</span><span class="w"> </span><span class="n">STATUS</span><span class="err">\</span><span class="k">G</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="k">SHOW</span><span class="w"> </span><span class="n">SLAVE</span><span class="w"> </span><span class="n">STATUS</span><span class="err">\</span><span class="k">G</span>
 </code></pre></div></p>
 </li>
 <li>
@@ -3761,8 +3808,8 @@
 </blockquote>
 </li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">call</span><span class="w"> </span><span class="n">mysql</span><span class="p">.</span><span class="n">rds_stop_replication</span><span class="p">();</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="k">SHOW</span><span class="w"> </span><span class="n">SLAVE</span><span class="w"> </span><span class="n">STATUS</span><span class="err">\</span><span class="k">G</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">call</span><span class="w"> </span><span class="n">mysql</span><span class="p">.</span><span class="n">rds_stop_replication</span><span class="p">();</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="k">SHOW</span><span class="w"> </span><span class="n">SLAVE</span><span class="w"> </span><span class="n">STATUS</span><span class="err">\</span><span class="k">G</span>
 </code></pre></div>
 <ul>
 <li>中断复制，并且记录断点，在后续恢复复制时使用</li>
@@ -3775,40 +3822,40 @@ Exec_Master_Log_Pos: 154</p>
 <h2 id="create-snapshot-on-replica">create snapshot on replica<a class="headerlink" href="#create-snapshot-on-replica" title="Permanent link">&para;</a></h2>
 <ul>
 <li>创建快照<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nv">RDS_REP1_SNAP_NAME</span><span class="o">=</span><span class="si">${</span><span class="nv">RDS_REP1_NAME</span><span class="si">}</span>-snap-1
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>aws<span class="w"> </span>rds<span class="w"> </span>create-db-snapshot<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>--db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_REP1_SNAP_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_REP1_NAME</span><span class="si">}</span>
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>
-<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a><span class="nv">SHARED_SNAP_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-snapshots<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-11-7" name="__codelineno-11-7" href="#__codelineno-11-7"></a>--db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_REP1_SNAP_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-11-8" name="__codelineno-11-8" href="#__codelineno-11-8"></a>--query<span class="w"> </span><span class="s1">&#39;DBSnapshots[].DBSnapshotArn&#39;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-11-9" name="__codelineno-11-9" href="#__codelineno-11-9"></a>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-11-10" name="__codelineno-11-10" href="#__codelineno-11-10"></a>
-<a id="__codelineno-11-11" name="__codelineno-11-11" href="#__codelineno-11-11"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;SHARED_SNAP_ARN=</span><span class="si">${</span><span class="nv">SHARED_SNAP_ARN</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-11-12" name="__codelineno-11-12" href="#__codelineno-11-12"></a>
-<a id="__codelineno-11-13" name="__codelineno-11-13" href="#__codelineno-11-13"></a><span class="c1"># get snapshot status util `available`</span>
-<a id="__codelineno-11-14" name="__codelineno-11-14" href="#__codelineno-11-14"></a><span class="k">while</span><span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-11-15" name="__codelineno-11-15" href="#__codelineno-11-15"></a><span class="nv">status</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-snapshots<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-11-16" name="__codelineno-11-16" href="#__codelineno-11-16"></a>--db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_REP1_SNAP_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-11-17" name="__codelineno-11-17" href="#__codelineno-11-17"></a>--query<span class="w"> </span><span class="s1">&#39;DBSnapshots[].Status&#39;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-11-18" name="__codelineno-11-18" href="#__codelineno-11-18"></a>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-11-19" name="__codelineno-11-19" href="#__codelineno-11-19"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$status</span>
-<a id="__codelineno-11-20" name="__codelineno-11-20" href="#__codelineno-11-20"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$status</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;available&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-11-21" name="__codelineno-11-21" href="#__codelineno-11-21"></a><span class="w">  </span><span class="k">break</span>
-<a id="__codelineno-11-22" name="__codelineno-11-22" href="#__codelineno-11-22"></a><span class="k">fi</span>
-<a id="__codelineno-11-23" name="__codelineno-11-23" href="#__codelineno-11-23"></a>sleep<span class="w"> </span><span class="m">60</span>
-<a id="__codelineno-11-24" name="__codelineno-11-24" href="#__codelineno-11-24"></a><span class="k">done</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nv">RDS_REP1_SNAP_NAME</span><span class="o">=</span><span class="si">${</span><span class="nv">RDS_REP1_NAME</span><span class="si">}</span>-snap-1
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>aws<span class="w"> </span>rds<span class="w"> </span>create-db-snapshot<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>--db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_REP1_SNAP_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_REP1_NAME</span><span class="si">}</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="nv">SHARED_SNAP_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-snapshots<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>--db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_REP1_SNAP_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>--query<span class="w"> </span><span class="s1">&#39;DBSnapshots[].DBSnapshotArn&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;SHARED_SNAP_ARN=</span><span class="si">${</span><span class="nv">SHARED_SNAP_ARN</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="c1"># get snapshot status util `available`</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="k">while</span><span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="nv">status</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-snapshots<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>--db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_REP1_SNAP_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>--query<span class="w"> </span><span class="s1">&#39;DBSnapshots[].Status&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$status</span>
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$status</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;available&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="w">  </span><span class="k">break</span>
+<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="k">fi</span>
+<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a>sleep<span class="w"> </span><span class="m">60</span>
+<a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a><span class="k">done</span>
 </code></pre></div></li>
 </ul>
 <h2 id="share-snapshot">share snapshot<a class="headerlink" href="#share-snapshot" title="Permanent link">&para;</a></h2>
 <ul>
 <li>跨账号共享快照</li>
 <li>输入目标账号 ID<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>aws<span class="w"> </span>rds<span class="w"> </span>modify-db-snapshot-attribute<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">    </span>--db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_REP1_SNAP_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span>--attribute-name<span class="w"> </span>restore<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">    </span>--values-to-add<span class="w"> </span>&lt;target_account_id&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>aws<span class="w"> </span>rds<span class="w"> </span>modify-db-snapshot-attribute<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">    </span>--db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_REP1_SNAP_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="w">    </span>--attribute-name<span class="w"> </span>restore<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a><span class="w">    </span>--values-to-add<span class="w"> </span>&lt;target_account_id&gt;
 </code></pre></div></li>
 </ul>
 <h2 id="copy-snapshot-local">copy snapshot local<a class="headerlink" href="#copy-snapshot-local" title="Permanent link">&para;</a></h2>
@@ -3820,56 +3867,56 @@ Exec_Master_Log_Pos: 154</p>
 <h3 id="check-snapshot">check snapshot<a class="headerlink" href="#check-snapshot" title="Permanent link">&para;</a></h3>
 <ul>
 <li>将源账号的环境变量复制到现有账号的命令行窗口方便执行后续操作<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nv">SHARED_SNAP_ARN</span><span class="o">=</span>???
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="nv">LOCAL_SNAP_NAME</span><span class="o">=</span>local-snap-<span class="nv">$RANDOM</span>
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># get shared snapshot</span>
-<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-snapshots<span class="w"> </span>--include-shared<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>--db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">SHARED_SNAP_ARN</span><span class="si">}</span>
-<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>
-<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a><span class="c1"># ensure `SnapshotType` is `shared`</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="nv">SHARED_SNAP_ARN</span><span class="o">=</span>???
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nv">LOCAL_SNAP_NAME</span><span class="o">=</span>local-snap-<span class="nv">$RANDOM</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># get shared snapshot</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-snapshots<span class="w"> </span>--include-shared<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>--db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">SHARED_SNAP_ARN</span><span class="si">}</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="c1"># ensure `SnapshotType` is `shared`</span>
 </code></pre></div></li>
 </ul>
 <h3 id="copy-without-kms">copy without kms<a class="headerlink" href="#copy-without-kms" title="Permanent link">&para;</a></h3>
 <ul>
 <li>复制快照到本账号，且不修改原有数据库未加密状态<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>aws<span class="w"> </span>rds<span class="w"> </span>copy-db-snapshot<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>--source-db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">SHARED_SNAP_ARN</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>--target-db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">LOCAL_SNAP_NAME</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>aws<span class="w"> </span>rds<span class="w"> </span>copy-db-snapshot<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>--source-db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">SHARED_SNAP_ARN</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>--target-db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">LOCAL_SNAP_NAME</span><span class="si">}</span>
 </code></pre></div></li>
 </ul>
 <h3 id="copy-with-kms-option">copy with kms (option)<a class="headerlink" href="#copy-with-kms-option" title="Permanent link">&para;</a></h3>
 <ul>
 <li>（可选）复制快照到本账号，且修改原有数据库未加密状态为加密状态</li>
 <li>提前创建所需要的CMK，或者指定KMS<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># KEY_ARN=???</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nv">KEY_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>kms<span class="w"> </span>create-key<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.KeyMetadata.Arn&#39;</span><span class="k">)</span>
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
-<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>aws<span class="w"> </span>rds<span class="w"> </span>copy-db-snapshot<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>--source-db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">SHARED_SNAP_ARN</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>--target-db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">LOCAL_SNAP_NAME</span><span class="si">}</span>
-<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a>--kms-key-id<span class="w"> </span><span class="si">${</span><span class="nv">KEY_ARN</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># KEY_ARN=???</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nv">KEY_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>kms<span class="w"> </span>create-key<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.KeyMetadata.Arn&#39;</span><span class="k">)</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>aws<span class="w"> </span>rds<span class="w"> </span>copy-db-snapshot<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>--source-db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">SHARED_SNAP_ARN</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>--target-db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">LOCAL_SNAP_NAME</span><span class="si">}</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>--kms-key-id<span class="w"> </span><span class="si">${</span><span class="nv">KEY_ARN</span><span class="si">}</span>
 </code></pre></div></li>
 </ul>
 <h3 id="wait-snapshot-complete">wait snapshot complete<a class="headerlink" href="#wait-snapshot-complete" title="Permanent link">&para;</a></h3>
 <ul>
 <li>等待复制快照操作完成<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="c1"># get snapshot status util `available`</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="nv">status</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="k">until</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${</span><span class="nv">status</span><span class="si">}</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;available&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="nv">status</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-snapshots<span class="w">        </span><span class="se">\</span>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">  </span>--db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">LOCAL_SNAP_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">&#39;DBSnapshots[].Status&#39;</span><span class="w">              </span><span class="se">\</span>
-<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-16-8" name="__codelineno-16-8" href="#__codelineno-16-8"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">status</span><span class="si">}</span>
-<a id="__codelineno-16-9" name="__codelineno-16-9" href="#__codelineno-16-9"></a>sleep<span class="w"> </span><span class="m">60</span>
-<a id="__codelineno-16-10" name="__codelineno-16-10" href="#__codelineno-16-10"></a><span class="k">done</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># get snapshot status util `available`</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="nv">status</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="k">until</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${</span><span class="nv">status</span><span class="si">}</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;available&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="nv">status</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-snapshots<span class="w">        </span><span class="se">\</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">  </span>--db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">LOCAL_SNAP_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">&#39;DBSnapshots[].Status&#39;</span><span class="w">              </span><span class="se">\</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">status</span><span class="si">}</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a>sleep<span class="w"> </span><span class="m">60</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="k">done</span>
 </code></pre></div></li>
 </ul>
 <h2 id="restore">restore<a class="headerlink" href="#restore" title="Permanent link">&para;</a></h2>
 <h3 id="prep">prep<a class="headerlink" href="#prep" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nv">VPC_ID</span><span class="o">=</span>vpc-0c6e8c75ad4af1ee5
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nv">RDS_NAME</span><span class="o">=</span>db1-restore
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nv">VPC_ID</span><span class="o">=</span>vpc-0c6e8c75ad4af1ee5
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="nv">RDS_NAME</span><span class="o">=</span>db1-restore
 </code></pre></div>
 <h3 id="subnet-group">subnet group<a class="headerlink" href="#subnet-group" title="Permanent link">&para;</a></h3>
 <ul>
@@ -3880,40 +3927,40 @@ Exec_Master_Log_Pos: 154</p>
 <h3 id="restore-db">restore db<a class="headerlink" href="#restore-db" title="Permanent link">&para;</a></h3>
 <ul>
 <li>从复制的快照恢复数据库<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># restore RDS MySQL instance</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a>aws<span class="w"> </span>rds<span class="w"> </span>restore-db-instance-from-db-snapshot<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">  </span>--db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">LOCAL_SNAP_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">     </span><span class="se">\</span>
-<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="w">  </span>--db-instance-class<span class="w"> </span>db.t3.micro<span class="w">          </span><span class="se">\</span>
-<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">  </span>--engine<span class="w"> </span>mysql<span class="w">                           </span><span class="se">\</span>
-<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="w">  </span>--db-subnet-group-name<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">       </span><span class="se">\</span>
-<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="w">  </span>--vpc-security-group-ids<span class="w"> </span><span class="si">${</span><span class="nv">RDS_SG</span><span class="si">}</span><span class="w">       </span><span class="se">\</span>
-<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="w">  </span>--publicly-accessible<span class="w">   </span>
-<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>
-<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a><span class="c1"># get rds status util `available`</span>
-<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a><span class="nv">status</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a><span class="k">until</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${</span><span class="nv">status</span><span class="si">}</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;available&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a><span class="nv">status</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-instances<span class="w">       </span><span class="se">\</span>
-<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">       </span><span class="se">\</span>
-<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;DBInstances[].DBInstanceStatus&quot;</span><span class="w">   </span><span class="se">\</span>
-<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">status</span><span class="si">}</span>
-<a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a>sleep<span class="w"> </span><span class="m">60</span>
-<a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a><span class="k">done</span>
-<a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a>
-<a id="__codelineno-18-22" name="__codelineno-18-22" href="#__codelineno-18-22"></a><span class="nv">TARGET_RDS_HOSTNAME</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-instances<span class="w">    </span><span class="se">\</span>
-<a id="__codelineno-18-23" name="__codelineno-18-23" href="#__codelineno-18-23"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">     </span><span class="se">\</span>
-<a id="__codelineno-18-24" name="__codelineno-18-24" href="#__codelineno-18-24"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;DBInstances[].Endpoint.Address&quot;</span><span class="w">    </span><span class="se">\</span>
-<a id="__codelineno-18-25" name="__codelineno-18-25" href="#__codelineno-18-25"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="c1"># restore RDS MySQL instance</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>aws<span class="w"> </span>rds<span class="w"> </span>restore-db-instance-from-db-snapshot<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">  </span>--db-snapshot-identifier<span class="w"> </span><span class="si">${</span><span class="nv">LOCAL_SNAP_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">     </span><span class="se">\</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">  </span>--db-instance-class<span class="w"> </span>db.t3.micro<span class="w">          </span><span class="se">\</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">  </span>--engine<span class="w"> </span>mysql<span class="w">                           </span><span class="se">\</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">  </span>--db-subnet-group-name<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">       </span><span class="se">\</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">  </span>--vpc-security-group-ids<span class="w"> </span><span class="si">${</span><span class="nv">RDS_SG</span><span class="si">}</span><span class="w">       </span><span class="se">\</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">  </span>--publicly-accessible<span class="w">   </span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a><span class="c1"># get rds status util `available`</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a><span class="nv">status</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a><span class="k">until</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${</span><span class="nv">status</span><span class="si">}</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;available&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a><span class="nv">status</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-instances<span class="w">       </span><span class="se">\</span>
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">       </span><span class="se">\</span>
+<a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;DBInstances[].DBInstanceStatus&quot;</span><span class="w">   </span><span class="se">\</span>
+<a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">status</span><span class="si">}</span>
+<a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a>sleep<span class="w"> </span><span class="m">60</span>
+<a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a><span class="k">done</span>
+<a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a>
+<a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a><span class="nv">TARGET_RDS_HOSTNAME</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-instances<span class="w">    </span><span class="se">\</span>
+<a id="__codelineno-17-23" name="__codelineno-17-23" href="#__codelineno-17-23"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">     </span><span class="se">\</span>
+<a id="__codelineno-17-24" name="__codelineno-17-24" href="#__codelineno-17-24"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;DBInstances[].Endpoint.Address&quot;</span><span class="w">    </span><span class="se">\</span>
+<a id="__codelineno-17-25" name="__codelineno-17-25" href="#__codelineno-17-25"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
 </code></pre></div></li>
 </ul>
 <h3 id="on-target">on target<a class="headerlink" href="#on-target" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
 <p>连接到恢复后的 rds 数据库，注意用户名为源账号主库，密码在源账号 <code>~/rds_password</code> 中<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="c1"># user should be origin db1 </span>
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="c1"># pass should be saved in ~/rds_password</span>
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="nb">echo</span><span class="w"> </span>mysql<span class="w"> </span>-h<span class="si">${</span><span class="nv">TARGET_RDS_HOSTNAME</span><span class="si">}</span><span class="w"> </span>-u<span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w"> </span>-p<span class="si">${</span><span class="nv">RDS_PASSWORD</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="c1"># user should be origin db1 </span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="c1"># pass should be saved in ~/rds_password</span>
+<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="nb">echo</span><span class="w"> </span>mysql<span class="w"> </span>-h<span class="si">${</span><span class="nv">TARGET_RDS_HOSTNAME</span><span class="si">}</span><span class="w"> </span>-u<span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w"> </span>-p<span class="si">${</span><span class="nv">RDS_PASSWORD</span><span class="si">}</span>
 </code></pre></div></p>
 </li>
 <li>
@@ -3923,32 +3970,32 @@ Exec_Master_Log_Pos: 154</p>
 <li>确认复制用户的用户名和密码 (<a href="./#^gycsd4" title="^gycsd4">^gycsd4</a>)</li>
 <li>
 <p>确认之前记录的断点 (<a href="./#^gjmipb" title="^gjmipb">^gjmipb</a>) <br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">CALL</span><span class="w"> </span><span class="n">mysql</span><span class="p">.</span><span class="n">rds_set_external_master</span><span class="w"> </span><span class="p">(</span>
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">  </span><span class="s1">&#39;db1.ckzqxxxxxxrg.us-east-2.rds.amazonaws.com&#39;</span>
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="mi">3306</span>
-<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;repl_user&#39;</span>
-<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;repl_password&#39;</span>
-<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;mysql-bin-changelog.000009&#39;</span>
-<a id="__codelineno-20-7" name="__codelineno-20-7" href="#__codelineno-20-7"></a><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="mi">154</span>
-<a id="__codelineno-20-8" name="__codelineno-20-8" href="#__codelineno-20-8"></a><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="mi">0</span>
-<a id="__codelineno-20-9" name="__codelineno-20-9" href="#__codelineno-20-9"></a><span class="w">  </span><span class="p">);</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="k">CALL</span><span class="w"> </span><span class="n">mysql</span><span class="p">.</span><span class="n">rds_set_external_master</span><span class="w"> </span><span class="p">(</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">  </span><span class="s1">&#39;db1.ckzqxxxxxxrg.us-east-2.rds.amazonaws.com&#39;</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="mi">3306</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;repl_user&#39;</span>
+<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;repl_password&#39;</span>
+<a id="__codelineno-19-6" name="__codelineno-19-6" href="#__codelineno-19-6"></a><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="s1">&#39;mysql-bin-changelog.000009&#39;</span>
+<a id="__codelineno-19-7" name="__codelineno-19-7" href="#__codelineno-19-7"></a><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="mi">154</span>
+<a id="__codelineno-19-8" name="__codelineno-19-8" href="#__codelineno-19-8"></a><span class="w">  </span><span class="p">,</span><span class="w"> </span><span class="mi">0</span>
+<a id="__codelineno-19-9" name="__codelineno-19-9" href="#__codelineno-19-9"></a><span class="w">  </span><span class="p">);</span>
 </code></pre></div></p>
 </li>
 <li>
 <p>确认恢复复制操作成功<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="k">CALL</span><span class="w"> </span><span class="n">mysql</span><span class="p">.</span><span class="n">rds_start_replication</span><span class="p">();</span>
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a><span class="k">SHOW</span><span class="w"> </span><span class="n">SLAVE</span><span class="w"> </span><span class="n">STATUS</span><span class="err">\</span><span class="k">G</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="k">CALL</span><span class="w"> </span><span class="n">mysql</span><span class="p">.</span><span class="n">rds_start_replication</span><span class="p">();</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="k">SHOW</span><span class="w"> </span><span class="n">SLAVE</span><span class="w"> </span><span class="n">STATUS</span><span class="err">\</span><span class="k">G</span>
 </code></pre></div></p>
 </li>
 <li>
 <p>如果恢复复制操作成功将出现下面输出<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>+-------------------------+
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>| Message                 |
-<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>+-------------------------+
-<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>| Slave running normally. |
-<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>+-------------------------+
-<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>1 row in set (1.01 sec)
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>+-------------------------+
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>| Message                 |
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>+-------------------------+
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>| Slave running normally. |
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>+-------------------------+
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>1 row in set (1.01 sec)
 </code></pre></div></p>
 </li>
 </ul>
@@ -3960,28 +4007,28 @@ Exec_Master_Log_Pos: 154</p>
 </ul>
 <h2 id="issue">issue<a class="headerlink" href="#issue" title="Permanent link">&para;</a></h2>
 <h3 id="host-error-in-mysqluser">host error in mysql.user<a class="headerlink" href="#host-error-in-mysqluser" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>mysql&gt; select user,host from mysql.user;
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>+------------------+-----------+
-<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a>| user             | host      |
-<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a>+------------------+-----------+
-<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a>| rdsrepladmin     | %         |
-<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a>| rdsworkshop      | %         |
-<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a>| repl_user        | *         |
-<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a>| mysql.infoschema | localhost |
-<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a>| mysql.session    | localhost |
-<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a>| mysql.sys        | localhost |
-<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>| rdsadmin         | localhost |
-<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a>+------------------+-----------+
-<a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a>7 rows in set (0.00 sec)
-<a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a>
-<a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a>mysql&gt; update mysql.user set host=&#39;%&#39; where user=&#39;repl_user&#39;;
-<a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a>Query OK, 1 row affected (0.01 sec)
-<a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a>Rows matched: 1  Changed: 1  Warnings: 0
-<a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a>
-<a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a>mysql&gt; flush privileges;
-<a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a>Query OK, 0 rows affected (0.00 sec)
-<a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a>
-<a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a>mysql&gt; 
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>mysql&gt; select user,host from mysql.user;
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a>+------------------+-----------+
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a>| user             | host      |
+<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a>+------------------+-----------+
+<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a>| rdsrepladmin     | %         |
+<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a>| rdsworkshop      | %         |
+<a id="__codelineno-22-7" name="__codelineno-22-7" href="#__codelineno-22-7"></a>| repl_user        | *         |
+<a id="__codelineno-22-8" name="__codelineno-22-8" href="#__codelineno-22-8"></a>| mysql.infoschema | localhost |
+<a id="__codelineno-22-9" name="__codelineno-22-9" href="#__codelineno-22-9"></a>| mysql.session    | localhost |
+<a id="__codelineno-22-10" name="__codelineno-22-10" href="#__codelineno-22-10"></a>| mysql.sys        | localhost |
+<a id="__codelineno-22-11" name="__codelineno-22-11" href="#__codelineno-22-11"></a>| rdsadmin         | localhost |
+<a id="__codelineno-22-12" name="__codelineno-22-12" href="#__codelineno-22-12"></a>+------------------+-----------+
+<a id="__codelineno-22-13" name="__codelineno-22-13" href="#__codelineno-22-13"></a>7 rows in set (0.00 sec)
+<a id="__codelineno-22-14" name="__codelineno-22-14" href="#__codelineno-22-14"></a>
+<a id="__codelineno-22-15" name="__codelineno-22-15" href="#__codelineno-22-15"></a>mysql&gt; update mysql.user set host=&#39;%&#39; where user=&#39;repl_user&#39;;
+<a id="__codelineno-22-16" name="__codelineno-22-16" href="#__codelineno-22-16"></a>Query OK, 1 row affected (0.01 sec)
+<a id="__codelineno-22-17" name="__codelineno-22-17" href="#__codelineno-22-17"></a>Rows matched: 1  Changed: 1  Warnings: 0
+<a id="__codelineno-22-18" name="__codelineno-22-18" href="#__codelineno-22-18"></a>
+<a id="__codelineno-22-19" name="__codelineno-22-19" href="#__codelineno-22-19"></a>mysql&gt; flush privileges;
+<a id="__codelineno-22-20" name="__codelineno-22-20" href="#__codelineno-22-20"></a>Query OK, 0 rows affected (0.00 sec)
+<a id="__codelineno-22-21" name="__codelineno-22-21" href="#__codelineno-22-21"></a>
+<a id="__codelineno-22-22" name="__codelineno-22-22" href="#__codelineno-22-22"></a>mysql&gt; 
 </code></pre></div>
 
   <hr>
@@ -3989,11 +4036,11 @@ Exec_Master_Log_Pos: 154</p>
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 21, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-03T15:40:40+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-03</span>
       
         <br>
         Created:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 16, 2023</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-16T10:37:24+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-16</span>
       
     
   </small>
@@ -4048,6 +4095,10 @@ Exec_Master_Log_Pos: 154</p>
     
     
       <script src="../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+        <script src="../../js/timeago.min.js"></script>
+      
+        <script src="../../js/timeago_mkdocs_material.js"></script>
       
     
   </body>

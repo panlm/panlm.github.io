@@ -48,6 +48,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -2554,6 +2556,8 @@
       
         
       
+        
+      
     
     
     
@@ -2615,6 +2619,26 @@
   
   <span class="md-ellipsis">
     assume-tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/docker-image-sample/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    docker-image-customized
   </span>
   
 
@@ -2701,6 +2725,8 @@
   
     
     
+      
+        
       
         
       
@@ -2889,6 +2915,26 @@
   
   <span class="md-ellipsis">
     ebs-cmd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ecs-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ecs
   </span>
   
 
@@ -3376,73 +3422,74 @@
 
 
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>title: This is a github note
-</code></pre></div>
+<blockquote>
+<p>[!WARNING] This is a github note</p>
+</blockquote>
 <h1 id="iam-cmd">iam cmd<a class="headerlink" href="#iam-cmd" title="Permanent link">&para;</a></h1>
 <h2 id="get-role-arn-by-name">get role arn by name<a class="headerlink" href="#get-role-arn-by-name" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>aws<span class="w"> </span>iam<span class="w"> </span>get-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">role_name</span><span class="si">}</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Role.Arn&#39;</span><span class="w"> </span>--output<span class="w"> </span>text
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>aws<span class="w"> </span>iam<span class="w"> </span>get-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">role_name</span><span class="si">}</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Role.Arn&#39;</span><span class="w"> </span>--output<span class="w"> </span>text
 </code></pre></div>
 <h2 id="get-policy-arn">get policy arn<a class="headerlink" href="#get-policy-arn" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>aws<span class="w"> </span>iam<span class="w"> </span>list-policies<span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Policies[*].[PolicyName,Arn]&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>CloudWatchAgentServerPolicy
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>aws<span class="w"> </span>iam<span class="w"> </span>get-policy<span class="w"> </span>--policy-arn<span class="w"> </span>arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>aws<span class="w"> </span>iam<span class="w"> </span>list-policies<span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Policies[*].[PolicyName,Arn]&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>CloudWatchAgentServerPolicy
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>aws<span class="w"> </span>iam<span class="w"> </span>get-policy<span class="w"> </span>--policy-arn<span class="w"> </span>arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy
 </code></pre></div>
 <h2 id="create-user">create user<a class="headerlink" href="#create-user" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>aws<span class="w"> </span>iam<span class="w"> </span>create-user<span class="w"> </span>--user-name<span class="w"> </span>cwagent-onprem
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># attach user policy</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>aws<span class="w"> </span>iam<span class="w"> </span>attach-user-policy<span class="w"> </span>--user-name<span class="w"> </span>cwagent-onprem<span class="w"> </span>--policy-arn<span class="w"> </span>arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># create access key, save the output</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>aws<span class="w"> </span>iam<span class="w"> </span>create-access-key<span class="w"> </span>--user-name<span class="w"> </span>cwagent-onprem
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>aws<span class="w"> </span>iam<span class="w"> </span>create-user<span class="w"> </span>--user-name<span class="w"> </span>cwagent-onprem
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># attach user policy</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>aws<span class="w"> </span>iam<span class="w"> </span>attach-user-policy<span class="w"> </span>--user-name<span class="w"> </span>cwagent-onprem<span class="w"> </span>--policy-arn<span class="w"> </span>arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># create access key, save the output</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>aws<span class="w"> </span>iam<span class="w"> </span>create-access-key<span class="w"> </span>--user-name<span class="w"> </span>cwagent-onprem
 </code></pre></div>
 <h2 id="attach-role-policy">attach role policy<a class="headerlink" href="#attach-role-policy" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../../../others/file-storage-gateway-lab/#create-nfs-share-" title="../../others/file-storage-gateway-lab">../../others/file-storage-gateway-lab</a></li>
 </ul>
 <h2 id="create-role">create role<a class="headerlink" href="#create-role" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">ROLE_NAME</span><span class="o">=</span>example-role1
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;{</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="s1">  &quot;Version&quot;: &quot;2012-10-17&quot;,</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="s1">  &quot;Statement&quot;: [</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="s1">    {</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="s1">      &quot;Effect&quot;: &quot;Allow&quot;,</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="s1">      &quot;Principal&quot;: {</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="s1">        &quot;Service&quot;: [</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="s1">          &quot;translate.amazonaws.com&quot;</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="s1">        ]</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="s1">      },</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="s1">      &quot;Action&quot;: &quot;sts:AssumeRole&quot;</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="s1">    }</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="s1">  ]</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="s1">}&#39;</span><span class="w"> </span><span class="p">|</span>tee<span class="w"> </span>role-policy.json
-<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>aws<span class="w"> </span>iam<span class="w"> </span>create-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">  </span>--assume-role-policy-document<span class="w"> </span>file://role-policy.json
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">  </span>--policy-arn<span class="w"> </span><span class="s2">&quot;arn:aws:iam::aws:policy/AmazonS3FullAccess&quot;</span>
-<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>aws<span class="w"> </span>iam<span class="w"> </span>list-attached-role-policies<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span>
-<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>
-<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="nv">role_arn</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>iam<span class="w"> </span>get-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Role.Arn&#39;</span><span class="k">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">ROLE_NAME</span><span class="o">=</span>example-role1
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;{</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="s1">  &quot;Version&quot;: &quot;2012-10-17&quot;,</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="s1">  &quot;Statement&quot;: [</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="s1">    {</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="s1">      &quot;Effect&quot;: &quot;Allow&quot;,</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="s1">      &quot;Principal&quot;: {</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="s1">        &quot;Service&quot;: [</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="s1">          &quot;translate.amazonaws.com&quot;</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="s1">        ]</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="s1">      },</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="s1">      &quot;Action&quot;: &quot;sts:AssumeRole&quot;</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="s1">    }</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="s1">  ]</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="s1">}&#39;</span><span class="w"> </span><span class="p">|</span>tee<span class="w"> </span>role-policy.json
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>aws<span class="w"> </span>iam<span class="w"> </span>create-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">  </span>--assume-role-policy-document<span class="w"> </span>file://role-policy.json
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">  </span>--policy-arn<span class="w"> </span><span class="s2">&quot;arn:aws:iam::aws:policy/AmazonS3FullAccess&quot;</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>aws<span class="w"> </span>iam<span class="w"> </span>list-attached-role-policies<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="nv">role_arn</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>iam<span class="w"> </span>get-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Role.Arn&#39;</span><span class="k">)</span>
 </code></pre></div>
 <h3 id="create-role-for-ec2">create role for ec2<a class="headerlink" href="#create-role-for-ec2" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">ROLE_NAME</span><span class="o">=</span>adminrole-<span class="nv">$RANDOM</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>cat<span class="w"> </span>&gt;<span class="w"> </span>trust.json<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="s">{</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="s">    &quot;Version&quot;: &quot;2012-10-17&quot;,</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="s">    &quot;Statement&quot;: [</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="s">        {</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="s">            &quot;Effect&quot;: &quot;Allow&quot;,</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="s">            &quot;Principal&quot;: {</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="s">                &quot;Service&quot;: &quot;ec2.amazonaws.com&quot;</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="s">            },</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="s">            &quot;Action&quot;: &quot;sts:AssumeRole&quot;</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="s">        }</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="s">    ]</span>
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="s">}</span>
-<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="s">EOF</span>
-<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>aws<span class="w"> </span>iam<span class="w"> </span>create-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">  </span>--assume-role-policy-document<span class="w"> </span>file://trust.json
-<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a>aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">  </span>--policy-arn<span class="w"> </span><span class="s2">&quot;arn:aws:iam::aws:policy/AdministratorAccess&quot;</span>
-<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>aws<span class="w"> </span>iam<span class="w"> </span>create-instance-profile<span class="w"> </span>--instance-profile-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span>
-<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a>aws<span class="w"> </span>iam<span class="w"> </span>add-role-to-instance-profile<span class="w"> </span>--instance-profile-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">ROLE_NAME</span><span class="o">=</span>adminrole-<span class="nv">$RANDOM</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>cat<span class="w"> </span>&gt;<span class="w"> </span>trust.json<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="s">{</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="s">    &quot;Version&quot;: &quot;2012-10-17&quot;,</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="s">    &quot;Statement&quot;: [</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="s">        {</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="s">            &quot;Effect&quot;: &quot;Allow&quot;,</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="s">            &quot;Principal&quot;: {</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="s">                &quot;Service&quot;: &quot;ec2.amazonaws.com&quot;</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="s">            },</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="s">            &quot;Action&quot;: &quot;sts:AssumeRole&quot;</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="s">        }</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="s">    ]</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="s">}</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="s">EOF</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>aws<span class="w"> </span>iam<span class="w"> </span>create-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">  </span>--assume-role-policy-document<span class="w"> </span>file://trust.json
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">  </span>--policy-arn<span class="w"> </span><span class="s2">&quot;arn:aws:iam::aws:policy/AdministratorAccess&quot;</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>aws<span class="w"> </span>iam<span class="w"> </span>create-instance-profile<span class="w"> </span>--instance-profile-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a>aws<span class="w"> </span>iam<span class="w"> </span>add-role-to-instance-profile<span class="w"> </span>--instance-profile-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span>
 </code></pre></div>
 <h3 id="create-role-for-firehose">create role for firehose<a class="headerlink" href="#create-role-for-firehose" title="Permanent link">&para;</a></h3>
 <ul>
@@ -3457,32 +3504,32 @@
 <li><a href="../../linux/assume-tool/" title="../linux/assume-tool">../linux/assume-tool</a></li>
 </ul>
 <h3 id="create-service-linked-role">create service-linked role<a class="headerlink" href="#create-service-linked-role" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>aws<span class="w"> </span>iam<span class="w"> </span>create-service-linked-role<span class="w"> </span>--aws-service-name<span class="w"> </span>SERVICE-NAME.amazonaws.com
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>aws<span class="w"> </span>iam<span class="w"> </span>create-service-linked-role<span class="w"> </span>--aws-service-name<span class="w"> </span>SERVICE-NAME.amazonaws.com
 </code></pre></div>
 <h2 id="assume-another-role">assume another role<a class="headerlink" href="#assume-another-role" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nv">account_id</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">&#39;Account&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nv">role_arn</span><span class="o">=</span>arn:aws:iam::<span class="si">${</span><span class="nv">account_id</span><span class="si">}</span>:role/eksworkshop-admin
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="nv">tmp_file</span><span class="o">=</span>/tmp/<span class="nv">$$</span>.1
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>aws<span class="w"> </span>sts<span class="w"> </span>assume-role<span class="w"> </span>--role-arn<span class="w"> </span><span class="si">${</span><span class="nv">role_arn</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">  </span>--duration-seconds<span class="w"> </span><span class="m">43200</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">  </span>--role-session-name<span class="w"> </span>Session-<span class="nv">$RANDOM</span><span class="w"> </span><span class="p">|</span>tee<span class="w"> </span><span class="si">${</span><span class="nv">tmp_file</span><span class="si">}</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span><span class="si">${</span><span class="nv">tmp_file</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Credentials.AccessKeyId&#39;</span><span class="w"> </span><span class="k">)</span>
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span><span class="si">${</span><span class="nv">tmp_file</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Credentials.SecretAccessKey&#39;</span><span class="w"> </span><span class="k">)</span>
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_SESSION_TOKEN</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span><span class="si">${</span><span class="nv">tmp_file</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Credentials.SessionToken&#39;</span><span class="w"> </span><span class="k">)</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span><span class="m">169</span>.254.169.254/latest/dynamic/instance-identity/document<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.region&#39;</span><span class="k">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nv">account_id</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">&#39;Account&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nv">role_arn</span><span class="o">=</span>arn:aws:iam::<span class="si">${</span><span class="nv">account_id</span><span class="si">}</span>:role/eksworkshop-admin
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nv">tmp_file</span><span class="o">=</span>/tmp/<span class="nv">$$</span>.1
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>aws<span class="w"> </span>sts<span class="w"> </span>assume-role<span class="w"> </span>--role-arn<span class="w"> </span><span class="si">${</span><span class="nv">role_arn</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">  </span>--duration-seconds<span class="w"> </span><span class="m">43200</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">  </span>--role-session-name<span class="w"> </span>Session-<span class="nv">$RANDOM</span><span class="w"> </span><span class="p">|</span>tee<span class="w"> </span><span class="si">${</span><span class="nv">tmp_file</span><span class="si">}</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span><span class="si">${</span><span class="nv">tmp_file</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Credentials.AccessKeyId&#39;</span><span class="w"> </span><span class="k">)</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span><span class="si">${</span><span class="nv">tmp_file</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Credentials.SecretAccessKey&#39;</span><span class="w"> </span><span class="k">)</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_SESSION_TOKEN</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span><span class="si">${</span><span class="nv">tmp_file</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Credentials.SessionToken&#39;</span><span class="w"> </span><span class="k">)</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span><span class="m">169</span>.254.169.254/latest/dynamic/instance-identity/document<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.region&#39;</span><span class="k">)</span>
 </code></pre></div>
 <h3 id="assume-in-credentials-file">assume in credentials file<a class="headerlink" href="#assume-in-credentials-file" title="Permanent link">&para;</a></h3>
 <p><a href="https://docs.aws.amazon.com/sdkref/latest/guide/feature-assume-role-credentials.html">https://docs.aws.amazon.com/sdkref/latest/guide/feature-assume-role-credentials.html</a><br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>[profile A]
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>source_profile = B
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>role_arn =  arn:aws:iam::123456789012:role/RoleA
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>[profile B]
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>aws_access_key_id=AKIAIOSFODNN7EXAMPLE
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>[profile A]
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>source_profile = B
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>role_arn =  arn:aws:iam::123456789012:role/RoleA
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>[profile B]
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>aws_access_key_id=AKIAIOSFODNN7EXAMPLE
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
 </code></pre></div></p>
 <h2 id="reference">reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
 <ul>
@@ -3496,11 +3543,11 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 26, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-03T15:40:40+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-03</span>
       
         <br>
         Created:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 12, 2023</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-12T12:20:41+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-12</span>
       
     
   </small>
@@ -3555,6 +3602,10 @@
     
     
       <script src="../../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
       
     
   </body>

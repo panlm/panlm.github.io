@@ -48,6 +48,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -2554,6 +2556,8 @@
       
         
       
+        
+      
     
     
     
@@ -2615,6 +2619,26 @@
   
   <span class="md-ellipsis">
     assume-tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/docker-image-sample/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    docker-image-customized
   </span>
   
 
@@ -2701,6 +2725,8 @@
   
     
     
+      
+        
       
         
       
@@ -2889,6 +2915,26 @@
   
   <span class="md-ellipsis">
     ebs-cmd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ecs-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ecs
   </span>
   
 
@@ -3336,63 +3382,66 @@
 
 
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>title: This is a github note
-</code></pre></div>
+<blockquote>
+<p>[!WARNING] This is a github note</p>
+</blockquote>
 <h1 id="ssm-cmd">ssm-cmd<a class="headerlink" href="#ssm-cmd" title="Permanent link">&para;</a></h1>
 <h2 id="ssm-agent">ssm agent<a class="headerlink" href="#ssm-agent" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm
 </code></pre></div>
 <h2 id="test-connect-available-or-not">test connect available or not<a class="headerlink" href="#test-connect-available-or-not" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>aws<span class="w"> </span>ssm<span class="w"> </span>get-connection-status<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>--target<span class="w"> </span>i-xxxx8c8d
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>aws<span class="w"> </span>ssm<span class="w"> </span>get-connection-status<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>--target<span class="w"> </span>i-xxxx8c8d
 </code></pre></div>
 <h2 id="start-session">start-session<a class="headerlink" href="#start-session" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>aws<span class="w"> </span>ssm<span class="w"> </span>start-session<span class="w"> </span>--target<span class="w">  </span>i-xxxxxx<span class="w"> </span>--region<span class="w"> </span>us-east-2
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>aws<span class="w"> </span>ssm<span class="w"> </span>start-session<span class="w"> </span>--target<span class="w">  </span>i-xxxxxx<span class="w"> </span>--region<span class="w"> </span>us-east-2
 </code></pre></div>
 <h3 id="prot-forward">prot-forward<a class="headerlink" href="#prot-forward" title="Permanent link">&para;</a></h3>
 <ul>
 <li><a href="https://aws.amazon.com/blogs/aws/new-port-forwarding-using-aws-system-manager-sessions-manager/">https://aws.amazon.com/blogs/aws/new-port-forwarding-using-aws-system-manager-sessions-manager/</a></li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">INST_ID</span><span class="o">=</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>aws<span class="w"> </span>ssm<span class="w"> </span>start-session<span class="w"> </span>--target<span class="w"> </span><span class="si">${</span><span class="nv">INST_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>--document-name<span class="w"> </span>AWS-StartPortForwardingSession<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>--parameters<span class="w"> </span><span class="s1">&#39;{&quot;localPortNumber&quot;:[&quot;9999&quot;],&quot;portNumber&quot;:[&quot;80&quot;]}&#39;</span><span class="w"> </span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1"># target 81 </span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># local 9999</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1"># curl http://localhost:9999</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">INST_ID</span><span class="o">=</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>aws<span class="w"> </span>ssm<span class="w"> </span>start-session<span class="w"> </span>--target<span class="w"> </span><span class="si">${</span><span class="nv">INST_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>--document-name<span class="w"> </span>AWS-StartPortForwardingSession<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>--parameters<span class="w"> </span><span class="s1">&#39;{&quot;localPortNumber&quot;:[&quot;9999&quot;],&quot;portNumber&quot;:[&quot;80&quot;]}&#39;</span><span class="w"> </span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1"># target 81 </span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># local 9999</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1"># curl http://localhost:9999</span>
 </code></pre></div>
 <h3 id="prot-forward-to-remote-host">prot-forward-to-remote-host<a class="headerlink" href="#prot-forward-to-remote-host" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">INST_ID</span><span class="o">=</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nv">REMOTE_HOST</span><span class="o">=</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>aws<span class="w"> </span>ssm<span class="w"> </span>start-session<span class="w"> </span>--target<span class="w"> </span><span class="si">${</span><span class="nv">INST_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>--document-name<span class="w"> </span>AWS-StartPortForwardingSessionToRemoteHost<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>--parameters<span class="w"> </span><span class="s1">&#39;{</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="s1">&quot;localPortNumber&quot;:[&quot;9999&quot;],</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="s1">&quot;host&quot;:[&quot;&#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">REMOTE_HOST</span><span class="si">}</span><span class="s2">&quot;</span><span class="s1">&#39;&quot;],</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="s1">&quot;portNumber&quot;:[&quot;443&quot;]</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="s1">}&#39;</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">INST_ID</span><span class="o">=</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nv">REMOTE_HOST</span><span class="o">=</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>aws<span class="w"> </span>ssm<span class="w"> </span>start-session<span class="w"> </span>--target<span class="w"> </span><span class="si">${</span><span class="nv">INST_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>--document-name<span class="w"> </span>AWS-StartPortForwardingSessionToRemoteHost<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>--parameters<span class="w"> </span><span class="s1">&#39;{</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="s1">&quot;localPortNumber&quot;:[&quot;9999&quot;],</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="s1">&quot;host&quot;:[&quot;&#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">REMOTE_HOST</span><span class="si">}</span><span class="s2">&quot;</span><span class="s1">&#39;&quot;],</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="s1">&quot;portNumber&quot;:[&quot;443&quot;]</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="s1">}&#39;</span><span class="w"> </span>
 </code></pre></div>
 <h2 id="send-command">send-command<a class="headerlink" href="#send-command" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../../ssm-document-runshell" title="ssm-document-runshell">ssm-document-runshell</a></li>
 </ul>
 <h2 id="create-document-and-run-it">create document and run it<a class="headerlink" href="#create-document-and-run-it" title="Permanent link">&para;</a></h2>
-<p><a href="https://aws.amazon.com/blogs/mt/amazon-ec2-systems-manager-documents-support-for-cross-platform-documents-and-multiple-steps-of-the-same-type/">https://aws.amazon.com/blogs/mt/amazon-ec2-systems-manager-documents-support-for-cross-platform-documents-and-multiple-steps-of-the-same-type/</a></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>aws<span class="w"> </span>ssm<span class="w"> </span>create-document<span class="w"> </span>--name<span class="w"> </span>step3demo<span class="w"> </span>--content<span class="w"> </span>file://a.json<span class="w"> </span>--document-type<span class="w"> </span>Command
+<ul>
+<li><a href="https://aws.amazon.com/blogs/mt/amazon-ec2-systems-manager-documents-support-for-cross-platform-documents-and-multiple-steps-of-the-same-type/">https://aws.amazon.com/blogs/mt/amazon-ec2-systems-manager-documents-support-for-cross-platform-documents-and-multiple-steps-of-the-same-type/</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>aws<span class="w"> </span>ssm<span class="w"> </span>create-document<span class="w"> </span>--name<span class="w"> </span>step3demo<span class="w"> </span>--content<span class="w"> </span>file://a.json<span class="w"> </span>--document-type<span class="w"> </span>Command
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># create automation document</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">for</span><span class="w"> </span>FILE<span class="w"> </span><span class="k">in</span><span class="w"> </span>*<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span>aws<span class="w"> </span>ssm<span class="w"> </span>create-document<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span>--content<span class="w"> </span>file://./<span class="si">${</span><span class="nv">FILE</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">FILE</span><span class="p">%%.json</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span>--document-type<span class="w"> </span>Automation
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="k">done</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># create automation document</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="k">for</span><span class="w"> </span>FILE<span class="w"> </span><span class="k">in</span><span class="w"> </span>*<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span>aws<span class="w"> </span>ssm<span class="w"> </span>create-document<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span>--content<span class="w"> </span>file://./<span class="si">${</span><span class="nv">FILE</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">FILE</span><span class="p">%%.json</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span>--document-type<span class="w"> </span>Automation
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="k">done</span>
 </code></pre></div>
 <h2 id="filter-inventory-">filter-inventory-<a class="headerlink" href="#filter-inventory-" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>aws<span class="w"> </span>ssm<span class="w"> </span>get-inventory<span class="w"> </span>--filter<span class="w"> </span><span class="nv">Key</span><span class="o">=</span><span class="s2">&quot;Custom:DiskUtilization.Size(GB)&quot;</span>,Values<span class="o">=</span><span class="m">100</span>,Type<span class="o">=</span>Equal
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>aws<span class="w"> </span>ssm<span class="w"> </span>get-inventory<span class="w"> </span>--filter<span class="w"> </span><span class="nv">Key</span><span class="o">=</span>Custom:DiskUtilization.Use%,Values<span class="o">=</span><span class="m">60</span>,Type<span class="o">=</span>GreaterThan
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>aws<span class="w"> </span>ssm<span class="w"> </span>get-inventory<span class="w"> </span>--filter<span class="w"> </span><span class="nv">Key</span><span class="o">=</span><span class="s2">&quot;Custom:DiskUtilization.Size(GB)&quot;</span>,Values<span class="o">=</span><span class="m">100</span>,Type<span class="o">=</span>Equal
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>aws<span class="w"> </span>ssm<span class="w"> </span>get-inventory<span class="w"> </span>--filter<span class="w"> </span><span class="nv">Key</span><span class="o">=</span>Custom:DiskUtilization.Use%,Values<span class="o">=</span><span class="m">60</span>,Type<span class="o">=</span>GreaterThan
 </code></pre></div>
 <h2 id="get-parameter">get parameter<a class="headerlink" href="#get-parameter" title="Permanent link">&para;</a></h2>
 <ul>
@@ -3401,49 +3450,52 @@
 </ul>
 <h2 id="join-domain-sample">join domain sample<a class="headerlink" href="#join-domain-sample" title="Permanent link">&para;</a></h2>
 <p><img alt="POC-mig-filezilla-to-transfer-family" src="../../POC-mig-filezilla-to-transfer-family#^5yhhfi" title="POC-mig-filezilla-to-transfer-family" /></p>
-<p>example<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>aws<span class="w"> </span>ssm<span class="w"> </span>send-command<span class="w"> </span>--document-name<span class="w"> </span><span class="s2">&quot;AWS-JoinDirectoryServiceDomain&quot;</span><span class="w"> </span>--document-version<span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="w"> </span>--targets<span class="w"> </span><span class="s1">&#39;[{&quot;Key&quot;:&quot;InstanceIds&quot;,&quot;Values&quot;:[&quot;i-0e23xxxx8bdc6xxxx&quot;]}]&#39;</span><span class="w"> </span>--parameters<span class="w"> </span><span class="s1">&#39;{&quot;directoryOU&quot;:[&quot;&quot;],&quot;directoryId&quot;:[&quot;d-9axxxxe3cf&quot;],&quot;directoryName&quot;:[&quot;xxxx.aws.panlm.xyz&quot;],&quot;dnsIpAddresses&quot;:[&quot;172.31.xx.xx&quot;,&quot;172.31.xx.xx&quot;]}&#39;</span><span class="w"> </span>--timeout-seconds<span class="w"> </span><span class="m">600</span><span class="w"> </span>--max-concurrency<span class="w"> </span><span class="s2">&quot;50&quot;</span><span class="w"> </span>--max-errors<span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="w"> </span>--region<span class="w"> </span>us-east-2
-</code></pre></div></p>
+<p>refer: <a href="../../POC-mig-filezilla-to-transfer-family#join-domain-" title="POC-mig-filezilla-to-transfer-family">POC-mig-filezilla-to-transfer-family</a></p>
+<ul>
+<li>example<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>aws<span class="w"> </span>ssm<span class="w"> </span>send-command<span class="w"> </span>--document-name<span class="w"> </span><span class="s2">&quot;AWS-JoinDirectoryServiceDomain&quot;</span><span class="w"> </span>--document-version<span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="w"> </span>--targets<span class="w"> </span><span class="s1">&#39;[{&quot;Key&quot;:&quot;InstanceIds&quot;,&quot;Values&quot;:[&quot;i-0e23xxxx8bdc6xxxx&quot;]}]&#39;</span><span class="w"> </span>--parameters<span class="w"> </span><span class="s1">&#39;{&quot;directoryOU&quot;:[&quot;&quot;],&quot;directoryId&quot;:[&quot;d-9axxxxe3cf&quot;],&quot;directoryName&quot;:[&quot;xxxx.aws.panlm.xyz&quot;],&quot;dnsIpAddresses&quot;:[&quot;172.31.xx.xx&quot;,&quot;172.31.xx.xx&quot;]}&#39;</span><span class="w"> </span>--timeout-seconds<span class="w"> </span><span class="m">600</span><span class="w"> </span>--max-concurrency<span class="w"> </span><span class="s2">&quot;50&quot;</span><span class="w"> </span>--max-errors<span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="w"> </span>--region<span class="w"> </span>us-east-2
+</code></pre></div></li>
+</ul>
 <h2 id="create-ssm-vpc-endpoint">create ssm vpc endpoint<a class="headerlink" href="#create-ssm-vpc-endpoint" title="Permanent link">&para;</a></h2>
-<p><div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span><span class="m">169</span>.254.169.254/latest/dynamic/instance-identity/document<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.region&#39;</span><span class="k">)</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PAGER</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># get cloud9 vpc</span>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="nv">C9_INST_ID</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>http://169.254.169.254/1.0/meta-data/instance-id<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="k">)</span>
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="nv">C9_VPC_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>--instance-ids<span class="w"> </span><span class="si">${</span><span class="nv">C9_INST_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>--query<span class="w"> </span><span class="s1">&#39;Reservations[0].Instances[0].VpcId&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>
-<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="c1"># get public subnet </span>
-<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="nv">C9_SUBNETS_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-subnets<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>--filter<span class="w"> </span><span class="s2">&quot;Name=vpc-id,Values=</span><span class="si">${</span><span class="nv">C9_VPC_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>--query<span class="w"> </span><span class="s1">&#39;Subnets[?MapPublicIpOnLaunch==`true`].SubnetId&#39;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>
-<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="c1"># get default security group </span>
-<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="nv">C9_DEFAULT_SG_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-security-groups<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>--filter<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>vpc-id,Values<span class="o">=</span><span class="si">${</span><span class="nv">C9_VPC_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>--query<span class="w"> </span><span class="s2">&quot;SecurityGroups[?GroupName == &#39;default&#39;].GroupId&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a>
-<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="c1"># allow 80/443 from anywhere</span>
-<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">80</span><span class="w"> </span><span class="m">443</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a>aws<span class="w"> </span>ec2<span class="w"> </span>authorize-security-group-ingress<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a><span class="w">  </span>--group-id<span class="w"> </span><span class="si">${</span><span class="nv">C9_DEFAULT_SG_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a><span class="w">  </span>--protocol<span class="w"> </span>tcp<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a><span class="w">  </span>--port<span class="w"> </span><span class="nv">$i</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a><span class="w">  </span>--cidr<span class="w"> </span><span class="m">0</span>.0.0.0/0<span class="w">  </span>
-<a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a><span class="k">done</span>
-<a id="__codelineno-10-30" name="__codelineno-10-30" href="#__codelineno-10-30"></a>
-<a id="__codelineno-10-31" name="__codelineno-10-31" href="#__codelineno-10-31"></a><span class="c1"># ssm ssmmessages</span>
-<a id="__codelineno-10-32" name="__codelineno-10-32" href="#__codelineno-10-32"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span>ssm<span class="w"> </span>ssmmessages<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-10-33" name="__codelineno-10-33" href="#__codelineno-10-33"></a>aws<span class="w"> </span>ec2<span class="w"> </span>create-vpc-endpoint<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-10-34" name="__codelineno-10-34" href="#__codelineno-10-34"></a>--vpc-id<span class="w"> </span><span class="si">${</span><span class="nv">C9_VPC_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-10-35" name="__codelineno-10-35" href="#__codelineno-10-35"></a>--vpc-endpoint-type<span class="w"> </span>Interface<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-10-36" name="__codelineno-10-36" href="#__codelineno-10-36"></a>--service-name<span class="w"> </span>com.amazonaws.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.<span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-10-37" name="__codelineno-10-37" href="#__codelineno-10-37"></a>--subnet-ids<span class="w"> </span><span class="si">${</span><span class="nv">C9_SUBNETS_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-10-38" name="__codelineno-10-38" href="#__codelineno-10-38"></a>--security-group-id<span class="w"> </span><span class="si">${</span><span class="nv">C9_DEFAULT_SG_ID</span><span class="si">}</span><span class="w"> </span>
-<a id="__codelineno-10-39" name="__codelineno-10-39" href="#__codelineno-10-39"></a><span class="k">done</span>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span><span class="m">169</span>.254.169.254/latest/dynamic/instance-identity/document<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.region&#39;</span><span class="k">)</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PAGER</span><span class="o">=</span><span class="s1">&#39;&#39;</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="c1"># get cloud9 vpc</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="nv">C9_INST_ID</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>http://169.254.169.254/1.0/meta-data/instance-id<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="k">)</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="nv">C9_VPC_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>--instance-ids<span class="w"> </span><span class="si">${</span><span class="nv">C9_INST_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a>--query<span class="w"> </span><span class="s1">&#39;Reservations[0].Instances[0].VpcId&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a>
+<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="c1"># get public subnet </span>
+<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="nv">C9_SUBNETS_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-subnets<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a>--filter<span class="w"> </span><span class="s2">&quot;Name=vpc-id,Values=</span><span class="si">${</span><span class="nv">C9_VPC_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>--query<span class="w"> </span><span class="s1">&#39;Subnets[?MapPublicIpOnLaunch==`true`].SubnetId&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>
+<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="c1"># get default security group </span>
+<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="nv">C9_DEFAULT_SG_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-security-groups<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a>--filter<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>vpc-id,Values<span class="o">=</span><span class="si">${</span><span class="nv">C9_VPC_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a>--query<span class="w"> </span><span class="s2">&quot;SecurityGroups[?GroupName == &#39;default&#39;].GroupId&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a>
+<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="c1"># allow 80/443 from anywhere</span>
+<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="m">80</span><span class="w"> </span><span class="m">443</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a>aws<span class="w"> </span>ec2<span class="w"> </span>authorize-security-group-ingress<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="w">  </span>--group-id<span class="w"> </span><span class="si">${</span><span class="nv">C9_DEFAULT_SG_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="w">  </span>--protocol<span class="w"> </span>tcp<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="w">  </span>--port<span class="w"> </span><span class="nv">$i</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="w">  </span>--cidr<span class="w"> </span><span class="m">0</span>.0.0.0/0<span class="w">  </span>
+<a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a><span class="k">done</span>
+<a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a>
+<a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a><span class="c1"># ssm ssmmessages</span>
+<a id="__codelineno-9-32" name="__codelineno-9-32" href="#__codelineno-9-32"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span>ssm<span class="w"> </span>ssmmessages<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-9-33" name="__codelineno-9-33" href="#__codelineno-9-33"></a>aws<span class="w"> </span>ec2<span class="w"> </span>create-vpc-endpoint<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-34" name="__codelineno-9-34" href="#__codelineno-9-34"></a>--vpc-id<span class="w"> </span><span class="si">${</span><span class="nv">C9_VPC_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-35" name="__codelineno-9-35" href="#__codelineno-9-35"></a>--vpc-endpoint-type<span class="w"> </span>Interface<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-36" name="__codelineno-9-36" href="#__codelineno-9-36"></a>--service-name<span class="w"> </span>com.amazonaws.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.<span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-37" name="__codelineno-9-37" href="#__codelineno-9-37"></a>--subnet-ids<span class="w"> </span><span class="si">${</span><span class="nv">C9_SUBNETS_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-38" name="__codelineno-9-38" href="#__codelineno-9-38"></a>--security-group-id<span class="w"> </span><span class="si">${</span><span class="nv">C9_DEFAULT_SG_ID</span><span class="si">}</span><span class="w"> </span>
+<a id="__codelineno-9-39" name="__codelineno-9-39" href="#__codelineno-9-39"></a><span class="k">done</span>
 </code></pre></div><br />
 ^ssm-vpce-0513</p>
 
@@ -3452,11 +3504,11 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 26, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-03T15:40:40+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-03</span>
       
         <br>
         Created:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">March 7, 2023</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-07T23:56:32+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-07</span>
       
     
   </small>
@@ -3511,6 +3563,10 @@
     
     
       <script src="../../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
       
     
   </body>

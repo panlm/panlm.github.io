@@ -48,6 +48,8 @@
       
     
     
+      <link rel="stylesheet" href="../../css/timeago.css">
+    
     <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -2620,6 +2622,8 @@
       
         
       
+        
+      
     
     
     
@@ -2681,6 +2685,26 @@
   
   <span class="md-ellipsis">
     assume-tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CLI/linux/docker-image-sample/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    docker-image-customized
   </span>
   
 
@@ -2765,6 +2789,8 @@
   
     
     
+      
+        
       
         
       
@@ -2953,6 +2979,26 @@
   
   <span class="md-ellipsis">
     ebs-cmd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CLI/awscli/ecs-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ecs
   </span>
   
 
@@ -3222,43 +3268,44 @@
 
 
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>title: This is a github note
-</code></pre></div>
+<blockquote>
+<p>[!WARNING] This is a github note</p>
+</blockquote>
 <h1 id="setup-cloud9-for-eks">setup cloud9 for eks<a class="headerlink" href="#setup-cloud9-for-eks" title="Permanent link">&para;</a></h1>
 <h2 id="spin-up-a-cloud9-instance-in-your-region">spin-up-a-cloud9-instance-in-your-region<a class="headerlink" href="#spin-up-a-cloud9-instance-in-your-region" title="Permanent link">&para;</a></h2>
 <ul>
 <li>点击<a href="https://console.aws.amazon.com/cloudshell">这里</a> 运行 cloudshell，执行代码块创建 cloud9 测试环境 (open cloudshell, and then execute following code to create cloud9 environment)<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># name=&lt;give your cloud9 a name&gt;</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">datestring</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%Y%m%d-%H%M<span class="k">)</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">name</span><span class="p">:=cloud9-</span><span class="nv">$datestring</span><span class="si">}</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># VPC_ID=&lt;your vpc id&gt; </span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1"># ensure you have public subnet in it</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nv">DEFAULT_VPC_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-vpcs<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span>--filter<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>is-default,Values<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">&#39;Vpcs[0].VpcId&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span><span class="k">)</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="nv">VPC_ID</span><span class="o">=</span><span class="si">${</span><span class="nv">VPC_ID</span><span class="p">:=</span><span class="nv">$DEFAULT_VPC_ID</span><span class="si">}</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span>-z<span class="w"> </span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">  </span><span class="nv">FIRST_SUBNET</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-subnets<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span>--filters<span class="w"> </span><span class="s2">&quot;Name=vpc-id,Values=</span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span>--query<span class="w"> </span><span class="s1">&#39;Subnets[?(AvailabilityZone==`&#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span><span class="s2">a&quot;</span><span class="s1">&#39;` &amp;&amp; MapPublicIpOnLaunch==`true`)].SubnetId&#39;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span>--output<span class="w"> </span>text<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span><span class="k">)</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">  </span>aws<span class="w"> </span>cloud9<span class="w"> </span>create-environment-ec2<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">    </span>--image-id<span class="w"> </span>amazonlinux-2-x86_64<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="w">    </span>--instance-type<span class="w"> </span>m5.large<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span>--subnet-id<span class="w"> </span><span class="si">${</span><span class="nv">FIRST_SUBNET</span><span class="p">%% *</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">    </span>--automatic-stop-time-minutes<span class="w"> </span><span class="m">10080</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">    </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>tee<span class="w"> </span>/tmp/<span class="nv">$$</span>
-<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Open URL to access your Cloud9 Environment:&quot;</span>
-<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">  </span><span class="nv">C9_ID</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span>/tmp/<span class="nv">$$</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.environmentId&#39;</span><span class="k">)</span>
-<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;https://</span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span><span class="s2">.console.aws.amazon.com/cloud9/ide/</span><span class="si">${</span><span class="nv">C9_ID</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="k">else</span>
-<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;you have no default vpc in </span><span class="nv">$AWS_DEFAULT_REGION</span><span class="s2">&quot;</span>
-<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="k">fi</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># name=&lt;give your cloud9 a name&gt;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nv">datestring</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%Y%m%d-%H%M<span class="k">)</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">name</span><span class="p">:=cloud9-</span><span class="nv">$datestring</span><span class="si">}</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># VPC_ID=&lt;your vpc id&gt; </span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># ensure you have public subnet in it</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nv">DEFAULT_VPC_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-vpcs<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span>--filter<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>is-default,Values<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">&#39;Vpcs[0].VpcId&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span><span class="k">)</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nv">VPC_ID</span><span class="o">=</span><span class="si">${</span><span class="nv">VPC_ID</span><span class="p">:=</span><span class="nv">$DEFAULT_VPC_ID</span><span class="si">}</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span>-z<span class="w"> </span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">  </span><span class="nv">FIRST_SUBNET</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-subnets<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span>--filters<span class="w"> </span><span class="s2">&quot;Name=vpc-id,Values=</span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span>--query<span class="w"> </span><span class="s1">&#39;Subnets[?(AvailabilityZone==`&#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span><span class="s2">a&quot;</span><span class="s1">&#39;` &amp;&amp; MapPublicIpOnLaunch==`true`)].SubnetId&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span>--output<span class="w"> </span>text<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span><span class="k">)</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">  </span>aws<span class="w"> </span>cloud9<span class="w"> </span>create-environment-ec2<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">    </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">    </span>--image-id<span class="w"> </span>amazonlinux-2-x86_64<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span>--instance-type<span class="w"> </span>m5.large<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">    </span>--subnet-id<span class="w"> </span><span class="si">${</span><span class="nv">FIRST_SUBNET</span><span class="p">%% *</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">    </span>--automatic-stop-time-minutes<span class="w"> </span><span class="m">10080</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>tee<span class="w"> </span>/tmp/<span class="nv">$$</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Open URL to access your Cloud9 Environment:&quot;</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">  </span><span class="nv">C9_ID</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span>/tmp/<span class="nv">$$</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.environmentId&#39;</span><span class="k">)</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;https://</span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span><span class="s2">.console.aws.amazon.com/cloud9/ide/</span><span class="si">${</span><span class="nv">C9_ID</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="k">else</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;you have no default vpc in </span><span class="nv">$AWS_DEFAULT_REGION</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="k">fi</span>
 </code></pre></div></li>
 </ul>
 <p>^xzcvy9</p>
@@ -3269,12 +3316,12 @@
 <h2 id="using-internal-proxy-or-not">using internal proxy or not<a class="headerlink" href="#using-internal-proxy-or-not" title="Permanent link">&para;</a></h2>
 <ul>
 <li>如果你不需要使用代理服务器下载软件包，跳过执行下面代码 (skip this code block if you do not need proxy in your environment)<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>cat<span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bash_profile<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="s">export http_proxy=http://10.101.1.55:998</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="s">export https_proxy=http://10.101.1.55:998</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="s">export NO_PROXY=169.254.169.254,10.0.0.0/8,172.16.0.0/16,192.168.0.0/16</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="s">EOF</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nb">source</span><span class="w"> </span>~/.bash_profile
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>cat<span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bash_profile<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="s">export http_proxy=http://10.101.1.55:998</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="s">export https_proxy=http://10.101.1.55:998</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="s">export NO_PROXY=169.254.169.254,10.0.0.0/8,172.16.0.0/16,192.168.0.0/16</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="s">EOF</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nb">source</span><span class="w"> </span>~/.bash_profile
 </code></pre></div></li>
 </ul>
 <h2 id="install-in-cloud9-">install in cloud9-<a class="headerlink" href="#install-in-cloud9-" title="Permanent link">&para;</a></h2>
@@ -3284,146 +3331,146 @@
 <ul>
 <li>安装更新常用的软件</li>
 <li>修改 cloud9 磁盘大小 (<a href="https://docs.aws.amazon.com/cloud9/latest/user-guide/move-environment.html#move-environment-resize">link</a>)<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">###-SCRIPT-PART-ONE-BEGIN-###</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;SCRIPT-PART-ONE-BEGIN&quot;</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># set size as your expectation, otherwize 100g as default volume size</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1"># size=200</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1"># install others</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>sudo<span class="w"> </span>yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>jq<span class="w"> </span>gettext<span class="w"> </span>bash-completion<span class="w"> </span>moreutils<span class="w"> </span>wget
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="c1"># install awscli</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>curl<span class="w"> </span><span class="s2">&quot;https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip&quot;</span><span class="w"> </span>-o<span class="w"> </span>/tmp/awscliv2.zip
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="nb">echo</span><span class="w"> </span>A<span class="w"> </span><span class="p">|</span>unzip<span class="w"> </span>/tmp/awscliv2.zip<span class="w"> </span>-d<span class="w"> </span>/tmp
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>sudo<span class="w"> </span>/tmp/aws/install<span class="w"> </span>--update<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span>&gt;/tmp/awscli-install.log
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;complete -C &#39;/usr/local/bin/aws_completer&#39; aws&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bash_profile
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="c1"># remove existed aws</span>
-<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">  </span>sudo<span class="w"> </span>yum<span class="w"> </span>remove<span class="w"> </span>-y<span class="w"> </span>awscli
-<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">  </span><span class="nb">source</span><span class="w"> </span>~/.bash_profile
-<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">  </span>aws<span class="w"> </span>--version
-<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="k">fi</span>
-<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a>
-<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="c1"># install ssm session plugin</span>
-<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>curl<span class="w"> </span><span class="s2">&quot;https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm&quot;</span><span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;/tmp/session-manager-plugin.rpm&quot;</span>
-<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>/tmp/session-manager-plugin.rpm
-<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>
-<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="c1"># your default region </span>
-<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span><span class="m">169</span>.254.169.254/latest/dynamic/instance-identity/document<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.region&#39;</span><span class="k">)</span>
-<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>
-<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="c1"># change root volume size</span>
-<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-c<span class="w"> </span>/dev/nvme0<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="w">  </span>wget<span class="w"> </span>-qO-<span class="w"> </span>https://github.com/amazonlinux/amazon-ec2-utils/raw/main/ebsnvme-id<span class="w"> </span>&gt;/tmp/ebsnvme-id
-<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="w">  </span><span class="nv">VOLUME_ID</span><span class="o">=</span><span class="k">$(</span>sudo<span class="w"> </span>python3<span class="w"> </span>/tmp/ebsnvme-id<span class="w"> </span>-v<span class="w"> </span>/dev/nvme0<span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $NF}&#39;</span><span class="k">)</span>
-<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="w">  </span><span class="nv">DEVICE_NAME</span><span class="o">=</span>/dev/nvme0n1
-<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a><span class="k">else</span>
-<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a><span class="w">  </span><span class="nv">C9_INST_ID</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span><span class="m">169</span>.254.169.254/latest/meta-data/instance-id<span class="k">)</span>
-<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a><span class="w">  </span><span class="nv">VOLUME_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-volumes<span class="w"> </span>--filters<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>attachment.instance-id,Values<span class="o">=</span><span class="si">${</span><span class="nv">C9_INST_ID</span><span class="si">}</span><span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;Volumes[0].VolumeId&quot;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a><span class="w">  </span><span class="nv">DEVICE_NAME</span><span class="o">=</span>/dev/xvda
-<a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a><span class="k">fi</span>
-<a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a>
-<a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a>aws<span class="w"> </span>ec2<span class="w"> </span>modify-volume<span class="w"> </span>--volume-id<span class="w"> </span><span class="si">${</span><span class="nv">VOLUME_ID</span><span class="si">}</span><span class="w"> </span>--size<span class="w"> </span><span class="si">${</span><span class="nv">size</span><span class="k">:-</span><span class="nv">100</span><span class="si">}</span>
-<a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a>sleep<span class="w"> </span><span class="m">10</span>
-<a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a>sudo<span class="w"> </span>growpart<span class="w"> </span><span class="si">${</span><span class="nv">DEVICE_NAME</span><span class="si">}</span><span class="w"> </span><span class="m">1</span>
-<a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a>sudo<span class="w"> </span>xfs_growfs<span class="w"> </span>-d<span class="w"> </span>/
-<a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a>
-<a id="__codelineno-3-47" name="__codelineno-3-47" href="#__codelineno-3-47"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-3-48" name="__codelineno-3-48" href="#__codelineno-3-48"></a><span class="w">  </span><span class="nv">ROOT_PART</span><span class="o">=</span><span class="k">$(</span>df<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>-w<span class="w"> </span>/<span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $1}&#39;</span><span class="k">)</span>
-<a id="__codelineno-3-49" name="__codelineno-3-49" href="#__codelineno-3-49"></a><span class="w">  </span>sudo<span class="w"> </span>resize2fs<span class="w"> </span><span class="si">${</span><span class="nv">ROOT_PART</span><span class="si">}</span>
-<a id="__codelineno-3-50" name="__codelineno-3-50" href="#__codelineno-3-50"></a><span class="k">fi</span>
-<a id="__codelineno-3-51" name="__codelineno-3-51" href="#__codelineno-3-51"></a>
-<a id="__codelineno-3-52" name="__codelineno-3-52" href="#__codelineno-3-52"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
-<a id="__codelineno-3-53" name="__codelineno-3-53" href="#__codelineno-3-53"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;SCRIPT-PART-ONE-END&quot;</span>
-<a id="__codelineno-3-54" name="__codelineno-3-54" href="#__codelineno-3-54"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
-<a id="__codelineno-3-55" name="__codelineno-3-55" href="#__codelineno-3-55"></a><span class="c1">###-SCRIPT-PART-ONE-END-###</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1">###-SCRIPT-PART-ONE-BEGIN-###</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;SCRIPT-PART-ONE-BEGIN&quot;</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># set size as your expectation, otherwize 100g as default volume size</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># size=200</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1"># install others</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>sudo<span class="w"> </span>yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>jq<span class="w"> </span>gettext<span class="w"> </span>bash-completion<span class="w"> </span>moreutils<span class="w"> </span>wget
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="c1"># install awscli</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>curl<span class="w"> </span><span class="s2">&quot;https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip&quot;</span><span class="w"> </span>-o<span class="w"> </span>/tmp/awscliv2.zip
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="nb">echo</span><span class="w"> </span>A<span class="w"> </span><span class="p">|</span>unzip<span class="w"> </span>/tmp/awscliv2.zip<span class="w"> </span>-d<span class="w"> </span>/tmp
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>sudo<span class="w"> </span>/tmp/aws/install<span class="w"> </span>--update<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span>&gt;/tmp/awscli-install.log
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;complete -C &#39;/usr/local/bin/aws_completer&#39; aws&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bash_profile
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="c1"># remove existed aws</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">  </span>sudo<span class="w"> </span>yum<span class="w"> </span>remove<span class="w"> </span>-y<span class="w"> </span>awscli
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">  </span><span class="nb">source</span><span class="w"> </span>~/.bash_profile
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">  </span>aws<span class="w"> </span>--version
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="k">fi</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="c1"># install ssm session plugin</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>curl<span class="w"> </span><span class="s2">&quot;https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm&quot;</span><span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;/tmp/session-manager-plugin.rpm&quot;</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>/tmp/session-manager-plugin.rpm
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="c1"># your default region </span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span><span class="m">169</span>.254.169.254/latest/dynamic/instance-identity/document<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.region&#39;</span><span class="k">)</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="c1"># change root volume size</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-c<span class="w"> </span>/dev/nvme0<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="w">  </span>wget<span class="w"> </span>-qO-<span class="w"> </span>https://github.com/amazonlinux/amazon-ec2-utils/raw/main/ebsnvme-id<span class="w"> </span>&gt;/tmp/ebsnvme-id
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="w">  </span><span class="nv">VOLUME_ID</span><span class="o">=</span><span class="k">$(</span>sudo<span class="w"> </span>python3<span class="w"> </span>/tmp/ebsnvme-id<span class="w"> </span>-v<span class="w"> </span>/dev/nvme0<span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $NF}&#39;</span><span class="k">)</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="w">  </span><span class="nv">DEVICE_NAME</span><span class="o">=</span>/dev/nvme0n1
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="k">else</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="w">  </span><span class="nv">C9_INST_ID</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span><span class="m">169</span>.254.169.254/latest/meta-data/instance-id<span class="k">)</span>
+<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="w">  </span><span class="nv">VOLUME_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-volumes<span class="w"> </span>--filters<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>attachment.instance-id,Values<span class="o">=</span><span class="si">${</span><span class="nv">C9_INST_ID</span><span class="si">}</span><span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;Volumes[0].VolumeId&quot;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="w">  </span><span class="nv">DEVICE_NAME</span><span class="o">=</span>/dev/xvda
+<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="k">fi</span>
+<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a>
+<a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a>aws<span class="w"> </span>ec2<span class="w"> </span>modify-volume<span class="w"> </span>--volume-id<span class="w"> </span><span class="si">${</span><span class="nv">VOLUME_ID</span><span class="si">}</span><span class="w"> </span>--size<span class="w"> </span><span class="si">${</span><span class="nv">size</span><span class="k">:-</span><span class="nv">100</span><span class="si">}</span>
+<a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a>sleep<span class="w"> </span><span class="m">10</span>
+<a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a>sudo<span class="w"> </span>growpart<span class="w"> </span><span class="si">${</span><span class="nv">DEVICE_NAME</span><span class="si">}</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a>sudo<span class="w"> </span>xfs_growfs<span class="w"> </span>-d<span class="w"> </span>/
+<a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a>
+<a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a><span class="w">  </span><span class="nv">ROOT_PART</span><span class="o">=</span><span class="k">$(</span>df<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>-w<span class="w"> </span>/<span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $1}&#39;</span><span class="k">)</span>
+<a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a><span class="w">  </span>sudo<span class="w"> </span>resize2fs<span class="w"> </span><span class="si">${</span><span class="nv">ROOT_PART</span><span class="si">}</span>
+<a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a><span class="k">fi</span>
+<a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a>
+<a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
+<a id="__codelineno-2-53" name="__codelineno-2-53" href="#__codelineno-2-53"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;SCRIPT-PART-ONE-END&quot;</span>
+<a id="__codelineno-2-54" name="__codelineno-2-54" href="#__codelineno-2-54"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
+<a id="__codelineno-2-55" name="__codelineno-2-55" href="#__codelineno-2-55"></a><span class="c1">###-SCRIPT-PART-ONE-END-###</span>
 </code></pre></div></li>
 </ul>
 </li>
 <li>
 <p>安装 eks 相关的常用软件 (install some eks related tools)<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">###-SCRIPT-PART-TWO-BEGIN-###</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;SCRIPT-PART-TWO-BEGIN&quot;</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>mv<span class="w"> </span>-f<span class="w"> </span>~/.bash_completion<span class="w"> </span>~/.bash_completion.<span class="k">$(</span>date<span class="w"> </span>+%N<span class="k">)</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># install kubectl with +/- 1 cluster version 1.25.14 / 1.26.9 / 1.27.6</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="c1"># refer: https://kubernetes.io/releases/</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1"># sudo curl --location -o /usr/local/bin/kubectl &quot;https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl&quot;</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>sudo<span class="w"> </span>curl<span class="w"> </span>--silent<span class="w"> </span>--location<span class="w"> </span>-o<span class="w"> </span>/usr/local/bin/kubectl<span class="w"> </span><span class="s2">&quot;https://storage.googleapis.com/kubernetes-release/release/v1.25.14/bin/linux/amd64/kubectl&quot;</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/usr/local/bin/kubectl
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>/usr/local/bin/kubectl<span class="w"> </span>completion<span class="w"> </span>bash<span class="w"> </span>&gt;&gt;<span class="w">  </span>~/.bash_completion
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="nb">source</span><span class="w"> </span>/etc/profile.d/bash_completion.sh
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="nb">source</span><span class="w"> </span>~/.bash_completion
-<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">k</span><span class="o">=</span>kubectl<span class="w"> </span>
-<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="nb">complete</span><span class="w"> </span>-F<span class="w"> </span>__start_kubectl<span class="w"> </span>k
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;alias k=kubectl&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
-<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;complete -F __start_kubectl k&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
-<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a>
-<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="c1"># install eksctl</span>
-<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="c1"># consider install eksctl version 0.89.0</span>
-<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="c1"># if you have older version yaml </span>
-<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="c1"># https://eksctl.io/announcements/nodegroup-override-announcement/</span>
-<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a>curl<span class="w"> </span>-L<span class="w"> </span><span class="s2">&quot;https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_</span><span class="k">$(</span>uname<span class="w"> </span>-s<span class="k">)</span><span class="s2">_amd64.tar.gz&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tar<span class="w"> </span>xz<span class="w"> </span>-C<span class="w"> </span>/tmp/
-<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>sudo<span class="w"> </span>mv<span class="w"> </span>-v<span class="w"> </span>/tmp/eksctl<span class="w"> </span>/usr/local/bin
-<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a>/usr/local/bin/eksctl<span class="w"> </span>completion<span class="w"> </span>bash<span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bash_completion
-<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="nb">source</span><span class="w"> </span>/etc/profile.d/bash_completion.sh
-<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="nb">source</span><span class="w"> </span>~/.bash_completion
-<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a>
-<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="c1"># install eksdemo</span>
-<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a>curl<span class="w"> </span>-L<span class="w"> </span><span class="s2">&quot;https://github.com/awslabs/eksdemo/releases/latest/download/eksdemo_</span><span class="k">$(</span>uname<span class="w"> </span>-s<span class="k">)</span><span class="s2">_</span><span class="k">$(</span>uname<span class="w"> </span>-p<span class="k">)</span><span class="s2">.tar.gz&quot;</span><span class="w"> </span><span class="p">|</span>tar<span class="w"> </span>xz<span class="w"> </span>-C<span class="w"> </span>/tmp/
-<a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a>sudo<span class="w"> </span>mv<span class="w"> </span>-v<span class="w"> </span>/tmp/eksdemo<span class="w"> </span>/usr/local/bin
-<a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a>/usr/local/bin/eksdemo<span class="w"> </span>completion<span class="w"> </span>bash<span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bash_completion
-<a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a><span class="nb">source</span><span class="w"> </span>/etc/profile.d/bash_completion.sh
-<a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a><span class="nb">source</span><span class="w"> </span>~/.bash_completion
-<a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a>
-<a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a><span class="c1"># helm newest version (3.10.3)</span>
-<a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a>curl<span class="w"> </span>-sSL<span class="w"> </span>https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
-<a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a><span class="c1"># helm 3.8.2 (helm 3.9.0 will have issue #10975)</span>
-<a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a><span class="c1"># wget https://get.helm.sh/helm-v3.8.2-linux-amd64.tar.gz</span>
-<a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a><span class="c1"># tar xf helm-v3.8.2-linux-amd64.tar.gz</span>
-<a id="__codelineno-4-43" name="__codelineno-4-43" href="#__codelineno-4-43"></a><span class="c1"># sudo mv linux-amd64/helm /usr/local/bin/helm</span>
-<a id="__codelineno-4-44" name="__codelineno-4-44" href="#__codelineno-4-44"></a>/usr/local/bin/helm<span class="w"> </span>version<span class="w"> </span>--short
-<a id="__codelineno-4-45" name="__codelineno-4-45" href="#__codelineno-4-45"></a>
-<a id="__codelineno-4-46" name="__codelineno-4-46" href="#__codelineno-4-46"></a><span class="c1"># install aws-iam-authenticator 0.6.11 (2023/10) </span>
-<a id="__codelineno-4-47" name="__codelineno-4-47" href="#__codelineno-4-47"></a>wget<span class="w"> </span>-O<span class="w"> </span>/tmp/aws-iam-authenticator<span class="w"> </span>https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v0.6.11/aws-iam-authenticator_0.6.11_linux_amd64
-<a id="__codelineno-4-48" name="__codelineno-4-48" href="#__codelineno-4-48"></a>chmod<span class="w"> </span>+x<span class="w"> </span>/tmp/aws-iam-authenticator
-<a id="__codelineno-4-49" name="__codelineno-4-49" href="#__codelineno-4-49"></a>sudo<span class="w"> </span>mv<span class="w"> </span>/tmp/aws-iam-authenticator<span class="w"> </span>/usr/local/bin/
-<a id="__codelineno-4-50" name="__codelineno-4-50" href="#__codelineno-4-50"></a>
-<a id="__codelineno-4-51" name="__codelineno-4-51" href="#__codelineno-4-51"></a><span class="c1"># install kube-no-trouble</span>
-<a id="__codelineno-4-52" name="__codelineno-4-52" href="#__codelineno-4-52"></a>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>-sSL<span class="w"> </span>https://git.io/install-kubent<span class="k">)</span><span class="s2">&quot;</span>
-<a id="__codelineno-4-53" name="__codelineno-4-53" href="#__codelineno-4-53"></a>
-<a id="__codelineno-4-54" name="__codelineno-4-54" href="#__codelineno-4-54"></a><span class="c1"># install kubectl convert plugin</span>
-<a id="__codelineno-4-55" name="__codelineno-4-55" href="#__codelineno-4-55"></a>curl<span class="w"> </span>-LO<span class="w"> </span><span class="s2">&quot;https://dl.k8s.io/release/</span><span class="k">$(</span>curl<span class="w"> </span>-L<span class="w"> </span>-s<span class="w"> </span>https://dl.k8s.io/release/stable.txt<span class="k">)</span><span class="s2">/bin/linux/amd64/kubectl-convert&quot;</span><span class="w"> </span>--output-dir<span class="w"> </span>/tmp
-<a id="__codelineno-4-56" name="__codelineno-4-56" href="#__codelineno-4-56"></a>curl<span class="w"> </span>-LO<span class="w"> </span><span class="s2">&quot;https://dl.k8s.io/</span><span class="k">$(</span>curl<span class="w"> </span>-L<span class="w"> </span>-s<span class="w"> </span>https://dl.k8s.io/release/stable.txt<span class="k">)</span><span class="s2">/bin/linux/amd64/kubectl-convert.sha256&quot;</span><span class="w"> </span>--output-dir<span class="w"> </span>/tmp
-<a id="__codelineno-4-57" name="__codelineno-4-57" href="#__codelineno-4-57"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>cat<span class="w"> </span>/tmp/kubectl-convert.sha256<span class="k">)</span><span class="s2"> /tmp/kubectl-convert&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sha256sum<span class="w"> </span>--check
-<a id="__codelineno-4-58" name="__codelineno-4-58" href="#__codelineno-4-58"></a>sudo<span class="w"> </span>install<span class="w"> </span>-o<span class="w"> </span>root<span class="w"> </span>-g<span class="w"> </span>root<span class="w"> </span>-m<span class="w"> </span><span class="m">0755</span><span class="w"> </span>/tmp/kubectl-convert<span class="w"> </span>/usr/local/bin/kubectl-convert
-<a id="__codelineno-4-59" name="__codelineno-4-59" href="#__codelineno-4-59"></a>rm<span class="w"> </span>/tmp/kubectl-convert<span class="w"> </span>/tmp/kubectl-convert.sha256
-<a id="__codelineno-4-60" name="__codelineno-4-60" href="#__codelineno-4-60"></a>
-<a id="__codelineno-4-61" name="__codelineno-4-61" href="#__codelineno-4-61"></a><span class="c1"># option install jwt-cli</span>
-<a id="__codelineno-4-62" name="__codelineno-4-62" href="#__codelineno-4-62"></a><span class="c1"># https://github.com/mike-engel/jwt-cli/blob/main/README.md</span>
-<a id="__codelineno-4-63" name="__codelineno-4-63" href="#__codelineno-4-63"></a><span class="c1"># sudo yum -y install cargo</span>
-<a id="__codelineno-4-64" name="__codelineno-4-64" href="#__codelineno-4-64"></a><span class="c1"># cargo install jwt-cli</span>
-<a id="__codelineno-4-65" name="__codelineno-4-65" href="#__codelineno-4-65"></a><span class="c1"># sudo ln -sf ~/.cargo/bin/jwt /usr/local/bin/jwt</span>
-<a id="__codelineno-4-66" name="__codelineno-4-66" href="#__codelineno-4-66"></a>
-<a id="__codelineno-4-67" name="__codelineno-4-67" href="#__codelineno-4-67"></a><span class="c1"># install flux &amp; fluxctl</span>
-<a id="__codelineno-4-68" name="__codelineno-4-68" href="#__codelineno-4-68"></a>curl<span class="w"> </span>-s<span class="w"> </span>https://fluxcd.io/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>-E<span class="w"> </span>bash
-<a id="__codelineno-4-69" name="__codelineno-4-69" href="#__codelineno-4-69"></a>/usr/local/bin/flux<span class="w"> </span>-v
-<a id="__codelineno-4-70" name="__codelineno-4-70" href="#__codelineno-4-70"></a><span class="nb">source</span><span class="w"> </span>&lt;<span class="o">(</span>/usr/local/bin/flux<span class="w"> </span>completion<span class="w"> </span>bash<span class="o">)</span>
-<a id="__codelineno-4-71" name="__codelineno-4-71" href="#__codelineno-4-71"></a>
-<a id="__codelineno-4-72" name="__codelineno-4-72" href="#__codelineno-4-72"></a><span class="c1"># sudo wget -O /usr/local/bin/fluxctl $(curl https://api.github.com/repos/fluxcd/flux/releases/latest | jq -r &quot;.assets[] | select(.name | test(\&quot;linux_amd64\&quot;)) | .browser_download_url&quot;)</span>
-<a id="__codelineno-4-73" name="__codelineno-4-73" href="#__codelineno-4-73"></a><span class="c1"># sudo chmod 755 /usr/local/bin/fluxctl</span>
-<a id="__codelineno-4-74" name="__codelineno-4-74" href="#__codelineno-4-74"></a><span class="c1"># fluxctl version</span>
-<a id="__codelineno-4-75" name="__codelineno-4-75" href="#__codelineno-4-75"></a><span class="c1"># fluxctl identity --k8s-fwd-ns flux</span>
-<a id="__codelineno-4-76" name="__codelineno-4-76" href="#__codelineno-4-76"></a>
-<a id="__codelineno-4-77" name="__codelineno-4-77" href="#__codelineno-4-77"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
-<a id="__codelineno-4-78" name="__codelineno-4-78" href="#__codelineno-4-78"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;SCRIPT-PART-TWO-END&quot;</span>
-<a id="__codelineno-4-79" name="__codelineno-4-79" href="#__codelineno-4-79"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
-<a id="__codelineno-4-80" name="__codelineno-4-80" href="#__codelineno-4-80"></a><span class="c1">###-SCRIPT-PART-TWO-END-###</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1">###-SCRIPT-PART-TWO-BEGIN-###</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;SCRIPT-PART-TWO-BEGIN&quot;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>mv<span class="w"> </span>-f<span class="w"> </span>~/.bash_completion<span class="w"> </span>~/.bash_completion.<span class="k">$(</span>date<span class="w"> </span>+%N<span class="k">)</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># install kubectl with +/- 1 cluster version 1.25.14 / 1.26.9 / 1.27.6</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1"># refer: https://kubernetes.io/releases/</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="c1"># sudo curl --location -o /usr/local/bin/kubectl &quot;https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl&quot;</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>sudo<span class="w"> </span>curl<span class="w"> </span>--silent<span class="w"> </span>--location<span class="w"> </span>-o<span class="w"> </span>/usr/local/bin/kubectl<span class="w"> </span><span class="s2">&quot;https://storage.googleapis.com/kubernetes-release/release/v1.25.14/bin/linux/amd64/kubectl&quot;</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>sudo<span class="w"> </span>chmod<span class="w"> </span>+x<span class="w"> </span>/usr/local/bin/kubectl
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>/usr/local/bin/kubectl<span class="w"> </span>completion<span class="w"> </span>bash<span class="w"> </span>&gt;&gt;<span class="w">  </span>~/.bash_completion
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="nb">source</span><span class="w"> </span>/etc/profile.d/bash_completion.sh
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="nb">source</span><span class="w"> </span>~/.bash_completion
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="nb">alias</span><span class="w"> </span><span class="nv">k</span><span class="o">=</span>kubectl<span class="w"> </span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="nb">complete</span><span class="w"> </span>-F<span class="w"> </span>__start_kubectl<span class="w"> </span>k
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;alias k=kubectl&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;complete -F __start_kubectl k&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bashrc
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="c1"># install eksctl</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="c1"># consider install eksctl version 0.89.0</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="c1"># if you have older version yaml </span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="c1"># https://eksctl.io/announcements/nodegroup-override-announcement/</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>curl<span class="w"> </span>-L<span class="w"> </span><span class="s2">&quot;https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_</span><span class="k">$(</span>uname<span class="w"> </span>-s<span class="k">)</span><span class="s2">_amd64.tar.gz&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tar<span class="w"> </span>xz<span class="w"> </span>-C<span class="w"> </span>/tmp/
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>sudo<span class="w"> </span>mv<span class="w"> </span>-v<span class="w"> </span>/tmp/eksctl<span class="w"> </span>/usr/local/bin
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>/usr/local/bin/eksctl<span class="w"> </span>completion<span class="w"> </span>bash<span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bash_completion
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="nb">source</span><span class="w"> </span>/etc/profile.d/bash_completion.sh
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="nb">source</span><span class="w"> </span>~/.bash_completion
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="c1"># install eksdemo</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a>curl<span class="w"> </span>-L<span class="w"> </span><span class="s2">&quot;https://github.com/awslabs/eksdemo/releases/latest/download/eksdemo_</span><span class="k">$(</span>uname<span class="w"> </span>-s<span class="k">)</span><span class="s2">_</span><span class="k">$(</span>uname<span class="w"> </span>-p<span class="k">)</span><span class="s2">.tar.gz&quot;</span><span class="w"> </span><span class="p">|</span>tar<span class="w"> </span>xz<span class="w"> </span>-C<span class="w"> </span>/tmp/
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a>sudo<span class="w"> </span>mv<span class="w"> </span>-v<span class="w"> </span>/tmp/eksdemo<span class="w"> </span>/usr/local/bin
+<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a>/usr/local/bin/eksdemo<span class="w"> </span>completion<span class="w"> </span>bash<span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bash_completion
+<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="nb">source</span><span class="w"> </span>/etc/profile.d/bash_completion.sh
+<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a><span class="nb">source</span><span class="w"> </span>~/.bash_completion
+<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a>
+<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a><span class="c1"># helm newest version (3.10.3)</span>
+<a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a>curl<span class="w"> </span>-sSL<span class="w"> </span>https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3<span class="w"> </span><span class="p">|</span><span class="w"> </span>bash
+<a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a><span class="c1"># helm 3.8.2 (helm 3.9.0 will have issue #10975)</span>
+<a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a><span class="c1"># wget https://get.helm.sh/helm-v3.8.2-linux-amd64.tar.gz</span>
+<a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a><span class="c1"># tar xf helm-v3.8.2-linux-amd64.tar.gz</span>
+<a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a><span class="c1"># sudo mv linux-amd64/helm /usr/local/bin/helm</span>
+<a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a>/usr/local/bin/helm<span class="w"> </span>version<span class="w"> </span>--short
+<a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a>
+<a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a><span class="c1"># install aws-iam-authenticator 0.6.11 (2023/10) </span>
+<a id="__codelineno-3-47" name="__codelineno-3-47" href="#__codelineno-3-47"></a>wget<span class="w"> </span>-O<span class="w"> </span>/tmp/aws-iam-authenticator<span class="w"> </span>https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v0.6.11/aws-iam-authenticator_0.6.11_linux_amd64
+<a id="__codelineno-3-48" name="__codelineno-3-48" href="#__codelineno-3-48"></a>chmod<span class="w"> </span>+x<span class="w"> </span>/tmp/aws-iam-authenticator
+<a id="__codelineno-3-49" name="__codelineno-3-49" href="#__codelineno-3-49"></a>sudo<span class="w"> </span>mv<span class="w"> </span>/tmp/aws-iam-authenticator<span class="w"> </span>/usr/local/bin/
+<a id="__codelineno-3-50" name="__codelineno-3-50" href="#__codelineno-3-50"></a>
+<a id="__codelineno-3-51" name="__codelineno-3-51" href="#__codelineno-3-51"></a><span class="c1"># install kube-no-trouble</span>
+<a id="__codelineno-3-52" name="__codelineno-3-52" href="#__codelineno-3-52"></a>sh<span class="w"> </span>-c<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>curl<span class="w"> </span>-sSL<span class="w"> </span>https://git.io/install-kubent<span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-3-53" name="__codelineno-3-53" href="#__codelineno-3-53"></a>
+<a id="__codelineno-3-54" name="__codelineno-3-54" href="#__codelineno-3-54"></a><span class="c1"># install kubectl convert plugin</span>
+<a id="__codelineno-3-55" name="__codelineno-3-55" href="#__codelineno-3-55"></a>curl<span class="w"> </span>-LO<span class="w"> </span><span class="s2">&quot;https://dl.k8s.io/release/</span><span class="k">$(</span>curl<span class="w"> </span>-L<span class="w"> </span>-s<span class="w"> </span>https://dl.k8s.io/release/stable.txt<span class="k">)</span><span class="s2">/bin/linux/amd64/kubectl-convert&quot;</span><span class="w"> </span>--output-dir<span class="w"> </span>/tmp
+<a id="__codelineno-3-56" name="__codelineno-3-56" href="#__codelineno-3-56"></a>curl<span class="w"> </span>-LO<span class="w"> </span><span class="s2">&quot;https://dl.k8s.io/</span><span class="k">$(</span>curl<span class="w"> </span>-L<span class="w"> </span>-s<span class="w"> </span>https://dl.k8s.io/release/stable.txt<span class="k">)</span><span class="s2">/bin/linux/amd64/kubectl-convert.sha256&quot;</span><span class="w"> </span>--output-dir<span class="w"> </span>/tmp
+<a id="__codelineno-3-57" name="__codelineno-3-57" href="#__codelineno-3-57"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>cat<span class="w"> </span>/tmp/kubectl-convert.sha256<span class="k">)</span><span class="s2"> /tmp/kubectl-convert&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>sha256sum<span class="w"> </span>--check
+<a id="__codelineno-3-58" name="__codelineno-3-58" href="#__codelineno-3-58"></a>sudo<span class="w"> </span>install<span class="w"> </span>-o<span class="w"> </span>root<span class="w"> </span>-g<span class="w"> </span>root<span class="w"> </span>-m<span class="w"> </span><span class="m">0755</span><span class="w"> </span>/tmp/kubectl-convert<span class="w"> </span>/usr/local/bin/kubectl-convert
+<a id="__codelineno-3-59" name="__codelineno-3-59" href="#__codelineno-3-59"></a>rm<span class="w"> </span>/tmp/kubectl-convert<span class="w"> </span>/tmp/kubectl-convert.sha256
+<a id="__codelineno-3-60" name="__codelineno-3-60" href="#__codelineno-3-60"></a>
+<a id="__codelineno-3-61" name="__codelineno-3-61" href="#__codelineno-3-61"></a><span class="c1"># option install jwt-cli</span>
+<a id="__codelineno-3-62" name="__codelineno-3-62" href="#__codelineno-3-62"></a><span class="c1"># https://github.com/mike-engel/jwt-cli/blob/main/README.md</span>
+<a id="__codelineno-3-63" name="__codelineno-3-63" href="#__codelineno-3-63"></a><span class="c1"># sudo yum -y install cargo</span>
+<a id="__codelineno-3-64" name="__codelineno-3-64" href="#__codelineno-3-64"></a><span class="c1"># cargo install jwt-cli</span>
+<a id="__codelineno-3-65" name="__codelineno-3-65" href="#__codelineno-3-65"></a><span class="c1"># sudo ln -sf ~/.cargo/bin/jwt /usr/local/bin/jwt</span>
+<a id="__codelineno-3-66" name="__codelineno-3-66" href="#__codelineno-3-66"></a>
+<a id="__codelineno-3-67" name="__codelineno-3-67" href="#__codelineno-3-67"></a><span class="c1"># install flux &amp; fluxctl</span>
+<a id="__codelineno-3-68" name="__codelineno-3-68" href="#__codelineno-3-68"></a>curl<span class="w"> </span>-s<span class="w"> </span>https://fluxcd.io/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sudo<span class="w"> </span>-E<span class="w"> </span>bash
+<a id="__codelineno-3-69" name="__codelineno-3-69" href="#__codelineno-3-69"></a>/usr/local/bin/flux<span class="w"> </span>-v
+<a id="__codelineno-3-70" name="__codelineno-3-70" href="#__codelineno-3-70"></a><span class="nb">source</span><span class="w"> </span>&lt;<span class="o">(</span>/usr/local/bin/flux<span class="w"> </span>completion<span class="w"> </span>bash<span class="o">)</span>
+<a id="__codelineno-3-71" name="__codelineno-3-71" href="#__codelineno-3-71"></a>
+<a id="__codelineno-3-72" name="__codelineno-3-72" href="#__codelineno-3-72"></a><span class="c1"># sudo wget -O /usr/local/bin/fluxctl $(curl https://api.github.com/repos/fluxcd/flux/releases/latest | jq -r &quot;.assets[] | select(.name | test(\&quot;linux_amd64\&quot;)) | .browser_download_url&quot;)</span>
+<a id="__codelineno-3-73" name="__codelineno-3-73" href="#__codelineno-3-73"></a><span class="c1"># sudo chmod 755 /usr/local/bin/fluxctl</span>
+<a id="__codelineno-3-74" name="__codelineno-3-74" href="#__codelineno-3-74"></a><span class="c1"># fluxctl version</span>
+<a id="__codelineno-3-75" name="__codelineno-3-75" href="#__codelineno-3-75"></a><span class="c1"># fluxctl identity --k8s-fwd-ns flux</span>
+<a id="__codelineno-3-76" name="__codelineno-3-76" href="#__codelineno-3-76"></a>
+<a id="__codelineno-3-77" name="__codelineno-3-77" href="#__codelineno-3-77"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
+<a id="__codelineno-3-78" name="__codelineno-3-78" href="#__codelineno-3-78"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;SCRIPT-PART-TWO-END&quot;</span>
+<a id="__codelineno-3-79" name="__codelineno-3-79" href="#__codelineno-3-79"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
+<a id="__codelineno-3-80" name="__codelineno-3-80" href="#__codelineno-3-80"></a><span class="c1">###-SCRIPT-PART-TWO-END-###</span>
 </code></pre></div></p>
 </li>
 <li>
@@ -3434,89 +3481,89 @@
 <li>下面代码块包括：<ul>
 <li>禁用 cloud9 中的 credential 管理，从 <code>~/.aws/credentials</code> 中删除 <code>aws_session_token=</code> 行</li>
 <li>分配管理员权限 role 到 cloud9 instance<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1">###-SCRIPT-PART-THREE-BEGIN-###</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;SCRIPT-PART-THREE-BEGIN&quot;</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>aws<span class="w"> </span>cloud9<span class="w"> </span>update-environment<span class="w">  </span>--environment-id<span class="w"> </span><span class="nv">$C9_PID</span><span class="w"> </span>--managed-credentials-action<span class="w"> </span>DISABLE
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>rm<span class="w"> </span>-vf<span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.aws/credentials
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="c1"># ---</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PAGER</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span><span class="m">169</span>.254.169.254/latest/dynamic/instance-identity/document<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.region&#39;</span><span class="k">)</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="nv">C9_INST_ID</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span><span class="m">169</span>.254.169.254/latest/meta-data/instance-id<span class="k">)</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="nv">ROLE_NAME</span><span class="o">=</span>adminrole-<span class="k">$(</span><span class="nv">TZ</span><span class="o">=</span>CST-8<span class="w"> </span>date<span class="w"> </span>+%Y%m%d-%H%M%S<span class="k">)</span>
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="nv">MY_ACCOUNT_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span>--query<span class="w"> </span>Account<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
-<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>cat<span class="w"> </span>&gt;<span class="w"> </span>ec2.json<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
-<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="s">{</span>
-<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="s">    &quot;Effect&quot;: &quot;Allow&quot;,</span>
-<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="s">    &quot;Principal&quot;: {</span>
-<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="s">        &quot;Service&quot;: &quot;ec2.amazonaws.com&quot;</span>
-<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="s">    },</span>
-<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="s">    &quot;Action&quot;: &quot;sts:AssumeRole&quot;</span>
-<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="s">}</span>
-<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="s">EOF</span>
-<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="nv">STATEMENT_LIST</span><span class="o">=</span>ec2.json
-<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>
-<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span>WSParticipantRole<span class="w"> </span>WSOpsRole<span class="w"> </span>TeamRole<span class="w"> </span>OpsRole<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">  </span>aws<span class="w"> </span>iam<span class="w"> </span>get-role<span class="w"> </span>--role-name<span class="w"> </span><span class="nv">$i</span><span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
-<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="w">    </span>envsubst<span class="w"> </span>&gt;<span class="nv">$i</span>.json<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
-<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="s">{</span>
-<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="s">  &quot;Effect&quot;: &quot;Allow&quot;,</span>
-<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="s">  &quot;Principal&quot;: {</span>
-<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="s">    &quot;AWS&quot;: &quot;arn:aws:iam::${MY_ACCOUNT_ID}:role/$i&quot;</span>
-<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="s">  },</span>
-<a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a><span class="s">  &quot;Action&quot;: &quot;sts:AssumeRole&quot;</span>
-<a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a><span class="s">}</span>
-<a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a><span class="s">EOF</span>
-<a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a><span class="w">    </span><span class="nv">STATEMENT_LIST</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">STATEMENT_LIST</span><span class="si">}</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$i</span><span class="s2">.json&quot;</span><span class="k">)</span>
-<a id="__codelineno-5-40" name="__codelineno-5-40" href="#__codelineno-5-40"></a><span class="w">  </span><span class="k">fi</span>
-<a id="__codelineno-5-41" name="__codelineno-5-41" href="#__codelineno-5-41"></a><span class="k">done</span>
-<a id="__codelineno-5-42" name="__codelineno-5-42" href="#__codelineno-5-42"></a>
-<a id="__codelineno-5-43" name="__codelineno-5-43" href="#__codelineno-5-43"></a>jq<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;{Version: &quot;2012-10-17&quot;, Statement: [inputs]}&#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">STATEMENT_LIST</span><span class="si">}</span><span class="w"> </span>&gt;<span class="w"> </span>trust.json
-<a id="__codelineno-5-44" name="__codelineno-5-44" href="#__codelineno-5-44"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">STATEMENT_LIST</span><span class="si">}</span>
-<a id="__codelineno-5-45" name="__codelineno-5-45" href="#__codelineno-5-45"></a>rm<span class="w"> </span>-f<span class="w"> </span><span class="si">${</span><span class="nv">STATEMENT_LIST</span><span class="si">}</span>
-<a id="__codelineno-5-46" name="__codelineno-5-46" href="#__codelineno-5-46"></a>
-<a id="__codelineno-5-47" name="__codelineno-5-47" href="#__codelineno-5-47"></a><span class="c1"># create role</span>
-<a id="__codelineno-5-48" name="__codelineno-5-48" href="#__codelineno-5-48"></a>aws<span class="w"> </span>iam<span class="w"> </span>create-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-49" name="__codelineno-5-49" href="#__codelineno-5-49"></a><span class="w">  </span>--assume-role-policy-document<span class="w"> </span>file://trust.json
-<a id="__codelineno-5-50" name="__codelineno-5-50" href="#__codelineno-5-50"></a>aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-51" name="__codelineno-5-51" href="#__codelineno-5-51"></a><span class="w">  </span>--policy-arn<span class="w"> </span><span class="s2">&quot;arn:aws:iam::aws:policy/AdministratorAccess&quot;</span>
-<a id="__codelineno-5-52" name="__codelineno-5-52" href="#__codelineno-5-52"></a>
-<a id="__codelineno-5-53" name="__codelineno-5-53" href="#__codelineno-5-53"></a><span class="nv">instance_profile_arn</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-iam-instance-profile-associations<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-54" name="__codelineno-5-54" href="#__codelineno-5-54"></a><span class="w">  </span>--filter<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>instance-id,Values<span class="o">=</span><span class="nv">$C9_INST_ID</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-55" name="__codelineno-5-55" href="#__codelineno-5-55"></a><span class="w">  </span>--query<span class="w"> </span>IamInstanceProfileAssociations<span class="o">[</span><span class="m">0</span><span class="o">]</span>.IamInstanceProfile.Arn<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-56" name="__codelineno-5-56" href="#__codelineno-5-56"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-5-57" name="__codelineno-5-57" href="#__codelineno-5-57"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${</span><span class="nv">instance_profile_arn</span><span class="si">}</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;None&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-5-58" name="__codelineno-5-58" href="#__codelineno-5-58"></a><span class="w">  </span><span class="c1"># create one</span>
-<a id="__codelineno-5-59" name="__codelineno-5-59" href="#__codelineno-5-59"></a><span class="w">  </span>aws<span class="w"> </span>iam<span class="w"> </span>create-instance-profile<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-60" name="__codelineno-5-60" href="#__codelineno-5-60"></a><span class="w">    </span>--instance-profile-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span>
-<a id="__codelineno-5-61" name="__codelineno-5-61" href="#__codelineno-5-61"></a><span class="w">  </span>sleep<span class="w"> </span><span class="m">10</span>
-<a id="__codelineno-5-62" name="__codelineno-5-62" href="#__codelineno-5-62"></a><span class="w">  </span><span class="c1"># attach role to it</span>
-<a id="__codelineno-5-63" name="__codelineno-5-63" href="#__codelineno-5-63"></a><span class="w">  </span>aws<span class="w"> </span>iam<span class="w"> </span>add-role-to-instance-profile<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-64" name="__codelineno-5-64" href="#__codelineno-5-64"></a><span class="w">    </span>--instance-profile-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-65" name="__codelineno-5-65" href="#__codelineno-5-65"></a><span class="w">    </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span>
-<a id="__codelineno-5-66" name="__codelineno-5-66" href="#__codelineno-5-66"></a><span class="w">  </span>sleep<span class="w"> </span><span class="m">10</span>
-<a id="__codelineno-5-67" name="__codelineno-5-67" href="#__codelineno-5-67"></a><span class="w">  </span><span class="c1"># attach instance profile to ec2</span>
-<a id="__codelineno-5-68" name="__codelineno-5-68" href="#__codelineno-5-68"></a><span class="w">  </span>aws<span class="w"> </span>ec2<span class="w"> </span>associate-iam-instance-profile<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-69" name="__codelineno-5-69" href="#__codelineno-5-69"></a><span class="w">    </span>--iam-instance-profile<span class="w"> </span><span class="nv">Name</span><span class="o">=</span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-70" name="__codelineno-5-70" href="#__codelineno-5-70"></a><span class="w">    </span>--instance-id<span class="w"> </span><span class="si">${</span><span class="nv">C9_INST_ID</span><span class="si">}</span>
-<a id="__codelineno-5-71" name="__codelineno-5-71" href="#__codelineno-5-71"></a><span class="k">else</span>
-<a id="__codelineno-5-72" name="__codelineno-5-72" href="#__codelineno-5-72"></a><span class="w">  </span><span class="nv">existed_role_name</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>iam<span class="w"> </span>get-instance-profile<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-73" name="__codelineno-5-73" href="#__codelineno-5-73"></a><span class="w">    </span>--instance-profile-name<span class="w"> </span><span class="si">${</span><span class="nv">instance_profile_arn</span><span class="p">##*/</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-74" name="__codelineno-5-74" href="#__codelineno-5-74"></a><span class="w">    </span>--query<span class="w"> </span><span class="s1">&#39;InstanceProfile.Roles[0].RoleName&#39;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-75" name="__codelineno-5-75" href="#__codelineno-5-75"></a><span class="w">    </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-5-76" name="__codelineno-5-76" href="#__codelineno-5-76"></a><span class="w">  </span>aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">existed_role_name</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-77" name="__codelineno-5-77" href="#__codelineno-5-77"></a><span class="w">    </span>--policy-arn<span class="w"> </span><span class="s2">&quot;arn:aws:iam::aws:policy/AdministratorAccess&quot;</span>
-<a id="__codelineno-5-78" name="__codelineno-5-78" href="#__codelineno-5-78"></a><span class="k">fi</span>
-<a id="__codelineno-5-79" name="__codelineno-5-79" href="#__codelineno-5-79"></a>
-<a id="__codelineno-5-80" name="__codelineno-5-80" href="#__codelineno-5-80"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
-<a id="__codelineno-5-81" name="__codelineno-5-81" href="#__codelineno-5-81"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;SCRIPT-PART-THREE-END&quot;</span>
-<a id="__codelineno-5-82" name="__codelineno-5-82" href="#__codelineno-5-82"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
-<a id="__codelineno-5-83" name="__codelineno-5-83" href="#__codelineno-5-83"></a><span class="c1">###-SCRIPT-PART-THREE-END-###</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1">###-SCRIPT-PART-THREE-BEGIN-###</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;SCRIPT-PART-THREE-BEGIN&quot;</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>aws<span class="w"> </span>cloud9<span class="w"> </span>update-environment<span class="w">  </span>--environment-id<span class="w"> </span><span class="nv">$C9_PID</span><span class="w"> </span>--managed-credentials-action<span class="w"> </span>DISABLE
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>rm<span class="w"> </span>-vf<span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.aws/credentials
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="c1"># ---</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PAGER</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span><span class="m">169</span>.254.169.254/latest/dynamic/instance-identity/document<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.region&#39;</span><span class="k">)</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="nv">C9_INST_ID</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span><span class="m">169</span>.254.169.254/latest/meta-data/instance-id<span class="k">)</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="nv">ROLE_NAME</span><span class="o">=</span>adminrole-<span class="k">$(</span><span class="nv">TZ</span><span class="o">=</span>CST-8<span class="w"> </span>date<span class="w"> </span>+%Y%m%d-%H%M%S<span class="k">)</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="nv">MY_ACCOUNT_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span>--query<span class="w"> </span>Account<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>cat<span class="w"> </span>&gt;<span class="w"> </span>ec2.json<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="s">{</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="s">    &quot;Effect&quot;: &quot;Allow&quot;,</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="s">    &quot;Principal&quot;: {</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="s">        &quot;Service&quot;: &quot;ec2.amazonaws.com&quot;</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="s">    },</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="s">    &quot;Action&quot;: &quot;sts:AssumeRole&quot;</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="s">}</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="s">EOF</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="nv">STATEMENT_LIST</span><span class="o">=</span>ec2.json
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span>WSParticipantRole<span class="w"> </span>WSOpsRole<span class="w"> </span>TeamRole<span class="w"> </span>OpsRole<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="w">  </span>aws<span class="w"> </span>iam<span class="w"> </span>get-role<span class="w"> </span>--role-name<span class="w"> </span><span class="nv">$i</span><span class="w"> </span>&gt;/dev/null<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="w">    </span>envsubst<span class="w"> </span>&gt;<span class="nv">$i</span>.json<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="s">{</span>
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="s">  &quot;Effect&quot;: &quot;Allow&quot;,</span>
+<a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a><span class="s">  &quot;Principal&quot;: {</span>
+<a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="s">    &quot;AWS&quot;: &quot;arn:aws:iam::${MY_ACCOUNT_ID}:role/$i&quot;</span>
+<a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a><span class="s">  },</span>
+<a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a><span class="s">  &quot;Action&quot;: &quot;sts:AssumeRole&quot;</span>
+<a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a><span class="s">}</span>
+<a id="__codelineno-4-38" name="__codelineno-4-38" href="#__codelineno-4-38"></a><span class="s">EOF</span>
+<a id="__codelineno-4-39" name="__codelineno-4-39" href="#__codelineno-4-39"></a><span class="w">    </span><span class="nv">STATEMENT_LIST</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">STATEMENT_LIST</span><span class="si">}</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$i</span><span class="s2">.json&quot;</span><span class="k">)</span>
+<a id="__codelineno-4-40" name="__codelineno-4-40" href="#__codelineno-4-40"></a><span class="w">  </span><span class="k">fi</span>
+<a id="__codelineno-4-41" name="__codelineno-4-41" href="#__codelineno-4-41"></a><span class="k">done</span>
+<a id="__codelineno-4-42" name="__codelineno-4-42" href="#__codelineno-4-42"></a>
+<a id="__codelineno-4-43" name="__codelineno-4-43" href="#__codelineno-4-43"></a>jq<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;{Version: &quot;2012-10-17&quot;, Statement: [inputs]}&#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">STATEMENT_LIST</span><span class="si">}</span><span class="w"> </span>&gt;<span class="w"> </span>trust.json
+<a id="__codelineno-4-44" name="__codelineno-4-44" href="#__codelineno-4-44"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">STATEMENT_LIST</span><span class="si">}</span>
+<a id="__codelineno-4-45" name="__codelineno-4-45" href="#__codelineno-4-45"></a>rm<span class="w"> </span>-f<span class="w"> </span><span class="si">${</span><span class="nv">STATEMENT_LIST</span><span class="si">}</span>
+<a id="__codelineno-4-46" name="__codelineno-4-46" href="#__codelineno-4-46"></a>
+<a id="__codelineno-4-47" name="__codelineno-4-47" href="#__codelineno-4-47"></a><span class="c1"># create role</span>
+<a id="__codelineno-4-48" name="__codelineno-4-48" href="#__codelineno-4-48"></a>aws<span class="w"> </span>iam<span class="w"> </span>create-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-49" name="__codelineno-4-49" href="#__codelineno-4-49"></a><span class="w">  </span>--assume-role-policy-document<span class="w"> </span>file://trust.json
+<a id="__codelineno-4-50" name="__codelineno-4-50" href="#__codelineno-4-50"></a>aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-51" name="__codelineno-4-51" href="#__codelineno-4-51"></a><span class="w">  </span>--policy-arn<span class="w"> </span><span class="s2">&quot;arn:aws:iam::aws:policy/AdministratorAccess&quot;</span>
+<a id="__codelineno-4-52" name="__codelineno-4-52" href="#__codelineno-4-52"></a>
+<a id="__codelineno-4-53" name="__codelineno-4-53" href="#__codelineno-4-53"></a><span class="nv">instance_profile_arn</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-iam-instance-profile-associations<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-54" name="__codelineno-4-54" href="#__codelineno-4-54"></a><span class="w">  </span>--filter<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>instance-id,Values<span class="o">=</span><span class="nv">$C9_INST_ID</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-55" name="__codelineno-4-55" href="#__codelineno-4-55"></a><span class="w">  </span>--query<span class="w"> </span>IamInstanceProfileAssociations<span class="o">[</span><span class="m">0</span><span class="o">]</span>.IamInstanceProfile.Arn<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-56" name="__codelineno-4-56" href="#__codelineno-4-56"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-4-57" name="__codelineno-4-57" href="#__codelineno-4-57"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${</span><span class="nv">instance_profile_arn</span><span class="si">}</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;None&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-4-58" name="__codelineno-4-58" href="#__codelineno-4-58"></a><span class="w">  </span><span class="c1"># create one</span>
+<a id="__codelineno-4-59" name="__codelineno-4-59" href="#__codelineno-4-59"></a><span class="w">  </span>aws<span class="w"> </span>iam<span class="w"> </span>create-instance-profile<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-60" name="__codelineno-4-60" href="#__codelineno-4-60"></a><span class="w">    </span>--instance-profile-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span>
+<a id="__codelineno-4-61" name="__codelineno-4-61" href="#__codelineno-4-61"></a><span class="w">  </span>sleep<span class="w"> </span><span class="m">10</span>
+<a id="__codelineno-4-62" name="__codelineno-4-62" href="#__codelineno-4-62"></a><span class="w">  </span><span class="c1"># attach role to it</span>
+<a id="__codelineno-4-63" name="__codelineno-4-63" href="#__codelineno-4-63"></a><span class="w">  </span>aws<span class="w"> </span>iam<span class="w"> </span>add-role-to-instance-profile<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-64" name="__codelineno-4-64" href="#__codelineno-4-64"></a><span class="w">    </span>--instance-profile-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-65" name="__codelineno-4-65" href="#__codelineno-4-65"></a><span class="w">    </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span>
+<a id="__codelineno-4-66" name="__codelineno-4-66" href="#__codelineno-4-66"></a><span class="w">  </span>sleep<span class="w"> </span><span class="m">10</span>
+<a id="__codelineno-4-67" name="__codelineno-4-67" href="#__codelineno-4-67"></a><span class="w">  </span><span class="c1"># attach instance profile to ec2</span>
+<a id="__codelineno-4-68" name="__codelineno-4-68" href="#__codelineno-4-68"></a><span class="w">  </span>aws<span class="w"> </span>ec2<span class="w"> </span>associate-iam-instance-profile<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-69" name="__codelineno-4-69" href="#__codelineno-4-69"></a><span class="w">    </span>--iam-instance-profile<span class="w"> </span><span class="nv">Name</span><span class="o">=</span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-70" name="__codelineno-4-70" href="#__codelineno-4-70"></a><span class="w">    </span>--instance-id<span class="w"> </span><span class="si">${</span><span class="nv">C9_INST_ID</span><span class="si">}</span>
+<a id="__codelineno-4-71" name="__codelineno-4-71" href="#__codelineno-4-71"></a><span class="k">else</span>
+<a id="__codelineno-4-72" name="__codelineno-4-72" href="#__codelineno-4-72"></a><span class="w">  </span><span class="nv">existed_role_name</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>iam<span class="w"> </span>get-instance-profile<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-73" name="__codelineno-4-73" href="#__codelineno-4-73"></a><span class="w">    </span>--instance-profile-name<span class="w"> </span><span class="si">${</span><span class="nv">instance_profile_arn</span><span class="p">##*/</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-74" name="__codelineno-4-74" href="#__codelineno-4-74"></a><span class="w">    </span>--query<span class="w"> </span><span class="s1">&#39;InstanceProfile.Roles[0].RoleName&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-75" name="__codelineno-4-75" href="#__codelineno-4-75"></a><span class="w">    </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-4-76" name="__codelineno-4-76" href="#__codelineno-4-76"></a><span class="w">  </span>aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">existed_role_name</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-77" name="__codelineno-4-77" href="#__codelineno-4-77"></a><span class="w">    </span>--policy-arn<span class="w"> </span><span class="s2">&quot;arn:aws:iam::aws:policy/AdministratorAccess&quot;</span>
+<a id="__codelineno-4-78" name="__codelineno-4-78" href="#__codelineno-4-78"></a><span class="k">fi</span>
+<a id="__codelineno-4-79" name="__codelineno-4-79" href="#__codelineno-4-79"></a>
+<a id="__codelineno-4-80" name="__codelineno-4-80" href="#__codelineno-4-80"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
+<a id="__codelineno-4-81" name="__codelineno-4-81" href="#__codelineno-4-81"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;SCRIPT-PART-THREE-END&quot;</span>
+<a id="__codelineno-4-82" name="__codelineno-4-82" href="#__codelineno-4-82"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
+<a id="__codelineno-4-83" name="__codelineno-4-83" href="#__codelineno-4-83"></a><span class="c1">###-SCRIPT-PART-THREE-END-###</span>
 </code></pre></div></li>
 </ul>
 </li>
@@ -3524,7 +3571,7 @@
 </li>
 <li>
 <p>在 cloud9 中，重新打开一个 terminal 窗口，并验证权限符合预期。上面代码块将创建一个 instance profile ，并将关联名为 <code>adminrole-xxx</code> 的 role，或者在 cloud9 现有的 role 上关联 <code>AdministratorAccess</code> role policy。(open new tab to verify you have new role, <code>adminrole-xxx</code>, on your cloud9)<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity
 </code></pre></div></p>
 </li>
 </ul>
@@ -3539,11 +3586,11 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 29, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-03T15:40:40+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-03</span>
       
         <br>
         Created:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">January 2, 2023</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-01-02T13:44:52+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-01-02</span>
       
     
   </small>
@@ -3598,6 +3645,10 @@
     
     
       <script src="../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+        <script src="../../js/timeago.min.js"></script>
+      
+        <script src="../../js/timeago_mkdocs_material.js"></script>
       
     
   </body>

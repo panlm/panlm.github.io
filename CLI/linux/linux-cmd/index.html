@@ -48,6 +48,8 @@
       
     
     
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
     <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
@@ -87,7 +89,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cmd" class="md-skip">
+        <a href="#linux-cmd" class="md-skip">
           Skip to content
         </a>
       
@@ -2556,6 +2558,8 @@
       
         
       
+        
+      
     
     
     
@@ -2638,9 +2642,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sed" class="md-nav__link">
-    sed
+  <a href="#brew" class="md-nav__link">
+    brew
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#curl" class="md-nav__link">
+    curl
+  </a>
+  
+    <nav class="md-nav" aria-label="curl">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-http-return-code" class="md-nav__link">
+    check http return code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -2652,15 +2676,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lsblk" class="md-nav__link">
-    lsblk
+  <a href="#history" class="md-nav__link">
+    history
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#ip-forward-" class="md-nav__link">
-    ip forward-
+    ip-forward-
   </a>
   
 </li>
@@ -2693,49 +2717,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#xfs" class="md-nav__link">
-    xfs
-  </a>
-  
-    <nav class="md-nav" aria-label="xfs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#xfs-mount-" class="md-nav__link">
-    xfs-mount-
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-uuid" class="md-nav__link">
-    get uuid
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tcp-setting-time_wiat" class="md-nav__link">
-    tcp setting - TIME_WIAT
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#xtop" class="md-nav__link">
-    xtop
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sponge-tee-redirect-to-same-file" class="md-nav__link">
-    sponge &amp; tee &amp; redirect to same file
+  <a href="#lsblk-" class="md-nav__link">
+    lsblk-
   </a>
   
 </li>
@@ -2757,34 +2740,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#traffic-control" class="md-nav__link">
-    traffic control
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ip-address-calc" class="md-nav__link">
-    ip address calc
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#curl" class="md-nav__link">
-    curl
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#history" class="md-nav__link">
-    history
-  </a>
   
 </li>
       
@@ -2816,6 +2771,75 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#sed" class="md-nav__link">
+    sed
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sponge-tee-redirect-to-same-file" class="md-nav__link">
+    sponge &amp; tee &amp; redirect to same file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp-setting-time_wiat" class="md-nav__link">
+    tcp setting - TIME_WIAT
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traffic-control" class="md-nav__link">
+    traffic control
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xfs" class="md-nav__link">
+    xfs
+  </a>
+  
+    <nav class="md-nav" aria-label="xfs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xfs-mount-" class="md-nav__link">
+    xfs-mount-
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-uuid" class="md-nav__link">
+    get uuid
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xtop" class="md-nav__link">
+    xtop
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ip-address-calc" class="md-nav__link">
+    ip address calc
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#others" class="md-nav__link">
     others
   </a>
@@ -2842,6 +2866,26 @@
   
   <span class="md-ellipsis">
     assume-tool
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../docker-image-sample/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    docker-image-customized
   </span>
   
 
@@ -2926,6 +2970,8 @@
   
     
     
+      
+        
       
         
       
@@ -3114,6 +3160,26 @@
   
   <span class="md-ellipsis">
     ebs-cmd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../awscli/ecs-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ecs
   </span>
   
 
@@ -3324,9 +3390,29 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#sed" class="md-nav__link">
-    sed
+  <a href="#brew" class="md-nav__link">
+    brew
   </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#curl" class="md-nav__link">
+    curl
+  </a>
+  
+    <nav class="md-nav" aria-label="curl">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#check-http-return-code" class="md-nav__link">
+    check http return code
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3338,15 +3424,15 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#lsblk" class="md-nav__link">
-    lsblk
+  <a href="#history" class="md-nav__link">
+    history
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#ip-forward-" class="md-nav__link">
-    ip forward-
+    ip-forward-
   </a>
   
 </li>
@@ -3379,49 +3465,8 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#xfs" class="md-nav__link">
-    xfs
-  </a>
-  
-    <nav class="md-nav" aria-label="xfs">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#xfs-mount-" class="md-nav__link">
-    xfs-mount-
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#get-uuid" class="md-nav__link">
-    get uuid
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#tcp-setting-time_wiat" class="md-nav__link">
-    tcp setting - TIME_WIAT
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#xtop" class="md-nav__link">
-    xtop
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sponge-tee-redirect-to-same-file" class="md-nav__link">
-    sponge &amp; tee &amp; redirect to same file
+  <a href="#lsblk-" class="md-nav__link">
+    lsblk-
   </a>
   
 </li>
@@ -3443,34 +3488,6 @@
         
       </ul>
     </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#traffic-control" class="md-nav__link">
-    traffic control
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#ip-address-calc" class="md-nav__link">
-    ip address calc
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#curl" class="md-nav__link">
-    curl
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#history" class="md-nav__link">
-    history
-  </a>
   
 </li>
       
@@ -3498,6 +3515,75 @@
         
       </ul>
     </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sed" class="md-nav__link">
+    sed
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sponge-tee-redirect-to-same-file" class="md-nav__link">
+    sponge &amp; tee &amp; redirect to same file
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#tcp-setting-time_wiat" class="md-nav__link">
+    tcp setting - TIME_WIAT
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#traffic-control" class="md-nav__link">
+    traffic control
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xfs" class="md-nav__link">
+    xfs
+  </a>
+  
+    <nav class="md-nav" aria-label="xfs">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#xfs-mount-" class="md-nav__link">
+    xfs-mount-
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-uuid" class="md-nav__link">
+    get uuid
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#xtop" class="md-nav__link">
+    xtop
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#ip-address-calc" class="md-nav__link">
+    ip address calc
+  </a>
   
 </li>
       
@@ -3540,16 +3626,25 @@
 
 
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>title: This is a github note
-</code></pre></div>
-<h1 id="cmd">cmd<a class="headerlink" href="#cmd" title="Permanent link">&para;</a></h1>
-<h2 id="sed">sed<a class="headerlink" href="#sed" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">file</span><span class="o">=</span>file.md
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>gsed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/^!\[\[\([^]]\+\)\]\]/![](\1)/&#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">file</span><span class="si">}</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># change </span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># ![[stream-k8s-control-panel-logs-to-s3-21.png]]</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># to </span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1"># ![](stream-k8s-control-panel-logs-to-s3-21.png)</span>
+<blockquote>
+<p>[!WARNING] This is a github note</p>
+</blockquote>
+<h1 id="linux-cmd">linux cmd<a class="headerlink" href="#linux-cmd" title="Permanent link">&para;</a></h1>
+<h2 id="brew">brew<a class="headerlink" href="#brew" title="Permanent link">&para;</a></h2>
+<ul>
+<li>install<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>git<span class="w"> </span>gcc<span class="w"> </span>make<span class="w"> </span>curl
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/Homebrew/brew.git
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>sudo<span class="w"> </span>cp<span class="w"> </span>brew/bin/brew<span class="w"> </span>/usr/local/bin/
+</code></pre></div></li>
+</ul>
+<h2 id="curl">curl<a class="headerlink" href="#curl" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../curl-sample-1" title="curl-sample-1">curl-sample-1</a></li>
+<li>badssl.com</li>
+</ul>
+<h3 id="check-http-return-code">check http return code<a class="headerlink" href="#check-http-return-code" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>curl<span class="w"> </span>-sL<span class="w"> </span>-w<span class="w"> </span><span class="s1">&#39;%{http_code}&#39;</span><span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span><span class="s2">&quot;https://httpbin.org/status/302&quot;</span>
 </code></pre></div>
 <h2 id="ec2-instance-selector">ec2-instance-selector<a class="headerlink" href="#ec2-instance-selector" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>brew<span class="w"> </span>tap<span class="w"> </span>aws/tap
@@ -3557,10 +3652,15 @@
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ec2-instance-selector<span class="w"> </span>-c<span class="w"> </span><span class="m">4</span><span class="w"> </span>-m<span class="w"> </span><span class="m">16</span><span class="w"> </span>-r<span class="w"> </span>us-east-2<span class="w"> </span>-a<span class="w"> </span>arm64
 </code></pre></div>
-<h2 id="lsblk">lsblk<a class="headerlink" href="#lsblk" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>lsblk -o name,mountpoint,label,size,uuid
+<h2 id="history">history<a class="headerlink" href="#history" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>bash<span class="w">                        </span><span class="c1"># open a new session.</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">unset</span><span class="w"> </span>HISTFILE<span class="w">              </span><span class="c1"># avoid recording commands to file.</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>commands<span class="w"> </span>not<span class="w"> </span>recorded
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>.
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>.
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nb">exit</span>
 </code></pre></div>
-<h2 id="ip-forward-">ip forward-<a class="headerlink" href="#ip-forward-" title="Permanent link">&para;</a></h2>
+<h2 id="ip-forward-">ip-forward-<a class="headerlink" href="#ip-forward-" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;net.ipv4.ip_forward = 1</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="s1">net.ipv4.conf.default.rp_filter = 0</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="s1">net.ipv4.conf.default.accept_source_route = 0</span>
@@ -3598,21 +3698,62 @@
 <a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="c1"># Save iptables:</span>
 <a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a>service<span class="w"> </span>iptables<span class="w"> </span>save<span class="p">;</span>
 </code></pre></div>
+<h2 id="lsblk-">lsblk-<a class="headerlink" href="#lsblk-" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>lsblk -o name,mountpoint,label,size,uuid
+</code></pre></div>
+<h2 id="network-monitor">network monitor<a class="headerlink" href="#network-monitor" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://www.tecmint.com/linux-network-bandwidth-monitoring-tools/">https://www.tecmint.com/linux-network-bandwidth-monitoring-tools/</a></li>
+</ul>
+<h3 id="iperf">iperf<a class="headerlink" href="#iperf" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://aws.amazon.com/premiumsupport/knowledge-center/network-throughput-benchmark-linux-ec2/">https://aws.amazon.com/premiumsupport/knowledge-center/network-throughput-benchmark-linux-ec2/</a></li>
+<li>server <br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>sudo<span class="w"> </span>iperf<span class="w"> </span>-s
+</code></pre></div></li>
+<li>client <br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>iperf<span class="w"> </span>-c<span class="w"> </span><span class="m">172</span>.31.30.41<span class="w"> </span>--parallel<span class="w"> </span><span class="m">40</span><span class="w"> </span>-i<span class="w"> </span><span class="m">1</span><span class="w"> </span>-t<span class="w"> </span><span class="m">2</span>
+</code></pre></div></li>
+</ul>
+<h2 id="rsync">rsync<a class="headerlink" href="#rsync" title="Permanent link">&para;</a></h2>
+<h3 id="notable-folder">notable folder<a class="headerlink" href="#notable-folder" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>rsync<span class="w"> </span>-narv<span class="w"> </span>--delete<span class="w"> </span>/home/ubuntu/.notable<span class="w"> </span>/home/ubuntu/OneDrive/CrossSync/
+</code></pre></div>
+<h3 id="work-notes">work-notes<a class="headerlink" href="#work-notes" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>bash
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">HISTSIZE</span><span class="o">=</span><span class="m">0</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>rsync<span class="w"> </span>-avr<span class="w"> </span>--delete<span class="w"> </span>./work-notes<span class="w"> </span>stevenpan@10.68.69.100:/Users/stevenpan/Documents/
+</code></pre></div>
+<h2 id="sed">sed<a class="headerlink" href="#sed" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nv">file</span><span class="o">=</span>file.md
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>gsed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/^!\[\[\([^]]\+\)\]\]/![](\1)/&#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">file</span><span class="si">}</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="c1"># change </span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># ![[stream-k8s-control-panel-logs-to-s3-21.png]]</span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="c1"># to </span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="c1"># ![](stream-k8s-control-panel-logs-to-s3-21.png)</span>
+</code></pre></div>
+<h2 id="sponge-tee-redirect-to-same-file">sponge &amp; tee &amp; redirect to same file<a class="headerlink" href="#sponge-tee-redirect-to-same-file" title="Permanent link">&para;</a></h2>
+<p>sponge  reads  standard input and writes it out to the specified file. Unlike a shell redirect, sponge soaks up all its input before opening the output file. This allows constructing pipelines that read from and write to the same file.</p>
+<h2 id="tcp-setting-time_wiat">tcp setting - TIME_WIAT<a class="headerlink" href="#tcp-setting-time_wiat" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>net.ipv4.tcp_fin_timeout<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">30</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>net.ipv4.ip_local_port_range<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">15000</span><span class="w"> </span><span class="m">65000</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>net.ipv4.tcp_tw_recycle<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>net.ipv4.tcp_tw_reuse<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>
+<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a>net.ipv4.ip_forward<span class="o">=</span><span class="m">1</span>
+<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a>net.ipv4.conf.all.accept_source_route<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+</code></pre></div>
+<h2 id="traffic-control">traffic control<a class="headerlink" href="#traffic-control" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>yum<span class="w"> </span>install<span class="w"> </span>iproute-tc
+</code></pre></div>
+<p><a href="../../tc-traffic-control" title="tc-traffic-control">tc-traffic-control</a></p>
 <h2 id="xfs">xfs<a class="headerlink" href="#xfs" title="Permanent link">&para;</a></h2>
 <h3 id="xfs-mount-">xfs-mount-<a class="headerlink" href="#xfs-mount-" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>mount<span class="w"> </span>-t<span class="w"> </span>xfs<span class="w"> </span>-o<span class="w"> </span>nouuid<span class="w"> </span>/dev/nvme1n1<span class="w"> </span>/mnt
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>mount<span class="w"> </span>-t<span class="w"> </span>xfs<span class="w"> </span>-o<span class="w"> </span>nouuid<span class="w"> </span>/dev/nvme1n1<span class="w"> </span>/mnt
 </code></pre></div>
 <h3 id="get-uuid">get uuid<a class="headerlink" href="#get-uuid" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>xfs_db<span class="w"> </span>-c<span class="w"> </span>uuid<span class="w"> </span>/dev/nvme1n1
-</code></pre></div>
-<h2 id="tcp-setting-time_wiat">tcp setting - TIME_WIAT<a class="headerlink" href="#tcp-setting-time_wiat" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>net.ipv4.tcp_fin_timeout<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">30</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>net.ipv4.ip_local_port_range<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">15000</span><span class="w"> </span><span class="m">65000</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>net.ipv4.tcp_tw_recycle<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>net.ipv4.tcp_tw_reuse<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
-<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>net.ipv4.ip_forward<span class="o">=</span><span class="m">1</span>
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>net.ipv4.conf.all.accept_source_route<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>xfs_db<span class="w"> </span>-c<span class="w"> </span>uuid<span class="w"> </span>/dev/nvme1n1
 </code></pre></div>
 <h2 id="xtop">xtop<a class="headerlink" href="#xtop" title="Permanent link">&para;</a></h2>
 <ul>
@@ -3620,52 +3761,13 @@
 <li>htop</li>
 <li><a href="../../atop" title="atop">atop</a></li>
 <li>iftop<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>iftop -t -s 10 &gt; output
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>iftop -t -s 10 &gt; output
 </code></pre></div></li>
 </ul>
-<h2 id="sponge-tee-redirect-to-same-file">sponge &amp; tee &amp; redirect to same file<a class="headerlink" href="#sponge-tee-redirect-to-same-file" title="Permanent link">&para;</a></h2>
-<p>sponge  reads  standard input and writes it out to the specified file. Unlike a shell redirect, sponge soaks up all its input before opening the output file. This allows constructing pipelines that read from and write to the same file.</p>
-<h2 id="network-monitor">network monitor<a class="headerlink" href="#network-monitor" title="Permanent link">&para;</a></h2>
-<p><a href="https://www.tecmint.com/linux-network-bandwidth-monitoring-tools/">https://www.tecmint.com/linux-network-bandwidth-monitoring-tools/</a></p>
-<h3 id="iperf">iperf<a class="headerlink" href="#iperf" title="Permanent link">&para;</a></h3>
-<p><a href="https://aws.amazon.com/premiumsupport/knowledge-center/network-throughput-benchmark-linux-ec2/">KB</a><br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo<span class="w"> </span>iperf<span class="w"> </span>-s
-</code></pre></div></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>iperf<span class="w"> </span>-c<span class="w"> </span><span class="m">172</span>.31.30.41<span class="w"> </span>--parallel<span class="w"> </span><span class="m">40</span><span class="w"> </span>-i<span class="w"> </span><span class="m">1</span><span class="w"> </span>-t<span class="w"> </span><span class="m">2</span>
-</code></pre></div>
-<h2 id="traffic-control">traffic control<a class="headerlink" href="#traffic-control" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>yum<span class="w"> </span>install<span class="w"> </span>iproute-tc
-</code></pre></div>
-<p><a href="../../tc-traffic-control" title="tc-traffic-control">tc-traffic-control</a></p>
 <h2 id="ip-address-calc">ip address calc<a class="headerlink" href="#ip-address-calc" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>sipcalc<span class="w"> </span>--enablerepo<span class="o">=</span>epel
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>sipcalc<span class="w"> </span>--enablerepo<span class="o">=</span>epel
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>brew<span class="w"> </span>install<span class="w"> </span>sipcalc<span class="w"> </span>
-</code></pre></div>
-<h2 id="curl">curl<a class="headerlink" href="#curl" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="../../curl-sample-1" title="curl-sample-1">curl-sample-1</a></li>
-<li>badssl.com</li>
-</ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>-w<span class="w"> </span><span class="s1">&#39;%{http_code}&#39;</span><span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span><span class="s2">&quot;https://httpbin.org/status/302&quot;</span>
-</code></pre></div>
-<h2 id="history">history<a class="headerlink" href="#history" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>bash<span class="w">                        </span><span class="c1"># open a new session.</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="nb">unset</span><span class="w"> </span>HISTFILE<span class="w">              </span><span class="c1"># avoid recording commands to file.</span>
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a>commands<span class="w"> </span>not<span class="w"> </span>recorded
-<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a>.
-<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a>.
-<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="nb">exit</span>
-</code></pre></div>
-<h2 id="rsync">rsync<a class="headerlink" href="#rsync" title="Permanent link">&para;</a></h2>
-<h3 id="notable-folder">notable folder<a class="headerlink" href="#notable-folder" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>rsync<span class="w"> </span>-narv<span class="w"> </span>--delete<span class="w"> </span>/home/ubuntu/.notable<span class="w"> </span>/home/ubuntu/OneDrive/CrossSync/
-</code></pre></div>
-<h3 id="work-notes">work-notes<a class="headerlink" href="#work-notes" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>bash
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">HISTSIZE</span><span class="o">=</span><span class="m">0</span>
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>
-<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>rsync<span class="w"> </span>-avr<span class="w"> </span>--delete<span class="w"> </span>./work-notes<span class="w"> </span>stevenpan@10.68.69.100:/Users/stevenpan/Documents/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>brew<span class="w"> </span>install<span class="w"> </span>sipcalc<span class="w"> </span>
 </code></pre></div>
 <h2 id="others">others<a class="headerlink" href="#others" title="Permanent link">&para;</a></h2>
 <ul>
@@ -3679,11 +3781,11 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 29, 2023</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-03T15:40:40+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-03</span>
       
         <br>
         Created:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-date">October 22, 2023</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-10-22T13:47:34+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-22</span>
       
     
   </small>
@@ -3738,6 +3840,10 @@
     
     
       <script src="../../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
       
     
   </body>
