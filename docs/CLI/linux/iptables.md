@@ -7,10 +7,7 @@ tags:
   - cmd
   - linux
 ---
-
-```ad-attention
-title: This is a github note
-```
+> [!WARNING] This is a github note
 
 # iptables
 

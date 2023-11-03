@@ -6,10 +6,7 @@ last_modified: 2023-10-24 22:53:47.633
 tags:
   - aws/mgmt/cloudwatch
 ---
-
-```ad-attention
-title: This is a github note
-```
+> [!WARNING] This is a github note
 
 # create-dashboard-for-instance-cpu-matrics
 

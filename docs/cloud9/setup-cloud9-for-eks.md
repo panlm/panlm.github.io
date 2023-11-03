@@ -7,11 +7,7 @@ tags:
   - aws/container/eks
   - aws/cloud9
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # setup cloud9 for eks
 

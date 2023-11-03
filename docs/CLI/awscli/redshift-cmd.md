@@ -1,11 +1,11 @@
 ---
 title: redshift
+description: 常用命令
 created: 2022-11-23 23:18:21.581
 last_modified: 2023-10-21 11:21:12.123
 tags:
   - aws/database/redshift
 ---
-
 > [!WARNING] This is a github note
 
 # redshift-cmd

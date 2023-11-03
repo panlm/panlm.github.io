@@ -1,12 +1,10 @@
 ---
 title: mwaa-lab
 description: 在中国区使用 mwaa 服务
-chapter: true
-weight: 20230609
 created: 2023-06-09 22:25:25.533
-last_modified: 2023-06-09 22:25:25.533
-tags: 
-- aws/analytics 
+last_modified: 2023-11-02 08:24:53.028
+tags:
+  - aws/analytics
 ---
 
 ```ad-attention
@@ -16,7 +14,7 @@ title: This is a github note
 
 # mwaa-lab
 
-## prepare endpoint for your private network
+## prepare-endpoint-for-your-private-network-
 
 中国区 mwaa 服务刚上线，由于文档还未按照中国区特殊性进行描述，因此会导致客户疑惑（文档链接[link](https://docs.amazonaws.cn/en_us/mwaa/latest/userguide/vpc-create.html#vpc-create-template-private-only)）。本文提供两种方式可以满足创建 mwaa 的网络条件
 

@@ -36,7 +36,7 @@ for i in proc sys dev run; do mount --bind /$i $rescuemnt/$i ; done
 chroot $rescuemnt
 ```
 
-refer: [[../CLI/linux/linux-cmd#xfs-mount-]]
+- refer: [[../CLI/linux/linux-cmd#xfs-mount-]]
 
 ## umount
 

@@ -85,16 +85,16 @@ plugins:
   - search
   - meta-descriptions
   - git-revision-date-localized:
-      type: date
+      type: timeago
       timezone: Asia/Shanghai
       locale: en
       custom_format: "%A %d %B %Y"
       enable_creation_date: true
-      #fallback_to_build_date: false
+      fallback_to_build_date: false
       exclude:
         - index.md
-      #enabled: true
-      #strict: true
+      enabled: true
+      strict: true
   - ezlinks:
         wikilinks: true
   - awesome-pages

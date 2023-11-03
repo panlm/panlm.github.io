@@ -1,8 +1,6 @@
 ---
 title: efs
 description: 1/ 在默认 vpc 中创建 efs
-chapter: true
-hidden: true
 created: 2023-02-24 08:03:38.967
 last_modified: 2023-10-24 22:49:16.442
 tags:

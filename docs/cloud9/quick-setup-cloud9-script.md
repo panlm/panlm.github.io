@@ -2,16 +2,12 @@
 title: quick setup cloud9 script
 description: 简化运行脚本
 created: 2023-08-04 15:56:59.747
-last_modified: 2023-10-22 17:01:00.006
+last_modified: 2023-10-29 21:54:13.193
 tags:
   - aws/cloud9
   - aws/container/eks
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # quick setup cloud9 script
 
@@ -70,6 +66,7 @@ watch -g -n 2 aws ec2 describe-instances \
     - 如果 cloud9 的实例已经有关联的 role，则将 role 添加管理员权限，如果没有则赋予新建的角色
     - 允许 cloud9 的实例被其他 2 个角色使用
     - 等待 cloud9 可以被 ssm 访问
+    - <mark style="background: #BBFABBA6;">检查脚本存在</mark>，并且创建 ssm 初始化脚本
     - 创建日志组，并使用 ssm 执行初始化脚本
     - 显示登录 cloud9 的 URL
 ```sh
@@ -170,6 +167,13 @@ done
 
 # script source location:
 # https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/setup-cloud9-for-eks.md
+# check script existed or not
+RET_CODE=$(curl -sL -w '%{http_code}' -o /dev/null  https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/setup-cloud9-for-eks.md)
+if [[ ${RET_CODE} -ne 200 ]]; then
+    echo "######"
+    echo "###### SCRIPT NOT EXISTED"
+    echo "######"
+fi
 
 cat >$$.json <<-'EOF'
 {

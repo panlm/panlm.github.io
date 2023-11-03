@@ -1,8 +1,6 @@
 ---
 title: eks-cluster-addons-list
 description: EKS 常用插件清单
-chapter: true
-weight: 120
 created: 2022-07-20 09:00:03.399
 last_modified: 2023-10-29 20:40:24.923
 tags:

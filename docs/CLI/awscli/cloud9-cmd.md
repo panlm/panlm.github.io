@@ -1,8 +1,6 @@
 ---
 title: cloud9
 description: cloud9 related commands
-chapter: true
-hidden: true
 created: 2022-07-01 09:18:29.572
 last_modified: 2023-10-23 12:44:57.070
 tags:

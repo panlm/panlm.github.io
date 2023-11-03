@@ -1,23 +1,18 @@
 ---
 title: ssm
 description: 常用命令
-chapter: true
-hidden: true
 created: 2022-12-06 14:58:34.056
-last_modified: 2023-10-24 22:35:03.160
+last_modified: 2023-10-31 11:52:48.805
 tags:
   - aws/cmd
   - aws/mgmt/systems-manager
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # ssm-cmd
 
 ## ssm agent
+
 ```sh
 sudo yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm
 ```
@@ -31,11 +26,13 @@ aws ssm get-connection-status \
 ```
 
 ## start-session
+
 ```sh
 aws ssm start-session --target  i-xxxxxx --region us-east-2
 ```
 
 ### prot-forward
+
 - https://aws.amazon.com/blogs/aws/new-port-forwarding-using-aws-system-manager-sessions-manager/
 
 ```sh
@@ -72,7 +69,7 @@ aws ssm start-session --target ${INST_ID} \
 
 ## create document and run it
 
-https://aws.amazon.com/blogs/mt/amazon-ec2-systems-manager-documents-support-for-cross-platform-documents-and-multiple-steps-of-the-same-type/
+- https://aws.amazon.com/blogs/mt/amazon-ec2-systems-manager-documents-support-for-cross-platform-documents-and-multiple-steps-of-the-same-type/
 
 ```sh
 aws ssm create-document --name step3demo --content file://a.json --document-type Command
@@ -101,15 +98,17 @@ aws ssm get-inventory --filter Key=Custom:DiskUtilization.Use%,Values=60,Type=Gr
 
 
 ## get parameter
+
 - [[../../EKS/infra/cluster/eks-public-access-cluster]]
 - [[ssm-public-parameters]]
-
 
 ## join domain sample
 
 ![[POC-mig-filezilla-to-transfer-family#^5yhhfi]]
 
-example
+refer: [[POC-mig-filezilla-to-transfer-family#join-domain-]]
+
+- example
 ```sh
 aws ssm send-command --document-name "AWS-JoinDirectoryServiceDomain" --document-version "1" --targets '[{"Key":"InstanceIds","Values":["i-0e23xxxx8bdc6xxxx"]}]' --parameters '{"directoryOU":[""],"directoryId":["d-9axxxxe3cf"],"directoryName":["xxxx.aws.panlm.xyz"],"dnsIpAddresses":["172.31.xx.xx","172.31.xx.xx"]}' --timeout-seconds 600 --max-concurrency "50" --max-errors "0" --region us-east-2
 

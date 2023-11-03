@@ -1,9 +1,6 @@
 ---
 title: eks-custom-network
 description: custom network 可以解决子网地址段耗尽的问题
-chapter: true
-hidden: false
-weight: 5
 created: 2023-08-21 17:56:37.517
 last_modified: 2023-10-29 13:24:49.648
 tags:

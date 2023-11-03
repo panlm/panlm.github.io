@@ -6,11 +6,7 @@ last_modified: 2023-10-21 11:17:42.435
 tags:
   - aws/database/rds
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # rds-mysql-replica-cross-region-cross-account
 

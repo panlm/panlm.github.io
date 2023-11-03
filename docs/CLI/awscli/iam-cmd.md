@@ -7,11 +7,7 @@ tags:
   - aws/security/iam
   - aws/cmd
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # iam cmd
 

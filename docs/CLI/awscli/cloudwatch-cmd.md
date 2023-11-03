@@ -6,10 +6,7 @@ last_modified: 2023-10-25 08:03:10.232
 tags:
   - aws/mgmt/cloudwatch
 ---
-
-```ad-attention
-title: This is a github note
-```
+> [!WARNING] This is a github note
 
 # cloudwatch-cmd
 
