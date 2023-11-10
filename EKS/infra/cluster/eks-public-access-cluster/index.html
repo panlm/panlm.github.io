@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.7">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.8">
     
     
       
@@ -900,6 +900,8 @@
       
         
       
+        
+      
     
     
     
@@ -941,6 +943,26 @@
   
   <span class="md-ellipsis">
     eks-fargate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../compute/karpenter-lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    karpenter-install-lab
   </span>
   
 
@@ -1142,8 +1164,6 @@
       
         
       
-        
-      
     
     
     
@@ -1205,26 +1225,6 @@
   
   <span class="md-ellipsis">
     automated-canary-deployment-using-flagger
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../network/appmesh/build-colorapp/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    build-colorapp
   </span>
   
 
@@ -2738,11 +2738,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../CLI/linux/docker-image-sample/" class="md-nav__link">
+      <a href="../../../../CLI/linux/docker-cmd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    docker-image-customized
+    docker
   </span>
   
 
@@ -2827,6 +2827,8 @@
   
     
     
+      
+        
       
         
       
@@ -3017,6 +3019,26 @@
   
   <span class="md-ellipsis">
     ebs-cmd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../CLI/awscli/ecr-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ecr
   </span>
   
 
@@ -3334,8 +3356,9 @@
 
 
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>title: This is a github note
-</code></pre></div>
+<blockquote>
+<p>[!WARNING] This is a github note</p>
+</blockquote>
 <h1 id="eks-public-access-cluster">eks-public-access-cluster<a class="headerlink" href="#eks-public-access-cluster" title="Permanent link">&para;</a></h1>
 <h2 id="prep">prep<a class="headerlink" href="#prep" title="Permanent link">&para;</a></h2>
 <ul>
@@ -3353,14 +3376,14 @@
 <ul>
 <li>
 <p>将在下面区域创建 EKS 集群 (prepare to create eks cluster)<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PAGER</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span><span class="m">169</span>.254.169.254/latest/dynamic/instance-identity/document<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.region&#39;</span><span class="k">)</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_REGION</span><span class="o">=</span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">CLUSTER_NAME</span><span class="o">=</span>ekscluster1
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="nb">export</span><span class="w"> </span><span class="nv">EKS_VERSION</span><span class="o">=</span><span class="m">1</span>.25
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nv">CLUSTER_NUM</span><span class="o">=</span><span class="k">$(</span>eksctl<span class="w"> </span>get<span class="w"> </span>cluster<span class="w"> </span><span class="p">|</span>wc<span class="w"> </span>-l<span class="k">)</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nb">export</span><span class="w"> </span><span class="nv">CIDR</span><span class="o">=</span><span class="s2">&quot;10.25</span><span class="si">${</span><span class="nv">CLUSTER_NUM</span><span class="si">}</span><span class="s2">.0.0/16&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PAGER</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span><span class="m">169</span>.254.169.254/latest/dynamic/instance-identity/document<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.region&#39;</span><span class="k">)</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_REGION</span><span class="o">=</span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">CLUSTER_NAME</span><span class="o">=</span>ekscluster1
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nb">export</span><span class="w"> </span><span class="nv">EKS_VERSION</span><span class="o">=</span><span class="m">1</span>.25
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nv">CLUSTER_NUM</span><span class="o">=</span><span class="k">$(</span>eksctl<span class="w"> </span>get<span class="w"> </span>cluster<span class="w"> </span><span class="p">|</span>wc<span class="w"> </span>-l<span class="k">)</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nb">export</span><span class="w"> </span><span class="nv">CIDR</span><span class="o">=</span><span class="s2">&quot;10.25</span><span class="si">${</span><span class="nv">CLUSTER_NUM</span><span class="si">}</span><span class="s2">.0.0/16&quot;</span>
 </code></pre></div></p>
 </li>
 <li>
@@ -3368,91 +3391,91 @@
 <ul>
 <li>注意集群名称</li>
 <li>注意使用的 AZ 符合你所在的区域<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">AZS</span><span class="o">=(</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-availability-zones<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>--query<span class="w"> </span><span class="s1">&#39;AvailabilityZones[].ZoneName&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $1,$2}&#39;</span><span class="k">)</span><span class="o">)</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AZ0</span><span class="o">=</span><span class="si">${</span><span class="nv">AZS</span><span class="p">[0]</span><span class="si">}</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AZ1</span><span class="o">=</span><span class="si">${</span><span class="nv">AZS</span><span class="p">[1]</span><span class="si">}</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>cat<span class="w"> </span>&gt;<span class="nv">$$</span>.yaml<span class="w"> </span><span class="s">&lt;&lt;-&#39;EOF&#39;</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="s">---</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="s">apiVersion: eksctl.io/v1alpha5</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="s">kind: ClusterConfig</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="s">metadata:</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="s">  name: &quot;${CLUSTER_NAME}&quot;</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="s">  region: &quot;${AWS_REGION}&quot;</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="s">  version: &quot;${EKS_VERSION}&quot;</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="s">availabilityZones: [&quot;${AZ0}&quot;, &quot;${AZ1}&quot;]</span>
-<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>
-<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="s">vpc:</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="s">  cidr: &quot;${CIDR}&quot;</span>
-<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="s">  clusterEndpoints:</span>
-<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="s">    privateAccess: true</span>
-<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="s">    publicAccess: true</span>
-<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>
-<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="s">cloudWatch:</span>
-<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="s">  clusterLogging:</span>
-<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="s">    enableTypes: [&quot;*&quot;]</span>
-<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>
-<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="s"># secretsEncryption:</span>
-<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="s">#   keyARN: ${MASTER_ARN}</span>
-<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a>
-<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="s">managedNodeGroups:</span>
-<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>
-<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="s">- name: managed-ng</span>
-<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="s">  minSize: 1</span>
-<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="s">  maxSize: 5</span>
-<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="s">  desiredCapacity: 2</span>
-<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="s">  instanceType: m5.large</span>
-<a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="s">  privateNetworking: true</span>
-<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a>
-<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="s">addons:</span>
-<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a>
-<a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a><span class="s">- name: vpc-cni </span>
-<a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a><span class="s">  version: latest</span>
-<a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a><span class="s">- name: coredns</span>
-<a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a><span class="s">  version: latest </span>
-<a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a><span class="s">- name: kube-proxy</span>
-<a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a><span class="s">  version: latest</span>
-<a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a>
-<a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a><span class="s">iam:</span>
-<a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a><span class="s">  withOIDC: true</span>
-<a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a><span class="s">  serviceAccounts:</span>
-<a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a>
-<a id="__codelineno-2-53" name="__codelineno-2-53" href="#__codelineno-2-53"></a><span class="s">  - metadata:</span>
-<a id="__codelineno-2-54" name="__codelineno-2-54" href="#__codelineno-2-54"></a><span class="s">      name: aws-load-balancer-controller</span>
-<a id="__codelineno-2-55" name="__codelineno-2-55" href="#__codelineno-2-55"></a><span class="s">      namespace: kube-system</span>
-<a id="__codelineno-2-56" name="__codelineno-2-56" href="#__codelineno-2-56"></a><span class="s">    wellKnownPolicies:</span>
-<a id="__codelineno-2-57" name="__codelineno-2-57" href="#__codelineno-2-57"></a><span class="s">      awsLoadBalancerController: true</span>
-<a id="__codelineno-2-58" name="__codelineno-2-58" href="#__codelineno-2-58"></a><span class="s">  - metadata:</span>
-<a id="__codelineno-2-59" name="__codelineno-2-59" href="#__codelineno-2-59"></a><span class="s">      name: ebs-csi-controller-sa</span>
-<a id="__codelineno-2-60" name="__codelineno-2-60" href="#__codelineno-2-60"></a><span class="s">      namespace: kube-system</span>
-<a id="__codelineno-2-61" name="__codelineno-2-61" href="#__codelineno-2-61"></a><span class="s">    wellKnownPolicies:</span>
-<a id="__codelineno-2-62" name="__codelineno-2-62" href="#__codelineno-2-62"></a><span class="s">      ebsCSIController: true</span>
-<a id="__codelineno-2-63" name="__codelineno-2-63" href="#__codelineno-2-63"></a><span class="s">  - metadata:</span>
-<a id="__codelineno-2-64" name="__codelineno-2-64" href="#__codelineno-2-64"></a><span class="s">      name: efs-csi-controller-sa</span>
-<a id="__codelineno-2-65" name="__codelineno-2-65" href="#__codelineno-2-65"></a><span class="s">      namespace: kube-system</span>
-<a id="__codelineno-2-66" name="__codelineno-2-66" href="#__codelineno-2-66"></a><span class="s">    wellKnownPolicies:</span>
-<a id="__codelineno-2-67" name="__codelineno-2-67" href="#__codelineno-2-67"></a><span class="s">      efsCSIController: true</span>
-<a id="__codelineno-2-68" name="__codelineno-2-68" href="#__codelineno-2-68"></a><span class="s">  - metadata:</span>
-<a id="__codelineno-2-69" name="__codelineno-2-69" href="#__codelineno-2-69"></a><span class="s">      name: cloudwatch-agent</span>
-<a id="__codelineno-2-70" name="__codelineno-2-70" href="#__codelineno-2-70"></a><span class="s">      namespace: amazon-cloudwatch</span>
-<a id="__codelineno-2-71" name="__codelineno-2-71" href="#__codelineno-2-71"></a><span class="s">    attachPolicyARNs:</span>
-<a id="__codelineno-2-72" name="__codelineno-2-72" href="#__codelineno-2-72"></a><span class="s">    - &quot;arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy&quot;</span>
-<a id="__codelineno-2-73" name="__codelineno-2-73" href="#__codelineno-2-73"></a><span class="s">  - metadata:</span>
-<a id="__codelineno-2-74" name="__codelineno-2-74" href="#__codelineno-2-74"></a><span class="s">      name: fluent-bit</span>
-<a id="__codelineno-2-75" name="__codelineno-2-75" href="#__codelineno-2-75"></a><span class="s">      namespace: amazon-cloudwatch</span>
-<a id="__codelineno-2-76" name="__codelineno-2-76" href="#__codelineno-2-76"></a><span class="s">    attachPolicyARNs:</span>
-<a id="__codelineno-2-77" name="__codelineno-2-77" href="#__codelineno-2-77"></a><span class="s">    - &quot;arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy&quot;</span>
-<a id="__codelineno-2-78" name="__codelineno-2-78" href="#__codelineno-2-78"></a><span class="s">EOF</span>
-<a id="__codelineno-2-79" name="__codelineno-2-79" href="#__codelineno-2-79"></a>cat<span class="w"> </span><span class="nv">$$</span>.yaml<span class="w"> </span><span class="p">|</span>envsubst<span class="w"> </span><span class="s1">&#39;$CLUSTER_NAME $AWS_REGION $AZ0 $AZ1 $EKS_VERSION $CIDR &#39;</span><span class="w"> </span>&gt;<span class="w"> </span>cluster-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>.yaml
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">AZS</span><span class="o">=(</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-availability-zones<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>--query<span class="w"> </span><span class="s1">&#39;AvailabilityZones[].ZoneName&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $1,$2}&#39;</span><span class="k">)</span><span class="o">)</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AZ0</span><span class="o">=</span><span class="si">${</span><span class="nv">AZS</span><span class="p">[0]</span><span class="si">}</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AZ1</span><span class="o">=</span><span class="si">${</span><span class="nv">AZS</span><span class="p">[1]</span><span class="si">}</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>cat<span class="w"> </span>&gt;<span class="nv">$$</span>.yaml<span class="w"> </span><span class="s">&lt;&lt;-&#39;EOF&#39;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="s">---</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="s">apiVersion: eksctl.io/v1alpha5</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="s">kind: ClusterConfig</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="s">metadata:</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="s">  name: &quot;${CLUSTER_NAME}&quot;</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="s">  region: &quot;${AWS_REGION}&quot;</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="s">  version: &quot;${EKS_VERSION}&quot;</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="s">availabilityZones: [&quot;${AZ0}&quot;, &quot;${AZ1}&quot;]</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="s">vpc:</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="s">  cidr: &quot;${CIDR}&quot;</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="s">  clusterEndpoints:</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="s">    privateAccess: true</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="s">    publicAccess: true</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="s">cloudWatch:</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="s">  clusterLogging:</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="s">    enableTypes: [&quot;*&quot;]</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="s"># secretsEncryption:</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="s">#   keyARN: ${MASTER_ARN}</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="s">managedNodeGroups:</span>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="s">- name: managed-ng</span>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="s">  minSize: 1</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="s">  maxSize: 5</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="s">  desiredCapacity: 2</span>
+<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="s">  instanceType: m5.large</span>
+<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="s">  privateNetworking: true</span>
+<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>
+<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="s">addons:</span>
+<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a>
+<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="s">- name: vpc-cni </span>
+<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="s">  version: latest</span>
+<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="s">- name: coredns</span>
+<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="s">  version: latest </span>
+<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="s">- name: kube-proxy</span>
+<a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="s">  version: latest</span>
+<a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a>
+<a id="__codelineno-1-49" name="__codelineno-1-49" href="#__codelineno-1-49"></a><span class="s">iam:</span>
+<a id="__codelineno-1-50" name="__codelineno-1-50" href="#__codelineno-1-50"></a><span class="s">  withOIDC: true</span>
+<a id="__codelineno-1-51" name="__codelineno-1-51" href="#__codelineno-1-51"></a><span class="s">  serviceAccounts:</span>
+<a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a>
+<a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a><span class="s">  - metadata:</span>
+<a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a><span class="s">      name: aws-load-balancer-controller</span>
+<a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a><span class="s">      namespace: kube-system</span>
+<a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a><span class="s">    wellKnownPolicies:</span>
+<a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a><span class="s">      awsLoadBalancerController: true</span>
+<a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a><span class="s">  - metadata:</span>
+<a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a><span class="s">      name: ebs-csi-controller-sa</span>
+<a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a><span class="s">      namespace: kube-system</span>
+<a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a><span class="s">    wellKnownPolicies:</span>
+<a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a><span class="s">      ebsCSIController: true</span>
+<a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a><span class="s">  - metadata:</span>
+<a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a><span class="s">      name: efs-csi-controller-sa</span>
+<a id="__codelineno-1-65" name="__codelineno-1-65" href="#__codelineno-1-65"></a><span class="s">      namespace: kube-system</span>
+<a id="__codelineno-1-66" name="__codelineno-1-66" href="#__codelineno-1-66"></a><span class="s">    wellKnownPolicies:</span>
+<a id="__codelineno-1-67" name="__codelineno-1-67" href="#__codelineno-1-67"></a><span class="s">      efsCSIController: true</span>
+<a id="__codelineno-1-68" name="__codelineno-1-68" href="#__codelineno-1-68"></a><span class="s">  - metadata:</span>
+<a id="__codelineno-1-69" name="__codelineno-1-69" href="#__codelineno-1-69"></a><span class="s">      name: cloudwatch-agent</span>
+<a id="__codelineno-1-70" name="__codelineno-1-70" href="#__codelineno-1-70"></a><span class="s">      namespace: amazon-cloudwatch</span>
+<a id="__codelineno-1-71" name="__codelineno-1-71" href="#__codelineno-1-71"></a><span class="s">    attachPolicyARNs:</span>
+<a id="__codelineno-1-72" name="__codelineno-1-72" href="#__codelineno-1-72"></a><span class="s">    - &quot;arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy&quot;</span>
+<a id="__codelineno-1-73" name="__codelineno-1-73" href="#__codelineno-1-73"></a><span class="s">  - metadata:</span>
+<a id="__codelineno-1-74" name="__codelineno-1-74" href="#__codelineno-1-74"></a><span class="s">      name: fluent-bit</span>
+<a id="__codelineno-1-75" name="__codelineno-1-75" href="#__codelineno-1-75"></a><span class="s">      namespace: amazon-cloudwatch</span>
+<a id="__codelineno-1-76" name="__codelineno-1-76" href="#__codelineno-1-76"></a><span class="s">    attachPolicyARNs:</span>
+<a id="__codelineno-1-77" name="__codelineno-1-77" href="#__codelineno-1-77"></a><span class="s">    - &quot;arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy&quot;</span>
+<a id="__codelineno-1-78" name="__codelineno-1-78" href="#__codelineno-1-78"></a><span class="s">EOF</span>
+<a id="__codelineno-1-79" name="__codelineno-1-79" href="#__codelineno-1-79"></a>cat<span class="w"> </span><span class="nv">$$</span>.yaml<span class="w"> </span><span class="p">|</span>envsubst<span class="w"> </span><span class="s1">&#39;$CLUSTER_NAME $AWS_REGION $AZ0 $AZ1 $EKS_VERSION $CIDR &#39;</span><span class="w"> </span>&gt;<span class="w"> </span>cluster-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>.yaml
 </code></pre></div></li>
 </ul>
 </li>
 <li>
 <p>创建集群，预计需要 20 分钟 (wait about 20 mins)<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>eksctl<span class="w"> </span>create<span class="w"> </span>cluster<span class="w"> </span>-f<span class="w"> </span>cluster-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>.yaml
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>eksctl<span class="w"> </span>create<span class="w"> </span>cluster<span class="w"> </span>-f<span class="w"> </span>cluster-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>.yaml
 </code></pre></div></p>
 </li>
 </ul>
@@ -3460,29 +3483,29 @@
 <ul>
 <li>
 <p>get newest ami id for your self-managed node group, for GPU or Graviton instance (<a href="https://docs.aws.amazon.com/eks/latest/userguide/retrieve-ami-id.html">link</a>)<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">EKS_VERSION</span><span class="si">}</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AMI</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ssm<span class="w"> </span>get-parameter<span class="w"> </span>--name<span class="w"> </span>/aws/service/eks/optimized-ami/<span class="si">${</span><span class="nv">EKS_VERSION</span><span class="si">}</span>/amazon-linux-2/recommended/image_id<span class="w"> </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;Parameter.Value&quot;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>cat<span class="w">  </span><span class="s">&lt;&lt;-&#39;EOF&#39; |envsubst &#39;$AMI&#39; |tee -a cluster-${CLUSTER_NAME}.yaml</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="s">nodeGroups:</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="s">- name: ng1</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="s">  minSize: 1</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="s">  maxSize: 5</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="s">  desiredCapacity: 1</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="s">  instanceType: m5.large</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="s">  ssh:</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="s">    enableSsm: true</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="s">  privateNetworking: true</span>
-<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="s">  ami: &quot;${AMI}&quot;</span>
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="s">  amiFamily: AmazonLinux2</span>
-<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="s">  overrideBootstrapCommand: |</span>
-<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="s">    #!/bin/bash</span>
-<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="s">    source /var/lib/cloud/scripts/eksctl/bootstrap.helper.sh</span>
-<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="s">    /etc/eks/bootstrap.sh ${CLUSTER_NAME} --container-runtime containerd --kubelet-extra-args &quot;--node-labels=${NODE_LABELS} --max-pods=110&quot;</span>
-<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="s">EOF</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">EKS_VERSION</span><span class="si">}</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AMI</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ssm<span class="w"> </span>get-parameter<span class="w"> </span>--name<span class="w"> </span>/aws/service/eks/optimized-ami/<span class="si">${</span><span class="nv">EKS_VERSION</span><span class="si">}</span>/amazon-linux-2/recommended/image_id<span class="w"> </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;Parameter.Value&quot;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>cat<span class="w">  </span><span class="s">&lt;&lt;-&#39;EOF&#39; |envsubst &#39;$AMI&#39; |tee -a cluster-${CLUSTER_NAME}.yaml</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="s">nodeGroups:</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="s">- name: ng1</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="s">  minSize: 1</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="s">  maxSize: 5</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="s">  desiredCapacity: 1</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="s">  instanceType: m5.large</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="s">  ssh:</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="s">    enableSsm: true</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="s">  privateNetworking: true</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="s">  ami: &quot;${AMI}&quot;</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="s">  amiFamily: AmazonLinux2</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="s">  overrideBootstrapCommand: |</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="s">    #!/bin/bash</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="s">    source /var/lib/cloud/scripts/eksctl/bootstrap.helper.sh</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="s">    /etc/eks/bootstrap.sh ${CLUSTER_NAME} --container-runtime containerd --kubelet-extra-args &quot;--node-labels=${NODE_LABELS} --max-pods=110&quot;</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="s">EOF</span>
 </code></pre></div></p>
 </li>
 <li>
@@ -3492,19 +3515,19 @@
 <h2 id="access-eks-cluster-from-web-console">access eks cluster from web console<a class="headerlink" href="#access-eks-cluster-from-web-console" title="Permanent link">&para;</a></h2>
 <ul>
 <li>将实验环境对应的 <code>TeamRole</code> 角色作为集群管理员，方便使用 web 页面查看 eks 集群<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nv">ACCOUNT_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span>--query<span class="w"> </span>Account<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nv">AWS_REGION</span><span class="o">=</span>us-east-2
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span>TeamRole<span class="w"> </span>WSOpsRole<span class="w"> </span>WSParticipantRole<span class="w"> </span>WSAdminRole<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>eksctl<span class="w"> </span>create<span class="w"> </span>iamidentitymapping<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">  </span>--cluster<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">  </span>--arn<span class="w"> </span>arn:aws:iam::<span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>:role/<span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">  </span>--username<span class="w"> </span>cluster-admin<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">  </span>--group<span class="w"> </span>system:masters<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">  </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="k">done</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nv">ACCOUNT_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span>--query<span class="w"> </span>Account<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nv">AWS_REGION</span><span class="o">=</span>us-east-2
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span>TeamRole<span class="w"> </span>WSOpsRole<span class="w"> </span>WSParticipantRole<span class="w"> </span>WSAdminRole<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>eksctl<span class="w"> </span>create<span class="w"> </span>iamidentitymapping<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">  </span>--cluster<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">  </span>--arn<span class="w"> </span>arn:aws:iam::<span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>:role/<span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">  </span>--username<span class="w"> </span>cluster-admin<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">  </span>--group<span class="w"> </span>system:masters<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">  </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="k">done</span>
 </code></pre></div></li>
 </ul>
 <h2 id="default-tags-on-subnet">default tags on subnet<a class="headerlink" href="#default-tags-on-subnet" title="Permanent link">&para;</a></h2>
@@ -3526,7 +3549,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-10-21T13:23:12+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-21</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-10T08:22:15+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-10</span>
       
         <br>
         Created:
@@ -3584,7 +3607,7 @@
     <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "toc.follow", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.81fa17fe.min.js"></script>
       
         <script src="../../../../js/timeago.min.js"></script>
       

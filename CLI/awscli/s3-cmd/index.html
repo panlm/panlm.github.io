@@ -6,6 +6,8 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="常用命令">
+      
       
       
       
@@ -16,7 +18,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.7">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.8">
     
     
       
@@ -792,6 +794,8 @@
       
         
       
+        
+      
     
     
     
@@ -833,6 +837,26 @@
   
   <span class="md-ellipsis">
     eks-fargate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/infra/compute/karpenter-lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    karpenter-install-lab
   </span>
   
 
@@ -1034,8 +1058,6 @@
       
         
       
-        
-      
     
     
     
@@ -1097,26 +1119,6 @@
   
   <span class="md-ellipsis">
     automated-canary-deployment-using-flagger
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../EKS/infra/network/appmesh/build-colorapp/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    build-colorapp
   </span>
   
 
@@ -2632,11 +2634,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/docker-image-sample/" class="md-nav__link">
+      <a href="../../linux/docker-cmd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    docker-image-customized
+    docker
   </span>
   
 
@@ -2723,6 +2725,8 @@
   
     
     
+      
+        
       
         
       
@@ -2913,6 +2917,26 @@
   
   <span class="md-ellipsis">
     ebs-cmd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ecr-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ecr
   </span>
   
 
@@ -3446,58 +3470,62 @@
 
 
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>title: This is a github note
-</code></pre></div>
+<blockquote>
+<p>[!WARNING] This is a github note</p>
+</blockquote>
 <h1 id="s3-cmd">s3-cmd<a class="headerlink" href="#s3-cmd" title="Permanent link">&para;</a></h1>
 <h2 id="versioning">versioning<a class="headerlink" href="#versioning" title="Permanent link">&para;</a></h2>
 <h3 id="create-s3-with-versioning">create s3 with versioning<a class="headerlink" href="#create-s3-with-versioning" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">bucket_name</span><span class="o">=</span>p1panlm
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">aws_region</span><span class="o">=</span>us-east-2
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>aws<span class="w"> </span>s3api<span class="w"> </span>create-bucket<span class="w"> </span>--bucket<span class="w"> </span><span class="nv">$bucket_name</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>--create-bucket-configuration<span class="w"> </span><span class="nv">LocationConstraint</span><span class="o">=</span><span class="si">${</span><span class="nv">aws_region</span><span class="si">}</span><span class="w"> </span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>aws<span class="w"> </span>s3api<span class="w"> </span>put-bucket-versioning<span class="w"> </span>--bucket<span class="w"> </span><span class="nv">$bucket_name</span><span class="w"> </span>--versioning-configuration<span class="w"> </span><span class="nv">Status</span><span class="o">=</span>Enabled
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">bucket_name</span><span class="o">=</span>p1panlm
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nv">aws_region</span><span class="o">=</span>us-east-2
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>aws<span class="w"> </span>s3api<span class="w"> </span>create-bucket<span class="w"> </span>--bucket<span class="w"> </span><span class="nv">$bucket_name</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>--create-bucket-configuration<span class="w"> </span><span class="nv">LocationConstraint</span><span class="o">=</span><span class="si">${</span><span class="nv">aws_region</span><span class="si">}</span><span class="w"> </span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>aws<span class="w"> </span>s3api<span class="w"> </span>put-bucket-versioning<span class="w"> </span>--bucket<span class="w"> </span><span class="nv">$bucket_name</span><span class="w"> </span>--versioning-configuration<span class="w"> </span><span class="nv">Status</span><span class="o">=</span>Enabled
 </code></pre></div>
 <h3 id="delete-s3-with-versioning-enabled">delete s3 with versioning enabled<a class="headerlink" href="#delete-s3-with-versioning-enabled" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">bucket_name</span><span class="o">=</span>aws-codestar-ap-southeast-1-xxxxxx-proj1-pipe
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>aws<span class="w"> </span>s3api<span class="w"> </span>put-bucket-versioning<span class="w"> </span>--bucket<span class="w"> </span><span class="nv">$bucket_name</span><span class="w"> </span>--versioning-configuration<span class="w"> </span><span class="nv">Status</span><span class="o">=</span>Suspended
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>aws<span class="w"> </span>s3api<span class="w"> </span>delete-objects<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">      </span>--bucket<span class="w"> </span><span class="nv">$bucket_name</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">      </span>--delete<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>aws<span class="w"> </span>s3api<span class="w"> </span>list-object-versions<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">      </span>--bucket<span class="w"> </span><span class="nv">$bucket_name</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">      </span>jq<span class="w"> </span><span class="s1">&#39;{Objects: [.Versions[] | {Key:.Key, VersionId : .VersionId}], Quiet: false}&#39;</span><span class="k">)</span><span class="s2">&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">bucket_name</span><span class="o">=</span>aws-codestar-ap-southeast-1-xxxxxx-proj1-pipe
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>aws<span class="w"> </span>s3api<span class="w"> </span>put-bucket-versioning<span class="w"> </span>--bucket<span class="w"> </span><span class="nv">$bucket_name</span><span class="w"> </span>--versioning-configuration<span class="w"> </span><span class="nv">Status</span><span class="o">=</span>Suspended
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>aws<span class="w"> </span>s3api<span class="w"> </span>delete-objects<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">      </span>--bucket<span class="w"> </span><span class="nv">$bucket_name</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">      </span>--delete<span class="w"> </span><span class="s2">&quot;</span><span class="k">$(</span>aws<span class="w"> </span>s3api<span class="w"> </span>list-object-versions<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">      </span>--bucket<span class="w"> </span><span class="nv">$bucket_name</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">      </span>jq<span class="w"> </span><span class="s1">&#39;{Objects: [.Versions[] | {Key:.Key, VersionId : .VersionId}], Quiet: false}&#39;</span><span class="k">)</span><span class="s2">&quot;</span>
 </code></pre></div>
 <h3 id="delete-s3-without-versioning">delete s3 without versioning<a class="headerlink" href="#delete-s3-without-versioning" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">$a</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>aws<span class="w"> </span>s3<span class="w"> </span>rm<span class="w"> </span>s3://<span class="nv">$i</span><span class="w"> </span>--region<span class="w"> </span>us-east-1<span class="w"> </span>--recursive
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>aws<span class="w"> </span>s3<span class="w"> </span>rb<span class="w"> </span>s3://<span class="nv">$i</span><span class="w"> </span>--force<span class="w"> </span>--region<span class="w"> </span>us-east-1
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">done</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w"> </span><span class="sb">```</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1">## download s3 folder</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="sb">```</span>sh
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>aws<span class="w"> </span>s3<span class="w"> </span>sync<span class="w"> </span>s3://my-exported-logs<span class="w"> </span>.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="nv">$a</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>aws<span class="w"> </span>s3<span class="w"> </span>rm<span class="w"> </span>s3://<span class="nv">$i</span><span class="w"> </span>--region<span class="w"> </span>us-east-1<span class="w"> </span>--recursive
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>aws<span class="w"> </span>s3<span class="w"> </span>rb<span class="w"> </span>s3://<span class="nv">$i</span><span class="w"> </span>--force<span class="w"> </span>--region<span class="w"> </span>us-east-1
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="k">done</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>aws<span class="w"> </span>s3api<span class="w"> </span>delete-objects<span class="w"> </span>--bucket<span class="w"> </span>panlm-test-object-1234<span class="w"> </span>--delete<span class="w"> </span><span class="s1">&#39;{&quot;Objects&quot;:[{&quot;Key&quot;:&quot;def&quot;}]}&#39;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w"> </span><span class="sb">```</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1">## download s3 folder</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="sb">```</span>sh
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>aws<span class="w"> </span>s3<span class="w"> </span>sync<span class="w"> </span>s3://my-exported-logs<span class="w"> </span>.
 </code></pre></div>
 <h2 id="create-folder">create folder<a class="headerlink" href="#create-folder" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>aws<span class="w"> </span>s3api<span class="w"> </span>put-object<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>--bucket<span class="w"> </span><span class="si">${</span><span class="nv">bucket_name</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>--key<span class="w"> </span><span class="si">${</span><span class="nv">folder_name</span><span class="si">}</span>/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>aws<span class="w"> </span>s3api<span class="w"> </span>put-object<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>--bucket<span class="w"> </span><span class="si">${</span><span class="nv">bucket_name</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>--key<span class="w"> </span><span class="si">${</span><span class="nv">folder_name</span><span class="si">}</span>/
 </code></pre></div>
 <h2 id="head-object">head object<a class="headerlink" href="#head-object" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>aws<span class="w"> </span>s3api<span class="w"> </span>head-object<span class="w"> </span>--bucket<span class="w"> </span>lcf-1350<span class="w"> </span>--key<span class="w"> </span>stop_sensor_data.sh
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># sample output: </span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="o">{</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="s2">&quot;AcceptRanges&quot;</span>:<span class="w"> </span><span class="s2">&quot;bytes&quot;</span>,
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="s2">&quot;Expiration&quot;</span>:<span class="w"> </span><span class="s2">&quot;expiry-date=\&quot;Thu, 02 Nov 2023 00:00:00 GMT\&quot;, rule-id=\&quot;rule1\&quot;&quot;</span>,
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">    </span><span class="s2">&quot;LastModified&quot;</span>:<span class="w"> </span><span class="s2">&quot;2023-10-22T09:41:20+00:00&quot;</span>,
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">    </span><span class="s2">&quot;ContentLength&quot;</span>:<span class="w"> </span><span class="m">162</span>,
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">    </span><span class="s2">&quot;ETag&quot;</span>:<span class="w"> </span><span class="s2">&quot;\&quot;65c759947d7b4e98624fa5bec23e0df0\&quot;&quot;</span>,
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">    </span><span class="s2">&quot;ContentType&quot;</span>:<span class="w"> </span><span class="s2">&quot;text/x-sh&quot;</span>,
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span><span class="s2">&quot;ServerSideEncryption&quot;</span>:<span class="w"> </span><span class="s2">&quot;AES256&quot;</span>,
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="s2">&quot;Metadata&quot;</span>:<span class="w"> </span><span class="o">{}</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="o">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>aws<span class="w"> </span>s3api<span class="w"> </span>head-object<span class="w"> </span>--bucket<span class="w"> </span>lcf-1350<span class="w"> </span>--key<span class="w"> </span>stop_sensor_data.sh
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># sample output: </span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="o">{</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">    </span><span class="s2">&quot;AcceptRanges&quot;</span>:<span class="w"> </span><span class="s2">&quot;bytes&quot;</span>,
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span><span class="s2">&quot;Expiration&quot;</span>:<span class="w"> </span><span class="s2">&quot;expiry-date=\&quot;Thu, 02 Nov 2023 00:00:00 GMT\&quot;, rule-id=\&quot;rule1\&quot;&quot;</span>,
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span><span class="s2">&quot;LastModified&quot;</span>:<span class="w"> </span><span class="s2">&quot;2023-10-22T09:41:20+00:00&quot;</span>,
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">    </span><span class="s2">&quot;ContentLength&quot;</span>:<span class="w"> </span><span class="m">162</span>,
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">    </span><span class="s2">&quot;ETag&quot;</span>:<span class="w"> </span><span class="s2">&quot;\&quot;65c759947d7b4e98624fa5bec23e0df0\&quot;&quot;</span>,
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">    </span><span class="s2">&quot;ContentType&quot;</span>:<span class="w"> </span><span class="s2">&quot;text/x-sh&quot;</span>,
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="s2">&quot;ServerSideEncryption&quot;</span>:<span class="w"> </span><span class="s2">&quot;AES256&quot;</span>,
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="s2">&quot;Metadata&quot;</span>:<span class="w"> </span><span class="o">{}</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="o">}</span>
 </code></pre></div>
 <ul>
 <li>ETag, is md5</li>
@@ -3506,40 +3534,40 @@
 </ul>
 <h2 id="get-object">get object<a class="headerlink" href="#get-object" title="Permanent link">&para;</a></h2>
 <h3 id="get-object_1">get object<a class="headerlink" href="#get-object_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>aws<span class="w"> </span>s3api<span class="w"> </span>get-object<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span>--key<span class="w"> </span>results/15c2c468a4c4.txt<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span>--bucket<span class="w"> </span>athena-bucket-1115<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span>--region<span class="w"> </span>us-east-2<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span>download.txt
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>aws<span class="w"> </span>s3api<span class="w"> </span>get-object<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span>--key<span class="w"> </span>results/15c2c468a4c4.txt<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span>--bucket<span class="w"> </span>athena-bucket-1115<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span>--region<span class="w"> </span>us-east-2<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span>download.txt
 </code></pre></div>
 <h3 id="get-object-from-access-point">get object from access point<a class="headerlink" href="#get-object-from-access-point" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># using access point alias</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>aws<span class="w"> </span>s3api<span class="w"> </span>get-object<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span>--key<span class="w"> </span>results/15c2c468a4c4.txt<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span>--bucket<span class="w"> </span>arn:aws:s3:us-east-2:ACCOUNT_ID:accesspoint/testap-internet<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">  </span>--region<span class="w"> </span>us-east-2<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">  </span>download.txt
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># using access point alias</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>aws<span class="w"> </span>s3api<span class="w"> </span>get-object<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span>--key<span class="w"> </span>results/15c2c468a4c4.txt<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">  </span>--bucket<span class="w"> </span>arn:aws:s3:us-east-2:ACCOUNT_ID:accesspoint/testap-internet<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">  </span>--region<span class="w"> </span>us-east-2<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">  </span>download.txt
 </code></pre></div>
 <h2 id="update-access-point-policy">update access point policy<a class="headerlink" href="#update-access-point-policy" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>aws<span class="w"> </span>s3control<span class="w"> </span>get-access-point-policy<span class="w"> </span><span class="se">\</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>aws<span class="w"> </span>s3control<span class="w"> </span>get-access-point-policy<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span>--region<span class="w"> </span>us-east-2<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span>--account-id<span class="w"> </span>ACCOUNT_ID<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">  </span>--name<span class="w"> </span>testap-internet
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>aws<span class="w"> </span>s3control<span class="w"> </span>put-access-point-policy<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span>--region<span class="w"> </span>us-east-2<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="w">  </span>--account-id<span class="w"> </span>ACCOUNT_ID<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span>--name<span class="w"> </span>testap-internet
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>aws<span class="w"> </span>s3control<span class="w"> </span>put-access-point-policy<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">  </span>--region<span class="w"> </span>us-east-2<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span>--account-id<span class="w"> </span>ACCOUNT_ID<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span>--name<span class="w"> </span>testap-internet<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">  </span>--policy<span class="w"> </span>file://policy.json
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="w">  </span>--name<span class="w"> </span>testap-internet<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">  </span>--policy<span class="w"> </span>file://policy.json
 </code></pre></div>
 <h2 id="presigned-url">presigned url<a class="headerlink" href="#presigned-url" title="Permanent link">&para;</a></h2>
 <h3 id="for-download">for download<a class="headerlink" href="#for-download" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nv">OBJECT_KEY</span><span class="o">=</span><span class="s2">&quot;folder/subfolder/file.txt&quot;</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nv">EXPIRES</span><span class="o">=</span><span class="m">3600</span><span class="w"> </span><span class="c1"># max 7 days</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>aws<span class="w"> </span>s3<span class="w"> </span>presign<span class="w"> </span>s3://my-bucket/<span class="si">${</span><span class="nv">OBJECT_KEY</span><span class="si">}</span><span class="w"> </span>--expires-in<span class="w"> </span><span class="si">${</span><span class="nv">EXPIRES</span><span class="si">}</span><span class="w"> </span>--region<span class="w"> </span>xxx<span class="w"> </span><span class="c1"># keep region same with bucket</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nv">OBJECT_KEY</span><span class="o">=</span><span class="s2">&quot;folder/subfolder/file.txt&quot;</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nv">EXPIRES</span><span class="o">=</span><span class="m">3600</span><span class="w"> </span><span class="c1"># max 7 days</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>aws<span class="w"> </span>s3<span class="w"> </span>presign<span class="w"> </span>s3://my-bucket/<span class="si">${</span><span class="nv">OBJECT_KEY</span><span class="si">}</span><span class="w"> </span>--expires-in<span class="w"> </span><span class="si">${</span><span class="nv">EXPIRES</span><span class="si">}</span><span class="w"> </span>--region<span class="w"> </span>xxx<span class="w"> </span><span class="c1"># keep region same with bucket</span>
 </code></pre></div>
 <h3 id="for-upload">for upload<a class="headerlink" href="#for-upload" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>
 </code></pre></div>
 <h2 id="public-access-">public-access-<a class="headerlink" href="#public-access-" title="Permanent link">&para;</a></h2>
 <ul>
@@ -3552,7 +3580,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-10-26T14:34:38+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-26</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-10T08:22:15+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-10</span>
       
         <br>
         Created:
@@ -3610,7 +3638,7 @@
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "toc.follow", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.81fa17fe.min.js"></script>
       
         <script src="../../../js/timeago.min.js"></script>
       

@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.7">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.8">
     
     
       
@@ -794,6 +794,8 @@
       
         
       
+        
+      
     
     
     
@@ -835,6 +837,26 @@
   
   <span class="md-ellipsis">
     eks-fargate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/infra/compute/karpenter-lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    karpenter-install-lab
   </span>
   
 
@@ -1036,8 +1058,6 @@
       
         
       
-        
-      
     
     
     
@@ -1099,26 +1119,6 @@
   
   <span class="md-ellipsis">
     automated-canary-deployment-using-flagger
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../EKS/infra/network/appmesh/build-colorapp/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    build-colorapp
   </span>
   
 
@@ -2634,11 +2634,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/docker-image-sample/" class="md-nav__link">
+      <a href="../../linux/docker-cmd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    docker-image-customized
+    docker
   </span>
   
 
@@ -2725,6 +2725,8 @@
   
     
     
+      
+        
       
         
       
@@ -2930,6 +2932,26 @@
   
   
     <li class="md-nav__item">
+      <a href="../ecr-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ecr
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../ecs-cmd/" class="md-nav__link">
         
   
@@ -3064,7 +3086,7 @@
       
         <li class="md-nav__item">
   <a href="#create-ns-record-" class="md-nav__link">
-    create ns record-
+    create-ns-record-
   </a>
   
 </li>
@@ -3228,7 +3250,7 @@
       
         <li class="md-nav__item">
   <a href="#create-ns-record-" class="md-nav__link">
-    create ns record-
+    create-ns-record-
   </a>
   
 </li>
@@ -3280,55 +3302,56 @@
 
 
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>title: This is a github note
-</code></pre></div>
+<blockquote>
+<p>[!WARNING] This is a github note</p>
+</blockquote>
 <h1 id="route53-cmd">route53-cmd<a class="headerlink" href="#route53-cmd" title="Permanent link">&para;</a></h1>
 <h2 id="create-hosted-zone">create hosted zone<a class="headerlink" href="#create-hosted-zone" title="Permanent link">&para;</a></h2>
 <p><img alt="../../EKS/infra/network/externaldns-for-route53" src="../../../EKS/infra/network/externaldns-for-route53/#^fgvqjb" title="../../EKS/infra/network/externaldns-for-route53" /></p>
 <p>refer: <a href="../../../EKS/infra/network/externaldns-for-route53/#setup-hosted-zone-" title="git/git-mkdocs/EKS/infra/network/externaldns-for-route53">git/git-mkdocs/EKS/infra/network/externaldns-for-route53</a></p>
-<h2 id="create-ns-record-">create ns record-<a class="headerlink" href="#create-ns-record-" title="Permanent link">&para;</a></h2>
+<h2 id="create-ns-record-">create-ns-record-<a class="headerlink" href="#create-ns-record-" title="Permanent link">&para;</a></h2>
 <ul>
 <li>create host zone in your child account and get NS (previous chapter)</li>
 <li><a href="../../linux/assume-tool/" title="assume">assume</a> to your parent account to add NS record to route53 host zone<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">DOMAIN_NAME</span><span class="o">=</span>poc1029.aws.panlm.xyz
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">NS</span><span class="o">=</span><span class="s1">&#39;ns-1716.awsdns-22.co.uk.</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="s1">ns-934.awsdns-52.net.</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="s1">ns-114.awsdns-14.com.</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="s1">ns-1223.awsdns-24.org.</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="s1">&#39;</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="nv">PARENT_DOMAIN_NAME</span><span class="o">=</span><span class="si">${</span><span class="nv">DOMAIN_NAME</span><span class="p">#*.</span><span class="si">}</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="nv">ZONE_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>route53<span class="w"> </span>list-hosted-zones-by-name<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>--dns-name<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PARENT_DOMAIN_NAME</span><span class="si">}</span><span class="s2">.&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>--query<span class="w"> </span>HostedZones<span class="o">[</span><span class="m">0</span><span class="o">]</span>.Id<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>envsubst<span class="w"> </span>&gt;ns-route53-record.json<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="s">{</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="s">  &quot;Comment&quot;: &quot;UPSERT a record for poc.xxx.com &quot;,</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="s">  &quot;Changes&quot;: [</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="s">    {</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="s">      &quot;Action&quot;: &quot;CREATE&quot;,</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="s">      &quot;ResourceRecordSet&quot;: {</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="s">        &quot;Name&quot;: &quot;${DOMAIN_NAME}&quot;,</span>
-<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="s">        &quot;Type&quot;: &quot;NS&quot;,</span>
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="s">        &quot;TTL&quot;: 172800,</span>
-<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="s">        &quot;ResourceRecords&quot;: [</span>
-<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="s">        ]</span>
-<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="s">      }</span>
-<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="s">    }</span>
-<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="s">  ]</span>
-<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="s">}</span>
-<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="s">EOF</span>
-<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>
-<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="w">    </span>cat<span class="w"> </span>ns-route53-record.json<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span><span class="s1">&#39;.Changes[0].ResourceRecordSet.ResourceRecords += [{&quot;Value&quot;: &quot;&#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="s1">&#39;&quot;}]&#39;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="w">        </span><span class="p">|</span>tee<span class="w"> </span>ns-route53-record-tmp.json
-<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">    </span>mv<span class="w"> </span>-f<span class="w"> </span>ns-route53-record-tmp.json<span class="w"> </span>ns-route53-record.json
-<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="k">done</span>
-<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>
-<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a>aws<span class="w"> </span>route53<span class="w"> </span>change-resource-record-sets<span class="w"> </span>--hosted-zone-id<span class="w"> </span><span class="si">${</span><span class="nv">ZONE_ID</span><span class="si">}</span><span class="w"> </span>--change-batch<span class="w"> </span>file://ns-route53-record.json
-<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a>
-<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>aws<span class="w"> </span>route53<span class="w"> </span>list-resource-record-sets<span class="w"> </span>--hosted-zone-id<span class="w"> </span><span class="si">${</span><span class="nv">ZONE_ID</span><span class="si">}</span><span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;ResourceRecordSets[?Name == &#39;</span><span class="si">${</span><span class="nv">DOMAIN_NAME</span><span class="si">}</span><span class="s2">.&#39;]&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">DOMAIN_NAME</span><span class="o">=</span>poc1029.aws.panlm.xyz
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nv">NS</span><span class="o">=</span><span class="s1">&#39;ns-1716.awsdns-22.co.uk.</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="s1">ns-934.awsdns-52.net.</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="s1">ns-114.awsdns-14.com.</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="s1">ns-1223.awsdns-24.org.</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="s1">&#39;</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nv">PARENT_DOMAIN_NAME</span><span class="o">=</span><span class="si">${</span><span class="nv">DOMAIN_NAME</span><span class="p">#*.</span><span class="si">}</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nv">ZONE_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>route53<span class="w"> </span>list-hosted-zones-by-name<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>--dns-name<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">PARENT_DOMAIN_NAME</span><span class="si">}</span><span class="s2">.&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>--query<span class="w"> </span>HostedZones<span class="o">[</span><span class="m">0</span><span class="o">]</span>.Id<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>envsubst<span class="w"> </span>&gt;ns-route53-record.json<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="s">{</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="s">  &quot;Comment&quot;: &quot;UPSERT a record for poc.xxx.com &quot;,</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="s">  &quot;Changes&quot;: [</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="s">    {</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="s">      &quot;Action&quot;: &quot;CREATE&quot;,</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="s">      &quot;ResourceRecordSet&quot;: {</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="s">        &quot;Name&quot;: &quot;${DOMAIN_NAME}&quot;,</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="s">        &quot;Type&quot;: &quot;NS&quot;,</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="s">        &quot;TTL&quot;: 172800,</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="s">        &quot;ResourceRecords&quot;: [</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="s">        ]</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="s">      }</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="s">    }</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="s">  ]</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="s">}</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="s">EOF</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">    </span>cat<span class="w"> </span>ns-route53-record.json<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span><span class="s1">&#39;.Changes[0].ResourceRecordSet.ResourceRecords += [{&quot;Value&quot;: &quot;&#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="s1">&#39;&quot;}]&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">        </span><span class="p">|</span>tee<span class="w"> </span>ns-route53-record-tmp.json
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">    </span>mv<span class="w"> </span>-f<span class="w"> </span>ns-route53-record-tmp.json<span class="w"> </span>ns-route53-record.json
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="k">done</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>aws<span class="w"> </span>route53<span class="w"> </span>change-resource-record-sets<span class="w"> </span>--hosted-zone-id<span class="w"> </span><span class="si">${</span><span class="nv">ZONE_ID</span><span class="si">}</span><span class="w"> </span>--change-batch<span class="w"> </span>file://ns-route53-record.json
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a>aws<span class="w"> </span>route53<span class="w"> </span>list-resource-record-sets<span class="w"> </span>--hosted-zone-id<span class="w"> </span><span class="si">${</span><span class="nv">ZONE_ID</span><span class="si">}</span><span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;ResourceRecordSets[?Name == &#39;</span><span class="si">${</span><span class="nv">DOMAIN_NAME</span><span class="si">}</span><span class="s2">.&#39;]&quot;</span>
 </code></pre></div></li>
 </ul>
 <h2 id="create-cname-record-">create cname record-<a class="headerlink" href="#create-cname-record-" title="Permanent link">&para;</a></h2>
@@ -3336,31 +3359,31 @@
 <p>refer: <a href="https://repost.aws/knowledge-center/simple-resource-record-route53-cli">link</a> <br />
 sample: <a href="../acm-cmd/#create-certificate-" title="acm-cmd">acm-cmd</a></p>
 <h2 id="insert-txt-record-with-multi-values">insert TXT record with multi values<a class="headerlink" href="#insert-txt-record-with-multi-values" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="p">{</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span><span class="nt">&quot;Comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Update record to add new TXT record&quot;</span><span class="p">,</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="nt">&quot;Changes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">        </span><span class="p">{</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">            </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UPSERT&quot;</span><span class="p">,</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">            </span><span class="nt">&quot;ResourceRecordSet&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">                </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@.panlm.com.&quot;</span><span class="p">,</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">                </span><span class="nt">&quot;Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TXT&quot;</span><span class="p">,</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">                </span><span class="nt">&quot;TTL&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">                </span><span class="nt">&quot;ResourceRecords&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">                    </span><span class="p">{</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">                        </span><span class="nt">&quot;Value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\&quot;test1=1\&quot;&quot;</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">                    </span><span class="p">},</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">                    </span><span class="p">{</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="w">                        </span><span class="nt">&quot;Value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\&quot;test2=1\&quot;&quot;</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">                    </span><span class="p">}</span>
-<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">                </span><span class="p">]</span>
-<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">            </span><span class="p">}</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">        </span><span class="p">}</span>
-<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">    </span><span class="p">]</span>
-<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="p">{</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span><span class="nt">&quot;Comment&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Update record to add new TXT record&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span><span class="nt">&quot;Changes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">            </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;UPSERT&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">            </span><span class="nt">&quot;ResourceRecordSet&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">                </span><span class="nt">&quot;Name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;@.panlm.com.&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">                </span><span class="nt">&quot;Type&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;TXT&quot;</span><span class="p">,</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">                </span><span class="nt">&quot;TTL&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">300</span><span class="p">,</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">                </span><span class="nt">&quot;ResourceRecords&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">                    </span><span class="p">{</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">                        </span><span class="nt">&quot;Value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\&quot;test1=1\&quot;&quot;</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">                    </span><span class="p">},</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">                    </span><span class="p">{</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">                        </span><span class="nt">&quot;Value&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;\&quot;test2=1\&quot;&quot;</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">                    </span><span class="p">}</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">                </span><span class="p">]</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span><span class="p">]</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="p">}</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>aws<span class="w"> </span>route53<span class="w"> </span>change-resource-record-sets<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span>--hosted-zone-id<span class="w"> </span>Z07xxxxZD1<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span>--change-batch<span class="w"> </span>file://a.json
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>aws<span class="w"> </span>route53<span class="w"> </span>change-resource-record-sets<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span>--hosted-zone-id<span class="w"> </span>Z07xxxxZD1<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span>--change-batch<span class="w"> </span>file://a.json
 </code></pre></div>
 <h2 id="refer">refer<a class="headerlink" href="#refer" title="Permanent link">&para;</a></h2>
 <ul>
@@ -3374,7 +3397,7 @@ sample: <a href="../acm-cmd/#create-certificate-" title="acm-cmd">acm-cmd</a></p
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-10-29T13:17:58+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-29</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-10T08:22:15+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-10</span>
       
         <br>
         Created:
@@ -3432,7 +3455,7 @@ sample: <a href="../acm-cmd/#create-certificate-" title="acm-cmd">acm-cmd</a></p
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "toc.follow", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.81fa17fe.min.js"></script>
       
         <script src="../../../js/timeago.min.js"></script>
       

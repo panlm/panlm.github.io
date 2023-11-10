@@ -6,30 +6,30 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="创建 color 应用">
+        <meta name="description" content="常用命令">
       
       
       
       
-        <link rel="prev" href="../automated-canary-deployment-using-flagger/">
+        <link rel="prev" href="../assume-tool/">
       
       
-        <link rel="next" href="../../../storage/ebs-for-eks/">
+        <link rel="next" href="../eksctl/">
       
       
-      <link rel="icon" href="../../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.7">
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.8">
     
     
       
-        <title>build-colorapp - panlm</title>
+        <title>docker - panlm</title>
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.4b4a2bd9.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.4b4a2bd9.min.css">
       
         
-        <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.356b1318.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
       
       
 
@@ -48,9 +48,9 @@
       
     
     
-      <link rel="stylesheet" href="../../../../../css/timeago.css">
+      <link rel="stylesheet" href="../../../css/timeago.css">
     
-    <script>__md_scope=new URL("../../../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -89,7 +89,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#build-colorapp" class="md-skip">
+        <a href="#docker-cmd" class="md-skip">
           Skip to content
         </a>
       
@@ -105,9 +105,9 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../../../../.." title="panlm" class="md-header__button md-logo" aria-label="panlm" data-md-component="logo">
+    <a href="../../.." title="panlm" class="md-header__button md-logo" aria-label="panlm" data-md-component="logo">
       
-  <img src="../../../../../git-attachment/AWS_Logo.png" alt="logo">
+  <img src="../../../git-attachment/AWS_Logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -124,7 +124,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              build-colorapp
+              docker
             
           </span>
         </div>
@@ -212,7 +212,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../.." class="md-tabs__link">
+      <a href="../../.." class="md-tabs__link">
         
   
     
@@ -231,7 +231,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../../cloud9/quick-setup-cloud9-script/" class="md-tabs__link">
+        <a href="../../../cloud9/quick-setup-cloud9-script/" class="md-tabs__link">
           
   
     
@@ -247,13 +247,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../../../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../EKS/" class="md-tabs__link">
           
   
     
@@ -273,7 +271,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../../data-analytics/mwaa-lab/" class="md-tabs__link">
+        <a href="../../../data-analytics/mwaa-lab/" class="md-tabs__link">
           
   
     
@@ -293,7 +291,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../../serverless/apigw-cross-account-private-endpoint/" class="md-tabs__link">
+        <a href="../../../serverless/apigw-cross-account-private-endpoint/" class="md-tabs__link">
           
   
     
@@ -313,7 +311,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../../../../others/cross-region-reverse-proxy-with-nlb-cloudfront/" class="md-tabs__link">
+        <a href="../../../others/cross-region-reverse-proxy-with-nlb-cloudfront/" class="md-tabs__link">
           
   
     
@@ -329,17 +327,21 @@
         
   
   
+    
+  
   
     
     
       
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../../../CLI/linux/linux-cmd/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../linux-cmd/" class="md-tabs__link">
           
   
     
@@ -360,7 +362,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../../../../tags/" class="md-tabs__link">
+      <a href="../../../tags/" class="md-tabs__link">
         
   
     
@@ -400,9 +402,9 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../../.." title="panlm" class="md-nav__button md-logo" aria-label="panlm" data-md-component="logo">
+    <a href="../../.." title="panlm" class="md-nav__button md-logo" aria-label="panlm" data-md-component="logo">
       
-  <img src="../../../../../git-attachment/AWS_Logo.png" alt="logo">
+  <img src="../../../git-attachment/AWS_Logo.png" alt="logo">
 
     </a>
     panlm
@@ -416,7 +418,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../.." class="md-nav__link">
+      <a href="../../.." class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -482,7 +484,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../cloud9/quick-setup-cloud9-script/" class="md-nav__link">
+      <a href="../../../cloud9/quick-setup-cloud9-script/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -502,7 +504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../cloud9/setup-cloud9-for-eks/" class="md-nav__link">
+      <a href="../../../cloud9/setup-cloud9-for-eks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -522,7 +524,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../cloud9/create-standard-vpc-for-lab-in-china-region/" class="md-nav__link">
+      <a href="../../../cloud9/create-standard-vpc-for-lab-in-china-region/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -547,8 +549,6 @@
       
   
   
-    
-  
   
     
     
@@ -568,17 +568,17 @@
       
       
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../../" class="md-nav__link ">
+            <a href="../../../EKS/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -595,7 +595,7 @@
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             EKS
@@ -608,8 +608,6 @@
                 
   
   
-    
-  
   
     
     
@@ -626,12 +624,12 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
         
           
           <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
@@ -645,7 +643,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             Infra
@@ -704,7 +702,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cluster/eks-private-access-cluster/" class="md-nav__link">
+      <a href="../../../EKS/infra/cluster/eks-private-access-cluster/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -724,7 +722,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cluster/eks-public-access-cluster-in-china-region/" class="md-nav__link">
+      <a href="../../../EKS/infra/cluster/eks-public-access-cluster-in-china-region/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -744,7 +742,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cluster/eks-public-access-cluster/" class="md-nav__link">
+      <a href="../../../EKS/infra/cluster/eks-public-access-cluster/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -764,7 +762,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../cluster/eks-terraform-cluster/" class="md-nav__link">
+      <a href="../../../EKS/infra/cluster/eks-terraform-cluster/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -793,6 +791,8 @@
   
     
     
+      
+        
       
         
       
@@ -832,11 +832,31 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../compute/eks-fargate-lab/" class="md-nav__link">
+      <a href="../../../EKS/infra/compute/eks-fargate-lab/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     eks-fargate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/infra/compute/karpenter-lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    karpenter-install-lab
   </span>
   
 
@@ -858,8 +878,6 @@
                 
   
   
-    
-  
   
     
     
@@ -882,12 +900,12 @@
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3" >
         
           
           <label class="md-nav__link" for="__nav_3_2_3" id="__nav_3_2_3_label" tabindex="0">
@@ -901,7 +919,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_3_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_3_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_2_3">
             <span class="md-nav__icon md-icon"></span>
             Network
@@ -914,7 +932,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../aws-load-balancer-controller/" class="md-nav__link">
+      <a href="../../../EKS/infra/network/aws-load-balancer-controller/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -934,7 +952,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../eks-custom-network/" class="md-nav__link">
+      <a href="../../../EKS/infra/network/eks-custom-network/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -954,7 +972,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../enable-sg-on-pod/" class="md-nav__link">
+      <a href="../../../EKS/infra/network/enable-sg-on-pod/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -974,7 +992,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../externaldns-for-route53/" class="md-nav__link">
+      <a href="../../../EKS/infra/network/externaldns-for-route53/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -994,7 +1012,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../nginx-ingress-controller-community-ver/" class="md-nav__link">
+      <a href="../../../EKS/infra/network/nginx-ingress-controller-community-ver/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1014,7 +1032,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../self-signed-certificates/" class="md-nav__link">
+      <a href="../../../EKS/infra/network/self-signed-certificates/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1032,8 +1050,6 @@
                 
   
   
-    
-  
   
     
     
@@ -1042,18 +1058,16 @@
       
         
       
-        
-      
     
     
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_7" >
         
           
           <label class="md-nav__link" for="__nav_3_2_3_7" id="__nav_3_2_3_7_label" tabindex="0">
@@ -1067,7 +1081,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_2_3_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_2_3_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_2_3_7">
             <span class="md-nav__icon md-icon"></span>
             Appmesh
@@ -1080,7 +1094,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../appmesh-workshop-eks/" class="md-nav__link">
+      <a href="../../../EKS/infra/network/appmesh/appmesh-workshop-eks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1100,7 +1114,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../automated-canary-deployment-using-flagger/" class="md-nav__link">
+      <a href="../../../EKS/infra/network/appmesh/automated-canary-deployment-using-flagger/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1109,87 +1123,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    build-colorapp
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    build-colorapp
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#v1" class="md-nav__link">
-    v1
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#v2" class="md-nav__link">
-    v2
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#refer" class="md-nav__link">
-    refer
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1259,7 +1192,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../storage/ebs-for-eks/" class="md-nav__link">
+      <a href="../../../EKS/infra/storage/ebs-for-eks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1279,7 +1212,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../storage/efs-for-eks/" class="md-nav__link">
+      <a href="../../../EKS/infra/storage/efs-for-eks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1403,7 +1336,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../operation/gitops/argocd-lab/" class="md-nav__link">
+      <a href="../../../EKS/operation/gitops/argocd-lab/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1423,7 +1356,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../operation/gitops/flux-lab/" class="md-nav__link">
+      <a href="../../../EKS/operation/gitops/flux-lab/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1495,7 +1428,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../operation/logging/cloudwatch-to-firehose-python/" class="md-nav__link">
+      <a href="../../../EKS/operation/logging/cloudwatch-to-firehose-python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1515,7 +1448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../operation/logging/export-cloudwatch-log-group-to-s3/" class="md-nav__link">
+      <a href="../../../EKS/operation/logging/export-cloudwatch-log-group-to-s3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1535,7 +1468,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../operation/logging/stream-k8s-control-panel-logs-to-s3/" class="md-nav__link">
+      <a href="../../../EKS/operation/logging/stream-k8s-control-panel-logs-to-s3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1613,7 +1546,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../operation/monitor/cluster-autoscaler/" class="md-nav__link">
+      <a href="../../../EKS/operation/monitor/cluster-autoscaler/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1633,7 +1566,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../operation/monitor/eks-container-insights/" class="md-nav__link">
+      <a href="../../../EKS/operation/monitor/eks-container-insights/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1653,7 +1586,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../operation/monitor/enable-prometheus-in-cloudwatch/" class="md-nav__link">
+      <a href="../../../EKS/operation/monitor/enable-prometheus-in-cloudwatch/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1673,7 +1606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../operation/monitor/install-grafana-lab/" class="md-nav__link">
+      <a href="../../../EKS/operation/monitor/install-grafana-lab/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1693,7 +1626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../operation/monitor/install-prometheus-grafana/" class="md-nav__link">
+      <a href="../../../EKS/operation/monitor/install-prometheus-grafana/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1713,7 +1646,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../operation/monitor/metrics-server/" class="md-nav__link">
+      <a href="../../../EKS/operation/monitor/metrics-server/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1807,7 +1740,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../operation/upgrade/eks-upgrade-procedure/" class="md-nav__link">
+      <a href="../../../EKS/operation/upgrade/eks-upgrade-procedure/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1827,7 +1760,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../operation/upgrade/eks-cluster-addons-list/" class="md-nav__link">
+      <a href="../../../EKS/operation/upgrade/eks-cluster-addons-list/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1847,7 +1780,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../operation/upgrade/eks-addons-coredns/" class="md-nav__link">
+      <a href="../../../EKS/operation/upgrade/eks-addons-coredns/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1867,7 +1800,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../operation/upgrade/eks-addons-kube-proxy/" class="md-nav__link">
+      <a href="../../../EKS/operation/upgrade/eks-addons-kube-proxy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1887,7 +1820,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../operation/upgrade/eks-addons-vpc-cni/" class="md-nav__link">
+      <a href="../../../EKS/operation/upgrade/eks-addons-vpc-cni/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1907,7 +1840,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../operation/upgrade/aws-for-fluent-bit/" class="md-nav__link">
+      <a href="../../../EKS/operation/upgrade/aws-for-fluent-bit/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1927,7 +1860,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../operation/upgrade/cert-manager/" class="md-nav__link">
+      <a href="../../../EKS/operation/upgrade/cert-manager/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1947,7 +1880,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../operation/upgrade/cni-metrics-helper/" class="md-nav__link">
+      <a href="../../../EKS/operation/upgrade/cni-metrics-helper/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1967,7 +1900,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../operation/upgrade/eksup/" class="md-nav__link">
+      <a href="../../../EKS/operation/upgrade/eksup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1987,7 +1920,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../operation/upgrade/kube-no-trouble/" class="md-nav__link">
+      <a href="../../../EKS/operation/upgrade/kube-no-trouble/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2007,7 +1940,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../operation/upgrade/kube-state-metrics/" class="md-nav__link">
+      <a href="../../../EKS/operation/upgrade/kube-state-metrics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2027,7 +1960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../operation/upgrade/nginx-ingress-controller-nginx-ver/" class="md-nav__link">
+      <a href="../../../EKS/operation/upgrade/nginx-ingress-controller-nginx-ver/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2047,7 +1980,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../operation/upgrade/nginx-ingress-controller/" class="md-nav__link">
+      <a href="../../../EKS/operation/upgrade/nginx-ingress-controller/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2067,7 +2000,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../operation/upgrade/pluto/" class="md-nav__link">
+      <a href="../../../EKS/operation/upgrade/pluto/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2157,7 +2090,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../data-analytics/mwaa-lab/" class="md-nav__link">
+      <a href="../../../data-analytics/mwaa-lab/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2177,7 +2110,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../data-analytics/rds-mysql-replica-cross-region-cross-account/" class="md-nav__link">
+      <a href="../../../data-analytics/rds-mysql-replica-cross-region-cross-account/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2197,7 +2130,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../data-analytics/redshift-data-api-lab/" class="md-nav__link">
+      <a href="../../../data-analytics/redshift-data-api-lab/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2275,7 +2208,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../serverless/apigw-cross-account-private-endpoint/" class="md-nav__link">
+      <a href="../../../serverless/apigw-cross-account-private-endpoint/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2295,7 +2228,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../serverless/apigw-custom-domain-name/" class="md-nav__link">
+      <a href="../../../serverless/apigw-custom-domain-name/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2315,7 +2248,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../serverless/apigw-get-sourceip/" class="md-nav__link">
+      <a href="../../../serverless/apigw-get-sourceip/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2335,7 +2268,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../serverless/apigw-private-api-alb-cdk/" class="md-nav__link">
+      <a href="../../../serverless/apigw-private-api-alb-cdk/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2355,7 +2288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../serverless/apigw-regional-api-access-from-vpc/" class="md-nav__link">
+      <a href="../../../serverless/apigw-regional-api-access-from-vpc/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2435,7 +2368,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../others/cross-region-reverse-proxy-with-nlb-cloudfront/" class="md-nav__link">
+      <a href="../../../others/cross-region-reverse-proxy-with-nlb-cloudfront/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2455,7 +2388,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../others/file-storage-gateway-lab/" class="md-nav__link">
+      <a href="../../../others/file-storage-gateway-lab/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2475,7 +2408,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../others/global-sso-and-china-aws-accounts/" class="md-nav__link">
+      <a href="../../../others/global-sso-and-china-aws-accounts/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2495,7 +2428,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../others/rescue-ec2-instance/" class="md-nav__link">
+      <a href="../../../others/rescue-ec2-instance/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2515,7 +2448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../others/script-api-resource-method/" class="md-nav__link">
+      <a href="../../../others/script-api-resource-method/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2535,7 +2468,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../others/github-page-howto/" class="md-nav__link">
+      <a href="../../../others/github-page-howto/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2560,6 +2493,8 @@
       
   
   
+    
+  
   
     
     
@@ -2577,12 +2512,12 @@
       
       
     
-    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
         
           
           <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
@@ -2596,7 +2531,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             CLI
@@ -2607,6 +2542,8 @@
                 
   
   
+    
+  
   
     
     
@@ -2627,12 +2564,12 @@
     
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" checked>
         
           
           <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
@@ -2646,7 +2583,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_7_1">
             <span class="md-nav__icon md-icon"></span>
             Linux Commands
@@ -2659,7 +2596,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../CLI/linux/linux-cmd/" class="md-nav__link">
+      <a href="../linux-cmd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2679,7 +2616,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../CLI/linux/assume-tool/" class="md-nav__link">
+      <a href="../assume-tool/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2697,17 +2634,153 @@
                 
   
   
+    
   
-    <li class="md-nav__item">
-      <a href="../../../../../CLI/linux/docker-image-sample/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    docker
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
-    docker-image-customized
+    docker
   </span>
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#docker-build" class="md-nav__link">
+    docker build
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-buildx" class="md-nav__link">
+    docker buildx
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-image" class="md-nav__link">
+    docker image
+  </a>
+  
+    <nav class="md-nav" aria-label="docker image">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clean" class="md-nav__link">
+    clean
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#samples" class="md-nav__link">
+    samples
+  </a>
+  
+    <nav class="md-nav" aria-label="samples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flask-app" class="md-nav__link">
+    flask app
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-colorapp-" class="md-nav__link">
+    build-colorapp-
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu-based" class="md-nav__link">
+    ubuntu-based
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#centos-based" class="md-nav__link">
+    centos-based
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-run" class="md-nav__link">
+    docker run
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-push" class="md-nav__link">
+    docker push
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-environment-variable" class="md-nav__link">
+    docker environment variable
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2719,7 +2792,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../CLI/linux/eksctl/" class="md-nav__link">
+      <a href="../eksctl/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2739,7 +2812,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../CLI/linux/eksdemo/" class="md-nav__link">
+      <a href="../eksdemo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2759,7 +2832,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../CLI/linux/iptables/" class="md-nav__link">
+      <a href="../iptables/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2788,6 +2861,8 @@
   
     
     
+      
+        
       
         
       
@@ -2853,7 +2928,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../CLI/awscli/acm-cmd/" class="md-nav__link">
+      <a href="../../awscli/acm-cmd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2873,7 +2948,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../CLI/awscli/apigw-cmd/" class="md-nav__link">
+      <a href="../../awscli/apigw-cmd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2893,7 +2968,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../CLI/awscli/cloud9-cmd/" class="md-nav__link">
+      <a href="../../awscli/cloud9-cmd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2913,7 +2988,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../CLI/awscli/cloudformation-cmd/" class="md-nav__link">
+      <a href="../../awscli/cloudformation-cmd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2933,7 +3008,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../CLI/awscli/cloudwatch-cmd/" class="md-nav__link">
+      <a href="../../awscli/cloudwatch-cmd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2953,7 +3028,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../CLI/awscli/directory-service-cmd/" class="md-nav__link">
+      <a href="../../awscli/directory-service-cmd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2973,7 +3048,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../CLI/awscli/ebs-cmd/" class="md-nav__link">
+      <a href="../../awscli/ebs-cmd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2993,7 +3068,27 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../CLI/awscli/ecs-cmd/" class="md-nav__link">
+      <a href="../../awscli/ecr-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ecr
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../awscli/ecs-cmd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3013,7 +3108,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../CLI/awscli/efs-cmd/" class="md-nav__link">
+      <a href="../../awscli/efs-cmd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3033,7 +3128,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../CLI/awscli/iam-cmd/" class="md-nav__link">
+      <a href="../../awscli/iam-cmd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3053,7 +3148,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../CLI/awscli/redshift-cmd/" class="md-nav__link">
+      <a href="../../awscli/redshift-cmd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3073,7 +3168,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../CLI/awscli/route53-cmd/" class="md-nav__link">
+      <a href="../../awscli/route53-cmd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3093,7 +3188,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../CLI/awscli/s3-cmd/" class="md-nav__link">
+      <a href="../../awscli/s3-cmd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3113,7 +3208,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../CLI/awscli/ssm-cmd/" class="md-nav__link">
+      <a href="../../awscli/ssm-cmd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3141,7 +3236,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../CLI/lab-create-cloudwatch-dashboard-cpu-metric/" class="md-nav__link">
+      <a href="../../lab-create-cloudwatch-dashboard-cpu-metric/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3168,7 +3263,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../../../tags/" class="md-nav__link">
+      <a href="../../../tags/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3208,22 +3303,97 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#v1" class="md-nav__link">
-    v1
+  <a href="#docker-build" class="md-nav__link">
+    docker build
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#v2" class="md-nav__link">
-    v2
+  <a href="#docker-buildx" class="md-nav__link">
+    docker buildx
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#refer" class="md-nav__link">
-    refer
+  <a href="#docker-image" class="md-nav__link">
+    docker image
+  </a>
+  
+    <nav class="md-nav" aria-label="docker image">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#clean" class="md-nav__link">
+    clean
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#samples" class="md-nav__link">
+    samples
+  </a>
+  
+    <nav class="md-nav" aria-label="samples">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#flask-app" class="md-nav__link">
+    flask app
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#build-colorapp-" class="md-nav__link">
+    build-colorapp-
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ubuntu-based" class="md-nav__link">
+    ubuntu-based
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#centos-based" class="md-nav__link">
+    centos-based
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-run" class="md-nav__link">
+    docker run
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-push" class="md-nav__link">
+    docker push
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-environment-variable" class="md-nav__link">
+    docker environment variable
   </a>
   
 </li>
@@ -3247,54 +3417,182 @@
     
     
     
-      <a href="../../../../../tags/#docker" class="md-tag">docker</a>
+      <a href="../../../tags/#docker" class="md-tag">docker</a>
+    
+  
+    
+    
+    
+      <a href="../../../tags/#linux" class="md-tag">linux</a>
+    
+  
+    
+    
+    
+      <a href="../../../tags/#cmd" class="md-tag">cmd</a>
     
   
 </nav>
 
 
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>title: This is a github note
+<blockquote>
+<p>[!WARNING] This is a github note</p>
+</blockquote>
+<h1 id="docker-cmd">docker cmd<a class="headerlink" href="#docker-cmd" title="Permanent link">&para;</a></h1>
+<h2 id="docker-build">docker build<a class="headerlink" href="#docker-build" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>docker build --tag panlm/ntnx:app2 .
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>docker run -d --name app2 -p 5000:5000 app2
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>docker login -u panlm
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>docker push panlm/ntnx:app2
 </code></pre></div>
-<h1 id="build-colorapp">build colorapp<a class="headerlink" href="#build-colorapp" title="Permanent link">&para;</a></h1>
-<h2 id="v1">v1<a class="headerlink" href="#v1" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span><span class="m">169</span>.254.169.254/latest/dynamic/instance-identity/document<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.region&#39;</span><span class="k">)</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_ACCOUNT_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span>--query<span class="w"> </span>Account<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nv">ECR_URL</span><span class="o">=</span><span class="si">${</span><span class="nv">AWS_ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>aws<span class="w"> </span>ecr<span class="w"> </span>get-login-password<span class="w"> </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>docker<span class="w"> </span>login<span class="w"> </span>--username<span class="w"> </span>AWS<span class="w"> </span>--password-stdin<span class="w"> </span><span class="si">${</span><span class="nv">ECR_URL</span><span class="si">}</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="nb">cd</span><span class="w"> </span>/tmp
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/sanjeevrg89/samplecolorapp.git
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="nb">cd</span><span class="w"> </span>samplecolorapp
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="nv">PROJ_NAME</span><span class="o">=</span>sample
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="nv">APP_NAME</span><span class="o">=</span>colorapp
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="nv">ECR_IMAGE_NAME</span><span class="o">=</span><span class="si">${</span><span class="nv">ECR_URL</span><span class="si">}</span>/<span class="si">${</span><span class="nv">PROJ_NAME</span><span class="si">}</span>/<span class="si">${</span><span class="nv">APP_NAME</span><span class="si">}</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>aws<span class="w"> </span>ecr<span class="w"> </span>create-repository<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>--repository-name<span class="w"> </span><span class="si">${</span><span class="nv">PROJ_NAME</span><span class="si">}</span>/<span class="si">${</span><span class="nv">APP_NAME</span><span class="si">}</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>docker<span class="w"> </span>build<span class="w"> </span>.<span class="w"> </span>-t<span class="w"> </span><span class="si">${</span><span class="nv">ECR_IMAGE_NAME</span><span class="si">}</span>:v1
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>docker<span class="w"> </span>push<span class="w"> </span><span class="si">${</span><span class="nv">ECR_IMAGE_NAME</span><span class="si">}</span>:v1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>docker pull panlm/ntnx:app2
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>docker run -d --name app2 -p 5000:5000 panlm/ntnx:app2
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>docker exec -it app2 /bin/bash
 </code></pre></div>
-<p>^y8c1ci</p>
-<h2 id="v2">v2<a class="headerlink" href="#v2" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">cd</span><span class="w"> </span>v2
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>docker<span class="w"> </span>build<span class="w"> </span>.<span class="w"> </span>-t<span class="w"> </span><span class="si">${</span><span class="nv">ECR_IMAGE_NAME</span><span class="si">}</span>:v2
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>docker<span class="w"> </span>push<span class="w"> </span><span class="si">${</span><span class="nv">ECR_IMAGE_NAME</span><span class="si">}</span>:v2
+<h2 id="docker-buildx">docker buildx<a class="headerlink" href="#docker-buildx" title="Permanent link">&para;</a></h2>
+<ul>
+<li>download binary from <a href="https://github.com/docker/buildx/">link</a><br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>mkdir -p ~/.docker/cli-plugins
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>mv &lt;buildx&gt; ~/.docker/cli-plugins/docker-buildx
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>chmod a+x ~/.docker/cli-plugins/docker-buildx
+</code></pre></div></li>
+<li>check qemu emulators<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>docker buildx ls
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>docker run -it --rm --privileged tonistiigi/binfmt --install all
+</code></pre></div></li>
+<li>build multi arch<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>docker<span class="w"> </span>buildx<span class="w"> </span>build<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>--platform<span class="w"> </span>linux/amd64,linux/arm64<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>-t<span class="w"> </span><span class="m">123456789012</span>.dkr.ecr.us-east-2.amazonaws.com/osarch:latest<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>--push<span class="w"> </span>.
+</code></pre></div></li>
+<li>refer: <a href="../../../../../../WebClip/How%20to%20quickly%20setup%20an%20experimental%20environment%20to%20run%20containers%20on%20x86%20and%20AWS%20Graviton2%20based%20Amazon%20EC2%20instances%20%20AWS%20Compute%20Blog" title="../../../../WebClip/How to quickly setup an experimental environment to run containers on x86 and AWS Graviton2 based Amazon EC2 instances  AWS Compute Blog">../../../../WebClip/How to quickly setup an experimental environment to run containers on x86 and AWS Graviton2 based Amazon EC2 instances  AWS Compute Blog</a></li>
+</ul>
+<h2 id="docker-image">docker image<a class="headerlink" href="#docker-image" title="Permanent link">&para;</a></h2>
+<h3 id="clean">clean<a class="headerlink" href="#clean" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>docker image prune -a
 </code></pre></div>
-<h2 id="refer">refer<a class="headerlink" href="#refer" title="Permanent link">&para;</a></h2>
-<p><a href="https://github.com/sanjeevrg89/samplecolorapp">https://github.com/sanjeevrg89/samplecolorapp</a></p>
+<h3 id="samples">samples<a class="headerlink" href="#samples" title="Permanent link">&para;</a></h3>
+<h4 id="flask-app">flask app<a class="headerlink" href="#flask-app" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>python_app.py<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="ch">#!/usr/bin/env python3</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="kn">from</span> <span class="nn">flask</span> <span class="kn">import</span> <span class="n">Flask</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="kn">import</span> <span class="nn">os</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="n">app</span> <span class="o">=</span> <span class="n">Flask</span><span class="p">(</span><span class="vm">__name__</span><span class="p">)</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="nd">@app</span><span class="o">.</span><span class="n">route</span><span class="p">(</span><span class="s1">&#39;/&#39;</span><span class="p">)</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="k">def</span> <span class="nf">index</span><span class="p">():</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>    <span class="k">return</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="se">{{</span><span class="s2"> OS Architecture: </span><span class="si">{</span><span class="n">os</span><span class="o">.</span><span class="n">uname</span><span class="p">()</span><span class="o">.</span><span class="n">machine</span><span class="si">}</span><span class="s2"> </span><span class="se">}}</span><span class="s2">&quot;</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="k">if</span> <span class="vm">__name__</span> <span class="o">==</span> <span class="s1">&#39;__main__&#39;</span><span class="p">:</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a>    <span class="n">app</span><span class="p">()</span><span class="o">.</span><span class="n">run</span><span class="p">(</span><span class="n">host</span><span class="o">=</span><span class="s1">&#39;0.0.0.0&#39;</span><span class="p">)</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>Dockerfile<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="k">FROM</span><span class="w"> </span><span class="s">public.ecr.aws/bitnami/python:3.7</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="k">EXPOSE</span><span class="w"> </span><span class="s">5000</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="k">WORKDIR</span><span class="w"> </span><span class="s">/</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="k">COPY</span><span class="w"> </span>./python_app.py<span class="w"> </span>/app.py
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="k">RUN</span><span class="w"> </span>pip<span class="w"> </span>install<span class="w"> </span>flask
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="k">CMD</span><span class="w"> </span><span class="p">[</span><span class="s2">&quot;flask&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;run&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;--host&quot;</span><span class="p">,</span><span class="w"> </span><span class="s2">&quot;0.0.0.0&quot;</span><span class="p">]</span>
+</code></pre></div></p>
+</li>
+<li>create repo <a href="../../awscli/ecr-cmd/#create-repo-" title="../awscli/ecr-cmd">../awscli/ecr-cmd</a></li>
+<li>
+<p>build<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">REPO_URI</span><span class="si">}</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>docker<span class="w"> </span>build<span class="w"> </span>-t<span class="w"> </span><span class="si">${</span><span class="nv">REPO_URI</span><span class="si">}</span>:latest<span class="w"> </span>.
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>docker<span class="w"> </span>push<span class="w"> </span><span class="si">${</span><span class="nv">REPO_URI</span><span class="si">}</span>:latest
+</code></pre></div></p>
+</li>
+<li>
+<p>docker run for testing<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>docker<span class="w"> </span>run<span class="w"> </span>--rm<span class="w"> </span>-d<span class="w"> </span>-p<span class="w"> </span><span class="m">8080</span>:5000<span class="w"> </span>--name<span class="w"> </span>osarch<span class="w"> </span><span class="si">${</span><span class="nv">REPO_URI</span><span class="si">}</span>:latest
+</code></pre></div></p>
+</li>
+</ul>
+<h4 id="build-colorapp-">build-colorapp-<a class="headerlink" href="#build-colorapp-" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>v1<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span><span class="m">169</span>.254.169.254/latest/dynamic/instance-identity/document<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.region&#39;</span><span class="k">)</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_ACCOUNT_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span>--query<span class="w"> </span>Account<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nv">ECR_URL</span><span class="o">=</span><span class="si">${</span><span class="nv">AWS_ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>aws<span class="w"> </span>ecr<span class="w"> </span>get-login-password<span class="w"> </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>docker<span class="w"> </span>login<span class="w"> </span>--username<span class="w"> </span>AWS<span class="w"> </span>--password-stdin<span class="w"> </span><span class="si">${</span><span class="nv">ECR_URL</span><span class="si">}</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="nb">cd</span><span class="w"> </span>/tmp
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/sanjeevrg89/samplecolorapp.git
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="nb">cd</span><span class="w"> </span>samplecolorapp
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="nv">PROJ_NAME</span><span class="o">=</span>sample
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="nv">APP_NAME</span><span class="o">=</span>colorapp
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="nv">ECR_IMAGE_NAME</span><span class="o">=</span><span class="si">${</span><span class="nv">ECR_URL</span><span class="si">}</span>/<span class="si">${</span><span class="nv">PROJ_NAME</span><span class="si">}</span>/<span class="si">${</span><span class="nv">APP_NAME</span><span class="si">}</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>aws<span class="w"> </span>ecr<span class="w"> </span>create-repository<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>--repository-name<span class="w"> </span><span class="si">${</span><span class="nv">PROJ_NAME</span><span class="si">}</span>/<span class="si">${</span><span class="nv">APP_NAME</span><span class="si">}</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>docker<span class="w"> </span>build<span class="w"> </span>.<span class="w"> </span>-t<span class="w"> </span><span class="si">${</span><span class="nv">ECR_IMAGE_NAME</span><span class="si">}</span>:v1
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>docker<span class="w"> </span>push<span class="w"> </span><span class="si">${</span><span class="nv">ECR_IMAGE_NAME</span><span class="si">}</span>:v1
+</code></pre></div></p>
+</li>
+<li>
+<p>v2<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">cd</span><span class="w"> </span>v2
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>docker<span class="w"> </span>build<span class="w"> </span>.<span class="w"> </span>-t<span class="w"> </span><span class="si">${</span><span class="nv">ECR_IMAGE_NAME</span><span class="si">}</span>:v2
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>docker<span class="w"> </span>push<span class="w"> </span><span class="si">${</span><span class="nv">ECR_IMAGE_NAME</span><span class="si">}</span>:v2
+</code></pre></div></p>
+</li>
+<li>
+<p>refer: <a href="https://github.com/sanjeevrg89/samplecolorapp">https://github.com/sanjeevrg89/samplecolorapp</a></p>
+</li>
+</ul>
+<h4 id="ubuntu-based">ubuntu-based<a class="headerlink" href="#ubuntu-based" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>FROM python:2.7
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>#RUN [&quot;apt-get&quot;, &quot;update&quot;]
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>#RUN [&quot;apt-get&quot;, &quot;install&quot;, &quot;-y&quot;, &quot;vim&quot;]
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>COPY . /app
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>WORKDIR /app
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>RUN pip install -r requirements.txt
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>EXPOSE 5000
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a>CMD python ./app.py
+</code></pre></div>
+<h4 id="centos-based">centos-based<a class="headerlink" href="#centos-based" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>FROM centos:7
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>RUN [&quot;yum&quot;, &quot;install&quot;, &quot;-y&quot;, &quot;epel-release&quot;, &quot;gcc&quot;, &quot;python-devel&quot;, &quot;python2-pip&quot;]
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>RUN [&quot;rpm&quot;, &quot;-Uvh&quot;, &quot;https://repo.mysql.com/mysql80-community-release-el7-3.noarch.rpm&quot;]
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>RUN [&quot;yum&quot;, &quot;install&quot;, &quot;-y&quot;, &quot;--enablerepo=mysql80-community&quot;, &quot;mysql-community-devel&quot;]
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>COPY . /app
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>WORKDIR /app
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a>RUN pip install -r requirements.txt
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>EXPOSE 5000
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>CMD python ./app.py
+</code></pre></div>
+<h2 id="docker-run">docker run<a class="headerlink" href="#docker-run" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../docker-run" title="docker-run">docker-run</a></li>
+</ul>
+<h2 id="docker-push">docker push<a class="headerlink" href="#docker-push" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html">https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html</a></li>
+</ul>
+<h2 id="docker-environment-variable">docker environment variable<a class="headerlink" href="#docker-environment-variable" title="Permanent link">&para;</a></h2>
+<p><a href="https://phoenixnap.com/kb/docker-environment-variables">https://phoenixnap.com/kb/docker-environment-variables</a></p>
+<p>ENV SPARK_VERSION=3.3.3</p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-10-18T00:44:56+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-18</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-10T08:22:15+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-10</span>
       
         <br>
         Created:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-01-09T14:34:06+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-01-09</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-10T08:22:15+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-10</span>
       
     
   </small>
@@ -3345,14 +3643,14 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "toc.follow", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "toc.follow", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.81fa17fe.min.js"></script>
       
-        <script src="../../../../../js/timeago.min.js"></script>
+        <script src="../../../js/timeago.min.js"></script>
       
-        <script src="../../../../../js/timeago_mkdocs_material.js"></script>
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
       
     
   </body>

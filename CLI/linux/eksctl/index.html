@@ -11,14 +11,14 @@
       
       
       
-        <link rel="prev" href="../docker-image-sample/">
+        <link rel="prev" href="../docker-cmd/">
       
       
         <link rel="next" href="../eksdemo/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.7">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.8">
     
     
       
@@ -794,6 +794,8 @@
       
         
       
+        
+      
     
     
     
@@ -835,6 +837,26 @@
   
   <span class="md-ellipsis">
     eks-fargate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/infra/compute/karpenter-lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    karpenter-install-lab
   </span>
   
 
@@ -1036,8 +1058,6 @@
       
         
       
-        
-      
     
     
     
@@ -1099,26 +1119,6 @@
   
   <span class="md-ellipsis">
     automated-canary-deployment-using-flagger
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../EKS/infra/network/appmesh/build-colorapp/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    build-colorapp
   </span>
   
 
@@ -2636,11 +2636,11 @@
   
   
     <li class="md-nav__item">
-      <a href="../docker-image-sample/" class="md-nav__link">
+      <a href="../docker-cmd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    docker-image-customized
+    docker
   </span>
   
 
@@ -2863,6 +2863,8 @@
       
         
       
+        
+      
     
     
     
@@ -3024,6 +3026,26 @@
   
   <span class="md-ellipsis">
     ebs-cmd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../awscli/ecr-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ecr
   </span>
   
 
@@ -3348,123 +3370,124 @@
 
 
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>title: This is a github note
-</code></pre></div>
+<blockquote>
+<p>[!WARNING] This is a github note</p>
+</blockquote>
 <h1 id="eksctl-cmd">eksctl-cmd<a class="headerlink" href="#eksctl-cmd" title="Permanent link">&para;</a></h1>
 <h2 id="install">install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># install eksctl</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="c1"># consider install eksctl version 0.89.0</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># if you have older version yaml </span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># https://eksctl.io/announcements/nodegroup-override-announcement/</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>curl<span class="w"> </span>--location<span class="w"> </span><span class="s2">&quot;https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_</span><span class="k">$(</span>uname<span class="w"> </span>-s<span class="k">)</span><span class="s2">_amd64.tar.gz&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tar<span class="w"> </span>xz<span class="w"> </span>-C<span class="w"> </span>/tmp
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>sudo<span class="w"> </span>mv<span class="w"> </span>-v<span class="w"> </span>/tmp/eksctl<span class="w"> </span>/usr/local/bin
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>eksctl<span class="w"> </span>completion<span class="w"> </span>bash<span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bash_completion
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>.<span class="w"> </span>/etc/profile.d/bash_completion.sh
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>.<span class="w"> </span>~/.bash_completion
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># install eksctl</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># consider install eksctl version 0.89.0</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># if you have older version yaml </span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># https://eksctl.io/announcements/nodegroup-override-announcement/</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>curl<span class="w"> </span>--location<span class="w"> </span><span class="s2">&quot;https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_</span><span class="k">$(</span>uname<span class="w"> </span>-s<span class="k">)</span><span class="s2">_amd64.tar.gz&quot;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tar<span class="w"> </span>xz<span class="w"> </span>-C<span class="w"> </span>/tmp
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>sudo<span class="w"> </span>mv<span class="w"> </span>-v<span class="w"> </span>/tmp/eksctl<span class="w"> </span>/usr/local/bin
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>eksctl<span class="w"> </span>completion<span class="w"> </span>bash<span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bash_completion
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>.<span class="w"> </span>/etc/profile.d/bash_completion.sh
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>.<span class="w"> </span>~/.bash_completion
 </code></pre></div>
 <p>refer: <a href="../../../cloud9/setup-cloud9-for-eks/#install-in-cloud9-" title="git/git-mkdocs/cloud9/setup-cloud9-for-eks">git/git-mkdocs/cloud9/setup-cloud9-for-eks</a></p>
 <h2 id="iamidentitymapping">iamidentitymapping<a class="headerlink" href="#iamidentitymapping" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>eksctl<span class="w"> </span>get<span class="w"> </span>iamidentitymapping<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>--cluster<span class="w"> </span>ekscluster1<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>--region<span class="w"> </span>us-east-2
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>eksctl<span class="w"> </span>create<span class="w"> </span>iamidentitymapping<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>--cluster<span class="w"> </span>ekscluster1<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>--region<span class="w"> </span>us-east-2<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>--arn<span class="w"> </span>arn:aws:iam::xxxx:role/eksadmin<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>--group<span class="w"> </span>system:masters<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>--username<span class="w"> </span>admin<span class="w"> </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>eksctl<span class="w"> </span>get<span class="w"> </span>iamidentitymapping<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>--cluster<span class="w"> </span>ekscluster1<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>--region<span class="w"> </span>us-east-2
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>eksctl<span class="w"> </span>create<span class="w"> </span>iamidentitymapping<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>--cluster<span class="w"> </span>ekscluster1<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>--region<span class="w"> </span>us-east-2<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>--arn<span class="w"> </span>arn:aws:iam::xxxx:role/eksadmin<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>--group<span class="w"> </span>system:masters<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>--username<span class="w"> </span>admin<span class="w"> </span>
 </code></pre></div>
 <h2 id="create-windows-self-managed-node-group">create windows self-managed node group<a class="headerlink" href="#create-windows-self-managed-node-group" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">cluster_name</span><span class="o">=</span>myeksctl
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nv">region_name</span><span class="o">=</span>ap-southeast-1
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>eksctl<span class="w"> </span>create<span class="w"> </span>nodegroup<span class="w">   </span><span class="se">\</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span>--region<span class="w"> </span><span class="nv">$region_name</span><span class="w">   </span><span class="se">\</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span>--cluster<span class="w"> </span><span class="nv">$cluster_name</span><span class="w">   </span><span class="se">\</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span>--name<span class="w"> </span>nodegroup-win-1<span class="w">   </span><span class="se">\</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span>--node-type<span class="w"> </span>m5.xlarge<span class="w">   </span><span class="se">\</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span>--nodes<span class="w"> </span><span class="m">1</span><span class="w">   </span><span class="se">\</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span>--nodes-min<span class="w"> </span><span class="m">1</span><span class="w">   </span><span class="se">\</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span>--nodes-max<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">  </span>--node-ami-family<span class="w"> </span>WindowsServer2019FullContainer<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">  </span>--managed<span class="o">=</span><span class="nb">false</span>
+</code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">cluster_name</span><span class="o">=</span>myeksctl
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nv">region_name</span><span class="o">=</span>ap-southeast-1
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>eksctl<span class="w"> </span>create<span class="w"> </span>nodegroup<span class="w">   </span><span class="se">\</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span>--region<span class="w"> </span><span class="nv">$region_name</span><span class="w">   </span><span class="se">\</span>
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span>--cluster<span class="w"> </span><span class="nv">$cluster_name</span><span class="w">   </span><span class="se">\</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span>--name<span class="w"> </span>nodegroup-win-1<span class="w">   </span><span class="se">\</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span>--name<span class="w"> </span>nodegroup-br-1<span class="w">   </span><span class="se">\</span>
 <a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span>--node-type<span class="w"> </span>m5.xlarge<span class="w">   </span><span class="se">\</span>
 <a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span>--nodes<span class="w"> </span><span class="m">1</span><span class="w">   </span><span class="se">\</span>
 <a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">  </span>--nodes-min<span class="w"> </span><span class="m">1</span><span class="w">   </span><span class="se">\</span>
 <a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">  </span>--nodes-max<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">  </span>--node-ami-family<span class="w"> </span>WindowsServer2019FullContainer<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">  </span>--managed<span class="o">=</span><span class="nb">false</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">  </span>--node-ami-family<span class="w"> </span>Bottlerocket
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">cluster_name</span><span class="o">=</span>myeksctl
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nv">region_name</span><span class="o">=</span>ap-southeast-1
+<h2 id="create-nodegroup">create nodegroup<a class="headerlink" href="#create-nodegroup" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">cluster_name</span><span class="o">=</span>ekscluster2
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nv">region_name</span><span class="o">=</span>us-east-1
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>eksctl<span class="w"> </span>create<span class="w"> </span>nodegroup<span class="w">   </span><span class="se">\</span>
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span>--region<span class="w"> </span><span class="nv">$region_name</span><span class="w">   </span><span class="se">\</span>
 <a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span>--cluster<span class="w"> </span><span class="nv">$cluster_name</span><span class="w">   </span><span class="se">\</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span>--name<span class="w"> </span>nodegroup-br-1<span class="w">   </span><span class="se">\</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span>--node-type<span class="w"> </span>m5.xlarge<span class="w">   </span><span class="se">\</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">  </span>--nodes<span class="w"> </span><span class="m">1</span><span class="w">   </span><span class="se">\</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">  </span>--nodes-min<span class="w"> </span><span class="m">1</span><span class="w">   </span><span class="se">\</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">  </span>--nodes-max<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">  </span>--node-ami-family<span class="w"> </span>Bottlerocket
-</code></pre></div>
-<h2 id="create-nodegroup">create nodegroup<a class="headerlink" href="#create-nodegroup" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">cluster_name</span><span class="o">=</span>ekscluster2
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nv">region_name</span><span class="o">=</span>us-east-1
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>eksctl<span class="w"> </span>create<span class="w"> </span>nodegroup<span class="w">   </span><span class="se">\</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span>--region<span class="w"> </span><span class="nv">$region_name</span><span class="w">   </span><span class="se">\</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">  </span>--cluster<span class="w"> </span><span class="nv">$cluster_name</span><span class="w">   </span><span class="se">\</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">  </span>--name<span class="w"> </span>mng-a<span class="w">   </span><span class="se">\</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span>--node-type<span class="w"> </span>m5.large<span class="w">   </span><span class="se">\</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">  </span>--nodes<span class="w"> </span><span class="m">2</span><span class="w">   </span><span class="se">\</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">  </span>--node-private-networking<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">  </span>--subnet-ids<span class="w"> </span>subnet-aaa,subnet-bbb
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span>--name<span class="w"> </span>mng-a<span class="w">   </span><span class="se">\</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span>--node-type<span class="w"> </span>m5.large<span class="w">   </span><span class="se">\</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">  </span>--nodes<span class="w"> </span><span class="m">2</span><span class="w">   </span><span class="se">\</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">  </span>--node-private-networking<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">  </span>--subnet-ids<span class="w"> </span>subnet-aaa,subnet-bbb
 </code></pre></div>
 <h2 id="scale-nodegroup">scale nodegroup<a class="headerlink" href="#scale-nodegroup" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nv">CLUSTER_NAME</span><span class="o">=</span>ekscluster1
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nv">NODEGROUP_NAME</span><span class="o">=</span>managed-ng
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nv">AWS_REGION</span><span class="o">=</span>us-east-2
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>eksctl<span class="w"> </span>scale<span class="w"> </span>nodegroup<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>--cluster<span class="o">=</span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>--nodes<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="si">${</span><span class="nv">NODEGROUP_NAME</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">CLUSTER_NAME</span><span class="o">=</span>ekscluster1
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nv">NODEGROUP_NAME</span><span class="o">=</span>managed-ng
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nv">AWS_REGION</span><span class="o">=</span>us-east-2
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>eksctl<span class="w"> </span>scale<span class="w"> </span>nodegroup<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>--cluster<span class="o">=</span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>--nodes<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="si">${</span><span class="nv">NODEGROUP_NAME</span><span class="si">}</span>
 </code></pre></div>
 <h2 id="appmesh-cluster">appmesh cluster<a class="headerlink" href="#appmesh-cluster" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>eksctl<span class="w"> </span>create<span class="w"> </span>cluster<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>--name<span class="w"> </span>appmeshtest<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>--nodes-min<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>--nodes-max<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>--nodes<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>--auto-kubeconfig<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>--full-ecr-access<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>--appmesh-access
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>eksctl<span class="w"> </span>create<span class="w"> </span>cluster<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>--name<span class="w"> </span>appmeshtest<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>--nodes-min<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>--nodes-max<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>--nodes<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>--auto-kubeconfig<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>--full-ecr-access<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>--appmesh-access
 </code></pre></div>
 <h3 id="appmesh-access-">appmesh-access-<a class="headerlink" href="#appmesh-access-" title="Permanent link">&para;</a></h3>
 <p><code>--appmesh-access</code> will apply customer inline policy for appmesh</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>{
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    &quot;Version&quot;: &quot;2012-10-17&quot;,
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    &quot;Statement&quot;: [
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>        {
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>            &quot;Action&quot;: [
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>                &quot;servicediscovery:CreateService&quot;,
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>                &quot;servicediscovery:DeleteService&quot;,
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>                &quot;servicediscovery:GetService&quot;,
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>                &quot;servicediscovery:GetInstance&quot;,
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>                &quot;servicediscovery:RegisterInstance&quot;,
-<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>                &quot;servicediscovery:DeregisterInstance&quot;,
-<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>                &quot;servicediscovery:ListInstances&quot;,
-<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>                &quot;servicediscovery:ListNamespaces&quot;,
-<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>                &quot;servicediscovery:ListServices&quot;,
-<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>                &quot;servicediscovery:GetInstancesHealthStatus&quot;,
-<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>                &quot;servicediscovery:UpdateInstanceCustomHealthStatus&quot;,
-<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>                &quot;servicediscovery:GetOperation&quot;,
-<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>                &quot;route53:GetHealthCheck&quot;,
-<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>                &quot;route53:CreateHealthCheck&quot;,
-<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>                &quot;route53:UpdateHealthCheck&quot;,
-<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a>                &quot;route53:ChangeResourceRecordSets&quot;,
-<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a>                &quot;route53:DeleteHealthCheck&quot;,
-<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a>                &quot;appmesh:*&quot;
-<a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a>            ],
-<a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a>            &quot;Resource&quot;: &quot;*&quot;,
-<a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a>            &quot;Effect&quot;: &quot;Allow&quot;
-<a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a>        }
-<a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a>    ]
-<a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a>}
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>{
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    &quot;Version&quot;: &quot;2012-10-17&quot;,
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    &quot;Statement&quot;: [
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>        {
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>            &quot;Action&quot;: [
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>                &quot;servicediscovery:CreateService&quot;,
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>                &quot;servicediscovery:DeleteService&quot;,
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>                &quot;servicediscovery:GetService&quot;,
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>                &quot;servicediscovery:GetInstance&quot;,
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>                &quot;servicediscovery:RegisterInstance&quot;,
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>                &quot;servicediscovery:DeregisterInstance&quot;,
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>                &quot;servicediscovery:ListInstances&quot;,
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>                &quot;servicediscovery:ListNamespaces&quot;,
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>                &quot;servicediscovery:ListServices&quot;,
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>                &quot;servicediscovery:GetInstancesHealthStatus&quot;,
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>                &quot;servicediscovery:UpdateInstanceCustomHealthStatus&quot;,
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>                &quot;servicediscovery:GetOperation&quot;,
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>                &quot;route53:GetHealthCheck&quot;,
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>                &quot;route53:CreateHealthCheck&quot;,
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>                &quot;route53:UpdateHealthCheck&quot;,
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>                &quot;route53:ChangeResourceRecordSets&quot;,
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a>                &quot;route53:DeleteHealthCheck&quot;,
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>                &quot;appmesh:*&quot;
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a>            ],
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a>            &quot;Resource&quot;: &quot;*&quot;,
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a>            &quot;Effect&quot;: &quot;Allow&quot;
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a>        }
+<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a>    ]
+<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a>}
 </code></pre></div>
 <h3 id="full-ecr-access">full-ecr-access<a class="headerlink" href="#full-ecr-access" title="Permanent link">&para;</a></h3>
 <p><code>--full-ecr-access</code> will apply ECR power user policy to node</p>
@@ -3482,7 +3505,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-10-26T14:34:38+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-26</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-10T08:22:15+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-10</span>
       
         <br>
         Created:
@@ -3540,7 +3563,7 @@
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "toc.follow", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.aecac24b.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.81fa17fe.min.js"></script>
       
         <script src="../../../js/timeago.min.js"></script>
       
