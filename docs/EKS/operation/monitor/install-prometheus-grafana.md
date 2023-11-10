@@ -1,36 +1,24 @@
 ---
 title: install-prometheus-grafana-on-eks
-description: "安装 grafana 和 prometheus"
-chapter: true
+description: 安装 grafana 和 prometheus
 created: 2023-02-18 21:31:31.678
-last_modified: 2023-02-18 21:31:31.678
-tags: 
-- grafana 
-- prometheus 
-- aws/container/eks 
+last_modified: 2023-11-09
+tags:
+  - grafana
+  - prometheus
+  - aws/container/eks
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # install-prometheus-grafana
 
-- [prep](#prep)
-- [(Prefer) install-prometheus-operator](#prefer-install-prometheus-operator)
-	- [forward to local](#forward-to-local)
-	- [install exporter on 2nd eks cluster](#install-exporter-on-2nd-eks-cluster)
-- [(Optional) install prometheus and grafana](#optional-install-prometheus-and-grafana)
-- [refer](#refer)
-
-
 ## prep
 
-- [[../../infra/storage/ebs-for-eks]]  or huge link: [ebs-for-eks.md]({{< ref "ebs-for-eks.md" >}}) 
+- [[../../infra/storage/ebs-for-eks#install-using-eksdemo-]] 
 
 ## (Prefer) install-prometheus-operator
-[link](https://blog.devgenius.io/step-by-step-guide-to-setting-up-prometheus-operator-in-your-kubernetes-cluster-7167a8228877)
+
+- https://blog.devgenius.io/step-by-step-guide-to-setting-up-prometheus-operator-in-your-kubernetes-cluster-7167a8228877
 
 ![install-prometheus-grafana-png-1.png](install-prometheus-grafana-png-1.png)
 
@@ -38,17 +26,21 @@ title: This is a github note
 DEPLOY_NAME=prom-operator-run-abc
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
-helm install ${DEPLOY_NAME} prometheus-community/kube-prometheus-stack
+
+kubectl create namespace monitoring
+helm install ${DEPLOY_NAME} prometheus-community/kube-prometheus-stack --namespace monitoring
 
 ```
 
 ### forward to local
+
 - port forward to cloud9
 ```sh
 k get svc/${DEPLOY_NAME}-grafana
 k port-forward svc/${DEPLOY_NAME}-grafana 3000:80 --address='0.0.0.0'
 
 ```
+
 - access from your laptop
 ```sh
 # you need AKSK environment variables
@@ -63,7 +55,18 @@ aws ssm start-session --target ${INST_ID} --document-name AWS-StartPortForwardin
 ```
 
 ### install exporter on 2nd eks cluster
+
 ```sh
+
+```
+
+
+### install with thanos
+
+```sh
+helm show values prometheus-community/kube-prometheus-stack > values_default2.yaml
+
+helm install -f values-1.yaml ${DEPLOY_NAME} prometheus-community/kube-prometheus-stack --namespace monitoring
 
 ```
 
@@ -118,7 +121,8 @@ kubectl get all -n grafana
 
 
 ## refer
-[link](https://archive.eksworkshop.com/intermediate/240_monitoring/prereqs/) 
+
+- https://archive.eksworkshop.com/intermediate/240_monitoring/prereqs/
 
 
 

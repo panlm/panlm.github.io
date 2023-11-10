@@ -1,25 +1,17 @@
 ---
 title: kube-no-trouble
 description: kube-no-trouble
-chapter: true
-weight: 111
 created: 2023-06-23 11:18:10.512
-last_modified: 2023-06-23 11:18:10.512
-tags: 
-- kubernetes 
+last_modified: 2023-11-08
+tags:
+  - kubernetes
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # kube-no-trouble
 
-- [github](#github)
-
-
 ## github
+
 https://github.com/doitintl/kube-no-trouble
 
 ### install

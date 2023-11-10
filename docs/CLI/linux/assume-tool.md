@@ -2,16 +2,12 @@
 title: assume-tool
 description: assume 工具，可以以另一个账号角色，快速打开 web console，或者执行命令
 created: 2023-09-15 09:40:01.442
-last_modified: 2023-10-28 21:01:02.875
+last_modified: 2023-11-08
 tags:
   - cmd
   - aws/security/iam
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # assume-tool
 
@@ -29,8 +25,10 @@ envsubst > /tmp/${ROLE_NAME}-trust.json <<-EOF
         {
             "Effect": "Allow",
             "Principal": {
-                "AWS": ["arn:aws:iam::${ACCOUNT_ID}:root",
-                        "arn:aws:iam::${LOCAL_ACCOUNT_ID}:root"]
+                "AWS": [
+                    "arn:aws:iam::${ACCOUNT_ID}:root",
+                    "arn:aws:iam::${LOCAL_ACCOUNT_ID}:root"
+                ]
             },
             "Action": "sts:AssumeRole",
             "Condition": {}
@@ -39,19 +37,20 @@ envsubst > /tmp/${ROLE_NAME}-trust.json <<-EOF
 }
 EOF
 aws iam create-role --role-name ${ROLE_NAME} \
-  --assume-role-policy-document file:///tmp/${ROLE_NAME}-trust.json \
-  --max-session-duration 43200 |tee /tmp/${ROLE_NAME}-role.json
+    --assume-role-policy-document file:///tmp/${ROLE_NAME}-trust.json \
+    --max-session-duration 43200 |tee /tmp/${ROLE_NAME}-role.json
 aws iam attach-role-policy --role-name ${ROLE_NAME} \
-  --policy-arn "arn:aws:iam::aws:policy/AdministratorAccess"
+    --policy-arn "arn:aws:iam::aws:policy/AdministratorAccess"
 ROLE_ARN=$(cat /tmp/${ROLE_NAME}-role.json |jq -r '.Role.Arn')
 
 CREDENTIAL_ENTITY_NAME="0-ws-${WS_NAME}"
-echo '[profile '"$CREDENTIAL_ENTITY_NAME"']' >> ~/.aws/config
-echo 'role_arn='${ROLE_ARN} >> ~/.aws/config
-echo 'source_profile=panlm' >> ~/.aws/config
-echo 'role_session_name=granted' >> ~/.aws/config
-echo 'region=us-east-2' >> ~/.aws/config
-echo ''
+envsubst >> ~/.aws/config <<-EOF
+[profile $CREDENTIAL_ENTITY_NAME]
+role_arn=${ROLE_ARN}
+source_profile=panlm
+role_session_name=granted
+region=us-east-2
+EOF
 echo ${CREDENTIAL_ENTITY_NAME}
 
 ```
@@ -117,7 +116,13 @@ ln -s /usr/local/bin/granted /usr/local/bin/assumego
 
 ### import existed credentials to mac `login` keychain
 
+```sh
+granted credentials import example
+```
+
 ![[../../git-attachment/assume-tool-png-1.png]]
+
+### export to aws credentials file
 
 - This command can be used to return your credentials to the original insecure plaintext format in the AWS credentials file.
 ```sh
@@ -129,6 +134,7 @@ granted credentials export-plaintext example
 ## refer
 
 - https://docs.commonfate.io/granted/introduction
+- https://awsu.me/
 
 
 

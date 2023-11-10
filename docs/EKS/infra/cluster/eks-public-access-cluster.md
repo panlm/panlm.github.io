@@ -8,11 +8,7 @@ last_modified: 2023-10-21 13:21:51.956
 tags:
   - aws/container/eks
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # eks-public-access-cluster
 

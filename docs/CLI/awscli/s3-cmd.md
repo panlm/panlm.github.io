@@ -1,16 +1,13 @@
 ---
 title: s3
-description: 
+description: 常用命令
 created: 2021-07-10 02:23:54.765
-last_modified: 2023-10-22 20:59:25.361
+last_modified: 2023-11-08
 tags:
   - aws/storage/s3
   - aws/cmd
 ---
-
-```ad-attention
-title: This is a github note
-```
+> [!WARNING] This is a github note
 
 # s3-cmd
 
@@ -45,6 +42,9 @@ for i in $a ; do
 aws s3 rm s3://$i --region us-east-1 --recursive
 aws s3 rb s3://$i --force --region us-east-1
 done
+
+aws s3api delete-objects --bucket panlm-test-object-1234 --delete '{"Objects":[{"Key":"def"}]}'
+
  ```
 
 ## download s3 folder

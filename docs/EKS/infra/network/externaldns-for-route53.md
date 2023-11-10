@@ -1,19 +1,13 @@
 ---
 title: externaldns-for-route53
 description: 使用 externaldns 组件
-chapter: true
-weight: 2
 created: 2022-08-04 13:24:34.806
-last_modified: 2023-10-29 13:06:52.438
+last_modified: 2023-11-09
 tags:
   - kubernetes
   - aws/network/route53
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # externaldns-for-route53
 
@@ -40,16 +34,18 @@ aws route53 list-resource-record-sets --output text \
 ###
 
 ```
-
 ^fgvqjb
 
-refer: [[route53-subdomian]]
+- refer: [[../../../CLI/awscli/route53-cmd#create-ns-record-]]
+- refer: [[route53-subdomian]]
 
 ### private hosted zone
 - you also could create private hosted zone and associate to your vpc. plugin will insert/update record in your private hosted zone. ([link](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-private.html))
 
+## install 
 
-## install-
+### install-
+
 - https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/aws.md
 - 创建所需要的服务账号 (create service account)
 	- 确保 EKS 集群名称正确 (ensure eks cluster name is correct)
@@ -205,8 +201,7 @@ kubectl create --filename externaldns-with-rbac.yaml \
 
 ```
 
-
-## install-with-eksdemo-
+### install-with-eksdemo-
 
 - https://github.com/awslabs/eksdemo/blob/main/docs/install-edns.md
 ```sh
@@ -333,6 +328,9 @@ dig +short server.${DOMAIN_NAME}. A
 curl https://server.${DOMAIN_NAME}
 
 ```
+
+
+
 
 
 

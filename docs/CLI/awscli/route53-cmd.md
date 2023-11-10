@@ -2,15 +2,11 @@
 title: route53
 description: 常用命令
 created: 2022-09-20 09:02:35.112
-last_modified: 2023-10-29 13:11:09.457
+last_modified: 2023-11-09
 tags:
   - aws/network/route53
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # route53-cmd
 
@@ -20,7 +16,7 @@ title: This is a github note
 
 refer: [[git/git-mkdocs/EKS/infra/network/externaldns-for-route53#setup-hosted-zone-]]
 
-## create ns record-
+## create-ns-record-
 
 - create host zone in your child account and get NS (previous chapter)
 - [[../linux/assume-tool|assume]] to your parent account to add NS record to route53 host zone

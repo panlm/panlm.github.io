@@ -1,28 +1,15 @@
 ---
 title: apigw-cross-account-private-endpoint
-description: 跨账号访问私有api 
+description: 跨账号访问私有api
 chapter: true
 created: 2023-03-05 22:05:10.532
 last_modified: 2023-03-05 22:05:10.532
-tags: 
-- aws/serverless/api-gateway 
+tags:
+  - aws/serverless/api-gateway
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # How can I access an API Gateway private REST API in another AWS account using an interface VPC endpoint
-
-- [topo](#topo)
-- [In Account A](#in-account-a)
-- [In API gateway Service Account](#in-api-gateway-service-account)
-	- [access-control-with-cidr](#access-control-with-cidr)
-	- [access-control-with-vpce](#access-control-with-vpce)
-	- [access-control-with-vpc](#access-control-with-vpc)
-	- [deploy](#deploy)
-- [refer](#refer)
 
 ## topo
 [KB](https://aws.amazon.com/premiumsupport/knowledge-center/api-gateway-private-cross-account-vpce/?nc1=h_ls) 

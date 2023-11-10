@@ -1,14 +1,13 @@
 ---
 title: eksdemo
 description: 使用 eksdemo 快速搭建 eks 集群以及其他所需组件
-chapter: true
 created: 2023-07-15 09:44:34.470
 last_modified: 2023-11-01 14:36:45.276
 tags:
   - aws/container/eks
   - aws/cmd
 ---
-
+> [!WARNING] This is a github note
 # eksdemo
 
 ## install

@@ -2,7 +2,7 @@
 title: quick setup cloud9 script
 description: 简化运行脚本
 created: 2023-08-04 15:56:59.747
-last_modified: 2023-10-29 21:54:13.193
+last_modified: 2023-11-08
 tags:
   - aws/cloud9
   - aws/container/eks
@@ -65,7 +65,7 @@ watch -g -n 2 aws ec2 describe-instances \
     - 创建角色名为 `ec2-admin-role-*`，添加管理员权限，且允许 4 个其他角色 assume
     - 如果 cloud9 的实例已经有关联的 role，则将 role 添加管理员权限，如果没有则赋予新建的角色
     - 允许 cloud9 的实例被其他 2 个角色使用
-    - 等待 cloud9 可以被 ssm 访问
+    - 重启 cloud9，等待 cloud9 可以被 ssm 访问
     - <mark style="background: #BBFABBA6;">检查脚本存在</mark>，并且创建 ssm 初始化脚本
     - 创建日志组，并使用 ssm 执行初始化脚本
     - 显示登录 cloud9 的 URL
@@ -146,14 +146,15 @@ else
         --policy-arn "arn:aws:iam::aws:policy/AdministratorAccess"
 fi
 
-for i in WSOpsRole/Ops WSParticipantRole/Participant; do
-    aws cloud9 create-environment-membership \
-        --environment-id ${C9_ID} \
-        --user-arn arn:aws:sts::${MY_ACCOUNT_ID}:assumed-role/${i} \
-        --permissions read-write
-done
+aws cloud9 create-environment-membership \
+    --environment-id ${C9_ID} \
+    --user-arn arn:aws:iam::${MY_ACCOUNT_ID}:root \
+    --permissions read-write
 
-# wait ssm could connect to this instance (5 mins)
+# reboot instance, make role effective ASAP
+aws ec2 reboot-instances --instance-ids ${C9_INST_ID}
+
+# wait ssm could connect to this instance (max 10 mins)
 while true ; do
     sleep 60
     CONN_STAT=$(aws ssm get-connection-status \

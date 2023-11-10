@@ -2,7 +2,7 @@
 title: linux-cmd
 description: 常用命令
 created: 2023-01-03 12:05:10.533
-last_modified: 2023-11-02 22:30:47.416
+last_modified: 2023-11-06
 tags:
   - cmd
   - linux
@@ -42,6 +42,48 @@ brew install ec2-instance-selector
 
 ```sh
 ec2-instance-selector -c 4 -m 16 -r us-east-2 -a arm64
+```
+
+## envsubst
+
+```sh
+var1=string1
+var2=string2
+
+cat >$$.yaml <<-'EOF'
+$var1
+$var2
+$var3
+EOF
+
+export var1 var2
+cat $$.yaml |envsubst '$var1 $var2' > $$-new.yaml
+
+```
+
+## function
+
+- 在 func 中定义 local 变量，export 后在 func 外部依然无法访问
+```sh
+function a() {
+ local var1=cccc
+ echo $var1
+ export var1
+}
+
+function b() {
+  echo $var1
+  var1=bbb
+}
+
+var1=abc
+
+a
+echo $var1
+
+b
+echo $var1
+
 ```
 
 ## history

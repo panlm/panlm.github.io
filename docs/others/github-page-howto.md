@@ -2,7 +2,7 @@
 title: github-page-howto
 description: github-page-howto
 created: 2023-01-02 13:55:05.242
-last_modified: 2023-10-29 20:13:46.593
+last_modified: 2023-11-03 15:49:55.785
 tags:
   - github
 ---
@@ -64,7 +64,7 @@ git submodule update
 ## plugins for mkdocs
 
 - https://github.com/mkdocs/catalog
-
+- For full documentation visit [mkdocs.org](https://www.mkdocs.org)
 
 
 

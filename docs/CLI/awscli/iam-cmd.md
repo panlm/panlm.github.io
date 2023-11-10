@@ -1,8 +1,8 @@
 ---
 title: iam
 description: 常用命令
-created: 2021-07-18T01:04:47.248Z
-last_modified: 2023-10-22 17:23:02.544
+created: 2021-07-18
+last_modified: 2023-11-05
 tags:
   - aws/security/iam
   - aws/cmd
@@ -40,37 +40,15 @@ aws iam create-access-key --user-name cwagent-onprem
 
 ## create role
 
-```shell
-ROLE_NAME=example-role1
-echo '{
-  "Version": "2012-10-17",
-  "Statement": [
-    {
-      "Effect": "Allow",
-      "Principal": {
-        "Service": [
-          "translate.amazonaws.com"
-        ]
-      },
-      "Action": "sts:AssumeRole"
-    }
-  ]
-}' |tee role-policy.json
-aws iam create-role --role-name ${ROLE_NAME} \
-  --assume-role-policy-document file://role-policy.json
-aws iam attach-role-policy --role-name ${ROLE_NAME} \
-  --policy-arn "arn:aws:iam::aws:policy/AmazonS3FullAccess"
-aws iam list-attached-role-policies --role-name ${ROLE_NAME}
-
-role_arn=$(aws iam get-role --role-name ${ROLE_NAME} |jq -r '.Role.Arn')
-
-```
-
-### create role for ec2
+### ec2-admin-role-create-
 
 ```sh
-ROLE_NAME=adminrole-$RANDOM
-cat > trust.json <<-EOF
+# no dependency variable
+# output ROLE_ARN / INSTANCE_PROFILE_ARN
+function ec2-admin-role-create () {
+    ROLE_NAME=ec2-admin-role-$(TZ=CST-8 date +%Y%m%d-%H%M)
+    local TMP=$(mktemp --suffix .${ROLE_NAME})
+    cat >${TMP} <<-EOF
 {
     "Version": "2012-10-17",
     "Statement": [
@@ -84,13 +62,16 @@ cat > trust.json <<-EOF
     ]
 }
 EOF
-aws iam create-role --role-name ${ROLE_NAME} \
-  --assume-role-policy-document file://trust.json
-aws iam attach-role-policy --role-name ${ROLE_NAME} \
-  --policy-arn "arn:aws:iam::aws:policy/AdministratorAccess"
-aws iam create-instance-profile --instance-profile-name ${ROLE_NAME}
-aws iam add-role-to-instance-profile --instance-profile-name ${ROLE_NAME} --role-name ${ROLE_NAME}
-
+    aws iam create-role --role-name ${ROLE_NAME} \
+        --assume-role-policy-document file://${TMP} |tee ${TMP}.out.role
+    aws iam attach-role-policy --role-name ${ROLE_NAME} \
+        --policy-arn "arn:aws:iam::aws:policy/AdministratorAccess"
+    aws iam create-instance-profile --instance-profile-name ${ROLE_NAME} |tee ${TMP}.out.instance-profile
+    aws iam add-role-to-instance-profile --instance-profile-name ${ROLE_NAME} \
+        --role-name ${ROLE_NAME}
+    ROLE_ARN=$(cat ${TMP}.out.role |jq -r '.Role.Arn')
+    INSTANCE_PROFILE_ARN=$(cat ${TMP}.out.instance-profile |jq -r '.InstanceProfile.Arn')
+}
 
 ```
 
@@ -102,11 +83,9 @@ aws iam add-role-to-instance-profile --instance-profile-name ${ROLE_NAME} --role
 
 - [[apigw-cmd#create-apigw-role-]]
 
-
 ### create role for account
 
 - [[../linux/assume-tool]]
-
 
 ### create service-linked role
 
@@ -114,7 +93,7 @@ aws iam add-role-to-instance-profile --instance-profile-name ${ROLE_NAME} --role
 aws iam create-service-linked-role --aws-service-name SERVICE-NAME.amazonaws.com
 ```
 
-## assume another role
+## assume-another-role-
 
 ```sh
 account_id=$(aws sts get-caller-identity \
@@ -135,7 +114,7 @@ export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-iden
 
 ### assume in credentials file
 
-https://docs.aws.amazon.com/sdkref/latest/guide/feature-assume-role-credentials.html
+- https://docs.aws.amazon.com/sdkref/latest/guide/feature-assume-role-credentials.html
 ```txt
 [profile A]
 source_profile = B

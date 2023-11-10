@@ -4,7 +4,7 @@ description: 自动化 canary 部署
 chapter: true
 weight: 30
 created: 2023-01-08 14:36:17.163
-last_modified: 2023-10-23 12:49:54.516
+last_modified: 2023-11-05
 tags:
   - aws/container/eks
   - aws/container/appmesh
@@ -87,7 +87,7 @@ kubectl apply -f namespace.yaml
 ```
 
 **Step 3.** Create a Kubernetes Deployment object.
-- [build-colorapp](build-colorapp.md)
+- [[../../../../CLI/linux/docker-cmd#build-colorapp-]]
 
 ```sh
 IMAGE_URL=694242712155.dkr.ecr.us-east-2.amazonaws.com/sample/colorapp:v1

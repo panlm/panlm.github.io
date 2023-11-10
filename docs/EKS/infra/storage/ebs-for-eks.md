@@ -1,32 +1,26 @@
 ---
-title: "ebs-for-eks"
+title: ebs-for-eks
 description: "使用 ebs 作为 pod 持久化存储 "
-chapter: true
-weight: 2
 created: 2022-06-24 14:41:33.643
-last_modified: 2022-06-24 14:41:33.643
-tags: 
-- aws/storage/ebs  
-- aws/container/eks 
+last_modified: 2023-11-09
+tags:
+  - aws/storage/ebs
+  - aws/container/eks
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # ebs-for-eks
 
-- [install](#install)
-	- [ebs-csi](#ebs-csi)
-	- [assign policy to node](#assign-policy-to-node)
-- [verify](#verify)
-	- [cross az pod definition](#cross-az-pod-definition)
-- [check log](#check-log)
-	- [ebs-csi-pod has 6 container](#ebs-csi-pod-has-6-container)
+## install-using-eksdemo-
 
+- assign new one if you already have a service account called `ebs-csi-controller-sa`
+```sh
+CLUSTER_NAME=ekscluster1
+eksdemo install storage-ebs-csi -c ${CLUSTER_NAME}
+```
 
 ## install
+
 https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/docs/install.md
 
 ### ebs-csi
@@ -43,6 +37,7 @@ kubectl get pods -n kube-system
 ```
 
 ### assign policy to node
+
 ```sh
 # # (option) using customer managed policy
 # aws iam create-policy \
@@ -92,11 +87,8 @@ kubectl apply -f aws-ebs-csi-driver/examples/kubernetes/dynamic-provisioning/man
 
 ```
 
-1. create sc/pvc
-2. pv will be created when pod run
-3. write something in pod
-
 ### cross az pod definition
+
 - check pv status
 - check pod on which az
 - delete pod and launch to another az
@@ -136,6 +128,7 @@ k logs -f deploy/ebs-csi-controller csi-provisioner -n kube-system
 ```
 
 ###  ebs-csi-pod has 6 container
+
 - https://www.velotio.com/engineering-blog/kubernetes-csi-in-action-explained-with-features-and-use-cases
 
 - ebs-plugin 

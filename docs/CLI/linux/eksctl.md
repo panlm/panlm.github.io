@@ -6,13 +6,9 @@ last_modified: 2023-10-22 12:35:54.654
 tags:
   - aws/container/eks
 ---
-
-```ad-attention
-title: This is a github note
-```
+> [!WARNING] This is a github note
 
 # eksctl-cmd
-
 
 ## install
 

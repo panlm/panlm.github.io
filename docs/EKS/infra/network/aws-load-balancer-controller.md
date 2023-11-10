@@ -4,16 +4,12 @@ description: 使用 aws 负载均衡控制器
 chapter: true
 weight: 1
 created: 2022-05-21 13:18:53.303
-last_modified: 2023-10-22 12:47:03.103
+last_modified: 2023-11-09
 tags:
   - aws/container/eks
   - kubernetes/ingress
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # aws-load-balancer-controller
 
@@ -125,11 +121,15 @@ kubectl get deployment -n kube-system aws-load-balancer-controller
 [[awslbc-ingress-controller-lab-issue]]
 
 ## install-with-eksdemo-
+
 - https://github.com/awslabs/eksdemo/blob/main/docs/install-awslb.md
+- remove service account if existed 
 ```sh
 echo ${CLUSTER_NAME}
 echo ${AWS_REGION}
-eksdemo install aws-lb-controller -c ${CLUSTER_NAME} --region ${AWS_REGION}
+eksdemo install aws-lb-controller -c ${CLUSTER_NAME} \
+    --namespace kube-system \
+    --region ${AWS_REGION} 
 
 ```
 ^yddjq0
