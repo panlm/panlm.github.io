@@ -2,7 +2,7 @@
 title: cert-manager
 description: cert-manager
 created: 2023-07-31 15:36:34.121
-last_modified: 2023-11-09
+last_modified: 2023-11-10
 tags:
   - kubernetes
   - aws/container/eks
@@ -23,16 +23,20 @@ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/latest/do
 
 ```
 
-### helm
+### install with helm
 
-- install with helm
-    - https://cert-manager.io/docs/installation/helm/
+- https://cert-manager.io/docs/installation/helm/
 
-### eksdemo
+### install with eksdemo
 
+- https://github.com/awslabs/eksdemo/blob/main/docs/install-cert-manager.md
 ```sh
-CLUSTER_NAME=ekscluster1
-eksdemo install cert-manager -c ${CLUSTER_NAME} -r ${AWS_REGION}
+echo ${CLUSTER_NAME}
+echo ${AWS_REGION}
+eksdemo install cert-manager -c ${CLUSTER_NAME}
+
+kubectl get clusterissuer
+# default name is letsencrypt-prod
 ```
 
 

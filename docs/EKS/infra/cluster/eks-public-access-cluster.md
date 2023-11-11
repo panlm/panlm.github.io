@@ -4,7 +4,7 @@ description: 创建公有访问的 eks 集群
 chapter: true
 weight: 20
 created: 2022-05-21 12:43:38.021
-last_modified: 2023-10-21 13:21:51.956
+last_modified: 2023-11-10
 tags:
   - aws/container/eks
 ---

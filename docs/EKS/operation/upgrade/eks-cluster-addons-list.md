@@ -2,7 +2,7 @@
 title: eks-cluster-addons-list
 description: EKS 常用插件清单
 created: 2022-07-20 09:00:03.399
-last_modified: 2023-10-29 20:40:24.923
+last_modified: 2023-11-10
 tags:
   - aws/container/eks
   - kubernetes
@@ -14,28 +14,28 @@ tags:
 ## list
 
 - 托管集群插件
-	- [[eks-addons-coredns]] 
-	- [[eks-addons-vpc-cni]] 
-	- [[eks-addons-kube-proxy]] 
+    - [[eks-addons-coredns]] 
+    - [[eks-addons-vpc-cni]] 
+    - [[eks-addons-kube-proxy]] 
 
 - 第三方插件
-	- [[aws-load-balancer-controller]] 
-	- [[metrics-server]] 
-	- [[cluster-autoscaler]] 
-	- tigera-operator for [[calico]]  
-	- [[cert-manager]] 
-	- [[splunk-otel-collector]] 
+    - [[aws-load-balancer-controller]] 
+    - [[../../infra/network/externaldns-for-route53|externaldns]] 
+    - [[cert-manager]] 
+    - [[../../infra/storage/ebs-for-eks|ebs-csi-driver]] 
+    - [[../monitor/install-prometheus-grafana|prometheus operator]] / grafana operator
+    - [[splunk-otel-collector]] 
+    - [[nginx-ingress-controller]] 
+    - [[metrics-server]] 
+    - [[cluster-autoscaler]] 
 
 - 其他插件
-	- [[../../infra/network/externaldns-for-route53|externaldns]] 
-	- [[../../infra/storage/efs-for-eks|efs-csi-driver]] 
-	- [[../../infra/storage/ebs-for-eks|ebs-csi-driver]] 
-	- cloudwatch-agent / [[aws-for-fluent-bit|fluentbit]] 
-	- [[k8s-dashboard-on-eks|kubernetes-dashboard]] 
-	- [[../monitor/install-prometheus-grafana|prometheus operator]] / grafana operator
-	- [[cni-metrics-helper]] 
-	- [[nginx-ingress-controller]] 
-	- [[kube-state-metrics]] 
+    - [[../../infra/storage/efs-for-eks|efs-csi-driver]] 
+    - cloudwatch-agent / [[aws-for-fluent-bit|fluentbit]] 
+    - [[k8s-dashboard-on-eks|kubernetes-dashboard]] 
+    - tigera-operator for [[calico]]  
+    - [[cni-metrics-helper]] 
+    - [[kube-state-metrics]] 
 
 ## upgrade addons sample
 

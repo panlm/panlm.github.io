@@ -1,36 +1,28 @@
 ---
-title: "nginx-ingress-controller-community-ver"
-description: "使用 nginx ingress"
-chapter: true
-weight: 6
+title: nginx-ingress-controller-community-ver
+description: 使用 nginx ingress
 created: 2022-06-16 10:25:37.971
-last_modified: 2022-06-16 10:25:37.971
-tags: 
-- nginx 
-- kubernetes/ingress 
-- aws/container/eks 
+last_modified: 2023-11-10
+tags:
+  - nginx
+  - kubernetes/ingress
+  - aws/container/eks
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # nginx-ingress-controller-community-ver
 
-- [install](#install)
-- [resources](#resources)
-- [tls certificate](#tls-certificate)
-- [ingress](#ingress)
-- [refer](#refer)
-	- [appendix - for clb](#appendix---for-clb)
-		- [certificate](#certificate)
-		- [ingress](#ingress)
-	- [appendix - ingress-nginx-output](#appendix---ingress-nginx-output)
-	- [appendix - other sample](#appendix---other-sample)
-
-
 ## install
+### install with eksdemo
+
+- https://github.com/awslabs/eksdemo/blob/main/docs/install-ingress-nginx.md
+```sh
+echo ${CLUSTER_NAME}
+eksdemo install ingress-nginx -c ${CLUSTER_NAME} --namespace kube-system
+```
+
+### install manually
+
 - link
 ```sh
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx

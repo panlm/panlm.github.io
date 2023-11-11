@@ -2,14 +2,11 @@
 title: nginx-ingress-controller
 description: nginx-ingress-controller
 created: 2023-02-11 13:55:31.445
-last_modified: 2023-02-11 13:55:31.445
+last_modified: 2023-11-10
 tags:
   - kubernetes/ingress
 ---
-
-```ad-attention
-title: This is a github note
-```
+> [!WARNING] This is a github note
 
 # nginx-ingress-controller
 
@@ -21,8 +18,8 @@ title: This is a github note
     -   NGINX Open Source‑based (free and open source option)
     -   [NGINX Plus-based](https://www.nginx.com/products/nginx-ingress-controller/) (commercial option)
 
-- [[../../infra/network/nginx-ingress-controller-community-ver]] (or [hugo]({{< ref nginx-ingress-controller-community-ver >}}))
-- [[nginx-ingress-controller-nginx-ver]] (or [hugo]({{< ref nginx-ingress-controller-nginx-ver >}}))
+- [[../../infra/network/nginx-ingress-controller-community-ver]] 
+- [[nginx-ingress-controller-nginx-ver]]
 
 ## refer
 

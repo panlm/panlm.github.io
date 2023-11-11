@@ -1,10 +1,8 @@
 ---
 title: aws-load-balancer-controller
 description: 使用 aws 负载均衡控制器
-chapter: true
-weight: 1
 created: 2022-05-21 13:18:53.303
-last_modified: 2023-11-09
+last_modified: 2023-11-10
 tags:
   - aws/container/eks
   - kubernetes/ingress
@@ -12,18 +10,6 @@ tags:
 > [!WARNING] This is a github note
 
 # aws-load-balancer-controller
-
-- [github](#github)
-- [workshop](#workshop)
-- [install-📚](#install-%F0%9F%93%9A)
-- [install using eksdemo](#install%20using%20eksdemo)
-- [install-in-china-region](#install-in-china-region)
-- [upgrade](#upgrade)
-	- [Supported Kubernetes versions](#Supported%20Kubernetes%20versions)
-	- [check version](#check%20version)
-- [in private cluster](#in%20private%20cluster)
-- [blog](#blog)
-- [refer](#refer)
 
 ## github
 
@@ -40,7 +26,29 @@ tags:
 - 使用已有ingress的相关配置 ([[awslbc-ingress-settings-ingress-group]])
 - pod rediness gate ([link](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/deploy/pod_readiness_gate/))
 
-## install-
+## install
+
+### install-with-eksdemo-
+
+- https://github.com/awslabs/eksdemo/blob/main/docs/install-awslb.md
+- remove service account if existed 
+```sh
+echo ${CLUSTER_NAME}
+eksctl delete iamserviceaccount -c ${${CLUSTER_NAME}} \
+    --name aws-load-balancer-controller --namespace kube-system
+```
+- create 
+```sh
+echo ${CLUSTER_NAME}
+echo ${AWS_DEFAULT_REGION}
+
+eksdemo install aws-lb-controller -c ${CLUSTER_NAME} \
+    --namespace kube-system 
+```
+^yddjq0
+
+### install-
+
 - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/deploy/installation/
 
 - Install AWS Load Balancer Controller
@@ -120,21 +128,7 @@ kubectl get deployment -n kube-system aws-load-balancer-controller
 
 [[awslbc-ingress-controller-lab-issue]]
 
-## install-with-eksdemo-
-
-- https://github.com/awslabs/eksdemo/blob/main/docs/install-awslb.md
-- remove service account if existed 
-```sh
-echo ${CLUSTER_NAME}
-echo ${AWS_REGION}
-eksdemo install aws-lb-controller -c ${CLUSTER_NAME} \
-    --namespace kube-system \
-    --region ${AWS_REGION} 
-
-```
-^yddjq0
-
-## install-in-china-region
+### install-in-china-region
 
 ```sh
 # using china region ecr url

@@ -1,19 +1,13 @@
 ---
 title: acm
 description: 常用命令
-chapter: true
-hidden: true
 created: 2023-03-15 11:58:12.994
 last_modified: 2023-10-09 15:39:34.897
 tags:
   - aws/cmd
   - aws/security/acm
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # acm-cmd
 

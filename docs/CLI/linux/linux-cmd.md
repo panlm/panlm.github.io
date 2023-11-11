@@ -2,7 +2,7 @@
 title: linux-cmd
 description: 常用命令
 created: 2023-01-03 12:05:10.533
-last_modified: 2023-11-06
+last_modified: 2023-11-11
 tags:
   - cmd
   - linux

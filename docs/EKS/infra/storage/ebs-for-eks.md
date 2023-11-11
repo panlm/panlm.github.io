@@ -2,7 +2,7 @@
 title: ebs-for-eks
 description: "使用 ebs 作为 pod 持久化存储 "
 created: 2022-06-24 14:41:33.643
-last_modified: 2023-11-09
+last_modified: 2023-11-10
 tags:
   - aws/storage/ebs
   - aws/container/eks
@@ -13,10 +13,18 @@ tags:
 
 ## install-using-eksdemo-
 
-- assign new one if you already have a service account called `ebs-csi-controller-sa`
+- if you already have a service account called `ebs-csi-controller-sa`, delete it
 ```sh
-CLUSTER_NAME=ekscluster1
-eksdemo install storage-ebs-csi -c ${CLUSTER_NAME}
+echo ${CLUSTER_NAME}
+eksctl delete iamserviceaccount -c ${CLUSTER_NAME} \
+--name ebs-csi-controller-sa --namespace kube-system
+```
+- install ebs plugin
+```sh
+echo ${CLUSTER_NAME}
+echo ${AWS_DEFAULT_REGION}
+
+eksdemo install storage-ebs-csi -c ${CLUSTER_NAME} --namespace kube-system
 ```
 
 ## install
@@ -24,6 +32,7 @@ eksdemo install storage-ebs-csi -c ${CLUSTER_NAME}
 https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/docs/install.md
 
 ### ebs-csi
+
 ```sh
 echo ${CLUSTER_NAME:=ekscluster1}
 echo ${AWS_REGION:=us-east-2}

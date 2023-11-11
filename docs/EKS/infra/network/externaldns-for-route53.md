@@ -2,7 +2,7 @@
 title: externaldns-for-route53
 description: 使用 externaldns 组件
 created: 2022-08-04 13:24:34.806
-last_modified: 2023-11-09
+last_modified: 2023-11-10
 tags:
   - kubernetes
   - aws/network/route53
@@ -40,6 +40,7 @@ aws route53 list-resource-record-sets --output text \
 - refer: [[route53-subdomian]]
 
 ### private hosted zone
+
 - you also could create private hosted zone and associate to your vpc. plugin will insert/update record in your private hosted zone. ([link](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-private.html))
 
 ## install 
@@ -208,7 +209,6 @@ kubectl create --filename externaldns-with-rbac.yaml \
 echo ${CLUSTER_NAME}
 echo ${AWS_REGION}
 eksdemo install external-dns -c ${CLUSTER_NAME} --region ${AWS_REGION}
-
 ```
 ^a2vlmo
 
