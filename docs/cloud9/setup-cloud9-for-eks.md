@@ -2,7 +2,7 @@
 title: setup cloud9 for eks
 description: 使用 cloud9 作为实验环境
 created: 2022-05-21 12:46:05.435
-last_modified: 2023-10-26 15:04:35.289
+last_modified: 2023-11-14
 tags:
   - aws/container/eks
   - aws/cloud9
@@ -162,6 +162,10 @@ sudo mv -v /tmp/eksctl /usr/local/bin
 /usr/local/bin/eksctl completion bash >> ~/.bash_completion
 source /etc/profile.d/bash_completion.sh
 source ~/.bash_completion
+
+# install kubectx
+curl -L "https://github.com/ahmetb/kubectx/releases/download/v0.9.5/kubectx_v0.9.5_linux_x86_64.tar.gz" |tar xz -C /tmp/
+sudo mv -f /tmp/kubectx /usr/local/bin/
 
 # install eksdemo
 curl -L "https://github.com/awslabs/eksdemo/releases/latest/download/eksdemo_$(uname -s)_$(uname -p).tar.gz" |tar xz -C /tmp/

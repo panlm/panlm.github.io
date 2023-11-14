@@ -2,7 +2,7 @@
 title: aws-load-balancer-controller
 description: 使用 aws 负载均衡控制器
 created: 2022-05-21 13:18:53.303
-last_modified: 2023-11-10
+last_modified: 2023-11-13
 tags:
   - aws/container/eks
   - kubernetes/ingress
@@ -34,7 +34,7 @@ tags:
 - remove service account if existed 
 ```sh
 echo ${CLUSTER_NAME}
-eksctl delete iamserviceaccount -c ${${CLUSTER_NAME}} \
+eksctl delete iamserviceaccount -c ${CLUSTER_NAME} \
     --name aws-load-balancer-controller --namespace kube-system
 ```
 - create 
@@ -42,8 +42,7 @@ eksctl delete iamserviceaccount -c ${${CLUSTER_NAME}} \
 echo ${CLUSTER_NAME}
 echo ${AWS_DEFAULT_REGION}
 
-eksdemo install aws-lb-controller -c ${CLUSTER_NAME} \
-    --namespace kube-system 
+eksdemo install aws-lb-controller -c ${CLUSTER_NAME} --namespace kube-system 
 ```
 ^yddjq0
 

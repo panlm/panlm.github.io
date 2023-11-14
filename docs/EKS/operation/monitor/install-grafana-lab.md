@@ -2,23 +2,13 @@
 title: grafana-install-lab
 description: "在 EC2 / beanstalk / EKS 上安装 grafana "
 created: 2023-02-25 08:35:55.725
-last_modified: 2023-10-24 22:50:07.438
+last_modified: 2023-11-14
 tags:
   - grafana
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # grafana-installation-lab
-
-- [summary](#summary)
-- [grafana container on beanstalk](#grafana-container-on-beanstalk)
-- [grafana in ec2](#grafana-in-ec2)
-- [grafana on eks](#grafana-on-eks)
-- [appendix - single pod in beanstalk](#appendix---single-pod-in-beanstalk)
 
 ## summary
 
@@ -34,7 +24,7 @@ AWS_REGION=us-east-2
 
 ![[../../../CLI/awscli/efs-cmd#^d4lka9]]
 
-refer: [[git/git-mkdocs/CLI/awscli/efs-cmd#create efs]]
+refer: [[git/git-mkdocs/CLI/awscli/efs-cmd#create-efs-]]
 
 mount nfs to instance ([link](https://aws.amazon.com/premiumsupport/knowledge-center/elastic-beanstalk-mount-efs-volumes/))
 

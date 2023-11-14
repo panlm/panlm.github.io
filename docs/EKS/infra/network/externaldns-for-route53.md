@@ -2,7 +2,7 @@
 title: externaldns-for-route53
 description: 使用 externaldns 组件
 created: 2022-08-04 13:24:34.806
-last_modified: 2023-11-10
+last_modified: 2023-11-13
 tags:
   - kubernetes
   - aws/network/route53
@@ -36,7 +36,7 @@ aws route53 list-resource-record-sets --output text \
 ```
 ^fgvqjb
 
-- refer: [[../../../CLI/awscli/route53-cmd#create-ns-record-]]
+- refer: [[../../../CLI/awscli/route53-cmd#create-ns-record-]] 
 - refer: [[route53-subdomian]]
 
 ### private hosted zone
@@ -207,8 +207,9 @@ kubectl create --filename externaldns-with-rbac.yaml \
 - https://github.com/awslabs/eksdemo/blob/main/docs/install-edns.md
 ```sh
 echo ${CLUSTER_NAME}
-echo ${AWS_REGION}
-eksdemo install external-dns -c ${CLUSTER_NAME} --region ${AWS_REGION}
+echo ${AWS_DEFAULT_REGION}
+
+eksdemo install external-dns -c ${CLUSTER_NAME} 
 ```
 ^a2vlmo
 

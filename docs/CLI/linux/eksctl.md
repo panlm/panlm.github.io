@@ -2,7 +2,7 @@
 title: eksctl
 description: 常用命令
 created: 2022-03-09 21:30:00.815
-last_modified: 2023-10-22 12:35:54.654
+last_modified: 2023-11-14
 tags:
   - aws/container/eks
 ---
@@ -105,6 +105,32 @@ eksctl scale nodegroup \
 --nodes=3 \
 ${NODEGROUP_NAME}
 
+```
+
+## create-iamserviceaccount-
+
+```sh
+echo ${CLUSTER_NAME}
+echo ${NAMESPACE_NAME}
+
+function create-iamserviceaccount () {
+    if [[ $# -ne 2 ]]; then
+        echo "format: $0 CLUSTER_NAME NAMESPACE_NAME "
+        return
+    else
+        local CLUSTER_NAME=$1
+        local NAMESPACE_NAME=$2
+    fi
+    
+# role only
+SA_NAME=sa-s3-admin-${CLUSTER_NAME}-$(TZ=EAT-8 date +%Y%m%d-%H%M)
+eksctl create iamserviceaccount -c ${CLUSTER_NAME} \
+    --name ${SA_NAME} --namespace ${NAMESPACE_NAME} \
+    --attach-policy-arn arn:aws:iam::aws:policy/AmazonS3FullAccess \
+    --role-name ${SA_NAME} --role-only --approve
+S3_ADMIN_ROLE_ARN=$(eksctl get iamserviceaccount -c $CLUSTER_NAME \
+    --name ${SA_NAME} -o json |jq -r '.[].status.roleARN')
+}
 ```
 
 ## appmesh cluster

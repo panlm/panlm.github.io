@@ -1,40 +1,29 @@
 ---
-title: "cluster-autoscaler"
-description: "EKS 集群中安装 Cluster Autoscaler"
-chapter: true
-weight: 4
+title: cluster-autoscaler
+description: EKS 集群中安装 Cluster Autoscaler
 created: 2022-02-19 11:57:07.687
 last_modified: 2022-02-19 11:57:07.6870
-tags: 
-- kubernetes 
-- aws/container/eks 
+tags:
+  - kubernetes
+  - aws/container/eks
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # cluster-autoscaler
 
-- [Lab](#lab)
-	- [blog](#blog)
-- [install](#install)
-	- [manual](#manual)
-		- [create service account](#create-service-account)
-		- [install from yaml](#install-from-yaml)
-	- [helm](#helm)
-
 ## link
+
 - [workshop](https://www.eksworkshop.com/beginner/080_scaling/deploy_ca/)
 - [troubleshooting](https://github.com/kubernetes/autoscaler/issues/1607#issuecomment-842038913)
 - [github](https://github.com/kubernetes/autoscaler/tree/master)
 
 ### blog
+
 - [[Creating Kubernetes Auto Scaling Groups for Multiple Availability Zones]]
 
 ## install
 ### manual
+
 https://docs.aws.amazon.com/zh_cn/eks/latest/userguide/autoscaling.html
 
 #### create service account

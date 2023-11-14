@@ -1,19 +1,13 @@
 ---
 title: eks-container-insights
 description: 启用 EKS 的 container insight 功能
-chapter: true
-weight: 2
 created: 2022-02-22 08:08:35.714
 last_modified: 2023-10-20 09:58:22.653
 tags:
   - aws/container/eks
   - aws/mgmt/cloudwatch
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # eks-container-insights
 

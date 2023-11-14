@@ -2,7 +2,7 @@
 title: eks-private-access-cluster
 description: 在已有 vpc 中创建私有访问的 eks 集群
 created: 2022-03-24 11:20:13.594
-last_modified: 2023-11-09
+last_modified: 2023-11-13
 tags:
   - aws/container/eks
 ---
@@ -79,6 +79,8 @@ aws ec2 describe-instance-attribute --instance-id $INST_ID --attribute groupSet
 
 - 创建完自定义 vpc 后，直接执行下面代码
 ```sh
+
+echo ${AWS_REGION}
 ACCOUNT_ID=$(aws sts get-caller-identity --output text --query Account)
 AZS=($(aws ec2 describe-availability-zones --query 'AvailabilityZones[].ZoneName' --output text --region $AWS_REGION))
 

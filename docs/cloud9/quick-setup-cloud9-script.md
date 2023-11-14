@@ -2,7 +2,7 @@
 title: quick setup cloud9 script
 description: 简化运行脚本
 created: 2023-08-04 15:56:59.747
-last_modified: 2023-11-08
+last_modified: 2023-11-13
 tags:
   - aws/cloud9
   - aws/container/eks
@@ -21,6 +21,8 @@ tags:
 # name=<give your cloud9 a name>
 datestring=$(TZ=CST-8 date +%Y%m%d-%H%M)
 echo ${name:=cloud9-$datestring}
+# export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
+echo ${AWS_DEFAULT_REGION:=us-east-2} && export ${AWS_DEFAULT_REGION}
 
 # VPC_ID=<your vpc id> 
 # ensure you have public subnet in it

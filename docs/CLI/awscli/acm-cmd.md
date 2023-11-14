@@ -2,7 +2,7 @@
 title: acm
 description: 常用命令
 created: 2023-03-15 11:58:12.994
-last_modified: 2023-10-09 15:39:34.897
+last_modified: 2023-11-12
 tags:
   - aws/cmd
   - aws/security/acm
@@ -10,6 +10,22 @@ tags:
 > [!WARNING] This is a github note
 
 # acm-cmd
+
+## create-certificate-with-eksdemo-
+
+- https://github.com/awslabs/eksdemo/blob/main/docs/create-acm-cert.md
+```sh
+echo ${DOMAIN_NAME}
+echo ${AWS_REGION}
+
+eksdemo create acm-certificate "*.${DOMAIN_NAME}" --region ${AWS_REGION}
+# eksdemo get hosted-zone
+# eksdemo get dns-records -z poc1009.aws.panlm.xyz
+
+eksdemo get acm-certificate # get certificate arn 
+
+```
+^kresvp
 
 ## create-certificate-
 
@@ -69,21 +85,6 @@ aws acm describe-certificate \
 --query 'Certificate.DomainValidationOptions[0]' 
 
 ```
-
-## create-certificate-with-eksdemo-
-
-- https://github.com/awslabs/eksdemo/blob/main/docs/create-acm-cert.md
-```sh
-echo ${DOMAIN_NAME}
-echo ${AWS_REGION}
-
-eksdemo create acm-certificate "*.${DOMAIN_NAME}" --region ${AWS_REGION}
-# eksdemo get hosted-zone
-# eksdemo get dns-records -z poc1009.aws.panlm.xyz
-# eksdemo get acm-certificate
-
-```
-^kresvp
 
 ## create certificate with pca  cross account
 
