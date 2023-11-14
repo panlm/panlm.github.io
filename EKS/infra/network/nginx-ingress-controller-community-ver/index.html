@@ -1066,6 +1066,26 @@
     install
   </a>
   
+    <nav class="md-nav" aria-label="install">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-with-eksdemo" class="md-nav__link">
+    install with eksdemo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-manually" class="md-nav__link">
+    install manually
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3293,6 +3313,26 @@
     install
   </a>
   
+    <nav class="md-nav" aria-label="install">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#install-with-eksdemo" class="md-nav__link">
+    install with eksdemo
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-manually" class="md-nav__link">
+    install manually
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -3408,26 +3448,19 @@
 
 
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>title: This is a github note
-</code></pre></div>
+<blockquote>
+<p>[!WARNING] This is a github note</p>
+</blockquote>
 <h1 id="nginx-ingress-controller-community-ver">nginx-ingress-controller-community-ver<a class="headerlink" href="#nginx-ingress-controller-community-ver" title="Permanent link">&para;</a></h1>
-<ul>
-<li><a href="./#install">install</a></li>
-<li><a href="./#resources">resources</a></li>
-<li><a href="./#tls-certificate">tls certificate</a></li>
-<li><a href="./#ingress">ingress</a></li>
-<li><a href="./#refer">refer</a><ul>
-<li><a href="./#appendix---for-clb">appendix - for clb</a><ul>
-<li><a href="./#certificate">certificate</a></li>
-<li><a href="./#ingress">ingress</a></li>
-</ul>
-</li>
-<li><a href="./#appendix---ingress-nginx-output">appendix - ingress-nginx-output</a></li>
-<li><a href="./#appendix---other-sample">appendix - other sample</a></li>
-</ul>
-</li>
-</ul>
 <h2 id="install">install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h2>
+<h3 id="install-with-eksdemo">install with eksdemo<a class="headerlink" href="#install-with-eksdemo" title="Permanent link">&para;</a></h3>
+<ul>
+<li><a href="https://github.com/awslabs/eksdemo/blob/main/docs/install-ingress-nginx.md">https://github.com/awslabs/eksdemo/blob/main/docs/install-ingress-nginx.md</a><br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>eksdemo<span class="w"> </span>install<span class="w"> </span>ingress-nginx<span class="w"> </span>-c<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span>--namespace<span class="w"> </span>kube-system
+</code></pre></div></li>
+</ul>
+<h3 id="install-manually">install manually<a class="headerlink" href="#install-manually" title="Permanent link">&para;</a></h3>
 <ul>
 <li>link<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>ingress-nginx<span class="w"> </span>https://kubernetes.github.io/ingress-nginx
@@ -3672,7 +3705,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-10-18T00:44:56+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-18</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-11T10:57:19+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-11</span>
       
         <br>
         Created:

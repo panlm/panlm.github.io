@@ -3302,94 +3302,88 @@
 
 
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>title: This is a github note
-</code></pre></div>
+<blockquote>
+<p>[!WARNING] This is a github note</p>
+</blockquote>
 <h1 id="grafana-installation-lab">grafana-installation-lab<a class="headerlink" href="#grafana-installation-lab" title="Permanent link">&para;</a></h1>
-<ul>
-<li><a href="./#summary">summary</a></li>
-<li><a href="./#grafana-container-on-beanstalk">grafana container on beanstalk</a></li>
-<li><a href="./#grafana-in-ec2">grafana in ec2</a></li>
-<li><a href="./#grafana-on-eks">grafana on eks</a></li>
-<li><a href="./#appendix---single-pod-in-beanstalk">appendix - single pod in beanstalk</a></li>
-</ul>
 <h2 id="summary">summary<a class="headerlink" href="#summary" title="Permanent link">&para;</a></h2>
 <p>Grafana 作为开源软件可以自由部署，1）在 ec2 中手动部署，除了 OS 和软件层面配置之外，不可避免需要一些额外的配置工作，包括 vpc 、 elb 安全组等；2）当然也有些解决方案将 Grafana 部署在 eks 集群上以解决高可用性问题，但如果只是希望简单使用可能会有点杀鸡用牛刀的感觉；3）本文描述了用 aws elastic beanstalk 提供一站式快速部署 Grafana，并且使用 efs 实现 grafana内部配置的持久化</p>
 <h2 id="grafana-container-on-beanstalk">grafana container on beanstalk<a class="headerlink" href="#grafana-container-on-beanstalk" title="Permanent link">&para;</a></h2>
 <ul>
 <li>need efs for storage persistent<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">CLUSTER_NAME</span><span class="o">=</span>efs0225
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">AWS_REGION</span><span class="o">=</span>us-east-2
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">CLUSTER_NAME</span><span class="o">=</span>efs0225
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nv">AWS_REGION</span><span class="o">=</span>us-east-2
 </code></pre></div></li>
 </ul>
 <p><img alt="../../../CLI/awscli/efs-cmd" src="../../../../CLI/awscli/efs-cmd/#^d4lka9" title="../../../CLI/awscli/efs-cmd" /></p>
-<p>refer: <a href="../../../../CLI/awscli/efs-cmd/#create-efs" title="git/git-mkdocs/CLI/awscli/efs-cmd">git/git-mkdocs/CLI/awscli/efs-cmd</a></p>
+<p>refer: <a href="../../../../CLI/awscli/efs-cmd/#create-efs-" title="git/git-mkdocs/CLI/awscli/efs-cmd">git/git-mkdocs/CLI/awscli/efs-cmd</a></p>
 <p>mount nfs to instance (<a href="https://aws.amazon.com/premiumsupport/knowledge-center/elastic-beanstalk-mount-efs-volumes/">link</a>)</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">FILESYSTEM_ID</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">FILESYSTEM_ID</span><span class="si">}</span>
 </code></pre></div>
 <ul>
 <li>
 <p>install beanstalk (<a href="https://docs.aws.amazon.com/elasticbeanstalk/latest/dg/eb-cli3-install.html">link</a>)<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/aws/aws-elastic-beanstalk-cli-setup.git
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>python<span class="w"> </span>./aws-elastic-beanstalk-cli-setup/scripts/ebcli_installer.py
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1"># export env variable as instructions</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/aws/aws-elastic-beanstalk-cli-setup.git
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>python<span class="w"> </span>./aws-elastic-beanstalk-cli-setup/scripts/ebcli_installer.py
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># export env variable as instructions</span>
 </code></pre></div></p>
 </li>
 <li>
 <p>deploy with prebuild image<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>mkdir<span class="w"> </span>example-prebuild
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">cd</span><span class="w"> </span>example-prebuild
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>cat<span class="w"> </span>&gt;docker-compose.yml<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="s">version: &quot;3.8&quot;</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="s">services:</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="s">  grafana:</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="s">    image: grafana/grafana-oss</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="s">    volumes:</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="s">      - &quot;/efsmnt/grafana/var-lib-grafana:/var/lib/grafana&quot;</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="s">      - &quot;/efsmnt/grafana/var-log-grafana:/var/log/grafana&quot;</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="s">    ports:</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="s">      - &quot;80:3000&quot;</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="s">    restart: always</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="s">EOF</span>
-<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a>
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a>mkdir<span class="w"> </span>.ebextensions
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>mkdir<span class="w"> </span>example-prebuild
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">cd</span><span class="w"> </span>example-prebuild
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>cat<span class="w"> </span>&gt;docker-compose.yml<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="s">version: &quot;3.8&quot;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="s">services:</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="s">  grafana:</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="s">    image: grafana/grafana-oss</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="s">    volumes:</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="s">      - &quot;/efsmnt/grafana/var-lib-grafana:/var/lib/grafana&quot;</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="s">      - &quot;/efsmnt/grafana/var-log-grafana:/var/log/grafana&quot;</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="s">    ports:</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="s">      - &quot;80:3000&quot;</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="s">    restart: always</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="s">EOF</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>mkdir<span class="w"> </span>.ebextensions
 </code></pre></div><br />
 if you just use one pod, reference appendix</p>
 </li>
 <li>
 <p>customize config <code>.ebextensions/efs-mount.config</code><br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>wget<span class="w"> </span>-O<span class="w"> </span>/tmp/efs-mount.config<span class="w"> </span><span class="s1">&#39;https://github.com/awsdocs/elastic-beanstalk-samples/raw/main/configuration-files/aws-provided/instance-configuration/storage-efs-mountfilesystem.config&#39;</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="c1"># regexp different between egrep &amp; sed</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># using &#39;\s*&#39; to instead will be better</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>cat<span class="w"> </span>/tmp/efs-mount.config<span class="w"> </span><span class="p">|</span>egrep<span class="w"> </span><span class="s1">&#39;^\s+FILE_SYSTEM_ID: &#39;</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;/^\s\+FILE_SYSTEM_ID: /s/:.*$/: &#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">FILESYSTEM_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="s1">&#39;/&#39;</span><span class="w"> </span>/tmp/efs-mount.config
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>cp<span class="w"> </span>/tmp/efs-mount.config<span class="w"> </span>.ebextensions/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>wget<span class="w"> </span>-O<span class="w"> </span>/tmp/efs-mount.config<span class="w"> </span><span class="s1">&#39;https://github.com/awsdocs/elastic-beanstalk-samples/raw/main/configuration-files/aws-provided/instance-configuration/storage-efs-mountfilesystem.config&#39;</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1"># regexp different between egrep &amp; sed</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># using &#39;\s*&#39; to instead will be better</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>cat<span class="w"> </span>/tmp/efs-mount.config<span class="w"> </span><span class="p">|</span>egrep<span class="w"> </span><span class="s1">&#39;^\s+FILE_SYSTEM_ID: &#39;</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;/^\s\+FILE_SYSTEM_ID: /s/:.*$/: &#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">FILESYSTEM_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="s1">&#39;/&#39;</span><span class="w"> </span>/tmp/efs-mount.config
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>cp<span class="w"> </span>/tmp/efs-mount.config<span class="w"> </span>.ebextensions/
 </code></pre></div><br />
 another sample (<a href="https://github.com/aws-samples/eb-php-wordpress">link</a>)</p>
 </li>
 <li>
 <p>prep elastic beanstalk<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nv">APP_NAME</span><span class="o">=</span>myapp<span class="k">$(</span>date<span class="w"> </span>+%m%d<span class="k">)</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nv">ENV_NAME</span><span class="o">=</span><span class="si">${</span><span class="nv">APP_NAME</span><span class="si">}</span>-env<span class="k">$(</span>date<span class="w"> </span>+%H%M<span class="k">)</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>eb<span class="w"> </span>init<span class="w"> </span>-p<span class="w"> </span>docker<span class="w"> </span><span class="si">${</span><span class="nv">APP_NAME</span><span class="si">}</span><span class="w"> </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>eb<span class="w"> </span><span class="nb">local</span><span class="w"> </span>run<span class="w"> </span>--port<span class="w"> </span><span class="m">3000</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>eb<span class="w"> </span>create<span class="w"> </span><span class="si">${</span><span class="nv">ENV_NAME</span><span class="si">}</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1">## after modify config</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="c1">## create a new app version</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>eb<span class="w"> </span>appversion<span class="w"> </span>-c
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="c1">## deploy using new appver</span>
-<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>eb<span class="w"> </span>create<span class="w"> </span>--version<span class="w"> </span>app-230224_123456789012<span class="w"> </span>app2-env-3
-<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>
-<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="c1">## swap ?</span>
-<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>eb<span class="w"> </span>swap
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">APP_NAME</span><span class="o">=</span>myapp<span class="k">$(</span>date<span class="w"> </span>+%m%d<span class="k">)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nv">ENV_NAME</span><span class="o">=</span><span class="si">${</span><span class="nv">APP_NAME</span><span class="si">}</span>-env<span class="k">$(</span>date<span class="w"> </span>+%H%M<span class="k">)</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>eb<span class="w"> </span>init<span class="w"> </span>-p<span class="w"> </span>docker<span class="w"> </span><span class="si">${</span><span class="nv">APP_NAME</span><span class="si">}</span><span class="w"> </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>eb<span class="w"> </span><span class="nb">local</span><span class="w"> </span>run<span class="w"> </span>--port<span class="w"> </span><span class="m">3000</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>eb<span class="w"> </span>create<span class="w"> </span><span class="si">${</span><span class="nv">ENV_NAME</span><span class="si">}</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1">## after modify config</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="c1">## create a new app version</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>eb<span class="w"> </span>appversion<span class="w"> </span>-c
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="c1">## deploy using new appver</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>eb<span class="w"> </span>create<span class="w"> </span>--version<span class="w"> </span>app-230224_123456789012<span class="w"> </span>app2-env-3
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="c1">## swap ?</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>eb<span class="w"> </span>swap
 </code></pre></div></p>
 </li>
 <li>
 <p>others parameters<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>cfg:default.paths.data=/var/lib/grafana cfg:default.paths.logs=/var/log/grafana cfg:default.paths.plugins=/var/lib/grafana/plugins cfg:default.paths.provisioning=/etc/grafana/provisioning
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>cfg:default.paths.data=/var/lib/grafana cfg:default.paths.logs=/var/log/grafana cfg:default.paths.plugins=/var/lib/grafana/plugins cfg:default.paths.provisioning=/etc/grafana/provisioning
 </code></pre></div></p>
 </li>
 </ul>
@@ -3397,20 +3391,20 @@ another sample (<a href="https://github.com/aws-samples/eb-php-wordpress">link</
 <ul>
 <li>
 <p>install <br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt;-EOF |sudo tee /etc/yum.repos.d/grafana.repo</span>
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="s">[grafana]</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="s">name=grafana</span>
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="s">baseurl=https://rpm.grafana.com</span>
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="s">repo_gpgcheck=1</span>
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="s">enabled=1</span>
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="s">gpgcheck=1</span>
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="s">gpgkey=https://rpm.grafana.com/gpg.key</span>
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="s">sslverify=1</span>
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="s">sslcacert=/etc/pki/tls/certs/ca-bundle.crt</span>
-<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="s">exclude=*beta*</span>
-<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="s">EOF</span>
-<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>grafana
-<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>grafana-server
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt;-EOF |sudo tee /etc/yum.repos.d/grafana.repo</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="s">[grafana]</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="s">name=grafana</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="s">baseurl=https://rpm.grafana.com</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="s">repo_gpgcheck=1</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="s">enabled=1</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="s">gpgcheck=1</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="s">gpgkey=https://rpm.grafana.com/gpg.key</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="s">sslverify=1</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="s">sslcacert=/etc/pki/tls/certs/ca-bundle.crt</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="s">exclude=*beta*</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="s">EOF</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>grafana
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>status<span class="w"> </span>grafana-server
 </code></pre></div></p>
 </li>
 <li>
@@ -3424,21 +3418,21 @@ another sample (<a href="https://github.com/aws-samples/eb-php-wordpress">link</
 <p><a href="https://aws-quickstart.github.io/quickstart-eks-grafana/">https://aws-quickstart.github.io/quickstart-eks-grafana/</a></p>
 <p><img alt="install-grafana-lab-png-1.png" src="../install-grafana-lab-png-1.png" /></p>
 <h2 id="appendix-single-pod-in-beanstalk">appendix - single pod in beanstalk<a class="headerlink" href="#appendix-single-pod-in-beanstalk" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>cat<span class="w"> </span>&gt;Dockerrun.aws.json<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="s">{</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="s">  &quot;AWSEBDockerrunVersion&quot;: &quot;1&quot;,</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="s">  &quot;Image&quot;: {</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="s">    &quot;Name&quot;: &quot;grafana/grafana-oss&quot;</span>
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="s">  },</span>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="s">  &quot;Ports&quot;: [</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="s">    {</span>
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="s">      &quot;ContainerPort&quot;: 3000,</span>
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="s">      &quot;HostPort&quot;: 3000</span>
-<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="s">    }</span>
-<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="s">  ],</span>
-<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="s">  &quot;Logging&quot;: &quot;/usr/local/glassfish5/glassfish/domains/domain1/logs&quot;</span>
-<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="s">}</span>
-<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="s">EOF</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>cat<span class="w"> </span>&gt;Dockerrun.aws.json<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="s">{</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="s">  &quot;AWSEBDockerrunVersion&quot;: &quot;1&quot;,</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="s">  &quot;Image&quot;: {</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="s">    &quot;Name&quot;: &quot;grafana/grafana-oss&quot;</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="s">  },</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="s">  &quot;Ports&quot;: [</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="s">    {</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="s">      &quot;ContainerPort&quot;: 3000,</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="s">      &quot;HostPort&quot;: 3000</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="s">    }</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="s">  ],</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="s">  &quot;Logging&quot;: &quot;/usr/local/glassfish5/glassfish/domains/domain1/logs&quot;</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="s">}</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="s">EOF</span>
 </code></pre></div>
 
   <hr>
@@ -3446,7 +3440,7 @@ another sample (<a href="https://github.com/aws-samples/eb-php-wordpress">link</
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-10-26T14:34:38+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-26</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-14T10:49:52+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-14</span>
       
         <br>
         Created:

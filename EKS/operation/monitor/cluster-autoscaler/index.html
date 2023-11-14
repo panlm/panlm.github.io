@@ -3386,24 +3386,10 @@
 
 
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>title: This is a github note
-</code></pre></div>
+<blockquote>
+<p>[!WARNING] This is a github note</p>
+</blockquote>
 <h1 id="cluster-autoscaler">cluster-autoscaler<a class="headerlink" href="#cluster-autoscaler" title="Permanent link">&para;</a></h1>
-<ul>
-<li><a href="./#lab">Lab</a><ul>
-<li><a href="./#blog">blog</a></li>
-</ul>
-</li>
-<li><a href="./#install">install</a><ul>
-<li><a href="./#manual">manual</a><ul>
-<li><a href="./#create-service-account">create service account</a></li>
-<li><a href="./#install-from-yaml">install from yaml</a></li>
-</ul>
-</li>
-<li><a href="./#helm">helm</a></li>
-</ul>
-</li>
-</ul>
 <h2 id="link">link<a class="headerlink" href="#link" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://www.eksworkshop.com/beginner/080_scaling/deploy_ca/">workshop</a></li>
@@ -3418,78 +3404,78 @@
 <h3 id="manual">manual<a class="headerlink" href="#manual" title="Permanent link">&para;</a></h3>
 <p><a href="https://docs.aws.amazon.com/zh_cn/eks/latest/userguide/autoscaling.html">https://docs.aws.amazon.com/zh_cn/eks/latest/userguide/autoscaling.html</a></p>
 <h4 id="create-service-account">create service account<a class="headerlink" href="#create-service-account" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">CLUSTER_NAME</span><span class="o">=</span>ekscluster1
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">AWS_REGION</span><span class="o">=</span>us-east-2
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>cat<span class="w"> </span>&gt;<span class="w"> </span>cluster-autoscaler-policy.json<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="s">{</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="s">    &quot;Version&quot;: &quot;2012-10-17&quot;,</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="s">    &quot;Statement&quot;: [</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="s">        {</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="s">            &quot;Sid&quot;: &quot;VisualEditor0&quot;,</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="s">            &quot;Effect&quot;: &quot;Allow&quot;,</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="s">            &quot;Action&quot;: [</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="s">                &quot;autoscaling:SetDesiredCapacity&quot;,</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="s">                &quot;autoscaling:TerminateInstanceInAutoScalingGroup&quot;</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="s">            ],</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="s">            &quot;Resource&quot;: &quot;*&quot;,</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="s">            &quot;Condition&quot;: {</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="s">                &quot;StringEquals&quot;: {</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="s">                    &quot;aws:ResourceTag/k8s.io/cluster-autoscaler/&lt;my-cluster&gt;&quot;: &quot;owned&quot;</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="s">                }</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="s">            }</span>
-<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="s">        },</span>
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="s">        {</span>
-<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="s">            &quot;Sid&quot;: &quot;VisualEditor1&quot;,</span>
-<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="s">            &quot;Effect&quot;: &quot;Allow&quot;,</span>
-<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="s">            &quot;Action&quot;: [</span>
-<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="s">                &quot;autoscaling:DescribeAutoScalingInstances&quot;,</span>
-<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="s">                &quot;autoscaling:DescribeAutoScalingGroups&quot;,</span>
-<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="s">                &quot;ec2:DescribeLaunchTemplateVersions&quot;,</span>
-<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="s">                &quot;autoscaling:DescribeTags&quot;,</span>
-<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="s">                &quot;autoscaling:DescribeLaunchConfigurations&quot;</span>
-<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="s">            ],</span>
-<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="s">            &quot;Resource&quot;: &quot;*&quot;</span>
-<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="s">        }</span>
-<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="s">    ]</span>
-<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="s">}</span>
-<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="s">EOF</span>
-<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a>
-<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="nv">ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>iam<span class="w"> </span>create-policy<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="w">    </span>--policy-name<span class="w"> </span>AmazonEKSClusterAutoscalerPolicy-<span class="nv">$RANDOM</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="w">    </span>--policy-document<span class="w"> </span>file://cluster-autoscaler-policy.json<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Policy.Arn&#39;</span><span class="k">)</span>
-<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a>
-<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a>eksctl<span class="w"> </span>create<span class="w"> </span>iamserviceaccount<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="w">  </span>--cluster<span class="o">=</span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="w">  </span>--namespace<span class="o">=</span>kube-system<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="w">  </span>--name<span class="o">=</span>cluster-autoscaler<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="w">  </span>--attach-policy-arn<span class="o">=</span><span class="si">${</span><span class="nv">ARN</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="w">  </span>--override-existing-serviceaccounts<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a><span class="w">  </span>--approve
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">CLUSTER_NAME</span><span class="o">=</span>ekscluster1
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nv">AWS_REGION</span><span class="o">=</span>us-east-2
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>cat<span class="w"> </span>&gt;<span class="w"> </span>cluster-autoscaler-policy.json<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="s">{</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="s">    &quot;Version&quot;: &quot;2012-10-17&quot;,</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="s">    &quot;Statement&quot;: [</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="s">        {</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="s">            &quot;Sid&quot;: &quot;VisualEditor0&quot;,</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="s">            &quot;Effect&quot;: &quot;Allow&quot;,</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="s">            &quot;Action&quot;: [</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="s">                &quot;autoscaling:SetDesiredCapacity&quot;,</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="s">                &quot;autoscaling:TerminateInstanceInAutoScalingGroup&quot;</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="s">            ],</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="s">            &quot;Resource&quot;: &quot;*&quot;,</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="s">            &quot;Condition&quot;: {</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="s">                &quot;StringEquals&quot;: {</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="s">                    &quot;aws:ResourceTag/k8s.io/cluster-autoscaler/&lt;my-cluster&gt;&quot;: &quot;owned&quot;</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="s">                }</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="s">            }</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="s">        },</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="s">        {</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="s">            &quot;Sid&quot;: &quot;VisualEditor1&quot;,</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="s">            &quot;Effect&quot;: &quot;Allow&quot;,</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="s">            &quot;Action&quot;: [</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="s">                &quot;autoscaling:DescribeAutoScalingInstances&quot;,</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="s">                &quot;autoscaling:DescribeAutoScalingGroups&quot;,</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="s">                &quot;ec2:DescribeLaunchTemplateVersions&quot;,</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="s">                &quot;autoscaling:DescribeTags&quot;,</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="s">                &quot;autoscaling:DescribeLaunchConfigurations&quot;</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="s">            ],</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="s">            &quot;Resource&quot;: &quot;*&quot;</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="s">        }</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="s">    ]</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="s">}</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="s">EOF</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="nv">ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>iam<span class="w"> </span>create-policy<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">    </span>--policy-name<span class="w"> </span>AmazonEKSClusterAutoscalerPolicy-<span class="nv">$RANDOM</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">    </span>--policy-document<span class="w"> </span>file://cluster-autoscaler-policy.json<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Policy.Arn&#39;</span><span class="k">)</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>eksctl<span class="w"> </span>create<span class="w"> </span>iamserviceaccount<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">  </span>--cluster<span class="o">=</span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="w">  </span>--namespace<span class="o">=</span>kube-system<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">  </span>--name<span class="o">=</span>cluster-autoscaler<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="w">  </span>--attach-policy-arn<span class="o">=</span><span class="si">${</span><span class="nv">ARN</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="w">  </span>--override-existing-serviceaccounts<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="w">  </span>--approve
 </code></pre></div>
 <h4 id="install-from-yaml">install from yaml<a class="headerlink" href="#install-from-yaml" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>curl<span class="w"> </span>-o<span class="w"> </span>cluster-autoscaler-autodiscover.yaml<span class="w"> </span>https://raw.githubusercontent.com/kubernetes/autoscaler/master/cluster-autoscaler/cloudprovider/aws/examples/cluster-autoscaler-autodiscover.yaml
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s/.YOUR CLUSTER NAME./</span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="s2">/&quot;</span><span class="w"> </span>cluster-autoscaler-autodiscover.yaml
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>cluster-autoscaler-autodiscover.yaml
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>kubectl<span class="w"> </span>patch<span class="w"> </span>deployment<span class="w"> </span>cluster-autoscaler<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span>-p<span class="w"> </span><span class="s1">&#39;{&quot;spec&quot;:{&quot;template&quot;:{&quot;metadata&quot;:{&quot;annotations&quot;:{&quot;cluster-autoscaler.kubernetes.io/safe-to-evict&quot;: &quot;false&quot;}}}}}&#39;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>curl<span class="w"> </span>-o<span class="w"> </span>cluster-autoscaler-autodiscover.yaml<span class="w"> </span>https://raw.githubusercontent.com/kubernetes/autoscaler/master/cluster-autoscaler/cloudprovider/aws/examples/cluster-autoscaler-autodiscover.yaml
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s2">&quot;s/.YOUR CLUSTER NAME./</span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="s2">/&quot;</span><span class="w"> </span>cluster-autoscaler-autodiscover.yaml
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>cluster-autoscaler-autodiscover.yaml
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>kubectl<span class="w"> </span>patch<span class="w"> </span>deployment<span class="w"> </span>cluster-autoscaler<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span>-p<span class="w"> </span><span class="s1">&#39;{&quot;spec&quot;:{&quot;template&quot;:{&quot;metadata&quot;:{&quot;annotations&quot;:{&quot;cluster-autoscaler.kubernetes.io/safe-to-evict&quot;: &quot;false&quot;}}}}}&#39;</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>kubectl<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span>edit<span class="w"> </span>deployment.apps/cluster-autoscaler
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>kubectl<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span>edit<span class="w"> </span>deployment.apps/cluster-autoscaler
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>#add following parameter
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>--balance-similar-node-groups
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>--skip-nodes-with-system-pods=false
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>#add following parameter
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>--balance-similar-node-groups
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>--skip-nodes-with-system-pods=false
 </code></pre></div>
 <p>get newest version for your cluster, for example 1.21.3 / 1.22.3<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">VER</span><span class="o">=</span><span class="m">1</span>.21.3
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>kubectl<span class="w"> </span><span class="nb">set</span><span class="w"> </span>image<span class="w"> </span>deployment<span class="w"> </span>cluster-autoscaler<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span>cluster-autoscaler<span class="o">=</span>k8s.gcr.io/autoscaling/cluster-autoscaler:v<span class="si">${</span><span class="nv">VER</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">VER</span><span class="o">=</span><span class="m">1</span>.21.3
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>kubectl<span class="w"> </span><span class="nb">set</span><span class="w"> </span>image<span class="w"> </span>deployment<span class="w"> </span>cluster-autoscaler<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span>cluster-autoscaler<span class="o">=</span>k8s.gcr.io/autoscaling/cluster-autoscaler:v<span class="si">${</span><span class="nv">VER</span><span class="si">}</span>
 </code></pre></div></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>kubectl<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>deployment.apps/cluster-autoscaler
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>kubectl<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>deployment.apps/cluster-autoscaler
 </code></pre></div>
 <h3 id="helm">helm<a class="headerlink" href="#helm" title="Permanent link">&para;</a></h3>
 <p><a href="https://github.com/kubernetes/autoscaler/blob/master/charts/cluster-autoscaler/README.md">https://github.com/kubernetes/autoscaler/blob/master/charts/cluster-autoscaler/README.md</a></p>
@@ -3497,21 +3483,21 @@
 <li><a href="./" title="create service account">create service account</a> in previous chapter</li>
 <li>
 <p>install from helm<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>autoscaler<span class="w"> </span>https://kubernetes.github.io/autoscaler
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>helm<span class="w"> </span>install<span class="w"> </span>myca-release<span class="w"> </span>autoscaler/cluster-autoscaler<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">    </span>--set<span class="w"> </span>autoDiscovery.clusterName<span class="o">=</span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">    </span>--set<span class="w"> </span><span class="nv">awsRegion</span><span class="o">=</span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span>--set<span class="w"> </span>rbac.serviceAccount.create<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span>--set<span class="w"> </span>rbac.serviceAccount.name<span class="o">=</span>cluster-autoscaler
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="c1"># refer values</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="c1"># wget -O myca-values.yaml https://github.com/kubernetes/autoscaler/raw/master/charts/cluster-autoscaler/values.yaml</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>autoscaler<span class="w"> </span>https://kubernetes.github.io/autoscaler
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>helm<span class="w"> </span>install<span class="w"> </span>myca-release<span class="w"> </span>autoscaler/cluster-autoscaler<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">    </span>--set<span class="w"> </span>autoDiscovery.clusterName<span class="o">=</span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span>--set<span class="w"> </span><span class="nv">awsRegion</span><span class="o">=</span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span>--set<span class="w"> </span>rbac.serviceAccount.create<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span>--set<span class="w"> </span>rbac.serviceAccount.name<span class="o">=</span>cluster-autoscaler
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="c1"># refer values</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="c1"># wget -O myca-values.yaml https://github.com/kubernetes/autoscaler/raw/master/charts/cluster-autoscaler/values.yaml</span>
 </code></pre></div></p>
 </li>
 <li>
 <p>check version<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>helm<span class="w"> </span>list<span class="w"> </span>-n<span class="w"> </span>kube-system
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>helm<span class="w"> </span>list<span class="w"> </span>-n<span class="w"> </span>kube-system
 </code></pre></div></p>
 </li>
 </ul>
@@ -3523,7 +3509,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-10-18T00:44:56+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-10-18</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-14T10:49:52+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-14</span>
       
         <br>
         Created:

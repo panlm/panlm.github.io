@@ -1242,14 +1242,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#install" class="md-nav__link">
+    install
+  </a>
+  
+    <nav class="md-nav" aria-label="install">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#install-using-eksdemo-" class="md-nav__link">
     install-using-eksdemo-
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#install" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#install_1" class="md-nav__link">
     install
   </a>
   
@@ -1267,6 +1275,11 @@
   <a href="#assign-policy-to-node" class="md-nav__link">
     assign policy to node
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -3281,14 +3294,22 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#install" class="md-nav__link">
+    install
+  </a>
+  
+    <nav class="md-nav" aria-label="install">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#install-using-eksdemo-" class="md-nav__link">
     install-using-eksdemo-
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
-  <a href="#install" class="md-nav__link">
+        
+          <li class="md-nav__item">
+  <a href="#install_1" class="md-nav__link">
     install
   </a>
   
@@ -3306,6 +3327,11 @@
   <a href="#assign-policy-to-node" class="md-nav__link">
     assign policy to node
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
         
@@ -3390,66 +3416,74 @@
 <p>[!WARNING] This is a github note</p>
 </blockquote>
 <h1 id="ebs-for-eks">ebs-for-eks<a class="headerlink" href="#ebs-for-eks" title="Permanent link">&para;</a></h1>
-<h2 id="install-using-eksdemo-">install-using-eksdemo-<a class="headerlink" href="#install-using-eksdemo-" title="Permanent link">&para;</a></h2>
+<h2 id="install">install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h2>
+<h3 id="install-using-eksdemo-">install-using-eksdemo-<a class="headerlink" href="#install-using-eksdemo-" title="Permanent link">&para;</a></h3>
 <ul>
-<li>assign new one if you already have a service account called <code>ebs-csi-controller-sa</code><br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">CLUSTER_NAME</span><span class="o">=</span>ekscluster1
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>eksdemo<span class="w"> </span>install<span class="w"> </span>storage-ebs-csi<span class="w"> </span>-c<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>
+<li>if you already have a service account called <code>ebs-csi-controller-sa</code>, delete it<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>eksctl<span class="w"> </span>delete<span class="w"> </span>iamserviceaccount<span class="w"> </span>-c<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>--name<span class="w"> </span>ebs-csi-controller-sa<span class="w"> </span>--namespace<span class="w"> </span>kube-system
+</code></pre></div></li>
+<li>install ebs plugin<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>eksdemo<span class="w"> </span>install<span class="w"> </span>storage-ebs-csi<span class="w"> </span>-c<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span>--namespace<span class="w"> </span>kube-system
 </code></pre></div></li>
 </ul>
-<h2 id="install">install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h2>
+<h3 id="install_1">install<a class="headerlink" href="#install_1" title="Permanent link">&para;</a></h3>
 <p><a href="https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/docs/install.md">https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/docs/install.md</a></p>
-<h3 id="ebs-csi">ebs-csi<a class="headerlink" href="#ebs-csi" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="p">:=ekscluster1</span><span class="si">}</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="p">:=us-east-2</span><span class="si">}</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/kubernetes-sigs/aws-ebs-csi-driver.git
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-k<span class="w"> </span>aws-ebs-csi-driver/deploy/kubernetes/overlays/stable
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># verify pod running</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>kube-system
+<h4 id="ebs-csi">ebs-csi<a class="headerlink" href="#ebs-csi" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="p">:=ekscluster1</span><span class="si">}</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="p">:=us-east-2</span><span class="si">}</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/kubernetes-sigs/aws-ebs-csi-driver.git
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-k<span class="w"> </span>aws-ebs-csi-driver/deploy/kubernetes/overlays/stable
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># verify pod running</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pods<span class="w"> </span>-n<span class="w"> </span>kube-system
 </code></pre></div>
-<h3 id="assign-policy-to-node">assign policy to node<a class="headerlink" href="#assign-policy-to-node" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># # (option) using customer managed policy</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># aws iam create-policy \</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1">#     --policy-name Amazon_EBS_CSI_Driver \</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1">#     --policy-document file://./aws-ebs-csi-driver/docs/example-iam-policy.json \</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1">#     --region ${AWS_REGION}</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="c1"># POLICY_NAME=$(aws iam list-policies \</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1">#   --query &#39;Policies[?PolicyName==`Amazon_EBS_CSI_Driver`].Arn&#39; \</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1">#   --output text --region ${AWS_REGION} )</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1"># using aws managed policy</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="nv">POLICY_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>iam<span class="w"> </span>list-policies<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">&#39;Policies[?PolicyName==`AmazonEBSCSIDriverPolicy`].Arn&#39;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="w"> </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="w"> </span><span class="k">)</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="c1"># check detail permission in this policy (need --no-cli-pager)</span>
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="c1"># aws iam get-policy-version --policy-arn ${POLICY_ARN} --version-id v1 --no-cli-pager</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
-<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="c1"># get vpc id</span>
-<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="nv">VPC_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>eks<span class="w"> </span>describe-cluster<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">  </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;cluster.resourcesVpcConfig.vpcId&quot;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="w"> </span><span class="k">)</span>
-<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="c1"># get nodegroups&#39; instance profiles</span>
-<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="nv">TAG</span><span class="o">=</span>tag:kubernetes.io/cluster/<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>
-<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="nv">INSTANCE_PROFILES</span><span class="o">=(</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">  </span>--filters<span class="w"> </span><span class="s2">&quot;Name=</span><span class="si">${</span><span class="nv">TAG</span><span class="si">}</span><span class="s2">,Values=owned&quot;</span><span class="w"> </span><span class="s2">&quot;Name=vpc-id,Values=</span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="se">\</span>
-<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">  </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Reservations[].Instances[].IamInstanceProfile.Arn&#39;</span><span class="w"> </span><span class="k">)</span><span class="w"> </span><span class="o">)</span>
-<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="c1"># get role arns for instance profiles</span>
-<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="nv">ROLE_ARNS</span><span class="o">=(</span><span class="k">$(for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="si">${</span><span class="nv">INSTANCE_PROFILES</span><span class="p">[@]</span><span class="si">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">  </span>aws<span class="w"> </span>iam<span class="w"> </span>get-instance-profile<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">    </span>--instance-profile-name<span class="w"> </span><span class="si">${</span><span class="nv">i</span><span class="p">##*/</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.InstanceProfile.Roles[0].Arn&#39;</span>
-<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="k">done</span><span class="w"> </span><span class="p">|</span>sort<span class="w"> </span>-u<span class="w"> </span><span class="k">)</span><span class="o">)</span>
-<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">ROLE_ARNS</span><span class="p">[@]</span><span class="si">}</span>
-<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>
-<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="c1"># attach policy to role</span>
-<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="si">${</span><span class="nv">ROLE_ARNS</span><span class="p">[@]</span><span class="si">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="w">  </span>aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--policy-arn<span class="w"> </span><span class="si">${</span><span class="nv">POLICY_ARN</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="w">    </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">i</span><span class="p">##*/</span><span class="si">}</span><span class="w"> </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span>
-<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="k">done</span>
+<h4 id="assign-policy-to-node">assign policy to node<a class="headerlink" href="#assign-policy-to-node" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># # (option) using customer managed policy</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># aws iam create-policy \</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="c1">#     --policy-name Amazon_EBS_CSI_Driver \</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1">#     --policy-document file://./aws-ebs-csi-driver/docs/example-iam-policy.json \</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1">#     --region ${AWS_REGION}</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1"># POLICY_NAME=$(aws iam list-policies \</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1">#   --query &#39;Policies[?PolicyName==`Amazon_EBS_CSI_Driver`].Arn&#39; \</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="c1">#   --output text --region ${AWS_REGION} )</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="c1"># using aws managed policy</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="nv">POLICY_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>iam<span class="w"> </span>list-policies<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">&#39;Policies[?PolicyName==`AmazonEBSCSIDriverPolicy`].Arn&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="w"> </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="w"> </span><span class="k">)</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="c1"># check detail permission in this policy (need --no-cli-pager)</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="c1"># aws iam get-policy-version --policy-arn ${POLICY_ARN} --version-id v1 --no-cli-pager</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="c1"># get vpc id</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="nv">VPC_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>eks<span class="w"> </span>describe-cluster<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">  </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;cluster.resourcesVpcConfig.vpcId&quot;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="w"> </span><span class="k">)</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="c1"># get nodegroups&#39; instance profiles</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="nv">TAG</span><span class="o">=</span>tag:kubernetes.io/cluster/<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="nv">INSTANCE_PROFILES</span><span class="o">=(</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">  </span>--filters<span class="w"> </span><span class="s2">&quot;Name=</span><span class="si">${</span><span class="nv">TAG</span><span class="si">}</span><span class="s2">,Values=owned&quot;</span><span class="w"> </span><span class="s2">&quot;Name=vpc-id,Values=</span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="se">\</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">  </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Reservations[].Instances[].IamInstanceProfile.Arn&#39;</span><span class="w"> </span><span class="k">)</span><span class="w"> </span><span class="o">)</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="c1"># get role arns for instance profiles</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="nv">ROLE_ARNS</span><span class="o">=(</span><span class="k">$(for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="si">${</span><span class="nv">INSTANCE_PROFILES</span><span class="p">[@]</span><span class="si">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">  </span>aws<span class="w"> </span>iam<span class="w"> </span>get-instance-profile<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="w">    </span>--instance-profile-name<span class="w"> </span><span class="si">${</span><span class="nv">i</span><span class="p">##*/</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.InstanceProfile.Roles[0].Arn&#39;</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="k">done</span><span class="w"> </span><span class="p">|</span>sort<span class="w"> </span>-u<span class="w"> </span><span class="k">)</span><span class="o">)</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">ROLE_ARNS</span><span class="p">[@]</span><span class="si">}</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a>
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="c1"># attach policy to role</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="si">${</span><span class="nv">ROLE_ARNS</span><span class="p">[@]</span><span class="si">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="w">  </span>aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--policy-arn<span class="w"> </span><span class="si">${</span><span class="nv">POLICY_ARN</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a><span class="w">    </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">i</span><span class="p">##*/</span><span class="si">}</span><span class="w"> </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span>
+<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a><span class="k">done</span>
 </code></pre></div>
 <h2 id="verify">verify<a class="headerlink" href="#verify" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>aws-ebs-csi-driver/examples/kubernetes/dynamic-provisioning/manifests/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>aws-ebs-csi-driver/examples/kubernetes/dynamic-provisioning/manifests/
 </code></pre></div>
 <h3 id="cross-az-pod-definition">cross az pod definition<a class="headerlink" href="#cross-az-pod-definition" title="Permanent link">&para;</a></h3>
 <ul>
@@ -3459,30 +3493,30 @@
 <li>check pod status pending</li>
 <li>kill pod and launch back to original az</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nt">metadata</span><span class="p">:</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nt">spec</span><span class="p">:</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1">#  nodeSelector:</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1">#    topology.kubernetes.io/zone: cn-northwest-1b</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">centos</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;/bin/sh&quot;</span><span class="p p-Indicator">]</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">    </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;-c&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;while</span><span class="nv"> </span><span class="s">true;</span><span class="nv"> </span><span class="s">do</span><span class="nv"> </span><span class="s">echo</span><span class="nv"> </span><span class="s">$(date</span><span class="nv"> </span><span class="s">-u)</span><span class="nv"> </span><span class="s">&gt;&gt;</span><span class="nv"> </span><span class="s">/data/out.txt;</span><span class="nv"> </span><span class="s">sleep</span><span class="nv"> </span><span class="s">5;</span><span class="nv"> </span><span class="s">done&quot;</span><span class="p p-Indicator">]</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="nt">volumeMounts</span><span class="p">:</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">persistent-storage</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">      </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/data</span>
-<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">persistent-storage</span>
-<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">    </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span>
-<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">      </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ebs-claim</span>
-<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">  </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Pod</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="c1">#  nodeSelector:</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1">#    topology.kubernetes.io/zone: cn-northwest-1b</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">app</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">centos</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="w">    </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;/bin/sh&quot;</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="w">    </span><span class="nt">args</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;-c&quot;</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="s">&quot;while</span><span class="nv"> </span><span class="s">true;</span><span class="nv"> </span><span class="s">do</span><span class="nv"> </span><span class="s">echo</span><span class="nv"> </span><span class="s">$(date</span><span class="nv"> </span><span class="s">-u)</span><span class="nv"> </span><span class="s">&gt;&gt;</span><span class="nv"> </span><span class="s">/data/out.txt;</span><span class="nv"> </span><span class="s">sleep</span><span class="nv"> </span><span class="s">5;</span><span class="nv"> </span><span class="s">done&quot;</span><span class="p p-Indicator">]</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="w">    </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">persistent-storage</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">      </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/data</span>
+<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">persistent-storage</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">    </span><span class="nt">persistentVolumeClaim</span><span class="p">:</span>
+<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">      </span><span class="nt">claimName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ebs-claim</span>
+<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">  </span><span class="nt">terminationGracePeriodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">0</span>
 </code></pre></div>
 <h2 id="check-log">check log<a class="headerlink" href="#check-log" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>k<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>deploy/ebs-csi-controller<span class="w"> </span>csi-provisioner<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>k<span class="w"> </span>logs<span class="w"> </span>-f<span class="w"> </span>deploy/ebs-csi-controller<span class="w"> </span>csi-provisioner<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span>
 </code></pre></div>
 <h3 id="ebs-csi-pod-has-6-container">ebs-csi-pod has 6 container<a class="headerlink" href="#ebs-csi-pod-has-6-container" title="Permanent link">&para;</a></h3>
 <ul>
@@ -3504,7 +3538,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-10T08:22:15+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-14T10:49:52+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-14</span>
       
         <br>
         Created:

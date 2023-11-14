@@ -2737,6 +2737,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#create-iamserviceaccount-" class="md-nav__link">
+    create-iamserviceaccount-
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#appmesh-cluster" class="md-nav__link">
     appmesh cluster
   </a>
@@ -3311,6 +3318,13 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#create-iamserviceaccount-" class="md-nav__link">
+    create-iamserviceaccount-
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#appmesh-cluster" class="md-nav__link">
     appmesh cluster
   </a>
@@ -3447,47 +3461,70 @@
 <a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>--nodes<span class="o">=</span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="si">${</span><span class="nv">NODEGROUP_NAME</span><span class="si">}</span>
 </code></pre></div>
+<h2 id="create-iamserviceaccount-">create-iamserviceaccount-<a class="headerlink" href="#create-iamserviceaccount-" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">NAMESPACE_NAME</span><span class="si">}</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="k">function</span><span class="w"> </span>create-iamserviceaccount<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>-ne<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;format: </span><span class="nv">$0</span><span class="s2"> CLUSTER_NAME NAMESPACE_NAME &quot;</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">        </span><span class="k">return</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span><span class="k">else</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">        </span><span class="nb">local</span><span class="w"> </span><span class="nv">CLUSTER_NAME</span><span class="o">=</span><span class="nv">$1</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">        </span><span class="nb">local</span><span class="w"> </span><span class="nv">NAMESPACE_NAME</span><span class="o">=</span><span class="nv">$2</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">    </span><span class="k">fi</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="c1"># role only</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="nv">SA_NAME</span><span class="o">=</span>sa-s3-admin-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>-<span class="k">$(</span><span class="nv">TZ</span><span class="o">=</span>EAT-8<span class="w"> </span>date<span class="w"> </span>+%Y%m%d-%H%M<span class="k">)</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a>eksctl<span class="w"> </span>create<span class="w"> </span>iamserviceaccount<span class="w"> </span>-c<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">    </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">SA_NAME</span><span class="si">}</span><span class="w"> </span>--namespace<span class="w"> </span><span class="si">${</span><span class="nv">NAMESPACE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">    </span>--attach-policy-arn<span class="w"> </span>arn:aws:iam::aws:policy/AmazonS3FullAccess<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">    </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">SA_NAME</span><span class="si">}</span><span class="w"> </span>--role-only<span class="w"> </span>--approve
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="nv">S3_ADMIN_ROLE_ARN</span><span class="o">=</span><span class="k">$(</span>eksctl<span class="w"> </span>get<span class="w"> </span>iamserviceaccount<span class="w"> </span>-c<span class="w"> </span><span class="nv">$CLUSTER_NAME</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="w">    </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">SA_NAME</span><span class="si">}</span><span class="w"> </span>-o<span class="w"> </span>json<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.[].status.roleARN&#39;</span><span class="k">)</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="o">}</span>
+</code></pre></div>
 <h2 id="appmesh-cluster">appmesh cluster<a class="headerlink" href="#appmesh-cluster" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>eksctl<span class="w"> </span>create<span class="w"> </span>cluster<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>--name<span class="w"> </span>appmeshtest<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>--nodes-min<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>--nodes-max<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>--nodes<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>--auto-kubeconfig<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>--full-ecr-access<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>--appmesh-access
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>eksctl<span class="w"> </span>create<span class="w"> </span>cluster<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>--name<span class="w"> </span>appmeshtest<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>--nodes-min<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>--nodes-max<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>--nodes<span class="w"> </span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>--auto-kubeconfig<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>--full-ecr-access<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>--appmesh-access
 </code></pre></div>
 <h3 id="appmesh-access-">appmesh-access-<a class="headerlink" href="#appmesh-access-" title="Permanent link">&para;</a></h3>
 <p><code>--appmesh-access</code> will apply customer inline policy for appmesh</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>{
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>    &quot;Version&quot;: &quot;2012-10-17&quot;,
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>    &quot;Statement&quot;: [
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>        {
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>            &quot;Action&quot;: [
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>                &quot;servicediscovery:CreateService&quot;,
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>                &quot;servicediscovery:DeleteService&quot;,
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>                &quot;servicediscovery:GetService&quot;,
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>                &quot;servicediscovery:GetInstance&quot;,
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>                &quot;servicediscovery:RegisterInstance&quot;,
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>                &quot;servicediscovery:DeregisterInstance&quot;,
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>                &quot;servicediscovery:ListInstances&quot;,
-<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>                &quot;servicediscovery:ListNamespaces&quot;,
-<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>                &quot;servicediscovery:ListServices&quot;,
-<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>                &quot;servicediscovery:GetInstancesHealthStatus&quot;,
-<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a>                &quot;servicediscovery:UpdateInstanceCustomHealthStatus&quot;,
-<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a>                &quot;servicediscovery:GetOperation&quot;,
-<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a>                &quot;route53:GetHealthCheck&quot;,
-<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a>                &quot;route53:CreateHealthCheck&quot;,
-<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>                &quot;route53:UpdateHealthCheck&quot;,
-<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a>                &quot;route53:ChangeResourceRecordSets&quot;,
-<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a>                &quot;route53:DeleteHealthCheck&quot;,
-<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a>                &quot;appmesh:*&quot;
-<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a>            ],
-<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a>            &quot;Resource&quot;: &quot;*&quot;,
-<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a>            &quot;Effect&quot;: &quot;Allow&quot;
-<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a>        }
-<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a>    ]
-<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a>}
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>{
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>    &quot;Version&quot;: &quot;2012-10-17&quot;,
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    &quot;Statement&quot;: [
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>        {
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>            &quot;Action&quot;: [
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>                &quot;servicediscovery:CreateService&quot;,
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>                &quot;servicediscovery:DeleteService&quot;,
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>                &quot;servicediscovery:GetService&quot;,
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>                &quot;servicediscovery:GetInstance&quot;,
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>                &quot;servicediscovery:RegisterInstance&quot;,
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>                &quot;servicediscovery:DeregisterInstance&quot;,
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>                &quot;servicediscovery:ListInstances&quot;,
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>                &quot;servicediscovery:ListNamespaces&quot;,
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>                &quot;servicediscovery:ListServices&quot;,
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>                &quot;servicediscovery:GetInstancesHealthStatus&quot;,
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a>                &quot;servicediscovery:UpdateInstanceCustomHealthStatus&quot;,
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a>                &quot;servicediscovery:GetOperation&quot;,
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a>                &quot;route53:GetHealthCheck&quot;,
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a>                &quot;route53:CreateHealthCheck&quot;,
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a>                &quot;route53:UpdateHealthCheck&quot;,
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a>                &quot;route53:ChangeResourceRecordSets&quot;,
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a>                &quot;route53:DeleteHealthCheck&quot;,
+<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a>                &quot;appmesh:*&quot;
+<a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a>            ],
+<a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a>            &quot;Resource&quot;: &quot;*&quot;,
+<a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a>            &quot;Effect&quot;: &quot;Allow&quot;
+<a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a>        }
+<a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a>    ]
+<a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a>}
 </code></pre></div>
 <h3 id="full-ecr-access">full-ecr-access<a class="headerlink" href="#full-ecr-access" title="Permanent link">&para;</a></h3>
 <p><code>--full-ecr-access</code> will apply ECR power user policy to node</p>
@@ -3505,7 +3542,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-10T08:22:15+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-14T10:49:52+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-14</span>
       
         <br>
         Created:
