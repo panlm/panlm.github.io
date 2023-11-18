@@ -2,7 +2,7 @@
 title: eks-private-access-cluster
 description: 在已有 vpc 中创建私有访问的 eks 集群
 created: 2022-03-24 11:20:13.594
-last_modified: 2023-11-13
+last_modified: 2023-11-18
 tags:
   - aws/container/eks
 ---

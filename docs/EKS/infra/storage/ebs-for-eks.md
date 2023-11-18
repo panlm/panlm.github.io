@@ -2,7 +2,7 @@
 title: ebs-for-eks
 description: "使用 ebs 作为 pod 持久化存储 "
 created: 2022-06-24 14:41:33.643
-last_modified: 2023-11-13
+last_modified: 2023-11-18
 tags:
   - aws/storage/ebs
   - aws/container/eks

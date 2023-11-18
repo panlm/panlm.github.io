@@ -7,9 +7,7 @@ tags:
   - aws/container/eks
   - aws/china
 ---
-
 > [!WARNING] This is a github note
-
 # eks-public-access-cluster-in-china-region
 
 1. create cloud9

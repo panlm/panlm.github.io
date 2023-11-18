@@ -70,7 +70,7 @@ helm install -f values-1.yaml ${DEPLOY_NAME} prometheus-community/kube-prometheu
 
 ```
 
-- refer: [[POC-prometheus-ha-architect-with-thanos#go-through-]]
+- refer: [[thanos/POC-prometheus-ha-architect-with-thanos#go-through-]]
 
 ## (Optional) install prometheus and grafana
 

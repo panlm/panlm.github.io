@@ -2,7 +2,7 @@
 title: setup cloud9 for eks
 description: 使用 cloud9 作为实验环境
 created: 2022-05-21 12:46:05.435
-last_modified: 2023-11-14
+last_modified: 2023-11-18
 tags:
   - aws/container/eks
   - aws/cloud9
@@ -68,7 +68,7 @@ source ~/.bash_profile
 
 ```
 
-## install in cloud9- 
+## install-in-cloud9- 
 
 - 下面代码块包含一些基本设置，包括：(execute this code block to install tools for your lab, and resize ebs of cloud9)
     - 安装更新常用的软件
@@ -139,7 +139,7 @@ echo "SCRIPT-PART-TWO-BEGIN"
 echo "###"
 
 mv -f ~/.bash_completion ~/.bash_completion.$(date +%N)
-# install kubectl with +/- 1 cluster version 1.25.14 / 1.26.9 / 1.27.6
+# install kubectl with +/- 1 cluster version 1.24.17 / 1.25.14 / 1.26.9 / 1.27.6
 # refer: https://kubernetes.io/releases/
 # sudo curl --location -o /usr/local/bin/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 sudo curl --silent --location -o /usr/local/bin/kubectl "https://storage.googleapis.com/kubernetes-release/release/v1.25.14/bin/linux/amd64/kubectl"
@@ -166,6 +166,13 @@ source ~/.bash_completion
 # install kubectx
 curl -L "https://github.com/ahmetb/kubectx/releases/download/v0.9.5/kubectx_v0.9.5_linux_x86_64.tar.gz" |tar xz -C /tmp/
 sudo mv -f /tmp/kubectx /usr/local/bin/
+# install kubens
+curl -L "https://github.com/ahmetb/kubectx/releases/download/v0.9.5/kubens_v0.9.5_linux_x86_64.tar.gz" |tar xz -C /tmp/
+sudo mv -f /tmp/kubens /usr/local/bin/
+
+# install k9s
+curl -L "https://github.com/derailed/k9s/releases/latest/download/k9s_Linux_amd64.tar.gz" |tar xz -C /tmp/
+sudo mv -f /tmp/k9s /usr/local/bin/
 
 # install eksdemo
 curl -L "https://github.com/awslabs/eksdemo/releases/latest/download/eksdemo_$(uname -s)_$(uname -p).tar.gz" |tar xz -C /tmp/

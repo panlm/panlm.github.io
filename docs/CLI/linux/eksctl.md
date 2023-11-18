@@ -2,7 +2,7 @@
 title: eksctl
 description: 常用命令
 created: 2022-03-09 21:30:00.815
-last_modified: 2023-11-14
+last_modified: 2023-11-18
 tags:
   - aws/container/eks
 ---
@@ -24,7 +24,7 @@ eksctl completion bash >> ~/.bash_completion
 . ~/.bash_completion
 ```
 
-refer: [[git/git-mkdocs/cloud9/setup-cloud9-for-eks#install in cloud9-]]
+refer: [[git/git-mkdocs/cloud9/setup-cloud9-for-eks#install-in-cloud9-]] 
 
 
 ## iamidentitymapping
@@ -114,22 +114,30 @@ echo ${CLUSTER_NAME}
 echo ${NAMESPACE_NAME}
 
 function create-iamserviceaccount () {
-    if [[ $# -ne 2 ]]; then
-        echo "format: $0 CLUSTER_NAME NAMESPACE_NAME "
+    if [[ $# -ne 4 ]]; then
+        echo "format: $0 SA_NAME CLUSTER_NAME NAMESPACE_NAME 0"
         return
     else
-        local CLUSTER_NAME=$1
-        local NAMESPACE_NAME=$2
+        local SA_NAME=$(echo $1)
+        local CLUSTER_NAME=$2
+        local NAMESPACE_NAME=$3
+        local ROLE_ONLY=$4
     fi
-    
-# role only
-SA_NAME=sa-s3-admin-${CLUSTER_NAME}-$(TZ=EAT-8 date +%Y%m%d-%H%M)
-eksctl create iamserviceaccount -c ${CLUSTER_NAME} \
-    --name ${SA_NAME} --namespace ${NAMESPACE_NAME} \
-    --attach-policy-arn arn:aws:iam::aws:policy/AmazonS3FullAccess \
-    --role-name ${SA_NAME} --role-only --approve
-S3_ADMIN_ROLE_ARN=$(eksctl get iamserviceaccount -c $CLUSTER_NAME \
-    --name ${SA_NAME} -o json |jq -r '.[].status.roleARN')
+
+    if [[ ROLE_ONLY -eq 0 ]]; then
+        local ROLE_OPTION="--role-only"
+    else
+        local ROLE_OPTION=""
+    fi
+
+    echo ${SA_NAME:=sa-s3-admin-$(TZ=EAT-8 date +%Y%m%d-%H%M)}
+    eksctl create iamserviceaccount -c ${CLUSTER_NAME} \
+        --name ${SA_NAME} --namespace ${NAMESPACE_NAME} \
+        --attach-policy-arn arn:aws:iam::aws:policy/AmazonS3FullAccess \
+        --role-name ${SA_NAME} ${ROLE_OPTION} --approve \
+        --override-existing-serviceaccounts
+    S3_ADMIN_ROLE_ARN=$(eksctl get iamserviceaccount -c $CLUSTER_NAME \
+        --name ${SA_NAME} -o json |jq -r '.[].status.roleARN')
 }
 ```
 

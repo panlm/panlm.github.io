@@ -1,5 +1,5 @@
 ---
-last_modified: 2023-11-03 15:50:45.923
+last_modified: 2023-11-18
 number headings: first-level 2, max 3, 1.1, auto
 ---
 
@@ -46,7 +46,7 @@ refer: [[EKS/index]]
 - [[automated-canary-deployment-using-flagger]]: 自动化 canary 部署
 - [[eks-custom-network]]: custom network 可以解决子网地址段耗尽的问题
 - [[eks-upgrade-procedure]]: eks 集群升级
-- [[eks-public-access-cluster-in-china-region]]: 在中国区域，创建共有访问的 eks 集群
+- [[EKS/infra/cluster/eks-public-access-cluster-in-china-region]]: 在中国区域，创建共有访问的 eks 集群
 - [[install-grafana-lab]]: 在 EC2 / beanstalk / EKS 上安装 grafana 
 - [[appmesh-workshop-eks]]: appmesh workshop
 - [[efs-for-eks]]: 使用 efs 作为 pod 持久化存储

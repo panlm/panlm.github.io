@@ -30,7 +30,7 @@ kubent -t 1.25
 
 ### windows
 
-https://github.com/doitintl/kube-no-trouble/releases/download/nightly-0.7.0-53-g4fa4920/kubent-nightly-0.7.0-53-g4fa4920-windows-amd64.tar.gz
+- https://github.com/doitintl/kube-no-trouble/releases/download/nightly-0.7.0-53-g4fa4920/kubent-nightly-0.7.0-53-g4fa4920-windows-amd64.tar.gz
 
 
 

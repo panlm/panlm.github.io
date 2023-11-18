@@ -1,10 +1,8 @@
 ---
 title: eks-public-access-cluster
 description: 创建公有访问的 eks 集群
-chapter: true
-weight: 20
 created: 2022-05-21 12:43:38.021
-last_modified: 2023-11-13
+last_modified: 2023-11-18
 tags:
   - aws/container/eks
 ---
@@ -17,14 +15,14 @@ tags:
 - do not need to create vpc in advance
 - [[../../../cloud9/setup-cloud9-for-eks]] or using your local environment
 
-## cluster yaml
+## create cluster from scratch
 
 - don't put `subnets`/`sharedNodeSecurityGroup` in your `vpc` section. eksctl will create a clean vpc for you
 - don't use `privateCluster` section, you could make cluster api server endpoint `public` or `public and private`
 - you still could put your group node in private subnet for security consideration
-- recommend for most of poc environment
+- recommend for most of POC environment
 
-### create-eks-cluster
+### create eks cluster
 
 - 将在下面区域创建 EKS 集群 (prepare to create eks cluster)
 ```sh
@@ -159,7 +157,7 @@ EOF
 - 托管节点没有 `/var/lib/cloud/scripts/eksctl/bootstrap.helper.sh` 脚本，导致当使用定制 ami 并且 extra args 中 NODE_LABELS 参数丢失。(refer [link](https://eksctl.io/announcements/nodegroup-override-announcement/))
 
 
-## access eks cluster from web console
+### access eks cluster from web console
 
 - 将实验环境对应的 `TeamRole` 角色作为集群管理员，方便使用 web 页面查看 eks 集群
 ```sh
@@ -180,11 +178,12 @@ done
 ```
 
 
-## create cluster in existed subnet
+## create cluster in existed VPC
 
 - get target vpc id
-- create sg [[../../../../../notes/ec2-cmd#create-sg-]]
-- get vpc info [[git/git-mkdocs/EKS/infra/cluster/eks-private-access-cluster#prep-config-]]
+- create SG ([[../../../../../notes/ec2-cmd#create-sg-]])
+    - or using existed cluster's shared SG (see chapter refer)
+- get vpc info ([[git/git-mkdocs/EKS/infra/cluster/eks-private-access-cluster#prep-config-]])
 - cluster yaml
 ```yaml
 ---
@@ -210,6 +209,9 @@ vpc:
       us-east-2b:
         id: subnet-xxxxxxxx
   sharedNodeSecurityGroup: sg-xxxxxxxx
+  clusterEndpoints:
+    privateAccess: true
+    publicAccess: true
 
 cloudWatch:
   clusterLogging:
@@ -240,19 +242,12 @@ addons:
   version: latest
 ```
 
-## default tags on subnet
-
-- [[eksctl-default-tags-on-subnet]]
-
-
-## network topo preview
-
-- [[TC-security-group-for-eks-deepdive]]
-
 
 ## refer
 
+- [[TC-security-group-for-eks-deepdive]]
 - [[eks-private-access-cluster]]
 - [[eks-nodegroup]]
+- [[eksctl-default-tags-on-subnet]]
 
 

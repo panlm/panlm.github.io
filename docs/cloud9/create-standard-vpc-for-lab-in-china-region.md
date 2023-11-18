@@ -7,11 +7,7 @@ tags:
   - aws/network/vpc
   - aws/mgmt/cloudformation
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # create standard vpc for lab in china region
 
