@@ -2,7 +2,7 @@
 title: github-page-howto
 description: github-page-howto
 created: 2023-01-02 13:55:05.242
-last_modified: 2023-11-14
+last_modified: 2023-11-19
 tags:
   - github
 ---
@@ -67,4 +67,8 @@ git submodule update
 - For full documentation visit [mkdocs.org](https://www.mkdocs.org)
 
 
-
+## mkdocs
+### review local
+```sh
+mkdocs serve
+```

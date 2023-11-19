@@ -2,7 +2,7 @@
 title: acm
 description: 常用命令
 created: 2023-03-15 11:58:12.994
-last_modified: 2023-11-12
+last_modified: 2023-11-18
 tags:
   - aws/cmd
   - aws/security/acm
