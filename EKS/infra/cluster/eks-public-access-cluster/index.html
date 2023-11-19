@@ -14,11 +14,11 @@
         <link rel="prev" href="../eks-public-access-cluster-in-china-region/">
       
       
-        <link rel="next" href="../eks-terraform-cluster/">
+        <link rel="next" href="../eks-private-access-cluster/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.8">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.9">
     
     
       
@@ -26,7 +26,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.4b4a2bd9.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.78cf6014.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.356b1318.min.css">
@@ -706,26 +706,6 @@
   
   
     <li class="md-nav__item">
-      <a href="../eks-private-access-cluster/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    eks-private-access-cluster
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
       <a href="../eks-public-access-cluster-in-china-region/" class="md-nav__link">
         
   
@@ -793,29 +773,46 @@
       
         <li class="md-nav__item">
   <a href="#prep" class="md-nav__link">
-    prep
+    <span class="md-ellipsis">
+      prep
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#cluster-yaml" class="md-nav__link">
-    cluster yaml
+  <a href="#create-cluster-from-scratch" class="md-nav__link">
+    <span class="md-ellipsis">
+      create cluster from scratch
+    </span>
   </a>
   
-    <nav class="md-nav" aria-label="cluster yaml">
+    <nav class="md-nav" aria-label="create cluster from scratch">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#create-eks-cluster" class="md-nav__link">
-    create-eks-cluster
+    <span class="md-ellipsis">
+      create eks cluster
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#get-newest-ami" class="md-nav__link">
-    get-newest-ami
+    <span class="md-ellipsis">
+      get-newest-ami
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-eks-cluster-from-web-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      access eks cluster from web console
+    </span>
   </a>
   
 </li>
@@ -826,36 +823,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#access-eks-cluster-from-web-console" class="md-nav__link">
-    access eks cluster from web console
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-cluster-in-existed-subnet" class="md-nav__link">
-    create cluster in existed subnet
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#default-tags-on-subnet" class="md-nav__link">
-    default tags on subnet
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#network-topo-preview" class="md-nav__link">
-    network topo preview
+  <a href="#create-cluster-in-existed-vpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      create cluster in existed VPC
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#refer" class="md-nav__link">
-    refer
+    <span class="md-ellipsis">
+      refer
+    </span>
   </a>
   
 </li>
@@ -864,6 +844,26 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../eks-private-access-cluster/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-private-access-cluster
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -1044,6 +1044,96 @@
   
   
   
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_3_1" id="__nav_3_2_3_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Appmesh
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_2_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            Appmesh
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../network/appmesh/appmesh-workshop-eks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    appmesh-workshop-eks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../network/appmesh/automated-canary-deployment-using-flagger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    automated-canary-deployment-using-flagger
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../network/aws-load-balancer-controller/" class="md-nav__link">
         
@@ -1154,96 +1244,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-    
-    
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_7" >
-        
-          
-          <label class="md-nav__link" for="__nav_3_2_3_7" id="__nav_3_2_3_7_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Appmesh
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_2_3_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_2_3_7">
-            <span class="md-nav__icon md-icon"></span>
-            Appmesh
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../network/appmesh/appmesh-workshop-eks/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    appmesh-workshop-eks
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../network/appmesh/automated-canary-deployment-using-flagger/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    automated-canary-deployment-using-flagger
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
     </li>
   
 
@@ -3277,29 +3277,46 @@
       
         <li class="md-nav__item">
   <a href="#prep" class="md-nav__link">
-    prep
+    <span class="md-ellipsis">
+      prep
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#cluster-yaml" class="md-nav__link">
-    cluster yaml
+  <a href="#create-cluster-from-scratch" class="md-nav__link">
+    <span class="md-ellipsis">
+      create cluster from scratch
+    </span>
   </a>
   
-    <nav class="md-nav" aria-label="cluster yaml">
+    <nav class="md-nav" aria-label="create cluster from scratch">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
   <a href="#create-eks-cluster" class="md-nav__link">
-    create-eks-cluster
+    <span class="md-ellipsis">
+      create eks cluster
+    </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
   <a href="#get-newest-ami" class="md-nav__link">
-    get-newest-ami
+    <span class="md-ellipsis">
+      get-newest-ami
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-eks-cluster-from-web-console" class="md-nav__link">
+    <span class="md-ellipsis">
+      access eks cluster from web console
+    </span>
   </a>
   
 </li>
@@ -3310,36 +3327,19 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#access-eks-cluster-from-web-console" class="md-nav__link">
-    access eks cluster from web console
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-cluster-in-existed-subnet" class="md-nav__link">
-    create cluster in existed subnet
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#default-tags-on-subnet" class="md-nav__link">
-    default tags on subnet
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#network-topo-preview" class="md-nav__link">
-    network topo preview
+  <a href="#create-cluster-in-existed-vpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      create cluster in existed VPC
+    </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
   <a href="#refer" class="md-nav__link">
-    refer
+    <span class="md-ellipsis">
+      refer
+    </span>
   </a>
   
 </li>
@@ -3379,14 +3379,14 @@
 <li>do not need to create vpc in advance</li>
 <li><a href="../../../../cloud9/setup-cloud9-for-eks/" title="../../../cloud9/setup-cloud9-for-eks">../../../cloud9/setup-cloud9-for-eks</a> or using your local environment</li>
 </ul>
-<h2 id="cluster-yaml">cluster yaml<a class="headerlink" href="#cluster-yaml" title="Permanent link">&para;</a></h2>
+<h2 id="create-cluster-from-scratch">create cluster from scratch<a class="headerlink" href="#create-cluster-from-scratch" title="Permanent link">&para;</a></h2>
 <ul>
 <li>don&rsquo;t put <code>subnets</code>/<code>sharedNodeSecurityGroup</code> in your <code>vpc</code> section. eksctl will create a clean vpc for you</li>
 <li>don&rsquo;t use <code>privateCluster</code> section, you could make cluster api server endpoint <code>public</code> or <code>public and private</code></li>
 <li>you still could put your group node in private subnet for security consideration</li>
-<li>recommend for most of poc environment</li>
+<li>recommend for most of POC environment</li>
 </ul>
-<h3 id="create-eks-cluster">create-eks-cluster<a class="headerlink" href="#create-eks-cluster" title="Permanent link">&para;</a></h3>
+<h3 id="create-eks-cluster">create eks cluster<a class="headerlink" href="#create-eks-cluster" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
 <p>将在下面区域创建 EKS 集群 (prepare to create eks cluster)<br />
@@ -3526,7 +3526,7 @@
 <p>托管节点没有 <code>/var/lib/cloud/scripts/eksctl/bootstrap.helper.sh</code> 脚本，导致当使用定制 ami 并且 extra args 中 NODE_LABELS 参数丢失。(refer <a href="https://eksctl.io/announcements/nodegroup-override-announcement/">link</a>)</p>
 </li>
 </ul>
-<h2 id="access-eks-cluster-from-web-console">access eks cluster from web console<a class="headerlink" href="#access-eks-cluster-from-web-console" title="Permanent link">&para;</a></h2>
+<h3 id="access-eks-cluster-from-web-console">access eks cluster from web console<a class="headerlink" href="#access-eks-cluster-from-web-console" title="Permanent link">&para;</a></h3>
 <ul>
 <li>将实验环境对应的 <code>TeamRole</code> 角色作为集群管理员，方便使用 web 页面查看 eks 集群<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>
@@ -3544,11 +3544,14 @@
 <a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="k">done</span>
 </code></pre></div></li>
 </ul>
-<h2 id="create-cluster-in-existed-subnet">create cluster in existed subnet<a class="headerlink" href="#create-cluster-in-existed-subnet" title="Permanent link">&para;</a></h2>
+<h2 id="create-cluster-in-existed-vpc">create cluster in existed VPC<a class="headerlink" href="#create-cluster-in-existed-vpc" title="Permanent link">&para;</a></h2>
 <ul>
 <li>get target vpc id</li>
-<li>create sg <a href="../../../../../../../../notes/ec2-cmd#create-sg-" title="../../../../../notes/ec2-cmd">../../../../../notes/ec2-cmd</a></li>
-<li>get vpc info <a href="../eks-private-access-cluster/#prep-config-" title="git/git-mkdocs/EKS/infra/cluster/eks-private-access-cluster">git/git-mkdocs/EKS/infra/cluster/eks-private-access-cluster</a></li>
+<li>create SG (<a href="../../../../../../../../notes/ec2-cmd#create-sg-" title="../../../../../notes/ec2-cmd">../../../../../notes/ec2-cmd</a>)<ul>
+<li>or using existed cluster&rsquo;s shared SG (see chapter refer)</li>
+</ul>
+</li>
+<li>get vpc info (<a href="../eks-private-access-cluster/#prep-config-" title="git/git-mkdocs/EKS/infra/cluster/eks-private-access-cluster">git/git-mkdocs/EKS/infra/cluster/eks-private-access-cluster</a>)</li>
 <li>cluster yaml<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nn">---</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eksctl.io/v1alpha5</span>
@@ -3573,50 +3576,47 @@
 <a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">      </span><span class="nt">us-east-2b</span><span class="p">:</span>
 <a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">subnet-xxxxxxxx</span>
 <a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">  </span><span class="nt">sharedNodeSecurityGroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sg-xxxxxxxx</span>
-<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a>
-<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="nt">cloudWatch</span><span class="p">:</span>
-<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">  </span><span class="nt">clusterLogging</span><span class="p">:</span>
-<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">    </span><span class="nt">enableTypes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">]</span>
-<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a>
-<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="c1"># secretsEncryption:</span>
-<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="c1">#   keyARN: ${MASTER_ARN}</span>
+<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">  </span><span class="nt">clusterEndpoints</span><span class="p">:</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">    </span><span class="nt">privateAccess</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">    </span><span class="nt">publicAccess</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>
+<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="nt">cloudWatch</span><span class="p">:</span>
+<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">  </span><span class="nt">clusterLogging</span><span class="p">:</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="w">    </span><span class="nt">enableTypes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">]</span>
 <a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a>
-<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="nt">managedNodeGroups</span><span class="p">:</span>
-<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a>
-<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mng1</span>
-<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="w">  </span><span class="nt">minSize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a><span class="w">  </span><span class="nt">maxSize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
-<a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a><span class="w">  </span><span class="nt">desiredCapacity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
-<a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a><span class="w">  </span><span class="nt">instanceType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">m5.large</span>
-<a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a><span class="w">  </span><span class="nt">ssh</span><span class="p">:</span>
-<a id="__codelineno-5-40" name="__codelineno-5-40" href="#__codelineno-5-40"></a><span class="w">    </span><span class="nt">enableSsm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<a id="__codelineno-5-41" name="__codelineno-5-41" href="#__codelineno-5-41"></a><span class="w">  </span><span class="nt">privateNetworking</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<a id="__codelineno-5-42" name="__codelineno-5-42" href="#__codelineno-5-42"></a>
-<a id="__codelineno-5-43" name="__codelineno-5-43" href="#__codelineno-5-43"></a><span class="nt">iam</span><span class="p">:</span>
-<a id="__codelineno-5-44" name="__codelineno-5-44" href="#__codelineno-5-44"></a><span class="w">  </span><span class="nt">withOIDC</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="c1"># secretsEncryption:</span>
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="c1">#   keyARN: ${MASTER_ARN}</span>
+<a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a>
+<a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a><span class="nt">managedNodeGroups</span><span class="p">:</span>
+<a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a>
+<a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mng1</span>
+<a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a><span class="w">  </span><span class="nt">minSize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a><span class="w">  </span><span class="nt">maxSize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
+<a id="__codelineno-5-40" name="__codelineno-5-40" href="#__codelineno-5-40"></a><span class="w">  </span><span class="nt">desiredCapacity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<a id="__codelineno-5-41" name="__codelineno-5-41" href="#__codelineno-5-41"></a><span class="w">  </span><span class="nt">instanceType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">m5.large</span>
+<a id="__codelineno-5-42" name="__codelineno-5-42" href="#__codelineno-5-42"></a><span class="w">  </span><span class="nt">ssh</span><span class="p">:</span>
+<a id="__codelineno-5-43" name="__codelineno-5-43" href="#__codelineno-5-43"></a><span class="w">    </span><span class="nt">enableSsm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-5-44" name="__codelineno-5-44" href="#__codelineno-5-44"></a><span class="w">  </span><span class="nt">privateNetworking</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 <a id="__codelineno-5-45" name="__codelineno-5-45" href="#__codelineno-5-45"></a>
-<a id="__codelineno-5-46" name="__codelineno-5-46" href="#__codelineno-5-46"></a><span class="nt">addons</span><span class="p">:</span>
-<a id="__codelineno-5-47" name="__codelineno-5-47" href="#__codelineno-5-47"></a>
-<a id="__codelineno-5-48" name="__codelineno-5-48" href="#__codelineno-5-48"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vpc-cni</span><span class="w"> </span>
-<a id="__codelineno-5-49" name="__codelineno-5-49" href="#__codelineno-5-49"></a><span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">latest</span>
-<a id="__codelineno-5-50" name="__codelineno-5-50" href="#__codelineno-5-50"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">coredns</span>
-<a id="__codelineno-5-51" name="__codelineno-5-51" href="#__codelineno-5-51"></a><span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">latest</span><span class="w"> </span><span class="c1"># auto discovers the latest available</span>
-<a id="__codelineno-5-52" name="__codelineno-5-52" href="#__codelineno-5-52"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-proxy</span>
-<a id="__codelineno-5-53" name="__codelineno-5-53" href="#__codelineno-5-53"></a><span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">latest</span>
+<a id="__codelineno-5-46" name="__codelineno-5-46" href="#__codelineno-5-46"></a><span class="nt">iam</span><span class="p">:</span>
+<a id="__codelineno-5-47" name="__codelineno-5-47" href="#__codelineno-5-47"></a><span class="w">  </span><span class="nt">withOIDC</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-5-48" name="__codelineno-5-48" href="#__codelineno-5-48"></a>
+<a id="__codelineno-5-49" name="__codelineno-5-49" href="#__codelineno-5-49"></a><span class="nt">addons</span><span class="p">:</span>
+<a id="__codelineno-5-50" name="__codelineno-5-50" href="#__codelineno-5-50"></a>
+<a id="__codelineno-5-51" name="__codelineno-5-51" href="#__codelineno-5-51"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">vpc-cni</span><span class="w"> </span>
+<a id="__codelineno-5-52" name="__codelineno-5-52" href="#__codelineno-5-52"></a><span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">latest</span>
+<a id="__codelineno-5-53" name="__codelineno-5-53" href="#__codelineno-5-53"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">coredns</span>
+<a id="__codelineno-5-54" name="__codelineno-5-54" href="#__codelineno-5-54"></a><span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">latest</span><span class="w"> </span><span class="c1"># auto discovers the latest available</span>
+<a id="__codelineno-5-55" name="__codelineno-5-55" href="#__codelineno-5-55"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-proxy</span>
+<a id="__codelineno-5-56" name="__codelineno-5-56" href="#__codelineno-5-56"></a><span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">latest</span>
 </code></pre></div></li>
-</ul>
-<h2 id="default-tags-on-subnet">default tags on subnet<a class="headerlink" href="#default-tags-on-subnet" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="../../../eksctl-default-tags-on-subnet" title="eksctl-default-tags-on-subnet">eksctl-default-tags-on-subnet</a></li>
-</ul>
-<h2 id="network-topo-preview">network topo preview<a class="headerlink" href="#network-topo-preview" title="Permanent link">&para;</a></h2>
-<ul>
-<li><a href="../../../TC-security-group-for-eks-deepdive" title="TC-security-group-for-eks-deepdive">TC-security-group-for-eks-deepdive</a></li>
 </ul>
 <h2 id="refer">refer<a class="headerlink" href="#refer" title="Permanent link">&para;</a></h2>
 <ul>
+<li><a href="../../../TC-security-group-for-eks-deepdive" title="TC-security-group-for-eks-deepdive">TC-security-group-for-eks-deepdive</a></li>
 <li><a href="../eks-private-access-cluster/" title="eks-private-access-cluster">eks-private-access-cluster</a></li>
 <li><a href="../../../eks-nodegroup" title="eks-nodegroup">eks-nodegroup</a></li>
+<li><a href="../../../eksctl-default-tags-on-subnet" title="eksctl-default-tags-on-subnet">eksctl-default-tags-on-subnet</a></li>
 </ul>
 
   <hr>
@@ -3624,7 +3624,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-14T10:49:52+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-14</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-18T12:19:59+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-18</span>
       
         <br>
         Created:
@@ -3682,7 +3682,7 @@
     <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "toc.follow", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.81fa17fe.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.6c14ae12.min.js"></script>
       
         <script src="../../../../js/timeago.min.js"></script>
       
