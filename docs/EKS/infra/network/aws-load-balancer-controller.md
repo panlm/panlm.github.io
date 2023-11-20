@@ -2,7 +2,7 @@
 title: aws-load-balancer-controller
 description: 使用 aws 负载均衡控制器
 created: 2022-05-21 13:18:53.303
-last_modified: 2023-11-18
+last_modified: 2023-11-20
 tags:
   - aws/container/eks
   - kubernetes/ingress

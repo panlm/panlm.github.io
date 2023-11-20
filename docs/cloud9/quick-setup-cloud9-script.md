@@ -2,7 +2,7 @@
 title: quick setup cloud9 script
 description: 简化运行脚本
 created: 2023-08-04 15:56:59.747
-last_modified: 2023-11-13
+last_modified: 2023-11-20
 tags:
   - aws/cloud9
   - aws/container/eks
@@ -213,7 +213,8 @@ aws ssm send-command \
     --parameters file://$$.json \
     --timeout-seconds 600 \
     --max-concurrency "50" --max-errors "0"  \
-    --cloud-watch-output-config CloudWatchLogGroupName=${LOGGROUP_NAME},CloudWatchOutputEnabled=true |tee -a ssm-$$.json
+    --cloud-watch-output-config CloudWatchLogGroupName=${LOGGROUP_NAME},CloudWatchOutputEnabled=true |tee ssm-$$.json
+# comment "-a" in tee 2023/11/20
 
 # wait to Success
 COMMAND_ID=$(cat ssm-$$.json |jq -r '.Command.CommandId')

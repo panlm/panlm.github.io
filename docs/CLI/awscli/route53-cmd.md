@@ -2,7 +2,7 @@
 title: route53
 description: 常用命令
 created: 2022-09-20 09:02:35.112
-last_modified: 2023-11-18
+last_modified: 2023-11-20
 tags:
   - aws/network/route53
 ---

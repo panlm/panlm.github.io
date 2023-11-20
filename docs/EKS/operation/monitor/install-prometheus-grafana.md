@@ -2,7 +2,7 @@
 title: install-prometheus-grafana-on-eks
 description: 安装 grafana 和 prometheus
 created: 2023-02-18 21:31:31.678
-last_modified: 2023-11-18
+last_modified: 2023-11-20
 tags:
   - grafana
   - prometheus
@@ -70,7 +70,7 @@ helm install -f values-1.yaml ${DEPLOY_NAME} prometheus-community/kube-prometheu
 
 ```
 
-- refer: [[thanos/POC-prometheus-ha-architect-with-thanos#go-through-]]
+- refer: [[POC-prometheus-ha-architect-with-thanos#go-through-]]
 
 ## (Optional) install prometheus and grafana
 
