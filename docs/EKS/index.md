@@ -5,23 +5,19 @@ number headings: first-level 2, max 3, 1.1, auto
 > [!WARNING] This is a github note
 
 # EKS
-
 ## 1 infra
-
 ### 1.1 cluster
-
 ```expander
 (path:git/git-mkdocs/eks/infra/cluster file:.md)
 -  [[$filename]]: $frontmatter:description
 ```
--  [[eks-public-access-cluster]]: 创建公有访问的 eks 集群
 -  [[eks-private-access-cluster]]: 在已有 vpc 中创建私有访问的 eks 集群
--  [[infra/cluster/eks-public-access-cluster-in-china-region]]: 在中国区域，创建共有访问的 eks 集群
+-  [[eks-public-access-cluster-in-china-region]]: 在中国区域，创建共有访问的 eks 集群
+-  [[eks-public-access-cluster]]: 创建公有访问的 eks 集群
 -  [[eks-terraform-cluster]]: 使用 terraform 创建 eks 集群
 <-->
 
 ### 1.2 compute
-
 ```expander
 (path:git/git-mkdocs/eks/infra/compute file:.md)
 - [[$filename]]: $frontmatter:description
@@ -31,7 +27,6 @@ number headings: first-level 2, max 3, 1.1, auto
 <-->
 
 ### 1.3 network
-
 ```expander
 (path:git/git-mkdocs/eks/infra/network file:.md)
 - [[$filename]]: $frontmatter:description
@@ -47,7 +42,6 @@ number headings: first-level 2, max 3, 1.1, auto
 <-->
 
 ### 1.4 storage
-
 ```expander
 (path:git/git-mkdocs/eks/infra/storage file:.md)
 - [[$filename]]: $frontmatter:description
@@ -58,7 +52,6 @@ number headings: first-level 2, max 3, 1.1, auto
 
 ## 2 operation
 ### 2.1 gitops
-
 ```expander
 (path:git/git-mkdocs/eks/operation/gitops file:.md)
 - [[$filename]]: $frontmatter:description
@@ -68,7 +61,6 @@ number headings: first-level 2, max 3, 1.1, auto
 <-->
 
 ### 2.2 logging
-
 ```expander
 (path:git/git-mkdocs/eks/operation/logging file:.md)
 - [[$filename]]: $frontmatter:description
@@ -79,29 +71,29 @@ number headings: first-level 2, max 3, 1.1, auto
 <-->
 
 ### 2.3 monitor
-
 ```expander
 (path:git/git-mkdocs/eks/operation/monitor file:.md)
 - [[$filename]]: $frontmatter:description
 ```
+- [[POC-prometheus-ha-architect-with-thanos]]: 用 thanos 扩展 prometheus 高可用性架构
 - [[install-prometheus-grafana]]: 安装 grafana 和 prometheus
-- [[install-grafana-lab]]: 在 EC2 / beanstalk / EKS 上安装 grafana 
-- [[eks-container-insights]]: 启用 EKS 的 container insight 功能
 - [[metrics-server]]: EKS 集群中安装 metrics server
-- [[enable-prometheus-in-cloudwatch]]: 将 EKS 集群的 prometheus 数据汇总到 cloudwatch
 - [[cluster-autoscaler]]: EKS 集群中安装 Cluster Autoscaler
+- [[enable-prometheus-in-cloudwatch]]: 将 EKS 集群的 prometheus 数据汇总到 cloudwatch
+- [[eks-container-insights]]: 启用 EKS 的 container insight 功能
+- [[install-grafana-lab]]: 在 EC2 / beanstalk / EKS 上安装 grafana 
 <-->
 
 ### 2.4 upgrade
-
 ```expander
 (path:git/git-mkdocs/eks/operation/upgrade file:.md)
 - [[$filename]]: $frontmatter:description
 ```
 - [[cert-manager]]: cert-manager
+- [[kube-no-trouble]]: kube-no-trouble
+- [[kube-state-metrics]]: kube-state-metrics
 - [[eks-cluster-addons-list]]: EKS 常用插件清单
 - [[nginx-ingress-controller]]: nginx-ingress-controller
-- [[kube-no-trouble]]: kube-no-trouble
 - [[eks-upgrade-procedure]]: eks 集群升级
 - [[aws-for-fluent-bit]]: 
 - [[eks-addons-coredns]]: eks-addons-coredns
@@ -109,7 +101,6 @@ number headings: first-level 2, max 3, 1.1, auto
 - [[eks-addons-vpc-cni]]: eks-addons-vpc-cni
 - [[pluto]]: pluto
 - [[nginx-ingress-controller-nginx-ver]]: nginx-ingress-controller-nginx-ver
-- [[kube-state-metrics]]: kube-state-metrics
 - [[eksup]]: eksup
 - [[cni-metrics-helper]]: cni-metrics-helper
 <-->

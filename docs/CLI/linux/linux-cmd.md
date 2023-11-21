@@ -2,7 +2,7 @@
 title: linux-cmd
 description: 常用命令
 created: 2023-01-03 12:05:10.533
-last_modified: 2023-11-11
+last_modified: 2023-11-21
 tags:
   - cmd
   - linux
@@ -12,7 +12,6 @@ tags:
 # linux cmd
 
 ## brew
-
 - install
 ```sh
 sudo yum install -y git gcc make curl
@@ -22,19 +21,16 @@ sudo cp brew/bin/brew /usr/local/bin/
 ```
 
 ## curl
-
 - [[curl-sample-1]]
 - badssl.com
 
 ### check http return code
-
 ```sh
 curl -sL -w '%{http_code}' -o /dev/null "https://httpbin.org/status/302"
 
 ```
 
 ## ec2-instance-selector
-
 ```sh
 brew tap aws/tap
 brew install ec2-instance-selector
@@ -45,7 +41,6 @@ ec2-instance-selector -c 4 -m 16 -r us-east-2 -a arm64
 ```
 
 ## envsubst
-
 ```sh
 var1=string1
 var2=string2
@@ -62,7 +57,6 @@ cat $$.yaml |envsubst '$var1 $var2' > $$-new.yaml
 ```
 
 ## function
-
 - 在 func 中定义 local 变量，export 后在 func 外部依然无法访问
 ```sh
 function a() {
@@ -87,7 +81,6 @@ echo $var1
 ```
 
 ## history
-
 ```bash
 bash                        # open a new session.
 unset HISTFILE              # avoid recording commands to file.
@@ -99,7 +92,6 @@ exit
 ```
 
 ## ip-forward-
-
 ```sh
 echo 'net.ipv4.ip_forward = 1
 net.ipv4.conf.default.rp_filter = 0
@@ -109,15 +101,12 @@ sysctl -p
 ```
 
 ## iptables-
-
 ### MASQUERADE-
-
 ```sh
 iptables -t nat -A POSTROUTING  -j MASQUERADE
 ```
 
 ### iptables
-
 ```sh
 yum install iptables-services -y;
 
@@ -148,17 +137,14 @@ service iptables save;
 ```
 
 ## lsblk-
-
 ```
 lsblk -o name,mountpoint,label,size,uuid
 ```
 
 ## network monitor
-
 - https://www.tecmint.com/linux-network-bandwidth-monitoring-tools/
 
 ### iperf
-
 - https://aws.amazon.com/premiumsupport/knowledge-center/network-throughput-benchmark-linux-ec2/
 - server 
 ```sh
@@ -170,16 +156,13 @@ iperf -c 172.31.30.41 --parallel 40 -i 1 -t 2
 ```
 
 ## rsync 
-
 ### notable folder
-
 ```bash
 rsync -narv --delete /home/ubuntu/.notable /home/ubuntu/OneDrive/CrossSync/
 
 ```
 
 ### work-notes
-
 ```sh
 bash
 export HISTSIZE=0
@@ -189,7 +172,6 @@ rsync -avr --delete ./work-notes stevenpan@10.68.69.100:/Users/stevenpan/Documen
 ```
 
 ## sed
-
 ```sh
 file=file.md
 gsed -i 's/^!\[\[\([^]]\+\)\]\]/![](\1)/' ${file}
@@ -200,11 +182,9 @@ gsed -i 's/^!\[\[\([^]]\+\)\]\]/![](\1)/' ${file}
 ```
 
 ## sponge & tee & redirect to same file
-
 sponge  reads  standard input and writes it out to the specified file. Unlike a shell redirect, sponge soaks up all its input before opening the output file. This allows constructing pipelines that read from and write to the same file.
 
 ## tcp setting - TIME_WIAT
-
 ```sh
 net.ipv4.tcp_fin_timeout = 30
 net.ipv4.ip_local_port_range = 15000 65000
@@ -217,7 +197,6 @@ net.ipv4.conf.all.accept_source_route = 1
 ```
 
 ## traffic control
-
 ```sh
 yum install iproute-tc
 
@@ -238,7 +217,6 @@ xfs_db -c uuid /dev/nvme1n1
 ```
 
 ## xtop
-
 - top
 - htop
 - [[atop]]
@@ -248,7 +226,6 @@ iftop -t -s 10 > output
 ```
 
 ## ip address calc
-
 ```sh
 yum -y install sipcalc --enablerepo=epel
 ```
@@ -258,9 +235,7 @@ brew install sipcalc
 ```
 
 
-
 ## others
-
 - [[web-press-testing-tool]]
 - [[httpbin.org]]
 - [[badssl.com]]

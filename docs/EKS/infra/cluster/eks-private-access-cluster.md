@@ -2,7 +2,7 @@
 title: eks-private-access-cluster
 description: 在已有 vpc 中创建私有访问的 eks 集群
 created: 2022-03-24 11:20:13.594
-last_modified: 2023-11-20
+last_modified: 2023-11-21
 tags:
   - aws/container/eks
 ---
@@ -226,6 +226,8 @@ aws ssm get-parameter --name /aws/service/eks/optimized-ami/${EKS_VERSION}/amazo
 ```
 
 ### endpoint
+https://docs.aws.amazon.com/eks/latest/userguide/private-clusters.html#private-cluster-requirements
+
 - 设置 `skipEndpointCreation: false`，集群创建完成后将自动创建以下 endpoint，并且绑定 `sharedNodeSecurityGroup` 中指定的安全组
 	- logs
 	- s3 (gw)
@@ -243,12 +245,11 @@ aws ssm get-parameter --name /aws/service/eks/optimized-ami/${EKS_VERSION}/amazo
 	- kms （待验证）
 	- ebs （待验证）
 
-
 ## access cluster
 
-[[create-kubeconfig-manually]]
-[[recover-access-eks]]
-[[token-different]]
+- [[create-kubeconfig-manually]]
+- [[recover-access-eks]]
+- [[token-different]]
 
 
 ## issue about kubectl

@@ -2,7 +2,7 @@
 title: cert-manager
 description: cert-manager
 created: 2023-07-31 15:36:34.121
-last_modified: 2023-11-10
+last_modified: 2023-11-21
 tags:
   - kubernetes
   - aws/container/eks
@@ -10,8 +10,22 @@ tags:
 > [!WARNING] This is a github note
 
 # cert-manager
-
 ## install
+### install with eksdemo
+- https://github.com/awslabs/eksdemo/blob/main/docs/install-cert-manager.md
+```sh
+echo ${CLUSTER_NAME}
+echo ${AWS_REGION}
+eksdemo install cert-manager -c ${CLUSTER_NAME}
+
+kubectl get clusterissuer
+# default name is letsencrypt-prod
+```
+
+### install with helm
+- https://cert-manager.io/docs/installation/helm/
+
+### install manually
 - https://cert-manager.io/docs/installation/
 - install newest version 
 ```sh
@@ -23,25 +37,7 @@ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/latest/do
 
 ```
 
-### install with helm
-
-- https://cert-manager.io/docs/installation/helm/
-
-### install with eksdemo
-
-- https://github.com/awslabs/eksdemo/blob/main/docs/install-cert-manager.md
-```sh
-echo ${CLUSTER_NAME}
-echo ${AWS_REGION}
-eksdemo install cert-manager -c ${CLUSTER_NAME}
-
-kubectl get clusterissuer
-# default name is letsencrypt-prod
-```
-
-
-## issuer certificates
-
+## issuer-certificates-
 ```
 TEST_DOMAIN=thanos-gateway.poc1109.aws.panlm.xyz
 cat <<EOF | kubectl apply -f -

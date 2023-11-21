@@ -10,9 +10,7 @@ tags:
 > [!WARNING] This is a github note
 
 # acm-cmd
-
 ## create-certificate-with-eksdemo-
-
 - https://github.com/awslabs/eksdemo/blob/main/docs/create-acm-cert.md
 ```sh
 echo ${DOMAIN_NAME}
@@ -28,7 +26,6 @@ eksdemo get acm-certificate # get certificate arn
 ^kresvp
 
 ## create-certificate-
-
 - 创建并通过添加 dns 记录验证证书 (create certificate with DNS verification)
 ```sh
 echo ${DOMAIN_NAME}
@@ -87,7 +84,6 @@ aws acm describe-certificate \
 ```
 
 ## create certificate with pca  cross account
-
 ```sh
 PCA_ARN=arn:aws:acm-pca:us-east-2:xxxxxx:certificate-authority/xxxxxx
 aws acm request-certificate \
@@ -99,7 +95,6 @@ aws acm request-certificate \
 
 
 ## list certificate by domain name
-
 ```sh
 echo $DOMAIN_NAME
 CERTIFICATE_ARN=$(aws acm list-certificates --query 'CertificateSummaryList[?DomainName==`*.'"${DOMAIN_NAME}"'`].CertificateArn' --output text)

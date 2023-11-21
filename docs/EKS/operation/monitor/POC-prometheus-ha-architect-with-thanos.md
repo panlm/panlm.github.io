@@ -2,32 +2,42 @@
 title: POC-prometheus-ha-architect-with-thanos
 description: 用 thanos 扩展 prometheus 高可用性架构
 created: 2023-11-09 08:41:02.494
-last_modified: 2023-11-20
+last_modified: 2023-11-21
 tags:
   - kubernetes
   - aws/container/eks
 ---
 > [!WARNING] This is a github note
 
-# POC prometheus HA architect with thanos
+# Prometheus HA Architect with Thanos
 ## diagram
-- without remote write
+
+使用 Thanos 可以扩展 Prometheus 的高可用性架构，包含 2 种典型的多集群架构。
+
+下图展示第一种 Prometheus 架构，被监控集群（Observee）只部署 Prometheus 和 Alert Manager 等组件用于监控集群本身，且启用 Thanos 的 Sidecar 方式将 Prometheus 监控的历史数据定期归档到 S3；被监控集群上不部署 Grafana 组件。
+
+监控集群（Observer）除了部署 Prometheus 和 Alert Manager 组件用于监控集群本身之外，将额外部署 Grafana 作为统一 Dashboard 展示，此外还将部署 Thanos 相关组件，包括：
+- Thanos Store 组件：用于从 S3 上查询历史任务
+- Thanos Query 组件：用于执行查询任务，将所有数据源添加为 Query 的 Endpoint，包括被监控集群的 Thanos Sider Car、 Thanos Store、 Thanos Receive 等
+- Thanos Query Frontend：用于统一查询入口，并且负责将查询分片以提高性能
+
 ![[git/git-mkdocs/git-attachment/POC-prometheus-ha-architect-with-thanos-png-1.png]]
 
-- with remotewrite
+下图展示另一种 Prometheus 监控架构，与之前架构的区别在于被监控集群（Observee）除了启用 Thanos Sidecar 之外（下图中未展示），还启用了 Prometheus 的 Remote Write 功能，将未归档的数据以 WAL 方式远程传输到部署在监控集群（Observer）上的 Thanos Receive，以保证数据的冗余度。 Thanos Receive 同样可以将历史监控数据归档到 S3 上，且支持被 Thanos Query 直接查询。
+
 ![[../../../git-attachment/POC-prometheus-ha-architect-with-thanos-png-2.png]]
 
 ## go-through-
 ### prometheus
-- create `ekscluster1` for observer, `ekscluster2` for observee ([[git/git-mkdocs/EKS/infra/cluster/eks-public-access-cluster|eks-public-access-cluster]])
-- addons
-    - [[git/git-mkdocs/EKS/infra/network/aws-load-balancer-controller#install-with-eksdemo-|aws lbc]] 
+- we will create 2 clsuters, `ekscluster1` for observer, `ekscluster2` for observee ([[git/git-mkdocs/EKS/infra/cluster/eks-public-access-cluster|eks-public-access-cluster]])
+- and install following addons on each cluster
+    - [[git/git-mkdocs/EKS/infra/network/aws-load-balancer-controller#install-with-eksdemo-|aws load balancer controller]] 
     - [[git/git-mkdocs/EKS/infra/storage/ebs-for-eks#install-using-eksdemo-|ebs csi]] 
     - [[git/git-mkdocs/EKS/infra/network/externaldns-for-route53|externaldns-for-route53]] 
         - setup host zone ([[git/git-mkdocs/EKS/infra/network/externaldns-for-route53#setup-hosted-zone-]])
         - create ns record on up stream dns register ([[git/git-mkdocs/CLI/awscli/route53-cmd#create-ns-record-]])
         - install addon to eks ([[git/git-mkdocs/EKS/infra/network/externaldns-for-route53#install-with-eksdemo-]])
-- export values for modify later
+- export values for customization
 ```sh
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
@@ -36,41 +46,8 @@ helm show values prometheus-community/kube-prometheus-stack > values_default.yam
 ```
 - get sample yaml to foler `POC`
 ```sh
-mkdir POC
-cd POC
+mkdir POC && cd POC
 mkdir prometheus s3-config query store receive receive-controller
-```
-- create cert for tls communitication (skip)
-```sh
-echo ${DOMAIN_NAME}
-
-kubectl create ns monitoring
-
-THANOS_DOMAIN=thanos-gateway.${DOMAIN_NAME}
-envsubst >thanos-gateway-tls.yaml <<-EOF
-apiVersion: cert-manager.io/v1
-kind: Certificate
-metadata:
-  name: ${THANOS_DOMAIN}
-  namespace: monitoring
-spec:
-  secretName: thanos-gateway-tls
-  dnsNames:
-    - ${THANOS_DOMAIN}
-  issuerRef:
-    name: letsencrypt-prod
-    kind: ClusterIssuer
-EOF
-kubectl apply -f thanos-gateway-tls.yaml
-
-```
-- create certificate for TLS access ([[git/git-mkdocs/CLI/awscli/acm-cmd#create-certificate-with-eksdemo-]])
-```sh
-echo ${DOMAIN_NAME}
-eksdemo get acm-certificate
-
-CERTIFICATE_ARN=$(aws acm list-certificates --query 'CertificateSummaryList[?DomainName==`*.'"${DOMAIN_NAME}"'`].CertificateArn' --output text)
-
 ```
 
 #### observer cluster
