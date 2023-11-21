@@ -67,7 +67,18 @@
     
     
     
-  </head>
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -3294,25 +3305,25 @@
 <ul>
 <li>
 <p>create application <code>External AWS Account Application</code> from sso <code>Applications</code><br />
-<img alt="global-sso-and-china-aws-accounts-png-1.png" src="../../git-attachment/global-sso-and-china-aws-accounts-png-1.png" /></p>
+<a class="glightbox" href="../../git-attachment/global-sso-and-china-aws-accounts-png-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="global-sso-and-china-aws-accounts-png-1.png" src="../../git-attachment/global-sso-and-china-aws-accounts-png-1.png" /></a></p>
 </li>
 <li>
 <p>download <code>IAM Identity Center SAML metadata file</code> </p>
 </li>
 <li>
 <p>create identity provider in aws china account<br />
-<img alt="global-sso-and-china-aws-accounts-png-2.png" src="../../git-attachment/global-sso-and-china-aws-accounts-png-2.png" /></p>
+<a class="glightbox" href="../../git-attachment/global-sso-and-china-aws-accounts-png-2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="global-sso-and-china-aws-accounts-png-2.png" src="../../git-attachment/global-sso-and-china-aws-accounts-png-2.png" /></a></p>
 </li>
 <li>
 <p>create role for <code>SAML 2.0 federation</code> in aws china account, and assign policy to it<br />
-<img alt="global-sso-and-china-aws-accounts-png-3.png" src="../../git-attachment/global-sso-and-china-aws-accounts-png-3.png" /></p>
+<a class="glightbox" href="../../git-attachment/global-sso-and-china-aws-accounts-png-3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="global-sso-and-china-aws-accounts-png-3.png" src="../../git-attachment/global-sso-and-china-aws-accounts-png-3.png" /></a></p>
 </li>
 <li>
 <p>back to create application page, review application metadata</p>
 <ul>
 <li>using <code>https://signin.amazonaws.cn/saml</code></li>
 <li><del>original is <code>https://signin.aws.amazon.com/saml</code></del><br />
-<img alt="global-sso-and-china-aws-accounts-png-4.png" src="../../git-attachment/global-sso-and-china-aws-accounts-png-4.png" /></li>
+<a class="glightbox" href="../../git-attachment/global-sso-and-china-aws-accounts-png-4.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="global-sso-and-china-aws-accounts-png-4.png" src="../../git-attachment/global-sso-and-china-aws-accounts-png-4.png" /></a></li>
 </ul>
 </li>
 <li>
@@ -3344,7 +3355,7 @@
 <ul>
 <li>assign user to application and login<ul>
 <li>find login url from sso dashboard or reset user&rsquo;s password<br />
-<img alt="global-sso-and-china-aws-accounts-png-5.png|400" src="../../git-attachment/global-sso-and-china-aws-accounts-png-5.png" /></li>
+<a class="glightbox" href="../../git-attachment/global-sso-and-china-aws-accounts-png-5.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="global-sso-and-china-aws-accounts-png-5.png|400" src="../../git-attachment/global-sso-and-china-aws-accounts-png-5.png" /></a></li>
 </ul>
 </li>
 </ul>
@@ -3424,5 +3435,5 @@
         <script src="../../js/timeago_mkdocs_material.js"></script>
       
     
-  </body>
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

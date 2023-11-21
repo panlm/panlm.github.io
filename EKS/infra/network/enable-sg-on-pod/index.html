@@ -67,7 +67,18 @@
     
     
     
-  </head>
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -3302,9 +3313,9 @@
 <h2 id="useful-env-sg-on-pod">useful-env-sg-on-pod<a class="headerlink" href="#useful-env-sg-on-pod" title="Permanent link">&para;</a></h2>
 <p><em>considerations</em><br />
 <a href="https://docs.amazonaws.cn/en_us/eks/latest/userguide/security-groups-for-pods.html">https://docs.amazonaws.cn/en_us/eks/latest/userguide/security-groups-for-pods.html</a></p>
-<p><img alt="enable-sg-on-pod-png-1.png" src="../../../../git-attachment/enable-sg-on-pod-png-1.png" /></p>
+<p><a class="glightbox" href="../../../../git-attachment/enable-sg-on-pod-png-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="enable-sg-on-pod-png-1.png" src="../../../../git-attachment/enable-sg-on-pod-png-1.png" /></a></p>
 <p><a href="../../../upgrade-vpc-cni" title="upgrade-vpc-cni">upgrade-vpc-cni</a></p>
-<p><img alt="enable-sg-on-pod-png-2.png" src="../../../../git-attachment/enable-sg-on-pod-png-2.png" /></p>
+<p><a class="glightbox" href="../../../../git-attachment/enable-sg-on-pod-png-2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="enable-sg-on-pod-png-2.png" src="../../../../git-attachment/enable-sg-on-pod-png-2.png" /></a></p>
 <p>第一个参数允许pod 挂sg<br />
 第二个参数允许有sg的pod同时遵守network policy控制<br />
 第三个参数snat disable，允许跨vpc保留pod ip，不会转成primary eni ip (<a href="../../../eks-external-snat" title="eks-external-snat">eks-external-snat</a>)</p>
@@ -3584,5 +3595,5 @@ refer <a href="../../../awslbc-ingress-settings-ingress-group" title="awslbc-ing
         <script src="../../../../js/timeago_mkdocs_material.js"></script>
       
     
-  </body>
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

@@ -67,7 +67,18 @@
     
     
     
-  </head>
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -3350,7 +3361,7 @@
 </code></pre></div>
 <h1 id="aws-cdk-private-api-and-application-load-balancer-demo">AWS CDK Private API and Application Load Balancer Demo<a class="headerlink" href="#aws-cdk-private-api-and-application-load-balancer-demo" title="Permanent link">&para;</a></h1>
 <p><a href="https://github.com/markilott/aws-cdk-internal-private-api-demo">https://github.com/markilott/aws-cdk-internal-private-api-demo</a></p>
-<p><img alt="apigw-private-api-alb-cdk-png-1.png" src="../apigw-private-api-alb-cdk-png-1.png" /></p>
+<p><a class="glightbox" href="../apigw-private-api-alb-cdk-png-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="apigw-private-api-alb-cdk-png-1.png" src="../apigw-private-api-alb-cdk-png-1.png" /></a></p>
 <h2 id="prep">prep<a class="headerlink" href="#prep" title="Permanent link">&para;</a></h2>
 <ul>
 <li>创建 host zone 可以被你的域名解析到 （在上游 route53 添加 NS 记录）</li>
@@ -3390,9 +3401,9 @@
 </li>
 </ul>
 <h2 id="data-flow-">data-flow-📚<a class="headerlink" href="#data-flow-" title="Permanent link">&para;</a></h2>
-<p><img alt="apigw-private-api-alb-cdk-png-2.png" src="../apigw-private-api-alb-cdk-png-2.png" /></p>
+<p><a class="glightbox" href="../apigw-private-api-alb-cdk-png-2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="apigw-private-api-alb-cdk-png-2.png" src="../apigw-private-api-alb-cdk-png-2.png" /></a></p>
 <h2 id="target-group-settings">target group settings<a class="headerlink" href="#target-group-settings" title="Permanent link">&para;</a></h2>
-<p><img alt="apigw-private-api-alb-cdk-png-3.png" src="../apigw-private-api-alb-cdk-png-3.png" /></p>
+<p><a class="glightbox" href="../apigw-private-api-alb-cdk-png-3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="apigw-private-api-alb-cdk-png-3.png" src="../apigw-private-api-alb-cdk-png-3.png" /></a></p>
 <h2 id="refer">refer<a class="headerlink" href="#refer" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://georgemao.medium.com/enabling-private-apis-with-custom-domain-names-aws-api-gateway-df1b62b0ba7c">https://georgemao.medium.com/enabling-private-apis-with-custom-domain-names-aws-api-gateway-df1b62b0ba7c</a></li>
@@ -3469,5 +3480,5 @@
         <script src="../../js/timeago_mkdocs_material.js"></script>
       
     
-  </body>
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

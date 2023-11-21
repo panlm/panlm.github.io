@@ -67,7 +67,18 @@
     
     
     
-  </head>
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -3372,7 +3383,7 @@
 <ul>
 <li>点击输出的 URL 链接，打开 cloud9 测试环境 (click the URL at the bottom to open cloud9 environment)</li>
 </ul>
-<p><img alt="setup-cloud9-for-eks-1.png" src="../../git-attachment/setup-cloud9-for-eks-1.png" /></p>
+<p><a class="glightbox" href="../../git-attachment/setup-cloud9-for-eks-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="setup-cloud9-for-eks-1.png" src="../../git-attachment/setup-cloud9-for-eks-1.png" /></a></p>
 <h2 id="using-internal-proxy-or-not">using internal proxy or not<a class="headerlink" href="#using-internal-proxy-or-not" title="Permanent link">&para;</a></h2>
 <ul>
 <li>如果你不需要使用代理服务器下载软件包，跳过执行下面代码 (skip this code block if you do not need proxy in your environment)<br />
@@ -3722,5 +3733,5 @@
         <script src="../../js/timeago_mkdocs_material.js"></script>
       
     
-  </body>
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

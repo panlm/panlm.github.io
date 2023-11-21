@@ -67,7 +67,18 @@
     
     
     
-  </head>
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -3412,7 +3423,7 @@
 <h1 id="how-can-i-access-an-api-gateway-private-rest-api-in-another-aws-account-using-an-interface-vpc-endpoint">How can I access an API Gateway private REST API in another AWS account using an interface VPC endpoint<a class="headerlink" href="#how-can-i-access-an-api-gateway-private-rest-api-in-another-aws-account-using-an-interface-vpc-endpoint" title="Permanent link">&para;</a></h1>
 <h2 id="topo">topo<a class="headerlink" href="#topo" title="Permanent link">&para;</a></h2>
 <p><a href="https://aws.amazon.com/premiumsupport/knowledge-center/api-gateway-private-cross-account-vpce/?nc1=h_ls">KB</a> </p>
-<p><img alt="apigw-cross-account-private-endpoint-png-1.png" src="../apigw-cross-account-private-endpoint-png-1.png" /></p>
+<p><a class="glightbox" href="../apigw-cross-account-private-endpoint-png-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="apigw-cross-account-private-endpoint-png-1.png" src="../apigw-cross-account-private-endpoint-png-1.png" /></a></p>
 <h2 id="in-account-a">In Account A<a class="headerlink" href="#in-account-a" title="Permanent link">&para;</a></h2>
 <ul>
 <li>create vpc &amp; <code>execute-api</code> endpoint</li>
@@ -3571,5 +3582,5 @@
         <script src="../../js/timeago_mkdocs_material.js"></script>
       
     
-  </body>
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

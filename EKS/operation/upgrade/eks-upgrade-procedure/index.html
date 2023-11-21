@@ -67,7 +67,18 @@
     
     
     
-  </head>
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -3438,8 +3449,8 @@
 <li><a href="../../../mm-eks-upgrade-workshop-walkley" title="mm-eks-upgrade-workshop-walkley">mm-eks-upgrade-workshop-walkley</a></li>
 </ul>
 <h2 id="deck">deck<a class="headerlink" href="#deck" title="Permanent link">&para;</a></h2>
-<p><img alt="eks-upgrade-procedure-png-1.png" src="../../../../git-attachment/eks-upgrade-procedure-png-1.png" /></p>
-<p><img alt="eks-upgrade-procedure-png-2.png" src="../../../../git-attachment/eks-upgrade-procedure-png-2.png" /></p>
+<p><a class="glightbox" href="../../../../git-attachment/eks-upgrade-procedure-png-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="eks-upgrade-procedure-png-1.png" src="../../../../git-attachment/eks-upgrade-procedure-png-1.png" /></a></p>
+<p><a class="glightbox" href="../../../../git-attachment/eks-upgrade-procedure-png-2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="eks-upgrade-procedure-png-2.png" src="../../../../git-attachment/eks-upgrade-procedure-png-2.png" /></a></p>
 <h2 id="docs-history">docs history<a class="headerlink" href="#docs-history" title="Permanent link">&para;</a></h2>
 <ul>
 <li>for release 1.22 <ul>
@@ -3541,5 +3552,5 @@
         <script src="../../../../js/timeago_mkdocs_material.js"></script>
       
     
-  </body>
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

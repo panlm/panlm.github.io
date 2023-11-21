@@ -67,7 +67,18 @@
     
     
     
-  </head>
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -3692,6 +3703,7 @@
 <a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>aws<span class="w"> </span>ssm<span class="w"> </span>get-parameter<span class="w"> </span>--name<span class="w"> </span>/aws/service/eks/optimized-ami/<span class="si">${</span><span class="nv">EKS_VERSION</span><span class="si">}</span>/amazon-linux-2/recommended/image_id<span class="w"> </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;Parameter.Value&quot;</span><span class="w"> </span>--output<span class="w"> </span>text
 </code></pre></div>
 <h3 id="endpoint">endpoint<a class="headerlink" href="#endpoint" title="Permanent link">&para;</a></h3>
+<p><a href="https://docs.aws.amazon.com/eks/latest/userguide/private-clusters.html#private-cluster-requirements">https://docs.aws.amazon.com/eks/latest/userguide/private-clusters.html#private-cluster-requirements</a></p>
 <ul>
 <li>设置 <code>skipEndpointCreation: false</code>，集群创建完成后将自动创建以下 endpoint，并且绑定 <code>sharedNodeSecurityGroup</code> 中指定的安全组<ul>
 <li>logs</li>
@@ -3717,9 +3729,11 @@
 </li>
 </ul>
 <h2 id="access-cluster">access cluster<a class="headerlink" href="#access-cluster" title="Permanent link">&para;</a></h2>
-<p><a href="../../../create-kubeconfig-manually" title="create-kubeconfig-manually">create-kubeconfig-manually</a><br />
-<a href="../../../recover-access-eks" title="recover-access-eks">recover-access-eks</a><br />
-<a href="../../../token-different" title="token-different">token-different</a></p>
+<ul>
+<li><a href="../../../create-kubeconfig-manually" title="create-kubeconfig-manually">create-kubeconfig-manually</a></li>
+<li><a href="../../../recover-access-eks" title="recover-access-eks">recover-access-eks</a></li>
+<li><a href="../../../token-different" title="token-different">token-different</a></li>
+</ul>
 <h2 id="issue-about-kubectl">issue about kubectl<a class="headerlink" href="#issue-about-kubectl" title="Permanent link">&para;</a></h2>
 <h3 id="solve-1">solve 1<a class="headerlink" href="#solve-1" title="Permanent link">&para;</a></h3>
 <ul>
@@ -3751,7 +3765,7 @@ it will using aws-iam-authenticator instead of aws to create kubeconfig</li>
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-20T22:12:26+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-20</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-21T21:12:52+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-21</span>
       
         <br>
         Created:
@@ -3816,5 +3830,5 @@ it will using aws-iam-authenticator instead of aws to create kubeconfig</li>
         <script src="../../../../js/timeago_mkdocs_material.js"></script>
       
     
-  </body>
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

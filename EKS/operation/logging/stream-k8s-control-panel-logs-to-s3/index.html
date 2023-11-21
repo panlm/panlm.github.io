@@ -67,7 +67,18 @@
     
     
     
-  </head>
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -3699,7 +3710,7 @@
 <li>成本和安全 - 成本控制，高安全性，支持多账号</li>
 </ol>
 <h2 id="architecture">architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h2>
-<p><img alt="" src="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-1.png" /></p>
+<p><a class="glightbox" href="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-1.png" /></a></p>
 <h2 id="_1">搭建实验环境<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <h3 id="eks-cluster">eks cluster<a class="headerlink" href="#eks-cluster" title="Permanent link">&para;</a></h3>
 <ul>
@@ -4038,10 +4049,10 @@
 <a id="__codelineno-6-49" name="__codelineno-6-49" href="#__codelineno-6-49"></a><span class="c1"># aws glue start-crawler --name ${crawler_name}</span>
 </code></pre></div>
 <h4 id="using-ui">using ui<a class="headerlink" href="#using-ui" title="Permanent link">&para;</a></h4>
-<p><img alt="" src="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-21.png" /></p>
-<p><img alt="" src="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-22.png" /></p>
-<p><img alt="" src="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-23.png" /></p>
-<p><img alt="" src="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-24.png" /></p>
+<p><a class="glightbox" href="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-21.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-21.png" /></a></p>
+<p><a class="glightbox" href="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-22.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-22.png" /></a></p>
+<p><a class="glightbox" href="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-23.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-23.png" /></a></p>
+<p><a class="glightbox" href="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-24.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-24.png" /></a></p>
 <h3 id="databrew">databrew<a class="headerlink" href="#databrew" title="Permanent link">&para;</a></h3>
 <h4 id="using-cli_1">using cli<a class="headerlink" href="#using-cli_1" title="Permanent link">&para;</a></h4>
 <ul>
@@ -4150,27 +4161,27 @@
 <p>import recipe</p>
 <ul>
 <li><a href="../cwl-recipe.json">download</a><br />
-<img alt="" src="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-31.png" /></li>
+<a class="glightbox" href="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-31.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-31.png" /></a></li>
 </ul>
 </li>
 <li>
 <p>create dataset from s3 or glue catalog<br />
-<img alt="" src="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-32.png" /></p>
+<a class="glightbox" href="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-32.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-32.png" /></a></p>
 </li>
 <li>
 <p>create project from this dataset and using existed recipe<br />
-<img alt="" src="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-33.png" /></p>
+<a class="glightbox" href="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-33.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-33.png" /></a></p>
 </li>
 </ul>
-<p><img alt="" src="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-34.png" /></p>
+<p><a class="glightbox" href="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-34.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-34.png" /></a></p>
 <ul>
 <li>create job as you need</li>
 </ul>
 <h3 id="athena">athena<a class="headerlink" href="#athena" title="Permanent link">&para;</a></h3>
 <p>this table is created by firehose<br />
-<img alt="" src="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-41.png" /></p>
+<a class="glightbox" href="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-41.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-41.png" /></a></p>
 <p>this table is created by databrew job<br />
-<img alt="" src="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-42.png" /></p>
+<a class="glightbox" href="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-42.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../../git-attachment/stream-k8s-control-panel-logs-to-s3-42.png" /></a></p>
 <h2 id="conclusion">conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
 <p>满足客户需求，基于目前s3中保存的原始数据，并且可以进行字段拆分等二次处理，未来可以使用aws databrew进行更复杂的处理</p>
 <h2 id="alternative">alternative<a class="headerlink" href="#alternative" title="Permanent link">&para;</a></h2>
@@ -4271,5 +4282,5 @@
         <script src="../../../../js/timeago_mkdocs_material.js"></script>
       
     
-  </body>
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

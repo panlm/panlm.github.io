@@ -65,7 +65,18 @@
     
     
     
-  </head>
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -3308,8 +3319,8 @@
 <ul>
 <li><a href="https://aws.amazon.com/premiumsupport/knowledge-center/ec2-instance-boot-issues/">https://aws.amazon.com/premiumsupport/knowledge-center/ec2-instance-boot-issues/</a></li>
 </ul>
-<p><img alt="../git-attachment/rescue-ec2-instance-png-1.png" src="../../git-attachment/rescue-ec2-instance-png-1.png" title="../git-attachment/rescue-ec2-instance-png-1.png" /></p>
-<p><img alt="../git-attachment/rescue-ec2-instance-png-2.png" src="../../git-attachment/rescue-ec2-instance-png-2.png" title="../git-attachment/rescue-ec2-instance-png-2.png" /></p>
+<p><a class="glightbox" href="../../git-attachment/rescue-ec2-instance-png-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="../git-attachment/rescue-ec2-instance-png-1.png" src="../../git-attachment/rescue-ec2-instance-png-1.png" title="../git-attachment/rescue-ec2-instance-png-1.png" /></a></p>
+<p><a class="glightbox" href="../../git-attachment/rescue-ec2-instance-png-2.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="../git-attachment/rescue-ec2-instance-png-2.png" src="../../git-attachment/rescue-ec2-instance-png-2.png" title="../git-attachment/rescue-ec2-instance-png-2.png" /></a></p>
 <h2 id="ssh-to-rescue">ssh to rescue<a class="headerlink" href="#ssh-to-rescue" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>su<span class="w"> </span>-
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
@@ -3330,7 +3341,7 @@
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>umount<span class="w"> </span><span class="nv">$rescuemnt</span>/<span class="o">{</span>proc,sys,dev,run,<span class="o">}</span>
 </code></pre></div>
-<p><img alt="../git-attachment/rescue-ec2-instance-png-3.png" src="../../git-attachment/rescue-ec2-instance-png-3.png" title="../git-attachment/rescue-ec2-instance-png-3.png" /></p>
+<p><a class="glightbox" href="../../git-attachment/rescue-ec2-instance-png-3.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="../git-attachment/rescue-ec2-instance-png-3.png" src="../../git-attachment/rescue-ec2-instance-png-3.png" title="../git-attachment/rescue-ec2-instance-png-3.png" /></a></p>
 <h2 id="refer">refer<a class="headerlink" href="#refer" title="Permanent link">&para;</a></h2>
 <p>automation runbook</p>
 <ul>
@@ -3407,5 +3418,5 @@
         <script src="../../js/timeago_mkdocs_material.js"></script>
       
     
-  </body>
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

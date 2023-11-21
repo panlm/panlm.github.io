@@ -67,7 +67,18 @@
     
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -3331,10 +3342,10 @@
 <a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>--vpc-settings<span class="w"> </span><span class="nv">VpcId</span><span class="o">=</span><span class="si">${</span><span class="nv">VPC</span><span class="si">}</span>,SubnetIds<span class="o">=</span><span class="si">${</span><span class="nv">SUBNETS</span><span class="si">}</span>
 </code></pre></div>
 <h2 id="create-ms-ad-in-default-vpc">create ms ad in default vpc<a class="headerlink" href="#create-ms-ad-in-default-vpc" title="Permanent link">&para;</a></h2>
-<p><img alt="POC-mig-filezilla-to-transfer-family" src="../../POC-mig-filezilla-to-transfer-family#^8ov5l3" title="POC-mig-filezilla-to-transfer-family" /></p>
+<p><a class="glightbox" href="../../POC-mig-filezilla-to-transfer-family#^8ov5l3" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="POC-mig-filezilla-to-transfer-family" src="../../POC-mig-filezilla-to-transfer-family#^8ov5l3" title="POC-mig-filezilla-to-transfer-family" /></a></p>
 <p>refer: <a href="../../POC-mig-filezilla-to-transfer-family#create-ad-" title="POC-mig-filezilla-to-transfer-family">POC-mig-filezilla-to-transfer-family</a></p>
 <h2 id="active-directory-windows-2012">active directory - windows 2012<a class="headerlink" href="#active-directory-windows-2012" title="Permanent link">&para;</a></h2>
-<p><img alt="Enabling Federation to AWS Using Windows Active Directory ADFS and SAML 2.0" src="../../Enabling%20Federation%20to%20AWS%20Using%20Windows%20Active%20Directory%20ADFS%20and%20SAML%202.0#^zfsdkd" title="Enabling Federation to AWS Using Windows Active Directory ADFS and SAML 2.0" /></p>
+<p><a class="glightbox" href="../../Enabling%20Federation%20to%20AWS%20Using%20Windows%20Active%20Directory%20ADFS%20and%20SAML%202.0#^zfsdkd" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="Enabling Federation to AWS Using Windows Active Directory ADFS and SAML 2.0" src="../../Enabling%20Federation%20to%20AWS%20Using%20Windows%20Active%20Directory%20ADFS%20and%20SAML%202.0#^zfsdkd" title="Enabling Federation to AWS Using Windows Active Directory ADFS and SAML 2.0" /></a></p>
 
   <hr>
 <div class="md-source-file">
@@ -3406,5 +3417,5 @@
         <script src="../../../js/timeago_mkdocs_material.js"></script>
       
     
-  </body>
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

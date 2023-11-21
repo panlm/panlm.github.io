@@ -67,7 +67,18 @@
     
     
     
-  </head>
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -3229,21 +3240,21 @@
 <ol>
 <li>create cloud9</li>
 <li>create vpc<br />
-<img alt="../../../cloud9/create-standard-vpc-for-lab-in-china-region" src="../../../../cloud9/create-standard-vpc-for-lab-in-china-region/#using-cloudformation-template-" title="../../../cloud9/create-standard-vpc-for-lab-in-china-region" /></li>
+<a class="glightbox" href="../../../../cloud9/create-standard-vpc-for-lab-in-china-region/#using-cloudformation-template-" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="../../../cloud9/create-standard-vpc-for-lab-in-china-region" src="../../../../cloud9/create-standard-vpc-for-lab-in-china-region/#using-cloudformation-template-" title="../../../cloud9/create-standard-vpc-for-lab-in-china-region" /></a></li>
 </ol>
 <ul>
 <li>refer: <a href="../../../../cloud9/create-standard-vpc-for-lab-in-china-region/#using-cloudformation-template-" title="git/git-mkdocs/cloud9/create-standard-vpc-for-lab-in-china-region">git/git-mkdocs/cloud9/create-standard-vpc-for-lab-in-china-region</a></li>
 </ul>
 <ol start="3">
 <li>get vpc id<br />
-<img alt="../../../cloud9/create-standard-vpc-for-lab-in-china-region" src="../../../../cloud9/create-standard-vpc-for-lab-in-china-region/#get-vpc-id-" title="../../../cloud9/create-standard-vpc-for-lab-in-china-region" /></li>
+<a class="glightbox" href="../../../../cloud9/create-standard-vpc-for-lab-in-china-region/#get-vpc-id-" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="../../../cloud9/create-standard-vpc-for-lab-in-china-region" src="../../../../cloud9/create-standard-vpc-for-lab-in-china-region/#get-vpc-id-" title="../../../cloud9/create-standard-vpc-for-lab-in-china-region" /></a></li>
 </ol>
 <ul>
 <li>refer: <a href="../../../../cloud9/create-standard-vpc-for-lab-in-china-region/#get-vpc-id-" title="git/git-mkdocs/cloud9/create-standard-vpc-for-lab-in-china-region">git/git-mkdocs/cloud9/create-standard-vpc-for-lab-in-china-region</a></li>
 </ul>
 <ol start="4">
 <li>pre-config<br />
-<img alt="eks-private-access-cluster" src="../eks-private-access-cluster/#^h86u1r" title="eks-private-access-cluster" /></li>
+<a class="glightbox" href="../eks-private-access-cluster/#^h86u1r" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="eks-private-access-cluster" src="../eks-private-access-cluster/#^h86u1r" title="eks-private-access-cluster" /></a></li>
 </ol>
 <ul>
 <li>refer: <a href="../eks-private-access-cluster/#prep-config-" title="git/git-mkdocs/EKS/infra/cluster/eks-private-access-cluster">git/git-mkdocs/EKS/infra/cluster/eks-private-access-cluster</a></li>
@@ -3377,5 +3388,5 @@
         <script src="../../../../js/timeago_mkdocs_material.js"></script>
       
     
-  </body>
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

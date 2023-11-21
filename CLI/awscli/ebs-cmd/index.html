@@ -67,7 +67,18 @@
     
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -3608,7 +3619,7 @@
 <p>download ebsnvme-id.zip </p>
 <ul>
 <li><a href="https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/nvme-ebs-volumes.html">doc</a><br />
-<img alt="powershell" src="../../powershell#download-awsnvme.zip" title="powershell" /></li>
+<a class="glightbox" href="../../powershell#download-awsnvme.zip" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="powershell" src="../../powershell#download-awsnvme.zip" title="powershell" /></a></li>
 </ul>
 <h3 id="refer">refer<a class="headerlink" href="#refer" title="Permanent link">&para;</a></h3>
 <p><a href="https://github.com/awslabs/amazon-ebs-autoscale">https://github.com/awslabs/amazon-ebs-autoscale</a></p>
@@ -3683,5 +3694,5 @@
         <script src="../../../js/timeago_mkdocs_material.js"></script>
       
     
-  </body>
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

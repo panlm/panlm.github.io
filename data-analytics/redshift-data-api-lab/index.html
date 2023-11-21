@@ -67,7 +67,18 @@
     
     
     
-  </head>
+   <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -3441,7 +3452,7 @@
 <h1 id="redshift-data-api-lab">redshift-data-api-lab<a class="headerlink" href="#redshift-data-api-lab" title="Permanent link">&para;</a></h1>
 <h2 id="_1">使用场景<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <p>Amazon Redshift 数据 API 使您能够使用所有类型的传统、云原生和容器化、基于 Web 服务的无服务器应用程序和事件驱动的应用程序轻松访问来自 Amazon Redshift 的数据。</p>
-<p><img alt="redshift-data-api-lab-2.jpeg" src="../redshift-data-api-lab-2.jpeg" /></p>
+<p><a class="glightbox" href="../redshift-data-api-lab-2.jpeg" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="redshift-data-api-lab-2.jpeg" src="../redshift-data-api-lab-2.jpeg" /></a></p>
 <p>Amazon Redshift Data API 不能替代 JDBC 和 ODBC 驱动程序，适用于不需要与集群建立持久连接的用例。它适用于以下用例：</p>
 <ul>
 <li>使用 AWS 开发工具包支持的任何编程语言从自定义应用程序访问 Amazon Redshift。这使您能够集成基于 Web 服务的应用程序，以使用 API 访问来自 Amazon Redshift 的数据以运行 SQL 语句。例如，您可以从 JavaScript 运行 SQL。</li>
@@ -3476,7 +3487,7 @@
 <li><a href="https://github.com/aws-samples/getting-started-with-amazon-redshift-data-api/tree/main/use-cases/rest-api-with-redshift-data-api">postman example</a></li>
 </ul>
 <h3 id="list-database">list database<a class="headerlink" href="#list-database" title="Permanent link">&para;</a></h3>
-<p><img alt="redshift-data-api-lab-1.png" src="../redshift-data-api-lab-1.png" /></p>
+<p><a class="glightbox" href="../redshift-data-api-lab-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="redshift-data-api-lab-1.png" src="../redshift-data-api-lab-1.png" /></a></p>
 <p>post url: <code>https://redshift-data.us-east-2.amazonaws.com/</code></p>
 <p>head:<br />
 <code>x-amz-target</code>: <code>RedshiftData.ListDatabases</code><br />
@@ -3612,5 +3623,5 @@
         <script src="../../js/timeago_mkdocs_material.js"></script>
       
     
-  </body>
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

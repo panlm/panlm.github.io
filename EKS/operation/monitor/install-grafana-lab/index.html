@@ -67,7 +67,18 @@
     
     
     
-  </head>
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -3357,7 +3368,7 @@
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nv">AWS_REGION</span><span class="o">=</span>us-east-2
 </code></pre></div></li>
 </ul>
-<p><img alt="../../../CLI/awscli/efs-cmd" src="../../../../CLI/awscli/efs-cmd/#^d4lka9" title="../../../CLI/awscli/efs-cmd" /></p>
+<p><a class="glightbox" href="../../../../CLI/awscli/efs-cmd/#^d4lka9" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="../../../CLI/awscli/efs-cmd" src="../../../../CLI/awscli/efs-cmd/#^d4lka9" title="../../../CLI/awscli/efs-cmd" /></a></p>
 <p>refer: <a href="../../../../CLI/awscli/efs-cmd/#create-efs-" title="git/git-mkdocs/CLI/awscli/efs-cmd">git/git-mkdocs/CLI/awscli/efs-cmd</a></p>
 <p>mount nfs to instance (<a href="https://aws.amazon.com/premiumsupport/knowledge-center/elastic-beanstalk-mount-efs-volumes/">link</a>)</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">FILESYSTEM_ID</span><span class="si">}</span>
@@ -3458,7 +3469,7 @@ another sample (<a href="https://github.com/aws-samples/eb-php-wordpress">link</
 </ul>
 <h2 id="grafana-on-eks">grafana on eks<a class="headerlink" href="#grafana-on-eks" title="Permanent link">&para;</a></h2>
 <p><a href="https://aws-quickstart.github.io/quickstart-eks-grafana/">https://aws-quickstart.github.io/quickstart-eks-grafana/</a></p>
-<p><img alt="install-grafana-lab-png-1.png" src="../install-grafana-lab-png-1.png" /></p>
+<p><a class="glightbox" href="../install-grafana-lab-png-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="install-grafana-lab-png-1.png" src="../install-grafana-lab-png-1.png" /></a></p>
 <h2 id="appendix-single-pod-in-beanstalk">appendix - single pod in beanstalk<a class="headerlink" href="#appendix-single-pod-in-beanstalk" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>cat<span class="w"> </span>&gt;Dockerrun.aws.json<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="s">{</span>
@@ -3547,5 +3558,5 @@ another sample (<a href="https://github.com/aws-samples/eb-php-wordpress">link</
         <script src="../../../../js/timeago_mkdocs_material.js"></script>
       
     
-  </body>
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

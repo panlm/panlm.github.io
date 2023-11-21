@@ -67,7 +67,18 @@
     
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -3476,7 +3487,7 @@
 <h3 id="import-existed-credentials-to-mac-login-keychain">import existed credentials to mac <code>login</code> keychain<a class="headerlink" href="#import-existed-credentials-to-mac-login-keychain" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>granted<span class="w"> </span>credentials<span class="w"> </span>import<span class="w"> </span>example
 </code></pre></div>
-<p><img alt="../../git-attachment/assume-tool-png-1.png" src="../../../git-attachment/assume-tool-png-1.png" title="../../git-attachment/assume-tool-png-1.png" /></p>
+<p><a class="glightbox" href="../../../git-attachment/assume-tool-png-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="../../git-attachment/assume-tool-png-1.png" src="../../../git-attachment/assume-tool-png-1.png" title="../../git-attachment/assume-tool-png-1.png" /></a></p>
 <h3 id="export-to-aws-credentials-file">export to aws credentials file<a class="headerlink" href="#export-to-aws-credentials-file" title="Permanent link">&para;</a></h3>
 <ul>
 <li>This command can be used to return your credentials to the original insecure plaintext format in the AWS credentials file.<br />
@@ -3559,5 +3570,5 @@
         <script src="../../../js/timeago_mkdocs_material.js"></script>
       
     
-  </body>
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

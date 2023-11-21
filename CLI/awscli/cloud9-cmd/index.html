@@ -67,7 +67,18 @@
     
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -3354,7 +3365,7 @@
 </code></pre></div>
 <h1 id="cloud9-cmd">cloud9-cmd<a class="headerlink" href="#cloud9-cmd" title="Permanent link">&para;</a></h1>
 <h2 id="spin-up-a-cloud9-instance-in-your-region">spin-up-a-cloud9-instance-in-your-region<a class="headerlink" href="#spin-up-a-cloud9-instance-in-your-region" title="Permanent link">&para;</a></h2>
-<p><img alt="../../cloud9/setup-cloud9-for-eks" src="../../../cloud9/setup-cloud9-for-eks/#^xzcvy9" title="../../cloud9/setup-cloud9-for-eks" /></p>
+<p><a class="glightbox" href="../../../cloud9/setup-cloud9-for-eks/#^xzcvy9" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="../../cloud9/setup-cloud9-for-eks" src="../../../cloud9/setup-cloud9-for-eks/#^xzcvy9" title="../../cloud9/setup-cloud9-for-eks" /></a></p>
 <p>refer: <a href="../../../cloud9/setup-cloud9-for-eks/#spin-up-a-cloud9-instance-in-your-region" title="../../cloud9/setup-cloud9-for-eks">../../cloud9/setup-cloud9-for-eks</a> </p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>aws<span class="w"> </span>cloud9<span class="w"> </span>describe-environments
 </code></pre></div>
@@ -3494,5 +3505,5 @@
         <script src="../../../js/timeago_mkdocs_material.js"></script>
       
     
-  </body>
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

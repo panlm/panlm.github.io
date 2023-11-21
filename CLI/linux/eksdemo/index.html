@@ -67,7 +67,18 @@
     
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -3329,17 +3340,17 @@
 <h2 id="addons-">addons-<a class="headerlink" href="#addons-" title="Permanent link">&para;</a></h2>
 <ul>
 <li>externaldns<br />
-<img alt="../../EKS/infra/network/externaldns-for-route53" src="../../../EKS/infra/network/externaldns-for-route53/#^a2vlmo" title="../../EKS/infra/network/externaldns-for-route53" /></li>
+<a class="glightbox" href="../../../EKS/infra/network/externaldns-for-route53/#^a2vlmo" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="../../EKS/infra/network/externaldns-for-route53" src="../../../EKS/infra/network/externaldns-for-route53/#^a2vlmo" title="../../EKS/infra/network/externaldns-for-route53" /></a></li>
 </ul>
 <p>refer: <a href="../../../EKS/infra/network/externaldns-for-route53/#install-with-eksdemo-" title="git/git-mkdocs/EKS/infra/network/externaldns-for-route53">git/git-mkdocs/EKS/infra/network/externaldns-for-route53</a></p>
 <ul>
 <li>aws load balancer controller<br />
-<img alt="../../EKS/infra/network/aws-load-balancer-controller" src="../../../EKS/infra/network/aws-load-balancer-controller/#^yddjq0" title="../../EKS/infra/network/aws-load-balancer-controller" /></li>
+<a class="glightbox" href="../../../EKS/infra/network/aws-load-balancer-controller/#^yddjq0" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="../../EKS/infra/network/aws-load-balancer-controller" src="../../../EKS/infra/network/aws-load-balancer-controller/#^yddjq0" title="../../EKS/infra/network/aws-load-balancer-controller" /></a></li>
 </ul>
 <p>refer: <a href="../../../EKS/infra/network/aws-load-balancer-controller/#install-with-eksdemo-" title="git/git-mkdocs/EKS/infra/network/aws-load-balancer-controller">git/git-mkdocs/EKS/infra/network/aws-load-balancer-controller</a></p>
 <ul>
 <li>2 certificates, one for each domain name in original region<br />
-<img alt="../awscli/acm-cmd" src="../../awscli/acm-cmd/#^kresvp" title="../awscli/acm-cmd" /></li>
+<a class="glightbox" href="../../awscli/acm-cmd/#^kresvp" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="../awscli/acm-cmd" src="../../awscli/acm-cmd/#^kresvp" title="../awscli/acm-cmd" /></a></li>
 </ul>
 <p>refer: <a href="../../awscli/acm-cmd/#create-certificate-with-eksdemo-" title="../awscli/acm-cmd">../awscli/acm-cmd</a></p>
 
@@ -3413,5 +3424,5 @@
         <script src="../../../js/timeago_mkdocs_material.js"></script>
       
     
-  </body>
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

@@ -67,7 +67,18 @@
     
     
     
-  </head>
+   <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -3311,9 +3322,9 @@
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>-  [[$filename]]: $frontmatter:description
 </code></pre></div><br />
--  <a href="infra/cluster/eks-public-access-cluster/" title="eks-public-access-cluster">eks-public-access-cluster</a>: 创建公有访问的 eks 集群<br />
 -  <a href="infra/cluster/eks-private-access-cluster/" title="eks-private-access-cluster">eks-private-access-cluster</a>: 在已有 vpc 中创建私有访问的 eks 集群<br />
--  <a href="infra/cluster/eks-public-access-cluster-in-china-region/" title="infra/cluster/eks-public-access-cluster-in-china-region">infra/cluster/eks-public-access-cluster-in-china-region</a>: 在中国区域，创建共有访问的 eks 集群<br />
+-  <a href="infra/cluster/eks-public-access-cluster-in-china-region/" title="eks-public-access-cluster-in-china-region">eks-public-access-cluster-in-china-region</a>: 在中国区域，创建共有访问的 eks 集群<br />
+-  <a href="infra/cluster/eks-public-access-cluster/" title="eks-public-access-cluster">eks-public-access-cluster</a>: 创建公有访问的 eks 集群<br />
 -  <a href="infra/cluster/eks-terraform-cluster/" title="eks-terraform-cluster">eks-terraform-cluster</a>: 使用 terraform 创建 eks 集群<br />
 &lt;&ndash;&gt;</p>
 <h3 id="12-compute">1.2 compute<a class="headerlink" href="#12-compute" title="Permanent link">&para;</a></h3>
@@ -3369,12 +3380,13 @@
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>- [[$filename]]: $frontmatter:description
 </code></pre></div><br />
+- <a href="operation/monitor/POC-prometheus-ha-architect-with-thanos/" title="POC-prometheus-ha-architect-with-thanos">POC-prometheus-ha-architect-with-thanos</a>: 用 thanos 扩展 prometheus 高可用性架构<br />
 - <a href="operation/monitor/install-prometheus-grafana/" title="install-prometheus-grafana">install-prometheus-grafana</a>: 安装 grafana 和 prometheus<br />
-- <a href="operation/monitor/install-grafana-lab/" title="install-grafana-lab">install-grafana-lab</a>: 在 EC2 / beanstalk / EKS 上安装 grafana <br />
-- <a href="operation/monitor/eks-container-insights/" title="eks-container-insights">eks-container-insights</a>: 启用 EKS 的 container insight 功能<br />
 - <a href="operation/monitor/metrics-server/" title="metrics-server">metrics-server</a>: EKS 集群中安装 metrics server<br />
-- <a href="operation/monitor/enable-prometheus-in-cloudwatch/" title="enable-prometheus-in-cloudwatch">enable-prometheus-in-cloudwatch</a>: 将 EKS 集群的 prometheus 数据汇总到 cloudwatch<br />
 - <a href="operation/monitor/cluster-autoscaler/" title="cluster-autoscaler">cluster-autoscaler</a>: EKS 集群中安装 Cluster Autoscaler<br />
+- <a href="operation/monitor/enable-prometheus-in-cloudwatch/" title="enable-prometheus-in-cloudwatch">enable-prometheus-in-cloudwatch</a>: 将 EKS 集群的 prometheus 数据汇总到 cloudwatch<br />
+- <a href="operation/monitor/eks-container-insights/" title="eks-container-insights">eks-container-insights</a>: 启用 EKS 的 container insight 功能<br />
+- <a href="operation/monitor/install-grafana-lab/" title="install-grafana-lab">install-grafana-lab</a>: 在 EC2 / beanstalk / EKS 上安装 grafana <br />
 &lt;&ndash;&gt;</p>
 <h3 id="24-upgrade">2.4 upgrade<a class="headerlink" href="#24-upgrade" title="Permanent link">&para;</a></h3>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>(path:git/git-mkdocs/eks/operation/upgrade file:.md)
@@ -3382,9 +3394,10 @@
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>- [[$filename]]: $frontmatter:description
 </code></pre></div><br />
 - <a href="operation/upgrade/cert-manager/" title="cert-manager">cert-manager</a>: cert-manager<br />
+- <a href="operation/upgrade/kube-no-trouble/" title="kube-no-trouble">kube-no-trouble</a>: kube-no-trouble<br />
+- <a href="operation/upgrade/kube-state-metrics/" title="kube-state-metrics">kube-state-metrics</a>: kube-state-metrics<br />
 - <a href="operation/upgrade/eks-cluster-addons-list/" title="eks-cluster-addons-list">eks-cluster-addons-list</a>: EKS 常用插件清单<br />
 - <a href="operation/upgrade/nginx-ingress-controller/" title="nginx-ingress-controller">nginx-ingress-controller</a>: nginx-ingress-controller<br />
-- <a href="operation/upgrade/kube-no-trouble/" title="kube-no-trouble">kube-no-trouble</a>: kube-no-trouble<br />
 - <a href="operation/upgrade/eks-upgrade-procedure/" title="eks-upgrade-procedure">eks-upgrade-procedure</a>: eks 集群升级<br />
 - <a href="operation/upgrade/aws-for-fluent-bit/" title="aws-for-fluent-bit">aws-for-fluent-bit</a>: <br />
 - <a href="operation/upgrade/eks-addons-coredns/" title="eks-addons-coredns">eks-addons-coredns</a>: eks-addons-coredns<br />
@@ -3392,7 +3405,6 @@
 - <a href="operation/upgrade/eks-addons-vpc-cni/" title="eks-addons-vpc-cni">eks-addons-vpc-cni</a>: eks-addons-vpc-cni<br />
 - <a href="operation/upgrade/pluto/" title="pluto">pluto</a>: pluto<br />
 - <a href="operation/upgrade/nginx-ingress-controller-nginx-ver/" title="nginx-ingress-controller-nginx-ver">nginx-ingress-controller-nginx-ver</a>: nginx-ingress-controller-nginx-ver<br />
-- <a href="operation/upgrade/kube-state-metrics/" title="kube-state-metrics">kube-state-metrics</a>: kube-state-metrics<br />
 - <a href="operation/upgrade/eksup/" title="eksup">eksup</a>: eksup<br />
 - <a href="operation/upgrade/cni-metrics-helper/" title="cni-metrics-helper">cni-metrics-helper</a>: cni-metrics-helper<br />
 &lt;&ndash;&gt;</p>
@@ -3402,7 +3414,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-18T12:19:59+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-18</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-21T21:12:52+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-21</span>
       
         <br>
         Created:
@@ -3467,5 +3479,5 @@
         <script src="../js/timeago_mkdocs_material.js"></script>
       
     
-  </body>
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

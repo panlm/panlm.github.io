@@ -67,7 +67,18 @@
     
     
     
-  </head>
+   <link href="../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -3360,10 +3371,10 @@
 </code></pre></div></li>
 </ol>
 <h2 id="revision">revision<a class="headerlink" href="#revision" title="Permanent link">&para;</a></h2>
-<p><img alt="lambda_function.py" src="../lambda_function.py" title="lambda_function.py" /></p>
+<p><a class="glightbox" href="../lambda_function.py" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="lambda_function.py" src="../lambda_function.py" title="lambda_function.py" /></a></p>
 <p>download from <a href="../lambda_function.py">here</a></p>
 <h2 id="3-party-python-lib">3-party python lib<a class="headerlink" href="#3-party-python-lib" title="Permanent link">&para;</a></h2>
-<p><img alt="package.zip" src="../package.zip" title="package.zip" /></p>
+<p><a class="glightbox" href="../package.zip" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="package.zip" src="../package.zip" title="package.zip" /></a></p>
 <p>download from <a href="../package.zip">here</a></p>
 <h2 id="layer-version">layer version<a class="headerlink" href="#layer-version" title="Permanent link">&para;</a></h2>
 <ul>
@@ -3440,5 +3451,5 @@
         <script src="../../../../js/timeago_mkdocs_material.js"></script>
       
     
-  </body>
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>

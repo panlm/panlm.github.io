@@ -67,7 +67,18 @@
     
     
     
-  </head>
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+        html.glightbox-open { overflow: initial; height: 100%; }
+        .gslide-title { margin-top: 0px; user-select: text; }
+        .gslide-desc { color: #666; user-select: text; }
+        .gslide-image img { background: white; }
+        
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}
+            </style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
   
   
     
@@ -3349,7 +3360,7 @@
 </blockquote>
 <h1 id="route53-cmd">route53-cmd<a class="headerlink" href="#route53-cmd" title="Permanent link">&para;</a></h1>
 <h2 id="create-hosted-zone">create hosted zone<a class="headerlink" href="#create-hosted-zone" title="Permanent link">&para;</a></h2>
-<p><img alt="../../EKS/infra/network/externaldns-for-route53" src="../../../EKS/infra/network/externaldns-for-route53/#^fgvqjb" title="../../EKS/infra/network/externaldns-for-route53" /></p>
+<p><a class="glightbox" href="../../../EKS/infra/network/externaldns-for-route53/#^fgvqjb" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="../../EKS/infra/network/externaldns-for-route53" src="../../../EKS/infra/network/externaldns-for-route53/#^fgvqjb" title="../../EKS/infra/network/externaldns-for-route53" /></a></p>
 <p>refer: <a href="../../../EKS/infra/network/externaldns-for-route53/#setup-hosted-zone-" title="git/git-mkdocs/EKS/infra/network/externaldns-for-route53">git/git-mkdocs/EKS/infra/network/externaldns-for-route53</a></p>
 <h2 id="create-ns-record-">create-ns-record-<a class="headerlink" href="#create-ns-record-" title="Permanent link">&para;</a></h2>
 <ul>
@@ -3397,7 +3408,7 @@
 </code></pre></div></li>
 </ul>
 <h2 id="create-cname-record-">create cname record-<a class="headerlink" href="#create-cname-record-" title="Permanent link">&para;</a></h2>
-<p><img alt="POC-apigw" src="../../POC-apigw#^d0liwm" title="POC-apigw" /></p>
+<p><a class="glightbox" href="../../POC-apigw#^d0liwm" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="POC-apigw" src="../../POC-apigw#^d0liwm" title="POC-apigw" /></a></p>
 <p>refer: <a href="https://repost.aws/knowledge-center/simple-resource-record-route53-cli">link</a> <br />
 sample: <a href="../acm-cmd/#create-certificate-" title="acm-cmd">acm-cmd</a></p>
 <h2 id="insert-txt-record-with-multi-values">insert TXT record with multi values<a class="headerlink" href="#insert-txt-record-with-multi-values" title="Permanent link">&para;</a></h2>
@@ -3504,5 +3515,5 @@ sample: <a href="../acm-cmd/#create-certificate-" title="acm-cmd">acm-cmd</a></p
         <script src="../../../js/timeago_mkdocs_material.js"></script>
       
     
-  </body>
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": true, "loop": false, "zoomable": true, "draggable": true, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
 </html>
