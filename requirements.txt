@@ -11,7 +11,7 @@ mkdocs_custom_fences
 mkdocs-encryptcontent-plugin
 mkdocs-callouts
 mkdocs-meta-descriptions-plugin
-#mkdocs-glightbox
+mkdocs-glightbox
 #obsidiantools
 #pyvis
 #cairosvg
