@@ -101,7 +101,12 @@ plugins:
   - awesome-pages
   - tags:
       tags_file: tags.md
-  - glightbox
+  - glightbox:
+      touchNavigation: false
+      loop: false
+      zoomable: true
+      draggable: false
+
 
 extra:
   analytics:
