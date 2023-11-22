@@ -2,7 +2,7 @@
 title: quick setup cloud9 script
 description: 简化运行脚本
 created: 2023-08-04 15:56:59.747
-last_modified: 2023-11-20
+last_modified: 2023-11-22
 tags:
   - aws/cloud9
   - aws/container/eks
@@ -148,10 +148,15 @@ else
         --policy-arn "arn:aws:iam::aws:policy/AdministratorAccess"
 fi
 
-aws cloud9 create-environment-membership \
-    --environment-id ${C9_ID} \
-    --user-arn arn:aws:iam::${MY_ACCOUNT_ID}:root \
-    --permissions read-write
+# share with other specific user
+# cannot use user-arn: arn:aws:iam::${MY_ACCOUNT_ID}:root to share everyone
+# cannot assign role to access cloud9, only root/user/assumed-role/federated-user
+for i in WSOpsRole/Ops WSParticipantRole/Participant panlm/granted; do
+    aws cloud9 create-environment-membership \
+        --environment-id ${C9_ID} \
+        --user-arn arn:aws:sts::${MY_ACCOUNT_ID}:assumed-role/${i} \
+        --permissions read-write
+done
 
 # reboot instance, make role effective ASAP
 aws ec2 reboot-instances --instance-ids ${C9_INST_ID}

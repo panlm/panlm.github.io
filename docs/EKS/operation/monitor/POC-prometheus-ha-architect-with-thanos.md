@@ -514,7 +514,7 @@ create-iamserviceaccount ${SA_NAME} ${CLUSTER_NAME} thanos 1
 - https://particule.io/en/blog/thanos-monitoring/
 - https://blog.csdn.net/kingu_crimson/article/details/123840099
 - [[../../../../../../thanos|thanos]] 
-- [[prometheus#performancetesting-]]
+- [[prometheus#performance-testing-]]
 - [[prometheus#cmd-]]
 
 ### todo

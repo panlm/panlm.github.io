@@ -2,16 +2,17 @@
 title: karpenter-install-lab
 description: 使用 Karpenter 代替 Cluster Autoscaler
 created: 2023-05-29 08:42:40.334
-last_modified: 2023-10-07 21:04:15.431
+last_modified: 2023-11-22
 tags:
   - aws/container/karpenter
+  - aws/container/eks
 ---
 > [!WARNING] This is a github note
 
 # karpenter-lab
 
 ## install
-- https://karpenter.sh/v0.27.5/getting-started/getting-started-with-karpenter/
+- https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/
 
 ```sh
 
