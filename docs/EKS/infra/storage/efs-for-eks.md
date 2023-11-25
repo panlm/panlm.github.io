@@ -2,26 +2,20 @@
 title: efs-for-eks
 description: 使用 efs 作为 pod 持久化存储
 created: 2022-05-23 09:57:50.932
-last_modified: 2023-10-23 13:07:02.986
+last_modified: 2023-11-25
 tags:
   - aws/storage/efs
   - aws/container/eks
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # efs-for-eks
-
 
 ## link
 
 - [efs workshop](https://www.eksworkshop.com/beginner/190_efs/launching-efs/)
 - [[efs-on-eks-mini-priviledge]]
 - [Introducing Amazon EFS CSI dynamic provisioning](https://aws.amazon.com/blogs/containers/introducing-efs-csi-dynamic-provisioning/)
-
 
 ## create efs 
 

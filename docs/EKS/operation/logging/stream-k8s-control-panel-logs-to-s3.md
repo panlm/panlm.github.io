@@ -1,44 +1,17 @@
 ---
-title: "stream-k8s-control-panel-logs-to-s3"
-description: "目前eks控制平面日志只支持发送到cloudwatch，且在同一个log group中有5种类型6种前缀的log stream的日志，不利于统一查询。且只有audit日志是json格式其他均是单行日志，且字段各不相同。本解决方案提供思路统一保存日志供后续分析处理"
-chapter: true
-weight: 1
+title: stream-k8s-control-panel-logs-to-s3
+description: 目前eks控制平面日志只支持发送到cloudwatch，且在同一个log group中有5种类型6种前缀的log stream的日志，不利于统一查询。且只有audit日志是json格式其他均是单行日志，且字段各不相同。本解决方案提供思路统一保存日志供后续分析处理
 created: 2022-10-02 08:37:27.387
 last_modified: 2022-10-02 19:50:39.960
-tags: 
-- aws/container/eks 
-- aws/analytics/kinesis/firehose 
-- aws/storage/s3 
-- aws/analytics/glue/databrew
+tags:
+  - aws/container/eks
+  - aws/analytics/kinesis/firehose
+  - aws/storage/s3
+  - aws/analytics/glue/databrew
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # stream-k8s-control-panel-logs-to-s3
-
-- [background](#background)
-- [requirement](#requirement)
-- [architecture](#architecture)
-- [lab](#lab)
-	- [eks cluster](#eks-cluster)
-	- [s3](#s3)
-	- [lambda](#lambda)
-	- [firehose](#firehose)
-	- [cloudwatch](#cloudwatch)
-	- [glue](#glue)
-		- [using cli](#using-cli)
-		- [using ui](#using-ui)
-	- [databrew](#databrew)
-		- [using cli](#using-cli)
-		- [using ui](#using-ui)
-	- [athena](#athena)
-- [conclusion](#conclusion)
-- [alternative](#alternative)
-- [reference](#reference)
-
 
 ## background
 

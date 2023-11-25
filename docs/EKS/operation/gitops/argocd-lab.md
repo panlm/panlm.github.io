@@ -1,32 +1,18 @@
 ---
-title: "argocd"
-description: "argocd"
+title: argocd
+description: argocd
 chapter: true
 weight: 20
 created: 2022-08-07 19:24:34.481
 last_modified: 2022-08-07 19:24:34.481
-tags: 
-- gitops/argo 
+tags:
+  - gitops/argo
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # argocd-lab
-
-- [install](#install)
-- [add helm](#add-helm)
-- [install aws-lb-controller](#install-aws-lb-controller)
-	- [with argocd UI](#with-argocd-ui)
-	- [with argocd cli](#with-argocd-cli)
-- [install echoserver with argocd](#install-echoserver-with-argocd)
-- [install 2048 game](#install-2048-game)
-- [refer](#refer)
-
 ## install
-[link](https://github.com/argoproj/argo-cd)
+- https://github.com/argoproj/argo-cd
 
 ```sh
 kubectl create namespace argocd

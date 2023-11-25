@@ -2,7 +2,7 @@
 title: docker
 description: 常用命令
 created: 2022-03-23 13:58:01.257
-last_modified: 2023-11-05
+last_modified: 2023-11-23
 tags:
   - docker
   - linux
@@ -29,7 +29,7 @@ docker exec -it app2 /bin/bash
 
 ```
 
-## docker buildx
+## docker-buildx-
 
 - download binary from [link](https://github.com/docker/buildx/)  
 ```

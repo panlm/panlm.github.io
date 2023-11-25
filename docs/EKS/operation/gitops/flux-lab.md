@@ -1,31 +1,15 @@
 ---
-title: "flux"
-description: "flux"
-chapter: true
-weight: 10
+title: flux
+description: flux
 created: 2022-04-06 19:28:05.118
 last_modified: 2022-09-14 08:40:30.375
-tags: 
-- aws/container/eks 
-- gitops/weaveworks/flux
+tags:
+  - aws/container/eks
+  - gitops/weaveworks/flux
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # flux-lab
-
-- [bootstrap v2](#bootstrap-v2)
-	- [another sample](#another-sample)
-- [lab](#lab)
-	- [generate yaml](#generate-yaml)
-- [helm v1 (alternative)](#helm-v1-alternative)
-- [dependencies](#dependencies)
-- [others](#others)
-	- [workshop](#workshop)
-
 ## bootstrap v2
 ```sh
 export GITHUB_TOKEN=ghp_xxxxxx

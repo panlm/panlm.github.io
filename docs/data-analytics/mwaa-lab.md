@@ -6,11 +6,7 @@ last_modified: 2023-11-02 08:24:53.028
 tags:
   - aws/analytics
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # mwaa-lab
 

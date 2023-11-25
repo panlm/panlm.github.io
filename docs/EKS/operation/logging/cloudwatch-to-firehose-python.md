@@ -1,23 +1,16 @@
 ---
-title: "cloudwatch-to-firehose-python"
-description: "在 firehose 上，处理从 cloudwatch 发送来的日志"
-chapter: true
-weight: 3
+title: cloudwatch-to-firehose-python
+description: 在 firehose 上，处理从 cloudwatch 发送来的日志
 created: 2022-10-02 11:52:39.497
 last_modified: 2022-10-02 11:52:39.497
-tags: 
-- aws/serverless/lambda
-- aws/mgmt/cloudwatch 
-- aws/analytics/kinesis/firehose 
-- python 
+tags:
+  - aws/serverless/lambda
+  - aws/mgmt/cloudwatch
+  - aws/analytics/kinesis/firehose
+  - python
 ---
-
+> [!WARNING] This is a github note
 # cloudwatch-to-firehose-python
-
-```toc
-min_depth: 2
-max_depth: 4
-```
 
 ## create
 
