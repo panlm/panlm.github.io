@@ -161,7 +161,7 @@ done
 # reboot instance, make role effective ASAP
 aws ec2 reboot-instances --instance-ids ${C9_INST_ID}
 
-# wait ssm could connect to this instance (max 10 mins)
+# wait ssm could connect to this instance 
 while true ; do
     sleep 60
     CONN_STAT=$(aws ssm get-connection-status \

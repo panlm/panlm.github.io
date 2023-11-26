@@ -2,7 +2,7 @@
 title: POC-prometheus-ha-architect-with-thanos
 description: 用 thanos 扩展 prometheus 高可用性架构
 created: 2023-11-09 08:41:02.494
-last_modified: 2023-11-21
+last_modified: 2023-11-26
 tags:
   - kubernetes
   - aws/container/eks
@@ -29,8 +29,8 @@ tags:
 
 ## go-through-
 ### prometheus
-- we will create 2 clsuters, `ekscluster1` for observer, `ekscluster2` for observee ([[git/git-mkdocs/EKS/infra/cluster/eks-public-access-cluster|eks-public-access-cluster]])
-- and install following addons on each cluster
+- we will create 2 clsuters, `ekscluster1` for observer, `ekscluster2` for observee ([[git/git-mkdocs/EKS/infra/cluster/eks-terraform-cluster#sample-create-2x-clusters-for-thanos-poc-]])
+- following addons will be included in each cluster
     - [[git/git-mkdocs/EKS/infra/network/aws-load-balancer-controller#install-with-eksdemo-|aws load balancer controller]] 
     - [[git/git-mkdocs/EKS/infra/storage/ebs-for-eks#install-using-eksdemo-|ebs csi]] 
     - [[git/git-mkdocs/EKS/infra/network/externaldns-for-route53|externaldns-for-route53]] 

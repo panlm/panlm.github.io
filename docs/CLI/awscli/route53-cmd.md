@@ -2,7 +2,7 @@
 title: route53
 description: 常用命令
 created: 2022-09-20 09:02:35.112
-last_modified: 2023-11-20
+last_modified: 2023-11-26
 tags:
   - aws/network/route53
 ---
@@ -21,19 +21,25 @@ refer: [[git/git-mkdocs/EKS/infra/network/externaldns-for-route53#setup-hosted-z
 - create host zone in your child account and get NS (previous chapter)
 - [[../linux/assume-tool|assume]] to your parent account to add NS record to route53 host zone
 ```sh
-DOMAIN_NAME=poc1029.aws.panlm.xyz
+DOMAIN_NAME=poc0000.aws.panlm.xyz
 NS='ns-1716.awsdns-22.co.uk.
 ns-934.awsdns-52.net.
 ns-114.awsdns-14.com.
 ns-1223.awsdns-24.org.
 '
 
-PARENT_DOMAIN_NAME=${DOMAIN_NAME#*.}
-ZONE_ID=$(aws route53 list-hosted-zones-by-name \
---dns-name "${PARENT_DOMAIN_NAME}." \
---query HostedZones[0].Id --output text)
-
-envsubst >ns-route53-record.json <<-EOF
+function create-ns-record () {
+    if [[ -z ${DOMAIN_NAME} || -z ${NS} ]]; then
+        echo "need variable: DOMAIN_NAME and NS"
+        return
+    fi
+    
+    PARENT_DOMAIN_NAME=${DOMAIN_NAME#*.}
+    ZONE_ID=$(aws route53 list-hosted-zones-by-name \
+    --dns-name "${PARENT_DOMAIN_NAME}." \
+    --query HostedZones[0].Id --output text)
+    
+    envsubst >ns-route53-record.json <<-EOF
 {
   "Comment": "UPSERT a record for poc.xxx.com ",
   "Changes": [
@@ -50,17 +56,17 @@ envsubst >ns-route53-record.json <<-EOF
   ]
 }
 EOF
-
-for i in ${NS}; do
-    cat ns-route53-record.json |jq '.Changes[0].ResourceRecordSet.ResourceRecords += [{"Value": "'"${i}"'"}]' \
-        |tee ns-route53-record-tmp.json
-    mv -f ns-route53-record-tmp.json ns-route53-record.json
-done
-
-aws route53 change-resource-record-sets --hosted-zone-id ${ZONE_ID} --change-batch file://ns-route53-record.json
-
-aws route53 list-resource-record-sets --hosted-zone-id ${ZONE_ID} --query "ResourceRecordSets[?Name == '${DOMAIN_NAME}.']"
-
+    
+    for i in ${NS}; do
+        cat ns-route53-record.json |jq '.Changes[0].ResourceRecordSet.ResourceRecords += [{"Value": "'"${i}"'"}]' \
+            |tee ns-route53-record-tmp.json
+        mv -f ns-route53-record-tmp.json ns-route53-record.json
+    done
+    
+    aws route53 change-resource-record-sets --hosted-zone-id ${ZONE_ID} --change-batch file://ns-route53-record.json
+    
+    aws route53 list-resource-record-sets --hosted-zone-id ${ZONE_ID} --query "ResourceRecordSets[?Name == '${DOMAIN_NAME}.']"
+}
 ```
 
 ## create cname record-

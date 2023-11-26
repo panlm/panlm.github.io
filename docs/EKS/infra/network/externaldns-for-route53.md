@@ -2,7 +2,7 @@
 title: externaldns-for-route53
 description: 使用 externaldns 组件
 created: 2022-08-04 13:24:34.806
-last_modified: 2023-11-20
+last_modified: 2023-11-26
 tags:
   - kubernetes
   - aws/network/route53
@@ -10,29 +10,35 @@ tags:
 > [!WARNING] This is a github note
 
 # externaldns-for-route53
-
 ## setup-hosted-zone-
-
 -  执行下面命令创建 Hosted Zone， 然后手工添加 NS 记录到上游的域名服务器 domain registrar 中 (create hosted zone, and then add NS records to upstream domain registrar)
 ```sh
 echo ${DOMAIN_NAME}
 
-aws route53 create-hosted-zone --name "${DOMAIN_NAME}." \
-  --caller-reference "external-dns-test-$(date +%s)"
-
-ZONE_ID=$(aws route53 list-hosted-zones-by-name --output json \
-  --dns-name "${DOMAIN_NAME}." --query HostedZones[0].Id --out text)
-
-aws route53 list-resource-record-sets --output text \
-  --hosted-zone-id $ZONE_ID --query \
-  "ResourceRecordSets[?Type == 'NS'].ResourceRecords[*].Value | []" | tr '\t' '\n'
-
-###
-# copy above output  
-# add NS record on your upstream domain registrar
-# set TTL to 172800
-###
-
+function create-host-zone () {
+    if [[ $# -ne 1 ]]; then
+        echo "format: $0 DOMAIN_NAME"
+        return
+    else
+        local DOMAIN_NAME=$1
+    fi
+    
+    aws route53 create-hosted-zone --name "${DOMAIN_NAME}." \
+      --caller-reference "external-dns-test-$(date +%s)"
+    
+    ZONE_ID=$(aws route53 list-hosted-zones-by-name --output json \
+      --dns-name "${DOMAIN_NAME}." --query HostedZones[0].Id --out text)
+    
+    aws route53 list-resource-record-sets --output text \
+      --hosted-zone-id $ZONE_ID --query \
+      "ResourceRecordSets[?Type == 'NS'].ResourceRecords[*].Value | []" | tr '\t' '\n'
+    
+    ###
+    # copy above output  
+    # add NS record on your upstream domain registrar
+    # set TTL to 172800
+    ###
+}
 ```
 ^fgvqjb
 
