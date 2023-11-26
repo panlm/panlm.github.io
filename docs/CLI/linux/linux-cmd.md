@@ -2,7 +2,7 @@
 title: linux-cmd
 description: 常用命令
 created: 2023-01-03 12:05:10.533
-last_modified: 2023-11-25
+last_modified: 2023-11-26
 tags:
   - cmd
   - linux
@@ -183,6 +183,11 @@ gsed -i 's/^!\[\[\([^]]\+\)\]\]/![](\1)/' ${file}
 
 ## sponge & tee & redirect to same file
 sponge  reads  standard input and writes it out to the specified file. Unlike a shell redirect, sponge soaks up all its input before opening the output file. This allows constructing pipelines that read from and write to the same file.
+
+## tar
+```sh
+tar cf a.tar ./blue-green-upgrade/ --exclude=".terraform"
+```
 
 ## tcp setting - TIME_WIAT
 ```sh

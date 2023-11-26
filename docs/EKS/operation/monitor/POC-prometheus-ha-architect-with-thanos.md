@@ -57,7 +57,7 @@ mkdir prometheus s3-config query store receive receive-controller
 CLUSTER_NAME=ekscluster1
 DEPLOY_NAME=prom-operator-${CLUSTER_NAME}
 THANOS_BUCKET_NAME=thanos-store-1234
-NAMESPACE=monitoring
+NAMESPACE_NAME=monitoring
 
 ```
 
@@ -65,13 +65,13 @@ NAMESPACE=monitoring
 ```sh title="refer-s3-config"
 echo ${DOMAIN_NAME}
 echo ${CLUSTER_NAME}
-echo ${STORAGECLASS_NAME:=gp3}
+echo ${STORAGECLASS_NAME:=gp2}
 echo ${THANOS_BUCKET_NAME}
 echo ${AWS_DEFAULT_REGION}
 echo ${CERTIFICATE_ARN}
-echo ${NAMESPACE}
+echo ${NAMESPACE_NAME}
 
-kubectl create ns ${NAMESPACE}
+kubectl create ns ${NAMESPACE_NAME}
 
 envsubst >s3-config/thanos-s3-config-${CLUSTER_NAME}.yaml <<-EOF
 type: S3
@@ -83,7 +83,7 @@ config:
     sts_endpoint: "https://sts.amazonaws.com"
 EOF
 
-kubectl -n ${NAMESPACE} create secret generic thanos-s3-config-${CLUSTER_NAME} --from-file=thanos-s3-config-${CLUSTER_NAME}=s3-config/thanos-s3-config-${CLUSTER_NAME}.yaml
+kubectl -n ${NAMESPACE_NAME} create secret generic thanos-s3-config-${CLUSTER_NAME} --from-file=thanos-s3-config-${CLUSTER_NAME}=s3-config/thanos-s3-config-${CLUSTER_NAME}.yaml
 
 ```
 ^refer-s3-config
@@ -157,7 +157,7 @@ prometheus:
           key: thanos-s3-config-${CLUSTER_NAME}
 EOF
 
-helm upgrade -i -f prometheus/values-${CLUSTER_NAME}-1.yaml -f prometheus/values-${CLUSTER_NAME}-1-1.yaml ${DEPLOY_NAME} prometheus-community/kube-prometheus-stack --namespace monitoring
+helm upgrade -i -f prometheus/values-${CLUSTER_NAME}-1.yaml -f prometheus/values-${CLUSTER_NAME}-1-1.yaml ${DEPLOY_NAME} prometheus-community/kube-prometheus-stack --namespace ${NAMESPACE_NAME}
 # helm uninstall ${DEPLOY_NAME} --namespace monitoring
 
 ```
@@ -185,13 +185,17 @@ kubectl rollout restart sts prometheus-prom-operator-${CLUSTER_NAME}-prometheus 
 
 ```
 
-#### observee cluster
-- on observee (ekscluster2)
+#### observee-cluster-
+- switch to observee cluster (ekscluster2)
+```sh
+kubectx #switch to ekscluster2
+```
+- on observee cluster (ekscluster2)
 ```sh
 CLUSTER_NAME=ekscluster2
 DEPLOY_NAME=prom-operator-${CLUSTER_NAME}
 THANOS_BUCKET_NAME=thanos-store-1234
-NAMESPACE=monitoring
+NAMESPACE_NAME=monitoring
 
 ```
 
@@ -259,7 +263,7 @@ prometheus:
           key: thanos-s3-config-${CLUSTER_NAME}
 EOF
 
-helm upgrade -i -f prometheus/values-${CLUSTER_NAME}-1.yaml -f prometheus/values-${CLUSTER_NAME}-1-1.yaml ${DEPLOY_NAME} prometheus-community/kube-prometheus-stack --namespace monitoring
+helm upgrade -i -f prometheus/values-${CLUSTER_NAME}-1.yaml -f prometheus/values-${CLUSTER_NAME}-1-1.yaml ${DEPLOY_NAME} prometheus-community/kube-prometheus-stack --namespace ${NAMESPACE_NAME}
 # helm uninstall ${DEPLOY_NAME} --namespace monitoring
 
 ```
@@ -310,14 +314,14 @@ kubectl rollout restart sts thanos-store-cluster1 -n thanos
 kubectl rollout restart sts thanos-store-cluster2 -n thanos
 ```
 
-#### query and query frontend
+#### query-and-query-frontend-
 - download [[query.tar.gz]] 
 - modify query frontend ingress yaml
 ```sh
   rules:
     - host: thanos-query-frontend-ingress.${DOMIAN_NAME}
 ```
-- improve query performance in query frontend
+- improve query performance in query frontend deployment yaml
 ```yaml
         - --query-range.split-interval=1h
         - --labels.split-interval=1h
@@ -350,16 +354,14 @@ kubectl annotate sa ${SA_NAME} -n thanos eks.amazonaws.com/role-arn=${S3_ADMIN_R
 k rollout restart sts thanos-receive-cluster2 -n thanos
 ```
 - get receive svc 
-    - add it to prometheus remote write in ekscluster2
-    - add it to query deployment yaml
-
-
+    - add it to prometheus remote write in ekscluster2 ([[git/git-mkdocs/EKS/operation/monitor/POC-prometheus-ha-architect-with-thanos#observee-cluster-]])
+    - add it to query deployment yaml ([[git/git-mkdocs/EKS/operation/monitor/POC-prometheus-ha-architect-with-thanos#query-and-query-frontend-]])
 
 ### grafana
 #### query history metrics
 - change default password
 - add prometheus type data source 
-    - url: http://thanos-query-frontend-svc:9090
+    - url: http://thanos-query-frontend.thanos.svc.cluster.local:9090
 - go this dashboard `Kubernetes / Networking / Namespace (Pods)`
 ![[../../../git-attachment/POC-prometheus-ha-architect-with-thanos-png-3.png]]
 - we have history data, but no latest 2 hour metrics
