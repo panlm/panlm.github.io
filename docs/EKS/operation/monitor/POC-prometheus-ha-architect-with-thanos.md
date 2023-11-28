@@ -2,7 +2,7 @@
 title: POC-prometheus-ha-architect-with-thanos
 description: 用 thanos 扩展 prometheus 高可用性架构
 created: 2023-11-09 08:41:02.494
-last_modified: 2023-11-26
+last_modified: 2023-11-28
 tags:
   - kubernetes
   - aws/container/eks

@@ -51,7 +51,7 @@ done
 
 ```
 
-## get-each-snapshot-change-blocks-📚
+## get-each-snapshot-change-blocks-
 
 使用 ebs 快照生命周期管理时，查看特定 volume 每次快照占用的大小，以方便跨区域复制时预估传输量。
 - 快照完成跨区域复制耗时不等，从 20+ 分钟到 45 分钟，不适合作为容灾切换使用
