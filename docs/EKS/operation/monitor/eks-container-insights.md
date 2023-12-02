@@ -2,7 +2,7 @@
 title: eks-container-insights
 description: 启用 EKS 的 container insight 功能
 created: 2022-02-22 08:08:35.714
-last_modified: 2023-10-20 09:58:22.653
+last_modified: 2023-11-29
 tags:
   - aws/container/eks
   - aws/mgmt/cloudwatch
@@ -10,10 +10,8 @@ tags:
 > [!WARNING] This is a github note
 
 # eks-container-insights
-
 ## install
 ### from CLI
-
 1. replace 2 service accounts with [CloudWatchAgentServerPolicy](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Container-Insights-prerequisites.htm)
 ```sh
 CLUSTER_NAME=ekscluster1
@@ -67,12 +65,10 @@ if you do 2 before 1, than need
 - check cloudtrail for "AccessDeny" events
 
 ### using chart
-
 - https://github.com/aws/eks-charts/blob/master/stable/aws-for-fluent-bit/README.md
 - [[../upgrade/aws-for-fluent-bit]]
 
 ## check pod / deployment log
-
 - https://www.eksworkshop.com/intermediate/250_cloudwatch_container_insights/viewlogs/
 
 

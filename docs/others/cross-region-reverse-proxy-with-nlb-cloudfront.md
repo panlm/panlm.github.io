@@ -2,7 +2,7 @@
 title: cross-region-reverse-proxy-with-nlb-cloudfront
 description: 跨区域的 Layer 4 反向代理，并使用 nlb + cloudfront，考察证书使用需求
 created: 2023-10-09 11:23:34.877
-last_modified: 2023-11-19
+last_modified: 2023-11-29
 tags:
   - aws/network/nlb
   - aws/network/cloudfront
@@ -11,18 +11,13 @@ tags:
 > [!WARNING] This is a github note
 
 # cross-region-reverse-proxy-with-nlb-cloudfront
-
 ## diagram
-
 - original region in global on right hand side
 - china region on left hand side
 ![cross-region-reverse-proxy-with-nlb-cloudfront-png-1.png](../git-attachment/cross-region-reverse-proxy-with-nlb-cloudfront-png-1.png)
 
-
 ## prepare application on eks
-
 ### host zone
-
 - 2 host zones, one for each region
 ```sh
 DOMAIN_NAME=poc1009.aws.panlm.xyz # for original region 
@@ -34,7 +29,6 @@ CN_DOMAIN_NAME=poc1010.aws.panlm.xyz # for china region
     ![[../EKS/infra/network/externaldns-for-route53#^fgvqjb]]
 
 ### eks cluster
-
 - create eks cluster (refer: [[../CLI/linux/eksdemo#create eks cluster-]])
 - install addons (refer: [[../CLI/linux/eksdemo#addons-]])
     - externaldns
@@ -43,7 +37,6 @@ CN_DOMAIN_NAME=poc1010.aws.panlm.xyz # for china region
 - httpbin app
 
 ### httpbin
-
 - [[TC-private-apigw-dataflow#后端应用]] ([github](https://github.com/panlm/blog-private-api-gateway-dataflow/blob/main/TC-private-apigw-dataflow.md#%E5%90%8E%E7%AB%AF%E5%BA%94%E7%94%A8))
 - ingress setting with multiple certificates and host wildcard
 ```yaml
@@ -62,7 +55,6 @@ curl https://httpbin.${DOMAIN_NAME}/anything
 
 
 ## prep NLB-1 in front of ALB
-
 - ALB type target group to tcp 80/443 (ALB 类型 TG 只能选 TCP，没有 TLS)
 - create NLB-1 with 2 listeners, 80/443 (TCP only, no TLS)
 - on route53, add DNS record alias to NLB-1, called `nlbtoalb.${DOMAIN_NAME}`
@@ -73,7 +65,6 @@ curl -L http://nlbtoalb.${DOMAIN_NAME}/anything
 - both could access application successfully
 
 ## reverse proxy in china region-
-
 - setup 2 EC2 instances [[fake-waf-on-ec2-forwarding-https#Layer 4 forwarding with iptables]] ([github](https://github.com/panlm/blog-private-api-gateway-dataflow/blob/main/fake-waf-on-ec2-forwarding-https.md#layer-4-forwarding-with-iptables))
 - forward request to NLB-1's public IP addresses. 
     - We have 2 destination IPs, using probability 50% in first rule and keep 2nd rule always been hit.
@@ -104,7 +95,6 @@ curl https://test.${CN_DOMAIN_NAME}/ip
 ```
 
 ## cloudfront in front of NLB-2
-
 - create certificate for cn domain name for cloudfront
     - 如果不使用 cloudfront 则不需要创建证书
 - create origin to NLB-2 
@@ -124,18 +114,14 @@ curl https://abc.${CN_DOMAIN_NAME}/ip
 - no CORS needed
 
 ## more
-
 - iptables DNAT will exhaust ports or not ?
     - No. refer [link](https://www.frozentux.net/iptables-tutorial/cn/iptables-tutorial-cn-1.1.19.html#TRAVERSINGOFTABLES)
 
 ### refer
-
 - [[../CLI/linux/iptables]]
 - [[fake-waf-on-ec2-forwarding-https]]
+    - [github](https://github.com/panlm/blog-private-api-gateway-dataflow/blob/main/fake-waf-on-ec2-forwarding-https.md) 
 - using alb + nginx as reverse proxy 
     - [[Extend Your Web Application Deployment to the China Region Using AWS Direct Connect]]
 - https://scalingo.com/blog/iptables
-
-
-
 

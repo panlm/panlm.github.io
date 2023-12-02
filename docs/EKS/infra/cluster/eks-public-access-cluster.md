@@ -181,7 +181,7 @@ done
 ## create cluster in existed VPC
 
 - get target vpc id
-- create SG ([[../../../../../notes/ec2-cmd#create-sg-]])
+- create SG ([[../../../CLI/awscli/ec2-cmd#func-create-sg-]])
     - or using existed cluster's shared SG (see chapter refer)
 - get vpc info ([[git/git-mkdocs/EKS/infra/cluster/eks-private-access-cluster#prep-config-]])
 - cluster yaml

@@ -1,16 +1,13 @@
 ---
+title: aws-for-fluent-bit
+description: 
 created: 2022-07-22 10:28:26.502
 last_modified: 2023-10-22 13:55:38.417
 tags:
   - kubernetes
   - aws/container/eks
-title: aws-for-fluent-bit
-description:
 ---
-
-```ad-attention
-title: This is a github note
-```
+> [!WARNING] This is a github note
 
 # aws-for-fluent-bit
 

@@ -2,7 +2,7 @@
 title: linux-cmd
 description: 常用命令
 created: 2023-01-03 12:05:10.533
-last_modified: 2023-11-26
+last_modified: 2023-12-02
 tags:
   - cmd
   - linux
@@ -165,8 +165,9 @@ rsync -narv --delete /home/ubuntu/.notable /home/ubuntu/OneDrive/CrossSync/
 ### work-notes
 ```sh
 bash
-export HISTSIZE=0
 
+export HISTSIZE=0
+cd ~/Documents/
 rsync -avr --delete ./work-notes stevenpan@10.68.69.100:/Users/stevenpan/Documents/
 
 ```

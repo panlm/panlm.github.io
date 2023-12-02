@@ -44,23 +44,25 @@ export AWS_DEFAULT_REGION=us-east-2
 ```sh
 ECS_AMI=$(aws ssm get-parameters --names /aws/service/ecs/optimized-ami/amazon-linux-2/recommended |jq -r '.Parameters[0].Value' |jq -r '.image_id')
 ```
-- get default security group ([[notes/ec2-cmd#create-sg-]])
+- get default security group ([[ec2-cmd#func-create-sg-]])
 ```sh
 create-sg ${VPC_ID} # call my function
 echo ${SG_ID}
 ```
-- create launch template ([[notes/auto-scaling-cmd#func-create-aunch-template-]])
+- execute function to create launch template ([[notes/auto-scaling-cmd#func-create-aunch-template-]])
 ```sh
 echo ${SG_ID}
 echo ${OLD_AMI_ID}
 create-launch-template ${SG_ID} ${OLD_AMI_ID} # call my function
 echo ${LAUNCH_TEMPLATE_ID}
 ```
-- add user data and instance profile ([[git/git-mkdocs/CLI/awscli/iam-cmd#ec2-admin-role-create-]])
+- execute function to create ec2 admin role ([[git/git-mkdocs/CLI/awscli/iam-cmd#func-ec2-admin-role-create-]])
 ```sh
 ec2-admin-role-create # call my function
 echo ${INSTANCE_PROFILE_ARN}
-
+```
+- add user data to launch template and make default version is 2
+```sh
 TMP=$(mktemp --suffix .UserData)
 envsubst >${TMP} <<-EOF
 #!/bin/bash
@@ -77,7 +79,7 @@ aws ec2 create-launch-template-version --launch-template-id ${LAUNCH_TEMPLATE_ID
 
 aws ec2 modify-launch-template --launch-template-id ${LAUNCH_TEMPLATE_ID} --default-version "2"
 ```
-- create auto scaling group ([[notes/auto-scaling-cmd#func-create-auto-scaling-group]])
+- execute function to create auto scaling group ([[notes/auto-scaling-cmd#func-create-auto-scaling-group]])
 ```sh
 create-auto-scaling ${LAUNCH_TEMPLATE_ID} # call my function
 echo ${ASG_ARN}
@@ -100,7 +102,21 @@ aws ecs put-cluster-capacity-providers \
     --cluster ${ECS_CLUSTER} \
     --capacity-providers ${ECS_CAP_PROVIDER} \
     --default-capacity-provider-strategy capacityProvider=${ECS_CAP_PROVIDER},weight=1
+```
 
+## get container instance 
+```sh
+CONTAINER_INST_ARN=($(aws ecs list-container-instances --cluster ${ECS_CLUSTER} \
+    --query 'containerInstanceArns[]' --output text |xargs ))
+CONTAINER_INST=($(
+    for i in ${CONTAINER_INST_ARN[@]} ; do
+        echo ${i##*/}
+    done
+))
+echo ${CONTAINER_INST[@]}
+aws ecs describe-container-instances --cluster ${ECS_CLUSTER} \
+    --container-instances ${CONTAINER_INST[@]} |tee /tmp/$$-instance
+cat /tmp/$$-instance |jq -r '.containerInstances[] | [.ec2InstanceId, .versionInfo.agentVersion]|@tsv' 
 ```
 
 ## register task definition
@@ -188,8 +204,8 @@ aws ecs create-service \
 
 ```
 
-## update launch template
-
+## update-launch-template-
+- update launch template based on default version
 ```sh
 echo ${NEW_AMI_ID}
 
@@ -204,8 +220,8 @@ LT_VER=$(cat /tmp/$$-new-lt |jq -r '.LaunchTemplateVersion.VersionNumber')
 
 ```
 
-## update asg
-
+## update-asg-
+- update asg using new template version
 ```sh
 aws autoscaling update-auto-scaling-group \
     --auto-scaling-group-name ${ASG_ARN##*/} \

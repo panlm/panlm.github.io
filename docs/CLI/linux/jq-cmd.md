@@ -17,7 +17,7 @@ tags:
 
 ## sample
 ### snapshot sort 
-!!! note "refer [[git/git-mkdocs/CLI/awscli/ebs-cmd#get-each-snapshot-change-blocks-|here]]"
+!!! note "refer [[git/git-mkdocs/CLI/awscli/ebs-cmd#get-each-snapshot-change-blocks-]]"
     ![[../awscli/ebs-cmd#get-each-snapshot-change-blocks-]]
 
 

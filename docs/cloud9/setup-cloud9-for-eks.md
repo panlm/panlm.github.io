@@ -10,9 +10,7 @@ tags:
 > [!WARNING] This is a github note
 
 # setup cloud9 for eks
-
 ## spin-up-a-cloud9-instance-in-your-region
-
 -  点击[这里](https://console.aws.amazon.com/cloudshell) 运行 cloudshell，执行代码块创建 cloud9 测试环境 (open cloudshell, and then execute following code to create cloud9 environment)
 ```sh
 # name=<give your cloud9 a name>
