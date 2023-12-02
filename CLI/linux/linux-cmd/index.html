@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.13">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.14">
     
     
       
@@ -2671,6 +2671,8 @@
       
         
       
+        
+      
     
     
     
@@ -2949,6 +2951,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#tar" class="md-nav__link">
+    <span class="md-ellipsis">
+      tar
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#tcp-setting-time_wiat" class="md-nav__link">
     <span class="md-ellipsis">
       tcp setting - TIME_WIAT
@@ -3140,6 +3151,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../jq-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    jq
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3156,6 +3188,12 @@
   
     
     
+      
+        
+      
+        
+      
+        
       
         
       
@@ -3371,6 +3409,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../../awscli/ec2-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ec2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../awscli/ecr-cmd/" class="md-nav__link">
         
   
@@ -3455,6 +3514,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../../awscli/rds-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    rds
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../awscli/redshift-cmd/" class="md-nav__link">
         
   
@@ -3523,6 +3603,27 @@
   
   <span class="md-ellipsis">
     ssm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../awscli/vpc-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vpc cmd
   </span>
   
 
@@ -3810,6 +3911,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#tar" class="md-nav__link">
+    <span class="md-ellipsis">
+      tar
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#tcp-setting-time_wiat" class="md-nav__link">
     <span class="md-ellipsis">
       tcp setting - TIME_WIAT
@@ -4050,9 +4160,10 @@
 </code></pre></div>
 <h3 id="work-notes">work-notes<a class="headerlink" href="#work-notes" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>bash
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">HISTSIZE</span><span class="o">=</span><span class="m">0</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a>rsync<span class="w"> </span>-avr<span class="w"> </span>--delete<span class="w"> </span>./work-notes<span class="w"> </span>stevenpan@10.68.69.100:/Users/stevenpan/Documents/
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">HISTSIZE</span><span class="o">=</span><span class="m">0</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="nb">cd</span><span class="w"> </span>~/Documents/
+<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>rsync<span class="w"> </span>-avr<span class="w"> </span>--delete<span class="w"> </span>./work-notes<span class="w"> </span>stevenpan@10.68.69.100:/Users/stevenpan/Documents/
 </code></pre></div>
 <h2 id="sed">sed<a class="headerlink" href="#sed" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nv">file</span><span class="o">=</span>file.md
@@ -4064,25 +4175,28 @@
 </code></pre></div>
 <h2 id="sponge-tee-redirect-to-same-file">sponge &amp; tee &amp; redirect to same file<a class="headerlink" href="#sponge-tee-redirect-to-same-file" title="Permanent link">&para;</a></h2>
 <p>sponge  reads  standard input and writes it out to the specified file. Unlike a shell redirect, sponge soaks up all its input before opening the output file. This allows constructing pipelines that read from and write to the same file.</p>
+<h2 id="tar">tar<a class="headerlink" href="#tar" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>tar<span class="w"> </span>cf<span class="w"> </span>a.tar<span class="w"> </span>./blue-green-upgrade/<span class="w"> </span>--exclude<span class="o">=</span><span class="s2">&quot;.terraform&quot;</span>
+</code></pre></div>
 <h2 id="tcp-setting-time_wiat">tcp setting - TIME_WIAT<a class="headerlink" href="#tcp-setting-time_wiat" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>net.ipv4.tcp_fin_timeout<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">30</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>net.ipv4.ip_local_port_range<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">15000</span><span class="w"> </span><span class="m">65000</span>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>net.ipv4.tcp_tw_recycle<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a>net.ipv4.tcp_tw_reuse<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a>
-<a id="__codelineno-16-6" name="__codelineno-16-6" href="#__codelineno-16-6"></a>net.ipv4.ip_forward<span class="o">=</span><span class="m">1</span>
-<a id="__codelineno-16-7" name="__codelineno-16-7" href="#__codelineno-16-7"></a>net.ipv4.conf.all.accept_source_route<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>net.ipv4.tcp_fin_timeout<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">30</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a>net.ipv4.ip_local_port_range<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">15000</span><span class="w"> </span><span class="m">65000</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>net.ipv4.tcp_tw_recycle<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>net.ipv4.tcp_tw_reuse<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a>net.ipv4.ip_forward<span class="o">=</span><span class="m">1</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a>net.ipv4.conf.all.accept_source_route<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
 </code></pre></div>
 <h2 id="traffic-control">traffic control<a class="headerlink" href="#traffic-control" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>yum<span class="w"> </span>install<span class="w"> </span>iproute-tc
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>yum<span class="w"> </span>install<span class="w"> </span>iproute-tc
 </code></pre></div>
 <p><a href="../../tc-traffic-control" title="tc-traffic-control">tc-traffic-control</a></p>
 <h2 id="xfs">xfs<a class="headerlink" href="#xfs" title="Permanent link">&para;</a></h2>
 <h3 id="xfs-mount-">xfs-mount-<a class="headerlink" href="#xfs-mount-" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>mount<span class="w"> </span>-t<span class="w"> </span>xfs<span class="w"> </span>-o<span class="w"> </span>nouuid<span class="w"> </span>/dev/nvme1n1<span class="w"> </span>/mnt
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>mount<span class="w"> </span>-t<span class="w"> </span>xfs<span class="w"> </span>-o<span class="w"> </span>nouuid<span class="w"> </span>/dev/nvme1n1<span class="w"> </span>/mnt
 </code></pre></div>
 <h3 id="get-uuid">get uuid<a class="headerlink" href="#get-uuid" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>xfs_db<span class="w"> </span>-c<span class="w"> </span>uuid<span class="w"> </span>/dev/nvme1n1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>xfs_db<span class="w"> </span>-c<span class="w"> </span>uuid<span class="w"> </span>/dev/nvme1n1
 </code></pre></div>
 <h2 id="xtop">xtop<a class="headerlink" href="#xtop" title="Permanent link">&para;</a></h2>
 <ul>
@@ -4090,13 +4204,13 @@
 <li>htop</li>
 <li><a href="../../atop" title="atop">atop</a></li>
 <li>iftop<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>iftop -t -s 10 &gt; output
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>iftop -t -s 10 &gt; output
 </code></pre></div></li>
 </ul>
 <h2 id="ip-address-calc">ip address calc<a class="headerlink" href="#ip-address-calc" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>sipcalc<span class="w"> </span>--enablerepo<span class="o">=</span>epel
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>sipcalc<span class="w"> </span>--enablerepo<span class="o">=</span>epel
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>brew<span class="w"> </span>install<span class="w"> </span>sipcalc<span class="w"> </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>brew<span class="w"> </span>install<span class="w"> </span>sipcalc<span class="w"> </span>
 </code></pre></div>
 <h2 id="others">others<a class="headerlink" href="#others" title="Permanent link">&para;</a></h2>
 <ul>
@@ -4110,7 +4224,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-25T12:10:30+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-25</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-12-02T22:06:57+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-02</span>
       
         <br>
         Created:

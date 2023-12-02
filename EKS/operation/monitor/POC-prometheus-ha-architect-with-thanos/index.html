@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.13">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.14">
     
     
       
@@ -1685,9 +1685,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#observee-cluster" class="md-nav__link">
+  <a href="#observee-cluster-" class="md-nav__link">
     <span class="md-ellipsis">
-      observee cluster
+      observee-cluster-
     </span>
   </a>
   
@@ -1718,9 +1718,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#query-and-query-frontend" class="md-nav__link">
+  <a href="#query-and-query-frontend-" class="md-nav__link">
     <span class="md-ellipsis">
-      query and query frontend
+      query-and-query-frontend-
     </span>
   </a>
   
@@ -2963,6 +2963,8 @@
       
         
       
+        
+      
     
     
     
@@ -3119,6 +3121,27 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../CLI/linux/jq-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    jq
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3135,6 +3158,12 @@
   
     
     
+      
+        
+      
+        
+      
+        
       
         
       
@@ -3350,6 +3379,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../CLI/awscli/ec2-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ec2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../CLI/awscli/ecr-cmd/" class="md-nav__link">
         
   
@@ -3434,6 +3484,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../../../../CLI/awscli/rds-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    rds
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../../../CLI/awscli/redshift-cmd/" class="md-nav__link">
         
   
@@ -3502,6 +3573,27 @@
   
   <span class="md-ellipsis">
     ssm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../CLI/awscli/vpc-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Vpc cmd
   </span>
   
 
@@ -3632,9 +3724,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#observee-cluster" class="md-nav__link">
+  <a href="#observee-cluster-" class="md-nav__link">
     <span class="md-ellipsis">
-      observee cluster
+      observee-cluster-
     </span>
   </a>
   
@@ -3665,9 +3757,9 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#query-and-query-frontend" class="md-nav__link">
+  <a href="#query-and-query-frontend-" class="md-nav__link">
     <span class="md-ellipsis">
-      query and query frontend
+      query-and-query-frontend-
     </span>
   </a>
   
@@ -3931,20 +4023,20 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">CLUSTER_NAME</span><span class="o">=</span>ekscluster1
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nv">DEPLOY_NAME</span><span class="o">=</span>prom-operator-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nv">THANOS_BUCKET_NAME</span><span class="o">=</span>thanos-store-1234
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nv">NAMESPACE</span><span class="o">=</span>monitoring
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nv">NAMESPACE_NAME</span><span class="o">=</span>monitoring
 </code></pre></div></p>
 </li>
 <li>
 <p>code block <code>refer-s3-config</code><br />
 <div class="highlight"><span class="filename">refer-s3-config</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">DOMAIN_NAME</span><span class="si">}</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">STORAGECLASS_NAME</span><span class="p">:=gp3</span><span class="si">}</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">STORAGECLASS_NAME</span><span class="p">:=gp2</span><span class="si">}</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">THANOS_BUCKET_NAME</span><span class="si">}</span>
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">CERTIFICATE_ARN</span><span class="si">}</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">NAMESPACE</span><span class="si">}</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">NAMESPACE_NAME</span><span class="si">}</span>
 <a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>kubectl<span class="w"> </span>create<span class="w"> </span>ns<span class="w"> </span><span class="si">${</span><span class="nv">NAMESPACE</span><span class="si">}</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>kubectl<span class="w"> </span>create<span class="w"> </span>ns<span class="w"> </span><span class="si">${</span><span class="nv">NAMESPACE_NAME</span><span class="si">}</span>
 <a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>
 <a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>envsubst<span class="w"> </span>&gt;s3-config/thanos-s3-config-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>.yaml<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
 <a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="s">type: S3</span>
@@ -3956,7 +4048,7 @@
 <a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="s">    sts_endpoint: &quot;https://sts.amazonaws.com&quot;</span>
 <a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="s">EOF</span>
 <a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>
-<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>kubectl<span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">NAMESPACE</span><span class="si">}</span><span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>thanos-s3-config-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span>--from-file<span class="o">=</span>thanos-s3-config-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="o">=</span>s3-config/thanos-s3-config-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>.yaml
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a>kubectl<span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">NAMESPACE_NAME</span><span class="si">}</span><span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>thanos-s3-config-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span>--from-file<span class="o">=</span>thanos-s3-config-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="o">=</span>s3-config/thanos-s3-config-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>.yaml
 </code></pre></div><br />
 ^refer-s3-config</p>
 </li>
@@ -4029,7 +4121,7 @@
 <a id="__codelineno-4-65" name="__codelineno-4-65" href="#__codelineno-4-65"></a><span class="s">          key: thanos-s3-config-${CLUSTER_NAME}</span>
 <a id="__codelineno-4-66" name="__codelineno-4-66" href="#__codelineno-4-66"></a><span class="s">EOF</span>
 <a id="__codelineno-4-67" name="__codelineno-4-67" href="#__codelineno-4-67"></a>
-<a id="__codelineno-4-68" name="__codelineno-4-68" href="#__codelineno-4-68"></a>helm<span class="w"> </span>upgrade<span class="w"> </span>-i<span class="w"> </span>-f<span class="w"> </span>prometheus/values-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>-1.yaml<span class="w"> </span>-f<span class="w"> </span>prometheus/values-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>-1-1.yaml<span class="w"> </span><span class="si">${</span><span class="nv">DEPLOY_NAME</span><span class="si">}</span><span class="w"> </span>prometheus-community/kube-prometheus-stack<span class="w"> </span>--namespace<span class="w"> </span>monitoring
+<a id="__codelineno-4-68" name="__codelineno-4-68" href="#__codelineno-4-68"></a>helm<span class="w"> </span>upgrade<span class="w"> </span>-i<span class="w"> </span>-f<span class="w"> </span>prometheus/values-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>-1.yaml<span class="w"> </span>-f<span class="w"> </span>prometheus/values-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>-1-1.yaml<span class="w"> </span><span class="si">${</span><span class="nv">DEPLOY_NAME</span><span class="si">}</span><span class="w"> </span>prometheus-community/kube-prometheus-stack<span class="w"> </span>--namespace<span class="w"> </span><span class="si">${</span><span class="nv">NAMESPACE_NAME</span><span class="si">}</span>
 <a id="__codelineno-4-69" name="__codelineno-4-69" href="#__codelineno-4-69"></a><span class="c1"># helm uninstall ${DEPLOY_NAME} --namespace monitoring</span>
 </code></pre></div></p>
 </li>
@@ -4054,13 +4146,16 @@
 </code></pre></div></p>
 </li>
 </ul>
-<h4 id="observee-cluster">observee cluster<a class="headerlink" href="#observee-cluster" title="Permanent link">&para;</a></h4>
+<h4 id="observee-cluster-">observee-cluster-<a class="headerlink" href="#observee-cluster-" title="Permanent link">&para;</a></h4>
 <ul>
-<li>on observee (ekscluster2)<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nv">CLUSTER_NAME</span><span class="o">=</span>ekscluster2
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nv">DEPLOY_NAME</span><span class="o">=</span>prom-operator-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nv">THANOS_BUCKET_NAME</span><span class="o">=</span>thanos-store-1234
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nv">NAMESPACE</span><span class="o">=</span>monitoring
+<li>switch to observee cluster (ekscluster2)<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>kubectx<span class="w"> </span><span class="c1">#switch to ekscluster2</span>
+</code></pre></div></li>
+<li>on observee cluster (ekscluster2)<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nv">CLUSTER_NAME</span><span class="o">=</span>ekscluster2
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nv">DEPLOY_NAME</span><span class="o">=</span>prom-operator-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nv">THANOS_BUCKET_NAME</span><span class="o">=</span>thanos-store-1234
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="nv">NAMESPACE_NAME</span><span class="o">=</span>monitoring
 </code></pre></div></li>
 </ul>
 <div class="admonition note">
@@ -4070,67 +4165,67 @@
 <ul>
 <li>
 <p>deploy prometheus with remote write and thanos sider car<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># enable grafana and typical prometheus</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>envsubst<span class="w"> </span>&gt;prometheus/values-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>-1.yaml<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="s">grafana:</span>
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="s">  enabled: false</span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="s">prometheus:</span>
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="s">  prometheusSpec:</span>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="s">    replicas: 2</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="s">    retention: 4h</span>
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="s">    retentionSize: &quot;20GB&quot;</span>
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="s">    ruleSelectorNilUsesHelmValues: false</span>
-<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="s">    serviceMonitorSelectorNilUsesHelmValues: false</span>
-<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="s">    podMonitorSelectorNilUsesHelmValues: false</span>
-<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a><span class="s">    topologySpreadConstraints: </span>
-<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a><span class="s">    - maxSkew: 1</span>
-<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a><span class="s">      topologyKey: topology.kubernetes.io/zone</span>
-<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a><span class="s">      whenUnsatisfiable: DoNotSchedule</span>
-<a id="__codelineno-9-17" name="__codelineno-9-17" href="#__codelineno-9-17"></a><span class="s">      labelSelector:</span>
-<a id="__codelineno-9-18" name="__codelineno-9-18" href="#__codelineno-9-18"></a><span class="s">        matchLabels:</span>
-<a id="__codelineno-9-19" name="__codelineno-9-19" href="#__codelineno-9-19"></a><span class="s">          app: prometheus</span>
-<a id="__codelineno-9-20" name="__codelineno-9-20" href="#__codelineno-9-20"></a><span class="s">    # additionalScrapeConfigsSecret: </span>
-<a id="__codelineno-9-21" name="__codelineno-9-21" href="#__codelineno-9-21"></a><span class="s">    #   enabled: true</span>
-<a id="__codelineno-9-22" name="__codelineno-9-22" href="#__codelineno-9-22"></a><span class="s">    #   name: additional-scrape-configs</span>
-<a id="__codelineno-9-23" name="__codelineno-9-23" href="#__codelineno-9-23"></a><span class="s">    #   key: avalanche-additional.yaml</span>
-<a id="__codelineno-9-24" name="__codelineno-9-24" href="#__codelineno-9-24"></a><span class="s">    storageSpec: </span>
-<a id="__codelineno-9-25" name="__codelineno-9-25" href="#__codelineno-9-25"></a><span class="s">      volumeClaimTemplate:</span>
-<a id="__codelineno-9-26" name="__codelineno-9-26" href="#__codelineno-9-26"></a><span class="s">        spec:</span>
-<a id="__codelineno-9-27" name="__codelineno-9-27" href="#__codelineno-9-27"></a><span class="s">          storageClassName: ${STORAGECLASS_NAME}</span>
-<a id="__codelineno-9-28" name="__codelineno-9-28" href="#__codelineno-9-28"></a><span class="s">          accessModes: [&quot;ReadWriteOnce&quot;]</span>
-<a id="__codelineno-9-29" name="__codelineno-9-29" href="#__codelineno-9-29"></a><span class="s">          resources:</span>
-<a id="__codelineno-9-30" name="__codelineno-9-30" href="#__codelineno-9-30"></a><span class="s">            requests:</span>
-<a id="__codelineno-9-31" name="__codelineno-9-31" href="#__codelineno-9-31"></a><span class="s">              storage: 50Gi</span>
-<a id="__codelineno-9-32" name="__codelineno-9-32" href="#__codelineno-9-32"></a><span class="s">        selector: {}</span>
-<a id="__codelineno-9-33" name="__codelineno-9-33" href="#__codelineno-9-33"></a><span class="s">    remoteWrite: </span>
-<a id="__codelineno-9-34" name="__codelineno-9-34" href="#__codelineno-9-34"></a><span class="s">    - url: http://k8s-thanos-thanosre-xxx.elb.us-east-2.amazonaws.com:19291/api/v1/receive</span>
-<a id="__codelineno-9-35" name="__codelineno-9-35" href="#__codelineno-9-35"></a><span class="s">    remoteWriteDashboards: true</span>
-<a id="__codelineno-9-36" name="__codelineno-9-36" href="#__codelineno-9-36"></a><span class="s">    externalLabels: </span>
-<a id="__codelineno-9-37" name="__codelineno-9-37" href="#__codelineno-9-37"></a><span class="s">      cluster: &quot;${CLUSTER_NAME}&quot;</span>
-<a id="__codelineno-9-38" name="__codelineno-9-38" href="#__codelineno-9-38"></a><span class="s">      cluster_name: &quot;${CLUSTER_NAME}&quot;</span>
-<a id="__codelineno-9-39" name="__codelineno-9-39" href="#__codelineno-9-39"></a><span class="s">      origin_prometheus: &quot;${CLUSTER_NAME}&quot;</span>
-<a id="__codelineno-9-40" name="__codelineno-9-40" href="#__codelineno-9-40"></a><span class="s">EOF</span>
-<a id="__codelineno-9-41" name="__codelineno-9-41" href="#__codelineno-9-41"></a>
-<a id="__codelineno-9-42" name="__codelineno-9-42" href="#__codelineno-9-42"></a><span class="c1"># enable prometheus with thanos</span>
-<a id="__codelineno-9-43" name="__codelineno-9-43" href="#__codelineno-9-43"></a>envsubst<span class="w"> </span>&gt;prometheus/values-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>-1-1.yaml<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
-<a id="__codelineno-9-44" name="__codelineno-9-44" href="#__codelineno-9-44"></a><span class="s">prometheus:</span>
-<a id="__codelineno-9-45" name="__codelineno-9-45" href="#__codelineno-9-45"></a><span class="s">  thanosService:</span>
-<a id="__codelineno-9-46" name="__codelineno-9-46" href="#__codelineno-9-46"></a><span class="s">    enabled: true</span>
-<a id="__codelineno-9-47" name="__codelineno-9-47" href="#__codelineno-9-47"></a><span class="s">  thanosServiceMonitor:</span>
-<a id="__codelineno-9-48" name="__codelineno-9-48" href="#__codelineno-9-48"></a><span class="s">    enabled: true</span>
-<a id="__codelineno-9-49" name="__codelineno-9-49" href="#__codelineno-9-49"></a><span class="s">  thanosServiceExternal:</span>
-<a id="__codelineno-9-50" name="__codelineno-9-50" href="#__codelineno-9-50"></a><span class="s">    enabled: true</span>
-<a id="__codelineno-9-51" name="__codelineno-9-51" href="#__codelineno-9-51"></a><span class="s">    type: LoadBalancer</span>
-<a id="__codelineno-9-52" name="__codelineno-9-52" href="#__codelineno-9-52"></a><span class="s">  prometheusSpec:</span>
-<a id="__codelineno-9-53" name="__codelineno-9-53" href="#__codelineno-9-53"></a><span class="s">    thanos: </span>
-<a id="__codelineno-9-54" name="__codelineno-9-54" href="#__codelineno-9-54"></a><span class="s">      objectStorageConfig:</span>
-<a id="__codelineno-9-55" name="__codelineno-9-55" href="#__codelineno-9-55"></a><span class="s">        existingSecret:</span>
-<a id="__codelineno-9-56" name="__codelineno-9-56" href="#__codelineno-9-56"></a><span class="s">          name: thanos-s3-config-${CLUSTER_NAME}</span>
-<a id="__codelineno-9-57" name="__codelineno-9-57" href="#__codelineno-9-57"></a><span class="s">          key: thanos-s3-config-${CLUSTER_NAME}</span>
-<a id="__codelineno-9-58" name="__codelineno-9-58" href="#__codelineno-9-58"></a><span class="s">EOF</span>
-<a id="__codelineno-9-59" name="__codelineno-9-59" href="#__codelineno-9-59"></a>
-<a id="__codelineno-9-60" name="__codelineno-9-60" href="#__codelineno-9-60"></a>helm<span class="w"> </span>upgrade<span class="w"> </span>-i<span class="w"> </span>-f<span class="w"> </span>prometheus/values-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>-1.yaml<span class="w"> </span>-f<span class="w"> </span>prometheus/values-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>-1-1.yaml<span class="w"> </span><span class="si">${</span><span class="nv">DEPLOY_NAME</span><span class="si">}</span><span class="w"> </span>prometheus-community/kube-prometheus-stack<span class="w"> </span>--namespace<span class="w"> </span>monitoring
-<a id="__codelineno-9-61" name="__codelineno-9-61" href="#__codelineno-9-61"></a><span class="c1"># helm uninstall ${DEPLOY_NAME} --namespace monitoring</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># enable grafana and typical prometheus</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>envsubst<span class="w"> </span>&gt;prometheus/values-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>-1.yaml<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="s">grafana:</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="s">  enabled: false</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="s">prometheus:</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="s">  prometheusSpec:</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="s">    replicas: 2</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="s">    retention: 4h</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="s">    retentionSize: &quot;20GB&quot;</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="s">    ruleSelectorNilUsesHelmValues: false</span>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="s">    serviceMonitorSelectorNilUsesHelmValues: false</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="s">    podMonitorSelectorNilUsesHelmValues: false</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="s">    topologySpreadConstraints: </span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="s">    - maxSkew: 1</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="s">      topologyKey: topology.kubernetes.io/zone</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="s">      whenUnsatisfiable: DoNotSchedule</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="s">      labelSelector:</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="s">        matchLabels:</span>
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="s">          app: prometheus</span>
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="s">    # additionalScrapeConfigsSecret: </span>
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="s">    #   enabled: true</span>
+<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="s">    #   name: additional-scrape-configs</span>
+<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="s">    #   key: avalanche-additional.yaml</span>
+<a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a><span class="s">    storageSpec: </span>
+<a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a><span class="s">      volumeClaimTemplate:</span>
+<a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a><span class="s">        spec:</span>
+<a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a><span class="s">          storageClassName: ${STORAGECLASS_NAME}</span>
+<a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a><span class="s">          accessModes: [&quot;ReadWriteOnce&quot;]</span>
+<a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a><span class="s">          resources:</span>
+<a id="__codelineno-10-30" name="__codelineno-10-30" href="#__codelineno-10-30"></a><span class="s">            requests:</span>
+<a id="__codelineno-10-31" name="__codelineno-10-31" href="#__codelineno-10-31"></a><span class="s">              storage: 50Gi</span>
+<a id="__codelineno-10-32" name="__codelineno-10-32" href="#__codelineno-10-32"></a><span class="s">        selector: {}</span>
+<a id="__codelineno-10-33" name="__codelineno-10-33" href="#__codelineno-10-33"></a><span class="s">    remoteWrite: </span>
+<a id="__codelineno-10-34" name="__codelineno-10-34" href="#__codelineno-10-34"></a><span class="s">    - url: http://k8s-thanos-thanosre-xxx.elb.us-east-2.amazonaws.com:19291/api/v1/receive</span>
+<a id="__codelineno-10-35" name="__codelineno-10-35" href="#__codelineno-10-35"></a><span class="s">    remoteWriteDashboards: true</span>
+<a id="__codelineno-10-36" name="__codelineno-10-36" href="#__codelineno-10-36"></a><span class="s">    externalLabels: </span>
+<a id="__codelineno-10-37" name="__codelineno-10-37" href="#__codelineno-10-37"></a><span class="s">      cluster: &quot;${CLUSTER_NAME}&quot;</span>
+<a id="__codelineno-10-38" name="__codelineno-10-38" href="#__codelineno-10-38"></a><span class="s">      cluster_name: &quot;${CLUSTER_NAME}&quot;</span>
+<a id="__codelineno-10-39" name="__codelineno-10-39" href="#__codelineno-10-39"></a><span class="s">      origin_prometheus: &quot;${CLUSTER_NAME}&quot;</span>
+<a id="__codelineno-10-40" name="__codelineno-10-40" href="#__codelineno-10-40"></a><span class="s">EOF</span>
+<a id="__codelineno-10-41" name="__codelineno-10-41" href="#__codelineno-10-41"></a>
+<a id="__codelineno-10-42" name="__codelineno-10-42" href="#__codelineno-10-42"></a><span class="c1"># enable prometheus with thanos</span>
+<a id="__codelineno-10-43" name="__codelineno-10-43" href="#__codelineno-10-43"></a>envsubst<span class="w"> </span>&gt;prometheus/values-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>-1-1.yaml<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
+<a id="__codelineno-10-44" name="__codelineno-10-44" href="#__codelineno-10-44"></a><span class="s">prometheus:</span>
+<a id="__codelineno-10-45" name="__codelineno-10-45" href="#__codelineno-10-45"></a><span class="s">  thanosService:</span>
+<a id="__codelineno-10-46" name="__codelineno-10-46" href="#__codelineno-10-46"></a><span class="s">    enabled: true</span>
+<a id="__codelineno-10-47" name="__codelineno-10-47" href="#__codelineno-10-47"></a><span class="s">  thanosServiceMonitor:</span>
+<a id="__codelineno-10-48" name="__codelineno-10-48" href="#__codelineno-10-48"></a><span class="s">    enabled: true</span>
+<a id="__codelineno-10-49" name="__codelineno-10-49" href="#__codelineno-10-49"></a><span class="s">  thanosServiceExternal:</span>
+<a id="__codelineno-10-50" name="__codelineno-10-50" href="#__codelineno-10-50"></a><span class="s">    enabled: true</span>
+<a id="__codelineno-10-51" name="__codelineno-10-51" href="#__codelineno-10-51"></a><span class="s">    type: LoadBalancer</span>
+<a id="__codelineno-10-52" name="__codelineno-10-52" href="#__codelineno-10-52"></a><span class="s">  prometheusSpec:</span>
+<a id="__codelineno-10-53" name="__codelineno-10-53" href="#__codelineno-10-53"></a><span class="s">    thanos: </span>
+<a id="__codelineno-10-54" name="__codelineno-10-54" href="#__codelineno-10-54"></a><span class="s">      objectStorageConfig:</span>
+<a id="__codelineno-10-55" name="__codelineno-10-55" href="#__codelineno-10-55"></a><span class="s">        existingSecret:</span>
+<a id="__codelineno-10-56" name="__codelineno-10-56" href="#__codelineno-10-56"></a><span class="s">          name: thanos-s3-config-${CLUSTER_NAME}</span>
+<a id="__codelineno-10-57" name="__codelineno-10-57" href="#__codelineno-10-57"></a><span class="s">          key: thanos-s3-config-${CLUSTER_NAME}</span>
+<a id="__codelineno-10-58" name="__codelineno-10-58" href="#__codelineno-10-58"></a><span class="s">EOF</span>
+<a id="__codelineno-10-59" name="__codelineno-10-59" href="#__codelineno-10-59"></a>
+<a id="__codelineno-10-60" name="__codelineno-10-60" href="#__codelineno-10-60"></a>helm<span class="w"> </span>upgrade<span class="w"> </span>-i<span class="w"> </span>-f<span class="w"> </span>prometheus/values-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>-1.yaml<span class="w"> </span>-f<span class="w"> </span>prometheus/values-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>-1-1.yaml<span class="w"> </span><span class="si">${</span><span class="nv">DEPLOY_NAME</span><span class="si">}</span><span class="w"> </span>prometheus-community/kube-prometheus-stack<span class="w"> </span>--namespace<span class="w"> </span><span class="si">${</span><span class="nv">NAMESPACE_NAME</span><span class="si">}</span>
+<a id="__codelineno-10-61" name="__codelineno-10-61" href="#__codelineno-10-61"></a><span class="c1"># helm uninstall ${DEPLOY_NAME} --namespace monitoring</span>
 </code></pre></div></p>
 </li>
 <li>
@@ -4138,9 +4233,9 @@
 </li>
 <li>
 <p>create irsa in monitoring namespace for thanos (<a href="../../../../CLI/linux/eksctl/#create-iamserviceaccount-" title="git/git-mkdocs/CLI/linux/eksctl">git/git-mkdocs/CLI/linux/eksctl</a>)<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">DEPLOY_NAME</span><span class="si">}</span>
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="nv">SA_NAME</span><span class="o">=</span><span class="si">${</span><span class="nv">DEPLOY_NAME</span><span class="si">}</span>-prometheus
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">DEPLOY_NAME</span><span class="si">}</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="nv">SA_NAME</span><span class="o">=</span><span class="si">${</span><span class="nv">DEPLOY_NAME</span><span class="si">}</span>-prometheus
 </code></pre></div></p>
 </li>
 </ul>
@@ -4150,52 +4245,52 @@
 </div>
 <ul>
 <li>rollout<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>kubectl<span class="w"> </span>rollout<span class="w"> </span>restart<span class="w"> </span>sts<span class="w"> </span>prometheus-prom-operator-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>-prometheus<span class="w"> </span>-n<span class="w"> </span>monitoring
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>kubectl<span class="w"> </span>rollout<span class="w"> </span>restart<span class="w"> </span>sts<span class="w"> </span>prometheus-prom-operator-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>-prometheus<span class="w"> </span>-n<span class="w"> </span>monitoring
 </code></pre></div></li>
 </ul>
 <h3 id="thanos">thanos<a class="headerlink" href="#thanos" title="Permanent link">&para;</a></h3>
 <h4 id="store">store<a class="headerlink" href="#store" title="Permanent link">&para;</a></h4>
 <ul>
 <li>reuse 2 cluster s3 config file for thanos store on observer<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>k<span class="w"> </span>create<span class="w"> </span>ns<span class="w"> </span>thanos
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="k">for</span><span class="w"> </span>CLUSTER_NAME<span class="w"> </span><span class="k">in</span><span class="w"> </span>ekscluster1<span class="w"> </span>ekscluster2<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>thanos-s3-config-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span>--from-file<span class="o">=</span>thanos-s3-config-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="o">=</span>./s3-config/thanos-s3-config-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>.yaml<span class="w"> </span>-n<span class="w"> </span>thanos
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="k">done</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>k<span class="w"> </span>create<span class="w"> </span>ns<span class="w"> </span>thanos
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="k">for</span><span class="w"> </span>CLUSTER_NAME<span class="w"> </span><span class="k">in</span><span class="w"> </span>ekscluster1<span class="w"> </span>ekscluster2<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">    </span>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>generic<span class="w"> </span>thanos-s3-config-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span>--from-file<span class="o">=</span>thanos-s3-config-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="o">=</span>./s3-config/thanos-s3-config-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>.yaml<span class="w"> </span>-n<span class="w"> </span>thanos
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="k">done</span>
 </code></pre></div></li>
 <li>create thanos store for history data query<ul>
 <li>download <a href="../../../../git-attachment/store.tar.gz" title="store.tar.gz">store.tar.gz</a> <br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>store/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>store/
 </code></pre></div></li>
 </ul>
 </li>
 <li>create role for sa (<a href="../../../../CLI/linux/eksctl/#create-iamserviceaccount-" title="git/git-mkdocs/CLI/linux/eksctl">git/git-mkdocs/CLI/linux/eksctl</a>) and annotate to existed sa<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="nv">CLUSTER_NAME</span><span class="o">=</span>ekscluster1
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="k">for</span><span class="w"> </span>SA_NAME<span class="w"> </span><span class="k">in</span><span class="w"> </span>thanos-store-cluster1<span class="w"> </span>thanos-store-cluster2<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="w">    </span>create-iamserviceaccount<span class="w"> </span><span class="si">${</span><span class="nv">SA_NAME</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span>thanos<span class="w"> </span><span class="m">0</span>
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">SA_NAME</span><span class="si">}</span>
-<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">S3_ADMIN_ROLE_ARN</span><span class="si">}</span>
-<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">    </span>kubectl<span class="w"> </span>annotate<span class="w"> </span>sa<span class="w"> </span><span class="si">${</span><span class="nv">SA_NAME</span><span class="si">}</span><span class="w"> </span>-n<span class="w"> </span>thanos<span class="w"> </span>eks.amazonaws.com/role-arn<span class="o">=</span><span class="si">${</span><span class="nv">S3_ADMIN_ROLE_ARN</span><span class="si">}</span><span class="w"> </span>--overwrite
-<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="k">done</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nv">CLUSTER_NAME</span><span class="o">=</span>ekscluster1
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="k">for</span><span class="w"> </span>SA_NAME<span class="w"> </span><span class="k">in</span><span class="w"> </span>thanos-store-cluster1<span class="w"> </span>thanos-store-cluster2<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">    </span>create-iamserviceaccount<span class="w"> </span><span class="si">${</span><span class="nv">SA_NAME</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span>thanos<span class="w"> </span><span class="m">0</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">SA_NAME</span><span class="si">}</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">S3_ADMIN_ROLE_ARN</span><span class="si">}</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="w">    </span>kubectl<span class="w"> </span>annotate<span class="w"> </span>sa<span class="w"> </span><span class="si">${</span><span class="nv">SA_NAME</span><span class="si">}</span><span class="w"> </span>-n<span class="w"> </span>thanos<span class="w"> </span>eks.amazonaws.com/role-arn<span class="o">=</span><span class="si">${</span><span class="nv">S3_ADMIN_ROLE_ARN</span><span class="si">}</span><span class="w"> </span>--overwrite
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="k">done</span>
 </code></pre></div></li>
 <li>rollout 2 stores (need to be deleted and apply again)<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>kubectl<span class="w"> </span>rollout<span class="w"> </span>restart<span class="w"> </span>sts<span class="w"> </span>thanos-store-cluster1<span class="w"> </span>-n<span class="w"> </span>thanos
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>kubectl<span class="w"> </span>rollout<span class="w"> </span>restart<span class="w"> </span>sts<span class="w"> </span>thanos-store-cluster2<span class="w"> </span>-n<span class="w"> </span>thanos
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>kubectl<span class="w"> </span>rollout<span class="w"> </span>restart<span class="w"> </span>sts<span class="w"> </span>thanos-store-cluster1<span class="w"> </span>-n<span class="w"> </span>thanos
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>kubectl<span class="w"> </span>rollout<span class="w"> </span>restart<span class="w"> </span>sts<span class="w"> </span>thanos-store-cluster2<span class="w"> </span>-n<span class="w"> </span>thanos
 </code></pre></div></li>
 </ul>
-<h4 id="query-and-query-frontend">query and query frontend<a class="headerlink" href="#query-and-query-frontend" title="Permanent link">&para;</a></h4>
+<h4 id="query-and-query-frontend-">query-and-query-frontend-<a class="headerlink" href="#query-and-query-frontend-" title="Permanent link">&para;</a></h4>
 <ul>
 <li>download <a href="../../../../git-attachment/query.tar.gz" title="query.tar.gz">query.tar.gz</a> </li>
 <li>modify query frontend ingress yaml<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="w">  </span>rules:
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="w">    </span>-<span class="w"> </span>host:<span class="w"> </span>thanos-query-frontend-ingress.<span class="si">${</span><span class="nv">DOMIAN_NAME</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="w">  </span>rules:
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">    </span>-<span class="w"> </span>host:<span class="w"> </span>thanos-query-frontend-ingress.<span class="si">${</span><span class="nv">DOMIAN_NAME</span><span class="si">}</span>
 </code></pre></div></li>
-<li>improve query performance in query frontend<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--query-range.split-interval=1h</span>
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--labels.split-interval=1h</span>
+<li>improve query performance in query frontend deployment yaml<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--query-range.split-interval=1h</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--labels.split-interval=1h</span>
 </code></pre></div></li>
 <li>modify query deployment yaml as need, add endpoint for sider car, receive, store, etc.</li>
 <li>deploy<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>query/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>query/
 </code></pre></div></li>
 </ul>
 <h4 id="receive">receive<a class="headerlink" href="#receive" title="Permanent link">&para;</a></h4>
@@ -4204,26 +4299,26 @@
 <li>use existed s3 config file in secret</li>
 <li>download <a href="../../../../git-attachment/receive.tar.gz" title="receive.tar.gz">receive.tar.gz</a></li>
 <li>deploy receive for ekscluster2 dedicate<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>k<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>receive/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>k<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>receive/
 </code></pre></div></li>
 <li>
 <p>create irsa in thanos namespace for receive (<a href="../../../../CLI/linux/eksctl/#create-iamserviceaccount-" title="git/git-mkdocs/CLI/linux/eksctl">git/git-mkdocs/CLI/linux/eksctl</a>)<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nv">CLUSTER_NAME</span><span class="o">=</span>ekscluster1
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="nv">SA_NAME</span><span class="o">=</span>thanos-receive-cluster2
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>
-<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>create-iamserviceaccount<span class="w"> </span><span class="si">${</span><span class="nv">SA_NAME</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span>thanos<span class="w"> </span><span class="m">0</span>
-<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">S3_ADMIN_ROLE_ARN</span><span class="si">}</span>
-<a id="__codelineno-20-6" name="__codelineno-20-6" href="#__codelineno-20-6"></a>kubectl<span class="w"> </span>annotate<span class="w"> </span>sa<span class="w"> </span><span class="si">${</span><span class="nv">SA_NAME</span><span class="si">}</span><span class="w"> </span>-n<span class="w"> </span>thanos<span class="w"> </span>eks.amazonaws.com/role-arn<span class="o">=</span><span class="si">${</span><span class="nv">S3_ADMIN_ROLE_ARN</span><span class="si">}</span><span class="w"> </span>--overwrite
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a><span class="nv">CLUSTER_NAME</span><span class="o">=</span>ekscluster1
+<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a><span class="nv">SA_NAME</span><span class="o">=</span>thanos-receive-cluster2
+<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>
+<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>create-iamserviceaccount<span class="w"> </span><span class="si">${</span><span class="nv">SA_NAME</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span>thanos<span class="w"> </span><span class="m">0</span>
+<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">S3_ADMIN_ROLE_ARN</span><span class="si">}</span>
+<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>kubectl<span class="w"> </span>annotate<span class="w"> </span>sa<span class="w"> </span><span class="si">${</span><span class="nv">SA_NAME</span><span class="si">}</span><span class="w"> </span>-n<span class="w"> </span>thanos<span class="w"> </span>eks.amazonaws.com/role-arn<span class="o">=</span><span class="si">${</span><span class="nv">S3_ADMIN_ROLE_ARN</span><span class="si">}</span><span class="w"> </span>--overwrite
 </code></pre></div></p>
 </li>
 <li>
 <p>rollout (delete and apply again)<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>k<span class="w"> </span>rollout<span class="w"> </span>restart<span class="w"> </span>sts<span class="w"> </span>thanos-receive-cluster2<span class="w"> </span>-n<span class="w"> </span>thanos
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>k<span class="w"> </span>rollout<span class="w"> </span>restart<span class="w"> </span>sts<span class="w"> </span>thanos-receive-cluster2<span class="w"> </span>-n<span class="w"> </span>thanos
 </code></pre></div></p>
 </li>
 <li>get receive svc <ul>
-<li>add it to prometheus remote write in ekscluster2</li>
-<li>add it to query deployment yaml</li>
+<li>add it to prometheus remote write in ekscluster2 (<a href="./#observee-cluster-" title="git/git-mkdocs/EKS/operation/monitor/POC-prometheus-ha-architect-with-thanos">git/git-mkdocs/EKS/operation/monitor/POC-prometheus-ha-architect-with-thanos</a>)</li>
+<li>add it to query deployment yaml (<a href="./#query-and-query-frontend-" title="git/git-mkdocs/EKS/operation/monitor/POC-prometheus-ha-architect-with-thanos">git/git-mkdocs/EKS/operation/monitor/POC-prometheus-ha-architect-with-thanos</a>)</li>
 </ul>
 </li>
 </ul>
@@ -4232,7 +4327,7 @@
 <ul>
 <li>change default password</li>
 <li>add prometheus type data source <ul>
-<li>url: <a href="http://thanos-query-frontend-svc:9090">http://thanos-query-frontend-svc:9090</a></li>
+<li>url: <a href="http://thanos-query-frontend.thanos.svc.cluster.local:9090">http://thanos-query-frontend.thanos.svc.cluster.local:9090</a></li>
 </ul>
 </li>
 <li>go this dashboard <code>Kubernetes / Networking / Namespace (Pods)</code><br />
@@ -4267,12 +4362,12 @@
 <ul>
 <li>change block-duration, will cause prometheus statefulset cannot be start<ul>
 <li><a href="https://github.com/prometheus-operator/prometheus-operator/issues/4414">https://github.com/prometheus-operator/prometheus-operator/issues/4414</a><br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="w">  </span><span class="nt">prometheusSpec</span><span class="p">:</span>
-<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">    </span><span class="nt">additionalArgs</span><span class="p">:</span><span class="w"> </span>
-<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">storage.tsdb.min-block-duration</span>
-<a id="__codelineno-22-4" name="__codelineno-22-4" href="#__codelineno-22-4"></a><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30m</span>
-<a id="__codelineno-22-5" name="__codelineno-22-5" href="#__codelineno-22-5"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">storage.tsdb.max-block-duration</span>
-<a id="__codelineno-22-6" name="__codelineno-22-6" href="#__codelineno-22-6"></a><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30m</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="w">  </span><span class="nt">prometheusSpec</span><span class="p">:</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="w">    </span><span class="nt">additionalArgs</span><span class="p">:</span><span class="w"> </span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">storage.tsdb.min-block-duration</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30m</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">storage.tsdb.max-block-duration</span>
+<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">30m</span>
 </code></pre></div></li>
 </ul>
 </li>
@@ -4283,77 +4378,77 @@
 <li><a href="https://github.com/panlm/thanos-example">https://github.com/panlm/thanos-example</a></li>
 </ul>
 <h4 id="grafana-ingress-with-nginx-sample">grafana ingress with nginx sample<a class="headerlink" href="#grafana-ingress-with-nginx-sample" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>envsubst<span class="w"> </span>&gt;<span class="si">${</span><span class="nv">TMP</span><span class="si">}</span>-1.yaml<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="s">grafana:</span>
-<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="s">  deploymentStrategy:</span>
-<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="s">    type: Recreate</span>
-<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="s">  ingress:</span>
-<a id="__codelineno-23-6" name="__codelineno-23-6" href="#__codelineno-23-6"></a><span class="s">    enabled: true</span>
-<a id="__codelineno-23-7" name="__codelineno-23-7" href="#__codelineno-23-7"></a><span class="s">    annotations:</span>
-<a id="__codelineno-23-8" name="__codelineno-23-8" href="#__codelineno-23-8"></a><span class="s">      kubernetes.io/ingress.class: nginx</span>
-<a id="__codelineno-23-9" name="__codelineno-23-9" href="#__codelineno-23-9"></a><span class="s">      cert-manager.io/cluster-issuer: &quot;letsencrypt-prod&quot;</span>
-<a id="__codelineno-23-10" name="__codelineno-23-10" href="#__codelineno-23-10"></a><span class="s">    hosts:</span>
-<a id="__codelineno-23-11" name="__codelineno-23-11" href="#__codelineno-23-11"></a>
-<a id="__codelineno-23-12" name="__codelineno-23-12" href="#__codelineno-23-12"></a><span class="s">      - grafana.${DOMAIN_NAME}</span>
-<a id="__codelineno-23-13" name="__codelineno-23-13" href="#__codelineno-23-13"></a><span class="s">    tls:</span>
-<a id="__codelineno-23-14" name="__codelineno-23-14" href="#__codelineno-23-14"></a><span class="s">      - secretName: grafana.${DOMAIN_NAME}</span>
-<a id="__codelineno-23-15" name="__codelineno-23-15" href="#__codelineno-23-15"></a><span class="s">        hosts:</span>
-<a id="__codelineno-23-16" name="__codelineno-23-16" href="#__codelineno-23-16"></a><span class="s">          - grafana.${DOMAIN_NAME}</span>
-<a id="__codelineno-23-17" name="__codelineno-23-17" href="#__codelineno-23-17"></a><span class="s">  persistence:</span>
-<a id="__codelineno-23-18" name="__codelineno-23-18" href="#__codelineno-23-18"></a><span class="s">    enabled: true</span>
-<a id="__codelineno-23-19" name="__codelineno-23-19" href="#__codelineno-23-19"></a><span class="s">    storageClassName: ${STORAGECLASS_NAME}</span>
-<a id="__codelineno-23-20" name="__codelineno-23-20" href="#__codelineno-23-20"></a><span class="s">    accessModes:</span>
-<a id="__codelineno-23-21" name="__codelineno-23-21" href="#__codelineno-23-21"></a><span class="s">      - ReadWriteOnce</span>
-<a id="__codelineno-23-22" name="__codelineno-23-22" href="#__codelineno-23-22"></a><span class="s">    size: 1Gi</span>
-<a id="__codelineno-23-23" name="__codelineno-23-23" href="#__codelineno-23-23"></a><span class="s">prometheus:</span>
-<a id="__codelineno-23-24" name="__codelineno-23-24" href="#__codelineno-23-24"></a><span class="s">  prometheusSpec:</span>
-<a id="__codelineno-23-25" name="__codelineno-23-25" href="#__codelineno-23-25"></a><span class="s">    replicas: 2</span>
-<a id="__codelineno-23-26" name="__codelineno-23-26" href="#__codelineno-23-26"></a><span class="s">    retention: 12h</span>
-<a id="__codelineno-23-27" name="__codelineno-23-27" href="#__codelineno-23-27"></a><span class="s">    retentionSize: &quot;10GB&quot;</span>
-<a id="__codelineno-23-28" name="__codelineno-23-28" href="#__codelineno-23-28"></a><span class="s">    ruleSelectorNilUsesHelmValues: false</span>
-<a id="__codelineno-23-29" name="__codelineno-23-29" href="#__codelineno-23-29"></a><span class="s">    serviceMonitorSelectorNilUsesHelmValues: false</span>
-<a id="__codelineno-23-30" name="__codelineno-23-30" href="#__codelineno-23-30"></a><span class="s">    podMonitorSelectorNilUsesHelmValues: false</span>
-<a id="__codelineno-23-31" name="__codelineno-23-31" href="#__codelineno-23-31"></a><span class="s">    storageSpec:</span>
-<a id="__codelineno-23-32" name="__codelineno-23-32" href="#__codelineno-23-32"></a><span class="s">      volumeClaimTemplate:</span>
-<a id="__codelineno-23-33" name="__codelineno-23-33" href="#__codelineno-23-33"></a><span class="s">        spec:</span>
-<a id="__codelineno-23-34" name="__codelineno-23-34" href="#__codelineno-23-34"></a><span class="s">          storageClassName: ${STORAGECLASS_NAME}</span>
-<a id="__codelineno-23-35" name="__codelineno-23-35" href="#__codelineno-23-35"></a><span class="s">          accessModes: [&quot;ReadWriteOnce&quot;]</span>
-<a id="__codelineno-23-36" name="__codelineno-23-36" href="#__codelineno-23-36"></a><span class="s">          resources:</span>
-<a id="__codelineno-23-37" name="__codelineno-23-37" href="#__codelineno-23-37"></a><span class="s">            requests:</span>
-<a id="__codelineno-23-38" name="__codelineno-23-38" href="#__codelineno-23-38"></a><span class="s">              storage: 10Gi</span>
-<a id="__codelineno-23-39" name="__codelineno-23-39" href="#__codelineno-23-39"></a><span class="s">EOF</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>envsubst<span class="w"> </span>&gt;<span class="si">${</span><span class="nv">TMP</span><span class="si">}</span>-1.yaml<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a><span class="s">grafana:</span>
+<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="s">  deploymentStrategy:</span>
+<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="s">    type: Recreate</span>
+<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="s">  ingress:</span>
+<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="s">    enabled: true</span>
+<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="s">    annotations:</span>
+<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="s">      kubernetes.io/ingress.class: nginx</span>
+<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="s">      cert-manager.io/cluster-issuer: &quot;letsencrypt-prod&quot;</span>
+<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="s">    hosts:</span>
+<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a>
+<a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a><span class="s">      - grafana.${DOMAIN_NAME}</span>
+<a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a><span class="s">    tls:</span>
+<a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a><span class="s">      - secretName: grafana.${DOMAIN_NAME}</span>
+<a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a><span class="s">        hosts:</span>
+<a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a><span class="s">          - grafana.${DOMAIN_NAME}</span>
+<a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a><span class="s">  persistence:</span>
+<a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a><span class="s">    enabled: true</span>
+<a id="__codelineno-24-19" name="__codelineno-24-19" href="#__codelineno-24-19"></a><span class="s">    storageClassName: ${STORAGECLASS_NAME}</span>
+<a id="__codelineno-24-20" name="__codelineno-24-20" href="#__codelineno-24-20"></a><span class="s">    accessModes:</span>
+<a id="__codelineno-24-21" name="__codelineno-24-21" href="#__codelineno-24-21"></a><span class="s">      - ReadWriteOnce</span>
+<a id="__codelineno-24-22" name="__codelineno-24-22" href="#__codelineno-24-22"></a><span class="s">    size: 1Gi</span>
+<a id="__codelineno-24-23" name="__codelineno-24-23" href="#__codelineno-24-23"></a><span class="s">prometheus:</span>
+<a id="__codelineno-24-24" name="__codelineno-24-24" href="#__codelineno-24-24"></a><span class="s">  prometheusSpec:</span>
+<a id="__codelineno-24-25" name="__codelineno-24-25" href="#__codelineno-24-25"></a><span class="s">    replicas: 2</span>
+<a id="__codelineno-24-26" name="__codelineno-24-26" href="#__codelineno-24-26"></a><span class="s">    retention: 12h</span>
+<a id="__codelineno-24-27" name="__codelineno-24-27" href="#__codelineno-24-27"></a><span class="s">    retentionSize: &quot;10GB&quot;</span>
+<a id="__codelineno-24-28" name="__codelineno-24-28" href="#__codelineno-24-28"></a><span class="s">    ruleSelectorNilUsesHelmValues: false</span>
+<a id="__codelineno-24-29" name="__codelineno-24-29" href="#__codelineno-24-29"></a><span class="s">    serviceMonitorSelectorNilUsesHelmValues: false</span>
+<a id="__codelineno-24-30" name="__codelineno-24-30" href="#__codelineno-24-30"></a><span class="s">    podMonitorSelectorNilUsesHelmValues: false</span>
+<a id="__codelineno-24-31" name="__codelineno-24-31" href="#__codelineno-24-31"></a><span class="s">    storageSpec:</span>
+<a id="__codelineno-24-32" name="__codelineno-24-32" href="#__codelineno-24-32"></a><span class="s">      volumeClaimTemplate:</span>
+<a id="__codelineno-24-33" name="__codelineno-24-33" href="#__codelineno-24-33"></a><span class="s">        spec:</span>
+<a id="__codelineno-24-34" name="__codelineno-24-34" href="#__codelineno-24-34"></a><span class="s">          storageClassName: ${STORAGECLASS_NAME}</span>
+<a id="__codelineno-24-35" name="__codelineno-24-35" href="#__codelineno-24-35"></a><span class="s">          accessModes: [&quot;ReadWriteOnce&quot;]</span>
+<a id="__codelineno-24-36" name="__codelineno-24-36" href="#__codelineno-24-36"></a><span class="s">          resources:</span>
+<a id="__codelineno-24-37" name="__codelineno-24-37" href="#__codelineno-24-37"></a><span class="s">            requests:</span>
+<a id="__codelineno-24-38" name="__codelineno-24-38" href="#__codelineno-24-38"></a><span class="s">              storage: 10Gi</span>
+<a id="__codelineno-24-39" name="__codelineno-24-39" href="#__codelineno-24-39"></a><span class="s">EOF</span>
 </code></pre></div>
 <h4 id="thanos-ingress-with-nginx-sample">thanos ingress with nginx sample<a class="headerlink" href="#thanos-ingress-with-nginx-sample" title="Permanent link">&para;</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a><span class="c1"># enable prometheus with thanos</span>
-<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>envsubst<span class="w"> </span>&gt;<span class="si">${</span><span class="nv">TMP</span><span class="p">##*.</span><span class="si">}</span>-1-1.yaml<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
-<a id="__codelineno-24-3" name="__codelineno-24-3" href="#__codelineno-24-3"></a><span class="s">prometheus:</span>
-<a id="__codelineno-24-4" name="__codelineno-24-4" href="#__codelineno-24-4"></a><span class="s">  thanosService:</span>
-<a id="__codelineno-24-5" name="__codelineno-24-5" href="#__codelineno-24-5"></a><span class="s">    enabled: true</span>
-<a id="__codelineno-24-6" name="__codelineno-24-6" href="#__codelineno-24-6"></a><span class="s">  thanosServiceMonitor:</span>
-<a id="__codelineno-24-7" name="__codelineno-24-7" href="#__codelineno-24-7"></a><span class="s">    enabled: true</span>
-<a id="__codelineno-24-8" name="__codelineno-24-8" href="#__codelineno-24-8"></a><span class="s">  thanosServiceExternal:</span>
-<a id="__codelineno-24-9" name="__codelineno-24-9" href="#__codelineno-24-9"></a><span class="s">    enabled: true</span>
-<a id="__codelineno-24-10" name="__codelineno-24-10" href="#__codelineno-24-10"></a><span class="s">    type: LoadBalancer</span>
-<a id="__codelineno-24-11" name="__codelineno-24-11" href="#__codelineno-24-11"></a><span class="s">  thanosIngress:</span>
-<a id="__codelineno-24-12" name="__codelineno-24-12" href="#__codelineno-24-12"></a><span class="s">    enabled: true</span>
-<a id="__codelineno-24-13" name="__codelineno-24-13" href="#__codelineno-24-13"></a><span class="s">    ingressClassName: nginx</span>
-<a id="__codelineno-24-14" name="__codelineno-24-14" href="#__codelineno-24-14"></a><span class="s">    hosts: </span>
-<a id="__codelineno-24-15" name="__codelineno-24-15" href="#__codelineno-24-15"></a>
-<a id="__codelineno-24-16" name="__codelineno-24-16" href="#__codelineno-24-16"></a><span class="s">    - thanos-gateway.${DOMAIN_NAME}</span>
-<a id="__codelineno-24-17" name="__codelineno-24-17" href="#__codelineno-24-17"></a><span class="s">    paths: []</span>
-<a id="__codelineno-24-18" name="__codelineno-24-18" href="#__codelineno-24-18"></a><span class="s">    # - /</span>
-<a id="__codelineno-24-19" name="__codelineno-24-19" href="#__codelineno-24-19"></a><span class="s">    pathType: ImplementationSpecific</span>
-<a id="__codelineno-24-20" name="__codelineno-24-20" href="#__codelineno-24-20"></a><span class="s">    tls: </span>
-<a id="__codelineno-24-21" name="__codelineno-24-21" href="#__codelineno-24-21"></a><span class="s">    - secretName: thanos-gateway-tls</span>
-<a id="__codelineno-24-22" name="__codelineno-24-22" href="#__codelineno-24-22"></a><span class="s">      hosts:</span>
-<a id="__codelineno-24-23" name="__codelineno-24-23" href="#__codelineno-24-23"></a><span class="s">      - thanos-gateway.${DOMAIN_NAME}</span>
-<a id="__codelineno-24-24" name="__codelineno-24-24" href="#__codelineno-24-24"></a><span class="s">  prometheusSpec:</span>
-<a id="__codelineno-24-25" name="__codelineno-24-25" href="#__codelineno-24-25"></a><span class="s">    thanos: </span>
-<a id="__codelineno-24-26" name="__codelineno-24-26" href="#__codelineno-24-26"></a><span class="s">      objectStorageConfig:</span>
-<a id="__codelineno-24-27" name="__codelineno-24-27" href="#__codelineno-24-27"></a><span class="s">        existingSecret: {}</span>
-<a id="__codelineno-24-28" name="__codelineno-24-28" href="#__codelineno-24-28"></a><span class="s">          key: thanos.yaml</span>
-<a id="__codelineno-24-29" name="__codelineno-24-29" href="#__codelineno-24-29"></a><span class="s">          name: thanos-s3-config</span>
-<a id="__codelineno-24-30" name="__codelineno-24-30" href="#__codelineno-24-30"></a><span class="s">EOF</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="c1"># enable prometheus with thanos</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>envsubst<span class="w"> </span>&gt;<span class="si">${</span><span class="nv">TMP</span><span class="p">##*.</span><span class="si">}</span>-1-1.yaml<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="s">prometheus:</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="s">  thanosService:</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="s">    enabled: true</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="s">  thanosServiceMonitor:</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="s">    enabled: true</span>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="s">  thanosServiceExternal:</span>
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="s">    enabled: true</span>
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="s">    type: LoadBalancer</span>
+<a id="__codelineno-25-11" name="__codelineno-25-11" href="#__codelineno-25-11"></a><span class="s">  thanosIngress:</span>
+<a id="__codelineno-25-12" name="__codelineno-25-12" href="#__codelineno-25-12"></a><span class="s">    enabled: true</span>
+<a id="__codelineno-25-13" name="__codelineno-25-13" href="#__codelineno-25-13"></a><span class="s">    ingressClassName: nginx</span>
+<a id="__codelineno-25-14" name="__codelineno-25-14" href="#__codelineno-25-14"></a><span class="s">    hosts: </span>
+<a id="__codelineno-25-15" name="__codelineno-25-15" href="#__codelineno-25-15"></a>
+<a id="__codelineno-25-16" name="__codelineno-25-16" href="#__codelineno-25-16"></a><span class="s">    - thanos-gateway.${DOMAIN_NAME}</span>
+<a id="__codelineno-25-17" name="__codelineno-25-17" href="#__codelineno-25-17"></a><span class="s">    paths: []</span>
+<a id="__codelineno-25-18" name="__codelineno-25-18" href="#__codelineno-25-18"></a><span class="s">    # - /</span>
+<a id="__codelineno-25-19" name="__codelineno-25-19" href="#__codelineno-25-19"></a><span class="s">    pathType: ImplementationSpecific</span>
+<a id="__codelineno-25-20" name="__codelineno-25-20" href="#__codelineno-25-20"></a><span class="s">    tls: </span>
+<a id="__codelineno-25-21" name="__codelineno-25-21" href="#__codelineno-25-21"></a><span class="s">    - secretName: thanos-gateway-tls</span>
+<a id="__codelineno-25-22" name="__codelineno-25-22" href="#__codelineno-25-22"></a><span class="s">      hosts:</span>
+<a id="__codelineno-25-23" name="__codelineno-25-23" href="#__codelineno-25-23"></a><span class="s">      - thanos-gateway.${DOMAIN_NAME}</span>
+<a id="__codelineno-25-24" name="__codelineno-25-24" href="#__codelineno-25-24"></a><span class="s">  prometheusSpec:</span>
+<a id="__codelineno-25-25" name="__codelineno-25-25" href="#__codelineno-25-25"></a><span class="s">    thanos: </span>
+<a id="__codelineno-25-26" name="__codelineno-25-26" href="#__codelineno-25-26"></a><span class="s">      objectStorageConfig:</span>
+<a id="__codelineno-25-27" name="__codelineno-25-27" href="#__codelineno-25-27"></a><span class="s">        existingSecret: {}</span>
+<a id="__codelineno-25-28" name="__codelineno-25-28" href="#__codelineno-25-28"></a><span class="s">          key: thanos.yaml</span>
+<a id="__codelineno-25-29" name="__codelineno-25-29" href="#__codelineno-25-29"></a><span class="s">          name: thanos-s3-config</span>
+<a id="__codelineno-25-30" name="__codelineno-25-30" href="#__codelineno-25-30"></a><span class="s">EOF</span>
 </code></pre></div>
 <h4 id="other-samples">other samples<a class="headerlink" href="#other-samples" title="Permanent link">&para;</a></h4>
 <ul>
@@ -4367,13 +4462,13 @@
 <li>In this POC we use dedicate receive. you could use receive route with receive controller project. refer (<a href="https://thanos.io/tip/proposals-accepted/202012-receive-split.md/">https://thanos.io/tip/proposals-accepted/202012-receive-split.md/</a>)</li>
 <li>download  <a href="../../../../git-attachment/receive-controller.tar.gz" title="receive-controller.tar.gz">receive-controller.tar.gz</a> </li>
 <li>create receive controller in thanos namespace<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>kubectx<span class="w"> </span><span class="nv">$c1</span>
-<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a>k<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>receive-controller/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>kubectx<span class="w"> </span><span class="nv">$c1</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>k<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>receive-controller/
 </code></pre></div></li>
 <li>receive controller will generate <code>thanos-receive-generated</code> configmap with endpoint for receive route scenarios, include this file as hashring-config</li>
 <li>create default s3 config<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="nv">CLUSTER_NAME</span><span class="o">=</span>default
-<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="nv">NAMESPACE</span><span class="o">=</span>thanos
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nv">CLUSTER_NAME</span><span class="o">=</span>default
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="nv">NAMESPACE</span><span class="o">=</span>thanos
 </code></pre></div></li>
 </ul>
 <div class="admonition note">
@@ -4382,9 +4477,9 @@
 </div>
 <ul>
 <li>create sa<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="nv">SA_NAME</span><span class="o">=</span>thanos-receive-default
-<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="nv">CLUSTER_NAME</span><span class="o">=</span>ekscluster1
-<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a>create-iamserviceaccount<span class="w"> </span><span class="si">${</span><span class="nv">SA_NAME</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span>thanos<span class="w"> </span><span class="m">1</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a><span class="nv">SA_NAME</span><span class="o">=</span>thanos-receive-default
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a><span class="nv">CLUSTER_NAME</span><span class="o">=</span>ekscluster1
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>create-iamserviceaccount<span class="w"> </span><span class="si">${</span><span class="nv">SA_NAME</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span>thanos<span class="w"> </span><span class="m">1</span>
 </code></pre></div></li>
 </ul>
 <h3 id="links">links<a class="headerlink" href="#links" title="Permanent link">&para;</a></h3>
@@ -4408,7 +4503,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-26T20:24:54+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-26</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-28T08:31:22+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-28</span>
       
         <br>
         Created:

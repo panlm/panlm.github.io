@@ -6,15 +6,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="常用命令">
+        <meta name="description" content="vpc-cmd">
       
       
       
       
-        <link rel="prev" href="../ec2-cmd/">
+        <link rel="prev" href="../ssm-cmd/">
       
       
-        <link rel="next" href="../ecs-cmd/">
+        <link rel="next" href="../../lab-create-cloudwatch-dashboard-cpu-metric/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>ecr - panlm</title>
+        <title>Vpc cmd - panlm</title>
       
     
     
@@ -100,7 +100,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#ecr-cmd" class="md-skip">
+        <a href="#vpc-cmd" class="md-skip">
           Skip to content
         </a>
       
@@ -135,7 +135,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              ecr
+              Vpc cmd
             
           </span>
         </div>
@@ -3105,30 +3105,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    ecr
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../ecr-cmd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3137,53 +3117,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#login" class="md-nav__link">
-    <span class="md-ellipsis">
-      login
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-repo-" class="md-nav__link">
-    <span class="md-ellipsis">
-      create-repo-
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-ecr-repo-nginx" class="md-nav__link">
-    <span class="md-ellipsis">
-      create ecr repo nginx
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3361,10 +3294,30 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../vpc-cmd/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Vpc cmd
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -3373,6 +3326,188 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#vpc-creation" class="md-nav__link">
+    <span class="md-ellipsis">
+      vpc creation
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#subnet-find" class="md-nav__link">
+    <span class="md-ellipsis">
+      subnet find
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="subnet find">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#first-2-subnets" class="md-nav__link">
+    <span class="md-ellipsis">
+      first 2 subnets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-subnet-in-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      list subnet in table
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#createdelete-transit-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      create/delete transit gateway
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="create/delete transit gateway">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    <span class="md-ellipsis">
+      create
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-transit-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      delete transit gateway
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vpc-subnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      vpc &amp; subnet
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#route-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      route table
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="route table">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#peering" class="md-nav__link">
+    <span class="md-ellipsis">
+      peering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tgw" class="md-nav__link">
+    <span class="md-ellipsis">
+      tgw
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cidr-range" class="md-nav__link">
+    <span class="md-ellipsis">
+      cidr range
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#func-get-default-vpc-" class="md-nav__link">
+    <span class="md-ellipsis">
+      func-get-default-vpc-
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#func-get-subnets-" class="md-nav__link">
+    <span class="md-ellipsis">
+      func-get-subnets-
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-instance-vpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      get instance vpc
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-vpc-endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      create vpc endpoint
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -3461,27 +3596,162 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#login" class="md-nav__link">
+  <a href="#vpc-creation" class="md-nav__link">
     <span class="md-ellipsis">
-      login
+      vpc creation
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-repo-" class="md-nav__link">
+  <a href="#subnet-find" class="md-nav__link">
     <span class="md-ellipsis">
-      create-repo-
+      subnet find
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="subnet find">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#first-2-subnets" class="md-nav__link">
+    <span class="md-ellipsis">
+      first 2 subnets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#list-subnet-in-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      list subnet in table
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#createdelete-transit-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      create/delete transit gateway
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="create/delete transit gateway">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create" class="md-nav__link">
+    <span class="md-ellipsis">
+      create
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#delete-transit-gateway" class="md-nav__link">
+    <span class="md-ellipsis">
+      delete transit gateway
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#vpc-subnet" class="md-nav__link">
+    <span class="md-ellipsis">
+      vpc &amp; subnet
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#route-table" class="md-nav__link">
+    <span class="md-ellipsis">
+      route table
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="route table">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#peering" class="md-nav__link">
+    <span class="md-ellipsis">
+      peering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tgw" class="md-nav__link">
+    <span class="md-ellipsis">
+      tgw
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#cidr-range" class="md-nav__link">
+    <span class="md-ellipsis">
+      cidr range
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-ecr-repo-nginx" class="md-nav__link">
+  <a href="#func-get-default-vpc-" class="md-nav__link">
     <span class="md-ellipsis">
-      create ecr repo nginx
+      func-get-default-vpc-
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#func-get-subnets-" class="md-nav__link">
+    <span class="md-ellipsis">
+      func-get-subnets-
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#get-instance-vpc" class="md-nav__link">
+    <span class="md-ellipsis">
+      get instance vpc
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-vpc-endpoint" class="md-nav__link">
+    <span class="md-ellipsis">
+      create vpc endpoint
     </span>
   </a>
   
@@ -3506,13 +3776,19 @@
     
     
     
-      <a href="../../../tags/#awscontainerecr" class="md-tag">aws/container/ecr</a>
+      <a href="../../../tags/#awsnetworkvpc" class="md-tag">aws/network/vpc</a>
     
   
     
     
     
       <a href="../../../tags/#awscmd" class="md-tag">aws/cmd</a>
+    
+  
+    
+    
+    
+      <a href="../../../tags/#todo" class="md-tag">todo</a>
     
   
 </nav>
@@ -3522,56 +3798,191 @@
 <blockquote>
 <p>[!WARNING] This is a github note</p>
 </blockquote>
-<h1 id="ecr-cmd">ecr-cmd<a class="headerlink" href="#ecr-cmd" title="Permanent link">&para;</a></h1>
+<h1 id="vpc-cmd">vpc-cmd<a class="headerlink" href="#vpc-cmd" title="Permanent link">&para;</a></h1>
+<h2 id="vpc-creation">vpc creation<a class="headerlink" href="#vpc-creation" title="Permanent link">&para;</a></h2>
 <ul class="task-list">
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> kms </li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> backup </li>
-<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> replication</li>
+<li class="task-list-item"><label class="task-list-control"><input type="checkbox" disabled/><span class="task-list-indicator"></span></label> dns hostname &ndash;&gt; true</li>
 </ul>
-<h2 id="login">login<a class="headerlink" href="#login" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span>us-east-2
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_ACCOUNT_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span>--query<span class="w"> </span>Account<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nv">ECR_URL</span><span class="o">=</span><span class="si">${</span><span class="nv">AWS_ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nv">AWS_CLI_VERSION</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>--version<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d/<span class="w"> </span>-f2<span class="w"> </span><span class="p">|</span><span class="w"> </span>cut<span class="w"> </span>-d.<span class="w"> </span>-f1<span class="k">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 10-128-vpc</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nv">CIDR</span><span class="o">=</span><span class="m">10</span>.128
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nv">VPC_NAME</span><span class="o">=</span>vpc-<span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>tr<span class="w"> </span><span class="s1">&#39;.&#39;</span><span class="w"> </span><span class="s1">&#39;-&#39;</span><span class="k">)</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span>cn-north-1
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>ecr_login<span class="o">()</span><span class="w"> </span><span class="o">{</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span><span class="nv">$AWS_CLI_VERSION</span><span class="w"> </span>-gt<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">        </span>aws<span class="w"> </span>ecr<span class="w"> </span>get-login-password<span class="w"> </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">            </span>docker<span class="w"> </span>login<span class="w"> </span>--username<span class="w"> </span>AWS<span class="w"> </span>--password-stdin<span class="w"> </span><span class="si">${</span><span class="nv">ECR_URL</span><span class="si">}</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span><span class="k">else</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">        </span><span class="k">$(</span>aws<span class="w"> </span>ecr<span class="w"> </span>get-login<span class="w"> </span>--no-include-email<span class="k">)</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span><span class="k">fi</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="o">}</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>ecr_login
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># first 2 AZs</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nv">AZS</span><span class="o">=(</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-availability-zones<span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;AvailabilityZones[].ZoneName&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="w"> </span><span class="p">|</span>xargs<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">|</span>sed<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;1,2p&#39;</span><span class="w"> </span><span class="p">|</span>xargs<span class="k">)</span><span class="o">)</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1"># create vpc</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="nv">VPC_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>create-vpc<span class="w"> </span>--cidr-block<span class="w"> </span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span>.0.0/16<span class="w"> </span>--tag-specifications<span class="w"> </span><span class="s1">&#39;ResourceType=vpc,Tags=[{Key=Name,Value=&#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">VPC_NAME</span><span class="si">}</span><span class="s2">&quot;</span><span class="s1">&#39;}]&#39;</span><span class="w"> </span>--query<span class="w"> </span>Vpc.VpcId<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>aws<span class="w"> </span>ec2<span class="w"> </span>modify-vpc-attribute<span class="w"> </span>--enable-dns-hostnames<span class="w"> </span>--vpc-id<span class="w"> </span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span><span class="w"> </span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="c1"># create subnet 2x pub, 2x priv, 2x tgw</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="nv">num</span><span class="o">=</span><span class="m">0</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="k">for</span><span class="w"> </span>j<span class="w"> </span><span class="k">in</span><span class="w"> </span>pub<span class="w"> </span>priv<span class="w"> </span>tgw<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="si">${</span><span class="nv">AZS</span><span class="p">[@]</span><span class="si">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">        </span><span class="nv">output</span><span class="o">=</span><span class="nv">$j</span>.<span class="k">$(</span>date<span class="w"> </span>+%H%M%S<span class="k">)</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">        </span>aws<span class="w"> </span>ec2<span class="w"> </span>create-subnet<span class="w"> </span>--vpc-id<span class="w"> </span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">        </span>--cidr-block<span class="w"> </span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span>.<span class="si">${</span><span class="nv">num</span><span class="si">}</span>.0/22<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">        </span>--availability-zone<span class="w"> </span><span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">        </span>--tag-specifications<span class="w"> </span><span class="s1">&#39;ResourceType=subnet,Tags=[{Key=Name,Value=&#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">VPC_NAME</span><span class="si">}</span><span class="s2">&quot;</span><span class="s1">&#39;-&#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">j</span><span class="si">}</span><span class="s2">&quot;</span><span class="s1">&#39;-&#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">i</span><span class="p">##*-</span><span class="si">}</span><span class="s2">&quot;</span><span class="s1">&#39;}]&#39;</span><span class="w"> </span><span class="p">|</span>tee<span class="w"> </span>-a<span class="w"> </span><span class="si">${</span><span class="nv">output</span><span class="si">}</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">        </span><span class="nv">num</span><span class="o">=</span><span class="k">$((</span><span class="nv">num</span><span class="o">+</span><span class="m">4</span><span class="k">))</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">    </span><span class="k">done</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="k">done</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="c1"># create igw</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="nv">IGW_ID</span><span class="o">=</span><span class="k">$(</span><span class="w"> </span>aws<span class="w"> </span>ec2<span class="w"> </span>create-internet-gateway<span class="w"> </span>--tag-specifications<span class="w"> </span><span class="s1">&#39;ResourceType=internet-gateway,Tags=[{Key=Name,Value=&#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">VPC_NAME</span><span class="si">}</span><span class="s2">&quot;</span><span class="s1">&#39;-igw}]&#39;</span><span class="w"> </span>--query<span class="w"> </span>InternetGateway.InternetGatewayId<span class="w"> </span>--output<span class="w"> </span>text<span class="w"> </span><span class="k">)</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a>aws<span class="w"> </span>ec2<span class="w"> </span>attach-internet-gateway<span class="w"> </span>--vpc-id<span class="w"> </span><span class="si">${</span><span class="nv">VPC_NAME</span><span class="si">}</span><span class="w"> </span>--internet-gateway-id<span class="w"> </span><span class="si">${</span><span class="nv">IGW_ID</span><span class="si">}</span>
 </code></pre></div>
-<h2 id="create-repo-">create-repo-<a class="headerlink" href="#create-repo-" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">REPO_NAME</span><span class="o">=</span>osarch
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>aws<span class="w"> </span>ecr<span class="w"> </span>create-repository<span class="w"> </span>--repository-name<span class="w"> </span><span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nv">REPO_URI</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ecr<span class="w"> </span>describe-repositories<span class="w"> </span>--repository-names<span class="w"> </span><span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span><span class="w"> </span>--query<span class="w"> </span>repositories<span class="o">[</span><span class="m">0</span><span class="o">]</span>.repositoryUri<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<h2 id="subnet-find">subnet find<a class="headerlink" href="#subnet-find" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>aws<span class="w"> </span>ec2<span class="w"> </span>describe-subnets<span class="w"> </span>--filters<span class="w"> </span><span class="s2">&quot;Name=vpc-id,Values=</span><span class="si">${</span><span class="nv">ovpc1_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;Subnets[*].{ID:SubnetId,CIDR:CidrBlock}&quot;</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>aws<span class="w"> </span>ec2<span class="w"> </span>describe-subnets<span class="w"> </span>--filters<span class="w"> </span><span class="s2">&quot;Name=vpc-id,Values=</span><span class="si">${</span><span class="nv">ovpc1_id</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;Subnets[*]&quot;</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.[].SubnetId&#39;</span>
+</code></pre></div>
+<h3 id="first-2-subnets">first 2 subnets<a class="headerlink" href="#first-2-subnets" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">FIRST_2AZ</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-availability-zones<span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;AvailabilityZones[].ZoneName&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $1,$2}&#39;</span><span class="k">)</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nv">SUBNET_IDS</span><span class="o">=</span><span class="k">$(for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="si">${</span><span class="nv">FIRST_2AZ</span><span class="si">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-subnets<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">        </span>--filters<span class="w"> </span><span class="s2">&quot;Name=vpc-id,Values=</span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span>--query<span class="w"> </span><span class="s1">&#39;Subnets[?AvailabilityZone==`&#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="s1">&#39;`].SubnetId&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">        </span>--output<span class="w"> </span>text
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="k">done</span><span class="w"> </span><span class="p">|</span>xargs<span class="k">)</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">FIRST_2AZ</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-availability-zones<span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;AvailabilityZones[].ZoneName&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $1,$2}&#39;</span><span class="k">)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nv">SUBNET_IDS</span><span class="o">=</span><span class="k">$(for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="si">${</span><span class="nv">FIRST_2AZ</span><span class="si">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span><span class="w"> </span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>aws<span class="w"> </span>ec2<span class="w"> </span>describe-subnets<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>--filters<span class="w"> </span><span class="s2">&quot;Name=vpc-id,Values=</span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>--query<span class="w"> </span><span class="s1">&#39;Subnets[?(AvailabilityZone==`&#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="s2">&quot;</span><span class="s1">&#39;` &amp;&amp; MapPublicIpOnLaunch==`true`)].SubnetId&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>--output<span class="w"> </span>text
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="k">done</span><span class="w"> </span><span class="p">|</span>xargs<span class="k">)</span>
+</code></pre></div>
+<h3 id="list-subnet-in-table">list subnet in table<a class="headerlink" href="#list-subnet-in-table" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>aws<span class="w"> </span>ec2<span class="w"> </span>describe-subnets<span class="w"> </span>--filters<span class="w"> </span><span class="s2">&quot;Name=vpc-id,Values=</span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;Subnets[].[AvailabilityZone,SubnetId]&quot;</span><span class="w"> </span>--output<span class="w"> </span>text
 </code></pre></div>
 <ul>
-<li>refer: <a href="../../linux/docker-cmd/#build-colorapp-" title="../linux/docker-cmd">../linux/docker-cmd</a></li>
+<li>refer: <a href="../../../EKS/infra/network/eks-custom-network/#lab-" title="../../EKS/infra/network/eks-custom-network">../../EKS/infra/network/eks-custom-network</a></li>
 </ul>
-<h2 id="create-ecr-repo-nginx">create ecr repo nginx<a class="headerlink" href="#create-ecr-repo-nginx" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span><span class="m">169</span>.254.169.254/latest/dynamic/instance-identity/document<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.region&#39;</span><span class="k">)</span><span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_ACCOUNT_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span>--query<span class="w"> </span>Account<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span><span class="w"> </span><span class="nv">ECR_URL</span><span class="o">=</span><span class="si">${</span><span class="nv">AWS_ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>aws<span class="w"> </span>ecr<span class="w"> </span>get-login-password<span class="w"> </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>docker<span class="w"> </span>login<span class="w"> </span>--username<span class="w"> </span>AWS<span class="w"> </span>--password-stdin<span class="w"> </span><span class="si">${</span><span class="nv">ECR_URL</span><span class="si">}</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>aws<span class="w"> </span>ecr<span class="w"> </span>create-repository<span class="w"> </span>--repository-name<span class="w"> </span>nginx
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>docker<span class="w"> </span>tag<span class="w"> </span>nginx:latest<span class="w"> </span><span class="si">${</span><span class="nv">ECR_URL</span><span class="si">}</span>/nginx:latest
+<h2 id="createdelete-transit-gateway">create/delete transit gateway<a class="headerlink" href="#createdelete-transit-gateway" title="Permanent link">&para;</a></h2>
+<h3 id="create">create<a class="headerlink" href="#create" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>aws ec2 create-transit-gateway \
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>  --tag-specifications &#39;ResourceType=transit-gateway,Tags=[{Key=Name,Value=otgw1}]&#39; \
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>  --query TransitGateway.TransitGatewayId --output text
 </code></pre></div>
+<h3 id="delete-transit-gateway">delete transit gateway<a class="headerlink" href="#delete-transit-gateway" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>aws ec2 describe-transit-gateway-attachments |jq -r .TransitGatewayAttachments[].TransitGatewayAttachmentId
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>aws ec2 delete-transit-gateway-vpc-attachment --transit-gateway-attachment-id tgw-attach-012c31682d0c11f22
+</code></pre></div>
+<h3 id="vpc-subnet">vpc &amp; subnet<a class="headerlink" href="#vpc-subnet" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>aws<span class="w"> </span>ec2<span class="w"> </span>create-subnet<span class="w"> </span>--cidr-block<span class="w"> </span><span class="m">10</span>.1.0.0/20<span class="w"> </span>--vpc-id<span class="w"> </span>vpc-xxx<span class="w"> </span>--availability-zone-id<span class="w"> </span>cnnw1-az1
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>aws<span class="w"> </span>ec2<span class="w"> </span>create-subnet<span class="w"> </span>--cidr-block<span class="w"> </span><span class="m">10</span>.1.16.0/20<span class="w"> </span>--vpc-id<span class="w"> </span>vpc-xxx<span class="w"> </span>--availability-zone-id<span class="w"> </span>cnnw1-az2
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>aws<span class="w"> </span>ec2<span class="w"> </span>create-subnet<span class="w"> </span>--cidr-block<span class="w"> </span><span class="m">10</span>.1.32.0/20<span class="w"> </span>--vpc-id<span class="w"> </span>vpc-xxx<span class="w"> </span>--availability-zone-id<span class="w"> </span>cnnw1-az3
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>aws<span class="w"> </span>ec2<span class="w"> </span>create-subnet<span class="w"> </span>--cidr-block<span class="w"> </span><span class="m">10</span>.2.0.0/20<span class="w"> </span>--vpc-id<span class="w"> </span>vpc-xxx<span class="w"> </span>--availability-zone-id<span class="w"> </span>cnnw1-az1
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>aws<span class="w"> </span>ec2<span class="w"> </span>create-subnet<span class="w"> </span>--cidr-block<span class="w"> </span><span class="m">10</span>.2.16.0/20<span class="w"> </span>--vpc-id<span class="w"> </span>vpc-xxx<span class="w"> </span>--availability-zone-id<span class="w"> </span>cnnw1-az2
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a>aws<span class="w"> </span>ec2<span class="w"> </span>create-subnet<span class="w"> </span>--cidr-block<span class="w"> </span><span class="m">10</span>.2.32.0/20<span class="w"> </span>--vpc-id<span class="w"> </span>vpc-xxx<span class="w"> </span>--availability-zone-id<span class="w"> </span>cnnw1-az3
+</code></pre></div>
+<h2 id="route-table">route table<a class="headerlink" href="#route-table" title="Permanent link">&para;</a></h2>
+<h3 id="peering">peering<a class="headerlink" href="#peering" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nv">CLUSTER_NAME</span><span class="o">=</span>ekscluster2
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="nv">TARGET_CIDR</span><span class="o">=</span><span class="s1">&#39;10.251.0.0/16&#39;</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="nv">PEER_ID</span><span class="o">=</span>pcx-xxx
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="nv">VPC_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>eks<span class="w"> </span>describe-cluster<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">  </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;cluster.resourcesVpcConfig.vpcId&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="nv">ROUTE_TABLES</span><span class="o">=(</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-route-tables<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">  </span>--filters<span class="w"> </span><span class="s2">&quot;Name=vpc-id,Values=</span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;Name=association.main,Values=false&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;RouteTables[].RouteTableId&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span><span class="o">)</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="si">${</span><span class="nv">ROUTE_TABLES</span><span class="p">[@]</span><span class="si">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="w">  </span>aws<span class="w"> </span>ec2<span class="w"> </span>create-route<span class="w"> </span>--route-table-id<span class="w"> </span><span class="nv">$i</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="w">    </span>--destination-cidr-block<span class="w"> </span><span class="si">${</span><span class="nv">TARGET_CIDR</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="w">    </span>--vpc-peering-connection-id<span class="w"> </span><span class="si">${</span><span class="nv">PEER_ID</span><span class="si">}</span>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="k">done</span>
+</code></pre></div>
+<h3 id="tgw">tgw<a class="headerlink" href="#tgw" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../../TC-private-api-cross-environment-traffic#^lyckqs" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="TC-private-api-cross-environment-traffic" src="../../TC-private-api-cross-environment-traffic#^lyckqs" title="TC-private-api-cross-environment-traffic" /></a></p>
+<h2 id="cidr-range">cidr range<a class="headerlink" href="#cidr-range" title="Permanent link">&para;</a></h2>
+<table>
+<thead>
+<tr>
+<th>RFC 1918 range</th>
+<th>Example CIDR block</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>10.0.0.0 - 10.255.255.255 (10/8 prefix)</td>
+<td>10.0.0.0/16</td>
+</tr>
+<tr>
+<td>172.16.0.0 - 172.31.255.255 (172.16/12 prefix)</td>
+<td>172.31.0.0/16</td>
+</tr>
+<tr>
+<td>192.168.0.0 - 192.168.255.255 (192.168/16 prefix)</td>
+<td>192.168.0.0/20</td>
+</tr>
+</tbody>
+</table>
+<h2 id="func-get-default-vpc-">func-get-default-vpc-<a class="headerlink" href="#func-get-default-vpc-" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="k">function</span><span class="w"> </span>get-default-vpc<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="w">    </span><span class="nv">DEFAULT_VPC</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-vpcs<span class="w"> </span>--filter<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>is-default,Values<span class="o">=</span><span class="nb">true</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Vpcs[0].VpcId&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">    </span><span class="nv">DEFAULT_CIDR</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-vpcs<span class="w"> </span>--filter<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>is-default,Values<span class="o">=</span><span class="nb">true</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Vpcs[0].CidrBlock&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="o">}</span>
+</code></pre></div>
+<h2 id="func-get-subnets-">func-get-subnets-<a class="headerlink" href="#func-get-subnets-" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="k">function</span><span class="w"> </span>get-subnets<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>-lt<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;format: </span><span class="nv">$0</span><span class="s2"> VPC_ID [true|false]&quot;</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;parameter 2: true for public, false for private&quot;</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="w">        </span><span class="k">return</span>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="w">    </span><span class="k">else</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="w">        </span><span class="nb">local</span><span class="w"> </span><span class="nv">VPC_ID</span><span class="o">=</span><span class="nv">$1</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a><span class="w">        </span><span class="nb">local</span><span class="w"> </span><span class="nv">IS_PUBLIC</span><span class="o">=</span><span class="si">${</span><span class="nv">2</span><span class="p">,,</span><span class="si">}</span><span class="w"> </span><span class="c1"># lower case $2</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="w">    </span><span class="k">fi</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="si">${</span><span class="nv">IS_PUBLIC</span><span class="si">}</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a><span class="w">        </span><span class="nv">IS_PUBLIC</span><span class="o">=</span><span class="nb">true</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="w">    </span><span class="k">fi</span>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${</span><span class="nv">IS_PUBLIC</span><span class="si">}</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;true&#39;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="si">${</span><span class="nv">IS_PUBLIC</span><span class="si">}</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;false&#39;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;get public subnet is: &quot;</span><span class="w"> </span><span class="si">${</span><span class="nv">IS_PUBLIC</span><span class="si">}</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="w">    </span><span class="k">else</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;parameter 2: true for public, false for private&quot;</span>
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="w">        </span><span class="k">return</span>
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="w">    </span><span class="k">fi</span>
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a>
+<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="w">    </span><span class="nv">SUBNET_IDS</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-subnets<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="w">        </span>--filter<span class="w"> </span><span class="s2">&quot;Name=vpc-id,Values=</span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a><span class="w">        </span>--query<span class="w"> </span><span class="s1">&#39;Subnets[?MapPublicIpOnLaunch==`&#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">IS_PUBLIC</span><span class="si">}</span><span class="s2">&quot;</span><span class="s1">&#39;`].SubnetId&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a><span class="w">        </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a><span class="o">}</span>
+</code></pre></div>
+<p>also see sample in <a href="../../../EKS/infra/cluster/eks-private-access-cluster/#prep-config-" title="../../EKS/infra/cluster/eks-private-access-cluster">../../EKS/infra/cluster/eks-private-access-cluster</a></p>
+<h2 id="get-instance-vpc">get instance vpc<a class="headerlink" href="#get-instance-vpc" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nv">VPC_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span>--instance-ids<span class="w"> </span><span class="si">${</span><span class="nv">INST_ID</span><span class="si">}</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Reservations[0].Instances[0].VpcId&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+</code></pre></div>
+<h2 id="create-vpc-endpoint">create vpc endpoint<a class="headerlink" href="#create-vpc-endpoint" title="Permanent link">&para;</a></h2>
+<p><a class="glightbox" href="../../POC-apigw#^gdy8eb" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="POC-apigw" src="../../POC-apigw#^gdy8eb" title="POC-apigw" /></a></p>
+<p>another sample: <a href="../ssm-cmd/#^ssm-vpce-0513" title="ssm-cmd">ssm-cmd</a><br />
+another sample: <a href="../../TC-private-apigw-dataflow#步骤-4" title="TC-private-apigw-dataflow">TC-private-apigw-dataflow</a></p>
 
   <hr>
 <div class="md-source-file">
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-10T08:22:15+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-10</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-12-02T22:06:57+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-02</span>
       
         <br>
         Created:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-10T08:22:15+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-10</span>
+        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-12-02T22:06:57+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-02</span>
       
     
   </small>
