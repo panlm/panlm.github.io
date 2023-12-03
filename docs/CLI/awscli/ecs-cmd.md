@@ -2,7 +2,7 @@
 title: ecs
 description: 常用命令
 created: 2023-02-22 22:46:31.539
-last_modified: 2023-11-28
+last_modified: 2023-12-02
 tags:
   - aws/container/ecs
   - aws/cmd
@@ -157,7 +157,11 @@ aws ecs register-task-definition \
 ```
 
 ## create service
-- create alb and target group first ([[elb-cmd#func-alb-and-tg]])
+- create alb and target group first ([[elb-cmd#func-alb-and-tg-]])
+```sh
+create-alb-and-tg
+echo ${TG80_ARN}
+```
 - create service
 ```sh
 echo ${ECS_CLUSTER}

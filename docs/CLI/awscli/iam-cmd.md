@@ -25,7 +25,6 @@ aws iam get-policy --policy-arn arn:aws:iam::aws:policy/CloudWatchAgentServerPol
 ```
 
 ## create user 
-
 ```sh
 aws iam create-user --user-name cwagent-onprem
 # attach user policy
@@ -35,11 +34,9 @@ aws iam create-access-key --user-name cwagent-onprem
 ```
 
 ## attach role policy
-
-- [[../../others/file-storage-gateway-lab#create nfs share-]]
+- [[../../others/file-storage-gateway-lab#create-nfs-share-]]
 
 ## create role
-
 ### func-ec2-admin-role-create-
 - create ec2 admin role
 ```sh

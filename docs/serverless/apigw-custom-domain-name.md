@@ -1,26 +1,14 @@
 ---
 title: apigw-custom-domain-name
 description: 为私有 api 创建定制域名
-chapter: true
 created: 2023-03-07 23:01:19.519
 last_modified: 2023-03-07 23:01:19.519
-tags: 
-- aws/serverless/api-gateway 
+tags:
+  - aws/serverless/api-gateway
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # apigw-custom-domain-name
-
-- [for private api](#for-private-api)
-	- [dns 解析](#dns-%E8%A7%A3%E6%9E%90)
-	- [refer](#refer)
-- [for regional api](#for-regional-api)
-	- [dns 解析](#dns-%E8%A7%A3%E6%9E%90)
-	- [refer](#refer)
 
 ## for private api 
 - 在 acm 中发布证书 `*.api.aws.panlm.xyz`
@@ -77,6 +65,7 @@ title: This is a github note
 - 自定义域名通过 cname 指向 api gateway 中配置的 api 的 url 中的域名
 
 **结论**
+
 前两者可以正常访问 api
 
 ### refer

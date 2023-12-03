@@ -1,18 +1,12 @@
 ---
 title: script-api-resource-method
 description: 每个 api 的每个 resource 的每个 method 都需要单独通过命令行启用“tlsConfig/insecureSkipVerification”，通过这个脚本简化工作
-chapter: true
-hidden: false
 created: 2023-04-05 21:49:56.309
 last_modified: 2023-04-05 21:49:56.309
-tags: 
-- aws/serverless/api-gateway 
+tags:
+  - aws/serverless/api-gateway
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 ```ad-attention
 title: Obseleted
@@ -21,8 +15,7 @@ newest version is [here](https://github.com/panlm/blog-private-api-gateway-dataf
 ```
 
 # script-api-resource-method
-
-每个 api 的每个 resource 的每个 method 都需要单独通过命令行启用“tlsConfig/insecureSkipVerification”，通过这个脚本简化工作
+- 每个 api 的每个 resource 的每个 method 都需要单独通过命令行启用“tlsConfig/insecureSkipVerification”，通过这个脚本简化工作
 
 ```sh
 #!/bin/bash
@@ -65,8 +58,7 @@ done
 
 
 ## refer
-
-https://aws.amazon.com/premiumsupport/knowledge-center/api-gateway-ssl-certificate-errors/
+- https://aws.amazon.com/premiumsupport/knowledge-center/api-gateway-ssl-certificate-errors/
 
 
 

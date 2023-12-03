@@ -1,28 +1,19 @@
 ---
 title: file-storage-gateway-lab
 description: create file storage gateway from cli
-chapter: true
-weight: 20220916
 created: 2022-09-16 13:40:22.702
-last_modified: 2023-10-22 17:23:10.993
+last_modified: 2023-12-03
 tags:
   - aws/storage/storage-gateway
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # file-gateway-lab
-
 ## prepare
-
 - create a cloud9 desktop for this lab
 - ensure you have enough privilege to create resources
 
 ## create s3 bucket
-
 ```sh
 AWS_REGION=us-east-1
 BUCKET_NAME=fgwlab-$RANDOM
@@ -34,7 +25,6 @@ aws s3api put-object --bucket ${BUCKET_NAME} \
 ```
 
 ## create fgw instance
-
 ```sh
 # ensure this key existed
 KEY_NAME=awskey
@@ -127,8 +117,7 @@ aws storagegateway add-cache \
 
 ```
 
-## create nfs share-
-
+## create-nfs-share-
 - create iam role
 ```sh
 account_id=$(aws sts get-caller-identity --query "Account" --output text)

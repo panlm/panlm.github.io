@@ -1,22 +1,15 @@
 ---
 title: ebs-cmd
-description: "1/ 转换 gp2 到 gp3 ; 2/ 获取指定 volume 每次 snapshot 占用的 block 数量 ; 3/ 创建两种不同类型的 dlm 策略"
-chapter: true
-hidden: true
+description: 1/ 转换 gp2 到 gp3 ; 2/ 获取指定 volume 每次 snapshot 占用的 block 数量 ; 3/ 创建两种不同类型的 dlm 策略
 created: 2023-02-18 11:53:13.625
-last_modified: 2023-02-18 11:53:13.625
-tags: 
-- aws/cmd 
-- aws/storage/ebs 
+last_modified: 2023-12-02
+tags:
+  - aws/cmd
+  - aws/storage/ebs
 ---
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 # ebs-cmd
-
 ## create ebs volume
-
 ```sh
 aws ec2 attach-volume
 --device <value>
@@ -29,8 +22,7 @@ aws ec2 create-volume
 ```
 
 ## change ebs gp2 to gp3
-
-[Script to automatically change all gp2 volumes to gp3 with aws-cli](https://www.daniloaz.com/en/script-to-automatically-change-all-gp2-volumes-to-gp3-with-aws-cli/) 
+- [Script to automatically change all gp2 volumes to gp3 with aws-cli](https://www.daniloaz.com/en/script-to-automatically-change-all-gp2-volumes-to-gp3-with-aws-cli/) 
 ```sh
 #! /bin/bash
 
@@ -52,7 +44,6 @@ done
 ```
 
 ## get-each-snapshot-change-blocks-
-
 使用 ebs 快照生命周期管理时，查看特定 volume 每次快照占用的大小，以方便跨区域复制时预估传输量。
 - 快照完成跨区域复制耗时不等，从 20+ 分钟到 45 分钟，不适合作为容灾切换使用
 - 但可以加速后续复制完成，需要注意保持配置一直才可以重用之前复制的内容，例如之前跨区域复制时使用kms，那么在后续手工快照+复制过程中也要选择kms，可以快速完成，否则耗时更多
@@ -86,8 +77,7 @@ fi
 ```
 
 ## dlm - snapshot
-default role doc ([link](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/service-role.html#default-service-roles))
-
+- default role doc ([link](https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/service-role.html#default-service-roles))
 ```sh
 # AWSDataLifecycleManagerDefaultRole
 aws dlm create-default-role --resource-type snapshot
@@ -222,13 +212,14 @@ aws dlm create-lifecycle-policy \
 
 
 ## tools
-
 - [list nvme volume script](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-volumes.html#windows-list-disks-nvme)
 - [list volume script](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/ec2-windows-volumes.html#windows-list-disks)
 
 download ebsnvme-id.zip 
 - [doc](https://docs.aws.amazon.com/AWSEC2/latest/WindowsGuide/nvme-ebs-volumes.html)
-![[powershell#download AWSNVMe.zip]]
+
+??? note "right-click & open-in-new-tab"
+    ![[../windows/powershell#download-AWSNVMe.zip-]]
 
 ### refer
 https://github.com/awslabs/amazon-ebs-autoscale

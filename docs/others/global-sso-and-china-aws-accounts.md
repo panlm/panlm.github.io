@@ -9,9 +9,7 @@ tags:
 > [!WARNING] This is a github note
 
 # global-sso-and-china-aws-accounts
-
 ## setup
-
 - create application `External AWS Account Application` from sso `Applications`
 ![global-sso-and-china-aws-accounts-png-1.png](../git-attachment/global-sso-and-china-aws-accounts-png-1.png)
 

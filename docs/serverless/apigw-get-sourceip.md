@@ -1,23 +1,14 @@
 ---
 title: apigw-get-sourceip
 description: 获取客户端源地址
-chapter: true
 created: 2023-03-11 22:57:11.866
 last_modified: 2023-03-11 22:57:11.866
-tags: 
-- aws/serverless/api-gateway 
+tags:
+  - aws/serverless/api-gateway
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # apigw-get-sourceip
-
-- [client ip](#client-ip)
-- [alb ip](#alb-ip)
-- [refer](#refer)
 
 ## client ip 
 - create function nodejs 18x
@@ -49,9 +40,9 @@ https://xxx.execute-api.us-east-2.amazonaws.com/prod/
 
 
 ## alb ip
-如果 alb 在 api gateway 前端，将获取到 alb 的内网地址，如下场景：
-- [apigw-private-api-alb-cdk.md](apigw-private-api-alb-cdk.md)
+- 如果 alb 在 api gateway 前端，将获取到 alb 的内网地址，如下场景：
+    - [apigw-private-api-alb-cdk.md](apigw-private-api-alb-cdk.md)
 
 ## refer
-https://dev.classmethod.jp/articles/api-gateway-client-ip/
+- https://dev.classmethod.jp/articles/api-gateway-client-ip/
 

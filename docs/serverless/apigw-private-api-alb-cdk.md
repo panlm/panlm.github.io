@@ -1,21 +1,17 @@
 ---
 title: apigw-private-api-alb-cdk
 description: 通过 alb 访问 private api 的例子
-chapter: true
 created: 2023-03-07 22:09:46.587
-last_modified: 2023-10-29 13:16:27.936
+last_modified: 2023-12-03
 tags:
   - aws/serverless/api-gateway
   - aws/mgmt/cdk
 ---
-
-```ad-attention
-title: This is a github note
-```
+> [!WARNING] This is a github note
 
 # AWS CDK Private API and Application Load Balancer Demo
 
-https://github.com/markilott/aws-cdk-internal-private-api-demo
+- https://github.com/markilott/aws-cdk-internal-private-api-demo
 
 ![apigw-private-api-alb-cdk-png-1.png](apigw-private-api-alb-cdk-png-1.png)
 
@@ -24,7 +20,7 @@ https://github.com/markilott/aws-cdk-internal-private-api-demo
 - 创建新vpc，不要创建 api gateway 的 endpoint
 - 创建 cloud9 在新 vpc
 
-## lab-setup-📚
+## lab-setup-
 - clone repo
 - edit `config/index.ts`
 ```js
@@ -54,7 +50,7 @@ cdk bootstrap
 cdk deploy --all --require-approval never
 ```
 
-## data-flow-📚
+## data flow
 ![apigw-private-api-alb-cdk-png-2.png](apigw-private-api-alb-cdk-png-2.png)
 
 ## target group settings

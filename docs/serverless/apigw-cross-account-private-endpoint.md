@@ -1,7 +1,6 @@
 ---
 title: apigw-cross-account-private-endpoint
 description: 跨账号访问私有api
-chapter: true
 created: 2023-03-05 22:05:10.532
 last_modified: 2023-03-05 22:05:10.532
 tags:
@@ -12,21 +11,18 @@ tags:
 # How can I access an API Gateway private REST API in another AWS account using an interface VPC endpoint
 
 ## topo
-[KB](https://aws.amazon.com/premiumsupport/knowledge-center/api-gateway-private-cross-account-vpce/?nc1=h_ls) 
+- https://aws.amazon.com/premiumsupport/knowledge-center/api-gateway-private-cross-account-vpce/?nc1=h_ls
 
 ![apigw-cross-account-private-endpoint-png-1.png](apigw-cross-account-private-endpoint-png-1.png)
-
 
 
 ## In Account A
 - create vpc & `execute-api` endpoint
 - no peering or tgw needed
 
-
 ## In API gateway Service Account
 ### access-control-with-cidr
-works. 
-
+- works. 
 ```json
 {
     "Version": "2012-10-17",
@@ -53,8 +49,7 @@ works.
 ```
 
 ### access-control-with-vpce
-works.
-
+- works.
 ```json
 {
   "Version": "2012-10-17",
@@ -82,8 +77,7 @@ works.
 ```
 
 ### access-control-with-vpc
-works
-
+- works
 ```json
 {
     "Version": "2012-10-17",
@@ -113,12 +107,7 @@ works
 - redeploy after you change `Resource Policy`
 
 ## refer
-https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-authorization-flow.html
-
-
-
-
-
+- https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-authorization-flow.html
 
 
 

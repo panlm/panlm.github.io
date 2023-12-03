@@ -11,10 +11,10 @@ number headings: first-level 2, max 3, 1.1, auto
 (path:git/git-mkdocs/eks/infra/cluster file:.md)
 -  [[$filename]]: $frontmatter:description
 ```
--  [[eks-private-access-cluster]]: 在已有 vpc 中创建私有访问的 eks 集群
--  [[eks-public-access-cluster-in-china-region]]: 在中国区域，创建共有访问的 eks 集群
 -  [[eks-public-access-cluster]]: 创建公有访问的 eks 集群
 -  [[eks-terraform-cluster]]: 使用 terraform 创建 eks 集群
+-  [[eks-private-access-cluster]]: 在已有 vpc 中创建私有访问的 eks 集群
+-  [[eks-public-access-cluster-in-china-region]]: 在中国区域，创建共有访问的 eks 集群
 <-->
 
 ### 1.2 compute
@@ -31,10 +31,10 @@ number headings: first-level 2, max 3, 1.1, auto
 (path:git/git-mkdocs/eks/infra/network file:.md)
 - [[$filename]]: $frontmatter:description
 ```
+- [[automated-canary-deployment-using-flagger]]: 自动化 canary 部署
 - [[externaldns-for-route53]]: 使用 externaldns 组件
 - [[aws-load-balancer-controller]]: 使用 aws 负载均衡控制器
 - [[nginx-ingress-controller-community-ver]]: 使用 nginx ingress
-- [[automated-canary-deployment-using-flagger]]: 自动化 canary 部署
 - [[eks-custom-network]]: custom network 可以解决子网地址段耗尽的问题
 - [[appmesh-workshop-eks]]: appmesh workshop
 - [[self-signed-certificates]]: 使用自签名证书，用根证书签发或者中间证书签发用于 api gateway
@@ -56,8 +56,8 @@ number headings: first-level 2, max 3, 1.1, auto
 (path:git/git-mkdocs/eks/operation/gitops file:.md)
 - [[$filename]]: $frontmatter:description
 ```
-- [[argocd-lab]]: argocd
 - [[flux-lab]]: flux
+- [[argocd-lab]]: argocd
 <-->
 
 ### 2.2 logging
@@ -65,9 +65,9 @@ number headings: first-level 2, max 3, 1.1, auto
 (path:git/git-mkdocs/eks/operation/logging file:.md)
 - [[$filename]]: $frontmatter:description
 ```
-- [[stream-k8s-control-panel-logs-to-s3]]: 目前eks控制平面日志只支持发送到cloudwatch，且在同一个log group中有5种类型6种前缀的log stream的日志，不利于统一查询。且只有audit日志是json格式其他均是单行日志，且字段各不相同。本解决方案提供思路统一保存日志供后续分析处理
-- [[export-cloudwatch-log-group-to-s3]]: 导出 cloudwatch 日志到 s3
 - [[cloudwatch-to-firehose-python]]: 在 firehose 上，处理从 cloudwatch 发送来的日志
+- [[export-cloudwatch-log-group-to-s3]]: 导出 cloudwatch 日志到 s3
+- [[stream-k8s-control-panel-logs-to-s3]]: 目前eks控制平面日志只支持发送到cloudwatch，且在同一个log group中有5种类型6种前缀的log stream的日志，不利于统一查询。且只有audit日志是json格式其他均是单行日志，且字段各不相同。本解决方案提供思路统一保存日志供后续分析处理
 <-->
 
 ### 2.3 monitor
@@ -75,12 +75,12 @@ number headings: first-level 2, max 3, 1.1, auto
 (path:git/git-mkdocs/eks/operation/monitor file:.md)
 - [[$filename]]: $frontmatter:description
 ```
-- [[POC-prometheus-ha-architect-with-thanos]]: 用 thanos 扩展 prometheus 高可用性架构
+- [[eks-container-insights]]: 启用 EKS 的 container insight 功能
 - [[install-prometheus-grafana]]: 安装 grafana 和 prometheus
+- [[POC-prometheus-ha-architect-with-thanos]]: 用 thanos 扩展 prometheus 高可用性架构
 - [[metrics-server]]: EKS 集群中安装 metrics server
 - [[cluster-autoscaler]]: EKS 集群中安装 Cluster Autoscaler
 - [[enable-prometheus-in-cloudwatch]]: 将 EKS 集群的 prometheus 数据汇总到 cloudwatch
-- [[eks-container-insights]]: 启用 EKS 的 container insight 功能
 - [[install-grafana-lab]]: 在 EC2 / beanstalk / EKS 上安装 grafana 
 <-->
 
@@ -90,12 +90,12 @@ number headings: first-level 2, max 3, 1.1, auto
 - [[$filename]]: $frontmatter:description
 ```
 - [[cert-manager]]: cert-manager
+- [[aws-for-fluent-bit]]: 
 - [[kube-no-trouble]]: kube-no-trouble
 - [[kube-state-metrics]]: kube-state-metrics
 - [[eks-cluster-addons-list]]: EKS 常用插件清单
 - [[nginx-ingress-controller]]: nginx-ingress-controller
 - [[eks-upgrade-procedure]]: eks 集群升级
-- [[aws-for-fluent-bit]]: 
 - [[eks-addons-coredns]]: eks-addons-coredns
 - [[eks-addons-kube-proxy]]: eks-addons-kube-proxy
 - [[eks-addons-vpc-cni]]: eks-addons-vpc-cni
