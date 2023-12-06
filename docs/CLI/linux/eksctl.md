@@ -2,7 +2,7 @@
 title: eksctl
 description: 常用命令
 created: 2022-03-09 21:30:00.815
-last_modified: 2023-11-26
+last_modified: 2023-12-06
 tags:
   - aws/container/eks
 ---
@@ -107,7 +107,7 @@ ${NODEGROUP_NAME}
 
 ```
 
-## create-iamserviceaccount-
+## func-create-iamserviceaccount-
 
 ```sh
 echo ${CLUSTER_NAME}

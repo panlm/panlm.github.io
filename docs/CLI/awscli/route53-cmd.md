@@ -2,7 +2,7 @@
 title: route53
 description: 常用命令
 created: 2022-09-20 09:02:35.112
-last_modified: 2023-11-26
+last_modified: 2023-12-06
 tags:
   - aws/network/route53
 ---
@@ -39,7 +39,7 @@ function create-ns-record () {
     --dns-name "${PARENT_DOMAIN_NAME}." \
     --query HostedZones[0].Id --output text)
     
-    envsubst >ns-route53-record.json <<-EOF
+    envsubst >/tmp/ns-route53-record.json <<-EOF
 {
   "Comment": "UPSERT a record for poc.xxx.com ",
   "Changes": [
@@ -58,12 +58,12 @@ function create-ns-record () {
 EOF
     
     for i in ${NS}; do
-        cat ns-route53-record.json |jq '.Changes[0].ResourceRecordSet.ResourceRecords += [{"Value": "'"${i}"'"}]' \
-            |tee ns-route53-record-tmp.json
-        mv -f ns-route53-record-tmp.json ns-route53-record.json
+        cat /tmp/ns-route53-record.json |jq '.Changes[0].ResourceRecordSet.ResourceRecords += [{"Value": "'"${i}"'"}]' \
+            |tee /tmp/ns-route53-record-tmp.json
+        mv -f /tmp/ns-route53-record-tmp.json /tmp/ns-route53-record.json
     done
     
-    aws route53 change-resource-record-sets --hosted-zone-id ${ZONE_ID} --change-batch file://ns-route53-record.json
+    aws route53 change-resource-record-sets --hosted-zone-id ${ZONE_ID} --change-batch file:///tmp/ns-route53-record.json
     
     aws route53 list-resource-record-sets --hosted-zone-id ${ZONE_ID} --query "ResourceRecordSets[?Name == '${DOMAIN_NAME}.']"
 }

@@ -35,7 +35,7 @@ refer: [[EKS/index]]
 - [[aws-for-fluent-bit]]: 
 - [[POC-prometheus-ha-architect-with-thanos]]: 用 thanos 扩展 prometheus 高可用性架构
 - [[automated-canary-deployment-using-flagger]]: 自动化 canary 部署
-- [[eks-terraform-cluster]]: 使用 terraform 创建 eks 集群
+- [[EKS/infra/cluster/eks-cluster-with-terraform]]: 使用 terraform 创建 eks 集群
 - [[externaldns-for-route53]]: 使用 externaldns 组件
 - [[cloudwatch-to-firehose-python]]: 在 firehose 上，处理从 cloudwatch 发送来的日志
 - [[export-cloudwatch-log-group-to-s3]]: 导出 cloudwatch 日志到 s3

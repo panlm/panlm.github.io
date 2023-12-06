@@ -2,7 +2,7 @@
 title: assume-tool
 description: assume 工具，可以以另一个账号角色，快速打开 web console，或者执行命令
 created: 2023-09-15 09:40:01.442
-last_modified: 2023-12-01
+last_modified: 2023-12-04
 tags:
   - cmd
   - aws/security/iam
@@ -106,9 +106,11 @@ echo ${CREDENTIAL_ENTITY_NAME}
 
 - https://docs.commonfate.io/granted/getting-started#installing-the-cli
 ```sh
-VERSION=0.19.2
+VERSION=0.20.3
 curl -OL https://releases.commonfate.io/granted/v${VERSION}/granted_${VERSION}_darwin_x86_64.tar.gz
 tar -zxvf ./granted_${VERSION}_darwin_x86_64.tar.gz -C /usr/local/bin/
+
+rm -f /usr/local/bin/assumego
 ln -s /usr/local/bin/granted /usr/local/bin/assumego
 
 ```

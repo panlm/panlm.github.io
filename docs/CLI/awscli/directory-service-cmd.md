@@ -2,15 +2,12 @@
 title: directory service
 description: 常用命令
 created: 2023-03-24 21:46:35.822
-last_modified: 2023-10-24 22:35:04.637
+last_modified: 2023-12-03
 tags:
   - aws/mgmt/directory-service
   - aws/cmd
 ---
-
-```ad-attention
-title: This is a github note
-```
+> [!WARNING] This is a github note
 
 # directory-service-cmd
 
@@ -33,9 +30,8 @@ aws ds create-microsoft-ad \
 
 ## create ms ad in default vpc
 
-![[POC-mig-filezilla-to-transfer-family#^8ov5l3]]
-
-refer: [[POC-mig-filezilla-to-transfer-family#create AD-]]
+??? note "right-click & open-in-new-tab"
+    ![[POC-mig-filezilla-to-transfer-family#create-AD-]]
 
 
 ## active directory - windows 2012

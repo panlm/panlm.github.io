@@ -2,7 +2,7 @@
 title: quick setup cloud9 script
 description: 简化运行脚本
 created: 2023-08-04 15:56:59.747
-last_modified: 2023-11-22
+last_modified: 2023-12-06
 tags:
   - aws/cloud9
   - aws/container/eks
@@ -17,12 +17,20 @@ tags:
     - 通过 `name` 自定义 cloud9 的名称，如果不指定将自动创建
     - cloud9 将创建在默认 vpc 中第一个公有子网中
     - 等待实例创建完成并获取到 instance_id
+- ensure aws region is correct
 ```sh
+aws configure list
+
+```
+- go through
+```sh
+#echo ${AWS_DEFAULT_REGION:=us-east-2}
+export AWS_DEFAULT_REGION
+# export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
+
 # name=<give your cloud9 a name>
 datestring=$(TZ=CST-8 date +%Y%m%d-%H%M)
 echo ${name:=cloud9-$datestring}
-# export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
-echo ${AWS_DEFAULT_REGION:=us-east-2} && export ${AWS_DEFAULT_REGION}
 
 # VPC_ID=<your vpc id> 
 # ensure you have public subnet in it

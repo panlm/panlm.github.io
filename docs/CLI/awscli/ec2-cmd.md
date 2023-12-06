@@ -2,7 +2,7 @@
 title: ec2
 description: 常用命令
 created: 2021-07-17T04:01:46.968Z
-last_modified: 2023-12-02
+last_modified: 2023-12-03
 tags:
   - aws/compute/ec2
   - aws/cmd
@@ -36,10 +36,16 @@ aws ec2 describe-images --region ${region} --owners 099720109477 \
   --filters Name=name,Values=ubuntu/images/hvm-ssd/ubuntu-bionic-18.04-amd64*  \
   --query 'Images[*].[ImageId,CreationDate,Name]' --output text |sort -k2 -r |column -t
 
-# windows
+# windows 2012
 export region=ap-southeast-1
 aws ec2 describe-images --region ${region}  --owners 801119661308 \
   --filter "Name=name,Values=Windows_Server-2012-R2_RTM-English-64Bit-Base*"  \
+  --query 'Images[*].[ImageId,CreationDate,Name]' --output text |sort -k2 -r |column -t
+
+# windows 2012
+export region=ap-southeast-1
+aws ec2 describe-images --region ${region}  --owners 801119661308 \
+  --filter "Name=name,Values=Windows_Server-2019-English-Full-Base*"  \
   --query 'Images[*].[ImageId,CreationDate,Name]' --output text |sort -k2 -r |column -t
 
 # amzn2
