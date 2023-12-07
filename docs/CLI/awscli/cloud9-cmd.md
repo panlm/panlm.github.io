@@ -2,19 +2,14 @@
 title: cloud9
 description: cloud9 related commands
 created: 2022-07-01 09:18:29.572
-last_modified: 2023-10-23 12:44:57.070
+last_modified: 2023-12-07
 tags:
   - aws/cloud9
   - aws/cmd
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # cloud9-cmd
-
 ## spin-up-a-cloud9-instance-in-your-region
 
 ![[../../cloud9/setup-cloud9-for-eks#^xzcvy9]]
@@ -57,6 +52,16 @@ C9_DEFAULT_SG_ID=$(aws ec2 describe-security-groups \
 ```
 
 ^wxvp2s
+
+## share cloud9 to others
+```sh
+C9_ID=
+aws cloud9 create-environment-membership \
+    --environment-id ${C9_ID} \
+    --user-arn arn:aws:sts::${MY_ACCOUNT_ID}:user/panlm \
+    --permissions read-write
+```
+
 
 ## old
 

@@ -2,7 +2,7 @@
 title: ssm
 description: 常用命令
 created: 2022-12-06 14:58:34.056
-last_modified: 2023-10-31 11:52:48.805
+last_modified: 2023-12-07
 tags:
   - aws/cmd
   - aws/mgmt/systems-manager
@@ -24,7 +24,8 @@ aws ssm get-connection-status \
 
 ## start-session
 ```sh
-aws ssm start-session --target  i-xxxxxx --region us-east-2
+INST_ID=
+aws ssm start-session --target  ${INST_ID} --region us-east-1
 ```
 
 ### prot-forward
@@ -51,7 +52,7 @@ aws ssm start-session --target ${INST_ID} \
 --parameters '{
 "localPortNumber":["9999"],
 "host":["'"${REMOTE_HOST}"'"],
-"portNumber":["443"]
+"portNumber":["8501"]
 }' 
 
 ```

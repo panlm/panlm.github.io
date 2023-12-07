@@ -2,7 +2,7 @@
 title: POC-prometheus-ha-architect-with-thanos
 description: 用 thanos 扩展 prometheus 高可用性架构
 created: 2023-11-09 08:41:02.494
-last_modified: 2023-11-28
+last_modified: 2023-12-06
 tags:
   - kubernetes
   - aws/container/eks
@@ -11,7 +11,6 @@ tags:
 
 # Prometheus HA Architect with Thanos
 ## diagram
-
 使用 Thanos 可以扩展 Prometheus 的高可用性架构，包含 2 种典型的多集群架构。
 
 下图展示第一种 Prometheus 架构，被监控集群（Observee）只部署 Prometheus 和 Alert Manager 等组件用于监控集群本身，且启用 Thanos 的 Sidecar 方式将 Prometheus 监控的历史数据定期归档到 S3；被监控集群上不部署 Grafana 组件。
@@ -23,13 +22,17 @@ tags:
 
 ![[git/git-mkdocs/git-attachment/POC-prometheus-ha-architect-with-thanos-png-1.png]]
 
+Prometheus 监控架构设计源于单机场景，对于数据持久性有缺陷，Pod 重启后，最近监控数据可能丢失（参见 refer 章节 1 关于 tsdb block duration 的描述），需要使用额外方式防止监控数据断层问题。
+
 下图展示另一种 Prometheus 监控架构，与之前架构的区别在于被监控集群（Observee）除了启用 Thanos Sidecar 之外（下图中未展示），还启用了 Prometheus 的 Remote Write 功能，将未归档的数据以 WAL 方式远程传输到部署在监控集群（Observer）上的 Thanos Receive，以保证数据的冗余度。 Thanos Receive 同样可以将历史监控数据归档到 S3 上，且支持被 Thanos Query 直接查询。
 
 ![[../../../git-attachment/POC-prometheus-ha-architect-with-thanos-png-2.png]]
 
+
+
 ## go-through-
 ### prometheus
-- we will create 2 clsuters, `ekscluster1` for observer, `ekscluster2` for observee ([[git/git-mkdocs/EKS/infra/cluster/eks-terraform-cluster#sample-create-2x-clusters-for-thanos-poc-]])
+- we will create 2 clsuters, `ekscluster1` for observer, `ekscluster2` for observee ([[../../infra/cluster/eks-cluster-with-terraform#sample-create-2x-clusters-for-thanos-poc-]])
 - following addons will be included in each cluster
     - [[git/git-mkdocs/EKS/infra/network/aws-load-balancer-controller#install-with-eksdemo-|aws load balancer controller]] 
     - [[git/git-mkdocs/EKS/infra/storage/ebs-for-eks#install-using-eksdemo-|ebs csi]] 
@@ -157,12 +160,15 @@ prometheus:
           key: thanos-s3-config-${CLUSTER_NAME}
 EOF
 
+echo ${CLUSTER_NAME}
+echo ${DEPLOY_NAME}
+
 helm upgrade -i -f prometheus/values-${CLUSTER_NAME}-1.yaml -f prometheus/values-${CLUSTER_NAME}-1-1.yaml ${DEPLOY_NAME} prometheus-community/kube-prometheus-stack --namespace ${NAMESPACE_NAME}
 # helm uninstall ${DEPLOY_NAME} --namespace monitoring
 
 ```
 
-- create irsa in monitoring namespace for thanos ([[git/git-mkdocs/CLI/linux/eksctl#create-iamserviceaccount-]])
+- create irsa in monitoring namespace for thanos ([[git/git-mkdocs/CLI/linux/eksctl#func-create-iamserviceaccount-]])
 ```sh
 echo ${DEPLOY_NAME}
 echo ${CLUSTER_NAME}
@@ -267,9 +273,9 @@ helm upgrade -i -f prometheus/values-${CLUSTER_NAME}-1.yaml -f prometheus/values
 # helm uninstall ${DEPLOY_NAME} --namespace monitoring
 
 ```
-- using remote write, WAL log will be transfer to receive pod, you could query real time data from receive.
+- using remote write, WAL log will be transfer to receive pod, you could query real time data from thanos receive.
 
-- create irsa in monitoring namespace for thanos ([[git/git-mkdocs/CLI/linux/eksctl#create-iamserviceaccount-]])
+- create irsa in monitoring namespace for thanos ([[git/git-mkdocs/CLI/linux/eksctl#func-create-iamserviceaccount-]])
 ```sh
 echo ${DEPLOY_NAME}
 echo ${CLUSTER_NAME}
@@ -285,6 +291,10 @@ kubectl rollout restart sts prometheus-prom-operator-${CLUSTER_NAME}-prometheus 
 ```
 
 ### thanos
+- switch to observer cluster (ekscluster1), we will install all Thanos components on observer cluster
+```sh
+kubectx #switch to ekscluster1
+```
 #### store
 - reuse 2 cluster s3 config file for thanos store on observer
 ```sh
@@ -298,7 +308,7 @@ done
 ```sh
 kubectl apply -f store/
 ```
-- create role for sa ([[git/git-mkdocs/CLI/linux/eksctl#create-iamserviceaccount-]]) and annotate to existed sa
+- create role for sa ([[git/git-mkdocs/CLI/linux/eksctl#func-create-iamserviceaccount-]]) and annotate to existed sa
 ```sh
 CLUSTER_NAME=ekscluster1
 for SA_NAME in thanos-store-cluster1 thanos-store-cluster2 ; do
@@ -340,7 +350,7 @@ kubectl apply -f query/
 ```sh
 k apply -f receive/
 ```
-- create irsa in thanos namespace for receive ([[git/git-mkdocs/CLI/linux/eksctl#create-iamserviceaccount-]])
+- create irsa in thanos namespace for receive ([[git/git-mkdocs/CLI/linux/eksctl#func-create-iamserviceaccount-]])
 ```sh
 CLUSTER_NAME=ekscluster1
 SA_NAME=thanos-receive-cluster2
@@ -398,6 +408,7 @@ k rollout restart sts thanos-receive-cluster2 -n thanos
     - name: storage.tsdb.max-block-duration
       value: 30m
 ```
+- if using Thanos sider car, `max-block-duration` will be `2h`
 
 ### samples 
 #### thanos config sample in this POC
@@ -521,4 +532,6 @@ create-iamserviceaccount ${SA_NAME} ${CLUSTER_NAME} thanos 1
 
 ### todo
 - thanos receive router
+- thanos compact component
+- configmap in prometheus 
 
