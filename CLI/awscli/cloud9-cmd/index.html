@@ -785,7 +785,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/infra/cluster/eks-terraform-cluster/" class="md-nav__link">
+      <a href="../../../EKS/infra/cluster/eks-cluster-with-terraform/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2432,6 +2432,8 @@
       
         
       
+        
+      
     
     
     
@@ -2477,6 +2479,27 @@
   
   <span class="md-ellipsis">
     cross-region-reverse-proxy-with-nlb-cloudfront
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/ecr-scan-on-push-notification-sns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ecr-scan-on-push-notification-sns
   </span>
   
 
@@ -2608,6 +2631,8 @@
   
     
     
+      
+        
       
         
       
@@ -3055,6 +3080,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#share-cloud9-to-others" class="md-nav__link">
+    <span class="md-ellipsis">
+      share cloud9 to others
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#old" class="md-nav__link">
     <span class="md-ellipsis">
       old
@@ -3425,6 +3459,76 @@
 
               
             
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_4" id="__nav_7_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Windows
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_4">
+            <span class="md-nav__icon md-icon"></span>
+            Windows
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../windows/powershell/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    powershell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
           </ul>
         </nav>
       
@@ -3506,6 +3610,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#share-cloud9-to-others" class="md-nav__link">
+    <span class="md-ellipsis">
+      share cloud9 to others
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#old" class="md-nav__link">
     <span class="md-ellipsis">
       old
@@ -3555,38 +3668,46 @@
 
 
 
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>title: This is a github note
-</code></pre></div>
+<blockquote>
+<p>[!WARNING] This is a github note</p>
+</blockquote>
 <h1 id="cloud9-cmd">cloud9-cmd<a class="headerlink" href="#cloud9-cmd" title="Permanent link">&para;</a></h1>
 <h2 id="spin-up-a-cloud9-instance-in-your-region">spin-up-a-cloud9-instance-in-your-region<a class="headerlink" href="#spin-up-a-cloud9-instance-in-your-region" title="Permanent link">&para;</a></h2>
 <p><a class="glightbox" href="../../../cloud9/setup-cloud9-for-eks/#^xzcvy9" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="../../cloud9/setup-cloud9-for-eks" src="../../../cloud9/setup-cloud9-for-eks/#^xzcvy9" title="../../cloud9/setup-cloud9-for-eks" /></a></p>
 <p>refer: <a href="../../../cloud9/setup-cloud9-for-eks/#spin-up-a-cloud9-instance-in-your-region" title="../../cloud9/setup-cloud9-for-eks">../../cloud9/setup-cloud9-for-eks</a> </p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>aws<span class="w"> </span>cloud9<span class="w"> </span>describe-environments
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>aws<span class="w"> </span>cloud9<span class="w"> </span>describe-environments
 </code></pre></div>
 <h2 id="disable-aws-credential-management">disable aws credential management<a class="headerlink" href="#disable-aws-credential-management" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>aws<span class="w"> </span>cloud9<span class="w"> </span>update-environment<span class="w">  </span>--environment-id<span class="w"> </span><span class="nv">$C9_PID</span><span class="w"> </span>--managed-credentials-action<span class="w"> </span>DISABLE
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>rm<span class="w"> </span>-vf<span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.aws/credentials
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>aws<span class="w"> </span>cloud9<span class="w"> </span>update-environment<span class="w">  </span>--environment-id<span class="w"> </span><span class="nv">$C9_PID</span><span class="w"> </span>--managed-credentials-action<span class="w"> </span>DISABLE
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>rm<span class="w"> </span>-vf<span class="w"> </span><span class="si">${</span><span class="nv">HOME</span><span class="si">}</span>/.aws/credentials
 </code></pre></div>
 <h2 id="get-subnet-id-and-vpc-id-from-cloud9-instance">get subnet id and vpc id from cloud9 instance<a class="headerlink" href="#get-subnet-id-and-vpc-id-from-cloud9-instance" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># get cloud9 vpc</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nv">C9_INST_ID</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>http://169.254.169.254/1.0/meta-data/instance-id<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="k">)</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nv">C9_VPC_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>--instance-ids<span class="w"> </span><span class="si">${</span><span class="nv">C9_INST_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>--query<span class="w"> </span><span class="s1">&#39;Reservations[0].Instances[0].VpcId&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="c1"># get public subnet for external alb</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="nv">C9_SUBNETS_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-subnets<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>--filter<span class="w"> </span><span class="s2">&quot;Name=vpc-id,Values=</span><span class="si">${</span><span class="nv">C9_VPC_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>--query<span class="w"> </span><span class="s1">&#39;Subnets[?MapPublicIpOnLaunch==`true`].SubnetId&#39;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="c1"># get default security group </span>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="nv">C9_DEFAULT_SG_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-security-groups<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>--filter<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>vpc-id,Values<span class="o">=</span><span class="si">${</span><span class="nv">C9_VPC_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>--query<span class="w"> </span><span class="s2">&quot;SecurityGroups[?GroupName == &#39;default&#39;].GroupId&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>--output<span class="w"> </span>text<span class="k">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># get cloud9 vpc</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nv">C9_INST_ID</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>http://169.254.169.254/1.0/meta-data/instance-id<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="k">)</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nv">C9_VPC_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>--instance-ids<span class="w"> </span><span class="si">${</span><span class="nv">C9_INST_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>--query<span class="w"> </span><span class="s1">&#39;Reservations[0].Instances[0].VpcId&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># get public subnet for external alb</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="nv">C9_SUBNETS_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-subnets<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>--filter<span class="w"> </span><span class="s2">&quot;Name=vpc-id,Values=</span><span class="si">${</span><span class="nv">C9_VPC_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>--query<span class="w"> </span><span class="s1">&#39;Subnets[?MapPublicIpOnLaunch==`true`].SubnetId&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="c1"># get default security group </span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="nv">C9_DEFAULT_SG_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-security-groups<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>--filter<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>vpc-id,Values<span class="o">=</span><span class="si">${</span><span class="nv">C9_VPC_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>--query<span class="w"> </span><span class="s2">&quot;SecurityGroups[?GroupName == &#39;default&#39;].GroupId&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>--output<span class="w"> </span>text<span class="k">)</span>
 </code></pre></div>
 <p>^wxvp2s</p>
+<h2 id="share-cloud9-to-others">share cloud9 to others<a class="headerlink" href="#share-cloud9-to-others" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">C9_ID</span><span class="o">=</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>aws<span class="w"> </span>cloud9<span class="w"> </span>create-environment-membership<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span>--environment-id<span class="w"> </span><span class="si">${</span><span class="nv">C9_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span>--user-arn<span class="w"> </span>arn:aws:sts::<span class="si">${</span><span class="nv">MY_ACCOUNT_ID</span><span class="si">}</span>:user/panlm<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span>--permissions<span class="w"> </span>read-write
+</code></pre></div>
 <h2 id="old">old<a class="headerlink" href="#old" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">OWNER_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w">  </span>--query<span class="w"> </span><span class="s1">&#39;Arn&#39;</span><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nv">ENV_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>cloud9<span class="w"> </span>create-environment-ec2<span class="w"> </span><span class="se">\</span>
@@ -3634,7 +3755,7 @@
   <small>
     
       Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-03T15:40:40+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-03</span>
+      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-12-07T17:07:05+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-07</span>
       
         <br>
         Created:
