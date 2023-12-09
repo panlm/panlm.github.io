@@ -1,5 +1,5 @@
 site_name: panlm
-#site_description: A cool description of your site
+site_description: notes from obsidian
 #site_url: https://panlm.github.io/git-ob/ # Change this to your site URL
 
 theme:
@@ -106,6 +106,10 @@ plugins:
       loop: false
       zoomable: true
       draggable: false
+  - mkdocs_exclude_tagged_files:
+      tags_to_exclude: ["panlm", "awscorp"]
+#  - section-index
+
 
 
 extra:

@@ -11,9 +11,9 @@ number headings: first-level 2, max 3, 1.1, auto
 (path:git/git-mkdocs/eks/infra/cluster file:.md)
 -  [[$filename]]: $frontmatter:description
 ```
--  [[eks-public-access-cluster]]: 创建公有访问的 eks 集群
--  [[infra/cluster/eks-cluster-with-terraform]]: 使用 terraform 创建 eks 集群
+-  [[eks-cluster-with-terraform]]: 使用 Terraform 创建 EKS 集群
 -  [[eks-private-access-cluster]]: 在已有 vpc 中创建私有访问的 eks 集群
+-  [[eks-public-access-cluster]]: 创建公有访问的 eks 集群
 -  [[eks-public-access-cluster-in-china-region]]: 在中国区域，创建共有访问的 eks 集群
 <-->
 
@@ -22,8 +22,8 @@ number headings: first-level 2, max 3, 1.1, auto
 (path:git/git-mkdocs/eks/infra/compute file:.md)
 - [[$filename]]: $frontmatter:description
 ```
-- [[karpenter-lab]]: 使用 Karpenter 代替 Cluster Autoscaler
 - [[eks-fargate-lab]]: 在 eks 集群中使用 fargate
+- [[karpenter-lab]]: 使用 Karpenter 代替 Cluster Autoscaler
 <-->
 
 ### 1.3 network
@@ -31,14 +31,14 @@ number headings: first-level 2, max 3, 1.1, auto
 (path:git/git-mkdocs/eks/infra/network file:.md)
 - [[$filename]]: $frontmatter:description
 ```
-- [[automated-canary-deployment-using-flagger]]: 自动化 canary 部署
-- [[externaldns-for-route53]]: 使用 externaldns 组件
-- [[aws-load-balancer-controller]]: 使用 aws 负载均衡控制器
-- [[nginx-ingress-controller-community-ver]]: 使用 nginx ingress
-- [[eks-custom-network]]: custom network 可以解决子网地址段耗尽的问题
 - [[appmesh-workshop-eks]]: appmesh workshop
-- [[self-signed-certificates]]: 使用自签名证书，用根证书签发或者中间证书签发用于 api gateway
+- [[automated-canary-deployment-using-flagger]]: 自动化 canary 部署
+- [[aws-load-balancer-controller]]: 使用 aws 负载均衡控制器
+- [[eks-custom-network]]: custom network 可以解决子网地址段耗尽的问题
 - [[enable-sg-on-pod]]: 启用 pod 安全组
+- [[externaldns-for-route53]]: 使用 externaldns 组件
+- [[nginx-ingress-controller-community-ver]]: 使用 nginx ingress
+- [[self-signed-certificates]]: 使用自签名证书，用根证书签发或者中间证书签发用于 api gateway
 <-->
 
 ### 1.4 storage
@@ -56,8 +56,8 @@ number headings: first-level 2, max 3, 1.1, auto
 (path:git/git-mkdocs/eks/operation/gitops file:.md)
 - [[$filename]]: $frontmatter:description
 ```
-- [[flux-lab]]: flux
 - [[argocd-lab]]: argocd
+- [[flux-lab]]: flux
 <-->
 
 ### 2.2 logging
@@ -75,13 +75,13 @@ number headings: first-level 2, max 3, 1.1, auto
 (path:git/git-mkdocs/eks/operation/monitor file:.md)
 - [[$filename]]: $frontmatter:description
 ```
-- [[eks-container-insights]]: 启用 EKS 的 container insight 功能
-- [[install-prometheus-grafana]]: 安装 grafana 和 prometheus
-- [[POC-prometheus-ha-architect-with-thanos]]: 用 thanos 扩展 prometheus 高可用性架构
-- [[metrics-server]]: EKS 集群中安装 metrics server
 - [[cluster-autoscaler]]: EKS 集群中安装 Cluster Autoscaler
+- [[eks-container-insights]]: 启用 EKS 的 container insight 功能
 - [[enable-prometheus-in-cloudwatch]]: 将 EKS 集群的 prometheus 数据汇总到 cloudwatch
-- [[install-grafana-lab]]: 在 EC2 / beanstalk / EKS 上安装 grafana 
+- [[install-grafana-on-beanstalk]]: 在 EC2 / beanstalk / EKS 上安装 grafana 
+- [[install-prometheus-grafana]]: 安装 grafana 和 prometheus
+- [[metrics-server]]: EKS 集群中安装 metrics server
+- [[POC-prometheus-ha-architect-with-thanos]]: 用 thanos 扩展 prometheus 高可用性架构
 <-->
 
 ### 2.4 upgrade
@@ -89,18 +89,18 @@ number headings: first-level 2, max 3, 1.1, auto
 (path:git/git-mkdocs/eks/operation/upgrade file:.md)
 - [[$filename]]: $frontmatter:description
 ```
-- [[cert-manager]]: cert-manager
 - [[aws-for-fluent-bit]]: 
-- [[kube-no-trouble]]: kube-no-trouble
-- [[kube-state-metrics]]: kube-state-metrics
-- [[eks-cluster-addons-list]]: EKS 常用插件清单
-- [[nginx-ingress-controller]]: nginx-ingress-controller
-- [[eks-upgrade-procedure]]: eks 集群升级
+- [[cert-manager]]: cert-manager
+- [[cni-metrics-helper]]: cni-metrics-helper
 - [[eks-addons-coredns]]: eks-addons-coredns
 - [[eks-addons-kube-proxy]]: eks-addons-kube-proxy
 - [[eks-addons-vpc-cni]]: eks-addons-vpc-cni
-- [[pluto]]: pluto
-- [[nginx-ingress-controller-nginx-ver]]: nginx-ingress-controller-nginx-ver
+- [[eks-cluster-addons-list]]: EKS 常用插件清单
+- [[eks-upgrade-procedure]]: eks 集群升级
 - [[eksup]]: eksup
-- [[cni-metrics-helper]]: cni-metrics-helper
+- [[kube-no-trouble]]: kube-no-trouble
+- [[kube-state-metrics]]: kube-state-metrics
+- [[nginx-ingress-controller]]: nginx-ingress-controller
+- [[nginx-ingress-controller-nginx-ver]]: nginx-ingress-controller-nginx-ver
+- [[pluto]]: pluto
 <-->

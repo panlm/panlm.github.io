@@ -12,6 +12,9 @@ mkdocs-encryptcontent-plugin
 mkdocs-callouts
 mkdocs-meta-descriptions-plugin
 mkdocs-glightbox
+mkdocs-exclude-tagged-files
+
+#mkdocs-section-index
 #obsidiantools
 #pyvis
 #cairosvg

@@ -23,6 +23,6 @@ jobs:
           path: .cache
           restore-keys: |
             mkdocs-material-
-      - run: pip install mkdocs-material mkdocs-ezlinked-plugin mkdocs-awesome-pages-plugin mdx_breakless_lists mkdocs-preview-links-plugin mkdocs-embed-file-plugins mkdocs_custom_fences mkdocs-git-revision-date-localized-plugin mkdocs-encryptcontent-plugin mkdocs-callouts mkdocs-custom-tags-attributes mkdocs-meta-descriptions-plugin mkdocs-glightbox
+      - run: pip install mkdocs-material mkdocs-ezlinked-plugin mkdocs-awesome-pages-plugin mdx_breakless_lists mkdocs-preview-links-plugin mkdocs-embed-file-plugins mkdocs_custom_fences mkdocs-git-revision-date-localized-plugin mkdocs-encryptcontent-plugin mkdocs-callouts mkdocs-custom-tags-attributes mkdocs-meta-descriptions-plugin mkdocs-glightbox mkdocs-exclude-tagged-files
       - run: mkdocs gh-deploy --force
 

@@ -2,7 +2,7 @@
 title: ssm
 description: 常用命令
 created: 2022-12-06 14:58:34.056
-last_modified: 2023-12-07
+last_modified: 2023-12-09
 tags:
   - aws/cmd
   - aws/mgmt/systems-manager
@@ -52,7 +52,7 @@ aws ssm start-session --target ${INST_ID} \
 --parameters '{
 "localPortNumber":["9999"],
 "host":["'"${REMOTE_HOST}"'"],
-"portNumber":["8501"]
+"portNumber":["443"]
 }' 
 
 ```
