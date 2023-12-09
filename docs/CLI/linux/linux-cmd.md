@@ -2,7 +2,7 @@
 title: linux-cmd
 description: 常用命令
 created: 2023-01-03 12:05:10.533
-last_modified: 2023-12-03
+last_modified: 2023-12-08
 tags:
   - cmd
   - linux
@@ -10,6 +10,11 @@ tags:
 > [!WARNING] This is a github note
 
 # linux cmd
+
+## awk
+```sh
+cat docs/CLI/awscli/vpc-cmd.md |awk '/^```sh title="func-.*/,/^```$/ {print}' > /tmp/$$.1
+```
 
 ## brew
 - install
@@ -202,13 +207,17 @@ net.ipv4.conf.all.accept_source_route = 1
 
 ```
 
-## traffic control
+## tc - traffic control
 ```sh
 yum install iproute-tc
 
 ```
 
-[[tc-traffic-control]]
+### doc
+- https://lartc.org/lartc.html#LARTC.COOKBOOK.FULLNAT.INTRO
+
+### scenario
+- [[connection-network-with-overlap-cidrs#Solution for Overlapping CIDRs using AWS Transit Gateway in VPC and NAT Instances]]
 
 
 ## xfs

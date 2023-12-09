@@ -25,7 +25,7 @@ AWS_REGION=us-east-2 # for original region
 CN_DOMAIN_NAME=poc1010.aws.panlm.xyz # for china region
 ```
 
-!!! note "refer: [[git/git-mkdocs/EKS/infra/network/externaldns-for-route53#setup-hosted-zone-]]"
+!!! note "refer: [[git/git-mkdocs/EKS/infra/network/externaldns-for-route53#func-setup-hosted-zone-]]"
     ![[../EKS/infra/network/externaldns-for-route53#^fgvqjb]]
 
 ### eks cluster

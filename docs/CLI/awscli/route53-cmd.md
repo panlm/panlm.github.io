@@ -2,31 +2,28 @@
 title: route53
 description: 常用命令
 created: 2022-09-20 09:02:35.112
-last_modified: 2023-12-06
+last_modified: 2023-12-08
 tags:
   - aws/network/route53
 ---
 > [!WARNING] This is a github note
 
 # route53-cmd
-
 ## create hosted zone
 
 ![[../../EKS/infra/network/externaldns-for-route53#^fgvqjb]]
 
-refer: [[git/git-mkdocs/EKS/infra/network/externaldns-for-route53#setup-hosted-zone-]]
+refer: [[git/git-mkdocs/EKS/infra/network/externaldns-for-route53#func-setup-hosted-zone-]]
 
-## create-ns-record-
-
+## func-create-ns-record-
 - create host zone in your child account and get NS (previous chapter)
 - [[../linux/assume-tool|assume]] to your parent account to add NS record to route53 host zone
-```sh
-DOMAIN_NAME=poc0000.aws.panlm.xyz
-NS='ns-1716.awsdns-22.co.uk.
-ns-934.awsdns-52.net.
-ns-114.awsdns-14.com.
-ns-1223.awsdns-24.org.
-'
+```sh title="create-ns-record"
+# DOMAIN_NAME=poc0000.aws.panlm.xyz
+# NS='ns-1716.awsdns-22.co.uk.
+# ns-934.awsdns-52.net.
+# ns-114.awsdns-14.com.
+# ns-1223.awsdns-24.org.'
 
 function create-ns-record () {
     if [[ -z ${DOMAIN_NAME} || -z ${NS} ]]; then

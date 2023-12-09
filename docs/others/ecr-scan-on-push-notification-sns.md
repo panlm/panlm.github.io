@@ -1,6 +1,6 @@
 ---
-title: ecr-scan-on-push-notification-sns
-description: ecr-scan-on-push-notification-sns
+title: Enable scan on push in ECR and send notification to SNS
+description: 启用 ECR 的 Scan on push 之后，自动将扫描结果中 CRITICAL 的信息发送到目标 SNS 告警
 created: 2023-12-07 16:22:54.252
 last_modified: 2023-12-07
 tags:
@@ -8,7 +8,7 @@ tags:
   - aws/integration/sns
 ---
 > [!WARNING] This is a github note
-# ecr-scan-on-push-notification-sns
+# Enable scan on push in ECR and send notification to SNS
 
 ## 需求
 启用 ECR 的 Scan on push 之后，自动将扫描结果中 CRITICAL 的信息发送到目标 SNS 告警。

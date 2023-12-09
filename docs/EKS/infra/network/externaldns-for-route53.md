@@ -2,7 +2,7 @@
 title: externaldns-for-route53
 description: 使用 externaldns 组件
 created: 2022-08-04 13:24:34.806
-last_modified: 2023-11-26
+last_modified: 2023-12-08
 tags:
   - kubernetes
   - aws/network/route53
@@ -10,9 +10,9 @@ tags:
 > [!WARNING] This is a github note
 
 # externaldns-for-route53
-## setup-hosted-zone-
--  执行下面命令创建 Hosted Zone， 然后手工添加 NS 记录到上游的域名服务器 domain registrar 中 (create hosted zone, and then add NS records to upstream domain registrar)
-```sh
+## func-setup-hosted-zone-
+-  执行下面命令创建 Hosted Zone，然后手工添加 NS 记录到上游的域名服务器 domain registrar 中 (create hosted zone, and then add NS records to upstream domain registrar)
+```sh title="func-setup-hosted-zone"
 echo ${DOMAIN_NAME}
 
 function create-host-zone () {
@@ -42,17 +42,14 @@ function create-host-zone () {
 ```
 ^fgvqjb
 
-- refer: [[../../../CLI/awscli/route53-cmd#create-ns-record-]] 
+- refer: [[../../../CLI/awscli/route53-cmd#func-create-ns-record-]] 
 - refer: [[route53-subdomian]]
 
 ### private hosted zone
-
 - you also could create private hosted zone and associate to your vpc. plugin will insert/update record in your private hosted zone. ([link](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-private.html))
 
 ## install 
-
 ### install-
-
 - https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/aws.md
 - 创建所需要的服务账号 (create service account)
 	- 确保 EKS 集群名称正确 (ensure eks cluster name is correct)
@@ -209,7 +206,6 @@ kubectl create --filename externaldns-with-rbac.yaml \
 ```
 
 ### install-with-eksdemo-
-
 - https://github.com/awslabs/eksdemo/blob/main/docs/install-edns.md
 ```sh
 echo ${CLUSTER_NAME}
@@ -220,7 +216,6 @@ eksdemo install external-dns -c ${CLUSTER_NAME}
 ^a2vlmo
 
 ## verify
-
 - create namespace
 ```sh
 NS=verify

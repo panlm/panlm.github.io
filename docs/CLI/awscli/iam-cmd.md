@@ -2,7 +2,7 @@
 title: iam
 description: 常用命令
 created: 2021-07-18
-last_modified: 2023-11-28
+last_modified: 2023-12-08
 tags:
   - aws/security/iam
   - aws/cmd
@@ -12,13 +12,11 @@ tags:
 # iam cmd
 
 ## get role arn by name
-
 ```sh
 aws iam get-role --role-name ${role_name} --query 'Role.Arn' --output text
 ```
 
 ## get policy arn
-
 ```sh
 aws iam list-policies --query 'Policies[*].[PolicyName,Arn]' --output text |grep CloudWatchAgentServerPolicy
 aws iam get-policy --policy-arn arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy
@@ -39,7 +37,7 @@ aws iam create-access-key --user-name cwagent-onprem
 ## create role
 ### func-ec2-admin-role-create-
 - create ec2 admin role
-```sh
+```sh title="func-ec2-admin-role-create"
 # no dependency variable
 # output ROLE_ARN / INSTANCE_PROFILE_ARN
 function ec2-admin-role-create () {

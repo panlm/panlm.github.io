@@ -2,16 +2,14 @@
 title: eksctl
 description: 常用命令
 created: 2022-03-09 21:30:00.815
-last_modified: 2023-12-06
+last_modified: 2023-12-08
 tags:
   - aws/container/eks
 ---
 > [!WARNING] This is a github note
 
 # eksctl-cmd
-
 ## install
-
 ```sh
 # install eksctl
 # consider install eksctl version 0.89.0
@@ -109,7 +107,7 @@ ${NODEGROUP_NAME}
 
 ## func-create-iamserviceaccount-
 
-```sh
+```sh title="func-create-iamserviceaccount"
 echo ${CLUSTER_NAME}
 echo ${NAMESPACE_NAME}
 

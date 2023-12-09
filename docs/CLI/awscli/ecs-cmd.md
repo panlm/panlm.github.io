@@ -79,7 +79,7 @@ aws ec2 create-launch-template-version --launch-template-id ${LAUNCH_TEMPLATE_ID
 
 aws ec2 modify-launch-template --launch-template-id ${LAUNCH_TEMPLATE_ID} --default-version "2"
 ```
-- execute function to create auto scaling group ([[notes/auto-scaling-cmd#func-create-auto-scaling-group]])
+- execute function to create auto scaling group ([[notes/auto-scaling-cmd#func-create-auto-scaling-group-]])
 ```sh
 create-auto-scaling ${LAUNCH_TEMPLATE_ID} # call my function
 echo ${ASG_ARN}

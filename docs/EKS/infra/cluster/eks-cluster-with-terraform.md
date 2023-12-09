@@ -24,12 +24,12 @@ git clone https://github.com/panlm/eks-blueprints-clusters.git
 cd eks-blueprints-clusters/multi-cluster-thanos
 ```
 
-- execute function to create an existed host zone ([[git/git-mkdocs/EKS/infra/network/externaldns-for-route53#setup-hosted-zone-]])
+- execute function to create an existed host zone ([[git/git-mkdocs/EKS/infra/network/externaldns-for-route53#func-setup-hosted-zone-]])
 ```sh
 DOMAIN_NAME=eks1206.aws.panlm.xyz
 create-host-zone ${DOMAIN_NAME}
 ```
-- need setup upstream domain registry from your labtop ([[git/git-mkdocs/CLI/awscli/route53-cmd#create-ns-record-]])
+- need setup upstream domain registry from your labtop ([[git/git-mkdocs/CLI/awscli/route53-cmd#func-create-ns-record-]])
 
 - terraform.tfvars
 ```text

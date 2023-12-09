@@ -2,15 +2,16 @@
 title: ec2
 description: 常用命令
 created: 2021-07-17T04:01:46.968Z
-last_modified: 2023-12-03
+last_modified: 2023-12-07
 tags:
   - aws/compute/ec2
   - aws/cmd
 ---
+> [!WARNING] This is a github note
 
 # ec2 cmd
 ## others
-- [[../git/git-mkdocs/CLI/awscli/ebs-cmd]]
+- [[ebs-cmd]]
 
 ## get image id
 ### get all ubuntu image from here (click to launch)
@@ -237,7 +238,7 @@ export SG_ID=$(aws ec2 describe-security-groups  --region $AWS_REGION --filter N
 ```
 
 ### func-create-sg-
-```sh
+```sh title="func-create-sg"
 # deps: VPC_ID
 # output: SG_ID
 function create-sg () {

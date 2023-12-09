@@ -10,9 +10,7 @@ tags:
 > [!WARNING] This is a github note
 
 # metrics-server
-
 ## github
-
 - https://github.com/kubernetes-sigs/metrics-server
 
 ![[metric-server-png-1.png]]
@@ -37,7 +35,6 @@ helm upgrade --install metrics-server metrics-server/metrics-server
 ```
 
 ## sample
-
 - [[hpa-horizontal-pod-autoscaler]]
 
 

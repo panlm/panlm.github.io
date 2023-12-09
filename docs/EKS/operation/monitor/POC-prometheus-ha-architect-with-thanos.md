@@ -37,8 +37,8 @@ Prometheus 监控架构设计源于单机场景，对于数据持久性有缺陷
     - [[git/git-mkdocs/EKS/infra/network/aws-load-balancer-controller#install-with-eksdemo-|aws load balancer controller]] 
     - [[git/git-mkdocs/EKS/infra/storage/ebs-for-eks#install-using-eksdemo-|ebs csi]] 
     - [[git/git-mkdocs/EKS/infra/network/externaldns-for-route53|externaldns-for-route53]] 
-        - setup host zone ([[git/git-mkdocs/EKS/infra/network/externaldns-for-route53#setup-hosted-zone-]])
-        - create ns record on up stream dns register ([[git/git-mkdocs/CLI/awscli/route53-cmd#create-ns-record-]])
+        - setup host zone ([[git/git-mkdocs/EKS/infra/network/externaldns-for-route53#func-setup-hosted-zone-]])
+        - create ns record on up stream dns register ([[git/git-mkdocs/CLI/awscli/route53-cmd#func-create-ns-record-]])
         - install addon to eks ([[git/git-mkdocs/EKS/infra/network/externaldns-for-route53#install-with-eksdemo-]])
 - export values for customization
 ```sh
