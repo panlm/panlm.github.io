@@ -1,13 +1,15 @@
 ---
+title: vpc
+description: 常用命令
 created: 2021-11-05T01:08:29.064Z
-description: vpc-cmd
-last_modified: 2023-12-02
+last_modified: 2023-12-10
 tags:
   - aws/network/vpc
   - aws/cmd
   - todo
 ---
 > [!WARNING] This is a github note
+
 # vpc-cmd
 ## vpc creation
 
@@ -86,14 +88,14 @@ aws ec2 describe-subnets --filters "Name=vpc-id,Values=${VPC_ID}" \
 
 ## create/delete transit gateway
 ### create
-```
+```sh
 aws ec2 create-transit-gateway \
   --tag-specifications 'ResourceType=transit-gateway,Tags=[{Key=Name,Value=otgw1}]' \
   --query TransitGateway.TransitGatewayId --output text
 ```
 
 ### delete transit gateway
-```
+```sh
 aws ec2 describe-transit-gateway-attachments |jq -r .TransitGatewayAttachments[].TransitGatewayAttachmentId
 aws ec2 delete-transit-gateway-vpc-attachment --transit-gateway-attachment-id tgw-attach-012c31682d0c11f22
 ```
@@ -150,7 +152,7 @@ done
 
 
 ## func-get-default-vpc-
-```sh
+```sh title="func-get-default-vpc"
 function get-default-vpc () {
     DEFAULT_VPC=$(aws ec2 describe-vpcs --filter Name=is-default,Values=true --query 'Vpcs[0].VpcId' --output text)
     DEFAULT_CIDR=$(aws ec2 describe-vpcs --filter Name=is-default,Values=true --query 'Vpcs[0].CidrBlock' --output text)
@@ -158,7 +160,7 @@ function get-default-vpc () {
 ```
 
 ## func-get-subnets-
-```sh
+```sh title="func-get-subnets"
 function get-subnets () {
     if [[ $# -lt 1 ]]; then
         echo "format: $0 VPC_ID [true|false]"
@@ -166,7 +168,7 @@ function get-subnets () {
         return
     else
         local VPC_ID=$1
-        local IS_PUBLIC=${2,,} # lower case $2
+        local IS_PUBLIC=$(echo $2 |tr 'A-Z' 'a-z') # lower case $2
     fi
 
     if [[ -z ${IS_PUBLIC} ]]; then

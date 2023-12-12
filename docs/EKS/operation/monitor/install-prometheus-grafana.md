@@ -2,7 +2,7 @@
 title: install-prometheus-grafana-on-eks
 description: 安装 grafana 和 prometheus
 created: 2023-02-18 21:31:31.678
-last_modified: 2023-12-07
+last_modified: 2023-12-12
 tags:
   - grafana
   - prometheus
@@ -51,23 +51,67 @@ aws ssm start-session --target ${INST_ID} --document-name AWS-StartPortForwardin
 
 ```
 
-### install exporter on 2nd eks cluster
-
+### install standalone prometheus
 ```sh
+CLUSTER_NAME=ekscluster4
+DEPLOY_NAME=prom-operator-${CLUSTER_NAME}
+NAMESPACE_NAME=monitoring
+
+# enable grafana and typical prometheus
+envsubst >values-${CLUSTER_NAME}-1.yaml <<-EOF
+grafana:
+  enabled: false
+prometheus:
+  prometheusSpec:
+    additionalArgs: 
+    - name: storage.tsdb.min-block-duration
+      value: 5m
+    - name: storage.tsdb.max-block-duration
+      value: 5m
+    replicas: 2
+    retention: 730h # one month
+    retentionSize: "100GB"
+    ruleSelectorNilUsesHelmValues: false
+    serviceMonitorSelectorNilUsesHelmValues: false
+    podMonitorSelectorNilUsesHelmValues: false
+    topologySpreadConstraints: 
+    - maxSkew: 1
+      topologyKey: topology.kubernetes.io/zone
+      whenUnsatisfiable: DoNotSchedule
+      labelSelector:
+        matchLabels:
+          app: prometheus
+    # additionalScrapeConfigsSecret: 
+    #   enabled: true
+    #   name: additional-scrape-configs
+    #   key: avalanche-additional.yaml
+    storageSpec: 
+      volumeClaimTemplate:
+        spec:
+          storageClassName: ${STORAGECLASS_NAME}
+          accessModes: ["ReadWriteOnce"]
+          resources:
+            requests:
+              storage: 200Gi
+        selector: {}
+    remoteWrite: 
+    - url: http://k8s-thanos-thanosre-xxx.elb.us-west-2.amazonaws.com:19291/api/v1/receive
+    externalLabels: 
+      cluster: "${CLUSTER_NAME}"
+      cluster_name: "${CLUSTER_NAME}"
+      origin_prometheus: "${CLUSTER_NAME}"
+EOF
+
+helm upgrade -i -f values-${CLUSTER_NAME}-1.yaml ${DEPLOY_NAME} prometheus-community/kube-prometheus-stack --namespace ${NAMESPACE_NAME} --create-namespace
 
 ```
 
-
+- https://github.com/prometheus-operator/prometheus-operator/issues/2918
+- 
 ### install with thanos
-
-```sh
-helm show values prometheus-community/kube-prometheus-stack > values_default2.yaml
-
-helm install -f values-1.yaml ${DEPLOY_NAME} prometheus-community/kube-prometheus-stack --namespace monitoring
-
-```
-
 - refer: [[POC-prometheus-ha-architect-with-thanos#go-through-]]
+
+![[../../../git-attachment/install-prometheus-grafana-png-2.png]]
 
 ## (Optional) install prometheus and grafana
 
@@ -121,6 +165,7 @@ kubectl get all -n grafana
 
 ## refer
 - https://archive.eksworkshop.com/intermediate/240_monitoring/prereqs/
-
+- External labels are only attached when data is communicated to the outside, including Outgoing alerts, remote write, remote read endpoint, `/federate` endpoint, etc.
+    - https://github.com/prometheus-operator/prometheus-operator/issues/2918
 
 

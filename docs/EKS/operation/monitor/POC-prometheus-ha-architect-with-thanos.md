@@ -2,7 +2,7 @@
 title: POC-prometheus-ha-architect-with-thanos
 description: 用 thanos 扩展 prometheus 高可用性架构
 created: 2023-11-09 08:41:02.494
-last_modified: 2023-12-06
+last_modified: 2023-12-12
 tags:
   - kubernetes
   - aws/container/eks
@@ -11,35 +11,54 @@ tags:
 
 # Prometheus HA Architect with Thanos
 ## diagram
-使用 Thanos 可以扩展 Prometheus 的高可用性架构，包含 2 种典型的多集群架构。
+使用 Thanos 可以扩展 Prometheus 的高可用性架构，本文讨论几种典型的多集群监控架构。
 
-下图展示第一种 Prometheus 架构，被监控集群（Observee）只部署 Prometheus 和 Alert Manager 等组件用于监控集群本身，且启用 Thanos 的 Sidecar 方式将 Prometheus 监控的历史数据定期归档到 S3；被监控集群上不部署 Grafana 组件。
-
-监控集群（Observer）除了部署 Prometheus 和 Alert Manager 组件用于监控集群本身之外，将额外部署 Grafana 作为统一 Dashboard 展示，此外还将部署 Thanos 相关组件，包括：
+一种监控架构，被监控集群（Observee）只部署 Prometheus 和 Alert Manager 等组件用于监控集群本身，且启用 Thanos 的 Sidecar 方式将 Prometheus 监控的历史数据定期归档到 S3；被监控集群中不部署 Grafana 组件。监控集群（Observer）除了部署 Prometheus 和 Alert Manager 组件用于监控集群本身之外，将额外部署 Grafana 作为统一 Dashboard 展示，此外还将部署 Thanos 相关组件，包括：
 - Thanos Store 组件：用于从 S3 上查询历史任务
-- Thanos Query 组件：用于执行查询任务，将所有数据源添加为 Query 的 Endpoint，包括被监控集群的 Thanos Sider Car、 Thanos Store、 Thanos Receive 等
+- Thanos Query 组件：用于执行查询任务，将所有数据源添加为 Query 的 Endpoint，包括被监控集群的 Thanos Sidecar、 Thanos Store、 Thanos Receive 等
 - Thanos Query Frontend：用于统一查询入口，并且负责将查询分片以提高性能
 
-![[git/git-mkdocs/git-attachment/POC-prometheus-ha-architect-with-thanos-png-1.png]]
+这种监控架构对应下图蓝色和绿色集群及组件。由于 Prometheus 监控架构设计源于单机场景，对于数据持久性有缺陷，Pod 重启后，最近监控数据可能丢失（参见 refer 章节 1 关于 tsdb block duration 的描述），需要使用额外方式防止监控数据断层的问题。
 
-Prometheus 监控架构设计源于单机场景，对于数据持久性有缺陷，Pod 重启后，最近监控数据可能丢失（参见 refer 章节 1 关于 tsdb block duration 的描述），需要使用额外方式防止监控数据断层问题。
+![[../../../git-attachment/POC-prometheus-ha-architect-with-thanos-png-1.png]]
 
-下图展示另一种 Prometheus 监控架构，与之前架构的区别在于被监控集群（Observee）除了启用 Thanos Sidecar 之外（下图中未展示），还启用了 Prometheus 的 Remote Write 功能，将未归档的数据以 WAL 方式远程传输到部署在监控集群（Observer）上的 Thanos Receive，以保证数据的冗余度。 Thanos Receive 同样可以将历史监控数据归档到 S3 上，且支持被 Thanos Query 直接查询。
+另一种监控架构，与之前架构的区别在于被监控集群（Observee）除了启用 Thanos Sidecar 之外（下图中未展示），还启用了 Prometheus 的 Remote Write 功能，将未归档的数据以 WAL 方式远程传输到部署在监控集群（Observer）上的 Thanos Receive，以保证数据的冗余度。 Thanos Receive 同样可以将历史监控数据归档到 S3 上，且支持被 Thanos Query 直接查询。这种监控架构对应上图蓝色和红色集群及组件
 
-![[../../../git-attachment/POC-prometheus-ha-architect-with-thanos-png-2.png]]
+### scenarios
 
-
+- scenario <mark style="background: #FF5582A6;">red</mark> (适合生产环境，或者不可容忍监控数据丢失的场景)
+    - HUB: store + receive
+    - SPOKE: prometheus with remote write + sidecar + compactor
+    - Pros: 
+        - data redundancy: crash will lost 2 hrs data in spoke, but data has been written to receive
+        - query directly from receive, no performance impact 
+    - Cons:
+        - one or more receive pod for each cluster, more storage cost needed
+- scenario <mark style="background: #BBFABBA6;">green</mark> & <mark style="background: #ADCCFFA6;">blue</mark> (适合非生产环境，可以容忍偶尔监控数据缺失的场景)
+    - HUB:  store
+    - SPOKE: prometheus + sidecar
+    - Pros: 
+        - architect simple
+        - only one copy of monitoring data, lower storage cost
+    - Cons: 
+        - no data redundancy: crash will lost 2 hrs data in spoke
+        - query will impact performance on target cluster
+- scenario <mark style="background: #FFF3A3A6;">yellow</mark>
+    - HUB: store + receive
+    - SPOKE: prometheus with remote write and local EBS
+    - Pros: 
+        - TSDB retention could be changed flexibly to meet tolerance of data lost 
+    - Cons: 
+        - one or more receive pod for each cluster, more storage cost needed
+        - additional cost depends on historical data on EBS
 
 ## go-through-
 ### prometheus
 - we will create 2 clsuters, `ekscluster1` for observer, `ekscluster2` for observee ([[../../infra/cluster/eks-cluster-with-terraform#sample-create-2x-clusters-for-thanos-poc-]])
-- following addons will be included in each cluster
+- following 3 addons will be included in each cluster
     - [[git/git-mkdocs/EKS/infra/network/aws-load-balancer-controller#install-with-eksdemo-|aws load balancer controller]] 
     - [[git/git-mkdocs/EKS/infra/storage/ebs-for-eks#install-using-eksdemo-|ebs csi]] 
     - [[git/git-mkdocs/EKS/infra/network/externaldns-for-route53|externaldns-for-route53]] 
-        - setup host zone ([[git/git-mkdocs/EKS/infra/network/externaldns-for-route53#func-setup-hosted-zone-]])
-        - create ns record on up stream dns register ([[git/git-mkdocs/CLI/awscli/route53-cmd#func-create-ns-record-]])
-        - install addon to eks ([[git/git-mkdocs/EKS/infra/network/externaldns-for-route53#install-with-eksdemo-]])
 - export values for customization
 ```sh
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
@@ -55,7 +74,7 @@ mkdir prometheus s3-config query store receive receive-controller
 
 #### observer cluster
 - on observer (ekscluster1)
-- create s3 config file for thanos sider car
+- create s3 config file for thanos sidecar
 ```sh
 CLUSTER_NAME=ekscluster1
 DEPLOY_NAME=prom-operator-${CLUSTER_NAME}
@@ -70,7 +89,7 @@ echo ${DOMAIN_NAME}
 echo ${CLUSTER_NAME}
 echo ${STORAGECLASS_NAME:=gp2}
 echo ${THANOS_BUCKET_NAME}
-echo ${AWS_DEFAULT_REGION}
+echo ${AWS_DEFAULT_REGION} ; export AWS_DEFAULT_REGION
 echo ${CERTIFICATE_ARN}
 echo ${NAMESPACE_NAME}
 
@@ -185,7 +204,7 @@ kubectl annotate sa prom-operator-${CLUSTER_NAME}-prometheus -n monitoring eks.a
 ```
 ^refer-irsa-prometheus
 
-- rollout deployment
+- rollout statefulset (need to delete pod and make it restart to use new SA)
 ```sh
 kubectl rollout restart sts prometheus-prom-operator-${CLUSTER_NAME}-prometheus -n monitoring
 
@@ -208,7 +227,7 @@ NAMESPACE_NAME=monitoring
 !!! note "refer code block `refer-s3-config`"
     ![[POC-prometheus-ha-architect-with-thanos#^refer-s3-config]]
 
-- deploy prometheus with remote write and thanos sider car
+- deploy prometheus with remote write and thanos sidecar
 ```sh
 # enable grafana and typical prometheus
 envsubst >prometheus/values-${CLUSTER_NAME}-1.yaml <<-EOF
@@ -285,10 +304,13 @@ SA_NAME=${DEPLOY_NAME}-prometheus
 !!! note "refer code block `refer-irsa-prometheus`"
     ![[POC-prometheus-ha-architect-with-thanos#^refer-irsa-prometheus]]
 
-- rollout
+- rollout statefulset (need to delete pod and make it restart to use new SA)
 ```sh
 kubectl rollout restart sts prometheus-prom-operator-${CLUSTER_NAME}-prometheus -n monitoring
 ```
+
+#### standalone prometheus deploy 
+- [[install-prometheus-grafana]]
 
 ### thanos
 - switch to observer cluster (ekscluster1), we will install all Thanos components on observer cluster
@@ -336,7 +358,7 @@ kubectl rollout restart sts thanos-store-cluster2 -n thanos
         - --query-range.split-interval=1h
         - --labels.split-interval=1h
 ```
-- modify query deployment yaml as need, add endpoint for sider car, receive, store, etc.
+- modify query deployment yaml as need, add endpoint for sidecar, receive, store, etc.
 - deploy
 ```sh
 kubectl apply -f query/
@@ -375,7 +397,7 @@ k rollout restart sts thanos-receive-cluster2 -n thanos
 - go this dashboard `Kubernetes / Networking / Namespace (Pods)`
 ![[../../../git-attachment/POC-prometheus-ha-architect-with-thanos-png-3.png]]
 - we have history data, but no latest 2 hour metrics
-- go to query deployment to add thanos sidercar svc (`xxx-kub-thanos-external`) to endpoint list with port `10901`
+- go to query deployment to add thanos sidecar svc (`xxx-kub-thanos-external`) to endpoint list with port `10901`
 - query again from grafana, we will get full metrics
 
 
@@ -393,6 +415,12 @@ k rollout restart sts thanos-receive-cluster2 -n thanos
 - 刷新 receive 数据时抖动严重
     - 检查是否多副本 receive sts，且未做数据 replica
 
+#### thanos frontend 
+- open svc of thanos frontend 
+    - min time in receive: means prometheus remote write has valid and data has been received by thanos receive
+    - min time in sidecar: data in thanos local before duration, 2 hr will write data from WAL to duration, if < 2hrs "-" will display. if over 2hrs, oldest data in local will be display
+![[../../../git-attachment/POC-prometheus-ha-architect-with-thanos-png-7.png]]
+
 
 ## refer
 
@@ -408,7 +436,7 @@ k rollout restart sts thanos-receive-cluster2 -n thanos
     - name: storage.tsdb.max-block-duration
       value: 30m
 ```
-- if using Thanos sider car, `max-block-duration` will be `2h`
+- if using Thanos sidecar, `max-block-duration` will be `2h`
 
 ### samples 
 #### thanos config sample in this POC
@@ -529,6 +557,9 @@ create-iamserviceaccount ${SA_NAME} ${CLUSTER_NAME} thanos 1
 - [[../../../../../../thanos|thanos]] 
 - [[prometheus#performance-testing-]]
 - [[prometheus#cmd-]]
+- https://github.com/terraform-aws-modules/terraform-aws-eks/issues/2009
+
+
 
 ### todo
 - thanos receive router

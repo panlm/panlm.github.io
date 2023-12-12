@@ -2,7 +2,7 @@
 title: ecs
 description: 常用命令
 created: 2023-02-22 22:46:31.539
-last_modified: 2023-12-02
+last_modified: 2023-12-10
 tags:
   - aws/container/ecs
   - aws/cmd
@@ -44,9 +44,9 @@ export AWS_DEFAULT_REGION=us-east-2
 ```sh
 ECS_AMI=$(aws ssm get-parameters --names /aws/service/ecs/optimized-ami/amazon-linux-2/recommended |jq -r '.Parameters[0].Value' |jq -r '.image_id')
 ```
-- get default security group ([[ec2-cmd#func-create-sg-]])
+- get default security group ([[../functions/func-create-sg.sh|func-create-sg.sh]])
 ```sh
-create-sg ${VPC_ID} # call my function
+create-sg -v ${VPC_ID} -c 0.0.0.0/0 # call my function
 echo ${SG_ID}
 ```
 - execute function to create launch template ([[notes/auto-scaling-cmd#func-create-aunch-template-]])

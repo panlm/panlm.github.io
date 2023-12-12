@@ -2,7 +2,7 @@
 title: setup cloud9 for eks
 description: 使用 cloud9 作为实验环境
 created: 2022-05-21 12:46:05.435
-last_modified: 2023-11-18
+last_modified: 2023-12-11
 tags:
   - aws/container/eks
   - aws/cloud9
@@ -82,7 +82,7 @@ echo "###"
 # install others
 sudo yum -y install jq gettext bash-completion moreutils wget
 
-# install awscli
+# install awscli v2
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o /tmp/awscliv2.zip
 echo A |unzip /tmp/awscliv2.zip -d /tmp
 sudo /tmp/aws/install --update 2>&1 >/tmp/awscli-install.log
@@ -94,6 +94,11 @@ if [[ $? -eq 0 ]]; then
   source ~/.bash_profile
   aws --version
 fi
+
+# install awscli v1
+# curl "https://s3.amazonaws.com/aws-cli/awscli-bundle.zip" -o "awscli-bundle.zip"
+# unzip awscli-bundle.zip
+# sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws
 
 # install ssm session plugin
 curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm" -o "/tmp/session-manager-plugin.rpm"

@@ -2,7 +2,7 @@
 title: eks-terraform-cluster
 description: 使用 Terraform 创建 EKS 集群
 created: 2023-06-30 15:02:19.833
-last_modified: 2023-12-06
+last_modified: 2023-12-10
 tags:
   - aws/container/eks
   - terraform
@@ -47,19 +47,37 @@ terraform init
 terraform apply -auto-approve
 ```
 
-- create two eks clusters
+- create ekscluster1
 ```sh
-cd ../ekscluster1
-terraform init
-terraform apply -auto-approve
-
-# go to another terminal to execute simultaneously
-cd ../ekscluster2
+cd ekscluster1
 terraform init
 terraform apply -auto-approve
 
 # following output to save kubeconfig file
 ```
+
+- create ekscluster2
+```sh
+# go to another terminal to execute simultaneously
+cd ekscluster2
+terraform init
+terraform apply -auto-approve
+
+# following output to save kubeconfig file
+```
+
+### internal error
+```error
+│       * Internal error occurred: failed calling webhook "mservice.elbv2.k8s.aws": failed to call webhook: Post "https://aws-load-balancer-webhook-service.kube-system.svc:443/mutate-v1-service?timeout=10s": no endpoints available for service "aws-load-balancer-webhook-service"
+│ 
+│   with module.eks_cluster.module.eks_blueprints_addons.module.cert_manager.helm_release.this[0],
+│   on .terraform/modules/eks_cluster.eks_blueprints_addons.cert_manager/main.tf line 9, in resource "helm_release" "this":
+│    9: resource "helm_release" "this" {
+
+```
+
+- re-run `terraform apply`
+
 
 ## refer
 - [[eks-blueprints-blue-green-upgrade]]

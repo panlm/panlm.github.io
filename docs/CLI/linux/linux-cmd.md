@@ -2,7 +2,7 @@
 title: linux-cmd
 description: 常用命令
 created: 2023-01-03 12:05:10.533
-last_modified: 2023-12-08
+last_modified: 2023-12-10
 tags:
   - cmd
   - linux
@@ -62,6 +62,7 @@ cat $$.yaml |envsubst '$var1 $var2' > $$-new.yaml
 ```
 
 ## function
+### less or no parameters
 - 在 func 中定义 local 变量，export 后在 func 外部依然无法访问
 ```sh
 function a() {
@@ -82,6 +83,44 @@ echo $var1
 
 b
 echo $var1
+
+```
+
+### parse parameter
+`c:p:` 参数 c 和 p 都需要参数
+`cp` 参数 c 和 p 都不需要参数
+
+```sh
+function parsepara () {
+    OPTIND=1
+    OPTSTRING="h?v:c:p:"
+    local VPC_ID=""
+    local VPC_CIDR=""
+    local PORTS=()
+    while getopts ${OPTSTRING} opt; do
+        case "${opt}" in
+            v) VPC_ID=${OPTARG} ;;
+            c) VPC_CIDR=${OPTARG} ;;
+            p) PORTS+=("${OPTARG}") ;;
+            h|\?) 
+                echo "format: create-sg -v VPC_ID -c VPC_CIDR [-p PORT1] [-p PORT2]"
+                echo -e "\tsample: create-sg -v vpc-xxx -p 172.31.0.0/16"
+                echo -e "\tsample: create-sg -v vpc-xxx -p 0.0.0.0/0 -p 80 -p 443"
+                return 0
+            ;;
+        esac
+    done
+    : ${VPC_ID:?Missing -v}
+    : ${VPC_CIDR:?Missing -c}
+
+    echo "CIDR:"${CIDR}
+    echo "PORTS:"${PORTS}
+    echo "PORTS[@]"${PORTS[@]}
+
+    for i in ${PORTS[@]:--1}; do
+        echo "i:"$i
+    done
+}
 
 ```
 

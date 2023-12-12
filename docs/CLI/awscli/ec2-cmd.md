@@ -2,7 +2,7 @@
 title: ec2
 description: 常用命令
 created: 2021-07-17T04:01:46.968Z
-last_modified: 2023-12-07
+last_modified: 2023-12-10
 tags:
   - aws/compute/ec2
   - aws/cmd
@@ -238,33 +238,8 @@ export SG_ID=$(aws ec2 describe-security-groups  --region $AWS_REGION --filter N
 ```
 
 ### func-create-sg-
-```sh title="func-create-sg"
-# deps: VPC_ID
-# output: SG_ID
-function create-sg () {
-    if [[ $# -lt 1 ]]; then
-        echo "format: $0 VPC_ID [CIDR]"
-        return
-    else
-        local VPC_ID=$1
-        local VPC_CIDR=$2
-    fi
-
-    # create sg
-    SG_NAME=mysg-$(TZ=EAT-8 date +%Y%m%d-%H%M%S)
-    SG_ID=$(aws ec2 create-security-group \
-        --description ${SG_NAME} \
-        --group-name ${SG_NAME} \
-        --vpc-id ${VPC_ID} \
-        --query 'GroupId' --output text )
-    
-    # all traffic allowed
-    aws ec2 authorize-security-group-ingress \
-        --group-id ${SG_ID} \
-        --protocol -1 --port -1 \
-        --cidr ${VPC_CIDR:-0.0.0.0/0}
-}
-```
+??? note "right-click & open-in-new-tab: "
+    ![[../functions/func-create-sg.sh|func-create-sg.sh]]
 
 ### create sg allow itself
 
