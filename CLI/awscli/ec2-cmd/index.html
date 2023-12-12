@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.14">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
     
     
       
@@ -26,10 +26,10 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.fad675c6.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
       
         
-        <link rel="stylesheet" href="../../../assets/stylesheets/palette.356b1318.min.css">
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -91,9 +91,6 @@
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="light-blue">
   
     
-    
-      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
-    
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
@@ -148,9 +145,9 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
       </label>
     
@@ -158,15 +155,18 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
       </label>
     
   
 </form>
       
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -1681,7 +1681,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/operation/monitor/install-grafana-lab/" class="md-nav__link">
+      <a href="../../../EKS/operation/monitor/install-grafana-on-beanstalk/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2499,7 +2499,7 @@
         
   
   <span class="md-ellipsis">
-    ecr-scan-on-push-notification-sns
+    Enable scan on push in ECR and send notification to SNS
   </span>
   
 
@@ -2928,6 +2928,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -3095,7 +3101,7 @@
         
   
   <span class="md-ellipsis">
-    ebs-cmd
+    ebs
   </span>
   
 
@@ -3614,6 +3620,48 @@
   
   
     <li class="md-nav__item">
+      <a href="../sns-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    sns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../sqs-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    sqs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../ssm-cmd/" class="md-nav__link">
         
   
@@ -3635,11 +3683,32 @@
   
   
     <li class="md-nav__item">
+      <a href="../transcribe-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    transcribe
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../vpc-cmd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Vpc cmd
+    vpc
   </span>
   
 
@@ -4106,10 +4175,13 @@
 
 
 
+<blockquote>
+<p>[!WARNING] This is a github note</p>
+</blockquote>
 <h1 id="ec2-cmd">ec2 cmd<a class="headerlink" href="#ec2-cmd" title="Permanent link">&para;</a></h1>
 <h2 id="others">others<a class="headerlink" href="#others" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../ebs-cmd/" title="../git/git-mkdocs/CLI/awscli/ebs-cmd">../git/git-mkdocs/CLI/awscli/ebs-cmd</a></li>
+<li><a href="../ebs-cmd/" title="ebs-cmd">ebs-cmd</a></li>
 </ul>
 <h2 id="get-image-id">get image id<a class="headerlink" href="#get-image-id" title="Permanent link">&para;</a></h2>
 <h3 id="get-all-ubuntu-image-from-here-click-to-launch">get all ubuntu image from here (click to launch)<a class="headerlink" href="#get-all-ubuntu-image-from-here-click-to-launch" title="Permanent link">&para;</a></h3>
@@ -4298,41 +4370,19 @@ us-east-2: ami-07251f912d2a831a3</p>
 <a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">SG_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-security-groups<span class="w">  </span>--region<span class="w"> </span><span class="nv">$AWS_REGION</span><span class="w"> </span>--filter<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>vpc-id,Values<span class="o">=</span><span class="nv">$VPC_ID</span><span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;SecurityGroups[?GroupName == &#39;eks-shared-sg&#39;].GroupId&quot;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
 </code></pre></div>
 <h3 id="func-create-sg-">func-create-sg-<a class="headerlink" href="#func-create-sg-" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># deps: VPC_ID</span>
-<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="c1"># output: SG_ID</span>
-<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="k">function</span><span class="w"> </span>create-sg<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">{</span>
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>-lt<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;format: </span><span class="nv">$0</span><span class="s2"> VPC_ID [CIDR]&quot;</span>
-<a id="__codelineno-14-6" name="__codelineno-14-6" href="#__codelineno-14-6"></a><span class="w">        </span><span class="k">return</span>
-<a id="__codelineno-14-7" name="__codelineno-14-7" href="#__codelineno-14-7"></a><span class="w">    </span><span class="k">else</span>
-<a id="__codelineno-14-8" name="__codelineno-14-8" href="#__codelineno-14-8"></a><span class="w">        </span><span class="nb">local</span><span class="w"> </span><span class="nv">VPC_ID</span><span class="o">=</span><span class="nv">$1</span>
-<a id="__codelineno-14-9" name="__codelineno-14-9" href="#__codelineno-14-9"></a><span class="w">        </span><span class="nb">local</span><span class="w"> </span><span class="nv">VPC_CIDR</span><span class="o">=</span><span class="nv">$2</span>
-<a id="__codelineno-14-10" name="__codelineno-14-10" href="#__codelineno-14-10"></a><span class="w">    </span><span class="k">fi</span>
-<a id="__codelineno-14-11" name="__codelineno-14-11" href="#__codelineno-14-11"></a>
-<a id="__codelineno-14-12" name="__codelineno-14-12" href="#__codelineno-14-12"></a><span class="w">    </span><span class="c1"># create sg</span>
-<a id="__codelineno-14-13" name="__codelineno-14-13" href="#__codelineno-14-13"></a><span class="w">    </span><span class="nv">SG_NAME</span><span class="o">=</span>mysg-<span class="k">$(</span><span class="nv">TZ</span><span class="o">=</span>EAT-8<span class="w"> </span>date<span class="w"> </span>+%Y%m%d-%H%M%S<span class="k">)</span>
-<a id="__codelineno-14-14" name="__codelineno-14-14" href="#__codelineno-14-14"></a><span class="w">    </span><span class="nv">SG_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>create-security-group<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-14-15" name="__codelineno-14-15" href="#__codelineno-14-15"></a><span class="w">        </span>--description<span class="w"> </span><span class="si">${</span><span class="nv">SG_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-14-16" name="__codelineno-14-16" href="#__codelineno-14-16"></a><span class="w">        </span>--group-name<span class="w"> </span><span class="si">${</span><span class="nv">SG_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-14-17" name="__codelineno-14-17" href="#__codelineno-14-17"></a><span class="w">        </span>--vpc-id<span class="w"> </span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-14-18" name="__codelineno-14-18" href="#__codelineno-14-18"></a><span class="w">        </span>--query<span class="w"> </span><span class="s1">&#39;GroupId&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="w"> </span><span class="k">)</span>
-<a id="__codelineno-14-19" name="__codelineno-14-19" href="#__codelineno-14-19"></a>
-<a id="__codelineno-14-20" name="__codelineno-14-20" href="#__codelineno-14-20"></a><span class="w">    </span><span class="c1"># all traffic allowed</span>
-<a id="__codelineno-14-21" name="__codelineno-14-21" href="#__codelineno-14-21"></a><span class="w">    </span>aws<span class="w"> </span>ec2<span class="w"> </span>authorize-security-group-ingress<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-14-22" name="__codelineno-14-22" href="#__codelineno-14-22"></a><span class="w">        </span>--group-id<span class="w"> </span><span class="si">${</span><span class="nv">SG_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-14-23" name="__codelineno-14-23" href="#__codelineno-14-23"></a><span class="w">        </span>--protocol<span class="w"> </span>-1<span class="w"> </span>--port<span class="w"> </span>-1<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-14-24" name="__codelineno-14-24" href="#__codelineno-14-24"></a><span class="w">        </span>--cidr<span class="w"> </span><span class="si">${</span><span class="nv">VPC_CIDR</span><span class="k">:-</span><span class="nv">0</span><span class="p">.0.0.0/0</span><span class="si">}</span>
-<a id="__codelineno-14-25" name="__codelineno-14-25" href="#__codelineno-14-25"></a><span class="o">}</span>
-</code></pre></div>
+<details class="note">
+<summary>right-click &amp; open-in-new-tab: </summary>
+<p><a class="glightbox" href="../../functions/func-create-sg.sh/" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="func-create-sg.sh" src="../../functions/func-create-sg.sh/" title="func-create-sg.sh" /></a></p>
+</details>
 <h3 id="create-sg-allow-itself">create sg allow itself<a class="headerlink" href="#create-sg-allow-itself" title="Permanent link">&para;</a></h3>
 <ul>
 <li>refer: <a href="../../../data-analytics/mwaa-lab/#prepare-endpoint-for-your-private-network-" title="git/git-mkdocs/data-analytics/mwaa-lab">git/git-mkdocs/data-analytics/mwaa-lab</a></li>
 </ul>
 <h2 id="count-vcpu">count vcpu<a class="headerlink" href="#count-vcpu" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span>--region<span class="w"> </span>us-east-2<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>--query<span class="w"> </span>Reservations<span class="o">[]</span>.Instances<span class="o">[]</span>.CpuOptions.<span class="o">[</span>CoreCount,ThreadsPerCore<span class="o">]</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>--output<span class="w"> </span>text<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;BEGIN {sum=0} {line=$1*$2;sum=sum+line} END {print sum} &#39;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span>--region<span class="w"> </span>us-east-2<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>--query<span class="w"> </span>Reservations<span class="o">[]</span>.Instances<span class="o">[]</span>.CpuOptions.<span class="o">[</span>CoreCount,ThreadsPerCore<span class="o">]</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>--output<span class="w"> </span>text<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;BEGIN {sum=0} {line=$1*$2;sum=sum+line} END {print sum} &#39;</span>
 </code></pre></div>
 <h2 id="troubleshooting">troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">&para;</a></h2>
 <p><a href="https://linuxconfig.org/how-to-name-label-a-partition-or-volume-on-linux">https://linuxconfig.org/how-to-name-label-a-partition-or-volume-on-linux</a></p>
@@ -4351,81 +4401,105 @@ us-east-2: ami-07251f912d2a831a3</p>
 <h2 id="source-destination-check-">source-destination-check-<a class="headerlink" href="#source-destination-check-" title="Permanent link">&para;</a></h2>
 <ul>
 <li>disable <code>Change Source / destination check</code><br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nv">INST_ID</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span><span class="m">169</span>.254.169.254/latest/meta-data/instance-id<span class="k">)</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>aws<span class="w"> </span>ec2<span class="w"> </span>modify-instance-attribute<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">    </span>--instance-id<span class="o">=</span><span class="si">${</span><span class="nv">INST_ID</span><span class="si">}</span><span class="w"> </span>--source-dest-check
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nv">INST_ID</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span><span class="m">169</span>.254.169.254/latest/meta-data/instance-id<span class="k">)</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>aws<span class="w"> </span>ec2<span class="w"> </span>modify-instance-attribute<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">    </span>--instance-id<span class="o">=</span><span class="si">${</span><span class="nv">INST_ID</span><span class="si">}</span><span class="w"> </span>--source-dest-check
 </code></pre></div></li>
 </ul>
 <h2 id="create-key-">create-key-<a class="headerlink" href="#create-key-" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nv">KEY_NAME</span><span class="o">=</span>aws-key
-<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;&lt;paste&gt;&#39;</span><span class="w"> </span><span class="p">|</span>base64<span class="w"> </span>-w<span class="w"> </span><span class="m">0</span><span class="w"> </span>&gt;my-key-pair.pub.b64
-<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a>aws<span class="w"> </span>ec2<span class="w"> </span>import-key-pair<span class="w"> </span>--key-name<span class="w"> </span><span class="si">${</span><span class="nv">KEY_NAME</span><span class="si">}</span><span class="w"> </span>--public-key-material<span class="w"> </span>file://my-key-pair.pub.b64
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nv">KEY_NAME</span><span class="o">=</span>aws-key
+<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;&lt;paste&gt;&#39;</span><span class="w"> </span><span class="p">|</span>base64<span class="w"> </span>-w<span class="w"> </span><span class="m">0</span><span class="w"> </span>&gt;my-key-pair.pub.b64
+<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a>aws<span class="w"> </span>ec2<span class="w"> </span>import-key-pair<span class="w"> </span>--key-name<span class="w"> </span><span class="si">${</span><span class="nv">KEY_NAME</span><span class="si">}</span><span class="w"> </span>--public-key-material<span class="w"> </span>file://my-key-pair.pub.b64
 </code></pre></div>
 <h2 id="create-instance-by-chatgpt">create instance by chatgpt<a class="headerlink" href="#create-instance-by-chatgpt" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nv">KEY_NAME</span><span class="o">=</span>aws-key
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="nv">AMI_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-images<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">    </span>--region<span class="w"> </span>us-east-2<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-18-4" name="__codelineno-18-4" href="#__codelineno-18-4"></a><span class="w">    </span>--filters<span class="w"> </span><span class="s2">&quot;Name=name,Values=Windows_Server-2019-English-Full-Base-*&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-18-5" name="__codelineno-18-5" href="#__codelineno-18-5"></a><span class="w">              </span><span class="s2">&quot;Name=architecture,Values=x86_64&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-18-6" name="__codelineno-18-6" href="#__codelineno-18-6"></a><span class="w">              </span><span class="s2">&quot;Name=root-device-type,Values=ebs&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-18-7" name="__codelineno-18-7" href="#__codelineno-18-7"></a><span class="w">              </span><span class="s2">&quot;Name=virtualization-type,Values=hvm&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-18-8" name="__codelineno-18-8" href="#__codelineno-18-8"></a><span class="w">    </span>--query<span class="w"> </span><span class="s2">&quot;reverse(sort_by(Images, &amp;CreationDate))[0].ImageId&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-18-9" name="__codelineno-18-9" href="#__codelineno-18-9"></a><span class="w">    </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-18-10" name="__codelineno-18-10" href="#__codelineno-18-10"></a>
-<a id="__codelineno-18-11" name="__codelineno-18-11" href="#__codelineno-18-11"></a>aws<span class="w"> </span>ec2<span class="w"> </span>run-instances<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-18-12" name="__codelineno-18-12" href="#__codelineno-18-12"></a>--image-id<span class="w"> </span><span class="si">${</span><span class="nv">AMI_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-18-13" name="__codelineno-18-13" href="#__codelineno-18-13"></a>--instance-type<span class="w"> </span>t3.medium<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-18-14" name="__codelineno-18-14" href="#__codelineno-18-14"></a>--key-name<span class="w"> </span><span class="si">${</span><span class="nv">KEY_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-18-15" name="__codelineno-18-15" href="#__codelineno-18-15"></a>--subnet-id<span class="w"> </span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-subnets<span class="w"> </span>--filters<span class="w"> </span><span class="s2">&quot;Name=default-for-az,Values=true&quot;</span><span class="w"> </span><span class="s2">&quot;Name=vpc-id,Values=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-vpcs<span class="w"> </span>--filters<span class="w"> </span><span class="s2">&quot;Name=isDefault,Values=true&quot;</span><span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;Vpcs[0].VpcId&quot;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;Subnets[0].SubnetId&quot;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-18-16" name="__codelineno-18-16" href="#__codelineno-18-16"></a>--iam-instance-profile<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>EC2DomainJoin-Instance-Profile<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-18-17" name="__codelineno-18-17" href="#__codelineno-18-17"></a>--user-data<span class="w"> </span><span class="s1">&#39;&lt;powershell&gt;</span>
-<a id="__codelineno-18-18" name="__codelineno-18-18" href="#__codelineno-18-18"></a><span class="s1">Import-Module &quot;C:\Program Files\Amazon\Ec2ConfigService\Scripts\InitializeInstance.ps1&quot;</span>
-<a id="__codelineno-18-19" name="__codelineno-18-19" href="#__codelineno-18-19"></a><span class="s1">Initialize-EC2Instance -Schedule -DomainName &quot;corp1.aws.panlm.xyz&quot; -DomainUserName &quot;admin&quot; -DomainPassword &quot;password&quot;</span>
-<a id="__codelineno-18-20" name="__codelineno-18-20" href="#__codelineno-18-20"></a><span class="s1">&lt;/powershell&gt;&#39;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-18-21" name="__codelineno-18-21" href="#__codelineno-18-21"></a>--associate-public-ip-address<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-18-22" name="__codelineno-18-22" href="#__codelineno-18-22"></a>--tag-specifications<span class="w"> </span><span class="s1">&#39;ResourceType=instance,Tags=[{Key=Name,Value=MyInstance4}]&#39;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-18-23" name="__codelineno-18-23" href="#__codelineno-18-23"></a>--region<span class="w"> </span>us-east-2
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nv">KEY_NAME</span><span class="o">=</span>aws-key
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="nv">AMI_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-images<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">    </span>--region<span class="w"> </span>us-east-2<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a><span class="w">    </span>--filters<span class="w"> </span><span class="s2">&quot;Name=name,Values=Windows_Server-2019-English-Full-Base-*&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a><span class="w">              </span><span class="s2">&quot;Name=architecture,Values=x86_64&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">              </span><span class="s2">&quot;Name=root-device-type,Values=ebs&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-17-7" name="__codelineno-17-7" href="#__codelineno-17-7"></a><span class="w">              </span><span class="s2">&quot;Name=virtualization-type,Values=hvm&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-17-8" name="__codelineno-17-8" href="#__codelineno-17-8"></a><span class="w">    </span>--query<span class="w"> </span><span class="s2">&quot;reverse(sort_by(Images, &amp;CreationDate))[0].ImageId&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-17-9" name="__codelineno-17-9" href="#__codelineno-17-9"></a><span class="w">    </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-17-10" name="__codelineno-17-10" href="#__codelineno-17-10"></a>
+<a id="__codelineno-17-11" name="__codelineno-17-11" href="#__codelineno-17-11"></a>aws<span class="w"> </span>ec2<span class="w"> </span>run-instances<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-17-12" name="__codelineno-17-12" href="#__codelineno-17-12"></a>--image-id<span class="w"> </span><span class="si">${</span><span class="nv">AMI_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-17-13" name="__codelineno-17-13" href="#__codelineno-17-13"></a>--instance-type<span class="w"> </span>t3.medium<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-17-14" name="__codelineno-17-14" href="#__codelineno-17-14"></a>--key-name<span class="w"> </span><span class="si">${</span><span class="nv">KEY_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-17-15" name="__codelineno-17-15" href="#__codelineno-17-15"></a>--subnet-id<span class="w"> </span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-subnets<span class="w"> </span>--filters<span class="w"> </span><span class="s2">&quot;Name=default-for-az,Values=true&quot;</span><span class="w"> </span><span class="s2">&quot;Name=vpc-id,Values=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-vpcs<span class="w"> </span>--filters<span class="w"> </span><span class="s2">&quot;Name=isDefault,Values=true&quot;</span><span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;Vpcs[0].VpcId&quot;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span><span class="s2">&quot;</span><span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;Subnets[0].SubnetId&quot;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-17-16" name="__codelineno-17-16" href="#__codelineno-17-16"></a>--iam-instance-profile<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>EC2DomainJoin-Instance-Profile<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-17-17" name="__codelineno-17-17" href="#__codelineno-17-17"></a>--user-data<span class="w"> </span><span class="s1">&#39;&lt;powershell&gt;</span>
+<a id="__codelineno-17-18" name="__codelineno-17-18" href="#__codelineno-17-18"></a><span class="s1">Import-Module &quot;C:\Program Files\Amazon\Ec2ConfigService\Scripts\InitializeInstance.ps1&quot;</span>
+<a id="__codelineno-17-19" name="__codelineno-17-19" href="#__codelineno-17-19"></a><span class="s1">Initialize-EC2Instance -Schedule -DomainName &quot;corp1.aws.panlm.xyz&quot; -DomainUserName &quot;admin&quot; -DomainPassword &quot;password&quot;</span>
+<a id="__codelineno-17-20" name="__codelineno-17-20" href="#__codelineno-17-20"></a><span class="s1">&lt;/powershell&gt;&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-17-21" name="__codelineno-17-21" href="#__codelineno-17-21"></a>--associate-public-ip-address<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-17-22" name="__codelineno-17-22" href="#__codelineno-17-22"></a>--tag-specifications<span class="w"> </span><span class="s1">&#39;ResourceType=instance,Tags=[{Key=Name,Value=MyInstance4}]&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-17-23" name="__codelineno-17-23" href="#__codelineno-17-23"></a>--region<span class="w"> </span>us-east-2
 </code></pre></div>
 <h2 id="instance-connect-">instance-connect-<a class="headerlink" href="#instance-connect-" title="Permanent link">&para;</a></h2>
 <h3 id="ssh-connect">ssh connect<a class="headerlink" href="#ssh-connect" title="Permanent link">&para;</a></h3>
 <ul>
 <li>
 <p>from public ip <br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>aws<span class="w"> </span>ec2-instance-connect<span class="w"> </span>ssh<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">    </span>--instance-id<span class="w"> </span>i-xxx
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>aws<span class="w"> </span>ec2-instance-connect<span class="w"> </span>ssh<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">    </span>--instance-id<span class="w"> </span>i-xxx
 </code></pre></div></p>
 </li>
 <li>
 <p>from private ip (need to create instance connect endpoint first)<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>aws<span class="w"> </span>ec2-instance-connect<span class="w"> </span>ssh<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a><span class="w">    </span>--instance-id<span class="w"> </span>i-xxx<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">    </span>--instance-ip<span class="w"> </span><span class="m">172</span>.31.7.81<span class="w">  </span><span class="se">\</span>
-<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">    </span>--connection-type<span class="w"> </span>eice
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a>aws<span class="w"> </span>ec2-instance-connect<span class="w"> </span>ssh<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">    </span>--instance-id<span class="w"> </span>i-xxx<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">    </span>--instance-ip<span class="w"> </span><span class="m">172</span>.31.7.81<span class="w">  </span><span class="se">\</span>
+<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w">    </span>--connection-type<span class="w"> </span>eice
 </code></pre></div></p>
 </li>
 </ul>
 <h3 id="send-ssh-public-key">send ssh public key<a class="headerlink" href="#send-ssh-public-key" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>aws<span class="w"> </span>ec2-instance-connect<span class="w"> </span>send-ssh-public-key<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>--region<span class="w"> </span>us-east-2<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>--ssh-public-key<span class="w"> </span>file://out.pub<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>--instance-id<span class="w"> </span>i-xxx<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>--instance-os-user<span class="w"> </span>ec2-user
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>aws<span class="w"> </span>ec2-instance-connect<span class="w"> </span>send-ssh-public-key<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>--region<span class="w"> </span>us-east-2<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a>--ssh-public-key<span class="w"> </span>file://out.pub<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a>--instance-id<span class="w"> </span>i-xxx<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a>--instance-os-user<span class="w"> </span>ec2-user
 </code></pre></div>
 
-  <hr>
-<div class="md-source-file">
-  <small>
+
+
+
+
+
+
+  
     
-      Last update:
-      <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-12-06T21:26:25+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-06</span>
-      
-        <br>
-        Created:
-        <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-12-02T22:06:57+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-02</span>
-      
+  
+  
     
-  </small>
-</div>
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-12-12T20:26:34+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-12</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-12-02T22:06:57+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-02</span>
+  </span>
+
+    
+    
+    
+  </aside>
 
 
   
@@ -4438,6 +4512,7 @@ us-east-2: ami-07251f912d2a831a3</p>
             </div>
           
           
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
@@ -4475,7 +4550,7 @@ us-east-2: ami-07251f912d2a831a3</p>
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "toc.follow", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.cd18aaf1.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d7c377c4.min.js"></script>
       
         <script src="../../../js/timeago.min.js"></script>
       

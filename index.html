@@ -6,6 +6,8 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
+        <meta name="description" content="notes from obsidian">
+      
       
       
       
@@ -14,7 +16,7 @@
       
       
       <link rel="icon" href="assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.4.14">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.2">
     
     
       
@@ -22,10 +24,10 @@
       
     
     
-      <link rel="stylesheet" href="assets/stylesheets/main.fad675c6.min.css">
+      <link rel="stylesheet" href="assets/stylesheets/main.50c56a3b.min.css">
       
         
-        <link rel="stylesheet" href="assets/stylesheets/palette.356b1318.min.css">
+        <link rel="stylesheet" href="assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -87,9 +89,6 @@
     <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="light-blue">
   
     
-    
-      <script>var palette=__md_get("__palette");if(palette&&"object"==typeof palette.color)for(var key of Object.keys(palette.color))document.body.setAttribute("data-md-color-"+key,palette.color[key])</script>
-    
     <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
     <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
     <label class="md-overlay" for="__drawer"></label>
@@ -144,9 +143,9 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_2" hidden>
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
       </label>
     
@@ -154,15 +153,18 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_2">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
       </label>
     
   
 </form>
       
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
     
@@ -1793,7 +1795,7 @@
   
   
     <li class="md-nav__item">
-      <a href="EKS/operation/monitor/install-grafana-lab/" class="md-nav__link">
+      <a href="EKS/operation/monitor/install-grafana-on-beanstalk/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2611,7 +2613,7 @@
         
   
   <span class="md-ellipsis">
-    ecr-scan-on-push-notification-sns
+    Enable scan on push in ECR and send notification to SNS
   </span>
   
 
@@ -3036,6 +3038,12 @@
       
         
       
+        
+      
+        
+      
+        
+      
     
     
     
@@ -3203,7 +3211,7 @@
         
   
   <span class="md-ellipsis">
-    ebs-cmd
+    ebs
   </span>
   
 
@@ -3409,6 +3417,48 @@
   
   
     <li class="md-nav__item">
+      <a href="CLI/awscli/sns-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    sns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="CLI/awscli/sqs-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    sqs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="CLI/awscli/ssm-cmd/" class="md-nav__link">
         
   
@@ -3430,11 +3480,32 @@
   
   
     <li class="md-nav__item">
+      <a href="CLI/awscli/transcribe-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    transcribe
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="CLI/awscli/vpc-cmd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
-    Vpc cmd
+    vpc
   </span>
   
 
@@ -3700,9 +3771,9 @@
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>- [[$filename]]: $frontmatter:description
 </code></pre></div><br />
-- <a href="cloud9/setup-cloud9-for-eks/" title="setup-cloud9-for-eks">setup-cloud9-for-eks</a>: 使用 cloud9 作为实验环境<br />
-- <a href="cloud9/quick-setup-cloud9-script/" title="quick-setup-cloud9-script">quick-setup-cloud9-script</a>: 简化运行脚本<br />
 - <a href="cloud9/create-standard-vpc-for-lab-in-china-region/" title="create-standard-vpc-for-lab-in-china-region">create-standard-vpc-for-lab-in-china-region</a>: 创建实验环境所需要的 vpc ，并且支持直接 attach 到 tgw 方便网络访问<br />
+- <a href="cloud9/quick-setup-cloud9-script/" title="quick-setup-cloud9-script">quick-setup-cloud9-script</a>: 简化运行脚本<br />
+- <a href="cloud9/setup-cloud9-for-eks/" title="setup-cloud9-for-eks">setup-cloud9-for-eks</a>: 使用 cloud9 作为实验环境<br />
 &lt;&ndash;&gt;</p>
 <h3 id="22-eks">2.2 eks<a class="headerlink" href="#22-eks" title="Permanent link">&para;</a></h3>
 <p>refer: <a href="EKS/" title="EKS/index">EKS/index</a></p>
@@ -3710,57 +3781,57 @@
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>- [[$filename]]: $frontmatter:description
 </code></pre></div><br />
-- <a href="EKS/infra/cluster/eks-public-access-cluster/" title="eks-public-access-cluster">eks-public-access-cluster</a>: 创建公有访问的 eks 集群<br />
-- <a href="EKS/operation/monitor/eks-container-insights/" title="eks-container-insights">eks-container-insights</a>: 启用 EKS 的 container insight 功能<br />
-- <a href="EKS/operation/upgrade/cert-manager/" title="cert-manager">cert-manager</a>: cert-manager<br />
-- <a href="EKS/operation/monitor/install-prometheus-grafana/" title="install-prometheus-grafana">install-prometheus-grafana</a>: 安装 grafana 和 prometheus<br />
-- <a href="EKS/infra/storage/ebs-for-eks/" title="ebs-for-eks">ebs-for-eks</a>: 使用 ebs 作为 pod 持久化存储 <br />
-- <a href="EKS/operation/upgrade/aws-for-fluent-bit/" title="aws-for-fluent-bit">aws-for-fluent-bit</a>: <br />
-- <a href="EKS/operation/monitor/POC-prometheus-ha-architect-with-thanos/" title="POC-prometheus-ha-architect-with-thanos">POC-prometheus-ha-architect-with-thanos</a>: 用 thanos 扩展 prometheus 高可用性架构<br />
-- <a href="EKS/infra/network/appmesh/automated-canary-deployment-using-flagger/" title="automated-canary-deployment-using-flagger">automated-canary-deployment-using-flagger</a>: 自动化 canary 部署<br />
-- <a href="EKS/infra/cluster/eks-cluster-with-terraform/" title="EKS/infra/cluster/eks-cluster-with-terraform">EKS/infra/cluster/eks-cluster-with-terraform</a>: 使用 terraform 创建 eks 集群<br />
-- <a href="EKS/infra/network/externaldns-for-route53/" title="externaldns-for-route53">externaldns-for-route53</a>: 使用 externaldns 组件<br />
-- <a href="EKS/operation/logging/cloudwatch-to-firehose-python/" title="cloudwatch-to-firehose-python">cloudwatch-to-firehose-python</a>: 在 firehose 上，处理从 cloudwatch 发送来的日志<br />
-- <a href="EKS/operation/logging/export-cloudwatch-log-group-to-s3/" title="export-cloudwatch-log-group-to-s3">export-cloudwatch-log-group-to-s3</a>: 导出 cloudwatch 日志到 s3<br />
-- <a href="EKS/operation/logging/stream-k8s-control-panel-logs-to-s3/" title="stream-k8s-control-panel-logs-to-s3">stream-k8s-control-panel-logs-to-s3</a>: 目前eks控制平面日志只支持发送到cloudwatch，且在同一个log group中有5种类型6种前缀的log stream的日志，不利于统一查询。且只有audit日志是json格式其他均是单行日志，且字段各不相同。本解决方案提供思路统一保存日志供后续分析处理<br />
-- <a href="EKS/operation/gitops/flux-lab/" title="flux-lab">flux-lab</a>: flux<br />
-- <a href="EKS/operation/gitops/argocd-lab/" title="argocd-lab">argocd-lab</a>: argocd<br />
-- <a href="EKS/infra/storage/efs-for-eks/" title="efs-for-eks">efs-for-eks</a>: 使用 efs 作为 pod 持久化存储<br />
-- <a href="EKS/infra/compute/karpenter-lab/" title="karpenter-lab">karpenter-lab</a>: 使用 Karpenter 代替 Cluster Autoscaler<br />
-- <a href="EKS/infra/cluster/eks-private-access-cluster/" title="eks-private-access-cluster">eks-private-access-cluster</a>: 在已有 vpc 中创建私有访问的 eks 集群<br />
-- <a href="EKS/infra/network/aws-load-balancer-controller/" title="aws-load-balancer-controller">aws-load-balancer-controller</a>: 使用 aws 负载均衡控制器<br />
-- <a href="EKS/infra/cluster/eks-public-access-cluster-in-china-region/" title="eks-public-access-cluster-in-china-region">eks-public-access-cluster-in-china-region</a>: 在中国区域，创建共有访问的 eks 集群<br />
-- <a href="EKS/operation/upgrade/kube-no-trouble/" title="kube-no-trouble">kube-no-trouble</a>: kube-no-trouble<br />
-- <a href="EKS/operation/upgrade/kube-state-metrics/" title="kube-state-metrics">kube-state-metrics</a>: kube-state-metrics<br />
-- <a href="EKS/operation/monitor/metrics-server/" title="metrics-server">metrics-server</a>: EKS 集群中安装 metrics server<br />
-- <a href="EKS/operation/monitor/cluster-autoscaler/" title="cluster-autoscaler">cluster-autoscaler</a>: EKS 集群中安装 Cluster Autoscaler<br />
-- <a href="EKS/operation/monitor/enable-prometheus-in-cloudwatch/" title="enable-prometheus-in-cloudwatch">enable-prometheus-in-cloudwatch</a>: 将 EKS 集群的 prometheus 数据汇总到 cloudwatch<br />
-- <a href="EKS/operation/monitor/install-grafana-lab/" title="install-grafana-lab">install-grafana-lab</a>: 在 EC2 / beanstalk / EKS 上安装 grafana <br />
-- <a href="EKS/operation/upgrade/eks-cluster-addons-list/" title="eks-cluster-addons-list">eks-cluster-addons-list</a>: EKS 常用插件清单<br />
-- <a href="EKS/infra/network/nginx-ingress-controller-community-ver/" title="nginx-ingress-controller-community-ver">nginx-ingress-controller-community-ver</a>: 使用 nginx ingress<br />
-- <a href="EKS/operation/upgrade/nginx-ingress-controller/" title="nginx-ingress-controller">nginx-ingress-controller</a>: nginx-ingress-controller<br />
-- <a href="EKS/infra/network/eks-custom-network/" title="eks-custom-network">eks-custom-network</a>: custom network 可以解决子网地址段耗尽的问题<br />
-- <a href="EKS/operation/upgrade/eks-upgrade-procedure/" title="eks-upgrade-procedure">eks-upgrade-procedure</a>: eks 集群升级<br />
 - <a href="EKS/infra/network/appmesh/appmesh-workshop-eks/" title="appmesh-workshop-eks">appmesh-workshop-eks</a>: appmesh workshop<br />
+- <a href="EKS/operation/gitops/argocd-lab/" title="argocd-lab">argocd-lab</a>: argocd<br />
+- <a href="EKS/infra/network/appmesh/automated-canary-deployment-using-flagger/" title="automated-canary-deployment-using-flagger">automated-canary-deployment-using-flagger</a>: 自动化 canary 部署<br />
+- <a href="EKS/operation/upgrade/aws-for-fluent-bit/" title="aws-for-fluent-bit">aws-for-fluent-bit</a>: <br />
+- <a href="EKS/infra/network/aws-load-balancer-controller/" title="aws-load-balancer-controller">aws-load-balancer-controller</a>: 使用 aws 负载均衡控制器<br />
+- <a href="EKS/operation/upgrade/cert-manager/" title="cert-manager">cert-manager</a>: cert-manager<br />
+- <a href="EKS/operation/logging/cloudwatch-to-firehose-python/" title="cloudwatch-to-firehose-python">cloudwatch-to-firehose-python</a>: 在 firehose 上，处理从 cloudwatch 发送来的日志<br />
+- <a href="EKS/operation/monitor/cluster-autoscaler/" title="cluster-autoscaler">cluster-autoscaler</a>: EKS 集群中安装 Cluster Autoscaler<br />
+- <a href="EKS/operation/upgrade/cni-metrics-helper/" title="cni-metrics-helper">cni-metrics-helper</a>: cni-metrics-helper<br />
+- <a href="EKS/infra/storage/ebs-for-eks/" title="ebs-for-eks">ebs-for-eks</a>: 使用 ebs 作为 pod 持久化存储 <br />
+- <a href="EKS/infra/storage/efs-for-eks/" title="efs-for-eks">efs-for-eks</a>: 使用 efs 作为 pod 持久化存储<br />
 - <a href="EKS/operation/upgrade/eks-addons-coredns/" title="eks-addons-coredns">eks-addons-coredns</a>: eks-addons-coredns<br />
 - <a href="EKS/operation/upgrade/eks-addons-kube-proxy/" title="eks-addons-kube-proxy">eks-addons-kube-proxy</a>: eks-addons-kube-proxy<br />
 - <a href="EKS/operation/upgrade/eks-addons-vpc-cni/" title="eks-addons-vpc-cni">eks-addons-vpc-cni</a>: eks-addons-vpc-cni<br />
-- <a href="EKS/infra/network/self-signed-certificates/" title="self-signed-certificates">self-signed-certificates</a>: 使用自签名证书，用根证书签发或者中间证书签发用于 api gateway<br />
-- <a href="EKS/infra/network/enable-sg-on-pod/" title="enable-sg-on-pod">enable-sg-on-pod</a>: 启用 pod 安全组<br />
+- <a href="EKS/operation/upgrade/eks-cluster-addons-list/" title="eks-cluster-addons-list">eks-cluster-addons-list</a>: EKS 常用插件清单<br />
+- <a href="EKS/infra/cluster/eks-cluster-with-terraform/" title="eks-cluster-with-terraform">eks-cluster-with-terraform</a>: 使用 Terraform 创建 EKS 集群<br />
+- <a href="EKS/operation/monitor/eks-container-insights/" title="eks-container-insights">eks-container-insights</a>: 启用 EKS 的 container insight 功能<br />
+- <a href="EKS/infra/network/eks-custom-network/" title="eks-custom-network">eks-custom-network</a>: custom network 可以解决子网地址段耗尽的问题<br />
 - <a href="EKS/infra/compute/eks-fargate-lab/" title="eks-fargate-lab">eks-fargate-lab</a>: 在 eks 集群中使用 fargate<br />
-- <a href="EKS/operation/upgrade/pluto/" title="pluto">pluto</a>: pluto<br />
-- <a href="EKS/operation/upgrade/nginx-ingress-controller-nginx-ver/" title="nginx-ingress-controller-nginx-ver">nginx-ingress-controller-nginx-ver</a>: nginx-ingress-controller-nginx-ver<br />
+- <a href="EKS/infra/cluster/eks-private-access-cluster/" title="eks-private-access-cluster">eks-private-access-cluster</a>: 在已有 vpc 中创建私有访问的 eks 集群<br />
+- <a href="EKS/infra/cluster/eks-public-access-cluster/" title="eks-public-access-cluster">eks-public-access-cluster</a>: 创建公有访问的 eks 集群<br />
+- <a href="EKS/infra/cluster/eks-public-access-cluster-in-china-region/" title="eks-public-access-cluster-in-china-region">eks-public-access-cluster-in-china-region</a>: 在中国区域，创建共有访问的 eks 集群<br />
+- <a href="EKS/operation/upgrade/eks-upgrade-procedure/" title="eks-upgrade-procedure">eks-upgrade-procedure</a>: eks 集群升级<br />
 - <a href="EKS/operation/upgrade/eksup/" title="eksup">eksup</a>: eksup<br />
-- <a href="EKS/operation/upgrade/cni-metrics-helper/" title="cni-metrics-helper">cni-metrics-helper</a>: cni-metrics-helper<br />
+- <a href="EKS/operation/monitor/enable-prometheus-in-cloudwatch/" title="enable-prometheus-in-cloudwatch">enable-prometheus-in-cloudwatch</a>: 将 EKS 集群的 prometheus 数据汇总到 cloudwatch<br />
+- <a href="EKS/infra/network/enable-sg-on-pod/" title="enable-sg-on-pod">enable-sg-on-pod</a>: 启用 pod 安全组<br />
+- <a href="EKS/operation/logging/export-cloudwatch-log-group-to-s3/" title="export-cloudwatch-log-group-to-s3">export-cloudwatch-log-group-to-s3</a>: 导出 cloudwatch 日志到 s3<br />
+- <a href="EKS/infra/network/externaldns-for-route53/" title="externaldns-for-route53">externaldns-for-route53</a>: 使用 externaldns 组件<br />
+- <a href="EKS/operation/gitops/flux-lab/" title="flux-lab">flux-lab</a>: flux<br />
+- <a href="EKS/operation/monitor/install-grafana-on-beanstalk/" title="install-grafana-on-beanstalk">install-grafana-on-beanstalk</a>: 在 EC2 / beanstalk / EKS 上安装 grafana <br />
+- <a href="EKS/operation/monitor/install-prometheus-grafana/" title="install-prometheus-grafana">install-prometheus-grafana</a>: 安装 grafana 和 prometheus<br />
+- <a href="EKS/infra/compute/karpenter-lab/" title="karpenter-lab">karpenter-lab</a>: 使用 Karpenter 代替 Cluster Autoscaler<br />
+- <a href="EKS/operation/upgrade/kube-no-trouble/" title="kube-no-trouble">kube-no-trouble</a>: kube-no-trouble<br />
+- <a href="EKS/operation/upgrade/kube-state-metrics/" title="kube-state-metrics">kube-state-metrics</a>: kube-state-metrics<br />
+- <a href="EKS/operation/monitor/metrics-server/" title="metrics-server">metrics-server</a>: EKS 集群中安装 metrics server<br />
+- <a href="EKS/operation/upgrade/nginx-ingress-controller/" title="nginx-ingress-controller">nginx-ingress-controller</a>: nginx-ingress-controller<br />
+- <a href="EKS/infra/network/nginx-ingress-controller-community-ver/" title="nginx-ingress-controller-community-ver">nginx-ingress-controller-community-ver</a>: 使用 nginx ingress<br />
+- <a href="EKS/operation/upgrade/nginx-ingress-controller-nginx-ver/" title="nginx-ingress-controller-nginx-ver">nginx-ingress-controller-nginx-ver</a>: nginx-ingress-controller-nginx-ver<br />
+- <a href="EKS/operation/upgrade/pluto/" title="pluto">pluto</a>: pluto<br />
+- <a href="EKS/operation/monitor/POC-prometheus-ha-architect-with-thanos/" title="POC-prometheus-ha-architect-with-thanos">POC-prometheus-ha-architect-with-thanos</a>: 用 thanos 扩展 prometheus 高可用性架构<br />
+- <a href="EKS/infra/network/self-signed-certificates/" title="self-signed-certificates">self-signed-certificates</a>: 使用自签名证书，用根证书签发或者中间证书签发用于 api gateway<br />
+- <a href="EKS/operation/logging/stream-k8s-control-panel-logs-to-s3/" title="stream-k8s-control-panel-logs-to-s3">stream-k8s-control-panel-logs-to-s3</a>: 目前eks控制平面日志只支持发送到cloudwatch，且在同一个log group中有5种类型6种前缀的log stream的日志，不利于统一查询。且只有audit日志是json格式其他均是单行日志，且字段各不相同。本解决方案提供思路统一保存日志供后续分析处理<br />
 &lt;&ndash;&gt;</p>
 <h3 id="23-database-and-data-analytics">2.3 database and data analytics<a class="headerlink" href="#23-database-and-data-analytics" title="Permanent link">&para;</a></h3>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>(file:.md (path:git/git-mkdocs/data-analytics))
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>- [[$filename]]: $frontmatter:description
 </code></pre></div><br />
-- <a href="data-analytics/redshift-data-api-lab/" title="redshift-data-api-lab">redshift-data-api-lab</a>: Amazon Redshift 数据 API 使您能够使用所有类型的传统、云原生和容器化、基于 Web 服务的无服务器应用程序和事件驱动的应用程序轻松访问来自 Amazon Redshift 的数据<br />
 - <a href="data-analytics/mwaa-lab/" title="mwaa-lab">mwaa-lab</a>: 在中国区使用 mwaa 服务<br />
 - <a href="data-analytics/rds-mysql-replica-cross-region-cross-account/" title="rds-mysql-replica-cross-region-cross-account">rds-mysql-replica-cross-region-cross-account</a>: 用于 1) 跨账号复制 RDS 数据库; 2) 或者将数据库转换成加密存储<br />
+- <a href="data-analytics/redshift-data-api-lab/" title="redshift-data-api-lab">redshift-data-api-lab</a>: Amazon Redshift 数据 API 使您能够使用所有类型的传统、云原生和容器化、基于 Web 服务的无服务器应用程序和事件驱动的应用程序轻松访问来自 Amazon Redshift 的数据<br />
 &lt;&ndash;&gt;</p>
 <h3 id="24-serverless">2.4 serverless<a class="headerlink" href="#24-serverless" title="Permanent link">&para;</a></h3>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>(file:.md (path:git/git-mkdocs/serverless))
@@ -3768,41 +3839,67 @@
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>- [[$filename]]: $frontmatter:description
 </code></pre></div><br />
 - <a href="serverless/apigw-cross-account-private-endpoint/" title="apigw-cross-account-private-endpoint">apigw-cross-account-private-endpoint</a>: 跨账号访问私有api<br />
+- <a href="serverless/apigw-custom-domain-name/" title="apigw-custom-domain-name">apigw-custom-domain-name</a>: 为私有 api 创建定制域名<br />
+- <a href="serverless/apigw-get-sourceip/" title="apigw-get-sourceip">apigw-get-sourceip</a>: 获取客户端源地址<br />
 - <a href="serverless/apigw-private-api-alb-cdk/" title="apigw-private-api-alb-cdk">apigw-private-api-alb-cdk</a>: 通过 alb 访问 private api 的例子<br />
 - <a href="serverless/apigw-regional-api-access-from-vpc/" title="apigw-regional-api-access-from-vpc">apigw-regional-api-access-from-vpc</a>: apigw-regional-api-access-from-vpc<br />
-- <a href="serverless/apigw-get-sourceip/" title="apigw-get-sourceip">apigw-get-sourceip</a>: 获取客户端源地址<br />
-- <a href="serverless/apigw-custom-domain-name/" title="apigw-custom-domain-name">apigw-custom-domain-name</a>: 为私有 api 创建定制域名<br />
 &lt;&ndash;&gt;</p>
 <h3 id="25-others">2.5 others<a class="headerlink" href="#25-others" title="Permanent link">&para;</a></h3>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>(file:.md -file:tags.md (path:git/git-mkdocs -path:git/git-mkdocs/eks -path:git/git-mkdocs/cloud9 -path:git/git-mkdocs/serverless -path:git/git-mkdocs/data-analytics ))
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>- [[$filename]]: $frontmatter:description
 </code></pre></div><br />
-- <a href="CLI/awscli/ecs-cmd/" title="ecs-cmd">ecs-cmd</a>: 常用命令<br />
-- <a href="CLI/awscli/ebs-cmd/" title="ebs-cmd">ebs-cmd</a>: 1/ 转换 gp2 到 gp3 ; 2/ 获取指定 volume 每次 snapshot 占用的 block 数量 ; 3/ 创建两种不同类型的 dlm 策略<br />
-- <a href="CLI/windows/powershell/" title="powershell">powershell</a>: <br />
-- <a href="CLI/awscli/ec2-cmd/" title="ec2-cmd">ec2-cmd</a>: 常用命令<br />
-- <a href="CLI/awscli/rds-cmd/" title="rds-cmd">rds-cmd</a>: 常用命令<br />
-- <a href="CLI/awscli/vpc-cmd/" title="vpc-cmd">vpc-cmd</a>: vpc-cmd<br />
-- <a href="others/github-page-howto/" title="github-page-howto">github-page-howto</a>: github-page-howto<br />
-- <a href="CLI/linux/linux-cmd/" title="linux-cmd">linux-cmd</a>: 常用命令<br />
-- <a href="CLI/linux/assume-tool/" title="assume-tool">assume-tool</a>: assume 工具，可以以另一个账号角色，快速打开 web console，或者执行命令<br />
-- <a href="others/cross-region-reverse-proxy-with-nlb-cloudfront/" title="cross-region-reverse-proxy-with-nlb-cloudfront">cross-region-reverse-proxy-with-nlb-cloudfront</a>: 跨区域的 Layer 4 反向代理，并使用 nlb + cloudfront，考察证书使用需求<br />
-- <a href="CLI/awscli/iam-cmd/" title="iam-cmd">iam-cmd</a>: 常用命令<br />
-- <a href="CLI/linux/jq-cmd/" title="jq-cmd">jq-cmd</a>: 常用命令<br />
-- <a href="CLI/linux/eksctl/" title="eksctl">eksctl</a>: 常用命令<br />
-- <a href="CLI/awscli/route53-cmd/" title="route53-cmd">route53-cmd</a>: 常用命令<br />
-- <a href="CLI/linux/docker-cmd/" title="docker-cmd">docker-cmd</a>: 常用命令<br />
 - <a href="CLI/awscli/acm-cmd/" title="acm-cmd">acm-cmd</a>: 常用命令<br />
-- <a href="CLI/awscli/efs-cmd/" title="efs-cmd">efs-cmd</a>: 1/ 在默认 vpc 中创建 efs<br />
-- <a href="CLI/awscli/s3-cmd/" title="s3-cmd">s3-cmd</a>: 常用命令<br />
+- <a href="CLI/awscli/apigw-cmd/" title="apigw-cmd">apigw-cmd</a>: api-gateway<br />
+- <a href="CLI/linux/assume-tool/" title="assume-tool">assume-tool</a>: assume 工具，可以以另一个账号角色，快速打开 web console，或者执行命令<br />
+- <a href="CLI/awscli/cloud9-cmd/" title="cloud9-cmd">cloud9-cmd</a>: cloud9 related commands<br />
+- <a href="CLI/awscli/cloudformation-cmd/" title="cloudformation-cmd">cloudformation-cmd</a>: 常用命令<br />
+- <a href="CLI/awscli/cloudwatch-cmd/" title="cloudwatch-cmd">cloudwatch-cmd</a>: 常用命令<br />
+- <a href="others/cross-region-reverse-proxy-with-nlb-cloudfront/" title="cross-region-reverse-proxy-with-nlb-cloudfront">cross-region-reverse-proxy-with-nlb-cloudfront</a>: 跨区域的 Layer 4 反向代理，并使用 nlb + cloudfront，考察证书使用需求<br />
+- <a href="CLI/awscli/directory-service-cmd/" title="directory-service-cmd">directory-service-cmd</a>: 常用命令<br />
+- <a href="CLI/linux/docker-cmd/" title="docker-cmd">docker-cmd</a>: 常用命令<br />
+- <a href="CLI/awscli/ebs-cmd/" title="ebs-cmd">ebs-cmd</a>: 1/ 转换 gp2 到 gp3 ; 2/ 获取指定 volume 每次 snapshot 占用的 block 数量 ; 3/ 创建两种不同类型的 dlm 策略<br />
+- <a href="CLI/awscli/ec2-cmd/" title="ec2-cmd">ec2-cmd</a>: 常用命令<br />
 - <a href="CLI/awscli/ecr-cmd/" title="ecr-cmd">ecr-cmd</a>: 常用命令<br />
+- <a href="others/ecr-scan-on-push-notification-sns/" title="ecr-scan-on-push-notification-sns">ecr-scan-on-push-notification-sns</a>: 启用 ECR 的 Scan on push 之后，自动将扫描结果中 CRITICAL 的信息发送到目标 SNS 告警<br />
+- <a href="CLI/awscli/ecs-cmd/" title="ecs-cmd">ecs-cmd</a>: 常用命令<br />
+- <a href="CLI/awscli/efs-cmd/" title="efs-cmd">efs-cmd</a>: 1/ 在默认 vpc 中创建 efs<br />
+- <a href="CLI/linux/eksctl/" title="eksctl">eksctl</a>: 常用命令<br />
 - <a href="CLI/linux/eksdemo/" title="eksdemo">eksdemo</a>: 使用 eksdemo 快速搭建 eks 集群以及其他所需组件<br />
+- <a href="others/file-storage-gateway-lab/" title="file-storage-gateway-lab">file-storage-gateway-lab</a>: create file storage gateway from cli<br />
+- <a href="others/github-page-howto/" title="github-page-howto">github-page-howto</a>: github-page-howto<br />
+- <a href="others/global-sso-and-china-aws-accounts/" title="global-sso-and-china-aws-accounts">global-sso-and-china-aws-accounts</a>: 使用 global sso 登录中国区域 aws 账号<br />
+- <a href="CLI/awscli/iam-cmd/" title="iam-cmd">iam-cmd</a>: 常用命令<br />
+- <a href="CLI/linux/iptables/" title="iptables">iptables</a>: iptables<br />
+- <a href="CLI/linux/jq-cmd/" title="jq-cmd">jq-cmd</a>: 常用命令<br />
+- <a href="CLI/lab-create-cloudwatch-dashboard-cpu-metric/" title="lab-create-cloudwatch-dashboard-cpu-metric">lab-create-cloudwatch-dashboard-cpu-metric</a>: 快速创建 cloudwatch dashboard<br />
+- <a href="CLI/linux/linux-cmd/" title="linux-cmd">linux-cmd</a>: 常用命令<br />
+- <a href="CLI/windows/powershell/" title="powershell">powershell</a>: <br />
+- <a href="CLI/awscli/rds-cmd/" title="rds-cmd">rds-cmd</a>: 常用命令<br />
+- <a href="CLI/awscli/redshift-cmd/" title="redshift-cmd">redshift-cmd</a>: 常用命令<br />
+- <a href="others/rescue-ec2-instance/" title="rescue-ec2-instance">rescue-ec2-instance</a>: <br />
+- <a href="CLI/awscli/route53-cmd/" title="route53-cmd">route53-cmd</a>: 常用命令<br />
+- <a href="CLI/awscli/s3-cmd/" title="s3-cmd">s3-cmd</a>: 常用命令<br />
+- <a href="others/script-api-resource-method/" title="script-api-resource-method">script-api-resource-method</a>: 每个 api 的每个 resource 的每个 method 都需要单独通过命令行启用“tlsConfig/insecureSkipVerification”，通过这个脚本简化工作<br />
+- <a href="CLI/awscli/sns-cmd/" title="sns-cmd">sns-cmd</a>: 常用命令<br />
+- <a href="CLI/awscli/sqs-cmd/" title="sqs-cmd">sqs-cmd</a>: 常用命令<br />
+- <a href="CLI/awscli/ssm-cmd/" title="ssm-cmd">ssm-cmd</a>: 常用命令<br />
+- <a href="CLI/awscli/vpc-cmd/" title="vpc-cmd">vpc-cmd</a>: 常用命令<br />
 &lt;&ndash;&gt;</p>
 <h2 id="3-my-blog">3 my blog<a class="headerlink" href="#3-my-blog" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://github.com/panlm/blog-private-api-gateway-dataflow">https://github.com/panlm/blog-private-api-gateway-dataflow</a></li>
 </ul>
+
+
+
+
+
+
+
+  
+  
+
 
 
   
@@ -3815,6 +3912,7 @@
             </div>
           
           
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
@@ -3852,7 +3950,7 @@
     <script id="__config" type="application/json">{"base": ".", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "toc.follow", "content.code.copy"], "search": "assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="assets/javascripts/bundle.cd18aaf1.min.js"></script>
+      <script src="assets/javascripts/bundle.d7c377c4.min.js"></script>
       
         <script src="js/timeago.min.js"></script>
       
