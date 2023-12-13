@@ -2,7 +2,7 @@
 title: quick setup cloud9 script
 description: 简化运行脚本
 created: 2023-08-04 15:56:59.747
-last_modified: 2023-12-06
+last_modified: 2023-12-13
 tags:
   - aws/cloud9
   - aws/container/eks
@@ -20,6 +20,9 @@ tags:
 - ensure aws region is correct
 ```sh
 aws configure list
+export AWS_DEFAULT_REGION AWS_REGION
+#echo ${AWS_DEFAULT_REGION:=us-east-2}
+# export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
 
 ```
 - go through

@@ -2,7 +2,7 @@
 title: eks-terraform-cluster
 description: 使用 Terraform 创建 EKS 集群
 created: 2023-06-30 15:02:19.833
-last_modified: 2023-12-10
+last_modified: 2023-12-13
 tags:
   - aws/container/eks
   - terraform
@@ -17,7 +17,7 @@ sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinu
 sudo yum -y install terraform
 ```
 
-## sample-create-2x-clusters-for-thanos-poc-
+## sample-create-3x-clusters-for-thanos-poc-
 - get terraform template 
 ```sh
 git clone https://github.com/panlm/eks-blueprints-clusters.git
@@ -57,6 +57,16 @@ terraform apply -auto-approve
 ```
 
 - create ekscluster2
+```sh
+# go to another terminal to execute simultaneously
+cd ekscluster2
+terraform init
+terraform apply -auto-approve
+
+# following output to save kubeconfig file
+```
+
+- create ekscluster3
 ```sh
 # go to another terminal to execute simultaneously
 cd ekscluster2
