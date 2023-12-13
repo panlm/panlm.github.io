@@ -2,57 +2,63 @@
 title: POC-prometheus-ha-architect-with-thanos
 description: 用 thanos 扩展 prometheus 高可用性架构
 created: 2023-11-09 08:41:02.494
-last_modified: 2023-12-12
+last_modified: 2023-12-13
 tags:
   - kubernetes
   - aws/container/eks
 ---
 > [!WARNING] This is a github note
 
-# Prometheus HA Architect with Thanos
-## diagram
-使用 Thanos 可以扩展 Prometheus 的高可用性架构，本文讨论几种典型的多集群监控架构。
+# 使用 Thanos 扩展 Prometheus 高可用监控架构
+## 架构描述
+Prometheus是一款开源的监控和报警工具，专为容器化和云原生架构的设计，通过基于HTTP的pull模式采集时序数据，提供功能强大的查询语言PromQL，并可视化呈现监控指标与生成报警信息。客户普遍采用其用于 Kubernetes 的监控体系建设。当集群数量较多，监控平台高可用性和可靠性要求高，希望提供全局查询，需要长时间保存历史监控数据等场景下，通常使用 Thanos 扩展 Promethseus 监控架构。Thanos是一套开源组件，构建在 Prometheus 之上，用以解决 Prometheus 在多集群大规模环境下的高可用性、可扩展性限制，具体来说，Thanos 主要通过接收并存储 Prometheus 的多集群数据副本，并提供全局查询和一致性数据访问接口的方式，实现了对于 Prometheus 的可靠性、一致性和可用性保障，从而解决了 Prometheus 单集群在存储、查询和数据备份等方面的扩展性挑战。
 
-一种监控架构，被监控集群（Observee）只部署 Prometheus 和 Alert Manager 等组件用于监控集群本身，且启用 Thanos 的 Sidecar 方式将 Prometheus 监控的历史数据定期归档到 S3；被监控集群中不部署 Grafana 组件。监控集群（Observer）除了部署 Prometheus 和 Alert Manager 组件用于监控集群本身之外，将额外部署 Grafana 作为统一 Dashboard 展示，此外还将部署 Thanos 相关组件，包括：
-- Thanos Store 组件：用于从 S3 上查询历史任务
-- Thanos Query 组件：用于执行查询任务，将所有数据源添加为 Query 的 Endpoint，包括被监控集群的 Thanos Sidecar、 Thanos Store、 Thanos Receive 等
-- Thanos Query Frontend：用于统一查询入口，并且负责将查询分片以提高性能
+在讨论不同监控架构之前，我们先了解下 Thanos 及其常用的组件，更多详细信息可以参考 thanos.io 。
 
-这种监控架构对应下图蓝色和绿色集群及组件。由于 Prometheus 监控架构设计源于单机场景，对于数据持久性有缺陷，Pod 重启后，最近监控数据可能丢失（参见 refer 章节 1 关于 tsdb block duration 的描述），需要使用额外方式防止监控数据断层的问题。
+- Sidecar（边车）：运行在 Prometheus 的 Pod 中，读取其数据以供查询和/或上传到云存储。
+- Store（存储网关）：用于从对象存储桶（例如：AWS S3）上查询数据
+- Compactor（压缩器)：对存储在对象存储桶中的数据进行压缩、聚合历史数据以减小采样精度并长久保留。
+- Receive（接收器）：接收来自 Prometheus 远程写入日志的数据，并将其上传到对象存储。
+- Ruler（规则器）：针对 Thanos 中的数据评估记录和警报规则。
+- Query（查询器）：实现 Prometheus 的 v1 API，查询并汇总来自底层组件的数据。将所有数据源添加为 Query 的 Endpoint，包括 Sidecar、 Store、 Receive 等。
+- Query Frontend（查询前端）：实现 Prometheus 的 v1 API，将其代理给查询器，同时缓存响应，并可以拆分查询以提高性能。
+
+第一种监控架构（对应下图蓝色和绿色集群及组件），被监控集群（Observee）只部署 Prometheus 和 Alert Manager 等组件用于监控集群本身，且启用 Thanos 的 Sidecar 方式将 Prometheus 监控的历史数据定期归档到 S3；被监控集群中不启用 Grafana 组件。监控集群（Observer）除了部署 Prometheus 和 Alert Manager 组件用于监控集群本身之外，将额外部署 Grafana 作为统一 Dashboard 展示，此外还将部署 Thanos 相关组件，包括： Receive 和 Store。Prometheus 收到监控指标后会保存在内存中，并且通过 WAL (Write-ahead Log) 方式持久化到磁盘。 Pod 重启后，将重新读取 WAL 文件到内存，如果未使用 EBS 作为数据持久化存储，将可能导致最近的监控数据缺失（参见 refer 章节 1 关于 tsdb block duration 的描述）。
 
 ![[../../../git-attachment/POC-prometheus-ha-architect-with-thanos-png-1.png]]
 
-另一种监控架构，与之前架构的区别在于被监控集群（Observee）除了启用 Thanos Sidecar 之外（下图中未展示），还启用了 Prometheus 的 Remote Write 功能，将未归档的数据以 WAL 方式远程传输到部署在监控集群（Observer）上的 Thanos Receive，以保证数据的冗余度。 Thanos Receive 同样可以将历史监控数据归档到 S3 上，且支持被 Thanos Query 直接查询。这种监控架构对应上图蓝色和红色集群及组件
+第二种监控架构（对应上图红色集群及组件），与第一种监控架构的区别在于被监控集群（Observee）除了启用 Thanos Sidecar 之外，还启用了 Prometheus 的 Remote Write 功能，将未归档的数据以 WAL 方式远程传输到部署在监控集群（Observer）上的 Thanos Receive，以保证数据的冗余度。 Thanos Receive 同样可以将历史监控数据归档到 S3 上，且支持被 Thanos Query 直接查询，同时避免直接查询 Sidecar 而给被监控集群带来额外的性能损耗。
 
-### scenarios
+以下总结了 Prometheus 的监控场景以及适合的环境。监控集群（Observer）上将部署 Grafana 作为统一 Dashboard 展示：
 
-- scenario <mark style="background: #FF5582A6;">red</mark> (适合生产环境，或者不可容忍监控数据丢失的场景)
-    - HUB: store + receive
-    - SPOKE: prometheus with remote write + sidecar + compactor
-    - Pros: 
-        - data redundancy: crash will lost 2 hrs data in spoke, but data has been written to receive
-        - query directly from receive, no performance impact 
-    - Cons:
-        - one or more receive pod for each cluster, more storage cost needed
-- scenario <mark style="background: #BBFABBA6;">green</mark> & <mark style="background: #ADCCFFA6;">blue</mark> (适合非生产环境，可以容忍偶尔监控数据缺失的场景)
-    - HUB:  store
-    - SPOKE: prometheus + sidecar
-    - Pros: 
-        - architect simple
-        - only one copy of monitoring data, lower storage cost
-    - Cons: 
-        - no data redundancy: crash will lost 2 hrs data in spoke
-        - query will impact performance on target cluster
-- scenario <mark style="background: #FFF3A3A6;">yellow</mark>
-    - HUB: store + receive
-    - SPOKE: prometheus with remote write and local EBS
-    - Pros: 
-        - TSDB retention could be changed flexibly to meet tolerance of data lost 
-    - Cons: 
-        - one or more receive pod for each cluster, more storage cost needed
-        - additional cost depends on historical data on EBS
+- 第一种监控架构，上图蓝色和绿色集群及组件适合普通生产环境，可以容忍额外性能损耗
+    - 监控集群（Observer）- Prometheus & Grafana + Thanos Store
+    - 被监控集群（Observee）- Prometheus + Thanos Sidecar
+    - 优点
+        - 架构简单
+        - 只有一份监控数据，最小化存储成本
+    - 缺点 
+        - 无监控数据冗余
+        - 查询监控数据将给被监控集群带来额外性能损耗
+- 第二种监控架构，上图红色集群及组件适合生产环境对于监控数据冗余度要求高的场景
+    - 监控集群（Observer）- Prometheus & Grafana + Thanos Store & Receive
+    - 被监控集群（Observee）- Prometheus with Remote Write + Thanos Sidecar & Compactor
+    - 优点
+        - 直接从 Thanos Receive 查询监控数据，对被监控集群没有额外性能损耗
+    - 缺点
+        - 每个集群对应一个 Thanos Receive，且监控数据冗余，可以使用 Compactor 对数据进行压缩、聚合历史数据以减少存储成本
+- 第三种监控架构，上图黄色集群及组件
+    - 监控集群（Observer）- Prometheus & Grafana + Thanos Store & Receive
+    - 被监控集群（Observee）- Prometheus Agent Mode (Or Prometheus with Remote Write, no additional components)
+    - 优点
+        - 架构简单
+        - 可实现集中告警 - 告警将通过 Thanos Ruler 定义，通过 Thanos Query 查询 Receive 并发送到监控集群的 Alert Manager 实现
+    - 缺点 
+        - 不适用分布式告警
+        - 无监控数据冗余
 
 ## go-through-
+接下来我们将创建 3 个 EKS 集群，分别对应上图中的蓝色、红色、黄色集群验证 Thanos 相关配置。
 ### prometheus
 - we will create 2 clsuters, `ekscluster1` for observer, `ekscluster2` for observee ([[../../infra/cluster/eks-cluster-with-terraform#sample-create-2x-clusters-for-thanos-poc-]])
 - following 3 addons will be included in each cluster

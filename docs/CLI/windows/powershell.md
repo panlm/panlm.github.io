@@ -1,5 +1,6 @@
 ---
 title: powershell
+description: 常用命令
 created: 2023-01-09 22:45:11.849
 last_modified: 2023-12-02
 tags:

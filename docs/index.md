@@ -1,5 +1,5 @@
 ---
-last_modified: 2023-12-09
+last_modified: 2023-12-12
 number headings: first-level 2, max 3, 1.1, auto
 ---
 
@@ -95,7 +95,7 @@ refer: [[EKS/index]]
 
 ### 2.5 others
 ```expander
-(file:.md -file:tags.md (path:git/git-mkdocs -path:git/git-mkdocs/eks -path:git/git-mkdocs/cloud9 -path:git/git-mkdocs/serverless -path:git/git-mkdocs/data-analytics ))
+(file:.md -file:tags.md -file:index.md (path:git/git-mkdocs -path:git/git-mkdocs/eks -path:git/git-mkdocs/cloud9 -path:git/git-mkdocs/serverless -path:git/git-mkdocs/data-analytics ))
 - [[$filename]]: $frontmatter:description
 ```
 - [[acm-cmd]]: 常用命令
@@ -116,6 +116,7 @@ refer: [[EKS/index]]
 - [[eksctl]]: 常用命令
 - [[eksdemo]]: 使用 eksdemo 快速搭建 eks 集群以及其他所需组件
 - [[file-storage-gateway-lab]]: create file storage gateway from cli
+- [[func-create-sg.sh]]: 
 - [[github-page-howto]]: github-page-howto
 - [[global-sso-and-china-aws-accounts]]: 使用 global sso 登录中国区域 aws 账号
 - [[iam-cmd]]: 常用命令
@@ -123,7 +124,7 @@ refer: [[EKS/index]]
 - [[jq-cmd]]: 常用命令
 - [[lab-create-cloudwatch-dashboard-cpu-metric]]: 快速创建 cloudwatch dashboard
 - [[linux-cmd]]: 常用命令
-- [[powershell]]: 
+- [[powershell]]: 常用命令
 - [[rds-cmd]]: 常用命令
 - [[redshift-cmd]]: 常用命令
 - [[rescue-ec2-instance]]: 
@@ -133,6 +134,7 @@ refer: [[EKS/index]]
 - [[sns-cmd]]: 常用命令
 - [[sqs-cmd]]: 常用命令
 - [[ssm-cmd]]: 常用命令
+- [[transcribe-cmd]]: script-convert-mp3-to-text
 - [[vpc-cmd]]: 常用命令
 <-->
 
