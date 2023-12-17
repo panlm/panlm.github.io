@@ -2,7 +2,7 @@
 title: route53
 description: 常用命令
 created: 2022-09-20 09:02:35.112
-last_modified: 2023-12-08
+last_modified: 2023-12-16
 tags:
   - aws/network/route53
 ---
@@ -17,7 +17,7 @@ refer: [[git/git-mkdocs/EKS/infra/network/externaldns-for-route53#func-setup-hos
 
 ## func-create-ns-record-
 - create host zone in your child account and get NS (previous chapter)
-- [[../linux/assume-tool|assume]] to your parent account to add NS record to route53 host zone
+- [[../linux/assume-tool|assume]] to your parent account to execute this function to add NS record to upstream route53 host zone
 ```sh title="create-ns-record"
 # DOMAIN_NAME=poc0000.aws.panlm.xyz
 # NS='ns-1716.awsdns-22.co.uk.

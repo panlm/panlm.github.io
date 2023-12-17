@@ -1,8 +1,8 @@
 ---
-title: 用 thanos 扩展 prometheus 高可用性架构
-description: 用 thanos 扩展 prometheus 高可用性架构
+title: 用 Thanos 扩展 Prometheus 高可用性架构
+description: Prometheus是一款开源的监控和报警工具，专为容器化和云原生架构的设计，通过基于HTTP的pull模式采集时序数据，提供功能强大的查询语言PromQL，并可视化呈现监控指标与生成报警信息。客户普遍采用其用于 Kubernetes 的监控体系建设。当集群数量较多，监控平台高可用性和可靠性要求高，希望提供全局查询，需要长时间保存历史监控数据等场景下，通常使用 Thanos 扩展 Promethseus 监控架构。Thanos是一套开源组件，构建在 Prometheus 之上，用以解决 Prometheus 在多集群大规模环境下的高可用性、可扩展性限制，具体来说，Thanos 主要通过接收并存储 Prometheus 的多集群数据副本，并提供全局查询和一致性数据访问接口的方式，实现了对于 Prometheus 的可靠性、一致性和可用性保障，从而解决了 Prometheus 单集群在存储、查询和数据备份等方面的扩展性挑战。
 created: 2023-11-09 08:41:02.494
-last_modified: 2023-12-13
+last_modified: 2023-12-17
 tags:
   - kubernetes
   - aws/container/eks
@@ -46,7 +46,8 @@ Prometheus是一款开源的监控和报警工具，专为容器化和云原生�
     - 优点
         - 直接从 Thanos Receive 查询监控数据，对被监控集群没有额外性能损耗
     - 缺点
-        - 每个集群对应一个 Thanos Receive，且监控数据冗余，可以使用 Compactor 对数据进行压缩、聚合历史数据以减少存储成本
+        - 每个集群对应一组 Thanos Receive，建议配置副本数量与源集群 Prometheus 副本数量相同
+        - 监控数据冗余，可以使用 Compactor 对数据进行压缩、聚合历史数据以减少存储成本
 - 第三种监控架构，上图黄色集群及组件
     - 监控集群（Observer）- Prometheus & Grafana + Thanos Store & Receive
     - 被监控集群（Observee）- Prometheus Agent Mode (Or Prometheus with Remote Write, no additional components)
@@ -60,25 +61,44 @@ Prometheus是一款开源的监控和报警工具，专为容器化和云原生�
 ## go-through-
 接下来我们将创建 3 个 EKS 集群，分别对应上图中的蓝色、红色、黄色集群验证 Thanos 相关配置。
 ### prometheus
-- we will create 2 clsuters, `ekscluster1` for observer, `ekscluster2` for observee ([[../../infra/cluster/eks-cluster-with-terraform#sample-create-3x-clusters-for-thanos-poc-]])
+- we will create 3 clusters, `ekscluster1` for observer, `ekscluster2` and `ekscluster3` for observee ([[../../infra/cluster/eks-cluster-with-terraform#sample-create-3x-clusters-for-thanos-poc-]])
 - following 3 addons will be included in each cluster
     - [[git/git-mkdocs/EKS/infra/network/aws-load-balancer-controller#install-with-eksdemo-|aws load balancer controller]] 
     - [[git/git-mkdocs/EKS/infra/storage/ebs-for-eks#install-using-eksdemo-|ebs csi]] 
     - [[git/git-mkdocs/EKS/infra/network/externaldns-for-route53|externaldns-for-route53]] 
-    - `DOMAIN_NAME` should be `environment_name.hosted_zone_name`
-- export values for customization
+    - `DOMAIN_NAME` should be `environment_name.hosted_zone_name`, for example `thanos.eks1217.aws.panlm.xyz`
+- get sample yaml 
+```sh
+git clone https://github.com/panlm/thanos-example.git
+cd thanos-example
+```
+- following` README.md` to build your version yaml files
+```sh
+CLUSTER_NAME_1=ekscluster1
+CLUSTER_NAME_2=ekscluster2
+CLUSTER_NAME_3=ekscluster3
+DOMAIN_NAME=thanos.eks1217.aws.panlm.xyz
+THANOS_BUCKET_NAME=thanos-store-eks1217
+AWS_DEFAULT_REGION=us-east-2
+export CLUSTER_NAME_1 CLUSTER_NAME_2 CLUSTER_NAME_3 DOMAIN_NAME THANOS_BUCKET_NAME AWS_DEFAULT_REGION
+
+mkdir POC
+cd POC-template
+find ./ -type d -name "[a-z]*" -exec mkdir ../POC/{} \;
+
+find ./ -type f -name "*" |while read filename ; do
+  cat $filename |envsubst > ../POC/$filename
+done
+
+cd ../POC/
+```
+- prepare to install thanos with helm
 ```sh
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
 
 helm show values prometheus-community/kube-prometheus-stack > values_default.yaml
 ```
-- get sample yaml to foler `POC`
-```sh
-git clone https://github.com/panlm/thanos-example.git
-cd thanos-example/POC
-```
-
 #### observer cluster
 - switch to observer (ekscluster1)
 ```sh
@@ -86,130 +106,29 @@ kubectx ekscluster1
 ```
 - create s3 config file for thanos sidecar
 ```sh
-CLUSTER_NAME=ekscluster1
-DEPLOY_NAME=prom-operator-${CLUSTER_NAME}
-THANOS_BUCKET_NAME=thanos-store-1234
+DEPLOY_NAME_1=prom-operator-${CLUSTER_NAME_1}
 NAMESPACE_NAME=monitoring
-```
-
-- code block `refer-s3-config`
-```sh title="refer-s3-config"
-echo ${DOMAIN_NAME}
-echo ${CLUSTER_NAME}
-echo ${STORAGECLASS_NAME:=gp2}
-echo ${THANOS_BUCKET_NAME}
-echo ${AWS_DEFAULT_REGION} ; export AWS_DEFAULT_REGION
-echo ${CERTIFICATE_ARN} # this could be ignored
-echo ${NAMESPACE_NAME}
 
 kubectl create ns ${NAMESPACE_NAME}
-
-envsubst >s3-config/thanos-s3-config-${CLUSTER_NAME}.yaml <<-EOF
-type: S3
-prefix: "${CLUSTER_NAME}"
-config:
-    bucket: "${THANOS_BUCKET_NAME}"
-    endpoint: "s3.${AWS_DEFAULT_REGION}.amazonaws.com"
-    region: "${AWS_DEFAULT_REGION}"
-    sts_endpoint: "https://sts.amazonaws.com"
-EOF
-
-kubectl -n ${NAMESPACE_NAME} create secret generic thanos-s3-config-${CLUSTER_NAME} --from-file=thanos-s3-config-${CLUSTER_NAME}=s3-config/thanos-s3-config-${CLUSTER_NAME}.yaml
+kubectl create secret generic thanos-s3-config-${CLUSTER_NAME_1} --from-file=thanos-s3-config-${CLUSTER_NAME_1}=s3-config/thanos-s3-config-${CLUSTER_NAME_1}.yaml --namespace ${NAMESPACE_NAME} 
 ```
-^refer-s3-config
-
-- deploy prometheus with thanos and grafana
+- deploy Prometheus with Thanos and Grafana
 ```sh
-# enable grafana 
-# enable prometheus
-envsubst >prometheus/values-${CLUSTER_NAME}-1.yaml <<-EOF
-grafana:
-  enabled: true
-  deploymentStrategy:
-    type: Recreate
-  service:
-    type: NodePort
-  ingress:
-    enabled: true
-    annotations:
-      kubernetes.io/ingress.class: alb
-      alb.ingress.kubernetes.io/scheme: internet-facing
-    hosts:
-      - grafana-${DOMAIN_NAME%%.*}.${DOMAIN_NAME}
-prometheus:
-  prometheusSpec:
-    replicas: 2
-    retention: 4h
-    retentionSize: "20GB"
-    ruleSelectorNilUsesHelmValues: false
-    serviceMonitorSelectorNilUsesHelmValues: false
-    podMonitorSelectorNilUsesHelmValues: false
-    topologySpreadConstraints: 
-    - maxSkew: 1
-      topologyKey: topology.kubernetes.io/zone
-      whenUnsatisfiable: DoNotSchedule
-      labelSelector:
-        matchLabels:
-          app: prometheus
-    # additionalScrapeConfigsSecret: 
-    #   enabled: true
-    #   name: additional-scrape-configs
-    #   key: avalanche-additional.yaml
-    storageSpec: 
-      volumeClaimTemplate:
-        spec:
-          storageClassName: ${STORAGECLASS_NAME}
-          accessModes: ["ReadWriteOnce"]
-          resources:
-            requests:
-              storage: 50Gi
-        selector: {}
-    externalLabels: 
-      cluster: "${CLUSTER_NAME}"
-      cluster_name: "${CLUSTER_NAME}"
-      origin_prometheus: "${CLUSTER_NAME}"
-EOF
-
-# enable prometheus with thanos
-envsubst >prometheus/values-${CLUSTER_NAME}-1-1.yaml <<-EOF
-prometheus:
-  thanosService:
-    enabled: true
-  thanosServiceMonitor:
-    enabled: true
-  thanosServiceExternal:
-    enabled: true
-    type: LoadBalancer
-  prometheusSpec:
-    thanos: 
-      objectStorageConfig:
-        existingSecret:
-          name: thanos-s3-config-${CLUSTER_NAME}
-          key: thanos-s3-config-${CLUSTER_NAME}
-EOF
-
-echo ${CLUSTER_NAME}
-echo ${DEPLOY_NAME}
-
-helm upgrade -i -f prometheus/values-${CLUSTER_NAME}-1.yaml -f prometheus/values-${CLUSTER_NAME}-1-1.yaml ${DEPLOY_NAME} prometheus-community/kube-prometheus-stack --namespace ${NAMESPACE_NAME}
+echo ${CLUSTER_NAME_1} ${DEPLOY_NAME_1} ${NAMESPACE_NAME}
+helm upgrade -i -f prometheus/values-${CLUSTER_NAME_1}-1.yaml -f prometheus/values-${CLUSTER_NAME_1}-2.yaml ${DEPLOY_NAME_1} prometheus-community/kube-prometheus-stack --namespace ${NAMESPACE_NAME}
 ```
 
 - create irsa in monitoring namespace for thanos ([[git/git-mkdocs/CLI/linux/eksctl#func-create-iamserviceaccount-]])
 ```sh
-echo ${DEPLOY_NAME}
-echo ${CLUSTER_NAME}
-SA_NAME=${DEPLOY_NAME}-prometheus
+echo ${DEPLOY_NAME_1}
+echo ${CLUSTER_NAME_1}
+SA_NAME=${DEPLOY_NAME_1}-prometheus
+create-iamserviceaccount -s ${SA_NAME} -c ${CLUSTER_NAME_1} -n monitoring -r 0
 ```
 
-- code block `refer-irsa-prometheus`
-```sh title="refer-irsa-prometheus"
-create-iamserviceaccount -s ${SA_NAME} -c ${CLUSTER_NAME} -n monitoring -r 0
-```
-^refer-irsa-prometheus
-
-- rollout statefulset (need to delete pod and make it restart to use new SA)
+- rollout statefulset (or using k9s to delete pod and make it restart to use new SA)
 ```sh
-kubectl rollout restart sts prometheus-prom-operator-${CLUSTER_NAME}-prometheus -n monitoring
+kubectl rollout restart sts prometheus-prom-operator-${CLUSTER_NAME_1}-prometheus -n monitoring
 ```
 
 #### observee-cluster-
@@ -219,98 +138,31 @@ kubectx ekscluster2
 ```
 - on observee cluster (ekscluster2)
 ```sh
-CLUSTER_NAME=ekscluster2
-DEPLOY_NAME=prom-operator-${CLUSTER_NAME}
-THANOS_BUCKET_NAME=thanos-store-1234
+DEPLOY_NAME_2=prom-operator-${CLUSTER_NAME_2}
 NAMESPACE_NAME=monitoring
+
+kubectl create ns ${NAMESPACE_NAME}
+kubectl create secret generic thanos-s3-config-${CLUSTER_NAME_2} --from-file=thanos-s3-config-${CLUSTER_NAME_2}=s3-config/thanos-s3-config-${CLUSTER_NAME_2}.yaml --namespace ${NAMESPACE_NAME}
 ```
 
-??? note "refer code block `refer-s3-config`"
-    ![[POC-prometheus-ha-architect-with-thanos#^refer-s3-config]]
-
-- deploy prometheus with remote write and thanos sidecar
+- deploy Prometheus with remote write and Thanos Sidecar, no Grafana
 ```sh
-# diable grafana 
-# enable prometheus
-envsubst >prometheus/values-${CLUSTER_NAME}-1.yaml <<-EOF
-grafana:
-  enabled: false
-prometheus:
-  prometheusSpec:
-    replicas: 2
-    retention: 4h
-    retentionSize: "20GB"
-    ruleSelectorNilUsesHelmValues: false
-    serviceMonitorSelectorNilUsesHelmValues: false
-    podMonitorSelectorNilUsesHelmValues: false
-    topologySpreadConstraints: 
-    - maxSkew: 1
-      topologyKey: topology.kubernetes.io/zone
-      whenUnsatisfiable: DoNotSchedule
-      labelSelector:
-        matchLabels:
-          app: prometheus
-    # additionalScrapeConfigsSecret: 
-    #   enabled: true
-    #   name: additional-scrape-configs
-    #   key: avalanche-additional.yaml
-    storageSpec: 
-      volumeClaimTemplate:
-        spec:
-          storageClassName: ${STORAGECLASS_NAME}
-          accessModes: ["ReadWriteOnce"]
-          resources:
-            requests:
-              storage: 50Gi
-        selector: {}
-    remoteWrite: 
-    - url: http://k8s-thanos-thanosre-xxx.elb.us-east-2.amazonaws.com:19291/api/v1/receive
-    remoteWriteDashboards: true
-    externalLabels: 
-      cluster: "${CLUSTER_NAME}"
-      cluster_name: "${CLUSTER_NAME}"
-      origin_prometheus: "${CLUSTER_NAME}"
-EOF
-
-# enable prometheus with thanos
-envsubst >prometheus/values-${CLUSTER_NAME}-1-1.yaml <<-EOF
-prometheus:
-  thanosService:
-    enabled: true
-  thanosServiceMonitor:
-    enabled: true
-  thanosServiceExternal:
-    enabled: true
-    type: LoadBalancer
-  prometheusSpec:
-    thanos: 
-      objectStorageConfig:
-        existingSecret:
-          name: thanos-s3-config-${CLUSTER_NAME}
-          key: thanos-s3-config-${CLUSTER_NAME}
-EOF
-
-echo ${CLUSTER_NAME}
-echo ${DEPLOY_NAME}
-echo ${NAMESPACE_NAME}
-
-helm upgrade -i -f prometheus/values-${CLUSTER_NAME}-1.yaml -f prometheus/values-${CLUSTER_NAME}-1-1.yaml ${DEPLOY_NAME} prometheus-community/kube-prometheus-stack --namespace ${NAMESPACE_NAME}
+echo ${CLUSTER_NAME_2} ${DEPLOY_NAME_2} ${NAMESPACE_NAME}
+helm upgrade -i -f prometheus/values-${CLUSTER_NAME_2}-1.yaml -f prometheus/values-${CLUSTER_NAME_2}-2.yaml ${DEPLOY_NAME_2} prometheus-community/kube-prometheus-stack --namespace ${NAMESPACE_NAME}
 ```
 - using remote write, WAL log will be transfer to receive pod, you could query real time data from thanos receive.
 
 - create irsa in monitoring namespace for thanos ([[git/git-mkdocs/CLI/linux/eksctl#func-create-iamserviceaccount-]])
 ```sh
-echo ${DEPLOY_NAME}
-echo ${CLUSTER_NAME}
-SA_NAME=${DEPLOY_NAME}-prometheus
+echo ${DEPLOY_NAME_2}
+echo ${CLUSTER_NAME_2}
+SA_NAME=${DEPLOY_NAME_2}-prometheus
+create-iamserviceaccount -s ${SA_NAME} -c ${CLUSTER_NAME_2} -n monitoring -r 0
 ```
 
-!!! note "refer code block `refer-irsa-prometheus`"
-    ![[POC-prometheus-ha-architect-with-thanos#^refer-irsa-prometheus]]
-
-- rollout statefulset (need to delete pod and make it restart to use new SA)
+- rollout statefulset (or using k9s to delete pod and make it restart to use new SA)
 ```sh
-kubectl rollout restart sts prometheus-prom-operator-${CLUSTER_NAME}-prometheus -n monitoring
+kubectl rollout restart sts prometheus-prom-operator-${CLUSTER_NAME_2}-prometheus -n monitoring
 ```
 
 #### observee cluster with prometheus agent mode
@@ -320,82 +172,30 @@ kubectx ekscluster3
 ```
 - on observee cluster (ekscluster3)
 ```sh
-CLUSTER_NAME=ekscluster3
-DEPLOY_NAME=prom-operator-${CLUSTER_NAME}
-THANOS_BUCKET_NAME=thanos-store-1234
+DEPLOY_NAME_3=prom-operator-${CLUSTER_NAME_3}
 NAMESPACE_NAME=monitoring
-```
 
-??? note "refer code block `refer-s3-config`"
-    ![[POC-prometheus-ha-architect-with-thanos#^refer-s3-config]]
+kubectl create ns ${NAMESPACE_NAME}
+kubectl create secret generic thanos-s3-config-${CLUSTER_NAME_3} --from-file=thanos-s3-config-${CLUSTER_NAME_3}=s3-config/thanos-s3-config-${CLUSTER_NAME_3}.yaml --namespace ${NAMESPACE_NAME}
+```
 
 - deploy prometheus in agent mode with remote write
 ```sh
-# disable grafana 
-# enable prometheus in agent mode
-envsubst >prometheus/values-${CLUSTER_NAME}-1.yaml <<-EOF
-grafana:
-  enabled: false
-prometheus:
-  enabled: true
-  agentMode: true
-  prometheusSpec:
-    replicas: 2
-    retention: 4h
-    retentionSize: "20GB"
-    ruleSelectorNilUsesHelmValues: false
-    serviceMonitorSelectorNilUsesHelmValues: false
-    podMonitorSelectorNilUsesHelmValues: false
-    topologySpreadConstraints: 
-    - maxSkew: 1
-      topologyKey: topology.kubernetes.io/zone
-      whenUnsatisfiable: DoNotSchedule
-      labelSelector:
-        matchLabels:
-          app: prometheus
-    # additionalScrapeConfigsSecret: 
-    #   enabled: true
-    #   name: additional-scrape-configs
-    #   key: avalanche-additional.yaml
-    storageSpec: 
-      volumeClaimTemplate:
-        spec:
-          storageClassName: 
-          accessModes: ["ReadWriteOnce"]
-          resources:
-            requests:
-              storage: 50Gi
-        selector: {}
-    remoteWrite: 
-    - url: http://k8s-thanos-thanosre-xxx.elb.us-west-2.amazonaws.com:19291/api/v1/receive
-    # remoteRead: 
-    # - url: http://remote1/read
-    externalLabels: 
-      cluster: "ekscluster3"
-      cluster_name: "ekscluster3"
-      origin_prometheus: "ekscluster3"
-EOF
-
-echo ${CLUSTER_NAME}
-echo ${DEPLOY_NAME}
-echo ${NAMESPACE_NAME}
-
-helm upgrade -i -f prometheus/values-${CLUSTER_NAME}-1.yaml ${DEPLOY_NAME} prometheus-community/kube-prometheus-stack --namespace ${NAMESPACE_NAME}
+echo ${CLUSTER_NAME_3} ${DEPLOY_NAME_3} ${NAMESPACE_NAME}
+helm upgrade -i -f prometheus/values-${CLUSTER_NAME_3}-1.yaml ${DEPLOY_NAME_3} prometheus-community/kube-prometheus-stack --namespace ${NAMESPACE_NAME}
 ```
 
 - create irsa in monitoring namespace for thanos ([[git/git-mkdocs/CLI/linux/eksctl#func-create-iamserviceaccount-]])
 ```sh
-echo ${DEPLOY_NAME}
-echo ${CLUSTER_NAME}
-SA_NAME=${DEPLOY_NAME}-prometheus
+echo ${DEPLOY_NAME_3}
+echo ${CLUSTER_NAME_3}
+SA_NAME=${DEPLOY_NAME_3}-prometheus
+create-iamserviceaccount -s ${SA_NAME} -c ${CLUSTER_NAME_3} -n monitoring -r 0
 ```
-
-!!! note "refer code block `refer-irsa-prometheus`"
-    ![[POC-prometheus-ha-architect-with-thanos#^refer-irsa-prometheus]]
 
 - rollout statefulset (need to delete pod and make it restart to use new SA)
 ```sh
-kubectl rollout restart sts prometheus-prom-operator-${CLUSTER_NAME}-prometheus -n monitoring
+kubectl rollout restart sts prometheus-prom-operator-${CLUSTER_NAME_3}-prometheus -n monitoring
 ```
 
 ### thanos
@@ -407,7 +207,7 @@ kubectx ekscluster1
 #### store
 - reuse 3 cluster s3 config file for thanos store on observer
 ```sh
-k create ns thanos
+kubectl create ns thanos
 for CLUSTER_NAME in ekscluster1 ekscluster2 ekscluster3 ; do
     kubectl create secret generic thanos-s3-config-${CLUSTER_NAME} --from-file=thanos-s3-config-${CLUSTER_NAME}=./s3-config/thanos-s3-config-${CLUSTER_NAME}.yaml -n thanos
 done
@@ -418,29 +218,25 @@ kubectl apply -f store/
 ```
 - create role for sa ([[git/git-mkdocs/CLI/linux/eksctl#func-create-iamserviceaccount-]]) and annotate to existed sa
 ```sh
-CLUSTER_NAME=ekscluster1
 for SA_NAME in thanos-store-cluster1 thanos-store-cluster2 thanos-store-cluster3 ; do
-    create-iamserviceaccount -s ${SA_NAME} -c ${CLUSTER_NAME} -n thanos -r 0
+    create-iamserviceaccount -s ${SA_NAME} -c ${CLUSTER_NAME_1} -n thanos -r 0
 done
 ```
-- rollout 2 stores (need to be deleted and apply again)
+- rollout 2 stores (or using k9s to delete pod and make it restart to use new SA)
 ```sh
-kubectl rollout restart sts thanos-store-cluster1 -n thanos
-kubectl rollout restart sts thanos-store-cluster2 -n thanos
+for i in thanos-store-cluster1 thanos-store-cluster2 thanos-store-cluster3 ; do
+    kubectl rollout restart sts $i -n thanos
+done
 ```
 
 #### query-and-query-frontend-
-- modify query frontend ingress yaml
-```sh
-  rules:
-    - host: thanos-query-frontend-ingress.${DOMIAN_NAME}
-```
-- improve query performance in query frontend deployment yaml
+- In query deployment yaml file, all endpoints we needed in this POC will be added to container's args, including sidecar, receive, store, etc.
+- In query frontend service yaml file, it will bind domain name
+- In query frontend deployment yaml file, using split parameters to improve query performance 
 ```yaml
         - --query-range.split-interval=1h
         - --labels.split-interval=1h
 ```
-- modify query deployment yaml as need, add endpoint for sidecar, receive, store, etc.
 - deploy
 ```sh
 kubectl apply -f query/
@@ -450,22 +246,21 @@ kubectl apply -f query/
 - use existed s3 config file in secret
 - deploy 2 receives, one for ekscluster2 and another for ekscluster3
 ```sh
-k apply -f receive-cluster2/
-k apply -f receive-cluster3/
+kubectl apply -f receive/
 ```
 - create irsa in thanos namespace for receive ([[git/git-mkdocs/CLI/linux/eksctl#func-create-iamserviceaccount-]])
 ```sh
-CLUSTER_NAME=ekscluster1
-
 for SA_NAME in thanos-receive-cluster2 thanos-receive-cluster3 ; do
-    create-iamserviceaccount -s ${SA_NAME} -c ${CLUSTER_NAME} -n thanos -r 0
+    create-iamserviceaccount -s ${SA_NAME} -c ${CLUSTER_NAME_1} -n thanos -r 0
 done
 ```
-- rollout (delete and apply again)
+- rollout 2 receives (or using k9s to delete pod and make it restart to use new SA)
 ```sh
-k rollout restart sts thanos-receive-cluster2 -n thanos
+for i in thanos-receive-cluster2 thanos-receive-cluster3 ; do
+    kubectl rollout restart sts ${i} -n thanos
+done
 ```
-- get receive svc 
+- (option) get receive svc domain name to: 
     - add it to prometheus remote write in ekscluster2 and ekscluster3 ([[git/git-mkdocs/EKS/operation/monitor/POC-prometheus-ha-architect-with-thanos#observee-cluster-]])
     - add it to query deployment yaml ([[git/git-mkdocs/EKS/operation/monitor/POC-prometheus-ha-architect-with-thanos#query-and-query-frontend-]])
 
@@ -495,9 +290,11 @@ k rollout restart sts thanos-receive-cluster2 -n thanos
     - 检查是否多副本 receive sts，且未做数据 replica
 
 #### thanos frontend 
-- open svc of thanos frontend 
-    - min time in receive: means prometheus remote write has valid and data has been received by thanos receive
-    - min time in sidecar: data in thanos local before duration, 2 hr will write data from WAL to duration, if < 2hrs "-" will display. if over 2hrs, oldest data in local will be display
+- open svc of thanos frontend: `thanos-query-frontend.${DOMAIN_NAME}`
+    - min time in receive table: means prometheus remote write has valid and data has been received by thanos receive
+    - min time in sidecar table: data in thanos local before duration, 2 hr will write data from WAL to duration, if < 2hrs "-" will display. if over 2hrs, oldest data in local will be display
+    - min time in store table: data has been store to s3, check labelset to identify data was written by receive or sidecar
+
 ![[../../../git-attachment/POC-prometheus-ha-architect-with-thanos-png-7.png]]
 
 
@@ -521,6 +318,24 @@ k rollout restart sts thanos-receive-cluster2 -n thanos
 #### thanos config sample in this POC
 - https://github.com/panlm/thanos-example
 
+#### grafana ingress with alb sample
+- `DOMAIN_NAME` should be `environment_name.hosted_zone_name`, for example `thanos.eks1217.aws.panlm.xyz`
+```yaml
+grafana:
+  enabled: true
+  deploymentStrategy:
+    type: Recreate
+  service:
+    type: NodePort
+  ingress:
+    enabled: true
+    annotations:
+      kubernetes.io/ingress.class: alb
+      alb.ingress.kubernetes.io/scheme: internet-facing
+    hosts:
+      - grafana-${DOMAIN_NAME%%.*}.${DOMAIN_NAME}
+```
+
 #### grafana ingress with nginx sample
 ```sh
 envsubst >${TMP}-1.yaml <<-EOF
@@ -540,7 +355,7 @@ grafana:
           - grafana.${DOMAIN_NAME}
   persistence:
     enabled: true
-    storageClassName: ${STORAGECLASS_NAME}
+    storageClassName: gp2
     accessModes:
       - ReadWriteOnce
     size: 1Gi
@@ -555,7 +370,7 @@ prometheus:
     storageSpec:
       volumeClaimTemplate:
         spec:
-          storageClassName: ${STORAGECLASS_NAME}
+          storageClassName: gp2
           accessModes: ["ReadWriteOnce"]
           resources:
             requests:
@@ -637,7 +452,7 @@ create-iamserviceaccount ${SA_NAME} ${CLUSTER_NAME} thanos 1
 - [[prometheus#performance-testing-]]
 - [[prometheus#cmd-]]
 - https://github.com/terraform-aws-modules/terraform-aws-eks/issues/2009
-
+- https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/designs/prometheus-agent.md
 
 
 ### todo

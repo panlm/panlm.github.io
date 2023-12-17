@@ -2,7 +2,7 @@
 title: eksctl
 description: 常用命令
 created: 2022-03-09 21:30:00.815
-last_modified: 2023-12-13
+last_modified: 2023-12-17
 tags:
   - aws/container/eks
 ---
@@ -148,6 +148,7 @@ function create-iamserviceaccount () {
         --attach-policy-arn arn:aws:iam::aws:policy/AmazonS3FullAccess \
         --role-name ${SA_NAME}-$(TZ=EAT-8 date +%Y%m%d-%H%M%S) ${ROLE_OPTION} --approve \
         --override-existing-serviceaccounts
+    unset S3_ADMIN_ROLE_ARN
     S3_ADMIN_ROLE_ARN=$(eksctl get iamserviceaccount -c $CLUSTER_NAME \
         --name ${SA_NAME} -o json |jq -r '.[].status.roleARN')
     echo ${S3_ADMIN_ROLE_ARN}
