@@ -1,5 +1,5 @@
 ---
-last_modified: 2023-10-29 13:21:38.256
+last_modified: 2023-12-20
 number headings: first-level 2, max 3, 1.1, auto
 ---
 > [!WARNING] This is a github note
@@ -67,6 +67,7 @@ number headings: first-level 2, max 3, 1.1, auto
 ```
 - [[cloudwatch-to-firehose-python]]: 在 firehose 上，处理从 cloudwatch 发送来的日志
 - [[export-cloudwatch-log-group-to-s3]]: 导出 cloudwatch 日志到 s3
+- [[POC-loki-for-logging]]: 使用 loki 收集日志
 - [[stream-k8s-control-panel-logs-to-s3]]: 目前eks控制平面日志只支持发送到cloudwatch，且在同一个log group中有5种类型6种前缀的log stream的日志，不利于统一查询。且只有audit日志是json格式其他均是单行日志，且字段各不相同。本解决方案提供思路统一保存日志供后续分析处理
 <-->
 
@@ -103,4 +104,13 @@ number headings: first-level 2, max 3, 1.1, auto
 - [[nginx-ingress-controller]]: nginx-ingress-controller
 - [[nginx-ingress-controller-nginx-ver]]: nginx-ingress-controller-nginx-ver
 - [[pluto]]: pluto
+<-->
+
+## 3 kubernetes
+```expander
+(path:git/git-mkdocs/eks/kubernetes file:.md)
+- [[$filename]]: $frontmatter:description
+```
+- [[k8s-hpa-horizontal-pod-autoscaler]]: horizontal pod autoscaler
+- [[k8s-topology-spread-constraints]]: topology spread constraints
 <-->

@@ -1,8 +1,8 @@
 ---
-title: 用 Thanos 扩展 Prometheus 高可用性架构
+title: Building Prometheus HA Architect with Thanos
 description: Prometheus是一款开源的监控和报警工具，专为容器化和云原生架构的设计，通过基于HTTP的pull模式采集时序数据，提供功能强大的查询语言PromQL，并可视化呈现监控指标与生成报警信息。客户普遍采用其用于 Kubernetes 的监控体系建设。当集群数量较多，监控平台高可用性和可靠性要求高，希望提供全局查询，需要长时间保存历史监控数据等场景下，通常使用 Thanos 扩展 Promethseus 监控架构。Thanos是一套开源组件，构建在 Prometheus 之上，用以解决 Prometheus 在多集群大规模环境下的高可用性、可扩展性限制，具体来说，Thanos 主要通过接收并存储 Prometheus 的多集群数据副本，并提供全局查询和一致性数据访问接口的方式，实现了对于 Prometheus 的可靠性、一致性和可用性保障，从而解决了 Prometheus 单集群在存储、查询和数据备份等方面的扩展性挑战。
 created: 2023-11-09 08:41:02.494
-last_modified: 2023-12-17
+last_modified: 2023-12-20
 tags:
   - kubernetes
   - aws/container/eks
@@ -36,7 +36,7 @@ Prometheus是一款开源的监控和报警工具，专为容器化和云原生�
     - 被监控集群（Observee）- Prometheus + Thanos Sidecar
     - 优点
         - 架构简单
-        - 只有一份监控数据，最小化存储成本
+        - 只有一份监控数据，最小化存储成本和其他资源开销
     - 缺点 
         - 无监控数据冗余
         - 查询监控数据将给被监控集群带来额外性能损耗
@@ -44,29 +44,31 @@ Prometheus是一款开源的监控和报警工具，专为容器化和云原生�
     - 监控集群（Observer）- Prometheus & Grafana + Thanos Store & Receive
     - 被监控集群（Observee）- Prometheus with Remote Write + Thanos Sidecar & Compactor
     - 优点
-        - 直接从 Thanos Receive 查询监控数据，对被监控集群没有额外性能损耗
+        - 直接从 Thanos Receive 查询监控数据，对被监控集群没有额外性能损耗，（在 0.19 版本，sidecar 没有实现 StoreAPI 前，通过 receive 查询最新的性能数据）
     - 缺点
-        - 每个集群对应一组 Thanos Receive，建议配置副本数量与源集群 Prometheus 副本数量相同
+        - 架构复杂，每个集群对应一组 Thanos Receive，建议配置副本数量与源集群 Prometheus 副本数量相同
         - 监控数据冗余，可以使用 Compactor 对数据进行压缩、聚合历史数据以减少存储成本
 - 第三种监控架构，上图黄色集群及组件
     - 监控集群（Observer）- Prometheus & Grafana + Thanos Store & Receive
-    - 被监控集群（Observee）- Prometheus Agent Mode (Or Prometheus with Remote Write, no additional components)
+    - 被监控集群（Observee）- Prometheus Agent Mode, or Prometheus with Remote Write, no additional components)
     - 优点
-        - 架构简单
+        - 架构简单，使用 Agent Mode 几乎无状态，可以使用除 stateful 之外的其他 deployment，本地存储需求低（除非远程 endpoint 不可用时，本地缓存数据以便重试）
         - 可实现集中告警 - 告警将通过 Thanos Ruler 定义，通过 Thanos Query 查询 Receive 并发送到监控集群的 Alert Manager 实现
     - 缺点 
-        - 不适用分布式告警
-        - 无监控数据冗余
+        - 无监控数据冗余，sidecar、alert、rules 将不可用与 agent mode
 
 ## go-through-
-接下来我们将创建 3 个 EKS 集群，分别对应上图中的蓝色、红色、黄色集群验证 Thanos 相关配置。
+Prometheus Operator 提供 Kubernetes 原生部署和管理 Prometheus 及相关监控组件的功能。该项目的目的是简化和自动配置 Kubernetes 集群基于 Prometheus 的监控堆栈。本文基于 Prometheus Operator 部署作为基础，通过 values 参数文件定制，详细信息参见（[github](https://github.com/prometheus-operator/prometheus-operator)）。接下来我们将创建 3 个 EKS 集群，分别对应上图中的蓝色、红色、黄色集群验证 Thanos 相关配置。
 ### prometheus
 - we will create 3 clusters, `ekscluster1` for observer, `ekscluster2` and `ekscluster3` for observee ([[../../infra/cluster/eks-cluster-with-terraform#sample-create-3x-clusters-for-thanos-poc-]])
-- following 3 addons will be included in each cluster
+- following addons will be included in each cluster
+    - argocd
     - [[git/git-mkdocs/EKS/infra/network/aws-load-balancer-controller#install-with-eksdemo-|aws load balancer controller]] 
     - [[git/git-mkdocs/EKS/infra/storage/ebs-for-eks#install-using-eksdemo-|ebs csi]] 
     - [[git/git-mkdocs/EKS/infra/network/externaldns-for-route53|externaldns-for-route53]] 
-    - `DOMAIN_NAME` should be `environment_name.hosted_zone_name`, for example `thanos.eks1217.aws.panlm.xyz`
+    - metrics-server
+    - cluster-autoscaler
+    - `DOMAIN_NAME` should be `environment_name.hosted_zone_name`, for example `thanos.eks1217.aws.panlm.xyz`. Use it in following lab.
 - get sample yaml 
 ```sh
 git clone https://github.com/panlm/thanos-example.git
@@ -98,6 +100,7 @@ helm repo add prometheus-community https://prometheus-community.github.io/helm-c
 helm repo update
 
 helm show values prometheus-community/kube-prometheus-stack > values_default.yaml
+cat values_default.yaml |grep adminPassword
 ```
 #### observer cluster
 - switch to observer (ekscluster1)
@@ -453,10 +456,13 @@ create-iamserviceaccount ${SA_NAME} ${CLUSTER_NAME} thanos 1
 - [[prometheus#cmd-]]
 - https://github.com/terraform-aws-modules/terraform-aws-eks/issues/2009
 - https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/designs/prometheus-agent.md
-
+- [[../../../../../prometheus-agent|prometheus-agent]]
+- https://p8s.io/docs/operator/install/
 
 ### todo
 - thanos receive router
-- thanos compact component
+- thanos compact component, and crash issue
 - configmap in prometheus 
+- store hpa and query hpa
+    - store startup speed for large history data
 

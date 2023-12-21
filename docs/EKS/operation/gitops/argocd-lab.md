@@ -1,10 +1,8 @@
 ---
 title: argocd
 description: argocd
-chapter: true
-weight: 20
 created: 2022-08-07 19:24:34.481
-last_modified: 2022-08-07 19:24:34.481
+last_modified: 2023-12-21
 tags:
   - gitops/argo
 ---
@@ -127,6 +125,16 @@ argocd app create game2048 --repo https://github.com/panlm/aws-eks-example.git -
 argocd app sync apps
 ```
 
+## install prometheus with customized values
+- [[argocd-sample-prometheus-operator]]
+
+- need customized values put on github or define in argocd Application yaml
 
 ## refer
 - [[argocd-cmd]]
+
+
+
+
+
+

@@ -2,7 +2,7 @@
 title: externaldns-for-route53
 description: 使用 externaldns 组件
 created: 2022-08-04 13:24:34.806
-last_modified: 2023-12-08
+last_modified: 2023-12-18
 tags:
   - kubernetes
   - aws/network/route53
@@ -214,6 +214,10 @@ echo ${AWS_DEFAULT_REGION}
 eksdemo install external-dns -c ${CLUSTER_NAME} 
 ```
 ^a2vlmo
+
+
+## sample
+- https://github.com/panlm/thanos-example/blob/main/POC-template/query/thanos-query-frontend-service.yaml
 
 ## verify
 - create namespace

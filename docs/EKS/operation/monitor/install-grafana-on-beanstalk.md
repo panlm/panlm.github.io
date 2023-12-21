@@ -2,7 +2,7 @@
 title: grafana-install-lab
 description: "在 EC2 / beanstalk / EKS 上安装 grafana "
 created: 2023-02-25 08:35:55.725
-last_modified: 2023-12-07
+last_modified: 2023-12-18
 tags:
   - grafana
 ---
@@ -126,7 +126,10 @@ sudo systemctl status grafana-server
 
 ![install-grafana-on-beanstalk-png-1.png](install-grafana-on-beanstalk-png-1.png)
 
-
+### helm
+```sh
+helm repo add grafana https://grafana.github.io/helm-charts
+```
 
 ## appendix - single pod in beanstalk
 ```sh

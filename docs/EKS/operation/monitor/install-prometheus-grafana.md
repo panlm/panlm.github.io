@@ -2,7 +2,7 @@
 title: install-prometheus-grafana-on-eks
 description: 安装 grafana 和 prometheus
 created: 2023-02-18 21:31:31.678
-last_modified: 2023-12-12
+last_modified: 2023-12-19
 tags:
   - grafana
   - prometheus
@@ -106,8 +106,15 @@ helm upgrade -i -f values-${CLUSTER_NAME}-1.yaml ${DEPLOY_NAME} prometheus-commu
 
 ```
 
+
 - https://github.com/prometheus-operator/prometheus-operator/issues/2918
-- 
+External labels are only attached when data is communicated to the outside so you will see them in:
+- Outgoing alerts (although we do automatically drop the "prometheus_replica" label, so alerts are unique and can be deduplicated by Alertmanager)
+- Remote-read endpoint
+- Remote-write
+- /federate endpoint
+
+
 ### install with thanos
 - refer: [[POC-prometheus-ha-architect-with-thanos#go-through-]]
 

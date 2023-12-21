@@ -2,7 +2,7 @@
 title: metrics-server
 description: EKS 集群中安装 metrics server
 created: 2022-07-04 13:54:12.092
-last_modified: 2022-07-04 13:54:12.092
+last_modified: 2023-12-19
 tags:
   - aws/container/eks
   - kubernetes
@@ -31,13 +31,13 @@ kubectl get deployment metrics-server -n kube-system
 ```sh
 helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
 
-helm upgrade --install metrics-server metrics-server/metrics-server
+helm upgrade --install metrics-server metrics-server/metrics-server -n kube-system
 ```
 
 ## sample
-- [[hpa-horizontal-pod-autoscaler]]
+- [[../../kubernetes/k8s-hpa-horizontal-pod-autoscaler]]
 
-
+**
 
 
 

@@ -1,8 +1,8 @@
 ---
-title: eks-terraform-cluster
+title: Create EKS Cluster with Terraform
 description: 使用 Terraform 创建 EKS 集群
 created: 2023-06-30 15:02:19.833
-last_modified: 2023-12-17
+last_modified: 2023-12-20
 tags:
   - aws/container/eks
   - terraform
@@ -40,7 +40,7 @@ hosted_zone_name    = "eks1206.aws.panlm.xyz" # your Existing Hosted Zone
 eks_admin_role_name = "panlm" # Additional role admin in the cluster 
 ```
 
-- environment
+- build environment
 ```sh
 cd environment
 terraform init
@@ -55,6 +55,9 @@ terraform apply -auto-approve
 ```
 - create ekscluster2 and ekscluster3 from their folder with same commands
 
+- in each eks cluster, will install following addons by argocd. access argocd svc url with default password saved in aws secret manager
+![[../../../git-attachment/eks-cluster-with-terraform-png-1.png]]
+
 ### internal error
 - re-run `terraform apply` if you got following errors
 ```error
@@ -68,7 +71,7 @@ terraform apply -auto-approve
 
 ## refer
 - [[eks-blueprints-blue-green-upgrade]]
-
+- [[../../../../../helm-in-terraform|helm-in-terraform]]
 
 
 
