@@ -701,6 +701,8 @@
       
         
       
+        
+      
     
     
     
@@ -912,7 +914,7 @@
         
   
   <span class="md-ellipsis">
-    eks-terraform-cluster
+    Create EKS Cluster with Terraform
   </span>
   
 
@@ -1559,6 +1561,8 @@
       
         
       
+        
+      
     
     
     
@@ -1588,6 +1592,27 @@
             Logging
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="EKS/operation/logging/POC-loki-for-logging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    loki
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1724,7 +1749,7 @@
         
   
   <span class="md-ellipsis">
-    用 Thanos 扩展 Prometheus 高可用性架构
+    Building Prometheus HA Architect with Thanos
   </span>
   
 
@@ -2232,6 +2257,99 @@
           </ul>
         </nav>
       
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Kubernetes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Kubernetes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="EKS/kubernetes/k8s-hpa-horizontal-pod-autoscaler/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    horizontal pod autoscaler
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="EKS/kubernetes/k8s-topology-spread-constraints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    topology spread constraints
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -3830,6 +3948,8 @@
 - <a href="EKS/operation/gitops/flux-lab/" title="flux-lab">flux-lab</a>: flux<br />
 - <a href="EKS/operation/monitor/install-grafana-on-beanstalk/" title="install-grafana-on-beanstalk">install-grafana-on-beanstalk</a>: 在 EC2 / beanstalk / EKS 上安装 grafana <br />
 - <a href="EKS/operation/monitor/install-prometheus-grafana/" title="install-prometheus-grafana">install-prometheus-grafana</a>: 安装 grafana 和 prometheus<br />
+- <a href="EKS/kubernetes/k8s-hpa-horizontal-pod-autoscaler/" title="k8s-hpa-horizontal-pod-autoscaler">k8s-hpa-horizontal-pod-autoscaler</a>: horizontal pod autoscaler<br />
+- <a href="EKS/kubernetes/k8s-topology-spread-constraints/" title="k8s-topology-spread-constraints">k8s-topology-spread-constraints</a>: topology spread constraints<br />
 - <a href="EKS/infra/compute/karpenter-lab/" title="karpenter-lab">karpenter-lab</a>: 使用 Karpenter 代替 Cluster Autoscaler<br />
 - <a href="EKS/operation/upgrade/kube-no-trouble/" title="kube-no-trouble">kube-no-trouble</a>: kube-no-trouble<br />
 - <a href="EKS/operation/upgrade/kube-state-metrics/" title="kube-state-metrics">kube-state-metrics</a>: kube-state-metrics<br />
@@ -3838,6 +3958,7 @@
 - <a href="EKS/infra/network/nginx-ingress-controller-community-ver/" title="nginx-ingress-controller-community-ver">nginx-ingress-controller-community-ver</a>: 使用 nginx ingress<br />
 - <a href="EKS/operation/upgrade/nginx-ingress-controller-nginx-ver/" title="nginx-ingress-controller-nginx-ver">nginx-ingress-controller-nginx-ver</a>: nginx-ingress-controller-nginx-ver<br />
 - <a href="EKS/operation/upgrade/pluto/" title="pluto">pluto</a>: pluto<br />
+- <a href="EKS/operation/logging/POC-loki-for-logging/" title="POC-loki-for-logging">POC-loki-for-logging</a>: 使用 loki 收集日志<br />
 - <a href="EKS/operation/monitor/POC-prometheus-ha-architect-with-thanos/" title="POC-prometheus-ha-architect-with-thanos">POC-prometheus-ha-architect-with-thanos</a>: Prometheus是一款开源的监控和报警工具，专为容器化和云原生架构的设计，通过基于HTTP的pull模式采集时序数据，提供功能强大的查询语言PromQL，并可视化呈现监控指标与生成报警信息。客户普遍采用其用于 Kubernetes 的监控体系建设。当集群数量较多，监控平台高可用性和可靠性要求高，希望提供全局查询，需要长时间保存历史监控数据等场景下，通常使用 Thanos 扩展 Promethseus 监控架构。Thanos是一套开源组件，构建在 Prometheus 之上，用以解决 Prometheus 在多集群大规模环境下的高可用性、可扩展性限制，具体来说，Thanos 主要通过接收并存储 Prometheus 的多集群数据副本，并提供全局查询和一致性数据访问接口的方式，实现了对于 Prometheus 的可靠性、一致性和可用性保障，从而解决了 Prometheus 单集群在存储、查询和数据备份等方面的扩展性挑战。<br />
 - <a href="EKS/infra/network/self-signed-certificates/" title="self-signed-certificates">self-signed-certificates</a>: 使用自签名证书，用根证书签发或者中间证书签发用于 api gateway<br />
 - <a href="EKS/operation/logging/stream-k8s-control-panel-logs-to-s3/" title="stream-k8s-control-panel-logs-to-s3">stream-k8s-control-panel-logs-to-s3</a>: 目前eks控制平面日志只支持发送到cloudwatch，且在同一个log group中有5种类型6种前缀的log stream的日志，不利于统一查询。且只有audit日志是json格式其他均是单行日志，且字段各不相同。本解决方案提供思路统一保存日志供后续分析处理<br />

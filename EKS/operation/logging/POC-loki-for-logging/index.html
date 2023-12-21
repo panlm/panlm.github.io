@@ -6,15 +6,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="在 firehose 上，处理从 cloudwatch 发送来的日志">
+        <meta name="description" content="使用 loki 收集日志">
       
       
       
       
-        <link rel="prev" href="../POC-loki-for-logging/">
+        <link rel="prev" href="../../gitops/flux-lab/">
       
       
-        <link rel="next" href="../export-cloudwatch-log-group-to-s3/">
+        <link rel="next" href="../cloudwatch-to-firehose-python/">
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>cloudwatch-to-firehose-python - panlm</title>
+        <title>loki - panlm</title>
       
     
     
@@ -97,7 +97,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#cloudwatch-to-firehose-python" class="md-skip">
+        <a href="#loki" class="md-skip">
           Skip to content
         </a>
       
@@ -132,7 +132,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              cloudwatch-to-firehose-python
+              loki
             
           </span>
         </div>
@@ -1478,27 +1478,6 @@
                 
   
   
-  
-  
-    <li class="md-nav__item">
-      <a href="../POC-loki-for-logging/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    loki
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
     
   
   
@@ -1515,7 +1494,7 @@
           
   
   <span class="md-ellipsis">
-    cloudwatch-to-firehose-python
+    loki
   </span>
   
 
@@ -1526,7 +1505,7 @@
         
   
   <span class="md-ellipsis">
-    cloudwatch-to-firehose-python
+    loki
   </span>
   
 
@@ -1548,36 +1527,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#create" class="md-nav__link">
+  <a href="#diagram" class="md-nav__link">
     <span class="md-ellipsis">
-      create
+      diagram
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#revision" class="md-nav__link">
+  <a href="#go-through" class="md-nav__link">
     <span class="md-ellipsis">
-      revision
+      go-through
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-party-python-lib" class="md-nav__link">
+  <a href="#dashboard-" class="md-nav__link">
     <span class="md-ellipsis">
-      3-party python lib
+      dashboard-
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#layer-version" class="md-nav__link">
+  <a href="#sample" class="md-nav__link">
     <span class="md-ellipsis">
-      layer version
+      sample
     </span>
   </a>
   
@@ -1587,6 +1566,27 @@
   
 </nav>
       
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../cloudwatch-to-firehose-python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cloudwatch-to-firehose-python
+  </span>
+  
+
+      </a>
     </li>
   
 
@@ -3752,36 +3752,36 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#create" class="md-nav__link">
+  <a href="#diagram" class="md-nav__link">
     <span class="md-ellipsis">
-      create
+      diagram
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#revision" class="md-nav__link">
+  <a href="#go-through" class="md-nav__link">
     <span class="md-ellipsis">
-      revision
+      go-through
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#3-party-python-lib" class="md-nav__link">
+  <a href="#dashboard-" class="md-nav__link">
     <span class="md-ellipsis">
-      3-party python lib
+      dashboard-
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#layer-version" class="md-nav__link">
+  <a href="#sample" class="md-nav__link">
     <span class="md-ellipsis">
-      layer version
+      sample
     </span>
   </a>
   
@@ -3806,25 +3806,7 @@
     
     
     
-      <a href="../../../../tags/#awsserverlesslambda" class="md-tag">aws/serverless/lambda</a>
-    
-  
-    
-    
-    
-      <a href="../../../../tags/#awsmgmtcloudwatch" class="md-tag">aws/mgmt/cloudwatch</a>
-    
-  
-    
-    
-    
-      <a href="../../../../tags/#awsanalyticskinesisfirehose" class="md-tag">aws/analytics/kinesis/firehose</a>
-    
-  
-    
-    
-    
-      <a href="../../../../tags/#python" class="md-tag">python</a>
+      <a href="../../../../tags/#grafanaloki" class="md-tag">grafana/loki</a>
     
   
 </nav>
@@ -3834,28 +3816,77 @@
 <blockquote>
 <p>[!WARNING] This is a github note</p>
 </blockquote>
-<h1 id="cloudwatch-to-firehose-python">cloudwatch-to-firehose-python<a class="headerlink" href="#cloudwatch-to-firehose-python" title="Permanent link">&para;</a></h1>
-<h2 id="create">create<a class="headerlink" href="#create" title="Permanent link">&para;</a></h2>
-<p>source from here</p>
-<ol>
-<li>create from blueprint <code>Process CloudWatch logs sent to Kinesis Firehose</code><br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>Process CloudWatch logs sent to Kinesis Firehose
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>An Amazon Kinesis Firehose stream processor that extracts individual log events from records sent by Cloudwatch Logs subscription filters.
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>python3.8 · kinesis-firehose · cloudwatch-logs · splunk
-</code></pre></div></li>
-</ol>
-<h2 id="revision">revision<a class="headerlink" href="#revision" title="Permanent link">&para;</a></h2>
-<p><a class="glightbox" href="../lambda_function.py" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="lambda_function.py" src="../lambda_function.py" title="lambda_function.py" /></a></p>
-<p>download from <a href="../lambda_function.py">here</a></p>
-<h2 id="3-party-python-lib">3-party python lib<a class="headerlink" href="#3-party-python-lib" title="Permanent link">&para;</a></h2>
-<p><a class="glightbox" href="../package.zip" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="package.zip" src="../package.zip" title="package.zip" /></a></p>
-<p>download from <a href="../package.zip">here</a></p>
-<h2 id="layer-version">layer version<a class="headerlink" href="#layer-version" title="Permanent link">&para;</a></h2>
+<h1 id="loki">loki<a class="headerlink" href="#loki" title="Permanent link">&para;</a></h1>
+<h2 id="diagram">diagram<a class="headerlink" href="#diagram" title="Permanent link">&para;</a></h2>
+<p><a class="glightbox" href="../../../../git-attachment/POC-loki-for-logging-png-1.png" data-type="image" data-width="100%" data-height="auto" data-desc-position="bottom"><img alt="500" src="../../../../git-attachment/POC-loki-for-logging-png-1.png" title="500" /></a></p>
+<h2 id="go-through">go-through<a class="headerlink" href="#go-through" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../../../lambda-cmd#add-layer-to-lambda" title="lambda-cmd">lambda-cmd</a></li>
+<li>
+<p>install with helm<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>grafana<span class="w"> </span>https://grafana.github.io/helm-charts
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>helm<span class="w"> </span>upgrade<span class="w"> </span>-i<span class="w"> </span>-f<span class="w"> </span>minio.yaml<span class="w"> </span>loki<span class="w"> </span>grafana/loki<span class="w"> </span>-n<span class="w"> </span>loki
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>helm<span class="w"> </span>upgrade<span class="w"> </span>-i<span class="w"> </span>promtail<span class="w"> </span>grafana/promtail<span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">NAMESPACE</span><span class="si">}</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># list all repo</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>helm<span class="w"> </span>search<span class="w"> </span>repo<span class="w"> </span>grafana
+</code></pre></div></p>
+</li>
+<li>
+<p>create sa for loki<br />
+<a href="../../../../CLI/linux/eksctl/#func-create-iamserviceaccount-" title="git/git-mkdocs/CLI/linux/eksctl">git/git-mkdocs/CLI/linux/eksctl</a> <br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">CLUSTER_NAME_1</span><span class="o">=</span>ekscluster1
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">NAMESPACE</span><span class="o">=</span>loki-stack
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nv">LOKI_SA_NAME</span><span class="o">=</span>loki-sa
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span>us-east-2
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nv">LOKI_BUCKET_NAME</span><span class="o">=</span>store-loki-eks1217
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>create-iamserviceaccount<span class="w"> </span>-s<span class="w"> </span><span class="si">${</span><span class="nv">LOKI_SA_NAME</span><span class="si">}</span><span class="w"> </span>-c<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME_1</span><span class="si">}</span><span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">NAMESPACE</span><span class="si">}</span><span class="w"> </span>-r<span class="w"> </span><span class="m">0</span>
+</code></pre></div></p>
+</li>
+<li>values yaml file for install<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>envsubst<span class="w"> </span>&gt;<span class="w"> </span>loki-1.yaml<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="s">loki:</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="s">  auth_enabled: false</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="s">  storage:</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="s">    bucketNames:</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="s">      chunks: ${LOKI_BUCKET_NAME}</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="s">      ruler: ${LOKI_BUCKET_NAME}</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="s">      admin: ${LOKI_BUCKET_NAME}</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="s">    type: s3</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="s">    s3:</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="s">      region: ${AWS_DEFAULT_REGION}</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="s">      insecure: false</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="s">      s3ForcePathStyle: false</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="s">serviceAccount:</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="s">  create: false</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="s">  name: ${LOKI_SA_NAME}</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="s">write:</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="s">  replicas: 2</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="s">read:</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="s">  replicas: 1</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="s">gateway: </span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="s">  enabled: true</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="s">  replicas: 2</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="s">EOF</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>helm<span class="w"> </span>upgrade<span class="w"> </span>-i<span class="w"> </span>-f<span class="w"> </span>loki-1.yaml<span class="w"> </span>loki<span class="w"> </span>grafana/loki<span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">NAMESPACE</span><span class="si">}</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>helm<span class="w"> </span>upgrade<span class="w"> </span>-i<span class="w"> </span>promtail<span class="w"> </span>grafana/promtail<span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">NAMESPACE</span><span class="si">}</span>
+</code></pre></div></li>
 </ul>
+<h2 id="dashboard-">dashboard-<a class="headerlink" href="#dashboard-" title="Permanent link">&para;</a></h2>
+<ul>
+<li>12019 - quick search - good for try<ul>
+<li>change to <code>{namespace="$namespace", pod=~"$pod"} |~ "$search"</code> in Logs Panel definition</li>
+</ul>
+</li>
+<li>loki-stack will have some predefined dashboard - <a href="https://artifacthub.io/packages/helm/grafana/loki-stack">https://artifacthub.io/packages/helm/grafana/loki-stack</a> </li>
+</ul>
+<h2 id="sample">sample<a class="headerlink" href="#sample" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nt">loki</span><span class="p">:</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="nt">auth_enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">false</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nt">minio</span><span class="p">:</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+</code></pre></div>
 
 
 
@@ -3878,7 +3909,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-11-25T12:10:30+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-11-25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-12-21T23:30:11+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-21</span>
   </span>
 
     
@@ -3888,7 +3919,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-01-02T13:44:52+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-01-02</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-12-21T23:30:11+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-21</span>
   </span>
 
     
