@@ -1,15 +1,15 @@
 ---
-title: setup cloud9 for eks
+title: Setup Cloud9 for EKS
 description: 使用 cloud9 作为实验环境
 created: 2022-05-21 12:46:05.435
-last_modified: 2023-12-11
+last_modified: 2023-12-24
 tags:
   - aws/container/eks
   - aws/cloud9
 ---
 > [!WARNING] This is a github note
 
-# setup cloud9 for eks
+# Setup Cloud9 for EKS
 ## spin-up-a-cloud9-instance-in-your-region
 -  点击[这里](https://console.aws.amazon.com/cloudshell) 运行 cloudshell，执行代码块创建 cloud9 测试环境 (open cloudshell, and then execute following code to create cloud9 environment)
 ```sh
@@ -47,10 +47,7 @@ fi
 
 ```
 
-^xzcvy9
-
 - 点击输出的 URL 链接，打开 cloud9 测试环境 (click the URL at the bottom to open cloud9 environment)
-
 ![setup-cloud9-for-eks-1.png](../git-attachment/setup-cloud9-for-eks-1.png)
 
 ## using internal proxy or not

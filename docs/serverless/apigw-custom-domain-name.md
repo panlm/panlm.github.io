@@ -1,14 +1,14 @@
 ---
-title: apigw-custom-domain-name
+title: Custom Domain Name in API Gateway
 description: 为私有 api 创建定制域名
 created: 2023-03-07 23:01:19.519
-last_modified: 2023-03-07 23:01:19.519
+last_modified: 2023-12-24
 tags:
   - aws/serverless/api-gateway
 ---
 > [!WARNING] This is a github note
 
-# apigw-custom-domain-name
+# Custom Domain Name in API Gateway
 
 ## for private api 
 - 在 acm 中发布证书 `*.api.aws.panlm.xyz`
@@ -46,7 +46,7 @@ tags:
 - https://github.com/aws-samples/serverless-patterns/tree/main/public-alb-private-api-terraform
 
 ## for regional api 
-- 如果该 api 是 regional ，创建定制域名，记录下定制域名配置中的 `API Gateway domain name`，不是 api stage 页面中的域名，参照 [apigw-regional-api-access-from-vpc](apigw-regional-api-access-from-vpc.md) or [hugo]({{< ref apigw-regional-api-access-from-vpc >}})
+- 如果该 api 是 regional ，创建定制域名，记录下定制域名配置中的 `API Gateway domain name`，不是 api stage 页面中的域名，参照 [apigw-regional-api-access-from-vpc](apigw-regional-api-access-from-vpc.md) 
 - 使用 route53 alias（或 cname） 将定制域名指向 `API Gateway domain name`
 - 访问定制域名，浏览器将显示证书有效
 - 如果定制域名指向 api 的 url （在 api stage 页面中），将遇到证书验证不通过的问题

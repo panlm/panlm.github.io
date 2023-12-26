@@ -2,7 +2,7 @@
 title: create standard vpc for lab in china region
 description: 创建实验环境所需要的 vpc ，并且支持直接 attach 到 tgw 方便网络访问
 created: 2022-04-10 22:12:29.404
-last_modified: 2023-10-29 13:41:12.359
+last_modified: 2023-12-24
 tags:
   - aws/network/vpc
   - aws/mgmt/cloudformation
@@ -115,8 +115,7 @@ VPC_ID=$(aws cloudformation --region ${AWS_REGION} describe-stacks --stack-name 
 ```
 
 ## (option) create cloud9 in target subnet 
-refer: [[setup-cloud9-for-eks#^xzcvy9]] or [hugo-link]({{< ref "setup-cloud9-for-eks#spin-up-a-cloud9-instance-in-your-region" >}}) 
-
+- refer: [[setup-cloud9-for-eks#spin-up-a-cloud9-instance-in-your-region]] 
 ```sh
 # name=<give your cloud9 a name>
 datestring=$(date +%Y%m%d-%H%M)
@@ -152,6 +151,7 @@ else
 fi
 
 ```
+
 
 ## description in this template
 

@@ -2,7 +2,7 @@
 title: cloud9
 description: cloud9 related commands
 created: 2022-07-01 09:18:29.572
-last_modified: 2023-12-07
+last_modified: 2023-12-23
 tags:
   - aws/cloud9
   - aws/cmd
@@ -11,10 +11,7 @@ tags:
 
 # cloud9-cmd
 ## spin-up-a-cloud9-instance-in-your-region
-
-![[../../cloud9/setup-cloud9-for-eks#^xzcvy9]]
-
-refer: [[../../cloud9/setup-cloud9-for-eks#spin-up-a-cloud9-instance-in-your-region]] 
+- refer: [[../../cloud9/setup-cloud9-for-eks#spin-up-a-cloud9-instance-in-your-region]] 
 
 ```sh
 aws cloud9 describe-environments
@@ -22,14 +19,12 @@ aws cloud9 describe-environments
 ```
 
 ## disable aws credential management
-
 ```sh
 aws cloud9 update-environment  --environment-id $C9_PID --managed-credentials-action DISABLE
 rm -vf ${HOME}/.aws/credentials
 ```
 
 ## get subnet id and vpc id from cloud9 instance
-
 ```sh
 # get cloud9 vpc
 C9_INST_ID=$(curl http://169.254.169.254/1.0/meta-data/instance-id 2>/dev/null)
@@ -62,6 +57,9 @@ aws cloud9 create-environment-membership \
     --permissions read-write
 ```
 
+```
+Value 'arn:aws:sts:::user/panlm' at 'userArn' failed to satisfy constraint: Member must satisfy regular expression pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):(iam|sts)::\d+:(root|(user\/[\w+=/:,.@-]{1,64}|federated-user\/[\w+=/:,.@-]{2,32}|assumed-role\/[\w+=:,.@-]{1,64}\/[\w+=,.@-]{1,64}))$
+```
 
 ## old
 

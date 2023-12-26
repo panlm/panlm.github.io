@@ -1,25 +1,19 @@
 ---
-title: rescue-ec2-instance
-description: 
+title: Rescue EC2 Instance
+description: 恢复 EC2 实例步骤
 created: 2023-01-20 10:54:51.597
-last_modified: 2023-10-22 12:41:09.801
+last_modified: 2023-12-24
 tags:
   - aws/compute/ec2
 ---
-
-```ad-attention
-title: This is a github note
-```
-
-# rescue-ec2-instance
+> [!WARNING] This is a github note
+# Rescue EC2 Instance
 
 - https://aws.amazon.com/premiumsupport/knowledge-center/ec2-instance-boot-issues/
 
 ![[../git-attachment/rescue-ec2-instance-png-1.png]]
 
-
 ![[../git-attachment/rescue-ec2-instance-png-2.png]]
-
 
 ## ssh to rescue
 

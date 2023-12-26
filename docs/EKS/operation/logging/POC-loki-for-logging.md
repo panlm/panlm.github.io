@@ -1,8 +1,8 @@
 ---
-title: loki
+title: Using Loki for Logging
 description: 使用 loki 收集日志
 created: 2023-12-18 14:09:49.975
-last_modified: 2023-12-19
+last_modified: 2023-12-24
 tags:
   - grafana/loki
 ---

@@ -2,7 +2,7 @@
 title: ssm
 description: 常用命令
 created: 2022-12-06 14:58:34.056
-last_modified: 2023-12-09
+last_modified: 2023-12-21
 tags:
   - aws/cmd
   - aws/mgmt/systems-manager
@@ -28,7 +28,7 @@ INST_ID=
 aws ssm start-session --target  ${INST_ID} --region us-east-1
 ```
 
-### prot-forward
+### port forward
 - https://aws.amazon.com/blogs/aws/new-port-forwarding-using-aws-system-manager-sessions-manager/
 
 ```sh
@@ -43,7 +43,7 @@ aws ssm start-session --target ${INST_ID} \
 
 ```
 
-### prot-forward-to-remote-host
+### port forward to remote host
 ```sh
 INST_ID=
 REMOTE_HOST=
@@ -81,25 +81,21 @@ done
 
 
 ## filter-inventory-
-
 ```sh
 aws ssm get-inventory --filter Key="Custom:DiskUtilization.Size(GB)",Values=100,Type=Equal
-
 aws ssm get-inventory --filter Key=Custom:DiskUtilization.Use%,Values=60,Type=GreaterThan
 
 ```
 
 
 ## get parameter
-
 - [[../../EKS/infra/cluster/eks-public-access-cluster]]
 - [[ssm-public-parameters]]
 
 ## join domain sample
+??? note "right-click & open-in-new-tab: "
+    ![[POC-mig-filezilla-to-transfer-family#join-domain-]]
 
-![[POC-mig-filezilla-to-transfer-family#^5yhhfi]]
-
-refer: [[POC-mig-filezilla-to-transfer-family#join-domain-]]
 
 - example
 ```sh

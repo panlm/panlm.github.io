@@ -1,14 +1,13 @@
 ---
-title: apigw-get-sourceip
+title: Get Source IP in API Gateway
 description: 获取客户端源地址
 created: 2023-03-11 22:57:11.866
-last_modified: 2023-03-11 22:57:11.866
+last_modified: 2023-12-24
 tags:
   - aws/serverless/api-gateway
 ---
 > [!WARNING] This is a github note
-
-# apigw-get-sourceip
+# Get Source IP in API Gateway
 
 ## client ip 
 - create function nodejs 18x

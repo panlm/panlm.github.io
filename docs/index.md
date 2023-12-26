@@ -106,8 +106,10 @@ refer: [[EKS/index]]
 - [[file-storage-gateway-lab]]: create file storage gateway from cli
 - [[github-page-howto]]: github-page-howto
 - [[global-sso-and-china-aws-accounts]]: 使用 global sso 登录中国区域 aws 账号
-- [[rescue-ec2-instance]]: 
+- [[lab-create-cloudwatch-dashboard-cpu-metric]]: 快速创建 cloudwatch dashboard
+- [[rescue-ec2-instance]]: 恢复 EC2 实例步骤
 - [[script-api-resource-method]]: 每个 api 的每个 resource 的每个 method 都需要单独通过命令行启用“tlsConfig/insecureSkipVerification”，通过这个脚本简化工作
+- [[script-convert-mp3-to-text]]: script-convert-mp3-to-text
 <-->
 
 ### 2.6 CLI
@@ -118,6 +120,7 @@ refer: [[EKS/index]]
 - [[acm-cmd]]: 常用命令
 - [[apigw-cmd]]: api-gateway
 - [[assume-tool]]: assume 工具，可以以另一个账号角色，快速打开 web console，或者执行命令
+- [[aws-ip-range]]: 
 - [[cloud9-cmd]]: cloud9 related commands
 - [[cloudformation-cmd]]: 常用命令
 - [[cloudwatch-cmd]]: 常用命令
@@ -134,7 +137,6 @@ refer: [[EKS/index]]
 - [[iam-cmd]]: 常用命令
 - [[iptables]]: iptables
 - [[jq-cmd]]: 常用命令
-- [[lab-create-cloudwatch-dashboard-cpu-metric]]: 快速创建 cloudwatch dashboard
 - [[linux-cmd]]: 常用命令
 - [[powershell]]: 常用命令
 - [[rds-cmd]]: 常用命令
@@ -144,7 +146,7 @@ refer: [[EKS/index]]
 - [[sns-cmd]]: 常用命令
 - [[sqs-cmd]]: 常用命令
 - [[ssm-cmd]]: 常用命令
-- [[transcribe-cmd]]: script-convert-mp3-to-text
+- [[terraform-cmd]]: 
 - [[vpc-cmd]]: 常用命令
 <-->
 

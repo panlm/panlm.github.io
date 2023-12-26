@@ -2,7 +2,7 @@
 title: externaldns-for-route53
 description: 使用 externaldns 组件
 created: 2022-08-04 13:24:34.806
-last_modified: 2023-12-18
+last_modified: 2023-12-24
 tags:
   - kubernetes
   - aws/network/route53
@@ -40,12 +40,9 @@ function create-host-zone () {
     ###
 }
 ```
-^fgvqjb
 
 - refer: [[../../../CLI/awscli/route53-cmd#func-create-ns-record-]] 
 - refer: [[route53-subdomian]]
-
-### private hosted zone
 - you also could create private hosted zone and associate to your vpc. plugin will insert/update record in your private hosted zone. ([link](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-private.html))
 
 ## install 
