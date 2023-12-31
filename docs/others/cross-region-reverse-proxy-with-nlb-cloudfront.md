@@ -7,7 +7,7 @@ tags:
   - aws/network/nlb
   - aws/network/cloudfront
   - aws/china
-  - myblogs
+status: myblog
 ---
 > [!WARNING] This is a github note
 # Cross Region Reverse Proxy with NLB and Cloudfront

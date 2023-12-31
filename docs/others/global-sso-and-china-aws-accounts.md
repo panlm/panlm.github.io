@@ -5,9 +5,7 @@ created: 2023-09-26 11:04:50.392
 last_modified: 2023-12-31
 tags:
   - aws/security/identity-center
-  - myblogs
-status:
-  - myblog
+status: myblog
 ---
 > [!WARNING] This is a github note
 

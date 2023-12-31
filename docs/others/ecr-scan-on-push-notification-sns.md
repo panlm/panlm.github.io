@@ -6,7 +6,7 @@ last_modified: 2023-12-31
 tags:
   - aws/container/ecr
   - aws/integration/sns
-  - myblogs
+status: myblog
 ---
 > [!WARNING] This is a github note
 # Enable scan on push in ECR and send notification to SNS

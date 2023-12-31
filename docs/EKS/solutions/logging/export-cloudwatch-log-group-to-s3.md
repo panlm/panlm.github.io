@@ -6,7 +6,7 @@ last_modified: 2023-12-31
 tags:
   - aws/mgmt/cloudwatch
   - aws/storage/s3
-  - myblogs
+status: myblog
 ---
 > [!WARNING] This is a github note
 

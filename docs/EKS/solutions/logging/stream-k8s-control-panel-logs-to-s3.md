@@ -8,7 +8,7 @@ tags:
   - aws/analytics/kinesis/firehose
   - aws/storage/s3
   - aws/analytics/glue/databrew
-  - myblogs
+status: myblog
 ---
 > [!WARNING] This is a github note
 

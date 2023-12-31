@@ -1,11 +1,11 @@
 ---
 last_modified: 2023-12-31
-number headings: first-level 1, max 3, 1, auto
+number headings: first-level 2, max 3, 1.1, auto
 ---
 > [!WARNING] This is a github note
 
-# 1 EKS
-## 1.1 cluster
+# EKS
+## 1 cluster 
 ```expander
 (path:git/git-mkdocs/eks/cluster file:.md)
 - [$frontmatter:title]($filename): $frontmatter:description
@@ -18,7 +18,7 @@ number headings: first-level 1, max 3, 1, auto
 - [EKS Upgrade Procedure](eks-upgrade-procedure): EKS 集群升级
 <-->
 
-## 1.2 kubernetes
+## 2 kubernetes
 ```expander
 (path:git/git-mkdocs/eks/kubernetes file:.md)
 - [$frontmatter:title]($filename): $frontmatter:description
@@ -27,7 +27,7 @@ number headings: first-level 1, max 3, 1, auto
 - [topology spread constraints](k8s-topology-spread-constraints): topology spread constraints
 <-->
 
-## 1.3 solutions
+## 3 solutions
 ```expander
 ( path:git/git-mkdocs/eks/solutions file:.md )
 - [$frontmatter:title]($filename): $frontmatter:description
@@ -47,7 +47,7 @@ number headings: first-level 1, max 3, 1, auto
 - [stream-k8s-control-panel-logs-to-s3](stream-k8s-control-panel-logs-to-s3): 目前eks控制平面日志只支持发送到cloudwatch，且在同一个log group中有5种类型6种前缀的log stream的日志，不利于统一查询。且只有audit日志是json格式其他均是单行日志，且字段各不相同。本解决方案提供思路统一保存日志供后续分析处理
 <-->
 
-## 1.4 addons 
+## 4 addons 
 ```expander
 (file:.md path:git/git-mkdocs/eks/addons) 
 - [$frontmatter:title]($filename): $frontmatter:description

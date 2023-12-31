@@ -1,4 +1,7 @@
 nav:
+  - ... | *terraform*
   - ... | *public*
   - ... | *private*
+  - ... | *upgrade*
+  - ... | *addons*
   - ...
