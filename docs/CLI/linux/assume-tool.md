@@ -2,7 +2,7 @@
 title: assume-tool
 description: assume 工具，可以以另一个账号角色，快速打开 web console，或者执行命令
 created: 2023-09-15 09:40:01.442
-last_modified: 2023-12-16
+last_modified: 2023-12-23
 tags:
   - cmd
   - aws/security/iam

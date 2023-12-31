@@ -72,11 +72,11 @@ aws cloudwatch get-metric-statistics \
 
 ## export task
 
-- [[git/git-mkdocs/EKS/operation/logging/export-cloudwatch-log-group-to-s3]]
+- [[../../EKS/solutions/logging/export-cloudwatch-log-group-to-s3]]
 
 ## subscription firehose
 
-- [[git/git-mkdocs/EKS/operation/logging/stream-k8s-control-panel-logs-to-s3]]
+- [[../../EKS/solutions/logging/stream-k8s-control-panel-logs-to-s3]]
 
 ## log-insights
 

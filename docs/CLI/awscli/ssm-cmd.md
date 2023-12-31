@@ -89,7 +89,7 @@ aws ssm get-inventory --filter Key=Custom:DiskUtilization.Use%,Values=60,Type=Gr
 
 
 ## get parameter
-- [[../../EKS/infra/cluster/eks-public-access-cluster]]
+- [[../../EKS/cluster/eks-public-access-cluster]]
 - [[ssm-public-parameters]]
 
 ## join domain sample

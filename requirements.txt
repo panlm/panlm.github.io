@@ -13,7 +13,7 @@ mkdocs-callouts
 mkdocs-meta-descriptions-plugin
 mkdocs-glightbox
 mkdocs-exclude-tagged-files
-
+mkdocs-pagetree-plugin
 #mkdocs-section-index
 #obsidiantools
 #pyvis

@@ -2,7 +2,7 @@
 title: func-create-sg.sh
 description: 
 created: 2023-12-10 13:51:39.632
-last_modified: 2023-12-10
+last_modified: 2023-12-13
 tags:
   - aws/cmd
   - bash/function

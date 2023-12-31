@@ -11,7 +11,7 @@ tags:
 # route53-cmd
 ## create hosted zone
 ??? note "right-click & open-in-new-tab: "
-    ![[../../EKS/infra/network/externaldns-for-route53#func-setup-hosted-zone-]]
+    ![[../../EKS/addons/externaldns-for-route53#func-setup-hosted-zone-]]
 
 ## func-create-ns-record-
 - create host zone in your child account and get NS (previous chapter)

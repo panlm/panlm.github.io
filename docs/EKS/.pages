@@ -1,5 +1,8 @@
 title: EKS
 nav:
+  - cluster
+  - addons
+  - solutions
   - ...
   - ... | *kubernetes*
 

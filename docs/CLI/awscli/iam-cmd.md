@@ -72,7 +72,7 @@ EOF
 
 ### create role for firehose
 
-- [[../../EKS/operation/logging/stream-k8s-control-panel-logs-to-s3#lambda]]
+- [[../../EKS/solutions/logging/stream-k8s-control-panel-logs-to-s3#lambda]]
 
 ### create role for api gateway
 

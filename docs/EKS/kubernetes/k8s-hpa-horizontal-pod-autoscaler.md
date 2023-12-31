@@ -2,7 +2,7 @@
 title: horizontal pod autoscaler
 description: horizontal pod autoscaler
 created: 2022-05-17 15:41:26.222
-last_modified: 2023-12-20
+last_modified: 2023-12-22
 tags:
   - kubernetes
 ---

@@ -63,7 +63,7 @@ done
 
 ^d4lka9
 
-another example: [[../../EKS/infra/storage/efs-for-eks#^mgh326]] 
+another example: [[../../EKS/addons/efs-for-eks#^mgh326]] 
 
 
 

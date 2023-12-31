@@ -2,11 +2,12 @@
 title: Cross Region Reverse Proxy with NLB and Cloudfront
 description: 跨区域的 Layer 4 反向代理，并使用 nlb + cloudfront，考察证书使用需求
 created: 2023-10-09 11:23:34.877
-last_modified: 2023-12-24
+last_modified: 2023-12-31
 tags:
   - aws/network/nlb
   - aws/network/cloudfront
   - aws/china
+  - myblogs
 ---
 > [!WARNING] This is a github note
 # Cross Region Reverse Proxy with NLB and Cloudfront
@@ -25,7 +26,7 @@ CN_DOMAIN_NAME=poc1010.aws.panlm.xyz # for china region
 ```
 
 ??? note "right-click & open-in-new-tab: "
-    ![[../EKS/infra/network/externaldns-for-route53#func-setup-hosted-zone-]]
+    ![[../EKS/addons/externaldns-for-route53#func-setup-hosted-zone-]]
 
 ### eks cluster
 - create eks cluster (refer: [[../CLI/linux/eksdemo#create eks cluster-]])

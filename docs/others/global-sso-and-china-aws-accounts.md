@@ -2,9 +2,12 @@
 title: Using Global SSO to Login China AWS Accounts
 description: 使用 global sso 登录中国区域 aws 账号
 created: 2023-09-26 11:04:50.392
-last_modified: 2023-12-24
+last_modified: 2023-12-31
 tags:
   - aws/security/identity-center
+  - myblogs
+status:
+  - myblog
 ---
 > [!WARNING] This is a github note
 

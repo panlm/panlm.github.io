@@ -35,7 +35,8 @@ theme:
         - navigation.top
         - navigation.tabs
         - navigation.tabs.sticky
-        #- navigation.expand
+        # - navigation.sections
+        # - navigation.expand # auto expand folder in navi
         - search.suggest
         - search.highlight
         - toc.follow
@@ -101,6 +102,7 @@ plugins:
   - awesome-pages
   - tags:
       tags_file: tags.md
+  - pagetree
   - glightbox:
       touchNavigation: false
       loop: false

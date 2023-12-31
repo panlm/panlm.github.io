@@ -1,14 +1,14 @@
 ---
-title: file-storage-gateway-lab
+title: Storage File Gateway
 description: create file storage gateway from cli
 created: 2022-09-16 13:40:22.702
-last_modified: 2023-12-03
+last_modified: 2023-12-24
 tags:
   - aws/storage/storage-gateway
 ---
 > [!WARNING] This is a github note
 
-# file-gateway-lab
+# Storage File Gateway 
 ## prepare
 - create a cloud9 desktop for this lab
 - ensure you have enough privilege to create resources
