@@ -2,7 +2,7 @@
 title: Create EKS Cluster with Terraform
 description: 使用 Terraform 创建 EKS 集群
 created: 2023-06-30 15:02:19.833
-last_modified: 2023-12-24
+last_modified: 2024-01-03
 tags:
   - aws/container/eks
   - terraform
@@ -11,6 +11,7 @@ tags:
 
 # Create EKS Cluster with Terraform
 ## install terraform
+- this step has been included in [[../../cloud9/setup-cloud9-for-eks|setup-cloud9-for-eks]]
 ```sh
 sudo yum install -y yum-utils shadow-utils
 sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
@@ -24,7 +25,7 @@ git clone https://github.com/panlm/eks-blueprints-clusters.git
 cd eks-blueprints-clusters/multi-cluster-thanos
 ```
 
-- execute function to create an existed host zone ([[../addons/externaldns-for-route53#func-setup-hosted-zone-]])
+- execute function to create an existed host zone ([[../addons/externaldns-for-route53#func-create-hosted-zone-]])
 ```sh
 DOMAIN_NAME=eks1224.aws.panlm.xyz
 create-host-zone ${DOMAIN_NAME}

@@ -1,8 +1,8 @@
 title: EKS
 nav:
+  - index.md
   - cluster
   - addons
   - solutions
-  - ...
-  - ... | *kubernetes*
+  - kubernetes
 

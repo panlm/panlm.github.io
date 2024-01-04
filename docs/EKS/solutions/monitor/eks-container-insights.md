@@ -11,13 +11,18 @@ tags:
 
 # EKS Container Insights
 ## install
+### using addons
+- https://docs.amazonaws.cn/en_us/AmazonCloudWatch/latest/monitoring/Container-Insights-setup-EKS-addon.html
+- it consists: 
+    - [[../../addons/aws-for-fluent-bit]]
+    - cloudwatch agent
+
 ### from CLI
 1. replace 2 service accounts with [CloudWatchAgentServerPolicy](https://docs.aws.amazon.com/AmazonCloudWatch/latest/monitoring/Container-Insights-prerequisites.htm)
 ```sh
 CLUSTER_NAME=ekscluster1
 export AWS_DEFAULT_REGION=us-east-2
 eksctl utils associate-iam-oidc-provider --cluster ${CLUSTER_NAME} --approve
-
 ```
 
 ```sh
@@ -63,10 +68,6 @@ k get po -n amazon-cloudwatch
 if you do 2 before 1, than need
 - delete pods which use these service account
 - check cloudtrail for "AccessDeny" events
-
-### using chart
-- https://github.com/aws/eks-charts/blob/master/stable/aws-for-fluent-bit/README.md
-- [[../../addons/aws-for-fluent-bit]]
 
 ## check pod / deployment log
 - https://www.eksworkshop.com/intermediate/250_cloudwatch_container_insights/viewlogs/

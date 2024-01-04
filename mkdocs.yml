@@ -110,7 +110,7 @@ plugins:
       draggable: false
   - mkdocs_exclude_tagged_files:
       tags_to_exclude: ["panlm", "awscorp"]
-#  - section-index
+  # - section-index
 
 
 

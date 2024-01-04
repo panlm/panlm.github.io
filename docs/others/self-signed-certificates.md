@@ -1,19 +1,13 @@
 ---
 title: self-signed-certificates
 description: 使用自签名证书，用根证书签发或者中间证书签发用于 api gateway
-chapter: true
-weight: 2
 created: 2022-05-17 15:49:16.687
-last_modified: 2023-10-21 11:50:40.440
+last_modified: 2024-01-02
 tags:
   - aws/security/acm
   - aws/container/eks
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # self-signed-certificates
 
@@ -159,4 +153,5 @@ alb.ingress.kubernetes.io/certificate-arn: arn:aws:acm:us-east-1:xxxxxx:certific
 
 - works for api gateway and alb
 - [[acm-issue-certificates]]
+- [[../../../aws_signing_helper|aws_signing_helper]]
 

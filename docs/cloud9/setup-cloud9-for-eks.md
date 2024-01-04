@@ -2,7 +2,8 @@
 title: Setup Cloud9 for EKS
 description: 使用 cloud9 作为实验环境
 created: 2022-05-21 12:46:05.435
-last_modified: 2023-12-24
+last_modified: 2024-01-01
+status: myblog
 tags:
   - aws/container/eks
   - aws/cloud9
@@ -10,6 +11,8 @@ tags:
 > [!WARNING] This is a github note
 
 # Setup Cloud9 for EKS
+快速设置 cloud9 用于日常测试环境搭建，包含从 cloudshell 中创建 cloud9 instance，然后登录 cloud9 instance 进行基础软件安装、磁盘大小调整和容器环境相关软件安装。为了更方便配置，在 [[quick-setup-cloud9-script]] 中，直接可以仅通过 cloudshell 即完成所有初始化动作，登录 cloud9 instance 后寄可以开始使用。
+
 ## spin-up-a-cloud9-instance-in-your-region
 -  点击[这里](https://console.aws.amazon.com/cloudshell) 运行 cloudshell，执行代码块创建 cloud9 测试环境 (open cloudshell, and then execute following code to create cloud9 environment)
 ```sh
@@ -78,6 +81,11 @@ echo "###"
 
 # install others
 sudo yum -y install jq gettext bash-completion moreutils wget
+
+# install terraform 
+sudo yum install -y yum-utils shadow-utils
+sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+sudo yum -y install terraform
 
 # install awscli v2
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o /tmp/awscliv2.zip

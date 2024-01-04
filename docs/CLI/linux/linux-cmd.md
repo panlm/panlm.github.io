@@ -2,7 +2,7 @@
 title: linux-cmd
 description: 常用命令
 created: 2023-01-03 12:05:10.533
-last_modified: 2023-12-20
+last_modified: 2024-01-02
 tags:
   - cmd
   - linux
@@ -59,6 +59,12 @@ EOF
 export var1 var2
 cat $$.yaml |envsubst '$var1 $var2' > $$-new.yaml
 
+```
+
+## firewall-cmd
+```sh
+firewall-cmd --permanent --add-port=80/tcp
+firewall-cmd --reload
 ```
 
 ## function

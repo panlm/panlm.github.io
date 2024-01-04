@@ -2,7 +2,7 @@
 title: externaldns-for-route53
 description: 使用 externaldns 组件
 created: 2022-08-04 13:24:34.806
-last_modified: 2023-12-24
+last_modified: 2024-01-03
 tags:
   - kubernetes
   - aws/network/route53
@@ -10,19 +10,27 @@ tags:
 > [!WARNING] This is a github note
 
 # externaldns-for-route53
-## func-setup-hosted-zone-
+## func-create-hosted-zone-
 -  执行下面命令创建 Hosted Zone，然后手工添加 NS 记录到上游的域名服务器 domain registrar 中 (create hosted zone, and then add NS records to upstream domain registrar)
 ```sh title="func-setup-hosted-zone"
 echo ${DOMAIN_NAME}
 
-function create-host-zone () {
-    if [[ $# -ne 1 ]]; then
-        echo "format: $0 DOMAIN_NAME"
-        return
-    else
-        local DOMAIN_NAME=$1
-    fi
-    
+function create-hosted-zone () {
+    OPTIND=1
+    OPTSTRING="h?n:"
+    local DOMAIN_NAME=""
+    while getopts ${OPTSTRING} opt; do
+        case "${opt}" in
+            n) DOMAIN_NAME=${OPTARG} ;;
+            h|\?) 
+                echo "format: create-host-zone -n DOMAIN_NAME "
+                echo -e "\tsample: create-host-zone -n xxx.domain.com "
+                return 0
+            ;;
+        esac
+    done
+    : ${DOMAIN_NAME:?Missing -n}
+        
     aws route53 create-hosted-zone --name "${DOMAIN_NAME}." \
       --caller-reference "external-dns-test-$(date +%s)"
     
@@ -33,11 +41,11 @@ function create-host-zone () {
       --hosted-zone-id $ZONE_ID --query \
       "ResourceRecordSets[?Type == 'NS'].ResourceRecords[*].Value | []" | tr '\t' '\n'
     
-    ###
-    # copy above output  
-    # add NS record on your upstream domain registrar
-    # set TTL to 172800
-    ###
+    echo '###'
+    echo '# copy above output  '
+    echo '# add NS record on your upstream domain registrar'
+    echo '# set TTL to 172800'
+    echo '###'
 }
 ```
 

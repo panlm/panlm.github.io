@@ -2,7 +2,7 @@
 title: route53
 description: 常用命令
 created: 2022-09-20 09:02:35.112
-last_modified: 2023-12-16
+last_modified: 2024-01-03
 tags:
   - aws/network/route53
 ---
@@ -11,7 +11,7 @@ tags:
 # route53-cmd
 ## create hosted zone
 ??? note "right-click & open-in-new-tab: "
-    ![[../../EKS/addons/externaldns-for-route53#func-setup-hosted-zone-]]
+    ![[../../EKS/addons/externaldns-for-route53#func-create-hosted-zone-]]
 
 ## func-create-ns-record-
 - create host zone in your child account and get NS (previous chapter)
@@ -24,11 +24,33 @@ tags:
 # ns-1223.awsdns-24.org.'
 
 function create-ns-record () {
-    if [[ -z ${DOMAIN_NAME} || -z ${NS} ]]; then
-        echo "need variable: DOMAIN_NAME and NS"
-        return
+    OPTIND=1
+    OPTSTRING="h?n:s:"
+    local DOMAIN_NAME=""
+    local NS=""
+    while getopts ${OPTSTRING} opt; do
+        case "${opt}" in
+            n) DOMAIN_NAME=${OPTARG} ;;
+            s) NS=${OPTARG} ;;
+            h|\?) 
+                echo "format: create-host-zone -n DOMAIN_NAME -s \"NS_RECORDS\" "
+                echo -e "\tsample: create-host-zone -n xxx.domain.com -s \"ns-xx.awsdns-xx.com ns-xx.awsdns-xx.com\" "
+                return 0
+            ;;
+        esac
+    done
+    : ${DOMAIN_NAME:?Missing -n}
+    : ${NS:?Missing -s}
+
+    # check NS number
+    local NS_NUM=$(echo $NS |xargs -n 1 |wc -l)
+    if [[ ${NS_NUM} -eq 1 ]]; then
+        echo "your NS is: "${NS}
+        echo 'typical NS record should has more than one record'
+        echo 'use double quotes when you use variable for -s '
+        create-ns-record -h
     fi
-    
+
     PARENT_DOMAIN_NAME=${DOMAIN_NAME#*.}
     ZONE_ID=$(aws route53 list-hosted-zones-by-name \
     --dns-name "${PARENT_DOMAIN_NAME}." \
@@ -39,7 +61,7 @@ function create-ns-record () {
   "Comment": "UPSERT a record for poc.xxx.com ",
   "Changes": [
     {
-      "Action": "CREATE",
+      "Action": "UPSERT",
       "ResourceRecordSet": {
         "Name": "${DOMAIN_NAME}",
         "Type": "NS",

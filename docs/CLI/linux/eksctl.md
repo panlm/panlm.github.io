@@ -2,7 +2,7 @@
 title: eksctl
 description: 常用命令
 created: 2022-03-09 21:30:00.815
-last_modified: 2023-12-17
+last_modified: 2024-01-03
 tags:
   - aws/container/eks
 ---

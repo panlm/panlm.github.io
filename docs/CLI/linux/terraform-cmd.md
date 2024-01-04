@@ -2,14 +2,14 @@
 title: terraform
 description: 
 created: 2022-07-05 21:52:16.279
-last_modified: 2023-11-04
+last_modified: 2024-01-03
 tags:
   - terraform
 ---
 > [!WARNING] This is a github note
 # terraform-cmd
 
-## install
+## install-
 
 - RHEL
 ```sh

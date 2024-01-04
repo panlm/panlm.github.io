@@ -1,16 +1,16 @@
 ---
-title: export-cloudwatch-log-group-to-s3
+title: Export Cloudwatch Log Group to S3
 description: 导出 cloudwatch 日志到 s3
 created: 2022-08-17 21:19:15.620
 last_modified: 2023-12-31
+status: myblog
 tags:
   - aws/mgmt/cloudwatch
   - aws/storage/s3
-status: myblog
 ---
 > [!WARNING] This is a github note
 
-# export-cloudwatch-log-group-to-s3
+# Export Cloudwatch Log Group to S3
 
 - https://docs.aws.amazon.com/zh_cn/AmazonCloudWatch/latest/logs/S3ExportTasks.html#S3Permissions
 

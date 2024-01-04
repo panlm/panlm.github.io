@@ -2,7 +2,8 @@
 title: quick setup cloud9 script
 description: 简化运行脚本
 created: 2023-08-04 15:56:59.747
-last_modified: 2023-12-13
+last_modified: 2024-01-04
+status: myblog
 tags:
   - aws/cloud9
   - aws/container/eks
@@ -10,9 +11,9 @@ tags:
 > [!WARNING] This is a github note
 
 # quick setup cloud9 script
+在 [[setup-cloud9-for-eks]] 基础上进一步简化操作，在 cloud9 中即完成所有初始化动作。
 
 ## spin-up-a-cloud9-instance-in-your-region
-
 -  点击[这里](https://console.aws.amazon.com/cloudshell) 运行 cloudshell，执行代码块创建 cloud9 测试环境 (open cloudshell, and then execute following code to create cloud9 environment)
     - 通过 `name` 自定义 cloud9 的名称，如果不指定将自动创建
     - cloud9 将创建在默认 vpc 中第一个公有子网中
@@ -21,16 +22,9 @@ tags:
 ```sh
 aws configure list
 export AWS_DEFAULT_REGION AWS_REGION
-#echo ${AWS_DEFAULT_REGION:=us-east-2}
-# export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
-
 ```
 - go through
 ```sh
-#echo ${AWS_DEFAULT_REGION:=us-east-2}
-export AWS_DEFAULT_REGION
-# export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
-
 # name=<give your cloud9 a name>
 datestring=$(TZ=CST-8 date +%Y%m%d-%H%M)
 echo ${name:=cloud9-$datestring}
@@ -71,7 +65,6 @@ watch -g -n 2 aws ec2 describe-instances \
 ```
 
 ### (prefer) stay in cloudshell to initiate cloud9
-
 - 代码将从 GitHub 下载：
     - https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/setup-cloud9-for-eks.md
 - 代码将完成：
@@ -244,12 +237,10 @@ echo "https://${AWS_DEFAULT_REGION}.console.aws.amazon.com/cloud9/ide/${C9_ID}"
 
 
 ### (alternative) login cloud9 to initiate
-
 - 代码将从 GitHub 下载：
     - https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/setup-cloud9-for-eks.md
 
 #### script-part-one-two
-
 - 下面代码块包含一些基本设置，包括：(execute this code block to install tools for your lab, and resize ebs of cloud9)
 	- 安装常用的软件
 	- 修改 cloud9 磁盘大小 ([link](https://docs.aws.amazon.com/cloud9/latest/user-guide/move-environment.html#move-environment-resize))
@@ -268,7 +259,6 @@ done
 
 
 #### script-part-three
-
 - 直接执行下面代码块可能遇到权限不够的告警，需要：
 	- 如果你有 workshop 的 Credentials ，直接先复制粘贴到命令行，再执行下列步骤；(copy and paste your workshop's credential to CLI and then execute this code block)
 	- 或者，如果自己账号的 cloud9，先用环境变量方式（`AWS_ACCESS_KEY_ID` 和 `AWS_SECRET_ACCESS_KEY`）保证有足够权限执行 (or using environment variables to export credential yourself)
@@ -285,7 +275,6 @@ sudo -u ec2-user bash $TMPFILE-$i.sh 2>&1
 ```
 
 ## open new tab for verify
-
 - 在 cloud9 中，重新打开一个 terminal 窗口，并验证权限符合预期。上面代码块将创建一个 instance profile ，并将关联名为 `adminrole-xxx` 的 role，或者在 cloud9 现有的 role 上关联 `AdministratorAccess` role policy。(open new tab to verify you have new role, `adminrole-xxx`, on your cloud9)
 
 ```sh

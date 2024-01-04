@@ -2,7 +2,7 @@
 title: ec2
 description: 常用命令
 created: 2021-07-17T04:01:46.968Z
-last_modified: 2023-12-10
+last_modified: 2024-01-04
 tags:
   - aws/compute/ec2
   - aws/cmd
@@ -178,7 +178,7 @@ systemctl status amazon-ssm-agent
 ## region cmd
 ```sh
 export ACCOUNT_ID=$(aws sts get-caller-identity --output text --query Account)
-export AWS_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
+export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
 #export AWS_REGION=ap-northeast-1
 export AZS=($(aws ec2 describe-availability-zones --query 'AvailabilityZones[].ZoneName' --output text --region $AWS_REGION))
 

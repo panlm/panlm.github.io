@@ -43,7 +43,7 @@ number headings: first-level 2, max 3, 1.1, auto
 - [Install Grafana on Beanstalk](install-grafana-on-beanstalk): 在 EC2 / beanstalk / EKS 上安装 grafana 
 - [install-prometheus-grafana-on-eks](install-prometheus-grafana): 安装 grafana 和 prometheus
 - [Using Loki for Logging](POC-loki-for-logging): 使用 loki 收集日志
-- [Building Prometheus HA Architect with Thanos](POC-prometheus-ha-architect-with-thanos): Prometheus是一款开源的监控和报警工具，专为容器化和云原生架构的设计，通过基于HTTP的pull模式采集时序数据，提供功能强大的查询语言PromQL，并可视化呈现监控指标与生成报警信息。客户普遍采用其用于 Kubernetes 的监控体系建设。当集群数量较多，监控平台高可用性和可靠性要求高，希望提供全局查询，需要长时间保存历史监控数据等场景下，通常使用 Thanos 扩展 Promethseus 监控架构。Thanos是一套开源组件，构建在 Prometheus 之上，用以解决 Prometheus 在多集群大规模环境下的高可用性、可扩展性限制，具体来说，Thanos 主要通过接收并存储 Prometheus 的多集群数据副本，并提供全局查询和一致性数据访问接口的方式，实现了对于 Prometheus 的可靠性、一致性和可用性保障，从而解决了 Prometheus 单集群在存储、查询和数据备份等方面的扩展性挑战。
+- [Building Prometheus HA Architect with Thanos](POC-prometheus-ha-architect-with-thanos): 用 Thanos 解决 Prometheus 在多集群大规模环境下的高可用性、可扩展性限制
 - [stream-k8s-control-panel-logs-to-s3](stream-k8s-control-panel-logs-to-s3): 目前eks控制平面日志只支持发送到cloudwatch，且在同一个log group中有5种类型6种前缀的log stream的日志，不利于统一查询。且只有audit日志是json格式其他均是单行日志，且字段各不相同。本解决方案提供思路统一保存日志供后续分析处理
 <-->
 
@@ -75,5 +75,5 @@ number headings: first-level 2, max 3, 1.1, auto
 - [nginx-ingress-controller-community-ver](nginx-ingress-controller-community-ver): 使用 nginx ingress
 - [nginx-ingress-controller-nginx-ver](nginx-ingress-controller-nginx-ver): nginx-ingress-controller-nginx-ver
 - [pluto](pluto): pluto
-- [self-signed-certificates](self-signed-certificates): 使用自签名证书，用根证书签发或者中间证书签发用于 api gateway
+- [self-signed-certificates](../others/self-signed-certificates.md): 使用自签名证书，用根证书签发或者中间证书签发用于 api gateway
 <-->

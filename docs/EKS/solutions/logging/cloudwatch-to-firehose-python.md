@@ -34,7 +34,7 @@ download from [[package.zip]]
 
 ## layer version
 
-- [[lambda-cmd#add-layer-to-lambda-]]
+- [[../../../CLI/awscli/lambda-cmd#add-layer-to-lambda-]]
 
 
 
