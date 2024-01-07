@@ -1,5 +1,5 @@
 ---
-last_modified: 2023-12-31
+last_modified: 2024-01-04
 number headings: first-level 2, max 3, 1.1, auto
 ---
 > [!WARNING] This is a github note
@@ -38,13 +38,13 @@ number headings: first-level 2, max 3, 1.1, auto
 - [cloudwatch-to-firehose-python](cloudwatch-to-firehose-python): 在 firehose 上，处理从 cloudwatch 发送来的日志
 - [EKS Container Insights](eks-container-insights): 启用 EKS 的 container insight 功能
 - [enable-prometheus-in-cloudwatch](enable-prometheus-in-cloudwatch): 将 EKS 集群的 prometheus 数据汇总到 cloudwatch
-- [export-cloudwatch-log-group-to-s3](export-cloudwatch-log-group-to-s3): 导出 cloudwatch 日志到 s3
+- [Export Cloudwatch Log Group to S3](export-cloudwatch-log-group-to-s3): 导出 cloudwatch 日志到 s3
 - [flux](flux-lab): flux
 - [Install Grafana on Beanstalk](install-grafana-on-beanstalk): 在 EC2 / beanstalk / EKS 上安装 grafana 
 - [install-prometheus-grafana-on-eks](install-prometheus-grafana): 安装 grafana 和 prometheus
 - [Using Loki for Logging](POC-loki-for-logging): 使用 loki 收集日志
 - [Building Prometheus HA Architect with Thanos](POC-prometheus-ha-architect-with-thanos): 用 Thanos 解决 Prometheus 在多集群大规模环境下的高可用性、可扩展性限制
-- [stream-k8s-control-panel-logs-to-s3](stream-k8s-control-panel-logs-to-s3): 目前eks控制平面日志只支持发送到cloudwatch，且在同一个log group中有5种类型6种前缀的log stream的日志，不利于统一查询。且只有audit日志是json格式其他均是单行日志，且字段各不相同。本解决方案提供思路统一保存日志供后续分析处理
+- [Stream EKS Control Panel Logs to S3](stream-k8s-control-panel-logs-to-s3): 目前 EKS 控制平面日志只支持发送到 cloudwatch，且在同一个 log group 中有5种类型6种前缀的 log stream 的日志，不利于统一查询。且只有 audit 日志是 json 格式其他均是单行日志，且字段各不相同。本解决方案提供思路统一保存日志供后续分析处理
 <-->
 
 ## 4 addons 
@@ -75,5 +75,4 @@ number headings: first-level 2, max 3, 1.1, auto
 - [nginx-ingress-controller-community-ver](nginx-ingress-controller-community-ver): 使用 nginx ingress
 - [nginx-ingress-controller-nginx-ver](nginx-ingress-controller-nginx-ver): nginx-ingress-controller-nginx-ver
 - [pluto](pluto): pluto
-- [self-signed-certificates](../others/self-signed-certificates.md): 使用自签名证书，用根证书签发或者中间证书签发用于 api gateway
 <-->

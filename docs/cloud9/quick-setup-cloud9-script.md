@@ -2,7 +2,7 @@
 title: quick setup cloud9 script
 description: 简化运行脚本
 created: 2023-08-04 15:56:59.747
-last_modified: 2024-01-04
+last_modified: 2024-01-05
 status: myblog
 tags:
   - aws/cloud9
@@ -40,9 +40,10 @@ VPC_ID=${VPC_ID:=$DEFAULT_VPC_ID}
 if [[ ! -z ${VPC_ID} ]]; then
     FIRST_SUBNET=$(aws ec2 describe-subnets \
         --filters "Name=vpc-id,Values=${VPC_ID}" \
-        --query 'Subnets[?(AvailabilityZone==`'"${AWS_DEFAULT_REGION}a"'` && MapPublicIpOnLaunch==`true`)].SubnetId' \
+        --query 'Subnets[?(MapPublicIpOnLaunch==`true`)].SubnetId' \
         --output text \
-        --region ${AWS_DEFAULT_REGION})
+        --region ${AWS_DEFAULT_REGION} |\
+        xargs -n 1 |tail -n 1)
     aws cloud9 create-environment-ec2 \
         --name ${name} \
         --image-id amazonlinux-2-x86_64 \

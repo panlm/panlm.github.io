@@ -2,7 +2,7 @@
 title: Create EKS Cluster with Terraform
 description: 使用 Terraform 创建 EKS 集群
 created: 2023-06-30 15:02:19.833
-last_modified: 2024-01-03
+last_modified: 2024-01-05
 tags:
   - aws/container/eks
   - terraform
@@ -28,7 +28,7 @@ cd eks-blueprints-clusters/multi-cluster-thanos
 - execute function to create an existed host zone ([[../addons/externaldns-for-route53#func-create-hosted-zone-]])
 ```sh
 DOMAIN_NAME=eks1224.aws.panlm.xyz
-create-host-zone ${DOMAIN_NAME}
+create-host-zone -n ${DOMAIN_NAME}
 ```
 - need setup upstream domain registry from your labtop ([[git/git-mkdocs/CLI/awscli/route53-cmd#func-create-ns-record-]])
 

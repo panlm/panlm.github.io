@@ -2,7 +2,7 @@
 title: externaldns-for-route53
 description: 使用 externaldns 组件
 created: 2022-08-04 13:24:34.806
-last_modified: 2024-01-03
+last_modified: 2024-01-05
 tags:
   - kubernetes
   - aws/network/route53
@@ -34,18 +34,21 @@ function create-hosted-zone () {
     aws route53 create-hosted-zone --name "${DOMAIN_NAME}." \
       --caller-reference "external-dns-test-$(date +%s)"
     
-    ZONE_ID=$(aws route53 list-hosted-zones-by-name --output json \
+    local ZONE_ID=$(aws route53 list-hosted-zones-by-name --output json \
       --dns-name "${DOMAIN_NAME}." --query HostedZones[0].Id --out text)
     
-    aws route53 list-resource-record-sets --output text \
+    local NS=$(aws route53 list-resource-record-sets --output text \
       --hosted-zone-id $ZONE_ID --query \
-      "ResourceRecordSets[?Type == 'NS'].ResourceRecords[*].Value | []" | tr '\t' '\n'
+      "ResourceRecordSets[?Type == 'NS'].ResourceRecords[*].Value | []")
     
     echo '###'
-    echo '# copy above output  '
-    echo '# add NS record on your upstream domain registrar'
-    echo '# set TTL to 172800'
+    echo '# get bash function from here: https://panlm.github.io/CLI/awscli/route53-cmd/#func-create-ns-record-'
+    echo '# copy below output to add NS record on your upstream domain registrar'
     echo '###'
+    echo 'DOMAIN_NAME='${DOMAIN_NAME}
+    echo 'NS="'${NS}'"'
+    echo 'create-ns-record -n ${DOMAIN_NAME} -s "${NS}"'
+    echo ''
 }
 ```
 

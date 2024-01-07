@@ -2,7 +2,7 @@
 title: Building Prometheus HA Architect with Thanos
 description: 用 Thanos 解决 Prometheus 在多集群大规模环境下的高可用性、可扩展性限制
 created: 2023-11-09 08:41:02.494
-last_modified: 2024-01-04
+last_modified: 2024-01-05
 status: myblog
 tags:
   - kubernetes
@@ -78,18 +78,23 @@ Prometheus Operator 提供 Kubernetes 原生部署和管理 Prometheus 及相关
 PARENT_DOMAIN_NAME=eks0103.aws.panlm.xyz
 create-hosted-zone -n ${PARENT_DOMAIN_NAME}
 ```
-- 并且在上游 Route53 中创建对应的 NS 记录（文档）（复制[链接](https://panlm.github.io/CLI/awscli/route53-cmd/?h=create+ns#func-create-ns-record-)中的函数并粘贴到命令行），此处离开 Cloud9 窗口，或者确保命令行有上游 Route53 相应的权限
+- 然后在上游 Route53 中创建对应的 NS 记录（文档）（复制[链接](https://panlm.github.io/CLI/awscli/route53-cmd/?h=create+ns#func-create-ns-record-)中的函数并粘贴到命令行），此处离开 Cloud9 窗口，或者确保命令行有上游 Route53 相应的权限
 ```sh
 PARENT_DOMAIN_NAME=eks0103.panlm.xyz
 NS="copy NS records from previous output and paste here"
 create-ns-record -n $PARENT_DOMAIN_NAME -s "$NS" # double quote is mandortory
 ```
-- 获取 Thanos 配置模板 
+- 创建本实验的目录，后续将在此路径下克隆 2 个 repo，分别用于创建 EKS 集群的 terraform 代码和 Thanos 配置示例
 ```sh
+mkdir ~/environment/lab-thanos
+```
+- 先获取 Thanos 配置模板
+```sh
+cd ~/environment/lab-thanos
 git clone https://github.com/panlm/thanos-example.git
 cd thanos-example
 ```
-- 本实验将使用下面参数进行创建，参考`README.md` 
+- 使用下面参数进行创建本实验使用的 yaml 目录，位于 POC 目录下
 ```sh
 CLUSTER_NAME_1=ekscluster1
 CLUSTER_NAME_2=ekscluster2
@@ -108,11 +113,10 @@ find ./ -type d -name "[a-z]*" -exec mkdir ../POC/{} \;
 find ./ -type f -name "*" |while read filename ; do
   cat $filename |envsubst > ../POC/$filename
 done
-
-cd ../../
 ```
 - 获取 Terraform 代码开始创建环境（参考[文档](https://panlm.github.io/EKS/cluster/eks-cluster-with-terraform/)）
 ```sh
+cd ~/environment/lab-thanos
 git clone https://github.com/panlm/eks-blueprints-clusters.git
 cd eks-blueprints-clusters/multi-cluster-thanos
 ```
@@ -124,13 +128,13 @@ cluster_version     = "1.27"
 hosted_zone_name    = "eks0103.aws.panlm.xyz" # your existing hosted zone
 eks_admin_role_name = "panlm" # Additional role admin in the cluster 
 ```
-- 创建独立环境用于本实验
+- 创建独立的网络环境用于本实验
 ```sh
 cd environment
 terraform init
 terraform apply -auto-approve
 ```
-- 创建 ekscluster1，并根据命令行输出保存 kubeconfig 配置
+- 创建 ekscluster1，并根据命令行输出保存 kubeconfig 配置。创建 EKS 集群后将自动判断如果 `thanos-example/POC` 路径下相关文件存在，则安装 Prometheus 组件
 ```sh
 cd ../ekscluster1
 terraform init
@@ -142,7 +146,7 @@ terraform apply -auto-approve
 - 命令行切换到 Observer 集群（ekscluster1），进入 `thanos-example/POC` 目录开始安装 Thanos 组件
 ```sh
 kubectx ekscluster1
-cd thanos-example/POC
+cd ~/environment/lab-thanos/thanos-example/POC
 ```
 
 #### store
@@ -176,7 +180,9 @@ kubectl apply -f receive/
 ```
 
 ### grafana
+使用 Prometheus Operator 部署 Grafana 将自带一些常用的 Dashboard，我们可以进行简单配置实现多集群数据查询。
 #### query history metrics
+- 访问 Grafana 域名，可以通过 `thanos-example/POC/prometheus/values-ekscluster1-1.yaml` 中查看
 - 修改 Grafana 默认密码
 - 添加 Thanos Query Frontend 作为 Prometheus  类型的数据源
     - 直接使用 Kubernetes 内部域名: http://thanos-query-frontend.thanos.svc.cluster.local:9090
