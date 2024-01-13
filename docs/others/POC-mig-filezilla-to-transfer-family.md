@@ -1,5 +1,5 @@
 ---
-title: migrate-filezilla-to-transfer-family
+title: Migrating Filezilla to Aws Transfer Family
 description: 迁移 filezilla 到 transfer family
 created: 2023-03-25 10:08:47.022
 last_modified: 2024-01-13
@@ -9,7 +9,7 @@ tags:
   - aws/mgmt/directory-service
 ---
 > [!WARNING] This is a github note
-# POC-to-transfer-family
+# Migrating Filezilla to Aws Transfer Family
 ## requirement
 - same domain for both sftp and ftps server
 - BU manage users themselves
