@@ -2,7 +2,7 @@
 title: Stream EKS Control Panel Logs to S3
 description: 目前 EKS 控制平面日志只支持发送到 cloudwatch，且在同一个 log group 中有5种类型6种前缀的 log stream 的日志，不利于统一查询。且只有 audit 日志是 json 格式其他均是单行日志，且字段各不相同。本解决方案提供思路统一保存日志供后续分析处理
 created: 2022-10-02 08:37:27.387
-last_modified: 2023-12-31
+last_modified: 2024-01-08
 status: myblog
 tags:
   - aws/container/eks
@@ -37,7 +37,7 @@ tags:
 
 ![](../../../git-attachment/stream-k8s-control-panel-logs-to-s3-1.png)
 
-## go through
+## walkthrough
 
 ### eks cluster
 

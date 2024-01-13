@@ -2,7 +2,7 @@
 title: quick setup cloud9 script
 description: 简化运行脚本
 created: 2023-08-04 15:56:59.747
-last_modified: 2024-01-05
+last_modified: 2024-01-12
 status: myblog
 tags:
   - aws/cloud9
@@ -10,7 +10,7 @@ tags:
 ---
 > [!WARNING] This is a github note
 
-# quick setup cloud9 script
+# Quick Setup Cloud9 
 在 [[setup-cloud9-for-eks]] 基础上进一步简化操作，在 cloud9 中即完成所有初始化动作。
 
 ## spin-up-a-cloud9-instance-in-your-region
@@ -18,13 +18,11 @@ tags:
     - 通过 `name` 自定义 cloud9 的名称，如果不指定将自动创建
     - cloud9 将创建在默认 vpc 中第一个公有子网中
     - 等待实例创建完成并获取到 instance_id
-- ensure aws region is correct
+- ensure aws region is correct and walkthrough
 ```sh
 aws configure list
 export AWS_DEFAULT_REGION AWS_REGION
-```
-- go through
-```sh
+
 # name=<give your cloud9 a name>
 datestring=$(TZ=CST-8 date +%Y%m%d-%H%M)
 echo ${name:=cloud9-$datestring}

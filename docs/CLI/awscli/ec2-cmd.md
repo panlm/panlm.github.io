@@ -2,7 +2,7 @@
 title: ec2
 description: 常用命令
 created: 2021-07-17T04:01:46.968Z
-last_modified: 2024-01-04
+last_modified: 2024-01-10
 tags:
   - aws/compute/ec2
   - aws/cmd
@@ -44,8 +44,8 @@ aws ec2 describe-images --region ${region}  --owners 801119661308 \
   --query 'Images[*].[ImageId,CreationDate,Name]' --output text |sort -k2 -r |column -t
 
 # windows 2012
-export region=ap-southeast-1
-aws ec2 describe-images --region ${region}  --owners 801119661308 \
+export AWS_DEFAULT_REGION=us-east-2
+aws ec2 describe-images --owners 801119661308 \
   --filter "Name=name,Values=Windows_Server-2019-English-Full-Base*"  \
   --query 'Images[*].[ImageId,CreationDate,Name]' --output text |sort -k2 -r |column -t
 
@@ -142,7 +142,7 @@ INST_ID=$(cat /tmp/instance-$$.1 |jq -r '.Instances[0].InstanceId')
 ```
 
 another example:
-- [[POC-mig-filezilla-to-transfer-family#^goacm2]]
+- [[../../others/POC-mig-filezilla-to-transfer-family#^goacm2]]
 
 ## list instance
 ```bash

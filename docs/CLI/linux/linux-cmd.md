@@ -2,7 +2,7 @@
 title: linux-cmd
 description: 常用命令
 created: 2023-01-03 12:05:10.533
-last_modified: 2024-01-02
+last_modified: 2024-01-13
 tags:
   - cmd
   - linux
@@ -35,6 +35,18 @@ curl -sL -w '%{http_code}' -o /dev/null "https://httpbin.org/status/302"
 
 ```
 
+## datediff
+- [[../../../../WebClip/Releases · hroptatyrdateutils|Releases · hroptatyrdateutils]]
+```sh
+git clone https://github.com/hroptatyr/dateutils.git
+cd dateutils
+sudo yum install -y texinfo gperf
+autoreconf -i
+./configure
+make
+sudo make install 
+```
+
 ## ec2-instance-selector
 ```sh
 brew tap aws/tap
@@ -60,6 +72,7 @@ export var1 var2
 cat $$.yaml |envsubst '$var1 $var2' > $$-new.yaml
 
 ```
+- refer [[../../../../notes/envsubst|envsubst]]
 
 ## firewall-cmd
 ```sh

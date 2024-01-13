@@ -2,7 +2,7 @@
 title: Using Loki for Logging
 description: 使用 loki 收集日志
 created: 2023-12-18 14:09:49.975
-last_modified: 2023-12-24
+last_modified: 2024-01-08
 tags:
   - grafana/loki
 ---
@@ -11,7 +11,7 @@ tags:
 ## diagram
 ![[git/git-mkdocs/git-attachment/POC-loki-for-logging-png-1.png|500]]
 
-## go-through
+## walkthrough
 - install with helm
 ```sh
 helm repo add grafana https://grafana.github.io/helm-charts

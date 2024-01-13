@@ -31,7 +31,7 @@ aws ds create-microsoft-ad \
 ## create ms ad in default vpc
 
 ??? note "right-click & open-in-new-tab"
-    ![[POC-mig-filezilla-to-transfer-family#create-AD-]]
+    ![[../../others/POC-mig-filezilla-to-transfer-family#create-AD-]]
 
 
 ## active directory - windows 2012

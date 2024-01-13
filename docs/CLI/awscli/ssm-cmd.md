@@ -94,7 +94,7 @@ aws ssm get-inventory --filter Key=Custom:DiskUtilization.Use%,Values=60,Type=Gr
 
 ## join domain sample
 ??? note "right-click & open-in-new-tab: "
-    ![[POC-mig-filezilla-to-transfer-family#join-domain-]]
+    ![[../../others/POC-mig-filezilla-to-transfer-family#join-domain-]]
 
 
 - example

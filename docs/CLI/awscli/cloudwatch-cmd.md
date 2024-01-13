@@ -2,7 +2,7 @@
 title: cloudwatch
 description: 常用命令
 created: 2022-08-18 21:42:04.979
-last_modified: 2023-10-25 08:03:10.232
+last_modified: 2024-01-09
 tags:
   - aws/mgmt/cloudwatch
 ---
@@ -13,7 +13,7 @@ tags:
 
 ## log group and log stream
 ### create log group
-
+- create standard log group
 ```sh
 LOGGROUP_NAME=apigw-access-log
 aws logs create-log-group \
@@ -23,6 +23,15 @@ LOGGROUP_ARN=$(aws logs describe-log-groups \
 --query 'logGroups[0].arn' --output text)
 LOGGROUP_ARN=${LOGGROUP_ARN%:*}
 
+```
+
+- create IA log group
+```sh
+LOGGROUP_NAME=/aws/eks/ekscluster3/cluster
+aws logs delete-log-group --log-group-name ${LOGGROUP_NAME} && \
+aws logs create-log-group \
+--log-group-name ${LOGGROUP_NAME} \
+--log-group-class INFREQUENT_ACCESS
 ```
 
 ### describe log stream
