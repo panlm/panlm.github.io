@@ -6,15 +6,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="script-convert-mp3-to-text">
+        <meta name="description" content="迁移 filezilla 到 transfer family">
       
       
       
       
-        <link rel="prev" href="../script-api-resource-method/">
+        <link rel="prev" href="../../serverless/apigw-regional-api-access-from-vpc/">
       
       
-        <link rel="next" href="../self-signed-certificates/">
+        <link rel="next" href="../POC-prometheus-ha-architect-with-thanos-manually/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>script-convert-mp3-to-text - panlm</title>
+        <title>migrate-filezilla-to-transfer-family - panlm</title>
       
     
     
@@ -97,7 +97,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#script-convert-mp3-to-text" class="md-skip">
+        <a href="#poc-to-transfer-family" class="md-skip">
           Skip to content
         </a>
       
@@ -132,7 +132,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              script-convert-mp3-to-text
+              migrate-filezilla-to-transfer-family
             
           </span>
         </div>
@@ -324,7 +324,7 @@
     
     
       <li class="md-tabs__item md-tabs__item--active">
-        <a href="../POC-mig-filezilla-to-transfer-family/" class="md-tabs__link">
+        <a href="./" class="md-tabs__link">
           
   
     
@@ -2415,10 +2415,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../POC-mig-filezilla-to-transfer-family/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    migrate-filezilla-to-transfer-family
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog"></span>
+  
+
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -2434,6 +2461,230 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#requirement" class="md-nav__link">
+    <span class="md-ellipsis">
+      requirement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      diagram
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#walkthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      walkthrough
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="walkthrough">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#directory-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      directory-service
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="directory-service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-ad-" class="md-nav__link">
+    <span class="md-ellipsis">
+      create-AD-
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-instance-and-join-domain" class="md-nav__link">
+    <span class="md-ellipsis">
+      create instance and join domain
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="create instance and join domain">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#join-domain-" class="md-nav__link">
+    <span class="md-ellipsis">
+      join-domain-
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-some-tool-to-manage-ad" class="md-nav__link">
+    <span class="md-ellipsis">
+      install some tool to manage AD
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transfer-family" class="md-nav__link">
+    <span class="md-ellipsis">
+      transfer family
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#route53" class="md-nav__link">
+    <span class="md-ellipsis">
+      route53
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-ftp-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      access ftp server
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      conclusion
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#refer" class="md-nav__link">
+    <span class="md-ellipsis">
+      refer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#screenshots" class="md-nav__link">
+    <span class="md-ellipsis">
+      screenshots
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="screenshots">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ftp-client-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      ftp client configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-and-download-using-ftp-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      upload and download using ftp client
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s3-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      s3 bucket
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transfer-family_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      transfer family
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directory-service_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      directory service
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#refer_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      refer
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -2646,30 +2897,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    script-convert-mp3-to-text
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../script-convert-mp3-to-text/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2678,44 +2909,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#updated-version" class="md-nav__link">
-    <span class="md-ellipsis">
-      updated version
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#refer" class="md-nav__link">
-    <span class="md-ellipsis">
-      refer
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3726,9 +3919,126 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#updated-version" class="md-nav__link">
+  <a href="#requirement" class="md-nav__link">
     <span class="md-ellipsis">
-      updated version
+      requirement
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      diagram
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#walkthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      walkthrough
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="walkthrough">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#directory-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      directory-service
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="directory-service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#create-ad-" class="md-nav__link">
+    <span class="md-ellipsis">
+      create-AD-
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-instance-and-join-domain" class="md-nav__link">
+    <span class="md-ellipsis">
+      create instance and join domain
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="create instance and join domain">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#join-domain-" class="md-nav__link">
+    <span class="md-ellipsis">
+      join-domain-
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#install-some-tool-to-manage-ad" class="md-nav__link">
+    <span class="md-ellipsis">
+      install some tool to manage AD
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transfer-family" class="md-nav__link">
+    <span class="md-ellipsis">
+      transfer family
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#route53" class="md-nav__link">
+    <span class="md-ellipsis">
+      route53
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#access-ftp-server" class="md-nav__link">
+    <span class="md-ellipsis">
+      access ftp server
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      conclusion
     </span>
   </a>
   
@@ -3736,6 +4046,75 @@
       
         <li class="md-nav__item">
   <a href="#refer" class="md-nav__link">
+    <span class="md-ellipsis">
+      refer
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#screenshots" class="md-nav__link">
+    <span class="md-ellipsis">
+      screenshots
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="screenshots">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ftp-client-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      ftp client configuration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#upload-and-download-using-ftp-client" class="md-nav__link">
+    <span class="md-ellipsis">
+      upload and download using ftp client
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#s3-bucket" class="md-nav__link">
+    <span class="md-ellipsis">
+      s3 bucket
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#transfer-family_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      transfer family
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#directory-service_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      directory service
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#refer_1" class="md-nav__link">
     <span class="md-ellipsis">
       refer
     </span>
@@ -3762,13 +4141,13 @@
     
     
     
-      <a href="../../tags/#awsaimltranscribe" class="md-tag">aws/aiml/transcribe</a>
+      <a href="../../tags/#awsstoragetransfer-family" class="md-tag">aws/storage/transfer-family</a>
     
   
     
     
     
-      <a href="../../tags/#awscmd" class="md-tag">aws/cmd</a>
+      <a href="../../tags/#awsmgmtdirectory-service" class="md-tag">aws/mgmt/directory-service</a>
     
   
 </nav>
@@ -3778,71 +4157,234 @@
 <blockquote>
 <p>[!WARNING] This is a github note</p>
 </blockquote>
-<h1 id="script-convert-mp3-to-text">script-convert-mp3-to-text<a class="headerlink" href="#script-convert-mp3-to-text" title="Permanent link">&para;</a></h1>
-<p>i wrote this script several years ago. I have chance to use it in real life today and update to here</p>
-<h2 id="updated-version">updated version<a class="headerlink" href="#updated-version" title="Permanent link">&para;</a></h2>
+<h1 id="poc-to-transfer-family">POC-to-transfer-family<a class="headerlink" href="#poc-to-transfer-family" title="Permanent link">&para;</a></h1>
+<h2 id="requirement">requirement<a class="headerlink" href="#requirement" title="Permanent link">&para;</a></h2>
 <ul>
-<li>ensure you have export the <code>AWS_DEFAULT_REGION</code><br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="ch">#!/bin/bash</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># </span>
+<li>same domain for both sftp and ftps server</li>
+<li>BU manage users themselves</li>
+<li>password and public key access</li>
+</ul>
+<h2 id="diagram">diagram<a class="headerlink" href="#diagram" title="Permanent link">&para;</a></h2>
+<p><a class="glightbox" href="file:///Users/panlm/Documents/customers/G1K-ihg/architecture-POC.drawio.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="architecture-POC.drawio.png" src="file:///Users/panlm/Documents/customers/G1K-ihg/architecture-POC.drawio.png" /></a></p>
+<h2 id="walkthrough">walkthrough<a class="headerlink" href="#walkthrough" title="Permanent link">&para;</a></h2>
+<h3 id="directory-service">directory-service<a class="headerlink" href="#directory-service" title="Permanent link">&para;</a></h3>
+<h4 id="create-ad-">create-AD-<a class="headerlink" href="#create-ad-" title="Permanent link">&para;</a></h4>
+<ul>
+<li>create managed directory service on aws<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">AD</span><span class="o">=</span>corp2.aws.panlm.xyz
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nv">PASS</span><span class="o">=</span><span class="si">${</span><span class="nv">PASS</span><span class="k">:-</span><span class="nv">passworD</span><span class="p">.1</span><span class="si">}</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$#</span><span class="w"> </span>-ne<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Usage: </span><span class="nv">$0</span><span class="s2"> filename&quot;</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nb">exit</span><span class="w"> </span><span class="m">99</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="k">fi</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nv">filename</span><span class="o">=</span><span class="nv">$1</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nv">string</span><span class="o">=</span><span class="sb">`</span><span class="nv">TZ</span><span class="o">=</span>EAT-8<span class="w"> </span>date<span class="w"> </span>+%Y%m%d%H%M%S<span class="sb">`</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="nv">mp3file</span><span class="o">=</span>mp3-<span class="si">${</span><span class="nv">string</span><span class="si">}</span>.mp3
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="nv">jobname</span><span class="o">=</span>job-<span class="si">${</span><span class="nv">string</span><span class="si">}</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="nv">transcriptfile</span><span class="o">=</span><span class="si">${</span><span class="nv">filename</span><span class="p">%.*</span><span class="si">}</span>-<span class="si">${</span><span class="nv">string</span><span class="si">}</span>.txt
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="nv">srtfile</span><span class="o">=</span><span class="si">${</span><span class="nv">filename</span><span class="p">%.*</span><span class="si">}</span>-<span class="si">${</span><span class="nv">string</span><span class="si">}</span>.en.srt
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="nv">bucket_name</span><span class="o">=</span>temp-<span class="si">${</span><span class="nv">string</span><span class="si">}</span>-<span class="k">$(</span>uuidgen<span class="w"> </span><span class="p">|</span>tr<span class="w"> </span><span class="s1">&#39;A-Z&#39;</span><span class="w"> </span><span class="s1">&#39;a-z&#39;</span><span class="k">)</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>aws<span class="w"> </span>s3<span class="w"> </span>mb<span class="w"> </span>s3://<span class="si">${</span><span class="nv">bucket_name</span><span class="si">}</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-ne<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;create bucket failed&quot;</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="k">fi</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span><span class="nv">$filename</span><span class="w"> </span>s3://<span class="si">${</span><span class="nv">bucket_name</span><span class="si">}</span>/<span class="nv">$mp3file</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="c1">#aws transcribe start-transcription-job --transcription-job-name $jobname \</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="c1"># --language-code en-US --media MediaFileUri=s3://$bucket_name/$mp3file</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>aws<span class="w"> </span>transcribe<span class="w"> </span>start-transcription-job<span class="w"> </span>--transcription-job-name<span class="w"> </span><span class="nv">$jobname</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">  </span>--identify-language<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">  </span>--media<span class="w"> </span><span class="nv">MediaFileUri</span><span class="o">=</span>s3://<span class="nv">$bucket_name</span>/<span class="nv">$mp3file</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-ne<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">  </span><span class="nb">exit</span><span class="w"> </span>
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="k">fi</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>
-<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="nv">output</span><span class="o">=</span>/tmp/<span class="nv">$$</span>.output
-<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;status file: </span><span class="nv">$output</span><span class="s2">&quot;</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="k">while</span><span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">  </span>aws<span class="w"> </span>transcribe<span class="w"> </span>get-transcription-job<span class="w"> </span>--transcription-job-name<span class="w"> </span><span class="nv">$jobname</span><span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$output</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">  </span><span class="nv">status</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span><span class="nv">$output</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.TranscriptionJob.TranscriptionJobStatus&#39;</span><span class="k">)</span>
-<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$status</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;COMPLETED&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">    </span><span class="nb">echo</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">    </span><span class="k">break</span>
-<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="w">  </span><span class="k">else</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s1">&#39;.\c&#39;</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="w">  </span><span class="k">fi</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">  </span>sleep<span class="w"> </span><span class="m">60</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="k">done</span>
-<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a>
-<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a>cat<span class="w"> </span><span class="nv">$output</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.TranscriptionJob.Transcript.TranscriptFileUri&#39;</span><span class="w"> </span><span class="p">|</span>xargs<span class="w"> </span>-J<span class="w"> </span><span class="o">{}</span><span class="w"> </span>wget<span class="w"> </span>-O<span class="w"> </span><span class="nv">$output</span>.wget<span class="w"> </span><span class="s1">&#39;{}&#39;</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a>cat<span class="w"> </span><span class="nv">$output</span>.wget<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.results.transcripts[0].transcript&#39;</span><span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$transcriptfile</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-f<span class="w"> </span><span class="nv">$home</span>/conv-srt.py<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="w">  </span><span class="nv">$home</span>/conv-srt.py<span class="w"> </span><span class="nv">$output</span>.wget<span class="w"> </span>&gt;<span class="w"> </span><span class="nv">$srtfile</span>
-<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="k">fi</span>
-<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a>
-<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="c1">#clean</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>aws<span class="w"> </span>s3<span class="w"> </span>rm<span class="w"> </span>s3://<span class="nv">$bucket_name</span>/<span class="nv">$mp3file</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PAGER</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nv">VPC</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-vpcs<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span>--filters<span class="w"> </span><span class="s2">&quot;Name=isDefault,Values=true&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span>--query<span class="w"> </span><span class="s2">&quot;Vpcs[0].VpcId&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">    </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nv">SUBNETS</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-subnets<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span>--filters<span class="w"> </span><span class="s2">&quot;Name=vpc-id,Values=</span><span class="si">${</span><span class="nv">VPC</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="s2">&quot;Name=map-public-ip-on-launch,Values=true&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span>--query<span class="w"> </span><span class="s2">&quot;Subnets[].SubnetId&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">    </span>--output<span class="w"> </span>text<span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;BEGIN{OFS=&quot;,&quot;} {print $1,$2}&#39;</span><span class="k">)</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>aws<span class="w"> </span>ds<span class="w"> </span>create-microsoft-ad<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">    </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">AD</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">    </span>--short-name<span class="w"> </span><span class="si">${</span><span class="nv">AD</span><span class="p">%%.*</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">    </span>--password<span class="w"> </span><span class="si">${</span><span class="nv">PASS</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">    </span>--edition<span class="w"> </span>Standard<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">    </span>--vpc-settings<span class="w"> </span><span class="nv">VpcId</span><span class="o">=</span><span class="si">${</span><span class="nv">VPC</span><span class="si">}</span>,SubnetIds<span class="o">=</span><span class="si">${</span><span class="nv">SUBNETS</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>tee<span class="w"> </span>/tmp/ds-<span class="nv">$$</span>.1
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="nv">MSDS_ID</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span>/tmp/ds-<span class="nv">$$</span>.1<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.DirectoryId&#39;</span><span class="k">)</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="c1"># until &quot;Active&quot;</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>watch<span class="w"> </span>-g<span class="w"> </span>-n<span class="w"> </span><span class="m">60</span><span class="w"> </span>aws<span class="w"> </span>ds<span class="w"> </span>describe-directories<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">    </span>--directory-ids<span class="w"> </span><span class="si">${</span><span class="nv">MSDS_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span>--query<span class="w"> </span>DirectoryDescriptions<span class="o">[</span><span class="m">0</span><span class="o">]</span>.Stage<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">    </span>--output<span class="w"> </span>text
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="nv">MSDS_IP</span><span class="o">=(</span><span class="k">$(</span>aws<span class="w"> </span>ds<span class="w"> </span>describe-directories<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">    </span>--directory-ids<span class="w"> </span><span class="si">${</span><span class="nv">MSDS_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">    </span>--query<span class="w"> </span>DirectoryDescriptions<span class="o">[</span><span class="m">0</span><span class="o">]</span>.DnsIpAddrs<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">    </span>--output<span class="w"> </span>text<span class="k">)</span><span class="o">)</span>
 </code></pre></div></li>
 </ul>
+<h4 id="create-instance-and-join-domain">create instance and join domain<a class="headerlink" href="#create-instance-and-join-domain" title="Permanent link">&para;</a></h4>
+<ul>
+<li>launch instance and join domain seamlessly (<a href="https://repost.aws/knowledge-center/manage-ad-directory-from-ec2-windows">link</a>)</li>
+<li>
+<p>create role for joining domain instance<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">ROLE_NAME</span><span class="o">=</span>ec2-msds-role-<span class="k">$(</span><span class="nv">TZ</span><span class="o">=</span>EAT-8<span class="w"> </span>date<span class="w"> </span>+%Y%m%d-%H%M%S<span class="k">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>cat<span class="w"> </span>&gt;<span class="w"> </span>trust.json<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="s">{</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="s">    &quot;Version&quot;: &quot;2012-10-17&quot;,</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="s">    &quot;Statement&quot;: [</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="s">        {</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="s">            &quot;Effect&quot;: &quot;Allow&quot;,</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="s">            &quot;Principal&quot;: {</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="s">                &quot;Service&quot;: &quot;ec2.amazonaws.com&quot;</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="s">            },</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="s">            &quot;Action&quot;: &quot;sts:AssumeRole&quot;</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="s">        }</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="s">    ]</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="s">}</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="s">EOF</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>aws<span class="w"> </span>iam<span class="w"> </span>create-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span>--assume-role-policy-document<span class="w"> </span>file://trust.json
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span>--policy-arn<span class="w"> </span><span class="s2">&quot;arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore&quot;</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="w">    </span>--policy-arn<span class="w"> </span><span class="s2">&quot;arn:aws:iam::aws:policy/AmazonSSMDirectoryServiceAccess&quot;</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="w">    </span>--policy-arn<span class="w"> </span><span class="s2">&quot;arn:aws:iam::aws:policy/AWSOpsWorksCloudWatchLogs&quot;</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>aws<span class="w"> </span>iam<span class="w"> </span>create-instance-profile<span class="w"> </span>--instance-profile-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>tee<span class="w"> </span>/tmp/inst-profile-<span class="nv">$$</span>.1
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>aws<span class="w"> </span>iam<span class="w"> </span>add-role-to-instance-profile<span class="w"> </span>--instance-profile-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="nv">INSTANCE_PROFILE_ARN</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span>/tmp/inst-profile-<span class="nv">$$</span>.1<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.InstanceProfile.Arn&#39;</span><span class="k">)</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>create key - <a href="../../CLI/awscli/ec2-cmd/#create-key-" title="git/git-mkdocs/CLI/awscli/ec2-cmd">git/git-mkdocs/CLI/awscli/ec2-cmd</a></p>
+</li>
+<li>create instance<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># IMAGE_ID=ami-06fe4639440b3ab22 # windows 2019 base</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nv">IMAGE_ID</span><span class="o">=</span>ami-0dd478adda4cc704d<span class="w"> </span><span class="c1"># windows 2016</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nv">AWS_REGION</span><span class="o">=</span>us-east-2
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">INSTANCE_PROFILE_ARN</span><span class="si">}</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="nv">KEY_NAME</span><span class="o">=</span>aws-key
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="nv">STR</span><span class="o">=</span><span class="k">$(</span><span class="nv">TZ</span><span class="o">=</span>EAT-8<span class="w"> </span>date<span class="w"> </span>+%H%M<span class="k">)</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>aws<span class="w"> </span>ec2<span class="w"> </span>run-instances<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">    </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="w"> </span>--key-name<span class="w"> </span><span class="si">${</span><span class="nv">KEY_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">    </span>--image-id<span class="w"> </span><span class="si">${</span><span class="nv">IMAGE_ID</span><span class="si">}</span><span class="w"> </span>--instance-type<span class="w"> </span>m5.large<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">    </span>--iam-instance-profile<span class="w"> </span><span class="nv">Arn</span><span class="o">=</span><span class="si">${</span><span class="nv">INSTANCE_PROFILE_ARN</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">    </span>--associate-public-ip-address<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">    </span>--private-dns-name-options<span class="w"> </span><span class="s2">&quot;HostnameType=ip-name,EnableResourceNameDnsARecord=true,EnableResourceNameDnsAAAARecord=false&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">    </span>--tag-specifications<span class="w"> </span><span class="s1">&#39;ResourceType=instance,Tags=[{Key=Name,Value=win-&#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">STR</span><span class="si">}</span><span class="s2">&quot;</span><span class="s1">&#39;},{Key=os,Value=windows}]&#39;</span><span class="w"> </span><span class="p">|</span>tee<span class="w"> </span>/tmp/instance-<span class="nv">$$</span>.1
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="nv">INST_ID</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span>/tmp/instance-<span class="nv">$$</span>.1<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Instances[0].InstanceId&#39;</span><span class="k">)</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="c1"># private dns name option is important for join domain</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="c1"># false/false will run ssm document failed</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="c1"># true/false will run ssm document successful</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="k">while</span><span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="w">    </span><span class="nv">RESULT</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instance-status<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="w">        </span>--instance-ids<span class="w"> </span><span class="si">${</span><span class="nv">INST_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">        </span>--query<span class="w"> </span><span class="s1">&#39;InstanceStatuses[?(InstanceStatus.Status==`ok` &amp;&amp; SystemStatus.Status==`ok`)].InstanceId&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="w">        </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$RESULT</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">INST_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">        </span><span class="k">break</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">    </span><span class="k">else</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">        </span>sleep<span class="w"> </span><span class="m">60</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">    </span><span class="k">fi</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="k">done</span>
+</code></pre></div></li>
+</ul>
+<p>^goacm2</p>
+<h5 id="join-domain-">join-domain-<a class="headerlink" href="#join-domain-" title="Permanent link">&para;</a></h5>
+<ul>
+<li>(option) logon windows instance once at least </li>
+<li>
+<p>execute ssm document to join domain<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">AD</span><span class="si">}</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">MSDS_ID</span><span class="si">}</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">INST_ID</span><span class="si">}</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">MSDS_IP</span><span class="p">[@]</span><span class="si">}</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>aws<span class="w"> </span>ssm<span class="w"> </span>send-command<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span>--document-name<span class="w"> </span><span class="s2">&quot;AWS-JoinDirectoryServiceDomain&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span>--document-version<span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span>--targets<span class="w"> </span><span class="s1">&#39;[{&quot;Key&quot;:&quot;InstanceIds&quot;,&quot;Values&quot;:[&quot;&#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">INST_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="s1">&#39;&quot;]}]&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span>--parameters<span class="w"> </span><span class="s1">&#39;{&quot;directoryOU&quot;:[&quot;&quot;],&quot;directoryId&quot;:[&quot;&#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">MSDS_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="s1">&#39;&quot;],&quot;directoryName&quot;:[&quot;&#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">AD</span><span class="si">}</span><span class="s2">&quot;</span><span class="s1">&#39;&quot;],&quot;dnsIpAddresses&quot;:[&quot;&#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">MSDS_IP</span><span class="p">[0]</span><span class="si">}</span><span class="s2">&quot;</span><span class="s1">&#39;&quot;,&quot;&#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">MSDS_IP</span><span class="p">[1]</span><span class="si">}</span><span class="s2">&quot;</span><span class="s1">&#39;&quot;]}&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">    </span>--timeout-seconds<span class="w"> </span><span class="m">600</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">    </span>--max-concurrency<span class="w"> </span><span class="s2">&quot;50&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span>--max-errors<span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span>--cloud-watch-output-config<span class="w"> </span><span class="s1">&#39;{&quot;CloudWatchOutputEnabled&quot;:true,&quot;CloudWatchLogGroupName&quot;:&quot;ssm-powershell-log-2024&quot;}&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>tee<span class="w"> </span>/tmp/ssm-<span class="nv">$$</span>.json
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="c1"># wait to Success</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="nv">COMMAND_ID</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span>/tmp/ssm-<span class="nv">$$</span>.json<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Command.CommandId&#39;</span><span class="k">)</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a>watch<span class="w"> </span>-g<span class="w"> </span>-n<span class="w"> </span><span class="m">10</span><span class="w"> </span>aws<span class="w"> </span>ssm<span class="w"> </span>get-command-invocation<span class="w"> </span>--command-id<span class="w"> </span><span class="si">${</span><span class="nv">COMMAND_ID</span><span class="si">}</span><span class="w"> </span>--instance-id<span class="w"> </span><span class="si">${</span><span class="nv">INST_ID</span><span class="si">}</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Status&#39;</span><span class="w"> </span>--output<span class="w"> </span>text
+</code></pre></div></p>
+</li>
+<li>
+<p>check join domain successfully or not, see <code>Domain:</code> in output<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>aws<span class="w"> </span>ssm<span class="w"> </span>send-command<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>--document-name<span class="w"> </span><span class="s2">&quot;AWS-RunPowerShellScript&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>--document-version<span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>--targets<span class="w"> </span><span class="s1">&#39;[{&quot;Key&quot;:&quot;InstanceIds&quot;,&quot;Values&quot;:[&quot;&#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">INST_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="s1">&#39;&quot;]}]&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>--parameters<span class="w"> </span><span class="s1">&#39;{&quot;workingDirectory&quot;:[&quot;&quot;],&quot;executionTimeout&quot;:[&quot;3600&quot;],&quot;commands&quot;:[&quot;systeminfo&quot;]}&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>--timeout-seconds<span class="w"> </span><span class="m">600</span><span class="w"> </span>--max-concurrency<span class="w"> </span><span class="s2">&quot;50&quot;</span><span class="w"> </span>--max-errors<span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>--cloud-watch-output-config<span class="w"> </span><span class="s1">&#39;{&quot;CloudWatchOutputEnabled&quot;:true,&quot;CloudWatchLogGroupName&quot;:&quot;ssm-powershell-log-2024&quot;}&#39;</span><span class="w"> </span>--region<span class="w"> </span>us-east-2
+</code></pre></div></p>
+</li>
+</ul>
+<h4 id="install-some-tool-to-manage-ad">install some tool to manage AD<a class="headerlink" href="#install-some-tool-to-manage-ad" title="Permanent link">&para;</a></h4>
+<ul>
+<li>
+<p>install <code>Remote Server Administration Tools</code> from powershell<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">Install-WindowsFeature</span> <span class="n">RSAT-ADDS-Tools</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nb">Install-WindowsFeature</span> <span class="n">-Name</span> <span class="s2">&quot;RSAT-AD-PowerShell&quot;</span> <span class="n">-IncludeAllSubFeature</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>login instance with domain admin <code>admin@your.domain.com</code></p>
+</li>
+<li>create group for sftp access <code>testgroup1</code></li>
+<li>create user belong this group <code>testuser1</code></li>
+<li>get sid of ad group (<a href="https://docs.aws.amazon.com/en_us/transfer/latest/userguide/directory-services-users.html#managed-ad-prereq">link</a>)<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>Get-ADGroup<span class="w"> </span>-Filter<span class="w"> </span><span class="o">{</span>samAccountName<span class="w"> </span>-like<span class="w"> </span><span class="s2">&quot;testgroup1*&quot;</span><span class="o">}</span><span class="w"> </span>-Properties<span class="w"> </span>*<span class="w"> </span><span class="p">|</span><span class="w"> </span>Select<span class="w"> </span>SamAccountName,ObjectSid
+</code></pre></div></li>
+</ul>
+<h3 id="transfer-family">transfer family<a class="headerlink" href="#transfer-family" title="Permanent link">&para;</a></h3>
+<ul>
+<li>allocate at least one elastic ip in your vpc</li>
+<li>request a certificate <code>ftp.your.domain.com</code> in acm</li>
+<li>create role to access s3, using transfer service as trust entity <code>access-s3-role</code></li>
+<li>
+<p>add directory service permissions to current user/role who will create ftp server (<a href="https://docs.aws.amazon.com/en_us/transfer/latest/userguide/directory-services-users.html#managed-ad-prereq">link</a>)</p>
+</li>
+<li>
+<p>create server with sftp and ftps protocol</p>
+</li>
+<li>select <code>aws directory service</code> as <strong>IdP</strong></li>
+<li>select <code>vpc hosted</code> as endpoint type, using <code>internet facing</code> access</li>
+<li>select public subnet and elastic ip</li>
+<li>modify or create security group for ports: <code>22,21,8192-8200</code> </li>
+<li>s3 as backend</li>
+<li>
+<p>select <code>enable</code> in <code>TLS session resumption</code> (<a href="https://repost.aws/questions/QURR9WVIbjQ-uYYFu_gMCdhw/ftp-transfer-family-ftps-tls-resume-failed">link</a>)</p>
+</li>
+<li>
+<p>after server created, add sid to <code>accesses</code>, mapping to role <code>access-s3-role</code></p>
+</li>
+<li>test user</li>
+</ul>
+<h3 id="route53">route53<a class="headerlink" href="#route53" title="Permanent link">&para;</a></h3>
+<ul>
+<li>create cname record <code>ftp.your.domain.com</code> to ftp server&rsquo;s endpoint, or alias to vpce public dns name</li>
+</ul>
+<h3 id="access-ftp-server">access ftp server<a class="headerlink" href="#access-ftp-server" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>sftp<span class="w"> </span>testuser1@your.domain.com@ftp.your.domain.com
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="c1"># or</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>lftp<span class="w"> </span>-d<span class="w"> </span>ftp://ftp.your.domain.com<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>-u<span class="w"> </span><span class="s1">&#39;testuser1@your.domain.com,PASSWORD&#39;</span>
+</code></pre></div>
+<h2 id="conclusion">conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<p>meeting requirement</p>
 <h2 id="refer">refer<a class="headerlink" href="#refer" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="https://github.com/panlm/NTNX/blob/master/scripts/translate/speechtext-aws.sh">https://github.com/panlm/NTNX/blob/master/scripts/translate/speechtext-aws.sh</a></li>
+<li><a href="https://aws.amazon.com/blogs/aws/new-aws-transfer-for-ftp-and-ftps-in-addition-to-existing-sftp/">https://aws.amazon.com/blogs/aws/new-aws-transfer-for-ftp-and-ftps-in-addition-to-existing-sftp/</a></li>
+<li><a href="https://aws.amazon.com/blogs/storage/announcing-the-open-source-release-of-web-client-for-aws-transfer-family/">https://aws.amazon.com/blogs/storage/announcing-the-open-source-release-of-web-client-for-aws-transfer-family/</a></li>
+</ul>
+<h2 id="screenshots">screenshots<a class="headerlink" href="#screenshots" title="Permanent link">&para;</a></h2>
+<h3 id="ftp-client-configuration">ftp client configuration<a class="headerlink" href="#ftp-client-configuration" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../Pasted%20image%2020230606163659.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Pasted image 20230606163659.png" src="../Pasted%20image%2020230606163659.png" title="Pasted image 20230606163659.png" /></a></p>
+<h3 id="upload-and-download-using-ftp-client">upload and download using ftp client<a class="headerlink" href="#upload-and-download-using-ftp-client" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../Pasted%20image%2020230606163753.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Pasted image 20230606163753.png" src="../Pasted%20image%2020230606163753.png" title="Pasted image 20230606163753.png" /></a></p>
+<h3 id="s3-bucket">s3 bucket<a class="headerlink" href="#s3-bucket" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../Pasted%20image%2020230606163852.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Pasted image 20230606163852.png" src="../Pasted%20image%2020230606163852.png" title="Pasted image 20230606163852.png" /></a></p>
+<h3 id="transfer-family_1">transfer family<a class="headerlink" href="#transfer-family_1" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../Pasted%20image%2020230606164005.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Pasted image 20230606164005.png" src="../Pasted%20image%2020230606164005.png" title="Pasted image 20230606164005.png" /></a></p>
+<h3 id="directory-service_1">directory service<a class="headerlink" href="#directory-service_1" title="Permanent link">&para;</a></h3>
+<p><a class="glightbox" href="../Pasted%20image%2020230606164124.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="Pasted image 20230606164124.png" src="../Pasted%20image%2020230606164124.png" title="Pasted image 20230606164124.png" /></a></p>
+<h2 id="refer_1">refer<a class="headerlink" href="#refer_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://repost.aws/knowledge-center/manage-ad-directory-from-ec2-windows">https://repost.aws/knowledge-center/manage-ad-directory-from-ec2-windows</a></li>
 </ul>
 
 
@@ -3866,7 +4408,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-12-26T10:48:29+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-13T10:42:38+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-13</span>
   </span>
 
     
@@ -3876,7 +4418,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-12-12T20:26:34+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-12</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-13T10:42:38+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-13</span>
   </span>
 
     
