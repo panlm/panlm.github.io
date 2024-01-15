@@ -1,8 +1,8 @@
 ---
 title: cert-manager
-description: cert-manager
+description: 证书管理插件
 created: 2023-07-31 15:36:34.121
-last_modified: 2023-11-28
+last_modified: 2024-01-13
 tags:
   - kubernetes
   - aws/container/eks

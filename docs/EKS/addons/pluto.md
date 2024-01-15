@@ -1,26 +1,14 @@
 ---
 title: pluto
-description: pluto
-chapter: true
-weight: 112
+description: Kubernetes 升级小工具
 created: 2023-05-18 09:40:00.214
-last_modified: 2023-10-07 21:30:27.389
+last_modified: 2024-01-13
 tags:
   - kubernetes
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # pluto-cmd
-
-- [scan](#scan)
-- [install](#install)
-	- [asdf](#asdf)
-	- [pluto](#pluto)
-
 
 ## scan
 - scan folder

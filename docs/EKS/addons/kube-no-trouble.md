@@ -1,8 +1,8 @@
 ---
 title: kube-no-trouble
-description: kube-no-trouble
+description: Kubernetes 升级小工具
 created: 2023-06-23 11:18:10.512
-last_modified: 2023-11-08
+last_modified: 2024-01-13
 tags:
   - kubernetes
 ---

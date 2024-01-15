@@ -16,6 +16,8 @@ number headings: first-level 2, max 3, 1.1, auto
 - [Create Public Access EKS Cluster](eks-public-access-cluster): 创建公有访问的 EKS 集群
 - [Create Public Access EKS Cluster in China Region](eks-public-access-cluster-in-china-region): 在中国区域，创建共有访问的 EKS 集群
 - [EKS Upgrade Procedure](eks-upgrade-procedure): EKS 集群升级
+- [IRSA 中的 Token 剖析](TC-eks-irsa-token-deep-dive-lab): 本文档总结了将 AWS IAM 角色授予 AWS EKS 集群的服务账户的过程
+- [EKS Security Group Deepdive](TC-security-group-for-eks-deepdive): 深入 EKS 安全组
 <-->
 
 ## 2 kubernetes
@@ -33,13 +35,13 @@ number headings: first-level 2, max 3, 1.1, auto
 - [$frontmatter:title]($filename): $frontmatter:description
 ```
 - [appmesh-workshop-eks](appmesh-workshop-eks): appmesh workshop
-- [argocd](argocd-lab): argocd
+- [argocd](argocd-lab): gitops 工具
 - [automated-canary-deployment-using-flagger](automated-canary-deployment-using-flagger): 自动化 canary 部署
 - [cloudwatch-to-firehose-python](cloudwatch-to-firehose-python): 在 firehose 上，处理从 cloudwatch 发送来的日志
 - [EKS Container Insights](eks-container-insights): 启用 EKS 的 container insight 功能
 - [enable-prometheus-in-cloudwatch](enable-prometheus-in-cloudwatch): 将 EKS 集群的 prometheus 数据汇总到 cloudwatch
 - [Export Cloudwatch Log Group to S3](export-cloudwatch-log-group-to-s3): 导出 cloudwatch 日志到 s3
-- [flux](flux-lab): flux
+- [flux](flux-lab): gitops 工具
 - [Install Grafana on Beanstalk](install-grafana-on-beanstalk): 在 EC2 / beanstalk / EKS 上安装 grafana 
 - [install-prometheus-grafana-on-eks](install-prometheus-grafana): 安装 grafana 和 prometheus
 - [Using Loki for Logging](POC-loki-for-logging): 使用 loki 收集日志
@@ -54,7 +56,7 @@ number headings: first-level 2, max 3, 1.1, auto
 ```
 - [aws-for-fluent-bit](aws-for-fluent-bit): 
 - [aws-load-balancer-controller](aws-load-balancer-controller): 使用 aws 负载均衡控制器
-- [cert-manager](cert-manager): cert-manager
+- [cert-manager](cert-manager): 证书管理插件
 - [cluster-autoscaler](cluster-autoscaler): EKS 集群中安装 Cluster Autoscaler
 - [cni-metrics-helper](cni-metrics-helper): cni-metrics-helper
 - [ebs-for-eks](ebs-for-eks): 使用 ebs 作为 pod 持久化存储 
@@ -62,17 +64,17 @@ number headings: first-level 2, max 3, 1.1, auto
 - [eks-addons-coredns](eks-addons-coredns): eks-addons-coredns
 - [eks-addons-kube-proxy](eks-addons-kube-proxy): eks-addons-kube-proxy
 - [eks-addons-vpc-cni](eks-addons-vpc-cni): eks-addons-vpc-cni
-- [eks-custom-network](eks-custom-network): custom network 可以解决子网地址段耗尽的问题
+- [eks-custom-network](eks-custom-network): 可以解决子网地址段耗尽的问题
 - [eks-fargate](eks-fargate-lab): 在 eks 集群中使用 fargate
-- [eksup](eksup): eksup
+- [eksup](eksup): EKS 升级小工具
 - [enable-sg-on-pod](enable-sg-on-pod): 启用 pod 安全组
 - [externaldns-for-route53](externaldns-for-route53): 使用 externaldns 组件
 - [karpenter-install-lab](karpenter-lab): 使用 Karpenter 代替 Cluster Autoscaler
-- [kube-no-trouble](kube-no-trouble): kube-no-trouble
+- [kube-no-trouble](kube-no-trouble): Kubernetes 升级小工具
 - [kube-state-metrics](kube-state-metrics): kube-state-metrics
 - [metrics-server](metrics-server): EKS 集群中安装 metrics server
 - [nginx-ingress-controller](nginx-ingress-controller): nginx-ingress-controller
 - [nginx-ingress-controller-community-ver](nginx-ingress-controller-community-ver): 使用 nginx ingress
 - [nginx-ingress-controller-nginx-ver](nginx-ingress-controller-nginx-ver): nginx-ingress-controller-nginx-ver
-- [pluto](pluto): pluto
+- [pluto](pluto): Kubernetes 升级小工具
 <-->

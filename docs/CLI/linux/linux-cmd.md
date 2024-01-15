@@ -36,7 +36,7 @@ curl -sL -w '%{http_code}' -o /dev/null "https://httpbin.org/status/302"
 ```
 
 ## datediff
-- [[../../../../WebClip/Releases · hroptatyrdateutils|Releases · hroptatyrdateutils]]
+- http://www.fresse.org/dateutils/
 ```sh
 git clone https://github.com/hroptatyr/dateutils.git
 cd dateutils

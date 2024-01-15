@@ -1,5 +1,5 @@
 ---
-title: POC-prometheus-with-thanos-manually
+title: Prometheus With Thanos Manually
 description: POC-prometheus-with-thanos-manually
 created: 2024-01-04 11:38:42.971
 last_modified: 2024-01-13
@@ -11,7 +11,7 @@ status: myblog
 > just backup copy 
 > no more update here
 > refer: [[git/git-mkdocs/EKS/solutions/monitor/TC-prometheus-ha-architect-with-thanos|TC-prometheus-ha-architect-with-thanos]]
-# POC-prometheus-with-thanos-manually
+# Prometheus With Thanos Manually
 ## 架构描述
 Prometheus 是一款开源的监控和报警工具，专为容器化和云原生架构的设计，通过基于 HTTP 的 Pull 模式采集时序数据，提供功能强大的查询语言 PromQL，并可视化呈现监控指标与生成报警信息。客户普遍采用其用于 Kubernetes 的监控体系建设。Amazon 也在 2021 年 9 月正式发布了托管的 Prometheus 服务（Amazon Managed Service for Prometheus）简化客户部署和使用。并且在 2023 年 11 月针对 EKS 发布了托管的 Prometheus 服务的无代理采集功能（[新闻稿](https://aws.amazon.com/about-aws/whats-new/2023/11/amazon-managed-service-prometheus-agentless-collector-metrics-eks/)），进一步方便客户无需提前规划，从而可以开箱即用的使用 Prometheus 的相关组件。
 

@@ -1,8 +1,8 @@
 ---
 title: flux
-description: flux
+description: gitops 工具
 created: 2022-04-06 19:28:05.118
-last_modified: 2022-09-14 08:40:30.375
+last_modified: 2024-01-13
 tags:
   - aws/container/eks
   - gitops/weaveworks/flux

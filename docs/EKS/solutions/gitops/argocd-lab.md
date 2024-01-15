@@ -1,8 +1,8 @@
 ---
 title: argocd
-description: argocd
+description: gitops 工具
 created: 2022-08-07 19:24:34.481
-last_modified: 2023-12-31
+last_modified: 2024-01-13
 tags:
   - gitops/argo
 ---

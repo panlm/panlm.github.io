@@ -2,20 +2,15 @@
 title: cloudformation
 description: 常用命令
 created: 2021-07-01T04:49:13.611Z
-modified: 2021-07-24T12:26:19.306Z
+last_modified: 2024-01-15
 tags:
   - aws/mgmt/cloudformation
   - aws/cmd
 ---
-
-```ad-attention
-title: This is a github note
-```
-
+> [!WARNING] This is a github note
 # cloudformation-cli
 
 ## describe-stacks
-
 ```sh
 AWS_REGION=us-east-1
 STACK_NAME=stack1-23948
@@ -27,7 +22,6 @@ aws cloudformation --region ${AWS_REGION} describe-stacks --stack-name ${STACK_N
 ```
 
 ## create-stack
-
 ```sh
 aws cloudformation create-stack --stack-name OELabStack2 \
   --parameters ParameterKey=InstanceProfile,ParameterValue="" \

@@ -1,30 +1,18 @@
 ---
 title: eksup
-description: eksup
-chapter: true
-weight: 113
+description: EKS 升级小工具
 created: 2023-05-29 17:14:42.987
-last_modified: 2023-05-29 17:14:42.987
-tags: 
-- aws/container/eks 
-- kubernetes 
+last_modified: 2024-01-13
+tags:
+  - aws/container/eks
+  - kubernetes
 ---
-
-```ad-attention
-title: This is a github note
-
-```
+> [!WARNING] This is a github note
 
 # eksup
 
-```toc
-min_depth: 2
-max_depth: 4
-```
-
 ## github
-
-https://clowdhaus.github.io/eksup/
+- https://clowdhaus.github.io/eksup/
 
 
 
