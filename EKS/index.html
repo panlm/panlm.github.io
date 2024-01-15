@@ -500,7 +500,7 @@
         
   
   <span class="md-ellipsis">
-    quick setup cloud9 script
+    Quick Setup Cloud9
   </span>
   
     
@@ -2422,7 +2422,7 @@
         
   
   <span class="md-ellipsis">
-    Migrating Filezilla to Aws Transfer Family
+    Migrating Filezilla to AWS Transfer Family
   </span>
   
     
@@ -2450,7 +2450,7 @@
         
   
   <span class="md-ellipsis">
-    POC-prometheus-with-thanos-manually
+    Prometheus With Thanos Manually
   </span>
   
     
@@ -3733,6 +3733,8 @@
 - <a href="cluster/eks-public-access-cluster/">Create Public Access EKS Cluster</a>: 创建公有访问的 EKS 集群<br />
 - <a href="cluster/eks-public-access-cluster-in-china-region/">Create Public Access EKS Cluster in China Region</a>: 在中国区域，创建共有访问的 EKS 集群<br />
 - <a href="cluster/eks-upgrade-procedure/">EKS Upgrade Procedure</a>: EKS 集群升级<br />
+- <a href="../TC-eks-irsa-token-deep-dive-lab">IRSA 中的 Token 剖析</a>: 本文档总结了将 AWS IAM 角色授予 AWS EKS 集群的服务账户的过程<br />
+- <a href="../TC-security-group-for-eks-deepdive">EKS Security Group Deepdive</a>: 深入 EKS 安全组<br />
 &lt;&ndash;&gt;</p>
 <h2 id="2-kubernetes">2 kubernetes<a class="headerlink" href="#2-kubernetes" title="Permanent link">&para;</a></h2>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>(path:git/git-mkdocs/eks/kubernetes file:.md)
@@ -3748,13 +3750,13 @@
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>- [$frontmatter:title]($filename): $frontmatter:description
 </code></pre></div><br />
 - <a href="solutions/appmesh/appmesh-workshop-eks/">appmesh-workshop-eks</a>: appmesh workshop<br />
-- <a href="solutions/gitops/argocd-lab/">argocd</a>: argocd<br />
+- <a href="solutions/gitops/argocd-lab/">argocd</a>: gitops 工具<br />
 - <a href="solutions/appmesh/automated-canary-deployment-using-flagger/">automated-canary-deployment-using-flagger</a>: 自动化 canary 部署<br />
 - <a href="solutions/logging/cloudwatch-to-firehose-python/">cloudwatch-to-firehose-python</a>: 在 firehose 上，处理从 cloudwatch 发送来的日志<br />
 - <a href="solutions/monitor/eks-container-insights/">EKS Container Insights</a>: 启用 EKS 的 container insight 功能<br />
 - <a href="solutions/monitor/enable-prometheus-in-cloudwatch/">enable-prometheus-in-cloudwatch</a>: 将 EKS 集群的 prometheus 数据汇总到 cloudwatch<br />
 - <a href="solutions/logging/export-cloudwatch-log-group-to-s3/">Export Cloudwatch Log Group to S3</a>: 导出 cloudwatch 日志到 s3<br />
-- <a href="solutions/gitops/flux-lab/">flux</a>: flux<br />
+- <a href="solutions/gitops/flux-lab/">flux</a>: gitops 工具<br />
 - <a href="solutions/monitor/install-grafana-on-beanstalk/">Install Grafana on Beanstalk</a>: 在 EC2 / beanstalk / EKS 上安装 grafana <br />
 - <a href="solutions/monitor/install-prometheus-grafana/">install-prometheus-grafana-on-eks</a>: 安装 grafana 和 prometheus<br />
 - <a href="solutions/logging/POC-loki-for-logging/">Using Loki for Logging</a>: 使用 loki 收集日志<br />
@@ -3768,7 +3770,7 @@
 </code></pre></div><br />
 - <a href="addons/aws-for-fluent-bit/">aws-for-fluent-bit</a>: <br />
 - <a href="addons/aws-load-balancer-controller/">aws-load-balancer-controller</a>: 使用 aws 负载均衡控制器<br />
-- <a href="addons/cert-manager/">cert-manager</a>: cert-manager<br />
+- <a href="addons/cert-manager/">cert-manager</a>: 证书管理插件<br />
 - <a href="addons/cluster-autoscaler/">cluster-autoscaler</a>: EKS 集群中安装 Cluster Autoscaler<br />
 - <a href="addons/cni-metrics-helper/">cni-metrics-helper</a>: cni-metrics-helper<br />
 - <a href="addons/ebs-for-eks/">ebs-for-eks</a>: 使用 ebs 作为 pod 持久化存储 <br />
@@ -3776,19 +3778,19 @@
 - <a href="addons/eks-addons-coredns/">eks-addons-coredns</a>: eks-addons-coredns<br />
 - <a href="addons/eks-addons-kube-proxy/">eks-addons-kube-proxy</a>: eks-addons-kube-proxy<br />
 - <a href="addons/eks-addons-vpc-cni/">eks-addons-vpc-cni</a>: eks-addons-vpc-cni<br />
-- <a href="addons/eks-custom-network/">eks-custom-network</a>: custom network 可以解决子网地址段耗尽的问题<br />
+- <a href="addons/eks-custom-network/">eks-custom-network</a>: 可以解决子网地址段耗尽的问题<br />
 - <a href="addons/eks-fargate-lab/">eks-fargate</a>: 在 eks 集群中使用 fargate<br />
-- <a href="addons/eksup/">eksup</a>: eksup<br />
+- <a href="addons/eksup/">eksup</a>: EKS 升级小工具<br />
 - <a href="addons/enable-sg-on-pod/">enable-sg-on-pod</a>: 启用 pod 安全组<br />
 - <a href="addons/externaldns-for-route53/">externaldns-for-route53</a>: 使用 externaldns 组件<br />
 - <a href="addons/karpenter-lab/">karpenter-install-lab</a>: 使用 Karpenter 代替 Cluster Autoscaler<br />
-- <a href="addons/kube-no-trouble/">kube-no-trouble</a>: kube-no-trouble<br />
+- <a href="addons/kube-no-trouble/">kube-no-trouble</a>: Kubernetes 升级小工具<br />
 - <a href="addons/kube-state-metrics/">kube-state-metrics</a>: kube-state-metrics<br />
 - <a href="addons/metrics-server/">metrics-server</a>: EKS 集群中安装 metrics server<br />
 - <a href="addons/nginx-ingress-controller/">nginx-ingress-controller</a>: nginx-ingress-controller<br />
 - <a href="addons/nginx-ingress-controller-community-ver/">nginx-ingress-controller-community-ver</a>: 使用 nginx ingress<br />
 - <a href="addons/nginx-ingress-controller-nginx-ver/">nginx-ingress-controller-nginx-ver</a>: nginx-ingress-controller-nginx-ver<br />
-- <a href="addons/pluto/">pluto</a>: pluto<br />
+- <a href="addons/pluto/">pluto</a>: Kubernetes 升级小工具<br />
 &lt;&ndash;&gt;</p>
 
 
@@ -3812,7 +3814,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-13T10:42:38+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-15T09:24:14+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-15</span>
   </span>
 
     
