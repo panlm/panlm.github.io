@@ -2,7 +2,7 @@
 title: Quick Setup Cloud9
 description: 简化运行脚本
 created: 2023-08-04 15:56:59.747
-last_modified: 2024-01-15
+last_modified: 2024-01-16
 status: myblog
 tags:
   - aws/cloud9
@@ -20,11 +20,16 @@ tags:
 aws configure list
 export AWS_DEFAULT_REGION AWS_REGION
 
-aws cloudformation create-stack --stack-name cloud9-$(TZ=EAT-8 date +%m%d-%H%M) \
-  --template-body file://./a.yaml --capabilities CAPABILITY_IAM
+STACK_NAME=cloud9-$(TZ=EAT-8 date +%m%d-%H%M)
+aws cloudformation create-stack --stack-name ${STACK_NAME} \
+    --template-body file://./example_instancestack.yaml --capabilities CAPABILITY_IAM
+aws cloudformation wait stack-create-complete --stack-name ${STACK_NAME}
+
+aws cloudformation describe-stacks --stack-name ${STACK_NAME} \
+    --query 'Stacks[].Outputs[?OutputKey==`Cloud9IDE`].OutputValue' --output text
 ```
 
-## option 2 - spin up a cloud9 instance in your region
+## option 2 - spin up a cloud9 instance with Cloudshell
 -  点击[这里](https://console.aws.amazon.com/cloudshell) 运行 cloudshell，执行代码块创建 cloud9 测试环境 (open cloudshell, and then execute following code to create cloud9 environment)
     - 通过 `name` 自定义 cloud9 的名称，如果不指定将自动创建
     - cloud9 将创建在默认 vpc 中第一个公有子网中

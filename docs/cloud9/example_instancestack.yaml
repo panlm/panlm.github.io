@@ -45,7 +45,7 @@ Resources:
     Properties:
       Tags:
         - Key: Environment
-          Value: AWS Example
+          Value: !Ref AWS::StackName
       AssumeRolePolicyDocument:
         Version: '2012-10-17'
         Statement:
@@ -94,6 +94,7 @@ Resources:
             - cloudformation:DescribeStackEvents
             - cloudformation:DescribeStackResource
             - cloudformation:DescribeStackResources
+            - ec2:RebootInstances
             - ec2:DescribeInstances
             - ec2:AssociateIamInstanceProfile
             - ec2:ModifyInstanceAttribute
@@ -115,7 +116,7 @@ Resources:
     Properties:
       Tags:
         - Key: Environment
-          Value: AWS Example
+          Value: !Ref AWS::StackName
       ServiceToken:
         Fn::GetAtt:
         - ExampleC9BootstrapInstanceLambdaFunction
@@ -138,7 +139,7 @@ Resources:
     Properties:
       Tags:
         - Key: Environment
-          Value: AWS Example
+          Value: !Ref AWS::StackName
       Handler: index.lambda_handler
       Role:
         Fn::GetAtt:
@@ -197,6 +198,20 @@ Resources:
                       # logger.info('response - associate_iam_instance_profile: {}'.format(response))
                       r_ec2 = boto3.resource('ec2')
   
+                      # reboot instance to 
+                      response1 = ec2.reboot_instances(InstanceIds=[instance['InstanceId']], DryRun=False)
+                      # logger.info('response - reboot_instances: {}'.format(response1))
+                      time.sleep(5)
+                      instance_state = ec2.describe_instances(InstanceIds=[instance['InstanceId']])
+
+                      # Wait for Instance to become ready after reboot
+                      instance_state = instance['State']['Name']
+                      # logger.info('instance_state: {}'.format(instance_state))
+                      while instance_state != 'running':
+                          time.sleep(5)
+                          instance_state = ec2.describe_instances(InstanceIds=[instance['InstanceId']])
+                          # logger.info('instance_state: {}'.format(instance_state))
+
                       responseData = {'Success': 'Started bootstrapping for instance: '+instance['InstanceId']}
                       cfnresponse.send(event, context, status, responseData, 'CustomResourcePhysicalID')
                       
@@ -211,8 +226,8 @@ Resources:
     Type: AWS::S3::Bucket
     DeletionPolicy: Delete
     Properties: 
-      VersioningConfiguration:
-        Status: Enabled
+#      VersioningConfiguration:
+#        Status: Enabled
       BucketEncryption: 
         ServerSideEncryptionConfiguration: 
           - ServerSideEncryptionByDefault:
@@ -223,7 +238,7 @@ Resources:
     Properties: 
       Tags:
         - Key: Environment
-          Value: AWS Example
+          Value: !Ref AWS::StackName
       DocumentType: Command
       DocumentFormat: YAML
       Content: 
@@ -244,8 +259,8 @@ Resources:
             - "cat $TMPFILE |awk '/###-SCRIPT-PART-TWO-BEGIN-###/,/###-SCRIPT-PART-TWO-END-###/ {print}' > $TMPFILE-TWO.sh"
             - "chmod a+x $TMPFILE-TWO.sh"
             - "sudo -u ec2-user bash $TMPFILE-TWO.sh 2>&1"
-            - "echo $C9_PID"
-            - "sudo -u ec2-user aws cloud9 update-environment --environment-id $C9_PID --managed-credentials-action DISABLE"
+            - "sudo -u ec2-user echo $C9_PID"
+            # - "sudo -u ec2-user /usr/local/bin/aws cloud9 update-environment --environment-id $C9_PID --managed-credentials-action DISABLE"
             # - !Join [' ', ['aws cloud9 update-environment  --environment-id', Ref: ExampleC9Instance, '--managed-credentials-action DISABLE']]
   
   ExampleC9BootstrapAssociation: 
@@ -258,9 +273,9 @@ Resources:
           OutputS3BucketName: !Ref ExampleC9OutputBucket
           OutputS3KeyPrefix: bootstrapoutput
       Targets:
-        - Key: tag:SSMBootstrap
+        - Key: tag:Environment
           Values:
-          - Active
+          - !Ref AWS::StackName
 
 ################## INSTANCE #####################
   ExampleC9InstanceProfile:
@@ -289,7 +304,7 @@ Resources:
           Value: Active
         - 
           Key: Environment
-          Value: AWS Example
+          Value: !Ref AWS::StackName
 
 Outputs: 
   Cloud9IDE:

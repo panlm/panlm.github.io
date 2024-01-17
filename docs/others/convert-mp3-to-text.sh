@@ -1,21 +1,3 @@
----
-title: script-convert-mp3-to-text
-description: script-convert-mp3-to-text
-created: 2023-12-09 12:09:31.654
-last_modified: 2024-01-17
-tags:
-  - aws/aiml/transcribe
-  - aws/cmd
----
-> [!WARNING] This is a github note
-# script-convert-mp3-to-text
-
-i wrote this script several years ago. I have chance to use it in real life today and update to here
-
-## updated version
-- ensure you have export the `AWS_DEFAULT_REGION`
-- download ([[convert-mp3-to-text.sh]] and [[conv-srt.py]])
-```sh
 #!/bin/bash
 # 
 
@@ -78,16 +60,3 @@ fi
 
 #clean
 aws s3 rm s3://$bucket_name/$mp3file
-
-```
-
-
-
-## refer
-- https://github.com/panlm/NTNX/blob/master/scripts/translate/speechtext-aws.sh
-
-
-
-
-
-

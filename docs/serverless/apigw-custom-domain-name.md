@@ -2,7 +2,7 @@
 title: Custom Domain Name in API Gateway
 description: 为私有 api 创建定制域名
 created: 2023-03-07 23:01:19.519
-last_modified: 2023-12-24
+last_modified: 2024-01-15
 tags:
   - aws/serverless/api-gateway
 ---
@@ -10,7 +10,7 @@ tags:
 
 # Custom Domain Name in API Gateway
 
-## for private api 
+## for-private-api-
 - 在 acm 中发布证书 `*.api.aws.panlm.xyz`
 - 在与 API 同区域中创建 route53 的 public host zone `api.aws.panlm.xyz`
 - 创建 私有 API 

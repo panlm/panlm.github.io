@@ -2,7 +2,7 @@
 title: linux-cmd
 description: 常用命令
 created: 2023-01-03 12:05:10.533
-last_modified: 2024-01-13
+last_modified: 2024-01-15
 tags:
   - cmd
   - linux
@@ -73,6 +73,9 @@ cat $$.yaml |envsubst '$var1 $var2' > $$-new.yaml
 
 ```
 - refer [[../../../../notes/envsubst|envsubst]]
+
+## ffmpeg
+- [[ffmpeg|ffmpeg]]
 
 ## firewall-cmd
 ```sh
