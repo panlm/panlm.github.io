@@ -2,7 +2,7 @@
 title: cloud9
 description: cloud9 related commands
 created: 2022-07-01 09:18:29.572
-last_modified: 2023-12-23
+last_modified: 2024-01-17
 tags:
   - aws/cloud9
   - aws/cmd
@@ -60,6 +60,13 @@ aws cloud9 create-environment-membership \
 ```
 Value 'arn:aws:sts:::user/panlm' at 'userArn' failed to satisfy constraint: Member must satisfy regular expression pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):(iam|sts)::\d+:(root|(user\/[\w+=/:,.@-]{1,64}|federated-user\/[\w+=/:,.@-]{2,32}|assumed-role\/[\w+=:,.@-]{1,64}\/[\w+=,.@-]{1,64}))$
 ```
+
+## get tags
+```sh
+C9_INST_ID=$(curl 169.254.169.254/latest/meta-data/instance-id)
+aws ec2 describe-instances --instance-ids $C9_INST_ID --query 'Reservations[].Instances[].Tags[?Key==`aws:cloud9:environment`].Value' --output text
+```
+
 
 ## old
 
