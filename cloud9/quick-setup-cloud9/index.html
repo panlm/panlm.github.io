@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.3">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.4">
     
     
       
@@ -567,13 +567,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#option-2-spin-up-a-cloud9-instance-in-your-region" class="md-nav__link">
+  <a href="#option-2-spin-up-a-cloud9-instance-with-cloudshell" class="md-nav__link">
     <span class="md-ellipsis">
-      option 2 - spin up a cloud9 instance in your region
+      option 2 - spin up a cloud9 instance with Cloudshell
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="option 2 - spin up a cloud9 instance in your region">
+    <nav class="md-nav" aria-label="option 2 - spin up a cloud9 instance with Cloudshell">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2916,6 +2916,8 @@
       
         
       
+        
+      
     
     
     
@@ -3042,6 +3044,27 @@
   
   <span class="md-ellipsis">
     eksdemo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../CLI/linux/ffmpeg/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ffmpeg
   </span>
   
 
@@ -3808,13 +3831,13 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#option-2-spin-up-a-cloud9-instance-in-your-region" class="md-nav__link">
+  <a href="#option-2-spin-up-a-cloud9-instance-with-cloudshell" class="md-nav__link">
     <span class="md-ellipsis">
-      option 2 - spin up a cloud9 instance in your region
+      option 2 - spin up a cloud9 instance with Cloudshell
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="option 2 - spin up a cloud9 instance in your region">
+    <nav class="md-nav" aria-label="option 2 - spin up a cloud9 instance with Cloudshell">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3926,11 +3949,16 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>aws<span class="w"> </span>configure<span class="w"> </span>list
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">export</span><span class="w"> </span>AWS_DEFAULT_REGION<span class="w"> </span>AWS_REGION
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>aws<span class="w"> </span>cloudformation<span class="w"> </span>create-stack<span class="w"> </span>--stack-name<span class="w"> </span>cloud9-<span class="k">$(</span><span class="nv">TZ</span><span class="o">=</span>EAT-8<span class="w"> </span>date<span class="w"> </span>+%m%d-%H%M<span class="k">)</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span>--template-body<span class="w"> </span>file://./a.yaml<span class="w"> </span>--capabilities<span class="w"> </span>CAPABILITY_IAM
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nv">STACK_NAME</span><span class="o">=</span>cloud9-<span class="k">$(</span><span class="nv">TZ</span><span class="o">=</span>EAT-8<span class="w"> </span>date<span class="w"> </span>+%m%d-%H%M<span class="k">)</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>aws<span class="w"> </span>cloudformation<span class="w"> </span>create-stack<span class="w"> </span>--stack-name<span class="w"> </span><span class="si">${</span><span class="nv">STACK_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span>--template-body<span class="w"> </span>file://./example_instancestack.yaml<span class="w"> </span>--capabilities<span class="w"> </span>CAPABILITY_IAM
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>aws<span class="w"> </span>cloudformation<span class="w"> </span><span class="nb">wait</span><span class="w"> </span>stack-create-complete<span class="w"> </span>--stack-name<span class="w"> </span><span class="si">${</span><span class="nv">STACK_NAME</span><span class="si">}</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>aws<span class="w"> </span>cloudformation<span class="w"> </span>describe-stacks<span class="w"> </span>--stack-name<span class="w"> </span><span class="si">${</span><span class="nv">STACK_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span>--query<span class="w"> </span><span class="s1">&#39;Stacks[].Outputs[?OutputKey==`Cloud9IDE`].OutputValue&#39;</span><span class="w"> </span>--output<span class="w"> </span>text
 </code></pre></div></li>
 </ul>
-<h2 id="option-2-spin-up-a-cloud9-instance-in-your-region">option 2 - spin up a cloud9 instance in your region<a class="headerlink" href="#option-2-spin-up-a-cloud9-instance-in-your-region" title="Permanent link">&para;</a></h2>
+<h2 id="option-2-spin-up-a-cloud9-instance-with-cloudshell">option 2 - spin up a cloud9 instance with Cloudshell<a class="headerlink" href="#option-2-spin-up-a-cloud9-instance-with-cloudshell" title="Permanent link">&para;</a></h2>
 <ul>
 <li>点击<a href="https://console.aws.amazon.com/cloudshell">这里</a> 运行 cloudshell，执行代码块创建 cloud9 测试环境 (open cloudshell, and then execute following code to create cloud9 environment)<ul>
 <li>通过 <code>name</code> 自定义 cloud9 的名称，如果不指定将自动创建</li>
@@ -4229,7 +4257,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-15T09:24:14+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-17T09:22:02+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-17</span>
   </span>
 
     
@@ -4293,10 +4321,10 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "toc.follow", "content.code.copy"], "search": "../../assets/javascripts/workers/search.f886a092.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "toc.follow", "content.code.copy"], "search": "../../assets/javascripts/workers/search.c011b7c0.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.d7c377c4.min.js"></script>
+      <script src="../../assets/javascripts/bundle.7389ff0e.min.js"></script>
       
         <script src="../../js/mkdocs_pagetree_plugin.js"></script>
       
