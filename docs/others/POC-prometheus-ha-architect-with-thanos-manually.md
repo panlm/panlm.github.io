@@ -2,7 +2,7 @@
 title: Prometheus With Thanos Manually
 description: POC-prometheus-with-thanos-manually
 created: 2024-01-04 11:38:42.971
-last_modified: 2024-01-13
+last_modified: 2024-01-19
 tags:
   - prometheus
 status: myblog
@@ -40,7 +40,7 @@ Thanos是一套开源组件，构建在 Prometheus 之上，用以解决 Prometh
 第三种监控架构（对应下图黄色集群及组件）：
 - 在多集群监控场景下，一般会在每个集群部署独立的 Prometheus 组件。Prometheus 提供 Agent Mode 针对这样的场景可以最小化资源占用，直接启用 Remote Write 功能将监控数据集中保存 （可以是另一个 Prometheus 集群，或者 Thanos Receive 组件）。在 AWS 上可以使用托管的 Prometheus 服务作为集中监控数据持久化，提供最好的性能和最低的维护成本。
 
-![[git/git-mkdocs/git-attachment/TC-prometheus-ha-architect-with-thanos-png-diagram-1.png]]
+![[../git-attachment/POC-prometheus-ha-architect-with-thanos-manually-png-diagram-1.png]]
 
 以下总结了基于 Thanos 的各种 Prometheus 监控架构所适合的场景：
 第一种监控架构（对应上图蓝色和绿色集群及组件）：适合绝大部分生产环境，尤其在亚马逊中国区域没有托管 Prometheus 服务，此类架构也是客户首选。

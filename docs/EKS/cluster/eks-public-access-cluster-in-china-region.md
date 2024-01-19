@@ -14,12 +14,12 @@ tags:
 2. create vpc
 ![[../../cloud9/create-standard-vpc-for-lab-in-china-region#using-cloudformation-template-]]
 
-- refer: [[git/git-mkdocs/cloud9/create-standard-vpc-for-lab-in-china-region#using-cloudformation-template-]]
+- refer: [[../../cloud9/create-standard-vpc-for-lab-in-china-region#using-cloudformation-template-]]
 
 3. get vpc id
 ![[../../cloud9/create-standard-vpc-for-lab-in-china-region#get-vpc-id-]]
 
-- refer: [[git/git-mkdocs/cloud9/create-standard-vpc-for-lab-in-china-region#get-vpc-id-]]
+- refer: [[../../cloud9/create-standard-vpc-for-lab-in-china-region#get-vpc-id-]]
 
 4. pre-config
 ![[eks-private-access-cluster#^h86u1r]]

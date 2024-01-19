@@ -2,7 +2,7 @@
 title: Quick Setup Cloud9
 description: 简化运行脚本
 created: 2023-08-04 15:56:59.747
-last_modified: 2024-01-16
+last_modified: 2024-01-17
 status: myblog
 tags:
   - aws/cloud9
@@ -11,9 +11,9 @@ tags:
 > [!WARNING] This is a github note
 
 # Quick Setup Cloud9 
-在 [[setup-cloud9-for-eks]] 基础上进一步简化操作，在 cloud9 中即完成所有初始化动作。
+在 [[setup-cloud9-for-eks]] 基础上进一步简化操作，使用不同方法在 cloud9 中完成所有常用软件安装等初始化操作。推荐使用 Option 1 使用 Cloudformation 自动化部署。或者使用 Option 2.2 在 Cloudshell 中复制粘贴脚本即完成初始化
 
-## option 1 - create cloud9 with cloudformation template
+## Option 1 - create cloud9 with cloudformation template
 - download [[example_instancestack.yaml]]
 - deploy it in cloudshell
 ```sh
@@ -28,8 +28,9 @@ aws cloudformation wait stack-create-complete --stack-name ${STACK_NAME}
 aws cloudformation describe-stacks --stack-name ${STACK_NAME} \
     --query 'Stacks[].Outputs[?OutputKey==`Cloud9IDE`].OutputValue' --output text
 ```
+- if you try to use this cloud9 instance in AccountB, after login AccountB, get cloud9 environment id and run command in cloudshell as [[git/git-mkdocs/CLI/awscli/cloud9-cmd#share-cloud9-with-others-]]
 
-## option 2 - spin up a cloud9 instance with Cloudshell
+## Option 2 - spin up a cloud9 instance with Cloudshell
 -  点击[这里](https://console.aws.amazon.com/cloudshell) 运行 cloudshell，执行代码块创建 cloud9 测试环境 (open cloudshell, and then execute following code to create cloud9 environment)
     - 通过 `name` 自定义 cloud9 的名称，如果不指定将自动创建
     - cloud9 将创建在默认 vpc 中第一个公有子网中
@@ -79,7 +80,7 @@ watch -g -n 2 aws ec2 describe-instances \
 
 ```
 
-### (prefer) stay in cloudshell to initiate cloud9
+### Option 2.1 stay in cloudshell to initiate cloud9 (prefer)
 - 代码将从 GitHub 下载：
     - https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/setup-cloud9-for-eks.md
 - 代码将完成：
@@ -251,7 +252,7 @@ echo "https://${AWS_DEFAULT_REGION}.console.aws.amazon.com/cloud9/ide/${C9_ID}"
 ```
 
 
-### (alternative) login cloud9 to initiate
+### Option 2.2 login cloud9 to initiate (alternative) 
 - 代码将从 GitHub 下载：
     - https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/setup-cloud9-for-eks.md
 
@@ -269,9 +270,7 @@ for i in ONE TWO ; do
     chmod a+x $TMPFILE-$i.sh
     sudo -u ec2-user bash $TMPFILE-$i.sh 2>&1
 done
-
 ```
-
 
 #### script-part-three
 - 直接执行下面代码块可能遇到权限不够的告警，需要：
@@ -295,7 +294,6 @@ sudo -u ec2-user bash $TMPFILE-$i.sh 2>&1
 ```sh
 aws sts get-caller-identity
 ```
-
 
 ## refer
 - open console from local [[../CLI/linux/assume-tool]] 

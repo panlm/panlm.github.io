@@ -2,7 +2,7 @@
 title: Building Prometheus HA Architect with Thanos
 description: 用 Thanos 解决 Prometheus 在多集群大规模环境下的高可用性、可扩展性限制
 created: 2023-11-09 08:41:02.494
-last_modified: 2024-01-13
+last_modified: 2024-01-19
 status: myblog
 tags:
   - kubernetes
@@ -30,20 +30,25 @@ Thanos是一套开源组件，构建在 Prometheus 之上，用以解决 Prometh
 - Query（查询器）：实现 Prometheus 的 v1 API，查询并汇总来自底层组件的数据。将所有数据源添加为 Query 的 Endpoint，包括 Sidecar、 Store、 Receive 等。
 - Query Frontend（查询前端）：实现 Prometheus 的 v1 API，将其代理给查询器，同时缓存响应，并可以拆分查询以提高性能。
 
-第一种监控架构（对应下图蓝色和绿色集群及组件）：
+第一种监控架构（对应下图蓝色集群及组件）：
+![[../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-arch-1.png]]
 - 被监控集群（Observee）部署 Prometheus 且启用 Thanos 的 Sidecar 方式将监控的历史数据定期归档到 S3，通过部署 Thanos Store 组件查询历史数据（下图中 Store 组件部署在监控集群中），被监控集群中不启用 Grafana 组件；
 - 监控集群（Observer）除了部署 Prometheus 之外，将统一部署 Grafana 作为 Dashboard 展示。
 
-第二种监控架构（对应下图红色集群及组件）:
+第二种监控架构（对应下图红色集群及组件）：
+![[../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-arch-2.png]]
 - 被监控集群（Observee）除了启用 Thanos Sidecar 之外，还启用了 Prometheus 的 Remote Write 功能，将未归档的数据以 WAL 方式远程传输到部署在监控集群（Observer）上的 Thanos Receive，以保证数据的冗余度。 Thanos Receive 同样可以将历史监控数据归档到 S3 上，且支持被 Thanos Query 直接查询，同时避免直接查询 Sidecar 而给被监控集群带来额外的性能损耗。
 
 第三种监控架构（对应下图黄色集群及组件）：
+![[../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-arch-3.png]]
 - 在多集群监控场景下，一般会在每个集群部署独立的 Prometheus 组件。Prometheus 提供 Agent Mode 针对这样的场景可以最小化资源占用，直接启用 Remote Write 功能将监控数据集中保存 （可以是另一个 Prometheus 集群，或者 Thanos Receive 组件）。在 AWS 上可以使用托管的 Prometheus 服务作为集中监控数据持久化，提供最好的性能和最低的维护成本。
 
-![[../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-diagram-1.png]]
+第四种监控架构（对应上图绿色集群及组件）：
+![[../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-arch-4.png]]
+- 在 AWS 上可以使用托管的 Prometheus 服务作为集中监控数据持久化，提供最好的性能和最低的维护成本。每个被监控集群可以使用无代理采集功能（[新闻稿](https://aws.amazon.com/about-aws/whats-new/2023/11/amazon-managed-service-prometheus-agentless-collector-metrics-eks/)），进一步方便客户无需提前规划，从而可以开箱即用的使用 Prometheus 的相关组件。
 
 以下总结了基于 Thanos 的各种 Prometheus 监控架构所适合的场景：
-第一种监控架构（对应上图蓝色和绿色集群及组件）：适合绝大部分生产环境，尤其在亚马逊中国区域没有托管 Prometheus 服务，此类架构也是客户首选。
+第一种监控架构（对应上图蓝色集群及组件）：适合绝大部分生产环境，尤其<mark style="background: #ADCCFFA6;">在亚马逊中国区域没有托管 Prometheus 服务，此类架构也是客户首选</mark>。
 - 优点
     - 架构简单
     - 只有一份监控数据，最小化存储成本和其他资源开销
@@ -64,16 +69,25 @@ Thanos是一套开源组件，构建在 Prometheus 之上，用以解决 Prometh
 - 缺点 
     - 无监控数据冗余，某些组件将无法在 Agent Mode 下启用，例如：Sidecar、Alert、Rules （参见[文档](https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/designs/prometheus-agent.md)）
 
-在支持托管 Prometheus 服务的亚马逊区域（[文档](https://docs.aws.amazon.com/prometheus/latest/userguide/what-is-Amazon-Managed-Service-Prometheus.html#AMP-supported-Regions)）可以直接使用托管服务替代第三种监控架构，实现完全开箱即用，同时避免管理 Thanos 组件，只需要部署 Grafana 即可。
+第四种监控架构（对应上图绿色集群及组件）：<mark style="background: #BBFABBA6;">在支持托管 Prometheus 服务的亚马逊区域</mark>（[文档](https://docs.aws.amazon.com/prometheus/latest/userguide/what-is-Amazon-Managed-Service-Prometheus.html#AMP-supported-Regions)）<mark style="background: #BBFABBA6;">可以直接使用</mark>，实现完全开箱即用，同时避免管理 Thanos 组件，只需要部署 Grafana 即可。
+- 优点
+    - 架构简单，资源占用少
+    - 免维护
+- 缺点
+    - 托管 Prometheus 服务的成本计算，参考[文档](https://aws.amazon.com/prometheus/pricing/)
 
 
 ## walkthrough
-Prometheus Operator 提供 Kubernetes 原生部署和管理 Prometheus 及相关监控组件的功能。该项目的目的是简化和自动配置 Kubernetes 集群基于 Prometheus 的监控堆栈。本实验基于 Prometheus Operator 部署作为基础，并通过 values.yaml 参数文件定制，详细信息参见（[Github](https://github.com/prometheus-operator/prometheus-operator)）。接下来我们将创建 3 个 EKS 集群，分别对应上图中的蓝色、红色、黄色集群验证 Thanos 相关配置。 
-
-本实验中将使用 Terraform 快速创建 EKS 集群，并且自动部署上图中相关的 Prometheus 监控架构（[Github](https://github.com/panlm/eks-blueprints-clusters)），和Thanos 相关组件（[Github](https://github.com/panlm/thanos-example)），带大家了解 Thanos 的配置和工作原理。
-
 ### Prometheus on EKS
-- 首先我们将先创建 3 个 EKS 集群, `ekscluster1` 是监控集群（Observer）, `ekscluster2`  和 `ekscluster3` 是被监控集群（Observee） 
+[Prometheus Operator](https://github.com/prometheus-operator/prometheus-operator) 提供 Kubernetes 原生部署和管理 Prometheus 及相关监控组件的功能。该项目的目的是简化和自动配置 Kubernetes 集群基于 Prometheus 的监控堆栈。本实验基于 Prometheus Operator 部署作为基础，并通过 values.yaml 参数文件定制。
+
+本实验中将使用 Terraform 快速创建 EKS 集群，并且自动部署上图中相关的 Prometheus 监控架构（[Github](https://github.com/panlm/eks-blueprints-clusters/tree/main/multi-cluster-thanos)），目录说明如下：  
+- environment 目录：创建实验公用的 VPC 等资源；
+- ekscluster1 目录：创建同名 EKS 集群，对应第一种监控架构图中所有组件；
+- ekscluster2 目录：创建同名 EKS 集群，对应第二种监控架构图中红色集群及组件；
+- ekscluster3 目录：创建同名 EKS 集群，对应第三种监控架构图中黄色集群及组件；
+
+创建实验相关资源
 - 本实验中使用了预设的子域名用于简化服务之间的访问和对外暴露。需要提前在 Route53 中创建该子域名（复制[链接](https://panlm.github.io/EKS/addons/externaldns-for-route53/#func-setup-hosted-zone-)中的函数并粘贴到命令行）
 ```sh
 PARENT_DOMAIN_NAME=eks0103.aws.panlm.xyz
@@ -88,7 +102,7 @@ create-ns-record -n $PARENT_DOMAIN_NAME -s "$NS" # double quote is mandortory
 - 创建本实验的目录，后续将在此路径下克隆 2 个 REPO，分别用于创建 EKS 集群的 Terraform 代码和 Thanos 配置示例
 ```sh
 LAB_HOME=~/environment/lab-thanos
-mkdir ${LAB_HOME}
+mkdir -p ${LAB_HOME}
 ```
 - 先获取 Thanos 配置模板
 ```sh
@@ -145,7 +159,12 @@ terraform apply -auto-approve
 - 按照上述操作分别进入其他两个目录创建 ekscluster2 和 ekscluster3，可以通过其他 terminal 同时操作。
 
 ### Thanos 组件
-所有 Thanos 相关的组件将部署在被监控集群（ekscluster1）。本实验使用 Terraform 调用 `thanos-values` 目录下自定义配置部署环境，同时提供 `thanos-yaml` 目录下配置实例供参考。
+本实验中，Thanos 相关组件（[Github](https://github.com/panlm/thanos-example)）也通过 Terraform 自动化部署在被监控集群（ekscluster1），方便大家了解 Thanos 的配置和工作原理，目录说明如下：  
+- prometheus: 包含针对 Prometheus Operator 的定制 Values
+- s3-config: 提供 Thanos 组件访问 S3 的相关配置信息，这些配置将会被创建成 kubernetes 的 secret
+- thanos-values: 包含针对 [bitnami thanos chart](https://github.com/bitnami/charts/tree/main/bitnami/thanos) 的定制 Values
+- thanos-yaml: 包含自建 Thanos 使用的相关 Yaml 定义文件。更多模板参考 [link](https://github.com/thanos-io/kube-thanos)
+
 #### Store
 Store 组件将只用于访问 S3 上的历史数据，每个 Store 使用独立的 secret 配置，且对应一个被监控集群。
 - 查看 Terraform 自动创建的 s3 的 secret 配置和 service account

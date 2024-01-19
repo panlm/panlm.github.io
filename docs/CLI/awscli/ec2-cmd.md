@@ -203,7 +203,7 @@ aws ec2 describe-instances \
 ```
 
 ## associate instance profile to ec2
-- [[setup-cloud9-for-eks]]
+- [[../../cloud9/setup-cloud9-for-eks]]
 
 ```sh
 aws ec2 describe-iam-instance-profile-associations

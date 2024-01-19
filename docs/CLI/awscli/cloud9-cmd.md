@@ -48,15 +48,18 @@ C9_DEFAULT_SG_ID=$(aws ec2 describe-security-groups \
 
 ^wxvp2s
 
-## share cloud9 to others
+## share-cloud9-with-others-
 ```sh
-C9_ID=
+C9_PID=
+AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query \"Account\" --output text)
+AWS_ACCOUNT_ARN=$(aws sts get-caller-identity --query \"Arn\" --output text)
 aws cloud9 create-environment-membership \
-    --environment-id ${C9_ID} \
-    --user-arn arn:aws:sts::${MY_ACCOUNT_ID}:user/panlm \
+    --environment-id ${C9_PID} \
+    --user-arn ${AWS_ACCOUNT_ARN} \
     --permissions read-write
 ```
 
+## error when use username in membership
 ```
 Value 'arn:aws:sts:::user/panlm' at 'userArn' failed to satisfy constraint: Member must satisfy regular expression pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):(iam|sts)::\d+:(root|(user\/[\w+=/:,.@-]{1,64}|federated-user\/[\w+=/:,.@-]{2,32}|assumed-role\/[\w+=:,.@-]{1,64}\/[\w+=,.@-]{1,64}))$
 ```

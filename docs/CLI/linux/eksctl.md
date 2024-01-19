@@ -22,7 +22,7 @@ eksctl completion bash >> ~/.bash_completion
 . ~/.bash_completion
 ```
 
-refer: [[git/git-mkdocs/cloud9/setup-cloud9-for-eks#install-in-cloud9-]] 
+refer: [[../../cloud9/setup-cloud9-for-eks#install-in-cloud9-]] 
 
 
 ## iamidentitymapping
