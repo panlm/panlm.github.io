@@ -4104,22 +4104,29 @@
 <li>Query（查询器）：实现 Prometheus 的 v1 API，查询并汇总来自底层组件的数据。将所有数据源添加为 Query 的 Endpoint，包括 Sidecar、 Store、 Receive 等。</li>
 <li>Query Frontend（查询前端）：实现 Prometheus 的 v1 API，将其代理给查询器，同时缓存响应，并可以拆分查询以提高性能。</li>
 </ul>
-<p>第一种监控架构（对应下图蓝色和绿色集群及组件）：</p>
+<p>第一种监控架构（对应下图蓝色集群及组件）：<br />
+<a class="glightbox" href="../../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-arch-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-arch-1.png" src="../../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-arch-1.png" title="../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-arch-1.png" /></a></p>
 <ul>
 <li>被监控集群（Observee）部署 Prometheus 且启用 Thanos 的 Sidecar 方式将监控的历史数据定期归档到 S3，通过部署 Thanos Store 组件查询历史数据（下图中 Store 组件部署在监控集群中），被监控集群中不启用 Grafana 组件；</li>
 <li>监控集群（Observer）除了部署 Prometheus 之外，将统一部署 Grafana 作为 Dashboard 展示。</li>
 </ul>
-<p>第二种监控架构（对应下图红色集群及组件）:</p>
+<p>第二种监控架构（对应下图红色集群及组件）：<br />
+<a class="glightbox" href="../../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-arch-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-arch-2.png" src="../../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-arch-2.png" title="../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-arch-2.png" /></a></p>
 <ul>
 <li>被监控集群（Observee）除了启用 Thanos Sidecar 之外，还启用了 Prometheus 的 Remote Write 功能，将未归档的数据以 WAL 方式远程传输到部署在监控集群（Observer）上的 Thanos Receive，以保证数据的冗余度。 Thanos Receive 同样可以将历史监控数据归档到 S3 上，且支持被 Thanos Query 直接查询，同时避免直接查询 Sidecar 而给被监控集群带来额外的性能损耗。</li>
 </ul>
-<p>第三种监控架构（对应下图黄色集群及组件）：</p>
+<p>第三种监控架构（对应下图黄色集群及组件）：<br />
+<a class="glightbox" href="../../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-arch-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-arch-3.png" src="../../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-arch-3.png" title="../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-arch-3.png" /></a></p>
 <ul>
 <li>在多集群监控场景下，一般会在每个集群部署独立的 Prometheus 组件。Prometheus 提供 Agent Mode 针对这样的场景可以最小化资源占用，直接启用 Remote Write 功能将监控数据集中保存 （可以是另一个 Prometheus 集群，或者 Thanos Receive 组件）。在 AWS 上可以使用托管的 Prometheus 服务作为集中监控数据持久化，提供最好的性能和最低的维护成本。</li>
 </ul>
-<p><a class="glightbox" href="../../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-diagram-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-diagram-1.png" src="../../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-diagram-1.png" title="../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-diagram-1.png" /></a></p>
+<p>第四种监控架构（对应上图绿色集群及组件）：<br />
+<a class="glightbox" href="../../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-arch-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-arch-4.png" src="../../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-arch-4.png" title="../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-arch-4.png" /></a></p>
+<ul>
+<li>在 AWS 上可以使用托管的 Prometheus 服务作为集中监控数据持久化，提供最好的性能和最低的维护成本。每个被监控集群可以使用无代理采集功能（<a href="https://aws.amazon.com/about-aws/whats-new/2023/11/amazon-managed-service-prometheus-agentless-collector-metrics-eks/">新闻稿</a>），进一步方便客户无需提前规划，从而可以开箱即用的使用 Prometheus 的相关组件。</li>
+</ul>
 <p>以下总结了基于 Thanos 的各种 Prometheus 监控架构所适合的场景：<br />
-第一种监控架构（对应上图蓝色和绿色集群及组件）：适合绝大部分生产环境，尤其在亚马逊中国区域没有托管 Prometheus 服务，此类架构也是客户首选。</p>
+第一种监控架构（对应上图蓝色集群及组件）：适合绝大部分生产环境，尤其<mark style="background: #ADCCFFA6;">在亚马逊中国区域没有托管 Prometheus 服务，此类架构也是客户首选</mark>。</p>
 <ul>
 <li>优点<ul>
 <li>架构简单</li>
@@ -4155,13 +4162,30 @@
 </ul>
 </li>
 </ul>
-<p>在支持托管 Prometheus 服务的亚马逊区域（<a href="https://docs.aws.amazon.com/prometheus/latest/userguide/what-is-Amazon-Managed-Service-Prometheus.html#AMP-supported-Regions">文档</a>）可以直接使用托管服务替代第三种监控架构，实现完全开箱即用，同时避免管理 Thanos 组件，只需要部署 Grafana 即可。</p>
-<h2 id="walkthrough">walkthrough<a class="headerlink" href="#walkthrough" title="Permanent link">&para;</a></h2>
-<p>Prometheus Operator 提供 Kubernetes 原生部署和管理 Prometheus 及相关监控组件的功能。该项目的目的是简化和自动配置 Kubernetes 集群基于 Prometheus 的监控堆栈。本实验基于 Prometheus Operator 部署作为基础，并通过 values.yaml 参数文件定制，详细信息参见（<a href="https://github.com/prometheus-operator/prometheus-operator">Github</a>）。接下来我们将创建 3 个 EKS 集群，分别对应上图中的蓝色、红色、黄色集群验证 Thanos 相关配置。 </p>
-<p>本实验中将使用 Terraform 快速创建 EKS 集群，并且自动部署上图中相关的 Prometheus 监控架构（<a href="https://github.com/panlm/eks-blueprints-clusters">Github</a>），和Thanos 相关组件（<a href="https://github.com/panlm/thanos-example">Github</a>），带大家了解 Thanos 的配置和工作原理。</p>
-<h3 id="prometheus-on-eks">Prometheus on EKS<a class="headerlink" href="#prometheus-on-eks" title="Permanent link">&para;</a></h3>
+<p>第四种监控架构（对应上图绿色集群及组件）：<mark style="background: #BBFABBA6;">在支持托管 Prometheus 服务的亚马逊区域</mark>（<a href="https://docs.aws.amazon.com/prometheus/latest/userguide/what-is-Amazon-Managed-Service-Prometheus.html#AMP-supported-Regions">文档</a>）<mark style="background: #BBFABBA6;">可以直接使用</mark>，实现完全开箱即用，同时避免管理 Thanos 组件，只需要部署 Grafana 即可。</p>
 <ul>
-<li>首先我们将先创建 3 个 EKS 集群, <code>ekscluster1</code> 是监控集群（Observer）, <code>ekscluster2</code>  和 <code>ekscluster3</code> 是被监控集群（Observee） </li>
+<li>优点<ul>
+<li>架构简单，资源占用少</li>
+<li>免维护</li>
+</ul>
+</li>
+<li>缺点<ul>
+<li>托管 Prometheus 服务的成本计算，参考<a href="https://aws.amazon.com/prometheus/pricing/">文档</a></li>
+</ul>
+</li>
+</ul>
+<h2 id="walkthrough">walkthrough<a class="headerlink" href="#walkthrough" title="Permanent link">&para;</a></h2>
+<h3 id="prometheus-on-eks">Prometheus on EKS<a class="headerlink" href="#prometheus-on-eks" title="Permanent link">&para;</a></h3>
+<p><a href="https://github.com/prometheus-operator/prometheus-operator">Prometheus Operator</a> 提供 Kubernetes 原生部署和管理 Prometheus 及相关监控组件的功能。该项目的目的是简化和自动配置 Kubernetes 集群基于 Prometheus 的监控堆栈。本实验基于 Prometheus Operator 部署作为基础，并通过 values.yaml 参数文件定制。</p>
+<p>本实验中将使用 Terraform 快速创建 EKS 集群，并且自动部署上图中相关的 Prometheus 监控架构（<a href="https://github.com/panlm/eks-blueprints-clusters/tree/main/multi-cluster-thanos">Github</a>），目录说明如下：  </p>
+<ul>
+<li>environment 目录：创建实验公用的 VPC 等资源；</li>
+<li>ekscluster1 目录：创建同名 EKS 集群，对应第一种监控架构图中所有组件；</li>
+<li>ekscluster2 目录：创建同名 EKS 集群，对应第二种监控架构图中红色集群及组件；</li>
+<li>ekscluster3 目录：创建同名 EKS 集群，对应第三种监控架构图中黄色集群及组件；</li>
+</ul>
+<p>创建实验相关资源</p>
+<ul>
 <li>本实验中使用了预设的子域名用于简化服务之间的访问和对外暴露。需要提前在 Route53 中创建该子域名（复制<a href="https://panlm.github.io/EKS/addons/externaldns-for-route53/#func-setup-hosted-zone-">链接</a>中的函数并粘贴到命令行）<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">PARENT_DOMAIN_NAME</span><span class="o">=</span>eks0103.aws.panlm.xyz
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>create-hosted-zone<span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">PARENT_DOMAIN_NAME</span><span class="si">}</span>
@@ -4173,7 +4197,7 @@
 </code></pre></div></li>
 <li>创建本实验的目录，后续将在此路径下克隆 2 个 REPO，分别用于创建 EKS 集群的 Terraform 代码和 Thanos 配置示例<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">LAB_HOME</span><span class="o">=</span>~/environment/lab-thanos
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>mkdir<span class="w"> </span><span class="si">${</span><span class="nv">LAB_HOME</span><span class="si">}</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="si">${</span><span class="nv">LAB_HOME</span><span class="si">}</span>
 </code></pre></div></li>
 <li>先获取 Thanos 配置模板<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">LAB_HOME</span><span class="si">}</span>
@@ -4228,7 +4252,13 @@
 <li>按照上述操作分别进入其他两个目录创建 ekscluster2 和 ekscluster3，可以通过其他 terminal 同时操作。</li>
 </ul>
 <h3 id="thanos">Thanos 组件<a class="headerlink" href="#thanos" title="Permanent link">&para;</a></h3>
-<p>所有 Thanos 相关的组件将部署在被监控集群（ekscluster1）。本实验使用 Terraform 调用 <code>thanos-values</code> 目录下自定义配置部署环境，同时提供 <code>thanos-yaml</code> 目录下配置实例供参考。</p>
+<p>本实验中，Thanos 相关组件（<a href="https://github.com/panlm/thanos-example">Github</a>）也通过 Terraform 自动化部署在被监控集群（ekscluster1），方便大家了解 Thanos 的配置和工作原理，目录说明如下：  </p>
+<ul>
+<li>prometheus: 包含针对 Prometheus Operator 的定制 Values</li>
+<li>s3-config: 提供 Thanos 组件访问 S3 的相关配置信息，这些配置将会被创建成 kubernetes 的 secret</li>
+<li>thanos-values: 包含针对 <a href="https://github.com/bitnami/charts/tree/main/bitnami/thanos">bitnami thanos chart</a> 的定制 Values</li>
+<li>thanos-yaml: 包含自建 Thanos 使用的相关 Yaml 定义文件。更多模板参考 <a href="https://github.com/thanos-io/kube-thanos">link</a></li>
+</ul>
 <h4 id="store">Store<a class="headerlink" href="#store" title="Permanent link">&para;</a></h4>
 <p>Store 组件将只用于访问 S3 上的历史数据，每个 Store 使用独立的 secret 配置，且对应一个被监控集群。</p>
 <ul>
@@ -4346,7 +4376,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-13T10:42:38+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-19T10:52:05+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-19</span>
   </span>
 
     

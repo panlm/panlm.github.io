@@ -560,7 +560,7 @@
         <li class="md-nav__item">
   <a href="#option-1-create-cloud9-with-cloudformation-template" class="md-nav__link">
     <span class="md-ellipsis">
-      option 1 - create cloud9 with cloudformation template
+      Option 1 - create cloud9 with cloudformation template
     </span>
   </a>
   
@@ -569,30 +569,30 @@
         <li class="md-nav__item">
   <a href="#option-2-spin-up-a-cloud9-instance-with-cloudshell" class="md-nav__link">
     <span class="md-ellipsis">
-      option 2 - spin up a cloud9 instance with Cloudshell
+      Option 2 - spin up a cloud9 instance with Cloudshell
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="option 2 - spin up a cloud9 instance with Cloudshell">
+    <nav class="md-nav" aria-label="Option 2 - spin up a cloud9 instance with Cloudshell">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#prefer-stay-in-cloudshell-to-initiate-cloud9" class="md-nav__link">
+  <a href="#option-21-stay-in-cloudshell-to-initiate-cloud9-prefer" class="md-nav__link">
     <span class="md-ellipsis">
-      (prefer) stay in cloudshell to initiate cloud9
+      Option 2.1 stay in cloudshell to initiate cloud9 (prefer)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#alternative-login-cloud9-to-initiate" class="md-nav__link">
+  <a href="#option-22-login-cloud9-to-initiate-alternative" class="md-nav__link">
     <span class="md-ellipsis">
-      (alternative) login cloud9 to initiate
+      Option 2.2 login cloud9 to initiate (alternative)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="(alternative) login cloud9 to initiate">
+    <nav class="md-nav" aria-label="Option 2.2 login cloud9 to initiate (alternative)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3824,7 +3824,7 @@
         <li class="md-nav__item">
   <a href="#option-1-create-cloud9-with-cloudformation-template" class="md-nav__link">
     <span class="md-ellipsis">
-      option 1 - create cloud9 with cloudformation template
+      Option 1 - create cloud9 with cloudformation template
     </span>
   </a>
   
@@ -3833,30 +3833,30 @@
         <li class="md-nav__item">
   <a href="#option-2-spin-up-a-cloud9-instance-with-cloudshell" class="md-nav__link">
     <span class="md-ellipsis">
-      option 2 - spin up a cloud9 instance with Cloudshell
+      Option 2 - spin up a cloud9 instance with Cloudshell
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="option 2 - spin up a cloud9 instance with Cloudshell">
+    <nav class="md-nav" aria-label="Option 2 - spin up a cloud9 instance with Cloudshell">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#prefer-stay-in-cloudshell-to-initiate-cloud9" class="md-nav__link">
+  <a href="#option-21-stay-in-cloudshell-to-initiate-cloud9-prefer" class="md-nav__link">
     <span class="md-ellipsis">
-      (prefer) stay in cloudshell to initiate cloud9
+      Option 2.1 stay in cloudshell to initiate cloud9 (prefer)
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#alternative-login-cloud9-to-initiate" class="md-nav__link">
+  <a href="#option-22-login-cloud9-to-initiate-alternative" class="md-nav__link">
     <span class="md-ellipsis">
-      (alternative) login cloud9 to initiate
+      Option 2.2 login cloud9 to initiate (alternative)
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="(alternative) login cloud9 to initiate">
+    <nav class="md-nav" aria-label="Option 2.2 login cloud9 to initiate (alternative)">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -3941,11 +3941,12 @@
 <p>[!WARNING] This is a github note</p>
 </blockquote>
 <h1 id="quick-setup-cloud9">Quick Setup Cloud9<a class="headerlink" href="#quick-setup-cloud9" title="Permanent link">&para;</a></h1>
-<p>在 <a href="../setup-cloud9-for-eks/" title="setup-cloud9-for-eks">setup-cloud9-for-eks</a> 基础上进一步简化操作，在 cloud9 中即完成所有初始化动作。</p>
-<h2 id="option-1-create-cloud9-with-cloudformation-template">option 1 - create cloud9 with cloudformation template<a class="headerlink" href="#option-1-create-cloud9-with-cloudformation-template" title="Permanent link">&para;</a></h2>
+<p>在 <a href="../setup-cloud9-for-eks/" title="setup-cloud9-for-eks">setup-cloud9-for-eks</a> 基础上进一步简化操作，使用不同方法在 cloud9 中完成所有常用软件安装等初始化操作。推荐使用 Option 1 使用 Cloudformation 自动化部署。或者使用 Option 2.2 在 Cloudshell 中复制粘贴脚本即完成初始化</p>
+<h2 id="option-1-create-cloud9-with-cloudformation-template">Option 1 - create cloud9 with cloudformation template<a class="headerlink" href="#option-1-create-cloud9-with-cloudformation-template" title="Permanent link">&para;</a></h2>
 <ul>
 <li>download <a href="../example_instancestack.yaml" title="example_instancestack.yaml">example_instancestack.yaml</a></li>
-<li>deploy it in cloudshell<br />
+<li>
+<p>deploy it in cloudshell<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>aws<span class="w"> </span>configure<span class="w"> </span>list
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">export</span><span class="w"> </span>AWS_DEFAULT_REGION<span class="w"> </span>AWS_REGION
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
@@ -3956,9 +3957,13 @@
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
 <a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>aws<span class="w"> </span>cloudformation<span class="w"> </span>describe-stacks<span class="w"> </span>--stack-name<span class="w"> </span><span class="si">${</span><span class="nv">STACK_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">    </span>--query<span class="w"> </span><span class="s1">&#39;Stacks[].Outputs[?OutputKey==`Cloud9IDE`].OutputValue&#39;</span><span class="w"> </span>--output<span class="w"> </span>text
-</code></pre></div></li>
+</code></pre></div></p>
+</li>
+<li>
+<p>if you try to use this cloud9 instance in AccountB, after login AccountB, get cloud9 environment id and run command in cloudshell as <a href="../../CLI/awscli/cloud9-cmd/#share-cloud9-with-others-" title="git/git-mkdocs/CLI/awscli/cloud9-cmd">git/git-mkdocs/CLI/awscli/cloud9-cmd</a></p>
+</li>
 </ul>
-<h2 id="option-2-spin-up-a-cloud9-instance-with-cloudshell">option 2 - spin up a cloud9 instance with Cloudshell<a class="headerlink" href="#option-2-spin-up-a-cloud9-instance-with-cloudshell" title="Permanent link">&para;</a></h2>
+<h2 id="option-2-spin-up-a-cloud9-instance-with-cloudshell">Option 2 - spin up a cloud9 instance with Cloudshell<a class="headerlink" href="#option-2-spin-up-a-cloud9-instance-with-cloudshell" title="Permanent link">&para;</a></h2>
 <ul>
 <li>点击<a href="https://console.aws.amazon.com/cloudshell">这里</a> 运行 cloudshell，执行代码块创建 cloud9 测试环境 (open cloudshell, and then execute following code to create cloud9 environment)<ul>
 <li>通过 <code>name</code> 自定义 cloud9 的名称，如果不指定将自动创建</li>
@@ -4009,7 +4014,7 @@
 <a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="w">    </span>--query<span class="w"> </span><span class="s2">&quot;Reservations[].Instances[].InstanceId&quot;</span><span class="w"> </span>--output<span class="w"> </span>text
 </code></pre></div></li>
 </ul>
-<h3 id="prefer-stay-in-cloudshell-to-initiate-cloud9">(prefer) stay in cloudshell to initiate cloud9<a class="headerlink" href="#prefer-stay-in-cloudshell-to-initiate-cloud9" title="Permanent link">&para;</a></h3>
+<h3 id="option-21-stay-in-cloudshell-to-initiate-cloud9-prefer">Option 2.1 stay in cloudshell to initiate cloud9 (prefer)<a class="headerlink" href="#option-21-stay-in-cloudshell-to-initiate-cloud9-prefer" title="Permanent link">&para;</a></h3>
 <ul>
 <li>代码将从 GitHub 下载：<ul>
 <li><a href="https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/setup-cloud9-for-eks.md">https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/setup-cloud9-for-eks.md</a></li>
@@ -4183,7 +4188,7 @@
 </ul>
 </li>
 </ul>
-<h3 id="alternative-login-cloud9-to-initiate">(alternative) login cloud9 to initiate<a class="headerlink" href="#alternative-login-cloud9-to-initiate" title="Permanent link">&para;</a></h3>
+<h3 id="option-22-login-cloud9-to-initiate-alternative">Option 2.2 login cloud9 to initiate (alternative)<a class="headerlink" href="#option-22-login-cloud9-to-initiate-alternative" title="Permanent link">&para;</a></h3>
 <ul>
 <li>代码将从 GitHub 下载：<ul>
 <li><a href="https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/setup-cloud9-for-eks.md">https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/setup-cloud9-for-eks.md</a></li>
@@ -4257,7 +4262,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-17T09:22:02+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-19T10:52:05+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-19</span>
   </span>
 
     
