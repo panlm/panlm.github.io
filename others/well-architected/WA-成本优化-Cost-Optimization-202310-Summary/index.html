@@ -1,0 +1,5680 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="notes from obsidian">
+      
+      
+      
+      
+        <link rel="prev" href="../WA-%E6%80%A7%E8%83%BD%E6%95%88%E7%8E%87-Performance-Efficiency-202310-Summary/">
+      
+      
+        <link rel="next" href="../../github-page-howto/">
+      
+      
+      <link rel="icon" href="../../../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.6">
+    
+    
+      
+        <title>WA-成本优化-Cost-Optimization-202310-Summary - panlm</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.50c56a3b.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+      
+    
+    
+      
+        
+        
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,700,700i%7CUbuntu+Mono:400,400i,700,700i&display=fallback">
+        <style>:root{--md-text-font:"Ubuntu";--md-code-font:"Ubuntu Mono"}</style>
+      
+    
+    
+      <link rel="stylesheet" href="../../../css/timeago.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce((e,_)=>(e<<5)-e+_.charCodeAt(0),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  
+  
+
+<script id="__analytics">function __md_analytics(){function n(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[],n("js",new Date),n("config","G-8C6HW94JT3"),document.addEventListener("DOMContentLoaded",function(){document.forms.search&&document.forms.search.query.addEventListener("blur",function(){this.value&&n("event","search",{search_term:this.value})}),document$.subscribe(function(){var a=document.forms.feedback;if(void 0!==a)for(var e of a.querySelectorAll("[type=submit]"))e.addEventListener("click",function(e){e.preventDefault();var t=document.location.pathname,e=this.getAttribute("data-md-value");n("event","feedback",{page:t,data:e}),a.firstElementChild.disabled=!0;e=a.querySelector(".md-feedback__note [data-md-value='"+e+"']");e&&(e.hidden=!1)}),a.hidden=!1}),location$.subscribe(function(e){n("config","G-8C6HW94JT3",{page_path:e.pathname})})});var e=document.createElement("script");e.async=!0,e.src="https://www.googletagmanager.com/gtag/js?id=G-8C6HW94JT3",document.getElementById("__analytics").insertAdjacentElement("afterEnd",e)}</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+   <link href="../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
+    html.glightbox-open { overflow: initial; height: 100%; }
+    .gslide-title { margin-top: 0px; user-select: text; }
+    .gslide-desc { color: #666; user-select: text; }
+    .gslide-image img { background: white; }
+    .gscrollbar-fixer { padding-right: 15px; }
+    .gdesc-inner { font-size: 0.75rem; }
+    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
+    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
+    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../assets/javascripts/glightbox.min.js"></script></head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="light-blue">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#_1" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+    </div>
+    
+    
+      
+
+  
+
+<header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="panlm" class="md-header__button md-logo" aria-label="panlm" data-md-component="logo">
+      
+  <img src="../../../git-attachment/AWS_Logo.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3V6m0 5h18v2H3v-2m0 5h18v2H3v-2Z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            panlm
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              WA-成本优化-Cost-Optimization-202310-Summary
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6zm0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4zM7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="indigo"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3Z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      <label class="md-header__button md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+      </label>
+      <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.516 6.516 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5Z"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11h12Z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12 19 6.41Z"/></svg>
+        </button>
+      </nav>
+      
+        <div class="md-search__suggest" data-md-component="search-suggest"></div>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+    
+    
+  </nav>
+  
+    
+      
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+    
+  
+  Welcome to panlm docs
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../cloud9/quick-setup-cloud9/" class="md-tabs__link">
+          
+  
+    
+  
+  Cloud9
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../EKS/" class="md-tabs__link">
+          
+  
+    
+  
+  EKS
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../data-analytics/mwaa-lab/" class="md-tabs__link">
+          
+  
+    
+  
+  Database and Analytics
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../serverless/apigw-cross-account-private-endpoint/" class="md-tabs__link">
+          
+  
+    
+  
+  Serverless
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+    
+  
+  
+    
+    
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../POC-mig-filezilla-to-transfer-family/" class="md-tabs__link">
+          
+  
+    
+  
+  Others
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+    
+    
+      
+  
+  
+  
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../CLI/linux/linux-cmd/" class="md-tabs__link">
+          
+  
+    
+  
+  CLI
+
+        </a>
+      </li>
+    
+  
+
+    
+  
+
+      
+        
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../tags/" class="md-tabs__link">
+        
+  
+    
+  
+  Tags
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+    
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="panlm" class="md-nav__button md-logo" aria-label="panlm" data-md-component="logo">
+      
+  <img src="../../../git-attachment/AWS_Logo.png" alt="logo">
+
+    </a>
+    panlm
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Welcome to panlm docs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Cloud9
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            Cloud9
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud9/quick-setup-cloud9/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Quick Setup Cloud9
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud9/setup-cloud9-for-eks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Setup Cloud9 for EKS
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud9/create-standard-vpc-for-lab-in-china-region/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    create standard vpc for lab in china region
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../EKS/" class="md-nav__link ">
+              
+  
+  <span class="md-ellipsis">
+    EKS
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            EKS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Cluster
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Cluster
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/cluster/eks-cluster-with-terraform/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create EKS Cluster with Terraform
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/cluster/eks-public-access-cluster-in-china-region/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create Public Access EKS Cluster in China Region
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/cluster/eks-public-access-cluster/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create Public Access EKS Cluster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/cluster/eks-private-access-cluster/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Create Private Only EKS Cluster
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/cluster/eks-upgrade-procedure/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EKS Upgrade Procedure
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/cluster/eks-cluster-addons-list/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EKS Addons
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Addons
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            Addons
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/addons/aws-for-fluent-bit/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    aws-for-fluent-bit
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/addons/aws-load-balancer-controller/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    aws-load-balancer-controller
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/addons/cert-manager/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cert-manager
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/addons/cluster-autoscaler/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cluster-autoscaler
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/addons/cni-metrics-helper/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cni-metrics-helper
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/addons/ebs-for-eks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ebs-for-eks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/addons/efs-for-eks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    efs-for-eks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/addons/eks-addons-coredns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-addons-coredns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/addons/eks-addons-kube-proxy/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-addons-kube-proxy
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/addons/eks-addons-vpc-cni/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-addons-vpc-cni
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/addons/eks-custom-network/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-custom-network
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/addons/eks-fargate-lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-fargate
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/addons/eksup/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eksup
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/addons/enable-sg-on-pod/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    enable-sg-on-pod
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/addons/externaldns-for-route53/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    externaldns-for-route53
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/addons/karpenter-lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    karpenter-install-lab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/addons/kube-no-trouble/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    kube-no-trouble
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/addons/kube-state-metrics/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    kube-state-metrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/addons/metrics-server/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    metrics-server
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/addons/nginx-ingress-controller-community-ver/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nginx-ingress-controller-community-ver
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/addons/nginx-ingress-controller-nginx-ver/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nginx-ingress-controller-nginx-ver
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/addons/nginx-ingress-controller/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    nginx-ingress-controller
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/addons/pluto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    pluto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Solutions
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            Solutions
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4_1" id="__nav_3_4_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Appmesh
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4_1">
+            <span class="md-nav__icon md-icon"></span>
+            Appmesh
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/solutions/appmesh/appmesh-workshop-eks/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    appmesh-workshop-eks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/solutions/appmesh/automated-canary-deployment-using-flagger/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    automated-canary-deployment-using-flagger
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4_2" id="__nav_3_4_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Gitops
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4_2">
+            <span class="md-nav__icon md-icon"></span>
+            Gitops
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/solutions/gitops/argocd-lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    argocd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/solutions/gitops/flux-lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    flux
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4_3" id="__nav_3_4_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Logging
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4_3">
+            <span class="md-nav__icon md-icon"></span>
+            Logging
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/solutions/logging/POC-loki-for-logging/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Loki for Logging
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/solutions/logging/cloudwatch-to-firehose-python/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cloudwatch-to-firehose-python
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/solutions/logging/export-cloudwatch-log-group-to-s3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Export Cloudwatch Log Group to S3
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/solutions/logging/stream-k8s-control-panel-logs-to-s3/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Stream EKS Control Panel Logs to S3
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4_4" id="__nav_3_4_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Monitor
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4_4">
+            <span class="md-nav__icon md-icon"></span>
+            Monitor
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/solutions/monitor/TC-prometheus-ha-architect-with-thanos/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Building Prometheus HA Architect with Thanos
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/solutions/monitor/eks-container-insights/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    EKS Container Insights
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/solutions/monitor/enable-prometheus-in-cloudwatch/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    enable-prometheus-in-cloudwatch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/solutions/monitor/install-grafana-on-beanstalk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Install Grafana on Beanstalk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/solutions/monitor/install-prometheus-grafana/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    install-prometheus-grafana-on-eks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Kubernetes
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_5">
+            <span class="md-nav__icon md-icon"></span>
+            Kubernetes
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/kubernetes/k8s-hpa-horizontal-pod-autoscaler/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    horizontal pod autoscaler
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/kubernetes/k8s-topology-spread-constraints/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    topology spread constraints
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_4" id="__nav_4_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Database and Analytics
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_4">
+            <span class="md-nav__icon md-icon"></span>
+            Database and Analytics
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data-analytics/mwaa-lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    mwaa-lab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data-analytics/rds-mysql-replica-cross-region-cross-account/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    rds-mysql-replica-cross-region-cross-account
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data-analytics/redshift-data-api-lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    redshift-data-api-lab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        
+          
+          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Serverless
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_5">
+            <span class="md-nav__icon md-icon"></span>
+            Serverless
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../serverless/apigw-cross-account-private-endpoint/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    apigw-cross-account-private-endpoint
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../serverless/apigw-custom-domain-name/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Custom Domain Name in API Gateway
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../serverless/apigw-get-sourceip/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Get Source IP in API Gateway
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../serverless/apigw-private-api-alb-cdk/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    apigw-private-api-alb-cdk
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../serverless/apigw-regional-api-access-from-vpc/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    apigw-regional-api-access-from-vpc
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    Others
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6">
+            <span class="md-nav__icon md-icon"></span>
+            Others
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../POC-mig-filezilla-to-transfer-family/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Migrating Filezilla to AWS Transfer Family
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../POC-prometheus-ha-architect-with-thanos-manually/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Prometheus With Thanos Manually
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cross-region-reverse-proxy-with-nlb-cloudfront/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Cross Region Reverse Proxy with NLB and Cloudfront
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ecr-scan-on-push-notification-sns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enable scan on push in ECR and send notification to SNS
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../file-storage-gateway-lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Storage File Gateway
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../global-sso-and-china-aws-accounts/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using Global SSO to Login China AWS Accounts
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../lab-create-cloudwatch-dashboard-cpu-metric/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    create-dashboard-for-instance-cpu-matrics
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../rescue-ec2-instance/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Rescue EC2 Instance
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../script-api-resource-method/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    script-api-resource-method
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--deprecated"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../script-convert-mp3-to-text/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    script-convert-mp3-to-text
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../self-signed-certificates/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    self-signed-certificates
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_12" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_6_12" id="__nav_6_12_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Well architected
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_12_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_6_12">
+            <span class="md-nav__icon md-icon"></span>
+            Well architected
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WA-%E5%8D%93%E8%B6%8A%E8%BF%90%E8%90%A5-Operational-Excellence-202310-Summary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WA-卓越运营-Operational-Excellence-202310-Summary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WA-%E5%8F%AF%E6%8C%81%E7%BB%AD%E5%8F%91%E5%B1%95-Sustainability-202310-Summary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WA-可持续性-Sustainability-202310-Summary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WA-%E5%8F%AF%E9%9D%A0%E6%80%A7-Reliability-202310-Summary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WA-可靠性-Reliability-202310-Summary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WA-%E5%AE%89%E5%85%A8-Security-202310-Summary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WA-安全-Security-202310-Summary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../WA-%E6%80%A7%E8%83%BD%E6%95%88%E7%8E%87-Performance-Efficiency-202310-Summary/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    WA-性能效率-Performance-Efficiency-202310-Summary
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    WA-成本优化-Cost-Optimization-202310-Summary
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    WA-成本优化-Cost-Optimization-202310-Summary
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      设计原则
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      问题和定义
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      最佳实践
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="最佳实践">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      实践云财务管理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="实践云财务管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cost-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      COST 1 如何实施云财务管理？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="COST 1 如何实施云财务管理？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      确立成本优化的责任归属模式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      在财务和技术之间建立合作关系
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      制定云预算和预测流程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      在组织流程中落实成本意识
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      主动监控成本
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      及时了解新发布的服务
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      量化通过成本优化实现的业务价值
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      报告和通知成本优化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      建立对成本敏感的文化
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      支出和使用意识
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="支出和使用意识">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cost-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      COST 2 您如何管理使用情况？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="COST 2 您如何管理使用情况？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      根据组织的要求制定各种策略
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      制定方向性目标和执行性目标
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      实施账户结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      实施成本控制
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      实施组和角色
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      跟踪项目生命周期
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      COST 3 您如何监控成本和使用情况？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="COST 3 您如何监控成本和使用情况？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      配置详细信息源
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      确定成本归属类别
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      建立组织指标
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      配置账单和成本管理工具
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      在成本和使用情况中添加组织信息
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      根据工作负载指标分配成本
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      COST 4 您如何停用资源？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="COST 4 您如何停用资源？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      在资源生命周期内跟踪资源
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      实施停用流程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      停用资源
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      实施数据留存策略
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      自动停用资源
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      高性价比的资源
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="高性价比的资源">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cost-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      COST 5 您在选择服务时如何评估成本？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="COST 5 您在选择服务时如何评估成本？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      确定组织对成本的要求
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      分析此工作负载的所有组件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      对每个组件进行彻底分析
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      选择此工作负载的组件，以便根据组织的优先事项优化成本
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      对不同时间的不同使用情况执行成本分析
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      选择具有经济实惠的许可的软件
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      COST 6 在选择资源类型、规模和数量时，如何实现成本目标？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="COST 6 在选择资源类型、规模和数量时，如何实现成本目标？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      执行成本建模
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      根据数据选择资源类型、规模和数量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      根据指标自动选择资源类型、规模和数量
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      COST 7 您如何使用定价模式来降低成本？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="COST 7 您如何使用定价模式来降低成本？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      执行定价模式分析
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      根据成本选择区域
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    <span class="md-ellipsis">
+      选择具有经济实惠的条款的第三方协议
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    <span class="md-ellipsis">
+      针对此工作负载的所有组件实施定价模式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    <span class="md-ellipsis">
+      在管理账户级别执行定价模式分析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      COST 8 您如何规划数据传输费用？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="COST 8 您如何规划数据传输费用？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    <span class="md-ellipsis">
+      执行数据传输建模
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    <span class="md-ellipsis">
+      选择组件以便优化数据传输成本
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    <span class="md-ellipsis">
+      实施服务以便降低数据传输成本
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    <span class="md-ellipsis">
+      管理需求和供应资源
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="管理需求和供应资源">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cost-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      COST 9 如何管理需求和供应资源？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="COST 9 如何管理需求和供应资源？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_51" class="md-nav__link">
+    <span class="md-ellipsis">
+      对工作负载需求执行分析
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_52" class="md-nav__link">
+    <span class="md-ellipsis">
+      实施缓冲区或限流来管理需求
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_53" class="md-nav__link">
+    <span class="md-ellipsis">
+      动态供应资源
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_54" class="md-nav__link">
+    <span class="md-ellipsis">
+      随着时间的推移进行优化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="随着时间的推移进行优化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cost-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      COST 10 如何评估新服务?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="COST 10 如何评估新服务?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_55" class="md-nav__link">
+    <span class="md-ellipsis">
+      制定工作负载审核流程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_56" class="md-nav__link">
+    <span class="md-ellipsis">
+      定期审核和分析此工作负载
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      COST 11 如何评估工作量成本？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="COST 11 如何评估工作量成本？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_57" class="md-nav__link">
+    <span class="md-ellipsis">
+      执行运营自动化
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../github-page-howto/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    github-page-howto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+      
+      
+    
+    <li class="md-nav__item md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        
+          
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+            
+  
+  <span class="md-ellipsis">
+    CLI
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7">
+            <span class="md-nav__icon md-icon"></span>
+            CLI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_1" id="__nav_7_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Linux Commands
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_1">
+            <span class="md-nav__icon md-icon"></span>
+            Linux Commands
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/linux/linux-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    linux-cmd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/linux/assume-tool/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    assume-tool
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog"></span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/linux/docker-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    docker
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/linux/eksctl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eksctl
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/linux/eksdemo/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eksdemo
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/linux/ffmpeg/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ffmpeg
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/linux/iptables/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    iptables
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/linux/jq-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    jq
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/linux/terraform-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    terraform
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    AWS CLI
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_2">
+            <span class="md-nav__icon md-icon"></span>
+            AWS CLI
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/awscli/acm-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    acm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/awscli/apigw-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    api-gateway
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/awscli/aws-ip-range/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ip-ranges
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/awscli/aws-nuke/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    aws-nuke
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/awscli/cloud9-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cloud9
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/awscli/cloudformation-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cloudformation
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/awscli/cloudwatch-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    cloudwatch
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/awscli/directory-service-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    directory service
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/awscli/ebs-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ebs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/awscli/ec2-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ec2
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/awscli/ecr-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ecr
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/awscli/ecs-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ecs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/awscli/efs-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    efs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/awscli/iam-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    iam
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/awscli/lambda-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    lambda-cmd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/awscli/lightsail-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    lightsail-cmd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/awscli/rds-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    rds
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/awscli/redshift-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    redshift
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/awscli/route53-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    route53
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/awscli/s3-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    s3
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/awscli/sns-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    sns
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/awscli/sqs-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    sqs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/awscli/ssm-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ssm
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/awscli/vpc-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    vpc
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_3" >
+        
+          
+          <label class="md-nav__link" for="__nav_7_3" id="__nav_7_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Windows
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_3">
+            <span class="md-nav__icon md-icon"></span>
+            Windows
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/windows/powershell/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    powershell
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../tags/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Tags
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      设计原则
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      问题和定义
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      最佳实践
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="最佳实践">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      实践云财务管理
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="实践云财务管理">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cost-1" class="md-nav__link">
+    <span class="md-ellipsis">
+      COST 1 如何实施云财务管理？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="COST 1 如何实施云财务管理？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      确立成本优化的责任归属模式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      在财务和技术之间建立合作关系
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      制定云预算和预测流程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_8" class="md-nav__link">
+    <span class="md-ellipsis">
+      在组织流程中落实成本意识
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      主动监控成本
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      及时了解新发布的服务
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      量化通过成本优化实现的业务价值
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_12" class="md-nav__link">
+    <span class="md-ellipsis">
+      报告和通知成本优化
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
+    <span class="md-ellipsis">
+      建立对成本敏感的文化
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_14" class="md-nav__link">
+    <span class="md-ellipsis">
+      支出和使用意识
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="支出和使用意识">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cost-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      COST 2 您如何管理使用情况？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="COST 2 您如何管理使用情况？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_15" class="md-nav__link">
+    <span class="md-ellipsis">
+      根据组织的要求制定各种策略
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_16" class="md-nav__link">
+    <span class="md-ellipsis">
+      制定方向性目标和执行性目标
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_17" class="md-nav__link">
+    <span class="md-ellipsis">
+      实施账户结构
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_18" class="md-nav__link">
+    <span class="md-ellipsis">
+      实施成本控制
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_19" class="md-nav__link">
+    <span class="md-ellipsis">
+      实施组和角色
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_20" class="md-nav__link">
+    <span class="md-ellipsis">
+      跟踪项目生命周期
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-3" class="md-nav__link">
+    <span class="md-ellipsis">
+      COST 3 您如何监控成本和使用情况？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="COST 3 您如何监控成本和使用情况？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_21" class="md-nav__link">
+    <span class="md-ellipsis">
+      配置详细信息源
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      确定成本归属类别
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      建立组织指标
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      配置账单和成本管理工具
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      在成本和使用情况中添加组织信息
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      根据工作负载指标分配成本
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-4" class="md-nav__link">
+    <span class="md-ellipsis">
+      COST 4 您如何停用资源？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="COST 4 您如何停用资源？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      在资源生命周期内跟踪资源
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      实施停用流程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_29" class="md-nav__link">
+    <span class="md-ellipsis">
+      停用资源
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_30" class="md-nav__link">
+    <span class="md-ellipsis">
+      实施数据留存策略
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_31" class="md-nav__link">
+    <span class="md-ellipsis">
+      自动停用资源
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_32" class="md-nav__link">
+    <span class="md-ellipsis">
+      高性价比的资源
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="高性价比的资源">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cost-5" class="md-nav__link">
+    <span class="md-ellipsis">
+      COST 5 您在选择服务时如何评估成本？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="COST 5 您在选择服务时如何评估成本？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_33" class="md-nav__link">
+    <span class="md-ellipsis">
+      确定组织对成本的要求
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_34" class="md-nav__link">
+    <span class="md-ellipsis">
+      分析此工作负载的所有组件
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_35" class="md-nav__link">
+    <span class="md-ellipsis">
+      对每个组件进行彻底分析
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_36" class="md-nav__link">
+    <span class="md-ellipsis">
+      选择此工作负载的组件，以便根据组织的优先事项优化成本
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_37" class="md-nav__link">
+    <span class="md-ellipsis">
+      对不同时间的不同使用情况执行成本分析
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_38" class="md-nav__link">
+    <span class="md-ellipsis">
+      选择具有经济实惠的许可的软件
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-6" class="md-nav__link">
+    <span class="md-ellipsis">
+      COST 6 在选择资源类型、规模和数量时，如何实现成本目标？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="COST 6 在选择资源类型、规模和数量时，如何实现成本目标？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_39" class="md-nav__link">
+    <span class="md-ellipsis">
+      执行成本建模
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_40" class="md-nav__link">
+    <span class="md-ellipsis">
+      根据数据选择资源类型、规模和数量
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_41" class="md-nav__link">
+    <span class="md-ellipsis">
+      根据指标自动选择资源类型、规模和数量
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-7" class="md-nav__link">
+    <span class="md-ellipsis">
+      COST 7 您如何使用定价模式来降低成本？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="COST 7 您如何使用定价模式来降低成本？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_42" class="md-nav__link">
+    <span class="md-ellipsis">
+      执行定价模式分析
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_43" class="md-nav__link">
+    <span class="md-ellipsis">
+      根据成本选择区域
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_44" class="md-nav__link">
+    <span class="md-ellipsis">
+      选择具有经济实惠的条款的第三方协议
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_45" class="md-nav__link">
+    <span class="md-ellipsis">
+      针对此工作负载的所有组件实施定价模式
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_46" class="md-nav__link">
+    <span class="md-ellipsis">
+      在管理账户级别执行定价模式分析
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-8" class="md-nav__link">
+    <span class="md-ellipsis">
+      COST 8 您如何规划数据传输费用？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="COST 8 您如何规划数据传输费用？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_47" class="md-nav__link">
+    <span class="md-ellipsis">
+      执行数据传输建模
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_48" class="md-nav__link">
+    <span class="md-ellipsis">
+      选择组件以便优化数据传输成本
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_49" class="md-nav__link">
+    <span class="md-ellipsis">
+      实施服务以便降低数据传输成本
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_50" class="md-nav__link">
+    <span class="md-ellipsis">
+      管理需求和供应资源
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="管理需求和供应资源">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cost-9" class="md-nav__link">
+    <span class="md-ellipsis">
+      COST 9 如何管理需求和供应资源？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="COST 9 如何管理需求和供应资源？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_51" class="md-nav__link">
+    <span class="md-ellipsis">
+      对工作负载需求执行分析
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_52" class="md-nav__link">
+    <span class="md-ellipsis">
+      实施缓冲区或限流来管理需求
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_53" class="md-nav__link">
+    <span class="md-ellipsis">
+      动态供应资源
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_54" class="md-nav__link">
+    <span class="md-ellipsis">
+      随着时间的推移进行优化
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="随着时间的推移进行优化">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#cost-10" class="md-nav__link">
+    <span class="md-ellipsis">
+      COST 10 如何评估新服务?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="COST 10 如何评估新服务?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_55" class="md-nav__link">
+    <span class="md-ellipsis">
+      制定工作负载审核流程
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_56" class="md-nav__link">
+    <span class="md-ellipsis">
+      定期审核和分析此工作负载
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cost-11" class="md-nav__link">
+    <span class="md-ellipsis">
+      COST 11 如何评估工作量成本？
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="COST 11 如何评估工作量成本？">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_57" class="md-nav__link">
+    <span class="md-ellipsis">
+      执行运营自动化
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+                  
+  
+<nav class="md-tags" >
+  
+    
+    
+    
+      <a href="../../../tags/#awswell-architected" class="md-tag">aws/well-architected</a>
+    
+  
+</nav>
+
+
+
+  <h1>WA-成本优化-Cost-Optimization-202310-Summary</h1>
+
+<h2 id="_1">设计原则<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>collapse: close
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>title:  实施云财务管理
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>为了在云中实现财务成功并加速实现业务价值，您需要投资于云财务管理/成本优化。您的组织需要投入时间和资源来构建这个新的技术和使用管理领域的能力. 与您的安全或卓越运营能力类似，您需要通过知识构建、计划、资源和流程来构建能力，以成为具有成本效益的组织。
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>collapse: close
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>title:  采用消费模式
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>只为你需要的计算资源付费，并根据业务需求增加或减少使用量，而不是通过精细的预测。例如，开发和测试环境通常在工作周内每天只使用八小时. 您可以在不使用这些资源时停止这些资源，从而节省 75% 的潜在成本（40 小时与 168 小时）。
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>collapse: close
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>title:  衡量整体效率
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>衡量工作负载的业务输出以及与交付它相关的成本。使用此度量来了解您从增加输出和降低成本中获得的收益。
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>collapse: close
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>title:  停止在无差别的繁重工作上花钱
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>AWS 负责数据中心运营的繁重工作，例如机架、堆叠和为服务器供电。它还消除了使用托管服务管理操作系统和应用程序的运营负担。这使您可以专注于您的客户和业务项目，而不是 IT 基础设施。
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>collapse: close
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>title:  分析和归因支出
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>云可以更轻松地准确识别系统的使用情况和成本，然后将 IT 成本透明地分配给各个工作负载所有者。这有助于衡量投资回报率 (ROI)，并为工作负载所有者提供优化的机会他们的资源和降低成本。
+</code></pre></div>
+<h2 id="_2">问题和定义<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>实践云财务管理<br />
+    COST 1 如何实施云财务管理？<br />
+支出和使用意识<br />
+    COST 2 您如何管理使用情况？<br />
+    COST 3 您如何监控成本和使用情况？<br />
+    COST 4 您如何停用资源？<br />
+高性价比的资源<br />
+    COST 5 您在选择服务时如何评估成本？<br />
+    COST 6 在选择资源类型、规模和数量时，如何实现成本目标？<br />
+    COST 7 您如何使用定价模式来降低成本？<br />
+    COST 8 您如何规划数据传输费用？<br />
+管理需求和供应资源<br />
+    COST 9 如何管理需求和供应资源？<br />
+随着时间的推移进行优化<br />
+    COST 10 如何评估新服务?<br />
+    COST 11 如何评估工作量成本？</p>
+<h2 id="_3">最佳实践<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h3 id="_4">实践云财务管理<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<h4 id="cost-1">COST 1 如何实施云财务管理？<a class="headerlink" href="#cost-1" title="Permanent link">&para;</a></h4>
+<h5 id="_5">确立成本优化的责任归属模式<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h5>
+<p>创建一个团队（云业务办公室、云卓越中心或 FinOps 团队），负责在整个组织内建立并维护成本意识。成本优化的负责人可以是了解整个组织和云财务的个人或团队（需要来自财务、技术和业务团队的人员）。</p>
+<h5 id="_6">在财务和技术之间建立合作关系<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h5>
+<p>在云之旅的所有阶段，都让财务和技术团队参与成本和使用情况的讨论。团队定期开会，讨论组织目标、成本和使用情况的当前状态以及财务和会计实务等主题。</p>
+<h5 id="_7">制定云预算和预测流程<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h5>
+<p>调整现有的组织预算和预测流程，使之适应云成本和使用情况的易变特性。流程必须是动态的，可以使用基于趋势或基于业务驱动因素的算法，也可以将两者结合使用。</p>
+<h5 id="_8">在组织流程中落实成本意识<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h5>
+<p>在影响使用量的新流程或现有流程中落实成本意识、创建成本透明度和成本问责制，并利用现有流程提高成本意识。在员工培训中贯彻成本意识。</p>
+<h5 id="_9">主动监控成本<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h5>
+<p>利用工具和控制面板主动监控工作负载的成本。定期用已配置的工具或开箱即用的工具审核成本，不要只在收到通知时才查看成本和类别。主动监控和分析成本有助于识别积极趋势，使您能够在整个组织中推广这些趋势。</p>
+<h5 id="_10">及时了解新发布的服务<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h5>
+<p>定期咨询专家或 AWS 合作伙伴，以便确定哪些服务和功能的成本更低。查看 AWS 博客和其他信息源。</p>
+<h5 id="_11">量化通过成本优化实现的业务价值<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h5>
+<p>通过量化成本优化带来的业务价值，您可以了解组织取得的全部效益。由于成本优化是一项必要的投资，因此量化业务价值之后，您就可以向利益相关者说明投资回报。如果能够量化业务价值，在未来的成本优化投资中，就可以从利益相关者那里得到更多支持，并获得一个框架来衡量组织成本优化活动的成果。</p>
+<h5 id="_12">报告和通知成本优化<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h5>
+<p>设置云预算并配置检测异常使用情况的机制。配置相关工具，根据预定义目标发出成本和使用量警报，并在任何使用量超过这些目标时接收通知。定期召开会议，分析工作负载的成本效益，提高成本意识。</p>
+<h5 id="_13">建立对成本敏感的文化<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h5>
+<p>在整个组织中实施更改或计划，以建立对成本敏感的文化。建议先从小范围着手，然后随着能力的增强和组织对云的使用的增加，在更广泛的范围实施更大型的计划。</p>
+<h3 id="_14">支出和使用意识<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h3>
+<h4 id="cost-2">COST 2 您如何管理使用情况？<a class="headerlink" href="#cost-2" title="Permanent link">&para;</a></h4>
+<h5 id="_15">根据组织的要求制定各种策略<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h5>
+<p>制定策略，确定贵组织应该如何管理资源，并定期执行检查。策略应该涵盖资源和工作负载的成本，包括在资源生命周期内的创建、修改和停用。</p>
+<h5 id="_16">制定方向性目标和执行性目标<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h5>
+<p>实施工作负载的成本和使用量方向性目标和执行性目标。方向性目标为组织在预期结果方面指明了方向，而执行性目标则提供了要为工作负载实现的具体可衡量结果。</p>
+<h5 id="_17">实施账户结构<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h5>
+<p>实施与您的组织对应的账户结构。这有助于在整个组织内分摊和管理成本。</p>
+<h5 id="_18">实施成本控制<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h5>
+<p>根据组织策略以及定义的组和角色来实施控制。这样可以确保成本只根据组织要求的规定产生，例如，控制用户对区域或资源类型的访问。</p>
+<h5 id="_19">实施组和角色<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h5>
+<p>实施与策略一致的组和角色，控制每个组中谁可以创建、修改或停用实例和资源。例如，实施开发组、测试组和生产组。这适用于 AWS 服务和第三方解决方案。</p>
+<h5 id="_20">跟踪项目生命周期<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h5>
+<p>跟踪、衡量并审计项目、团队和环境的生命周期，以避免使用不必要的资源并为此付费。</p>
+<h4 id="cost-3">COST 3 您如何监控成本和使用情况？<a class="headerlink" href="#cost-3" title="Permanent link">&para;</a></h4>
+<h5 id="_21">配置详细信息源<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h5>
+<p>按小时粒度配置成本管理和报告工具，以提供详细的成本和使用量信息，从而实现更深入的分析和透明度。配置工作负载，为交付的每个业务成果生成或提供日志条目。</p>
+<h5 id="_22">确定成本归属类别<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h5>
+<p>确定组织类别，例如业务单位、部门或项目，这些类别可用于在组织中按照内部使用实体分配成本。利用这些类别来执行支出问责制，树立成本意识，并推动高效的使用行为。</p>
+<h5 id="_23">建立组织指标<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h5>
+<p>建立此工作负载需要的组织指标。生成的客户报告或提供给客户的 Web 页面都属于工作负载指标。</p>
+<h5 id="_24">配置账单和成本管理工具<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h5>
+<p>根据您的组织策略配置成本管理工具，以管理和优化云支出。这包括用于组织和跟踪成本和使用情况数据的服务、工具和资源，通过合并计费和访问权限增强控制，通过预算和预测改进规划，接收通知或提醒，并通过资源和定价优化进一步降低成本。</p>
+<h5 id="_25">在成本和使用情况中添加组织信息<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h5>
+<p>根据您的组织、工作负载属性和成本分配类别定义标记方案，以便您可以在成本管理工具中筛选和搜索资源或监控成本和使用情况。在可能的情况下，根据目的、团队、环境或与您的业务相关的其他标准，在所有资源中实施一致的标记。</p>
+<h5 id="_26">根据工作负载指标分配成本<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h5>
+<p>根据使用量指标或业务成果分配工作负载的成本，以便衡量工作负载的成本效益。实施一个流程，使用分析服务来分析成本和使用量数据，以便深入了解成本因素和退款功能。</p>
+<h4 id="cost-4">COST 4 您如何停用资源？<a class="headerlink" href="#cost-4" title="Permanent link">&para;</a></h4>
+<h5 id="_27">在资源生命周期内跟踪资源<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h5>
+<p>制定和实施一种方法，在资源生命周期内跟踪资源及其与系统的关联。您可以使用标记来标识资源的工作负载或功能。</p>
+<h5 id="_28">实施停用流程<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h5>
+<p>实施一个流程来确定和停用未使用的资源。</p>
+<h5 id="_29">停用资源<a class="headerlink" href="#_29" title="Permanent link">&para;</a></h5>
+<p>停用由定期审计或使用情况发生变化等事件触发的资源。停用通常定期执行，可以手动停用，也可以自动停用。</p>
+<h5 id="_30">实施数据留存策略<a class="headerlink" href="#_30" title="Permanent link">&para;</a></h5>
+<p>在支持的资源上定义数据留存策略，以根据您组织的要求处理对象的删除事宜。识别并删除非必要的或不再需要的孤立资源和对象。</p>
+<h5 id="_31">自动停用资源<a class="headerlink" href="#_31" title="Permanent link">&para;</a></h5>
+<p>设计您的工作负载，使其在您发现并停用非关键资源、不需要的资源或使用率低的资源时妥善处理资源的终止。</p>
+<h3 id="_32">高性价比的资源<a class="headerlink" href="#_32" title="Permanent link">&para;</a></h3>
+<h4 id="cost-5">COST 5 您在选择服务时如何评估成本？<a class="headerlink" href="#cost-5" title="Permanent link">&para;</a></h4>
+<h5 id="_33">确定组织对成本的要求<a class="headerlink" href="#_33" title="Permanent link">&para;</a></h5>
+<p>与团队成员合作，为此工作负载确定成本优化与其他支柱（例如性能和可靠性）之间的平衡。</p>
+<h5 id="_34">分析此工作负载的所有组件<a class="headerlink" href="#_34" title="Permanent link">&para;</a></h5>
+<p>确认已分析工作负载的每个组件，无论当前大小或当前成本如何。审核工作应该体现出可能带来的好处，例如当前成本和预期成本。</p>
+<h5 id="_35">对每个组件进行彻底分析<a class="headerlink" href="#_35" title="Permanent link">&para;</a></h5>
+<p>分析组织为每个组件付出的总体成本。通过考虑运营和管理成本（尤其是在使用云提供商提供的托管服务时）来计算总拥有成本。审核工作量应该体现可能带来的好处（例如分析时间与组件成本成正比）。</p>
+<h5 id="_36">选择此工作负载的组件，以便根据组织的优先事项优化成本<a class="headerlink" href="#_36" title="Permanent link">&para;</a></h5>
+<p>为工作负载选择所有组件时考虑成本因素。这包括使用应用程序级别的托管服务或无服务器服务、容器或事件驱动型架构，以降低整体成本。使用开源软件、没有许可证费用的软件或替代方案来尽可能减少许可证成本，从而减少开支。</p>
+<h5 id="_37">对不同时间的不同使用情况执行成本分析<a class="headerlink" href="#_37" title="Permanent link">&para;</a></h5>
+<p>工作负载可能会随时间而变化。某些服务或功能在不同的使用水平下更具成本效益。通过根据每个组件在一段时间内的预期使用情况执行分析，工作负载可在其生命周期内保持成本效益。</p>
+<h5 id="_38">选择具有经济实惠的许可的软件<a class="headerlink" href="#_38" title="Permanent link">&para;</a></h5>
+<p>开源软件无需软件许可成本，从而大大节省了工作负载的成本。如果需要许可软件，应避免使用绑定到任意属性（如 CPU）的许可证，而应使用绑定到输出或结果的许可证。这些许可证的成本与所提供的效益更为相当。</p>
+<h4 id="cost-6">COST 6 在选择资源类型、规模和数量时，如何实现成本目标？<a class="headerlink" href="#cost-6" title="Permanent link">&para;</a></h4>
+<h5 id="_39">执行成本建模<a class="headerlink" href="#_39" title="Permanent link">&para;</a></h5>
+<p>确定组织要求（如业务需求和现有承诺），并对工作负载及其每个组件进行成本建模（总体成本）。对不同预计负载下的工作负载执行基准测试活动，并比较成本。建模工作量应该体现可能带来的好处，例如花费的时间与组件成本成正比。</p>
+<h5 id="_40">根据数据选择资源类型、规模和数量<a class="headerlink" href="#_40" title="Permanent link">&para;</a></h5>
+<p>根据工作负载和资源特征的相关数据选择资源规模或类型。例如计算、内存、吞吐量或写入密集型资源。通常使用工作负载的上一个版本（本地版本）、文档或关于工作负载的其他信息源进行选择。</p>
+<h5 id="_41">根据指标自动选择资源类型、规模和数量<a class="headerlink" href="#_41" title="Permanent link">&para;</a></h5>
+<p>使用当前运行的工作负载的指标选择正确的规模和类型，从而优化成本。为计算、存储、数据和网络服务适当地预置吞吐量、规模和存储。这可以通过自动扩展等反馈环路进行，也可以在工作负载中使用自定义代码来实现。</p>
+<h4 id="cost-7">COST 7 您如何使用定价模式来降低成本？<a class="headerlink" href="#cost-7" title="Permanent link">&para;</a></h4>
+<h5 id="_42">执行定价模式分析<a class="headerlink" href="#_42" title="Permanent link">&para;</a></h5>
+<p>分析工作负载的每个组件。确定组件和资源是长时间运行（享受承诺折扣），还是短时间动态运行（采用 Spot 或按需定价）。使用成本管理工具中的建议对工作负载执行分析，并对这些建议应用业务规则以实现高回报。</p>
+<h5 id="_43">根据成本选择区域<a class="headerlink" href="#_43" title="Permanent link">&para;</a></h5>
+<p>资源定价在每个区域中可能各不相同。确定区域成本差异，仅当需要满足延迟、数据驻留和数据主权要求时，才在成本较高的区域部署。考虑区域成本有助于您为此工作负载支付最低的总体费用。</p>
+<h5 id="_44">选择具有经济实惠的条款的第三方协议<a class="headerlink" href="#_44" title="Permanent link">&para;</a></h5>
+<p>经济实惠的协议和条款可确保这些服务的成本与所提供的效益相称。选择与可为组织带来额外效益相称的协议和定价。</p>
+<h5 id="_45">针对此工作负载的所有组件实施定价模式<a class="headerlink" href="#_45" title="Permanent link">&para;</a></h5>
+<p>永久运行的资源应利用预留容量，如节省计划或预留实例。短期容量配置为使用竞价型实例或竞价型实例集。按需型实例仅用于无法中断并且运行时间没有长到可以使用预留容量的短期工作负载，时间为使用时期的 25% 到 75%，具体取决于资源类型。</p>
+<h5 id="_46">在管理账户级别执行定价模式分析<a class="headerlink" href="#_46" title="Permanent link">&para;</a></h5>
+<p>检查账单和成本管理工具，并查看承诺和预留的建议折扣，以便在管理账户级别执行定期分析。</p>
+<h4 id="cost-8">COST 8 您如何规划数据传输费用？<a class="headerlink" href="#cost-8" title="Permanent link">&para;</a></h4>
+<h5 id="_47">执行数据传输建模<a class="headerlink" href="#_47" title="Permanent link">&para;</a></h5>
+<p>收集组织要求，并对工作负载及其每个组件执行数据传输建模。这样可以确定满足当前数据传输要求的最低成本点。</p>
+<h5 id="_48">选择组件以便优化数据传输成本<a class="headerlink" href="#_48" title="Permanent link">&para;</a></h5>
+<p>选择所有组件然后设计架构，以便降低数据传输成本。其中包括使用广域网（WAN）优化和多可用区（AZ）配置等组件</p>
+<h5 id="_49">实施服务以便降低数据传输成本<a class="headerlink" href="#_49" title="Permanent link">&para;</a></h5>
+<p>实施服务以减少数据传输。例如，使用边缘站点或内容分发网络（CDN）向最终用户交付内容，在应用程序服务器或数据库前构建缓存层，并使用专用网络连接而不是 VPN 连接到云端。</p>
+<h3 id="_50">管理需求和供应资源<a class="headerlink" href="#_50" title="Permanent link">&para;</a></h3>
+<h4 id="cost-9">COST 9 如何管理需求和供应资源？<a class="headerlink" href="#cost-9" title="Permanent link">&para;</a></h4>
+<h5 id="_51">对工作负载需求执行分析<a class="headerlink" href="#_51" title="Permanent link">&para;</a></h5>
+<p>分析工作负载需求随时间的变化。确认分析涵盖季节性趋势，并准确反映整个工作负载生命周期内的运行条件。分析工作应该体现出可能带来的好处，例如花费的时间与工作负载成本成正比。</p>
+<h5 id="_52">实施缓冲区或限流来管理需求<a class="headerlink" href="#_52" title="Permanent link">&para;</a></h5>
+<p>缓冲和限流可修改工作负载需求，从而避免出现任何峰值情形。在客户端执行重试时实施限流。实施缓冲以存储请求并将处理任务往后推迟一段时间。确认设计节流和缓冲区时客户端能够在所需的时间内收到响应。</p>
+<h5 id="_53">动态供应资源<a class="headerlink" href="#_53" title="Permanent link">&para;</a></h5>
+<p>资源按计划预置。这种预置可以基于需求（例如通过自动扩缩来实现），也可以基于时间（需求可以预测，基于时间提供资源）。这些方法可以尽可能减少过度预置或预置不足的情况。</p>
+<h3 id="_54">随着时间的推移进行优化<a class="headerlink" href="#_54" title="Permanent link">&para;</a></h3>
+<h4 id="cost-10">COST 10 如何评估新服务?<a class="headerlink" href="#cost-10" title="Permanent link">&para;</a></h4>
+<h5 id="_55">制定工作负载审核流程<a class="headerlink" href="#_55" title="Permanent link">&para;</a></h5>
+<p>制定流程，定义工作负载的审核标准和流程。审核工作量应该体现可能带来的好处，例如，核心工作负载或费用占比超过 10% 的工作负载每季度或每六个月审核一次，而费用占比低于 10% 的工作负载每年审核一次。</p>
+<h5 id="_56">定期审核和分析此工作负载<a class="headerlink" href="#_56" title="Permanent link">&para;</a></h5>
+<p>根据每个明确的流程定期审核现有工作负载，以便确定是采用新服务、替换现有服务还是重新构建工作负载。</p>
+<h4 id="cost-11">COST 11 如何评估工作量成本？<a class="headerlink" href="#cost-11" title="Permanent link">&para;</a></h4>
+<h5 id="_57">执行运营自动化<a class="headerlink" href="#_57" title="Permanent link">&para;</a></h5>
+<p>评估云上运营工作量的成本。量化使用自动化之后管理任务、部署和其他运营工作减少的时间和工作量。评估运营工作所需的时间和成本，并自动执行管理任务，以尽可能减少人工工作量。</p>
+
+
+
+
+
+
+
+  
+    
+  
+  
+    
+  
+
+
+  <aside class="md-source-file">
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Last update">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-28T22:19:40+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-28</span>
+  </span>
+
+    
+    
+      
+  <span class="md-source-file__fact">
+    <span class="md-icon" title="Created">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
+    </span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-01-28T22:19:40+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-01-28</span>
+  </span>
+
+    
+    
+    
+  </aside>
+
+
+  
+
+
+
+
+                
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+  
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8v12Z"/></svg>
+  Back to top
+</button>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "toc.follow", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.e1c3ead8.min.js"></script>
+      
+        <script src="../../../js/mkdocs_pagetree_plugin.js"></script>
+      
+        <script src="../../../js/timeago.min.js"></script>
+      
+        <script src="../../../js/timeago_mkdocs_material.js"></script>
+      
+    
+  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": false, "loop": false, "zoomable": true, "draggable": false, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+</html>
