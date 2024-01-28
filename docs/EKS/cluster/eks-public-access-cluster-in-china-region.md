@@ -2,7 +2,7 @@
 title: Create Public Access EKS Cluster in China Region
 description: 在中国区域，创建共有访问的 EKS 集群
 created: 2023-02-19 21:55:37.905
-last_modified: 2023-12-31
+last_modified: 2024-01-21
 tags:
   - aws/container/eks
   - aws/china
@@ -10,23 +10,21 @@ tags:
 > [!WARNING] This is a github note
 # Create Public Access EKS Cluster in China Region
 
-1. create cloud9
-2. create vpc
-![[../../cloud9/create-standard-vpc-for-lab-in-china-region#using-cloudformation-template-]]
+- create cloud9
+- create vpc
+??? note "right-click & open-in-new-tab: "
+    ![[../../cloud9/create-standard-vpc-for-lab-in-china-region#using-cloudformation-template-]]
 
-- refer: [[../../cloud9/create-standard-vpc-for-lab-in-china-region#using-cloudformation-template-]]
+- get vpc id
+??? note "right-click & open-in-new-tab: "
+    ![[../../cloud9/create-standard-vpc-for-lab-in-china-region#get-vpc-id-]]
 
-3. get vpc id
-![[../../cloud9/create-standard-vpc-for-lab-in-china-region#get-vpc-id-]]
+- pre-config
+??? note "right-click & open-in-new-tab: "
+    ![[eks-private-access-cluster#prep-config-]]
 
-- refer: [[../../cloud9/create-standard-vpc-for-lab-in-china-region#get-vpc-id-]]
 
-4. pre-config
-![[eks-private-access-cluster#^h86u1r]]
-
-- refer: [[eks-private-access-cluster#prep-config-]]
-
-5. cluster config
+- cluster config
 ```yaml
 ---
 apiVersion: eksctl.io/v1alpha5

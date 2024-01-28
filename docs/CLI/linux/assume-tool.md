@@ -2,10 +2,11 @@
 title: assume-tool
 description: assume 工具，可以以另一个账号角色，快速打开 web console，或者执行命令
 created: 2023-09-15 09:40:01.442
-last_modified: 2023-12-23
+last_modified: 2024-01-21
 tags:
   - cmd
   - aws/security/iam
+status: myblog
 ---
 > [!WARNING] This is a github note
 
@@ -56,7 +57,7 @@ echo ${CREDENTIAL_ENTITY_NAME}
 
 ^0de4c9
 
-## modify role for account to assume- 
+## modify role for account to assume
 
 - (deprecated due to new SCP policy do not allow to modify WSParticipantRole's trust policy)
 - login from macbook CLI

@@ -2,7 +2,7 @@
 title: ec2
 description: 常用命令
 created: 2021-07-17T04:01:46.968Z
-last_modified: 2024-01-10
+last_modified: 2024-01-23
 tags:
   - aws/compute/ec2
   - aws/cmd
@@ -201,6 +201,20 @@ aws ec2 describe-instances \
   |jq -r '.Reservations[].Instances[].InstanceId' 
 
 ```
+
+```sh
+aws ec2 describe-volumes \
+--filters "Name=tag:kubernetes.io/cluster/ekscluster1,Values=owned" \
+--query 'Volumes[].[Tags[?Key==`Name`].Value,State]' --output=text \
+|xargs -n 2
+
+aws ec2 describe-volumes \
+--filters "Name=tag:kubernetes.io/cluster/${CLUSTER_NAME},Values=owned" \
+--query 'Volumes[*].[`aws ec2 delete-volume --volume-id`, VolumeId,`#`,State,Tags[?Key==`Name`].Value | [0]]' --output=text 
+
+```
+- https://stackoverflow.com/questions/76115278/aws-cli-query-return-on-one-line
+
 
 ## associate instance profile to ec2
 - [[../../cloud9/setup-cloud9-for-eks]]

@@ -2,7 +2,7 @@
 title: linux-cmd
 description: 常用命令
 created: 2023-01-03 12:05:10.533
-last_modified: 2024-01-15
+last_modified: 2024-01-21
 tags:
   - cmd
   - linux
@@ -23,6 +23,12 @@ sudo yum install -y git gcc make curl
 git clone https://github.com/Homebrew/brew.git
 sudo cp brew/bin/brew /usr/local/bin/
 
+```
+
+
+## column
+```sh
+column -t
 ```
 
 ## curl
@@ -76,6 +82,9 @@ cat $$.yaml |envsubst '$var1 $var2' > $$-new.yaml
 
 ## ffmpeg
 - [[ffmpeg|ffmpeg]]
+
+## fio
+- [[../../../../notes/snapshot impact with fio|snapshot impact with fio]]
 
 ## firewall-cmd
 ```sh
@@ -157,6 +166,11 @@ exit
 
 ```
 
+## imagemagick
+```sh
+brew install imagemagick
+```
+
 ## ip-forward-
 ```sh
 echo 'net.ipv4.ip_forward = 1
@@ -221,6 +235,13 @@ sudo iperf -s
 iperf -c 172.31.30.41 --parallel 40 -i 1 -t 2
 ```
 
+
+## openssl
+compile
+- https://gist.github.com/fernandoaleman/5459173e24d59b45ae2cfc618e20fe06
+
+
+
 ## rsync 
 ### notable folder
 ```bash
@@ -251,6 +272,17 @@ gsed -i 's/^!\[\[\([^]]\+\)\]\]/![](\1)/' ${file}
 ## sponge & tee & redirect to same file
 sponge  reads  standard input and writes it out to the specified file. Unlike a shell redirect, sponge soaks up all its input before opening the output file. This allows constructing pipelines that read from and write to the same file.
 
+## ssh
+- [[../../../../notes/ssh-cmd|ssh-cmd]]
+
+## stress-ng
+
+```
+stress-ng --vm-bytes $(awk '_MemFree_{printf "%d\n", $2 * 0.95;}' < _proc_meminfo)k --vm-keep -m 1
+```
+
+
+
 ## tar
 ```sh
 tar cf a.tar ./blue-green-upgrade/ --exclude=".terraform"
@@ -280,6 +312,8 @@ yum install iproute-tc
 ### scenario
 - [[connection-network-with-overlap-cidrs#Solution for Overlapping CIDRs using AWS Transit Gateway in VPC and NAT Instances]]
 
+## vim
+- [[../../../../vim-cmd|vim-cmd]]
 
 ## xfs
 ### xfs-mount-

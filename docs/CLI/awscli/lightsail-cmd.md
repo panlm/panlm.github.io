@@ -1,0 +1,18 @@
+---
+title: lightsail-cmd
+description: lightsail-cmd
+created: 2023-08-24 18:29:22.661
+last_modified: 2024-01-21
+tags:
+  - aws/compute/lightsail
+  - aws/cmd
+---
+> [!WARNING] This is a github note
+# lightsail-cmd
+
+## lightsail
+
+```
+aws --profile nutanix lightsail --region=ap-northeast-2 open-instance-public-ports  --instance-name Ubuntu-Seoul --port-info='fromPort=443,toPort=443,protocol="TCP",cidrs=["0.0.0.0/0"],cidrListAliases=[]'
+```
+

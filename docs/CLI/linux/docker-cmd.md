@@ -2,7 +2,7 @@
 title: docker
 description: 常用命令
 created: 2022-03-23 13:58:01.257
-last_modified: 2023-11-23
+last_modified: 2024-01-27
 tags:
   - docker
   - linux
@@ -41,6 +41,8 @@ chmod a+x ~/.docker/cli-plugins/docker-buildx
 ```
 docker buildx ls
 docker run -it --rm --privileged tonistiigi/binfmt --install all
+# docker buildx create --use --platform=linux/arm64,linux/amd64 --name multi-platform-builder
+docker buildx inspect --bootstrap
 ```
 - build multi arch
 ```sh
@@ -49,7 +51,7 @@ docker buildx build \
 -t 123456789012.dkr.ecr.us-east-2.amazonaws.com/osarch:latest \
 --push .
 ```
-- refer: [[../../../../WebClip/How to quickly setup an experimental environment to run containers on x86 and AWS Graviton2 based Amazon EC2 instances  AWS Compute Blog]]
+- refer: [[../../../../WebClip/How to quickly setup an experimental environment to run containers on x86 and AWS Graviton2 based Amazon EC2 instances]]
 
 ## docker image
 ### clean

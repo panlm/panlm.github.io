@@ -2,7 +2,7 @@
 title: externaldns-for-route53
 description: 使用 externaldns 组件
 created: 2022-08-04 13:24:34.806
-last_modified: 2024-01-05
+last_modified: 2024-01-18
 tags:
   - kubernetes
   - aws/network/route53
@@ -13,8 +13,6 @@ tags:
 ## func-create-hosted-zone-
 -  执行下面命令创建 Hosted Zone，然后手工添加 NS 记录到上游的域名服务器 domain registrar 中 (create hosted zone, and then add NS records to upstream domain registrar)
 ```sh title="func-setup-hosted-zone"
-echo ${DOMAIN_NAME}
-
 function create-hosted-zone () {
     OPTIND=1
     OPTSTRING="h?n:"

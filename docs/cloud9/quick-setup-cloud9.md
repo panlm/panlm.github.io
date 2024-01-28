@@ -2,7 +2,7 @@
 title: Quick Setup Cloud9
 description: 简化运行脚本
 created: 2023-08-04 15:56:59.747
-last_modified: 2024-01-17
+last_modified: 2024-01-21
 status: myblog
 tags:
   - aws/cloud9
@@ -19,6 +19,8 @@ tags:
 ```sh
 aws configure list
 export AWS_DEFAULT_REGION AWS_REGION
+
+wget -O example_instancestack.yaml 'https://panlm.github.io/cloud9/example_instancestack.yaml'
 
 STACK_NAME=cloud9-$(TZ=EAT-8 date +%m%d-%H%M)
 aws cloudformation create-stack --stack-name ${STACK_NAME} \
