@@ -2,16 +2,52 @@
 title: route53
 description: 常用命令
 created: 2022-09-20 09:02:35.112
-last_modified: 2024-01-03
+last_modified: 2024-02-04
 tags:
   - aws/network/route53
 ---
 > [!WARNING] This is a github note
 
 # route53-cmd
-## create hosted zone
-??? note "right-click & open-in-new-tab: "
-    ![[../../EKS/addons/externaldns-for-route53#func-create-hosted-zone-]]
+## func-create-hosted-zone-
+- 执行下面命令创建 Hosted Zone，然后手工添加 NS 记录到上游的域名服务器 domain registrar 中 (create hosted zone, and then add NS records to upstream domain registrar)
+```sh
+function create-hosted-zone () {
+    OPTIND=1
+    OPTSTRING="h?n:"
+    local DOMAIN_NAME=""
+    while getopts ${OPTSTRING} opt; do
+        case "${opt}" in
+            n) DOMAIN_NAME=${OPTARG} ;;
+            h|\?) 
+                echo "format: create-host-zone -n DOMAIN_NAME "
+                echo -e "\tsample: create-host-zone -n xxx.domain.com "
+                return 0
+            ;;
+        esac
+    done
+    : ${DOMAIN_NAME:?Missing -n}
+        
+    aws route53 create-hosted-zone --name "${DOMAIN_NAME}." \
+      --caller-reference "external-dns-test-$(date +%s)"
+    
+    local ZONE_ID=$(aws route53 list-hosted-zones-by-name --output json \
+      --dns-name "${DOMAIN_NAME}." --query HostedZones[0].Id --out text)
+    
+    local NS=$(aws route53 list-resource-record-sets --output text \
+      --hosted-zone-id $ZONE_ID --query \
+      "ResourceRecordSets[?Type == 'NS'].ResourceRecords[*].Value | []")
+    
+    echo '###'
+    echo '# get bash function from here: https://panlm.github.io/CLI/awscli/route53-cmd/#func-create-ns-record-'
+    echo '# copy below output to add NS record on your upstream domain registrar'
+    echo '###'
+    echo 'DOMAIN_NAME='${DOMAIN_NAME}
+    echo 'NS="'${NS}'"'
+    echo 'create-ns-record -n ${DOMAIN_NAME} -s "${NS}"'
+    echo ''
+}
+```
 
 ## func-create-ns-record-
 - create host zone in your child account and get NS (previous chapter)
@@ -86,7 +122,7 @@ EOF
 }
 ```
 
-## create cname record-
+## create cname record
 
 ![[POC-apigw#^d0liwm]]
 

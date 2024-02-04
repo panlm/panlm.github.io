@@ -4,7 +4,7 @@ description: 在 eks 集群中使用 fargate
 chapter: true
 weight: 1
 created: 2022-06-25 09:17:05.835
-last_modified: 2023-10-05 12:14:09.500
+last_modified: 2024-02-03
 tags:
   - aws/container/eks
   - aws/container/fargate
@@ -62,9 +62,8 @@ eksctl get fargateprofile \
 - 截个图
 
 ## install aws load balancer controller
-
 - 接下来我们将安装一个应用，并且对外发布，这里需要用到 aws load balancer controller
-    - refer [[aws-load-balancer-controller#install]]
+    - refer [[aws-load-balancer-controller#install-with-eksdemo-]]
 
 ```sh
 eksctl utils associate-iam-oidc-provider \

@@ -2,7 +2,7 @@
 title: aws-load-balancer-controller
 description: 使用 aws 负载均衡控制器
 created: 2022-05-21 13:18:53.303
-last_modified: 2023-11-20
+last_modified: 2024-02-03
 tags:
   - aws/container/eks
   - kubernetes/ingress
@@ -12,14 +12,12 @@ tags:
 # aws-load-balancer-controller
 
 ## github
-
 - https://github.com/kubernetes-sigs/aws-load-balancer-controller
 - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/how-it-works/
 
 ![aws-load-balancer-controller-png-1.png](../../git-attachment/aws-load-balancer-controller-png-1.png)
 
 ## workshop
-
 - [[awslbc-ingress-lab-echoserver#install echoserver-]]
 - https://www.eksworkshop.com/beginner/180_fargate/prerequisites-for-alb/
 - 常用ingress的相关配置 ([[awslbc-ingress-settings]])
@@ -27,9 +25,7 @@ tags:
 - pod rediness gate ([link](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/deploy/pod_readiness_gate/))
 
 ## install
-
 ### install-with-eksdemo-
-
 - https://github.com/awslabs/eksdemo/blob/main/docs/install-awslb.md
 - remove service account if existed 
 ```sh
@@ -47,9 +43,7 @@ eksdemo install aws-lb-controller -c ${CLUSTER_NAME} --namespace kube-system
 ^yddjq0
 
 ### install-
-
 - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/deploy/installation/
-
 - Install AWS Load Balancer Controller
 ```sh
 CLUSTER_NAME=ekscluster1
@@ -125,10 +119,9 @@ kubectl get deployment -n kube-system aws-load-balancer-controller
 
 ```
 
-[[awslbc-ingress-controller-lab-issue]]
+- [[awslbc-ingress-controller-lab-issue]]
 
 ### install-in-china-region
-
 ```sh
 # using china region ecr url
 helm upgrade -i aws-load-balancer-controller \
@@ -162,32 +155,30 @@ REGISTRY=602401143452.dkr.ecr.us-east-1.amazonaws.com
 
 
 ## upgrade
-
 - [Migrate v1 to v2](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.5/deploy/upgrade/migrate_v1_v2/) 
 
 ### Supported Kubernetes versions
-
 - AWS Load Balancer Controller v2.0.0~v2.1.3 requires Kubernetes 1.15+
 - AWS Load Balancer Controller v2.2.0~v2.3.1 requires Kubernetes 1.16-1.21
 - AWS Load Balancer Controller v2.4.0+ requires Kubernetes 1.19+
 - AWS Load Balancer Controller v2.5.0+ requires Kubernetes 1.22+
+- AWS Load Balancer Controller v2.6.0+ requires Kubernetes 1.22+
+- AWS Load Balancer Controller v2.7.0+ requires Kubernetes 1.22+
 
 ### check version
 ```sh
 helm list -n kube-system
-
 ```
 
 
 ## in private cluster
-
 如果节点组无法访问公网，则创建 ingress 时感觉很慢，约 5-6 分钟才能看到 alb，分析日志看到，创建 alb 过程中会访问 `shield` 和 `wafv2` 等服务时超时导致
 
 
 ## blog
-
 - [[How To Expose Multiple Applications on Amazon EKS Using a Single Application Load Balancer]]
-- [[Expose Amazon EKS pods through cross-account load balancer]]
+- [[Expose Amazon EKS pods through cross-account load balancer]] 
+- [[../../../../WebClip/Enabling mTLS with ALB in Amazon EKS  Containers|Enabling mTLS with ALB in Amazon EKS  Containers]] 
 
 
 ## refer

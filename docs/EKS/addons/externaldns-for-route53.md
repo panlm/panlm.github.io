@@ -2,54 +2,16 @@
 title: externaldns-for-route53
 description: 使用 externaldns 组件
 created: 2022-08-04 13:24:34.806
-last_modified: 2024-01-18
+last_modified: 2024-02-04
 tags:
   - kubernetes
   - aws/network/route53
 ---
 > [!WARNING] This is a github note
 
-# externaldns-for-route53
-## func-create-hosted-zone-
--  执行下面命令创建 Hosted Zone，然后手工添加 NS 记录到上游的域名服务器 domain registrar 中 (create hosted zone, and then add NS records to upstream domain registrar)
-```sh title="func-setup-hosted-zone"
-function create-hosted-zone () {
-    OPTIND=1
-    OPTSTRING="h?n:"
-    local DOMAIN_NAME=""
-    while getopts ${OPTSTRING} opt; do
-        case "${opt}" in
-            n) DOMAIN_NAME=${OPTARG} ;;
-            h|\?) 
-                echo "format: create-host-zone -n DOMAIN_NAME "
-                echo -e "\tsample: create-host-zone -n xxx.domain.com "
-                return 0
-            ;;
-        esac
-    done
-    : ${DOMAIN_NAME:?Missing -n}
-        
-    aws route53 create-hosted-zone --name "${DOMAIN_NAME}." \
-      --caller-reference "external-dns-test-$(date +%s)"
-    
-    local ZONE_ID=$(aws route53 list-hosted-zones-by-name --output json \
-      --dns-name "${DOMAIN_NAME}." --query HostedZones[0].Id --out text)
-    
-    local NS=$(aws route53 list-resource-record-sets --output text \
-      --hosted-zone-id $ZONE_ID --query \
-      "ResourceRecordSets[?Type == 'NS'].ResourceRecords[*].Value | []")
-    
-    echo '###'
-    echo '# get bash function from here: https://panlm.github.io/CLI/awscli/route53-cmd/#func-create-ns-record-'
-    echo '# copy below output to add NS record on your upstream domain registrar'
-    echo '###'
-    echo 'DOMAIN_NAME='${DOMAIN_NAME}
-    echo 'NS="'${NS}'"'
-    echo 'create-ns-record -n ${DOMAIN_NAME} -s "${NS}"'
-    echo ''
-}
-```
-
+# ExternalDNS for Route53
+## func create hosted zone
+- refer: [[../../CLI/awscli/route53-cmd#func-create-hosted-zone-]]
 - refer: [[../../CLI/awscli/route53-cmd#func-create-ns-record-]] 
 - refer: [[route53-subdomian]]
 - you also could create private hosted zone and associate to your vpc. plugin will insert/update record in your private hosted zone. ([link](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-private.html))
