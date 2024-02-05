@@ -1,14 +1,3 @@
----
-title: func-create-sg.sh
-description: 
-created: 2023-12-10 13:51:39.632
-last_modified: 2024-01-30
-tags:
-  - aws/cmd
-  - bash/function
----
-
-```sh title="func-create-sg"
 # deps: VPC_ID
 # output: SG_ID
 # format: create-sg -v VPC_ID -c VPC_CIDR [-p PORT1] [-p PORT2]
@@ -60,8 +49,3 @@ function create-sg () {
             --cidr ${VPC_CIDR}
     done
 }
-```
-
-
-
-

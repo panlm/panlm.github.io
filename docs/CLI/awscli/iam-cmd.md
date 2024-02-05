@@ -2,7 +2,8 @@
 title: iam
 description: 常用命令
 created: 2021-07-18
-last_modified: 2023-12-08
+last_modified: 2024-02-05
+icon: simple/amazoniam
 tags:
   - aws/security/iam
   - aws/cmd

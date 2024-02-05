@@ -2,7 +2,8 @@
 title: cloudwatch
 description: 常用命令
 created: 2022-08-18 21:42:04.979
-last_modified: 2024-01-09
+last_modified: 2024-02-05
+icon: simple/amazoncloudwatch
 tags:
   - aws/mgmt/cloudwatch
 ---

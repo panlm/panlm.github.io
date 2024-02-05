@@ -2,7 +2,8 @@
 title: cloud9
 description: cloud9 related commands
 created: 2022-07-01 09:18:29.572
-last_modified: 2024-01-17
+last_modified: 2024-02-05
+icon: simple/amazonaws
 tags:
   - aws/cloud9
   - aws/cmd

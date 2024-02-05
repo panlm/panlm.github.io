@@ -2,8 +2,9 @@
 title: Migrating Filezilla to AWS Transfer Family
 description: 迁移 filezilla 到 transfer family
 created: 2023-03-25 10:08:47.022
-last_modified: 2024-01-13
+last_modified: 2024-02-05
 status: myblog
+icon: material/pen
 tags:
   - aws/storage/transfer-family
   - aws/mgmt/directory-service

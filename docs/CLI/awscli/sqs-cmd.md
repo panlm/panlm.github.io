@@ -2,7 +2,8 @@
 title: sqs
 description: 常用命令
 created: 2023-08-31 20:18:28.430
-last_modified: 2023-12-07
+last_modified: 2024-02-05
+icon: simple/amazonsqs
 tags:
   - aws/integration/sqs
 ---

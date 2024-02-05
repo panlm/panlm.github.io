@@ -2,7 +2,8 @@
 title: aws-nuke
 description: AWS Account Cleanser framework
 created: 2023-06-22 22:33:14.281
-last_modified: 2024-01-21
+last_modified: 2024-02-05
+icon: material/recycle-variant
 tags:
   - aws/cmd
 ---

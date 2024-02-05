@@ -2,7 +2,8 @@
 title: ec2
 description: 常用命令
 created: 2021-07-17T04:01:46.968Z
-last_modified: 2024-01-23
+last_modified: 2024-02-05
+icon: simple/amazonec2
 tags:
   - aws/compute/ec2
   - aws/cmd
@@ -252,11 +253,12 @@ export SG_ID=$(aws ec2 describe-security-groups  --region $AWS_REGION --filter N
 ```
 
 ### func-create-sg-
-??? note "right-click & open-in-new-tab: "
-    ![[../functions/func-create-sg.sh|func-create-sg.sh]]
+- [[../functions/func-create-sg.sh]]
+```sh title="func-create-sg.sh" linenums="1"
+--8<-- "docs/CLI/functions/func-create-sg.sh"
+```
 
 ### create sg allow itself
-
 - refer: [[git/git-mkdocs/data-analytics/mwaa-lab#prepare-endpoint-for-your-private-network-]]
 
 ## count vcpu

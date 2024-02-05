@@ -2,7 +2,8 @@
 title: ssm
 description: 常用命令
 created: 2022-12-06 14:58:34.056
-last_modified: 2023-12-21
+last_modified: 2024-02-05
+icon: simple/amazonaws
 tags:
   - aws/cmd
   - aws/mgmt/systems-manager

@@ -2,7 +2,8 @@
 title: route53
 description: 常用命令
 created: 2022-09-20 09:02:35.112
-last_modified: 2024-02-04
+last_modified: 2024-02-05
+icon: simple/amazonroute53
 tags:
   - aws/network/route53
 ---
@@ -11,7 +12,7 @@ tags:
 # route53-cmd
 ## func-create-hosted-zone-
 - 执行下面命令创建 Hosted Zone，然后手工添加 NS 记录到上游的域名服务器 domain registrar 中 (create hosted zone, and then add NS records to upstream domain registrar)
-```sh title="create-hosted-zone"
+```sh title="create-hosted-zone" linenums="1"
 function create-hosted-zone () {
     OPTIND=1
     OPTSTRING="h?n:"
@@ -52,7 +53,7 @@ function create-hosted-zone () {
 ## func-create-ns-record-
 - create host zone in your child account and get NS (previous chapter)
 - [[../linux/assume-tool|assume]] to your parent account to execute this function to add NS record to upstream route53 host zone
-```sh title="create-ns-record"
+```sh title="create-ns-record" linenums="1"
 # DOMAIN_NAME=poc0000.aws.panlm.xyz
 # NS='ns-1716.awsdns-22.co.uk.
 # ns-934.awsdns-52.net.

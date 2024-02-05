@@ -2,7 +2,8 @@
 title: api-gateway
 description: api-gateway
 created: 2023-03-03 09:25:15.137
-last_modified: 2023-10-24 22:47:54.576
+last_modified: 2024-02-05
+icon: simple/amazonapigateway
 tags:
   - cmd
   - aws/cmd
@@ -136,7 +137,7 @@ aws apigateway put-integration \
 ### using api definition
 
 - refer: [[git/blog-private-api-gateway-dataflow/TC-private-apigw-dataflow#步骤 9-10 -- Private API Custom Domain Name Access Logging]]
-- refer: [[POC-apigw#create api to use vpclink and]]
+- refer: [[POC-apigw#create api to use vpclink]]
 
 ## update-access-log-for-rest-api-
 

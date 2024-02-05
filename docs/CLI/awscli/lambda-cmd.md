@@ -2,7 +2,8 @@
 title: lambda
 description: 
 created: 2022-08-19 10:57:53.314
-last_modified: 2024-02-04
+last_modified: 2024-02-05
+icon: simple/awslambda
 tags:
   - aws/serverless/lambda
   - aws/cmd
