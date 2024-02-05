@@ -1,8 +1,8 @@
 ---
-title: lambda-cmd
+title: lambda
 description: 
 created: 2022-08-19 10:57:53.314
-last_modified: 2024-01-01
+last_modified: 2024-02-04
 tags:
   - aws/serverless/lambda
   - aws/cmd

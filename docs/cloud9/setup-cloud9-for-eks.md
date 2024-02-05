@@ -1,8 +1,8 @@
 ---
 title: Setup Cloud9 for EKS
-description: 使用 cloud9 作为实验环境
+description: 使用脚本完成实验环境初始化
 created: 2022-05-21 12:46:05.435
-last_modified: 2024-01-01
+last_modified: 2024-02-04
 status: myblog
 tags:
   - aws/container/eks

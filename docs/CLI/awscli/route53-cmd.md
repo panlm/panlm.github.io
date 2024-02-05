@@ -11,7 +11,7 @@ tags:
 # route53-cmd
 ## func-create-hosted-zone-
 - 执行下面命令创建 Hosted Zone，然后手工添加 NS 记录到上游的域名服务器 domain registrar 中 (create hosted zone, and then add NS records to upstream domain registrar)
-```sh
+```sh title="create-hosted-zone"
 function create-hosted-zone () {
     OPTIND=1
     OPTSTRING="h?n:"

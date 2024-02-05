@@ -1,8 +1,8 @@
 ---
-title: lightsail-cmd
+title: lightsail
 description: lightsail-cmd
 created: 2023-08-24 18:29:22.661
-last_modified: 2024-01-21
+last_modified: 2024-02-04
 tags:
   - aws/compute/lightsail
   - aws/cmd

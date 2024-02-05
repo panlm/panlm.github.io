@@ -1,8 +1,8 @@
 ---
 title: Quick Setup Cloud9
-description: 简化运行脚本
+description: 简化创建 Cloud9 脚本，优先选择使用 Terraform 自动初始化；也可以使用脚本从 CloudShell 中完成初始化
 created: 2023-08-04 15:56:59.747
-last_modified: 2024-01-21
+last_modified: 2024-02-04
 status: myblog
 tags:
   - aws/cloud9

@@ -115,9 +115,14 @@ plugins:
 
 
 extra:
+  status:
+    awsblog: blogs released on aws
+    myblog: my blogs
   analytics:
     provider: google
     property: G-8C6HW94JT3
+extra_css:
+  - extra.css
 
 
 

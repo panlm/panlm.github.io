@@ -2,7 +2,7 @@
 title: github-page-howto
 description: github-page-howto
 created: 2023-01-02 13:55:05.242
-last_modified: 2023-12-20
+last_modified: 2024-02-04
 tags:
   - github
 ---
@@ -72,3 +72,8 @@ git submodule update
 ```sh
 mkdocs serve
 ```
+
+### status in front matter
+- get icons: https://pictogrammers.com/library/mdi/
+- copy paste to extra.css
+
