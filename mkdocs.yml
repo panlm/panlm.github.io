@@ -74,7 +74,8 @@ markdown_extensions:
   - toc:
       permalink: true
   - pymdownx.inlinehilite
-  - pymdownx.snippets
+  - pymdownx.snippets:
+      base_path: ["docs/CLI/functions","docs/cloud9","."]
   - pymdownx.superfences:
       custom_fences:
         - name: mermaid

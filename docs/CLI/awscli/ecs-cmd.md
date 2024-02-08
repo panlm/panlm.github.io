@@ -2,7 +2,8 @@
 title: ecs
 description: 常用命令
 created: 2023-02-22 22:46:31.539
-last_modified: 2023-12-10
+last_modified: 2024-02-05
+icon: simple/amazonecs
 tags:
   - aws/container/ecs
   - aws/cmd
@@ -20,10 +21,12 @@ aws ssm get-parameters-by-path \
 
 - last 2 AMI ID
 ```sh
+export AWS_DEFAULT_REGION=us-east-1
+
 AMI_IDS=($(
 aws ssm get-parameters-by-path \
     --path /aws/service/ecs/optimized-ami/amazon-linux-2 \
-    --query 'sort_by(Parameters,&LastModifiedDate)[?contains(ARN, `arn:aws:ssm:us-east-2::parameter/aws/service/ecs/optimized-ami/amazon-linux-2/ami-`)==`true`]' \
+    --query 'sort_by(Parameters,&LastModifiedDate)[?contains(ARN, `arn:aws:ssm:'"${AWS_DEFAULT_REGION}"'::parameter/aws/service/ecs/optimized-ami/amazon-linux-2/ami-`)==`true`]' \
     |jq -r '.[].Value' |jq -r '.image_id' \
     |tail -n 2
 ))
@@ -38,7 +41,7 @@ NEW_AMI_ID=${AMI_IDS[1]}
 ECS_CLUSTER=myecs1
 VPC_ID=$(aws ec2 describe-vpcs --filter Name=is-default,Values=true --query 'Vpcs[0].VpcId' --output text)
 export AWS_PAGER=""
-export AWS_DEFAULT_REGION=us-east-2
+export AWS_DEFAULT_REGION=us-east-1
 ```
 - get ecs recommended optimized ami
 ```sh
@@ -81,7 +84,7 @@ aws ec2 modify-launch-template --launch-template-id ${LAUNCH_TEMPLATE_ID} --defa
 ```
 - execute function to create auto scaling group ([[notes/auto-scaling-cmd#func-create-auto-scaling-group-]])
 ```sh
-create-auto-scaling ${LAUNCH_TEMPLATE_ID} # call my function
+create-auto-scaling-group ${LAUNCH_TEMPLATE_ID} # call my function
 echo ${ASG_ARN}
 ```
 - create ecs cluster 

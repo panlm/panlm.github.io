@@ -2,7 +2,7 @@
 title: ec2
 description: 常用命令
 created: 2021-07-17T04:01:46.968Z
-last_modified: 2024-02-05
+last_modified: 2024-02-08
 icon: simple/amazonec2
 tags:
   - aws/compute/ec2
@@ -253,7 +253,7 @@ export SG_ID=$(aws ec2 describe-security-groups  --region $AWS_REGION --filter N
 ```
 
 ### func-create-sg-
-- [[../functions/func-create-sg.sh]]
+- [[../functions/func-create-sg.sh]] 
 ```sh title="func-create-sg.sh" linenums="1"
 --8<-- "docs/CLI/functions/func-create-sg.sh"
 ```

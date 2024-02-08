@@ -2,7 +2,7 @@
 title: Quick Setup Cloud9
 description: 简化创建 Cloud9 脚本，优先选择使用 Terraform 自动初始化；也可以使用脚本从 CloudShell 中完成初始化
 created: 2023-08-04 15:56:59.747
-last_modified: 2024-02-04
+last_modified: 2024-02-08
 status: myblog
 tags:
   - aws/cloud9
@@ -196,12 +196,12 @@ while true ; do
 done
 
 # script source location:
-# https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/setup-cloud9-for-eks.md
+# https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/script-prep-eks-env-part-one.sh
 # check script existed or not
-RET_CODE=$(curl -sL -w '%{http_code}' -o /dev/null  https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/setup-cloud9-for-eks.md)
+RET_CODE=$(curl -sL -w '%{http_code}' -o /dev/null  https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/script-prep-eks-env-part-one.sh)
 if [[ ${RET_CODE} -ne 200 ]]; then
     echo "######"
-    echo "###### SCRIPT NOT EXISTED"
+    echo "###### SCRIPT ONE NOT EXISTED"
     echo "######"
 fi
 
@@ -216,14 +216,13 @@ cat >$$.json <<-'EOF'
   "commands": [
     "",
     "TMPFILE=$(mktemp)",
-    "curl --location -o $TMPFILE https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/setup-cloud9-for-eks.md",
-    "cat $TMPFILE |awk '/###-SCRIPT-PART-ONE-BEGIN-###/,/###-SCRIPT-PART-ONE-END-###/ {print}' > $TMPFILE-ONE.sh",
-    "chmod a+x $TMPFILE-ONE.sh",
-    "sudo -u ec2-user bash $TMPFILE-ONE.sh 2>&1",
+    "curl --location -o ${TMPFILE}-ONE.sh https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/script-prep-eks-env-part-one.sh",
+    "chmod a+x ${TMPFILE}-ONE.sh",
+    "sudo -u ec2-user bash ${TMPFILE}-ONE.sh 2>&1",
     "",
-    "cat $TMPFILE |awk '/###-SCRIPT-PART-TWO-BEGIN-###/,/###-SCRIPT-PART-TWO-END-###/ {print}' > $TMPFILE-TWO.sh",
-    "chmod a+x $TMPFILE-TWO.sh",
-    "sudo -u ec2-user bash $TMPFILE-TWO.sh 2>&1",
+    "curl --location -o ${TMPFILE}-TWO.sh https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/script-prep-eks-env-part-two.sh",
+    "chmod a+x ${TMPFILE}-TWO.sh",
+    "sudo -u ec2-user bash ${TMPFILE}-TWO.sh 2>&1",
     ""
   ]
 }

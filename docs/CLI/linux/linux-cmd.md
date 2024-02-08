@@ -2,7 +2,7 @@
 title: linux-cmd
 description: 常用命令
 created: 2023-01-03 12:05:10.533
-last_modified: 2024-01-21
+last_modified: 2024-02-07
 tags:
   - cmd
   - linux
@@ -334,6 +334,19 @@ xfs_db -c uuid /dev/nvme1n1
 ```
 iftop -t -s 10 > output
 ```
+
+## yum
+```sh
+yum --showduplicates list httpd
+```
+
+
+## ubuntu
+```sh
+sudo apt install terraform=1.5.7-1
+sudo apt-mark hold terraform
+```
+
 
 ## ip address calc
 ```sh

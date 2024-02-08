@@ -2,7 +2,7 @@
 title: assume
 description: assume 工具，可以以另一个账号角色，快速打开 web console，或者执行命令
 created: 2023-09-15 09:40:01.442
-last_modified: 2024-02-05
+last_modified: 2024-02-08
 tags:
   - cmd
   - aws/security/iam
@@ -12,7 +12,7 @@ status: myblog
 
 # assume
 ## create role for account to assume
-```sh title="func-create-aws-config-entity"
+```sh title="create-aws-config-entity" linenums="1"
 function create-aws-config-entity () {
 echo WS_NAME=$(TZ=EAT-8 date +%Y%m%d-%H%M)
 ACCOUNT_ID=$(GRANTED_QUIET=true . assume panlm --exec "aws sts get-caller-identity" |jq -r '.Account')
@@ -70,7 +70,6 @@ echo ${AWS_SECRET_ACCESS_KEY}
 echo ${AWS_SESSION_TOKEN}
 
 aws sts get-caller-identity
-
 ```
 
 ```sh
