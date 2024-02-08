@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.7">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.8">
     
     
       
@@ -3692,6 +3692,8 @@
       <a href="../../awscli/ecs-cmd/" class="md-nav__link">
         
   
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.895 15.256-3.369-2.021V8.421a.42.42 0 0 0-.209-.364l-4.843-2.825V1.159l8.42 4.976Zm.635-9.724L13.267.06a.422.422 0 0 0-.635.362v5.053c0 .15.08.288.208.363l4.844 2.826v4.81a.42.42 0 0 0 .205.362l4.21 2.526a.42.42 0 0 0 .638-.361V5.895a.42.42 0 0 0-.207-.363ZM11.977 23.1l-9.872-5.248V6.135l8.421-4.976v4.084L6.09 8.066a.422.422 0 0 0-.195.355v7.158a.42.42 0 0 0 .226.373l5.665 2.948a.42.42 0 0 0 .387 0l5.496-2.84 3.382 2.03-9.074 5.01Zm10.135-5.356-4.21-2.526a.42.42 0 0 0-.411-.013l-5.51 2.847-5.244-2.729v-6.67l4.436-2.824a.422.422 0 0 0 .195-.355V.42a.421.421 0 0 0-.635-.362L1.47 5.532a.421.421 0 0 0-.207.363v12.21c0 .156.086.299.223.372l10.297 5.474a.421.421 0 0 0 .401-.004l9.915-5.473a.422.422 0 0 0 .013-.73Z"/></svg>
+  
   <span class="md-ellipsis">
     ecs
   </span>
@@ -4207,47 +4209,86 @@
 </blockquote>
 <h1 id="assume">assume<a class="headerlink" href="#assume" title="Permanent link">&para;</a></h1>
 <h2 id="create-role-for-account-to-assume">create role for account to assume<a class="headerlink" href="#create-role-for-account-to-assume" title="Permanent link">&para;</a></h2>
-<div class="highlight"><span class="filename">func-create-aws-config-entity</span><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="k">function</span><span class="w"> </span>create-aws-config-entity<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">{</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">WS_NAME</span><span class="o">=</span><span class="k">$(</span><span class="nv">TZ</span><span class="o">=</span>EAT-8<span class="w"> </span>date<span class="w"> </span>+%Y%m%d-%H%M<span class="k">)</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nv">ACCOUNT_ID</span><span class="o">=</span><span class="k">$(</span><span class="nv">GRANTED_QUIET</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span>.<span class="w"> </span>assume<span class="w"> </span>panlm<span class="w"> </span>--exec<span class="w"> </span><span class="s2">&quot;aws sts get-caller-identity&quot;</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Account&#39;</span><span class="k">)</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nv">LOCAL_ACCOUNT_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Account&#39;</span><span class="k">)</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nv">ROLE_NAME</span><span class="o">=</span>panlm<span class="w"> </span><span class="c1"># easy for remeber and switch from WSParticipantRole</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>envsubst<span class="w"> </span>&gt;<span class="w"> </span>/tmp/<span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span>-trust.json<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="s">{</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="s">    &quot;Version&quot;: &quot;2012-10-17&quot;,</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="s">    &quot;Statement&quot;: [</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="s">        {</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="s">            &quot;Effect&quot;: &quot;Allow&quot;,</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="s">            &quot;Principal&quot;: {</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="s">                &quot;AWS&quot;: [</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="s">                    &quot;arn:aws:iam::${ACCOUNT_ID}:root&quot;,</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="s">                    &quot;arn:aws:iam::${LOCAL_ACCOUNT_ID}:root&quot;</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="s">                ]</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="s">            },</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="s">            &quot;Action&quot;: &quot;sts:AssumeRole&quot;,</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="s">            &quot;Condition&quot;: {}</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="s">        }</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="s">    ]</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="s">}</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="s">EOF</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>aws<span class="w"> </span>iam<span class="w"> </span>create-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">    </span>--assume-role-policy-document<span class="w"> </span>file:///tmp/<span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span>-trust.json<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">    </span>--max-session-duration<span class="w"> </span><span class="m">43200</span><span class="w"> </span><span class="p">|</span>tee<span class="w"> </span>/tmp/<span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span>-role.json
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">    </span>--policy-arn<span class="w"> </span><span class="s2">&quot;arn:aws:iam::aws:policy/AdministratorAccess&quot;</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="nv">ROLE_ARN</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span>/tmp/<span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span>-role.json<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Role.Arn&#39;</span><span class="k">)</span>
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a>
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="nv">CREDENTIAL_ENTITY_NAME</span><span class="o">=</span><span class="s2">&quot;0-ws-</span><span class="si">${</span><span class="nv">WS_NAME</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>envsubst<span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.aws/config<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="s">[profile $CREDENTIAL_ENTITY_NAME]</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="s">role_arn=${ROLE_ARN}</span>
-<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="s">source_profile=panlm</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="s">role_session_name=granted</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="s">region=us-east-2</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="s">EOF</span>
-<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">CREDENTIAL_ENTITY_NAME</span><span class="si">}</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="o">}</span>
-</code></pre></div>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">create-aws-config-entity</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-0-1"> 1</a></span>
+<span class="normal"><a href="#__codelineno-0-2"> 2</a></span>
+<span class="normal"><a href="#__codelineno-0-3"> 3</a></span>
+<span class="normal"><a href="#__codelineno-0-4"> 4</a></span>
+<span class="normal"><a href="#__codelineno-0-5"> 5</a></span>
+<span class="normal"><a href="#__codelineno-0-6"> 6</a></span>
+<span class="normal"><a href="#__codelineno-0-7"> 7</a></span>
+<span class="normal"><a href="#__codelineno-0-8"> 8</a></span>
+<span class="normal"><a href="#__codelineno-0-9"> 9</a></span>
+<span class="normal"><a href="#__codelineno-0-10">10</a></span>
+<span class="normal"><a href="#__codelineno-0-11">11</a></span>
+<span class="normal"><a href="#__codelineno-0-12">12</a></span>
+<span class="normal"><a href="#__codelineno-0-13">13</a></span>
+<span class="normal"><a href="#__codelineno-0-14">14</a></span>
+<span class="normal"><a href="#__codelineno-0-15">15</a></span>
+<span class="normal"><a href="#__codelineno-0-16">16</a></span>
+<span class="normal"><a href="#__codelineno-0-17">17</a></span>
+<span class="normal"><a href="#__codelineno-0-18">18</a></span>
+<span class="normal"><a href="#__codelineno-0-19">19</a></span>
+<span class="normal"><a href="#__codelineno-0-20">20</a></span>
+<span class="normal"><a href="#__codelineno-0-21">21</a></span>
+<span class="normal"><a href="#__codelineno-0-22">22</a></span>
+<span class="normal"><a href="#__codelineno-0-23">23</a></span>
+<span class="normal"><a href="#__codelineno-0-24">24</a></span>
+<span class="normal"><a href="#__codelineno-0-25">25</a></span>
+<span class="normal"><a href="#__codelineno-0-26">26</a></span>
+<span class="normal"><a href="#__codelineno-0-27">27</a></span>
+<span class="normal"><a href="#__codelineno-0-28">28</a></span>
+<span class="normal"><a href="#__codelineno-0-29">29</a></span>
+<span class="normal"><a href="#__codelineno-0-30">30</a></span>
+<span class="normal"><a href="#__codelineno-0-31">31</a></span>
+<span class="normal"><a href="#__codelineno-0-32">32</a></span>
+<span class="normal"><a href="#__codelineno-0-33">33</a></span>
+<span class="normal"><a href="#__codelineno-0-34">34</a></span>
+<span class="normal"><a href="#__codelineno-0-35">35</a></span>
+<span class="normal"><a href="#__codelineno-0-36">36</a></span>
+<span class="normal"><a href="#__codelineno-0-37">37</a></span>
+<span class="normal"><a href="#__codelineno-0-38">38</a></span>
+<span class="normal"><a href="#__codelineno-0-39">39</a></span>
+<span class="normal"><a href="#__codelineno-0-40">40</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">function</span><span class="w"> </span>create-aws-config-entity<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">WS_NAME</span><span class="o">=</span><span class="k">$(</span><span class="nv">TZ</span><span class="o">=</span>EAT-8<span class="w"> </span>date<span class="w"> </span>+%Y%m%d-%H%M<span class="k">)</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="nv">ACCOUNT_ID</span><span class="o">=</span><span class="k">$(</span><span class="nv">GRANTED_QUIET</span><span class="o">=</span><span class="nb">true</span><span class="w"> </span>.<span class="w"> </span>assume<span class="w"> </span>panlm<span class="w"> </span>--exec<span class="w"> </span><span class="s2">&quot;aws sts get-caller-identity&quot;</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Account&#39;</span><span class="k">)</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="nv">LOCAL_ACCOUNT_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Account&#39;</span><span class="k">)</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5"></a><span class="nv">ROLE_NAME</span><span class="o">=</span>panlm<span class="w"> </span><span class="c1"># easy for remeber and switch from WSParticipantRole</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6"></a>envsubst<span class="w"> </span>&gt;<span class="w"> </span>/tmp/<span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span>-trust.json<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7"></a><span class="s">{</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8"></a><span class="s">    &quot;Version&quot;: &quot;2012-10-17&quot;,</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9"></a><span class="s">    &quot;Statement&quot;: [</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10"></a><span class="s">        {</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11"></a><span class="s">            &quot;Effect&quot;: &quot;Allow&quot;,</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12"></a><span class="s">            &quot;Principal&quot;: {</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13"></a><span class="s">                &quot;AWS&quot;: [</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14"></a><span class="s">                    &quot;arn:aws:iam::${ACCOUNT_ID}:root&quot;,</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15"></a><span class="s">                    &quot;arn:aws:iam::${LOCAL_ACCOUNT_ID}:root&quot;</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16"></a><span class="s">                ]</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17"></a><span class="s">            },</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18"></a><span class="s">            &quot;Action&quot;: &quot;sts:AssumeRole&quot;,</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19"></a><span class="s">            &quot;Condition&quot;: {}</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20"></a><span class="s">        }</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21"></a><span class="s">    ]</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22"></a><span class="s">}</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23"></a><span class="s">EOF</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24"></a>aws<span class="w"> </span>iam<span class="w"> </span>create-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25"></a><span class="w">    </span>--assume-role-policy-document<span class="w"> </span>file:///tmp/<span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span>-trust.json<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26"></a><span class="w">    </span>--max-session-duration<span class="w"> </span><span class="m">43200</span><span class="w"> </span><span class="p">|</span>tee<span class="w"> </span>/tmp/<span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span>-role.json
+<a id="__codelineno-0-27" name="__codelineno-0-27"></a>aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28"></a><span class="w">    </span>--policy-arn<span class="w"> </span><span class="s2">&quot;arn:aws:iam::aws:policy/AdministratorAccess&quot;</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29"></a><span class="nv">ROLE_ARN</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span>/tmp/<span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span>-role.json<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Role.Arn&#39;</span><span class="k">)</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30"></a>
+<a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="nv">CREDENTIAL_ENTITY_NAME</span><span class="o">=</span><span class="s2">&quot;0-ws-</span><span class="si">${</span><span class="nv">WS_NAME</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32"></a>envsubst<span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.aws/config<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="s">[profile $CREDENTIAL_ENTITY_NAME]</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="s">role_arn=${ROLE_ARN}</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="s">source_profile=panlm</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="s">role_session_name=granted</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="s">region=us-east-2</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38"></a><span class="s">EOF</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">CREDENTIAL_ENTITY_NAME</span><span class="si">}</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40"></a><span class="o">}</span>
+</code></pre></div></td></tr></table></div>
 <h2 id="modify-role-for-account-to-assume-deprecated">modify role for account to assume (deprecated)<a class="headerlink" href="#modify-role-for-account-to-assume-deprecated" title="Permanent link">&para;</a></h2>
 <ul>
 <li>(deprecated due to new SCP policy do not allow to modify WSParticipantRole&rsquo;s trust policy)</li>
@@ -4334,7 +4375,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-05T11:06:27+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-08T13:06:05+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-08</span>
   </span>
 
     
@@ -4401,7 +4442,7 @@
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "toc.follow", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.caa56a14.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
       
         <script src="../../../js/mkdocs_pagetree_plugin.js"></script>
       

@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.7">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.8">
     
     
       
@@ -3664,6 +3664,8 @@
       <a href="../../../CLI/awscli/ecs-cmd/" class="md-nav__link">
         
   
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.895 15.256-3.369-2.021V8.421a.42.42 0 0 0-.209-.364l-4.843-2.825V1.159l8.42 4.976Zm.635-9.724L13.267.06a.422.422 0 0 0-.635.362v5.053c0 .15.08.288.208.363l4.844 2.826v4.81a.42.42 0 0 0 .205.362l4.21 2.526a.42.42 0 0 0 .638-.361V5.895a.42.42 0 0 0-.207-.363ZM11.977 23.1l-9.872-5.248V6.135l8.421-4.976v4.084L6.09 8.066a.422.422 0 0 0-.195.355v7.158a.42.42 0 0 0 .226.373l5.665 2.948a.42.42 0 0 0 .387 0l5.496-2.84 3.382 2.03-9.074 5.01Zm10.135-5.356-4.21-2.526a.42.42 0 0 0-.411-.013l-5.51 2.847-5.244-2.729v-6.67l4.436-2.824a.422.422 0 0 0 .195-.355V.42a.421.421 0 0 0-.635-.362L1.47 5.532a.421.421 0 0 0-.207.363v12.21c0 .156.086.299.223.372l10.297 5.474a.421.421 0 0 0 .401-.004l9.915-5.473a.422.422 0 0 0 .013-.73Z"/></svg>
+  
   <span class="md-ellipsis">
     ecs
   </span>
@@ -4162,24 +4164,38 @@
 <h1 id="create-eks-cluster-with-terraform">Create EKS Cluster with Terraform<a class="headerlink" href="#create-eks-cluster-with-terraform" title="Permanent link">&para;</a></h1>
 <h2 id="install-terraform">install terraform<a class="headerlink" href="#install-terraform" title="Permanent link">&para;</a></h2>
 <ul>
-<li>this step has been included in <a href="../../../cloud9/setup-cloud9-for-eks/" title="setup-cloud9-for-eks">setup-cloud9-for-eks</a><br />
+<li><a href="https://developer.hashicorp.com/terraform/install">https://developer.hashicorp.com/terraform/install</a></li>
+<li>this step has been included in <a href="../../../cloud9/setup-cloud9-for-eks/" title="setup-cloud9-for-eks">setup-cloud9-for-eks</a> </li>
+</ul>
+<div class="tabbed-set tabbed-alternate" data-tabs="1:1"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">CentOS / AL2</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>yum-utils<span class="w"> </span>shadow-utils
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>yum-config-manager<span class="w"> </span>--add-repo<span class="w"> </span>https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>sudo<span class="w"> </span>yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>terraform
-</code></pre></div></li>
-</ul>
+</code></pre></div>
+<div class="tabbed-set tabbed-alternate" data-tabs="2:1"><input checked="checked" id="__tabbed_2_1" name="__tabbed_2" type="radio" /><div class="tabbed-labels"><label for="__tabbed_2_1">Ubuntu</label></div>
+<div class="tabbed-content">
+<div class="tabbed-block"></div>
+</div>
+</div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>sudo<span class="w"> </span>apt<span class="w"> </span>install<span class="w"> </span><span class="nv">terraform</span><span class="o">=</span><span class="m">1</span>.5.7-1
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>sudo<span class="w"> </span>apt-mark<span class="w"> </span>hold<span class="w"> </span>terraform
+</code></pre></div>
 <h2 id="sample-create-3x-clusters-for-thanos-poc-">sample-create-3x-clusters-for-thanos-poc-<a class="headerlink" href="#sample-create-3x-clusters-for-thanos-poc-" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p>get terraform template <br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/panlm/eks-blueprints-clusters.git
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">cd</span><span class="w"> </span>eks-blueprints-clusters/multi-cluster-thanos
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/panlm/eks-blueprints-clusters.git
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">cd</span><span class="w"> </span>eks-blueprints-clusters/multi-cluster-thanos
 </code></pre></div></p>
 </li>
 <li>
 <p>execute function to create an existed host zone (<a href="../../../CLI/awscli/route53-cmd/#func-create-hosted-zone-" title="route53-cmd">route53-cmd</a>)<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">DOMAIN_NAME</span><span class="o">=</span>eks1224.aws.panlm.xyz
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>create-host-zone<span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">DOMAIN_NAME</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">DOMAIN_NAME</span><span class="o">=</span>eks1224.aws.panlm.xyz
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>create-hosted-zone<span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">DOMAIN_NAME</span><span class="si">}</span>
 </code></pre></div></p>
 </li>
 <li>
@@ -4187,25 +4203,25 @@
 </li>
 <li>
 <p>terraform.tfvars<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>aws_region          = &quot;us-east-2&quot;
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>environment_name    = &quot;thanos&quot;
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>cluster_version     = &quot;1.27&quot;
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>hosted_zone_name    = &quot;eks1206.aws.panlm.xyz&quot; # your Existing Hosted Zone
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>eks_admin_role_name = &quot;panlm&quot; # Additional role admin in the cluster 
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>aws_region          = &quot;us-east-2&quot;
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>environment_name    = &quot;thanos&quot;
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>cluster_version     = &quot;1.27&quot;
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>hosted_zone_name    = &quot;eks1206.aws.panlm.xyz&quot; # your Existing Hosted Zone
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>eks_admin_role_name = &quot;panlm&quot; # Additional role admin in the cluster 
 </code></pre></div></p>
 </li>
 <li>
 <p>build environment<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">cd</span><span class="w"> </span>environment
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>terraform<span class="w"> </span>init
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>terraform<span class="w"> </span>apply<span class="w"> </span>-auto-approve
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">cd</span><span class="w"> </span>environment
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>terraform<span class="w"> </span>init
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>terraform<span class="w"> </span>apply<span class="w"> </span>-auto-approve
 </code></pre></div></p>
 </li>
 <li>
 <p>create ekscluster1, following output to save kubeconfig file<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">cd</span><span class="w"> </span>ekscluster1
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>terraform<span class="w"> </span>init
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>terraform<span class="w"> </span>apply<span class="w"> </span>-auto-approve
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">cd</span><span class="w"> </span>ekscluster1
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>terraform<span class="w"> </span>init
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>terraform<span class="w"> </span>apply<span class="w"> </span>-auto-approve
 </code></pre></div></p>
 </li>
 <li>
@@ -4219,11 +4235,11 @@
 <h3 id="internal-error">internal error<a class="headerlink" href="#internal-error" title="Permanent link">&para;</a></h3>
 <ul>
 <li>re-run <code>terraform apply</code> if you got following errors<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>│       * Internal error occurred: failed calling webhook &quot;mservice.elbv2.k8s.aws&quot;: failed to call webhook: Post &quot;https://aws-load-balancer-webhook-service.kube-system.svc:443/mutate-v1-service?timeout=10s&quot;: no endpoints available for service &quot;aws-load-balancer-webhook-service&quot;
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>│ 
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>│   with module.eks_cluster.module.eks_blueprints_addons.module.cert_manager.helm_release.this[0],
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>│   on .terraform/modules/eks_cluster.eks_blueprints_addons.cert_manager/main.tf line 9, in resource &quot;helm_release&quot; &quot;this&quot;:
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>│    9: resource &quot;helm_release&quot; &quot;this&quot; {
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>│       * Internal error occurred: failed calling webhook &quot;mservice.elbv2.k8s.aws&quot;: failed to call webhook: Post &quot;https://aws-load-balancer-webhook-service.kube-system.svc:443/mutate-v1-service?timeout=10s&quot;: no endpoints available for service &quot;aws-load-balancer-webhook-service&quot;
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>│ 
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>│   with module.eks_cluster.module.eks_blueprints_addons.module.cert_manager.helm_release.this[0],
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>│   on .terraform/modules/eks_cluster.eks_blueprints_addons.cert_manager/main.tf line 9, in resource &quot;helm_release&quot; &quot;this&quot;:
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>│    9: resource &quot;helm_release&quot; &quot;this&quot; {
 </code></pre></div></li>
 </ul>
 <h2 id="refer">refer<a class="headerlink" href="#refer" title="Permanent link">&para;</a></h2>
@@ -4253,7 +4269,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-04T10:57:27+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-08T13:06:05+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-08</span>
   </span>
 
     
@@ -4320,7 +4336,7 @@
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "toc.follow", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.caa56a14.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
       
         <script src="../../../js/mkdocs_pagetree_plugin.js"></script>
       

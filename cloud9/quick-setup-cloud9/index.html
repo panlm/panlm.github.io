@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.7">
+      <meta name="generator" content="mkdocs-1.5.3, mkdocs-material-9.5.8">
     
     
       
@@ -3712,6 +3712,8 @@
       <a href="../../CLI/awscli/ecs-cmd/" class="md-nav__link">
         
   
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.895 15.256-3.369-2.021V8.421a.42.42 0 0 0-.209-.364l-4.843-2.825V1.159l8.42 4.976Zm.635-9.724L13.267.06a.422.422 0 0 0-.635.362v5.053c0 .15.08.288.208.363l4.844 2.826v4.81a.42.42 0 0 0 .205.362l4.21 2.526a.42.42 0 0 0 .638-.361V5.895a.42.42 0 0 0-.207-.363ZM11.977 23.1l-9.872-5.248V6.135l8.421-4.976v4.084L6.09 8.066a.422.422 0 0 0-.195.355v7.158a.42.42 0 0 0 .226.373l5.665 2.948a.42.42 0 0 0 .387 0l5.496-2.84 3.382 2.03-9.074 5.01Zm10.135-5.356-4.21-2.526a.42.42 0 0 0-.411-.013l-5.51 2.847-5.244-2.729v-6.67l4.436-2.824a.422.422 0 0 0 .195-.355V.42a.421.421 0 0 0-.635-.362L1.47 5.532a.421.421 0 0 0-.207.363v12.21c0 .156.086.299.223.372l10.297 5.474a.421.421 0 0 0 .401-.004l9.915-5.473a.422.422 0 0 0 .013-.73Z"/></svg>
+  
   <span class="md-ellipsis">
     ecs
   </span>
@@ -4441,12 +4443,12 @@
 <a id="__codelineno-2-100" name="__codelineno-2-100" href="#__codelineno-2-100"></a><span class="k">done</span>
 <a id="__codelineno-2-101" name="__codelineno-2-101" href="#__codelineno-2-101"></a>
 <a id="__codelineno-2-102" name="__codelineno-2-102" href="#__codelineno-2-102"></a><span class="c1"># script source location:</span>
-<a id="__codelineno-2-103" name="__codelineno-2-103" href="#__codelineno-2-103"></a><span class="c1"># https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/setup-cloud9-for-eks.md</span>
+<a id="__codelineno-2-103" name="__codelineno-2-103" href="#__codelineno-2-103"></a><span class="c1"># https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/script-prep-eks-env-part-one.sh</span>
 <a id="__codelineno-2-104" name="__codelineno-2-104" href="#__codelineno-2-104"></a><span class="c1"># check script existed or not</span>
-<a id="__codelineno-2-105" name="__codelineno-2-105" href="#__codelineno-2-105"></a><span class="nv">RET_CODE</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-sL<span class="w"> </span>-w<span class="w"> </span><span class="s1">&#39;%{http_code}&#39;</span><span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w">  </span>https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/setup-cloud9-for-eks.md<span class="k">)</span>
+<a id="__codelineno-2-105" name="__codelineno-2-105" href="#__codelineno-2-105"></a><span class="nv">RET_CODE</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-sL<span class="w"> </span>-w<span class="w"> </span><span class="s1">&#39;%{http_code}&#39;</span><span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w">  </span>https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/script-prep-eks-env-part-one.sh<span class="k">)</span>
 <a id="__codelineno-2-106" name="__codelineno-2-106" href="#__codelineno-2-106"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${</span><span class="nv">RET_CODE</span><span class="si">}</span><span class="w"> </span>-ne<span class="w"> </span><span class="m">200</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 <a id="__codelineno-2-107" name="__codelineno-2-107" href="#__codelineno-2-107"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;######&quot;</span>
-<a id="__codelineno-2-108" name="__codelineno-2-108" href="#__codelineno-2-108"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###### SCRIPT NOT EXISTED&quot;</span>
+<a id="__codelineno-2-108" name="__codelineno-2-108" href="#__codelineno-2-108"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###### SCRIPT ONE NOT EXISTED&quot;</span>
 <a id="__codelineno-2-109" name="__codelineno-2-109" href="#__codelineno-2-109"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;######&quot;</span>
 <a id="__codelineno-2-110" name="__codelineno-2-110" href="#__codelineno-2-110"></a><span class="k">fi</span>
 <a id="__codelineno-2-111" name="__codelineno-2-111" href="#__codelineno-2-111"></a>
@@ -4461,40 +4463,39 @@
 <a id="__codelineno-2-120" name="__codelineno-2-120" href="#__codelineno-2-120"></a><span class="s">  &quot;commands&quot;: [</span>
 <a id="__codelineno-2-121" name="__codelineno-2-121" href="#__codelineno-2-121"></a><span class="s">    &quot;&quot;,</span>
 <a id="__codelineno-2-122" name="__codelineno-2-122" href="#__codelineno-2-122"></a><span class="s">    &quot;TMPFILE=$(mktemp)&quot;,</span>
-<a id="__codelineno-2-123" name="__codelineno-2-123" href="#__codelineno-2-123"></a><span class="s">    &quot;curl --location -o $TMPFILE https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/setup-cloud9-for-eks.md&quot;,</span>
-<a id="__codelineno-2-124" name="__codelineno-2-124" href="#__codelineno-2-124"></a><span class="s">    &quot;cat $TMPFILE |awk &#39;/###-SCRIPT-PART-ONE-BEGIN-###/,/###-SCRIPT-PART-ONE-END-###/ {print}&#39; &gt; $TMPFILE-ONE.sh&quot;,</span>
-<a id="__codelineno-2-125" name="__codelineno-2-125" href="#__codelineno-2-125"></a><span class="s">    &quot;chmod a+x $TMPFILE-ONE.sh&quot;,</span>
-<a id="__codelineno-2-126" name="__codelineno-2-126" href="#__codelineno-2-126"></a><span class="s">    &quot;sudo -u ec2-user bash $TMPFILE-ONE.sh 2&gt;&amp;1&quot;,</span>
-<a id="__codelineno-2-127" name="__codelineno-2-127" href="#__codelineno-2-127"></a><span class="s">    &quot;&quot;,</span>
-<a id="__codelineno-2-128" name="__codelineno-2-128" href="#__codelineno-2-128"></a><span class="s">    &quot;cat $TMPFILE |awk &#39;/###-SCRIPT-PART-TWO-BEGIN-###/,/###-SCRIPT-PART-TWO-END-###/ {print}&#39; &gt; $TMPFILE-TWO.sh&quot;,</span>
-<a id="__codelineno-2-129" name="__codelineno-2-129" href="#__codelineno-2-129"></a><span class="s">    &quot;chmod a+x $TMPFILE-TWO.sh&quot;,</span>
-<a id="__codelineno-2-130" name="__codelineno-2-130" href="#__codelineno-2-130"></a><span class="s">    &quot;sudo -u ec2-user bash $TMPFILE-TWO.sh 2&gt;&amp;1&quot;,</span>
-<a id="__codelineno-2-131" name="__codelineno-2-131" href="#__codelineno-2-131"></a><span class="s">    &quot;&quot;</span>
-<a id="__codelineno-2-132" name="__codelineno-2-132" href="#__codelineno-2-132"></a><span class="s">  ]</span>
-<a id="__codelineno-2-133" name="__codelineno-2-133" href="#__codelineno-2-133"></a><span class="s">}</span>
-<a id="__codelineno-2-134" name="__codelineno-2-134" href="#__codelineno-2-134"></a><span class="s">EOF</span>
-<a id="__codelineno-2-135" name="__codelineno-2-135" href="#__codelineno-2-135"></a>
-<a id="__codelineno-2-136" name="__codelineno-2-136" href="#__codelineno-2-136"></a><span class="nv">LOGGROUP_NAME</span><span class="o">=</span>ssm-runshellscript-log-<span class="k">$(</span><span class="nv">TZ</span><span class="o">=</span>CST-8<span class="w"> </span>date<span class="w"> </span>+%Y%m%d-%H%M<span class="k">)</span>
-<a id="__codelineno-2-137" name="__codelineno-2-137" href="#__codelineno-2-137"></a>aws<span class="w"> </span>logs<span class="w"> </span>create-log-group<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-138" name="__codelineno-2-138" href="#__codelineno-2-138"></a><span class="w">    </span>--log-group-name<span class="w"> </span><span class="si">${</span><span class="nv">LOGGROUP_NAME</span><span class="si">}</span>
-<a id="__codelineno-2-139" name="__codelineno-2-139" href="#__codelineno-2-139"></a>
-<a id="__codelineno-2-140" name="__codelineno-2-140" href="#__codelineno-2-140"></a>aws<span class="w"> </span>ssm<span class="w"> </span>send-command<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-141" name="__codelineno-2-141" href="#__codelineno-2-141"></a><span class="w">    </span>--document-name<span class="w"> </span><span class="s2">&quot;AWS-RunShellScript&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-142" name="__codelineno-2-142" href="#__codelineno-2-142"></a><span class="w">    </span>--document-version<span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-143" name="__codelineno-2-143" href="#__codelineno-2-143"></a><span class="w">    </span>--targets<span class="w"> </span><span class="s1">&#39;[{&quot;Key&quot;:&quot;InstanceIds&quot;,&quot;Values&quot;:[&quot;&#39;</span><span class="si">${</span><span class="nv">C9_INST_ID</span><span class="si">}</span><span class="s1">&#39;&quot;]}]&#39;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-144" name="__codelineno-2-144" href="#__codelineno-2-144"></a><span class="w">    </span>--parameters<span class="w"> </span>file://<span class="nv">$$</span>.json<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-145" name="__codelineno-2-145" href="#__codelineno-2-145"></a><span class="w">    </span>--timeout-seconds<span class="w"> </span><span class="m">600</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-146" name="__codelineno-2-146" href="#__codelineno-2-146"></a><span class="w">    </span>--max-concurrency<span class="w"> </span><span class="s2">&quot;50&quot;</span><span class="w"> </span>--max-errors<span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="w">  </span><span class="se">\</span>
-<a id="__codelineno-2-147" name="__codelineno-2-147" href="#__codelineno-2-147"></a><span class="w">    </span>--cloud-watch-output-config<span class="w"> </span><span class="nv">CloudWatchLogGroupName</span><span class="o">=</span><span class="si">${</span><span class="nv">LOGGROUP_NAME</span><span class="si">}</span>,CloudWatchOutputEnabled<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="p">|</span>tee<span class="w"> </span>ssm-<span class="nv">$$</span>.json
-<a id="__codelineno-2-148" name="__codelineno-2-148" href="#__codelineno-2-148"></a><span class="c1"># comment &quot;-a&quot; in tee 2023/11/20</span>
-<a id="__codelineno-2-149" name="__codelineno-2-149" href="#__codelineno-2-149"></a>
-<a id="__codelineno-2-150" name="__codelineno-2-150" href="#__codelineno-2-150"></a><span class="c1"># wait to Success</span>
-<a id="__codelineno-2-151" name="__codelineno-2-151" href="#__codelineno-2-151"></a><span class="nv">COMMAND_ID</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span>ssm-<span class="nv">$$</span>.json<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Command.CommandId&#39;</span><span class="k">)</span>
-<a id="__codelineno-2-152" name="__codelineno-2-152" href="#__codelineno-2-152"></a>watch<span class="w"> </span>-g<span class="w"> </span>-n<span class="w"> </span><span class="m">10</span><span class="w"> </span>aws<span class="w"> </span>ssm<span class="w"> </span>get-command-invocation<span class="w"> </span>--command-id<span class="w"> </span><span class="si">${</span><span class="nv">COMMAND_ID</span><span class="si">}</span><span class="w"> </span>--instance-id<span class="w"> </span><span class="si">${</span><span class="nv">C9_INST_ID</span><span class="si">}</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Status&#39;</span><span class="w"> </span>--output<span class="w"> </span>text
-<a id="__codelineno-2-153" name="__codelineno-2-153" href="#__codelineno-2-153"></a>
-<a id="__codelineno-2-154" name="__codelineno-2-154" href="#__codelineno-2-154"></a><span class="c1"># disable managed credential and login cloud9</span>
-<a id="__codelineno-2-155" name="__codelineno-2-155" href="#__codelineno-2-155"></a>aws<span class="w"> </span>cloud9<span class="w"> </span>update-environment<span class="w">  </span>--environment-id<span class="w"> </span><span class="nv">$C9_ID</span><span class="w"> </span>--managed-credentials-action<span class="w"> </span>DISABLE
-<a id="__codelineno-2-156" name="__codelineno-2-156" href="#__codelineno-2-156"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;https://</span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span><span class="s2">.console.aws.amazon.com/cloud9/ide/</span><span class="si">${</span><span class="nv">C9_ID</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-2-123" name="__codelineno-2-123" href="#__codelineno-2-123"></a><span class="s">    &quot;curl --location -o ${TMPFILE}-ONE.sh https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/script-prep-eks-env-part-one.sh&quot;,</span>
+<a id="__codelineno-2-124" name="__codelineno-2-124" href="#__codelineno-2-124"></a><span class="s">    &quot;chmod a+x ${TMPFILE}-ONE.sh&quot;,</span>
+<a id="__codelineno-2-125" name="__codelineno-2-125" href="#__codelineno-2-125"></a><span class="s">    &quot;sudo -u ec2-user bash ${TMPFILE}-ONE.sh 2&gt;&amp;1&quot;,</span>
+<a id="__codelineno-2-126" name="__codelineno-2-126" href="#__codelineno-2-126"></a><span class="s">    &quot;&quot;,</span>
+<a id="__codelineno-2-127" name="__codelineno-2-127" href="#__codelineno-2-127"></a><span class="s">    &quot;curl --location -o ${TMPFILE}-TWO.sh https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/script-prep-eks-env-part-two.sh&quot;,</span>
+<a id="__codelineno-2-128" name="__codelineno-2-128" href="#__codelineno-2-128"></a><span class="s">    &quot;chmod a+x ${TMPFILE}-TWO.sh&quot;,</span>
+<a id="__codelineno-2-129" name="__codelineno-2-129" href="#__codelineno-2-129"></a><span class="s">    &quot;sudo -u ec2-user bash ${TMPFILE}-TWO.sh 2&gt;&amp;1&quot;,</span>
+<a id="__codelineno-2-130" name="__codelineno-2-130" href="#__codelineno-2-130"></a><span class="s">    &quot;&quot;</span>
+<a id="__codelineno-2-131" name="__codelineno-2-131" href="#__codelineno-2-131"></a><span class="s">  ]</span>
+<a id="__codelineno-2-132" name="__codelineno-2-132" href="#__codelineno-2-132"></a><span class="s">}</span>
+<a id="__codelineno-2-133" name="__codelineno-2-133" href="#__codelineno-2-133"></a><span class="s">EOF</span>
+<a id="__codelineno-2-134" name="__codelineno-2-134" href="#__codelineno-2-134"></a>
+<a id="__codelineno-2-135" name="__codelineno-2-135" href="#__codelineno-2-135"></a><span class="nv">LOGGROUP_NAME</span><span class="o">=</span>ssm-runshellscript-log-<span class="k">$(</span><span class="nv">TZ</span><span class="o">=</span>CST-8<span class="w"> </span>date<span class="w"> </span>+%Y%m%d-%H%M<span class="k">)</span>
+<a id="__codelineno-2-136" name="__codelineno-2-136" href="#__codelineno-2-136"></a>aws<span class="w"> </span>logs<span class="w"> </span>create-log-group<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-137" name="__codelineno-2-137" href="#__codelineno-2-137"></a><span class="w">    </span>--log-group-name<span class="w"> </span><span class="si">${</span><span class="nv">LOGGROUP_NAME</span><span class="si">}</span>
+<a id="__codelineno-2-138" name="__codelineno-2-138" href="#__codelineno-2-138"></a>
+<a id="__codelineno-2-139" name="__codelineno-2-139" href="#__codelineno-2-139"></a>aws<span class="w"> </span>ssm<span class="w"> </span>send-command<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-140" name="__codelineno-2-140" href="#__codelineno-2-140"></a><span class="w">    </span>--document-name<span class="w"> </span><span class="s2">&quot;AWS-RunShellScript&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-141" name="__codelineno-2-141" href="#__codelineno-2-141"></a><span class="w">    </span>--document-version<span class="w"> </span><span class="s2">&quot;1&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-142" name="__codelineno-2-142" href="#__codelineno-2-142"></a><span class="w">    </span>--targets<span class="w"> </span><span class="s1">&#39;[{&quot;Key&quot;:&quot;InstanceIds&quot;,&quot;Values&quot;:[&quot;&#39;</span><span class="si">${</span><span class="nv">C9_INST_ID</span><span class="si">}</span><span class="s1">&#39;&quot;]}]&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-143" name="__codelineno-2-143" href="#__codelineno-2-143"></a><span class="w">    </span>--parameters<span class="w"> </span>file://<span class="nv">$$</span>.json<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-144" name="__codelineno-2-144" href="#__codelineno-2-144"></a><span class="w">    </span>--timeout-seconds<span class="w"> </span><span class="m">600</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-145" name="__codelineno-2-145" href="#__codelineno-2-145"></a><span class="w">    </span>--max-concurrency<span class="w"> </span><span class="s2">&quot;50&quot;</span><span class="w"> </span>--max-errors<span class="w"> </span><span class="s2">&quot;0&quot;</span><span class="w">  </span><span class="se">\</span>
+<a id="__codelineno-2-146" name="__codelineno-2-146" href="#__codelineno-2-146"></a><span class="w">    </span>--cloud-watch-output-config<span class="w"> </span><span class="nv">CloudWatchLogGroupName</span><span class="o">=</span><span class="si">${</span><span class="nv">LOGGROUP_NAME</span><span class="si">}</span>,CloudWatchOutputEnabled<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="p">|</span>tee<span class="w"> </span>ssm-<span class="nv">$$</span>.json
+<a id="__codelineno-2-147" name="__codelineno-2-147" href="#__codelineno-2-147"></a><span class="c1"># comment &quot;-a&quot; in tee 2023/11/20</span>
+<a id="__codelineno-2-148" name="__codelineno-2-148" href="#__codelineno-2-148"></a>
+<a id="__codelineno-2-149" name="__codelineno-2-149" href="#__codelineno-2-149"></a><span class="c1"># wait to Success</span>
+<a id="__codelineno-2-150" name="__codelineno-2-150" href="#__codelineno-2-150"></a><span class="nv">COMMAND_ID</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span>ssm-<span class="nv">$$</span>.json<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Command.CommandId&#39;</span><span class="k">)</span>
+<a id="__codelineno-2-151" name="__codelineno-2-151" href="#__codelineno-2-151"></a>watch<span class="w"> </span>-g<span class="w"> </span>-n<span class="w"> </span><span class="m">10</span><span class="w"> </span>aws<span class="w"> </span>ssm<span class="w"> </span>get-command-invocation<span class="w"> </span>--command-id<span class="w"> </span><span class="si">${</span><span class="nv">COMMAND_ID</span><span class="si">}</span><span class="w"> </span>--instance-id<span class="w"> </span><span class="si">${</span><span class="nv">C9_INST_ID</span><span class="si">}</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Status&#39;</span><span class="w"> </span>--output<span class="w"> </span>text
+<a id="__codelineno-2-152" name="__codelineno-2-152" href="#__codelineno-2-152"></a>
+<a id="__codelineno-2-153" name="__codelineno-2-153" href="#__codelineno-2-153"></a><span class="c1"># disable managed credential and login cloud9</span>
+<a id="__codelineno-2-154" name="__codelineno-2-154" href="#__codelineno-2-154"></a>aws<span class="w"> </span>cloud9<span class="w"> </span>update-environment<span class="w">  </span>--environment-id<span class="w"> </span><span class="nv">$C9_ID</span><span class="w"> </span>--managed-credentials-action<span class="w"> </span>DISABLE
+<a id="__codelineno-2-155" name="__codelineno-2-155" href="#__codelineno-2-155"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;https://</span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span><span class="s2">.console.aws.amazon.com/cloud9/ide/</span><span class="si">${</span><span class="nv">C9_ID</span><span class="si">}</span><span class="s2">&quot;</span>
 </code></pre></div></li>
 </ul>
 </li>
@@ -4573,7 +4574,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-05T11:06:27+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-08T13:06:05+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-08</span>
   </span>
 
     
@@ -4640,7 +4641,7 @@
     <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "toc.follow", "content.code.copy"], "search": "../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.caa56a14.min.js"></script>
+      <script src="../../assets/javascripts/bundle.8fd75fb4.min.js"></script>
       
         <script src="../../js/mkdocs_pagetree_plugin.js"></script>
       
