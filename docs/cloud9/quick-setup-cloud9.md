@@ -11,7 +11,7 @@ tags:
 > [!WARNING] This is a github note
 
 # Quick Setup Cloud9 
-在 [[setup-cloud9-for-eks]] 基础上进一步简化操作，使用不同方法在 cloud9 中完成所有常用软件安装等初始化操作。推荐使用 Option 1 使用 Cloudformation 自动化部署。或者使用 Option 2.2 在 Cloudshell 中复制粘贴脚本即完成初始化
+在 [[setup-cloud9-for-eks]] 基础上进一步简化操作，使用不同方法在 cloud9 中完成所有常用软件安装等初始化操作。推荐使用 Option 1 使用 Cloudformation 自动化部署。或者使用 Option 2.1 在 Cloudshell 中复制粘贴脚本即完成初始化
 
 ## Option 1 - create cloud9 with cloudformation template
 - download [[example_instancestack.yaml]]
@@ -80,6 +80,8 @@ watch -g -n 2 aws ec2 describe-instances \
     --filters "Name=tag:Name,Values=aws-cloud9-${name}-${C9_ID}" \
     --query "Reservations[].Instances[].InstanceId" --output text
 
+sudo yum install -yq gettext
+
 ```
 
 ### Option 2.1 stay in cloudshell to initiate cloud9 (prefer)
@@ -99,39 +101,37 @@ echo ${name}
 
 export AWS_PAGER=""
 C9_INST_ID=$(aws ec2 describe-instances \
-    --filters "Name=tag:Name,Values=aws-cloud9-${name}-${C9_ID}" \
-    --query "Reservations[].Instances[].InstanceId" --output text)
+  --filters "Name=tag:Name,Values=aws-cloud9-${name}-${C9_ID}" \
+  --query "Reservations[].Instances[].InstanceId" --output text)
 MY_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text)
 ROLE_NAME=ec2-admin-role-$(TZ=CST-8 date +%Y%m%d-%H%M%S)
-
-sudo yum install -y gettext
 
 # build trust.json
 cat > ec2.json <<-EOF
 {
-    "Effect": "Allow",
-    "Principal": {
-        "Service": "ec2.amazonaws.com"
-    },
-    "Action": "sts:AssumeRole"
+  "Effect": "Allow",
+  "Principal": {
+    "Service": "ec2.amazonaws.com"
+  },
+  "Action": "sts:AssumeRole"
 }
 EOF
 STATEMENT_LIST=ec2.json
 
 for i in WSParticipantRole WSOpsRole TeamRole OpsRole ; do
-    aws iam get-role --role-name $i >/dev/null 2>&1
-    if [[ $? -eq 0 ]]; then
-        envsubst >$i.json <<-EOF
+  aws iam get-role --role-name $i >/dev/null 2>&1
+  if [[ $? -eq 0 ]]; then
+    envsubst >$i.json <<-EOF
 {
-    "Effect": "Allow",
-    "Principal": {
-        "AWS": "arn:aws:iam::${MY_ACCOUNT_ID}:role/$i"
-    },
-    "Action": "sts:AssumeRole"
+  "Effect": "Allow",
+  "Principal": {
+    "AWS": "arn:aws:iam::${MY_ACCOUNT_ID}:role/$i"
+  },
+  "Action": "sts:AssumeRole"
 }
 EOF
-        STATEMENT_LIST=$(echo ${STATEMENT_LIST} "$i.json")
-    fi
+    STATEMENT_LIST=$(echo ${STATEMENT_LIST} "$i.json")
+  fi
 done
 
 jq -n '{Version: "2012-10-17", Statement: [inputs]}' ${STATEMENT_LIST} > trust.json
@@ -140,44 +140,44 @@ rm -f ${STATEMENT_LIST}
 
 # create role
 aws iam create-role --role-name ${ROLE_NAME} \
-    --assume-role-policy-document file://trust.json
+  --assume-role-policy-document file://trust.json
 aws iam attach-role-policy --role-name ${ROLE_NAME} \
-    --policy-arn "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
+  --policy-arn "arn:aws:iam::aws:policy/AmazonSSMManagedInstanceCore"
 aws iam attach-role-policy --role-name ${ROLE_NAME} \
-    --policy-arn "arn:aws:iam::aws:policy/AdministratorAccess"
+  --policy-arn "arn:aws:iam::aws:policy/AdministratorAccess"
 
 instance_profile_arn=$(aws ec2 describe-iam-instance-profile-associations \
-    --filter Name=instance-id,Values=$C9_INST_ID \
-    --query IamInstanceProfileAssociations[0].IamInstanceProfile.Arn \
-    --output text)
+  --filter Name=instance-id,Values=$C9_INST_ID \
+  --query IamInstanceProfileAssociations[0].IamInstanceProfile.Arn \
+  --output text)
 if [[ ${instance_profile_arn} == "None" ]]; then
-    # create one
-    aws iam create-instance-profile --instance-profile-name ${ROLE_NAME} |tee /tmp/inst-profile-$$.1
-    sleep 10
-    # attach role to it
-    aws iam add-role-to-instance-profile --instance-profile-name ${ROLE_NAME} --role-name ${ROLE_NAME}
-    sleep 10
-    # attach instance profile to ec2
-    aws ec2 associate-iam-instance-profile \
-        --iam-instance-profile Name=${ROLE_NAME} \
-        --instance-id ${C9_INST_ID}
+  # create one
+  aws iam create-instance-profile --instance-profile-name ${ROLE_NAME} |tee /tmp/inst-profile-$$.1
+  sleep 10
+  # attach role to it
+  aws iam add-role-to-instance-profile --instance-profile-name ${ROLE_NAME} --role-name ${ROLE_NAME}
+  sleep 10
+  # attach instance profile to ec2
+  aws ec2 associate-iam-instance-profile \
+    --iam-instance-profile Name=${ROLE_NAME} \
+    --instance-id ${C9_INST_ID}
 else
-    existed_role_name=$(aws iam get-instance-profile \
-        --instance-profile-name ${instance_profile_arn##*/} \
-        --query 'InstanceProfile.Roles[0].RoleName' \
-        --output text)
-    aws iam attach-role-policy --role-name ${existed_role_name} \
-        --policy-arn "arn:aws:iam::aws:policy/AdministratorAccess"
+  existed_role_name=$(aws iam get-instance-profile \
+    --instance-profile-name ${instance_profile_arn##*/} \
+    --query 'InstanceProfile.Roles[0].RoleName' \
+    --output text)
+  aws iam attach-role-policy --role-name ${existed_role_name} \
+    --policy-arn "arn:aws:iam::aws:policy/AdministratorAccess"
 fi
 
 # share with other specific user
 # cannot use user-arn: arn:aws:iam::${MY_ACCOUNT_ID}:root to share everyone
 # cannot assign role to access cloud9, only root/user/assumed-role/federated-user
 for i in WSOpsRole/Ops WSParticipantRole/Participant panlm/granted; do
-    aws cloud9 create-environment-membership \
-        --environment-id ${C9_ID} \
-        --user-arn arn:aws:sts::${MY_ACCOUNT_ID}:assumed-role/${i} \
-        --permissions read-write
+  aws cloud9 create-environment-membership \
+    --environment-id ${C9_ID} \
+    --user-arn arn:aws:sts::${MY_ACCOUNT_ID}:assumed-role/${i} \
+    --permissions read-write
 done
 
 # reboot instance, make role effective ASAP
@@ -185,14 +185,14 @@ aws ec2 reboot-instances --instance-ids ${C9_INST_ID}
 
 # wait ssm could connect to this instance 
 while true ; do
-    sleep 60
-    CONN_STAT=$(aws ssm get-connection-status \
-    --target ${C9_INST_ID} \
-    --query "Status" --output text)
-    echo ${CONN_STAT}
-    if [[ ${CONN_STAT} == 'connected' ]]; then
-        break
-    fi
+  sleep 60
+  CONN_STAT=$(aws ssm get-connection-status \
+  --target ${C9_INST_ID} \
+  --query "Status" --output text)
+  echo ${CONN_STAT}
+  if [[ ${CONN_STAT} == 'connected' ]]; then
+    break
+  fi
 done
 
 # script source location:
@@ -200,9 +200,9 @@ done
 # check script existed or not
 RET_CODE=$(curl -sL -w '%{http_code}' -o /dev/null  https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/script-prep-eks-env-part-one.sh)
 if [[ ${RET_CODE} -ne 200 ]]; then
-    echo "######"
-    echo "###### SCRIPT ONE NOT EXISTED"
-    echo "######"
+  echo "######"
+  echo "###### SCRIPT ONE NOT EXISTED"
+  echo "######"
 fi
 
 cat >$$.json <<-'EOF'
@@ -230,16 +230,16 @@ EOF
 
 LOGGROUP_NAME=ssm-runshellscript-log-$(TZ=CST-8 date +%Y%m%d-%H%M)
 aws logs create-log-group \
-    --log-group-name ${LOGGROUP_NAME}
+  --log-group-name ${LOGGROUP_NAME}
 
 aws ssm send-command \
-    --document-name "AWS-RunShellScript" \
-    --document-version "1" \
-    --targets '[{"Key":"InstanceIds","Values":["'${C9_INST_ID}'"]}]' \
-    --parameters file://$$.json \
-    --timeout-seconds 600 \
-    --max-concurrency "50" --max-errors "0"  \
-    --cloud-watch-output-config CloudWatchLogGroupName=${LOGGROUP_NAME},CloudWatchOutputEnabled=true |tee ssm-$$.json
+  --document-name "AWS-RunShellScript" \
+  --document-version "1" \
+  --targets '[{"Key":"InstanceIds","Values":["'${C9_INST_ID}'"]}]' \
+  --parameters file://$$.json \
+  --timeout-seconds 600 \
+  --max-concurrency "50" --max-errors "0"  \
+  --cloud-watch-output-config CloudWatchLogGroupName=${LOGGROUP_NAME},CloudWatchOutputEnabled=true |tee ssm-$$.json
 # comment "-a" in tee 2023/11/20
 
 # wait to Success
@@ -253,23 +253,23 @@ echo "https://${AWS_DEFAULT_REGION}.console.aws.amazon.com/cloud9/ide/${C9_ID}"
 ```
 
 
-### Option 2.2 login cloud9 to initiate (alternative) 
+### ~~Option 2.2 login cloud9 to initiate (alternative)~~ 
 - 代码将从 GitHub 下载：
     - https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/setup-cloud9-for-eks.md
 
 #### script-part-one-two
 - 下面代码块包含一些基本设置，包括：(execute this code block to install tools for your lab, and resize ebs of cloud9)
 	- 安装常用的软件
-	- 修改 cloud9 磁盘大小 ([link](https://docs.aws.amazon.com/cloud9/latest/user-guide/move-environment.html#move-environment-resize))
+	- 修改 cloud9 磁盘大小 ([docs](https://docs.aws.amazon.com/cloud9/latest/user-guide/move-environment.html#move-environment-resize))
 - 安装 eks 相关的常用软件 (install some eks related tools)
 
 ```sh
 TMPFILE=$(mktemp)
 curl --location -o $TMPFILE https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/setup-cloud9-for-eks.md
 for i in ONE TWO ; do
-    cat $TMPFILE |awk '/###-SCRIPT-PART-'"${i}"'-BEGIN-###/,/###-SCRIPT-PART-'"${i}"'-END-###/ {print}' > $TMPFILE-$i.sh
-    chmod a+x $TMPFILE-$i.sh
-    sudo -u ec2-user bash $TMPFILE-$i.sh 2>&1
+  cat $TMPFILE |awk '/###-SCRIPT-PART-'"${i}"'-BEGIN-###/,/###-SCRIPT-PART-'"${i}"'-END-###/ {print}' > $TMPFILE-$i.sh
+  chmod a+x $TMPFILE-$i.sh
+  sudo -u ec2-user bash $TMPFILE-$i.sh 2>&1
 done
 ```
 
