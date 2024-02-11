@@ -254,13 +254,13 @@ Resources:
             runCommand:
             - "#!/bin/bash"
             - "TMPFILE=$(mktemp)"
-            - "curl --location -o ${TMPFILE}-ONE.sh https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/script-prep-eks-env-part-one.sh"
+            - "curl --location -o ${TMPFILE}-ONE.sh https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/script-ubuntu-prep-eks-env-part-one.sh"
             - "chmod a+x ${TMPFILE}-ONE.sh"
-            - "sudo -u ec2-user bash ${TMPFILE}-ONE.sh 2>&1"
+            - "sudo -u ubuntu bash ${TMPFILE}-ONE.sh 2>&1"
             - ""
             - "curl --location -o ${TMPFILE}-TWO.sh https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/script-prep-eks-env-part-two.sh"
             - "chmod a+x ${TMPFILE}-TWO.sh"
-            - "sudo -u ec2-user bash ${TMPFILE}-TWO.sh 2>&1"
+            - "sudo -u ubuntu bash ${TMPFILE}-TWO.sh 2>&1"
             - ""
             - "C9_INST_ID=$(curl 169.254.169.254/latest/meta-data/instance-id)"
             - "export C9_PID=$(aws ec2 describe-instances --instance-ids ${C9_INST_ID} --query 'Reservations[].Instances[].Tags[?Key==`aws:cloud9:environment`].Value' --output text)"
@@ -299,7 +299,7 @@ Resources:
     Properties:
       Description: AWS Cloud9 instance for Examples
       AutomaticStopTimeMinutes: 10080
-      ImageId: amazonlinux-2-x86_64
+      ImageId: "ubuntu-22.04-x86_64"
       InstanceType:
         Ref: ExampleC9InstanceType
       Name:
