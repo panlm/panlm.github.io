@@ -4417,16 +4417,16 @@
 <span class="normal"><a href="#__codelineno-3-55">55</a></span>
 <span class="normal"><a href="#__codelineno-3-56">56</a></span>
 <span class="normal"><a href="#__codelineno-3-57">57</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="ch">#!/bin/bash</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="o">(</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="c1">###-SCRIPT-PART-ONE-BEGIN-###</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;SCRIPT-PART-ONE-BEGIN&quot;</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="c1"># set size as your expectation, otherwize 100g as default volume size</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8"></a><span class="c1"># size=200</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9"></a>
-<a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="c1"># install others</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11"></a><span class="nb">export</span><span class="w"> </span><span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive
+<a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="o">(</span><span class="c1">###-SCRIPT-PART-ONE-BEGIN-###</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;SCRIPT-PART-ONE-BEGIN&quot;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6"></a><span class="c1"># set size as your expectation, otherwize 100g as default volume size</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7"></a><span class="c1"># size=200</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8"></a>
+<a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="c1"># install others</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="nb">export</span><span class="w"> </span><span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive
+<a id="__codelineno-3-11" name="__codelineno-3-11"></a>sudo<span class="w"> </span>-E<span class="w"> </span>apt<span class="w"> </span>update
 <a id="__codelineno-3-12" name="__codelineno-3-12"></a>sudo<span class="w"> </span>-E<span class="w"> </span>apt-get<span class="w"> </span>-yq<span class="w"> </span>install<span class="w"> </span>jq<span class="w"> </span>gettext<span class="w"> </span>bash-completion<span class="w"> </span>moreutils<span class="w"> </span>wget
 <a id="__codelineno-3-13" name="__codelineno-3-13"></a>
 <a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="c1"># install terraform </span>

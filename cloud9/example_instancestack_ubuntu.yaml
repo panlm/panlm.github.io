@@ -7,7 +7,6 @@ Parameters:
   ExampleC9InstanceType:
     Description: Example Cloud9 instance type
     Type: String
-    Default: t3.small
     AllowedValues:
       - t2.micro
       - t3.small
@@ -15,6 +14,13 @@ Parameters:
       - m5.large
     ConstraintDescription: Must be a valid Cloud9 instance type
     Default: m5.large
+  ExampleC9InstanceAMI:
+    Description: Example Cloud9 instance AMI
+    Type: String
+    AllowedValues:
+      - ubuntu-22.04-x86_64
+      - amazonlinux-2-x86_64
+    Default: ubuntu-22.04-x86_64
   ExampleC9EnvType: 
     Description: Environment type.
     Default: self
@@ -37,6 +43,9 @@ Parameters:
 
 Conditions: 
   Create3rdPartyResources: !Equals [ !Ref ExampleC9EnvType, 3rdParty ]
+  CreateUbuntuResources: !Equals [!Ref ExampleC9InstanceAMI, "ubuntu-22.04-x86_64"]
+  CreateAL2Resources: !Equals [!Ref ExampleC9InstanceAMI, "amazonlinux-2-x86_64"]
+
 
 Resources:
 ################## PERMISSIONS AND ROLES #################
@@ -252,23 +261,34 @@ Resources:
           name: ExampleC9bootstrap
           inputs:
             runCommand:
-            - "#!/bin/bash"
+            - "#!/bin/bash -x"
             - "TMPFILE=$(mktemp)"
-            - "curl --location -o ${TMPFILE}-ONE.sh https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/script-ubuntu-prep-eks-env-part-one.sh"
+            - !If [CreateUbuntuResources, "curl --location -o ${TMPFILE}-ONE.sh https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/script-ubuntu-prep-eks-env-part-one.sh", ""]
+            - !If [CreateAL2Resources, "curl --location -o ${TMPFILE}-ONE.sh https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/script-prep-eks-env-part-one.sh", ""]
             - "chmod a+x ${TMPFILE}-ONE.sh"
-            - "sudo -u ubuntu bash ${TMPFILE}-ONE.sh 2>&1"
+            - !If [CreateUbuntuResources, "sudo -u ubuntu bash ${TMPFILE}-ONE.sh 2>&1", ""]
+            - !If [CreateAL2Resources, "sudo -u ec2-user bash ${TMPFILE}-ONE.sh 2>&1", ""]
             - ""
             - "curl --location -o ${TMPFILE}-TWO.sh https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/script-prep-eks-env-part-two.sh"
             - "chmod a+x ${TMPFILE}-TWO.sh"
-            - "sudo -u ubuntu bash ${TMPFILE}-TWO.sh 2>&1"
+            - !If [CreateUbuntuResources, "sudo -u ubuntu bash ${TMPFILE}-TWO.sh 2>&1", ""]
+            - !If [CreateAL2Resources, "sudo -u ec2-user bash ${TMPFILE}-TWO.sh 2>&1", ""]
             - ""
-            - "C9_INST_ID=$(curl 169.254.169.254/latest/meta-data/instance-id)"
+            - "export C9_INST_ID=$(curl 169.254.169.254/latest/meta-data/instance-id)"
             - "export C9_PID=$(aws ec2 describe-instances --instance-ids ${C9_INST_ID} --query 'Reservations[].Instances[].Tags[?Key==`aws:cloud9:environment`].Value' --output text)"
             - "echo C9_INST_ID: ${C9_INST_ID} C9_PID: ${C9_PID}"
             - "AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query \"Account\" --output text)"
+            - "aws cloud9 create-environment-membership --environment-id ${C9_PID} --user-arn arn:aws:sts::${AWS_ACCOUNT_ID}:assumed-role/WSParticipantRole/Participant --permissions read-write"
             - "aws cloud9 create-environment-membership --environment-id ${C9_PID} --user-arn arn:aws:sts::${AWS_ACCOUNT_ID}:assumed-role/panlm/granted --permissions read-write"
+            - "aws sts assume-role --role-arn arn:aws:iam::${AWS_ACCOUNT_ID}:role/panlm --role-session-name \"granted\" |tee /tmp/tmp-session"
+            - "export AWS_ACCESS_KEY_ID=$(cat /tmp/tmp-session |jq -r '.Credentials.AccessKeyId' )"
+            - "export AWS_SECRET_ACCESS_KEY=$(cat /tmp/tmp-session |jq -r '.Credentials.SecretAccessKey' )"
+            - "export AWS_SESSION_TOKEN=$(cat /tmp/tmp-session |jq -r '.Credentials.SessionToken' )"
+            - "export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')"
+            - "aws sts get-caller-identity"
+            # - !Join ["", ["aws cloud9 create-environment-membership --environment-id ${C9_PID} --user-arn arn:aws:sts::${AWS_ACCOUNT_ID}:assumed-role/", Ref: ExampleC9Role, "/${C9_INST_ID}", " --permissions read-write"]]
+            - "aws cloud9 update-environment --environment-id ${C9_PID} --managed-credentials-action DISABLE"
             - "echo 0"
-            # - "aws cloud9 update-environment --environment-id $C9_PID --managed-credentials-action DISABLE"
   
   ExampleC9BootstrapAssociation: 
     Type: AWS::SSM::Association
@@ -299,12 +319,14 @@ Resources:
     Properties:
       Description: AWS Cloud9 instance for Examples
       AutomaticStopTimeMinutes: 10080
-      ImageId: "ubuntu-22.04-x86_64"
+      ImageId:
+        Ref: ExampleC9InstanceAMI
       InstanceType:
         Ref: ExampleC9InstanceType
       Name:
         Ref: AWS::StackName
-      OwnerArn: !If [Create3rdPartyResources, !Ref ExampleOwnerArn, !Ref "AWS::NoValue" ]
+      OwnerArn: !If [Create3rdPartyResources, !Ref ExampleOwnerArn, !Join ["", ["arn:aws:sts::", Ref: AWS::AccountId, ":assumed-role/panlm/granted"]]]
+# arn:aws:sts::615811583517:assumed-role/WSParticipantRole/Participant
       Tags: 
         - 
           Key: SSMBootstrap
