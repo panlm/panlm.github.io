@@ -2,7 +2,7 @@
 title: linux-cmd
 description: 常用命令
 created: 2023-01-03 12:05:10.533
-last_modified: 2024-02-07
+last_modified: 2024-02-10
 tags:
   - cmd
   - linux
@@ -337,16 +337,22 @@ iftop -t -s 10 > output
 
 ## yum
 ```sh
-yum --showduplicates list httpd
+yum --showduplicates list terraform
+yum install terraform-1.5.7-1
+yum versionlock terraform
 ```
 
+### fixed version
 
-## ubuntu
-```sh
-sudo apt install terraform=1.5.7-1
-sudo apt-mark hold terraform
-```
+=== "centos7"
+    ```sh
+    yum install yum-plugin-versionlock
+    ```
 
+=== "centos8/9"
+    ```sh
+    yum install python3-dnf-plugin-versionlock
+    ```
 
 ## ip address calc
 ```sh

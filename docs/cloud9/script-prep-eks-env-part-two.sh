@@ -5,10 +5,10 @@ echo "SCRIPT-PART-TWO-BEGIN"
 echo "###"
 
 mv -f ~/.bash_completion ~/.bash_completion.$(date +%N)
-# install kubectl with +/- 1 cluster version 1.24.17 / 1.25.14 / 1.26.9 / 1.27.6
+# install kubectl with +/- 1 cluster version 1.24.17 / 1.25.16 / 1.26.13 / 1.27.10
 # refer: https://kubernetes.io/releases/
 # sudo curl --location -o /usr/local/bin/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-sudo curl --silent --location -o /usr/local/bin/kubectl "https://storage.googleapis.com/kubernetes-release/release/v1.25.14/bin/linux/amd64/kubectl"
+sudo curl --silent --location -o /usr/local/bin/kubectl "https://storage.googleapis.com/kubernetes-release/release/v1.26.13/bin/linux/amd64/kubectl"
 sudo chmod +x /usr/local/bin/kubectl
 
 /usr/local/bin/kubectl completion bash >>  ~/.bash_completion
@@ -56,7 +56,7 @@ curl -sSL https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 
 /usr/local/bin/helm version --short
 
 # install aws-iam-authenticator 0.6.11 (2023/10) 
-wget -O /tmp/aws-iam-authenticator https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v0.6.11/aws-iam-authenticator_0.6.11_linux_amd64
+wget -O /tmp/aws-iam-authenticator https://github.com/kubernetes-sigs/aws-iam-authenticator/releases/download/v0.6.14/aws-iam-authenticator_0.6.14_linux_amd64
 chmod +x /tmp/aws-iam-authenticator
 sudo mv /tmp/aws-iam-authenticator /usr/local/bin/
 

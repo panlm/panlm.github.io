@@ -2,7 +2,7 @@
 title: Setup Cloud9 for EKS
 description: 使用脚本完成实验环境初始化
 created: 2022-05-21 12:46:05.435
-last_modified: 2024-02-08
+last_modified: 2024-02-09
 status: myblog
 tags:
   - aws/container/eks
@@ -11,7 +11,7 @@ tags:
 > [!WARNING] This is a github note
 
 # Setup Cloud9 for EKS
-快速设置 cloud9 用于日常测试环境搭建，包含从 cloudshell 中创建 cloud9 instance，然后登录 cloud9 instance 进行基础软件安装、磁盘大小调整和容器环境相关软件安装。为了更方便配置，在 [[quick-setup-cloud9]] 中，直接可以仅通过 cloudshell 即完成所有初始化动作，登录 cloud9 instance 后寄可以开始使用。
+快速设置 cloud9 用于日常测试环境搭建，包含从 cloudshell 中创建 cloud9 instance，然后登录 cloud9 instance 进行基础软件安装、磁盘大小调整和容器环境相关软件安装。为了更方便配置，在 [[quick-setup-cloud9]] 中，直接可以仅通过 cloudshell 即完成所有初始化动作，登录 cloud9 instance 后就可以开始使用。
 
 ## spin-up-a-cloud9-instance-in-your-region
 -  点击[这里](https://console.aws.amazon.com/cloudshell) 运行 cloudshell，执行代码块创建 cloud9 测试环境 (open cloudshell, and then execute following code to create cloud9 environment)
@@ -71,13 +71,23 @@ source ~/.bash_profile
 - 下面代码块包含一些基本设置，包括：(execute this code block to install tools for your lab, and resize ebs of cloud9)
     - 安装更新常用的软件
     - 修改 cloud9 磁盘大小 ([link](https://docs.aws.amazon.com/cloud9/latest/user-guide/move-environment.html#move-environment-resize))
-- [[script-prep-eks-env-part-one.sh]] 
-```sh title="script-prep-eks-env-part-one.sh" linenums="1"
---8<-- "script-prep-eks-env-part-one.sh"
-```
+- for AL2: [[script-prep-eks-env-part-one.sh]] 
+- for ubuntu: [[script-ubuntu-prep-eks-env-part-one.sh]]  
+
+=== "AL2 "
+
+    ```sh title="script-prep-eks-env-part-one.sh" linenums="1"
+    --8<-- "script-prep-eks-env-part-one.sh"
+    ```
+
+=== "ubuntu"
+
+    ```sh title="script-ubuntu-prep-eks-env-part-one.sh" linenums="1"
+    --8<-- "script-ubuntu-prep-eks-env-part-one.sh"
+    ```
 
 - 安装 eks 相关的常用软件 (install some eks related tools)
-- [[script-prep-eks-env-part-two.sh]]
+- for AL2 & ubuntu: [[script-prep-eks-env-part-two.sh]]
 ```sh title="script-prep-eks-env-part-two.sh" linenums="1"
 --8<-- "script-prep-eks-env-part-two.sh"
 ```
@@ -88,7 +98,7 @@ source ~/.bash_profile
 	- 下面代码块包括：
 		- 禁用 cloud9 中的 credential 管理，从 `~/.aws/credentials` 中删除 `aws_session_token=` 行
 		- 分配管理员权限 role 到 cloud9 instance
-- [[script-prep-eks-env-part-three.sh]]
+- for AL2: [[script-prep-eks-env-part-three.sh]] 
 ```sh title="script-prep-eks-env-part-three.sh" linenums="1"
 --8<-- "script-prep-eks-env-part-three.sh"
 ```

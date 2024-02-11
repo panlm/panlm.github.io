@@ -2,7 +2,7 @@
 title: Quick Setup Cloud9
 description: 简化创建 Cloud9 脚本，优先选择使用 Terraform 自动初始化；也可以使用脚本从 CloudShell 中完成初始化
 created: 2023-08-04 15:56:59.747
-last_modified: 2024-02-08
+last_modified: 2024-02-11
 status: myblog
 tags:
   - aws/cloud9
@@ -14,7 +14,7 @@ tags:
 在 [[setup-cloud9-for-eks]] 基础上进一步简化操作，使用不同方法在 cloud9 中完成所有常用软件安装等初始化操作。推荐使用 Option 1 使用 Cloudformation 自动化部署。或者使用 Option 2.1 在 Cloudshell 中复制粘贴脚本即完成初始化
 
 ## Option 1 - create cloud9 with cloudformation template
-- download [[example_instancestack.yaml]]
+- download [[example_instancestack.yaml]] or [[example_instancestack_ubuntu.yaml]]
 - deploy it in cloudshell
 ```sh
 aws configure list

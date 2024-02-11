@@ -2,7 +2,7 @@
 title: github-page-howto
 description: github-page-howto
 created: 2023-01-02 13:55:05.242
-last_modified: 2024-02-05
+last_modified: 2024-02-06
 icon: material/emoticon-happy-outline
 status: happy
 tags:
@@ -13,7 +13,7 @@ tags:
 
 # how to put workshop on github 
 
-## build local :material-ab-testing: :smile:
+## build local 
 
 - https://aws-samples.github.io/aws-modernization-workshop-sample/20_build/1_setup/
 
@@ -73,7 +73,7 @@ git submodule update
 - For full documentation visit [mkdocs.org](https://www.mkdocs.org)
 
 
-## mkdocs
+## mkdocs :material-ab-testing: :smile:
 ### review local
 ```sh
 mkdocs serve
@@ -85,3 +85,8 @@ mkdocs serve
 
 - emoji and icons, search from here
     - https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/#using-emojis
+
+
+
+
+

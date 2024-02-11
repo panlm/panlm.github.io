@@ -2,7 +2,7 @@
 title: Create EKS Cluster with Terraform
 description: 使用 Terraform 创建 EKS 集群
 created: 2023-06-30 15:02:19.833
-last_modified: 2024-02-08
+last_modified: 2024-02-10
 tags:
   - aws/container/eks
   - terraform
@@ -15,19 +15,17 @@ tags:
 - this step has been included in [[../../cloud9/setup-cloud9-for-eks|setup-cloud9-for-eks]] 
 
 === "CentOS / AL2"
-
-  ```sh
-  sudo yum install -y yum-utils shadow-utils
-  sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
-  sudo yum -y install terraform
-  ```
+    ```sh
+    sudo yum install -y yum-utils shadow-utils
+    sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
+    sudo yum -y install terraform
+    ```
 
 === "Ubuntu"
-
-  ```sh
-  sudo apt install terraform=1.5.7-1
-  sudo apt-mark hold terraform
-  ```
+    ```sh
+    sudo apt install terraform=1.5.7-1
+    sudo apt-mark hold terraform
+    ```
 
 
 ## sample-create-3x-clusters-for-thanos-poc-
