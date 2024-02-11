@@ -325,8 +325,8 @@ Resources:
         Ref: ExampleC9InstanceType
       Name:
         Ref: AWS::StackName
-      OwnerArn: !If [Create3rdPartyResources, !Ref ExampleOwnerArn, !Join ["", ["arn:aws:sts::", Ref: AWS::AccountId, ":assumed-role/panlm/granted"]]]
-# arn:aws:sts::615811583517:assumed-role/WSParticipantRole/Participant
+      OwnerArn: !If [Create3rdPartyResources, !Ref ExampleOwnerArn, !Ref "AWS::NoValue"]
+#      OwnerArn: !If [Create3rdPartyResources, !Ref ExampleOwnerArn, !Join ["", ["arn:aws:sts::", Ref: AWS::AccountId, ":assumed-role/panlm/granted"]]]
       Tags: 
         - 
           Key: SSMBootstrap

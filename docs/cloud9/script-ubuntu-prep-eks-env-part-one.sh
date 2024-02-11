@@ -15,7 +15,8 @@ sudo -E apt-get -yq install jq gettext bash-completion moreutils wget
 sudo rm -f /usr/share/keyrings/hashicorp-archive-keyring.gpg
 wget -O- https://apt.releases.hashicorp.com/gpg | sudo gpg --dearmor -o /usr/share/keyrings/hashicorp-archive-keyring.gpg
 echo "deb [signed-by=/usr/share/keyrings/hashicorp-archive-keyring.gpg] https://apt.releases.hashicorp.com $(lsb_release -cs) main" | sudo tee /etc/apt/sources.list.d/hashicorp.list
-sudo -E apt-get install terraform=1.5.7-1
+sudo -E apt update
+sudo -E apt-get -yq install terraform=1.5.7-1
 sudo apt-mark hold terraform
 
 # install awscli v2

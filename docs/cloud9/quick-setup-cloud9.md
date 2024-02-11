@@ -14,23 +14,43 @@ tags:
 在 [[setup-cloud9-for-eks]] 基础上进一步简化操作，使用不同方法在 cloud9 中完成所有常用软件安装等初始化操作。推荐使用 Option 1 使用 Cloudformation 自动化部署。或者使用 Option 2.1 在 Cloudshell 中复制粘贴脚本即完成初始化
 
 ## Option 1 - create cloud9 with cloudformation template
-- download [[example_instancestack.yaml]] or [[example_instancestack_ubuntu.yaml]]
-- deploy it in cloudshell
-```sh
-aws configure list
-export AWS_DEFAULT_REGION AWS_REGION
+- download [[example_instancestack_ubuntu.yaml]] 
+- deploy it in cloudshell (refer: [[git/git-mkdocs/CLI/awscli/cloud9-cmd#share-cloud9-with-others-|share-cross-users]])
 
-wget -O example_instancestack.yaml 'https://panlm.github.io/cloud9/example_instancestack.yaml'
+=== "role/panlm not existed"
 
-STACK_NAME=cloud9-$(TZ=EAT-8 date +%m%d-%H%M)
-aws cloudformation create-stack --stack-name ${STACK_NAME} \
-    --template-body file://./example_instancestack.yaml --capabilities CAPABILITY_IAM
-aws cloudformation wait stack-create-complete --stack-name ${STACK_NAME}
+    ```sh
+    aws configure list
+    export AWS_DEFAULT_REGION AWS_REGION
+    
+    wget -O example_instancestack_ubuntu.yaml 'https://panlm.github.io/cloud9/example_instancestack_ubuntu.yaml'
+    
+    STACK_NAME=cloud9-$(TZ=EAT-8 date +%m%d-%H%M)
+    aws cloudformation create-stack --stack-name ${STACK_NAME} \
+        --template-body file://./example_instancestack_ubuntu.yaml --capabilities CAPABILITY_IAM
+    aws cloudformation wait stack-create-complete --stack-name ${STACK_NAME}
+    
+    aws cloudformation describe-stacks --stack-name ${STACK_NAME} \
+        --query 'Stacks[].Outputs[?OutputKey==`Cloud9IDE`].OutputValue' --output text
+    ```
 
-aws cloudformation describe-stacks --stack-name ${STACK_NAME} \
-    --query 'Stacks[].Outputs[?OutputKey==`Cloud9IDE`].OutputValue' --output text
-```
-- if you try to use this cloud9 instance in AccountB, after login AccountB, get cloud9 environment id and run command in cloudshell as [[git/git-mkdocs/CLI/awscli/cloud9-cmd#share-cloud9-with-others-]]
+=== "role/panlm existed"
+
+    ```sh
+    aws configure list
+    export AWS_DEFAULT_REGION AWS_REGION
+    
+    wget -O example_instancestack_ubuntu.yaml 'https://panlm.github.io/cloud9/example_instancestack_ubuntu.yaml'
+    
+    STACK_NAME=cloud9-$(TZ=EAT-8 date +%m%d-%H%M)
+    aws cloudformation create-stack --stack-name ${STACK_NAME} \
+        --template-body file://./example_instancestack_ubuntu.yaml --capabilities CAPABILITY_IAM \
+        --parameters ParameterKey=ExampleC9EnvType,ParameterValue="3rdParty"
+    aws cloudformation wait stack-create-complete --stack-name ${STACK_NAME}
+    
+    aws cloudformation describe-stacks --stack-name ${STACK_NAME} \
+        --query 'Stacks[].Outputs[?OutputKey==`Cloud9IDE`].OutputValue' --output text
+    ```
 
 ## Option 2 - spin up a cloud9 instance with Cloudshell
 -  点击[这里](https://console.aws.amazon.com/cloudshell) 运行 cloudshell，执行代码块创建 cloud9 测试环境 (open cloudshell, and then execute following code to create cloud9 environment)
@@ -80,7 +100,9 @@ watch -g -n 2 aws ec2 describe-instances \
     --filters "Name=tag:Name,Values=aws-cloud9-${name}-${C9_ID}" \
     --query "Reservations[].Instances[].InstanceId" --output text
 
+( # needed on ubuntu when sudo
 sudo yum install -yq gettext
+)
 
 ```
 

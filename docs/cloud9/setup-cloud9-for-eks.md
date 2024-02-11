@@ -2,7 +2,7 @@
 title: Setup Cloud9 for EKS
 description: 使用脚本完成实验环境初始化
 created: 2022-05-21 12:46:05.435
-last_modified: 2024-02-09
+last_modified: 2024-02-11
 status: myblog
 tags:
   - aws/container/eks
@@ -71,17 +71,19 @@ source ~/.bash_profile
 - 下面代码块包含一些基本设置，包括：(execute this code block to install tools for your lab, and resize ebs of cloud9)
     - 安装更新常用的软件
     - 修改 cloud9 磁盘大小 ([link](https://docs.aws.amazon.com/cloud9/latest/user-guide/move-environment.html#move-environment-resize))
-- for AL2: [[script-prep-eks-env-part-one.sh]] 
-- for ubuntu: [[script-ubuntu-prep-eks-env-part-one.sh]]  
 
 === "AL2 "
 
+    - [[script-prep-eks-env-part-one.sh]] 
+    
     ```sh title="script-prep-eks-env-part-one.sh" linenums="1"
     --8<-- "script-prep-eks-env-part-one.sh"
     ```
 
 === "ubuntu"
 
+    - [[script-ubuntu-prep-eks-env-part-one.sh]]  
+    
     ```sh title="script-ubuntu-prep-eks-env-part-one.sh" linenums="1"
     --8<-- "script-ubuntu-prep-eks-env-part-one.sh"
     ```

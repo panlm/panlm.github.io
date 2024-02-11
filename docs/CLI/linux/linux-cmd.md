@@ -2,7 +2,7 @@
 title: linux-cmd
 description: 常用命令
 created: 2023-01-03 12:05:10.533
-last_modified: 2024-02-10
+last_modified: 2024-02-11
 tags:
   - cmd
   - linux
@@ -345,11 +345,13 @@ yum versionlock terraform
 ### fixed version
 
 === "centos7"
+
     ```sh
     yum install yum-plugin-versionlock
     ```
 
 === "centos8/9"
+
     ```sh
     yum install python3-dnf-plugin-versionlock
     ```
