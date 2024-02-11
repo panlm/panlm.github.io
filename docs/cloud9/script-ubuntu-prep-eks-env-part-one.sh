@@ -1,6 +1,5 @@
 #!/bin/bash
-(
-###-SCRIPT-PART-ONE-BEGIN-###
+(###-SCRIPT-PART-ONE-BEGIN-###
 echo "###"
 echo "SCRIPT-PART-ONE-BEGIN"
 echo "###"
@@ -9,6 +8,7 @@ echo "###"
 
 # install others
 export DEBIAN_FRONTEND=noninteractive
+sudo -E apt update
 sudo -E apt-get -yq install jq gettext bash-completion moreutils wget
 
 # install terraform 
