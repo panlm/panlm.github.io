@@ -2,7 +2,7 @@
 title: cloud9
 description: cloud9 related commands
 created: 2022-07-01 09:18:29.572
-last_modified: 2024-02-05
+last_modified: 2024-02-11
 icon: simple/amazonaws
 tags:
   - aws/cloud9
@@ -49,7 +49,7 @@ C9_DEFAULT_SG_ID=$(aws ec2 describe-security-groups \
 
 ^wxvp2s
 
-## share-cloud9-with-others-
+## share-cloud9-with-other-users-
 ```sh
 C9_PID=
 AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query \"Account\" --output text)
