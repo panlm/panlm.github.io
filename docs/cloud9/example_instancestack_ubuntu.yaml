@@ -8,7 +8,7 @@ Parameters:
     Description: Example Cloud9 instance type
     Type: String
     AllowedValues:
-      - t2.micro
+      # - t2.micro
       - t3.small
       - t3.medium
       - m5.large
@@ -21,12 +21,12 @@ Parameters:
       - ubuntu-22.04-x86_64
       - amazonlinux-2-x86_64
     Default: ubuntu-22.04-x86_64
-  ExampleC9EnvType: 
-    Description: Environment type.
-    Default: self
+  ExampleC9EnvOwner: 
+    Description: Using current role or 3rdParty role (role/panlm) in your environment.
+    Default: current
     Type: String
     AllowedValues: 
-      - self
+      - current
       - 3rdParty
     ConstraintDescription: must specify self or 3rdParty.
   ExampleOwnerArn: 
@@ -36,13 +36,14 @@ Parameters:
       Member must satisfy regular expression pattern: 
       "^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):(iam|sts)::\d+:(root|(user\/[\w+=/:,.@-]{1,64}|federated-user\/[\w+=/:,.@-]{2,32}|assumed-role\/[\w+=:,.@-]{1,64}\/[\w+=,.@-]{1,64}))$"
     Default: "arn:aws:sts::ACCOUNT_ID:assumed-role/panlm/granted"
+    AllowedPattern: "arn:aws:sts::(\\d+|ACCOUNT_ID):assumed-role.panlm.granted$"
   ExampleC9InstanceVolumeSize: 
     Type: Number
     Description: The Size in GB of the Cloud9 Instance Volume. 
     Default: 50
 
 Conditions: 
-  Create3rdPartyResources: !Equals [ !Ref ExampleC9EnvType, 3rdParty ]
+  Create3rdPartyResources: !Equals [ !Ref ExampleC9EnvOwner, "3rdParty" ]
   CreateUbuntuResources: !Equals [!Ref ExampleC9InstanceAMI, "ubuntu-22.04-x86_64"]
   CreateAL2Resources: !Equals [!Ref ExampleC9InstanceAMI, "amazonlinux-2-x86_64"]
 
@@ -327,6 +328,11 @@ Resources:
         Ref: AWS::StackName
       OwnerArn: !If [Create3rdPartyResources, !Ref ExampleOwnerArn, !Ref "AWS::NoValue"]
 #      OwnerArn: !If [Create3rdPartyResources, !Ref ExampleOwnerArn, !Join ["", ["arn:aws:sts::", Ref: AWS::AccountId, ":assumed-role/panlm/granted"]]]
+      Repositories:
+        - PathComponent: /eks-blueprints-clusters
+          RepositoryUrl: https://github.com/panlm/eks-blueprints-clusters.git
+        - PathComponent: /thanos-example
+          RepositoryUrl: https://github.com/panlm/thanos-example.git
       Tags: 
         - 
           Key: SSMBootstrap

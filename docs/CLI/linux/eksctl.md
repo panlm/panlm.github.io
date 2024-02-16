@@ -2,7 +2,7 @@
 title: eksctl
 description: 常用命令
 created: 2022-03-09 21:30:00.815
-last_modified: 2024-01-03
+last_modified: 2024-02-13
 tags:
   - aws/container/eks
 ---
@@ -25,20 +25,20 @@ eksctl completion bash >> ~/.bash_completion
 refer: [[../../cloud9/setup-cloud9-for-eks#install-in-cloud9-]] 
 
 
-## iamidentitymapping
-
+## iamidentitymapping-
+- add role to `aws-auth` configmap ([[../../../../eks-aws-auth|eks-aws-auth]])
 ```sh
+CLUSTER_NAME=ekscluster1
+ARN=role-arn
+AWS_REGION=us-west-2
+
 eksctl get iamidentitymapping \
---cluster ekscluster1 \
---region us-east-2
+    --cluster ${CLUSTER_NAME} --region ${AWS_REGION}
 
 eksctl create iamidentitymapping \
---cluster ekscluster1 \
---region us-east-2 \
---arn arn:aws:iam::xxxx:role/eksadmin \
---group system:masters \
---username admin 
-
+    --cluster ${CLUSTER_NAME} --region ${AWS_REGION} \
+    --arn ${ARN} \
+    --group system:masters --username admin 
 ```
 
 ## create windows self-managed node group
@@ -107,7 +107,7 @@ ${NODEGROUP_NAME}
 
 ## func-create-iamserviceaccount-
 
-```sh title="func-create-iamserviceaccount"
+```sh title="func-create-iamserviceaccount" linenums="1"
 echo ${CLUSTER_NAME}
 echo ${NAMESPACE_NAME}
 

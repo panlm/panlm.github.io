@@ -2,7 +2,7 @@
 title: Quick Setup Cloud9
 description: 简化创建 Cloud9 脚本，优先选择使用 Terraform 自动初始化；也可以使用脚本从 CloudShell 中完成初始化
 created: 2023-08-04 15:56:59.747
-last_modified: 2024-02-11
+last_modified: 2024-02-12
 status: myblog
 tags:
   - aws/cloud9
@@ -20,13 +20,14 @@ tags:
 
 ## Option 1 - create cloud9 with cloudformation template
 - download [[example_instancestack_ubuntu.yaml]] 
-- deploy it in cloudshell (refer: [[git/git-mkdocs/CLI/awscli/cloud9-cmd#share-cloud9-with-other-users-]])
-- if role/panlm does not exist
+- 如果 role/panlm 不存在，指定 `ExampleC9EnvOwner` 为 `current`
     - C9 instance owner: role/WSParticipantRole (assumed-role/WSParticipantRole/Participant)
     - AWS managed temporary credentials: Enabled
-- if role/panlm exists ([[../CLI/linux/assume-tool|assume-tool]])
+    - `aws sts get-caller-identity` in cloud9 is owner role
+- 如果 role/panlm 存在 (参考[[../CLI/linux/assume-tool|这里]]创建)，可以指定 `ExampleC9EnvOwner` 为 `3rdParty`  设置 Owner 为 role/panlm
     - C9 instance owner: role/panlm (assumed-role/panlm/granted)
     - AWS managed temporary credentials: Disabled
+    - `aws sts get-caller-identity` in cloud9 is EC2 instance role
 
 ```sh hl_lines="6-13 20"
 aws configure list
@@ -37,7 +38,7 @@ export AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query "Account" --output t
 aws iam get-role --role-name panlm 2>&1 >/dev/null
 if [[ $? -eq 0 ]]; then
     echo "role/panlm existed"
-    PARAMETERS='--parameters ParameterKey=ExampleC9EnvType,ParameterValue="3rdParty" ParameterKey=ExampleOwnerArn,ParameterValue="arn:aws:sts::'"${AWS_ACCOUNT_ID}"':assumed-role/panlm/granted"'
+    PARAMETERS='--parameters ParameterKey=ExampleC9EnvOwner,ParameterValue="3rdParty" ParameterKey=ExampleOwnerArn,ParameterValue="arn:aws:sts::'"${AWS_ACCOUNT_ID}"':assumed-role/panlm/granted"'
 else
     echo "role/panlm does not existed"
     PARAMETERS=''
@@ -54,6 +55,8 @@ aws cloudformation wait stack-create-complete --stack-name ${STACK_NAME}
 aws cloudformation describe-stacks --stack-name ${STACK_NAME} \
     --query 'Stacks[].Outputs[?OutputKey==`Cloud9IDE`].OutputValue' --output text
 ```
+
+- 如何 share cloud9 实例，可以参考 ([[git/git-mkdocs/CLI/awscli/cloud9-cmd#share-cloud9-with-other-users-]])
 
 ## Option 2 - spin up a cloud9 instance with Cloudshell
 -  点击[这里](https://console.aws.amazon.com/cloudshell) 运行 cloudshell，执行代码块创建 cloud9 测试环境 (open cloudshell, and then execute following code to create cloud9 environment)

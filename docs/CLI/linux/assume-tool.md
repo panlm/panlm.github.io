@@ -2,11 +2,11 @@
 title: assume
 description: assume 工具，可以以另一个账号角色，快速打开 web console，或者执行命令
 created: 2023-09-15 09:40:01.442
-last_modified: 2024-02-11
+last_modified: 2024-02-12
+status: myblog
 tags:
   - cmd
   - aws/security/iam
-status: myblog
 ---
 > [!WARNING] This is a github note
 
@@ -56,8 +56,8 @@ echo ${CREDENTIAL_ENTITY_NAME}
 ```
 
 
-## modify role for account to assume (deprecated)
-- (deprecated due to new SCP policy do not allow to modify WSParticipantRole's trust policy)
+## modify role for account to assume :material-delete:
+- DEPRECATED due to new SCP policy do not allow to modify WSParticipantRole's trust policy
 - login from macbook CLI
 - modify existed role for login - WSParticipantRole
 - create aws credential entities
@@ -101,6 +101,7 @@ echo ${CREDENTIAL_ENTITY_NAME}
 
 ## install
 - https://docs.commonfate.io/granted/getting-started#installing-the-cli
+- still has issue until 0.20.7
 ```sh
 VERSION=0.20.3
 curl -OL https://releases.commonfate.io/granted/v${VERSION}/granted_${VERSION}_darwin_x86_64.tar.gz
@@ -108,7 +109,6 @@ tar -zxvf ./granted_${VERSION}_darwin_x86_64.tar.gz -C /usr/local/bin/
 
 rm -f /usr/local/bin/assumego
 ln -s /usr/local/bin/granted /usr/local/bin/assumego
-
 ```
 
 ### import existed credentials to mac `login` keychain
@@ -122,7 +122,6 @@ granted credentials import example
 - This command can be used to return your credentials to the original insecure plaintext format in the AWS credentials file.
 ```sh
 granted credentials export-plaintext example
-
 ```
 
 

@@ -2,7 +2,7 @@
 title: github-page-howto
 description: github-page-howto
 created: 2023-01-02 13:55:05.242
-last_modified: 2024-02-06
+last_modified: 2024-02-16
 icon: material/emoticon-happy-outline
 status: happy
 tags:
@@ -13,7 +13,7 @@ tags:
 
 # how to put workshop on github 
 
-## build local 
+## ~~build local~~ 
 
 - https://aws-samples.github.io/aws-modernization-workshop-sample/20_build/1_setup/
 
