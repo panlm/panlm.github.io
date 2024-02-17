@@ -2,7 +2,7 @@
 title: Quick Setup Cloud9
 description: 简化创建 Cloud9 脚本，优先选择使用 Terraform 自动初始化；也可以使用脚本从 CloudShell 中完成初始化
 created: 2023-08-04 15:56:59.747
-last_modified: 2024-02-12
+last_modified: 2024-02-16
 status: myblog
 tags:
   - aws/cloud9
@@ -22,13 +22,13 @@ tags:
 - download [[example_instancestack_ubuntu.yaml]] 
 - 如果 role/panlm 不存在，指定 `ExampleC9EnvOwner` 为 `current`
     - C9 instance owner: role/WSParticipantRole (assumed-role/WSParticipantRole/Participant)
-    - AWS managed temporary credentials: Enabled
+    - AWS managed temporary credentials: <mark style="background: #BBFABBA6;">Enabled</mark>
     - `aws sts get-caller-identity` in cloud9 is owner role
 - 如果 role/panlm 存在 (参考[[../CLI/linux/assume-tool|这里]]创建)，可以指定 `ExampleC9EnvOwner` 为 `3rdParty`  设置 Owner 为 role/panlm
     - C9 instance owner: role/panlm (assumed-role/panlm/granted)
-    - AWS managed temporary credentials: Disabled
+    - AWS managed temporary credentials: <mark style="background: #FF5582A6;">Disabled</mark>
     - `aws sts get-caller-identity` in cloud9 is EC2 instance role
-
+- 在 CloudShell 中执行下面脚本
 ```sh hl_lines="6-13 20"
 aws configure list
 export AWS_DEFAULT_REGION AWS_REGION
@@ -55,7 +55,6 @@ aws cloudformation wait stack-create-complete --stack-name ${STACK_NAME}
 aws cloudformation describe-stacks --stack-name ${STACK_NAME} \
     --query 'Stacks[].Outputs[?OutputKey==`Cloud9IDE`].OutputValue' --output text
 ```
-
 - 如何 share cloud9 实例，可以参考 ([[git/git-mkdocs/CLI/awscli/cloud9-cmd#share-cloud9-with-other-users-]])
 
 ## Option 2 - spin up a cloud9 instance with Cloudshell

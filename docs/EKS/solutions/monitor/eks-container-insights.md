@@ -2,7 +2,7 @@
 title: EKS Container Insights
 description: 启用 EKS 的 container insight 功能
 created: 2022-02-22 08:08:35.714
-last_modified: 2024-01-05
+last_modified: 2024-02-15
 tags:
   - aws/container/eks
   - aws/mgmt/cloudwatch
@@ -12,7 +12,10 @@ tags:
 # EKS Container Insights
 ## install
 ### using addons
-- https://docs.amazonaws.cn/en_us/AmazonCloudWatch/latest/monitoring/Container-Insights-setup-EKS-addon.html
+- attached additional policy to node role ([docs](https://docs.amazonaws.cn/en_us/AmazonCloudWatch/latest/monitoring/Container-Insights-setup-EKS-addon.html))
+    - CloudWatchAgentServerPolicy
+    - AWSXrayWriteOnlyAccess
+- 
 - it consists: 
     - [[../../addons/aws-for-fluent-bit]]
     - cloudwatch agent
