@@ -30,6 +30,8 @@ function create-hosted-zone () {
     echo '###'
     echo 'DOMAIN_NAME='${DOMAIN_NAME}
     echo 'NS="'${NS}'"'
+    echo 'curl -sL -o /tmp/func-create-ns-record.sh https://panlm.github.io/CLI/functions/func-create-ns-record.sh'
+    echo 'source /tmp/func-create-ns-record.sh'
     echo 'create-ns-record -n ${DOMAIN_NAME} -s "${NS}"'
     echo ''
 }

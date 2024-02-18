@@ -6,15 +6,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="常用命令">
+        <meta name="description" content="本文档总结了将 AWS IAM 角色授予 AWS EKS 集群的服务账户的过程">
       
       
       
       
-        <link rel="prev" href="../efs-cmd/">
+        <link rel="prev" href="../eks-cluster-addons-list/">
       
       
-        <link rel="next" href="../lambda-cmd/">
+        <link rel="next" href="../../addons/aws-for-fluent-bit/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>iam - panlm</title>
+        <title>IRSA 中的 Token 剖析 - panlm</title>
       
     
     
@@ -97,7 +97,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#iam-cmd" class="md-skip">
+        <a href="#irsa-token" class="md-skip">
           Skip to content
         </a>
       
@@ -132,7 +132,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              iam
+              IRSA 中的 Token 剖析
             
           </span>
         </div>
@@ -258,11 +258,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../EKS/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
           
   
     
@@ -338,21 +340,17 @@
         
   
   
-    
-  
   
     
     
       
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../linux/linux-cmd/" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../CLI/linux/linux-cmd/" class="md-tabs__link">
           
   
     
@@ -579,6 +577,8 @@
       
   
   
+    
+  
   
   
     
@@ -599,19 +599,22 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../EKS/" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -622,13 +625,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             EKS
@@ -641,8 +644,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -666,11 +671,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
         
           
           <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
@@ -684,7 +689,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             Cluster
@@ -698,7 +703,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/cluster/eks-cluster-with-terraform/" class="md-nav__link">
+      <a href="../eks-cluster-with-terraform/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -719,7 +724,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/cluster/eks-public-access-cluster-in-china-region/" class="md-nav__link">
+      <a href="../eks-public-access-cluster-in-china-region/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -740,7 +745,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/cluster/eks-public-access-cluster/" class="md-nav__link">
+      <a href="../eks-public-access-cluster/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -761,7 +766,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/cluster/eks-private-access-cluster/" class="md-nav__link">
+      <a href="../eks-private-access-cluster/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -782,7 +787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/cluster/eks-upgrade-procedure/" class="md-nav__link">
+      <a href="../eks-upgrade-procedure/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -803,7 +808,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/cluster/eks-cluster-addons-list/" class="md-nav__link">
+      <a href="../eks-cluster-addons-list/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -821,10 +826,38 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../../../EKS/cluster/TC-eks-irsa-token-deep-dive-lab/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    IRSA 中的 Token 剖析
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog" title="my blogs">
+    </span>
+  
+
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   <span class="md-ellipsis">
@@ -841,6 +874,110 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建服务帐户
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="创建服务帐户">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#pod-sa" class="md-nav__link">
+    <span class="md-ellipsis">
+      创建 Pod 并使用 SA
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      服务帐户令牌创建 / 替换
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用服务帐户令牌
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="使用服务帐户令牌">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#token" class="md-nav__link">
+    <span class="md-ellipsis">
+      手工申请一个token
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#token_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      验证 token
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      结论
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考链接
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -947,7 +1084,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/aws-for-fluent-bit/" class="md-nav__link">
+      <a href="../../addons/aws-for-fluent-bit/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -968,7 +1105,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/aws-load-balancer-controller/" class="md-nav__link">
+      <a href="../../addons/aws-load-balancer-controller/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -989,7 +1126,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/cert-manager/" class="md-nav__link">
+      <a href="../../addons/cert-manager/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1010,7 +1147,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/cluster-autoscaler/" class="md-nav__link">
+      <a href="../../addons/cluster-autoscaler/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1031,7 +1168,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/cni-metrics-helper/" class="md-nav__link">
+      <a href="../../addons/cni-metrics-helper/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1052,7 +1189,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/ebs-for-eks/" class="md-nav__link">
+      <a href="../../addons/ebs-for-eks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1073,7 +1210,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/efs-for-eks/" class="md-nav__link">
+      <a href="../../addons/efs-for-eks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1094,7 +1231,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/eks-addons-coredns/" class="md-nav__link">
+      <a href="../../addons/eks-addons-coredns/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1115,7 +1252,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/eks-addons-kube-proxy/" class="md-nav__link">
+      <a href="../../addons/eks-addons-kube-proxy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1136,7 +1273,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/eks-addons-vpc-cni/" class="md-nav__link">
+      <a href="../../addons/eks-addons-vpc-cni/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1157,7 +1294,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/eks-custom-network/" class="md-nav__link">
+      <a href="../../addons/eks-custom-network/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1178,7 +1315,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/eks-fargate-lab/" class="md-nav__link">
+      <a href="../../addons/eks-fargate-lab/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1199,7 +1336,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/eksup/" class="md-nav__link">
+      <a href="../../addons/eksup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1220,7 +1357,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/enable-sg-on-pod/" class="md-nav__link">
+      <a href="../../addons/enable-sg-on-pod/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1241,7 +1378,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/externaldns-for-route53/" class="md-nav__link">
+      <a href="../../addons/externaldns-for-route53/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1262,7 +1399,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/karpenter-lab/" class="md-nav__link">
+      <a href="../../addons/karpenter-lab/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1283,7 +1420,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/kube-no-trouble/" class="md-nav__link">
+      <a href="../../addons/kube-no-trouble/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1304,7 +1441,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/kube-state-metrics/" class="md-nav__link">
+      <a href="../../addons/kube-state-metrics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1325,7 +1462,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/metrics-server/" class="md-nav__link">
+      <a href="../../addons/metrics-server/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1346,7 +1483,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/nginx-ingress-controller-community-ver/" class="md-nav__link">
+      <a href="../../addons/nginx-ingress-controller-community-ver/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1367,7 +1504,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/nginx-ingress-controller-nginx-ver/" class="md-nav__link">
+      <a href="../../addons/nginx-ingress-controller-nginx-ver/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1388,7 +1525,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/nginx-ingress-controller/" class="md-nav__link">
+      <a href="../../addons/nginx-ingress-controller/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1409,7 +1546,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/pluto/" class="md-nav__link">
+      <a href="../../addons/pluto/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1530,7 +1667,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/appmesh/appmesh-workshop-eks/" class="md-nav__link">
+      <a href="../../solutions/appmesh/appmesh-workshop-eks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1551,7 +1688,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/appmesh/automated-canary-deployment-using-flagger/" class="md-nav__link">
+      <a href="../../solutions/appmesh/automated-canary-deployment-using-flagger/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1624,7 +1761,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/gitops/argocd-lab/" class="md-nav__link">
+      <a href="../../solutions/gitops/argocd-lab/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1645,7 +1782,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/gitops/flux-lab/" class="md-nav__link">
+      <a href="../../solutions/gitops/flux-lab/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1722,7 +1859,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/logging/POC-loki-for-logging/" class="md-nav__link">
+      <a href="../../solutions/logging/POC-loki-for-logging/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1743,7 +1880,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/logging/cloudwatch-to-firehose-python/" class="md-nav__link">
+      <a href="../../solutions/logging/cloudwatch-to-firehose-python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1764,7 +1901,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/logging/export-cloudwatch-log-group-to-s3/" class="md-nav__link">
+      <a href="../../solutions/logging/export-cloudwatch-log-group-to-s3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1793,7 +1930,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/logging/stream-k8s-control-panel-logs-to-s3/" class="md-nav__link">
+      <a href="../../solutions/logging/stream-k8s-control-panel-logs-to-s3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1880,7 +2017,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/monitor/TC-prometheus-ha-architect-with-thanos/" class="md-nav__link">
+      <a href="../../solutions/monitor/TC-prometheus-ha-architect-with-thanos/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1909,7 +2046,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/monitor/eks-container-insights/" class="md-nav__link">
+      <a href="../../solutions/monitor/eks-container-insights/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1930,7 +2067,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/monitor/enable-prometheus-in-cloudwatch/" class="md-nav__link">
+      <a href="../../solutions/monitor/enable-prometheus-in-cloudwatch/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1951,7 +2088,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/monitor/install-grafana-on-beanstalk/" class="md-nav__link">
+      <a href="../../solutions/monitor/install-grafana-on-beanstalk/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1972,7 +2109,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/monitor/install-prometheus-grafana/" class="md-nav__link">
+      <a href="../../solutions/monitor/install-prometheus-grafana/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2053,7 +2190,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/kubernetes/k8s-hpa-horizontal-pod-autoscaler/" class="md-nav__link">
+      <a href="../../kubernetes/k8s-hpa-horizontal-pod-autoscaler/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2074,7 +2211,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/kubernetes/k8s-topology-spread-constraints/" class="md-nav__link">
+      <a href="../../kubernetes/k8s-topology-spread-constraints/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2952,10 +3089,8 @@
       
   
   
-    
   
   
-  
     
     
       
@@ -2968,20 +3103,17 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
-          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="">
+          <label class="md-nav__link" for="__nav_7" id="__nav_7_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -2992,7 +3124,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             CLI
@@ -3064,7 +3196,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/linux-cmd/" class="md-nav__link">
+      <a href="../../../CLI/linux/linux-cmd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3085,7 +3217,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/assume-tool/" class="md-nav__link">
+      <a href="../../../CLI/linux/assume-tool/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3114,7 +3246,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/docker-cmd/" class="md-nav__link">
+      <a href="../../../CLI/linux/docker-cmd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3135,7 +3267,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/eksctl/" class="md-nav__link">
+      <a href="../../../CLI/linux/eksctl/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3156,7 +3288,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/eksdemo/" class="md-nav__link">
+      <a href="../../../CLI/linux/eksdemo/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3177,7 +3309,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/ffmpeg/" class="md-nav__link">
+      <a href="../../../CLI/linux/ffmpeg/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3198,7 +3330,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/iptables/" class="md-nav__link">
+      <a href="../../../CLI/linux/iptables/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3219,7 +3351,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/jq-cmd/" class="md-nav__link">
+      <a href="../../../CLI/linux/jq-cmd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3240,7 +3372,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/terraform-cmd/" class="md-nav__link">
+      <a href="../../../CLI/linux/terraform-cmd/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3266,10 +3398,8 @@
                 
   
   
-    
   
   
-  
     
     
       
@@ -3327,11 +3457,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_2" >
         
           
           <label class="md-nav__link" for="__nav_7_2" id="__nav_7_2_label" tabindex="0">
@@ -3345,7 +3475,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7_2">
             <span class="md-nav__icon md-icon"></span>
             AWS CLI
@@ -3359,7 +3489,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../acm-cmd/" class="md-nav__link">
+      <a href="../../../CLI/awscli/acm-cmd/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183 0 .08-.048.16-.152.24l-.503.335a.383.383 0 0 1-.208.072c-.08 0-.16-.04-.239-.112a2.47 2.47 0 0 1-.287-.375 6.18 6.18 0 0 1-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67 0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533 0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272 0 .551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28 0-.568.031-.863.103-.295.072-.583.16-.862.272a2.287 2.287 0 0 1-.28.104.488.488 0 0 1-.127.023c-.112 0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597 0 0 1 .224-.167 4.577 4.577 0 0 1 1.005-.36 4.84 4.84 0 0 1 1.246-.151c.95 0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263 0 .534-.048.822-.144a1.78 1.78 0 0 0 .758-.51 1.27 1.27 0 0 0 .272-.512c.047-.191.08-.423.08-.694v-.335a6.66 6.66 0 0 0-.735-.136 6.02 6.02 0 0 0-.75-.048c-.535 0-.926.104-1.19.32-.263.215-.39.518-.39.917 0 .375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144 0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398 0 0 1-.072-.32c0-.128.064-.2.191-.2h.783c.151 0 .255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549 0 0 1 .32-.08h.638c.152 0 .256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52 0 0 1 .311-.08h.743c.127 0 .2.065.2.2 0 .04-.009.08-.017.128a1.137 1.137 0 0 1-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51 0 0 1-.303.08h-.687c-.151 0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415 0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563 0 0 1-.048-.224v-.407c0-.167.064-.247.183-.247.048 0 .096.008.144.024.048.016.12.048.2.08.271.12.566.215.878.279.319.064.63.096.95.096.502 0 .894-.088 1.165-.264a.86.86 0 0 0 .415-.758.777.777 0 0 0-.215-.559c-.144-.151-.416-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902 0 0 1-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175 0 .359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69 0 0 1 .24.2.43.43 0 0 1 .071.263v.375c0 .168-.064.256-.184.256a.83.83 0 0 1-.303-.096 3.652 3.652 0 0 0-1.532-.311c-.455 0-.815.071-1.062.223-.248.152-.375.383-.375.71 0 .224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117 0 .343-.072.655-.207.926a2.157 2.157 0 0 1-.583.703c-.248.2-.543.343-.886.447-.36.111-.734.167-1.142.167zm1.509 3.88c-2.626 1.94-6.442 2.969-9.722 2.969-4.598 0-8.74-1.7-11.87-4.526-.247-.223-.024-.527.272-.351 3.384 1.963 7.559 3.153 11.877 3.153 2.914 0 6.114-.607 9.06-1.852.439-.2.814.287.383.607zm1.094-1.246c-.336-.43-2.22-.207-3.074-.103-.255.032-.295-.192-.063-.36 1.5-1.053 3.967-.75 4.254-.399.287.36-.08 2.826-1.485 4.007-.215.184-.423.088-.327-.151.32-.79 1.03-2.57.695-2.994z"/></svg>
@@ -3382,7 +3512,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../apigw-cmd/" class="md-nav__link">
+      <a href="../../../CLI/awscli/apigw-cmd/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.456 18.7h1.258v-.865H9.456Zm2.115 0h1.286v-.865h-1.286ZM6.43 1.127.857 3.892v17.19l5.572 1.885Zm.857 5.47v11.238H8.57v.865H7.286v4.868a.434.434 0 0 1-.429.432.425.425 0 0 1-.136-.022L.292 21.804a.432.432 0 0 1-.292-.41V3.623c0-.164.093-.315.24-.388L6.668.045a.424.424 0 0 1 .415.02.433.433 0 0 1 .203.367v5.3H8.57v.865ZM13.714 18.7H15v-.865h-1.286Zm.028-12.103H15v-.864h-1.258Zm-2.143 0h1.258v-.864H11.6Zm-2.143 0h1.258v-.864H9.456Zm13.687-2.705L17.57 1.127v21.84l5.572-1.884ZM24 21.394c0 .186-.117.35-.292.41l-6.429 2.174a.425.425 0 0 1-.386-.06.434.434 0 0 1-.179-.35V18.7h-.829v-.865h.83V6.597h-.83v-.864h.83v-5.3c0-.15.076-.289.202-.368a.424.424 0 0 1 .415-.02l6.428 3.19c.147.073.24.224.24.388ZM13.257 9.346l-.8-.31-2.143 5.618.8.31Zm2.903 2.744a.434.434 0 0 0 0-.612L14.446 9.75l-.606.612 1.411 1.423-1.411 1.423.606.611Zm-6.606 1.728L7.84 12.09a.434.434 0 0 1 0-.612L9.554 9.75l.606.612-1.411 1.423 1.411 1.423Z"/></svg>
@@ -3405,7 +3535,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-ip-range/" class="md-nav__link">
+      <a href="../../../CLI/awscli/aws-ip-range/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183 0 .08-.048.16-.152.24l-.503.335a.383.383 0 0 1-.208.072c-.08 0-.16-.04-.239-.112a2.47 2.47 0 0 1-.287-.375 6.18 6.18 0 0 1-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67 0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533 0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272 0 .551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28 0-.568.031-.863.103-.295.072-.583.16-.862.272a2.287 2.287 0 0 1-.28.104.488.488 0 0 1-.127.023c-.112 0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597 0 0 1 .224-.167 4.577 4.577 0 0 1 1.005-.36 4.84 4.84 0 0 1 1.246-.151c.95 0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263 0 .534-.048.822-.144a1.78 1.78 0 0 0 .758-.51 1.27 1.27 0 0 0 .272-.512c.047-.191.08-.423.08-.694v-.335a6.66 6.66 0 0 0-.735-.136 6.02 6.02 0 0 0-.75-.048c-.535 0-.926.104-1.19.32-.263.215-.39.518-.39.917 0 .375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144 0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398 0 0 1-.072-.32c0-.128.064-.2.191-.2h.783c.151 0 .255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549 0 0 1 .32-.08h.638c.152 0 .256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52 0 0 1 .311-.08h.743c.127 0 .2.065.2.2 0 .04-.009.08-.017.128a1.137 1.137 0 0 1-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51 0 0 1-.303.08h-.687c-.151 0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415 0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563 0 0 1-.048-.224v-.407c0-.167.064-.247.183-.247.048 0 .096.008.144.024.048.016.12.048.2.08.271.12.566.215.878.279.319.064.63.096.95.096.502 0 .894-.088 1.165-.264a.86.86 0 0 0 .415-.758.777.777 0 0 0-.215-.559c-.144-.151-.416-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902 0 0 1-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175 0 .359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69 0 0 1 .24.2.43.43 0 0 1 .071.263v.375c0 .168-.064.256-.184.256a.83.83 0 0 1-.303-.096 3.652 3.652 0 0 0-1.532-.311c-.455 0-.815.071-1.062.223-.248.152-.375.383-.375.71 0 .224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117 0 .343-.072.655-.207.926a2.157 2.157 0 0 1-.583.703c-.248.2-.543.343-.886.447-.36.111-.734.167-1.142.167zm1.509 3.88c-2.626 1.94-6.442 2.969-9.722 2.969-4.598 0-8.74-1.7-11.87-4.526-.247-.223-.024-.527.272-.351 3.384 1.963 7.559 3.153 11.877 3.153 2.914 0 6.114-.607 9.06-1.852.439-.2.814.287.383.607zm1.094-1.246c-.336-.43-2.22-.207-3.074-.103-.255.032-.295-.192-.063-.36 1.5-1.053 3.967-.75 4.254-.399.287.36-.08 2.826-1.485 4.007-.215.184-.423.088-.327-.151.32-.79 1.03-2.57.695-2.994z"/></svg>
@@ -3428,7 +3558,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-nuke/" class="md-nav__link">
+      <a href="../../../CLI/awscli/aws-nuke/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m7.17 7.91 1.73 1 3.18-5.49 2.25 3.89-2.6 1.5 5.46 1.46 1.47-5.46-2.6 1.5-2.25-3.9a1.988 1.988 0 0 0-2.73-.73c-.27.15-.5.37-.67.63M10 20v-2H3.66l2.24-3.9 2.6 1.5-1.46-5.46-5.47 1.46 2.6 1.5L1.92 17a2.003 2.003 0 0 0 1.62 3m15.52-8.5-1.74 1L20.5 18H16v-3l-4 4 4 4v-3h4.5c1.11 0 2-.89 2-2 0-.31-.08-.62-.22-.89Z"/></svg>
@@ -3451,7 +3581,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloud9-cmd/" class="md-nav__link">
+      <a href="../../../CLI/awscli/cloud9-cmd/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183 0 .08-.048.16-.152.24l-.503.335a.383.383 0 0 1-.208.072c-.08 0-.16-.04-.239-.112a2.47 2.47 0 0 1-.287-.375 6.18 6.18 0 0 1-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67 0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533 0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272 0 .551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28 0-.568.031-.863.103-.295.072-.583.16-.862.272a2.287 2.287 0 0 1-.28.104.488.488 0 0 1-.127.023c-.112 0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597 0 0 1 .224-.167 4.577 4.577 0 0 1 1.005-.36 4.84 4.84 0 0 1 1.246-.151c.95 0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263 0 .534-.048.822-.144a1.78 1.78 0 0 0 .758-.51 1.27 1.27 0 0 0 .272-.512c.047-.191.08-.423.08-.694v-.335a6.66 6.66 0 0 0-.735-.136 6.02 6.02 0 0 0-.75-.048c-.535 0-.926.104-1.19.32-.263.215-.39.518-.39.917 0 .375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144 0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398 0 0 1-.072-.32c0-.128.064-.2.191-.2h.783c.151 0 .255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549 0 0 1 .32-.08h.638c.152 0 .256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52 0 0 1 .311-.08h.743c.127 0 .2.065.2.2 0 .04-.009.08-.017.128a1.137 1.137 0 0 1-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51 0 0 1-.303.08h-.687c-.151 0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415 0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563 0 0 1-.048-.224v-.407c0-.167.064-.247.183-.247.048 0 .096.008.144.024.048.016.12.048.2.08.271.12.566.215.878.279.319.064.63.096.95.096.502 0 .894-.088 1.165-.264a.86.86 0 0 0 .415-.758.777.777 0 0 0-.215-.559c-.144-.151-.416-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902 0 0 1-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175 0 .359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69 0 0 1 .24.2.43.43 0 0 1 .071.263v.375c0 .168-.064.256-.184.256a.83.83 0 0 1-.303-.096 3.652 3.652 0 0 0-1.532-.311c-.455 0-.815.071-1.062.223-.248.152-.375.383-.375.71 0 .224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117 0 .343-.072.655-.207.926a2.157 2.157 0 0 1-.583.703c-.248.2-.543.343-.886.447-.36.111-.734.167-1.142.167zm1.509 3.88c-2.626 1.94-6.442 2.969-9.722 2.969-4.598 0-8.74-1.7-11.87-4.526-.247-.223-.024-.527.272-.351 3.384 1.963 7.559 3.153 11.877 3.153 2.914 0 6.114-.607 9.06-1.852.439-.2.814.287.383.607zm1.094-1.246c-.336-.43-2.22-.207-3.074-.103-.255.032-.295-.192-.063-.36 1.5-1.053 3.967-.75 4.254-.399.287.36-.08 2.826-1.485 4.007-.215.184-.423.088-.327-.151.32-.79 1.03-2.57.695-2.994z"/></svg>
@@ -3474,7 +3604,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloudformation-cmd/" class="md-nav__link">
+      <a href="../../../CLI/awscli/cloudformation-cmd/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183 0 .08-.048.16-.152.24l-.503.335a.383.383 0 0 1-.208.072c-.08 0-.16-.04-.239-.112a2.47 2.47 0 0 1-.287-.375 6.18 6.18 0 0 1-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67 0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533 0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272 0 .551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28 0-.568.031-.863.103-.295.072-.583.16-.862.272a2.287 2.287 0 0 1-.28.104.488.488 0 0 1-.127.023c-.112 0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597 0 0 1 .224-.167 4.577 4.577 0 0 1 1.005-.36 4.84 4.84 0 0 1 1.246-.151c.95 0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263 0 .534-.048.822-.144a1.78 1.78 0 0 0 .758-.51 1.27 1.27 0 0 0 .272-.512c.047-.191.08-.423.08-.694v-.335a6.66 6.66 0 0 0-.735-.136 6.02 6.02 0 0 0-.75-.048c-.535 0-.926.104-1.19.32-.263.215-.39.518-.39.917 0 .375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144 0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398 0 0 1-.072-.32c0-.128.064-.2.191-.2h.783c.151 0 .255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549 0 0 1 .32-.08h.638c.152 0 .256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52 0 0 1 .311-.08h.743c.127 0 .2.065.2.2 0 .04-.009.08-.017.128a1.137 1.137 0 0 1-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51 0 0 1-.303.08h-.687c-.151 0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415 0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563 0 0 1-.048-.224v-.407c0-.167.064-.247.183-.247.048 0 .096.008.144.024.048.016.12.048.2.08.271.12.566.215.878.279.319.064.63.096.95.096.502 0 .894-.088 1.165-.264a.86.86 0 0 0 .415-.758.777.777 0 0 0-.215-.559c-.144-.151-.416-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902 0 0 1-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175 0 .359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69 0 0 1 .24.2.43.43 0 0 1 .071.263v.375c0 .168-.064.256-.184.256a.83.83 0 0 1-.303-.096 3.652 3.652 0 0 0-1.532-.311c-.455 0-.815.071-1.062.223-.248.152-.375.383-.375.71 0 .224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117 0 .343-.072.655-.207.926a2.157 2.157 0 0 1-.583.703c-.248.2-.543.343-.886.447-.36.111-.734.167-1.142.167zm1.509 3.88c-2.626 1.94-6.442 2.969-9.722 2.969-4.598 0-8.74-1.7-11.87-4.526-.247-.223-.024-.527.272-.351 3.384 1.963 7.559 3.153 11.877 3.153 2.914 0 6.114-.607 9.06-1.852.439-.2.814.287.383.607zm1.094-1.246c-.336-.43-2.22-.207-3.074-.103-.255.032-.295-.192-.063-.36 1.5-1.053 3.967-.75 4.254-.399.287.36-.08 2.826-1.485 4.007-.215.184-.423.088-.327-.151.32-.79 1.03-2.57.695-2.994z"/></svg>
@@ -3497,7 +3627,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../cloudwatch-cmd/" class="md-nav__link">
+      <a href="../../../CLI/awscli/cloudwatch-cmd/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M18.454 14.905c0-1.676-1.372-3.039-3.059-3.039-1.686 0-3.058 1.363-3.058 3.039 0 1.675 1.372 3.038 3.058 3.038 1.687 0 3.059-1.363 3.059-3.038Zm.862 0c0 2.147-1.759 3.894-3.92 3.894-2.162 0-3.92-1.747-3.92-3.894 0-2.148 1.758-3.895 3.92-3.895 2.161 0 3.92 1.747 3.92 3.895Zm3.617 5.87-3.004-2.688c-.242.34-.523.649-.834.926l2.999 2.687c.256.23.654.208.885-.046a.623.623 0 0 0-.046-.88Zm-7.538-1.206c2.59 0 4.696-2.092 4.696-4.664 0-2.573-2.106-4.665-4.696-4.665-2.589 0-4.696 2.092-4.696 4.665 0 2.572 2.107 4.664 4.696 4.664Zm8.224 2.658c-.293.323-.7.487-1.107.487a1.49 1.49 0 0 1-.995-.378l-3.118-2.794a5.543 5.543 0 0 1-3.004.883c-3.064 0-5.557-2.476-5.557-5.52 0-3.044 2.493-5.521 5.557-5.521 3.065 0 5.558 2.477 5.558 5.52 0 .874-.21 1.697-.576 2.432l3.133 2.803c.608.546.657 1.482.11 2.088ZM3.977 7.454c0 .222.014.444.04.659a.426.426 0 0 1-.352.473C2.605 8.858.862 9.681.862 12.148c0 1.863 1.034 2.892 1.902 3.427.297.185.647.284 1.017.288l5.195.005v.856l-5.2-.005a2.815 2.815 0 0 1-1.469-.418C1.447 15.77 0 14.524 0 12.148c0-2.864 1.971-3.923 3.129-4.297a6.093 6.093 0 0 1-.013-.397c0-2.34 1.598-4.767 3.716-5.645 2.478-1.031 5.104-.52 7.022 1.367a7.048 7.048 0 0 1 1.459 2.116 2.79 2.79 0 0 1 1.78-.644c1.287 0 2.735.97 2.993 3.092 1.205.276 3.751 1.24 3.751 4.441 0 1.278-.403 2.333-1.199 3.137l-.614-.6c.632-.638.952-1.491.952-2.537 0-2.8-2.36-3.495-3.374-3.664a.43.43 0 0 1-.353-.496c-.141-1.738-1.18-2.517-2.156-2.517-.616 0-1.193.298-1.584.818a.431.431 0 0 1-.75-.111c-.353-.971-.861-1.788-1.511-2.426-1.663-1.636-3.936-2.079-6.084-1.186-1.787.74-3.187 2.873-3.187 4.855Z"/></svg>
@@ -3520,7 +3650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../directory-service-cmd/" class="md-nav__link">
+      <a href="../../../CLI/awscli/directory-service-cmd/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183 0 .08-.048.16-.152.24l-.503.335a.383.383 0 0 1-.208.072c-.08 0-.16-.04-.239-.112a2.47 2.47 0 0 1-.287-.375 6.18 6.18 0 0 1-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67 0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533 0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272 0 .551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28 0-.568.031-.863.103-.295.072-.583.16-.862.272a2.287 2.287 0 0 1-.28.104.488.488 0 0 1-.127.023c-.112 0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597 0 0 1 .224-.167 4.577 4.577 0 0 1 1.005-.36 4.84 4.84 0 0 1 1.246-.151c.95 0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263 0 .534-.048.822-.144a1.78 1.78 0 0 0 .758-.51 1.27 1.27 0 0 0 .272-.512c.047-.191.08-.423.08-.694v-.335a6.66 6.66 0 0 0-.735-.136 6.02 6.02 0 0 0-.75-.048c-.535 0-.926.104-1.19.32-.263.215-.39.518-.39.917 0 .375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144 0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398 0 0 1-.072-.32c0-.128.064-.2.191-.2h.783c.151 0 .255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549 0 0 1 .32-.08h.638c.152 0 .256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52 0 0 1 .311-.08h.743c.127 0 .2.065.2.2 0 .04-.009.08-.017.128a1.137 1.137 0 0 1-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51 0 0 1-.303.08h-.687c-.151 0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415 0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563 0 0 1-.048-.224v-.407c0-.167.064-.247.183-.247.048 0 .096.008.144.024.048.016.12.048.2.08.271.12.566.215.878.279.319.064.63.096.95.096.502 0 .894-.088 1.165-.264a.86.86 0 0 0 .415-.758.777.777 0 0 0-.215-.559c-.144-.151-.416-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902 0 0 1-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175 0 .359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69 0 0 1 .24.2.43.43 0 0 1 .071.263v.375c0 .168-.064.256-.184.256a.83.83 0 0 1-.303-.096 3.652 3.652 0 0 0-1.532-.311c-.455 0-.815.071-1.062.223-.248.152-.375.383-.375.71 0 .224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117 0 .343-.072.655-.207.926a2.157 2.157 0 0 1-.583.703c-.248.2-.543.343-.886.447-.36.111-.734.167-1.142.167zm1.509 3.88c-2.626 1.94-6.442 2.969-9.722 2.969-4.598 0-8.74-1.7-11.87-4.526-.247-.223-.024-.527.272-.351 3.384 1.963 7.559 3.153 11.877 3.153 2.914 0 6.114-.607 9.06-1.852.439-.2.814.287.383.607zm1.094-1.246c-.336-.43-2.22-.207-3.074-.103-.255.032-.295-.192-.063-.36 1.5-1.053 3.967-.75 4.254-.399.287.36-.08 2.826-1.485 4.007-.215.184-.423.088-.327-.151.32-.79 1.03-2.57.695-2.994z"/></svg>
@@ -3543,7 +3673,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ebs-cmd/" class="md-nav__link">
+      <a href="../../../CLI/awscli/ebs-cmd/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183 0 .08-.048.16-.152.24l-.503.335a.383.383 0 0 1-.208.072c-.08 0-.16-.04-.239-.112a2.47 2.47 0 0 1-.287-.375 6.18 6.18 0 0 1-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67 0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533 0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272 0 .551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28 0-.568.031-.863.103-.295.072-.583.16-.862.272a2.287 2.287 0 0 1-.28.104.488.488 0 0 1-.127.023c-.112 0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597 0 0 1 .224-.167 4.577 4.577 0 0 1 1.005-.36 4.84 4.84 0 0 1 1.246-.151c.95 0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263 0 .534-.048.822-.144a1.78 1.78 0 0 0 .758-.51 1.27 1.27 0 0 0 .272-.512c.047-.191.08-.423.08-.694v-.335a6.66 6.66 0 0 0-.735-.136 6.02 6.02 0 0 0-.75-.048c-.535 0-.926.104-1.19.32-.263.215-.39.518-.39.917 0 .375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144 0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398 0 0 1-.072-.32c0-.128.064-.2.191-.2h.783c.151 0 .255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549 0 0 1 .32-.08h.638c.152 0 .256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52 0 0 1 .311-.08h.743c.127 0 .2.065.2.2 0 .04-.009.08-.017.128a1.137 1.137 0 0 1-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51 0 0 1-.303.08h-.687c-.151 0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415 0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563 0 0 1-.048-.224v-.407c0-.167.064-.247.183-.247.048 0 .096.008.144.024.048.016.12.048.2.08.271.12.566.215.878.279.319.064.63.096.95.096.502 0 .894-.088 1.165-.264a.86.86 0 0 0 .415-.758.777.777 0 0 0-.215-.559c-.144-.151-.416-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902 0 0 1-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175 0 .359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69 0 0 1 .24.2.43.43 0 0 1 .071.263v.375c0 .168-.064.256-.184.256a.83.83 0 0 1-.303-.096 3.652 3.652 0 0 0-1.532-.311c-.455 0-.815.071-1.062.223-.248.152-.375.383-.375.71 0 .224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117 0 .343-.072.655-.207.926a2.157 2.157 0 0 1-.583.703c-.248.2-.543.343-.886.447-.36.111-.734.167-1.142.167zm1.509 3.88c-2.626 1.94-6.442 2.969-9.722 2.969-4.598 0-8.74-1.7-11.87-4.526-.247-.223-.024-.527.272-.351 3.384 1.963 7.559 3.153 11.877 3.153 2.914 0 6.114-.607 9.06-1.852.439-.2.814.287.383.607zm1.094-1.246c-.336-.43-2.22-.207-3.074-.103-.255.032-.295-.192-.063-.36 1.5-1.053 3.967-.75 4.254-.399.287.36-.08 2.826-1.485 4.007-.215.184-.423.088-.327-.151.32-.79 1.03-2.57.695-2.994z"/></svg>
@@ -3566,7 +3696,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ec2-cmd/" class="md-nav__link">
+      <a href="../../../CLI/awscli/ec2-cmd/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.429 17.571h10.714V6.857H6.429v10.714ZM18 6.857h1.714v.857H18V9.43h1.714v.857H18v1.285h1.714v.858H18v1.714h1.714V15H18v1.714h1.714v.857H18v.059a.8.8 0 0 1-.799.799h-.058v1.714h-.857v-1.714H14.57v1.714h-.857v-1.714H12.43v1.714h-.858v-1.714H9.857v1.714H9v-1.714H7.286v1.714h-.857v-1.714H6.37a.8.8 0 0 1-.799-.8v-.058H4.286v-.857H5.57V15H4.286v-.857H5.57v-1.714H4.286v-.858H5.57v-1.285H4.286v-.857H5.57V7.714H4.286v-.857H5.57V6.8a.8.8 0 0 1 .8-.799h.058V4.286h.857V6H9V4.286h.857V6h1.714V4.286h.858V6h1.285V4.286h.857V6h1.715V4.286h.857V6h.058a.8.8 0 0 1 .799.799v.058ZM12.429 23.09a.054.054 0 0 1-.054.053H.91a.053.053 0 0 1-.053-.053V11.625c0-.03.024-.054.053-.054h2.52v-.857H.91a.911.911 0 0 0-.91.91V23.09c0 .502.408.91.91.91h11.465a.91.91 0 0 0 .91-.91V21h-.856ZM24 .91v11.465a.91.91 0 0 1-.91.91h-2.52v-.856h2.519a.054.054 0 0 0 .053-.054V.91a.053.053 0 0 0-.053-.053H11.625a.053.053 0 0 0-.054.053v2.52h-.857V.91c0-.502.409-.91.91-.91H23.09a.91.91 0 0 1 .91.91Z"/></svg>
@@ -3589,7 +3719,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ecr-cmd/" class="md-nav__link">
+      <a href="../../../CLI/awscli/ecr-cmd/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183 0 .08-.048.16-.152.24l-.503.335a.383.383 0 0 1-.208.072c-.08 0-.16-.04-.239-.112a2.47 2.47 0 0 1-.287-.375 6.18 6.18 0 0 1-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67 0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533 0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272 0 .551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28 0-.568.031-.863.103-.295.072-.583.16-.862.272a2.287 2.287 0 0 1-.28.104.488.488 0 0 1-.127.023c-.112 0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597 0 0 1 .224-.167 4.577 4.577 0 0 1 1.005-.36 4.84 4.84 0 0 1 1.246-.151c.95 0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263 0 .534-.048.822-.144a1.78 1.78 0 0 0 .758-.51 1.27 1.27 0 0 0 .272-.512c.047-.191.08-.423.08-.694v-.335a6.66 6.66 0 0 0-.735-.136 6.02 6.02 0 0 0-.75-.048c-.535 0-.926.104-1.19.32-.263.215-.39.518-.39.917 0 .375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144 0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398 0 0 1-.072-.32c0-.128.064-.2.191-.2h.783c.151 0 .255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549 0 0 1 .32-.08h.638c.152 0 .256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52 0 0 1 .311-.08h.743c.127 0 .2.065.2.2 0 .04-.009.08-.017.128a1.137 1.137 0 0 1-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51 0 0 1-.303.08h-.687c-.151 0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415 0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563 0 0 1-.048-.224v-.407c0-.167.064-.247.183-.247.048 0 .096.008.144.024.048.016.12.048.2.08.271.12.566.215.878.279.319.064.63.096.95.096.502 0 .894-.088 1.165-.264a.86.86 0 0 0 .415-.758.777.777 0 0 0-.215-.559c-.144-.151-.416-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902 0 0 1-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175 0 .359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69 0 0 1 .24.2.43.43 0 0 1 .071.263v.375c0 .168-.064.256-.184.256a.83.83 0 0 1-.303-.096 3.652 3.652 0 0 0-1.532-.311c-.455 0-.815.071-1.062.223-.248.152-.375.383-.375.71 0 .224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117 0 .343-.072.655-.207.926a2.157 2.157 0 0 1-.583.703c-.248.2-.543.343-.886.447-.36.111-.734.167-1.142.167zm1.509 3.88c-2.626 1.94-6.442 2.969-9.722 2.969-4.598 0-8.74-1.7-11.87-4.526-.247-.223-.024-.527.272-.351 3.384 1.963 7.559 3.153 11.877 3.153 2.914 0 6.114-.607 9.06-1.852.439-.2.814.287.383.607zm1.094-1.246c-.336-.43-2.22-.207-3.074-.103-.255.032-.295-.192-.063-.36 1.5-1.053 3.967-.75 4.254-.399.287.36-.08 2.826-1.485 4.007-.215.184-.423.088-.327-.151.32-.79 1.03-2.57.695-2.994z"/></svg>
@@ -3612,7 +3742,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ecs-cmd/" class="md-nav__link">
+      <a href="../../../CLI/awscli/ecs-cmd/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m21.895 15.256-3.369-2.021V8.421a.42.42 0 0 0-.209-.364l-4.843-2.825V1.159l8.42 4.976Zm.635-9.724L13.267.06a.422.422 0 0 0-.635.362v5.053c0 .15.08.288.208.363l4.844 2.826v4.81a.42.42 0 0 0 .205.362l4.21 2.526a.42.42 0 0 0 .638-.361V5.895a.42.42 0 0 0-.207-.363ZM11.977 23.1l-9.872-5.248V6.135l8.421-4.976v4.084L6.09 8.066a.422.422 0 0 0-.195.355v7.158a.42.42 0 0 0 .226.373l5.665 2.948a.42.42 0 0 0 .387 0l5.496-2.84 3.382 2.03-9.074 5.01Zm10.135-5.356-4.21-2.526a.42.42 0 0 0-.411-.013l-5.51 2.847-5.244-2.729v-6.67l4.436-2.824a.422.422 0 0 0 .195-.355V.42a.421.421 0 0 0-.635-.362L1.47 5.532a.421.421 0 0 0-.207.363v12.21c0 .156.086.299.223.372l10.297 5.474a.421.421 0 0 0 .401-.004l9.915-5.473a.422.422 0 0 0 .013-.73Z"/></svg>
@@ -3635,7 +3765,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../efs-cmd/" class="md-nav__link">
+      <a href="../../../CLI/awscli/efs-cmd/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183 0 .08-.048.16-.152.24l-.503.335a.383.383 0 0 1-.208.072c-.08 0-.16-.04-.239-.112a2.47 2.47 0 0 1-.287-.375 6.18 6.18 0 0 1-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67 0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533 0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272 0 .551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28 0-.568.031-.863.103-.295.072-.583.16-.862.272a2.287 2.287 0 0 1-.28.104.488.488 0 0 1-.127.023c-.112 0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597 0 0 1 .224-.167 4.577 4.577 0 0 1 1.005-.36 4.84 4.84 0 0 1 1.246-.151c.95 0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263 0 .534-.048.822-.144a1.78 1.78 0 0 0 .758-.51 1.27 1.27 0 0 0 .272-.512c.047-.191.08-.423.08-.694v-.335a6.66 6.66 0 0 0-.735-.136 6.02 6.02 0 0 0-.75-.048c-.535 0-.926.104-1.19.32-.263.215-.39.518-.39.917 0 .375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144 0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398 0 0 1-.072-.32c0-.128.064-.2.191-.2h.783c.151 0 .255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549 0 0 1 .32-.08h.638c.152 0 .256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52 0 0 1 .311-.08h.743c.127 0 .2.065.2.2 0 .04-.009.08-.017.128a1.137 1.137 0 0 1-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51 0 0 1-.303.08h-.687c-.151 0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415 0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563 0 0 1-.048-.224v-.407c0-.167.064-.247.183-.247.048 0 .096.008.144.024.048.016.12.048.2.08.271.12.566.215.878.279.319.064.63.096.95.096.502 0 .894-.088 1.165-.264a.86.86 0 0 0 .415-.758.777.777 0 0 0-.215-.559c-.144-.151-.416-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902 0 0 1-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175 0 .359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69 0 0 1 .24.2.43.43 0 0 1 .071.263v.375c0 .168-.064.256-.184.256a.83.83 0 0 1-.303-.096 3.652 3.652 0 0 0-1.532-.311c-.455 0-.815.071-1.062.223-.248.152-.375.383-.375.71 0 .224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117 0 .343-.072.655-.207.926a2.157 2.157 0 0 1-.583.703c-.248.2-.543.343-.886.447-.36.111-.734.167-1.142.167zm1.509 3.88c-2.626 1.94-6.442 2.969-9.722 2.969-4.598 0-8.74-1.7-11.87-4.526-.247-.223-.024-.527.272-.351 3.384 1.963 7.559 3.153 11.877 3.153 2.914 0 6.114-.607 9.06-1.852.439-.2.814.287.383.607zm1.094-1.246c-.336-.43-2.22-.207-3.074-.103-.255.032-.295-.192-.063-.36 1.5-1.053 3.967-.75 4.254-.399.287.36-.08 2.826-1.485 4.007-.215.184-.423.088-.327-.151.32-.79 1.03-2.57.695-2.994z"/></svg>
@@ -3655,32 +3785,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 3.429V20.57c0 .258-.171.429-.429.429H.43C.17 21 0 20.829 0 20.571V3.43C0 3.17.171 3 .429 3H23.57c.258 0 .429.171.429.429ZM.857 20.143h22.286V3.857H.857Zm12.857-5.572h6.429v.858h-6.429ZM19.286 12h2.143v.857h-2.143zm-5.572 0h3.429v.857h-3.429ZM2.143 18.429V11.57q0-.171.128-.3.129-.128.3-.128h.858v-3c0-1.5 1.542-2.7 3.428-2.7s3.429 1.2 3.429 2.7v3h.857a.43.43 0 0 1 .428.428v6.858q0 .171-.128.3-.129.128-.3.128H2.57a.43.43 0 0 1-.428-.428zM3 18h7.714v-1.714H9v-.857h1.714v-1.286H9v-.857h1.714V12H3Zm5.143-3.429c0 .558-.343 1.029-.857 1.2v.943h-.857v-.943a1.248 1.248 0 0 1-.858-1.2c0-.685.6-1.285 1.286-1.285.729 0 1.286.6 1.286 1.285zm-3.857-3.428h5.143v-3c0-.986-1.2-1.843-2.572-1.843-1.371 0-2.571.857-2.571 1.843Zm3 3.429a.43.43 0 0 0-.429-.429.46.46 0 0 0-.428.428.43.43 0 0 0 .428.43c.257 0 .429-.172.429-.43ZM20.57 9.428h.858v.857h-.858zm-6.857 0h4.715v.857h-4.715z"/></svg>
-  
-  <span class="md-ellipsis">
-    iam
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../../../CLI/awscli/iam-cmd/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 3.429V20.57c0 .258-.171.429-.429.429H.43C.17 21 0 20.829 0 20.571V3.43C0 3.17.171 3 .429 3H23.57c.258 0 .429.171.429.429ZM.857 20.143h22.286V3.857H.857Zm12.857-5.572h6.429v.858h-6.429ZM19.286 12h2.143v.857h-2.143zm-5.572 0h3.429v.857h-3.429ZM2.143 18.429V11.57q0-.171.128-.3.129-.128.3-.128h.858v-3c0-1.5 1.542-2.7 3.428-2.7s3.429 1.2 3.429 2.7v3h.857a.43.43 0 0 1 .428.428v6.858q0 .171-.128.3-.129.128-.3.128H2.57a.43.43 0 0 1-.428-.428zM3 18h7.714v-1.714H9v-.857h1.714v-1.286H9v-.857h1.714V12H3Zm5.143-3.429c0 .558-.343 1.029-.857 1.2v.943h-.857v-.943a1.248 1.248 0 0 1-.858-1.2c0-.685.6-1.285 1.286-1.285.729 0 1.286.6 1.286 1.285zm-3.857-3.428h5.143v-3c0-.986-1.2-1.843-2.572-1.843-1.371 0-2.571.857-2.571 1.843Zm3 3.429a.43.43 0 0 0-.429-.429.46.46 0 0 0-.428.428.43.43 0 0 0 .428.43c.257 0 .429-.172.429-.43ZM20.57 9.428h.858v.857h-.858zm-6.857 0h4.715v.857h-4.715z"/></svg>
@@ -3691,155 +3799,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#get-role-arn-by-name" class="md-nav__link">
-    <span class="md-ellipsis">
-      get role arn by name
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#get-policy-arn" class="md-nav__link">
-    <span class="md-ellipsis">
-      get policy arn
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-user" class="md-nav__link">
-    <span class="md-ellipsis">
-      create user
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#attach-role-policy" class="md-nav__link">
-    <span class="md-ellipsis">
-      attach role policy
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-role" class="md-nav__link">
-    <span class="md-ellipsis">
-      create role
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="create role">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#func-ec2-admin-role-create-" class="md-nav__link">
-    <span class="md-ellipsis">
-      func-ec2-admin-role-create-
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-role-for-firehose" class="md-nav__link">
-    <span class="md-ellipsis">
-      create role for firehose
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-role-for-api-gateway" class="md-nav__link">
-    <span class="md-ellipsis">
-      create role for api gateway
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-role-for-account" class="md-nav__link">
-    <span class="md-ellipsis">
-      create role for account
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-service-linked-role" class="md-nav__link">
-    <span class="md-ellipsis">
-      create service-linked role
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#assume-another-role-" class="md-nav__link">
-    <span class="md-ellipsis">
-      assume-another-role-
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="assume-another-role-">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#assume-in-credentials-file" class="md-nav__link">
-    <span class="md-ellipsis">
-      assume in credentials file
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#reference" class="md-nav__link">
-    <span class="md-ellipsis">
-      reference
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3852,7 +3811,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../lambda-cmd/" class="md-nav__link">
+      <a href="../../../CLI/awscli/lambda-cmd/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M4.986 0a.545.545 0 0 0-.534.548l-.006 4.908c0 .145.06.283.159.39a.532.532 0 0 0 .38.155h3.429l8.197 17.68a.536.536 0 0 0 .488.319h5.811a.547.547 0 0 0 .543-.548v-4.908a.543.543 0 0 0-.543-.548h-2.013L12.739.316A.55.55 0 0 0 12.245 0H4.991Zm.54 1.09h6.367l8.16 17.681a.536.536 0 0 0 .488.318h1.818v3.817h-4.922L9.24 5.226a.536.536 0 0 0-.488-.318h-3.23Zm2.013 8.237a.538.538 0 0 0-.486.31L.6 23.213a.55.55 0 0 0 .032.528.533.533 0 0 0 .454.25h6.169a.547.547 0 0 0 .497-.31l3.38-7.165a.54.54 0 0 0-.003-.469l-3.093-6.41a.547.547 0 0 0-.494-.31Zm.006 1.804 2.488 5.152-3.122 6.62H1.947Z"/></svg>
@@ -3875,7 +3834,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../lightsail-cmd/" class="md-nav__link">
+      <a href="../../../CLI/awscli/lightsail-cmd/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183 0 .08-.048.16-.152.24l-.503.335a.383.383 0 0 1-.208.072c-.08 0-.16-.04-.239-.112a2.47 2.47 0 0 1-.287-.375 6.18 6.18 0 0 1-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67 0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533 0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272 0 .551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28 0-.568.031-.863.103-.295.072-.583.16-.862.272a2.287 2.287 0 0 1-.28.104.488.488 0 0 1-.127.023c-.112 0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597 0 0 1 .224-.167 4.577 4.577 0 0 1 1.005-.36 4.84 4.84 0 0 1 1.246-.151c.95 0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263 0 .534-.048.822-.144a1.78 1.78 0 0 0 .758-.51 1.27 1.27 0 0 0 .272-.512c.047-.191.08-.423.08-.694v-.335a6.66 6.66 0 0 0-.735-.136 6.02 6.02 0 0 0-.75-.048c-.535 0-.926.104-1.19.32-.263.215-.39.518-.39.917 0 .375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144 0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398 0 0 1-.072-.32c0-.128.064-.2.191-.2h.783c.151 0 .255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549 0 0 1 .32-.08h.638c.152 0 .256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52 0 0 1 .311-.08h.743c.127 0 .2.065.2.2 0 .04-.009.08-.017.128a1.137 1.137 0 0 1-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51 0 0 1-.303.08h-.687c-.151 0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415 0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563 0 0 1-.048-.224v-.407c0-.167.064-.247.183-.247.048 0 .096.008.144.024.048.016.12.048.2.08.271.12.566.215.878.279.319.064.63.096.95.096.502 0 .894-.088 1.165-.264a.86.86 0 0 0 .415-.758.777.777 0 0 0-.215-.559c-.144-.151-.416-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902 0 0 1-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175 0 .359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69 0 0 1 .24.2.43.43 0 0 1 .071.263v.375c0 .168-.064.256-.184.256a.83.83 0 0 1-.303-.096 3.652 3.652 0 0 0-1.532-.311c-.455 0-.815.071-1.062.223-.248.152-.375.383-.375.71 0 .224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117 0 .343-.072.655-.207.926a2.157 2.157 0 0 1-.583.703c-.248.2-.543.343-.886.447-.36.111-.734.167-1.142.167zm1.509 3.88c-2.626 1.94-6.442 2.969-9.722 2.969-4.598 0-8.74-1.7-11.87-4.526-.247-.223-.024-.527.272-.351 3.384 1.963 7.559 3.153 11.877 3.153 2.914 0 6.114-.607 9.06-1.852.439-.2.814.287.383.607zm1.094-1.246c-.336-.43-2.22-.207-3.074-.103-.255.032-.295-.192-.063-.36 1.5-1.053 3.967-.75 4.254-.399.287.36-.08 2.826-1.485 4.007-.215.184-.423.088-.327-.151.32-.79 1.03-2.57.695-2.994z"/></svg>
@@ -3898,7 +3857,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../rds-cmd/" class="md-nav__link">
+      <a href="../../../CLI/awscli/rds-cmd/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M1.463.857 5.446 4.84l-.606.606L.857 1.463v3.251H0V.43A.43.43 0 0 1 .429 0h4.285v.857ZM24 .43v4.285h-.857v-3.25l-3.983 3.98-.606-.606L22.537.857h-3.251V0h4.285c.237 0 .429.192.429.429Zm-.857 18.857H24v4.285a.428.428 0 0 1-.429.429h-4.285v-.857h3.25l-3.982-3.983.606-.606 3.983 3.983Zm-.214-7.623c0-1.423-1.643-2.828-4.393-3.76l.274-.811c3.162 1.07 4.976 2.736 4.976 4.57 0 1.836-1.814 3.502-4.976 4.572l-.275-.812c2.751-.931 4.394-2.336 4.394-3.76Zm-21.834 0c0 1.363 1.538 2.73 4.113 3.66l-.291.806C1.944 15.057.238 13.43.238 11.664S1.944 8.27 4.917 7.197l.291.806c-2.575.93-4.113 2.297-4.113 3.66Zm4.35 7.497-3.982 3.983h3.251V24H.43a.428.428 0 0 1-.43-.429v-4.285h.857v3.25l3.983-3.982ZM12 8.265c-3.063 0-4.714-.79-4.714-1.114 0-.323 1.651-1.114 4.714-1.114 3.062 0 4.714.79 4.714 1.114 0 .323-1.652 1.114-4.714 1.114Zm.012 3.32c-2.932 0-4.726-.801-4.726-1.237V8.265c1.055.582 2.928.858 4.714.858 1.786 0 3.659-.276 4.714-.858v2.083c0 .436-1.785 1.237-4.702 1.237Zm0 3.272c-2.932 0-4.726-.8-4.726-1.237v-2.108c1.042.613 2.89.93 4.726.93 1.827 0 3.664-.317 4.702-.928v2.106c0 .437-1.785 1.237-4.702 1.237ZM12 17.793c-3.05 0-4.714-.82-4.714-1.24v-1.768c1.042.612 2.89.93 4.726.93 1.827 0 3.664-.317 4.702-.928v1.765c0 .422-1.664 1.241-4.714 1.241ZM12 5.18c-2.683 0-5.571.616-5.571 1.971v9.401c0 1.378 2.802 2.099 5.571 2.099 2.769 0 5.571-.721 5.571-2.099v-9.4c0-1.356-2.888-1.972-5.571-1.972Z"/></svg>
@@ -3921,7 +3880,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../redshift-cmd/" class="md-nav__link">
+      <a href="../../../CLI/awscli/redshift-cmd/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M16.639 9.932a.822.822 0 0 1-.822-.82.823.823 0 0 1 1.645 0c0 .452-.37.82-.823.82m-2.086 4.994a.823.823 0 0 1-.822-.822.822.822 0 0 1 1.645 0 .822.822 0 0 1-.823.822m-5.004-.833a.822.822 0 1 1 .002-1.644.822.822 0 0 1-.002 1.644m-2.083 4.578a.823.823 0 0 1-.823-.82.823.823 0 0 1 1.645 0c0 .452-.37.82-.822.82m9.173-11.236a1.68 1.68 0 0 0-1.68 1.676c0 .566.285 1.066.718 1.37l-.782 1.982a1.674 1.674 0 0 0-1.923 1.104l-1.753-.398a1.675 1.675 0 0 0-3.348.103c0 .432.169.823.438 1.12l-.764 1.79c-.028-.001-.053-.008-.08-.008a1.68 1.68 0 0 0-1.68 1.676 1.68 1.68 0 0 0 3.36 0c0-.593-.312-1.112-.778-1.41l.674-1.579c.161.052.33.088.508.088.661 0 1.228-.386 1.502-.94l1.856.42a1.68 1.68 0 0 0 3.327-.325c0-.5-.224-.943-.574-1.25l.822-2.083c.053.005.104.016.157.016a1.68 1.68 0 0 0 1.68-1.676 1.68 1.68 0 0 0-1.68-1.676M12 23.145c-4.17 0-7.286-1.252-7.286-2.37V4.79C6.14 5.938 9.131 6.547 12 6.547c2.869 0 5.86-.609 7.286-1.756v15.983c0 1.12-3.116 2.37-7.286 2.37M12 .856c4.293 0 7.286 1.274 7.286 2.419 0 1.143-2.993 2.418-7.286 2.418-4.293 0-7.286-1.275-7.286-2.418 0-1.146 2.993-2.42 7.286-2.42m8.143 2.419C20.143 1.147 15.947 0 12 0 8.052 0 3.857 1.147 3.857 3.274l.002.01h-.002v17.49C3.857 22.87 8.052 24 12 24c3.947 0 8.143-1.13 8.143-3.226V3.284h-.002l.002-.01"/></svg>
@@ -3944,7 +3903,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../route53-cmd/" class="md-nav__link">
+      <a href="../../../CLI/awscli/route53-cmd/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M24 15.766c0 2.872-2.357 5.015-6.3 5.7-2.957.558-5.4 2.4-5.443 2.443q-.128.086-.257.086t-.257-.086c-.043-.043-2.486-1.885-5.443-2.443-3.943-.685-6.3-2.828-6.3-5.7 0-1.757.686-2.914 1.286-3.942.514-.9.985-1.672.985-2.743 0-2.272-1.757-3.772-1.8-3.772Q.343 5.181.3 5.01q0-.171.129-.3c0-.043 2.828-3.428 3.471-4.328.086-.086.171-.172.3-.172s.257.043.343.129c1.114 1.157 2.357 1.8 3.6 1.8 1.371 0 2.486-.6 3.514-1.972a.446.446 0 0 1 .686 0c1.028 1.372 2.143 1.972 3.514 1.972 1.243 0 2.486-.643 3.6-1.8.086-.086.214-.129.343-.129s.214.086.3.172c.643.9 3.471 4.285 3.471 4.328q.129.129.129.3-.043.172-.171.3c-.043 0-1.8 1.5-1.8 3.772 0 1.071.47 1.843.985 2.743.6 1.028 1.286 2.185 1.286 3.943Zm-.857 0c0-1.5-.6-2.528-1.157-3.514-.557-.9-1.115-1.886-1.115-3.171 0-2.1 1.2-3.557 1.8-4.157-.642-.729-2.185-2.658-2.957-3.643-1.157 1.114-2.528 1.714-3.857 1.714-1.5 0-2.743-.6-3.857-1.886-1.114 1.286-2.357 1.886-3.857 1.886-1.329 0-2.7-.6-3.857-1.714-.772.985-2.315 2.914-2.957 3.643.6.6 1.8 2.057 1.8 4.157 0 1.285-.558 2.271-1.115 3.171-.557.986-1.157 2.014-1.157 3.514 0 .9.386 3.943 5.572 4.886 2.614.472 4.842 1.886 5.57 2.4.73-.514 2.958-1.928 5.572-2.4 5.186-.943 5.572-3.986 5.572-4.886zM20.57 13.11c.558.986.9 1.629.9 2.657 0 2.315-3.214 3.043-4.2 3.215-2.057.385-3.9 1.285-5.057 1.971q-.085.043-.214.043t-.214-.043c-1.157-.686-3-1.586-5.057-1.971-.986-.172-4.2-.9-4.2-3.215 0-1.028.342-1.671.9-2.657.6-1.028 1.328-2.314 1.328-4.028 0-1.372-.386-2.657-1.114-3.857-.086-.172-.086-.386.043-.515q.3-.385.643-.814a.467.467 0 0 1 .557-.129c1.071.6 2.143.9 3.257.9 1.371 0 2.528-.385 3.6-1.114a.546.546 0 0 1 .514 0c1.072.729 2.229 1.114 3.6 1.114 1.114 0 2.186-.3 3.257-.9a.467.467 0 0 1 .557.129q.343.429.643.814c.129.129.129.343.043.515-.728 1.2-1.114 2.485-1.114 3.857 0 1.714.728 3 1.328 4.028zm.043 2.657c0-.771-.257-1.328-.814-2.228-.643-1.114-1.414-2.486-1.414-4.457 0-1.457.343-2.786 1.071-4.072q-.128-.171-.257-.3c-1.071.515-2.186.815-3.343.815A7.11 7.11 0 0 1 12 4.409a7.11 7.11 0 0 1-3.857 1.115q-1.714 0-3.343-.815-.129.129-.257.3a8.037 8.037 0 0 1 1.071 4.072c0 1.971-.771 3.343-1.414 4.457-.557.9-.814 1.457-.814 2.228 0 1.672 2.914 2.272 3.471 2.4 2.1.386 3.9 1.2 5.143 1.886 1.243-.686 3.043-1.5 5.143-1.886.557-.128 3.471-.728 3.471-2.4zm-4.885-3.471q.471.429.471 1.157 0 .814-.557 1.286-.6.471-1.586.471-.771 0-1.5-.3v-.685q.9.3 1.5.3.643 0 .986-.258.3-.3.3-.814 0-.986-1.243-.986-.386 0-.771.043v-.557l1.714-1.843h-2.4v-.685h3.3v.642l-1.672 1.8h.172q.814 0 1.286.429zm-4.758-.171q.472.471.472 1.285t-.557 1.329q-.6.471-1.543.471-.814 0-1.586-.3v-.685q.943.3 1.586.3.6 0 .943-.258.343-.3.343-.814 0-.6-.3-.857-.343-.257-1.029-.257-.514 0-1.286.086v-.558l.172-2.442h3v.685H8.87l-.128 1.629q.471-.043.814-.043.9 0 1.414.429z"/></svg>
@@ -3967,7 +3926,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../s3-cmd/" class="md-nav__link">
+      <a href="../../../CLI/awscli/s3-cmd/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m20.913 13.147.12-.895c.947.576 1.258.922 1.354 1.071-.16.031-.562.046-1.474-.176zm-2.174 7.988a.547.547 0 0 0-.005.073c0 .084-.207.405-1.124.768a10.28 10.28 0 0 1-1.438.432c-1.405.325-3.128.504-4.853.504-4.612 0-7.412-1.184-7.412-1.704a.547.547 0 0 0-.005-.073L1.81 5.602c.135.078.28.154.432.227.042.02.086.038.128.057.134.062.272.122.417.18l.179.069c.154.058.314.114.478.168.043.013.084.029.13.043.207.065.423.127.646.187l.176.044c.175.044.353.087.534.127a23.414 23.414 0 0 0 .843.17l.121.023c.252.045.508.085.768.122.071.011.144.02.216.03.2.027.4.053.604.077l.24.027c.245.026.49.05.74.07l.081.009c.275.022.552.04.83.056l.233.012c.21.01.422.018.633.025a33.088 33.088 0 0 0 2.795-.026l.232-.011c.278-.016.555-.034.83-.056l.08-.008c.25-.02.497-.045.742-.072l.238-.026c.205-.024.408-.05.609-.077.07-.01.141-.019.211-.03.261-.037.519-.078.772-.122l.111-.02c.215-.04.427-.082.634-.125l.212-.047c.186-.041.368-.085.546-.13l.166-.042c.225-.06.444-.122.654-.189.04-.012.077-.026.115-.038a10.6 10.6 0 0 0 .493-.173c.058-.021.114-.044.17-.066.15-.06.293-.12.43-.185.038-.017.079-.034.116-.052.153-.073.3-.15.436-.228l-.976 7.245c-2.488-.78-5.805-2.292-7.311-3a1.09 1.09 0 0 0-1.088-1.085c-.6 0-1.088.489-1.088 1.088 0 .6.488 1.089 1.088 1.089.196 0 .378-.056.537-.148 1.72.812 5.144 2.367 7.715 3.15zm-7.42-20.047c5.677 0 9.676 1.759 9.75 2.736l-.014.113c-.01.033-.031.067-.048.101-.015.028-.026.057-.047.087-.024.033-.058.068-.09.102-.028.03-.051.06-.084.09-.038.035-.087.07-.133.105-.04.03-.074.06-.119.091-.053.036-.116.071-.177.107-.05.03-.095.06-.15.09-.068.036-.147.073-.222.11-.059.028-.114.057-.177.085-.084.038-.177.074-.268.111-.068.027-.13.054-.203.082-.097.036-.205.072-.31.107-.075.026-.148.053-.228.079-.111.035-.233.069-.35.103-.085.024-.165.05-.253.073-.124.034-.258.065-.389.098-.093.022-.181.046-.278.068-.139.032-.287.061-.433.091-.098.02-.191.041-.293.06-.155.03-.32.057-.482.084-.1.018-.198.036-.302.052-.166.026-.342.048-.515.072-.11.014-.213.03-.325.044-.181.023-.372.041-.56.06-.11.012-.218.025-.332.036-.188.016-.386.029-.58.043-.122.009-.24.02-.364.028-.207.012-.422.02-.635.028-.12.005-.234.012-.354.016a35.605 35.605 0 0 1-2.069 0c-.12-.004-.234-.011-.352-.016-.214-.008-.43-.016-.637-.028-.122-.008-.238-.02-.36-.027-.195-.015-.394-.028-.584-.044-.11-.01-.215-.024-.324-.035-.19-.02-.384-.038-.568-.06l-.315-.044c-.176-.024-.355-.046-.525-.073-.1-.015-.192-.033-.29-.05-.167-.028-.335-.055-.494-.086-.096-.018-.183-.038-.276-.056-.151-.032-.305-.062-.45-.095-.09-.02-.173-.043-.26-.064-.138-.034-.277-.067-.407-.102-.082-.022-.157-.046-.235-.069a11.75 11.75 0 0 1-.368-.108c-.075-.024-.141-.049-.213-.073-.11-.037-.223-.075-.325-.113-.067-.025-.125-.051-.188-.077-.096-.038-.195-.076-.282-.115-.06-.027-.11-.054-.166-.08-.08-.039-.162-.077-.233-.116-.052-.028-.094-.055-.142-.084-.063-.038-.13-.075-.185-.113-.043-.029-.075-.058-.113-.086-.048-.037-.098-.073-.139-.11-.032-.029-.054-.057-.08-.087-.033-.035-.069-.07-.093-.104-.02-.03-.031-.058-.046-.086-.018-.035-.039-.068-.049-.102l-.015-.113c.076-.977 4.074-2.736 9.748-2.736zm12.182 12.124c-.118-.628-.84-1.291-2.31-2.128l.963-7.16a.531.531 0 0 0 .005-.073C22.16 1.581 16.447 0 11.32 0 6.194 0 .482 1.581.482 3.851a.58.58 0 0 0 .005.072L2.819 21.25c.071 2.002 5.236 2.75 8.5 2.75 1.805 0 3.615-.188 5.098-.531.598-.138 1.133-.3 1.592-.48 1.18-.467 1.789-1.053 1.813-1.739l.945-7.018c.557.131 1.016.197 1.389.197.54 0 .902-.137 1.134-.413a.956.956 0 0 0 .21-.804Z"/></svg>
@@ -3990,7 +3949,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sns-cmd/" class="md-nav__link">
+      <a href="../../../CLI/awscli/sns-cmd/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183 0 .08-.048.16-.152.24l-.503.335a.383.383 0 0 1-.208.072c-.08 0-.16-.04-.239-.112a2.47 2.47 0 0 1-.287-.375 6.18 6.18 0 0 1-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67 0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533 0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272 0 .551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28 0-.568.031-.863.103-.295.072-.583.16-.862.272a2.287 2.287 0 0 1-.28.104.488.488 0 0 1-.127.023c-.112 0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597 0 0 1 .224-.167 4.577 4.577 0 0 1 1.005-.36 4.84 4.84 0 0 1 1.246-.151c.95 0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263 0 .534-.048.822-.144a1.78 1.78 0 0 0 .758-.51 1.27 1.27 0 0 0 .272-.512c.047-.191.08-.423.08-.694v-.335a6.66 6.66 0 0 0-.735-.136 6.02 6.02 0 0 0-.75-.048c-.535 0-.926.104-1.19.32-.263.215-.39.518-.39.917 0 .375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144 0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398 0 0 1-.072-.32c0-.128.064-.2.191-.2h.783c.151 0 .255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549 0 0 1 .32-.08h.638c.152 0 .256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52 0 0 1 .311-.08h.743c.127 0 .2.065.2.2 0 .04-.009.08-.017.128a1.137 1.137 0 0 1-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51 0 0 1-.303.08h-.687c-.151 0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415 0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563 0 0 1-.048-.224v-.407c0-.167.064-.247.183-.247.048 0 .096.008.144.024.048.016.12.048.2.08.271.12.566.215.878.279.319.064.63.096.95.096.502 0 .894-.088 1.165-.264a.86.86 0 0 0 .415-.758.777.777 0 0 0-.215-.559c-.144-.151-.416-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902 0 0 1-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175 0 .359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69 0 0 1 .24.2.43.43 0 0 1 .071.263v.375c0 .168-.064.256-.184.256a.83.83 0 0 1-.303-.096 3.652 3.652 0 0 0-1.532-.311c-.455 0-.815.071-1.062.223-.248.152-.375.383-.375.71 0 .224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117 0 .343-.072.655-.207.926a2.157 2.157 0 0 1-.583.703c-.248.2-.543.343-.886.447-.36.111-.734.167-1.142.167zm1.509 3.88c-2.626 1.94-6.442 2.969-9.722 2.969-4.598 0-8.74-1.7-11.87-4.526-.247-.223-.024-.527.272-.351 3.384 1.963 7.559 3.153 11.877 3.153 2.914 0 6.114-.607 9.06-1.852.439-.2.814.287.383.607zm1.094-1.246c-.336-.43-2.22-.207-3.074-.103-.255.032-.295-.192-.063-.36 1.5-1.053 3.967-.75 4.254-.399.287.36-.08 2.826-1.485 4.007-.215.184-.423.088-.327-.151.32-.79 1.03-2.57.695-2.994z"/></svg>
@@ -4013,7 +3972,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../sqs-cmd/" class="md-nav__link">
+      <a href="../../../CLI/awscli/sqs-cmd/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m7.164 13.58 1.287-1.27a.425.425 0 0 0 .002-.603L7.166 10.42l-.608.601.552.552H5.147v.852h1.97l-.557.55Zm9.82.04 1.715-1.28a.427.427 0 0 0 0-.682l-1.716-1.277-.515.682.686.51H15.44v.853h1.715l-.686.511ZM9.945 12c0 .905-.156 1.758-.449 2.5a7.07 7.07 0 0 1 2.511-.445c.87 0 1.74.148 2.51.445a6.855 6.855 0 0 1-.448-2.5c0-.905.157-1.757.449-2.5-1.543.593-3.479.593-5.022 0 .293.743.45 1.595.45 2.5Zm-2.1 4.136a.424.424 0 0 1 0-.602c.778-.774 1.243-2.095 1.243-3.534 0-1.439-.465-2.76-1.244-3.534a.424.424 0 0 1 0-.602.43.43 0 0 1 .607 0c1.662 1.65 5.45 1.65 7.113 0a.43.43 0 0 1 .732.301.42.42 0 0 1-.126.301c-.778.774-1.243 2.095-1.243 3.534 0 1.439.465 2.76 1.243 3.534a.424.424 0 0 1 0 .602.43.43 0 0 1-.606 0c-1.662-1.65-5.451-1.65-7.113 0a.43.43 0 0 1-.607 0Zm15.299-4.134c0-.397-.155-.77-.438-1.051a1.495 1.495 0 0 0-1.058-.435c-.383 0-.766.145-1.058.435a1.481 1.481 0 0 0 0 2.102c.583.58 1.532.58 2.116 0 .283-.28.438-.654.438-1.05Zm.168 1.654a2.354 2.354 0 0 1-1.664.684 2.354 2.354 0 0 1-1.664-.684 2.33 2.33 0 0 1 0-3.308 2.366 2.366 0 0 1 3.328 0 2.33 2.33 0 0 1 0 3.308ZM3.85 12.012a1.491 1.491 0 0 0-1.496-1.487 1.493 1.493 0 0 0-1.496 1.487c0 .397.155.77.437 1.051.566.561 1.551.561 2.116 0 .283-.281.439-.654.439-1.051Zm.168 1.654a2.354 2.354 0 0 1-1.665.684 2.355 2.355 0 0 1-1.664-.684 2.332 2.332 0 0 1 0-3.308 2.367 2.367 0 0 1 3.329 0 2.33 2.33 0 0 1 0 3.308Zm14.367 4.7a9.034 9.034 0 0 1-6.41 2.639 9.033 9.033 0 0 1-6.41-2.638c-1.175-1.166-1.82-2.56-2.156-3.524l-.81.28c.364 1.047 1.07 2.566 2.36 3.846a9.888 9.888 0 0 0 7.016 2.888 9.888 9.888 0 0 0 7.016-2.888 10.234 10.234 0 0 0 2.43-3.848l-.812-.276a9.37 9.37 0 0 1-2.224 3.522ZM3.407 9.158l-.81-.28c.52-1.484 1.358-2.851 2.363-3.849a9.887 9.887 0 0 1 7.014-2.885 9.885 9.885 0 0 1 7.014 2.885 10.497 10.497 0 0 1 2.43 3.85l-.809.279a9.628 9.628 0 0 0-2.228-3.526 9.03 9.03 0 0 0-6.407-2.636 9.03 9.03 0 0 0-6.408 2.636c-.914.909-1.681 2.161-2.159 3.526Z"/></svg>
@@ -4036,7 +3995,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ssm-cmd/" class="md-nav__link">
+      <a href="../../../CLI/awscli/ssm-cmd/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183 0 .08-.048.16-.152.24l-.503.335a.383.383 0 0 1-.208.072c-.08 0-.16-.04-.239-.112a2.47 2.47 0 0 1-.287-.375 6.18 6.18 0 0 1-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67 0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533 0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272 0 .551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28 0-.568.031-.863.103-.295.072-.583.16-.862.272a2.287 2.287 0 0 1-.28.104.488.488 0 0 1-.127.023c-.112 0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597 0 0 1 .224-.167 4.577 4.577 0 0 1 1.005-.36 4.84 4.84 0 0 1 1.246-.151c.95 0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263 0 .534-.048.822-.144a1.78 1.78 0 0 0 .758-.51 1.27 1.27 0 0 0 .272-.512c.047-.191.08-.423.08-.694v-.335a6.66 6.66 0 0 0-.735-.136 6.02 6.02 0 0 0-.75-.048c-.535 0-.926.104-1.19.32-.263.215-.39.518-.39.917 0 .375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144 0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398 0 0 1-.072-.32c0-.128.064-.2.191-.2h.783c.151 0 .255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549 0 0 1 .32-.08h.638c.152 0 .256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52 0 0 1 .311-.08h.743c.127 0 .2.065.2.2 0 .04-.009.08-.017.128a1.137 1.137 0 0 1-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51 0 0 1-.303.08h-.687c-.151 0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415 0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563 0 0 1-.048-.224v-.407c0-.167.064-.247.183-.247.048 0 .096.008.144.024.048.016.12.048.2.08.271.12.566.215.878.279.319.064.63.096.95.096.502 0 .894-.088 1.165-.264a.86.86 0 0 0 .415-.758.777.777 0 0 0-.215-.559c-.144-.151-.416-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902 0 0 1-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175 0 .359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69 0 0 1 .24.2.43.43 0 0 1 .071.263v.375c0 .168-.064.256-.184.256a.83.83 0 0 1-.303-.096 3.652 3.652 0 0 0-1.532-.311c-.455 0-.815.071-1.062.223-.248.152-.375.383-.375.71 0 .224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117 0 .343-.072.655-.207.926a2.157 2.157 0 0 1-.583.703c-.248.2-.543.343-.886.447-.36.111-.734.167-1.142.167zm1.509 3.88c-2.626 1.94-6.442 2.969-9.722 2.969-4.598 0-8.74-1.7-11.87-4.526-.247-.223-.024-.527.272-.351 3.384 1.963 7.559 3.153 11.877 3.153 2.914 0 6.114-.607 9.06-1.852.439-.2.814.287.383.607zm1.094-1.246c-.336-.43-2.22-.207-3.074-.103-.255.032-.295-.192-.063-.36 1.5-1.053 3.967-.75 4.254-.399.287.36-.08 2.826-1.485 4.007-.215.184-.423.088-.327-.151.32-.79 1.03-2.57.695-2.994z"/></svg>
@@ -4059,7 +4018,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../vpc-cmd/" class="md-nav__link">
+      <a href="../../../CLI/awscli/vpc-cmd/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.763 10.036c0 .296.032.535.088.71.064.176.144.368.256.576.04.063.056.127.056.183 0 .08-.048.16-.152.24l-.503.335a.383.383 0 0 1-.208.072c-.08 0-.16-.04-.239-.112a2.47 2.47 0 0 1-.287-.375 6.18 6.18 0 0 1-.248-.471c-.622.734-1.405 1.101-2.347 1.101-.67 0-1.205-.191-1.596-.574-.391-.384-.59-.894-.59-1.533 0-.678.239-1.23.726-1.644.487-.415 1.133-.623 1.955-.623.272 0 .551.024.846.064.296.04.6.104.918.176v-.583c0-.607-.127-1.03-.375-1.277-.255-.248-.686-.367-1.3-.367-.28 0-.568.031-.863.103-.295.072-.583.16-.862.272a2.287 2.287 0 0 1-.28.104.488.488 0 0 1-.127.023c-.112 0-.168-.08-.168-.247v-.391c0-.128.016-.224.056-.28a.597.597 0 0 1 .224-.167 4.577 4.577 0 0 1 1.005-.36 4.84 4.84 0 0 1 1.246-.151c.95 0 1.644.216 2.091.647.439.43.662 1.085.662 1.963v2.586zm-3.24 1.214c.263 0 .534-.048.822-.144a1.78 1.78 0 0 0 .758-.51 1.27 1.27 0 0 0 .272-.512c.047-.191.08-.423.08-.694v-.335a6.66 6.66 0 0 0-.735-.136 6.02 6.02 0 0 0-.75-.048c-.535 0-.926.104-1.19.32-.263.215-.39.518-.39.917 0 .375.095.655.295.846.191.2.47.296.838.296zm6.41.862c-.144 0-.24-.024-.304-.08-.064-.048-.12-.16-.168-.311L7.586 5.55a1.398 1.398 0 0 1-.072-.32c0-.128.064-.2.191-.2h.783c.151 0 .255.025.31.08.065.048.113.16.16.312l1.342 5.284 1.245-5.284c.04-.16.088-.264.151-.312a.549.549 0 0 1 .32-.08h.638c.152 0 .256.025.32.08.063.048.12.16.151.312l1.261 5.348 1.381-5.348c.048-.16.104-.264.16-.312a.52.52 0 0 1 .311-.08h.743c.127 0 .2.065.2.2 0 .04-.009.08-.017.128a1.137 1.137 0 0 1-.056.2l-1.923 6.17c-.048.16-.104.263-.168.311a.51.51 0 0 1-.303.08h-.687c-.151 0-.255-.024-.32-.08-.063-.056-.119-.16-.15-.32l-1.238-5.148-1.23 5.14c-.04.16-.087.264-.15.32-.065.056-.177.08-.32.08zm10.256.215c-.415 0-.83-.048-1.229-.143-.399-.096-.71-.2-.918-.32-.128-.071-.215-.151-.247-.223a.563.563 0 0 1-.048-.224v-.407c0-.167.064-.247.183-.247.048 0 .096.008.144.024.048.016.12.048.2.08.271.12.566.215.878.279.319.064.63.096.95.096.502 0 .894-.088 1.165-.264a.86.86 0 0 0 .415-.758.777.777 0 0 0-.215-.559c-.144-.151-.416-.287-.807-.415l-1.157-.36c-.583-.183-1.014-.454-1.277-.813a1.902 1.902 0 0 1-.4-1.158c0-.335.073-.63.216-.886.144-.255.335-.479.575-.654.24-.184.51-.32.83-.415.32-.096.655-.136 1.006-.136.175 0 .359.008.535.032.183.024.35.056.518.088.16.04.312.08.455.127.144.048.256.096.336.144a.69.69 0 0 1 .24.2.43.43 0 0 1 .071.263v.375c0 .168-.064.256-.184.256a.83.83 0 0 1-.303-.096 3.652 3.652 0 0 0-1.532-.311c-.455 0-.815.071-1.062.223-.248.152-.375.383-.375.71 0 .224.08.416.24.567.159.152.454.304.877.44l1.134.358c.574.184.99.44 1.237.767.247.327.367.702.367 1.117 0 .343-.072.655-.207.926a2.157 2.157 0 0 1-.583.703c-.248.2-.543.343-.886.447-.36.111-.734.167-1.142.167zm1.509 3.88c-2.626 1.94-6.442 2.969-9.722 2.969-4.598 0-8.74-1.7-11.87-4.526-.247-.223-.024-.527.272-.351 3.384 1.963 7.559 3.153 11.877 3.153 2.914 0 6.114-.607 9.06-1.852.439-.2.814.287.383.607zm1.094-1.246c-.336-.43-2.22-.207-3.074-.103-.255.032-.295-.192-.063-.36 1.5-1.053 3.967-.75 4.254-.399.287.36-.08 2.826-1.485 4.007-.215.184-.423.088-.327-.151.32-.79 1.03-2.57.695-2.994z"/></svg>
@@ -4132,7 +4091,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../windows/powershell/" class="md-nav__link">
+      <a href="../../../CLI/windows/powershell/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4208,91 +4167,19 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#get-role-arn-by-name" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      get role arn by name
+      创建服务帐户
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#get-policy-arn" class="md-nav__link">
-    <span class="md-ellipsis">
-      get policy arn
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-user" class="md-nav__link">
-    <span class="md-ellipsis">
-      create user
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#attach-role-policy" class="md-nav__link">
-    <span class="md-ellipsis">
-      attach role policy
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#create-role" class="md-nav__link">
-    <span class="md-ellipsis">
-      create role
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="create role">
+    <nav class="md-nav" aria-label="创建服务帐户">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#func-ec2-admin-role-create-" class="md-nav__link">
+  <a href="#pod-sa" class="md-nav__link">
     <span class="md-ellipsis">
-      func-ec2-admin-role-create-
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-role-for-firehose" class="md-nav__link">
-    <span class="md-ellipsis">
-      create role for firehose
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-role-for-api-gateway" class="md-nav__link">
-    <span class="md-ellipsis">
-      create role for api gateway
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-role-for-account" class="md-nav__link">
-    <span class="md-ellipsis">
-      create role for account
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#create-service-linked-role" class="md-nav__link">
-    <span class="md-ellipsis">
-      create service-linked role
+      创建 Pod 并使用 SA
     </span>
   </a>
   
@@ -4304,19 +4191,37 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#assume-another-role-" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      assume-another-role-
+      服务帐户令牌创建 / 替换
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="assume-another-role-">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      使用服务帐户令牌
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="使用服务帐户令牌">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#assume-in-credentials-file" class="md-nav__link">
+  <a href="#token" class="md-nav__link">
     <span class="md-ellipsis">
-      assume in credentials file
+      手工申请一个token
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#token_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      验证 token
     </span>
   </a>
   
@@ -4328,9 +4233,18 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#reference" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      reference
+      结论
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考链接
     </span>
   </a>
   
@@ -4355,13 +4269,7 @@
     
     
     
-      <a href="../../../tags/#awssecurityiam" class="md-tag">aws/security/iam</a>
-    
-  
-    
-    
-    
-      <a href="../../../tags/#awscmd" class="md-tag">aws/cmd</a>
+      <a href="../../../tags/#awscontainereks" class="md-tag">aws/container/eks</a>
     
   
 </nav>
@@ -4371,108 +4279,298 @@
 <blockquote>
 <p>[!WARNING] This is a github note</p>
 </blockquote>
-<h1 id="iam-cmd">iam cmd<a class="headerlink" href="#iam-cmd" title="Permanent link">&para;</a></h1>
-<h2 id="get-role-arn-by-name">get role arn by name<a class="headerlink" href="#get-role-arn-by-name" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>aws<span class="w"> </span>iam<span class="w"> </span>get-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">role_name</span><span class="si">}</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Role.Arn&#39;</span><span class="w"> </span>--output<span class="w"> </span>text
-</code></pre></div>
-<h2 id="get-policy-arn">get policy arn<a class="headerlink" href="#get-policy-arn" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>aws<span class="w"> </span>iam<span class="w"> </span>list-policies<span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Policies[*].[PolicyName,Arn]&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>CloudWatchAgentServerPolicy
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>aws<span class="w"> </span>iam<span class="w"> </span>get-policy<span class="w"> </span>--policy-arn<span class="w"> </span>arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy
-</code></pre></div>
-<h2 id="create-user">create user<a class="headerlink" href="#create-user" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>aws<span class="w"> </span>iam<span class="w"> </span>create-user<span class="w"> </span>--user-name<span class="w"> </span>cwagent-onprem
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># attach user policy</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>aws<span class="w"> </span>iam<span class="w"> </span>attach-user-policy<span class="w"> </span>--user-name<span class="w"> </span>cwagent-onprem<span class="w"> </span>--policy-arn<span class="w"> </span>arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># create access key, save the output</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>aws<span class="w"> </span>iam<span class="w"> </span>create-access-key<span class="w"> </span>--user-name<span class="w"> </span>cwagent-onprem
-</code></pre></div>
-<h2 id="attach-role-policy">attach role policy<a class="headerlink" href="#attach-role-policy" title="Permanent link">&para;</a></h2>
+<h1 id="irsa-token">IRSA 中的 Token 剖析<a class="headerlink" href="#irsa-token" title="Permanent link">&para;</a></h1>
+<p>本文档总结了将 AWS IAM 角色授予 AWS EKS 集群的服务账户的过程。 这些功能称为 IRSA（服务帐户的 IAM 角色 - IAM Role for Service Account ）。</p>
+<p>Projected SA Token 实际上并不是由 EKS 集群的 OIDC Identity Provider 颁发，而是由 Kubernetes API Server 颁发，是 Kubernetes API Server 在颁发时使用与 OIDC Identity Provider 同样的私钥来颁发 Projected SA Token。被视为由集群的 OIDC Identity Provider 颁发的令牌。这也是后续 AWS STS 检查令牌颁发者并确认它是受信任的（联合）OIDC Identity Provider 的原因。使用 OIDC Identity Provider 的公钥验证 Projected SA Token ，如果确定它是有效的，AWS STS 会将凭证传输到 Pod 内的应用程序。之后，应用程序将获得一个使用凭证的 AWS IAM 角色并访问 AWS 服务。</p>
+<p><a class="glightbox" href="../../../git-attachment/TC-eks-irsa-token-deep-dive-lab-png-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="git/git-mkdocs/git-attachment/TC-eks-irsa-token-deep-dive-lab-png-1.png" src="../../../git-attachment/TC-eks-irsa-token-deep-dive-lab-png-1.png" title="git/git-mkdocs/git-attachment/TC-eks-irsa-token-deep-dive-lab-png-1.png" /></a><br />
+[图 1] </p>
+<p>AWS EKS 版本 1.14 或更高版本提供将 AWS IAM 角色分配给 EKS (K8S) 集群的服务账户的能力。通过此功能，使用已授予 AWS IAM 角色的服务账户的 Pod 可以使用 AWS 服务。 [图 1] 显示此过程分为 4 个步骤：Service Account 创建、Pod 创建、Service Account Token 创建/替换和 Service Account Token 使用。 [图 1] 的主要组成部分如下。</p>
 <ul>
-<li><a href="../../../others/file-storage-gateway-lab/#create-nfs-share-" title="../../others/file-storage-gateway-lab">../../others/file-storage-gateway-lab</a></li>
+<li>AWS EKS OIDC Identity Provider：表示每个 EKS 集群拥有的专用 OIDC 身份提供商。它已注册（联合）为受 AWS IAM 信任的 OIDC 身份提供商。</li>
+<li>私钥/公钥：AWS EKS OIDC 身份提供商和 Kubernetes API 服务器共享和使用相同的私钥/公钥。</li>
+<li>Pod Identity Webhook：代表 Kubernetes API Server 的 Mutating Webhook。当 Pod 使用分配了 AWS IAM 角色的服务账户时，它会扮演更改 Pod 规范的角色，以便授予服务账户的 AWS IAM 角色可以在 Pod 内部使用。</li>
+<li>Projected SA Token：指示 AWS IAM 角色被授予的服务账户的令牌。它是与 Kubernetes 默认使用的基本服务帐户令牌不同的令牌。与基本的 Service Account Token 不同，它设置了过期时间和受众，并且定期更换了 token。它具有 JWT Token 的形式。</li>
 </ul>
-<h2 id="create-role">create role<a class="headerlink" href="#create-role" title="Permanent link">&para;</a></h2>
-<h3 id="func-ec2-admin-role-create-">func-ec2-admin-role-create-<a class="headerlink" href="#func-ec2-admin-role-create-" title="Permanent link">&para;</a></h3>
-<ul>
-<li>create ec2 admin role<br />
-<div class="highlight"><span class="filename">func-ec2-admin-role-create</span><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># no dependency variable</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="c1"># output ROLE_ARN / INSTANCE_PROFILE_ARN</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="k">function</span><span class="w"> </span>ec2-admin-role-create<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">{</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nv">ROLE_NAME</span><span class="o">=</span>ec2-admin-role-<span class="k">$(</span><span class="nv">TZ</span><span class="o">=</span>CST-8<span class="w"> </span>date<span class="w"> </span>+%Y%m%d-%H%M<span class="k">)</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">TMP</span><span class="o">=</span><span class="k">$(</span>mktemp<span class="w"> </span>--suffix<span class="w"> </span>.<span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="k">)</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span>cat<span class="w"> </span>&gt;<span class="si">${</span><span class="nv">TMP</span><span class="si">}</span><span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="s">{</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="s">    &quot;Version&quot;: &quot;2012-10-17&quot;,</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="s">    &quot;Statement&quot;: [</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="s">        {</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="s">            &quot;Effect&quot;: &quot;Allow&quot;,</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="s">            &quot;Principal&quot;: {</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="s">                &quot;Service&quot;: &quot;ec2.amazonaws.com&quot;</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="s">            },</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="s">            &quot;Action&quot;: &quot;sts:AssumeRole&quot;</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="s">        }</span>
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="s">    ]</span>
-<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="s">}</span>
-<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="s">EOF</span>
-<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">    </span>aws<span class="w"> </span>iam<span class="w"> </span>create-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">        </span>--assume-role-policy-document<span class="w"> </span>file://<span class="si">${</span><span class="nv">TMP</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>tee<span class="w"> </span><span class="si">${</span><span class="nv">TMP</span><span class="si">}</span>.out.role
-<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">    </span>aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">        </span>--policy-arn<span class="w"> </span><span class="s2">&quot;arn:aws:iam::aws:policy/AdministratorAccess&quot;</span>
-<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">    </span>aws<span class="w"> </span>iam<span class="w"> </span>create-instance-profile<span class="w"> </span>--instance-profile-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>tee<span class="w"> </span><span class="si">${</span><span class="nv">TMP</span><span class="si">}</span>.out.instance-profile
-<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">    </span>aws<span class="w"> </span>iam<span class="w"> </span>add-role-to-instance-profile<span class="w"> </span>--instance-profile-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">        </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_NAME</span><span class="si">}</span>
-<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">    </span><span class="nv">ROLE_ARN</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span><span class="si">${</span><span class="nv">TMP</span><span class="si">}</span>.out.role<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Role.Arn&#39;</span><span class="k">)</span>
-<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">    </span><span class="nv">INSTANCE_PROFILE_ARN</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span><span class="si">${</span><span class="nv">TMP</span><span class="si">}</span>.out.instance-profile<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.InstanceProfile.Arn&#39;</span><span class="k">)</span>
-<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="o">}</span>
-</code></pre></div></li>
-</ul>
-<h3 id="create-role-for-firehose">create role for firehose<a class="headerlink" href="#create-role-for-firehose" title="Permanent link">&para;</a></h3>
-<ul>
-<li><a href="../../../EKS/solutions/logging/stream-k8s-control-panel-logs-to-s3/#lambda" title="../../EKS/solutions/logging/stream-k8s-control-panel-logs-to-s3">../../EKS/solutions/logging/stream-k8s-control-panel-logs-to-s3</a></li>
-</ul>
-<h3 id="create-role-for-api-gateway">create role for api gateway<a class="headerlink" href="#create-role-for-api-gateway" title="Permanent link">&para;</a></h3>
-<ul>
-<li><a href="../apigw-cmd/#create-apigw-role-" title="apigw-cmd">apigw-cmd</a></li>
-</ul>
-<h3 id="create-role-for-account">create role for account<a class="headerlink" href="#create-role-for-account" title="Permanent link">&para;</a></h3>
-<ul>
-<li><a href="../../linux/assume-tool/" title="../linux/assume-tool">../linux/assume-tool</a></li>
-</ul>
-<h3 id="create-service-linked-role">create service-linked role<a class="headerlink" href="#create-service-linked-role" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>aws<span class="w"> </span>iam<span class="w"> </span>create-service-linked-role<span class="w"> </span>--aws-service-name<span class="w"> </span>SERVICE-NAME.amazonaws.com
-</code></pre></div>
-<h2 id="assume-another-role-">assume-another-role-<a class="headerlink" href="#assume-another-role-" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">account_id</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">&#39;Account&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nv">role_arn</span><span class="o">=</span>arn:aws:iam::<span class="si">${</span><span class="nv">account_id</span><span class="si">}</span>:role/eksworkshop-admin
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nv">tmp_file</span><span class="o">=</span>/tmp/<span class="nv">$$</span>.1
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>aws<span class="w"> </span>sts<span class="w"> </span>assume-role<span class="w"> </span>--role-arn<span class="w"> </span><span class="si">${</span><span class="nv">role_arn</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span>--duration-seconds<span class="w"> </span><span class="m">43200</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">  </span>--role-session-name<span class="w"> </span>Session-<span class="nv">$RANDOM</span><span class="w"> </span><span class="p">|</span>tee<span class="w"> </span><span class="si">${</span><span class="nv">tmp_file</span><span class="si">}</span>
+<h2 id="_1">创建服务帐户<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>要执行以下命令前，确保你有一个可用的 EKS 环境，或者参见参考资料 2 创建环境。</p>
+<p>关联 OIDC Identity Provider 并且创建 Service Account ，执行：<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">cluster_name</span><span class="o">=</span>eksworkshop-eksctl
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span>us-east-2
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>eksctl<span class="w"> </span>utils<span class="w"> </span>associate-iam-oidc-provider<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span>--cluster<span class="w"> </span><span class="nv">$cluster_name</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span>--approve
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nv">serviceaccount_name</span><span class="o">=</span>adminaccess
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nv">namespace_name</span><span class="o">=</span>default
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="nv">policy_arn</span><span class="o">=</span>arn:aws:iam::aws:policy/AdministratorAccess
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>eksctl<span class="w"> </span>create<span class="w"> </span>iamserviceaccount<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">  </span>--cluster<span class="o">=</span><span class="nv">$cluster_name</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">  </span>--name<span class="o">=</span><span class="nv">$serviceaccount_name</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">  </span>--namespace<span class="o">=</span><span class="nv">$namespace_name</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">  </span>--attach-policy-arn<span class="o">=</span><span class="nv">$policy_arn</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">  </span>--approve<span class="w"> </span>--override-existing-serviceaccounts
+</code></pre></div></p>
+<p>执行：<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>sa<span class="w"> </span><span class="si">${</span><span class="nv">serviceaccount_name</span><span class="si">}</span><span class="w"> </span>-o<span class="o">=</span>yaml
+</code></pre></div></p>
+<p>输出：<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ServiceAccount</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="nt">annotations</span><span class="p">:</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nt">eks.amazonaws.com/role-arn</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:iam::123456789012:role/eksctl-eksworkshop-eksctl-addon-iamserviceac-Role1-xxxxxxxxxxxxxx</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span><span class="nt">creationTimestamp</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;2022-11-02T07:22:41Z&quot;</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="nt">labels</span><span class="p">:</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">    </span><span class="nt">app.kubernetes.io/managed-by</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eksctl</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">adminaccess</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span><span class="nt">namespace</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">default</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">  </span><span class="nt">resourceVersion</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;4209&quot;</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">  </span><span class="nt">uid</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">7621dbcf-6c33-4c4d-881d-1f85d29b89ef</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="nt">secrets</span><span class="p">:</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">adminaccess-token-4cc6n</span>
+</code></pre></div><br />
+[文本 1]</p>
+<p>要将 AWS IAM 角色分配给服务账户，您必须首先创建一个服务账户。此时，必须指定要分配给 eks.amazonaws.com/role-arn 注解的 AWS IAM 角色的 ARN。 [文本 1] 显示服务账户。您可以看到正在分配角色的 ARN 。</p>
+<p>执行：<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">role_arn</span><span class="o">=</span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>sa<span class="w"> </span><span class="si">${</span><span class="nv">serviceaccount_name</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">namespace_name</span><span class="si">}</span><span class="w"> </span>-o<span class="w"> </span>json<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.metadata.annotations.&quot;eks.amazonaws.com/role-arn&quot;&#39;</span><span class="k">)</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>aws<span class="w"> </span>iam<span class="w"> </span>get-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">role_arn</span><span class="p">##*role/</span><span class="si">}</span><span class="w"> </span>--output<span class="w"> </span>json<span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Role.AssumeRolePolicyDocument&#39;</span>
+</code></pre></div></p>
+<p>输出：<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="p">{</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">    </span><span class="nt">&quot;Version&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2012-10-17&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">    </span><span class="nt">&quot;Statement&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">        </span><span class="p">{</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">            </span><span class="nt">&quot;Effect&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Allow&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">            </span><span class="nt">&quot;Principal&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">                </span><span class="nt">&quot;Federated&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;arn:aws:iam::123456789012:oidc-provider/oidc.eks.us-east-2.amazonaws.com/id/D3488XXXXXXXXXXXXXXXXXXXXXA21CD3&quot;</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">            </span><span class="p">},</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">            </span><span class="nt">&quot;Action&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sts:AssumeRoleWithWebIdentity&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">            </span><span class="nt">&quot;Condition&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">                </span><span class="nt">&quot;StringEquals&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="w">                    </span><span class="nt">&quot;oidc.eks.us-east-2.amazonaws.com/id/D3488XXXXXXXXXXXXXXXXXXXXXA21CD3:aud&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sts.amazonaws.com&quot;</span><span class="p">,</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">                    </span><span class="nt">&quot;oidc.eks.us-east-2.amazonaws.com/id/D3488XXXXXXXXXXXXXXXXXXXXXA21CD3:sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;system:serviceaccount:default:adminaccess&quot;</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">                </span><span class="p">}</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">            </span><span class="p">}</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">        </span><span class="p">}</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">    </span><span class="p">]</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="p">}</span>
+</code></pre></div><br />
+[文本 2]</p>
+<p>[文本 2] 显示了 AWS IAM 角色授予 [文本 1] 中服务账户的信任关系。信任关系表示使用 AWS IAM 角色的身份验证方法和条件。 Principal 项指示需要对谁进行身份验证才能被授予 AWS IAM 角色。在[文本 2]中，您可以看到指定了 EKS Cluster 的 OIDC Identity Provider 的 URL。因此，这意味着<u>在 EKS 集群内运行的 Pod 必须通过 EKS 集群的 OIDC 身份提供者的身份验证才能被授予 AWS IAM 角色</u>。</p>
+<p>获取 AWS IAM Role 的方法在 Trust Relationship 的 Action 中指定，AssumeRoleWithWebIdentity 在 [文本 2] 的 Action 项中指定。 AssumeRoleWithWebIdentity 表示通过 OIDC Identity Provider 颁发的 JWT Token 进行身份验证。 Condition 表示 JWT Token 中必须包含的声明条件。 [文本 2] 表示<u>应在 aud Claim 中指定“sts.amazonaws.com”，在 sub Claim 中指定“system:serviceaccount:default:adminaccess”</u>。</p>
+<p>在 IRSA 过程中，Projected SA Token 用作 JWT Token，Projected SA Token 满足上述所有条件。因此，通过使用 Projected SA Token，您可以获得和使用分配给服务账户的 AWS IAM 角色。</p>
+<h3 id="pod-sa">创建 Pod 并使用 SA<a class="headerlink" href="#pod-sa" title="Permanent link">&para;</a></h3>
+<p>创建一个 Pod 并且指定以之前创建的 Service Account 运行，然后观察并进行 Token 验证。执行：<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>cat<span class="w"> </span>&gt;sleep-pod.yaml<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="s">apiVersion: v1</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="s">kind: Pod</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="s">metadata:</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="s">  name: sleep-pod</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="s">spec:</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="s">  serviceAccountName: adminaccess</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="s">  containers:</span>
 <a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_ACCESS_KEY_ID</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span><span class="si">${</span><span class="nv">tmp_file</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Credentials.AccessKeyId&#39;</span><span class="w"> </span><span class="k">)</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_SECRET_ACCESS_KEY</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span><span class="si">${</span><span class="nv">tmp_file</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Credentials.SecretAccessKey&#39;</span><span class="w"> </span><span class="k">)</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_SESSION_TOKEN</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span><span class="si">${</span><span class="nv">tmp_file</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Credentials.SessionToken&#39;</span><span class="w"> </span><span class="k">)</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span><span class="m">169</span>.254.169.254/latest/dynamic/instance-identity/document<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.region&#39;</span><span class="k">)</span>
-</code></pre></div>
-<h3 id="assume-in-credentials-file">assume in credentials file<a class="headerlink" href="#assume-in-credentials-file" title="Permanent link">&para;</a></h3>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="s">    - name: my-aws-cli</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="s">      image: amazon/aws-cli:latest</span>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="s">      command: [&#39;sleep&#39;, &#39;360000&#39;]</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="s">  restartPolicy: Never</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="s">EOF</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>sleep-pod.yaml
+</code></pre></div></p>
+<p>执行：<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>pod<span class="w"> </span>sleep-pod<span class="w"> </span>-o<span class="w"> </span>yaml
+</code></pre></div></p>
+<p>输出：<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nn">...</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">  </span><span class="nt">containers</span><span class="p">:</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">command</span><span class="p">:</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sleep</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&quot;360000&quot;</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span><span class="nt">env</span><span class="p">:</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_STS_REGIONAL_ENDPOINTS</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">regional</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_DEFAULT_REGION</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">us-east-2</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_REGION</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">us-east-2</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_ROLE_ARN</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">arn:aws:iam::123456789012:role/eksctl-eksworkshop-eksctl-addon-iamserviceac-Role1-1JL3FI83YZ5ZN</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AWS_WEB_IDENTITY_TOKEN_FILE</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w">      </span><span class="nt">value</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/run/secrets/eks.amazonaws.com/serviceaccount/token</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="w">    </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">amazon/aws-cli:latest</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="w">    </span><span class="nt">imagePullPolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Always</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="w">    </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">my-aws-cli</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="w">    </span><span class="nt">resources</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="w">    </span><span class="nt">terminationMessagePath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/dev/termination-log</span>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="w">    </span><span class="nt">terminationMessagePolicy</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">File</span>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="w">    </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/run/secrets/kubernetes.io/serviceaccount</span>
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-api-access-srtw7</span>
+<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="w">      </span><span class="nt">readOnly</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/var/run/secrets/eks.amazonaws.com/serviceaccount</span>
+<a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a><span class="w">      </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws-iam-token</span>
+<a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a><span class="w">      </span><span class="nt">readOnly</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a><span class="nn">...</span>
+<a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a><span class="w">  </span><span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">aws-iam-token</span>
+<a id="__codelineno-7-35" name="__codelineno-7-35" href="#__codelineno-7-35"></a><span class="w">    </span><span class="nt">projected</span><span class="p">:</span>
+<a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a><span class="w">      </span><span class="nt">defaultMode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">420</span>
+<a id="__codelineno-7-37" name="__codelineno-7-37" href="#__codelineno-7-37"></a><span class="w">      </span><span class="nt">sources</span><span class="p">:</span>
+<a id="__codelineno-7-38" name="__codelineno-7-38" href="#__codelineno-7-38"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">serviceAccountToken</span><span class="p">:</span>
+<a id="__codelineno-7-39" name="__codelineno-7-39" href="#__codelineno-7-39"></a><span class="w">          </span><span class="nt">audience</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sts.amazonaws.com</span>
+<a id="__codelineno-7-40" name="__codelineno-7-40" href="#__codelineno-7-40"></a><span class="w">          </span><span class="nt">expirationSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">86400</span>
+<a id="__codelineno-7-41" name="__codelineno-7-41" href="#__codelineno-7-41"></a><span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">token</span>
+<a id="__codelineno-7-42" name="__codelineno-7-42" href="#__codelineno-7-42"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-api-access-srtw7</span>
+<a id="__codelineno-7-43" name="__codelineno-7-43" href="#__codelineno-7-43"></a><span class="w">    </span><span class="nt">projected</span><span class="p">:</span>
+<a id="__codelineno-7-44" name="__codelineno-7-44" href="#__codelineno-7-44"></a><span class="w">      </span><span class="nt">defaultMode</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">420</span>
+<a id="__codelineno-7-45" name="__codelineno-7-45" href="#__codelineno-7-45"></a><span class="w">      </span><span class="nt">sources</span><span class="p">:</span>
+<a id="__codelineno-7-46" name="__codelineno-7-46" href="#__codelineno-7-46"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">serviceAccountToken</span><span class="p">:</span>
+<a id="__codelineno-7-47" name="__codelineno-7-47" href="#__codelineno-7-47"></a><span class="w">          </span><span class="nt">expirationSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3607</span>
+<a id="__codelineno-7-48" name="__codelineno-7-48" href="#__codelineno-7-48"></a><span class="w">          </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">token</span>
+<a id="__codelineno-7-49" name="__codelineno-7-49" href="#__codelineno-7-49"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">configMap</span><span class="p">:</span>
+<a id="__codelineno-7-50" name="__codelineno-7-50" href="#__codelineno-7-50"></a><span class="w">          </span><span class="nt">items</span><span class="p">:</span>
+<a id="__codelineno-7-51" name="__codelineno-7-51" href="#__codelineno-7-51"></a><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ca.crt</span>
+<a id="__codelineno-7-52" name="__codelineno-7-52" href="#__codelineno-7-52"></a><span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ca.crt</span>
+<a id="__codelineno-7-53" name="__codelineno-7-53" href="#__codelineno-7-53"></a><span class="w">          </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">kube-root-ca.crt</span>
+<a id="__codelineno-7-54" name="__codelineno-7-54" href="#__codelineno-7-54"></a><span class="w">      </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">downwardAPI</span><span class="p">:</span>
+<a id="__codelineno-7-55" name="__codelineno-7-55" href="#__codelineno-7-55"></a><span class="w">          </span><span class="nt">items</span><span class="p">:</span>
+<a id="__codelineno-7-56" name="__codelineno-7-56" href="#__codelineno-7-56"></a><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">fieldRef</span><span class="p">:</span>
+<a id="__codelineno-7-57" name="__codelineno-7-57" href="#__codelineno-7-57"></a><span class="w">              </span><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">v1</span>
+<a id="__codelineno-7-58" name="__codelineno-7-58" href="#__codelineno-7-58"></a><span class="w">              </span><span class="nt">fieldPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">metadata.namespace</span>
+<a id="__codelineno-7-59" name="__codelineno-7-59" href="#__codelineno-7-59"></a><span class="w">            </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">namespace</span>
+<a id="__codelineno-7-60" name="__codelineno-7-60" href="#__codelineno-7-60"></a><span class="nn">...</span>
+</code></pre></div><br />
+[文本 3]</p>
+<p>为了在 Pod 内执行 AssumeRoleWithWebIdentity，需要 Pod 运行所在的 Kubernetes 集群区域、要授予的 AWS IAM 角色以及 JWT Token 的位置信息。这些必要的信息被 EKS 控制平面中存在的 Pod Identity Webhook 强行注入到 Pod 中。当创建使用具有 AWS IAM 角色的服务账户的 Pod 时，Pod Identity Webhook 通过更改（变异）Pod 的规范来注入信息。 [文本 3] 显示了由于 Pod Identity Webhook 而更改的Pod。</p>
+<p>Pod Identity Webhook 创建并挂载一个名为 AWS_DEFAULT_REGION、AWS_REGION、AWS_ROLE_ARN、AWS_WEB_IDENTITY_TOKEN_FILE 环境变量和 <code>aws-iam-token</code> 的 Projected SA Token 卷。<u>Projected SA Token 存在于名为 aws-iam-token 的 Projected SA Token 卷中</u>。您可以看到 Projected SA Token 卷设置包括过期时间和 Audience 设置。</p>
+<p>Pod Identity Webhook 添加的 “AWS_*” 环境变量和 “aws-iam-token” Token 被 AWS SDK 使用。 AWS SDK 通过设置的环境变量信息执行 AssumeRoleWithWebIdentity 操作。在 [文本 3] 中，您可以看到默认为每个 Pod 分配的默认 Service Account 设置仍然存在。</p>
+<p>执行：<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>mutatingwebhookconfiguration<span class="w"> </span>pod-identity-webhook<span class="w"> </span>-o<span class="w"> </span>yaml
+</code></pre></div><br />
+上述命令输出中可以看到包含 <code>caBundle</code> ，该证书和以下 <code>configmap</code> 中的证书相同</p>
+<p>执行：<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>cm<span class="w"> </span>kube-root-ca.crt<span class="w"> </span>-o<span class="w"> </span>yaml
+</code></pre></div></p>
+<h2 id="_2">服务帐户令牌创建 / 替换<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>为了执行 AssumeRoleWithWebIdentity 操作，必须使用 JWT 形式的 ID Token，其中包含 OIDC 身份提供者颁发的身份验证信息。但是 Kubernetes API Server 并没有收到 OIDC Identity Provider 下发的 ID Token，而是直接创建一个 JWT Token 注入到 Pod 中。<u>为了让 Kubernetes API Server 代表 OIDC Identity Provider 生成 JWT Token，OIDC Identity Provider 使用的 Private/Public Key 也被 API Server 使用</u>。</p>
+<p>在 Kubernetes API Server 中，JWT Token 生成的必要设置是通过以下参数进行的。</p>
 <ul>
-<li><a href="https://docs.aws.amazon.com/sdkref/latest/guide/feature-assume-role-credentials.html">https://docs.aws.amazon.com/sdkref/latest/guide/feature-assume-role-credentials.html</a><br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>[profile A]
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>source_profile = B
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>role_arn =  arn:aws:iam::123456789012:role/RoleA
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>[profile B]
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>aws_access_key_id=AKIAIOSFODNN7EXAMPLE
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
-</code></pre></div></li>
+<li>service-account-signing-key-file ：指定用于签署服务帐户令牌的密钥文件的路径。期望指定 EKS 集群的 OIDC 身份提供者的私钥。</li>
+<li>service-account-key-file ：指定用于验证签名服务帐户令牌的密钥文件的路径。期望指定 EKS 集群的 OIDC 身份提供者的公钥。</li>
+<li>service-account-issuer ：设置 OIDC Identity Provider 的 URL，即 Service Account Token 的颁发者。预计 EKS 集群的 OIDC 身份提供者 URL 设置在 EKS 的 Kubernetes API 服务器中。</li>
 </ul>
-<h2 id="reference">reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
+<p>在 cloudwatch log insight 页面中进行查询，选中你的 eks 控制平面的日志组，并且选择日期范围覆盖集群创建时间点。<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>fields @timestamp, @message
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>| filter @message like /service-account/
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>| sort @timestamp desc
+</code></pre></div></p>
+<p>查询结果：<br />
+<a class="glightbox" href="../../../git-attachment/TC-eks-irsa-token-deep-dive-lab-png-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="git/git-mkdocs/git-attachment/TC-eks-irsa-token-deep-dive-lab-png-2.png" src="../../../git-attachment/TC-eks-irsa-token-deep-dive-lab-png-2.png" title="git/git-mkdocs/git-attachment/TC-eks-irsa-token-deep-dive-lab-png-2.png" /></a></p>
+<p>执行下面命令，并将输出复制到 jwt.io <br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>kubectl<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>pod/sleep-pod<span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">namespace_name</span><span class="si">}</span><span class="w"> </span>--<span class="w"> </span>cat<span class="w"> </span>/var/run/secrets/eks.amazonaws.com/serviceaccount/token<span class="w"> </span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="c1"># |jwt decode --json --iso8601 - |tee /tmp/$$.eks-token</span>
+</code></pre></div></p>
+<p>jwt 解析输出：<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="p">{</span>
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a><span class="w">  </span><span class="nt">&quot;header&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a><span class="w">    </span><span class="nt">&quot;alg&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;RS256&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="w">    </span><span class="nt">&quot;kid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;5d46b7af567c7c87b2a87603c8b144855bae1fc7&quot;</span>
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a><span class="w">  </span><span class="nt">&quot;payload&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a><span class="w">    </span><span class="nt">&quot;aud&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-12-8" name="__codelineno-12-8" href="#__codelineno-12-8"></a><span class="w">      </span><span class="s2">&quot;sts.amazonaws.com&quot;</span>
+<a id="__codelineno-12-9" name="__codelineno-12-9" href="#__codelineno-12-9"></a><span class="w">    </span><span class="p">],</span>
+<a id="__codelineno-12-10" name="__codelineno-12-10" href="#__codelineno-12-10"></a><span class="w">    </span><span class="nt">&quot;exp&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-11-03T07:23:53+00:00&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-11" name="__codelineno-12-11" href="#__codelineno-12-11"></a><span class="w">    </span><span class="nt">&quot;iat&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-11-02T07:23:53+00:00&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-12" name="__codelineno-12-12" href="#__codelineno-12-12"></a><span class="w">    </span><span class="nt">&quot;iss&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://oidc.eks.us-east-2.amazonaws.com/id/D3488XXXXXXXXXXXXXXXXXXXXXA21CD3&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-13" name="__codelineno-12-13" href="#__codelineno-12-13"></a><span class="w">    </span><span class="nt">&quot;kubernetes.io&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-14" name="__codelineno-12-14" href="#__codelineno-12-14"></a><span class="w">      </span><span class="nt">&quot;namespace&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;default&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-15" name="__codelineno-12-15" href="#__codelineno-12-15"></a><span class="w">      </span><span class="nt">&quot;pod&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-16" name="__codelineno-12-16" href="#__codelineno-12-16"></a><span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;sleep-pod&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-17" name="__codelineno-12-17" href="#__codelineno-12-17"></a><span class="w">        </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;b6c05863-18b9-46f1-9155-0a300ab5ceee&quot;</span>
+<a id="__codelineno-12-18" name="__codelineno-12-18" href="#__codelineno-12-18"></a><span class="w">      </span><span class="p">},</span>
+<a id="__codelineno-12-19" name="__codelineno-12-19" href="#__codelineno-12-19"></a><span class="w">      </span><span class="nt">&quot;serviceaccount&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-12-20" name="__codelineno-12-20" href="#__codelineno-12-20"></a><span class="w">        </span><span class="nt">&quot;name&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;adminaccess&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-21" name="__codelineno-12-21" href="#__codelineno-12-21"></a><span class="w">        </span><span class="nt">&quot;uid&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;7621dbcf-6c33-4c4d-881d-1f85d29b89ef&quot;</span>
+<a id="__codelineno-12-22" name="__codelineno-12-22" href="#__codelineno-12-22"></a><span class="w">      </span><span class="p">}</span>
+<a id="__codelineno-12-23" name="__codelineno-12-23" href="#__codelineno-12-23"></a><span class="w">    </span><span class="p">},</span>
+<a id="__codelineno-12-24" name="__codelineno-12-24" href="#__codelineno-12-24"></a><span class="w">    </span><span class="nt">&quot;nbf&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;2022-11-02T07:23:53+00:00&quot;</span><span class="p">,</span>
+<a id="__codelineno-12-25" name="__codelineno-12-25" href="#__codelineno-12-25"></a><span class="w">    </span><span class="nt">&quot;sub&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;system:serviceaccount:default:adminaccess&quot;</span>
+<a id="__codelineno-12-26" name="__codelineno-12-26" href="#__codelineno-12-26"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-12-27" name="__codelineno-12-27" href="#__codelineno-12-27"></a><span class="p">}</span>
+</code></pre></div><br />
+[文本 4]</p>
+<p>[文本 4] 显示了对 Pod 的 Projected SA 令牌执行 JWT Deconding 时的内容。 根据 service-account-issuer 参数，在 Issuer(iss) Claim 中设置了 EKS 集群的 OIDC Identity Provider 的 URL。 在 [文本 3] 中，由于 Audience 中设置了“sts.amazonaws.com”，Audience(aud) Claim 中也设置了“sts.amazonaws.com”。</p>
+<p>在 Subject(sub) Claim 中设置了相关内容。 Expiration(exp) 您还可以检查 Claim 中是否有过期时间。 可以看出 [文本 3] 中 Projected SA Token 的内容满足 [文本 2] 中 AWS IAM Role 的 Condition 条件。</p>
+<h2 id="_3">使用服务帐户令牌<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>Pod 内的 App 通过 AssumeRoleWithWebIdentity 操作向 AWS STS 发送 Projected SA Token 以获取 Credential。收到 Projected SA 令牌后，AWS STS 检查令牌颁发者并确认它是受信任的（联合）OIDC 身份提供商。如果确认 OIDC 身份提供者是可信的，则使用 OIDC 身份提供者的公钥验证投影 SA 令牌。如果确定它是有效的 Projected SA 令牌，AWS STS 会将凭证传输到 Pod 内的应用程序。之后，应用程序将获得一个使用凭证的 AWS IAM 角色并访问 AWS 服务。</p>
+<p>Projected SA Token 实际上并不是由 EKS 集群的 OIDC Identity Provider 颁发，而是由 Kubernetes API Server 颁发，而是 Kubernetes API Server 在颁发时使用与 OIDC Identity Provider 一起使用的私钥来颁发 Projected SA Token。被视为由集群的 OIDC 身份提供者颁发的令牌。</p>
+<p>以下步骤通过集群 Endpoint 手工申请 Token ，并使用 OIDC Identity Provider 的公钥进行签名验证，验证通过，可以表明该 Token 中包含的签名是由 OIDC Identity Provider 的私钥签发的。</p>
+<h3 id="token">手工申请一个token<a class="headerlink" href="#token" title="Permanent link">&para;</a></h3>
+<p>可以手工执行 curl 命令，从 API Server 获取令牌，参照如下代码：<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="nv">PAYLOAD</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>eks<span class="w"> </span>describe-cluster<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">  </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">cluster_name</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">&#39;cluster.{CA: certificateAuthority.data,Endpoint: endpoint}&#39;</span><span class="k">)</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$PAYLOAD</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-rc<span class="w"> </span>.CA<span class="w"> </span><span class="p">|</span><span class="w"> </span>base64<span class="w"> </span>--decode<span class="w"> </span>&gt;<span class="w"> </span>/tmp/public_cert<span class="w">  </span>
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a><span class="nv">ENDPOINT</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="nv">$PAYLOAD</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-rc<span class="w"> </span>.Endpoint<span class="k">)</span>
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a><span class="nv">TOKEN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>eks<span class="w"> </span>get-token<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-13-7" name="__codelineno-13-7" href="#__codelineno-13-7"></a><span class="w">  </span>--cluster-name<span class="w"> </span><span class="si">${</span><span class="nv">cluster_name</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-rc<span class="w"> </span>.status.token<span class="k">)</span>
+<a id="__codelineno-13-8" name="__codelineno-13-8" href="#__codelineno-13-8"></a>
+<a id="__codelineno-13-9" name="__codelineno-13-9" href="#__codelineno-13-9"></a>curl<span class="w"> </span>-v<span class="w"> </span>-X<span class="w"> </span><span class="s2">&quot;POST&quot;</span><span class="w"> </span>--cacert<span class="w"> </span>/tmp/public_cert<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-13-10" name="__codelineno-13-10" href="#__codelineno-13-10"></a><span class="w">  </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json; charset=utf-8&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-13-11" name="__codelineno-13-11" href="#__codelineno-13-11"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">&quot;Authorization: Bearer &quot;</span><span class="si">${</span><span class="nv">TOKEN</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-13-12" name="__codelineno-13-12" href="#__codelineno-13-12"></a><span class="w">  </span>-d<span class="w"> </span><span class="s1">$&#39;{&quot;kind&quot;:&quot;TokenRequest&quot;,&quot;apiVersion&quot;:&quot;authentication.k8s.io/v1&quot;,&quot;spec&quot;:{&quot;audiences&quot;:[&quot;sts.amazonaws.com&quot;]}}&#39;</span><span class="w"> </span><span class="nv">$ENDPOINT</span>/api/v1/namespaces/<span class="si">${</span><span class="nv">namespace_name</span><span class="si">}</span>/serviceaccounts/<span class="si">${</span><span class="nv">serviceaccount_name</span><span class="si">}</span>/token<span class="w"> </span>&gt;<span class="w"> </span>/tmp/<span class="nv">$$</span>.out<span class="w"> </span><span class="m">2</span>&gt;<span class="w"> </span>/tmp/<span class="nv">$$</span>.err
+<a id="__codelineno-13-13" name="__codelineno-13-13" href="#__codelineno-13-13"></a>
+<a id="__codelineno-13-14" name="__codelineno-13-14" href="#__codelineno-13-14"></a><span class="c1"># get your curl version</span>
+<a id="__codelineno-13-15" name="__codelineno-13-15" href="#__codelineno-13-15"></a>cat<span class="w"> </span>/tmp/<span class="nv">$$</span>.err<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>user-agent
+<a id="__codelineno-13-16" name="__codelineno-13-16" href="#__codelineno-13-16"></a>
+<a id="__codelineno-13-17" name="__codelineno-13-17" href="#__codelineno-13-17"></a><span class="c1"># get your token</span>
+<a id="__codelineno-13-18" name="__codelineno-13-18" href="#__codelineno-13-18"></a>cat<span class="w"> </span>/tmp/<span class="nv">$$</span>.out<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.status.token&#39;</span>
+</code></pre></div></p>
+<p>申请 Token 成功或者失败信息可以从 api server audit 日志中获取详细信息，从之前命令中获取 curl 版本信息，可以有效的查询 Log Insights。<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>fields<span class="w"> </span>@timestamp,<span class="w"> </span>@message
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="p">|</span><span class="w"> </span>filter<span class="w"> </span><span class="nv">userAgent</span><span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;curl/7.79.1&quot;</span>
+<a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>@timestamp<span class="w"> </span>desc
+</code></pre></div></p>
+<h3 id="token_1">验证 token<a class="headerlink" href="#token_1" title="Permanent link">&para;</a></h3>
 <ul>
-<li><a href="https://aws.amazon.com/cn/premiumsupport/knowledge-center/cross-account-access-s3/">如何提供对 Amazon S3 存储桶中的对象的跨账户访问权限</a></li>
-<li><a href="https://docs.aws.amazon.com/zh_cn/IAM/latest/UserGuide/reference_policies_evaluation-logic.html">策略评估逻辑</a></li>
-<li><a href="https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_multi-value-conditions.html">https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_multi-value-conditions.html</a></li>
+<li>打开页面 jwt.io</li>
+<li>复制 Token 到 Encoded 框中，并且将右侧 kid 的值复制到下面命令行中</li>
+<li>将如下命令的 key 输出 (json format) 复制到右侧 VERIFY SIGNATURE 中</li>
+<li>如果提供正确的公钥，将在右侧出现蓝色 <code>Signature Verified</code> 字样。否则是红色的 <code>Invalid Signature</code></li>
 </ul>
+<p><div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nv">IDP</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>eks<span class="w"> </span>describe-cluster<span class="w"> </span>--name<span class="w"> </span><span class="nv">$cluster_name</span><span class="w"> </span>--query<span class="w"> </span>cluster.identity.oidc.issuer<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="c1"># kid=$(cat /tmp/$$.eks-token |jq -r &#39;.header.kid&#39;)</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="nv">kid</span><span class="o">=</span>&lt;copy-paste-kid-here&gt;
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a>curl<span class="w"> </span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span><span class="nv">$IDP</span>/.well-known/openid-configuration<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.jwks_uri&#39;</span><span class="k">)</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.keys[] | select (.kid==&quot;&#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">kid</span><span class="si">}</span><span class="s2">&quot;</span><span class="s1">&#39;&quot;)&#39;</span>
+</code></pre></div><br />
+[文本 6]</p>
+<p>[文本 6] 中使用的 kid 在 [文本 4] 中使用 jwt 命令输出时也可以看到。</p>
+<h2 id="_4">结论<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<p>Projected SA Token 实际上是由 Kubernetes API Server 颁发，使用与 OIDC Identity Provider 同样的私钥来颁发。使用 OIDC Identity Provider 的公钥可以验证 Projected SA Token 的有效性。</p>
+<h2 id="_5">参考链接<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<ol>
+<li><a href="https://ssup2.github.io/theory_analysis/AWS_EKS_Service_Account_IAM_Role/">https://ssup2.github.io/theory_analysis/AWS_EKS_Service_Account_IAM_Role/</a></li>
+<li>create eks lab environment<ul>
+<li>prepare your cloud9 (<a href="https://github.com/panlm/aws-labs/blob/main/eks-create-cluster/setup-cloud9-for-eks.md">link</a>), uncomment line to install <code>jwt-cli</code> </li>
+<li>create your eks (<a href="https://github.com/panlm/aws-labs/blob/main/eks-create-cluster/eks-public-access-cluster.md">link</a>), exclude <code>addons</code> and <code>iam</code> part from config file</li>
+</ul>
+</li>
+<li><a href="../../verify-jwt-token-with-nodejs" title="verify-jwt-token-with-nodejs">verify-jwt-token-with-nodejs</a></li>
+<li><a href="../../eks-request-jwt-token-manually" title="eks-request-jwt-token-manually">eks-request-jwt-token-manually</a></li>
+<li><a href="https://aws.amazon.com/blogs/opensource/introducing-fine-grained-iam-roles-service-accounts/">https://aws.amazon.com/blogs/opensource/introducing-fine-grained-iam-roles-service-accounts/</a></li>
+<li><a href="https://aws.amazon.com/blogs/containers/diving-into-iam-roles-for-service-accounts/">https://aws.amazon.com/blogs/containers/diving-into-iam-roles-for-service-accounts/</a></li>
+<li><a href="https://github.com/aws/amazon-eks-pod-identity-webhook/blob/master/SELF_HOSTED_SETUP.md">https://github.com/aws/amazon-eks-pod-identity-webhook/blob/master/SELF_HOSTED_SETUP.md</a></li>
+<li><a href="https://medium.com/dataseries/public-claims-and-how-to-validate-a-jwt-1d6c81823826">https://medium.com/dataseries/public-claims-and-how-to-validate-a-jwt-1d6c81823826</a></li>
+</ol>
 
 
 
@@ -4495,7 +4593,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-05T14:31:36+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-18T13:07:21+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-18</span>
   </span>
 
     
@@ -4505,7 +4603,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-03-12T12:20:41+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-03-12</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-18T13:07:21+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-18</span>
   </span>
 
     

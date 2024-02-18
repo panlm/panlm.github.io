@@ -658,6 +658,8 @@
       
         
       
+        
+      
     
     
       
@@ -807,6 +809,35 @@
   <span class="md-ellipsis">
     EKS Addons
   </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/cluster/TC-eks-irsa-token-deep-dive-lab/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    IRSA 中的 Token 剖析
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog" title="my blogs">
+    </span>
+  
+
   
 
       </a>
@@ -4205,7 +4236,9 @@
 <span class="normal"><a href="#__codelineno-0-32">32</a></span>
 <span class="normal"><a href="#__codelineno-0-33">33</a></span>
 <span class="normal"><a href="#__codelineno-0-34">34</a></span>
-<span class="normal"><a href="#__codelineno-0-35">35</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">function</span><span class="w"> </span>create-hosted-zone<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<span class="normal"><a href="#__codelineno-0-35">35</a></span>
+<span class="normal"><a href="#__codelineno-0-36">36</a></span>
+<span class="normal"><a href="#__codelineno-0-37">37</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1"></a><span class="k">function</span><span class="w"> </span>create-hosted-zone<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">{</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2"></a><span class="w">    </span><span class="nv">OPTIND</span><span class="o">=</span><span class="m">1</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3"></a><span class="w">    </span><span class="nv">OPTSTRING</span><span class="o">=</span><span class="s2">&quot;h?n:&quot;</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4"></a><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">DOMAIN_NAME</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
@@ -4237,9 +4270,11 @@
 <a id="__codelineno-0-30" name="__codelineno-0-30"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;###&#39;</span>
 <a id="__codelineno-0-31" name="__codelineno-0-31"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;DOMAIN_NAME=&#39;</span><span class="si">${</span><span class="nv">DOMAIN_NAME</span><span class="si">}</span>
 <a id="__codelineno-0-32" name="__codelineno-0-32"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;NS=&quot;&#39;</span><span class="si">${</span><span class="nv">NS</span><span class="si">}</span><span class="s1">&#39;&quot;&#39;</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;create-ns-record -n ${DOMAIN_NAME} -s &quot;${NS}&quot;&#39;</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
-<a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="o">}</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;curl -sL -o /tmp/func-create-ns-record.sh https://panlm.github.io/CLI/functions/func-create-ns-record.sh&#39;</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;source /tmp/func-create-ns-record.sh&#39;</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;create-ns-record -n ${DOMAIN_NAME} -s &quot;${NS}&quot;&#39;</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;&#39;</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37"></a><span class="o">}</span>
 </code></pre></div></td></tr></table></div></li>
 </ul>
 <h2 id="func-create-ns-record-">func-create-ns-record-<a class="headerlink" href="#func-create-ns-record-" title="Permanent link">&para;</a></h2>
