@@ -13,7 +13,7 @@ tags:
 ## func-create-hosted-zone-
 - 执行下面命令创建 Hosted Zone，然后手工添加 NS 记录到上游的域名服务器 domain registrar 中 (create hosted zone, and then add NS records to upstream domain registrar)
 - [[../functions/func-create-hosted-zone.sh|func-create-hosted-zone]]
-```sh title="create-hosted-zone" linenums="1"
+```sh title="func-create-hosted-zone" linenums="1"
 --8<-- "docs/CLI/functions/func-create-hosted-zone.sh"
 ```
 
@@ -21,7 +21,7 @@ tags:
 - create host zone in your child account and get NS (previous chapter)
 - [[../linux/assume-tool|assume]] to your parent account to execute this function to add NS record to upstream route53 host zone
 - [[../functions/func-create-ns-record.sh|func-create-ns-record]]
-```sh title="create-ns-record" linenums="1"
+```sh title="func-create-ns-record" linenums="1"
 --8<-- "docs/CLI/functions/func-create-ns-record.sh"
 ```
 

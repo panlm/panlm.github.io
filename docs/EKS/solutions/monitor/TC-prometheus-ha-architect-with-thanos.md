@@ -2,7 +2,7 @@
 title: Building Prometheus HA Architect with Thanos
 description: 用 Thanos 解决 Prometheus 在多集群大规模环境下的高可用性、可扩展性限制
 created: 2023-11-09 08:41:02.494
-last_modified: 2024-01-23
+last_modified: 2024-02-22
 status: myblog
 tags:
   - kubernetes
@@ -10,6 +10,10 @@ tags:
   - prometheus
 ---
 > [!WARNING] This is a github note
+
+!!! warning "This pages has been obseleted."
+    released on aws
+    https://aws.amazon.com/cn/blogs/china/extending-the-prometheus-high-availability-monitoring-architecture-using-thanos/
 
 # 使用 Thanos 扩展 Prometheus 高可用监控架构
 ## 架构描述

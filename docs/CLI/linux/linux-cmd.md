@@ -2,7 +2,7 @@
 title: linux-cmd
 description: 常用命令
 created: 2023-01-03 12:05:10.533
-last_modified: 2024-02-11
+last_modified: 2024-02-18
 tags:
   - cmd
   - linux
@@ -240,7 +240,15 @@ iperf -c 172.31.30.41 --parallel 40 -i 1 -t 2
 compile
 - https://gist.github.com/fernandoaleman/5459173e24d59b45ae2cfc618e20fe06
 
-
+### encryption
+- encrypt on mac
+```sh
+openssl enc -aes-256-cbc -salt -in file.txt -out file.enc
+```
+- decrypt on linux
+```sh
+openssl enc -d -aes-256-cbc -in file.enc -out file.txt -pass pass:yourpassword
+```
 
 ## rsync 
 ### notable folder

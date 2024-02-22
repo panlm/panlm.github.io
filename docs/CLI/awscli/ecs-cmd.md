@@ -2,7 +2,7 @@
 title: ecs
 description: 常用命令
 created: 2023-02-22 22:46:31.539
-last_modified: 2024-02-05
+last_modified: 2024-02-19
 icon: simple/amazonecs
 tags:
   - aws/container/ecs
@@ -282,6 +282,18 @@ aws ecs execute-command \
     --region us-east-2 
 }
 ```
+
+## get-windows-ecs-ami-list-
+```sh
+aws ssm get-parameters-by-path \
+    --path /aws/service/ami-windows-latest \
+    --query 'Parameters[].Name' |grep 2019 |grep ECS
+
+aws ssm get-parameter \
+    --name "/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-ECS_Optimized"
+    
+```
+
 
 
 ## sample

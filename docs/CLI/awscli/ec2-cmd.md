@@ -2,7 +2,7 @@
 title: ec2
 description: 常用命令
 created: 2021-07-17T04:01:46.968Z
-last_modified: 2024-02-08
+last_modified: 2024-02-22
 icon: simple/amazonec2
 tags:
   - aws/compute/ec2
@@ -57,11 +57,13 @@ aws ec2 describe-images --region ${region} --owners 137112412989 \
   --query 'Images[*].[ImageId,CreationDate,Name]' --output text |sort -k2 -r |column -t
 
 # centos
-export region=ap-southeast-1
-aws ec2 describe-images --region ${region} --owners 679593333241 \
+export AWS_DEFAULT_REGION=us-east-2
+aws ec2 describe-images \
   --filters Name=name,Values='CentOS Linux 7 x86_64*'  \
   --query 'Images[*].[ImageId,CreationDate,Name]' --output text \
   |sort -k2 -r |column -t
+# --owners 679593333241
+
 
 export region=cn-northwest-1
 awscn ec2 describe-images --region ${region} --owners 336777782633 \
@@ -116,6 +118,16 @@ aws ec2 run-instances --region ${AWS_REGION} --key-name $KEY_NAME \
 ```
 
 ### windows instance
+- get image
+```sh
+export AWS_DEFAULT_REGION=us-west-2
+WINDOWS_AMI_ID=$(aws ssm get-parameters \
+    --names "/aws/service/ami-windows-latest/Windows_Server-2016-English-Full-Base" \
+    --query 'Parameters[].Value' --output text )
+
+```
+
+- create instance 
 ```sh
 # windows 2016 base
 IMAGE_ID=ami-02c88710773712fea
@@ -293,12 +305,9 @@ aws ec2 modify-instance-attribute \
 ```
 
 ## create-key-
-
-```sh
-KEY_NAME=aws-key
-echo '<paste>' |base64 -w 0 >my-key-pair.pub.b64
-aws ec2 import-key-pair --key-name ${KEY_NAME} --public-key-material file://my-key-pair.pub.b64
-
+- [[../functions/import-aws-key.sh|import-aws-key]] 
+```sh title="import-aws-key.sh" linenums="1"
+--8<-- "docs/CLI/functions/import-aws-key.sh"
 ```
 
 ## create instance by chatgpt

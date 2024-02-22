@@ -1,15 +1,15 @@
 ---
-title: efs-for-eks
+title: EFS for EKS
 description: 使用 efs 作为 pod 持久化存储
 created: 2022-05-23 09:57:50.932
-last_modified: 2023-12-27
+last_modified: 2024-02-20
 tags:
   - aws/storage/efs
   - aws/container/eks
 ---
 > [!WARNING] This is a github note
 
-# efs-for-eks
+# EFS for EKS
 
 ## link
 
@@ -17,17 +17,17 @@ tags:
 - [[efs-on-eks-mini-priviledge]]
 - [Introducing Amazon EFS CSI dynamic provisioning](https://aws.amazon.com/blogs/containers/introducing-efs-csi-dynamic-provisioning/)
 
-## create efs 
+## create-efs- 
 
 ```sh
 echo ${CLUSTER_NAME:=ekscluster1}
-echo ${AWS_REGION:=cn-northwest-1}
+echo ${AWS_DEFAULT_REGION:=cn-northwest-1} ; export AWS_DEFAULT_REGION
 
 VPC_ID=$(aws eks describe-cluster \
-  --name ${CLUSTER_NAME} --region ${AWS_REGION} \
+  --name ${CLUSTER_NAME} \
   --query "cluster.resourcesVpcConfig.vpcId" --output text )
 VPC_CIDR=$(aws ec2 describe-vpcs --vpc-ids ${VPC_ID} \
-  --query "Vpcs[].CidrBlock"  --region ${AWS_REGION} --output text )
+  --query "Vpcs[].CidrBlock" --output text )
 
 # create security group
 SG_ID=$(aws ec2 create-security-group --description ${CLUSTER_NAME}-efs-eks-sg \
@@ -37,15 +37,14 @@ aws ec2 authorize-security-group-ingress --group-id ${SG_ID}  --protocol tcp --p
 
 # create efs
 FILESYSTEM_ID=$(aws efs create-file-system \
-  --creation-token ${CLUSTER_NAME} \
-  --region ${AWS_REGION} |jq -r '.FileSystemId' )
+    --creation-token ${CLUSTER_NAME} |jq -r '.FileSystemId' )
 echo ${FILESYSTEM_ID}
 
 while true ; do
 aws efs describe-file-systems \
---file-system-id ${FILESYSTEM_ID} \
---query 'FileSystems[].LifeCycleState' \
---output text |grep -q available
+    --file-system-id ${FILESYSTEM_ID} \
+    --query 'FileSystems[].LifeCycleState' \
+    --output text |grep -q available
 if [[ $? -eq 0 ]]; then
   break
 else
@@ -57,22 +56,20 @@ done
 # create mount target
 TAG=tag:kubernetes.io/role/internal-elb
 SUBNETS=($(aws eks describe-cluster --name ${CLUSTER_NAME} \
-  --region ${AWS_REGION} |jq -r '.cluster.resourcesVpcConfig.subnetIds[]'))
+    |jq -r '.cluster.resourcesVpcConfig.subnetIds[]'))
 PRIV_SUBNETS=($(aws ec2 describe-subnets --filters "Name=${TAG},Values=1" \
-  --subnet-ids ${SUBNETS[@]} |jq -r '.Subnets[].SubnetId' ) )
+    --subnet-ids ${SUBNETS[@]} |jq -r '.Subnets[].SubnetId' ) )
 for i in ${PRIV_SUBNETS[@]} ; do
-  echo "creating mount target in: " $i
-  aws efs create-mount-target --file-system-id ${FILESYSTEM_ID} \
-    --subnet-id ${i} --security-group ${SG_ID}
+    echo "creating mount target in: " $i
+    aws efs create-mount-target --file-system-id ${FILESYSTEM_ID} \
+        --subnet-id ${i} --security-group ${SG_ID}
 done
 
 ```
 
-^mgh326
-
 ## install from github
-直接安装不额外配置权限的话，只能验证静态制备
-如果验证动态制备，会有权限不够的告警，因为需要动态创建access point，可以通过节点role方式加载权限，或者重新部署为irsa
+直接安装不额外配置权限的话，只能验证静态 provision
+如果验证动态 provision，会有权限不够的告警，因为需要动态创建 access point，可以通过节点 role方式加载权限，或者重新部署为 irsa
 
 ```sh
 git clone https://github.com/kubernetes-sigs/aws-efs-csi-driver.git
@@ -95,7 +92,7 @@ kubectl kustomize |kubectl delete -f -
 
 
 ## install from helm
-[link](https://github.com/kubernetes-sigs/aws-efs-csi-driver/blob/master/docs/README.md#installation)
+https://github.com/kubernetes-sigs/aws-efs-csi-driver/blob/master/docs/README.md#installation
 
 ### node role (alternative)
 - you will got error in creating pod:  `User: arn:aws:sts::xxx:assumed-role/eksctl-ekscluster1-nodegroup-mana-NodeInstanceRole-1LTHOM1WRDBIS/i-xxx is not authorized to perform: elasticfilesystem:DescribeMountTargets on the specified resource`, if you miss this step
@@ -109,7 +106,7 @@ POLICY_ARN=$(aws iam create-policy \
   --policy-document file://iam-policy.json |jq -r '.Policy.Arn' )
 echo ${POLICY_ARN}
 
-## attach policy to node role
+## attach policy to node role MANUALLY
 
 ```
 
@@ -117,23 +114,22 @@ echo ${POLICY_ARN}
 ```sh
 
 # do steps in **node role** chapter
+# need POLICY_ARN
 
-CLUSTER_NAME=eks0630
-AWS_REGION=cn-northwest-1
+echo ${CLUSTER_NAME}
+echo ${AWS_DEFAULT_REGION}
+echo ${POLICY_ARN}
 
 eksctl utils associate-iam-oidc-provider \
-  --cluster ${CLUSTER_NAME} \
-  --region ${AWS_REGION} \
-  --approve
+    --cluster ${CLUSTER_NAME} \
+    --approve
 eksctl create iamserviceaccount \
-  --cluster=${CLUSTER_NAME} \
-  --region ${AWS_REGION} \
-  --namespace=kube-system \
-  --name=efs-csi-controller-sa \
-  --override-existing-serviceaccounts \
-  --attach-policy-arn=${POLICY_ARN} \
-  --approve
-
+    --cluster=${CLUSTER_NAME} \
+    --namespace=kube-system \
+    --name=efs-csi-controller-sa \
+    --override-existing-serviceaccounts \
+    --attach-policy-arn=${POLICY_ARN} \
+    --approve
 ```
 
 ### install
@@ -144,7 +140,7 @@ helm repo update
 # get url for your region 
 # https://docs.aws.amazon.com/eks/latest/userguide/add-ons-images.html
 # add `.cn` postfix for china region
-if [[ ${AWS_REGION%%-*} == "cn" ]]; then 
+if [[ ${AWS_DEFAULT_REGION%%-*} == "cn" ]]; then 
   REGISTRY=961992271922.dkr.ecr.cn-northwest-1.amazonaws.com.cn
 else 
   REGISTRY=602401143452.dkr.ecr.us-east-1.amazonaws.com
@@ -268,7 +264,7 @@ kubectl apply -f pod.yaml
 ```
 
 ### dynamic provisioning with efs access point 
-[link](https://github.com/kubernetes-sigs/aws-efs-csi-driver/tree/master/examples/kubernetes/dynamic_provisioning)
+https://github.com/kubernetes-sigs/aws-efs-csi-driver/tree/master/examples/kubernetes/dynamic_provisioning
 need additional iam policy, execute `node role` part, or reinstall with irsa
 
 ```sh

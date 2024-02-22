@@ -2,7 +2,7 @@
 title: Create EKS Cluster with Terraform
 description: 使用 Terraform 创建 EKS 集群
 created: 2023-06-30 15:02:19.833
-last_modified: 2024-02-11
+last_modified: 2024-02-21
 tags:
   - aws/container/eks
   - terraform
@@ -37,8 +37,11 @@ git clone https://github.com/panlm/eks-blueprints-clusters.git
 cd eks-blueprints-clusters/multi-cluster-thanos
 ```
 
-- execute function to create an existed host zone ([[../../CLI/awscli/route53-cmd#func-create-hosted-zone-|route53-cmd]])
+- execute function to create an existed host zone ([[../../CLI/awscli/route53-cmd#func-create-hosted-zone-]])
 ```sh
+curl -sL -o /tmp/func-create-hosted-zone.sh https://panlm.github.io/CLI/functions/func-create-hosted-zone.sh
+source /tmp/func-create-hosted-zone.sh
+
 DOMAIN_NAME=eks1224.aws.panlm.xyz
 create-hosted-zone -n ${DOMAIN_NAME}
 ```
