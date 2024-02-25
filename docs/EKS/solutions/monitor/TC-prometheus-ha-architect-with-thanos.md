@@ -3,7 +3,7 @@ title: Building Prometheus HA Architect with Thanos
 description: 用 Thanos 解决 Prometheus 在多集群大规模环境下的高可用性、可扩展性限制
 created: 2023-11-09 08:41:02.494
 last_modified: 2024-02-22
-status: myblog
+status: deprecated
 tags:
   - kubernetes
   - aws/container/eks
