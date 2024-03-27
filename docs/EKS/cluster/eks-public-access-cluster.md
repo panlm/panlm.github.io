@@ -3,27 +3,26 @@ title: Create Public Access EKS Cluster
 description: 创建公有访问的 EKS 集群
 created: 2022-05-21 12:43:38.021
 last_modified: 2024-03-27
+status: myblog
 tags:
   - aws/container/eks
 ---
 > [!WARNING] This is a github note
 
 # Create Public Access EKS Cluster
+本文指导快速创建 EKS 集群实验环境
+- 创建单个集群，可以参考章节 [[#create cluster from scratch]]
+- 如果希望创建多个集群在同一个 VPC 内部，可以参考章节 [[#create cluster in specific VPC]]
 
-## prep
-
-- do not need to create vpc in advance
-- [[../../cloud9/setup-cloud9-for-eks]] or using your local environment
+参考 [[../../cloud9/quick-setup-cloud9|quick-setup-cloud9]] 快速设置实验用 Cloud9 环境
 
 ## create cluster from scratch
-
 - don't put `subnets`/`sharedNodeSecurityGroup` in your `vpc` section. eksctl will create a clean vpc for you
 - don't use `privateCluster` section, you could make cluster api server endpoint `public` or `public and private`
 - you still could put your group node in private subnet for security consideration
 - recommend for most of POC environment
 
 ### create eks cluster
-
 - 将在下面区域创建 EKS 集群 (prepare to create eks cluster)
 ```sh
 export AWS_PAGER=""
@@ -127,7 +126,6 @@ eksctl create cluster -f cluster-${CLUSTER_NAME}.yaml
 ```
 
 ### get-newest-ami
-
 - get newest ami id for your self-managed node group, for GPU or Graviton instance ([link](https://docs.aws.amazon.com/eks/latest/userguide/retrieve-ami-id.html))
 ```sh
 echo ${AWS_REGION}

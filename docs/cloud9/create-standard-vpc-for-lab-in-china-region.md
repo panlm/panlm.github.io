@@ -50,6 +50,7 @@ else
 fi
 # do not create public subnet & igw
 CREATE_PUB_SUB=false
+CREATE_NAT=false
 
 ```
 
@@ -57,12 +58,13 @@ CREATE_PUB_SUB=false
 ```sh
 TGW_ATTACH=false
 CREATE_PUB_SUB=true
+CREATE_NAT=true
 ```
 
 ### create-vpc-
 create your vpc with specific CIDR
 ```sh
-echo ${CIDR:=10.129}
+echo ${CIDR:=10.130}
 export AWS_PAGER=""
 
 STACK_NAME=aws-vpc-${CIDR##*.}-${UNIQ_STR}
@@ -94,7 +96,7 @@ aws cloudformation create-stack --stack-name ${STACK_NAME} \
   ParameterKey=TransitGatewayId,ParameterValue="${TGW_ID}" \
   ParameterKey=CreatePublicSubnets,ParameterValue="${CREATE_PUB_SUB}" \
   ParameterKey=CreatePrivateSubnets,ParameterValue="true" \
-  ParameterKey=CreateNATGateways,ParameterValue="false" \
+  ParameterKey=CreateNATGateways,ParameterValue="${CREATE_NAT}" \
   --template-url https://${BUCKET_NAME}.s3.${AWS_REGION}.amazonaws.com${SUFFIX}/aws-vpc.template.yaml 
 
 aws cloudformation wait stack-create-complete \
