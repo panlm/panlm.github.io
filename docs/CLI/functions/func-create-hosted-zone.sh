@@ -1,3 +1,7 @@
+# depends on: DOMAIN_NAME
+# output: see output to setup NS record on upstream domain registry
+# quick link: https://panlm.github.io/CLI/functions/func-create-hosted-zone.sh
+
 function create-hosted-zone () {
     OPTIND=1
     OPTSTRING="h?n:"
