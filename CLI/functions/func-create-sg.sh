@@ -1,6 +1,6 @@
-# deps: VPC_ID
-# output: SG_ID
-# format: create-sg -v VPC_ID -c VPC_CIDR [-p PORT1] [-p PORT2]
+# depends on: VPC_ID
+# output variable: SG_ID
+# quick link: https://panlm.github.io/CLI/functions/func-create-sg.sh
 function create-sg () {
     OPTIND=1
     OPTSTRING="h?v:c:p:"
@@ -13,9 +13,10 @@ function create-sg () {
             c) VPC_CIDR=${OPTARG} ;;
             p) PORTS+=("${OPTARG}") ;;
             h|\?) 
-                echo "format: create-sg -v VPC_ID -c VPC_CIDR [-p PORT1] [-p PORT2]"
-                echo -e "\tsample: create-sg -v vpc-xxx -p 172.31.0.0/16"
-                echo -e "\tsample: create-sg -v vpc-xxx -p 0.0.0.0/0 -p 80 -p 443"
+                echo "format: create-sg -v VPC_ID [-c VPC_CIDR] [-p PORT1] [-p PORT2]"
+                echo -e "\tsample: create-sg -v vpc-xxx"
+                echo -e "\tsample: create-sg -v vpc-xxx -c 172.31.0.0/16"
+                echo -e "\tsample: create-sg -v vpc-xxx -c 0.0.0.0/0 -p 80 -p 443"
                 echo 
                 echo "omit -p parameter will open all ports"
                 echo
@@ -24,12 +25,12 @@ function create-sg () {
         esac
     done
     : ${VPC_ID:?Missing -v}
-    : ${VPC_CIDR:?Missing -c}
+    : ${VPC_CIDR:=0.0.0.0/0}
 
     if [[ -z ${PORTS} ]]; then
-        local PROTOCOL=all
+        local PROTOCOL=(all)
     else
-        local PROTOCOL=tcp
+        local PROTOCOL=(tcp udp)
     fi
 
     # create sg
@@ -42,10 +43,12 @@ function create-sg () {
 
     # all traffic allowed
     for i in ${PORTS[@]:--1}; do
-        aws ec2 authorize-security-group-ingress \
-            --group-id ${SG_ID} \
-            --protocol ${PROTOCOL} \
-            --port ${i} \
-            --cidr ${VPC_CIDR}
+        for j in ${PROTOCOL[@]} ; do
+            aws ec2 authorize-security-group-ingress \
+                --group-id ${SG_ID} \
+                --protocol ${j} \
+                --port ${i} \
+                --cidr ${VPC_CIDR}
+        done
     done
 }
