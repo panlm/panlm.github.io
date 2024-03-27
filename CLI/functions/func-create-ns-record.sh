@@ -1,8 +1,6 @@
-# DOMAIN_NAME=poc0000.aws.panlm.xyz
-# NS='ns-1716.awsdns-22.co.uk.
-# ns-934.awsdns-52.net.
-# ns-114.awsdns-14.com.
-# ns-1223.awsdns-24.org.'
+# depends on: DOMAIN_NAME NS_RECORD
+# output: N/A
+# quick link: https://panlm.github.io/CLI/functions/func-create-ns-record.sh
 
 function create-ns-record () {
     OPTIND=1

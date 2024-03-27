@@ -97,7 +97,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#create-standard-vpc-for-lab-in-china-region" class="md-skip">
+        <a href="#create-standard-vpc-for-lab-in-china-region-or-global-region" class="md-skip">
           Skip to content
         </a>
       
@@ -609,14 +609,71 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="using-cloudformation-template-">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prep-cfn-template-" class="md-nav__link">
+    <span class="md-ellipsis">
+      prep-cfn-template-
+    </span>
+  </a>
+  
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
+  <a href="#using-tgw-or-not" class="md-nav__link">
+    <span class="md-ellipsis">
+      using tgw or not
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="using tgw or not">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-1-if-you-create-vpc-in-china-region-you-could-put-your-existed-tgw-id-here-for-attach-automatically" class="md-nav__link">
+    <span class="md-ellipsis">
+      (option 1) if you create vpc in china region, you could put your existed tgw id here for attach automatically
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2-you-could-create-vpc-without-tgw" class="md-nav__link">
+    <span class="md-ellipsis">
+      (option 2) you could create vpc without tgw
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-vpc-" class="md-nav__link">
+    <span class="md-ellipsis">
+      create-vpc-
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#get-vpc-id-" class="md-nav__link">
     <span class="md-ellipsis">
       get-vpc-id-
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -4365,14 +4422,71 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="using-cloudformation-template-">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#prep-cfn-template-" class="md-nav__link">
+    <span class="md-ellipsis">
+      prep-cfn-template-
+    </span>
+  </a>
+  
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
+  <a href="#using-tgw-or-not" class="md-nav__link">
+    <span class="md-ellipsis">
+      using tgw or not
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="using tgw or not">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#option-1-if-you-create-vpc-in-china-region-you-could-put-your-existed-tgw-id-here-for-attach-automatically" class="md-nav__link">
+    <span class="md-ellipsis">
+      (option 1) if you create vpc in china region, you could put your existed tgw id here for attach automatically
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#option-2-you-could-create-vpc-without-tgw" class="md-nav__link">
+    <span class="md-ellipsis">
+      (option 2) you could create vpc without tgw
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#create-vpc-" class="md-nav__link">
+    <span class="md-ellipsis">
+      create-vpc-
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#get-vpc-id-" class="md-nav__link">
     <span class="md-ellipsis">
       get-vpc-id-
     </span>
   </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -4438,130 +4552,130 @@
 <blockquote>
 <p>[!WARNING] This is a github note</p>
 </blockquote>
-<h1 id="create-standard-vpc-for-lab-in-china-region">create standard vpc for lab in china region<a class="headerlink" href="#create-standard-vpc-for-lab-in-china-region" title="Permanent link">&para;</a></h1>
+<h1 id="create-standard-vpc-for-lab-in-china-region-or-global-region">create standard vpc for lab in china region or global region<a class="headerlink" href="#create-standard-vpc-for-lab-in-china-region-or-global-region" title="Permanent link">&para;</a></h1>
 <h2 id="using-cloudformation-template-">using-cloudformation-template-<a class="headerlink" href="#using-cloudformation-template-" title="Permanent link">&para;</a></h2>
 <ul>
+<li>download cloudformation template<ul>
+<li><a href="https://panlm.github.io/EKS/cluster/aws-vpc.template.yaml">https://panlm.github.io/EKS/cluster/aws-vpc.template.yaml</a></li>
+</ul>
+</li>
 <li>search <code>cloud9</code> in marketplace, and launch instance from it</li>
 <li>assign <code>AdministratorAccess</code> to instance profile</li>
+<li></li>
 </ul>
+<h3 id="prep-cfn-template-">prep-cfn-template-<a class="headerlink" href="#prep-cfn-template-" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">AWS_REGION</span><span class="o">=</span>cn-north-1
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nv">UNIQ_STR</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%Y%m%d-%H%M%S<span class="k">)</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nv">BUCKET_NAME</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>s3<span class="w"> </span>mb<span class="w"> </span>s3://panlm-<span class="si">${</span><span class="nv">UNIQ_STR</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="k">)</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>wget<span class="w"> </span>-O<span class="w"> </span>aws-vpc.template.yaml<span class="w"> </span>https://github.com/panlm/panlm.github.io/raw/main/content/100-eks-infra/110-eks-cluster/aws-vpc.template.yaml
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>aws-vpc.template.yaml<span class="w"> </span>s3://<span class="si">${</span><span class="nv">BUCKET_NAME</span><span class="si">}</span>/
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1"># first 2 AZs</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1"># separator `\,` is necessary for ParameterValue in cloudformation</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nv">TWOAZS</span><span class="o">=(</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-availability-zones<span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;AvailabilityZones[].ZoneName&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="w"> </span><span class="p">|</span>xargs<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">|</span>sed<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;1,2p&#39;</span><span class="w"> </span><span class="p">|</span>xargs<span class="w"> </span><span class="p">|</span>sed<span class="w"> </span><span class="s1">&#39;s/ /\\,/g&#39;</span><span class="k">)</span><span class="o">)</span>
 </code></pre></div>
-<p>(option 1) if you create vpc in china region, you could put your existed tgw id here for attach automatically.<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># new vpc will connect with TGW, if TGW existed</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">TGW_ID</span><span class="o">=</span>tgw-0ec1b74b7d8dcea74
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nv">TGW_NUMBER</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-transit-gateways<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>--filter<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>transit-gateway-id,Values<span class="o">=</span><span class="si">${</span><span class="nv">TGW_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.TransitGateways | length&#39;</span><span class="k">)</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${</span><span class="nv">TGW_NUMBER</span><span class="si">}</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="nv">TGW_ATTACH</span><span class="o">=</span><span class="nb">true</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="k">else</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span><span class="nv">TGW_ATTACH</span><span class="o">=</span><span class="nb">false</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="k">fi</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="c1"># do not create public subnet &amp; igw</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="nv">CREATE_PUB_SUB</span><span class="o">=</span><span class="nb">false</span>
-</code></pre></div></p>
-<p>(option 2) you could create vpc without tgw<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">TGW_ATTACH</span><span class="o">=</span><span class="nb">false</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nv">CREATE_PUB_SUB</span><span class="o">=</span><span class="nb">true</span>
-</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">UNIQ_STR</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%Y%m%d-%H%M%S<span class="k">)</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">BUCKET_NAME</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>s3<span class="w"> </span>mb<span class="w"> </span>s3://panlm-<span class="si">${</span><span class="nv">UNIQ_STR</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $2}&#39;</span><span class="k">)</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>wget<span class="w"> </span>-O<span class="w"> </span>aws-vpc.template.yaml<span class="w"> </span>https://panlm.github.io/EKS/cluster/aws-vpc.template.yaml
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>aws-vpc.template.yaml<span class="w"> </span>s3://<span class="si">${</span><span class="nv">BUCKET_NAME</span><span class="si">}</span>/
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># first 2 AZs</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="c1"># separator `\,` is necessary for ParameterValue in cloudformation</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="nv">TWOAZS</span><span class="o">=(</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-availability-zones<span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;AvailabilityZones[].ZoneName&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="w"> </span><span class="p">|</span>xargs<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="p">|</span>sed<span class="w"> </span>-n<span class="w"> </span><span class="s1">&#39;1,2p&#39;</span><span class="w"> </span><span class="p">|</span>xargs<span class="w"> </span><span class="p">|</span>sed<span class="w"> </span><span class="s1">&#39;s/ /\\,/g&#39;</span><span class="k">)</span><span class="o">)</span>
+</code></pre></div>
+<h3 id="using-tgw-or-not">using tgw or not<a class="headerlink" href="#using-tgw-or-not" title="Permanent link">&para;</a></h3>
+<h4 id="option-1-if-you-create-vpc-in-china-region-you-could-put-your-existed-tgw-id-here-for-attach-automatically">(option 1) if you create vpc in china region, you could put your existed tgw id here for attach automatically<a class="headerlink" href="#option-1-if-you-create-vpc-in-china-region-you-could-put-your-existed-tgw-id-here-for-attach-automatically" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># new vpc will connect with TGW, if TGW existed</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nv">TGW_ID</span><span class="o">=</span>tgw-0ec1b74b7d8dcea74
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nv">TGW_NUMBER</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-transit-gateways<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>--filter<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>transit-gateway-id,Values<span class="o">=</span><span class="si">${</span><span class="nv">TGW_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.TransitGateways | length&#39;</span><span class="k">)</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${</span><span class="nv">TGW_NUMBER</span><span class="si">}</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span><span class="nv">TGW_ATTACH</span><span class="o">=</span><span class="nb">true</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="k">else</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span><span class="nv">TGW_ATTACH</span><span class="o">=</span><span class="nb">false</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="k">fi</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="c1"># do not create public subnet &amp; igw</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="nv">CREATE_PUB_SUB</span><span class="o">=</span><span class="nb">false</span>
+</code></pre></div>
+<h4 id="option-2-you-could-create-vpc-without-tgw">(option 2) you could create vpc without tgw<a class="headerlink" href="#option-2-you-could-create-vpc-without-tgw" title="Permanent link">&para;</a></h4>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">TGW_ATTACH</span><span class="o">=</span><span class="nb">false</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nv">CREATE_PUB_SUB</span><span class="o">=</span><span class="nb">true</span>
+</code></pre></div>
+<h3 id="create-vpc-">create-vpc-<a class="headerlink" href="#create-vpc-" title="Permanent link">&para;</a></h3>
 <p>create your vpc with specific CIDR<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">CIDR</span><span class="p">:=10.129</span><span class="si">}</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PAGER</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nv">STACK_NAME</span><span class="o">=</span>aws-vpc-<span class="si">${</span><span class="nv">CIDR</span><span class="p">##*.</span><span class="si">}</span>-<span class="si">${</span><span class="nv">UNIQ_STR</span><span class="si">}</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># global region: amazonaws.com</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="c1"># china region: amazonaws.com.cn</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="p">%%-*</span><span class="si">}</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;cn&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span><span class="nv">SUFFIX</span><span class="o">=</span><span class="s2">&quot;.cn&quot;</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="k">else</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">  </span><span class="nv">SUFFIX</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="k">fi</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>aws<span class="w"> </span>cloudformation<span class="w"> </span>create-stack<span class="w"> </span>--stack-name<span class="w"> </span><span class="si">${</span><span class="nv">STACK_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">  </span>--parameters<span class="w"> </span><span class="nv">ParameterKey</span><span class="o">=</span>AvailabilityZones,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TWOAZS</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>VPCCIDR,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span><span class="s2">.0.0/16&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>NumberOfAZs,ParameterValue<span class="o">=</span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>PublicSubnet1CIDR,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span><span class="s2">.128.0/24&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>PublicSubnet2CIDR,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span><span class="s2">.129.0/24&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>PublicSubnet3CIDR,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span><span class="s2">.130.0/24&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>PublicSubnet4CIDR,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span><span class="s2">.131.0/24&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>PrivateSubnet1ACIDR,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span><span class="s2">.0.0/19&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>PrivateSubnet2ACIDR,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span><span class="s2">.32.0/19&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>PrivateSubnet3ACIDR,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span><span class="s2">.64.0/19&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>PrivateSubnet4ACIDR,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span><span class="s2">.96.0/19&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>CreateTgwSubnets,ParameterValue<span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>TgwSubnet1CIDR,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span><span class="s2">.132.0/24&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>TgwSubnet2CIDR,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span><span class="s2">.133.0/24&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>TgwSubnet3CIDR,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span><span class="s2">.134.0/24&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>TgwSubnet4CIDR,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span><span class="s2">.135.0/24&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>CreateTgwAttachment,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TGW_ATTACH</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>TransitGatewayId,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TGW_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>CreatePublicSubnets,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CREATE_PUB_SUB</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>CreatePrivateSubnets,ParameterValue<span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>CreateNATGateways,ParameterValue<span class="o">=</span><span class="s2">&quot;false&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="w">  </span>--template-url<span class="w"> </span>https://<span class="si">${</span><span class="nv">BUCKET_NAME</span><span class="si">}</span>.s3.<span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span>.amazonaws.com<span class="si">${</span><span class="nv">SUFFIX</span><span class="si">}</span>/aws-vpc.template.yaml<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="w">  </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span>
-<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a>
-<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a><span class="c1"># until get CREATE_COMPLETE</span>
-<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a><span class="k">while</span><span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a><span class="w">  </span><span class="nv">status</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>cloudformation<span class="w"> </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="w"> </span>describe-stacks<span class="w"> </span>--stack-name<span class="w"> </span><span class="si">${</span><span class="nv">STACK_NAME</span><span class="si">}</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Stacks[0].StackStatus&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">status</span><span class="si">}</span>
-<a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${</span><span class="nv">status</span><span class="si">}</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s1">&#39;CREATE_IN_PROGRESS&#39;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a><span class="w">    </span>sleep<span class="w"> </span><span class="m">30</span>
-<a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a><span class="w">  </span><span class="k">else</span>
-<a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a><span class="w">    </span><span class="k">break</span>
-<a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a><span class="w">  </span><span class="k">fi</span>
-<a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a><span class="k">done</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">CIDR</span><span class="p">:=10.129</span><span class="si">}</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PAGER</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nv">STACK_NAME</span><span class="o">=</span>aws-vpc-<span class="si">${</span><span class="nv">CIDR</span><span class="p">##*.</span><span class="si">}</span>-<span class="si">${</span><span class="nv">UNIQ_STR</span><span class="si">}</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># global region: amazonaws.com</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="c1"># china region: amazonaws.com.cn</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="p">%%-*</span><span class="si">}</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;cn&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">  </span><span class="nv">SUFFIX</span><span class="o">=</span><span class="s2">&quot;.cn&quot;</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="k">else</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">  </span><span class="nv">SUFFIX</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="k">fi</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>aws<span class="w"> </span>cloudformation<span class="w"> </span>create-stack<span class="w"> </span>--stack-name<span class="w"> </span><span class="si">${</span><span class="nv">STACK_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">  </span>--parameters<span class="w"> </span><span class="nv">ParameterKey</span><span class="o">=</span>AvailabilityZones,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TWOAZS</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>VPCCIDR,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span><span class="s2">.0.0/16&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>NumberOfAZs,ParameterValue<span class="o">=</span><span class="m">2</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>PublicSubnet1CIDR,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span><span class="s2">.128.0/24&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>PublicSubnet2CIDR,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span><span class="s2">.129.0/24&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>PublicSubnet3CIDR,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span><span class="s2">.130.0/24&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>PublicSubnet4CIDR,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span><span class="s2">.131.0/24&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>PrivateSubnet1ACIDR,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span><span class="s2">.0.0/19&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>PrivateSubnet2ACIDR,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span><span class="s2">.32.0/19&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>PrivateSubnet3ACIDR,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span><span class="s2">.64.0/19&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>PrivateSubnet4ACIDR,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span><span class="s2">.96.0/19&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>CreateTgwSubnets,ParameterValue<span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>TgwSubnet1CIDR,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span><span class="s2">.132.0/24&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>TgwSubnet2CIDR,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span><span class="s2">.133.0/24&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>TgwSubnet3CIDR,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span><span class="s2">.134.0/24&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>TgwSubnet4CIDR,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CIDR</span><span class="si">}</span><span class="s2">.135.0/24&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>CreateTgwAttachment,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TGW_ATTACH</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>TransitGatewayId,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TGW_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>CreatePublicSubnets,ParameterValue<span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">CREATE_PUB_SUB</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-32" name="__codelineno-4-32" href="#__codelineno-4-32"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>CreatePrivateSubnets,ParameterValue<span class="o">=</span><span class="s2">&quot;true&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-33" name="__codelineno-4-33" href="#__codelineno-4-33"></a><span class="w">  </span><span class="nv">ParameterKey</span><span class="o">=</span>CreateNATGateways,ParameterValue<span class="o">=</span><span class="s2">&quot;false&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-34" name="__codelineno-4-34" href="#__codelineno-4-34"></a><span class="w">  </span>--template-url<span class="w"> </span>https://<span class="si">${</span><span class="nv">BUCKET_NAME</span><span class="si">}</span>.s3.<span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span>.amazonaws.com<span class="si">${</span><span class="nv">SUFFIX</span><span class="si">}</span>/aws-vpc.template.yaml<span class="w"> </span>
+<a id="__codelineno-4-35" name="__codelineno-4-35" href="#__codelineno-4-35"></a>
+<a id="__codelineno-4-36" name="__codelineno-4-36" href="#__codelineno-4-36"></a>aws<span class="w"> </span>cloudformation<span class="w"> </span><span class="nb">wait</span><span class="w"> </span>stack-create-complete<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-37" name="__codelineno-4-37" href="#__codelineno-4-37"></a><span class="w">  </span>--stack-name<span class="w"> </span><span class="si">${</span><span class="nv">STACK_NAME</span><span class="si">}</span>
 </code></pre></div></p>
-<h2 id="get-vpc-id-">get-vpc-id-<a class="headerlink" href="#get-vpc-id-" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">VPC_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>cloudformation<span class="w"> </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="w"> </span>describe-stacks<span class="w"> </span>--stack-name<span class="w"> </span><span class="si">${</span><span class="nv">STACK_NAME</span><span class="si">}</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Stacks[0].Outputs[?OutputKey==`VPCID`].OutputValue&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># PublicSubnet1ID=$(aws cloudformation --region ${AWS_REGION} describe-stacks --stack-name ${STACK_NAME} --query &#39;Stacks[0].Outputs[?OutputKey==`PublicSubnet1ID`].OutputValue&#39; --output text)</span>
+<h3 id="get-vpc-id-">get-vpc-id-<a class="headerlink" href="#get-vpc-id-" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">VPC_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>cloudformation<span class="w"> </span>describe-stacks<span class="w"> </span>--stack-name<span class="w"> </span><span class="si">${</span><span class="nv">STACK_NAME</span><span class="si">}</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Stacks[0].Outputs[?OutputKey==`VPCID`].OutputValue&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="c1"># PublicSubnet1ID=$(aws cloudformation --region ${AWS_REGION} describe-stacks --stack-name ${STACK_NAME} --query &#39;Stacks[0].Outputs[?OutputKey==`PublicSubnet1ID`].OutputValue&#39; --output text)</span>
 </code></pre></div>
 <h2 id="option-create-cloud9-in-target-subnet">(option) create cloud9 in target subnet<a class="headerlink" href="#option-create-cloud9-in-target-subnet" title="Permanent link">&para;</a></h2>
 <ul>
 <li>refer: <a href="../setup-cloud9-for-eks/#spin-up-a-cloud9-instance-in-your-region" title="setup-cloud9-for-eks">setup-cloud9-for-eks</a> <br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># name=&lt;give your cloud9 a name&gt;</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nv">datestring</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%Y%m%d-%H%M<span class="k">)</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nv">name</span><span class="o">=</span><span class="si">${</span><span class="nv">name</span><span class="p">:=cloud9-</span><span class="nv">$datestring</span><span class="si">}</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span>us-east-2<span class="w"> </span><span class="c1"># need put each command</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="c1"># VPC_ID=&lt;your vpc id&gt; </span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="c1"># ensure you have public subnet in it</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="nv">DEFAULT_VPC_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-vpcs<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="w">  </span>--filter<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>is-default,Values<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">&#39;Vpcs[0].VpcId&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="w">  </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span><span class="k">)</span>
-<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="nv">VPC_ID</span><span class="o">=</span><span class="si">${</span><span class="nv">VPC_ID</span><span class="p">:=</span><span class="nv">$DEFAULT_VPC_ID</span><span class="si">}</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span>-z<span class="w"> </span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="w">  </span><span class="nv">FIRST_SUBNET</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-subnets<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="w">    </span>--filters<span class="w"> </span><span class="s2">&quot;Name=vpc-id,Values=</span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="w">    </span>--query<span class="w"> </span><span class="s1">&#39;Subnets[?(AvailabilityZone==`&#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span><span class="s2">a&quot;</span><span class="s1">&#39;` &amp;&amp; MapPublicIpOnLaunch==`true`)].SubnetId&#39;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="w">    </span>--output<span class="w"> </span>text<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="w">    </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span><span class="k">)</span>
-<a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="w">  </span>aws<span class="w"> </span>cloud9<span class="w"> </span>create-environment-ec2<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="w">    </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="w">    </span>--image-id<span class="w"> </span>amazonlinux-2-x86_64<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="w">    </span>--instance-type<span class="w"> </span>m5.xlarge<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="w">    </span>--subnet-id<span class="w"> </span><span class="si">${</span><span class="nv">FIRST_SUBNET</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="w">    </span>--automatic-stop-time-minutes<span class="w"> </span><span class="m">10080</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="w">    </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>tee<span class="w"> </span>/tmp/<span class="nv">$$</span>
-<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Open URL to access your Cloud9 Environment:&quot;</span>
-<a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="w">  </span><span class="nv">C9_ID</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span>/tmp/<span class="nv">$$</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.environmentId&#39;</span><span class="k">)</span>
-<a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;https://</span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span><span class="s2">.console.aws.amazon.com/cloud9/ide/</span><span class="si">${</span><span class="nv">C9_ID</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="k">else</span>
-<a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;you have no default vpc in </span><span class="nv">$AWS_DEFAULT_REGION</span><span class="s2">&quot;</span>
-<a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a><span class="k">fi</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="c1"># name=&lt;give your cloud9 a name&gt;</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nv">datestring</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%Y%m%d-%H%M<span class="k">)</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="nv">name</span><span class="o">=</span><span class="si">${</span><span class="nv">name</span><span class="p">:=cloud9-</span><span class="nv">$datestring</span><span class="si">}</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span>us-east-2<span class="w"> </span><span class="c1"># need put each command</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="c1"># VPC_ID=&lt;your vpc id&gt; </span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="c1"># ensure you have public subnet in it</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="nv">DEFAULT_VPC_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-vpcs<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">  </span>--filter<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>is-default,Values<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">&#39;Vpcs[0].VpcId&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">  </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span><span class="k">)</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="nv">VPC_ID</span><span class="o">=</span><span class="si">${</span><span class="nv">VPC_ID</span><span class="p">:=</span><span class="nv">$DEFAULT_VPC_ID</span><span class="si">}</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>!<span class="w"> </span>-z<span class="w"> </span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="w">  </span><span class="nv">FIRST_SUBNET</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-subnets<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="w">    </span>--filters<span class="w"> </span><span class="s2">&quot;Name=vpc-id,Values=</span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="w">    </span>--query<span class="w"> </span><span class="s1">&#39;Subnets[?(AvailabilityZone==`&#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span><span class="s2">a&quot;</span><span class="s1">&#39;` &amp;&amp; MapPublicIpOnLaunch==`true`)].SubnetId&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="w">    </span>--output<span class="w"> </span>text<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="w">    </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span><span class="k">)</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="w">  </span>aws<span class="w"> </span>cloud9<span class="w"> </span>create-environment-ec2<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="w">    </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">name</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="w">    </span>--image-id<span class="w"> </span>amazonlinux-2-x86_64<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="w">    </span>--instance-type<span class="w"> </span>m5.xlarge<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="w">    </span>--subnet-id<span class="w"> </span><span class="si">${</span><span class="nv">FIRST_SUBNET</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="w">    </span>--automatic-stop-time-minutes<span class="w"> </span><span class="m">10080</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="w">    </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>tee<span class="w"> </span>/tmp/<span class="nv">$$</span>
+<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Open URL to access your Cloud9 Environment:&quot;</span>
+<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="w">  </span><span class="nv">C9_ID</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span>/tmp/<span class="nv">$$</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.environmentId&#39;</span><span class="k">)</span>
+<a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;https://</span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span><span class="s2">.console.aws.amazon.com/cloud9/ide/</span><span class="si">${</span><span class="nv">C9_ID</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a><span class="k">else</span>
+<a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;you have no default vpc in </span><span class="nv">$AWS_DEFAULT_REGION</span><span class="s2">&quot;</span>
+<a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a><span class="k">fi</span>
 </code></pre></div></li>
 </ul>
 <h2 id="description-in-this-template">description in this template<a class="headerlink" href="#description-in-this-template" title="Permanent link">&para;</a></h2>
@@ -4606,7 +4720,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-12-26T10:48:29+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-12-26</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-03-27T23:53:50+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-27</span>
   </span>
 
     
