@@ -20,6 +20,9 @@ tags:
 ```sh
 AWS_REGION=cn-north-1
 export AWS_DEFAULT_REGION=${AWS_REGION}
+```
+
+```sh
 UNIQ_STR=$(date +%Y%m%d-%H%M%S)
 BUCKET_NAME=$(aws s3 mb s3://panlm-${UNIQ_STR} |awk '{print $2}')
 
@@ -92,16 +95,16 @@ aws cloudformation create-stack --stack-name ${STACK_NAME} \
   ParameterKey=CreatePublicSubnets,ParameterValue="${CREATE_PUB_SUB}" \
   ParameterKey=CreatePrivateSubnets,ParameterValue="true" \
   ParameterKey=CreateNATGateways,ParameterValue="false" \
-  --template-url https://${BUCKET_NAME}.s3.${AWS_REGION}.amazonaws.com${SUFFIX}/aws-vpc.template.yaml \
-  --region ${AWS_REGION}
+  --template-url https://${BUCKET_NAME}.s3.${AWS_REGION}.amazonaws.com${SUFFIX}/aws-vpc.template.yaml 
 
-aws cloudformation wait stack-create-complete --stack-name ${STACK_NAME}
+aws cloudformation wait stack-create-complete \
+  --stack-name ${STACK_NAME}
 
 ```
 
 ### get-vpc-id-
 ```sh
-VPC_ID=$(aws cloudformation --region ${AWS_REGION} describe-stacks --stack-name ${STACK_NAME} --query 'Stacks[0].Outputs[?OutputKey==`VPCID`].OutputValue' --output text)
+VPC_ID=$(aws cloudformation describe-stacks --stack-name ${STACK_NAME} --query 'Stacks[0].Outputs[?OutputKey==`VPCID`].OutputValue' --output text)
 
 # PublicSubnet1ID=$(aws cloudformation --region ${AWS_REGION} describe-stacks --stack-name ${STACK_NAME} --query 'Stacks[0].Outputs[?OutputKey==`PublicSubnet1ID`].OutputValue' --output text)
 

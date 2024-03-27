@@ -2,7 +2,7 @@
 title: Create Public Access EKS Cluster
 description: 创建公有访问的 EKS 集群
 created: 2022-05-21 12:43:38.021
-last_modified: 2023-12-31
+last_modified: 2024-03-27
 tags:
   - aws/container/eks
 ---
@@ -178,9 +178,9 @@ done
 ```
 
 
-## create cluster in existed VPC
-
+## create cluster in specific VPC
 - get target vpc id
+    - or create new vpc ([[../../cloud9/create-standard-vpc-for-lab-in-china-region#using-cloudformation-template-|create-standard-vpc-for-lab-in-china-region]])
 - create SG ([[../../CLI/awscli/ec2-cmd#func-create-sg-]])
     - or using existed cluster's shared SG (see chapter refer)
 - get vpc info ([[eks-private-access-cluster#prep-config-]])
@@ -193,7 +193,7 @@ kind: ClusterConfig
 metadata:
   name: ekscluster2 # MODIFY cluster name
   region: "us-east-2" # MODIFY region
-  version: "1.25" # MODIFY version
+  version: "1.26" # MODIFY version
 
 # REPLACE THIS CODE BLOCK
 vpc:
@@ -209,6 +209,7 @@ vpc:
       us-east-2b:
         id: subnet-xxxxxxxx
   sharedNodeSecurityGroup: sg-xxxxxxxx
+# REPLACE THIS CODE BLOCK
   clusterEndpoints:
     privateAccess: true
     publicAccess: true
@@ -224,7 +225,7 @@ managedNodeGroups:
 - name: mng1
   minSize: 1
   maxSize: 5
-  desiredCapacity: 2
+  desiredCapacity: 3
   instanceType: m5.large
   ssh:
     enableSsm: true
@@ -244,7 +245,6 @@ addons:
 
 
 ## refer
-
 - [[TC-security-group-for-eks-deepdive]]
 - [[eks-private-access-cluster]]
 - [[eks-nodegroup]]

@@ -2,7 +2,7 @@
 title: Create Private Only EKS Cluster
 description: 在已有 VPC 中创建私有访问的 EKS 集群
 created: 2022-03-24 11:20:13.594
-last_modified: 2023-12-31
+last_modified: 2024-03-27
 tags:
   - aws/container/eks
 ---
@@ -32,11 +32,12 @@ sudo yum -y install jq gettext bash-completion moreutils wget
 # export VPC_ID=vpc-xxxxxxxx
 # export AWS_REGION=cn-north-1
 AWS_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
+export AWS_DEFAULT_REGION=${AWS_REGION}
 INST_ID=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.instanceId')
-VPC_ID=$(aws ec2 describe-instances --instance-ids ${INST_ID} --region ${AWS_REGION} |jq -r '.Reservations[0].Instances[0].VpcId')
+VPC_ID=$(aws ec2 describe-instances --instance-ids ${INST_ID} |jq -r '.Reservations[0].Instances[0].VpcId')
 
 SG_NAME=eks-shared-sg
-SG_ID=$(aws ec2 describe-security-groups --region $AWS_REGION \
+SG_ID=$(aws ec2 describe-security-groups \
 --filter Name=vpc-id,Values=$VPC_ID \
 --query "SecurityGroups[?GroupName == '"${SG_NAME}"'].GroupId" \
 --output text)
@@ -72,17 +73,16 @@ aws ec2 describe-instance-attribute --instance-id $INST_ID --attribute groupSet
 
 - if you create private only cluster in vpc which you have created with public/private eks endpoint, using the **Shared SG** of the previous cluster
 
-
 ## prep-config-
 - 创建完自定义 vpc 后，直接执行下面代码
 ```sh
+echo ${AWS_DEFAULT_REGION}
 
-echo ${AWS_REGION}
 ACCOUNT_ID=$(aws sts get-caller-identity --output text --query Account)
-AZS=($(aws ec2 describe-availability-zones --query 'AvailabilityZones[].ZoneName' --output text --region $AWS_REGION))
+AZS=($(aws ec2 describe-availability-zones --query 'AvailabilityZones[].ZoneName' --output text))
 
 echo "export VPC_ID=${VPC_ID}" 
-echo "export AWS_REGION=${AWS_REGION}"
+echo "export AWS_DEFAULT_REGION=${AWS_DEFAULT_REGION}"
 echo "export AZS=(${AZS[@]})"
 
 # output yaml format for vpc/subnet info
@@ -115,12 +115,9 @@ fi )
 
 ```
 
-^h86u1r
-
 - output will be used in next step
 - ensure you have no s3 endpoint in your target vpc 
     - you could have ssm/ssmmessages endpoint
-
 
 ## cluster yaml
 ```sh
@@ -217,7 +214,7 @@ eksctl create cluster -f cluster1.yaml
 # get optimized eks ami id for your version & region
 EKS_VERSION=1.24
 # AWS_REGION=us-east-2
-aws ssm get-parameter --name /aws/service/eks/optimized-ami/${EKS_VERSION}/amazon-linux-2/recommended/image_id --region ${AWS_REGION} --query "Parameter.Value" --output text
+aws ssm get-parameter --name /aws/service/eks/optimized-ami/${EKS_VERSION}/amazon-linux-2/recommended/image_id --query "Parameter.Value" --output text
 
 ```
 
@@ -246,7 +243,6 @@ https://docs.aws.amazon.com/eks/latest/userguide/private-clusters.html#private-c
 - [[recover-access-eks]]
 - [[token-different]]
 
-
 ## issue about kubectl
 ### solve 1
 - download aws-iam-authenticator, and then run write-kubeconfig command
@@ -262,10 +258,8 @@ eksctl utils write-kubeconfig --cluster ekscluster1
 - check if null TOKEN variable `aws_session_token=` in your `~/.aws/credentials`
 - delete it
 
-
 ## network topo preview
 - [[TC-security-group-for-eks-deepdive]]
-
 
 ## reference
 - [[eks-public-access-cluster]]
