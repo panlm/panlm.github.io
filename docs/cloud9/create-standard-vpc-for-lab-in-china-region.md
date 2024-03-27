@@ -2,27 +2,28 @@
 title: create standard vpc for lab in china region
 description: 创建实验环境所需要的 vpc ，并且支持直接 attach 到 tgw 方便网络访问
 created: 2022-04-10 22:12:29.404
-last_modified: 2023-12-24
+last_modified: 2024-03-27
 tags:
   - aws/network/vpc
   - aws/mgmt/cloudformation
 ---
 > [!WARNING] This is a github note
 
-# create standard vpc for lab in china region
-
+# create standard vpc for lab in china region or global region
 ## using-cloudformation-template-
-
+- download cloudformation template
+    - https://panlm.github.io/EKS/cluster/aws-vpc.template.yaml
 - search `cloud9` in marketplace, and launch instance from it
 - assign `AdministratorAccess` to instance profile
-
+- 
+### prep-cfn-template-
 ```sh
 AWS_REGION=cn-north-1
 export AWS_DEFAULT_REGION=${AWS_REGION}
 UNIQ_STR=$(date +%Y%m%d-%H%M%S)
 BUCKET_NAME=$(aws s3 mb s3://panlm-${UNIQ_STR} |awk '{print $2}')
 
-wget -O aws-vpc.template.yaml https://github.com/panlm/panlm.github.io/raw/main/content/100-eks-infra/110-eks-cluster/aws-vpc.template.yaml
+wget -O aws-vpc.template.yaml https://panlm.github.io/EKS/cluster/aws-vpc.template.yaml
 aws s3 cp aws-vpc.template.yaml s3://${BUCKET_NAME}/
 
 # first 2 AZs
@@ -31,7 +32,8 @@ TWOAZS=($(aws ec2 describe-availability-zones --query 'AvailabilityZones[].ZoneN
 
 ```
 
-(option 1) if you create vpc in china region, you could put your existed tgw id here for attach automatically.
+### using tgw or not
+#### (option 1) if you create vpc in china region, you could put your existed tgw id here for attach automatically
 ```sh
 # new vpc will connect with TGW, if TGW existed
 TGW_ID=tgw-0ec1b74b7d8dcea74
@@ -48,12 +50,13 @@ CREATE_PUB_SUB=false
 
 ```
 
-(option 2) you could create vpc without tgw
+#### (option 2) you could create vpc without tgw
 ```sh
 TGW_ATTACH=false
 CREATE_PUB_SUB=true
 ```
 
+### create-vpc-
 create your vpc with specific CIDR
 ```sh
 echo ${CIDR:=10.129}
@@ -92,21 +95,11 @@ aws cloudformation create-stack --stack-name ${STACK_NAME} \
   --template-url https://${BUCKET_NAME}.s3.${AWS_REGION}.amazonaws.com${SUFFIX}/aws-vpc.template.yaml \
   --region ${AWS_REGION}
 
-# until get CREATE_COMPLETE
-while true ; do
-  status=$(aws cloudformation --region ${AWS_REGION} describe-stacks --stack-name ${STACK_NAME} --query 'Stacks[0].StackStatus' --output text)
-  echo ${status}
-  if [[ ${status} == 'CREATE_IN_PROGRESS' ]]; then
-    sleep 30
-  else
-    break
-  fi
-done
+aws cloudformation wait stack-create-complete --stack-name ${STACK_NAME}
 
 ```
 
-## get-vpc-id-
-
+### get-vpc-id-
 ```sh
 VPC_ID=$(aws cloudformation --region ${AWS_REGION} describe-stacks --stack-name ${STACK_NAME} --query 'Stacks[0].Outputs[?OutputKey==`VPCID`].OutputValue' --output text)
 
@@ -154,7 +147,6 @@ fi
 
 
 ## description in this template
-
 - no s3 endpoint
 - security group named eks-shared-sg (only it self)
 - security group named normal-sg ( icmp/80/443 for all )
@@ -167,7 +159,6 @@ fi
 - add `10.0.0.0/8` route to public/private1A/private2A route table
 
 ## refer
-
 - [[../CLI/awscli/cloudformation-cmd]] 
 - [quickstart-aws-vpc](https://aws-quickstart.github.io/quickstart-aws-vpc/) 
 
