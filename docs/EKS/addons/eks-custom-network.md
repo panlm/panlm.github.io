@@ -2,7 +2,7 @@
 title: eks-custom-network
 description: 可以解决子网地址段耗尽的问题
 created: 2023-08-21 17:56:37.517
-last_modified: 2024-01-13
+last_modified: 2024-03-18
 tags:
   - aws/container/eks
   - kubernetes/cni
@@ -16,11 +16,19 @@ tags:
 
 - [link](https://docs.aws.amazon.com/zh_cn/eks/latest/userguide/cni-custom-network.html)
 - [[Leveraging CNI custom networking alongside security groups for pods in Amazon EKS]]
-- [[Automating custom networking to solve IPv4 exhaustion in Amazon EKS Containers]]
+- [[../../../../notes/blog/Automating custom networking to solve IPv4 exhaustion in Amazon EKS]]
 
 - There are a limited number of IP addresses available in a subnet. Using different subnets for pods allows you to increase the number of available IP addresses
 - For security reasons, your pods must use different security groups or subnets than the node's primary network interface.
 - The nodes are configured in public subnets and you want the pods to be placed in private subnets using a NAT Gateway
+
+## 部分使用 custom network
+
+- 手动相关 eniconfig 到节点，覆盖 default 值（默认值使用 secondary CIDR 子网），可以让特定节点允许 pod 使用主 CIDR
+    - https://repost.aws/knowledge-center/eks-custom-subnet-for-pod#:~:text=Manually%20associate%20ENIConfig%20objects%20with%20nodes
+    - https://github.com/aws/amazon-vpc-cni-k8s#eni_config_label_def
+- 或者尝试 https://docs.aws.amazon.com/eks/latest/userguide/cni-custom-network.html
+    - 1. If a Pod's `spec` contains `hostNetwork=true`, it's assigned the primary IP address of the node. It isn't assigned an address from the subnets that you added. By default, this value is set to `false`. This value is set to `true` for the `kube-proxy` and Amazon VPC CNI plugin for Kubernetes (`aws-node`) Pods that run on your cluster. This is why the `kube-proxy` and the plugin's `aws-node` Pods aren't assigned `192.168.1._x_` addresses in the previous output. For more information about a Pod's `hostNetwork` setting, see [PodSpec v1 core](https://kubernetes.io/docs/reference/generated/kubernetes-api/v1.29/#podspec-v1-core) in the Kubernetes API reference.
 
 
 ## lab-

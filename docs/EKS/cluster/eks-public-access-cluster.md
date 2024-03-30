@@ -36,9 +36,7 @@ export CIDR="10.25${CLUSTER_NUM}.0.0/16"
 
 ```
 
-- 执行下面代码创建配置文件 (create eks cluster)
-	- 注意集群名称
-	- 注意使用的 AZ 符合你所在的区域
+- 执行下面代码创建配置文件 (create eks cluster)。注意集群名称，使用的 AZ 符合你所在的区域
 ```sh
 AZS=($(aws ec2 describe-availability-zones \
 --query 'AvailabilityZones[].ZoneName' --output text |awk '{print $1,$2}'))

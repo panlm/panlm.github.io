@@ -2,7 +2,7 @@
 title: Install Grafana on Beanstalk
 description: "在 EC2 / beanstalk / EKS 上安装 grafana "
 created: 2023-02-25 08:35:55.725
-last_modified: 2023-12-31
+last_modified: 2024-03-19
 tags:
   - grafana
 ---
@@ -100,7 +100,7 @@ cfg:default.paths.data=/var/lib/grafana cfg:default.paths.logs=/var/log/grafana 
 ## grafana in ec2
 - install 
 ```sh
-cat <<-EOF |sudo tee /etc/yum.repos.d/grafana.repo
+cat >/etc/yum.repos.d/grafana.repo <<-EOF
 [grafana]
 name=grafana
 baseurl=https://rpm.grafana.com
@@ -114,6 +114,7 @@ exclude=*beta*
 EOF
 sudo yum install -y grafana
 sudo systemctl status grafana-server
+sudo systemctl start grafana-server
 
 ```
 

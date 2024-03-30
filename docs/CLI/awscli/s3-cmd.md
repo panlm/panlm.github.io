@@ -2,7 +2,7 @@
 title: s3
 description: 常用命令
 created: 2021-07-10 02:23:54.765
-last_modified: 2024-02-05
+last_modified: 2024-03-19
 icon: simple/amazons3
 tags:
   - aws/storage/s3
@@ -14,7 +14,6 @@ tags:
 
 ## versioning
 ### create s3 with versioning
-
 ```sh
 bucket_name=p1panlm
 aws_region=us-east-2
@@ -25,7 +24,6 @@ aws s3api put-bucket-versioning --bucket $bucket_name --versioning-configuration
 ```
 
 ### delete s3 with versioning enabled
-
 ```sh
 bucket_name=aws-codestar-ap-southeast-1-xxxxxx-proj1-pipe
 aws s3api put-bucket-versioning --bucket $bucket_name --versioning-configuration Status=Suspended
@@ -37,7 +35,6 @@ aws s3api delete-objects \
 ```
 
 ### delete s3 without versioning
-
 ```bash
 for i in $a ; do 
 aws s3 rm s3://$i --region us-east-1 --recursive
@@ -49,13 +46,11 @@ aws s3api delete-objects --bucket panlm-test-object-1234 --delete '{"Objects":[{
  ```
 
 ## download s3 folder
-
 ```sh
 aws s3 sync s3://my-exported-logs .
 ```
 
 ## create folder
-
 ```sh
 aws s3api put-object \
 --bucket ${bucket_name} \
@@ -65,7 +60,6 @@ aws s3api put-object \
 
 
 ## head object 
-
 ```sh
 aws s3api head-object --bucket lcf-1350 --key stop_sensor_data.sh
 
@@ -86,9 +80,7 @@ aws s3api head-object --bucket lcf-1350 --key stop_sensor_data.sh
 - LastModified, only timestamp
 
 ## get object 
-
 ### get object
-
 ```sh
 aws s3api get-object \
   --key results/15c2c468a4c4.txt \
@@ -98,7 +90,6 @@ aws s3api get-object \
 ```
 
 ### get object from access point
-
 ```sh
 # using access point alias
 aws s3api get-object \
@@ -109,7 +100,6 @@ aws s3api get-object \
 ```
 
 ## update access point policy
-
 ```sh
 aws s3control get-access-point-policy \
   --region us-east-2 \
@@ -127,9 +117,7 @@ aws s3control put-access-point-policy \
 
 
 ## presigned url
-
 ### for download
-
 ```sh
 OBJECT_KEY="folder/subfolder/file.txt"
 EXPIRES=3600 # max 7 days
@@ -137,13 +125,23 @@ aws s3 presign s3://my-bucket/${OBJECT_KEY} --expires-in ${EXPIRES} --region xxx
 ```
 
 ### for upload
-
 ```sh
 
 ```
 
 ## public-access-
-
 - https://repost.aws/knowledge-center/read-access-objects-s3-bucket
 - https://aws.amazon.com/blogs/networking-and-content-delivery/amazon-s3-amazon-cloudfront-a-match-made-in-the-cloud/
 
+
+## delete obj
+```sh
+export BUCKET_NAME=perspective-0106-xxx
+aws s3api list-object-versions --bucket ${BUCKET_NAME} --output json --query "Versions[].{Key:Key,VersionId:VersionId}" | jq -r '.[] | "aws s3api delete-object --bucket ${BUCKET_NAME} --key \(.Key) --version-id \(.VersionId)"' | sh
+
+aws s3api list-object-versions --bucket ${BUCKET_NAME} --output json --query "DeleteMarkers[].{Key:Key,VersionId:VersionId}" | jq -r '.[] | "aws s3api delete-object --bucket ${BUCKET_NAME} --key \(.Key) --version-id \(.VersionId)"' | sh
+
+aws s3 rb s3://${BUCKET_NAME}  --force
+
+
+```

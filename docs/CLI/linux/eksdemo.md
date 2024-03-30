@@ -2,7 +2,7 @@
 title: eksdemo
 description: 使用 eksdemo 快速搭建 eks 集群以及其他所需组件
 created: 2023-07-15 09:44:34.470
-last_modified: 2023-11-01 14:36:45.276
+last_modified: 2024-03-27
 tags:
   - aws/container/eks
   - aws/cmd
@@ -27,15 +27,8 @@ eksdemo create cluster ${CLUSTER_NAME} -i m5.large -N 3
 
 ## addons-
 
-- externaldns
-![[../../EKS/addons/externaldns-for-route53#^a2vlmo]]
-
-refer: [[../../EKS/addons/externaldns-for-route53#install-with-eksdemo-]]
-
-- aws load balancer controller
-![[../../EKS/addons/aws-load-balancer-controller#^yddjq0]]
-
-refer: [[../../EKS/addons/aws-load-balancer-controller#install-with-eksdemo-]]
+- externaldns ([[../../EKS/addons/externaldns-for-route53#install-with-eksdemo-]])
+- aws load balancer controller ([[git/git-mkdocs/EKS/addons/aws-load-balancer-controller#install-with-eksdemo-]])
 
 - 2 certificates, one for each domain name in original region
 ![[../awscli/acm-cmd#^kresvp]]

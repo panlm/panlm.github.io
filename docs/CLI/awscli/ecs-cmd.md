@@ -2,7 +2,7 @@
 title: ecs
 description: 常用命令
 created: 2023-02-22 22:46:31.539
-last_modified: 2024-02-19
+last_modified: 2024-03-19
 icon: simple/amazonecs
 tags:
   - aws/container/ecs
@@ -11,6 +11,7 @@ tags:
 > [!WARNING] This is a github note
 # ecs-cmd
 ## get ami list
+### al2
 - get full list
 ```sh
 aws ssm get-parameters-by-path \
@@ -19,7 +20,12 @@ aws ssm get-parameters-by-path \
     |jq -r 'sort_by(.LastModifiedDate)' 
 ```
 
-- last 2 AMI ID
+- get ecs recommended optimized ami
+```sh
+ECS_AMI=$(aws ssm get-parameters --names /aws/service/ecs/optimized-ami/amazon-linux-2/recommended |jq -r '.Parameters[0].Value' |jq -r '.image_id')
+```
+
+- get last 2 AMI ID
 ```sh
 export AWS_DEFAULT_REGION=us-east-1
 
@@ -33,26 +39,40 @@ aws ssm get-parameters-by-path \
 
 OLD_AMI_ID=${AMI_IDS[0]}
 NEW_AMI_ID=${AMI_IDS[1]}
+echo ${AMI_IDS[@]}
 ```
 
-## create cluster with ec2 capacity provider
-- basic info
+### windows 2019
+```sh
+export AWS_DEFAULT_REGION=us-east-1
+export AMI_WIN2019_NAME="Windows_Server-2019-English-Full-ECS_Optimized"
+
+AMI_IDS=($(
+aws ec2 describe-images \
+    --filter "Name=name,Values=${AMI_WIN2019_NAME}*" \
+    --query  'Images[*].[ImageId,CreationDate,Name]' --output text |grep ECS_Optimized |sort -k2 |tail -n 2 |awk '{print $1}'
+))
+
+OLD_AMI_ID=${AMI_IDS[0]}
+NEW_AMI_ID=${AMI_IDS[1]}
+echo ${AMI_IDS[@]}
+
+```
+
+## create ecs cluster 
+### create launch template v1
 ```sh
 ECS_CLUSTER=myecs1
 VPC_ID=$(aws ec2 describe-vpcs --filter Name=is-default,Values=true --query 'Vpcs[0].VpcId' --output text)
 export AWS_PAGER=""
 export AWS_DEFAULT_REGION=us-east-1
 ```
-- get ecs recommended optimized ami
-```sh
-ECS_AMI=$(aws ssm get-parameters --names /aws/service/ecs/optimized-ami/amazon-linux-2/recommended |jq -r '.Parameters[0].Value' |jq -r '.image_id')
-```
 - get default security group ([[../functions/func-create-sg.sh|func-create-sg.sh]])
 ```sh
 create-sg -v ${VPC_ID} -c 0.0.0.0/0 # call my function
 echo ${SG_ID}
 ```
-- execute function to create launch template ([[notes/auto-scaling-cmd#func-create-aunch-template-]])
+- execute function to create launch template ([[notes/auto-scaling-cmd#func-create-launch-template-]])
 ```sh
 echo ${SG_ID}
 echo ${OLD_AMI_ID}
@@ -64,7 +84,8 @@ echo ${LAUNCH_TEMPLATE_ID}
 ec2-admin-role-create # call my function
 echo ${INSTANCE_PROFILE_ARN}
 ```
-- add user data to launch template and make default version is 2
+### add user data to launch template and make v2 as default
+#### linux
 ```sh
 TMP=$(mktemp --suffix .UserData)
 envsubst >${TMP} <<-EOF
@@ -82,19 +103,84 @@ aws ec2 create-launch-template-version --launch-template-id ${LAUNCH_TEMPLATE_ID
 
 aws ec2 modify-launch-template --launch-template-id ${LAUNCH_TEMPLATE_ID} --default-version "2"
 ```
+
+if you use gMSA on linux, add following lines to beginning of user data
+```sh
+#!/bin/bash
+echo "ECS_GMSA_SUPPORTED=true" >> /etc/ecs/ecs.config
+echo "sleeping for 80 secs to avoid RPM lock error..."
+sleep 80s
+dnf install dotnet realmd oddjob oddjob-mkhomedir sssd adcli krb5-workstation samba-common-tools credentials-fetcher -y
+systemctl enable credentials-fetcher
+systemctl start credentials-fetcher
+
+```
+
+#### windows
+```sh
+TMP=$(mktemp --suffix .UserData)
+envsubst >${TMP} <<-EOF
+Content-Type: multipart/mixed; boundary="67fa5624dc94e98fee4093fbc2d9d1de2825990f57aa9b139aed1acf3b3a"
+MIME-Version: 1.0
+
+--67fa5624dc94e98fee4093fbc2d9d1de2825990f57aa9b139aed1acf3b3a
+Content-Type: text/text/plain; charset="utf-8"
+Mime-Version: 1.0
+
+<powershell>
+Import-Module ECSTools;
+[Environment]::SetEnvironmentVariable("ECS_CLUSTER", "${ECS_CLUSTER}", "Machine");
+[Environment]::SetEnvironmentVariable("ECS_GMSA_SUPPORTED", "true", "Machine")
+[Environment]::SetEnvironmentVariable("ECS_ENABLE_AWSLOGS_EXECUTIONROLE_OVERRIDE", "true", "Machine");
+[Environment]::SetEnvironmentVariable("ECS_ENABLE_TASK_ENI", "true", "Machine");
+[Environment]::SetEnvironmentVariable("ECS_AVAILABLE_LOGGING_DRIVERS", '["json-file","awslogs"]', "Machine");
+[Environment]::SetEnvironmentVariable("ECS_ENABLE_TASK_IAM_ROLE", "true", "Machine");
+Install-PackageProvider -Name NuGet -Force;
+Initialize-ECSAgent -Cluster '${ECS_CLUSTER}' -EnableTaskIAMRole -AwsvpcBlockIMDS
+</powershell>
+
+--67fa5624dc94e98fee4093fbc2d9d1de2825990f57aa9b139aed1acf3b3a
+Content-Type: text/text/x-shellscript; charset="utf-8"
+Mime-Version: 1.0
+
+
+#!/bin/bash
+echo ECS_CLUSTER=${ECS_CLUSTER} >> /etc/ecs/ecs.config
+echo ECS_GMSA_SUPPORTED=true >> /etc/ecs/ecs.config
+
+--67fa5624dc94e98fee4093fbc2d9d1de2825990f57aa9b139aed1acf3b3a--
+EOF
+
+B64STRING=$(cat ${TMP}|base64 -w 0)
+aws ec2 create-launch-template-version \
+    --launch-template-id ${LAUNCH_TEMPLATE_ID} \
+    --version-description ${LAUNCH_TEMPLATE_ID}-$(TZ=CST-8 date +%H%M) \
+    --source-version 1 \
+    --launch-template-data '{"UserData":"'"${B64STRING}"'","IamInstanceProfile":{"Arn":"'"${INSTANCE_PROFILE_ARN}"'"}}' |tee ${TMP}.out
+
+aws ec2 modify-launch-template --launch-template-id ${LAUNCH_TEMPLATE_ID} --default-version "2"
+
+```
+
+### create auto scaling group
 - execute function to create auto scaling group ([[notes/auto-scaling-cmd#func-create-auto-scaling-group-]])
+- ASG's desire number is zero
 ```sh
 create-auto-scaling-group ${LAUNCH_TEMPLATE_ID} # call my function
 echo ${ASG_ARN}
 ```
-- create ecs cluster 
+
+### create cluster
+- create ecs cluster (before create asg if desire number is greater than 0)
 ```sh
 echo ${ECS_CLUSTER}
 
 aws iam create-service-linked-role --aws-service-name ecs.amazonaws.com
 aws ecs create-cluster --cluster-name ${ECS_CLUSTER}
 ```
-- capacity provider 
+
+#### create capacity provider
+- capacity provider (if desire number in asg is greater than 0, than no CP needed)
 ```sh
 ECS_CAP_PROVIDER=mycp1
 aws ecs create-capacity-provider \
@@ -107,7 +193,10 @@ aws ecs put-cluster-capacity-providers \
     --default-capacity-provider-strategy capacityProvider=${ECS_CAP_PROVIDER},weight=1
 ```
 
-## get container instance 
+#### change asg desire number to non-zero
+- if you do not create CP, change ASG desire number to 1, EC2 will be spun up and add to ECS cluster
+
+## get container instances
 ```sh
 CONTAINER_INST_ARN=($(aws ecs list-container-instances --cluster ${ECS_CLUSTER} \
     --query 'containerInstanceArns[]' --output text |xargs ))
@@ -122,7 +211,9 @@ aws ecs describe-container-instances --cluster ${ECS_CLUSTER} \
 cat /tmp/$$-instance |jq -r '.containerInstances[] | [.ec2InstanceId, .versionInfo.agentVersion]|@tsv' 
 ```
 
-## register task definition
+
+## sample for ami upgrade / replace 
+### register task definition
 ```sh
 TASK_NAME=task2-$(TZ=EAT-8 date +%Y%m%d-%H%M)
 
@@ -159,7 +250,7 @@ aws ecs register-task-definition \
 
 ```
 
-## create service
+### create service
 - create alb and target group first ([[elb-cmd#func-alb-and-tg-]])
 ```sh
 create-alb-and-tg
@@ -211,7 +302,7 @@ aws ecs create-service \
 
 ```
 
-## update-launch-template-
+### update-launch-template-
 - update launch template based on default version
 ```sh
 echo ${NEW_AMI_ID}
@@ -227,7 +318,7 @@ LT_VER=$(cat /tmp/$$-new-lt |jq -r '.LaunchTemplateVersion.VersionNumber')
 
 ```
 
-## update-asg-
+### update-asg-
 - update asg using new template version
 ```sh
 aws autoscaling update-auto-scaling-group \
@@ -237,7 +328,7 @@ aws autoscaling update-auto-scaling-group \
 ```
 
 
-## get task definition
+### get task definition
 ```sh
 ECS_SVC_NAME=${SERVICE_NAME}
 ECS_TASK_DEF_ARN=$(aws ecs describe-services --cluster ${ECS_CLUSTER} \
@@ -246,7 +337,7 @@ ECS_TASK_DEF_ARN=$(aws ecs describe-services --cluster ${ECS_CLUSTER} \
 
 ```
 
-## modify-task-definition-
+### modify-task-definition-
 - update task definition
 ```sh
 # ami-0b7778d86d8789cff / ami-0f896121197c465b6
@@ -265,13 +356,12 @@ TASK_DEF_ARN=$(cat /tmp/$$-new-task-def |jq -r '.taskDefinition.taskDefinitionAr
 
 ```
 
-## update service 
+### update service 
 ```sh
 aws ecs update-service --cluster ${ECS_CLUSTER} --service ${SERVICE_NAME} --task-definition ${TASK_DEF_ARN##*/}
 ```
 
-
-## func ecsexec
+### func ecsexec to test
 ```sh
 ECS_CLUSTER=CapacityProviderDemo
 function ecsexec {
@@ -283,7 +373,53 @@ aws ecs execute-command \
 }
 ```
 
-## get-windows-ecs-ami-list-
+
+## sample for domain-less windows
+
+```sh
+envsubst >${TMP}.td.3 <<-'EOF'
+{
+  "family": "windows-gmsa-domainless-task",
+  "containerDefinitions": [
+    {
+      "name": "windows_sample_app",
+      "image": "111111111111.dkr.ecr.us-east-1.amazonaws.com/amazon-ecs-gmsa-linux/web-site",
+      "cpu": 1024,
+      "memory": 1024,
+      "essential": true,
+      "credentialSpecs": [
+        "credentialspecdomainless:arn:aws:ssm:us-east-1:111111111111:parameter/amazon-ecs-gmsa-linux/credspec"
+      ],
+      "entryPoint": [
+        "powershell",
+        "-Command"
+      ],
+      "command": [
+        "New-Item -Path C:\\inetpub\\wwwroot\\index.html -ItemType file -Value '<html> <head> <title>Amazon ECS Sample App</title> <style>body {margin-top: 40px; background-color: #333;} </style> </head><body> <div style=color:white;text-align:center> <h1>Amazon ECS Sample App</h1> <h2>Congratulations!</h2> <p>Your application is now running on a container in Amazon ECS.</p>' -Force ; C:\\ServiceMonitor.exe w3svc"
+      ],
+      "portMappings": [
+        {
+          "protocol": "tcp",
+          "containerPort": 80,
+          "hostPort": 8080
+        }
+      ]
+    }
+  ],
+  "taskRoleArn": "arn:aws:iam::111111111111:role/ecs-exec-demo-task-role",
+  "executionRoleArn": "arn:aws:iam::111111111111:role/ecs-exec-demo-task-execution-role"
+}
+EOF
+
+aws ecs register-task-definition \
+    --cli-input-json file://${TMP}.td.3
+```
+
+
+
+
+## others
+### get-windows-ecs-ami-list-
 ```sh
 aws ssm get-parameters-by-path \
     --path /aws/service/ami-windows-latest \
@@ -296,7 +432,7 @@ aws ssm get-parameter \
 
 
 
-## sample
+### sample
 
 - create asg & launch template first
     - [[auto-scaling-cmd#launch-template-and-auto-scaling-group-]]

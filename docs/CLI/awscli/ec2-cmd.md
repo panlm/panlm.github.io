@@ -2,7 +2,7 @@
 title: ec2
 description: 常用命令
 created: 2021-07-17T04:01:46.968Z
-last_modified: 2024-02-22
+last_modified: 2024-03-05
 icon: simple/amazonec2
 tags:
   - aws/compute/ec2
@@ -122,7 +122,7 @@ aws ec2 run-instances --region ${AWS_REGION} --key-name $KEY_NAME \
 ```sh
 export AWS_DEFAULT_REGION=us-west-2
 WINDOWS_AMI_ID=$(aws ssm get-parameters \
-    --names "/aws/service/ami-windows-latest/Windows_Server-2016-English-Full-Base" \
+    --names "/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-Base" \
     --query 'Parameters[].Value' --output text )
 
 ```

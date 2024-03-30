@@ -2,7 +2,7 @@
 title: linux-cmd
 description: 常用命令
 created: 2023-01-03 12:05:10.533
-last_modified: 2024-02-18
+last_modified: 2024-03-27
 tags:
   - cmd
   - linux
@@ -14,6 +14,32 @@ tags:
 ## awk
 ```sh
 cat docs/CLI/awscli/vpc-cmd.md |awk '/^```sh title="func-.*/,/^```$/ {print}' > /tmp/$$.1
+```
+
+## awscurl
+```sh
+export AWS_DEFAULT_REGION=us-east-2
+export AMP_QUERY_ENDPOINT=https://aps-workspaces.us-east-2.amazonaws.com/workspaces/ws-xxx/api/v1/query
+awscurl -X POST --region ${AWS_DEFAULT_REGION} --service aps \
+"${AMP_QUERY_ENDPOINT}" -d 'query=prometheus_tsdb_head_series' \
+--header 'Content-Type: application/x-www-form-urlencoded'
+
+```
+
+```sh
+awscurl -X POST --region ${AWS_DEFAULT_REGION} --service aps \
+"${AMP_QUERY_ENDPOINT}" -d 'query=up&time=1652382537&stats=all' \
+--header 'Content-Type: application/x-www-form-urlencoded'
+
+```
+
+```sh
+query=sum+%28rate+%28go_gc_duration_seconds_count%5B1m%5D%29%29&start=1652382537&end=1652384705&step=1000&stats=all
+```
+
+### install
+```sh
+pip install git+https://github.com/okigan/awscurl
 ```
 
 ## brew
@@ -179,6 +205,9 @@ net.ipv4.conf.default.accept_source_route = 0
 ' |tee -a /etc/sysctl.conf
 sysctl -p
 ```
+
+## ip-public
+- [[../../../../cmd-my-public-ip-address|cmd-my-public-ip-address]]
 
 ## iptables-
 ### MASQUERADE-

@@ -2,7 +2,7 @@
 title: ebs-for-eks
 description: "使用 ebs 作为 pod 持久化存储 "
 created: 2022-06-24 14:41:33.643
-last_modified: 2023-11-28
+last_modified: 2024-03-27
 tags:
   - aws/storage/ebs
   - aws/container/eks
@@ -13,7 +13,6 @@ tags:
 
 ## install
 ### install-using-eksdemo-
-
 - if you already have a service account called `ebs-csi-controller-sa`, delete it
 ```sh
 echo ${CLUSTER_NAME}
@@ -29,11 +28,9 @@ eksdemo install storage-ebs-csi -c ${CLUSTER_NAME} --namespace kube-system
 ```
 
 ### install
-
 https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/docs/install.md
 
 #### ebs-csi
-
 ```sh
 echo ${CLUSTER_NAME:=ekscluster1}
 echo ${AWS_REGION:=us-east-2}
@@ -47,7 +44,6 @@ kubectl get pods -n kube-system
 ```
 
 #### assign policy to node
-
 ```sh
 # # (option) using customer managed policy
 # aws iam create-policy \
@@ -91,14 +87,12 @@ done
 
 
 ## verify
-
 ```sh
 kubectl apply -f aws-ebs-csi-driver/examples/kubernetes/dynamic-provisioning/manifests/
 
 ```
 
 ### cross az pod definition
-
 - check pv status
 - check pod on which az
 - delete pod and launch to another az
@@ -131,14 +125,12 @@ spec:
 
 
 ## check log
-
 ```sh
 k logs -f deploy/ebs-csi-controller csi-provisioner -n kube-system 
 
 ```
 
 ###  ebs-csi-pod has 6 container
-
 - https://www.velotio.com/engineering-blog/kubernetes-csi-in-action-explained-with-features-and-use-cases
 
 - ebs-plugin 

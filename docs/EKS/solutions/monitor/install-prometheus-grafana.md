@@ -2,7 +2,7 @@
 title: install-prometheus-grafana-on-eks
 description: 安装 grafana 和 prometheus
 created: 2023-02-18 21:31:31.678
-last_modified: 2024-01-08
+last_modified: 2024-03-28
 tags:
   - grafana
   - prometheus
@@ -20,17 +20,18 @@ tags:
 ![install-prometheus-grafana-png-1.png](install-prometheus-grafana-png-1.png)
 
 ```sh
-DEPLOY_NAME=prom-operator-run-abc
+DEPLOY_NAME=prom-0327
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
 
 kubectl create namespace monitoring
 helm install ${DEPLOY_NAME} prometheus-community/kube-prometheus-stack --namespace monitoring
 
+# refer defualt value
+# helm show values prometheus-community/kube-prometheus-stack > values_default.yaml
 ```
 
 ### forward to local
-
 - port forward to cloud9
 ```sh
 k get svc/${DEPLOY_NAME}-grafana
@@ -51,7 +52,35 @@ aws ssm start-session --target ${INST_ID} --document-name AWS-StartPortForwardin
 
 ```
 
-### install standalone prometheus
+### install prom operator, accept remote write
+- enable remote write receiver: `enableRemoteWriteReceiver=true`
+```text
+grafana:
+  enabled: true
+  service:
+    type: LoadBalancer
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-type: "external"
+      service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+  grafana.ini: 
+    auth:
+      sigv4_auth_enabled: true 
+prometheus:
+  enabled: true
+  service:
+    type: LoadBalancer
+    annotations:
+      service.beta.kubernetes.io/aws-load-balancer-type: "external"
+      service.beta.kubernetes.io/aws-load-balancer-scheme: internet-facing
+  prometheusSpec:
+    enableRemoteWriteReceiver: true
+    externalLabels: 
+      cluster: "ekscluster2"
+      cluster_name: "ekscluster2"
+      origin_prometheus: "ekscluster2"
+```
+
+### install prometheus only, without grafana
 ```sh
 CLUSTER_NAME=ekscluster4
 DEPLOY_NAME=prom-operator-${CLUSTER_NAME}

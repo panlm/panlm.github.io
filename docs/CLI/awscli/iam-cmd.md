@@ -2,7 +2,7 @@
 title: iam
 description: 常用命令
 created: 2021-07-18
-last_modified: 2024-02-05
+last_modified: 2024-03-11
 icon: simple/amazoniam
 tags:
   - aws/security/iam
@@ -37,7 +37,7 @@ aws iam create-access-key --user-name cwagent-onprem
 
 ## create role
 ### func-ec2-admin-role-create-
-- create ec2 admin role
+- create admin role for ec2 and ecs
 ```sh title="func-ec2-admin-role-create"
 # no dependency variable
 # output ROLE_ARN / INSTANCE_PROFILE_ARN
@@ -51,7 +51,7 @@ function ec2-admin-role-create () {
         {
             "Effect": "Allow",
             "Principal": {
-                "Service": "ec2.amazonaws.com"
+                "Service": ["ec2.amazonaws.com", "ecs.amazonaws.com"]
             },
             "Action": "sts:AssumeRole"
         }

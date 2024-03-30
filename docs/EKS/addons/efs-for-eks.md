@@ -2,7 +2,7 @@
 title: EFS for EKS
 description: 使用 efs 作为 pod 持久化存储
 created: 2022-05-23 09:57:50.932
-last_modified: 2024-02-20
+last_modified: 2024-03-01
 tags:
   - aws/storage/efs
   - aws/container/eks
@@ -359,5 +359,10 @@ kubectl rollout restart deploy efs-csi-controller -n kube-system
 kubectl rollout restart ds efs-csi-node -n kube-system
 
 ```
+
+
+
+## todo
+- [ ] #todo cross vpc efs csi mount
 
 

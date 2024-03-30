@@ -1,19 +1,24 @@
 ---
-title: metrics-server
-description: EKS 集群中安装 metrics server
+title: Metrics Server
+description: EKS 集群中用于弹性扩展使用的指标服务
 created: 2022-07-04 13:54:12.092
-last_modified: 2023-12-19
+last_modified: 2024-03-29
 tags:
   - aws/container/eks
   - kubernetes
 ---
 > [!WARNING] This is a github note
 
-# metrics-server
+# Metrics Server
+
+Metrics Server is not meant for non-autoscaling purposes. For example, don't use it to forward metrics to monitoring solutions, or as a source of monitoring solution metrics. In such cases please collect metrics from Kubelet `/metrics/resource` endpoint directly.
+
+refer: [[kube-state-metrics]]
+
 ## github
 - https://github.com/kubernetes-sigs/metrics-server
 
-![[../../git-attachment/metric-server-png-1.png]]
+![[../../git-attachment/metrics-server-png-1.png]]
 
 ## install
 ### from yaml
@@ -37,7 +42,7 @@ helm upgrade --install metrics-server metrics-server/metrics-server -n kube-syst
 ## sample
 - [[../kubernetes/k8s-hpa-horizontal-pod-autoscaler]]
 
-**
+
 
 
 

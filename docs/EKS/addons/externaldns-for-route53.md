@@ -2,7 +2,7 @@
 title: externaldns-for-route53
 description: 使用 externaldns 组件
 created: 2022-08-04 13:24:34.806
-last_modified: 2024-02-04
+last_modified: 2024-03-27
 tags:
   - kubernetes
   - aws/network/route53
@@ -17,6 +17,15 @@ tags:
 - you also could create private hosted zone and associate to your vpc. plugin will insert/update record in your private hosted zone. ([link](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-private.html))
 
 ## install 
+### install-with-eksdemo-
+- https://github.com/awslabs/eksdemo/blob/main/docs/install-edns.md
+```sh
+echo ${CLUSTER_NAME}
+echo ${AWS_DEFAULT_REGION}
+
+eksdemo install external-dns -c ${CLUSTER_NAME} 
+```
+
 ### install-
 - https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/aws.md
 - 创建所需要的服务账号 (create service account)
@@ -172,17 +181,6 @@ kubectl create --filename externaldns-with-rbac.yaml \
   --namespace ${EXTERNALDNS_NS:-"default"}
 
 ```
-
-### install-with-eksdemo-
-- https://github.com/awslabs/eksdemo/blob/main/docs/install-edns.md
-```sh
-echo ${CLUSTER_NAME}
-echo ${AWS_DEFAULT_REGION}
-
-eksdemo install external-dns -c ${CLUSTER_NAME} 
-```
-^a2vlmo
-
 
 ## sample
 - https://github.com/panlm/thanos-example/blob/main/POC-template/query/thanos-query-frontend-service.yaml
