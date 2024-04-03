@@ -2,7 +2,7 @@
 title: install-prometheus-grafana-on-eks
 description: 安装 grafana 和 prometheus
 created: 2023-02-18 21:31:31.678
-last_modified: 2024-03-28
+last_modified: 2024-04-02
 tags:
   - grafana
   - prometheus
@@ -20,12 +20,11 @@ tags:
 ![install-prometheus-grafana-png-1.png](install-prometheus-grafana-png-1.png)
 
 ```sh
-DEPLOY_NAME=prom-0327
+DEPLOY_NAME=prom-0330
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
 
-kubectl create namespace monitoring
-helm install ${DEPLOY_NAME} prometheus-community/kube-prometheus-stack --namespace monitoring
+helm install ${DEPLOY_NAME} prometheus-community/kube-prometheus-stack --namespace monitoring --create-namespace
 
 # refer defualt value
 # helm show values prometheus-community/kube-prometheus-stack > values_default.yaml
@@ -54,7 +53,7 @@ aws ssm start-session --target ${INST_ID} --document-name AWS-StartPortForwardin
 
 ### install prom operator, accept remote write
 - enable remote write receiver: `enableRemoteWriteReceiver=true`
-```text
+```yaml title="prom.yaml"
 grafana:
   enabled: true
   service:
@@ -75,9 +74,13 @@ prometheus:
   prometheusSpec:
     enableRemoteWriteReceiver: true
     externalLabels: 
-      cluster: "ekscluster2"
-      cluster_name: "ekscluster2"
-      origin_prometheus: "ekscluster2"
+      cluster: "ekscluster1"
+      cluster_name: "ekscluster1"
+      origin_prometheus: "ekscluster1"
+```
+
+```sh
+helm install -f prom.yaml ${DEPLOY_NAME} prometheus-community/kube-prometheus-stack --namespace monitoring --create-namespace
 ```
 
 ### install prometheus only, without grafana

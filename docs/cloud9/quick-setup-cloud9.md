@@ -2,7 +2,7 @@
 title: Quick Setup Cloud9
 description: 简化创建 Cloud9 脚本，优先选择使用 Terraform 自动初始化；也可以使用脚本从 CloudShell 中完成初始化
 created: 2023-08-04 15:56:59.747
-last_modified: 2024-02-16
+last_modified: 2024-04-02
 status: myblog
 tags:
   - aws/cloud9
@@ -56,6 +56,14 @@ aws cloudformation describe-stacks --stack-name ${STACK_NAME} \
     --query 'Stacks[].Outputs[?OutputKey==`Cloud9IDE`].OutputValue' --output text
 ```
 - 如何 share cloud9 实例，可以参考 ([[git/git-mkdocs/CLI/awscli/cloud9-cmd#share-cloud9-with-other-users-]])
+
+- get C9_PID, and disable aws credential in Cloud9 instance.
+```sh
+C9PID=$(aws cloudformation describe-stacks \
+    --stack-name ${STACK_NAME} \
+    --query 'Stacks[].Outputs[?OutputKey==`C9PID`].OutputValue' --output text)
+aws cloud9 update-environment  --environment-id $C9_PID --managed-credentials-action DISABLE
+```
 
 ## Option 2 - spin up a cloud9 instance with Cloudshell
 -  点击[这里](https://console.aws.amazon.com/cloudshell) 运行 cloudshell，执行代码块创建 cloud9 测试环境 (open cloudshell, and then execute following code to create cloud9 environment)

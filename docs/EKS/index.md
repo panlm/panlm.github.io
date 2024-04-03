@@ -60,7 +60,7 @@ number headings: first-level 2, max 3, 1.1, auto
 - [cluster-autoscaler](cluster-autoscaler): EKS 集群中安装 Cluster Autoscaler
 - [cni-metrics-helper](cni-metrics-helper): cni-metrics-helper
 - [ebs-for-eks](ebs-for-eks): 使用 ebs 作为 pod 持久化存储 
-- [efs-for-eks](efs-for-eks): 使用 efs 作为 pod 持久化存储
+- [EFS for EKS](efs-for-eks): 使用 efs 作为 pod 持久化存储
 - [eks-addons-coredns](eks-addons-coredns): eks-addons-coredns
 - [eks-addons-kube-proxy](eks-addons-kube-proxy): eks-addons-kube-proxy
 - [eks-addons-vpc-cni](eks-addons-vpc-cni): eks-addons-vpc-cni
@@ -71,8 +71,8 @@ number headings: first-level 2, max 3, 1.1, auto
 - [externaldns-for-route53](externaldns-for-route53): 使用 externaldns 组件
 - [karpenter-install-lab](karpenter-lab): 使用 Karpenter 代替 Cluster Autoscaler
 - [kube-no-trouble](kube-no-trouble): Kubernetes 升级小工具
-- [kube-state-metrics](kube-state-metrics): kube-state-metrics
-- [metrics-server](metrics-server): EKS 集群中安装 metrics server
+- [kube-state-metrics](kube-state-metrics): EKS 集群中用于性能监控使用的指标服务
+- [Metrics Server](metrics-server): EKS 集群中用于弹性扩展使用的指标服务
 - [nginx-ingress-controller](nginx-ingress-controller): nginx-ingress-controller
 - [nginx-ingress-controller-community-ver](nginx-ingress-controller-community-ver): 使用 nginx ingress
 - [nginx-ingress-controller-nginx-ver](nginx-ingress-controller-nginx-ver): nginx-ingress-controller-nginx-ver

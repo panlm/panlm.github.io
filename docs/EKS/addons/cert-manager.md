@@ -2,7 +2,7 @@
 title: cert-manager
 description: 证书管理插件
 created: 2023-07-31 15:36:34.121
-last_modified: 2024-01-13
+last_modified: 2024-04-02
 tags:
   - kubernetes
   - aws/container/eks
@@ -15,7 +15,7 @@ tags:
 - https://github.com/awslabs/eksdemo/blob/main/docs/install-cert-manager.md
 ```sh
 echo ${CLUSTER_NAME}
-echo ${AWS_REGION}
+echo ${AWS_DEFAULT_REGION}
 eksdemo install cert-manager -c ${CLUSTER_NAME}
 
 kubectl get clusterissuer
@@ -58,8 +58,9 @@ EOF
 ```
 
 
-## newest version v1.12.3 (2023/07)
+## newest version v1.12.3 (2024/04)
+https://cert-manager.io/docs/releases/
 
-![cert-manager-png-1.png](../../git-attachment/cert-manager-png-1.png)
+![[../../git-attachment/cert-manager-png-1.png]]
 
 

@@ -343,6 +343,7 @@ Resources:
 
 Outputs: 
   Cloud9IDE:
+    Description: 'The Cloud9 URL'
     Value:
       Fn::Join:
       - ''
@@ -352,3 +353,6 @@ Outputs:
         - Ref: ExampleC9Instance
         - "?region="
         - Ref: AWS::Region
+  C9PID: 
+    Description: 'The Cloud9 ID'
+    Value: !Ref ExampleC9Instance

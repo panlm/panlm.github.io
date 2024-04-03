@@ -2,7 +2,7 @@
 title: Migrating Filezilla to AWS Transfer Family
 description: 迁移 Filezilla 到 Transfer Family
 created: 2023-03-25 10:08:47.022
-last_modified: 2024-02-05
+last_modified: 2024-03-06
 status: myblog
 tags:
   - aws/storage/transfer-family
@@ -27,6 +27,7 @@ tags:
 AD=corp2.aws.panlm.xyz
 PASS=${PASS:-passworD.1}
 
+export AWS_DEFAULT_REGION=us-east-1
 export AWS_PAGER=""
 VPC=$(aws ec2 describe-vpcs \
     --filters "Name=isDefault,Values=true" \
@@ -95,14 +96,19 @@ INSTANCE_PROFILE_ARN=$(cat /tmp/inst-profile-$$.1 |jq -r '.InstanceProfile.Arn')
 - create instance
 ```sh
 # IMAGE_ID=ami-06fe4639440b3ab22 # windows 2019 base
-IMAGE_ID=ami-0dd478adda4cc704d # windows 2016
-AWS_REGION=us-east-2
+# IMAGE_ID=ami-0dd478adda4cc704d # windows 2016
 echo ${INSTANCE_PROFILE_ARN}
+
+IMAGE_ID=$(aws ssm get-parameters \
+    --names "/aws/service/ami-windows-latest/Windows_Server-2019-English-Full-Base" --query 'Parameters[].Value' --output text )
+
+# SUBNET_PARAMETER="--subnet-id subnet-0d568921201a89751"
 
 KEY_NAME=aws-key
 STR=$(TZ=EAT-8 date +%H%M)
 aws ec2 run-instances \
-    --region ${AWS_REGION} --key-name ${KEY_NAME} \
+    ${SUBNET_PARAMETER} \
+    --key-name ${KEY_NAME} \
     --image-id ${IMAGE_ID} --instance-type m5.large \
     --iam-instance-profile Arn=${INSTANCE_PROFILE_ARN} \
     --associate-public-ip-address \
@@ -137,7 +143,6 @@ echo ${AD}
 echo ${MSDS_ID}
 echo ${INST_ID}
 echo ${MSDS_IP[@]}
-echo ${AWS_REGION}
 
 aws ssm send-command \
     --document-name "AWS-JoinDirectoryServiceDomain" \
@@ -147,8 +152,7 @@ aws ssm send-command \
     --timeout-seconds 600 \
     --max-concurrency "50" \
     --max-errors "0" \
-    --cloud-watch-output-config '{"CloudWatchOutputEnabled":true,"CloudWatchLogGroupName":"ssm-powershell-log-2024"}' \
-    --region ${AWS_REGION} |tee /tmp/ssm-$$.json
+    --cloud-watch-output-config '{"CloudWatchOutputEnabled":true,"CloudWatchLogGroupName":"ssm-powershell-log-2024"}' |tee /tmp/ssm-$$.json
 
 # wait to Success
 COMMAND_ID=$(cat /tmp/ssm-$$.json |jq -r '.Command.CommandId')
@@ -164,11 +168,11 @@ aws ssm send-command \
 --targets '[{"Key":"InstanceIds","Values":["'"${INST_ID}"'"]}]' \
 --parameters '{"workingDirectory":[""],"executionTimeout":["3600"],"commands":["systeminfo"]}' \
 --timeout-seconds 600 --max-concurrency "50" --max-errors "0" \
---cloud-watch-output-config '{"CloudWatchOutputEnabled":true,"CloudWatchLogGroupName":"ssm-powershell-log-2024"}' --region us-east-2
+--cloud-watch-output-config '{"CloudWatchOutputEnabled":true,"CloudWatchLogGroupName":"ssm-powershell-log-2024"}' 
 
 ```
 
-#### install some tool to manage AD
+#### install-some-tool-to-manage-ad-
 - install `Remote Server Administration Tools` from powershell
 ```powershell
 Install-WindowsFeature RSAT-ADDS-Tools
