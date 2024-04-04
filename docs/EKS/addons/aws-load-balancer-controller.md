@@ -2,7 +2,7 @@
 title: aws-load-balancer-controller
 description: 使用 aws 负载均衡控制器
 created: 2022-05-21 13:18:53.303
-last_modified: 2024-02-03
+last_modified: 2024-04-02
 tags:
   - aws/container/eks
   - kubernetes/ingress
@@ -40,7 +40,6 @@ echo ${AWS_DEFAULT_REGION}
 
 eksdemo install aws-lb-controller -c ${CLUSTER_NAME} --namespace kube-system 
 ```
-^yddjq0
 
 ### install-
 - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/deploy/installation/

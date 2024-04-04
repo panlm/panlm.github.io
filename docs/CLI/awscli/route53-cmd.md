@@ -2,7 +2,7 @@
 title: route53
 description: 常用命令
 created: 2022-09-20 09:02:35.112
-last_modified: 2024-02-17
+last_modified: 2024-03-13
 icon: simple/amazonroute53
 tags:
   - aws/network/route53
@@ -23,6 +23,42 @@ tags:
 - [[../functions/func-create-ns-record.sh|func-create-ns-record]]
 ```sh title="func-create-ns-record" linenums="1"
 --8<-- "docs/CLI/functions/func-create-ns-record.sh"
+```
+
+## func-create-outbound-resolver
+
+```sh
+function create-outbound-resolver () {
+    OPTIND=1
+    OPTSTRING="h?s:"
+    local SG_ID=""
+    while getopts ${OPTSTRING} opt; do
+        case "${opt}" in
+            s) SG_ID=${OPTARG} ;;
+            h|\?) 
+                echo "format: create-outbound-resolver -s security_group_id "
+                echo -e "\tsample: create-outbound-resolver -s sg-xxx "
+                return 0
+            ;;
+        esac
+    done
+    : ${SG_ID:?Missing -s}
+
+    # find 2 subnet id in vpc
+    
+
+    # RANDOM
+    REQUEST_ID=$(TZ=EAT-8 date +%Y%m%d-%H%M%S)
+    aws route53resolver create-resolver-endpoint \
+        --creator-request-id ${REQUEST_ID} \
+        --name my-outbound-endpoint \
+        --security-group-ids ${SG_ID} \
+        --direction OUTBOUND \
+        --ip-addresses SubnetId=${SUBNET_ID[0]} SubnetId=${SUBNET_ID[1]}  \
+        --resolver-endpoint-type IPV4 \
+        --protocols "Do53" "DoH"
+
+}
 ```
 
 ## create cname record
