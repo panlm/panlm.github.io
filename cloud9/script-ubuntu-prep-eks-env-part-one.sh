@@ -24,8 +24,8 @@ sudo -E apt-get -yq install awscli
 echo "complete -C '/usr/bin/aws_completer' aws" >> ~/.bash_profile
 
 # install ssm session plugin
-curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "session-manager-plugin.deb"
-sudo dpkg -i session-manager-plugin.deb
+curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "/tmp/session-manager-plugin.deb"
+sudo dpkg -i /tmp/session-manager-plugin.deb
 
 # your default region 
 export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
