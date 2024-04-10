@@ -2,12 +2,14 @@
 title: Using Loki for Logging
 description: 使用 loki 收集日志
 created: 2023-12-18 14:09:49.975
-last_modified: 2024-01-08
+last_modified: 2024-04-04
 tags:
   - grafana/loki
 ---
 > [!WARNING] This is a github note
-# loki
+# grafana loki
+Loki is a backend store for long-term log retention
+
 ## diagram
 ![[git/git-mkdocs/git-attachment/POC-loki-for-logging-png-1.png|500]]
 

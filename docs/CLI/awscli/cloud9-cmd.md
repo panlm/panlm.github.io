@@ -2,7 +2,7 @@
 title: cloud9
 description: cloud9 related commands
 created: 2022-07-01 09:18:29.572
-last_modified: 2024-02-11
+last_modified: 2024-04-09
 icon: simple/amazonaws
 tags:
   - aws/cloud9
@@ -47,8 +47,6 @@ C9_DEFAULT_SG_ID=$(aws ec2 describe-security-groups \
 
 ```
 
-^wxvp2s
-
 ## share-cloud9-with-other-users-
 ```sh
 C9_PID=
@@ -60,7 +58,12 @@ aws cloud9 create-environment-membership \
     --permissions read-write
 ```
 
-## error when use username in membership
+## spin-up cloud9 in China region
+```
+AMI_ID_ZHY=ami-00974946d12b0f21a
+
+```
+## error message when use username in membership
 ```
 Value 'arn:aws:sts:::user/panlm' at 'userArn' failed to satisfy constraint: Member must satisfy regular expression pattern: ^arn:(aws|aws-cn|aws-us-gov|aws-iso|aws-iso-b):(iam|sts)::\d+:(root|(user\/[\w+=/:,.@-]{1,64}|federated-user\/[\w+=/:,.@-]{2,32}|assumed-role\/[\w+=:,.@-]{1,64}\/[\w+=,.@-]{1,64}))$
 ```

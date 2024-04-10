@@ -31,7 +31,7 @@ CN_DOMAIN_NAME=poc1010.aws.panlm.xyz # for china region
     ![[../CLI/awscli/route53-cmd#func-create-hosted-zone-]]
 
 ### eks cluster
-- create eks cluster (refer: [[../CLI/linux/eksdemo#create eks cluster-]])
+- create eks cluster (refer: [[../CLI/linux/eksdemo#create-eks-cluster-]])
 - install addons (refer: [[../CLI/linux/eksdemo#addons-]])
     - externaldns
     - aws load balancer controller
