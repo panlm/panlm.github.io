@@ -1,15 +1,15 @@
 ---
-title: EFS for EKS
-description: 使用 efs 作为 pod 持久化存储
+title: EFS CSI on EKS
+description: 使用 EFS 作为 Pod 持久化存储
 created: 2022-05-23 09:57:50.932
-last_modified: 2024-03-01
+last_modified: 2024-04-19
 tags:
   - aws/storage/efs
   - aws/container/eks
 ---
 > [!WARNING] This is a github note
 
-# EFS for EKS
+# EFS CSI on EKS
 
 ## link
 
@@ -67,7 +67,8 @@ done
 
 ```
 
-## install from github
+## install efs-csi
+### install from github
 直接安装不额外配置权限的话，只能验证静态 provision
 如果验证动态 provision，会有权限不够的告警，因为需要动态创建 access point，可以通过节点 role方式加载权限，或者重新部署为 irsa
 
@@ -84,17 +85,17 @@ kubectl exec -it ${pod1} -n kube-system -- mount.efs --version
 
 ```
 
-### uninstall efs-csi
+#### uninstall
 ```sh
 cd aws-efs-csi-driver/deploy/kubernetes/overlays/stable
 kubectl kustomize |kubectl delete -f -
 ```
 
 
-## install from helm
+### install from helm
 https://github.com/kubernetes-sigs/aws-efs-csi-driver/blob/master/docs/README.md#installation
 
-### node role (alternative)
+#### node role (alternative)
 - you will got error in creating pod:  `User: arn:aws:sts::xxx:assumed-role/eksctl-ekscluster1-nodegroup-mana-NodeInstanceRole-1LTHOM1WRDBIS/i-xxx is not authorized to perform: elasticfilesystem:DescribeMountTargets on the specified resource`, if you miss this step
 ```sh
 wget -O iam-policy.json 'https://github.com/kubernetes-sigs/aws-efs-csi-driver/raw/master/docs/iam-policy-example.json'
@@ -110,7 +111,7 @@ echo ${POLICY_ARN}
 
 ```
 
-### sa role
+#### sa role
 ```sh
 
 # do steps in **node role** chapter
@@ -132,7 +133,7 @@ eksctl create iamserviceaccount \
     --approve
 ```
 
-### install
+#### install
 ```sh
 helm repo add aws-efs-csi-driver https://kubernetes-sigs.github.io/aws-efs-csi-driver
 helm repo update
@@ -154,7 +155,7 @@ helm upgrade -i aws-efs-csi-driver aws-efs-csi-driver/aws-efs-csi-driver \
 ```
 find registry url from [[eks-container-image-registries-url-by-region]]
 
-#### for private cluster 
+##### for private cluster 
 [doc](https://github.com/kubernetes-sigs/aws-efs-csi-driver/blob/master/docs/README.md#installation)
 
 ```sh
@@ -163,7 +164,7 @@ find registry url from [[eks-container-image-registries-url-by-region]]
 --set sidecars.csiProvisioner.image.repository=602401143452.dkr.ecr.region-code.amazonaws.com/eks/csi-provisioner
 ```
 
-### uninstall
+#### uninstall
 ```sh
 helm uninstall aws-efs-csi-driver -n kube-system
 ```

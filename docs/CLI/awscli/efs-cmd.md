@@ -64,7 +64,7 @@ done
 
 ^d4lka9
 
-another example: [[../../EKS/addons/efs-for-eks#create-efs-]] 
+another example: [[../../EKS/addons/efs-csi#create-efs-]] 
 
 
 ## refer

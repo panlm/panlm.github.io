@@ -2,7 +2,7 @@
 title: redshift
 description: 常用命令
 created: 2022-11-23 23:18:21.581
-last_modified: 2024-02-05
+last_modified: 2024-04-15
 icon: simple/amazonredshift
 tags:
   - aws/database/redshift
@@ -12,13 +12,11 @@ tags:
 # redshift-cmd
 
 ## setup
+??? note "right-click & open-in-new-tab: "
+    ![[git/git-mkdocs/data-analytics/redshift-data-api-lab#初始化-redshift-集群-]]
 
-![[git/git-mkdocs/data-analytics/redshift-data-api-lab#初始化-redshift-集群-]]
-
-refer: [[git/git-mkdocs/data-analytics/redshift-data-api-lab#初始化-redshift-集群-]]
 
 ## unload
-
 - https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/t_unloading_encrypted_files.html 
 - https://hevodata.com/learn/redshift-unload-command-usage-and-examples/#r2
 
@@ -66,11 +64,9 @@ insert into table_utf8 values
 ```
 
 ## others
-
 - https://github.com/awslabs/amazon-redshift-utils/tree/master/src/UnloadCopyUtility
 
 ## create cluster
-
 ```sh
 aws redshift create-cluster \
 --cluster-identifier my-redshift-cluster \

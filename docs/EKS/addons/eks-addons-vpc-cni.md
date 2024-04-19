@@ -4,9 +4,9 @@ description: eks-addons-vpc-cni
 chapter: true
 weight: 123
 created: 2023-07-31 08:44:28.400
-last_modified: 2023-07-31 08:44:28.400
-tags: 
-- aws/container/eks 
+last_modified: 2024-04-18
+tags:
+  - aws/container/eks
 ---
 
 ```ad-attention

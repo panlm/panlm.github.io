@@ -10,9 +10,7 @@ tags:
 > [!WARNING] This is a github note
 
 # EKS Addons
-
 ## list
-
 - 托管集群插件
     - [[../addons/eks-addons-coredns]] 
     - [[../addons/eks-addons-vpc-cni]] 
@@ -30,7 +28,7 @@ tags:
     - [[../addons/cluster-autoscaler]] 
 
 - 其他插件
-    - [[../addons/efs-for-eks|efs-csi-driver]] 
+    - [[../addons/efs-csi|efs-csi-driver]] 
     - cloudwatch-agent / [[../addons/aws-for-fluent-bit|fluentbit]] 
     - [[k8s-dashboard-on-eks|kubernetes-dashboard]] 
     - tigera-operator for [[calico]]  
@@ -38,7 +36,6 @@ tags:
     - [[../addons/kube-state-metrics]] 
 
 ## upgrade addons sample
-
 - https://aws.amazon.com/blogs/containers/amazon-eks-add-ons-preserve-customer-edits/
 - https://aws.amazon.com/cn/blogs/containers/amazon-eks-add-ons-advanced-configuration/
 ```sh
@@ -56,5 +53,8 @@ aws eks update-addon \
 --resolve-conflicts PRESERVE
 
 ```
+
+
+
 
 
