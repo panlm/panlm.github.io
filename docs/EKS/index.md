@@ -16,8 +16,8 @@ number headings: first-level 2, max 3, 1.1, auto
 - [Create Public Access EKS Cluster](eks-public-access-cluster): 创建公有访问的 EKS 集群
 - [Create Public Access EKS Cluster in China Region](eks-public-access-cluster-in-china-region): 在中国区域，创建共有访问的 EKS 集群
 - [EKS Upgrade Procedure](eks-upgrade-procedure): EKS 集群升级
-- [IRSA 中的 Token 剖析](TC-eks-irsa-token-deep-dive-lab): 本文档总结了将 AWS IAM 角色授予 AWS EKS 集群的服务账户的过程
-- [EKS Security Group Deepdive](TC-security-group-for-eks-deepdive): 深入 EKS 安全组
+- [IRSA 中的 Token 剖析](others/TC-eks-irsa-token-deep-dive-lab.md): 本文档总结了将 AWS IAM 角色授予 AWS EKS 集群的服务账户的过程
+- [EKS Security Group Deepdive](others/TC-security-group-for-eks-deepdive.md): 深入 EKS 安全组
 <-->
 
 ## 2 kubernetes

@@ -156,7 +156,7 @@ helm upgrade -i aws-efs-csi-driver aws-efs-csi-driver/aws-efs-csi-driver \
 find registry url from [[eks-container-image-registries-url-by-region]]
 
 ##### for private cluster 
-[doc](https://github.com/kubernetes-sigs/aws-efs-csi-driver/blob/master/docs/README.md#installation)
+https://github.com/kubernetes-sigs/aws-efs-csi-driver/blob/master/docs/README.md#installation
 
 ```sh
 --set sidecars.livenessProbe.image.repository=602401143452.dkr.ecr.region-code.amazonaws.com/eks/livenessprobe \

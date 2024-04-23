@@ -241,7 +241,7 @@ addons:
 
 
 ## refer
-- [[TC-security-group-for-eks-deepdive]]
+- [[../others/TC-security-group-for-eks-deepdive]]
 - [[eks-private-access-cluster]]
 - [[eks-nodegroup]]
 - [[eksctl-default-tags-on-subnet]]

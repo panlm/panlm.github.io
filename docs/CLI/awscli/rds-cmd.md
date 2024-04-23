@@ -2,7 +2,7 @@
 title: rds
 description: 常用命令
 created: 2022-07-22 20:22:12.985
-last_modified: 2024-02-05
+last_modified: 2024-04-23
 icon: simple/amazonrds
 tags:
   - aws/database/rds
@@ -10,13 +10,14 @@ tags:
 ---
 > [!WARNING] This is a github note
 # rds-cmd
-## create postsql
+## create-postsql-
 - https://www.eksworkshop.com/beginner/115_sg-per-pod/10_secgroup/
 
 ```sh
 export VPC_ID=vpc-xxx
 export VPC_CIDR="172.31.0.0/16"
-export RDS_NAME=rdsworkshop
+export RDS_NAME=pgsql
+export AWS_DEFAULT_REGION=
 
 sudo yum install -y jq 
 sudo amazon-linux-extras install -y postgresql12

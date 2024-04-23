@@ -2,12 +2,26 @@
 title: aws-nfw-network-firewall
 description: 
 created: 2023-07-22 10:07:37.041
-last_modified: 2024-03-17
+last_modified: 2024-04-19
 tags:
   - aws/network/nfw
 ---
 > [!WARNING] This is a github note
 # AWS Network Firewall
+
+## stateless-vs-stateful-
+AWS Network Firewall支持有状态的规则（最大规则组容量30,000），也支持无状态的规则（最大规则组容量10,000）
+- 无状态规则优先于有状态规则执行，且按配置的顺序执行，支持pass，drop和forward到有状态的规则三种处理方式；
+- 假如无状态规则配置有冲突，按优先级匹配执行；
+- 有状态的规则如果有冲突
+    - Action Order：（例如某个规则设置了允许ssh，另外一个规则设置了禁止ssh），它是合并后再统一匹配执行，优先级为pass > drop > alert，所以只要有一个pass的设置，其他的非pass设置全部会失效，所以我们在设置规则时要明确具体。
+    - 推荐 Strict order，按顺序执行
+
+![[../../git-attachment/aws-nfw-network-firewall-png-1.png|500]]
+
+- https://docs.aws.amazon.com/network-firewall/latest/developerguide/firewall-rules-engines.html
+- https://aws.amazon.com/cn/blogs/china/effective-protection-of-ns-resources-and-services-through-aws-network-firewall/
+
 
 ## available in china
 - from  2024/2

@@ -1,10 +1,9 @@
 ---
 title: appmesh-workshop-eks
 description: appmesh workshop
-chapter: true
-weight: 10
 created: 2023-01-06 12:22:19.360
-last_modified: 2023-10-22 12:36:03.337
+last_modified: 2024-04-23
+status: deprecated
 tags:
   - aws/container/appmesh
   - aws/container/eks

@@ -2,7 +2,7 @@
 title: docker
 description: 常用命令
 created: 2022-03-23 13:58:01.257
-last_modified: 2024-01-27
+last_modified: 2024-04-23
 tags:
   - docker
   - linux
@@ -170,6 +170,11 @@ CMD python ./app.py
 ## docker run 
 
 - [[docker-run]]
+
+```sh
+docker run --restart=unless-stopped redis
+
+```
 
 ## docker push
 

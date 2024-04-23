@@ -2,7 +2,7 @@
 title: EKS Container Insights
 description: 启用 EKS 的 container insight 功能
 created: 2022-02-22 08:08:35.714
-last_modified: 2024-04-18
+last_modified: 2024-04-23
 tags:
   - aws/container/eks
   - aws/mgmt/cloudwatch
@@ -18,8 +18,9 @@ tags:
 - install cloudwatch observibility addon
 ```sh
 CLUSTER_NAME=
+ADDON_DEFAULT_VERSION=$(aws eks describe-addon-versions --addon-name amazon-cloudwatch-observability --kubernetes-version "1.29" --query 'addons[].addonVersions[?compatibilities[?defaultVersion==`true`]].addonVersion' --output text)
 aws eks create-addon --cluster-name ${CLUSTER_NAME} \
---addon-name amazon-cloudwatch-observability --addon-version v1.5.1-eksbuild.1 \
+--addon-name amazon-cloudwatch-observability --addon-version ${ADDON_DEFAULT_VERSION} \
 --resolve-conflicts OVERWRITE
 ```
 - it consists: 

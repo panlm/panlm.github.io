@@ -2,7 +2,7 @@
 title: eksctl
 description: 常用命令
 created: 2022-03-09 21:30:00.815
-last_modified: 2024-02-13
+last_modified: 2024-04-23
 tags:
   - aws/container/eks
 ---
@@ -26,7 +26,7 @@ refer: [[../../cloud9/setup-cloud9-for-eks#install-in-cloud9-]]
 
 
 ## iamidentitymapping-
-- add role to `aws-auth` configmap ([[../../../../eks-aws-auth|eks-aws-auth]])
+- add role to `aws-auth` configmap ([[../../EKS/others/eks-aws-auth|eks-aws-auth]])
 ```sh
 CLUSTER_NAME=ekscluster1
 ARN=role-arn
@@ -74,7 +74,8 @@ eksctl create nodegroup   \
 
 
 ## create nodegroup
-
+- create nodegroup on a cluster which not created by eksctl
+    - https://eksctl.io/usage/unowned-clusters/#creating-nodegroups
 ```sh
 cluster_name=ekscluster2
 region_name=us-east-1
@@ -85,7 +86,8 @@ eksctl create nodegroup   \
   --node-type m5.large   \
   --nodes 2   \
   --node-private-networking \
-  --subnet-ids subnet-aaa,subnet-bbb
+  --subnet-ids subnet-aaa,subnet-bbb \
+  --node-security-groups sg-xxx # this is the ControlPlaneSecurityGroup
 
 ```
 

@@ -259,7 +259,7 @@ eksctl utils write-kubeconfig --cluster ekscluster1
 - delete it
 
 ## network topo preview
-- [[TC-security-group-for-eks-deepdive]]
+- [[../others/TC-security-group-for-eks-deepdive]]
 
 ## reference
 - [[eks-public-access-cluster]]
