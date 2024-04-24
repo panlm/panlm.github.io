@@ -656,10 +656,6 @@
       
         
       
-        
-      
-        
-      
     
     
       
@@ -817,64 +813,6 @@
   <span class="md-ellipsis">
     EKS Addons
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../EKS/cluster/TC-eks-irsa-token-deep-dive-lab/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    IRSA 中的 Token 剖析
-  </span>
-  
-    
-  
-  
-    <span class="md-status md-status--myblog" title="my blogs">
-    </span>
-  
-
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../EKS/cluster/TC-security-group-for-eks-deepdive/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    EKS Security Group Deepdive
-  </span>
-  
-    
-  
-  
-    <span class="md-status md-status--myblog" title="my blogs">
-    </span>
-  
-
   
 
       </a>
@@ -1573,6 +1511,13 @@
   <span class="md-ellipsis">
     appmesh-workshop-eks
   </span>
+  
+    
+  
+  
+    <span class="md-status md-status--deprecated"></span>
+  
+
   
 
       </a>
@@ -2879,6 +2824,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#stateless-vs-stateful-" class="md-nav__link">
+    <span class="md-ellipsis">
+      stateless-vs-stateful-
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#available-in-china" class="md-nav__link">
     <span class="md-ellipsis">
       available in china
@@ -3813,6 +3767,8 @@
       
         
       
+        
+      
     
     
       
@@ -4134,6 +4090,27 @@
   
   <span class="md-ellipsis">
     efs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/awscli/eks-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks
   </span>
   
 
@@ -4598,6 +4575,15 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#stateless-vs-stateful-" class="md-nav__link">
+    <span class="md-ellipsis">
+      stateless-vs-stateful-
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#available-in-china" class="md-nav__link">
     <span class="md-ellipsis">
       available in china
@@ -4663,6 +4649,22 @@
 <p>[!WARNING] This is a github note</p>
 </blockquote>
 <h1 id="aws-network-firewall">AWS Network Firewall<a class="headerlink" href="#aws-network-firewall" title="Permanent link">&para;</a></h1>
+<h2 id="stateless-vs-stateful-">stateless-vs-stateful-<a class="headerlink" href="#stateless-vs-stateful-" title="Permanent link">&para;</a></h2>
+<p>AWS Network Firewall支持有状态的规则（最大规则组容量30,000），也支持无状态的规则（最大规则组容量10,000）</p>
+<ul>
+<li>无状态规则优先于有状态规则执行，且按配置的顺序执行，支持pass，drop和forward到有状态的规则三种处理方式；</li>
+<li>假如无状态规则配置有冲突，按优先级匹配执行；</li>
+<li>有状态的规则如果有冲突<ul>
+<li>Action Order：（例如某个规则设置了允许ssh，另外一个规则设置了禁止ssh），它是合并后再统一匹配执行，优先级为pass &gt; drop &gt; alert，所以只要有一个pass的设置，其他的非pass设置全部会失效，所以我们在设置规则时要明确具体。</li>
+<li>推荐 Strict order，按顺序执行</li>
+</ul>
+</li>
+</ul>
+<p><a class="glightbox" href="../../../git-attachment/aws-nfw-network-firewall-png-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="500" src="../../../git-attachment/aws-nfw-network-firewall-png-1.png" title="500" /></a></p>
+<ul>
+<li><a href="https://docs.aws.amazon.com/network-firewall/latest/developerguide/firewall-rules-engines.html">https://docs.aws.amazon.com/network-firewall/latest/developerguide/firewall-rules-engines.html</a></li>
+<li><a href="https://aws.amazon.com/cn/blogs/china/effective-protection-of-ns-resources-and-services-through-aws-network-firewall/">https://aws.amazon.com/cn/blogs/china/effective-protection-of-ns-resources-and-services-through-aws-network-firewall/</a></li>
+</ul>
 <h2 id="available-in-china">available in china<a class="headerlink" href="#available-in-china" title="Permanent link">&para;</a></h2>
 <ul>
 <li>from  2024/2<ul>
@@ -4710,7 +4712,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-03-17T21:35:39+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-23T13:14:53+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-23</span>
   </span>
 
     

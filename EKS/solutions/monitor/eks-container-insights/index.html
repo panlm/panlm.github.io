@@ -661,10 +661,6 @@
       
         
       
-        
-      
-        
-      
     
     
       
@@ -822,64 +818,6 @@
   <span class="md-ellipsis">
     EKS Addons
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../cluster/TC-eks-irsa-token-deep-dive-lab/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    IRSA 中的 Token 剖析
-  </span>
-  
-    
-  
-  
-    <span class="md-status md-status--myblog" title="my blogs">
-    </span>
-  
-
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../cluster/TC-security-group-for-eks-deepdive/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    EKS Security Group Deepdive
-  </span>
-  
-    
-  
-  
-    <span class="md-status md-status--myblog" title="my blogs">
-    </span>
-  
-
   
 
       </a>
@@ -1580,6 +1518,13 @@
   <span class="md-ellipsis">
     appmesh-workshop-eks
   </span>
+  
+    
+  
+  
+    <span class="md-status md-status--deprecated"></span>
+  
+
   
 
       </a>
@@ -3830,6 +3775,8 @@
       
         
       
+        
+      
     
     
       
@@ -4151,6 +4098,27 @@
   
   <span class="md-ellipsis">
     efs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../CLI/awscli/eks-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks
   </span>
   
 
@@ -4711,9 +4679,10 @@
 </li>
 <li>install cloudwatch observibility addon<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">CLUSTER_NAME</span><span class="o">=</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>aws<span class="w"> </span>eks<span class="w"> </span>create-addon<span class="w"> </span>--cluster-name<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>--addon-name<span class="w"> </span>amazon-cloudwatch-observability<span class="w"> </span>--addon-version<span class="w"> </span>v1.5.1-eksbuild.1<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>--resolve-conflicts<span class="w"> </span>OVERWRITE
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nv">ADDON_DEFAULT_VERSION</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>eks<span class="w"> </span>describe-addon-versions<span class="w"> </span>--addon-name<span class="w"> </span>amazon-cloudwatch-observability<span class="w"> </span>--kubernetes-version<span class="w"> </span><span class="s2">&quot;1.29&quot;</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;addons[].addonVersions[?compatibilities[?defaultVersion==`true`]].addonVersion&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>aws<span class="w"> </span>eks<span class="w"> </span>create-addon<span class="w"> </span>--cluster-name<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>--addon-name<span class="w"> </span>amazon-cloudwatch-observability<span class="w"> </span>--addon-version<span class="w"> </span><span class="si">${</span><span class="nv">ADDON_DEFAULT_VERSION</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>--resolve-conflicts<span class="w"> </span>OVERWRITE
 </code></pre></div></li>
 <li>it consists: <ul>
 <li><a href="../../../addons/aws-for-fluent-bit/" title="../../addons/aws-for-fluent-bit">../../addons/aws-for-fluent-bit</a></li>
@@ -4800,7 +4769,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-19T08:16:48+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-19</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-23T13:14:53+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-23</span>
   </span>
 
     

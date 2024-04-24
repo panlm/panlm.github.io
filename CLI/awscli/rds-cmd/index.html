@@ -658,10 +658,6 @@
       
         
       
-        
-      
-        
-      
     
     
       
@@ -819,64 +815,6 @@
   <span class="md-ellipsis">
     EKS Addons
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../EKS/cluster/TC-eks-irsa-token-deep-dive-lab/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    IRSA 中的 Token 剖析
-  </span>
-  
-    
-  
-  
-    <span class="md-status md-status--myblog" title="my blogs">
-    </span>
-  
-
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../EKS/cluster/TC-security-group-for-eks-deepdive/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    EKS Security Group Deepdive
-  </span>
-  
-    
-  
-  
-    <span class="md-status md-status--myblog" title="my blogs">
-    </span>
-  
-
   
 
       </a>
@@ -1575,6 +1513,13 @@
   <span class="md-ellipsis">
     appmesh-workshop-eks
   </span>
+  
+    
+  
+  
+    <span class="md-status md-status--deprecated"></span>
+  
+
   
 
       </a>
@@ -3739,6 +3684,8 @@
       
         
       
+        
+      
     
     
       
@@ -4076,6 +4023,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../eks-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../elasticache-redis-cmd/" class="md-nav__link">
         
   
@@ -4218,9 +4186,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#create-postsql" class="md-nav__link">
+  <a href="#create-postsql-" class="md-nav__link">
     <span class="md-ellipsis">
-      create postsql
+      create-postsql-
     </span>
   </a>
   
@@ -4644,9 +4612,9 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#create-postsql" class="md-nav__link">
+  <a href="#create-postsql-" class="md-nav__link">
     <span class="md-ellipsis">
-      create postsql
+      create-postsql-
     </span>
   </a>
   
@@ -4757,92 +4725,93 @@
 <p>[!WARNING] This is a github note</p>
 </blockquote>
 <h1 id="rds-cmd">rds-cmd<a class="headerlink" href="#rds-cmd" title="Permanent link">&para;</a></h1>
-<h2 id="create-postsql">create postsql<a class="headerlink" href="#create-postsql" title="Permanent link">&para;</a></h2>
+<h2 id="create-postsql-">create-postsql-<a class="headerlink" href="#create-postsql-" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://www.eksworkshop.com/beginner/115_sg-per-pod/10_secgroup/">https://www.eksworkshop.com/beginner/115_sg-per-pod/10_secgroup/</a></li>
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">VPC_ID</span><span class="o">=</span>vpc-xxx
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">VPC_CIDR</span><span class="o">=</span><span class="s2">&quot;172.31.0.0/16&quot;</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">RDS_NAME</span><span class="o">=</span>rdsworkshop
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>jq<span class="w"> </span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>sudo<span class="w"> </span>amazon-linux-extras<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>postgresql12
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nv">SG_NAME</span><span class="o">=</span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span>-<span class="si">${</span><span class="nv">RANDOM</span><span class="si">}</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>aws<span class="w"> </span>ec2<span class="w"> </span>create-security-group<span class="w">  </span><span class="se">\</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span>--description<span class="w"> </span><span class="si">${</span><span class="nv">SG_NAME</span><span class="si">}</span><span class="w">     </span><span class="se">\</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span>--group-name<span class="w"> </span><span class="si">${</span><span class="nv">SG_NAME</span><span class="si">}</span><span class="w">      </span><span class="se">\</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span>--vpc-id<span class="w"> </span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="nb">export</span><span class="w"> </span><span class="nv">RDS_SG</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-security-groups<span class="w">      </span><span class="se">\</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">  </span>--filters<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>group-name,Values<span class="o">=</span><span class="si">${</span><span class="nv">SG_NAME</span><span class="si">}</span><span class="w">         </span><span class="se">\</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">            </span><span class="nv">Name</span><span class="o">=</span>vpc-id,Values<span class="o">=</span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span><span class="w">              </span><span class="se">\</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;SecurityGroups[0].GroupId&quot;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;RDS security group ID: </span><span class="si">${</span><span class="nv">RDS_SG</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>aws<span class="w"> </span>ec2<span class="w"> </span>authorize-security-group-ingress<span class="w">  </span><span class="se">\</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">  </span>--group-id<span class="w"> </span><span class="si">${</span><span class="nv">RDS_SG</span><span class="si">}</span><span class="w">                    </span><span class="se">\</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">  </span>--protocol<span class="w"> </span>tcp<span class="w">                          </span><span class="se">\</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">  </span>--port<span class="w"> </span><span class="m">5432</span><span class="w">                             </span><span class="se">\</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">  </span>--cidr<span class="w"> </span><span class="si">${</span><span class="nv">VPC_CIDR</span><span class="si">}</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PUBLIC_SUBNETS_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-subnets<span class="w">        </span><span class="se">\</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">  </span>--filters<span class="w"> </span><span class="s2">&quot;Name=vpc-id,Values=</span><span class="nv">$VPC_ID</span><span class="s2">&quot;</span><span class="w">                   </span><span class="se">\</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">&#39;Subnets[?MapPublicIpOnLaunch==`true`].SubnetId&#39;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">  </span>--output<span class="w"> </span>json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-c<span class="w"> </span>.<span class="k">)</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a>
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="c1"># create a db subnet group</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a>aws<span class="w"> </span>rds<span class="w"> </span>create-db-subnet-group<span class="w">               </span><span class="se">\</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">  </span>--db-subnet-group-name<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">         </span><span class="se">\</span>
-<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">  </span>--db-subnet-group-description<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">  </span><span class="se">\</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">  </span>--subnet-ids<span class="w"> </span><span class="si">${</span><span class="nv">PUBLIC_SUBNETS_ID</span><span class="si">}</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a>
-<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="c1"># generate a password for RDS</span>
-<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="nb">export</span><span class="w"> </span><span class="nv">RDS_PASSWORD</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>date<span class="w"> </span><span class="p">|</span><span class="w"> </span>md5sum<span class="w">  </span><span class="p">|</span>cut<span class="w"> </span>-f1<span class="w"> </span>-d<span class="s1">&#39; &#39;</span><span class="k">)</span><span class="s2">&quot;</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">RDS_PASSWORD</span><span class="si">}</span><span class="w">  </span>&gt;<span class="w"> </span>~/rds_password
-<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>
-<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="c1"># create RDS Postgresql instance</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>aws<span class="w"> </span>rds<span class="w"> </span>create-db-instance<span class="w">                 </span><span class="se">\</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">     </span><span class="se">\</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">  </span>--db-name<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">                    </span><span class="se">\</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="w">  </span>--db-instance-class<span class="w"> </span>db.t3.micro<span class="w">          </span><span class="se">\</span>
-<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="w">  </span>--engine<span class="w"> </span>postgres<span class="w">                        </span><span class="se">\</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="w">  </span>--db-subnet-group-name<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">       </span><span class="se">\</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="w">  </span>--vpc-security-group-ids<span class="w"> </span><span class="si">${</span><span class="nv">RDS_SG</span><span class="si">}</span><span class="w">       </span><span class="se">\</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="w">  </span>--master-username<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">            </span><span class="se">\</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="w">  </span>--publicly-accessible<span class="w">                    </span><span class="se">\</span>
-<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="w">  </span>--master-user-password<span class="w"> </span><span class="si">${</span><span class="nv">RDS_PASSWORD</span><span class="si">}</span><span class="w">   </span><span class="se">\</span>
-<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="w">  </span>--backup-retention-period<span class="w"> </span><span class="m">0</span><span class="w">              </span><span class="se">\</span>
-<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="w">  </span>--allocated-storage<span class="w"> </span><span class="m">20</span>
-<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a>
-<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-instances<span class="w">                </span><span class="se">\</span>
-<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">       </span><span class="se">\</span>
-<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;DBInstances[].DBInstanceStatus&quot;</span><span class="w">   </span><span class="se">\</span>
-<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="w">  </span>--output<span class="w"> </span>text
-<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a>
-<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="c1"># get RDS endpoint</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a><span class="nb">export</span><span class="w"> </span><span class="nv">RDS_ENDPOINT</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-instances<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">&#39;DBInstances[0].Endpoint.Address&#39;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a>
-<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;RDS endpoint: </span><span class="si">${</span><span class="nv">RDS_ENDPOINT</span><span class="si">}</span><span class="s2">&quot;</span>
-<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">RDS_NAME</span><span class="o">=</span>pgsql
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>jq<span class="w"> </span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>sudo<span class="w"> </span>amazon-linux-extras<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>postgresql12
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nv">SG_NAME</span><span class="o">=</span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span>-<span class="si">${</span><span class="nv">RANDOM</span><span class="si">}</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>aws<span class="w"> </span>ec2<span class="w"> </span>create-security-group<span class="w">  </span><span class="se">\</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">  </span>--description<span class="w"> </span><span class="si">${</span><span class="nv">SG_NAME</span><span class="si">}</span><span class="w">     </span><span class="se">\</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span>--group-name<span class="w"> </span><span class="si">${</span><span class="nv">SG_NAME</span><span class="si">}</span><span class="w">      </span><span class="se">\</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">  </span>--vpc-id<span class="w"> </span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="nb">export</span><span class="w"> </span><span class="nv">RDS_SG</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-security-groups<span class="w">      </span><span class="se">\</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">  </span>--filters<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>group-name,Values<span class="o">=</span><span class="si">${</span><span class="nv">SG_NAME</span><span class="si">}</span><span class="w">         </span><span class="se">\</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">            </span><span class="nv">Name</span><span class="o">=</span>vpc-id,Values<span class="o">=</span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span><span class="w">              </span><span class="se">\</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;SecurityGroups[0].GroupId&quot;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;RDS security group ID: </span><span class="si">${</span><span class="nv">RDS_SG</span><span class="si">}</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>aws<span class="w"> </span>ec2<span class="w"> </span>authorize-security-group-ingress<span class="w">  </span><span class="se">\</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">  </span>--group-id<span class="w"> </span><span class="si">${</span><span class="nv">RDS_SG</span><span class="si">}</span><span class="w">                    </span><span class="se">\</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">  </span>--protocol<span class="w"> </span>tcp<span class="w">                          </span><span class="se">\</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">  </span>--port<span class="w"> </span><span class="m">5432</span><span class="w">                             </span><span class="se">\</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">  </span>--cidr<span class="w"> </span><span class="si">${</span><span class="nv">VPC_CIDR</span><span class="si">}</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PUBLIC_SUBNETS_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-subnets<span class="w">        </span><span class="se">\</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">  </span>--filters<span class="w"> </span><span class="s2">&quot;Name=vpc-id,Values=</span><span class="nv">$VPC_ID</span><span class="s2">&quot;</span><span class="w">                   </span><span class="se">\</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">&#39;Subnets[?MapPublicIpOnLaunch==`true`].SubnetId&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">  </span>--output<span class="w"> </span>json<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-c<span class="w"> </span>.<span class="k">)</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="c1"># create a db subnet group</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>aws<span class="w"> </span>rds<span class="w"> </span>create-db-subnet-group<span class="w">               </span><span class="se">\</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">  </span>--db-subnet-group-name<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">         </span><span class="se">\</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">  </span>--db-subnet-group-description<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">  </span><span class="se">\</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">  </span>--subnet-ids<span class="w"> </span><span class="si">${</span><span class="nv">PUBLIC_SUBNETS_ID</span><span class="si">}</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="c1"># generate a password for RDS</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="nb">export</span><span class="w"> </span><span class="nv">RDS_PASSWORD</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>date<span class="w"> </span><span class="p">|</span><span class="w"> </span>md5sum<span class="w">  </span><span class="p">|</span>cut<span class="w"> </span>-f1<span class="w"> </span>-d<span class="s1">&#39; &#39;</span><span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">RDS_PASSWORD</span><span class="si">}</span><span class="w">  </span>&gt;<span class="w"> </span>~/rds_password
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="c1"># create RDS Postgresql instance</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a>aws<span class="w"> </span>rds<span class="w"> </span>create-db-instance<span class="w">                 </span><span class="se">\</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">     </span><span class="se">\</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="w">  </span>--db-name<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">                    </span><span class="se">\</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="w">  </span>--db-instance-class<span class="w"> </span>db.t3.micro<span class="w">          </span><span class="se">\</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="w">  </span>--engine<span class="w"> </span>postgres<span class="w">                        </span><span class="se">\</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="w">  </span>--db-subnet-group-name<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">       </span><span class="se">\</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="w">  </span>--vpc-security-group-ids<span class="w"> </span><span class="si">${</span><span class="nv">RDS_SG</span><span class="si">}</span><span class="w">       </span><span class="se">\</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="w">  </span>--master-username<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">            </span><span class="se">\</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="w">  </span>--publicly-accessible<span class="w">                    </span><span class="se">\</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="w">  </span>--master-user-password<span class="w"> </span><span class="si">${</span><span class="nv">RDS_PASSWORD</span><span class="si">}</span><span class="w">   </span><span class="se">\</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="w">  </span>--backup-retention-period<span class="w"> </span><span class="m">0</span><span class="w">              </span><span class="se">\</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="w">  </span>--allocated-storage<span class="w"> </span><span class="m">20</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a>
+<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-instances<span class="w">                </span><span class="se">\</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w">       </span><span class="se">\</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="w">  </span>--query<span class="w"> </span><span class="s2">&quot;DBInstances[].DBInstanceStatus&quot;</span><span class="w">   </span><span class="se">\</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="w">  </span>--output<span class="w"> </span>text
+<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a>
+<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a><span class="c1"># get RDS endpoint</span>
+<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a><span class="nb">export</span><span class="w"> </span><span class="nv">RDS_ENDPOINT</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>rds<span class="w"> </span>describe-db-instances<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a><span class="w">  </span>--db-instance-identifier<span class="w"> </span><span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">&#39;DBInstances[0].Endpoint.Address&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a>
+<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;RDS endpoint: </span><span class="si">${</span><span class="nv">RDS_ENDPOINT</span><span class="si">}</span><span class="s2">&quot;</span>
 <a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a>
-<a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a>cat<span class="w"> </span>&gt;<span class="w"> </span>/tmp/pgsql.sql<span class="w"> </span><span class="s">&lt;&lt;-EoF</span>
-<a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a><span class="s">CREATE TABLE welcome (column1 TEXT);</span>
-<a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a><span class="s">insert into welcome values (&#39;--------------------------&#39;);</span>
-<a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a><span class="s">insert into welcome values (&#39;Welcome to the rdsworkshop&#39;);</span>
+<a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a>
+<a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a>cat<span class="w"> </span>&gt;<span class="w"> </span>/tmp/pgsql.sql<span class="w"> </span><span class="s">&lt;&lt;-EoF</span>
+<a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a><span class="s">CREATE TABLE welcome (column1 TEXT);</span>
+<a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a><span class="s">insert into welcome values (&#39;--------------------------&#39;);</span>
 <a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a><span class="s">insert into welcome values (&#39;Welcome to the rdsworkshop&#39;);</span>
 <a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a><span class="s">insert into welcome values (&#39;Welcome to the rdsworkshop&#39;);</span>
 <a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a><span class="s">insert into welcome values (&#39;Welcome to the rdsworkshop&#39;);</span>
 <a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a><span class="s">insert into welcome values (&#39;Welcome to the rdsworkshop&#39;);</span>
-<a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a><span class="s">insert into welcome values (&#39;--------------------------&#39;);</span>
-<a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a><span class="s">EoF</span>
-<a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a>
-<a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a><span class="nb">export</span><span class="w"> </span><span class="nv">RDS_PASSWORD</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span>~/rds_password<span class="k">)</span>
-<a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a>psql<span class="w"> </span>postgresql://<span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span>:<span class="si">${</span><span class="nv">RDS_PASSWORD</span><span class="si">}</span>@<span class="si">${</span><span class="nv">RDS_ENDPOINT</span><span class="si">}</span>:5432/<span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w"> </span>-f<span class="w"> </span>/tmp/pgsql.sql
+<a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a><span class="s">insert into welcome values (&#39;Welcome to the rdsworkshop&#39;);</span>
+<a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a><span class="s">insert into welcome values (&#39;--------------------------&#39;);</span>
+<a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a><span class="s">EoF</span>
+<a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a>
+<a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a><span class="nb">export</span><span class="w"> </span><span class="nv">RDS_PASSWORD</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span>~/rds_password<span class="k">)</span>
+<a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a>psql<span class="w"> </span>postgresql://<span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span>:<span class="si">${</span><span class="nv">RDS_PASSWORD</span><span class="si">}</span>@<span class="si">${</span><span class="nv">RDS_ENDPOINT</span><span class="si">}</span>:5432/<span class="si">${</span><span class="nv">RDS_NAME</span><span class="si">}</span><span class="w"> </span>-f<span class="w"> </span>/tmp/pgsql.sql
 </code></pre></div>
 <h2 id="create-mysql">create mysql<a class="headerlink" href="#create-mysql" title="Permanent link">&para;</a></h2>
 <ul>
@@ -4946,7 +4915,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-05T14:31:36+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-23T13:14:53+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-23</span>
   </span>
 
     

@@ -6,15 +6,15 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="深入 EKS 安全组">
+        <meta name="description" content="The Advantage of using Role to access the cluster instead of specifying directly IAM users is that it will be easier to manage: we won’t have to update the ConfigMap each time we want to add or remove users, we will just need to add or remove users from the IAM Group and we just configure the ConfigMap to allow the IAM Role associated to the IAM Group.">
       
       
       
       
-        <link rel="prev" href="../TC-eks-irsa-token-deep-dive-lab/">
+        <link rel="prev" href="../TC-security-group-for-eks-deepdive/">
       
       
-        <link rel="next" href="../../addons/aws-for-fluent-bit/">
+        <link rel="next" href="../../solutions/appmesh/appmesh-workshop-eks/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>EKS Security Group Deepdive - panlm</title>
+        <title>eks-aws-auth - panlm</title>
       
     
     
@@ -97,7 +97,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#eks" class="md-skip">
+        <a href="#aws-auth" class="md-skip">
           Skip to content
         </a>
       
@@ -132,7 +132,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              EKS Security Group Deepdive
+              eks-aws-auth
             
           </span>
         </div>
@@ -644,16 +644,10 @@
                 
   
   
-    
   
   
-  
     
     
-      
-        
-      
-        
       
         
       
@@ -673,11 +667,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
         
           
           <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
@@ -691,7 +685,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_2">
             <span class="md-nav__icon md-icon"></span>
             Cluster
@@ -705,7 +699,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../eks-cluster-with-terraform/" class="md-nav__link">
+      <a href="../../cluster/eks-cluster-with-terraform/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -726,7 +720,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../eks-public-access-cluster-in-china-region/" class="md-nav__link">
+      <a href="../../cluster/eks-public-access-cluster-in-china-region/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -747,7 +741,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../eks-public-access-cluster/" class="md-nav__link">
+      <a href="../../cluster/eks-public-access-cluster/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -776,7 +770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../eks-private-access-cluster/" class="md-nav__link">
+      <a href="../../cluster/eks-private-access-cluster/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -797,7 +791,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../eks-upgrade-procedure/" class="md-nav__link">
+      <a href="../../cluster/eks-upgrade-procedure/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -818,7 +812,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../eks-cluster-addons-list/" class="md-nav__link">
+      <a href="../../cluster/eks-cluster-addons-list/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -827,187 +821,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../TC-eks-irsa-token-deep-dive-lab/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    IRSA 中的 Token 剖析
-  </span>
-  
-    
-  
-  
-    <span class="md-status md-status--myblog" title="my blogs">
-    </span>
-  
-
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    EKS Security Group Deepdive
-  </span>
-  
-    
-  
-  
-    <span class="md-status md-status--myblog" title="my blogs">
-    </span>
-  
-
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    EKS Security Group Deepdive
-  </span>
-  
-    
-  
-  
-    <span class="md-status md-status--myblog" title="my blogs">
-    </span>
-  
-
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#general" class="md-nav__link">
-    <span class="md-ellipsis">
-      general
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#eks-api-server-endpoint-access-is-private-only" class="md-nav__link">
-    <span class="md-ellipsis">
-      EKS API server endpoint access is private only
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="EKS API server endpoint access is private only">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#yaml" class="md-nav__link">
-    <span class="md-ellipsis">
-      yaml
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#eks-api-server-endpoint-access-is-public-and-private-or-public-only" class="md-nav__link">
-    <span class="md-ellipsis">
-      EKS API server endpoint access is public and private (or public only)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="EKS API server endpoint access is public and private (or public only)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#yaml_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      yaml
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#refer" class="md-nav__link">
-    <span class="md-ellipsis">
-      refer
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#todo" class="md-nav__link">
-    <span class="md-ellipsis">
-      TODO
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -1703,6 +1516,13 @@
   <span class="md-ellipsis">
     appmesh-workshop-eks
   </span>
+  
+    
+  
+  
+    <span class="md-status md-status--deprecated"></span>
+  
+
   
 
       </a>
@@ -3860,6 +3680,8 @@
       
         
       
+        
+      
     
     
       
@@ -4181,6 +4003,27 @@
   
   <span class="md-ellipsis">
     efs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/awscli/eks-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks
   </span>
   
 
@@ -4645,75 +4488,27 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#general" class="md-nav__link">
+  <a href="#alternatives" class="md-nav__link">
     <span class="md-ellipsis">
-      general
+      alternatives
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#eks-api-server-endpoint-access-is-private-only" class="md-nav__link">
+  <a href="#add-userrole-to-aws-auth-manually" class="md-nav__link">
     <span class="md-ellipsis">
-      EKS API server endpoint access is private only
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="EKS API server endpoint access is private only">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#yaml" class="md-nav__link">
-    <span class="md-ellipsis">
-      yaml
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#eks-api-server-endpoint-access-is-public-and-private-or-public-only" class="md-nav__link">
-    <span class="md-ellipsis">
-      EKS API server endpoint access is public and private (or public only)
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="EKS API server endpoint access is public and private (or public only)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#yaml_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      yaml
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#refer" class="md-nav__link">
-    <span class="md-ellipsis">
-      refer
+      add user/role to aws-auth manually
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#todo" class="md-nav__link">
+  <a href="#more-specific-sample" class="md-nav__link">
     <span class="md-ellipsis">
-      TODO
+      more specific sample
     </span>
   </a>
   
@@ -4741,232 +4536,48 @@
       <a href="../../../tags/#awscontainereks" class="md-tag">aws/container/eks</a>
     
   
-    
-    
-    
-      <a href="../../../tags/#awsnetworksecurity-group" class="md-tag">aws/network/security-group</a>
-    
-  
 </nav>
 
 
 
-<blockquote>
-<p>[!WARNING] This is a github note</p>
-</blockquote>
-<h1 id="eks">深入 EKS 安全组<a class="headerlink" href="#eks" title="Permanent link">&para;</a></h1>
-<h2 id="general">general<a class="headerlink" href="#general" title="Permanent link">&para;</a></h2>
-<p>eksctl 是一个用于在 Amazon EKS 上创建和管理 Kubernetes 集群的简单命令行实用程序。</p>
-<ul>
-<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html">https://docs.aws.amazon.com/eks/latest/userguide/getting-started-eksctl.html</a></li>
-<li><a href="https://eksctl.io/introduction/">https://eksctl.io/introduction/</a></li>
-</ul>
-<p>使用 eksctl 创建 EKS 集群后，需要搞清楚不同安全组之间的关系，尤其是在private only集群的场景下，以便未来在更复杂场景下诊断问题提供基础。我们今天就来了解下。</p>
-<p>我们先把所涉及到的相关安全组以功能名称可以进行细分，帮助我们更好理解架构：<br />
-1）集群安全组（Cluster SG）&ndash; 可以在eks控制台查看，由eks集群创建；<br />
-2）附加安全组（Additional SG）&ndash; 可以在eks控制台查看，可以在集群创建之前创建并作为参数传入<code>securityGroup</code>；另外，Additional SG在安全组名称中称为ControlPlaneSG，注意不要混淆，后续描述该SG以控制台上名称为准。<br />
-3）共享安全组（Shared SG）&ndash; 创建集群时如果不指定，eksctl会自动创建；任何其他需要访问集群（例如跳板机）或者集群需要访问的资源（例如endpoint）都会绑定该安全组，简化安全组管理<br />
-4）节点组安全组（Nodegroup SG）&ndash; 自管节点组创建时创建；</p>
-<p>默认创建集群后安全组分配及其入站规则可以参照如下规则：</p>
-<ul>
-<li>eks控制平面eni将分配Cluster SG和Additional SG；</li>
-<li>托管节点将分配Cluster SG，fargate节点将分配Cluster SG，Cluster SG会添加自身作为入站规则；</li>
-<li>自管节点将分配Nodegroup SG和Shared SG，且Nodegroup SG与Additional SG相互添加（特定端口）以允许访问；</li>
-<li>所有其他需要与eks集群互访的资源都将分配Shared SG，且Shared SG与Cluster SG相互添加以允许访问，Cluster SG会添加自身作为入站规则；</li>
-</ul>
-<h2 id="eks-api-server-endpoint-access-is-private-only">EKS API server endpoint access is private only<a class="headerlink" href="#eks-api-server-endpoint-access-is-private-only" title="Permanent link">&para;</a></h2>
-<p>在使用private only集群时，我们一般会在现有规划好的vpc中创建，并且使用一台跳板机访问集群，因此需要按照如下顺序部署：</p>
-<ul>
-<li>创建vpc以及相关子网</li>
-<li>使用cloud9作为跳板机</li>
-<li>创建Shared SG，并挂载到cloud9保证其可以访问集群控制平面</li>
-<li>执行eksctl创建eks集群</li>
-</ul>
-<p><a class="glightbox" href="../../../git-attachment/security-group-in-eks-privonly.drawio.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="git/git-mkdocs/git-attachment/security-group-in-eks-privonly.drawio.png" src="../../../git-attachment/security-group-in-eks-privonly.drawio.png" title="git/git-mkdocs/git-attachment/security-group-in-eks-privonly.drawio.png" /></a></p>
-<p>当配置文件中指定<code>privateCluster: true</code>和<code>skipEndpointCreation: false</code>时，下列endpoint将被创建，且共享安全组（Shared SG）被分配到endpoint上。<br />
-如果你的子网可以正常访问公网，那么绝大部分情况下你可以跳过创建这些endpoint，即<code>skipEndpointCreation: true</code>。</p>
-<ul>
-<li>autoscaling (additional)</li>
-<li>logs (additional)</li>
-<li>cloudformation (additional)</li>
-<li>s3</li>
-<li>ecr dkr / ecr api</li>
-<li>ec2 / ec2messages</li>
-<li>sts</li>
-<li>elasticloadbalancing</li>
-<li>kms</li>
-<li>ssm / ssmmessages</li>
-</ul>
-<h3 id="yaml">yaml<a class="headerlink" href="#yaml" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nn">---</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eksctl.io/v1alpha5</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterConfig</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nt">metadata</span><span class="p">:</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ekscluster-privonly</span><span class="w"> </span><span class="c1"># MODIFY cluster name</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">  </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;us-east-2&quot;</span><span class="w"> </span><span class="c1"># MODIFY region</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.21&quot;</span><span class="w"> </span><span class="c1"># MODIFY version</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="c1"># full private cluster</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nt">privateCluster</span><span class="p">:</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span><span class="w"> </span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">  </span><span class="nt">skipEndpointCreation</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">  </span><span class="c1"># additionalEndpointServices:</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">  </span><span class="c1"># - &quot;autoscaling&quot;</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">  </span><span class="c1"># - &quot;logs&quot;</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">  </span><span class="c1"># - &quot;cloudformation&quot;</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="c1"># REPLACE THIS CODE BLOCK</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="nt">vpc</span><span class="p">:</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">  </span><span class="nt">subnets</span><span class="p">:</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">    </span><span class="nt">private</span><span class="p">:</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">      </span><span class="nt">us-east-2a</span><span class="p">:</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">subnet-04b9</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">      </span><span class="nt">us-east-2b</span><span class="p">:</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">subnet-0337</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">    </span><span class="nt">public</span><span class="p">:</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">      </span><span class="nt">us-east-2a</span><span class="p">:</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">subnet-0196</span>
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">      </span><span class="nt">us-east-2b</span><span class="p">:</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">        </span><span class="nt">id</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">subnet-0190</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">  </span><span class="nt">sharedNodeSecurityGroup</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">sg-07bb</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">  </span><span class="c1"># securityGroup: sg-0ba1457c2bb55a5ff</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a>
-<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="nt">cloudWatch</span><span class="p">:</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">  </span><span class="nt">clusterLogging</span><span class="p">:</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">    </span><span class="nt">enableTypes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">]</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a>
-<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="c1"># secretsEncryption:</span>
-<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="c1">#   keyARN: ${MASTER_ARN}</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>
-<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="nt">managedNodeGroups</span><span class="p">:</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a>
-<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">managed-ng</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">  </span><span class="nt">minSize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="w">  </span><span class="nt">maxSize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
-<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="w">  </span><span class="nt">desiredCapacity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="w">  </span><span class="nt">instanceType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">m5.large</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="w">  </span><span class="nt">ssh</span><span class="p">:</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="w">    </span><span class="nt">enableSsm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="w">  </span><span class="nt">privateNetworking</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
+<h1 id="aws-auth">AWS Auth<a class="headerlink" href="#aws-auth" title="Permanent link">&para;</a></h1>
+<p>The Advantage of using Role to access the cluster instead of specifying directly IAM users is that it will be easier to manage: we won’t have to update the ConfigMap each time we want to add or remove users, we will just need to add or remove users from the IAM Group and we just configure the ConfigMap to allow the IAM Role associated to the IAM Group.</p>
+<p><a href="https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html">https://docs.aws.amazon.com/eks/latest/userguide/add-user-role.html</a></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">CLUSTER_NAME</span><span class="o">=</span>ekscluster1
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span>us-west-2
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nv">AWS_ACCOUNT_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span>--query<span class="w"> </span><span class="se">\&quot;</span>Account<span class="se">\&quot;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>eksctl<span class="w"> </span>create<span class="w"> </span>iamidentitymapping<span class="w"> </span>--cluster<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">    </span>--arn<span class="w"> </span>arn:aws:iam::<span class="si">${</span><span class="nv">AWS_ACCOUNT_ID</span><span class="si">}</span>:role/WSParticipantRole<span class="w"> </span>--username<span class="w"> </span>admin<span class="w"> </span>--group<span class="w"> </span>system:masters<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">    </span>--no-duplicate-arns
 </code></pre></div>
-<h2 id="eks-api-server-endpoint-access-is-public-and-private-or-public-only">EKS API server endpoint access is public and private (or public only)<a class="headerlink" href="#eks-api-server-endpoint-access-is-public-and-private-or-public-only" title="Permanent link">&para;</a></h2>
-<p>创建可以公网访问api server的eks集群相对比较简单，适合用于测试或者实验环境。在配置中vpc章节，不指定具体的id以及相关子网信息，eksctl会创建全新子网来运行eks集群，如下图：</p>
-<p><a class="glightbox" href="../../../git-attachment/security-group-in-eks-pub-and-priv.drawio.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="git/git-mkdocs/git-attachment/security-group-in-eks-pub-and-priv.drawio.png" src="../../../git-attachment/security-group-in-eks-pub-and-priv.drawio.png" title="git/git-mkdocs/git-attachment/security-group-in-eks-pub-and-priv.drawio.png" /></a></p>
-<p>相关安全组分配、入站规则等与private only集群相同。我们来看下当应用发布时对于安全组又有哪些更新：</p>
 <ul>
-<li>LB托管安全组（Managed SG for LB）&ndash; 安全组名称类似<code>k8s-ingressname-随机字符串</code>，包含应用对外访问端口，例如80，443；</li>
-<li>LB共享后端安全组（Shared Backend SG for LB）&ndash; 安全组名称类似<code>k8s-traffic-eks集群名称-随机字符串</code></li>
+<li><a href="../../../CLI/linux/eksctl/#iamidentitymapping-" title="eksctl">eksctl</a> </li>
 </ul>
-<p>我们再看下相关SG入站规则情况（包含完整规则）</p>
+<h2 id="alternatives">alternatives<a class="headerlink" href="#alternatives" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Cluster SG<ul>
-<li>允许自身</li>
-<li>允许Shared SG</li>
-<li>允许LB共享后端安全组，且使用Nodeport端口(instance mode)或者Pod端口(ip mode)</li>
+<li><a href="../../eks-access-api" title="eks-access-api">eks-access-api</a></li>
 </ul>
-</li>
-<li>Additional SG<ul>
-<li>允许Nodegroup SG 443端口 （自管节点组访问集群控制平面）</li>
-</ul>
-</li>
-<li>Shared SG<ul>
-<li>允许自身</li>
-<li>允许Cluster SG</li>
-</ul>
-</li>
-<li>Nodegroup SG<ul>
-<li>允许Additional SG 443 端口 （kube-proxy）和 1025-65535 端口 （回包端口）</li>
-<li>允许LB共享后端安全组， 且使用Nodeport端口(instance mode)或者Pod端口(ip mode)</li>
-</ul>
-</li>
-</ul>
-<p>如果发布的应用自身不带SG，则使用节点组主ENI的SG</p>
-<ul>
-<li>如果Pod运行在管理节点组，LB共享后端安全组会自动添加到Cluster SG（如果elb类型为instance，添加Nodeport Port；如果elb类型为ip，添加Pod Port）</li>
-<li>如果Pod运行在自管节点组，LB共享后端安全组会自动添加到Nodegroup SG（如果elb类型为instance，添加Nodeport Port；如果elb类型为ip，添加Pod Port）</li>
-</ul>
-<p>如果发布的应用自身有SG，则会使用它</p>
-<ul>
-<li>一般我们会手工添加应用自带SG且目的端口53，到Cluster SG和Nodegroup SG，方便应用与coredns服务通讯</li>
-<li>LB共享后端安全组会自动添加到应用自带SG（如果elb类型为ip，添加Pod Port）</li>
-<li>LB共享后端安全组会自动添加到Cluster SG（如果elb类型为instance，添加Nodeport Port）</li>
-</ul>
-<p>补充应用发布在fargate上的场景</p>
-<ul>
-<li>应用自身不带SG<ul>
-<li>elb类型为instance时，LB共享后端安全组将添加Nodeport Port到Cluster SG中</li>
-<li>elb类型为ip时，LB共享后端安全组将添加Pod Port到Cluster SG中</li>
-</ul>
-</li>
-<li>应用自身有SG<ul>
-<li>elb类型为instance时，LB共享后端安全组将添加Nodeport Port到Cluster SG中</li>
-<li>elb类型为ip时，LB共享后端安全组将添加Pod Port到应用自带SG中</li>
-</ul>
-</li>
-</ul>
-<h3 id="yaml_1">yaml<a class="headerlink" href="#yaml_1" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nn">---</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">eksctl.io/v1alpha5</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ClusterConfig</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nt">metadata</span><span class="p">:</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ekscluster1</span><span class="w"> </span><span class="c1"># MODIFY cluster name </span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="nt">region</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;us-east-1&quot;</span><span class="w"> </span><span class="c1"># MODIFY region</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span><span class="nt">version</span><span class="p">:</span><span class="w"> </span><span class="s">&quot;1.21&quot;</span><span class="w"> </span><span class="c1"># MODIFY version</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="nt">vpc</span><span class="p">:</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span><span class="nt">clusterEndpoints</span><span class="p">:</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="w">    </span><span class="nt">privateAccess</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">    </span><span class="nt">publicAccess</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="nt">cloudWatch</span><span class="p">:</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">  </span><span class="nt">clusterLogging</span><span class="p">:</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span><span class="nt">enableTypes</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="s">&quot;*&quot;</span><span class="p p-Indicator">]</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="c1"># secretsEncryption:</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="c1">#   keyARN: ${MASTER_ARN}</span>
-<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="nt">managedNodeGroups</span><span class="p">:</span>
-<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>
-<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">mng1</span>
-<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">  </span><span class="nt">minSize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">  </span><span class="nt">maxSize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
-<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">  </span><span class="nt">desiredCapacity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">  </span><span class="nt">instanceType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">m5.large</span>
-<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="w">  </span><span class="nt">ssh</span><span class="p">:</span>
-<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="w">    </span><span class="nt">enableSsm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="w">  </span><span class="nt">privateNetworking</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>
-<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="nt">nodeGroups</span><span class="p">:</span>
-<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>
-<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ng1</span>
-<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">  </span><span class="nt">ami</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">ami-06a8</span>
-<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="w">  </span><span class="nt">amiFamily</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">AmazonLinux2</span>
-<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="w">  </span><span class="nt">minSize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a><span class="w">  </span><span class="nt">maxSize</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">5</span>
-<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="w">  </span><span class="nt">desiredCapacity</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
-<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="w">  </span><span class="nt">instanceType</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">m5.large</span>
-<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="w">  </span><span class="nt">ssh</span><span class="p">:</span>
-<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="w">    </span><span class="nt">enableSsm</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="w">  </span><span class="nt">privateNetworking</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
-<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="w">  </span><span class="nt">overrideBootstrapCommand</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
-<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="w">    </span><span class="no">#!/bin/bash</span>
-<a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="w">    </span><span class="no">source /var/lib/cloud/scripts/eksctl/bootstrap.helper.sh</span>
-<a id="__codelineno-1-48" name="__codelineno-1-48" href="#__codelineno-1-48"></a><span class="w">    </span><span class="no">/etc/eks/bootstrap.sh ${CLUSTER_NAME} --container-runtime containerd --kubelet-extra-args &quot;--node-labels=${NODE_LABELS}&quot;</span>
+<h2 id="add-userrole-to-aws-auth-manually">add user/role to aws-auth manually<a class="headerlink" href="#add-userrole-to-aws-auth-manually" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>kubectl<span class="w"> </span>edit<span class="w"> </span>configmap<span class="w"> </span>aws-auth<span class="w"> </span>-n<span class="w"> </span>kube-system
 </code></pre></div>
-<h2 id="refer">refer<a class="headerlink" href="#refer" title="Permanent link">&para;</a></h2>
-<ul>
-<li>file:///Users/panlm/Documents/SA-Baseline-50-12/eks/security-group-in-eks-0614.drawio</li>
-<li><a href="https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/examples/echo_server/">https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/examples/echo_server/</a></li>
-<li><a href="../../addons/enable-sg-on-pod/" title="git/git-mkdocs/EKS/addons/enable-sg-on-pod">git/git-mkdocs/EKS/addons/enable-sg-on-pod</a></li>
-<li><a href="../eks-public-access-cluster/" title="git/git-mkdocs/EKS/cluster/eks-public-access-cluster">git/git-mkdocs/EKS/cluster/eks-public-access-cluster</a></li>
-<li><a href="../eks-private-access-cluster/" title="git/git-mkdocs/EKS/cluster/eks-private-access-cluster">git/git-mkdocs/EKS/cluster/eks-private-access-cluster</a></li>
-</ul>
-<h2 id="todo">TODO<a class="headerlink" href="#todo" title="Permanent link">&para;</a></h2>
-<ul>
-<li>endpoint for elb &amp; appmesh-envoy-management </li>
-</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="w">  </span><span class="nt">mapUsers</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span><span class="no">- userarn: arn:aws:iam::XXXXXXXXXXXX:user/testuser</span>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">      </span><span class="no">username: testuser</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">      </span><span class="no">groups:</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">      </span><span class="no">- system:masters</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="w">  </span><span class="nt">mapRoles</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="no">- groups:</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">      </span><span class="no">- system:masters</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">      </span><span class="no">rolearn: arn:aws:iam::XXXXXXXXXXXX:role/WSParticipantRole</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">      </span><span class="no">username: system:role:adminrole</span>
+</code></pre></div>
+<h2 id="more-specific-sample">more specific sample<a class="headerlink" href="#more-specific-sample" title="Permanent link">&para;</a></h2>
+<p><a href="https://aws.amazon.com/premiumsupport/knowledge-center/eks-kubernetes-object-access-error/">https://aws.amazon.com/premiumsupport/knowledge-center/eks-kubernetes-object-access-error/</a></p>
+<p>从这个章节“Create a cluster role and cluster role binding, or a role and role binding”，第一步或者第二步都可以实现查看pod资源，区别就是第一步权限更大，比如可以查看configmap secret之类的。</p>
+<p>另外一个章节“View Kubernetes resources in a specific namespace”可以按照namespace进行区分允许细粒度查看资源（第一步或者第二步）。界面上可能报错，但是选对namespace就可以查看不会报错。</p>
 
 
 
@@ -4989,7 +4600,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-25T11:06:11+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-23T13:14:53+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-23</span>
   </span>
 
     
@@ -4999,7 +4610,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-02-25T11:06:11+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-02-25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-23T13:14:53+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-23</span>
   </span>
 
     
