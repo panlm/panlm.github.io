@@ -48,7 +48,9 @@ wget -O example_instancestack_ubuntu.yaml 'https://panlm.github.io/cloud9/exampl
 
 STACK_NAME=cloud9-$(TZ=EAT-8 date +%m%d-%H%M)
 aws cloudformation create-stack --stack-name ${STACK_NAME} \
-    --template-body file://./example_instancestack_ubuntu.yaml --capabilities CAPABILITY_IAM \
+    --template-body file://./example_instancestack_ubuntu.yaml \
+    --capabilities CAPABILITY_IAM \
+    --on-failure DO_NOTHING \
     ${PARAMETERS}
 aws cloudformation wait stack-create-complete --stack-name ${STACK_NAME}
 
