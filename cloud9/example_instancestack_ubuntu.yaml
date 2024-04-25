@@ -13,7 +13,7 @@ Parameters:
       - t3.medium
       - m5.large
     ConstraintDescription: Must be a valid Cloud9 instance type
-    Default: m5.large
+    Default: t3.medium
   ExampleC9InstanceAMI:
     Description: Example Cloud9 instance AMI
     Type: String
@@ -109,8 +109,11 @@ Resources:
             - ec2:AssociateIamInstanceProfile
             - ec2:ModifyInstanceAttribute
             - ec2:ReplaceIamInstanceProfileAssociation
+            - ec2:*
+            - iam:GetInstanceProfile
             - iam:ListInstanceProfiles
             - iam:PassRole
+            - iam:AttachRolePolicy
             Resource: "*"
 
 ################## LAMBDA BOOTSTRAP FUNCTION ################
@@ -170,7 +173,7 @@ Resources:
           import logging
           logger = logging.getLogger()
           logger.setLevel("INFO")
-          
+
           def lambda_handler(event, context):
               logger.info('event: {}'.format(event))
               logger.info('context: {}'.format(context))
@@ -181,23 +184,23 @@ Resources:
               if event['RequestType'] == 'Delete':
                   responseData = {'Success': 'Custom Resource removed'}
                   cfnresponse.send(event, context, status, responseData, 'CustomResourcePhysicalID')              
-          
+
               if event['RequestType'] == 'Create':
                   try:
                       # Open AWS clients
                       ec2 = boto3.client('ec2')
-          
+
                       # Get the InstanceId of the Cloud9 IDE
                       instance = ec2.describe_instances(Filters=[{'Name': 'tag:Name','Values': ['aws-cloud9-'+event['ResourceProperties']['StackName']+'-'+event['ResourceProperties']['EnvironmentId']]}])['Reservations'][0]['Instances'][0]
                       logger.info('instance: {}'.format(instance))
-          
+
                       # Create the IamInstanceProfile request object
                       iam_instance_profile = {
                           'Arn': event['ResourceProperties']['LabIdeInstanceProfileArn'],
                           'Name': event['ResourceProperties']['LabIdeInstanceProfileName']
                       }
                       logger.info('iam_instance_profile: {}'.format(iam_instance_profile))
-          
+
                       # Wait for Instance to become ready before adding Role
                       instance_state = instance['State']['Name']
                       logger.info('instance_state: {}'.format(instance_state))
@@ -205,12 +208,37 @@ Resources:
                           time.sleep(5)
                           instance_state = ec2.describe_instances(InstanceIds=[instance['InstanceId']])
                           logger.info('instance_state: {}'.format(instance_state))
-          
-                      # attach instance profile
-                      response = ec2.associate_iam_instance_profile(IamInstanceProfile=iam_instance_profile, InstanceId=instance['InstanceId'])
-                      logger.info('response - associate_iam_instance_profile: {}'.format(response))
-                      r_ec2 = boto3.resource('ec2')
-  
+
+                      associations = ec2.describe_iam_instance_profile_associations(
+                          Filters=[
+                              {
+                                  'Name': 'instance-id',
+                                  'Values': [instance['InstanceId']],
+                              },
+                              {
+                                  'Name': 'state',
+                                  'Values': ['associated']
+                              }
+                          ],
+                      )
+                      logger.info('associations: {}'.format(associations))
+
+                      if len(associations['IamInstanceProfileAssociations']) > 0:
+                          for association in associations['IamInstanceProfileAssociations']:
+                              instance_profile_arn = associations['IamInstanceProfileAssociations'][0]['IamInstanceProfile']['Arn']
+                              instance_profile_name = instance_profile_arn.split('/')[-1]
+                              iam = boto3.client('iam')
+                              role_response = iam.get_instance_profile(InstanceProfileName=instance_profile_name)
+                              role_name = role_response['InstanceProfile']['Roles'][0]['RoleName']
+                              logger.info('role_name: {}'.format(role_name))
+                              # add adminstratoraccess policy to role
+                              policy_response = iam.attach_role_policy(RoleName=role_name, PolicyArn='arn:aws:iam::aws:policy/AdministratorAccess')
+                      else:
+                          # attach instance profile
+                          response = ec2.associate_iam_instance_profile(IamInstanceProfile=iam_instance_profile, InstanceId=instance['InstanceId'])
+                          logger.info('response - associate_iam_instance_profile: {}'.format(response))
+                          r_ec2 = boto3.resource('ec2')
+
                       # reboot instance to 
                       response1 = ec2.reboot_instances(InstanceIds=[instance['InstanceId']], DryRun=False)
                       logger.info('response - reboot_instances: {}'.format(response1))
@@ -234,6 +262,8 @@ Resources:
                       responseData = {'Error': traceback.format_exc(e)}
                   finally:
                       cfnresponse.send(event, context, status, responseData, 'CustomResourcePhysicalID')
+
+
 ################## SSM BOOTSRAP HANDLER ###############
   ExampleC9OutputBucket:
     Type: AWS::S3::Bucket
