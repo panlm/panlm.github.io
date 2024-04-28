@@ -36,9 +36,9 @@ AWS Network Firewall支持有状态的规则（最大规则组容量30,000），
 
 ## blog
 - https://aws.amazon.com/cn/blogs/security/how-to-deploy-aws-network-firewall-to-help-protect-your-network-from-malware/
-- [[blog-design-your-firewall-deployment-for-internet-ingress-traffic-flows]] 
-- [[blog-design-your-firewall-deployments-to-protect-your-internet-applications-nis30|blog-design-your-firewall-deployments-to-protect-your-internet-applications-nis30]] 
-- [[../../../../notes/blog/blog-deployment-models-for-aws-network-firewall|blog-deployment-models-for-aws-network-firewall]]
+- [[../../git-attachment/blog-design-your-firewall-deployment-for-internet-ingress-traffic-flows|blog-design-your-firewall-deployment-for-internet-ingress-traffic-flows]] 
+- [[../../git-attachment/blog-design-your-firewall-deployments-to-protect-your-internet-applications-nis30|blog-design-your-firewall-deployments-to-protect-your-internet-applications-nis30]] 
+- [[../../git-attachment/blog-deployment-models-for-aws-network-firewall|blog-deployment-models-for-aws-network-firewall]]
 
 
 ## refer

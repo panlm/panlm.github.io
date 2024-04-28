@@ -11,8 +11,6 @@ number headings: first-level 2, max 3, 1.1, auto
 - [$frontmatter:title]($filename): $frontmatter:description
 ```
 - [aws-nfw-network-firewall](aws-nfw-network-firewall): 
-- [Design your firewall deployment for Internet ingress traffic flows](blog-design-your-firewall-deployment-for-internet-ingress-traffic-flows): 
-- [Design your firewall deployments to protect your internet applications - NIS301](blog-design-your-firewall-deployments-to-protect-your-internet-applications-nis30): 
 - [Approaches to layered security for Amazon VPC](ws-approaches-to-layered-security-for-amazon-vpc): 
 - [ws-aws-network-firewall-for-ingress-egress-traffic](ws-aws-network-firewall-for-ingress-egress-traffic): 
 - [AWS Network Firewall Workshop](ws-aws-network-firewall-workshop): 

@@ -46,32 +46,32 @@ In this blog post, I share network architectures for these various firewalling o
 
 ## AWS WAF
 distributed 
-![[../../git-attachment/blog-design-your-firewall-deployment-for-internet-ingress-traffic-flows-png-1.png]]
+![[blog-design-your-firewall-deployment-for-internet-ingress-traffic-flows-png-1.png]]
 
 centralized
-![[../../git-attachment/blog-design-your-firewall-deployment-for-internet-ingress-traffic-flows-png-2.png]]
+![[blog-design-your-firewall-deployment-for-internet-ingress-traffic-flows-png-2.png]]
 
 ## AWS Network Firewall
 distributed 
-![[../../git-attachment/blog-design-your-firewall-deployment-for-internet-ingress-traffic-flows-png-3.png]]
+![[blog-design-your-firewall-deployment-for-internet-ingress-traffic-flows-png-3.png]]
 
 centralized
-![[../../git-attachment/blog-design-your-firewall-deployment-for-internet-ingress-traffic-flows-png-4.png]]
+![[blog-design-your-firewall-deployment-for-internet-ingress-traffic-flows-png-4.png]]
 
 ## Gateway Load Balancer
 distributed 
-![[../../git-attachment/blog-design-your-firewall-deployment-for-internet-ingress-traffic-flows-png-5.png]]
+![[blog-design-your-firewall-deployment-for-internet-ingress-traffic-flows-png-5.png]]
 
 centralized
-![[../../git-attachment/blog-design-your-firewall-deployment-for-internet-ingress-traffic-flows-png-6.png]]
+![[blog-design-your-firewall-deployment-for-internet-ingress-traffic-flows-png-6.png]]
 
 ## ELB sandwich
 distributed 
-![[../../git-attachment/blog-design-your-firewall-deployment-for-internet-ingress-traffic-flows-png-7.png]]
+![[blog-design-your-firewall-deployment-for-internet-ingress-traffic-flows-png-7.png]]
 The client IP preservation depends on the type of internet-facing ELB you use. NLB can preserve the client IP. [This document](https://docs.aws.amazon.com/elasticloadbalancing/latest/network/load-balancer-target-groups.html#client-ip-preservation) goes into detail on what’s required to achieve that. In the case of ALB, it doesn’t preserve the client IP in the packet. The ALB adds it to an X-Forwarded-For HTTP header.
 
 centralized
-![[../../git-attachment/blog-design-your-firewall-deployment-for-internet-ingress-traffic-flows-png-8.png]]
+![[blog-design-your-firewall-deployment-for-internet-ingress-traffic-flows-png-8.png]]
 
 
 
