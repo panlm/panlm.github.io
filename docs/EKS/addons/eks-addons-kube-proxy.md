@@ -1,23 +1,13 @@
 ---
 title: eks-addons-kube-proxy
 description: eks-addons-kube-proxy
-chapter: true
-weight: 124
 created: 2023-07-31 14:05:39.381
 last_modified: 2023-07-31 14:05:39.381
 tags: 
 - aws/container/eks 
 ---
 
-```ad-attention
-title: This is a github note
-
-```
-
 # eks-addons-kube-proxy
-
-- [github](#github)
-
 
 ## github
 - [doc](https://docs.aws.amazon.com/eks/latest/userguide/managing-kube-proxy.html)

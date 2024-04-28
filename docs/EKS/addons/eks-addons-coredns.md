@@ -1,28 +1,13 @@
 ---
 title: eks-addons-coredns
 description: eks-addons-coredns
-chapter: true
-weight: 122
 created: 2023-07-31 08:53:12.492
 last_modified: 2023-07-31 08:53:12.492
 tags: 
 - aws/container/eks 
 ---
 
-```ad-attention
-title: This is a github note
-
-```
-
 # eks-addons-coredns
-
-- [github](#github)
-- [updating](#updating)
-	- [from cli](#from-cli)
-	- [from webui](#from-webui)
-- [others](#others)
-- [refer](#refer)
-
 
 ## github
 

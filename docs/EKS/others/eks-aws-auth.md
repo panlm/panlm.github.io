@@ -1,6 +1,6 @@
 ---
 title: eks-aws-auth
-description: 
+description: EKS aws-auth
 created: 2022-03-15 08:51:03.927
 last_modified: 2024-04-23
 tags:

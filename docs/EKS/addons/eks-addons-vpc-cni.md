@@ -1,31 +1,14 @@
 ---
 title: eks-addons-vpc-cni
 description: eks-addons-vpc-cni
-chapter: true
-weight: 123
 created: 2023-07-31 08:44:28.400
 last_modified: 2024-04-18
 tags:
   - aws/container/eks
 ---
 
-```ad-attention
-title: This is a github note
-
-```
-
 # eks-addons-vpc-cni
-
-- [github](#github)
-- [Updating add-on](#updating-add-on)
-	- [from webui (prefer)](#from-webui-prefer)
-	- [from cli](#from-cli)
-	- [re-install](#re-install)
-- [additional](#additional)
-
-
 ## github
-
 - [github](https://github.com/aws/amazon-vpc-cni-k8s) 
 - [doc](https://docs.aws.amazon.com/eks/latest/userguide/managing-vpc-cni.html) 
 

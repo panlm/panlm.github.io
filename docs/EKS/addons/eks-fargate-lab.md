@@ -1,8 +1,6 @@
 ---
 title: eks-fargate
 description: 在 eks 集群中使用 fargate
-chapter: true
-weight: 1
 created: 2022-06-25 09:17:05.835
 last_modified: 2024-02-03
 tags:
@@ -10,13 +8,7 @@ tags:
   - aws/container/fargate
 ---
 
-```ad-attention
-title: This is a github note
-
-```
-
 # eks-fargate-lab
-
 ## 环境准备
 
 - 登录你的实验环境 ([LINK](https://dashboard.eventengine.run/login))，并且打开 `AWS Console` 

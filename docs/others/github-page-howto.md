@@ -9,12 +9,8 @@ tags:
   - github
 ---
 
-> [!WARNING] This is a github note
-
 # how to put workshop on github 
-
 ## ~~build local~~ 
-
 - https://aws-samples.github.io/aws-modernization-workshop-sample/20_build/1_setup/
 
 ```sh
@@ -24,14 +20,12 @@ git submodule update
 
 
 ## hosted on github page
-
 - https://gohugo.io/hosting-and-deployment/hosting-on-github/
 
 ![github-page-howto-1.png](../git-attachment/github-page-howto-1.png)
 
 
 ## remove custom domain
-
 - remove `static/CNAME` file
     - this file include line: `aws-labs.panlm.xyz`
 - remove custom domain from github `Pages` page
@@ -40,7 +34,6 @@ git submodule update
     - `baseURL` --> `https://panlm.github.io/git-ghpages/`
 
 ## awesome pages plugin
-
 - https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin
 
 
@@ -57,7 +50,6 @@ git submodule update
 > Critical content demanding immediate user attention due to potential risks.
 
 ### in material mkdocs
-
 - https://squidfunk.github.io/mkdocs-material/reference/admonitions/
 ```
 !!! warning "This is a github note"
@@ -68,7 +60,6 @@ git submodule update
 !!! warning "This is a github note"
 
 ## plugins for mkdocs
-
 - https://github.com/mkdocs/catalog
 - For full documentation visit [mkdocs.org](https://www.mkdocs.org)
 
