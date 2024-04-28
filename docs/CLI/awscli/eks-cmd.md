@@ -6,7 +6,6 @@ last_modified: 2024-04-23
 tags:
   - aws/container/eks
 ---
-> [!WARNING] This is a github note
 # eks-cmd
 ## network
 ### check network 

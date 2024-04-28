@@ -8,7 +8,6 @@ tags:
   - aws/storage/transfer-family
   - aws/mgmt/directory-service
 ---
-> [!WARNING] This is a github note
 # Migrating Filezilla to AWS Transfer Family
 ## requirement
 - same domain for both sftp and ftps server

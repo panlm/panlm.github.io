@@ -7,7 +7,6 @@ tags:
   - kubernetes
   - aws/container/eks
 ---
-> [!WARNING] This is a github note
 
 # cert-manager
 ## install

@@ -7,7 +7,6 @@ tags:
   - aws/container/eks
   - aws/mgmt/cloudwatch
 ---
-> [!WARNING] This is a github note
 
 # EKS Container Insights
 ## install

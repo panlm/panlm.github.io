@@ -7,7 +7,6 @@ status: myblog
 tags:
   - aws/container/eks
 ---
-> [!WARNING] This is a github note
 
 # Create Public Access EKS Cluster
 本文指导快速创建 EKS 集群实验环境

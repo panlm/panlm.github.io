@@ -8,7 +8,6 @@ tags:
   - aws/cmd
   - aws/storage/ebs
 ---
-> [!WARNING] This is a github note
 
 # ebs-cmd
 ## create ebs volume

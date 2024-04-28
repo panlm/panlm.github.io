@@ -8,7 +8,6 @@ tags:
   - aws/mgmt/cloudwatch
   - prometheus
 ---
-> [!WARNING] This is a github note
 
 # enable-prometheus-in-cloudwatch
 

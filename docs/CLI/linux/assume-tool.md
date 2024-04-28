@@ -8,7 +8,6 @@ tags:
   - cmd
   - aws/security/iam
 ---
-> [!WARNING] This is a github note
 
 # assume
 ## create role for account to assume

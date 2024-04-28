@@ -7,7 +7,6 @@ tags:
   - aws/container/eks
   - kubernetes/ingress
 ---
-> [!WARNING] This is a github note
 
 # aws-load-balancer-controller
 

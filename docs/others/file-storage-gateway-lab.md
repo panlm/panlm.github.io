@@ -6,7 +6,6 @@ last_modified: 2023-12-24
 tags:
   - aws/storage/storage-gateway
 ---
-> [!WARNING] This is a github note
 
 # Storage File Gateway 
 ## prepare

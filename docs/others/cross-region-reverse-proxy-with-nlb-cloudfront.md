@@ -9,7 +9,6 @@ tags:
   - aws/china
 status: myblog
 ---
-> [!WARNING] This is a github note
 # Cross Region Reverse Proxy with NLB and Cloudfront
 使用 4 层反向代理访问 global 应用时，在 IPtables 中也可以实现流量分发到下游 NLB 的多个公网地址。解决反向代理的高可用性问题。如果在中国区域不使用 cloudfront 的话，可以不使用证书。
 

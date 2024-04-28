@@ -8,7 +8,6 @@ tags:
   - aws/serverless/lambda
   - aws/cmd
 ---
-> [!WARNING] This is a github note
 # lambda-cmd
 
 ## create execute role 

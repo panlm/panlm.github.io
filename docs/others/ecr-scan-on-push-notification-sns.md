@@ -8,7 +8,6 @@ tags:
   - aws/integration/sns
 status: myblog
 ---
-> [!WARNING] This is a github note
 # Enable scan on push in ECR and send notification to SNS
 
 ## 需求

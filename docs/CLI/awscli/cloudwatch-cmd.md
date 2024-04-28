@@ -7,7 +7,6 @@ icon: simple/amazoncloudwatch
 tags:
   - aws/mgmt/cloudwatch
 ---
-> [!WARNING] This is a github note
 
 # cloudwatch-cmd
 
@@ -81,7 +80,6 @@ aws cloudwatch get-metric-statistics \
 ```
 
 ## export task
-
 - [[../../EKS/solutions/logging/export-cloudwatch-log-group-to-s3]]
 
 ## subscription firehose

@@ -8,7 +8,6 @@ tags:
   - aws/database/rds
   - aws/cmd
 ---
-> [!WARNING] This is a github note
 # rds-cmd
 ## create-postsql-
 - https://www.eksworkshop.com/beginner/115_sg-per-pod/10_secgroup/

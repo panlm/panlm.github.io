@@ -7,7 +7,6 @@ tags:
   - aws/storage/ebs
   - aws/container/eks
 ---
-> [!WARNING] This is a github note
 
 # ebs-for-eks
 

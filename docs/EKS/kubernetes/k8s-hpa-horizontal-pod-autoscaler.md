@@ -6,7 +6,6 @@ last_modified: 2023-12-22
 tags:
   - kubernetes
 ---
-> [!WARNING] This is a github note
 # hpa-horizontal-pod-autoscaler
 
 ## sample

@@ -7,7 +7,6 @@ icon: simple/amazonaws
 tags:
   - aws/cmd
 ---
-> [!WARNING] This is a github note
 # sts-cmd
 ## get session token
 

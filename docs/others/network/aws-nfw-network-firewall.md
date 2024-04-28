@@ -6,7 +6,6 @@ last_modified: 2024-04-19
 tags:
   - aws/network/nfw
 ---
-> [!WARNING] This is a github note
 # AWS Network Firewall
 
 ## stateless-vs-stateful-

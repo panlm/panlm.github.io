@@ -8,7 +8,6 @@ tags:
   - aws/mgmt/directory-service
   - aws/cmd
 ---
-> [!WARNING] This is a github note
 
 # directory-service-cmd
 

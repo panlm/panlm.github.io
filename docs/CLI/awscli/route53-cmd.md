@@ -7,7 +7,6 @@ icon: simple/amazonroute53
 tags:
   - aws/network/route53
 ---
-> [!WARNING] This is a github note
 
 # route53-cmd
 ## func-create-hosted-zone-

@@ -6,7 +6,6 @@ last_modified: 2024-03-27
 tags:
   - aws/container/eks
 ---
-> [!WARNING] This is a github note
 
 # Create Private Only EKS Cluster
 

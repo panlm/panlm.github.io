@@ -7,7 +7,6 @@ tags:
   - cmd/jq
   - python
 ---
-> [!WARNING] This is a github note
 # how-to-use-jq
 ## reference 
 - https://programminghistorian.org/en/lessons/json-and-jq

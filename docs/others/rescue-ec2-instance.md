@@ -6,7 +6,6 @@ last_modified: 2023-12-24
 tags:
   - aws/compute/ec2
 ---
-> [!WARNING] This is a github note
 # Rescue EC2 Instance
 
 - https://aws.amazon.com/premiumsupport/knowledge-center/ec2-instance-boot-issues/

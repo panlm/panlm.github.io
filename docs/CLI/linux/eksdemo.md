@@ -7,7 +7,6 @@ tags:
   - aws/container/eks
   - aws/cmd
 ---
-> [!WARNING] This is a github note
 # eksdemo
 
 ## install

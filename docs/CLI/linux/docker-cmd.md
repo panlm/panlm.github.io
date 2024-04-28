@@ -8,7 +8,6 @@ tags:
   - linux
   - cmd
 ---
-> [!WARNING] This is a github note
 # docker cmd
 
 ## docker build

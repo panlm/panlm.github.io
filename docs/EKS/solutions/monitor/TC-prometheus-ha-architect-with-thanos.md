@@ -9,7 +9,6 @@ tags:
   - aws/container/eks
   - prometheus
 ---
-> [!WARNING] This is a github note
 
 !!! warning "This pages has been obseleted."
     released on aws

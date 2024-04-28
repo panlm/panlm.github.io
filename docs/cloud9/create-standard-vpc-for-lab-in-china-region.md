@@ -7,7 +7,6 @@ tags:
   - aws/network/vpc
   - aws/mgmt/cloudformation
 ---
-> [!WARNING] This is a github note
 
 # create standard vpc for lab in china region or global region
 ## using-cloudformation-template-

@@ -7,7 +7,6 @@ status: myblog
 tags:
   - aws/container/eks
 ---
-> [!WARNING] This is a github note
 # IRSA 中的 Token 剖析
 
 本文档总结了将 AWS IAM 角色授予 AWS EKS 集群的服务账户的过程。 这些功能称为 IRSA（服务帐户的 IAM 角色 - IAM Role for Service Account ）。

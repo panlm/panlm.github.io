@@ -7,7 +7,6 @@ icon: simple/amazonsqs
 tags:
   - aws/integration/sqs
 ---
-> [!WARNING] This is a github note
 # sqs-cmd
 ## send and receive messages
 ### with curl

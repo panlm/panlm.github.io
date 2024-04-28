@@ -8,7 +8,6 @@ tags:
   - kubernetes/ingress
   - aws/container/eks
 ---
-> [!WARNING] This is a github note
 
 # nginx-ingress-controller-community-ver
 

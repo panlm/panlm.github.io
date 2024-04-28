@@ -7,7 +7,6 @@ tags:
   - aws/container/eks
   - gitops/weaveworks/flux
 ---
-> [!WARNING] This is a github note
 
 # flux-lab
 ## bootstrap v2

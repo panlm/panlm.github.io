@@ -7,7 +7,6 @@ tags:
   - microsoft/windows
   - microsoft/powershell
 ---
-> [!WARNING] This is a github note
 # powershell
 
 ## download file

@@ -8,7 +8,6 @@ tags:
   - aws/container/eks
   - aws/network/security-group
 ---
-> [!WARNING] This is a github note
 # 深入 EKS 安全组
 
 ## general

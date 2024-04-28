@@ -7,7 +7,6 @@ tags:
   - cmd
   - linux
 ---
-> [!WARNING] This is a github note
 
 # linux cmd
 

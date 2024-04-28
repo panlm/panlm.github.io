@@ -9,7 +9,6 @@ tags:
   - aws/cmd
   - todo
 ---
-> [!WARNING] This is a github note
 
 # vpc-cmd
 ## vpc creation

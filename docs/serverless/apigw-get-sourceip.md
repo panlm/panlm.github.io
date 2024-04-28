@@ -6,7 +6,6 @@ last_modified: 2023-12-24
 tags:
   - aws/serverless/api-gateway
 ---
-> [!WARNING] This is a github note
 # Get Source IP in API Gateway
 
 ## client ip 

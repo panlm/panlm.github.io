@@ -7,7 +7,6 @@ tags:
   - aws/security/acm
   - aws/container/eks
 ---
-> [!WARNING] This is a github note
 
 # self-signed-certificates
 

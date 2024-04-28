@@ -7,7 +7,6 @@ icon: simple/amazonredshift
 tags:
   - aws/database/redshift
 ---
-> [!WARNING] This is a github note
 
 # redshift-cmd
 

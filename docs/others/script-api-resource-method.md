@@ -7,7 +7,6 @@ status: deprecated
 tags:
   - aws/serverless/api-gateway
 ---
-> [!WARNING] This is a github note
 
 !!! warning "This pages has been obseleted."
     newest version is [here](https://github.com/panlm/blog-private-api-gateway-dataflow#appendix)

@@ -7,7 +7,6 @@ tags:
   - aws/aiml/transcribe
   - aws/cmd
 ---
-> [!WARNING] This is a github note
 # script-convert-mp3-to-text
 
 i wrote this script several years ago. I have chance to use it in real life today and update to here

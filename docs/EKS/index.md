@@ -2,7 +2,6 @@
 last_modified: 2024-01-13
 number headings: first-level 2, max 3, 1.1, auto
 ---
-> [!WARNING] This is a github note
 
 # EKS
 ## 1 cluster 

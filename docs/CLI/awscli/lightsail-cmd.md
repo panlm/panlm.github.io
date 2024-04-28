@@ -8,7 +8,6 @@ tags:
   - aws/compute/lightsail
   - aws/cmd
 ---
-> [!WARNING] This is a github note
 # lightsail-cmd
 
 ## lightsail

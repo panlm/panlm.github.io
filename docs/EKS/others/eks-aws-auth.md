@@ -25,7 +25,6 @@ eksctl create iamidentitymapping --cluster ${CLUSTER_NAME} \
 ## alternatives
 - [[eks-access-api]]
 
-
 ## add user/role to aws-auth manually
 
 ```sh

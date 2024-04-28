@@ -8,7 +8,6 @@ tags:
   - aws/container/ecr
   - aws/cmd
 ---
-> [!WARNING] This is a github note
 # ecr-cmd
 
 

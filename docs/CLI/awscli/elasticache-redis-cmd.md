@@ -8,7 +8,6 @@ tags:
   - aws/database/elasticache/redis
   - aws/cmd
 ---
-> [!WARNING] This is a github note
 # elasticache-redis-cmd
 ## create 6.2 in default vpc - cluster mode disabled
 

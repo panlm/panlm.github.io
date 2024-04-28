@@ -7,7 +7,6 @@ tags:
   - microsoft/gmsa
   - aws/container/ecs
 ---
-> [!WARNING] This is a github note
 # Windows Authentication with gMSA for .NET Linux Containers in Amazon ECS
 
 workshop

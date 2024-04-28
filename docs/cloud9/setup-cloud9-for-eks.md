@@ -8,7 +8,6 @@ tags:
   - aws/container/eks
   - aws/cloud9
 ---
-> [!WARNING] This is a github note
 
 # Setup Cloud9 for EKS
 快速设置 cloud9 用于日常测试环境搭建，包含从 cloudshell 中创建 cloud9 instance，然后登录 cloud9 instance 进行基础软件安装、磁盘大小调整和容器环境相关软件安装。为了更方便配置，在 [[quick-setup-cloud9]] 中，直接可以仅通过 cloudshell 即完成所有初始化动作，登录 cloud9 instance 后就可以开始使用。

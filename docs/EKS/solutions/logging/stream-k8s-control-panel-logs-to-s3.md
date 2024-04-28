@@ -10,12 +10,9 @@ tags:
   - aws/storage/s3
   - aws/analytics/glue/databrew
 ---
-> [!WARNING] This is a github note
 
 # Stream EKS Control Panel Logs to S3
-
 ## background
-
 目前 eks 控制平面日志只支持发送到 cloudwatch，且在同一个 log group 中有 5 种类型 6种前缀的 log stream 的日志，不利于统一查询。且只有 audit 日志是 json 格式其他均是单行日志，且字段各不相同。
 
 - kube-apiserver-audit
@@ -26,7 +23,6 @@ tags:
 - cloud-controller-manager
 
 ## requirement
-
 客户需求：
 1. 简单 - 已有 splunk 日志平台，不希望使用 opensearch 等其他日志平台，保证运维简化
 2. 实时 - 需要有方法将日志近实时地发送到S3，可以通过 splunk 进行查询和实时告警。export cloudwatch 日志的方式，实时性无法满足，且同样需要额外实现 export 端点续导的问题
@@ -34,13 +30,10 @@ tags:
 4. 成本和安全 - 成本控制，高安全性，支持多账号
 
 ## architecture
-
 ![](../../../git-attachment/stream-k8s-control-panel-logs-to-s3-1.png)
 
 ## walkthrough
-
 ### eks cluster
-
 - need an EKS cluster and enable log to cloudwatch
 
 ### s3
@@ -532,7 +525,7 @@ this table is created by databrew job
 满足客户需求，基于目前s3中保存的原始数据，并且可以进行字段拆分等二次处理，未来可以使用aws databrew进行更复杂的处理
 
 ## alternative 
-- export-cloudwatch-log-group-to-s3 ([link](export-cloudwatch-log-group-to-s3.md) or [hugo](export-cloudwatch-log-group-to-s3.md))
+- [[export-cloudwatch-log-group-to-s3]] 
 
 ## reference
 - https://aws.amazon.com/blogs/architecture/stream-amazon-cloudwatch-logs-to-a-centralized-account-for-audit-and-analysis/
@@ -541,7 +534,7 @@ this table is created by databrew job
 - https://www.chaossearch.io/blog/cloudwatch2s3-an-easy-way-to-get-your-logs-to-aws-s3
 - [[eks-control-panel-log-cwl-firehose-opensearch]]
 - [[cloudwatch-firehose-splunk]]
-- [[eks-loggroup-description]]
+- [[../../others/eks-loggroup-description]]
 - Subscription filters with Amazon Kinesis Data Firehose
     - https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/SubscriptionFilters.html#FirehoseExample
     - https://docs.amazonaws.cn/en_us/AmazonCloudWatch/latest/logs/SubscriptionFilters.html#FirehoseExample

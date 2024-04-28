@@ -6,7 +6,6 @@ last_modified: 2024-01-03
 tags:
   - terraform
 ---
-> [!WARNING] This is a github note
 # terraform-cmd
 
 ## install-

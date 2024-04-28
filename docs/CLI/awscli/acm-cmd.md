@@ -8,7 +8,6 @@ tags:
   - aws/cmd
   - aws/security/acm
 ---
-> [!WARNING] This is a github note
 
 # acm-cmd
 ## create-certificate-with-eksdemo-

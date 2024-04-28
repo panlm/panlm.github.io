@@ -7,7 +7,6 @@ tags:
   - microsoft/windows
   - aws/container/ecs
 ---
-> [!WARNING] This is a github note
 # poc-container-on-domainless-windows-in-ecs
 
 ## walkthrough

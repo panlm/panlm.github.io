@@ -6,7 +6,6 @@ last_modified: 2023-03-14 08:56:36.285
 tags:
   - aws/serverless/api-gateway
 ---
-> [!WARNING] This is a github note
 # apigw-regional-api-access-from-vpc
 - https://aws.amazon.com/premiumsupport/knowledge-center/api-gateway-vpc-connections/
 

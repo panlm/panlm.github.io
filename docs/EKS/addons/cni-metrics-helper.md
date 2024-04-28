@@ -6,7 +6,6 @@ last_modified: 2024-01-13
 tags:
   - aws/container/eks
 ---
-> [!WARNING] This is a github note
 # cni-metrics-helper
 
 ## install

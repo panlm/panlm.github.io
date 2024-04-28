@@ -6,7 +6,6 @@ last_modified: 2023-03-05 22:05:10.532
 tags:
   - aws/serverless/api-gateway
 ---
-> [!WARNING] This is a github note
 
 # How can I access an API Gateway private REST API in another AWS account using an interface VPC endpoint
 

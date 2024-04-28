@@ -7,7 +7,6 @@ tags:
   - aws/serverless/api-gateway
   - aws/mgmt/cdk
 ---
-> [!WARNING] This is a github note
 
 # AWS CDK Private API and Application Load Balancer Demo
 

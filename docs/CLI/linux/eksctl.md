@@ -6,7 +6,6 @@ last_modified: 2024-04-23
 tags:
   - aws/container/eks
 ---
-> [!WARNING] This is a github note
 
 # eksctl-cmd
 ## install
@@ -157,7 +156,7 @@ function create-iamserviceaccount () {
 }
 ```
 
-## appmesh cluster
+## ~~appmesh cluster~~
 
 ```sh
 eksctl create cluster \

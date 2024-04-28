@@ -8,7 +8,6 @@ tags:
   - aws/container/ecs
   - aws/cmd
 ---
-> [!WARNING] This is a github note
 # ecs-cmd
 ## get ami list
 ### al2

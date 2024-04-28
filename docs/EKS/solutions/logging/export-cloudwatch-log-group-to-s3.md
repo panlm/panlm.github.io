@@ -8,12 +8,9 @@ tags:
   - aws/mgmt/cloudwatch
   - aws/storage/s3
 ---
-> [!WARNING] This is a github note
 
 # Export Cloudwatch Log Group to S3
-
 - https://docs.aws.amazon.com/zh_cn/AmazonCloudWatch/latest/logs/S3ExportTasks.html#S3Permissions
-
 - 导出日志格式文件类似：
 ![](../../../git-attachment/export-cloudwatch-log-group-to-s3-1.png)
 
@@ -87,7 +84,7 @@ done
 - 需要保存导出的时间点，以便于下次从改时间点继续
 - 导出后将在指定的 prefix 中，创建 task id 为 folder ，按照所有 log stream name 作为下一层的 folder ，日志文件为 gz 压缩格式
 - 可以省略 `log-stream-name-prefix` 参数，导出所有日志，考虑日志如何进行二次处理
-- k8s控制日志包含类似前缀，比如 `kube-apiserver-audit-xxx` 和 `kube-apiserver-xxxx` ，并且前者是json格式日志，后者是行日志，如何进行区分导出到不同 prefix 路径，或者导出后如何进行二次处理，参考： stream-k8s-control-panel-logs-to-s3 ([link](stream-k8s-control-panel-logs-to-s3.md) or [hugo](stream-k8s-control-panel-logs-to-s3.md))
-- 导出消息格式问题待解决 [[athena-sample-query#file-format-when-export-cwl-to-s3-📚]] 
+- k8s控制日志包含类似前缀，比如 `kube-apiserver-audit-xxx` 和 `kube-apiserver-xxxx` ，并且前者是json格式日志，后者是行日志，如何进行区分导出到不同 prefix 路径，或者导出后如何进行二次处理，参考： [[stream-k8s-control-panel-logs-to-s3]] 
+- 导出消息格式问题待解决 [[athena-sample-query#file-format-when-export-cwl-to-s3-]] 
 
 

@@ -7,7 +7,6 @@ tags:
   - aws/storage/efs
   - aws/container/eks
 ---
-> [!WARNING] This is a github note
 
 # EFS CSI on EKS
 

@@ -6,7 +6,6 @@ last_modified: 2023-11-25
 tags:
   - aws/database/redshift
 ---
-> [!WARNING] This is a github note
 
 # redshift-data-api-lab
 

@@ -8,7 +8,6 @@ tags:
   - aws/container/appmesh
   - flagger
 ---
-> [!WARNING] This is a github note
 
 # flagger lab
 

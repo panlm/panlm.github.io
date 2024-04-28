@@ -6,7 +6,6 @@ last_modified: 2024-01-13
 tags:
   - gitops/argo
 ---
-> [!WARNING] This is a github note
 
 # argocd-lab
 ## install

@@ -6,7 +6,6 @@ last_modified: 2024-01-15
 tags:
   - aws/serverless/api-gateway
 ---
-> [!WARNING] This is a github note
 
 # Custom Domain Name in API Gateway
 

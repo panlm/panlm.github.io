@@ -8,7 +8,6 @@ tags:
   - aws/cloud9
   - aws/container/eks
 ---
-> [!WARNING] This is a github note
 
 # Quick Setup Cloud9 
 在 [[setup-cloud9-for-eks]] 基础上进一步简化操作，使用不同方法在 cloud9 中完成所有常用软件安装等初始化操作。推荐：

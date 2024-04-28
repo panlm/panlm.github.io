@@ -8,7 +8,6 @@ tags:
   - aws/storage/s3
   - aws/cmd
 ---
-> [!WARNING] This is a github note
 
 # s3-cmd
 

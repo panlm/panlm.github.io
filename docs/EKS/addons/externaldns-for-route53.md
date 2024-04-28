@@ -7,7 +7,6 @@ tags:
   - kubernetes
   - aws/network/route53
 ---
-> [!WARNING] This is a github note
 
 # ExternalDNS for Route53
 ## func create hosted zone

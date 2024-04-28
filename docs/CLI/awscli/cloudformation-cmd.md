@@ -8,7 +8,6 @@ tags:
   - aws/mgmt/cloudformation
   - aws/cmd
 ---
-> [!WARNING] This is a github note
 # cloudformation-cli
 
 ## describe-stacks

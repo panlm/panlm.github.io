@@ -6,7 +6,6 @@ last_modified: 2024-04-18
 tags:
   - grafana/loki
 ---
-> [!WARNING] This is a github note
 # grafana loki
 Loki is a backend store for long-term log retention
 

@@ -7,7 +7,6 @@ tags:
   - aws/container/eks
   - aws/network/security-group
 ---
-> [!WARNING] This is a github note
 
 # enable-sg-on-pod
 

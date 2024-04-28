@@ -8,7 +8,6 @@ tags:
   - aws/cmd
   - aws/storage/efs
 ---
-> [!WARNING] This is a github note
 
 # efs-cmd
 

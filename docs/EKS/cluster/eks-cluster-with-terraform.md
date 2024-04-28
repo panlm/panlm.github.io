@@ -7,7 +7,6 @@ tags:
   - aws/container/eks
   - terraform
 ---
-> [!WARNING] This is a github note
 
 # Create EKS Cluster with Terraform
 ## install terraform

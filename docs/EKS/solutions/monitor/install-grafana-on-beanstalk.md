@@ -6,7 +6,6 @@ last_modified: 2024-03-19
 tags:
   - grafana
 ---
-> [!WARNING] This is a github note
 
 # Install Grafana on Beanstalk
 ## summary

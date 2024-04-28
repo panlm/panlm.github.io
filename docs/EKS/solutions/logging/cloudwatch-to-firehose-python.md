@@ -9,7 +9,6 @@ tags:
   - aws/analytics/kinesis/firehose
   - python
 ---
-> [!WARNING] This is a github note
 # cloudwatch-to-firehose-python
 
 ## create

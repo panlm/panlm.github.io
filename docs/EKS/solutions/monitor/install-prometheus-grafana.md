@@ -8,7 +8,6 @@ tags:
   - prometheus
   - aws/container/eks
 ---
-> [!WARNING] This is a github note
 # install-prometheus-grafana
 ## prep
 - [[../../addons/ebs-for-eks#install-using-eksdemo-]] 

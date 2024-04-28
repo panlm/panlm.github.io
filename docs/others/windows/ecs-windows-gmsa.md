@@ -7,7 +7,6 @@ tags:
   - microsoft/windows
   - aws/container/ecs
 ---
-> [!WARNING] This is a github note
 # ecs-windows-gmsa
 
 | ecs node | ec2          | fargate        |

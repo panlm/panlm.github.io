@@ -6,7 +6,6 @@ last_modified: 2023-12-31
 tags:
   - kubernetes/ingress
 ---
-> [!WARNING] This is a github note
 
 # nginx-ingress-controller
 

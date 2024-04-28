@@ -7,7 +7,6 @@ tags:
   - aws/security/identity-center
 status: myblog
 ---
-> [!WARNING] This is a github note
 
 # Using Global SSO to Login China AWS Accounts
 使用 global sso 登录中国区 aws 账号，同时实现使用命令行操作。

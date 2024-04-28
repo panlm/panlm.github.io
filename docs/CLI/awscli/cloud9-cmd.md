@@ -8,7 +8,6 @@ tags:
   - aws/cloud9
   - aws/cmd
 ---
-> [!WARNING] This is a github note
 
 # cloud9-cmd
 ## spin-up-a-cloud9-instance-in-your-region

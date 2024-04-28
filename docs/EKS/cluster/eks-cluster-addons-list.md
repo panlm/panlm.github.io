@@ -7,7 +7,6 @@ tags:
   - aws/container/eks
   - kubernetes
 ---
-> [!WARNING] This is a github note
 
 # EKS Addons
 ## list

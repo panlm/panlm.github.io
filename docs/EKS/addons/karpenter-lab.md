@@ -7,7 +7,6 @@ tags:
   - aws/container/karpenter
   - aws/container/eks
 ---
-> [!WARNING] This is a github note
 
 # karpenter-lab
 

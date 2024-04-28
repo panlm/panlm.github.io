@@ -8,7 +8,6 @@ tags:
   - aws/compute/ec2
   - aws/cmd
 ---
-> [!WARNING] This is a github note
 
 # ec2 cmd
 ## others

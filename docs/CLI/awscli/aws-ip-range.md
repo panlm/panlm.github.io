@@ -8,7 +8,6 @@ tags:
   - aws/network
   - aws/cmd
 ---
-> [!WARNING] This is a github note
 # ip-range
 
 ## blog

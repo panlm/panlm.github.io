@@ -8,7 +8,6 @@ tags:
   - aws/security/iam
   - aws/cmd
 ---
-> [!WARNING] This is a github note
 
 # iam cmd
 

@@ -7,7 +7,6 @@ icon: simple/amazonaws
 tags:
   - aws/integration/sns
 ---
-> [!WARNING] This is a github note
 # sns-cmd
 ## send file as message
 ``` bash

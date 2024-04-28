@@ -8,7 +8,6 @@ tags:
   - aws/cmd
   - aws/mgmt/systems-manager
 ---
-> [!WARNING] This is a github note
 
 # ssm-cmd
 ## ssm agent

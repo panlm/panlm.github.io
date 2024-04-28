@@ -6,7 +6,6 @@ last_modified: 2024-03-29
 tags:
   - kubernetes
 ---
-> [!WARNING] This is a github note
 
 # kube-state-metrics
 

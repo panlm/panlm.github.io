@@ -8,7 +8,6 @@ tags:
   - kubernetes/cni
 ---
 
-> [!WARNING] This is a github note
 
 # eks-custom-network-lab
 
