@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.19">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.20">
     
     
       
@@ -4017,6 +4017,8 @@
       <a href="../eks-cmd/" class="md-nav__link">
         
   
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m14.67 8.505-2.875 3.335 3.128 3.648h-1.168l-2.808-3.277v3.368h-.842V8.421h.842v2.947l2.603-2.863Zm7.225 6.751-3.369-2.021V8.421a.42.42 0 0 0-.209-.364l-4.843-2.825V1.159l8.42 4.976Zm.635-9.724L13.267.06a.422.422 0 0 0-.635.362v5.053c0 .15.08.288.208.363l4.844 2.826v4.81a.42.42 0 0 0 .205.362l4.21 2.526a.42.42 0 0 0 .638-.361V5.895a.42.42 0 0 0-.207-.363ZM11.977 23.1l-9.872-5.248V6.135l8.421-4.976v4.084L6.09 8.066a.422.422 0 0 0-.195.355v7.158a.42.42 0 0 0 .226.373l5.665 2.948a.42.42 0 0 0 .387 0l5.496-2.84 3.382 2.03Zm10.135-5.356-4.21-2.526a.42.42 0 0 0-.411-.013l-5.51 2.847-5.244-2.729v-6.67l4.436-2.824a.422.422 0 0 0 .195-.355V.42a.421.421 0 0 0-.635-.362L1.47 5.532a.421.421 0 0 0-.207.363v12.21c0 .156.086.299.223.372l10.297 5.474a.421.421 0 0 0 .401-.004l9.915-5.473a.422.422 0 0 0 .013-.73Z"/></svg>
+  
   <span class="md-ellipsis">
     eks
   </span>
@@ -4209,6 +4211,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#create-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      create cluster
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#unload" class="md-nav__link">
     <span class="md-ellipsis">
       unload
@@ -4236,18 +4247,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#others" class="md-nav__link">
+  <a href="#list-snapshot" class="md-nav__link">
     <span class="md-ellipsis">
-      others
+      list snapshot
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-cluster" class="md-nav__link">
+  <a href="#put-resource-policy-to-snapshot" class="md-nav__link">
     <span class="md-ellipsis">
-      create cluster
+      put resource policy to snapshot
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#others" class="md-nav__link">
+    <span class="md-ellipsis">
+      others
     </span>
   </a>
   
@@ -4588,6 +4608,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#create-cluster" class="md-nav__link">
+    <span class="md-ellipsis">
+      create cluster
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#unload" class="md-nav__link">
     <span class="md-ellipsis">
       unload
@@ -4615,18 +4644,27 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#others" class="md-nav__link">
+  <a href="#list-snapshot" class="md-nav__link">
     <span class="md-ellipsis">
-      others
+      list snapshot
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-cluster" class="md-nav__link">
+  <a href="#put-resource-policy-to-snapshot" class="md-nav__link">
     <span class="md-ellipsis">
-      create cluster
+      put resource policy to snapshot
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#others" class="md-nav__link">
+    <span class="md-ellipsis">
+      others
     </span>
   </a>
   
@@ -4664,52 +4702,59 @@
 <summary>right-click &amp; open-in-new-tab: </summary>
 <p><a class="glightbox" href="../../../data-analytics/redshift-data-api-lab/#初始化-redshift-集群-" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="git/git-mkdocs/data-analytics/redshift-data-api-lab" src="../../../data-analytics/redshift-data-api-lab/#初始化-redshift-集群-" title="git/git-mkdocs/data-analytics/redshift-data-api-lab" /></a></p>
 </details>
+<h2 id="create-cluster">create cluster<a class="headerlink" href="#create-cluster" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>aws<span class="w"> </span>redshift<span class="w"> </span>create-cluster<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>--cluster-identifier<span class="w"> </span>my-redshift-cluster<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>--node-type<span class="w"> </span>dc2.large<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>--master-username<span class="w"> </span>myadmin<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>--master-user-password<span class="w"> </span>passworD.1<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>--number-of-nodes<span class="w"> </span><span class="m">3</span><span class="w"> </span>
+</code></pre></div>
 <h2 id="unload">unload<a class="headerlink" href="#unload" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/t_unloading_encrypted_files.html">https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/t_unloading_encrypted_files.html</a> </li>
 <li><a href="https://hevodata.com/learn/redshift-unload-command-usage-and-examples/#r2">https://hevodata.com/learn/redshift-unload-command-usage-and-examples/#r2</a></li>
 </ul>
 <p>CSE:<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">echo</span><span class="w"> </span><span class="m">01234567890123456789012345678901</span><span class="w"> </span><span class="p">|</span>base64
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">echo</span><span class="w"> </span><span class="m">01234567890123456789012345678901</span><span class="w"> </span><span class="p">|</span>base64
 </code></pre></div></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="go">MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEK</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="go">MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEK</span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="n">unload</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;select * from dev.public.customer&#39;</span><span class="p">)</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="k">to</span><span class="w"> </span><span class="s1">&#39;s3://template1-rs3bucket-1bor4w2qr4rti/unload_encrypted/&#39;</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="n">iam_role</span><span class="w"> </span><span class="s1">&#39;arn:aws:iam::012345678901:role/RedshiftImmersionRole&#39;</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="n">master_symmetric_key</span><span class="w"> </span><span class="s1">&#39;MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEK&#39;</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="k">encrypted</span><span class="p">;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="n">unload</span><span class="w"> </span><span class="p">(</span><span class="s1">&#39;select * from dev.public.customer&#39;</span><span class="p">)</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="k">to</span><span class="w"> </span><span class="s1">&#39;s3://template1-rs3bucket-1bor4w2qr4rti/unload_encrypted/&#39;</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="n">iam_role</span><span class="w"> </span><span class="s1">&#39;arn:aws:iam::012345678901:role/RedshiftImmersionRole&#39;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="n">master_symmetric_key</span><span class="w"> </span><span class="s1">&#39;MDEyMzQ1Njc4OTAxMjM0NTY3ODkwMTIzNDU2Nzg5MDEK&#39;</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="k">encrypted</span><span class="p">;</span>
 </code></pre></div>
 <p>SSE:<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>
 </code></pre></div></p>
 <h2 id="create-database">create database<a class="headerlink" href="#create-database" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="k">create</span><span class="w"> </span><span class="k">database</span><span class="w"> </span><span class="n">lab798</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="k">create</span><span class="w"> </span><span class="k">database</span><span class="w"> </span><span class="n">lab798</span>
 </code></pre></div>
 <h2 id="create-table">create table<a class="headerlink" href="#create-table" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>create table table_utf8(
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>col1 integer not null,
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>col2 varchar(100) not null ,
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>col3 varchar(100) not null
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>);
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>insert into table_utf8 values
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>(  1,&#39;中文1&#39;,&#39;中文2&#39;),
-<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>(  2,&#39;中文1&#39;,&#39;中文2&#39;),
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>(  3,&#39;中文1&#39;,&#39;中文2&#39;);
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>create table table_utf8(
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>col1 integer not null,
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>col2 varchar(100) not null ,
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>col3 varchar(100) not null
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>);
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>insert into table_utf8 values
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>(  1,&#39;中文1&#39;,&#39;中文2&#39;),
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>(  2,&#39;中文1&#39;,&#39;中文2&#39;),
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>(  3,&#39;中文1&#39;,&#39;中文2&#39;);
 </code></pre></div>
+<h2 id="list-snapshot">list snapshot<a class="headerlink" href="#list-snapshot" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>aws<span class="w"> </span>redshift<span class="w"> </span>describe-cluster-snapshots<span class="w"> </span>--cluster-identifier<span class="w"> </span>redshift-cluster-2
+</code></pre></div>
+<h2 id="put-resource-policy-to-snapshot">put resource policy to snapshot<a class="headerlink" href="#put-resource-policy-to-snapshot" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../../../../../migrate-redshift-provisioned-serverless-cross-account" title="migrate-redshift-provisioned-serverless-cross-account">migrate-redshift-provisioned-serverless-cross-account</a> </li>
+</ul>
 <h2 id="others">others<a class="headerlink" href="#others" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="https://github.com/awslabs/amazon-redshift-utils/tree/master/src/UnloadCopyUtility">https://github.com/awslabs/amazon-redshift-utils/tree/master/src/UnloadCopyUtility</a></li>
 </ul>
-<h2 id="create-cluster">create cluster<a class="headerlink" href="#create-cluster" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>aws<span class="w"> </span>redshift<span class="w"> </span>create-cluster<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>--cluster-identifier<span class="w"> </span>my-redshift-cluster<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>--node-type<span class="w"> </span>dc2.large<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>--master-username<span class="w"> </span>myadmin<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>--master-user-password<span class="w"> </span>passworD.1<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>--number-of-nodes<span class="w"> </span><span class="m">3</span><span class="w"> </span>
-</code></pre></div>
 
 
 
@@ -4732,7 +4777,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-28T10:21:30+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-02T23:52:28+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-02</span>
   </span>
 
     
