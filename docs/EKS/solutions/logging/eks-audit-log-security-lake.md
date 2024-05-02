@@ -30,6 +30,6 @@ https://aws.amazon.com/about-aws/whats-new/2024/02/amazon-security-lake-audit-lo
 
 
 ## refer
-- setup in account 365
+- enabled in account 365
 
 

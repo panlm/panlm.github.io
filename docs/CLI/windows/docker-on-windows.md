@@ -18,7 +18,7 @@ Invoke-WebRequest -UseBasicParsing "https://raw.githubusercontent.com/microsoft/
 
 ```
 
-![[../../git-attachment/docker-on-windows-png-1.png]]
+![[attachments/docker-on-windows/IMG-20240502-235049-999.png]]
 
 
 ## sample build iis + sqlcmd container

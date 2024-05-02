@@ -3,6 +3,7 @@ title: eks
 description: 常用命令
 created: 2022-04-22 08:17:31.190
 last_modified: 2024-04-23
+icon: simple/amazoneks
 tags:
   - aws/container/eks
 ---

@@ -19,7 +19,7 @@ https://aws.amazon.com/cn/blogs/containers/using-windows-authentication-with-gms
 
 ## lab 
 
-wait until cdk bootstrap display on cloudformation
+wait until `CDKToolkit` bootstrap template display on cloudformation, you could logon to your windows dev EC2 with credential in secret manager
 ```sh
 
 git clone https://github.com/aws-samples/gmsa-linux-containers-ecs.git

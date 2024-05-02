@@ -15,6 +15,18 @@ tags:
     ![[git/git-mkdocs/data-analytics/redshift-data-api-lab#初始化-redshift-集群-]]
 
 
+## create cluster
+```sh
+aws redshift create-cluster \
+--cluster-identifier my-redshift-cluster \
+--node-type dc2.large \
+--master-username myadmin \
+--master-user-password passworD.1 \
+--number-of-nodes 3 
+
+```
+
+
 ## unload
 - https://docs.aws.amazon.com/zh_cn/redshift/latest/dg/t_unloading_encrypted_files.html 
 - https://hevodata.com/learn/redshift-unload-command-usage-and-examples/#r2
@@ -62,19 +74,19 @@ insert into table_utf8 values
 
 ```
 
+
+## list snapshot
+```sh
+aws redshift describe-cluster-snapshots --cluster-identifier redshift-cluster-2
+```
+
+
+## put resource policy to snapshot
+- [[../../../../migrate-redshift-provisioned-serverless-cross-account|migrate-redshift-provisioned-serverless-cross-account]] 
+
+
 ## others
 - https://github.com/awslabs/amazon-redshift-utils/tree/master/src/UnloadCopyUtility
-
-## create cluster
-```sh
-aws redshift create-cluster \
---cluster-identifier my-redshift-cluster \
---node-type dc2.large \
---master-username myadmin \
---master-user-password passworD.1 \
---number-of-nodes 3 
-
-```
 
 
 
