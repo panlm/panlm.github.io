@@ -17,7 +17,7 @@ tags:
 ![aws-load-balancer-controller-png-1.png](../../git-attachment/aws-load-balancer-controller-png-1.png)
 
 ## workshop
-- [[awslbc-ingress-lab-echoserver#install echoserver-]]
+- [[awslbc-ingress-lab-echoserver#install-echoserver-]]
 - https://www.eksworkshop.com/beginner/180_fargate/prerequisites-for-alb/
 - 常用ingress的相关配置 ([[awslbc-ingress-settings]])
 - 使用已有ingress的相关配置 ([[awslbc-ingress-settings-ingress-group]])

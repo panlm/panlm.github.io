@@ -49,12 +49,12 @@ C9_DEFAULT_SG_ID=$(aws ec2 describe-security-groups \
 ## share-cloud9-with-other-users-
 ```sh
 C9_PID=
-AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query \"Account\" --output text)
-AWS_ACCOUNT_ARN=$(aws sts get-caller-identity --query \"Arn\" --output text)
+AWS_ACCOUNT_ARN=
 aws cloud9 create-environment-membership \
     --environment-id ${C9_PID} \
     --user-arn ${AWS_ACCOUNT_ARN} \
     --permissions read-write
+
 ```
 
 ## spin-up cloud9 in China region
@@ -75,7 +75,6 @@ aws ec2 describe-instances --instance-ids $C9_INST_ID --query 'Reservations[].In
 
 
 ## old
-
 ```sh
 
 

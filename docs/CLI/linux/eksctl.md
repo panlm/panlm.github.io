@@ -23,6 +23,10 @@ eksctl completion bash >> ~/.bash_completion
 
 refer: [[../../cloud9/setup-cloud9-for-eks#install-in-cloud9-]] 
 
+## oidc
+```sh
+eksctl utils associate-iam-oidc-provider --cluster $EKS_CLUSTER_NAME --region $AWS_REGION --approve
+```
 
 ## iamidentitymapping-
 - add role to `aws-auth` configmap ([[../../EKS/others/eks-aws-auth|eks-aws-auth]])

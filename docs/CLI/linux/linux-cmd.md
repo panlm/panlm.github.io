@@ -317,7 +317,32 @@ sponge  reads  standard input and writes it out to the specified file. Unlike a 
 stress-ng --vm-bytes $(awk '_MemFree_{printf "%d\n", $2 * 0.95;}' < _proc_meminfo)k --vm-keep -m 1
 ```
 
-
+### container
+```
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cpu-stress-deployment
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: stress-ng
+  template:
+    metadata:
+      labels:
+        app: stress-ng
+    spec:
+      containers:
+      - name: stress-ng-container
+        image: polinux/stress-ng # progrium/stress
+        command: ["stress", "--cpu", "2"]
+        resources:
+          limits:
+            cpu: "1"
+          requests:
+            cpu: "1"
+```
 
 ## tar
 ```sh

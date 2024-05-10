@@ -81,7 +81,7 @@ number headings: first-level 2, max 3, 1.1, auto
 (file:.md path:git/git-mkdocs/eks/others) 
 - [$frontmatter:title]($filename): $frontmatter:description
 ```
-- [EKS Access API](eks-access-api): eks-access-api
+- [EKS Access API](others/eks-access-api.md): eks-access-api
 - [eks-aws-auth](eks-aws-auth): EKS aws-auth
 - [eks-loggroup-description](eks-loggroup-description): eks 日志类型分析
 - [IRSA 中的 Token 剖析](TC-eks-irsa-token-deep-dive-lab): 本文档总结了将 AWS IAM 角色授予 AWS EKS 集群的服务账户的过程

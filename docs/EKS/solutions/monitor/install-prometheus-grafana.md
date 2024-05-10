@@ -19,11 +19,12 @@ tags:
 ![install-prometheus-grafana-png-1.png](install-prometheus-grafana-png-1.png)
 
 ```sh
-DEPLOY_NAME=prom-0330
+DEPLOY_NAME=prom-0509
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
 
-helm install ${DEPLOY_NAME} prometheus-community/kube-prometheus-stack --namespace monitoring --create-namespace
+NAMESPACE_NAME=helm
+helm install ${DEPLOY_NAME} prometheus-community/kube-prometheus-stack --namespace ${NAMESPACE_NAME} --create-namespace
 
 # refer defualt value
 # helm show values prometheus-community/kube-prometheus-stack > values_default.yaml
@@ -150,6 +151,19 @@ External labels are only attached when data is communicated to the outside so yo
 - refer: [[TC-prometheus-ha-architect-with-thanos]]
 
 ![[../../../git-attachment/install-prometheus-grafana-png-2.png]]
+
+## (DO NOT USE) install prometheus from github
+https://github.com/prometheus-operator/kube-prometheus
+```
+kubectl apply --server-side -f manifests/setup
+kubectl wait \
+	--for condition=Established \
+	--all CustomResourceDefinition \
+	--namespace=monitoring
+kubectl apply -f manifests/
+```
+- it uses prometheus-adapter as metrics.k8s.io APIService instead of metrics-server.
+- maybe it has some performance metrics accuracy issue, when you have limit/request settings in POD and resources breach.
 
 ## (Optional) install prometheus and grafana
 

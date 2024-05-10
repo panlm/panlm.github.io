@@ -31,5 +31,6 @@ https://aws.amazon.com/about-aws/whats-new/2024/02/amazon-security-lake-audit-lo
 
 ## refer
 - enabled in account 365
+- supported in terraform provider aws 5.40+
 
 

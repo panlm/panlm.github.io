@@ -11,10 +11,6 @@ number headings: first-level 2, max 3, 1.1, auto
 - [$frontmatter:title]($filename): $frontmatter:description
 ```
 - [aws-nfw-network-firewall](aws-nfw-network-firewall): 
-- [Approaches to layered security for Amazon VPC](ws-approaches-to-layered-security-for-amazon-vpc): 
-- [ws-aws-network-firewall-for-ingress-egress-traffic](ws-aws-network-firewall-for-ingress-egress-traffic): 
-- [AWS Network Firewall Workshop](ws-aws-network-firewall-workshop): 
-- [Hands on Network Firewall Workshop](ws-hands-on-network-firewall-workshop): 
 <-->
 
 ## 2 well-architected

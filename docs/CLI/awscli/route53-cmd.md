@@ -62,7 +62,7 @@ function create-outbound-resolver () {
 
 ## create cname record
 
-![[POC-apigw#^d0liwm]]
+![[../../../../gitlab/artifacts/MK/POC-apigw-dataflow#^d0liwm]]
 
 refer: [link](https://repost.aws/knowledge-center/simple-resource-record-route53-cli) 
 sample: [[acm-cmd#create-certificate-]]

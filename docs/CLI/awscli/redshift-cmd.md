@@ -82,7 +82,7 @@ aws redshift describe-cluster-snapshots --cluster-identifier redshift-cluster-2
 
 
 ## put resource policy to snapshot
-- [[../../../../migrate-redshift-provisioned-serverless-cross-account|migrate-redshift-provisioned-serverless-cross-account]] 
+- [[../../../../redshift-provisioned-to-serverless-cross-account|redshift-provisioned-to-serverless-cross-account]] 
 
 
 ## others

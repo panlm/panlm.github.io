@@ -28,10 +28,10 @@ AWS Network Firewall支持有状态的规则（最大规则组容量30,000），
 
 
 ## workshop
-- [[ws-aws-network-firewall-workshop]] 
-- [[ws-hands-on-network-firewall-workshop]] 
-- [[ws-aws-network-firewall-for-ingress-egress-traffic]] 
-- [[ws-approaches-to-layered-security-for-amazon-vpc]] 
+- [[../../../../ws-aws-network-firewall-workshop]] 
+- [[../../../../ws-hands-on-network-firewall-workshop]] 
+- [[../../../../ws-aws-network-firewall-for-ingress-egress-traffic]] 
+- [[../../../../ws-approaches-to-layered-security-for-amazon-vpc]] 
 
 
 ## blog

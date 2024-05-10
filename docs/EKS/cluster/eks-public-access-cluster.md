@@ -85,6 +85,22 @@ addons:
 
 iam:
   withOIDC: true
+
+EOF
+cat $$.yaml |envsubst '$CLUSTER_NAME $AWS_REGION $AZ0 $AZ1 $EKS_VERSION $CIDR ' > cluster-${CLUSTER_NAME}.yaml
+
+```
+
+- 创建集群，预计需要 20 分钟 (wait about 20 mins)
+```sh
+eksctl create cluster -f cluster-${CLUSTER_NAME}.yaml
+
+```
+
+#### extra service accounts
+```yaml
+iam:
+  withOIDC: true
   serviceAccounts:
   - metadata:
       name: aws-load-balancer-controller
@@ -111,15 +127,6 @@ iam:
       namespace: amazon-cloudwatch
     attachPolicyARNs:
     - "arn:aws:iam::aws:policy/CloudWatchAgentServerPolicy"
-EOF
-cat $$.yaml |envsubst '$CLUSTER_NAME $AWS_REGION $AZ0 $AZ1 $EKS_VERSION $CIDR ' > cluster-${CLUSTER_NAME}.yaml
-
-```
-
-- 创建集群，预计需要 20 分钟 (wait about 20 mins)
-```sh
-eksctl create cluster -f cluster-${CLUSTER_NAME}.yaml
-
 ```
 
 ### get-newest-ami

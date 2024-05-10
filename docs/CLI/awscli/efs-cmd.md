@@ -12,7 +12,6 @@ tags:
 # efs-cmd
 
 ## create-efs-
-
 - 在默认 vpc 中创建 efs
 ```sh
 CLUSTER_NAME=${CLUSTER_NAME:-eks0630}
@@ -61,10 +60,7 @@ done
 
 ```
 
-^d4lka9
-
 another example: [[../../EKS/addons/efs-csi#create-efs-]] 
-
 
 ## refer
 - https://repost.aws/knowledge-center/efs-mount-automount-unmount-steps

@@ -18,11 +18,9 @@ CLUSTER_NAME=efs0225
 AWS_REGION=us-east-2
 ```
 
-![[../../../CLI/awscli/efs-cmd#^d4lka9]]
-
-refer: [[git/git-mkdocs/CLI/awscli/efs-cmd#create-efs-]]
-
-mount nfs to instance ([link](https://aws.amazon.com/premiumsupport/knowledge-center/elastic-beanstalk-mount-efs-volumes/))
+- create EFS
+    - refer: [[git/git-mkdocs/CLI/awscli/efs-cmd#create-efs-]]
+- mount nfs to instance ([link](https://aws.amazon.com/premiumsupport/knowledge-center/elastic-beanstalk-mount-efs-volumes/))
 
 ```sh
 echo ${FILESYSTEM_ID}
