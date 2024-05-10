@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.20">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.21">
     
     
       
@@ -2091,6 +2091,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#do-not-use-install-prometheus-from-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      (DO NOT USE) install prometheus from github
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#optional-install-prometheus-and-grafana" class="md-nav__link">
     <span class="md-ellipsis">
       (Optional) install prometheus and grafana
@@ -2146,6 +2155,8 @@
       
         
       
+        
+      
     
     
       
@@ -2189,6 +2200,27 @@
   
   <span class="md-ellipsis">
     horizontal pod autoscaler
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kubernetes/k8s-liveness-readiness-startup-probes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    k8s-liveness-readiness-startup-probes
   </span>
   
 
@@ -2885,14 +2917,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
     
     
       
@@ -2936,90 +2960,6 @@
   
   <span class="md-ellipsis">
     aws-nfw-network-firewall
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../others/network/ws-approaches-to-layered-security-for-amazon-vpc/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Approaches to layered security for Amazon VPC
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../others/network/ws-aws-network-firewall-for-ingress-egress-traffic/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    ws-aws-network-firewall-for-ingress-egress-traffic
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../others/network/ws-aws-network-firewall-workshop/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    AWS Network Firewall Workshop
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../others/network/ws-hands-on-network-firewall-workshop/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Hands on Network Firewall Workshop
   </span>
   
 
@@ -4663,6 +4603,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#do-not-use-install-prometheus-from-github" class="md-nav__link">
+    <span class="md-ellipsis">
+      (DO NOT USE) install prometheus from github
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#optional-install-prometheus-and-grafana" class="md-nav__link">
     <span class="md-ellipsis">
       (Optional) install prometheus and grafana
@@ -4728,14 +4677,15 @@
 <li><a href="https://blog.devgenius.io/step-by-step-guide-to-setting-up-prometheus-operator-in-your-kubernetes-cluster-7167a8228877">https://blog.devgenius.io/step-by-step-guide-to-setting-up-prometheus-operator-in-your-kubernetes-cluster-7167a8228877</a></li>
 </ul>
 <p><a class="glightbox" href="../install-prometheus-grafana-png-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="install-prometheus-grafana-png-1.png" src="../install-prometheus-grafana-png-1.png" /></a></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">DEPLOY_NAME</span><span class="o">=</span>prom-0330
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">DEPLOY_NAME</span><span class="o">=</span>prom-0509
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>prometheus-community<span class="w"> </span>https://prometheus-community.github.io/helm-charts
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>helm<span class="w"> </span>repo<span class="w"> </span>update
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>helm<span class="w"> </span>install<span class="w"> </span><span class="si">${</span><span class="nv">DEPLOY_NAME</span><span class="si">}</span><span class="w"> </span>prometheus-community/kube-prometheus-stack<span class="w"> </span>--namespace<span class="w"> </span>monitoring<span class="w"> </span>--create-namespace
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># refer defualt value</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1"># helm show values prometheus-community/kube-prometheus-stack &gt; values_default.yaml</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nv">NAMESPACE_NAME</span><span class="o">=</span>helm
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>helm<span class="w"> </span>install<span class="w"> </span><span class="si">${</span><span class="nv">DEPLOY_NAME</span><span class="si">}</span><span class="w"> </span>prometheus-community/kube-prometheus-stack<span class="w"> </span>--namespace<span class="w"> </span><span class="si">${</span><span class="nv">NAMESPACE_NAME</span><span class="si">}</span><span class="w"> </span>--create-namespace
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1"># refer defualt value</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="c1"># helm show values prometheus-community/kube-prometheus-stack &gt; values_default.yaml</span>
 </code></pre></div>
 <h3 id="forward-to-local">forward to local<a class="headerlink" href="#forward-to-local" title="Permanent link">&para;</a></h3>
 <ul>
@@ -4854,46 +4804,59 @@ External labels are only attached when data is communicated to the outside so yo
 <li>refer: <a href="../TC-prometheus-ha-architect-with-thanos/" title="TC-prometheus-ha-architect-with-thanos">TC-prometheus-ha-architect-with-thanos</a></li>
 </ul>
 <p><a class="glightbox" href="../../../../git-attachment/install-prometheus-grafana-png-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="../../../git-attachment/install-prometheus-grafana-png-2.png" src="../../../../git-attachment/install-prometheus-grafana-png-2.png" title="../../../git-attachment/install-prometheus-grafana-png-2.png" /></a></p>
+<h2 id="do-not-use-install-prometheus-from-github">(DO NOT USE) install prometheus from github<a class="headerlink" href="#do-not-use-install-prometheus-from-github" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/prometheus-operator/kube-prometheus">https://github.com/prometheus-operator/kube-prometheus</a><br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>kubectl apply --server-side -f manifests/setup
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>kubectl wait \
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>    --for condition=Established \
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>    --all CustomResourceDefinition \
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>    --namespace=monitoring
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>kubectl apply -f manifests/
+</code></pre></div></p>
+<ul>
+<li>it uses prometheus-adapter as metrics.k8s.io APIService instead of metrics-server.</li>
+<li>maybe it has some performance metrics accuracy issue, when you have limit/request settings in POD and resources breach.</li>
+</ul>
 <h2 id="optional-install-prometheus-and-grafana">(Optional) install prometheus and grafana<a class="headerlink" href="#optional-install-prometheus-and-grafana" title="Permanent link">&para;</a></h2>
 <ul>
 <li>
 <p>install prometheus<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>prometheus
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>prometheus-community<span class="w"> </span>https://prometheus-community.github.io/helm-charts
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>helm<span class="w"> </span>install<span class="w"> </span>prometheus<span class="w"> </span>prometheus-community/prometheus<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">    </span>--namespace<span class="w"> </span>prometheus<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">    </span>--set<span class="w"> </span>alertmanager.persistentVolume.storageClass<span class="o">=</span><span class="s2">&quot;gp2&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">    </span>--set<span class="w"> </span>server.persistentVolume.storageClass<span class="o">=</span><span class="s2">&quot;gp2&quot;</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>kubectl<span class="w"> </span>get<span class="w"> </span>all<span class="w"> </span>-n<span class="w"> </span>prometheus
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>prometheus
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>prometheus-community<span class="w"> </span>https://prometheus-community.github.io/helm-charts
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>helm<span class="w"> </span>install<span class="w"> </span>prometheus<span class="w"> </span>prometheus-community/prometheus<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">    </span>--namespace<span class="w"> </span>prometheus<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">    </span>--set<span class="w"> </span>alertmanager.persistentVolume.storageClass<span class="o">=</span><span class="s2">&quot;gp2&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">    </span>--set<span class="w"> </span>server.persistentVolume.storageClass<span class="o">=</span><span class="s2">&quot;gp2&quot;</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a>kubectl<span class="w"> </span>get<span class="w"> </span>all<span class="w"> </span>-n<span class="w"> </span>prometheus
 </code></pre></div></p>
 </li>
 <li>
 <p>install grafana<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>cat<span class="w"> </span>&gt;<span class="w"> </span>./grafana.yaml<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="s">datasources:</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="s">  datasources.yaml:</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="s">    apiVersion: 1</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="s">    datasources:</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="s">    - name: Prometheus</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="s">      type: prometheus</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="s">      url: http://prometheus-server.prometheus.svc.cluster.local</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="s">      access: proxy</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="s">      isDefault: true</span>
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="s">EOF</span>
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a>
-<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>grafana<span class="w"> </span>https://grafana.github.io/helm-charts
-<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>grafana
-<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a>helm<span class="w"> </span>install<span class="w"> </span>grafana<span class="w"> </span>grafana/grafana<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="w">    </span>--namespace<span class="w"> </span>grafana<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="w">    </span>--set<span class="w"> </span>persistence.storageClassName<span class="o">=</span><span class="s2">&quot;gp2&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="w">    </span>--set<span class="w"> </span>persistence.enabled<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="w">    </span>--set<span class="w"> </span><span class="nv">adminPassword</span><span class="o">=</span><span class="s1">&#39;EKS!sAWSome&#39;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="w">    </span>--values<span class="w"> </span>./grafana.yaml<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="w">    </span>--set<span class="w"> </span>service.type<span class="o">=</span>LoadBalancer
-<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a>kubectl<span class="w"> </span>get<span class="w"> </span>all<span class="w"> </span>-n<span class="w"> </span>grafana
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>cat<span class="w"> </span>&gt;<span class="w"> </span>./grafana.yaml<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="s">datasources:</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="s">  datasources.yaml:</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="s">    apiVersion: 1</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="s">    datasources:</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="s">    - name: Prometheus</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="s">      type: prometheus</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="s">      url: http://prometheus-server.prometheus.svc.cluster.local</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="s">      access: proxy</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="s">      isDefault: true</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="s">EOF</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>grafana<span class="w"> </span>https://grafana.github.io/helm-charts
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>grafana
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a>helm<span class="w"> </span>install<span class="w"> </span>grafana<span class="w"> </span>grafana/grafana<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="w">    </span>--namespace<span class="w"> </span>grafana<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="w">    </span>--set<span class="w"> </span>persistence.storageClassName<span class="o">=</span><span class="s2">&quot;gp2&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="w">    </span>--set<span class="w"> </span>persistence.enabled<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="w">    </span>--set<span class="w"> </span><span class="nv">adminPassword</span><span class="o">=</span><span class="s1">&#39;EKS!sAWSome&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a><span class="w">    </span>--values<span class="w"> </span>./grafana.yaml<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="w">    </span>--set<span class="w"> </span>service.type<span class="o">=</span>LoadBalancer
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a>kubectl<span class="w"> </span>get<span class="w"> </span>all<span class="w"> </span>-n<span class="w"> </span>grafana
 </code></pre></div></p>
 </li>
 <li>
@@ -4935,7 +4898,7 @@ External labels are only attached when data is communicated to the outside so yo
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-28T10:21:30+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-10T08:26:34+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-10</span>
   </span>
 
     
@@ -5002,7 +4965,7 @@ External labels are only attached when data is communicated to the outside so yo
     <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "toc.follow", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.dd8806f2.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.a7c05c9e.min.js"></script>
       
         <script src="../../../../js/mkdocs_pagetree_plugin.js"></script>
       
@@ -5011,5 +4974,7 @@ External labels are only attached when data is communicated to the outside so yo
         <script src="../../../../js/timeago_mkdocs_material.js"></script>
       
     
-  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": false, "loop": false, "zoomable": true, "draggable": false, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": false, "loop": false, "zoomable": true, "draggable": false, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

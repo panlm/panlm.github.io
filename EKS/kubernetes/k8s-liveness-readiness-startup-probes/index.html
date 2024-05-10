@@ -6,23 +6,23 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="notes from obsidian">
+        <meta name="description" content="readiness probe - This is simply a signal to inform Kubernetes when to put this pod behind the load balancer and when to put this service behind the proxy to serve traffic. If you put an application behind the load balancer before it’s ready, then a user can reach this pod but won’t get the expected response of a healthy server.">
       
       
       
       
-        <link rel="prev" href="../ws-aws-network-firewall-workshop/">
+        <link rel="prev" href="../k8s-hpa-horizontal-pod-autoscaler/">
       
       
-        <link rel="next" href="../../well-architected/WA-%E5%8D%93%E8%B6%8A%E8%BF%90%E8%90%A5-Operational-Excellence-202310-Summary/">
+        <link rel="next" href="../k8s-topology-spread-constraints/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.20">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.21">
     
     
       
-        <title>Hands on Network Firewall Workshop - panlm</title>
+        <title>k8s-liveness-readiness-startup-probes - panlm</title>
       
     
     
@@ -97,7 +97,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#hands-on-network-firewall-workshop" class="md-skip">
+        <a href="#k8s-liveness-readiness-startup-probes" class="md-skip">
           Skip to content
         </a>
       
@@ -132,7 +132,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Hands on Network Firewall Workshop
+              k8s-liveness-readiness-startup-probes
             
           </span>
         </div>
@@ -258,11 +258,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../EKS/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
           
   
     
@@ -318,13 +320,11 @@
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../others/" class="md-tabs__link">
           
   
     
@@ -577,6 +577,8 @@
       
   
   
+    
+  
   
   
     
@@ -597,19 +599,22 @@
     
     
       
+        
+        
+      
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../EKS/" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -620,13 +625,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
             EKS
@@ -694,7 +699,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/cluster/eks-cluster-with-terraform/" class="md-nav__link">
+      <a href="../../cluster/eks-cluster-with-terraform/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -715,7 +720,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/cluster/eks-public-access-cluster-in-china-region/" class="md-nav__link">
+      <a href="../../cluster/eks-public-access-cluster-in-china-region/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -736,7 +741,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/cluster/eks-public-access-cluster/" class="md-nav__link">
+      <a href="../../cluster/eks-public-access-cluster/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -765,7 +770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/cluster/eks-private-access-cluster/" class="md-nav__link">
+      <a href="../../cluster/eks-private-access-cluster/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -786,7 +791,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/cluster/eks-upgrade-procedure/" class="md-nav__link">
+      <a href="../../cluster/eks-upgrade-procedure/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -807,7 +812,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/cluster/eks-cluster-addons-list/" class="md-nav__link">
+      <a href="../../cluster/eks-cluster-addons-list/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -922,7 +927,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/aws-for-fluent-bit/" class="md-nav__link">
+      <a href="../../addons/aws-for-fluent-bit/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -943,7 +948,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/aws-load-balancer-controller/" class="md-nav__link">
+      <a href="../../addons/aws-load-balancer-controller/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -964,7 +969,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/cert-manager/" class="md-nav__link">
+      <a href="../../addons/cert-manager/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -985,7 +990,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/cluster-autoscaler/" class="md-nav__link">
+      <a href="../../addons/cluster-autoscaler/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1006,7 +1011,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/cni-metrics-helper/" class="md-nav__link">
+      <a href="../../addons/cni-metrics-helper/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1027,7 +1032,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/ebs-for-eks/" class="md-nav__link">
+      <a href="../../addons/ebs-for-eks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1048,7 +1053,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/efs-csi/" class="md-nav__link">
+      <a href="../../addons/efs-csi/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1069,7 +1074,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/eks-addons-coredns/" class="md-nav__link">
+      <a href="../../addons/eks-addons-coredns/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1090,7 +1095,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/eks-addons-kube-proxy/" class="md-nav__link">
+      <a href="../../addons/eks-addons-kube-proxy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1111,7 +1116,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/eks-addons-vpc-cni/" class="md-nav__link">
+      <a href="../../addons/eks-addons-vpc-cni/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1132,7 +1137,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/eks-custom-network/" class="md-nav__link">
+      <a href="../../addons/eks-custom-network/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1153,7 +1158,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/eks-fargate-lab/" class="md-nav__link">
+      <a href="../../addons/eks-fargate-lab/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1174,7 +1179,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/eksup/" class="md-nav__link">
+      <a href="../../addons/eksup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1195,7 +1200,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/enable-sg-on-pod/" class="md-nav__link">
+      <a href="../../addons/enable-sg-on-pod/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1216,7 +1221,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/externaldns-for-route53/" class="md-nav__link">
+      <a href="../../addons/externaldns-for-route53/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1237,7 +1242,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/karpenter-lab/" class="md-nav__link">
+      <a href="../../addons/karpenter-lab/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1258,7 +1263,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/kube-no-trouble/" class="md-nav__link">
+      <a href="../../addons/kube-no-trouble/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1279,7 +1284,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/kube-state-metrics/" class="md-nav__link">
+      <a href="../../addons/kube-state-metrics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1300,7 +1305,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/metrics-server/" class="md-nav__link">
+      <a href="../../addons/metrics-server/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1321,7 +1326,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/nginx-ingress-controller-community-ver/" class="md-nav__link">
+      <a href="../../addons/nginx-ingress-controller-community-ver/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1342,7 +1347,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/nginx-ingress-controller-nginx-ver/" class="md-nav__link">
+      <a href="../../addons/nginx-ingress-controller-nginx-ver/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1363,7 +1368,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/nginx-ingress-controller/" class="md-nav__link">
+      <a href="../../addons/nginx-ingress-controller/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1384,7 +1389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/pluto/" class="md-nav__link">
+      <a href="../../addons/pluto/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1505,7 +1510,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/appmesh/appmesh-workshop-eks/" class="md-nav__link">
+      <a href="../../solutions/appmesh/appmesh-workshop-eks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1533,7 +1538,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/appmesh/automated-canary-deployment-using-flagger/" class="md-nav__link">
+      <a href="../../solutions/appmesh/automated-canary-deployment-using-flagger/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1606,7 +1611,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/gitops/argocd-lab/" class="md-nav__link">
+      <a href="../../solutions/gitops/argocd-lab/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1627,7 +1632,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/gitops/flux-lab/" class="md-nav__link">
+      <a href="../../solutions/gitops/flux-lab/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1706,7 +1711,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/logging/cloudwatch-to-firehose-python/" class="md-nav__link">
+      <a href="../../solutions/logging/cloudwatch-to-firehose-python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1727,7 +1732,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/logging/eks-audit-log-security-lake/" class="md-nav__link">
+      <a href="../../solutions/logging/eks-audit-log-security-lake/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1748,7 +1753,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/logging/export-cloudwatch-log-group-to-s3/" class="md-nav__link">
+      <a href="../../solutions/logging/export-cloudwatch-log-group-to-s3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1777,7 +1782,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/logging/grafana-loki/" class="md-nav__link">
+      <a href="../../solutions/logging/grafana-loki/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1798,7 +1803,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/logging/stream-k8s-control-panel-logs-to-s3/" class="md-nav__link">
+      <a href="../../solutions/logging/stream-k8s-control-panel-logs-to-s3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1885,7 +1890,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/monitor/TC-prometheus-ha-architect-with-thanos/" class="md-nav__link">
+      <a href="../../solutions/monitor/TC-prometheus-ha-architect-with-thanos/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1913,7 +1918,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/monitor/eks-container-insights/" class="md-nav__link">
+      <a href="../../solutions/monitor/eks-container-insights/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1934,7 +1939,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/monitor/enable-prometheus-in-cloudwatch/" class="md-nav__link">
+      <a href="../../solutions/monitor/enable-prometheus-in-cloudwatch/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1955,7 +1960,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/monitor/install-grafana-on-beanstalk/" class="md-nav__link">
+      <a href="../../solutions/monitor/install-grafana-on-beanstalk/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1976,7 +1981,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/monitor/install-prometheus-grafana/" class="md-nav__link">
+      <a href="../../solutions/monitor/install-prometheus-grafana/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2010,8 +2015,10 @@
                 
   
   
+    
   
   
+  
     
     
       
@@ -2019,17 +2026,19 @@
       
         
       
+        
+      
     
     
       
       
     
     
-    <li class="md-nav__item md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" checked>
         
           
           <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
@@ -2043,7 +2052,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3_5">
             <span class="md-nav__icon md-icon"></span>
             Kubernetes
@@ -2057,7 +2066,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/kubernetes/k8s-hpa-horizontal-pod-autoscaler/" class="md-nav__link">
+      <a href="../k8s-hpa-horizontal-pod-autoscaler/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2075,10 +2084,131 @@
                 
   
   
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    k8s-liveness-readiness-startup-probes
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    k8s-liveness-readiness-startup-probes
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#verify" class="md-nav__link">
+    <span class="md-ellipsis">
+      verify
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="verify">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#startup-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      startup failed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liveness-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      liveness failed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#readiness-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      readiness failed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      结论
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#refer" class="md-nav__link">
+    <span class="md-ellipsis">
+      refer
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/kubernetes/k8s-topology-spread-constraints/" class="md-nav__link">
+      <a href="../k8s-topology-spread-constraints/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2389,8 +2519,6 @@
       
   
   
-    
-  
   
   
     
@@ -2433,22 +2561,19 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
+            <a href="../../../others/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2459,13 +2584,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             Others
@@ -2481,7 +2606,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../POC-mig-filezilla-to-transfer-family/" class="md-nav__link">
+      <a href="../../../others/POC-mig-filezilla-to-transfer-family/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2510,7 +2635,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../POC-prometheus-ha-architect-with-thanos-manually/" class="md-nav__link">
+      <a href="../../../others/POC-prometheus-ha-architect-with-thanos-manually/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2539,7 +2664,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cross-region-reverse-proxy-with-nlb-cloudfront/" class="md-nav__link">
+      <a href="../../../others/cross-region-reverse-proxy-with-nlb-cloudfront/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2568,7 +2693,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../ecr-scan-on-push-notification-sns/" class="md-nav__link">
+      <a href="../../../others/ecr-scan-on-push-notification-sns/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2597,7 +2722,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../file-storage-gateway-lab/" class="md-nav__link">
+      <a href="../../../others/file-storage-gateway-lab/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2618,7 +2743,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../global-sso-and-china-aws-accounts/" class="md-nav__link">
+      <a href="../../../others/global-sso-and-china-aws-accounts/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2647,7 +2772,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../lab-create-cloudwatch-dashboard-cpu-metric/" class="md-nav__link">
+      <a href="../../../others/lab-create-cloudwatch-dashboard-cpu-metric/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2668,7 +2793,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../rescue-ec2-instance/" class="md-nav__link">
+      <a href="../../../others/rescue-ec2-instance/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2689,7 +2814,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../script-api-resource-method/" class="md-nav__link">
+      <a href="../../../others/script-api-resource-method/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2717,7 +2842,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../script-convert-mp3-to-text/" class="md-nav__link">
+      <a href="../../../others/script-convert-mp3-to-text/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2738,7 +2863,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../self-signed-certificates/" class="md-nav__link">
+      <a href="../../../others/self-signed-certificates/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2756,20 +2881,10 @@
                 
   
   
-    
   
   
-  
     
     
-      
-        
-      
-        
-      
-        
-      
-        
       
         
       
@@ -2779,11 +2894,11 @@
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_13" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6_13" >
         
           
           <label class="md-nav__link" for="__nav_6_13" id="__nav_6_13_label" tabindex="0">
@@ -2797,7 +2912,7 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_13_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_6_13_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_6_13">
             <span class="md-nav__icon md-icon"></span>
             Network
@@ -2811,7 +2926,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../aws-nfw-network-firewall/" class="md-nav__link">
+      <a href="../../../others/network/aws-nfw-network-firewall/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2820,166 +2935,6 @@
   
 
       </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ws-approaches-to-layered-security-for-amazon-vpc/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Approaches to layered security for Amazon VPC
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ws-aws-network-firewall-for-ingress-egress-traffic/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    ws-aws-network-firewall-for-ingress-egress-traffic
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ws-aws-network-firewall-workshop/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    AWS Network Firewall Workshop
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Hands on Network Firewall Workshop
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    Hands on Network Firewall Workshop
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#h1" class="md-nav__link">
-    <span class="md-ellipsis">
-      H1
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lab-1" class="md-nav__link">
-    <span class="md-ellipsis">
-      lab 1
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lab-2" class="md-nav__link">
-    <span class="md-ellipsis">
-      lab 2
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lab-three-centralized-egress-with-an-inspection-vpc" class="md-nav__link">
-    <span class="md-ellipsis">
-      Lab Three: Centralized Egress with an Inspection VPC
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -3052,7 +3007,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../well-architected/WA-%E5%8D%93%E8%B6%8A%E8%BF%90%E8%90%A5-Operational-Excellence-202310-Summary/" class="md-nav__link">
+      <a href="../../../others/well-architected/WA-%E5%8D%93%E8%B6%8A%E8%BF%90%E8%90%A5-Operational-Excellence-202310-Summary/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3073,7 +3028,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../well-architected/WA-%E5%8F%AF%E6%8C%81%E7%BB%AD%E5%8F%91%E5%B1%95-Sustainability-202310-Summary/" class="md-nav__link">
+      <a href="../../../others/well-architected/WA-%E5%8F%AF%E6%8C%81%E7%BB%AD%E5%8F%91%E5%B1%95-Sustainability-202310-Summary/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3094,7 +3049,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../well-architected/WA-%E5%8F%AF%E9%9D%A0%E6%80%A7-Reliability-202310-Summary/" class="md-nav__link">
+      <a href="../../../others/well-architected/WA-%E5%8F%AF%E9%9D%A0%E6%80%A7-Reliability-202310-Summary/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3115,7 +3070,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../well-architected/WA-%E5%AE%89%E5%85%A8-Security-202310-Summary/" class="md-nav__link">
+      <a href="../../../others/well-architected/WA-%E5%AE%89%E5%85%A8-Security-202310-Summary/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3136,7 +3091,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../well-architected/WA-%E6%80%A7%E8%83%BD%E6%95%88%E7%8E%87-Performance-Efficiency-202310-Summary/" class="md-nav__link">
+      <a href="../../../others/well-architected/WA-%E6%80%A7%E8%83%BD%E6%95%88%E7%8E%87-Performance-Efficiency-202310-Summary/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3157,7 +3112,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../well-architected/WA-%E6%88%90%E6%9C%AC%E4%BC%98%E5%8C%96-Cost-Optimization-202310-Summary/" class="md-nav__link">
+      <a href="../../../others/well-architected/WA-%E6%88%90%E6%9C%AC%E4%BC%98%E5%8C%96-Cost-Optimization-202310-Summary/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3234,7 +3189,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../windows/blog-migrating-net-classic-applications-to-amazon-ecs-using-windows-containers/" class="md-nav__link">
+      <a href="../../../others/windows/blog-migrating-net-classic-applications-to-amazon-ecs-using-windows-containers/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3255,7 +3210,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../windows/ecs-windows-gmsa/" class="md-nav__link">
+      <a href="../../../others/windows/ecs-windows-gmsa/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3276,7 +3231,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../windows/poc-container-on-domainless-windows-node-in-ecs/" class="md-nav__link">
+      <a href="../../../others/windows/poc-container-on-domainless-windows-node-in-ecs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3297,7 +3252,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../windows/ws-gmsa-linux-containers-ecs/" class="md-nav__link">
+      <a href="../../../others/windows/ws-gmsa-linux-containers-ecs/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3326,7 +3281,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../github-page-howto/" class="md-nav__link">
+      <a href="../../../others/github-page-howto/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81Z"/></svg>
@@ -4559,36 +4514,60 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#h1" class="md-nav__link">
+  <a href="#verify" class="md-nav__link">
     <span class="md-ellipsis">
-      H1
+      verify
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="verify">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#startup-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      startup failed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#liveness-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      liveness failed
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#readiness-failed" class="md-nav__link">
+    <span class="md-ellipsis">
+      readiness failed
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      结论
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#lab-1" class="md-nav__link">
+  <a href="#refer" class="md-nav__link">
     <span class="md-ellipsis">
-      lab 1
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lab-2" class="md-nav__link">
-    <span class="md-ellipsis">
-      lab 2
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#lab-three-centralized-egress-with-an-inspection-vpc" class="md-nav__link">
-    <span class="md-ellipsis">
-      Lab Three: Centralized Egress with an Inspection VPC
+      refer
     </span>
   </a>
   
@@ -4613,22 +4592,128 @@
     
     
     
-      <a href="../../../tags/#awsnetworknfw" class="md-tag">aws/network/nfw</a>
+      <a href="../../../tags/#kubernetes" class="md-tag">kubernetes</a>
     
   
 </nav>
 
 
 
-<h1 id="hands-on-network-firewall-workshop">Hands on Network Firewall Workshop<a class="headerlink" href="#hands-on-network-firewall-workshop" title="Permanent link">&para;</a></h1>
-<h2 id="h1">H1<a class="headerlink" href="#h1" title="Permanent link">&para;</a></h2>
-<p><a href="https://catalog.us-east-1.prod.workshops.aws/workshops/d071f444-e854-4f3f-98c8-025fa0d1de2f">https://catalog.us-east-1.prod.workshops.aws/workshops/d071f444-e854-4f3f-98c8-025fa0d1de2f</a></p>
-<h2 id="lab-1">lab 1<a class="headerlink" href="#lab-1" title="Permanent link">&para;</a></h2>
-<p><a class="glightbox" href="../../../git-attachment/ws-hands-on-network-firewall-workshop-png-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="500" src="../../../git-attachment/ws-hands-on-network-firewall-workshop-png-1.png" title="500" /></a></p>
-<h2 id="lab-2">lab 2<a class="headerlink" href="#lab-2" title="Permanent link">&para;</a></h2>
-<p><a class="glightbox" href="../../../git-attachment/ws-hands-on-network-firewall-workshop-png-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="500" src="../../../git-attachment/ws-hands-on-network-firewall-workshop-png-2.png" title="500" /></a></p>
-<h2 id="lab-three-centralized-egress-with-an-inspection-vpc">Lab Three: Centralized Egress with an Inspection VPC<a class="headerlink" href="#lab-three-centralized-egress-with-an-inspection-vpc" title="Permanent link">&para;</a></h2>
-<p><a class="glightbox" href="../../../git-attachment/ws-hands-on-network-firewall-workshop-png-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="../../git-attachment/ws-hands-on-network-firewall-workshop-png-3.png" src="../../../git-attachment/ws-hands-on-network-firewall-workshop-png-3.png" title="../../git-attachment/ws-hands-on-network-firewall-workshop-png-3.png" /></a></p>
+<h1 id="k8s-liveness-readiness-startup-probes">k8s-liveness-readiness-startup-probes<a class="headerlink" href="#k8s-liveness-readiness-startup-probes" title="Permanent link">&para;</a></h1>
+<p><strong>readiness probe</strong> - This is simply a signal to inform Kubernetes when to <mark style="background: #BBFABBA6;">put this pod behind the load balancer</mark> and when to put this service behind the proxy to serve traffic. If you put an application behind the load balancer before it’s ready, then a user can reach this pod but won’t get the expected response of a healthy server.</p>
+<p><strong>liveness probe</strong> - The liveness probe let’s Kubernetes know if the pod is in a healthy state. If it isn’t healthy, then Kubernetes should <mark style="background: #BBFABBA6;">restart</mark> it.</p>
+<p><strong>startup probes</strong> - The kubelet uses startup probes to know when a container application has started. If such a probe is configured, <mark style="background: #BBFABBA6;">liveness and readiness probes do not start until it succeeds</mark>, making sure those probes don&rsquo;t interfere with the application startup. This can be used to adopt liveness checks on <mark style="background: #BBFABBA6;">slow starting containers</mark>, avoiding them getting killed by the kubelet before they are up and running.</p>
+<h2 id="verify">verify<a class="headerlink" href="#verify" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>create deployment<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nt">apiVersion</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">apps/v1</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nt">kind</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">Deployment</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="w">  </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-deployment</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span><span class="nt">selector</span><span class="p">:</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">    </span><span class="nt">matchLabels</span><span class="p">:</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">      </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">  </span><span class="nt">replicas</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="w">  </span><span class="nt">template</span><span class="p">:</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="w">    </span><span class="nt">metadata</span><span class="p">:</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="w">      </span><span class="nt">labels</span><span class="p">:</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">        </span><span class="nt">app</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a><span class="w">      </span><span class="nt">containers</span><span class="p">:</span>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">init-container</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">busybox</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">          </span><span class="nt">command</span><span class="p">:</span><span class="w"> </span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;sh&#39;</span>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;-c&#39;</span>
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="p p-Indicator">|</span>
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">              </span><span class="no">echo &quot;Hello World&quot; &gt; /usr/share/nginx/html/index.html</span>
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="w">              </span><span class="no">echo &quot;Hello liveness&quot; &gt; /usr/share/nginx/html/liveness.html</span>
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a><span class="w">              </span><span class="no">echo &quot;Hello readiness&quot; &gt; /usr/share/nginx/html/readiness.html</span>
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">              </span><span class="no">echo &quot;Hello startup&quot; &gt; /usr/share/nginx/html/startup.html</span>
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">              </span><span class="no">echo &quot;Hello ELB&quot; &gt; /usr/share/nginx/html/elbcheck.html</span>
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">              </span><span class="no">while true ; do sleep 60; echo ===; done</span>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">          </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a><span class="w">          </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-html</span>
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="w">            </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/share/nginx/html</span>
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx</span>
+<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="w">          </span><span class="nt">image</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx:latest</span>
+<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="w">          </span><span class="nt">ports</span><span class="p">:</span>
+<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">containerPort</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="w">          </span><span class="nt">volumeMounts</span><span class="p">:</span>
+<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="w">            </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-html</span>
+<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="w">              </span><span class="nt">mountPath</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/usr/share/nginx/html</span>
+<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="w">          </span><span class="nt">startupProbe</span><span class="p">:</span>
+<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="w">            </span><span class="nt">httpGet</span><span class="p">:</span>
+<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="w">              </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/startup.html</span>
+<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a><span class="w">              </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="w">            </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="w">            </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">2</span>
+<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="w">            </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">3</span>
+<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="w">          </span><span class="nt">readinessProbe</span><span class="p">:</span>
+<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="w">            </span><span class="nt">httpGet</span><span class="p">:</span>
+<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="w">              </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/readiness.html</span>
+<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="w">              </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="w">            </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="w">            </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">10</span>
+<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="w">            </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="w">          </span><span class="nt">livenessProbe</span><span class="p">:</span>
+<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="w">            </span><span class="nt">httpGet</span><span class="p">:</span>
+<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a><span class="w">              </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/liveness.html</span>
+<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="w">              </span><span class="nt">port</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">80</span>
+<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="w">            </span><span class="nt">initialDelaySeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15</span>
+<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="w">            </span><span class="nt">periodSeconds</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">15</span>
+<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="w">            </span><span class="nt">failureThreshold</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">1</span>
+<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a><span class="w">      </span><span class="nt">volumes</span><span class="p">:</span>
+<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">name</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">nginx-html</span>
+<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="w">          </span><span class="nt">emptyDir</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">{}</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>ELB / startup / liveness / readiness probe 分别检查不同的 html</p>
+</li>
+</ul>
+<h3 id="startup-failed">startup failed<a class="headerlink" href="#startup-failed" title="Permanent link">&para;</a></h3>
+<p>启动 probe 在 pod 正常启动后失效，不再检查<br />
+除非 liveness 检查失效，container 被重启后，才会再次 check</p>
+<h3 id="liveness-failed">liveness failed<a class="headerlink" href="#liveness-failed" title="Permanent link">&para;</a></h3>
+<p>nginx container 重启<br />
+init container 未重启<br />
+ip address 不变</p>
+<h3 id="readiness-failed">readiness failed<a class="headerlink" href="#readiness-failed" title="Permanent link">&para;</a></h3>
+<p>remove from service / ELB<br />
+nginx container 未重启<br />
+init container 未重启<br />
+ip address 不变</p>
+<h2 id="_1">结论<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<ul>
+<li>startup probe 用于慢速容器启动检查</li>
+<li>readiness probe 检查基本雷同与 ELB 自带的健康检查，区别在于 readiness 检查由 kubelet 发起，在节点本地完成；ELB 的健康检查通过网络完成。使用其一即可</li>
+<li>liveness probe 是唯一检查失败后会重启容器，如果 pod 有多个容器，则只检查启用了该 probe 的 container。pod 地址保持不变。</li>
+<li>场景1：ELB + liveness<ul>
+<li>ELB 检查失效 小于 liveness 检查失效<ul>
+<li>允许服务临时不可用，ELB 检查失败将不再将流量转到该 POD。POD 在 liveness 检查失效前如果能回复，则自动加回（满足 ELB 检查成功）</li>
+</ul>
+</li>
+<li>ELB 检查失效 大于 liveness 检查失效<ul>
+<li>服务将被重启</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>pod readiness gate 功能在 1.29 集群中未表现为加快 pod 注册到 ELB<ul>
+<li>在 namespace 层面添加标签后，还需要额外配置 <code>objectSelector</code> 才能正常抓取到 default namespace 中的 POD</li>
+</ul>
+</li>
+</ul>
+<h2 id="refer">refer<a class="headerlink" href="#refer" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="https://aws.amazon.com/blogs/containers/preventing-kubernetes-misconfigurations-using-datree/">https://aws.amazon.com/blogs/containers/preventing-kubernetes-misconfigurations-using-datree/</a></li>
+<li><a href="https://www.datree.io/resources/kubernetes-readiness-and-liveness-probes-best-practices">https://www.datree.io/resources/kubernetes-readiness-and-liveness-probes-best-practices</a></li>
+<li><a href="https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/">https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/</a></li>
+<li><a href="https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.7/deploy/pod_readiness_gate/">https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.7/deploy/pod_readiness_gate/</a></li>
+</ul>
 
 
 
@@ -4651,7 +4736,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-03-17T21:35:39+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-10T08:26:34+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-10</span>
   </span>
 
     
@@ -4661,7 +4746,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-03-17T21:35:39+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-03-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-10T08:26:34+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-10</span>
   </span>
 
     
@@ -4718,7 +4803,7 @@
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "toc.follow", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.dd8806f2.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.a7c05c9e.min.js"></script>
       
         <script src="../../../js/mkdocs_pagetree_plugin.js"></script>
       
@@ -4727,5 +4812,7 @@
         <script src="../../../js/timeago_mkdocs_material.js"></script>
       
     
-  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": false, "loop": false, "zoomable": true, "draggable": false, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": false, "loop": false, "zoomable": true, "draggable": false, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>

@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.20">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.21">
     
     
       
@@ -2128,6 +2128,8 @@
       
         
       
+        
+      
     
     
       
@@ -2171,6 +2173,27 @@
   
   <span class="md-ellipsis">
     horizontal pod autoscaler
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../kubernetes/k8s-liveness-readiness-startup-probes/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    k8s-liveness-readiness-startup-probes
   </span>
   
 
@@ -2867,14 +2890,6 @@
       
         
       
-        
-      
-        
-      
-        
-      
-        
-      
     
     
       
@@ -2918,90 +2933,6 @@
   
   <span class="md-ellipsis">
     aws-nfw-network-firewall
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../others/network/ws-approaches-to-layered-security-for-amazon-vpc/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Approaches to layered security for Amazon VPC
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../others/network/ws-aws-network-firewall-for-ingress-egress-traffic/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    ws-aws-network-firewall-for-ingress-egress-traffic
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../others/network/ws-aws-network-firewall-workshop/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    AWS Network Firewall Workshop
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../../others/network/ws-hands-on-network-firewall-workshop/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Hands on Network Firewall Workshop
   </span>
   
 
@@ -4675,14 +4606,20 @@
 <p>Grafana 作为开源软件可以自由部署，1）在 ec2 中手动部署，除了 OS 和软件层面配置之外，不可避免需要一些额外的配置工作，包括 vpc 、 elb 安全组等；2）当然也有些解决方案将 Grafana 部署在 eks 集群上以解决高可用性问题，但如果只是希望简单使用可能会有点杀鸡用牛刀的感觉；3）本文描述了用 aws elastic beanstalk 提供一站式快速部署 Grafana，并且使用 efs 实现 grafana内部配置的持久化</p>
 <h2 id="grafana-container-on-beanstalk">grafana container on beanstalk<a class="headerlink" href="#grafana-container-on-beanstalk" title="Permanent link">&para;</a></h2>
 <ul>
-<li>need efs for storage persistent<br />
+<li>
+<p>need efs for storage persistent<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">CLUSTER_NAME</span><span class="o">=</span>efs0225
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nv">AWS_REGION</span><span class="o">=</span>us-east-2
-</code></pre></div></li>
+</code></pre></div></p>
+</li>
+<li>
+<p>create EFS</p>
+<ul>
+<li>refer: <a href="../../../../CLI/awscli/efs-cmd/#create-efs-" title="git/git-mkdocs/CLI/awscli/efs-cmd">git/git-mkdocs/CLI/awscli/efs-cmd</a></li>
 </ul>
-<p><a class="glightbox" href="../../../../CLI/awscli/efs-cmd/#^d4lka9" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="../../../CLI/awscli/efs-cmd" src="../../../../CLI/awscli/efs-cmd/#^d4lka9" title="../../../CLI/awscli/efs-cmd" /></a></p>
-<p>refer: <a href="../../../../CLI/awscli/efs-cmd/#create-efs-" title="git/git-mkdocs/CLI/awscli/efs-cmd">git/git-mkdocs/CLI/awscli/efs-cmd</a></p>
-<p>mount nfs to instance (<a href="https://aws.amazon.com/premiumsupport/knowledge-center/elastic-beanstalk-mount-efs-volumes/">link</a>)</p>
+</li>
+<li>mount nfs to instance (<a href="https://aws.amazon.com/premiumsupport/knowledge-center/elastic-beanstalk-mount-efs-volumes/">link</a>)</li>
+</ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">FILESYSTEM_ID</span><span class="si">}</span>
 </code></pre></div>
 <ul>
@@ -4827,7 +4764,7 @@ another sample (<a href="https://github.com/aws-samples/eb-php-wordpress">link</
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-28T10:21:30+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-10T08:26:34+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-10</span>
   </span>
 
     
@@ -4894,7 +4831,7 @@ another sample (<a href="https://github.com/aws-samples/eb-php-wordpress">link</
     <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "search.highlight", "toc.follow", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.dd8806f2.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.a7c05c9e.min.js"></script>
       
         <script src="../../../../js/mkdocs_pagetree_plugin.js"></script>
       
@@ -4903,5 +4840,7 @@ another sample (<a href="https://github.com/aws-samples/eb-php-wordpress">link</
         <script src="../../../../js/timeago_mkdocs_material.js"></script>
       
     
-  <script>document$.subscribe(() => {const lightbox = GLightbox({"touchNavigation": false, "loop": false, "zoomable": true, "draggable": false, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});})</script></body>
+  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": false, "loop": false, "zoomable": true, "draggable": false, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(() => { lightbox.reload() });
+</script></body>
 </html>
