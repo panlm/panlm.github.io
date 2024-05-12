@@ -336,7 +336,16 @@ spec:
       containers:
       - name: stress-ng-container
         image: polinux/stress-ng # progrium/stress
-        command: ["stress", "--cpu", "2"]
+        command:
+        - 'sh'
+        - '-c'
+        - |
+          while true ; do
+            echo "start stress (10 min)"
+            stress-ng --cpu 2 --timeout 600
+            echo "start sleep (10min)"
+            sleep 600
+          done
         resources:
           limits:
             cpu: "1"
