@@ -1755,6 +1755,14 @@ https://aws.amazon.com/about-aws/whats-new/2024/02/amazon-security-lake-audit-lo
     eks-audit-log-security-lake
   </span>
   
+    
+  
+  
+    <span class="md-status md-status--myblog" title="my blogs">
+    </span>
+  
+
+  
 
           <span class="md-nav__icon md-icon"></span>
         </label>
@@ -1765,6 +1773,14 @@ https://aws.amazon.com/about-aws/whats-new/2024/02/amazon-security-lake-audit-lo
   <span class="md-ellipsis">
     eks-audit-log-security-lake
   </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog" title="my blogs">
+    </span>
+  
+
   
 
       </a>
@@ -1785,6 +1801,24 @@ https://aws.amazon.com/about-aws/whats-new/2024/02/amazon-security-lake-audit-lo
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      diagram
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      accounts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#enable-security-lake" class="md-nav__link">
     <span class="md-ellipsis">
       enable security lake
@@ -1803,18 +1837,27 @@ https://aws.amazon.com/about-aws/whats-new/2024/02/amazon-security-lake-audit-lo
 </li>
       
         <li class="md-nav__item">
-  <a href="#query-from-athena" class="md-nav__link">
+  <a href="#query-from-athena-account-b" class="md-nav__link">
     <span class="md-ellipsis">
-      query from athena
+      query from athena account B
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-subscribers-with-lake-formation-data-access" class="md-nav__link">
+  <a href="#query-from-athena-in-account-a" class="md-nav__link">
     <span class="md-ellipsis">
-      create subscribers with lake formation data access
+      query from athena in account A
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#query-from-quicksights-athena-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      query from quicksight&rsquo;s athena dataset
     </span>
   </a>
   
@@ -4683,6 +4726,24 @@ https://aws.amazon.com/about-aws/whats-new/2024/02/amazon-security-lake-audit-lo
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
+  <a href="#diagram" class="md-nav__link">
+    <span class="md-ellipsis">
+      diagram
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#accounts" class="md-nav__link">
+    <span class="md-ellipsis">
+      accounts
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#enable-security-lake" class="md-nav__link">
     <span class="md-ellipsis">
       enable security lake
@@ -4701,18 +4762,27 @@ https://aws.amazon.com/about-aws/whats-new/2024/02/amazon-security-lake-audit-lo
 </li>
       
         <li class="md-nav__item">
-  <a href="#query-from-athena" class="md-nav__link">
+  <a href="#query-from-athena-account-b" class="md-nav__link">
     <span class="md-ellipsis">
-      query from athena
+      query from athena account B
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-subscribers-with-lake-formation-data-access" class="md-nav__link">
+  <a href="#query-from-athena-in-account-a" class="md-nav__link">
     <span class="md-ellipsis">
-      create subscribers with lake formation data access
+      query from athena in account A
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#query-from-quicksights-athena-dataset" class="md-nav__link">
+    <span class="md-ellipsis">
+      query from quicksight&rsquo;s athena dataset
     </span>
   </a>
   
@@ -4762,6 +4832,16 @@ https://aws.amazon.com/about-aws/whats-new/2024/02/amazon-security-lake-audit-lo
 <h1 id="eks-audit-log-security-lake">eks-audit-log-security-lake<a class="headerlink" href="#eks-audit-log-security-lake" title="Permanent link">&para;</a></h1>
 <p>news:<br />
 <a href="https://aws.amazon.com/about-aws/whats-new/2024/02/amazon-security-lake-audit-logs-eks/?nc1=h_ls">https://aws.amazon.com/about-aws/whats-new/2024/02/amazon-security-lake-audit-logs-eks/?nc1=h_ls</a></p>
+<h2 id="diagram">diagram<a class="headerlink" href="#diagram" title="Permanent link">&para;</a></h2>
+<ul>
+<li>both accounts in same Organizations<br />
+<a class="glightbox" href="../../../../git-attachment/eks-audit-log-security-lake-png-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="../../../git-attachment/eks-audit-log-security-lake-png-1.png" src="../../../../git-attachment/eks-audit-log-security-lake-png-1.png" title="../../../git-attachment/eks-audit-log-security-lake-png-1.png" /></a></li>
+</ul>
+<h2 id="accounts">accounts<a class="headerlink" href="#accounts" title="Permanent link">&para;</a></h2>
+<ul>
+<li>account A 产生 eks audit log</li>
+<li>account B security lake delegate admin, owned all data</li>
+</ul>
 <h2 id="enable-security-lake">enable security lake<a class="headerlink" href="#enable-security-lake" title="Permanent link">&para;</a></h2>
 <ul>
 <li>for account in orgs<ul>
@@ -4775,23 +4855,41 @@ https://aws.amazon.com/about-aws/whats-new/2024/02/amazon-security-lake-audit-lo
 </ul>
 <h2 id="settings-in-eks">settings in eks<a class="headerlink" href="#settings-in-eks" title="Permanent link">&para;</a></h2>
 <ul>
-<li>no need EKS to enable logging for audit</li>
+<li>no need EKS to enable logging for audit (account A)</li>
 </ul>
-<h2 id="query-from-athena">query from athena<a class="headerlink" href="#query-from-athena" title="Permanent link">&para;</a></h2>
+<h2 id="query-from-athena-account-b">query from athena account B<a class="headerlink" href="#query-from-athena-account-b" title="Permanent link">&para;</a></h2>
 <ul>
 <li>glue table has been created in db:<code>amazon_security_lake_glue_db_us_east_2</code></li>
 </ul>
-<h2 id="create-subscribers-with-lake-formation-data-access">create subscribers with lake formation data access<a class="headerlink" href="#create-subscribers-with-lake-formation-data-access" title="Permanent link">&para;</a></h2>
+<h2 id="query-from-athena-in-account-a">query from athena in account A<a class="headerlink" href="#query-from-athena-in-account-a" title="Permanent link">&para;</a></h2>
 <ul>
-<li>share data access to producer account<ul>
-<li><a href="../../../../git-attachment/Securely%20share%20your%20data%20across%20AWS%20accounts%20using%20AWS%20Lake%20Formation/" title="Securely share your data across AWS accounts using AWS Lake Formation">Securely share your data across AWS accounts using AWS Lake Formation</a></li>
+<li>account B<ul>
+<li>create subscribers with lake formation data access in security lake</li>
+<li>share named resource to account A (<a href="../../../../git-attachment/Securely%20share%20your%20data%20across%20AWS%20accounts%20using%20AWS%20Lake%20Formation/" title="Securely share your data across AWS accounts using AWS Lake Formation">Securely share your data across AWS accounts using AWS Lake Formation</a>)<ul>
+<li>grant database describe permissions to account A (need grant grant permission for quicksight use it)</li>
+</ul>
+</li>
+</ul>
+</li>
+<li>account A<ul>
+<li>accept resource sharing in RAM</li>
+<li>select databases in lake formation, create resource link (input new database name)</li>
+<li>query tables in new database name in Athena</li>
+</ul>
+</li>
+</ul>
+<h2 id="query-from-quicksights-athena-dataset">query from quicksight&rsquo;s athena dataset<a class="headerlink" href="#query-from-quicksights-athena-dataset" title="Permanent link">&para;</a></h2>
+<ul>
+<li>account A<ul>
+<li>grant quicksight user to access new database name in lake formation</li>
+<li>create dataset and analytics in quicksight</li>
 </ul>
 </li>
 </ul>
 <h2 id="refer">refer<a class="headerlink" href="#refer" title="Permanent link">&para;</a></h2>
 <ul>
-<li>enabled in account 365</li>
 <li>supported in terraform provider aws 5.40+</li>
+<li><a href="https://docs.splunk.com/Documentation/AddOns/released/AWS/SecurityLake">https://docs.splunk.com/Documentation/AddOns/released/AWS/SecurityLake</a></li>
 </ul>
 
 
@@ -4815,7 +4913,7 @@ https://aws.amazon.com/about-aws/whats-new/2024/02/amazon-security-lake-audit-lo
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-10T08:26:34+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-12T10:41:57+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-12</span>
   </span>
 
     
