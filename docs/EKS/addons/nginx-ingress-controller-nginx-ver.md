@@ -9,10 +9,6 @@ tags:
   - nginx
 ---
 
-```ad-attention
-title: This is a github note
-```
-
 # nginx-ingress-controller-nginx-version
 
 ## install

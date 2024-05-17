@@ -71,7 +71,7 @@ aws eks create-addon --cluster-name ${CLUSTER_NAME} \
 
 ## additional
 - [[security-group-for-pod]]
-	- [[enable-sg-on-pod]]
+	- [[../solutions/network/enable-sg-on-pod]]
 - [[upgrade-vpc-cni]]
 
 

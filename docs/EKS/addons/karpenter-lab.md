@@ -10,6 +10,9 @@ tags:
 
 # karpenter-lab
 
+## compatibility
+![[../../git-attachment/karpenter-lab/IMG-20240516-091024-233.png]]
+
 ## install
 - https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/
 
@@ -47,7 +50,7 @@ spec:
 
 ```
 
-![[../../git-attachment/karpenter-lab-png-1.png]]
+![[../../git-attachment/karpenter-lab/IMG-20240516-091024-682.png]]
 
 ## install eks-node-viewer
 

@@ -206,7 +206,7 @@ nodeGroups:
 
 - file:///Users/panlm/Documents/SA-Baseline-50-12/eks/security-group-in-eks-0614.drawio
 - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/examples/echo_server/
-- [[git/git-mkdocs/EKS/addons/enable-sg-on-pod]]
+- [[enable-sg-on-pod]]
 - [[git/git-mkdocs/EKS/cluster/eks-public-access-cluster]]
 - [[git/git-mkdocs/EKS/cluster/eks-private-access-cluster]]
 

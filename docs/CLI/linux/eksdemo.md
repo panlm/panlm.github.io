@@ -18,12 +18,17 @@ sudo mv -v /tmp/eksdemo /usr/local/bin
 
 ## create-eks-cluster-
 ```sh
-CLUSTER_NAME=ekscluster2
+CLUSTER_NAME=ekscluster1
 eksdemo create cluster ${CLUSTER_NAME} \
     --instance m5.large \
     --nodes 3 \
     --version 1.26 \
     --vpc-cidr 10.10.0.0/16
+```
+
+## create node gropu
+```sh
+
 ```
 
 ## addons-

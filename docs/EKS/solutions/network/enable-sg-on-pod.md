@@ -10,17 +10,16 @@ tags:
 
 # enable-sg-on-pod
 
-
 ## useful-env-sg-on-pod
 
 *considerations*
 https://docs.amazonaws.cn/en_us/eks/latest/userguide/security-groups-for-pods.html
 
-![enable-sg-on-pod-png-1.png](../../git-attachment/enable-sg-on-pod-png-1.png)
+![enable-sg-on-pod-png-1.png](../../../git-attachment/enable-sg-on-pod-png-1.png)
 
 [[upgrade-vpc-cni]]
 
-![enable-sg-on-pod-png-2.png](../../git-attachment/enable-sg-on-pod-png-2.png)
+![enable-sg-on-pod-png-2.png](../../../git-attachment/enable-sg-on-pod-png-2.png)
 
 第一个参数允许pod 挂sg
 第二个参数允许有sg的pod同时遵守network policy控制
@@ -238,7 +237,8 @@ EoF
 
 ```
 
-
+## refer
+- [[../../../../../eks-external-snat|eks-external-snat]]
 
 
 

@@ -534,7 +534,7 @@ this table is created by databrew job
 - https://www.chaossearch.io/blog/cloudwatch2s3-an-easy-way-to-get-your-logs-to-aws-s3
 - [[eks-control-panel-log-cwl-firehose-opensearch]]
 - [[cloudwatch-firehose-splunk]]
-- [[../../others/eks-loggroup-description]]
+- [[eks-loggroup-description]]
 - Subscription filters with Amazon Kinesis Data Firehose
     - https://docs.aws.amazon.com/AmazonCloudWatch/latest/logs/SubscriptionFilters.html#FirehoseExample
     - https://docs.amazonaws.cn/en_us/AmazonCloudWatch/latest/logs/SubscriptionFilters.html#FirehoseExample

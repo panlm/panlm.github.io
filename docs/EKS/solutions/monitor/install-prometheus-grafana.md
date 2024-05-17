@@ -2,7 +2,7 @@
 title: install-prometheus-grafana-on-eks
 description: 安装 grafana 和 prometheus
 created: 2023-02-18 21:31:31.678
-last_modified: 2024-04-02
+last_modified: 2024-05-02
 tags:
   - grafana
   - prometheus
@@ -162,8 +162,8 @@ kubectl wait \
 	--namespace=monitoring
 kubectl apply -f manifests/
 ```
-- it uses prometheus-adapter as metrics.k8s.io APIService instead of metrics-server.
-- maybe it has some performance metrics accuracy issue, when you have limit/request settings in POD and resources breach.
+- it uses <mark style="background: #FF5582A6;">prometheus-adapter</mark> as metrics.k8s.io APIService instead of metrics-server.
+- maybe it has some performance metrics <mark style="background: #FF5582A6;">accuracy issue</mark>, when you have limit/request settings in POD and resources breach.
 
 ## (Optional) install prometheus and grafana
 

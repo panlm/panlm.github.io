@@ -46,11 +46,11 @@ aws eks delete-access-entry --cluster-name ${CLUSTER_NAME} \
 available
 
 ## alternative
-- [[git/git-mkdocs/EKS/others/eks-aws-auth|eks-aws-auth]]
+- [[eks-aws-auth|eks-aws-auth]]
 
 
 ## refer
 https://www.wiz.io/blog/new-attack-vectors-emerge-via-recent-eks-access-entries-and-pod-identity-features
 
-![[../../git-attachment/eks-access-api/IMG-20240510-081900-423.png]]
+![[../../../git-attachment/eks-access-api/IMG-20240510-081900-423.png]]
 

@@ -61,12 +61,12 @@ number headings: first-level 2, max 3, 1.1, auto
 - [eks-addons-coredns](eks-addons-coredns): eks-addons-coredns
 - [eks-addons-kube-proxy](eks-addons-kube-proxy): eks-addons-kube-proxy
 - [eks-addons-vpc-cni](eks-addons-vpc-cni): eks-addons-vpc-cni
-- [eks-custom-network](eks-custom-network): 可以解决子网地址段耗尽的问题
-- [eks-fargate](eks-fargate-lab): 在 eks 集群中使用 fargate
+- [eks-custom-network](solutions/network/eks-custom-network.md): 可以解决子网地址段耗尽的问题
+- [eks-fargate](solutions/compute/eks-fargate-lab.md): 在 eks 集群中使用 fargate
 - [eksup](eksup): EKS 升级小工具
-- [enable-sg-on-pod](enable-sg-on-pod): 启用 pod 安全组
+- [enable-sg-on-pod](solutions/network/enable-sg-on-pod.md): 启用 pod 安全组
 - [externaldns-for-route53](externaldns-for-route53): 使用 externaldns 组件
-- [karpenter-install-lab](karpenter-lab): 使用 Karpenter 代替 Cluster Autoscaler
+- [karpenter-install-lab](addons/karpenter-lab.md): 使用 Karpenter 代替 Cluster Autoscaler
 - [kube-no-trouble](kube-no-trouble): Kubernetes 升级小工具
 - [kube-state-metrics](kube-state-metrics): EKS 集群中用于性能监控使用的指标服务
 - [Metrics Server](metrics-server): EKS 集群中用于弹性扩展使用的指标服务
@@ -81,11 +81,11 @@ number headings: first-level 2, max 3, 1.1, auto
 (file:.md path:git/git-mkdocs/eks/others) 
 - [$frontmatter:title]($filename): $frontmatter:description
 ```
-- [EKS Access API](others/eks-access-api.md): eks-access-api
-- [eks-aws-auth](eks-aws-auth): EKS aws-auth
-- [eks-loggroup-description](eks-loggroup-description): eks 日志类型分析
-- [IRSA 中的 Token 剖析](TC-eks-irsa-token-deep-dive-lab): 本文档总结了将 AWS IAM 角色授予 AWS EKS 集群的服务账户的过程
-- [EKS Security Group Deepdive](TC-security-group-for-eks-deepdive): 深入 EKS 安全组
+- [EKS Access API](solutions/security/eks-access-api.md): eks-access-api
+- [eks-aws-auth](solutions/security/eks-aws-auth.md): EKS aws-auth
+- [eks-loggroup-description](solutions/logging/eks-loggroup-description.md): eks 日志类型分析
+- [IRSA 中的 Token 剖析](solutions/security/TC-eks-irsa-token-deep-dive-lab.md): 本文档总结了将 AWS IAM 角色授予 AWS EKS 集群的服务账户的过程
+- [EKS Security Group Deepdive](solutions/network/TC-security-group-for-eks-deepdive.md): 深入 EKS 安全组
 <-->
 
 

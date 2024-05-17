@@ -29,7 +29,7 @@ eksctl utils associate-iam-oidc-provider --cluster $EKS_CLUSTER_NAME --region $A
 ```
 
 ## iamidentitymapping-
-- add role to `aws-auth` configmap ([[../../EKS/others/eks-aws-auth|eks-aws-auth]])
+- add role to `aws-auth` configmap ([[../../EKS/solutions/security/eks-aws-auth|eks-aws-auth]])
 ```sh
 CLUSTER_NAME=ekscluster1
 ARN=role-arn
@@ -47,11 +47,10 @@ eksctl create iamidentitymapping \
 ## create windows self-managed node group
 
 ```sh
-cluster_name=myeksctl
-region_name=ap-southeast-1
+CLUSTER_NAME=myeksctl
+export AWS_DEFAULT_REGION=us-west-2
 eksctl create nodegroup   \
-  --region $region_name   \
-  --cluster $cluster_name   \
+  --cluster $CLUSTER_NAME   \
   --name nodegroup-win-1   \
   --node-type m5.xlarge   \
   --nodes 1   \
@@ -62,11 +61,10 @@ eksctl create nodegroup   \
 ```
 
 ```sh
-cluster_name=myeksctl
-region_name=ap-southeast-1
+CLUSTER_NAME=myeksctl
+export AWS_DEFAULT_REGION=us-west-2
 eksctl create nodegroup   \
-  --region $region_name   \
-  --cluster $cluster_name   \
+  --cluster $CLUSTER_NAME   \
   --name nodegroup-br-1   \
   --node-type m5.xlarge   \
   --nodes 1   \
@@ -80,14 +78,13 @@ eksctl create nodegroup   \
 - create nodegroup on a cluster which not created by eksctl
     - https://eksctl.io/usage/unowned-clusters/#creating-nodegroups
 ```sh
-cluster_name=ekscluster2
-region_name=us-east-1
+CLUSTER_NAME=ekscluster2
+export AWS_DEFAULT_REGION=us-west-2
 eksctl create nodegroup   \
-  --region $region_name   \
-  --cluster $cluster_name   \
+  --cluster ${CLUSTER_NAME}   \
   --name mng-a   \
   --node-type m5.large   \
-  --nodes 2   \
+  --nodes 3   \
   --node-private-networking \
   --subnet-ids subnet-aaa,subnet-bbb \
   --node-security-groups sg-xxx # this is the ControlPlaneSecurityGroup

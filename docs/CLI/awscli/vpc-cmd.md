@@ -84,7 +84,7 @@ aws ec2 describe-subnets --filters "Name=vpc-id,Values=${VPC_ID}" \
   --query "Subnets[].[AvailabilityZone,SubnetId]" --output text
 
 ```
-- refer: [[../../EKS/addons/eks-custom-network#lab-]]
+- refer: [[../../EKS/solutions/network/eks-custom-network#lab-]]
 
 ## create/delete transit gateway
 ### create

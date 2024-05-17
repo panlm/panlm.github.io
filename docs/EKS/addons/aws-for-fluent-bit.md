@@ -35,6 +35,6 @@ aws eks describe-addon-configuration \
 
 
 ## refer
-[[../others/eks-loggroup-description|eks-loggroup-description]]
+[[../solutions/logging/eks-loggroup-description|eks-loggroup-description]]
 
 

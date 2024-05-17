@@ -13,16 +13,16 @@ tags:
 
 eks control panel logging
 - kube-apiserver-audit
-![[../../git-attachment/eks-loggroup-description-png-1.png]]
+![[../../../git-attachment/eks-loggroup-description-png-1.png]]
 - kube-apiserver
-![[../../git-attachment/eks-loggroup-description-png-2.png]]
+![[../../../git-attachment/eks-loggroup-description-png-2.png]]
 - kube-scheduler
 - kube-controller-manager
-![[../../git-attachment/eks-loggroup-description-png-3.png]]
+![[../../../git-attachment/eks-loggroup-description-png-3.png]]
 - cloud-controller-manager
-![[../../git-attachment/eks-loggroup-description-png-4.png]]
+![[../../../git-attachment/eks-loggroup-description-png-4.png]]
 - authenticator
-![[../../git-attachment/eks-loggroup-description-png-5.png]]
+![[../../../git-attachment/eks-loggroup-description-png-5.png]]
 > 如果使用[[lambda-cwl-opensearch]]，不需要分开成多个index；如果使用firehose to opensearch，可能需要考虑多个firehose
 
 https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html

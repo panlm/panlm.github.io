@@ -47,8 +47,17 @@ https://aws.amazon.com/about-aws/whats-new/2024/02/amazon-security-lake-audit-lo
 - account A
     - grant quicksight user to access new database name in lake formation
     - create dataset and analytics in quicksight
+- sample dashboard for security lake 1.0 format
+    - https://github.com/aws-samples/amazon-security-lake-quicksight
+
 
 ## refer
 - supported in terraform provider aws 5.40+
 - https://docs.splunk.com/Documentation/AddOns/released/AWS/SecurityLake
+- https://schema.ocsf.io/1.1.0/classes/api_activity?extensions=
+- https://docs.aws.amazon.com/security-lake/latest/userguide/open-cybersecurity-schema-framework.html
+- https://github.com/aws-samples/amazon-security-lake-quicksight
+
+
+
 
