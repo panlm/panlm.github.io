@@ -183,8 +183,14 @@ done
 ## create cluster in specific VPC
 - get target vpc id
     - or create new vpc ([[../../cloud9/create-standard-vpc-for-lab-in-china-region#using-cloudformation-template-|create-standard-vpc-for-lab-in-china-region]])
+```sh
+VPC_ID=
+```
 - create SG ([[../../CLI/awscli/ec2-cmd#func-create-sg-]])
     - or using existed cluster's shared SG (see chapter refer)
+```sh
+echo ${SG_ID}
+```
 - get vpc info ([[eks-private-access-cluster#prep-config-]])
 - cluster yaml
 ```yaml

@@ -45,7 +45,7 @@ aws ds create-microsoft-ad \
     --vpc-settings VpcId=${VPC},SubnetIds=${SUBNETS} |tee /tmp/ds-$$.1
 MSDS_ID=$(cat /tmp/ds-$$.1 |jq -r '.DirectoryId')
 
-# until "Active"
+# until "Requested" - "Creating" - "Active"
 watch -g -n 60 aws ds describe-directories \
     --directory-ids ${MSDS_ID} \
     --query DirectoryDescriptions[0].Stage \

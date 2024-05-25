@@ -20,11 +20,17 @@ VPC=vpc-0946
 SUBNETS=subnet-056f,subnet-033c
 
 aws ds create-microsoft-ad \
---name ${AD} \
---short-name ${AD%%.*} \
---password ${PASS} \
---edition Standard \
---vpc-settings VpcId=${VPC},SubnetIds=${SUBNETS}
+    --name ${AD} \
+    --short-name ${AD%%.*} \
+    --password ${PASS} \
+    --edition Standard \
+    --vpc-settings VpcId=${VPC},SubnetIds=${SUBNETS}
+
+MSDS_ID=d-xxxx
+aws ds describe-directories \
+    --directory-ids ${MSDS_ID} \
+    --query DirectoryDescriptions[0].[Stage,DnsIpAddrs] \
+    --output text
 
 ```
 

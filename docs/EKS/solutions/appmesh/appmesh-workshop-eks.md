@@ -9,10 +9,6 @@ tags:
   - aws/container/eks
 ---
 
-```ad-attention
-title: This is a github note
-```
-
 # appmesh-workshop-eks
 
 https://www.eksworkshop.com/intermediate/330_app_mesh/deploy_dj_app/clone_repo/

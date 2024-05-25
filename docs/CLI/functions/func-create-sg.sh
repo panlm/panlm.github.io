@@ -51,4 +51,7 @@ function create-sg () {
                 --cidr ${VPC_CIDR}
         done
     done
+
+    # echo SG_ID
+    echo "SG_ID="$SG_ID
 }

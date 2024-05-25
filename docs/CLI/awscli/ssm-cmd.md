@@ -11,9 +11,12 @@ tags:
 
 # ssm-cmd
 ## ssm agent
+### centos
 ```sh
 sudo yum install -y https://s3.amazonaws.com/ec2-downloads-windows/SSMAgent/latest/linux_amd64/amazon-ssm-agent.rpm
 ```
+### ubuntu
+amazon-ssm-agent has been installed in ubuntu 24
 
 ## test connect available or not
 ```sh

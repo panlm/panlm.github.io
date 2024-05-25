@@ -2,7 +2,7 @@
 title: eksdemo
 description: 使用 eksdemo 快速搭建 eks 集群以及其他所需组件
 created: 2023-07-15 09:44:34.470
-last_modified: 2024-04-09
+last_modified: 2024-05-09
 tags:
   - aws/container/eks
   - aws/cmd
@@ -19,11 +19,13 @@ sudo mv -v /tmp/eksdemo /usr/local/bin
 ## create-eks-cluster-
 ```sh
 CLUSTER_NAME=ekscluster1
+export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
 eksdemo create cluster ${CLUSTER_NAME} \
     --instance m5.large \
     --nodes 3 \
     --version 1.26 \
     --vpc-cidr 10.10.0.0/16
+    
 ```
 
 ## create node gropu
