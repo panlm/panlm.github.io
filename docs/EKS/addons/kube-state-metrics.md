@@ -21,11 +21,6 @@ kube-state-metrics (KSM) is a simple service that listens to the Kubernetes API 
 
 Having kube-state-metrics as a separate project also enables access to these metrics from monitoring systems such as Prometheus.
 
-
-备注:
-kube-state-metrics 精度可能不如 metrics-server
-考虑使用 adot
-
 ## refer
 - https://medium.com/@seifeddinerajhi/monitoring-kubernetes-clusters-with-kube-state-metrics-2b9e73a67895#:~:text=Kube%2DState%2DMetrics%20vs%20Metrics%20Server%3A
 - [[metrics-server]]

@@ -66,7 +66,7 @@ number headings: first-level 2, max 3, 1.1, auto
 - [eksup](eksup): EKS 升级小工具
 - [enable-sg-on-pod](solutions/network/enable-sg-on-pod.md): 启用 pod 安全组
 - [externaldns-for-route53](externaldns-for-route53): 使用 externaldns 组件
-- [karpenter-install-lab](addons/karpenter-lab.md): 使用 Karpenter 代替 Cluster Autoscaler
+- [karpenter-install-lab](addons/karpenter.md): 使用 Karpenter 代替 Cluster Autoscaler
 - [kube-no-trouble](kube-no-trouble): Kubernetes 升级小工具
 - [kube-state-metrics](kube-state-metrics): EKS 集群中用于性能监控使用的指标服务
 - [Metrics Server](metrics-server): EKS 集群中用于弹性扩展使用的指标服务

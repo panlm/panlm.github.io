@@ -17,7 +17,7 @@ refer: [[kube-state-metrics]]
 ## github
 - https://github.com/kubernetes-sigs/metrics-server
 
-![[../../git-attachment/metrics-server-png-1.png]]
+![[attachments/metrics-server/IMG-metrics-server.png]]
 
 ## install
 ### from helm
@@ -41,7 +41,8 @@ kubectl get deployment metrics-server -n kube-system
 ## sample
 - [[../kubernetes/k8s-hpa-horizontal-pod-autoscaler]]
 
-
+## alternative 
+- [[prometheus-adapter]]
 
 
 

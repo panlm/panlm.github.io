@@ -66,6 +66,7 @@ EOF
         --role-name ${ROLE_NAME}
     ROLE_ARN=$(cat ${TMP}.out.role |jq -r '.Role.Arn')
     INSTANCE_PROFILE_ARN=$(cat ${TMP}.out.instance-profile |jq -r '.InstanceProfile.Arn')
+    echo "INSTANCE_PROFILE_ARN="${INSTANCE_PROFILE_ARN}
 }
 
 ```

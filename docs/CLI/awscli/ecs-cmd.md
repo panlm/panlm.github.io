@@ -58,18 +58,20 @@ echo ${AMI_IDS[@]}
 
 ```
 
-## create ecs cluster 
+## create-ecs-cluster-
 ### create launch template v1
 ```sh
 ECS_CLUSTER=myecs1
 VPC_ID=$(aws ec2 describe-vpcs --filter Name=is-default,Values=true --query 'Vpcs[0].VpcId' --output text)
 export AWS_PAGER=""
 export AWS_DEFAULT_REGION=us-east-1
+
 ```
 - get default security group ([[../functions/func-create-sg.sh|func-create-sg.sh]])
 ```sh
 create-sg -v ${VPC_ID} -c 0.0.0.0/0 # call my function
 echo ${SG_ID}
+
 ```
 - execute function to create launch template ([[notes/auto-scaling-cmd#func-create-launch-template-]])
 ```sh
@@ -77,14 +79,16 @@ echo ${SG_ID}
 echo ${OLD_AMI_ID}
 create-launch-template ${SG_ID} ${OLD_AMI_ID} # call my function
 echo ${LAUNCH_TEMPLATE_ID}
+
 ```
 - execute function to create ec2 admin role ([[git/git-mkdocs/CLI/awscli/iam-cmd#func-ec2-admin-role-create-]])
 ```sh
 ec2-admin-role-create # call my function
 echo ${INSTANCE_PROFILE_ARN}
+
 ```
 ### add user data to launch template and make v2 as default
-#### linux
+#### linux node
 ```sh
 TMP=$(mktemp --suffix .UserData)
 envsubst >${TMP} <<-EOF
@@ -115,7 +119,7 @@ systemctl start credentials-fetcher
 
 ```
 
-#### windows
+#### windows node
 ```sh
 TMP=$(mktemp --suffix .UserData)
 envsubst >${TMP} <<-EOF
@@ -167,6 +171,7 @@ aws ec2 modify-launch-template --launch-template-id ${LAUNCH_TEMPLATE_ID} --defa
 ```sh
 create-auto-scaling-group ${LAUNCH_TEMPLATE_ID} # call my function
 echo ${ASG_ARN}
+
 ```
 
 ### create cluster
@@ -174,8 +179,11 @@ echo ${ASG_ARN}
 ```sh
 echo ${ECS_CLUSTER}
 
+# this command will failed if you already have service linked role
 aws iam create-service-linked-role --aws-service-name ecs.amazonaws.com
+
 aws ecs create-cluster --cluster-name ${ECS_CLUSTER}
+
 ```
 
 #### create capacity provider

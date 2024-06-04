@@ -19,7 +19,7 @@ https://aws.amazon.com/cn/blogs/containers/using-windows-authentication-with-gms
 
 ## lab 
 
-wait until `CDKToolkit` bootstrap template display on cloudformation, you could logon to your windows dev EC2 with credential in secret manager
+wait until `CDKToolkit` bootstrap template display on cloudformation, you could logon to your windows dev EC2 with credential in Secret Manager
 ```sh
 
 git clone https://github.com/aws-samples/gmsa-linux-containers-ecs.git
@@ -33,16 +33,21 @@ $Env:EC2_INSTANCE_KEYPAIR_NAME = "gmsa"
 $Env:MY_SG_INGRESS_IP = "0.0.0.0" 
 $Env:DOMAIN_JOIN_ECS = 0 
 
+# npm --verison
+# if version is lower, for example 1.4.9
+# choco uninstall npm 
+
 npm install -g aws-cdk # npm upgrade
 cdk --version
 
-
-npx cdk deploy "*" --require-approval "never" --verbose
+# cd cdk-dotnet
+cdk deploy "*" --require-approval "never" --verbose
 
 # if got cdk cli version compatibility issue
 # add "npx" at the front of CLI
 
 ```
+wiat 1 hour to deploy complete
 
 create cloudformation stack to upgrade existing one
 ```sh

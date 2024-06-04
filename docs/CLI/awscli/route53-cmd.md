@@ -24,7 +24,7 @@ tags:
 --8<-- "docs/CLI/functions/func-create-ns-record.sh"
 ```
 
-## func-create-outbound-resolver
+## func-create-outbound-resolver-
 
 ```sh
 function create-outbound-resolver () {

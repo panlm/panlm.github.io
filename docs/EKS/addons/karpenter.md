@@ -11,7 +11,7 @@ tags:
 # karpenter-lab
 
 ## compatibility
-![[../../git-attachment/karpenter-lab/IMG-20240516-091024-233.png]]
+![[attachments/karpenter/IMG-karpenter.png]]
 
 ## install
 - https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/
@@ -50,7 +50,7 @@ spec:
 
 ```
 
-![[../../git-attachment/karpenter-lab/IMG-20240516-091024-682.png]]
+![[attachments/karpenter/IMG-karpenter-1.png]]
 
 ## install eks-node-viewer
 
@@ -59,5 +59,20 @@ go install github.com/awslabs/eks-node-viewer/cmd/eks-node-viewer@latest
 sudo mv -v ~/go/bin/eks-node-viewer /usr/local/bin
 
 ```
+
+## Lab
+- [workshop](https://www.eksworkshop.com/beginner/085_scaling_karpenter/)
+
+## run gpu pod
+- https://kubernetes.io/docs/tasks/manage-gpus/scheduling-gpus/
+
+## refer
+- https://karpenter.sh/v0.32/
+- [[Creating Kubernetes Auto Scaling Groups for Multiple Availability Zones]]
+
+
+![[attachments/karpenter/IMG-karpenter-2.png]]
+
+
 
 

@@ -9,7 +9,7 @@ tags:
 # AWS Network Firewall
 
 ## stateless-vs-stateful-
-AWS Network Firewall支持有状态的规则（最大规则组容量30,000），也支持无状态的规则（最大规则组容量10,000）
+AWS Network Firewall支持有状态的规则（最大规则组容量50,000），也支持无状态的规则（最大规则组容量10,000）
 - 无状态规则优先于有状态规则执行，且按配置的顺序执行，支持pass，drop和forward到有状态的规则三种处理方式；
 - 假如无状态规则配置有冲突，按优先级匹配执行；
 - 有状态的规则如果有冲突
@@ -25,6 +25,8 @@ AWS Network Firewall支持有状态的规则（最大规则组容量30,000），
 ## available in china
 - from  2024/2
     - https://www.amazonaws.cn/en/new/2024/amazon-network-firewall-is-available-in-amazon-web-services-china-regions/
+- increase to 50k stateful rules
+    - https://www.amazonaws.cn/new/2024/amazon-network-firewall-increases-quota-for-stateful-rules/
 
 
 ## workshop

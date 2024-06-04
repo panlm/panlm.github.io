@@ -29,7 +29,7 @@ export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-iden
 export AWS_REGION=${AWS_DEFAULT_REGION}
 
 export CLUSTER_NAME=ekscluster1
-export EKS_VERSION=1.25
+export EKS_VERSION=1.26
 CLUSTER_NUM=$(eksctl get cluster |wc -l)
 export CIDR="10.25${CLUSTER_NUM}.0.0/16"
 
