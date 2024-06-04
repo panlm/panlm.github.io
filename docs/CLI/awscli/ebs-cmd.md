@@ -3,7 +3,7 @@ title: ebs
 description: 1/ 转换 gp2 到 gp3 ; 2/ 获取指定 volume 每次 snapshot 占用的 block 数量 ; 3/ 创建两种不同类型的 dlm 策略
 created: 2023-02-18 11:53:13.625
 last_modified: 2024-02-05
-icon: simple/amazonaws
+icon: simple/amazon
 tags:
   - aws/cmd
   - aws/storage/ebs

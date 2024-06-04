@@ -3,7 +3,7 @@ title: ip-ranges
 description: 
 created: 2022-03-26 10:25:49.147
 last_modified: 2024-02-05
-icon: simple/amazonaws
+icon: simple/amazon
 tags:
   - aws/network
   - aws/cmd

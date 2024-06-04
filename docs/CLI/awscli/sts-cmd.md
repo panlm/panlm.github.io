@@ -3,7 +3,7 @@ title: sts
 description: 常用命令
 created: 2023-09-10 22:52:34.617
 last_modified: 2024-03-14
-icon: simple/amazonaws
+icon: simple/amazon
 tags:
   - aws/cmd
 ---

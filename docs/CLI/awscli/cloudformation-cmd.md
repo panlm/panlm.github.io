@@ -3,7 +3,7 @@ title: cloudformation
 description: 常用命令
 created: 2021-07-01T04:49:13.611Z
 last_modified: 2024-02-05
-icon: simple/amazonaws
+icon: simple/amazon
 tags:
   - aws/mgmt/cloudformation
   - aws/cmd

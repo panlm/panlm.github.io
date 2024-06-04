@@ -3,7 +3,7 @@ title: ecr
 description: 常用命令
 created: 2022-03-19 21:19:57.648
 last_modified: 2024-02-05
-icon: simple/amazonaws
+icon: simple/amazon
 tags:
   - aws/container/ecr
   - aws/cmd

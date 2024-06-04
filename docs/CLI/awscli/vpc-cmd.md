@@ -3,7 +3,7 @@ title: vpc
 description: 常用命令
 created: 2021-11-05T01:08:29.064Z
 last_modified: 2024-02-05
-icon: simple/amazonaws
+icon: simple/amazon
 tags:
   - aws/network/vpc
   - aws/cmd
