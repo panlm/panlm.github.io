@@ -1,5 +1,5 @@
 ---
-title: karpenter-install-lab
+title: karpenter
 description: 使用 Karpenter 代替 Cluster Autoscaler
 created: 2023-05-29 08:42:40.334
 last_modified: 2023-11-22

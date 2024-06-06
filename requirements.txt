@@ -12,11 +12,14 @@ mkdocs-encryptcontent-plugin
 mkdocs-callouts
 mkdocs-meta-descriptions-plugin
 mkdocs-glightbox
-mkdocs-exclude-tagged-files
 mkdocs-pagetree-plugin
+mkdocs-file-filter-plugin
+
 #mkdocs-section-index
 #obsidiantools
 #pyvis
 #cairosvg
 #pillow
 #mkdocs-minify-plugin
+# replaced
+#mkdocs-exclude-tagged-files

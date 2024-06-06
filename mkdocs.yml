@@ -109,9 +109,12 @@ plugins:
       loop: false
       zoomable: true
       draggable: false
-  - mkdocs_exclude_tagged_files:
-      tags_to_exclude: ["panlm", "awscorp"]
+  # - mkdocs_exclude_tagged_files:
+  #     tags_to_exclude: ["panlm", "awscorp"]
   # - section-index
+  - file-filter:
+      exclude_tag:
+        - draft
 
 
 

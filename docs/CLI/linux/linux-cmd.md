@@ -278,6 +278,13 @@ openssl enc -aes-256-cbc -salt -in file.txt -out file.enc
 openssl enc -d -aes-256-cbc -in file.enc -out file.txt -pass pass:yourpassword
 ```
 
+## parallel
+touch 1024 files, with parallel 128, filename will test-1, test-2, etc.
+```sh
+time seq 1 1024 | parallel --will-cite -j 128 touch /mnt/efs/01/tutorial/touch/${directory}/test-1.4-{}
+
+```
+
 ## rsync 
 ### notable folder
 ```bash
@@ -294,6 +301,7 @@ cd ~/Documents/
 rsync -avr --delete ./work-notes stevenpan@10.68.69.100:/Users/stevenpan/Documents/
 
 ```
+
 
 ## sed
 ```sh
