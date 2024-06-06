@@ -2,11 +2,15 @@
 title: obsidian-help
 description: obsidian 使用点滴
 last_modified: 2024-01-01
+status: myblog
 tags:
   - obsidian
 ---
 
-# obsidian-help
+# obsidian
+文本笔记 第二大脑
+https://obsidian.md/
+
 ## useful plugins
 ### Obsidian Attachment Management
 https://github.com/trganda/obsidian-attachment-management
@@ -16,7 +20,7 @@ https://github.com/trganda/obsidian-attachment-management
 - 文档图片以文件名命名
 - 不要包含非图片扩展名
 - exclude 特定目录，比如 template
-![[attachments/obsidian-help/IMG-obsidian-help-1.png]]
+![[attachments/obsidian/IMG-obsidian.png]]
 
 ### Colorful Note Borders
 https://github.com/rusi/obsidian-colorful-note-borders
@@ -25,7 +29,7 @@ https://github.com/rusi/obsidian-colorful-note-borders
 推荐配置
 - git 路径下笔记添加红色框，提醒这个笔记将添加到 github 上
 - gitlab 路径下笔记添加绿色框，提醒这个笔记将添加到公司内网 gitlab 上
-![[attachments/obsidian-help/IMG-obsidian-help-2.png]]
+![[attachments/obsidian/IMG-obsidian-1.png]]
 
 ### File path to URI
 https://github.com/MichalBures/obsidian-file-path-to-uri
@@ -49,7 +53,7 @@ right click file, then hold `option`, click `copy xxx as Pathname` ([link](https
 
 ## Tips
 ### files and links
-![[attachments/obsidian-help/IMG-obsidian-help.png]]
+![[attachments/obsidian/IMG-obsidian-2.png]]
 
 
 ## input emoji

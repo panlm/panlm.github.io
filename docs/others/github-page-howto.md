@@ -12,7 +12,7 @@ tags:
 # how to put workshop on github 
 
 ## obsidian tips
-- [[obsidian-help|obsidian-help]]
+- [[obsidian|obsidian]]
 
 ## ~~build local~~ 
 - https://aws-samples.github.io/aws-modernization-workshop-sample/20_build/1_setup/
