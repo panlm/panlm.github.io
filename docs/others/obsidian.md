@@ -18,9 +18,9 @@ https://github.com/trganda/obsidian-attachment-management
 推荐配置
 - attachment 和文档在同一父路径下，但是独立目录
 - 文档图片以文件名命名
-- 不要包含非图片扩展名
+- 不要包含非图片扩展名，非图片扩展名的文件将保存在系统 attachment 目录下
 - exclude 特定目录，比如 template
-![[attachments/obsidian/IMG-obsidian.png]]
+![[attachments/obsidian/IMG-obsidian.png|600]]
 
 ### Colorful Note Borders
 https://github.com/rusi/obsidian-colorful-note-borders
@@ -29,13 +29,13 @@ https://github.com/rusi/obsidian-colorful-note-borders
 推荐配置
 - git 路径下笔记添加红色框，提醒这个笔记将添加到 github 上
 - gitlab 路径下笔记添加绿色框，提醒这个笔记将添加到公司内网 gitlab 上
-![[attachments/obsidian/IMG-obsidian-1.png]]
+![[attachments/obsidian/IMG-obsidian-1.png|600]]
 
 ### File path to URI
 https://github.com/MichalBures/obsidian-file-path-to-uri
 
 hold `ctl` click filename, choose `copy`, paste in obsidian
-直接将文件以附件形式插入 obsidian，由于附件名不是图片，因此不会移动到图片所在路径下的 attachment
+直接将文件以附件形式插入 obsidian，由于附件名不是图片，因此会保留在系统的 attachment 目录下
 
 right click file, then hold `option`, click `copy xxx as Pathname` ([link](https://technastic.com/copy-file-path-mac/)), and using this plugin `File path to URI`, 
 直接将文件以链接形式插入 obsidian，直接可以点击后，用第三方打开
@@ -45,6 +45,8 @@ right click file, then hold `option`, click `copy xxx as Pathname` ([link](https
 
 
 ### others 
+- [Quiet Outline](https://github.com/guopenghui/obsidian-quiet-outline)
+- [Text expand](https://github.com/mrjackphil/obsidian-text-expand)
 - [dataview doc](https://blacksmithgu.github.io/obsidian-dataview/)
 - [File path to URI]()
 - [Better PDF Plugin](https://github.com/MSzturc/obsidian-better-pdf-plugin/)
@@ -53,7 +55,7 @@ right click file, then hold `option`, click `copy xxx as Pathname` ([link](https
 
 ## Tips
 ### files and links
-![[attachments/obsidian/IMG-obsidian-2.png]]
+![[attachments/obsidian/IMG-obsidian-2.png|600]]
 
 
 ## input emoji

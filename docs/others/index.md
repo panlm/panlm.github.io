@@ -38,12 +38,24 @@ number headings: first-level 2, max 3, 1.1, auto
 <-->
 
 ## 4 others
-
 ```expander
-(path:git/git-mkdocs/others) AND (NOT "git/git-mkdocs/others/well-architected") 
-- [$frontmatter:title]($filename): $frontmatter:description
+(file:.md path:git/git-mkdocs/others -path:git/git-mkdocs/others/windows -path:git/git-mkdocs/others/network -path:git/git-mkdocs/others/well-architected)
 ```
+- [[cross-region-reverse-proxy-with-nlb-cloudfront]]
+- [[ecr-scan-on-push-notification-sns]]
+- [[file-storage-gateway-lab]]
+- [[github-page-howto]]
+- [[global-sso-and-china-aws-accounts]]
+- [[lab-create-cloudwatch-dashboard-cpu-metric]]
+- [[obsidian]]
+- [[POC-mig-filezilla-to-transfer-family]]
+- [[POC-prometheus-ha-architect-with-thanos-manually]]
+- [[rescue-ec2-instance]]
+- [[script-api-resource-method]]
+- [[script-convert-mp3-to-text]]
+- [[self-signed-certificates]]
 <-->
+
 ```dataview
 LIST
 FROM ("git/git-mkdocs/others") 

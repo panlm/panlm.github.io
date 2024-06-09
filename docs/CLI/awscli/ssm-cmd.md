@@ -83,6 +83,17 @@ done
 ```
 
 
+## parameter
+```sh
+aws ssm put-parameter \
+    --name  /brconnector/first-user-key  \
+    --value "" \
+    --type String \
+    --overwrite \
+    --region us-west-2
+
+```
+
 ## filter-inventory-
 ```sh
 aws ssm get-inventory --filter Key="Custom:DiskUtilization.Size(GB)",Values=100,Type=Equal
