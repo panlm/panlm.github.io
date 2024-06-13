@@ -4240,6 +4240,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#cfn-signal" class="md-nav__link">
+    <span class="md-ellipsis">
+      cfn-signal
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sample" class="md-nav__link">
+    <span class="md-ellipsis">
+      sample
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#others" class="md-nav__link">
+    <span class="md-ellipsis">
+      others
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4905,6 +4932,33 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#cfn-signal" class="md-nav__link">
+    <span class="md-ellipsis">
+      cfn-signal
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sample" class="md-nav__link">
+    <span class="md-ellipsis">
+      sample
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#others" class="md-nav__link">
+    <span class="md-ellipsis">
+      others
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4958,6 +5012,31 @@
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span><span class="s2">&quot;StackId&quot;</span>:<span class="w"> </span><span class="s2">&quot;arn:aws-cn:cloudformation:cn-north-1:24xxxxx11488:stack/OELabStack1/64469510-5339-11ea-8854-022274580dba&quot;</span>
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="o">}</span>
 </code></pre></div>
+<h2 id="cfn-signal">cfn-signal<a class="headerlink" href="#cfn-signal" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>/opt/aws/bin/cfn-signal<span class="w"> </span>-s<span class="w"> </span><span class="nb">true</span><span class="w"> </span>--stack<span class="w"> </span><span class="si">${</span><span class="nv">AWS</span><span class="p">::</span><span class="nv">StackId</span><span class="si">}</span><span class="w"> </span>--resource<span class="w"> </span>PrivateWaitCondition<span class="w"> </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS</span><span class="p">::</span><span class="nv">Region</span><span class="si">}</span><span class="w"> </span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="c1"># or </span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>/opt/aws/bin/cfn-signal<span class="w"> </span>-s<span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="s1">&#39;${PrivateWaitHandle}&#39;</span>
+</code></pre></div>
+<h2 id="sample">sample<a class="headerlink" href="#sample" title="Permanent link">&para;</a></h2>
+<ul>
+<li>some sample for user data format - <a href="../../../others/quick-build-brclient.yaml" title="quick-build-brclient.yaml">quick-build-brclient.yaml</a></li>
+<li>some sample - <a href="../../../EKS/cluster/aws-vpc.template.yaml" title="aws-vpc.template.yaml">aws-vpc.template.yaml</a></li>
+</ul>
+<h2 id="others">others<a class="headerlink" href="#others" title="Permanent link">&para;</a></h2>
+<ul>
+<li>ref &amp; getatt cheatsheet<ul>
+<li><a href="https://theburningmonk.com/cloudformation-ref-and-getatt-cheatsheet/">https://theburningmonk.com/cloudformation-ref-and-getatt-cheatsheet/</a></li>
+</ul>
+</li>
+<li>sample<ul>
+<li><a href="https://github.com/aws-cloudformation/aws-cloudformation-templates/tree/main">https://github.com/aws-cloudformation/aws-cloudformation-templates/tree/main</a></li>
+</ul>
+</li>
+<li>snippts<ul>
+<li><a href="https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-general.html">https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-general.html</a></li>
+</ul>
+</li>
+</ul>
 
 
 
@@ -4980,7 +5059,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-06-04T11:18:17+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-06-13T08:53:16+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-13</span>
   </span>
 
     
