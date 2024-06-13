@@ -38,7 +38,7 @@ eksctl 是一个用于在 Amazon EKS 上创建和管理 Kubernetes 集群的简�
 - 创建Shared SG，并挂载到cloud9保证其可以访问集群控制平面
 - 执行eksctl创建eks集群
 
-![[git/git-mkdocs/git-attachment/security-group-in-eks-privonly.drawio.png]]
+![[attachments/TC-security-group-for-eks-deepdive/IMG-TC-security-group-for-eks-deepdive.png]]
 
 当配置文件中指定`privateCluster: true`和`skipEndpointCreation: false`时，下列endpoint将被创建，且共享安全组（Shared SG）被分配到endpoint上。
 如果你的子网可以正常访问公网，那么绝大部分情况下你可以跳过创建这些endpoint，即`skipEndpointCreation: true`。
@@ -112,7 +112,7 @@ managedNodeGroups:
 
 创建可以公网访问api server的eks集群相对比较简单，适合用于测试或者实验环境。在配置中vpc章节，不指定具体的id以及相关子网信息，eksctl会创建全新子网来运行eks集群，如下图：
 
-![[git/git-mkdocs/git-attachment/security-group-in-eks-pub-and-priv.drawio.png]]
+![[attachments/TC-security-group-for-eks-deepdive/IMG-TC-security-group-for-eks-deepdive-1.png]]
 
 相关安全组分配、入站规则等与private only集群相同。我们来看下当应用发布时对于安全组又有哪些更新：
 - LB托管安全组（Managed SG for LB）-- 安全组名称类似`k8s-ingressname-随机字符串`，包含应用对外访问端口，例如80，443；

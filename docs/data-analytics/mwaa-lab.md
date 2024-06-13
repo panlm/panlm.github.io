@@ -117,13 +117,13 @@ aws ec2 create-vpc-endpoint --vpc-id ${VPC_ID} \
 ## create mwaa environment
 
 - 选择之前命令行中指定的 vpc 和 子网
-![mwaa-lab-png-1.png](mwaa-lab-png-1.png)
+![IMG-mwaa-lab.png](attachments/mwaa-lab/IMG-mwaa-lab.png)
 
 - 使用私有网络暴露 web 服务器，后续可以通过 ssh tunnel 或者 ssm tunnel 方式远程访问
-![mwaa-lab-png-2.png](mwaa-lab-png-2.png)
+![IMG-mwaa-lab-1.png](attachments/mwaa-lab/IMG-mwaa-lab-1.png)
 
 - 同时选择 “创建新安全组” 和 “之前命令行创建的安全组（用于 interface endpoint）”
-![mwaa-lab-png-3.png](mwaa-lab-png-3.png)
+![IMG-mwaa-lab-2.png](attachments/mwaa-lab/IMG-mwaa-lab-2.png)
 
 
 

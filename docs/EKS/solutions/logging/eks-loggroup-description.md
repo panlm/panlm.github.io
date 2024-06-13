@@ -67,4 +67,37 @@ log for windows pod
 - [[git/git-mkdocs/EKS/solutions/monitor/eks-container-insights]]
 
 
+## solutions
+```expander
+( file:POC-PCF-EKS-DRAFT  section:/Metric-指标-/)
+$matchline:+27
+```
+### ==Metric-指标-==
+- 使用开源 prometheus 监控 ([[git/git-mkdocs/EKS/solutions/monitor/TC-prometheus-ha-architect-with-thanos|TC-prometheus-ha-architect-with-thanos]])
+- cloudwatch原始监控ec2 metric
+- 使用cloudwatch container insight ([[git/git-mkdocs/EKS/solutions/monitor/eks-container-insights|eks-container-insights]])
+    - Enable Prometheus Metrics in CloudWatch ([[git/git-mkdocs/EKS/solutions/monitor/enable-prometheus-in-cloudwatch|enable-prometheus-in-cloudwatch]])
+
+### Logging-日志-
+- eks相关日志组描述 ([[git/git-mkdocs/EKS/solutions/logging/eks-loggroup-description|eks-loggroup-description]])
+- 转发cloudwatch日志到splunk ([[cloudwatch-firehose-splunk]])
+    - 控制平面：
+        - 启用eks日志发送到Cloudwatch ([LINK](https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html#enabling-control-plane-log-export))
+        - 转发cloudtrail中相关eks日志到splunk ([LINK](https://docs.splunk.com/Documentation/AddOns/released/AWS/CloudTrail))
+    - 数据平面
+        - 推荐EFK解决方案作为日志收集 ([[eks-fluentbit-opensearch]])
+        - Windows节点组日志收集 ([[logging-windows-container]])
+        - ALB logging could be enabled to S3, how to forward to splunk ([LINK](https://splunkbase.splunk.com/app/1274/))
+- 快速检索 Amazon EKS 控制平面日志 ([LINK](https://aws.amazon.com/cn/premiumsupport/knowledge-center/eks-get-control-plane-logs/))
+- 转发cloudwatch日志到opensearch ([[eks-control-panel-log-cwl-firehose-opensearch]])
+- eks控制平面日志组包含多个日志流，使用[[lambda-cwl-opensearch]]，将日志流发送到opensearch时，基于log group name和log stream name组合创建独立index文件
+    - 或者将日志通过 kinesis firehose 注入到 s3 并且使用，然后使用 glue crawler 爬取表结构便于 athena 进行查询，另外可以使用 glue databrew 进行二次处理 ([[git/git-mkdocs/EKS/solutions/logging/stream-k8s-control-panel-logs-to-s3]])
+- 转发eks控制平面日志到s3 ([[eks-logging-cost-compare]])
+
+### Tracing-跟踪-
+- 使用app mesh ([[aws-appmesh-RETIRED]])
+- 使用x-ray ([[x-ray-lab]])
+- 使用ADOT ([[adot-aws-distro-open-telemetry]])
+
+<-->
 

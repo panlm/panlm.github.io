@@ -15,11 +15,11 @@ tags:
 *considerations*
 https://docs.amazonaws.cn/en_us/eks/latest/userguide/security-groups-for-pods.html
 
-![enable-sg-on-pod-png-1.png](../../../git-attachment/enable-sg-on-pod-png-1.png)
+![IMG-enable-sg-on-pod.png](attachments/enable-sg-on-pod/IMG-enable-sg-on-pod.png)
 
 [[upgrade-vpc-cni]]
 
-![enable-sg-on-pod-png-2.png](../../../git-attachment/enable-sg-on-pod-png-2.png)
+![IMG-enable-sg-on-pod-1.png](attachments/enable-sg-on-pod/IMG-enable-sg-on-pod-1.png)
 
 第一个参数允许pod 挂sg
 第二个参数允许有sg的pod同时遵守network policy控制
