@@ -17,12 +17,15 @@ tags:
 ### get all ubuntu image from here (click to launch)
 - https://cloud-images.ubuntu.com/locator/ec2/
 
-### option 1
+### option-1-get-AL2-ami-id-
 - https://aws.amazon.com/blogs/compute/query-for-the-latest-amazon-linux-ami-ids-using-aws-systems-manager-parameter-store/
 
 ```sh
-AWS_REGION=us-east-2
-aws ssm get-parameters --names /aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2 --region ${AWS_REGION}
+export AWS_DEFAULT_REGION=us-west-2
+AMI_ID=$(aws ssm get-parameters \
+  --names /aws/service/ami-amazon-linux-latest/amzn2-ami-hvm-x86_64-gp2 \
+  --query 'Parameters[0].Value' --output text)
+
 ```
 
 2022.6.27
@@ -264,11 +267,11 @@ export SG_ID=$(aws ec2 describe-security-groups  --region $AWS_REGION --filter N
 ```
 
 ### func-create-sg-
-- [[../functions/func-create-sg.sh]] 
+- to create security group, you need VPC_ID ([[git/git-mkdocs/CLI/awscli/vpc-cmd#func-get-default-vpc-]])
 ```sh title="func-create-sg.sh" linenums="1"
 --8<-- "docs/CLI/functions/func-create-sg.sh"
 ```
-
+refer: [[../functions/func-create-sg.sh]] 
 ### create sg allow itself
 - refer: [[git/git-mkdocs/data-analytics/mwaa-lab#prepare-endpoint-for-your-private-network-]]
 

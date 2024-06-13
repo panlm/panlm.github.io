@@ -1,5 +1,5 @@
 ---
-title: auto-scaling-cmd
+title: auto-scaling-group
 description: 常用命令
 created: 2022-06-02 15:49:26.940
 last_modified: 2024-06-13
@@ -9,19 +9,16 @@ tags:
   - aws/compute/autoscaling
 ---
 
-# auto-scaling-cmd
+# auto-scaling-group-cmd
 ## func-create-launch-template-
-- create launch template need 
-    - security group id 
-    - ami id
+- to create launch template, you need: security group id ([[git/git-mkdocs/CLI/awscli/ec2-cmd#func-create-sg-]]) and ami id ([[git/git-mkdocs/CLI/awscli/ec2-cmd#option-1-get-AL2-ami-id-]])
 ```sh title="func-create-launch-template" linenums="1"
 --8<-- "docs/CLI/functions/func-create-launch-template.sh"
 ```
 refer: [[../functions/func-create-launch-template.sh|func-create-launch-template]]
 
 ## func-create-auto-scaling-group-
-- create auto scaling group need 
-    - launch template id
+- to create auto scaling group, you need: launch template id
 ```sh title="func-create-auto-scaling-group" linenums="1"
 --8<-- "docs/CLI/functions/func-create-auto-scaling-group.sh"
 ```

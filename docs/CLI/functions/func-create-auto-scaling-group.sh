@@ -1,18 +1,27 @@
+# depends on: LAUNCH_TEMPLATE_ID
+# output variable: ASG_ARN
+# quick link: https://panlm.github.io/CLI/functions/func-create-auto-scaling-group.sh
+
 function create-auto-scaling-group () {
     OPTIND=1
     OPTSTRING="h?l:"
     local LAUNCH_TEMPLATE_ID=""
+    local NUM=""
     while getopts ${OPTSTRING} opt; do
         case "${opt}" in
-            l) SG_ID=${OPTARG} ;;
+            l) LAUNCH_TEMPLATE_ID=${OPTARG} ;;
+            n) NUM=${OPTARG}
             h|\?) 
-                echo "format: create-auto-scaling-group -s LAUNCH_TEMPLATE_ID"
+                echo "format: create-auto-scaling-group -l LAUNCH_TEMPLATE_ID [-n NUM]"
+                echo -e "\tsample: create-auto-scaling-group "
+                echo -e "\tsample: create-auto-scaling-group -l lt-xxx -n 2"
                 echo
                 return 0
             ;;
         esac
     done
-    : ${LAUNCH_TEMPLATE_ID:?Missing -v}
+    : ${LAUNCH_TEMPLATE_ID:?Missing -l}
+    : ${NUM:=0}
 
     local TMP=$(mktemp --suffix .asg)
     # get sg id

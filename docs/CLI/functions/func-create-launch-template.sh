@@ -1,3 +1,7 @@
+# depends on: SG_ID, AMI_ID
+# output variable: LAUNCH_TEMPLATE_ID
+# quick link: https://panlm.github.io/CLI/functions/func-create-launch-template.sh
+
 function create-launch-template () {
     OPTIND=1
     OPTSTRING="h?s:a:"
@@ -14,8 +18,8 @@ function create-launch-template () {
             ;;
         esac
     done
-    : ${SG_ID:?Missing -v}
-    : ${AMI_ID:?Missing -v}
+    : ${SG_ID:?Missing -s}
+    : ${AMI_ID:?Missing -a}
 
     LAUNCH_TEMPLATE_NAME=launchtemplate-$(TZ=CST-8 date +%Y%m%d-%H%M)
     local TMP=$(mktemp --suffix .${LAUNCH_TEMPLATE_NAME})
