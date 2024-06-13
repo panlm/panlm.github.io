@@ -73,7 +73,7 @@ create-sg -v ${VPC_ID} -c 0.0.0.0/0 # call my function
 echo ${SG_ID}
 
 ```
-- execute function to create launch template ([[notes/auto-scaling-cmd#func-create-launch-template-]])
+- execute function to create launch template ([[auto-scaling-cmd#func-create-launch-template-]])
 ```sh
 echo ${SG_ID}
 echo ${OLD_AMI_ID}
@@ -166,7 +166,7 @@ aws ec2 modify-launch-template --launch-template-id ${LAUNCH_TEMPLATE_ID} --defa
 ```
 
 ### create auto scaling group
-- execute function to create auto scaling group ([[notes/auto-scaling-cmd#func-create-auto-scaling-group-]])
+- execute function to create auto scaling group ([[auto-scaling-cmd#func-create-auto-scaling-group-]])
 - ASG's desire number is zero
 ```sh
 create-auto-scaling-group ${LAUNCH_TEMPLATE_ID} # call my function
