@@ -4143,6 +4143,8 @@
       
         
       
+        
+      
     
     
       
@@ -4211,6 +4213,29 @@
   
   <span class="md-ellipsis">
     api-gateway
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../CLI/awscli/auto-scaling-cmd/" class="md-nav__link">
+        
+  
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.429 17.571h10.714V6.857H6.429v10.714ZM18 6.857h1.714v.857H18V9.43h1.714v.857H18v1.285h1.714v.858H18v1.714h1.714V15H18v1.714h1.714v.857H18v.059a.8.8 0 0 1-.799.799h-.058v1.714h-.857v-1.714H14.57v1.714h-.857v-1.714H12.43v1.714h-.858v-1.714H9.857v1.714H9v-1.714H7.286v1.714h-.857v-1.714H6.37a.8.8 0 0 1-.799-.8v-.058H4.286v-.857H5.57V15H4.286v-.857H5.57v-1.714H4.286v-.858H5.57v-1.285H4.286v-.857H5.57V7.714H4.286v-.857H5.57V6.8a.8.8 0 0 1 .8-.799h.058V4.286h.857V6H9V4.286h.857V6h1.714V4.286h.858V6h1.285V4.286h.857V6h1.715V4.286h.857V6h.058a.8.8 0 0 1 .799.799v.058ZM12.429 23.09a.054.054 0 0 1-.054.053H.91a.053.053 0 0 1-.053-.053V11.625c0-.03.024-.054.053-.054h2.52v-.857H.91a.911.911 0 0 0-.91.91V23.09c0 .502.408.91.91.91h11.465a.91.91 0 0 0 .91-.91V21h-.856ZM24 .91v11.465a.91.91 0 0 1-.91.91h-2.52v-.856h2.519a.054.054 0 0 0 .053-.054V.91a.053.053 0 0 0-.053-.053H11.625a.053.053 0 0 0-.054.053v2.52h-.857V.91c0-.502.409-.91.91-.91H23.09a.91.91 0 0 1 .91.91Z"/></svg>
+  
+  <span class="md-ellipsis">
+    auto-scaling-cmd
   </span>
   
 
@@ -5085,7 +5110,7 @@
 <li>创建Shared SG，并挂载到cloud9保证其可以访问集群控制平面</li>
 <li>执行eksctl创建eks集群</li>
 </ul>
-<p><a class="glightbox" href="../../../../git-attachment/security-group-in-eks-privonly.drawio.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="git/git-mkdocs/git-attachment/security-group-in-eks-privonly.drawio.png" src="../../../../git-attachment/security-group-in-eks-privonly.drawio.png" title="git/git-mkdocs/git-attachment/security-group-in-eks-privonly.drawio.png" /></a></p>
+<p><a class="glightbox" href="../attachments/TC-security-group-for-eks-deepdive/IMG-TC-security-group-for-eks-deepdive.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="attachments/TC-security-group-for-eks-deepdive/IMG-TC-security-group-for-eks-deepdive.png" src="../attachments/TC-security-group-for-eks-deepdive/IMG-TC-security-group-for-eks-deepdive.png" title="attachments/TC-security-group-for-eks-deepdive/IMG-TC-security-group-for-eks-deepdive.png" /></a></p>
 <p>当配置文件中指定<code>privateCluster: true</code>和<code>skipEndpointCreation: false</code>时，下列endpoint将被创建，且共享安全组（Shared SG）被分配到endpoint上。<br />
 如果你的子网可以正常访问公网，那么绝大部分情况下你可以跳过创建这些endpoint，即<code>skipEndpointCreation: true</code>。</p>
 <ul>
@@ -5155,7 +5180,7 @@
 </code></pre></div>
 <h2 id="eks-api-server-endpoint-access-is-public-and-private-or-public-only">EKS API server endpoint access is public and private (or public only)<a class="headerlink" href="#eks-api-server-endpoint-access-is-public-and-private-or-public-only" title="Permanent link">&para;</a></h2>
 <p>创建可以公网访问api server的eks集群相对比较简单，适合用于测试或者实验环境。在配置中vpc章节，不指定具体的id以及相关子网信息，eksctl会创建全新子网来运行eks集群，如下图：</p>
-<p><a class="glightbox" href="../../../../git-attachment/security-group-in-eks-pub-and-priv.drawio.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="git/git-mkdocs/git-attachment/security-group-in-eks-pub-and-priv.drawio.png" src="../../../../git-attachment/security-group-in-eks-pub-and-priv.drawio.png" title="git/git-mkdocs/git-attachment/security-group-in-eks-pub-and-priv.drawio.png" /></a></p>
+<p><a class="glightbox" href="../attachments/TC-security-group-for-eks-deepdive/IMG-TC-security-group-for-eks-deepdive-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="attachments/TC-security-group-for-eks-deepdive/IMG-TC-security-group-for-eks-deepdive-1.png" src="../attachments/TC-security-group-for-eks-deepdive/IMG-TC-security-group-for-eks-deepdive-1.png" title="attachments/TC-security-group-for-eks-deepdive/IMG-TC-security-group-for-eks-deepdive-1.png" /></a></p>
 <p>相关安全组分配、入站规则等与private only集群相同。我们来看下当应用发布时对于安全组又有哪些更新：</p>
 <ul>
 <li>LB托管安全组（Managed SG for LB）&ndash; 安全组名称类似<code>k8s-ingressname-随机字符串</code>，包含应用对外访问端口，例如80，443；</li>
@@ -5292,7 +5317,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-17T11:05:08+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-06-13T09:33:13+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-13</span>
   </span>
 
     
