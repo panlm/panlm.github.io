@@ -30,7 +30,7 @@ tags:
 4. 成本和安全 - 成本控制，高安全性，支持多账号
 
 ## architecture
-![](../../../git-attachment/stream-k8s-control-panel-logs-to-s3-1.png)
+![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3.png)
 
 ## walkthrough
 ### eks cluster
@@ -59,7 +59,7 @@ aws s3 mb s3://${ATHENA_BUCKET_NAME}
 ### lambda
 - 创建函数所需角色
 - 下载定制 lambda 代码 和 layer （参见[[cloudwatch-to-firehose-python]]）
-    - [lambda_function.py](lambda_function.py) 
+    - [lambda_function.py](attachments/stream-k8s-control-panel-logs-to-s3/lambda_function.py) 
     - [package.zip](package.zip) 
 - 创建函数并获取arn
 
@@ -380,19 +380,19 @@ aws glue create-crawler --name ${crawler_name} \
 ```
 
 #### using ui
-![](../../../git-attachment/stream-k8s-control-panel-logs-to-s3-21.png)
+![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-1.png)
 
-![](../../../git-attachment/stream-k8s-control-panel-logs-to-s3-22.png)
+![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-2.png)
 
-![](../../../git-attachment/stream-k8s-control-panel-logs-to-s3-23.png)
+![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-3.png)
 
-![](../../../git-attachment/stream-k8s-control-panel-logs-to-s3-24.png)
+![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-4.png)
 
 
 ### databrew
 #### using cli
 - download recipe first
-	- [cwl-recipe.json](cwl-recipe.json) 
+	- [cwl-recipe.json](attachments/stream-k8s-control-panel-logs-to-s3/cwl-recipe.json) 
 ```sh
 databrew_name=cwl-$RANDOM
 databrew_output=parquet-$RANDOM
@@ -501,25 +501,25 @@ aws glue start-crawler --name ${crawler_name_2}
 
 #### using ui
 - import recipe
-    - [download](cwl-recipe.json)
-![](../../../git-attachment/stream-k8s-control-panel-logs-to-s3-31.png)
+    - [download](attachments/stream-k8s-control-panel-logs-to-s3/cwl-recipe.json)
+![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-5.png)
 
 - create dataset from s3 or glue catalog
-![](../../../git-attachment/stream-k8s-control-panel-logs-to-s3-32.png)
+![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-6.png)
 
 - create project from this dataset and using existed recipe
-![](../../../git-attachment/stream-k8s-control-panel-logs-to-s3-33.png)
+![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-7.png)
 
-![](../../../git-attachment/stream-k8s-control-panel-logs-to-s3-34.png)
+![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-8.png)
 
 - create job as you need
 
 ### athena
 this table is created by firehose
-![](../../../git-attachment/stream-k8s-control-panel-logs-to-s3-41.png)
+![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-9.png)
 
 this table is created by databrew job
-![](../../../git-attachment/stream-k8s-control-panel-logs-to-s3-42.png)
+![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-10.png)
 
 ## conclusion
 满足客户需求，基于目前s3中保存的原始数据，并且可以进行字段拆分等二次处理，未来可以使用aws databrew进行更复杂的处理

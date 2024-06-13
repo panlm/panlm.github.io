@@ -40,18 +40,33 @@ hold `ctl` click filename, choose `copy`, paste in obsidian
 right click file, then hold `option`, click `copy xxx as Pathname` ([link](https://technastic.com/copy-file-path-mac/)), and using this plugin `File path to URI`, 
 直接将文件以链接形式插入 obsidian，直接可以点击后，用第三方打开
 
-### tasks plugin
+### Tasks Plugin
 - https://github.com/obsidian-tasks-group/obsidian-tasks/discussions/442#discussioncomment-4215151
 
+### Text Format
+https://github.com/Benature/obsidian-text-format
+
+快速切换文本格式，尤其是可以切换 `title with space` 到 `title-with-space` (slugify 格式)，方便跨文档引用，以及生成更友好的 github URL
+
+### Text expander
+https://github.com/mrjackphil/obsidian-text-expand
+
+跨文档应用，主要用于：
+- 在单个项目文档中记录 weekly report
+- 在周报文档中通过正则表达式搜索并提取本周更新到当前位置
+
+### Highlightr Plugin
+https://github.com/chetachiezikeuzor/Highlightr-Plugin
+
+通过不同颜色高亮文本
 
 ### others 
 - [Quiet Outline](https://github.com/guopenghui/obsidian-quiet-outline)
-- [Text expand](https://github.com/mrjackphil/obsidian-text-expand)
 - [dataview doc](https://blacksmithgu.github.io/obsidian-dataview/)
-- [File path to URI]()
 - [Better PDF Plugin](https://github.com/MSzturc/obsidian-better-pdf-plugin/)
 - [admonition](https://github.com/valentine195/obsidian-admonition)
 - [[export-util-obsidianhtml]]
+
 
 ## Tips
 ### files and links

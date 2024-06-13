@@ -188,3 +188,32 @@ jq -r '.TransitGateways | length'
 ```
 
 
+## install jq 
+https://stedolan.github.io/jq/download/
+
+### install jq on CentOS7
+```sh
+sudo wget -O /usr/local/bin/jq 'https://github.com/stedolan/jq/releases/download/jq-1.6/jq-linux64'
+```
+
+### install pyjq on mac
+```sh
+brew remove jq
+brew install ruby (ruby > 2.3)
+brew install --HEAD jq
+pip install pyjq
+```
+
+### install pyjq on CentOS 7
+```sh
+yum groupinstall -y 'Development Tools'
+yum install python-devel
+pip install pyjq
+
+yum install python2-pip
+pip install —upgrade pip
+```
+
+
+
+

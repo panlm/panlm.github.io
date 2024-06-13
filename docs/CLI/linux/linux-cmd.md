@@ -292,6 +292,11 @@ rsync -narv --delete /home/ubuntu/.notable /home/ubuntu/OneDrive/CrossSync/
 
 ```
 
+### sync to s3
+```sh
+aws s3 sync ./work-notes s3://knowledge-base-quick-start-qjmkd-data-source-1351/work-notes --delete --exclude "*.png"
+```
+
 ### work-notes
 ```sh
 bash
@@ -389,6 +394,14 @@ yum install iproute-tc
 
 ### scenario
 - [[connection-network-with-overlap-cidrs#Solution for Overlapping CIDRs using AWS Transit Gateway in VPC and NAT Instances]]
+
+
+## ts
+add timestamp at the front of every command output
+```sh
+yum install moreutils
+ls |ts
+```
 
 ## vim
 - [[../../../../vim-cmd|vim-cmd]]

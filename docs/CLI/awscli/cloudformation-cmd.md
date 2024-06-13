@@ -36,4 +36,25 @@ aws cloudformation create-stack --stack-name OELabStack2 \
 
 ```
 
+## cfn-signal
+```sh
+/opt/aws/bin/cfn-signal -s true --stack ${AWS::StackId} --resource PrivateWaitCondition --region ${AWS::Region} 
+# or 
+/opt/aws/bin/cfn-signal -s true '${PrivateWaitHandle}'
+
+```
+
+
+## sample
+- some sample for user data format - [[../../others/quick-build-brclient.yaml|quick-build-brclient.yaml]]
+- some sample - [[../../EKS/cluster/aws-vpc.template.yaml|aws-vpc.template.yaml]]
+
+## others
+- ref & getatt cheatsheet
+    - https://theburningmonk.com/cloudformation-ref-and-getatt-cheatsheet/
+- sample
+    - https://github.com/aws-cloudformation/aws-cloudformation-templates/tree/main
+- snippts
+    - https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-general.html
+
 

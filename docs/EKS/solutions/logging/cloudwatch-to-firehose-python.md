@@ -25,7 +25,7 @@ python3.8 · kinesis-firehose · cloudwatch-logs · splunk
 
 ## revision
 
-download [[lambda_function.py]]
+download [[attachments/stream-k8s-control-panel-logs-to-s3/lambda_function.py|lambda_function]]
 
 ## 3-party python lib
 
