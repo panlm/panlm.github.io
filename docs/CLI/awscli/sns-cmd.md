@@ -8,6 +8,12 @@ tags:
   - aws/integration/sns
 ---
 # sns-cmd
+
+## create sns
+```sh
+aws sns create-topic --name sns2 --query 'TopicArn' --output text
+```
+
 ## send file as message
 ``` bash
 TOPIC_ARN=

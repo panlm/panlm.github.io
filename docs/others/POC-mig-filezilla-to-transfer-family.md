@@ -32,10 +32,19 @@ VPC=$(aws ec2 describe-vpcs \
     --filters "Name=isDefault,Values=true" \
     --query "Vpcs[0].VpcId" \
     --output text)
+
+# SUBNETS=$(aws ec2 describe-subnets \
+#     --filters "Name=vpc-id,Values=${VPC}" "Name=map-public-ip-on-launch,Values=true" \
+#     --query "Subnets[].SubnetId" \
+#     --output text |awk 'BEGIN{OFS=","} {print $1,$2}')
+
+# sort by AZ name and get first 2 subnets
+# sometimes will failed in us-west-2 if dont sort output
 SUBNETS=$(aws ec2 describe-subnets \
-    --filters "Name=vpc-id,Values=${VPC}" "Name=map-public-ip-on-launch,Values=true" \
-    --query "Subnets[].SubnetId" \
-    --output text |awk 'BEGIN{OFS=","} {print $1,$2}')
+    --filters "Name=vpc-id,Values=${VPC}" \
+        "Name=map-public-ip-on-launch,Values=true" |\
+    jq -r '.Subnets | sort_by(.AvailabilityZone) | .[].SubnetId' |\
+    xargs |awk 'BEGIN{OFS=","} {print $1,$2}')
 
 aws ds create-microsoft-ad \
     --name ${AD} \

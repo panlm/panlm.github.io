@@ -46,7 +46,7 @@ aws cloudformation create-stack --stack-name OELabStack2 \
 
 
 ## sample
-- some sample for user data format - [[../../others/quick-build-brclient.yaml|quick-build-brclient.yaml]]
+- some sample for user data format - [[../../others/quick-build-brconnector.yaml|quick-build-brconnector.yaml]]
 - some sample - [[../../EKS/cluster/aws-vpc.template.yaml|aws-vpc.template.yaml]]
 
 ## others

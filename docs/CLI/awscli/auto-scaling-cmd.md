@@ -43,6 +43,49 @@ aws autoscaling put-warm-pool \
 
 refer: https://docs.aws.amazon.com/autoscaling/ec2/userguide/examples-warm-pools-aws-cli.html
 
+## lifecycle-hook-
+- need an autoscaling role to create hook
+```sh
+UNIQ=$(TZ=EAT-8 date +%Y%m%d-%H%M%S)
+ASG_NAME=${ASG_ARN##*/}
+
+ROLE_NAME=autoscaling-notification-role-${UNIQ}
+cat >trust.json <<-EOF
+{
+    "Version": "2012-10-17",
+    "Statement": [
+        {
+            "Effect": "Allow",
+            "Principal": {
+                "Service": "autoscaling.amazonaws.com"
+            },
+            "Action": "sts:AssumeRole"
+        }
+    ]
+}
+EOF
+
+aws iam create-role --role-name ${ROLE_NAME} \
+    --assume-role-policy-document file://./trust.json |tee ${ROLE_NAME}.out
+aws iam attach-role-policy --role-name ${ROLE_NAME} \
+    --policy-arn "arn:aws:iam::aws:policy/service-role/AutoScalingNotificationAccessRole"
+ROLE_ARN=$(cat ${ROLE_NAME}.out |jq -r '.Role.Arn')
+
+#TARGET_ARN=$(aws sns create-topic --name asg-sns-${UNIQ} --query 'TopicArn' --output text)
+QUEUE_URL=$(aws sqs create-queue --queue-name asg-sqs-${UNIQ} --query 'QueueUrl' --output text)
+ACCOUNT_ID=$(aws sts get-caller-identity --output text --query Account)
+TARGET_ARN=arn:aws:sqs:${AWS_DEFAULT_REGION}:${ACCOUNT_ID}:${QUEUE_URL##*/}
+
+aws autoscaling put-lifecycle-hook \
+    --lifecycle-hook-name hook-${UNIQ} \
+    --auto-scaling-group-name ${ASG_NAME} \
+    --lifecycle-transition autoscaling:EC2_INSTANCE_LAUNCHING \
+    --role-arn ${ROLE_ARN} \
+    --notification-target-arn ${TARGET_ARN}
+
+```
+
+
 ## refer
 ??? note "right-click & open-in-new-tab: "
     ![[git/git-mkdocs/CLI/awscli/ecs-cmd#update-launch-template-]]

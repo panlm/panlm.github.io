@@ -8,6 +8,11 @@ tags:
   - aws/integration/sqs
 ---
 # sqs-cmd
+## create 
+```sh
+aws sns create-queue --queue-name sqs2 --query 'QueueUrl' --output text
+```
+
 ## send and receive messages
 ### with curl
 ``` bash
