@@ -3091,6 +3091,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Components
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#deploy" class="md-nav__link">
     <span class="md-ellipsis">
       Deploy
@@ -4166,7 +4175,7 @@
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M6.429 17.571h10.714V6.857H6.429v10.714ZM18 6.857h1.714v.857H18V9.43h1.714v.857H18v1.285h1.714v.858H18v1.714h1.714V15H18v1.714h1.714v.857H18v.059a.8.8 0 0 1-.799.799h-.058v1.714h-.857v-1.714H14.57v1.714h-.857v-1.714H12.43v1.714h-.858v-1.714H9.857v1.714H9v-1.714H7.286v1.714h-.857v-1.714H6.37a.8.8 0 0 1-.799-.8v-.058H4.286v-.857H5.57V15H4.286v-.857H5.57v-1.714H4.286v-.858H5.57v-1.285H4.286v-.857H5.57V7.714H4.286v-.857H5.57V6.8a.8.8 0 0 1 .8-.799h.058V4.286h.857V6H9V4.286h.857V6h1.714V4.286h.858V6h1.285V4.286h.857V6h1.715V4.286h.857V6h.058a.8.8 0 0 1 .799.799v.058ZM12.429 23.09a.054.054 0 0 1-.054.053H.91a.053.053 0 0 1-.053-.053V11.625c0-.03.024-.054.053-.054h2.52v-.857H.91a.911.911 0 0 0-.91.91V23.09c0 .502.408.91.91.91h11.465a.91.91 0 0 0 .91-.91V21h-.856ZM24 .91v11.465a.91.91 0 0 1-.91.91h-2.52v-.856h2.519a.054.054 0 0 0 .053-.054V.91a.053.053 0 0 0-.053-.053H11.625a.053.053 0 0 0-.054.053v2.52h-.857V.91c0-.502.409-.91.91-.91H23.09a.91.91 0 0 1 .91.91Z"/></svg>
   
   <span class="md-ellipsis">
-    auto-scaling-cmd
+    auto-scaling-group
   </span>
   
 
@@ -4916,6 +4925,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#components" class="md-nav__link">
+    <span class="md-ellipsis">
+      Components
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#deploy" class="md-nav__link">
     <span class="md-ellipsis">
       Deploy
@@ -4962,30 +4980,43 @@
 
 
 
-<h1 id="quick-deploy-using-cloudformation">quick deploy using cloudformation<a class="headerlink" href="#quick-deploy-using-cloudformation" title="Permanent link">&para;</a></h1>
+<h1 id="quick-deploy-using-cloudformation">Quick deploy using Cloudformation<a class="headerlink" href="#quick-deploy-using-cloudformation" title="Permanent link">&para;</a></h1>
 <p><a href="https://github.com/aws-samples/sample-connector-for-bedrock/blob/cloudformation-deployment/cloudformation/README.md">https://github.com/aws-samples/sample-connector-for-bedrock/blob/cloudformation-deployment/cloudformation/README.md</a></p>
 <h2 id="prerequisites">Prerequisites<a class="headerlink" href="#prerequisites" title="Permanent link">&para;</a></h2>
 <ul>
 <li>Enable Claude 3 Sonnet or Haiku in your region - If you are new to using Anthropic models, go to the <a href="https://console.aws.amazon.com/bedrock/">Amazon Bedrock console</a> and choose <strong>Model access</strong> on the bottom left pane. Request access separately for Claude 3 Sonnet or Haiku.</li>
+<li>Verified in following regions:<ul>
+<li>us-east-1</li>
+<li>us-west-2</li>
+</ul>
+</li>
+</ul>
+<h2 id="components">Components<a class="headerlink" href="#components" title="Permanent link">&para;</a></h2>
+<p>Following components will be included in this cloudformation template: </p>
+<ul>
+<li>Cloudfront</li>
+<li>EC2 for BRConnector</li>
+<li>RDS PostgreSQL (option)</li>
 </ul>
 <h2 id="deploy">Deploy<a class="headerlink" href="#deploy" title="Permanent link">&para;</a></h2>
 <ul>
-<li>
-<p>In Same region, download <a href="../quick-build-brclient.yaml">quick-build-brclient.yaml</a> and upload to cloudformation console.</p>
-<ul>
-<li>give a name to this cloudformation stack</li>
-<li>default use amazon linux 2 AMI</li>
-<li>default use t3.medium instance type</li>
-<li>default postgresql password is <code>mysecretpassword</code></li>
-<li>choose a vpc with public subnets</li>
-<li>choose one public subnet<br />
-<a class="glightbox" href="../attachments/quick-build-brclient-on-ec2/IMG-quick-build-brclient-on-ec2-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="IMG-quick-build-brclient-on-ec2-1" src="../attachments/quick-build-brclient-on-ec2/IMG-quick-build-brclient-on-ec2-1.png" /></a></li>
+<li>In same region, download <a href="../quick-build-brconnector.yaml">quick-build-brconnector.yaml</a> and upload to cloudformation console.<ul>
+<li>Choose a existing VPC with public subnets</li>
+<li>Choose one public subnet</li>
+<li>Default use t3.medium as EC2 instance type</li>
+<li>Default use amazon linux 2 AMI</li>
+<li>Default will create PostgreSQL as container in same EC2 (option to false), you could choose to create standalone RDS PostgreSQL as backend (option to true)</li>
+<li>Default PostgreSQL password is <code>mysecretpassword</code></li>
 </ul>
 </li>
-<li>
-<p>Until deploy successfully, go to output page and copy cloudfront URL and first user key to your bedrock client settings page.<br />
-<a class="glightbox" href="../attachments/quick-build-brclient-on-ec2/IMG-quick-build-brclient-on-ec2-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="IMG-quick-build-brclient-on-ec2-2" src="../attachments/quick-build-brclient-on-ec2/IMG-quick-build-brclient-on-ec2-2.png" /></a></p>
-</li>
+</ul>
+<p><a class="glightbox" href="../attachments/quick-build-brconnector-on-ec2/IMG-quick-build-brconnector-on-ec2-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="attachments/quick-build-brconnector-on-ec2/IMG-quick-build-brconnector-on-ec2-2.png" src="../attachments/quick-build-brconnector-on-ec2/IMG-quick-build-brconnector-on-ec2-2.png" /></a></p>
+<ul>
+<li>Until deploy successfully, go to output page and copy cloudfront URL and first user key to your bedrock client settings page.</li>
+</ul>
+<p><a class="glightbox" href="../attachments/quick-build-brconnector-on-ec2/IMG-quick-build-brconnector-on-ec2-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="attachments/quick-build-brconnector-on-ec2/IMG-quick-build-brconnector-on-ec2-1.png" src="../attachments/quick-build-brconnector-on-ec2/IMG-quick-build-brconnector-on-ec2-1.png" /></a></p>
+<ul>
+<li>Also you could connect to <code>BRConnector</code> EC2 instance with SSM Session Manager (<a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#start-ec2-console">docs</a>)</li>
 </ul>
 
 
@@ -5009,7 +5040,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-06-09T22:20:14+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-09</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-06-16T09:20:52+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-16</span>
   </span>
 
     
@@ -5019,7 +5050,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-06-09T22:20:14+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-09</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-06-16T09:20:52+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-16</span>
   </span>
 
     

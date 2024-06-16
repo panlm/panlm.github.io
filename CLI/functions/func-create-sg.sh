@@ -1,4 +1,4 @@
-# depends on: VPC_ID
+# depends on: if no VPC_ID, will use default vpc as VPC_ID
 # output variable: SG_ID
 # quick link: https://panlm.github.io/CLI/functions/func-create-sg.sh
 function create-sg () {
@@ -13,8 +13,8 @@ function create-sg () {
             c) VPC_CIDR=${OPTARG} ;;
             p) PORTS+=("${OPTARG}") ;;
             h|\?) 
-                echo "format: create-sg -v VPC_ID [-c VPC_CIDR] [-p PORT1] [-p PORT2]"
-                echo -e "\tsample: create-sg -v vpc-xxx"
+                echo "format: create-sg [-v VPC_ID] [-c VPC_CIDR] [-p PORT1] [-p PORT2]"
+                echo -e "\tsample: create-sg "
                 echo -e "\tsample: create-sg -v vpc-xxx -c 172.31.0.0/16"
                 echo -e "\tsample: create-sg -v vpc-xxx -c 0.0.0.0/0 -p 80 -p 443"
                 echo 
@@ -24,8 +24,12 @@ function create-sg () {
             ;;
         esac
     done
-    : ${VPC_ID:?Missing -v}
     : ${VPC_CIDR:=0.0.0.0/0}
+
+    if [[ -z ${VPC_ID} ]]; then
+        VPC_ID=$(aws ec2 describe-vpcs --filter Name=is-default,Values=true \
+        --query 'Vpcs[0].VpcId' --output text)
+    fi
 
     if [[ -z ${PORTS} ]]; then
         local PROTOCOL=(all)
@@ -53,5 +57,6 @@ function create-sg () {
     done
 
     # echo SG_ID
-    echo "SG_ID="$SG_ID
+    echo "VPC_ID="${VPC_ID}
+    echo "SG_ID="${SG_ID}
 }
