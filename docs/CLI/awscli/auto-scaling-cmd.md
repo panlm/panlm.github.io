@@ -70,12 +70,19 @@ aws iam create-role --role-name ${ROLE_NAME} \
 aws iam attach-role-policy --role-name ${ROLE_NAME} \
     --policy-arn "arn:aws:iam::aws:policy/service-role/AutoScalingNotificationAccessRole"
 ROLE_ARN=$(cat ${ROLE_NAME}.out |jq -r '.Role.Arn')
-
+```
+- create sns or sqs as target
+```sh
+# for sns
 #TARGET_ARN=$(aws sns create-topic --name asg-sns-${UNIQ} --query 'TopicArn' --output text)
+
+# for sqs
 QUEUE_URL=$(aws sqs create-queue --queue-name asg-sqs-${UNIQ} --query 'QueueUrl' --output text)
 ACCOUNT_ID=$(aws sts get-caller-identity --output text --query Account)
 TARGET_ARN=arn:aws:sqs:${AWS_DEFAULT_REGION}:${ACCOUNT_ID}:${QUEUE_URL##*/}
-
+```
+- create hook
+```sh
 aws autoscaling put-lifecycle-hook \
     --lifecycle-hook-name hook-${UNIQ} \
     --auto-scaling-group-name ${ASG_NAME} \

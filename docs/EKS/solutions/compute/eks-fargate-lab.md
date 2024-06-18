@@ -1,6 +1,6 @@
 ---
-title: eks-fargate
-description: 在 eks 集群中使用 fargate
+title: Fargate on EKS
+description: 在 EKS 集群中使用 Fargate
 created: 2022-06-25 09:17:05.835
 last_modified: 2024-02-03
 tags:
@@ -8,12 +8,10 @@ tags:
   - aws/container/fargate
 ---
 
-# eks-fargate-lab
+# Fargate on EKS
 ## 环境准备
-
 - 登录你的实验环境 ([LINK](https://dashboard.eventengine.run/login))，并且打开 `AWS Console` 
 - 进入 aws cloud9 ([LINK](https://console.aws.amazon.com/cloud9))，打开已经准备好的 `EKSLabIDE` 桌面，点击 `+` 新建一个 `Terminal` 窗口
-
 - 安装必要的软件
 ```sh
 aws s3 cp s3://ee-assets-prod-us-east-1/modules/bd7b369f613f452dacbcea2a5d058d5b/v6/eksinit.sh . 
@@ -29,9 +27,7 @@ kubectl get nodes
 - 如果可以正常显示节点信息，表示环境已经就绪。
 
 ## create fargate profile
-
 - 在现有集群中添加 fargate 支持
-
 ```sh
 CLUSTER_NAME=eksworkshop-eksctl
 AWS_REGION=${AWS_DEFAULT_REGION}
@@ -54,9 +50,7 @@ eksctl get fargateprofile \
 - 截个图
 
 ## install aws load balancer controller
-- 接下来我们将安装一个应用，并且对外发布，这里需要用到 aws load balancer controller
-    - refer [[aws-load-balancer-controller#install-with-eksdemo-]]
-
+- 接下来我们将安装一个应用，并且对外发布，这里需要用到 aws load balancer controller (refer [[aws-load-balancer-controller#install-with-eksdemo-]])
 ```sh
 eksctl utils associate-iam-oidc-provider \
     --region ${AWS_REGION} \
@@ -104,9 +98,7 @@ kubectl get deploy aws-load-balancer-controller -n kube-system
 ```
 
 ## deploy game 2048 
-
 - 部署应用
-
 ```sh
 kubectl apply -f https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/main/docs/examples/2048/2048_full.yaml
 
@@ -129,7 +121,6 @@ kubectl get no  -o wide
 kubectl get ing -n ${NAMESPACE} -o=custom-columns="URL":.status.loadBalancer.ingress[*].hostname
 
 ```
-
 
 ## other fargate labs
 - [immersion workshop](https://catalog.us-east-1.prod.workshops.aws/workshops/76a5dd80-3249-4101-8726-9be3eeee09b2/en-US/fargate)

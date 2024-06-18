@@ -1,5 +1,5 @@
 ---
-title: quick-build-brclient-on-ec2
+title: Quick Deploy BRConnector using Cloudformation
 description: 
 created: 2024-06-09 11:59:37.855
 last_modified: 2024-06-09
@@ -7,9 +7,10 @@ tags:
   - aws/mgmt/cloudformation
   - aws/compute/ec2
   - aws/network/cloudfront
+status: myblog
 ---
 
-# Quick deploy using Cloudformation
+# Quick Deploy BRConnector using Cloudformation
 https://github.com/aws-samples/sample-connector-for-bedrock/blob/cloudformation-deployment/cloudformation/README.md
 
 ## Prerequisites
@@ -25,7 +26,7 @@ Following components will be included in this cloudformation template:
 - RDS PostgreSQL (option)
 
 ## Deploy
-- In same region, download [quick-build-brconnector.yaml](quick-build-brconnector.yaml) and upload to cloudformation console.
+- Download [quick-build-brconnector.yaml](quick-build-brconnector.yaml) and upload to cloudformation console.
     - Choose a existing VPC with public subnets
     - Choose one public subnet
     - Default use t3.medium as EC2 instance type

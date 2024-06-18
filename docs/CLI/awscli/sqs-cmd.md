@@ -2,7 +2,7 @@
 title: sqs
 description: 常用命令
 created: 2023-08-31 20:18:28.430
-last_modified: 2024-02-05
+last_modified: 2024-06-05
 icon: simple/amazonsqs
 tags:
   - aws/integration/sqs
@@ -10,11 +10,12 @@ tags:
 # sqs-cmd
 ## create 
 ```sh
-aws sns create-queue --queue-name sqs2 --query 'QueueUrl' --output text
+aws sqs create-queue --queue-name sqs2 --query 'QueueUrl' --output text
 ```
 
 ## send and receive messages
-### with curl
+使用 send-message 发送消息，将保持 lambda 并发为 1
+### ~~with curl~~
 ``` bash
 # send message to sqs anonymously
 message=test
@@ -60,5 +61,43 @@ aws sqs delete-message \
 ```
 
 
+## send-message-batch
+使用 batch 发送消息，会使得 lambda 并发与 message 数量一致，如下将并发 2 个 lambda
+- messages.json
+```json
+[
+  {
+    "Id": "Message1",
+    "MessageBody": "This is the first message",
+    "DelaySeconds": 0,
+    "MessageAttributes": {
+      "Attribute1": {
+        "DataType": "String",
+        "StringValue": "Value1"
+      }
+    }
+  },
+  {
+    "Id": "Message2",
+    "MessageBody": "This is the second message",
+    "DelaySeconds": 0,
+    "MessageAttributes": {
+      "Attribute2": {
+        "DataType": "String",
+        "StringValue": "Value2"
+      }
+    }
+  }
+]
+```
 
+- send message batch
+```sh
+aws sqs send-message-batch --queue-url $sqs_url --entries file://./messages.json
+```
 
+## scaling behavior for sqs trigger in lambda
+https://docs.aws.amazon.com/lambda/latest/dg/services-sqs-scaling.html
+- batch size 
+- batch window
+- maximum concurrency
