@@ -4,7 +4,6 @@ description: 迁移 Filezilla 到 Transfer Family
 created: 2023-03-25 10:08:47.022
 last_modified: 2024-04-04
 status: myblog
-comments: true
 tags:
   - aws/storage/transfer-family
   - aws/mgmt/directory-service
