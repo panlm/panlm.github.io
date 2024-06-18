@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="在 eks 集群中使用 fargate">
+        <meta name="description" content="在 EKS 集群中使用 Fargate">
       
       
       
@@ -18,11 +18,11 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
     
     
       
-        <title>eks-fargate - panlm</title>
+        <title>Fargate on EKS - panlm</title>
       
     
     
@@ -97,7 +97,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#eks-fargate-lab" class="md-skip">
+        <a href="#fargate-on-eks" class="md-skip">
           Skip to content
         </a>
       
@@ -132,7 +132,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              eks-fargate
+              Fargate on EKS
             
           </span>
         </div>
@@ -1563,7 +1563,7 @@
           
   
   <span class="md-ellipsis">
-    eks-fargate
+    Fargate on EKS
   </span>
   
 
@@ -1574,7 +1574,7 @@
         
   
   <span class="md-ellipsis">
-    eks-fargate
+    Fargate on EKS
   </span>
   
 
@@ -3129,8 +3129,16 @@
         
   
   <span class="md-ellipsis">
-    quick-build-brclient-on-ec2
+    Quick Deploy BRConnector using Cloudformation
   </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog" title="my blogs">
+    </span>
+  
+
   
 
       </a>
@@ -5014,13 +5022,11 @@
 
 
 
-<h1 id="eks-fargate-lab">eks-fargate-lab<a class="headerlink" href="#eks-fargate-lab" title="Permanent link">&para;</a></h1>
+<h1 id="fargate-on-eks">Fargate on EKS<a class="headerlink" href="#fargate-on-eks" title="Permanent link">&para;</a></h1>
 <h2 id="_1">环境准备<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
 <ul>
 <li>登录你的实验环境 (<a href="https://dashboard.eventengine.run/login">LINK</a>)，并且打开 <code>AWS Console</code> </li>
-<li>
-<p>进入 aws cloud9 (<a href="https://console.aws.amazon.com/cloud9">LINK</a>)，打开已经准备好的 <code>EKSLabIDE</code> 桌面，点击 <code>+</code> 新建一个 <code>Terminal</code> 窗口</p>
-</li>
+<li>进入 aws cloud9 (<a href="https://console.aws.amazon.com/cloud9">LINK</a>)，打开已经准备好的 <code>EKSLabIDE</code> 桌面，点击 <code>+</code> 新建一个 <code>Terminal</code> 窗口</li>
 <li>
 <p>安装必要的软件<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>aws<span class="w"> </span>s3<span class="w"> </span>cp<span class="w"> </span>s3://ee-assets-prod-us-east-1/modules/bd7b369f613f452dacbcea2a5d058d5b/v6/eksinit.sh<span class="w"> </span>.<span class="w"> </span>
@@ -5038,8 +5044,8 @@
 </ul>
 <h2 id="create-fargate-profile">create fargate profile<a class="headerlink" href="#create-fargate-profile" title="Permanent link">&para;</a></h2>
 <ul>
-<li>在现有集群中添加 fargate 支持</li>
-</ul>
+<li>
+<p>在现有集群中添加 fargate 支持<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">CLUSTER_NAME</span><span class="o">=</span>eksworkshop-eksctl
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">AWS_REGION</span><span class="o">=</span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nv">NAMESPACE</span><span class="o">=</span>game-2048
@@ -5054,18 +5060,17 @@
 <a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>eksctl<span class="w"> </span>get<span class="w"> </span>fargateprofile<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span>--cluster<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">  </span>-o<span class="w"> </span>yaml
-</code></pre></div>
-<ul>
-<li>你可以登录 eks 管理界面确认 fargate profile 创建成功 </li>
+</code></pre></div></p>
+</li>
+<li>
+<p>你可以登录 eks 管理界面确认 fargate profile 创建成功 </p>
+</li>
 <li>截个图</li>
 </ul>
 <h2 id="install-aws-load-balancer-controller">install aws load balancer controller<a class="headerlink" href="#install-aws-load-balancer-controller" title="Permanent link">&para;</a></h2>
 <ul>
-<li>接下来我们将安装一个应用，并且对外发布，这里需要用到 aws load balancer controller<ul>
-<li>refer <a href="../../../addons/aws-load-balancer-controller/#install-with-eksdemo-" title="aws-load-balancer-controller">aws-load-balancer-controller</a></li>
-</ul>
-</li>
-</ul>
+<li>
+<p>接下来我们将安装一个应用，并且对外发布，这里需要用到 aws load balancer controller (refer <a href="../../../addons/aws-load-balancer-controller/#install-with-eksdemo-" title="aws-load-balancer-controller">aws-load-balancer-controller</a>)<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>eksctl<span class="w"> </span>utils<span class="w"> </span>associate-iam-oidc-provider<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span>--cluster<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
@@ -5102,19 +5107,21 @@
 <a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="w">    </span>--set<span class="w"> </span>serviceAccount.name<span class="o">=</span>aws-load-balancer-controller
 <a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a>
 <a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a>kubectl<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span>rollout<span class="w"> </span>status<span class="w"> </span>deployment<span class="w"> </span>aws-load-balancer-controller
-</code></pre></div>
-<ul>
-<li>确认 <code>aws-load-balancer-controller</code> 部署成功<br />
+</code></pre></div></p>
+</li>
+<li>
+<p>确认 <code>aws-load-balancer-controller</code> 部署成功<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>deploy<span class="w"> </span>aws-load-balancer-controller<span class="w"> </span>-n<span class="w"> </span>kube-system
-</code></pre></div></li>
+</code></pre></div></p>
+</li>
 </ul>
 <h2 id="deploy-game-2048">deploy game 2048<a class="headerlink" href="#deploy-game-2048" title="Permanent link">&para;</a></h2>
 <ul>
-<li>部署应用</li>
-</ul>
+<li>
+<p>部署应用<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/kubernetes-sigs/aws-load-balancer-controller/main/docs/examples/2048/2048_full.yaml
-</code></pre></div>
-<ul>
+</code></pre></div></p>
+</li>
 <li>
 <p>观察到有 <code>fargate-</code> 开头的节点被加入到集群中<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>all<span class="w"> </span>-n<span class="w"> </span><span class="nv">$NAMESPACE</span><span class="w"> </span>-o<span class="w"> </span>wide
@@ -5158,7 +5165,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-17T11:05:08+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-06-18T11:04:42+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-18</span>
   </span>
 
     
@@ -5181,7 +5188,21 @@
 
 
 
-
+<script
+  src="https://giscus.app/client.js"
+  data-repo="panlm/panlm-giscus"
+  data-repo-id="..."
+  data-category="..."
+  data-category-id="..."
+  data-mapping="pathname"
+  data-reactions-enabled="1"
+  data-emit-metadata="1"
+  data-theme="light"
+  data-lang="en"
+  crossorigin="anonymous"
+  async
+>
+</script>
                 
               </article>
             </div>

@@ -18,7 +18,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.26">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.27">
     
     
       
@@ -1547,7 +1547,7 @@
         
   
   <span class="md-ellipsis">
-    eks-fargate
+    Fargate on EKS
   </span>
   
 
@@ -3037,8 +3037,16 @@
         
   
   <span class="md-ellipsis">
-    quick-build-brclient-on-ec2
+    Quick Deploy BRConnector using Cloudformation
   </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog" title="my blogs">
+    </span>
+  
+
   
 
       </a>
@@ -4703,6 +4711,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#send-message-batch" class="md-nav__link">
+    <span class="md-ellipsis">
+      send-message-batch
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scaling-behavior-for-sqs-trigger-in-lambda" class="md-nav__link">
+    <span class="md-ellipsis">
+      scaling behavior for sqs trigger in lambda
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -4978,6 +5004,24 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#send-message-batch" class="md-nav__link">
+    <span class="md-ellipsis">
+      send-message-batch
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#scaling-behavior-for-sqs-trigger-in-lambda" class="md-nav__link">
+    <span class="md-ellipsis">
+      scaling behavior for sqs trigger in lambda
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5006,10 +5050,11 @@
 
 <h1 id="sqs-cmd">sqs-cmd<a class="headerlink" href="#sqs-cmd" title="Permanent link">&para;</a></h1>
 <h2 id="create">create<a class="headerlink" href="#create" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>aws<span class="w"> </span>sns<span class="w"> </span>create-queue<span class="w"> </span>--queue-name<span class="w"> </span>sqs2<span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;QueueUrl&#39;</span><span class="w"> </span>--output<span class="w"> </span>text
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>aws<span class="w"> </span>sqs<span class="w"> </span>create-queue<span class="w"> </span>--queue-name<span class="w"> </span>sqs2<span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;QueueUrl&#39;</span><span class="w"> </span>--output<span class="w"> </span>text
 </code></pre></div>
 <h2 id="send-and-receive-messages">send and receive messages<a class="headerlink" href="#send-and-receive-messages" title="Permanent link">&para;</a></h2>
-<h3 id="with-curl">with curl<a class="headerlink" href="#with-curl" title="Permanent link">&para;</a></h3>
+<p>使用 send-message 发送消息，将保持 lambda 并发为 1</p>
+<h3 id="with-curl"><del>with curl</del><a class="headerlink" href="#with-curl" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="c1"># send message to sqs anonymously</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">message</span><span class="o">=</span><span class="nb">test</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nv">sqs_url</span><span class="o">=</span>https://sqs.ap-northeast-2.amazonaws.com/123456789012/public-queue-seoul
@@ -5048,6 +5093,50 @@
 <a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">  </span>--queue-url<span class="w"> </span>https://cn-northwest-1.queue.amazonaws.com.cn/123456789012/sqs-std1<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">  </span>--receipt-handle<span class="w"> </span><span class="s2">&quot;===ReceiptHandleString===&quot;</span>
 </code></pre></div>
+<h2 id="send-message-batch">send-message-batch<a class="headerlink" href="#send-message-batch" title="Permanent link">&para;</a></h2>
+<p>使用 batch 发送消息，会使得 lambda 并发与 message 数量一致，如下将并发 2 个 lambda</p>
+<ul>
+<li>
+<p>messages.json<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="p">[</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span><span class="p">{</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">    </span><span class="nt">&quot;Id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Message1&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">    </span><span class="nt">&quot;MessageBody&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This is the first message&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">    </span><span class="nt">&quot;DelaySeconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span><span class="nt">&quot;MessageAttributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">      </span><span class="nt">&quot;Attribute1&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">        </span><span class="nt">&quot;DataType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;String&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">        </span><span class="nt">&quot;StringValue&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Value1&quot;</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">      </span><span class="p">}</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">  </span><span class="p">},</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">  </span><span class="p">{</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">    </span><span class="nt">&quot;Id&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Message2&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="nt">&quot;MessageBody&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;This is the second message&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span><span class="nt">&quot;DelaySeconds&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">0</span><span class="p">,</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span><span class="nt">&quot;MessageAttributes&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">      </span><span class="nt">&quot;Attribute2&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">        </span><span class="nt">&quot;DataType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;String&quot;</span><span class="p">,</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">        </span><span class="nt">&quot;StringValue&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;Value2&quot;</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">      </span><span class="p">}</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="p">]</span>
+</code></pre></div></p>
+</li>
+<li>
+<p>send message batch<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>aws<span class="w"> </span>sqs<span class="w"> </span>send-message-batch<span class="w"> </span>--queue-url<span class="w"> </span><span class="nv">$sqs_url</span><span class="w"> </span>--entries<span class="w"> </span>file://./messages.json
+</code></pre></div></p>
+</li>
+</ul>
+<h2 id="scaling-behavior-for-sqs-trigger-in-lambda">scaling behavior for sqs trigger in lambda<a class="headerlink" href="#scaling-behavior-for-sqs-trigger-in-lambda" title="Permanent link">&para;</a></h2>
+<p><a href="https://docs.aws.amazon.com/lambda/latest/dg/services-sqs-scaling.html">https://docs.aws.amazon.com/lambda/latest/dg/services-sqs-scaling.html</a></p>
+<ul>
+<li>batch size </li>
+<li>batch window</li>
+<li>maximum concurrency</li>
+</ul>
 
 
 
@@ -5070,7 +5159,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-06-16T09:20:52+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-06-18T11:04:42+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-18</span>
   </span>
 
     
@@ -5093,7 +5182,21 @@
 
 
 
-
+<script
+  src="https://giscus.app/client.js"
+  data-repo="panlm/panlm-giscus"
+  data-repo-id="..."
+  data-category="..."
+  data-category-id="..."
+  data-mapping="pathname"
+  data-reactions-enabled="1"
+  data-emit-metadata="1"
+  data-theme="light"
+  data-lang="en"
+  crossorigin="anonymous"
+  async
+>
+</script>
                 
               </article>
             </div>
