@@ -2459,6 +2459,8 @@
       
         
       
+        
+      
     
     
       
@@ -2503,6 +2505,35 @@
   <span class="md-ellipsis">
     mwaa-lab
   </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data-analytics/poc-quicksight-with-identity-center/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enable Quicksight with Identity Center
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog" title="my blogs">
+    </span>
+  
+
   
 
       </a>
@@ -3666,6 +3697,10 @@
       
         
       
+        
+      
+        
+      
     
     
       
@@ -4447,6 +4482,48 @@
   
   <span class="md-ellipsis">
     jq
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubectx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    kubectx
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../kubernetes-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    kubernetes-cmd
   </span>
   
 
@@ -6254,8 +6331,13 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>rsync<span class="w"> </span>-narv<span class="w"> </span>--delete<span class="w"> </span>/home/ubuntu/.notable<span class="w"> </span>/home/ubuntu/OneDrive/CrossSync/
 </code></pre></div>
 <h3 id="sync-to-s3">sync to s3<a class="headerlink" href="#sync-to-s3" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>aws<span class="w"> </span>s3<span class="w"> </span>sync<span class="w"> </span>./work-notes<span class="w"> </span>s3://knowledge-base-quick-start-qjmkd-data-source-1351/work-notes<span class="w"> </span>--delete<span class="w"> </span>--exclude<span class="w"> </span><span class="s2">&quot;*.png&quot;</span>
-</code></pre></div>
+<p>upload only md file to s3</p>
+<ul>
+<li>&ndash;exclude 参数必须放在 &ndash;include 参数之前。</li>
+<li>如果您需要上传多个类型文件，可以使用多个 &ndash;include 参数。<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>aws<span class="w"> </span>s3<span class="w"> </span>sync<span class="w"> </span>./work-notes<span class="w"> </span>s3://knowledge-base-quick-worknotes-1350/work-notes<span class="w"> </span>--delete<span class="w">  </span>--exclude<span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.md&quot;</span>
+</code></pre></div></li>
+</ul>
 <h3 id="work-notes">work-notes<a class="headerlink" href="#work-notes" title="Permanent link">&para;</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>bash
 <a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>
@@ -6275,7 +6357,7 @@
 <p>sponge  reads  standard input and writes it out to the specified file. Unlike a shell redirect, sponge soaks up all its input before opening the output file. This allows constructing pipelines that read from and write to the same file.</p>
 <h2 id="ssh">ssh<a class="headerlink" href="#ssh" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../../../../../../notes/ssh-cmd" title="ssh-cmd">ssh-cmd</a></li>
+<li><a href="../../../../../../ssh-cmd" title="ssh-cmd">ssh-cmd</a></li>
 </ul>
 <h2 id="stress-ng">stress-ng<a class="headerlink" href="#stress-ng" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>stress-ng --vm-bytes $(awk &#39;_MemFree_{printf &quot;%d\n&quot;, $2 * 0.95;}&#39; &lt; _proc_meminfo)k --vm-keep -m 1
@@ -6414,7 +6496,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-06-13T08:53:16+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-06-20T17:00:01+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-20</span>
   </span>
 
     

@@ -1906,6 +1906,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#install-loki-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      install loki-stack
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -2542,6 +2551,8 @@
       
         
       
+        
+      
     
     
       
@@ -2586,6 +2597,35 @@
   <span class="md-ellipsis">
     mwaa-lab
   </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../data-analytics/poc-quicksight-with-identity-center/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enable Quicksight with Identity Center
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog" title="my blogs">
+    </span>
+  
+
   
 
       </a>
@@ -3742,6 +3782,10 @@
       
         
       
+        
+      
+        
+      
     
     
       
@@ -3940,6 +3984,48 @@
   
   <span class="md-ellipsis">
     jq
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../CLI/linux/kubectx/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    kubectx
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../CLI/linux/kubernetes-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    kubernetes-cmd
   </span>
   
 
@@ -4972,6 +5058,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#install-loki-stack" class="md-nav__link">
+    <span class="md-ellipsis">
+      install loki-stack
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5004,6 +5099,7 @@
 <p><a class="glightbox" href="../../../../git-attachment/POC-loki-for-logging-png-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="500" src="../../../../git-attachment/POC-loki-for-logging-png-1.png" title="500" /></a></p>
 <h2 id="walkthrough">walkthrough<a class="headerlink" href="#walkthrough" title="Permanent link">&para;</a></h2>
 <ul>
+<li>ebs addon is needed (<a href="../../../addons/ebs-for-eks/" title="ebs-for-eks">ebs-for-eks</a>)</li>
 <li>
 <p>install with helm<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>grafana<span class="w"> </span>https://grafana.github.io/helm-charts
@@ -5018,14 +5114,15 @@
 <p>create sa for loki<br />
 <a href="../../../../CLI/linux/eksctl/#func-create-iamserviceaccount-" title="git/git-mkdocs/CLI/linux/eksctl">git/git-mkdocs/CLI/linux/eksctl</a> <br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">CLUSTER_NAME_1</span><span class="o">=</span>ekscluster1
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">NAMESPACE</span><span class="o">=</span>loki-stack
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">NAMESPACE</span><span class="o">=</span>loki
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nv">LOKI_SA_NAME</span><span class="o">=</span>loki-sa
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span>us-east-2
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span>us-west-2
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="nv">LOKI_BUCKET_NAME</span><span class="o">=</span>store-loki-eks1217
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>create-iamserviceaccount<span class="w"> </span>-s<span class="w"> </span><span class="si">${</span><span class="nv">LOKI_SA_NAME</span><span class="si">}</span><span class="w"> </span>-c<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME_1</span><span class="si">}</span><span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">NAMESPACE</span><span class="si">}</span><span class="w"> </span>-r<span class="w"> </span><span class="m">0</span>
 </code></pre></div></p>
 </li>
-<li>values yaml file for install<br />
+<li>
+<p>values yaml file for install<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>envsubst<span class="w"> </span>&gt;<span class="w"> </span>loki-1.yaml<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="s">loki:</span>
@@ -5043,18 +5140,22 @@
 <a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="s">serviceAccount:</span>
 <a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="s">  create: false</span>
 <a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="s">  name: ${LOKI_SA_NAME}</span>
-<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="s">write:</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="s">  replicas: 2</span>
-<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="s">read:</span>
-<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="s">  replicas: 1</span>
-<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="s">gateway: </span>
-<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="s">  enabled: true</span>
-<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="s">  replicas: 2</span>
-<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="s">EOF</span>
-<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>
-<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>helm<span class="w"> </span>upgrade<span class="w"> </span>-i<span class="w"> </span>-f<span class="w"> </span>loki-1.yaml<span class="w"> </span>loki<span class="w"> </span>grafana/loki<span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">NAMESPACE</span><span class="si">}</span>
-<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>helm<span class="w"> </span>upgrade<span class="w"> </span>-i<span class="w"> </span>promtail<span class="w"> </span>grafana/promtail<span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">NAMESPACE</span><span class="si">}</span>
-</code></pre></div></li>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="s">chunksCache:</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="s">  enabled: true</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="s">write:</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="s">  replicas: 2</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="s">read:</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="s">  replicas: 1</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="s">gateway: </span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="s">  enabled: true</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="s">  replicas: 2</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="s">EOF</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a>helm<span class="w"> </span>upgrade<span class="w"> </span>-i<span class="w"> </span>-f<span class="w"> </span>loki-1.yaml<span class="w"> </span>loki<span class="w"> </span>grafana/loki<span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">NAMESPACE</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">    </span>--set<span class="w"> </span>loki.useTestSchema<span class="o">=</span><span class="nb">true</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a>helm<span class="w"> </span>upgrade<span class="w"> </span>-i<span class="w"> </span>promtail<span class="w"> </span>grafana/promtail<span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">NAMESPACE</span><span class="si">}</span>
+</code></pre></div></p>
+</li>
 </ul>
 <h2 id="dashboard-">dashboard-<a class="headerlink" href="#dashboard-" title="Permanent link">&para;</a></h2>
 <ul>
@@ -5070,6 +5171,11 @@
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nt">minio</span><span class="p">:</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span><span class="nt">enabled</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">true</span>
 </code></pre></div>
+<h2 id="install-loki-stack">install loki-stack<a class="headerlink" href="#install-loki-stack" title="Permanent link">&para;</a></h2>
+<ul>
+<li>新集群没有安装 prometheus 或者 grafana</li>
+<li>直接安装 <code>grafana/loki-stack</code>，并且enable 安装 grafana 和prometheus，默认 loki 的 datasource 就可以用，手工添加 data source 保存后验证失败，但是可以查询到数据</li>
+</ul>
 
 
 
@@ -5092,7 +5198,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-28T10:21:30+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-06-20T17:00:01+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-20</span>
   </span>
 
     
