@@ -40,21 +40,24 @@ number headings: first-level 2, max 3, 1.1, auto
 ## 4 others
 ```expander
 (file:.md path:git/git-mkdocs/others -path:git/git-mkdocs/others/windows -path:git/git-mkdocs/others/network -path:git/git-mkdocs/others/well-architected)
+- [$frontmatter:title]($filename): $frontmatter:description
 ```
-- [[cross-region-reverse-proxy-with-nlb-cloudfront]]
-- [[ecr-scan-on-push-notification-sns]]
-- [[file-storage-gateway-lab]]
-- [[github-page-howto]]
-- [[global-sso-and-china-aws-accounts]]
-- [[lab-create-cloudwatch-dashboard-cpu-metric]]
-- [[obsidian]]
-- [[POC-mig-filezilla-to-transfer-family]]
-- [[POC-prometheus-ha-architect-with-thanos-manually]]
-- [[rescue-ec2-instance]]
-- [[script-api-resource-method]]
-- [[script-convert-mp3-to-text]]
-- [[self-signed-certificates]]
+- [Cross Region Reverse Proxy with NLB and Cloudfront](cross-region-reverse-proxy-with-nlb-cloudfront): 跨区域的 Layer 4 反向代理，并使用 nlb + cloudfront，考察证书使用需求
+- [Enable scan on push in ECR and send notification to SNS](ecr-scan-on-push-notification-sns): 启用 ECR 的 Scan on push 之后，自动将扫描结果中 CRITICAL 的信息发送到目标 SNS 告警
+- [Storage File Gateway](file-storage-gateway-lab): create file storage gateway from cli
+- [github-page-howto](github-page-howto): github-page-howto
+- [Using Global SSO to Login China AWS Accounts](global-sso-and-china-aws-accounts): 使用 global sso 登录中国区域 aws 账号
+- [create-dashboard-for-instance-cpu-matrics](lab-create-cloudwatch-dashboard-cpu-metric): 快速创建 cloudwatch dashboard
+- [obsidian-help](obsidian): obsidian 使用点滴
+- [Migrating Filezilla to AWS Transfer Family](POC-mig-filezilla-to-transfer-family): 迁移 Filezilla 到 Transfer Family
+- [Prometheus With Thanos Manually](POC-prometheus-ha-architect-with-thanos-manually): POC-prometheus-with-thanos-manually
+- [Quick Deploy BRConnector using Cloudformation](quick-build-brconnector-on-ec2): 使用 Cloudformation 快速部署 BRConnector
+- [Rescue EC2 Instance](rescue-ec2-instance): 恢复 EC2 实例步骤
+- [script-api-resource-method](script-api-resource-method): 每个 api 的每个 resource 的每个 method 都需要单独通过命令行启用“tlsConfig/insecureSkipVerification”，通过这个脚本简化工作
+- [script-convert-mp3-to-text](script-convert-mp3-to-text): script-convert-mp3-to-text
+- [self-signed-certificates](self-signed-certificates): 使用自签名证书，用根证书签发或者中间证书签发用于 api gateway
 <-->
+
 
 ```dataview
 LIST

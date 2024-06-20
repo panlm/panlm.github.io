@@ -1,6 +1,6 @@
 ---
 title: Quick Deploy BRConnector using Cloudformation
-description: 
+description: 使用 Cloudformation 快速部署 BRConnector
 created: 2024-06-09 11:59:37.855
 last_modified: 2024-06-09
 tags:
