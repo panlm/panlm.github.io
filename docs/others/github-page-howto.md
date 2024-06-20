@@ -33,6 +33,11 @@ mkdocs serve
 - https://github.com/mkdocs/catalog
 - For full documentation visit [mkdocs.org](https://www.mkdocs.org)
 
+### enable discussion 
+- start from this page ([link](https://squidfunk.github.io/mkdocs-material/setup/adding-a-comment-system/))
+- generate config file ([link](https://giscus.app/))
+- add `comment: true` to all pages ([link](https://squidfunk.github.io/mkdocs-material/plugins/meta/))
+
 ## awesome pages plugin
 - https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin
 

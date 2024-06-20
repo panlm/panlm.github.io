@@ -13,6 +13,7 @@ Loki is a backend store for long-term log retention
 ![[git/git-mkdocs/git-attachment/POC-loki-for-logging-png-1.png|500]]
 
 ## walkthrough
+- ebs addon is needed ([[../../addons/ebs-for-eks|ebs-for-eks]])
 - install with helm
 ```sh
 helm repo add grafana https://grafana.github.io/helm-charts
@@ -26,11 +27,12 @@ helm search repo grafana
 [[git/git-mkdocs/CLI/linux/eksctl#func-create-iamserviceaccount-]] 
 ```sh
 CLUSTER_NAME_1=ekscluster1
-NAMESPACE=loki-stack
+NAMESPACE=loki
 LOKI_SA_NAME=loki-sa
-AWS_DEFAULT_REGION=us-east-2
+export AWS_DEFAULT_REGION=us-west-2
 LOKI_BUCKET_NAME=store-loki-eks1217
 create-iamserviceaccount -s ${LOKI_SA_NAME} -c ${CLUSTER_NAME_1} -n ${NAMESPACE} -r 0
+
 ```
 - values yaml file for install
 ```sh
@@ -51,6 +53,8 @@ loki:
 serviceAccount:
   create: false
   name: ${LOKI_SA_NAME}
+chunksCache:
+  enabled: true
 write:
   replicas: 2
 read:
@@ -60,15 +64,16 @@ gateway:
   replicas: 2
 EOF
 
-helm upgrade -i -f loki-1.yaml loki grafana/loki -n ${NAMESPACE}
+helm upgrade -i -f loki-1.yaml loki grafana/loki -n ${NAMESPACE} \
+    --set loki.useTestSchema=true
 helm upgrade -i promtail grafana/promtail -n ${NAMESPACE}
+
 ```
 
 ## dashboard-
 - 12019 - quick search - good for try
     - change to `{namespace="$namespace", pod=~"$pod"} |~ "$search"` in Logs Panel definition
 - loki-stack will have some predefined dashboard - https://artifacthub.io/packages/helm/grafana/loki-stack 
-
 
 ## sample
 ```yaml 
@@ -78,6 +83,9 @@ minio:
   enabled: true
 ```
 
+## install loki-stack
+- 新集群没有安装 prometheus 或者 grafana
+- 直接安装 `grafana/loki-stack`，并且enable 安装 grafana 和prometheus，默认 loki 的 datasource 就可以用，手工添加 data source 保存后验证失败，但是可以查询到数据
 
 
 

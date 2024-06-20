@@ -23,7 +23,7 @@ DEPLOY_NAME=prom-0509
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
 
-NAMESPACE_NAME=helm
+NAMESPACE_NAME=prom
 helm install ${DEPLOY_NAME} prometheus-community/kube-prometheus-stack --namespace ${NAMESPACE_NAME} --create-namespace
 
 # refer defualt value

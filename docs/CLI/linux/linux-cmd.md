@@ -293,8 +293,11 @@ rsync -narv --delete /home/ubuntu/.notable /home/ubuntu/OneDrive/CrossSync/
 ```
 
 ### sync to s3
+upload only md file to s3
+- --exclude 参数必须放在 --include 参数之前。
+- 如果您需要上传多个类型文件，可以使用多个 --include 参数。
 ```sh
-aws s3 sync ./work-notes s3://knowledge-base-quick-start-qjmkd-data-source-1351/work-notes --delete --exclude "*.png"
+aws s3 sync ./work-notes s3://knowledge-base-quick-worknotes-1350/work-notes --delete  --exclude "*" --include "*.md"
 ```
 
 ### work-notes
@@ -322,7 +325,7 @@ gsed -i 's/^!\[\[\([^]]\+\)\]\]/![](\1)/' ${file}
 sponge  reads  standard input and writes it out to the specified file. Unlike a shell redirect, sponge soaks up all its input before opening the output file. This allows constructing pipelines that read from and write to the same file.
 
 ## ssh
-- [[../../../../notes/ssh-cmd|ssh-cmd]]
+- [[../../../../ssh-cmd|ssh-cmd]]
 
 ## stress-ng
 

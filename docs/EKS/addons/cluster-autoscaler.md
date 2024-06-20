@@ -11,22 +11,27 @@ tags:
 # cluster-autoscaler
 
 ## link
-
 - [workshop](https://www.eksworkshop.com/beginner/080_scaling/deploy_ca/)
 - [troubleshooting](https://github.com/kubernetes/autoscaler/issues/1607#issuecomment-842038913)
 - [github](https://github.com/kubernetes/autoscaler/tree/master)
 
 ### blog
-
 - [[Creating Kubernetes Auto Scaling Groups for Multiple Availability Zones]]
 
 ## install
-### manual
+### eksdemo
+```sh
+echo ${CLUSTER_NAME}
+echo ${AWS_DEFAULT_REGION}
 
+eksdemo install autoscaling cluster-autoscaler -c ${CLUSTER_NAME} -n kube-system
+
+```
+
+### manual
 https://docs.aws.amazon.com/zh_cn/eks/latest/userguide/autoscaling.html
 
 #### create service account
-
 ```sh
 CLUSTER_NAME=ekscluster1
 AWS_REGION=us-east-2
@@ -140,6 +145,5 @@ helm list -n kube-system
 
 
 ## compatibility and upgrade
-
 https://github.com/kubernetes-sigs/metrics-server#compatibility-matrix
 

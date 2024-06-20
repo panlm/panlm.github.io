@@ -93,22 +93,20 @@ eksctl create nodegroup   \
 
 
 ## scale nodegroup
-
 ```sh
 CLUSTER_NAME=ekscluster1
 NODEGROUP_NAME=managed-ng
 AWS_REGION=us-east-2
 
 eksctl scale nodegroup \
---cluster=${CLUSTER_NAME} \
---region ${AWS_REGION} \
---nodes=3 \
-${NODEGROUP_NAME}
+    --cluster=${CLUSTER_NAME} \
+    --region ${AWS_REGION} \
+    --nodes=3 \
+    ${NODEGROUP_NAME}
 
 ```
 
 ## func-create-iamserviceaccount-
-
 ```sh title="func-create-iamserviceaccount" linenums="1"
 echo ${CLUSTER_NAME}
 echo ${NAMESPACE_NAME}
