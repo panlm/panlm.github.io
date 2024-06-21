@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="在中国区使用 mwaa 服务">
+        <meta name="description" content="中国区域启用 Quicksight 并且集成 Microsoft Entra">
       
       
       
@@ -14,7 +14,7 @@
         <link rel="prev" href="../">
       
       
-        <link rel="next" href="../poc-quicksight-with-identity-center/">
+        <link rel="next" href="../rds-mysql-replica-cross-region-cross-account/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
@@ -22,7 +22,7 @@
     
     
       
-        <title>mwaa-lab - panlm</title>
+        <title>Enable Quicksight with Identity Center - panlm</title>
       
     
     
@@ -97,7 +97,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#mwaa-lab" class="md-skip">
+        <a href="#enable-quicksight-with-identity-center" class="md-skip">
           Skip to content
         </a>
       
@@ -132,7 +132,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              mwaa-lab
+              Enable Quicksight with Identity Center
             
           </span>
         </div>
@@ -2549,8 +2549,16 @@
           
   
   <span class="md-ellipsis">
-    mwaa-lab
+    Enable Quicksight with Identity Center
   </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog" title="my blogs">
+    </span>
+  
+
   
 
           <span class="md-nav__icon md-icon"></span>
@@ -2560,8 +2568,16 @@
         
   
   <span class="md-ellipsis">
-    mwaa-lab
+    Enable Quicksight with Identity Center
   </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog" title="my blogs">
+    </span>
+  
+
   
 
       </a>
@@ -2582,28 +2598,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prepare-endpoint-for-your-private-network-" class="md-nav__link">
+  <a href="#using-microsoft-entra-as-external-idp" class="md-nav__link">
     <span class="md-ellipsis">
-      prepare-endpoint-for-your-private-network-
+      Using Microsoft Entra as External IdP
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="prepare-endpoint-for-your-private-network-">
+    <nav class="md-nav" aria-label="Using Microsoft Entra as External IdP">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#walkthrough" class="md-nav__link">
     <span class="md-ellipsis">
-      命令行
+      Walkthrough
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#cloudformation" class="md-nav__link">
+  <a href="#another-sample-use-okta-as-idp-for-aws-sso-to-login-quicksight" class="md-nav__link">
     <span class="md-ellipsis">
-      cloudformation 模版
+      Another sample - use Okta as IdP for AWS-SSO to login Quicksight
     </span>
   </a>
   
@@ -2615,9 +2631,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-mwaa-environment" class="md-nav__link">
+  <a href="#using-identity-center-local-directory" class="md-nav__link">
     <span class="md-ellipsis">
-      create mwaa environment
+      Using Identity Center local directory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using Identity Center local directory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#walkthrough_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Walkthrough
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Appendix
     </span>
   </a>
   
@@ -2627,35 +2667,6 @@
   
 </nav>
       
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../poc-quicksight-with-identity-center/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Enable Quicksight with Identity Center
-  </span>
-  
-    
-  
-  
-    <span class="md-status md-status--myblog" title="my blogs">
-    </span>
-  
-
-  
-
-      </a>
     </li>
   
 
@@ -2694,6 +2705,27 @@
   
   <span class="md-ellipsis">
     redshift-data-api-lab
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../using-mwaa-in-private-network/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Using MWAA in Private Network
   </span>
   
 
@@ -5120,28 +5152,28 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#prepare-endpoint-for-your-private-network-" class="md-nav__link">
+  <a href="#using-microsoft-entra-as-external-idp" class="md-nav__link">
     <span class="md-ellipsis">
-      prepare-endpoint-for-your-private-network-
+      Using Microsoft Entra as External IdP
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="prepare-endpoint-for-your-private-network-">
+    <nav class="md-nav" aria-label="Using Microsoft Entra as External IdP">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#walkthrough" class="md-nav__link">
     <span class="md-ellipsis">
-      命令行
+      Walkthrough
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#cloudformation" class="md-nav__link">
+  <a href="#another-sample-use-okta-as-idp-for-aws-sso-to-login-quicksight" class="md-nav__link">
     <span class="md-ellipsis">
-      cloudformation 模版
+      Another sample - use Okta as IdP for AWS-SSO to login Quicksight
     </span>
   </a>
   
@@ -5153,9 +5185,33 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#create-mwaa-environment" class="md-nav__link">
+  <a href="#using-identity-center-local-directory" class="md-nav__link">
     <span class="md-ellipsis">
-      create mwaa environment
+      Using Identity Center local directory
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Using Identity Center local directory">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#walkthrough_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Walkthrough
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#appendix" class="md-nav__link">
+    <span class="md-ellipsis">
+      Appendix
     </span>
   </a>
   
@@ -5180,124 +5236,95 @@
     
     
     
-      <a href="../../tags/#awsanalytics" class="md-tag">aws/analytics</a>
+      <a href="../../tags/#awsanalyticsquicksight" class="md-tag">aws/analytics/quicksight</a>
+    
+  
+    
+    
+    
+      <a href="../../tags/#awssecurityidentity-center" class="md-tag">aws/security/identity-center</a>
+    
+  
+    
+    
+    
+      <a href="../../tags/#azure" class="md-tag">azure</a>
     
   
 </nav>
 
 
 
-<h1 id="mwaa-lab">mwaa-lab<a class="headerlink" href="#mwaa-lab" title="Permanent link">&para;</a></h1>
-<h2 id="prepare-endpoint-for-your-private-network-">prepare-endpoint-for-your-private-network-<a class="headerlink" href="#prepare-endpoint-for-your-private-network-" title="Permanent link">&para;</a></h2>
-<p>中国区 mwaa 服务刚上线，由于文档还未按照中国区特殊性进行描述，因此会导致客户疑惑（文档链接<a href="https://docs.amazonaws.cn/en_us/mwaa/latest/userguide/vpc-create.html#vpc-create-template-private-only">link</a>）。本文提供两种方式可以满足创建 mwaa 的网络条件</p>
-<h3 id="_1">命令行<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h3>
-<p>从本地命令行对于目标 vpc 进行定制，首先确保你有安装最新版本 awscli，另外，需要有 credential 配置在命令行</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">VPC_ID</span><span class="o">=</span>vpc-0ab3bxxxx
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nv">PRIV_SUBNET_STRING</span><span class="o">=</span><span class="s2">&quot;subnet-0b314xxx1 subnet-0bddxxxf61&quot;</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PAGER</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_REGION</span><span class="o">=</span>cn-northwest-1
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PROFILE</span><span class="o">=</span>panlmcn
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nv">ROUTE_TABLE_STRING</span><span class="o">=</span><span class="k">$(for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="si">${</span><span class="nv">PRIV_SUBNET_STRING</span><span class="si">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>aws<span class="w"> </span>ec2<span class="w"> </span>describe-route-tables<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>--filter<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>association.subnet-id,Values<span class="o">=</span><span class="nv">$i</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>--query<span class="w"> </span>RouteTables<span class="o">[]</span>.RouteTableId<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>--output<span class="w"> </span>text
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="k">done</span><span class="w"> </span><span class="p">|</span>sort<span class="w"> </span>-u<span class="w"> </span><span class="p">|</span>xargs<span class="k">)</span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="c1"># create security group</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="nv">SECURITY_GROUP_NAME</span><span class="o">=</span>mwaa-endp-<span class="nv">$RANDOM</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="nv">SECURITY_GROUP_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>create-security-group<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">  </span>--description<span class="w"> </span><span class="si">${</span><span class="nv">SECURITY_GROUP_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a><span class="w">  </span>--group-name<span class="w"> </span><span class="si">${</span><span class="nv">SECURITY_GROUP_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a><span class="w">  </span>--vpc-id<span class="w"> </span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">&#39;GroupId&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="w"> </span><span class="k">)</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="c1"># self traffic allowed</span>
-<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>aws<span class="w"> </span>ec2<span class="w"> </span>authorize-security-group-ingress<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a><span class="w">  </span>--group-id<span class="w"> </span><span class="si">${</span><span class="nv">SECURITY_GROUP_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a><span class="w">  </span>--protocol<span class="w"> </span>-1<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a><span class="w">  </span>--port<span class="w"> </span>-1<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a><span class="w">  </span>--source-group<span class="w"> </span><span class="si">${</span><span class="nv">SECURITY_GROUP_ID</span><span class="si">}</span>
-<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a>
-<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a><span class="c1"># china region endpoint services needed by mwaa in private env</span>
-<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a><span class="nv">CN_SERVICE_LIST</span><span class="o">=</span><span class="s2">&quot;</span>
-<a id="__codelineno-0-32" name="__codelineno-0-32" href="#__codelineno-0-32"></a><span class="s2">cn.com.amazonaws.</span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="s2">.monitoring</span>
-<a id="__codelineno-0-33" name="__codelineno-0-33" href="#__codelineno-0-33"></a><span class="s2">cn.com.amazonaws.</span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="s2">.ecr.dkr</span>
-<a id="__codelineno-0-34" name="__codelineno-0-34" href="#__codelineno-0-34"></a><span class="s2">cn.com.amazonaws.</span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="s2">.ecr.api</span>
-<a id="__codelineno-0-35" name="__codelineno-0-35" href="#__codelineno-0-35"></a><span class="s2">com.amazonaws.</span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="s2">.logs</span>
-<a id="__codelineno-0-36" name="__codelineno-0-36" href="#__codelineno-0-36"></a><span class="s2">cn.com.amazonaws.</span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="s2">.sqs</span>
-<a id="__codelineno-0-37" name="__codelineno-0-37" href="#__codelineno-0-37"></a><span class="s2">com.amazonaws.</span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="s2">.kms</span>
-<a id="__codelineno-0-38" name="__codelineno-0-38" href="#__codelineno-0-38"></a><span class="s2">cn.com.amazonaws.</span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="s2">.airflow.api  </span>
-<a id="__codelineno-0-39" name="__codelineno-0-39" href="#__codelineno-0-39"></a><span class="s2">cn.com.amazonaws.</span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="s2">.airflow.env  </span>
-<a id="__codelineno-0-40" name="__codelineno-0-40" href="#__codelineno-0-40"></a><span class="s2">&quot;</span>
-<a id="__codelineno-0-41" name="__codelineno-0-41" href="#__codelineno-0-41"></a>
-<a id="__codelineno-0-42" name="__codelineno-0-42" href="#__codelineno-0-42"></a><span class="c1"># global region endpoint services needed by mwaa in private env</span>
-<a id="__codelineno-0-43" name="__codelineno-0-43" href="#__codelineno-0-43"></a><span class="nv">SERVICE_LIST</span><span class="o">=</span><span class="s2">&quot;</span>
-<a id="__codelineno-0-44" name="__codelineno-0-44" href="#__codelineno-0-44"></a><span class="s2">com.amazonaws.</span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="s2">.monitoring</span>
-<a id="__codelineno-0-45" name="__codelineno-0-45" href="#__codelineno-0-45"></a><span class="s2">com.amazonaws.</span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="s2">.ecr.dkr</span>
-<a id="__codelineno-0-46" name="__codelineno-0-46" href="#__codelineno-0-46"></a><span class="s2">com.amazonaws.</span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="s2">.ecr.api</span>
-<a id="__codelineno-0-47" name="__codelineno-0-47" href="#__codelineno-0-47"></a><span class="s2">com.amazonaws.</span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="s2">.logs</span>
-<a id="__codelineno-0-48" name="__codelineno-0-48" href="#__codelineno-0-48"></a><span class="s2">com.amazonaws.</span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="s2">.sqs</span>
-<a id="__codelineno-0-49" name="__codelineno-0-49" href="#__codelineno-0-49"></a><span class="s2">com.amazonaws.</span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="s2">.kms</span>
-<a id="__codelineno-0-50" name="__codelineno-0-50" href="#__codelineno-0-50"></a><span class="s2">com.amazonaws.</span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="s2">.airflow.api</span>
-<a id="__codelineno-0-51" name="__codelineno-0-51" href="#__codelineno-0-51"></a><span class="s2">com.amazonaws.</span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="s2">.airflow.env</span>
-<a id="__codelineno-0-52" name="__codelineno-0-52" href="#__codelineno-0-52"></a><span class="s2">com.amazonaws.</span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="s2">.airflow.ops</span>
-<a id="__codelineno-0-53" name="__codelineno-0-53" href="#__codelineno-0-53"></a><span class="s2">&quot;</span>
-<a id="__codelineno-0-54" name="__codelineno-0-54" href="#__codelineno-0-54"></a>
-<a id="__codelineno-0-55" name="__codelineno-0-55" href="#__codelineno-0-55"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>egrep<span class="w"> </span>-q<span class="w"> </span><span class="s1">&#39;^cn-&#39;</span>
-<a id="__codelineno-0-56" name="__codelineno-0-56" href="#__codelineno-0-56"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-0-57" name="__codelineno-0-57" href="#__codelineno-0-57"></a><span class="w">    </span><span class="nv">SERVICE_LIST</span><span class="o">=</span><span class="si">${</span><span class="nv">CN_SERVICE_LIST</span><span class="si">}</span>
-<a id="__codelineno-0-58" name="__codelineno-0-58" href="#__codelineno-0-58"></a><span class="k">fi</span>
-<a id="__codelineno-0-59" name="__codelineno-0-59" href="#__codelineno-0-59"></a>
-<a id="__codelineno-0-60" name="__codelineno-0-60" href="#__codelineno-0-60"></a><span class="c1"># create interface endpoint</span>
-<a id="__codelineno-0-61" name="__codelineno-0-61" href="#__codelineno-0-61"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="si">${</span><span class="nv">SERVICE_LIST</span><span class="si">}</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-0-62" name="__codelineno-0-62" href="#__codelineno-0-62"></a>aws<span class="w"> </span>ec2<span class="w"> </span>create-vpc-endpoint<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-63" name="__codelineno-0-63" href="#__codelineno-0-63"></a><span class="w">    </span>--vpc-id<span class="w"> </span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-64" name="__codelineno-0-64" href="#__codelineno-0-64"></a><span class="w">    </span>--vpc-endpoint-type<span class="w"> </span>Interface<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-65" name="__codelineno-0-65" href="#__codelineno-0-65"></a><span class="w">    </span>--service-name<span class="w"> </span><span class="nv">$i</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-66" name="__codelineno-0-66" href="#__codelineno-0-66"></a><span class="w">    </span>--subnet-id<span class="w"> </span><span class="si">${</span><span class="nv">PRIV_SUBNET_STRING</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-67" name="__codelineno-0-67" href="#__codelineno-0-67"></a><span class="w">    </span>--security-group-id<span class="w"> </span><span class="si">${</span><span class="nv">SECURITY_GROUP_ID</span><span class="si">}</span>
-<a id="__codelineno-0-68" name="__codelineno-0-68" href="#__codelineno-0-68"></a><span class="k">done</span>
-<a id="__codelineno-0-69" name="__codelineno-0-69" href="#__codelineno-0-69"></a>
-<a id="__codelineno-0-70" name="__codelineno-0-70" href="#__codelineno-0-70"></a>envsubst<span class="w"> </span>&gt;s3-gw-endpoint-policy.json<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
-<a id="__codelineno-0-71" name="__codelineno-0-71" href="#__codelineno-0-71"></a><span class="s">{</span>
-<a id="__codelineno-0-72" name="__codelineno-0-72" href="#__codelineno-0-72"></a><span class="s">  &quot;Statement&quot;: [</span>
-<a id="__codelineno-0-73" name="__codelineno-0-73" href="#__codelineno-0-73"></a><span class="s">    {</span>
-<a id="__codelineno-0-74" name="__codelineno-0-74" href="#__codelineno-0-74"></a><span class="s">      &quot;Principal&quot;: &quot;*&quot;,</span>
-<a id="__codelineno-0-75" name="__codelineno-0-75" href="#__codelineno-0-75"></a><span class="s">      &quot;Action&quot;: &quot;*&quot;,</span>
-<a id="__codelineno-0-76" name="__codelineno-0-76" href="#__codelineno-0-76"></a><span class="s">      &quot;Effect&quot;: &quot;Allow&quot;,</span>
-<a id="__codelineno-0-77" name="__codelineno-0-77" href="#__codelineno-0-77"></a><span class="s">      &quot;Resource&quot;: &quot;*&quot;</span>
-<a id="__codelineno-0-78" name="__codelineno-0-78" href="#__codelineno-0-78"></a><span class="s">    }</span>
-<a id="__codelineno-0-79" name="__codelineno-0-79" href="#__codelineno-0-79"></a><span class="s">  ]</span>
-<a id="__codelineno-0-80" name="__codelineno-0-80" href="#__codelineno-0-80"></a><span class="s">}</span>
-<a id="__codelineno-0-81" name="__codelineno-0-81" href="#__codelineno-0-81"></a><span class="s">EOF</span>
-<a id="__codelineno-0-82" name="__codelineno-0-82" href="#__codelineno-0-82"></a>
-<a id="__codelineno-0-83" name="__codelineno-0-83" href="#__codelineno-0-83"></a><span class="c1"># create s3 gateway endpoint</span>
-<a id="__codelineno-0-84" name="__codelineno-0-84" href="#__codelineno-0-84"></a>aws<span class="w"> </span>ec2<span class="w"> </span>create-vpc-endpoint<span class="w"> </span>--vpc-id<span class="w"> </span><span class="si">${</span><span class="nv">VPC_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-85" name="__codelineno-0-85" href="#__codelineno-0-85"></a>--service-name<span class="w"> </span>com.amazonaws.<span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span>.s3<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-86" name="__codelineno-0-86" href="#__codelineno-0-86"></a>--route-table-ids<span class="w"> </span><span class="si">${</span><span class="nv">ROUTE_TABLE_STRING</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-87" name="__codelineno-0-87" href="#__codelineno-0-87"></a>--vpc-endpoint-type<span class="w"> </span>Gateway<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-88" name="__codelineno-0-88" href="#__codelineno-0-88"></a>--policy-document<span class="w"> </span>file://s3-gw-endpoint-policy.json
-</code></pre></div>
-<h3 id="cloudformation">cloudformation 模版<a class="headerlink" href="#cloudformation" title="Permanent link">&para;</a></h3>
+<h1 id="enable-quicksight-with-identity-center">Enable Quicksight with Identity Center<a class="headerlink" href="#enable-quicksight-with-identity-center" title="Permanent link">&para;</a></h1>
+<h2 id="using-microsoft-entra-as-external-idp">Using Microsoft Entra as External IdP<a class="headerlink" href="#using-microsoft-entra-as-external-idp" title="Permanent link">&para;</a></h2>
+<p>In BJS region, QS does not support SAML Authentication Method (refer Appendix chapter). If you try to integration with existing SSO, for example Microsoft Entra ID, you need enable Amazon IAM Identity Center (short for AWS-SSO) with SAML support to carry out (<a href="../saml-2.0" title="saml-2.0">saml-2.0</a>)</p>
+<h3 id="walkthrough">Walkthrough<a class="headerlink" href="#walkthrough" title="Permanent link">&para;</a></h3>
 <ul>
-<li>使用这个模版（<a href="../mwaa-private-vpc.yaml">download</a>）创建专用于 mwaa 的 vpc 环境</li>
+<li>One Microsoft Entra tenant, at least P1 license  (<a href="https://www.microsoft.com/en-us/security/business/microsoft-entra-pricing">link</a>)</li>
+<li>Enable AWS-SSO account instance in this lab<ul>
+<li>If your account joined AWS Organizations, you could choose enable AWS-SSO with organization instance (<a href="https://docs.aws.amazon.com/singlesignon/latest/userguide/identity-center-instances.html">link</a>)</li>
+<li>refer this blog for AWS-SSO deployment pattern (<a href="https://aws.amazon.com/cn/blogs/security/how-to-use-multiple-instances-of-aws-iam-identity-center/">link</a>)</li>
 </ul>
-<h2 id="create-mwaa-environment">create mwaa environment<a class="headerlink" href="#create-mwaa-environment" title="Permanent link">&para;</a></h2>
+</li>
+<li>Using SAML IdP for AWS-SSO, integration with existing Microsoft Entra tenant <ul>
+<li>Following this <a href="https://docs.aws.amazon.com/singlesignon/latest/userguide/idp-microsoft-entra.html">link</a></li>
+<li>Complete <code>Step 1</code>, and<ul>
+<li>New a Microsoft 365 Group for Quicksight and assign user to this group</li>
+<li>assign group to SSO application in Microsoft Entra directly (P1 license needed)</li>
+<li>verify sign in URL: (<a href="https://myaccount.microsoft.com">account portal</a> &amp; <a href="https://myapplications.microsoft.com/">app portal</a>)</li>
+<li>Dont forgot firstName and lastName. If missing these properties will cause SCIM sync failure</li>
+</ul>
+</li>
+<li>Complete <code>Step 2.2</code> (Other steps is only for AWS-SSO organization instance)</li>
+<li>Complete <code>Step 3</code> and <code>Step 4</code></li>
+</ul>
+</li>
+<li>Enable Quicksight <br />
+<a class="glightbox" href="../attachments/enable-quicksight-with-identity-center/IMG-enable-quicksight-with-identity-center.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="500" src="../attachments/enable-quicksight-with-identity-center/IMG-enable-quicksight-with-identity-center.png" title="500" /></a></li>
+<li>assign group to reader/author/admin role in Quicksight</li>
+<li>create vpc connection</li>
+<li>create redshift vpc endpoint</li>
+<li>Quicksight will use this role: <code>aws-quicksight-service-role-v0</code> to access aws resources</li>
+<li><a href="../cn-north-1.quicksight.amazonaws.cn">Open Quicksight</a></li>
+</ul>
+<h3 id="another-sample-use-okta-as-idp-for-aws-sso-to-login-quicksight">Another sample - use Okta as IdP for AWS-SSO to login Quicksight<a class="headerlink" href="#another-sample-use-okta-as-idp-for-aws-sso-to-login-quicksight" title="Permanent link">&para;</a></h3>
+<p>In this sample, use Okta as IdP for AWS-SSO. Just like our lab using Microsoft Entra ID instead of. Put sign-in process here for your reference.</p>
 <ul>
-<li>
-<p>选择之前命令行中指定的 vpc 和 子网<br />
-<a class="glightbox" href="../attachments/mwaa-lab/IMG-mwaa-lab.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="IMG-mwaa-lab.png" src="../attachments/mwaa-lab/IMG-mwaa-lab.png" /></a></p>
+<li>blog: <a href="../WebClip/Simplify%20business%20intelligence%20identity%20management%20with%20Amazon%20QuickSight%20and%20AWS%20IAM%20Identity%20Center" title="Simplify business intelligence identity management with Amazon QuickSight and AWS IAM Identity Center">Simplify business intelligence identity management with Amazon QuickSight and AWS IAM Identity Center</a> (<a href="https://aws.amazon.com/cn/blogs/business-intelligence/simplify-business-intelligence-identity-management-with-amazon-quicksight-and-aws-iam-identity-center/">link</a>)</li>
+<li>QuickSight service provider (SP) initiated sign-in<br />
+<a class="glightbox" href="../attachments/enable-quicksight-with-identity-center/IMG-enable-quicksight-with-identity-center-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="attachments/enable-quicksight-with-identity-center/IMG-enable-quicksight-with-identity-center-1.png" src="../attachments/enable-quicksight-with-identity-center/IMG-enable-quicksight-with-identity-center-1.png" title="attachments/enable-quicksight-with-identity-center/IMG-enable-quicksight-with-identity-center-1.png" /></a></li>
+<li>External IdP initiated sign-in<br />
+<a class="glightbox" href="../attachments/enable-quicksight-with-identity-center/IMG-enable-quicksight-with-identity-center-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="attachments/enable-quicksight-with-identity-center/IMG-enable-quicksight-with-identity-center-2.png" src="../attachments/enable-quicksight-with-identity-center/IMG-enable-quicksight-with-identity-center-2.png" title="attachments/enable-quicksight-with-identity-center/IMG-enable-quicksight-with-identity-center-2.png" /></a></li>
+</ul>
+<h2 id="using-identity-center-local-directory">Using Identity Center local directory<a class="headerlink" href="#using-identity-center-local-directory" title="Permanent link">&para;</a></h2>
+<p>Using AWS-SSO local directory as identity source. This mode works both in global region and BJS region. No AWS Organizations needed.</p>
+<h3 id="walkthrough_1">Walkthrough<a class="headerlink" href="#walkthrough_1" title="Permanent link">&para;</a></h3>
+<ul>
+<li>create user <code>abcdeabcdeab</code> in identity center (length need 12+)</li>
+<li>create group with any name</li>
+<li>enable Quicksight in account level with user name and group name<ul>
+<li>default Quicksight role works (<a href="https://docs.aws.amazon.com/quicksight/latest/user/iam-policy-examples.html#security_iam_id-based-policy-examples-all-access-enterprise-edition-sso">role policy</a> &amp; <a href="https://docs.aws.amazon.com/quicksight/latest/user/security_iam_service-with-iam.html#security-create-iam-role">trust</a>)</li>
+</ul>
 </li>
-<li>
-<p>使用私有网络暴露 web 服务器，后续可以通过 ssh tunnel 或者 ssm tunnel 方式远程访问<br />
-<a class="glightbox" href="../attachments/mwaa-lab/IMG-mwaa-lab-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="IMG-mwaa-lab-1.png" src="../attachments/mwaa-lab/IMG-mwaa-lab-1.png" /></a></p>
+</ul>
+<h2 id="appendix">Appendix<a class="headerlink" href="#appendix" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Supported Authentication Method for Quicksight in global region (<a href="https://docs.aws.amazon.com/quicksight/latest/user/identity.html">link</a>)<ul>
+<li>Use IAM federated identities &amp; QuickSight-managed users</li>
+<li>Use AWS IAM Identity Center</li>
+<li>Use IAM federated identities only</li>
+<li>Use Active Directory</li>
+</ul>
 </li>
-<li>
-<p>同时选择 “创建新安全组” 和 “之前命令行创建的安全组（用于 interface endpoint）”<br />
-<a class="glightbox" href="../attachments/mwaa-lab/IMG-mwaa-lab-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="IMG-mwaa-lab-2.png" src="../attachments/mwaa-lab/IMG-mwaa-lab-2.png" /></a></p>
+<li>Supported Authentication Method for Quicksight in China region (until Jun 2024)<ul>
+<li>Use Amazon IAM Identity Center</li>
+<li>Use Active Directory</li>
+</ul>
+</li>
+<li>Other refer<ul>
+<li><a href="https://docs.amazonaws.cn/aws/latest/userguide/iam-identity-center.html">https://docs.amazonaws.cn/aws/latest/userguide/iam-identity-center.html</a></li>
+<li><a href="https://learn.microsoft.com/en-us/entra/identity/saas-apps/aws-single-sign-on-tutorial">https://learn.microsoft.com/en-us/entra/identity/saas-apps/aws-single-sign-on-tutorial</a></li>
+</ul>
 </li>
 </ul>
 
@@ -5322,7 +5349,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-06-13T09:33:13+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-06-21T08:26:56+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-21</span>
   </span>
 
     
@@ -5332,7 +5359,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3h-2Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2023-06-11T11:44:36+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2023-06-11</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-06-20T17:00:41+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-20</span>
   </span>
 
     
