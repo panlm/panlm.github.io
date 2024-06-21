@@ -12,7 +12,7 @@ tags:
 
 # Enable Quicksight with Identity Center
 ## Using Microsoft Entra as External IdP
-In BJS region, QS does not support SAML Authentication Method (refer Appendix chapter). If you try to integration with existing SSO, for example Microsoft Entra, you need enable Amazon IAM Identity Center (short for AWS-SSO) with SAML support to carry out ([[saml-2.0]])
+In BJS region, QS does not support SAML Authentication Method (refer Appendix chapter). If you try to integration with existing SSO, for example Microsoft Entra ID, you need enable Amazon IAM Identity Center (short for AWS-SSO) with SAML support to carry out ([[saml-2.0]])
 
 ### Walkthrough
 - One Microsoft Entra tenant, at least P1 license  ([link](https://www.microsoft.com/en-us/security/business/microsoft-entra-pricing))
@@ -29,7 +29,7 @@ In BJS region, QS does not support SAML Authentication Method (refer Appendix ch
     - Complete `Step 2.2` (Other steps is only for AWS-SSO organization instance)
     - Complete `Step 3` and `Step 4`
 - Enable Quicksight 
-![[attachments/poc-quicksight-with-identity-center/IMG-poc-quicksight-with-identity-center.png|500]]
+![[attachments/enable-quicksight-with-identity-center/IMG-enable-quicksight-with-identity-center.png|500]]
 - assign group to reader/author/admin role in Quicksight
 - create vpc connection
 - create redshift vpc endpoint
@@ -37,11 +37,13 @@ In BJS region, QS does not support SAML Authentication Method (refer Appendix ch
 - [Open Quicksight](cn-north-1.quicksight.amazonaws.cn)
 
 ### Another sample - use Okta as IdP for AWS-SSO to login Quicksight
+In this sample, use Okta as IdP for AWS-SSO. Just like our lab using Microsoft Entra ID instead of. Put sign-in process here for your reference.
+
 - blog: [[WebClip/Simplify business intelligence identity management with Amazon QuickSight and AWS IAM Identity Center|Simplify business intelligence identity management with Amazon QuickSight and AWS IAM Identity Center]] ([link](https://aws.amazon.com/cn/blogs/business-intelligence/simplify-business-intelligence-identity-management-with-amazon-quicksight-and-aws-iam-identity-center/))
 - QuickSight service provider (SP) initiated sign-in
-![[attachments/poc-quicksight-with-identity-center/IMG-poc-quicksight-with-identity-center-1.png]]
+![[attachments/enable-quicksight-with-identity-center/IMG-enable-quicksight-with-identity-center-1.png]]
 - External IdP initiated sign-in
-![[attachments/poc-quicksight-with-identity-center/IMG-poc-quicksight-with-identity-center-2.png]]
+![[attachments/enable-quicksight-with-identity-center/IMG-enable-quicksight-with-identity-center-2.png]]
 
 
 ## Using Identity Center local directory

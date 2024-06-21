@@ -273,7 +273,7 @@ export SG_ID=$(aws ec2 describe-security-groups  --region $AWS_REGION --filter N
 ```
 refer: [[../functions/func-create-sg.sh]] 
 ### create sg allow itself
-- refer: [[git/git-mkdocs/data-analytics/mwaa-lab#prepare-endpoint-for-your-private-network-]]
+- refer: [[../../data-analytics/using-mwaa-in-private-network#prepare-endpoint-for-your-private-network-]]
 
 ## count vcpu
 ```sh

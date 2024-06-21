@@ -1,20 +1,17 @@
 ---
-title: mwaa-lab
-description: 在中国区使用 mwaa 服务
+title: Using MWAA in Private Network
+description: 在中国区私有网络中启用 mwaa 服务
 created: 2023-06-09 22:25:25.533
 last_modified: 2023-11-02 08:24:53.028
 tags:
   - aws/analytics
 ---
 
-# mwaa-lab
-
+# Using MWAA in Private Network
 ## prepare-endpoint-for-your-private-network-
-
 中国区 mwaa 服务刚上线，由于文档还未按照中国区特殊性进行描述，因此会导致客户疑惑（文档链接[link](https://docs.amazonaws.cn/en_us/mwaa/latest/userguide/vpc-create.html#vpc-create-template-private-only)）。本文提供两种方式可以满足创建 mwaa 的网络条件
 
 ### 命令行
-
 从本地命令行对于目标 vpc 进行定制，首先确保你有安装最新版本 awscli，另外，需要有 credential 配置在命令行
 
 ```sh
@@ -110,20 +107,18 @@ aws ec2 create-vpc-endpoint --vpc-id ${VPC_ID} \
 ```
 
 ### cloudformation 模版
-
 - 使用这个模版（[download](mwaa-private-vpc.yaml)）创建专用于 mwaa 的 vpc 环境
 
 
 ## create mwaa environment
-
 - 选择之前命令行中指定的 vpc 和 子网
-![IMG-mwaa-lab.png](attachments/mwaa-lab/IMG-mwaa-lab.png)
+![IMG-using-mwaa-in-private-network.png](attachments/using-mwaa-in-private-network/IMG-using-mwaa-in-private-network.png)
 
 - 使用私有网络暴露 web 服务器，后续可以通过 ssh tunnel 或者 ssm tunnel 方式远程访问
-![IMG-mwaa-lab-1.png](attachments/mwaa-lab/IMG-mwaa-lab-1.png)
+![IMG-using-mwaa-in-private-network-1.png](attachments/using-mwaa-in-private-network/IMG-using-mwaa-in-private-network-1.png)
 
 - 同时选择 “创建新安全组” 和 “之前命令行创建的安全组（用于 interface endpoint）”
-![IMG-mwaa-lab-2.png](attachments/mwaa-lab/IMG-mwaa-lab-2.png)
+![IMG-using-mwaa-in-private-network-2.png](attachments/using-mwaa-in-private-network/IMG-using-mwaa-in-private-network-2.png)
 
 
 
