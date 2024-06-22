@@ -21,6 +21,7 @@ REGION_SUFFIX=$(echo ${AWS_DEFAULT_REGION} |egrep -q '^cn-' && echo '-cn' || ech
 PRINCIPAL_ARN=arn:aws${REGION_SUFFIX}:iam::xxx:user/panlm
 CLUSTER_NAME=ekscluster1
 
+# default mode for new cluster
 aws eks update-cluster-config \
    --name ${CLUSTER_NAME} \
    --access-config authenticationMode=API_AND_CONFIG_MAP
@@ -43,7 +44,7 @@ aws eks delete-access-entry --cluster-name ${CLUSTER_NAME} \
 ```
 
 ## available in china region 
-available
+- available
 
 ## alternative
 - [[eks-aws-auth|eks-aws-auth]]

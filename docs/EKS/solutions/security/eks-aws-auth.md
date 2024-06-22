@@ -23,7 +23,7 @@ eksctl create iamidentitymapping --cluster ${CLUSTER_NAME} \
 - [[git/git-mkdocs/CLI/linux/eksctl#iamidentitymapping-|eksctl]] 
 
 ## alternatives
-- if you use `eksdemo` to create cluster's nodegroup failed due to temporary credentials timeout in cloud9, you will find cluster create successfully but `aws-auth` does not exists, at this time you could not use kubectl to connect it.
+- if you use `eksdemo` to create cluster's nodegroup failed due to temporary credentials timeout in cloud9, you will find cluster create successfully but `aws-auth` does not exists, at this time you could not use `kubectl` to connect it.
 - try to use temporary credential to add instance profile role to cluster following: [[eks-access-api]]
 - then try to add node groups to cluster with `eksctl` (cannot assign security group in eksdemo cli)
 - and add original role to aws-auth again 
@@ -44,10 +44,10 @@ kubectl edit configmap aws-auth -n kube-system
 
 ```yaml
   mapRoles: |
-    - groups:
-      - system:masters
-      rolearn: arn:aws:iam::XXXXXXXXXXXX:role/WSParticipantRole
+    - rolearn: arn:aws:iam::XXXXXXXXXXXX:role/WSParticipantRole
       username: system:role:adminrole
+      groups:
+      - system:masters
 ```
 
 ## more specific sample

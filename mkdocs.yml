@@ -30,6 +30,7 @@ theme:
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
+
     features:
         - navigation.indexes
         - navigation.top

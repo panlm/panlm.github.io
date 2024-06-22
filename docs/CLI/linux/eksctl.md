@@ -45,7 +45,6 @@ eksctl create iamidentitymapping \
 ```
 
 ## create windows self-managed node group
-
 ```sh
 CLUSTER_NAME=myeksctl
 export AWS_DEFAULT_REGION=us-west-2
@@ -90,7 +89,6 @@ eksctl create nodegroup   \
   --node-security-groups sg-xxx # this is the ControlPlaneSecurityGroup
 
 ```
-
 
 ## scale nodegroup
 ```sh
@@ -170,7 +168,6 @@ eksctl create cluster \
 ```
 
 ### appmesh-access-
-
 `--appmesh-access` will apply customer inline policy for appmesh
 
 ```
@@ -207,7 +204,6 @@ eksctl create cluster \
 
 
 ### full-ecr-access
-
 `--full-ecr-access` will apply ECR power user policy to node
 
 - and others

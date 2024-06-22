@@ -23,14 +23,15 @@ export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-iden
 eksdemo create cluster ${CLUSTER_NAME} \
     --instance m5.large \
     --nodes 3 \
-    --version 1.26 \
+    --version 1.27 \
     --vpc-cidr 10.10.0.0/16
-    
+
 ```
 
-## create node gropu
+## create node group
 ```sh
-
+eksdemo create ng mng1 \
+    -c ekscluster1 -i m5.large -N 3 
 ```
 
 ## addons-
@@ -42,4 +43,8 @@ eksdemo create cluster ${CLUSTER_NAME} \
 
 refer: [[../awscli/acm-cmd#create-certificate-with-eksdemo-]]
 
+
+
+## refer
+- when create broken due to role change in cloud9, add another admin user to eks cluster and try create nodegroup ([[../../EKS/solutions/security/eks-access-api|eks-access-api]])
 
