@@ -15,7 +15,7 @@ tags:
 ## diagram
 - original region in global on right hand side
 - china region on left hand side
-![cross-region-reverse-proxy-with-nlb-cloudfront-png-1.png](../git-attachment/cross-region-reverse-proxy-with-nlb-cloudfront-png-1.png)
+![IMG-cross-region-reverse-proxy-with-nlb-cloudfront.png](attachments/cross-region-reverse-proxy-with-nlb-cloudfront/IMG-cross-region-reverse-proxy-with-nlb-cloudfront.png)
 
 ## prepare application on eks
 ### host zone
@@ -27,11 +27,11 @@ CN_DOMAIN_NAME=poc1010.aws.panlm.xyz # for china region
 ```
 
 ??? note "right-click & open-in-new-tab: "
-    ![[../CLI/awscli/route53-cmd#func-create-hosted-zone-]]
+    ![[../../CLI/awscli/route53-cmd#func-create-hosted-zone-]]
 
 ### eks cluster
-- create eks cluster (refer: [[../CLI/linux/eksdemo#create-eks-cluster-]])
-- install addons (refer: [[../CLI/linux/eksdemo#addons-]])
+- create eks cluster (refer: [[../../CLI/linux/eksdemo#create-eks-cluster-]])
+- install addons (refer: [[../../CLI/linux/eksdemo#addons-]])
     - externaldns
     - aws load balancer controller
     - certificate
@@ -65,7 +65,7 @@ curl -L http://nlbtoalb.${DOMAIN_NAME}/anything
 ```
 - both could access application successfully
 
-## reverse proxy in china region-
+## reverse-proxy-in-china-region-
 - setup 2 EC2 instances [[fake-waf-on-ec2-forwarding-https#Layer 4 forwarding with iptables]] ([github](https://github.com/panlm/blog-private-api-gateway-dataflow/blob/main/fake-waf-on-ec2-forwarding-https.md#layer-4-forwarding-with-iptables))
 - forward request to NLB-1's public IP addresses. 
     - We have 2 destination IPs, using probability 50% in first rule and keep 2nd rule always been hit.
@@ -106,11 +106,11 @@ curl https://test.${CN_DOMAIN_NAME}/ip
 curl https://abc.${CN_DOMAIN_NAME}/ip
 ```
 
-![cross-region-reverse-proxy-with-nlb-cloudfront-png-2.png](../git-attachment/cross-region-reverse-proxy-with-nlb-cloudfront-png-2.png)
+![IMG-cross-region-reverse-proxy-with-nlb-cloudfront-1.png](attachments/cross-region-reverse-proxy-with-nlb-cloudfront/IMG-cross-region-reverse-proxy-with-nlb-cloudfront-1.png)
 
-![cross-region-reverse-proxy-with-nlb-cloudfront-png-3.png](../git-attachment/cross-region-reverse-proxy-with-nlb-cloudfront-png-3.png)
+![IMG-cross-region-reverse-proxy-with-nlb-cloudfront-2.png](attachments/cross-region-reverse-proxy-with-nlb-cloudfront/IMG-cross-region-reverse-proxy-with-nlb-cloudfront-2.png)
 
-![cross-region-reverse-proxy-with-nlb-cloudfront-png-4.png](../git-attachment/cross-region-reverse-proxy-with-nlb-cloudfront-png-4.png)
+![IMG-cross-region-reverse-proxy-with-nlb-cloudfront-3.png](attachments/cross-region-reverse-proxy-with-nlb-cloudfront/IMG-cross-region-reverse-proxy-with-nlb-cloudfront-3.png)
 
 - no CORS needed
 
@@ -119,11 +119,11 @@ curl https://abc.${CN_DOMAIN_NAME}/ip
     - No. refer [link](https://www.frozentux.net/iptables-tutorial/cn/iptables-tutorial-cn-1.1.19.html#TRAVERSINGOFTABLES)
 
 ## refer
-- [[../CLI/linux/iptables]]
+- [[../../CLI/linux/iptables]]
 - [[fake-waf-on-ec2-forwarding-https]]
     - [github](https://github.com/panlm/blog-private-api-gateway-dataflow/blob/main/fake-waf-on-ec2-forwarding-https.md) 
 - using alb + nginx as reverse proxy 
-    - [[../git-attachment/Extend Your Web Application Deployment to the China Region Using AWS Direct Connect]]
+    - [[../../git-attachment/Extend Your Web Application Deployment to the China Region Using AWS Direct Connect]]
 - https://scalingo.com/blog/iptables
-- [[../git-attachment/Building a Solution for China Cross-Border VPC Connection]]
+- [[../../git-attachment/Building a Solution for China Cross-Border VPC Connection]]
 

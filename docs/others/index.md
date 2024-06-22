@@ -42,7 +42,7 @@ number headings: first-level 2, max 3, 1.1, auto
 (file:.md path:git/git-mkdocs/others -path:git/git-mkdocs/others/windows -path:git/git-mkdocs/others/network -path:git/git-mkdocs/others/well-architected)
 - [$frontmatter:title]($filename): $frontmatter:description
 ```
-- [Cross Region Reverse Proxy with NLB and Cloudfront](cross-region-reverse-proxy-with-nlb-cloudfront): 跨区域的 Layer 4 反向代理，并使用 nlb + cloudfront，考察证书使用需求
+- [Cross Region Reverse Proxy with NLB and Cloudfront](network/cross-region-reverse-proxy-with-nlb-cloudfront.md): 跨区域的 Layer 4 反向代理，并使用 nlb + cloudfront，考察证书使用需求
 - [Enable scan on push in ECR and send notification to SNS](ecr-scan-on-push-notification-sns): 启用 ECR 的 Scan on push 之后，自动将扫描结果中 CRITICAL 的信息发送到目标 SNS 告警
 - [Storage File Gateway](file-storage-gateway-lab): create file storage gateway from cli
 - [github-page-howto](github-page-howto): github-page-howto

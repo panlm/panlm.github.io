@@ -1,6 +1,6 @@
 site_name: panlm
 site_description: notes from obsidian
-#site_url: https://panlm.github.io/git-ob/ # Change this to your site URL
+site_url: https://panlm.github.io/ # Change this to your site URL
 
 theme:
     name: material
@@ -26,7 +26,7 @@ theme:
     - media: "(prefers-color-scheme: dark)"
       scheme: slate
       primary: blue
-      accent: indigo
+      accent: light blue
       toggle:
         icon: material/toggle-switch
         name: Switch to light mode
@@ -84,6 +84,7 @@ markdown_extensions:
           format: !!python/name:pymdownx.superfences.fence_code_format
   - pymdownx.tabbed:
       alternate_style: true
+
 
 plugins:
   - search

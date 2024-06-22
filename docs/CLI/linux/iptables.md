@@ -14,7 +14,7 @@ tags:
 
 - [[git/git-mkdocs/CLI/linux/linux-cmd#iptables-]]
 - [[fake-waf-on-ec2-forwarding-https#Layer 4 forwarding with iptables-]]
-- [[git/git-mkdocs/others/cross-region-reverse-proxy-with-nlb-cloudfront#reverse proxy in china region-]]
+- [[../../others/network/cross-region-reverse-proxy-with-nlb-cloudfront#reverse-proxy-in-china-region-|reverse-proxy-in-china-region-]]
 
 
 ## doc
