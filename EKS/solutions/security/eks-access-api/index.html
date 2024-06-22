@@ -475,6 +475,10 @@
         
       
         
+          
+        
+      
+        
       
     
     
@@ -489,16 +493,24 @@
         <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
         
           
-          <label class="md-nav__link" for="__nav_2" id="__nav_2_label" tabindex="0">
-            
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../../cloud9/" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     Cloud9
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
         <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_2">
@@ -566,6 +578,8 @@
               
             
               
+            
+              
                 
   
   
@@ -576,8 +590,16 @@
         
   
   <span class="md-ellipsis">
-    create standard vpc for lab in china region
+    Create Standard VPC for Lab in China Region or Global Region
   </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog" title="my blogs">
+    </span>
+  
+
   
 
       </a>
@@ -5196,25 +5218,28 @@ blog:<br />
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nv">PRINCIPAL_ARN</span><span class="o">=</span>arn:aws<span class="si">${</span><span class="nv">REGION_SUFFIX</span><span class="si">}</span>:iam::xxx:user/panlm
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nv">CLUSTER_NAME</span><span class="o">=</span>ekscluster1
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>aws<span class="w"> </span>eks<span class="w"> </span>update-cluster-config<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="w">   </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">   </span>--access-config<span class="w"> </span><span class="nv">authenticationMode</span><span class="o">=</span>API_AND_CONFIG_MAP
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>aws<span class="w"> </span>eks<span class="w"> </span>list-access-entries<span class="w"> </span>--cluster-name<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>aws<span class="w"> </span>eks<span class="w"> </span>create-access-entry<span class="w"> </span>--cluster-name<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="w">  </span>--principal-arn<span class="w"> </span><span class="si">${</span><span class="nv">PRINCIPAL_ARN</span><span class="si">}</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>aws<span class="w"> </span>eks<span class="w"> </span>associate-access-policy<span class="w"> </span>--cluster-name<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="w">  </span>--principal-arn<span class="w">  </span><span class="si">${</span><span class="nv">PRINCIPAL_ARN</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">  </span>--policy-arn<span class="w"> </span>arn:aws<span class="si">${</span><span class="nv">REGION_SUFFIX</span><span class="si">}</span>:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">  </span>--access-scope<span class="w"> </span><span class="nv">type</span><span class="o">=</span>cluster
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="c1"># default mode for new cluster</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>aws<span class="w"> </span>eks<span class="w"> </span>update-cluster-config<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="w">   </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="w">   </span>--access-config<span class="w"> </span><span class="nv">authenticationMode</span><span class="o">=</span>API_AND_CONFIG_MAP
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>aws<span class="w"> </span>eks<span class="w"> </span>list-access-entries<span class="w"> </span>--cluster-name<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>aws<span class="w"> </span>eks<span class="w"> </span>create-access-entry<span class="w"> </span>--cluster-name<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="w">  </span>--principal-arn<span class="w"> </span><span class="si">${</span><span class="nv">PRINCIPAL_ARN</span><span class="si">}</span>
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>aws<span class="w"> </span>eks<span class="w"> </span>associate-access-policy<span class="w"> </span>--cluster-name<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="w">  </span>--principal-arn<span class="w">  </span><span class="si">${</span><span class="nv">PRINCIPAL_ARN</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a><span class="w">  </span>--policy-arn<span class="w"> </span>arn:aws<span class="si">${</span><span class="nv">REGION_SUFFIX</span><span class="si">}</span>:eks::aws:cluster-access-policy/AmazonEKSClusterAdminPolicy<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="w">  </span>--access-scope<span class="w"> </span><span class="nv">type</span><span class="o">=</span>cluster
 </code></pre></div>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>aws<span class="w"> </span>eks<span class="w"> </span>delete-access-entry<span class="w"> </span>--cluster-name<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span>--principal-arn<span class="w"> </span><span class="si">${</span><span class="nv">PRINCIPAL_ARN</span><span class="si">}</span>
 </code></pre></div>
 <h2 id="available-in-china-region">available in china region<a class="headerlink" href="#available-in-china-region" title="Permanent link">&para;</a></h2>
-<p>available</p>
+<ul>
+<li>available</li>
+</ul>
 <h2 id="alternative">alternative<a class="headerlink" href="#alternative" title="Permanent link">&para;</a></h2>
 <ul>
 <li><a href="../eks-aws-auth/" title="eks-aws-auth">eks-aws-auth</a></li>
@@ -5244,7 +5269,7 @@ blog:<br />
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-05-17T11:05:08+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-05-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-06-22T10:42:34+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-22</span>
   </span>
 
     
@@ -5277,7 +5302,7 @@ blog:<br />
         data-reactions-enabled="1"
         data-emit-metadata="0"
         data-input-position="bottom"
-        data-theme="light"
+        data-theme="preferred-color-scheme"
         data-lang="en"
         crossorigin="anonymous"
         async>
