@@ -15,7 +15,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
 blog
 https://aws.amazon.com/cn/blogs/containers/using-windows-authentication-with-gmsa-on-linux-containers-on-amazon-ecs/
 
-![[git/git-mkdocs/git-attachment/ws-gmsa-linux-containers-ecs-png-1.png]]
+![[attachments/ws-gmsa-linux-containers-ecs/IMG-ws-gmsa-linux-containers-ecs.png]]
 
 ## lab 
 

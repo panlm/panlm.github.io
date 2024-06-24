@@ -3,10 +3,11 @@ last_modified: 2024-01-13
 number headings: first-level 2, max 3, 1.1, auto
 ---
 
-# EKS
-## 1 cluster 
+# Container
+## 1 EKS
+### 1.1 cluster 
 ```expander
-(path:git/git-mkdocs/eks/cluster file:.md)
+(path:git/git-mkdocs/EKS/cluster file:.md)
 - [$frontmatter:title]($filename): $frontmatter:description
 ```
 - [EKS Addons](eks-cluster-addons-list): EKS 常用插件清单
@@ -17,9 +18,9 @@ number headings: first-level 2, max 3, 1.1, auto
 - [EKS Upgrade Procedure](eks-upgrade-procedure): EKS 集群升级
 <-->
 
-## 2 kubernetes
+### 1.2 kubernetes
 ```expander
-(path:git/git-mkdocs/eks/kubernetes file:.md)
+(path:git/git-mkdocs/EKS/kubernetes file:.md)
 - [$frontmatter:title]($filename): $frontmatter:description
 ```
 - [horizontal pod autoscaler](k8s-hpa-horizontal-pod-autoscaler): horizontal pod autoscaler
@@ -27,9 +28,9 @@ number headings: first-level 2, max 3, 1.1, auto
 - [topology spread constraints](k8s-topology-spread-constraints): topology spread constraints
 <-->
 
-## 3 solutions
+### 1.3 solutions
 ```expander
-( path:git/git-mkdocs/eks/solutions file:.md )
+( path:git/git-mkdocs/EKS/solutions file:.md )
 - [$frontmatter:title]($filename): $frontmatter:description
 ```
 - [appmesh-workshop-eks](appmesh-workshop-eks): appmesh workshop
@@ -41,7 +42,7 @@ number headings: first-level 2, max 3, 1.1, auto
 - [eks-aws-auth](eks-aws-auth): EKS aws-auth
 - [EKS Container Insights](eks-container-insights): 启用 EKS 的 container insight 功能
 - [eks-custom-network](eks-custom-network): 可以解决子网地址段耗尽的问题
-- [eks-fargate](eks-fargate-lab): 在 eks 集群中使用 fargate
+- [Fargate on EKS](eks-fargate-lab): 在 EKS 集群中使用 Fargate
 - [eks-loggroup-description](eks-loggroup-description): eks 日志类型分析
 - [eks-prefix-assignment](eks-prefix-assignment): 
 - [enable-prometheus-in-cloudwatch](enable-prometheus-in-cloudwatch): 将 EKS 集群的 prometheus 数据汇总到 cloudwatch
@@ -57,9 +58,9 @@ number headings: first-level 2, max 3, 1.1, auto
 - [EKS Security Group Deepdive](TC-security-group-for-eks-deepdive): 深入 EKS 安全组
 <-->
 
-## 4 addons 
+### 1.4 addons 
 ```expander
-(file:.md path:git/git-mkdocs/eks/addons) 
+(file:.md path:git/git-mkdocs/EKS/addons) 
 - [$frontmatter:title]($filename): $frontmatter:description
 ```
 - [aws-for-fluent-bit](aws-for-fluent-bit): 
@@ -83,4 +84,24 @@ number headings: first-level 2, max 3, 1.1, auto
 - [nginx-ingress-controller-nginx-ver](nginx-ingress-controller-nginx-ver): nginx-ingress-controller-nginx-ver
 - [pluto](pluto): Kubernetes 升级小工具
 <-->
+
+## 2 ECS
+```expander
+(file:.md path:git/git-mkdocs/EKS/ecs) 
+- [$frontmatter:title]($filename): $frontmatter:description
+```
+- [Migrating .NET Classic Applications to Amazon ECS Using Windows Containers](blog-migrating-net-classic-applications-to-amazon-ecs-using-windows-containers): 
+- [ecs-windows-gmsa](ecs-windows-gmsa): 
+- [poc-container-on-domainless-windows-in-ecs](poc-container-on-domainless-windows-node-in-ecs): 
+- [Windows Authentication with gMSA for .NET Linux Containers in Amazon ECS](ws-gmsa-linux-containers-ecs): 
+<-->
+
+## 3 ECR
+```expander
+(file:.md path:git/git-mkdocs/EKS/ecr) 
+- [$frontmatter:title]($filename): $frontmatter:description
+```
+- [Enable scan on push in ECR and send notification to SNS](ecr-scan-on-push-notification-sns): 启用 ECR 的 Scan on push 之后，自动将扫描结果中 CRITICAL 的信息发送到目标 SNS 告警
+<-->
+
 

@@ -11,6 +11,7 @@ number headings: first-level 2, max 3, 1.1, auto
 - [$frontmatter:title]($filename): $frontmatter:description
 ```
 - [aws-nfw-network-firewall](aws-nfw-network-firewall): 
+- [Cross Region Reverse Proxy with NLB and Cloudfront](cross-region-reverse-proxy-with-nlb-cloudfront): 跨区域的 Layer 4 反向代理，并使用 nlb + cloudfront，考察证书使用需求
 <-->
 
 ## 2 well-architected
@@ -26,24 +27,11 @@ number headings: first-level 2, max 3, 1.1, auto
 - [WA-成本优化-Cost-Optimization-202310-Summary](WA-成本优化-Cost-Optimization-202310-Summary): 
 <-->
 
-## 3 windows
-```expander
-(path:git/git-mkdocs/others/windows file:.md)
-- [$frontmatter:title]($filename): $frontmatter:description
-```
-- [Migrating .NET Classic Applications to Amazon ECS Using Windows Containers](blog-migrating-net-classic-applications-to-amazon-ecs-using-windows-containers): 
-- [ecs-windows-gmsa](ecs-windows-gmsa): 
-- [poc-container-on-domainless-windows-in-ecs](poc-container-on-domainless-windows-node-in-ecs): 
-- [Windows Authentication with gMSA for .NET Linux Containers in Amazon ECS](ws-gmsa-linux-containers-ecs): 
-<-->
-
-## 4 others
+## 3 others
 ```expander
 (file:.md path:git/git-mkdocs/others -path:git/git-mkdocs/others/windows -path:git/git-mkdocs/others/network -path:git/git-mkdocs/others/well-architected)
 - [$frontmatter:title]($filename): $frontmatter:description
 ```
-- [Cross Region Reverse Proxy with NLB and Cloudfront](network/cross-region-reverse-proxy-with-nlb-cloudfront.md): 跨区域的 Layer 4 反向代理，并使用 nlb + cloudfront，考察证书使用需求
-- [Enable scan on push in ECR and send notification to SNS](ecr-scan-on-push-notification-sns): 启用 ECR 的 Scan on push 之后，自动将扫描结果中 CRITICAL 的信息发送到目标 SNS 告警
 - [Storage File Gateway](file-storage-gateway-lab): create file storage gateway from cli
 - [github-page-howto](github-page-howto): github-page-howto
 - [Using Global SSO to Login China AWS Accounts](global-sso-and-china-aws-accounts): 使用 global sso 登录中国区域 aws 账号

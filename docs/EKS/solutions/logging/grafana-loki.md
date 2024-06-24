@@ -6,7 +6,7 @@ last_modified: 2024-04-18
 tags:
   - grafana/loki
 ---
-# grafana loki
+# Grafana Loki
 Loki is a backend store for long-term log retention
 
 ## diagram
@@ -22,6 +22,7 @@ helm upgrade -i promtail grafana/promtail -n ${NAMESPACE}
 
 # list all repo
 helm search repo grafana
+helm show value grafana/loki-canary
 ```
 - create sa for loki
 [[git/git-mkdocs/CLI/linux/eksctl#func-create-iamserviceaccount-]] 
@@ -54,13 +55,15 @@ serviceAccount:
   create: false
   name: ${LOKI_SA_NAME}
 chunksCache:
-  enabled: true
+  enabled: false
 write:
   replicas: 2
 read:
-  replicas: 1
+  replicas: 2
 gateway: 
   enabled: true
+  replicas: 2
+backend:
   replicas: 2
 EOF
 
@@ -87,5 +90,7 @@ minio:
 - 新集群没有安装 prometheus 或者 grafana
 - 直接安装 `grafana/loki-stack`，并且enable 安装 grafana 和prometheus，默认 loki 的 datasource 就可以用，手工添加 data source 保存后验证失败，但是可以查询到数据
 
-
+## refer
+- https://cloud.tencent.com/developer/article/2307121
+- https://grafana.com/docs/loki/latest/get-started/components/
 

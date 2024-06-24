@@ -9,11 +9,11 @@ tags:
 ---
 # ecs-windows-gmsa
 
-| ecs node | ec2          | fargate        |
-| -------- | ------------ | -------------- |
-| windows  | support gMSA | do not support |
-| linux    | support gMSA | support gMSA   |
-|          |              |                |
+| ecs node | ec2          | fargate        |     |
+| -------- | ------------ | -------------- | --- |
+| windows  | support gMSA | do not support |     |
+| linux    | support gMSA | support gMSA   |     |
+|          |              |                |     |
 
 
 - ecs
@@ -30,9 +30,9 @@ tags:
 ## walkthrough
 https://learn.microsoft.com/en-us/virtualization/windowscontainers/manage-containers/manage-serviceaccounts
 
-![[../../git-attachment/ecs-windows-gmsa-png-1.png]]
+![[attachments/ecs-windows-gmsa/IMG-ecs-windows-gmsa.png]]
 
-create adgroup and user
+create ad group and user
 ```powershell
 $gmsa = "WebApp02"
 $groupname = "WebApp02Group"

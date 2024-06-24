@@ -28,7 +28,7 @@ https://docs.aws.amazon.com/eks/latest/userguide/control-plane-logs.html
 
 
 ### /aws/containerinsights/cluster_name/application 
-All applications logs stored under `/var/log/containers/*.log` are streamed into the dedicated log group. All non-application logs such as kube-proxy and aws-node logs are excluded by default. However, additional Kubernetes add-on logs, such as CoreDNS logs, are also processed and streamed into this log group.
+All applications logs stored under `/var/log/containers/*.log` are streamed into the dedicated log group. 当 Kubernetes Pod 被驱逐或删除时，与该 Pod 关联的日志将从工作节点中永久删除。 All non-application logs such as kube-proxy and aws-node logs are excluded by default. However, additional Kubernetes add-on logs, such as CoreDNS logs, are also processed and streamed into this log group.
 - log rotate in k8s refer: [link](https://kubernetes.io/docs/concepts/cluster-administration/logging/)
 - **`containerLogMaxSize`** default 10MB
 - **`containerLogMaxFiles`** default 5
