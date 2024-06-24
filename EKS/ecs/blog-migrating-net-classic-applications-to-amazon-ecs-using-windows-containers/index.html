@@ -6,18 +6,17 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="workshop
-https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-fda420122632/en-US">
+        <meta name="description" content="notes from obsidian">
       
       
       
-        <link rel="canonical" href="https://panlm.github.io/others/windows/ws-gmsa-linux-containers-ecs/">
+        <link rel="canonical" href="https://panlm.github.io/EKS/ecs/blog-migrating-net-classic-applications-to-amazon-ecs-using-windows-containers/">
       
       
-        <link rel="prev" href="../poc-container-on-domainless-windows-node-in-ecs/">
+        <link rel="prev" href="../../kubernetes/k8s-topology-spread-constraints/">
       
       
-        <link rel="next" href="../../github-page-howto/">
+        <link rel="next" href="../ecs-windows-gmsa/">
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
@@ -25,7 +24,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
     
     
       
-        <title>Windows Authentication with gMSA for .NET Linux Containers in Amazon ECS - panlm</title>
+        <title>Migrating .NET Classic Applications to Amazon ECS Using Windows Containers - panlm</title>
       
     
     
@@ -100,7 +99,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
     <div data-md-component="skip">
       
         
-        <a href="#windows-authentication-with-gmsa-for-net-linux-containers-in-amazon-ecs" class="md-skip">
+        <a href="#migrating-net-classic-applications-to-amazon-ecs-using-windows-containers" class="md-skip">
           Skip to content
         </a>
       
@@ -135,7 +134,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Windows Authentication with gMSA for .NET Linux Containers in Amazon ECS
+              Migrating .NET Classic Applications to Amazon ECS Using Windows Containers
             
           </span>
         </div>
@@ -261,16 +260,18 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../../EKS/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../../" class="md-tabs__link">
           
   
     
   
-  EKS
+  Container
 
         </a>
       </li>
@@ -341,13 +342,11 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
         
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../../../others/" class="md-tabs__link">
           
   
     
@@ -622,6 +621,8 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
       
   
   
+    
+  
   
   
     
@@ -637,44 +638,45 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
       
         
       
-        
-      
     
     
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../../EKS/" class="md-nav__link ">
+            <a href="../../" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
-    EKS
+    Container
   </span>
   
 
             </a>
             
               
-              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_3">
             <span class="md-nav__icon md-icon"></span>
-            EKS
+            Container
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
@@ -688,10 +690,6 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
     
     
-      
-        
-      
-        
       
         
       
@@ -718,7 +716,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
             
   
   <span class="md-ellipsis">
-    Cluster
+    EKS
   </span>
   
 
@@ -727,6 +725,58 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
         
         <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            EKS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_1" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2_1" id="__nav_3_2_1_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    Cluster
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_1">
             <span class="md-nav__icon md-icon"></span>
             Cluster
           </label>
@@ -739,7 +789,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/cluster/eks-cluster-with-terraform/" class="md-nav__link">
+      <a href="../../cluster/eks-cluster-with-terraform/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -760,7 +810,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/cluster/eks-public-access-cluster-in-china-region/" class="md-nav__link">
+      <a href="../../cluster/eks-public-access-cluster-in-china-region/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -781,7 +831,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/cluster/eks-public-access-cluster/" class="md-nav__link">
+      <a href="../../cluster/eks-public-access-cluster/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -810,7 +860,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/cluster/eks-private-access-cluster/" class="md-nav__link">
+      <a href="../../cluster/eks-private-access-cluster/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -831,7 +881,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/cluster/eks-upgrade-procedure/" class="md-nav__link">
+      <a href="../../cluster/eks-upgrade-procedure/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -852,7 +902,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/cluster/eks-cluster-addons-list/" class="md-nav__link">
+      <a href="../../cluster/eks-cluster-addons-list/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -933,10 +983,10 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2" >
         
           
-          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -947,8 +997,8 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_3">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_2">
             <span class="md-nav__icon md-icon"></span>
             Addons
           </label>
@@ -961,7 +1011,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/aws-for-fluent-bit/" class="md-nav__link">
+      <a href="../../addons/aws-for-fluent-bit/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -982,7 +1032,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/aws-load-balancer-controller/" class="md-nav__link">
+      <a href="../../addons/aws-load-balancer-controller/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1003,7 +1053,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/cert-manager/" class="md-nav__link">
+      <a href="../../addons/cert-manager/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1024,7 +1074,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/cluster-autoscaler/" class="md-nav__link">
+      <a href="../../addons/cluster-autoscaler/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1045,7 +1095,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/cni-metrics-helper/" class="md-nav__link">
+      <a href="../../addons/cni-metrics-helper/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1066,7 +1116,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/ebs-for-eks/" class="md-nav__link">
+      <a href="../../addons/ebs-for-eks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1087,7 +1137,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/efs-csi/" class="md-nav__link">
+      <a href="../../addons/efs-csi/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1108,7 +1158,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/eks-addons-coredns/" class="md-nav__link">
+      <a href="../../addons/eks-addons-coredns/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1129,7 +1179,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/eks-addons-kube-proxy/" class="md-nav__link">
+      <a href="../../addons/eks-addons-kube-proxy/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1150,7 +1200,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/eks-addons-vpc-cni/" class="md-nav__link">
+      <a href="../../addons/eks-addons-vpc-cni/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1171,7 +1221,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/eksup/" class="md-nav__link">
+      <a href="../../addons/eksup/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1192,7 +1242,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/externaldns-for-route53/" class="md-nav__link">
+      <a href="../../addons/externaldns-for-route53/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1213,7 +1263,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/karpenter/" class="md-nav__link">
+      <a href="../../addons/karpenter/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1234,7 +1284,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/kube-no-trouble/" class="md-nav__link">
+      <a href="../../addons/kube-no-trouble/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1255,7 +1305,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/kube-state-metrics/" class="md-nav__link">
+      <a href="../../addons/kube-state-metrics/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1276,7 +1326,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/metrics-server/" class="md-nav__link">
+      <a href="../../addons/metrics-server/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1297,7 +1347,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/nginx-ingress-controller-community-ver/" class="md-nav__link">
+      <a href="../../addons/nginx-ingress-controller-community-ver/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1318,7 +1368,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/nginx-ingress-controller-nginx-ver/" class="md-nav__link">
+      <a href="../../addons/nginx-ingress-controller-nginx-ver/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1339,7 +1389,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/nginx-ingress-controller/" class="md-nav__link">
+      <a href="../../addons/nginx-ingress-controller/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1360,7 +1410,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/addons/pluto/" class="md-nav__link">
+      <a href="../../addons/pluto/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1415,10 +1465,10 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3" >
         
           
-          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_2_3" id="__nav_3_2_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1429,8 +1479,8 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_4">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_3">
             <span class="md-nav__icon md-icon"></span>
             Solutions
           </label>
@@ -1459,10 +1509,10 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_1" >
         
           
-          <label class="md-nav__link" for="__nav_3_4_1" id="__nav_3_4_1_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_2_3_1" id="__nav_3_2_3_1_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1473,8 +1523,8 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_1_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_4_1">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_2_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_3_1">
             <span class="md-nav__icon md-icon"></span>
             Appmesh
           </label>
@@ -1487,7 +1537,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/appmesh/appmesh-workshop-eks/" class="md-nav__link">
+      <a href="../../solutions/appmesh/appmesh-workshop-eks/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1515,7 +1565,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/appmesh/automated-canary-deployment-using-flagger/" class="md-nav__link">
+      <a href="../../solutions/appmesh/automated-canary-deployment-using-flagger/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1558,10 +1608,10 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_2" >
         
           
-          <label class="md-nav__link" for="__nav_3_4_2" id="__nav_3_4_2_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_2_3_2" id="__nav_3_2_3_2_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1572,8 +1622,8 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_2_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_4_2">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_2_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_3_2">
             <span class="md-nav__icon md-icon"></span>
             Compute
           </label>
@@ -1586,7 +1636,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/compute/eks-fargate-lab/" class="md-nav__link">
+      <a href="../../solutions/compute/eks-fargate-lab/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1631,10 +1681,10 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_3" >
         
           
-          <label class="md-nav__link" for="__nav_3_4_3" id="__nav_3_4_3_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_2_3_3" id="__nav_3_2_3_3_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1645,8 +1695,8 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_3_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_4_3">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_2_3_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_3_3">
             <span class="md-nav__icon md-icon"></span>
             Gitops
           </label>
@@ -1659,7 +1709,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/gitops/argocd-lab/" class="md-nav__link">
+      <a href="../../solutions/gitops/argocd-lab/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1680,7 +1730,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/gitops/flux-lab/" class="md-nav__link">
+      <a href="../../solutions/gitops/flux-lab/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1733,10 +1783,10 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_4" >
         
           
-          <label class="md-nav__link" for="__nav_3_4_4" id="__nav_3_4_4_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_2_3_4" id="__nav_3_2_3_4_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1747,8 +1797,8 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_4_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_4_4">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_2_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_3_4">
             <span class="md-nav__icon md-icon"></span>
             Logging
           </label>
@@ -1761,7 +1811,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/logging/cloudwatch-to-firehose-python/" class="md-nav__link">
+      <a href="../../solutions/logging/cloudwatch-to-firehose-python/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1782,7 +1832,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/logging/eks-audit-log-security-lake/" class="md-nav__link">
+      <a href="../../solutions/logging/eks-audit-log-security-lake/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1811,7 +1861,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/logging/eks-loggroup-description/" class="md-nav__link">
+      <a href="../../solutions/logging/eks-loggroup-description/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1832,7 +1882,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/logging/export-cloudwatch-log-group-to-s3/" class="md-nav__link">
+      <a href="../../solutions/logging/export-cloudwatch-log-group-to-s3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1861,7 +1911,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/logging/grafana-loki/" class="md-nav__link">
+      <a href="../../solutions/logging/grafana-loki/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1882,7 +1932,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/logging/stream-k8s-control-panel-logs-to-s3/" class="md-nav__link">
+      <a href="../../solutions/logging/stream-k8s-control-panel-logs-to-s3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1941,10 +1991,10 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_5" >
         
           
-          <label class="md-nav__link" for="__nav_3_4_5" id="__nav_3_4_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_2_3_5" id="__nav_3_2_3_5_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -1955,8 +2005,8 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_4_5">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_2_3_5_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_3_5">
             <span class="md-nav__icon md-icon"></span>
             Monitor
           </label>
@@ -1969,7 +2019,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/monitor/TC-prometheus-ha-architect-with-thanos/" class="md-nav__link">
+      <a href="../../solutions/monitor/TC-prometheus-ha-architect-with-thanos/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -1997,7 +2047,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/monitor/eks-container-insights/" class="md-nav__link">
+      <a href="../../solutions/monitor/eks-container-insights/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2018,7 +2068,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/monitor/enable-prometheus-in-cloudwatch/" class="md-nav__link">
+      <a href="../../solutions/monitor/enable-prometheus-in-cloudwatch/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2039,7 +2089,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/monitor/install-grafana-on-beanstalk/" class="md-nav__link">
+      <a href="../../solutions/monitor/install-grafana-on-beanstalk/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2060,7 +2110,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/monitor/install-prometheus-grafana/" class="md-nav__link">
+      <a href="../../solutions/monitor/install-prometheus-grafana/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2109,10 +2159,10 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_6" >
         
           
-          <label class="md-nav__link" for="__nav_3_4_6" id="__nav_3_4_6_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_2_3_6" id="__nav_3_2_3_6_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -2123,8 +2173,8 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_6_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_4_6">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_2_3_6_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_3_6">
             <span class="md-nav__icon md-icon"></span>
             Network
           </label>
@@ -2137,7 +2187,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/network/TC-security-group-for-eks-deepdive/" class="md-nav__link">
+      <a href="../../solutions/network/TC-security-group-for-eks-deepdive/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2166,7 +2216,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/network/eks-custom-network/" class="md-nav__link">
+      <a href="../../solutions/network/eks-custom-network/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2187,7 +2237,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/network/eks-prefix-assignment/" class="md-nav__link">
+      <a href="../../solutions/network/eks-prefix-assignment/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2208,7 +2258,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/network/enable-sg-on-pod/" class="md-nav__link">
+      <a href="../../solutions/network/enable-sg-on-pod/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2255,10 +2305,10 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_7" >
         
           
-          <label class="md-nav__link" for="__nav_3_4_7" id="__nav_3_4_7_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_2_3_7" id="__nav_3_2_3_7_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -2269,8 +2319,8 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_4_7_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_4_7">
+        <nav class="md-nav" data-md-level="4" aria-labelledby="__nav_3_2_3_7_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_3_7">
             <span class="md-nav__icon md-icon"></span>
             Security
           </label>
@@ -2283,7 +2333,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/security/TC-eks-irsa-token-deep-dive-lab/" class="md-nav__link">
+      <a href="../../solutions/security/TC-eks-irsa-token-deep-dive-lab/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2312,7 +2362,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/security/eks-access-api/" class="md-nav__link">
+      <a href="../../solutions/security/eks-access-api/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2333,7 +2383,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/security/eks-aws-auth/" class="md-nav__link">
+      <a href="../../solutions/security/eks-aws-auth/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2388,10 +2438,10 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_4" >
         
           
-          <label class="md-nav__link" for="__nav_3_5" id="__nav_3_5_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_3_2_4" id="__nav_3_2_4_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -2402,8 +2452,8 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_5_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_3_5">
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_4">
             <span class="md-nav__icon md-icon"></span>
             Kubernetes
           </label>
@@ -2416,7 +2466,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/kubernetes/k8s-hpa-horizontal-pod-autoscaler/" class="md-nav__link">
+      <a href="../../kubernetes/k8s-hpa-horizontal-pod-autoscaler/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2437,7 +2487,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/kubernetes/k8s-liveness-readiness-startup-probes/" class="md-nav__link">
+      <a href="../../kubernetes/k8s-liveness-readiness-startup-probes/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -2458,12 +2508,308 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/kubernetes/k8s-topology-spread-constraints/" class="md-nav__link">
+      <a href="../../kubernetes/k8s-topology-spread-constraints/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     topology spread constraints
   </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ECS
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_3">
+            <span class="md-nav__icon md-icon"></span>
+            ECS
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    Migrating .NET Classic Applications to Amazon ECS Using Windows Containers
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    Migrating .NET Classic Applications to Amazon ECS Using Windows Containers
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#start-from" class="md-nav__link">
+    <span class="md-ellipsis">
+      start from
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-walkthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      lab walkthrough
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#refer" class="md-nav__link">
+    <span class="md-ellipsis">
+      refer
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ecs-windows-gmsa/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    ecs-windows-gmsa
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../poc-container-on-domainless-windows-node-in-ecs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    poc-container-on-domainless-windows-in-ecs
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../ws-gmsa-linux-containers-ecs/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Windows Authentication with gMSA for .NET Linux Containers in Amazon ECS
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+      
+        
+      
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
+            
+  
+  <span class="md-ellipsis">
+    ECR
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_4_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_4">
+            <span class="md-nav__icon md-icon"></span>
+            ECR
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ecr/ecr-scan-on-push-notification-sns/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Enable scan on push in ECR and send notification to SNS
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog" title="my blogs">
+    </span>
+  
+
   
 
       </a>
@@ -2884,8 +3230,6 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
       
   
   
-    
-  
   
   
     
@@ -2923,29 +3267,22 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
       
         
       
-        
-      
-        
-      
     
     
-      
-        
-        
       
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
         
           
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../" class="md-nav__link ">
+            <a href="../../../others/" class="md-nav__link ">
               
   
   <span class="md-ellipsis">
@@ -2956,13 +3293,13 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
             </a>
             
               
-              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="">
+              <label class="md-nav__link " for="__nav_7" id="__nav_7_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_7_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_7">
             <span class="md-nav__icon md-icon"></span>
             Others
@@ -2978,7 +3315,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../POC-mig-filezilla-to-transfer-family/" class="md-nav__link">
+      <a href="../../../others/POC-mig-filezilla-to-transfer-family/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3007,7 +3344,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../POC-prometheus-ha-architect-with-thanos-manually/" class="md-nav__link">
+      <a href="../../../others/POC-prometheus-ha-architect-with-thanos-manually/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3036,36 +3373,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../ecr-scan-on-push-notification-sns/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Enable scan on push in ECR and send notification to SNS
-  </span>
-  
-    
-  
-  
-    <span class="md-status md-status--myblog" title="my blogs">
-    </span>
-  
-
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../file-storage-gateway-lab/" class="md-nav__link">
+      <a href="../../../others/file-storage-gateway-lab/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3086,7 +3394,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../global-sso-and-china-aws-accounts/" class="md-nav__link">
+      <a href="../../../others/global-sso-and-china-aws-accounts/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3115,7 +3423,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../lab-create-cloudwatch-dashboard-cpu-metric/" class="md-nav__link">
+      <a href="../../../others/lab-create-cloudwatch-dashboard-cpu-metric/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3136,7 +3444,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../obsidian/" class="md-nav__link">
+      <a href="../../../others/obsidian/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3165,7 +3473,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../quick-build-brconnector-on-ec2/" class="md-nav__link">
+      <a href="../../../others/quick-build-brconnector-on-ec2/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3194,7 +3502,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../rescue-ec2-instance/" class="md-nav__link">
+      <a href="../../../others/rescue-ec2-instance/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3215,7 +3523,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../script-api-resource-method/" class="md-nav__link">
+      <a href="../../../others/script-api-resource-method/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3243,7 +3551,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../script-convert-mp3-to-text/" class="md-nav__link">
+      <a href="../../../others/script-convert-mp3-to-text/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3264,7 +3572,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../self-signed-certificates/" class="md-nav__link">
+      <a href="../../../others/self-signed-certificates/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3301,10 +3609,10 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_14" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_13" >
         
           
-          <label class="md-nav__link" for="__nav_7_14" id="__nav_7_14_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_13" id="__nav_7_13_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -3315,8 +3623,8 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_14_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_14">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_13_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_13">
             <span class="md-nav__icon md-icon"></span>
             Network
           </label>
@@ -3329,7 +3637,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../network/aws-nfw-network-firewall/" class="md-nav__link">
+      <a href="../../../others/network/aws-nfw-network-firewall/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3350,7 +3658,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../network/cross-region-reverse-proxy-with-nlb-cloudfront/" class="md-nav__link">
+      <a href="../../../others/network/cross-region-reverse-proxy-with-nlb-cloudfront/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3411,10 +3719,10 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_15" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_14" >
         
           
-          <label class="md-nav__link" for="__nav_7_15" id="__nav_7_15_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_14" id="__nav_7_14_label" tabindex="0">
             
   
   <span class="md-ellipsis">
@@ -3425,8 +3733,8 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_15_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_15">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_14_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_14">
             <span class="md-nav__icon md-icon"></span>
             Well architected
           </label>
@@ -3439,7 +3747,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../well-architected/WA-%E5%8D%93%E8%B6%8A%E8%BF%90%E8%90%A5-Operational-Excellence-202310-Summary/" class="md-nav__link">
+      <a href="../../../others/well-architected/WA-%E5%8D%93%E8%B6%8A%E8%BF%90%E8%90%A5-Operational-Excellence-202310-Summary/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3460,7 +3768,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../well-architected/WA-%E5%8F%AF%E6%8C%81%E7%BB%AD%E5%8F%91%E5%B1%95-Sustainability-202310-Summary/" class="md-nav__link">
+      <a href="../../../others/well-architected/WA-%E5%8F%AF%E6%8C%81%E7%BB%AD%E5%8F%91%E5%B1%95-Sustainability-202310-Summary/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3481,7 +3789,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../well-architected/WA-%E5%8F%AF%E9%9D%A0%E6%80%A7-Reliability-202310-Summary/" class="md-nav__link">
+      <a href="../../../others/well-architected/WA-%E5%8F%AF%E9%9D%A0%E6%80%A7-Reliability-202310-Summary/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3502,7 +3810,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../well-architected/WA-%E5%AE%89%E5%85%A8-Security-202310-Summary/" class="md-nav__link">
+      <a href="../../../others/well-architected/WA-%E5%AE%89%E5%85%A8-Security-202310-Summary/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3523,7 +3831,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../well-architected/WA-%E6%80%A7%E8%83%BD%E6%95%88%E7%8E%87-Performance-Efficiency-202310-Summary/" class="md-nav__link">
+      <a href="../../../others/well-architected/WA-%E6%80%A7%E8%83%BD%E6%95%88%E7%8E%87-Performance-Efficiency-202310-Summary/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3544,7 +3852,7 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
   
   
     <li class="md-nav__item">
-      <a href="../../well-architected/WA-%E6%88%90%E6%9C%AC%E4%BC%98%E5%8C%96-Cost-Optimization-202310-Summary/" class="md-nav__link">
+      <a href="../../../others/well-architected/WA-%E6%88%90%E6%9C%AC%E4%BC%98%E5%8C%96-Cost-Optimization-202310-Summary/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -3570,201 +3878,10 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
                 
   
   
-    
-  
-  
-  
-    
-    
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_16" checked>
-        
-          
-          <label class="md-nav__link" for="__nav_7_16" id="__nav_7_16_label" tabindex="0">
-            
-  
-  <span class="md-ellipsis">
-    Windows
-  </span>
-  
-
-            <span class="md-nav__icon md-icon"></span>
-          </label>
-        
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_16_label" aria-expanded="true">
-          <label class="md-nav__title" for="__nav_7_16">
-            <span class="md-nav__icon md-icon"></span>
-            Windows
-          </label>
-          <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
   
   
     <li class="md-nav__item">
-      <a href="../blog-migrating-net-classic-applications-to-amazon-ecs-using-windows-containers/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Migrating .NET Classic Applications to Amazon ECS Using Windows Containers
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../ecs-windows-gmsa/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    ecs-windows-gmsa
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../poc-container-on-domainless-windows-node-in-ecs/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    poc-container-on-domainless-windows-in-ecs
-  </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  <span class="md-ellipsis">
-    Windows Authentication with gMSA for .NET Linux Containers in Amazon ECS
-  </span>
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  <span class="md-ellipsis">
-    Windows Authentication with gMSA for .NET Linux Containers in Amazon ECS
-  </span>
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#lab" class="md-nav__link">
-    <span class="md-ellipsis">
-      lab
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-          </ul>
-        </nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../github-page-howto/" class="md-nav__link">
+      <a href="../../../others/github-page-howto/" class="md-nav__link">
         
   
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81Z"/></svg>
@@ -5114,9 +5231,27 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#lab" class="md-nav__link">
+  <a href="#start-from" class="md-nav__link">
     <span class="md-ellipsis">
-      lab
+      start from
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#lab-walkthrough" class="md-nav__link">
+    <span class="md-ellipsis">
+      lab walkthrough
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#refer" class="md-nav__link">
+    <span class="md-ellipsis">
+      refer
     </span>
   </a>
   
@@ -5141,66 +5276,56 @@ https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-f
     
     
     
-      <a href="../../../tags/#microsoftgmsa" class="md-tag">microsoft/gmsa</a>
+      <a href="../../../tags/#awscontainerecs" class="md-tag">aws/container/ecs</a>
     
   
     
     
     
-      <a href="../../../tags/#awscontainerecs" class="md-tag">aws/container/ecs</a>
+      <a href="../../../tags/#microsoftdotnet" class="md-tag">microsoft/dotnet</a>
     
   
 </nav>
 
 
 
-<h1 id="windows-authentication-with-gmsa-for-net-linux-containers-in-amazon-ecs">Windows Authentication with gMSA for .NET Linux Containers in Amazon ECS<a class="headerlink" href="#windows-authentication-with-gmsa-for-net-linux-containers-in-amazon-ecs" title="Permanent link">&para;</a></h1>
-<p>workshop<br />
-<a href="https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-fda420122632/en-US">https://catalog.us-east-1.prod.workshops.aws/workshops/a6761c4f-f1f8-44e9-8455-fda420122632/en-US</a></p>
-<p>blog<br />
-<a href="https://aws.amazon.com/cn/blogs/containers/using-windows-authentication-with-gmsa-on-linux-containers-on-amazon-ecs/">https://aws.amazon.com/cn/blogs/containers/using-windows-authentication-with-gmsa-on-linux-containers-on-amazon-ecs/</a></p>
-<p><a class="glightbox" href="../../../git-attachment/ws-gmsa-linux-containers-ecs-png-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="git/git-mkdocs/git-attachment/ws-gmsa-linux-containers-ecs-png-1.png" src="../../../git-attachment/ws-gmsa-linux-containers-ecs-png-1.png" title="git/git-mkdocs/git-attachment/ws-gmsa-linux-containers-ecs-png-1.png" /></a></p>
-<h2 id="lab">lab<a class="headerlink" href="#lab" title="Permanent link">&para;</a></h2>
-<p>wait until <code>CDKToolkit</code> bootstrap template display on cloudformation, you could logon to your windows dev EC2 with credential in Secret Manager<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/aws-samples/gmsa-linux-containers-ecs.git
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># has send pull request</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="c1"># change cdk-dotnet\src\CdkDotnet\CdkDotnet.csproj</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="c1"># 2.93.0 --&gt; 2.130.0</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nv">$Env</span>:AWS_DEFAULT_REGION<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;us-east-1&quot;</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nv">$Env</span>:EC2_INSTANCE_KEYPAIR_NAME<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;gmsa&quot;</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nv">$Env</span>:MY_SG_INGRESS_IP<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="s2">&quot;0.0.0.0&quot;</span><span class="w"> </span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="nv">$Env</span>:DOMAIN_JOIN_ECS<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">0</span><span class="w"> </span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
-<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="c1"># npm --verison</span>
-<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="c1"># if version is lower, for example 1.4.9</span>
-<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a><span class="c1"># choco uninstall npm </span>
-<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
-<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>npm<span class="w"> </span>install<span class="w"> </span>-g<span class="w"> </span>aws-cdk<span class="w"> </span><span class="c1"># npm upgrade</span>
-<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>cdk<span class="w"> </span>--version
-<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>
-<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a><span class="c1"># cd cdk-dotnet</span>
-<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>cdk<span class="w"> </span>deploy<span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="w"> </span>--require-approval<span class="w"> </span><span class="s2">&quot;never&quot;</span><span class="w"> </span>--verbose
-<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>
-<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a><span class="c1"># if got cdk cli version compatibility issue</span>
-<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a><span class="c1"># add &quot;npx&quot; at the front of CLI</span>
-</code></pre></div><br />
-wiat 1 hour to deploy complete</p>
-<p>create cloudformation stack to upgrade existing one<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">$env</span>:DEPLOY_APP<span class="o">=</span><span class="m">1</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">$env</span>:APP_TD_REVISION<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>cdk<span class="w"> </span>deploy<span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="w"> </span>--require-approval<span class="w"> </span><span class="s2">&quot;never&quot;</span><span class="w"> </span>--verbose
-</code></pre></div></p>
-<p>directory.amazon-ecs-gmsa-linux.com<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a> .\Add-ECSContainerInstancesToADGroup.ps1 -EcsAsgName amazon-ecs-gmsa-linux
-</code></pre></div></p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a> .\update-ecs-task-definition-cred-spec.sh -t amazon-ecs-gmsa-linux-web-site-task
-</code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">$env</span>:DEPLOY_APP<span class="o">=</span><span class="m">1</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nv">$env</span>:APP_TD_REVISION<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">2</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>cdk<span class="w"> </span>deploy<span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="w"> </span>--require-approval<span class="w"> </span><span class="s2">&quot;never&quot;</span><span class="w"> </span>--verbose
-</code></pre></div>
+<h1 id="migrating-net-classic-applications-to-amazon-ecs-using-windows-containers">Migrating .NET Classic Applications to Amazon ECS Using Windows Containers<a class="headerlink" href="#migrating-net-classic-applications-to-amazon-ecs-using-windows-containers" title="Permanent link">&para;</a></h1>
+<h2 id="start-from">start from<a class="headerlink" href="#start-from" title="Permanent link">&para;</a></h2>
+<ul>
+<li><a href="../../../../../../initiate-ec2-windows-dev-environment" title="initiate-ec2-windows-dev-environment">initiate-ec2-windows-dev-environment</a></li>
+<li>clone repo</li>
+<li>open vs2022</li>
+</ul>
+<h2 id="lab-walkthrough">lab walkthrough<a class="headerlink" href="#lab-walkthrough" title="Permanent link">&para;</a></h2>
+<ul>
+<li>windows 2019 base AMI</li>
+<li>assign instance profile </li>
+<li>install microsoft edge</li>
+<li><a href="../../../CLI/windows/docker-on-windows/" title="../../CLI/windows/docker-on-windows">../../CLI/windows/docker-on-windows</a></li>
+<li>install <a href="../../ms-visual-studio" title="ms-visual-studio">ms-visual-studio</a> <ul>
+<li>clone repo: <a href="https://github.com/aws-samples/aws-ecs-windows-aspnet">https://github.com/aws-samples/aws-ecs-windows-aspnet</a></li>
+</ul>
+</li>
+<li>download 4.5.2 sdk</li>
+<li>restart ms vs 2022<ul>
+<li>open solution explorer</li>
+<li>change Dockerfile (<a href="../../../../../../dotnet-core-and-framework#dotnet-framework-" title="../../../../dotnet-core-and-framework">../../../../dotnet-core-and-framework</a>)</li>
+<li>right click project AWSECSSample, Add Docker support </li>
+<li>start debugging, Container (Dockerfile)</li>
+<li>you will see docker image from cli</li>
+</ul>
+</li>
+<li>install awscli on windows</li>
+<li>upload docker image to ECS</li>
+<li>download cloudformation (<a href="../../../git-attachment/aspnetwincontainer.json" title="../../git-attachment/aspnetwincontainer.json">../../git-attachment/aspnetwincontainer.json</a>)<ul>
+<li>need windows 2019 AMI (Windows_Server-2019-English-Full-ECS_Optimized-) (<a href="../../../CLI/awscli/ecs-cmd/#get-windows-ecs-ami-list-" title="git/git-mkdocs/CLI/awscli/ecs-cmd">git/git-mkdocs/CLI/awscli/ecs-cmd</a>)</li>
+<li>assign public subnet </li>
+</ul>
+</li>
+</ul>
+<h2 id="refer">refer<a class="headerlink" href="#refer" title="Permanent link">&para;</a></h2>
+<p>another ecs github <br />
+<a href="https://github.com/aws-samples/ecs-refarch-cloudformation-windows">https://github.com/aws-samples/ecs-refarch-cloudformation-windows</a></p>
 
 
 
@@ -5223,7 +5348,7 @@ wiat 1 hour to deploy complete</p>
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-06-04T11:11:47+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-06-24T08:02:42+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-24</span>
   </span>
 
     
@@ -5252,7 +5377,7 @@ wiat 1 hour to deploy complete</p>
         data-category="General"
         data-category-id="DIC_kwDOItMQOc4CgKfp"
         data-mapping="pathname"
-        data-strict="0"
+        data-strict="1"
         data-reactions-enabled="1"
         data-emit-metadata="0"
         data-input-position="bottom"
