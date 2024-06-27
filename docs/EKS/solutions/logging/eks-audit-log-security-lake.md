@@ -31,7 +31,7 @@ https://aws.amazon.com/about-aws/whats-new/2024/02/amazon-security-lake-audit-lo
 - no need EKS to enable logging for audit (account A)
 
 ## query from athena account B
-- glue table has been created in db:`amazon_security_lake_glue_db_us_east_2`
+- glue table has been created in db: `amazon_security_lake_glue_db_us_east_2`
 
 ## query from athena in account A
 - account B

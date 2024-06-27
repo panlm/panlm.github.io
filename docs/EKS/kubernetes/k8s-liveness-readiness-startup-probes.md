@@ -84,19 +84,19 @@ spec:
 - ELB / startup / liveness / readiness probe 分别检查不同的 html
 
 ### startup failed
-启动 probe 在 pod 正常启动后失效，不再检查
-除非 liveness 检查失效，container 被重启后，才会再次 check
+- 启动 probe 在 pod 正常启动后失效，不再检查
+- 除非 liveness 检查失效，container 被重启后，才会再次 check
 
 ### liveness failed
-nginx container 重启
-init container 未重启
-ip address 不变
+- nginx container 重启
+- init container 未重启
+- ip address 不变
 
 ### readiness failed
-remove from service / ELB
-nginx container 未重启
-init container 未重启
-ip address 不变
+- remove from service / ELB
+- nginx container 未重启
+- init container 未重启
+- ip address 不变
 
 
 ## 结论
@@ -110,6 +110,12 @@ ip address 不变
         - 服务将被重启
 -  pod readiness gate 功能在 1.29 集群中未表现为加快 pod 注册到 ELB
     - 在 namespace 层面添加标签后，还需要额外配置 `objectSelector` 才能正常抓取到 default namespace 中的 POD
+
+## prestop-hook-
+
+![[attachments/k8s-liveness-readiness-startup-probes/IMG-k8s-liveness-readiness-startup-probes.png]]
+- blog: [[../../../../WebClip/How to rapidly scale your application with ALB on EKS without losing traffic|How to rapidly scale your application with ALB on EKS without losing traffic]]
+- blog: https://aws.amazon.com/ko/blogs/tech/case-study-lotteon-running-on-amazon-eks/
 
 
 ## refer

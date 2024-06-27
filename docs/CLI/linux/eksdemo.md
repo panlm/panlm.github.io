@@ -23,15 +23,28 @@ export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-iden
 eksdemo create cluster ${CLUSTER_NAME} \
     --instance m5.large \
     --nodes 3 \
-    --version 1.27 \
+    --version 1.28 \
     --vpc-cidr 10.10.0.0/16
-
+;
 ```
 
 ## create node group
 ```sh
 eksdemo create ng mng1 \
     -c ekscluster1 -i m5.large -N 3 
+```
+
+
+## fargate-profile-
+```sh
+CLUSTER_NAME=ekscluster1
+export AWS_DEFAULT_REGION=us-west-2
+NAMESPACE=game-2048
+
+eksdemo create fargate-profile fp-game-2048 \
+    -c ${CLUSTER_NAME} 
+    --namespaces ${NAMESPACE}
+
 ```
 
 ## addons-

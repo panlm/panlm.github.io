@@ -9,8 +9,6 @@ tags:
 ---
 
 # cloudwatch-cmd
-
-
 ## log group and log stream
 ### create log group
 - create standard log group
@@ -35,7 +33,6 @@ aws logs create-log-group \
 ```
 
 ### describe log stream
-
 ```sh
 aws logs describe-log-streams \
   --log-group-name /aws/eks/ekscluster1/cluster \
@@ -46,7 +43,6 @@ aws logs describe-log-streams \
 ```
 
 ### delete log stream
-
 ```sh
 aws logs delete-log-stream \
   --log-group-name /aws/eks/ekscluster1/cluster \
@@ -55,7 +51,6 @@ aws logs delete-log-stream \
 ```
 
 ## check log size
-
 **IncomingBytes**
 refer: [Which Log Group is causing a sudden increase in my CloudWatch Logs bill?](https://aws.amazon.com/premiumsupport/knowledge-center/cloudwatch-logs-bill-increase/)
 
@@ -83,18 +78,12 @@ aws cloudwatch get-metric-statistics \
 - [[../../EKS/solutions/logging/export-cloudwatch-log-group-to-s3]]
 
 ## subscription firehose
-
 - [[../../EKS/solutions/logging/stream-k8s-control-panel-logs-to-s3]]
 
 ## log-insights
-
 - [[cloudwatch-logs-insights]]
 
-
-
-
 ## metric
-
 ```
 SELECT AVG(WriteIOPS) FROM SCHEMA("AWS/ES", ClientId,DomainName,NodeId) WHERE DomainName = 'myaos-20221210-130610' GROUP BY NodeId, DomainName
 
@@ -114,7 +103,6 @@ SELECT AVG(WriteIOPS) FROM SCHEMA("AWS/ES", ClientId,DomainName,NodeId) WHERE Do
 
 
 ## add alarm
-
 ```sh
 account_id=2086xxxx7602
 opensearch_name=opensearch-uez6sk9a
@@ -131,7 +119,6 @@ aws cloudwatch put-metric-alarm \
 --threshold 1 \
 --treat-missing-data missing \
 --dimensions Name=ClientId,Value=${account_id} Name=DomainName,Value=${opensearch_name}
-
 
 ```
 

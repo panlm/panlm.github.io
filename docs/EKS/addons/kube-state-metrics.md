@@ -2,15 +2,29 @@
 title: kube-state-metrics
 description: EKS 集群中用于性能监控使用的指标服务
 created: 2023-08-01 08:46:22.190
-last_modified: 2024-03-29
+last_modified: 2024-06-29
 tags:
   - kubernetes
 ---
 
 # kube-state-metrics
-
 - https://github.com/kubernetes/kube-state-metrics
 - included by prometheus operator
+
+## kube-state-metrics vs. cadvisor
+https://aws.amazon.com/blogs/containers/monitoring-amazon-eks-on-aws-fargate-using-prometheus-and-grafana/
+
+To measure a pod’s performance on Fargate, we need metrics like vCPU, memory usage, and network transfers. Prometheus collects these metrics from two sources: cAdvisor and kube-state-metrics.
+### cadvisor
+refer: [[../../../../cadvisor|cadvisor]]
+```
+container_cpu*
+```
+
+### kube-state-metrics
+```
+kube_pod_*
+```
 
 ## kube-state-metrics vs. metrics-server
 https://github.com/kubernetes/kube-state-metrics?tab=readme-ov-file#kube-state-metrics-vs-metrics-server
