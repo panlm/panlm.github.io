@@ -29,18 +29,17 @@ docker exec -it app2 /bin/bash
 ```
 
 ## docker-buildx-
-
-- download binary from [link](https://github.com/docker/buildx/)  
-```
+- download binary from https://github.com/docker/buildx/
+```sh
 mkdir -p ~/.docker/cli-plugins
 mv <buildx> ~/.docker/cli-plugins/docker-buildx
 chmod a+x ~/.docker/cli-plugins/docker-buildx
 ```
 - check qemu emulators
-```
+```sh
 docker buildx ls
-docker run -it --rm --privileged tonistiigi/binfmt --install all
-# docker buildx create --use --platform=linux/arm64,linux/amd64 --name multi-platform-builder
+docker run -t --rm --privileged tonistiigi/binfmt --install all
+docker buildx create --use --platform=linux/arm64,linux/amd64 --name multi-platform-builder
 docker buildx inspect --bootstrap
 ```
 - build multi arch

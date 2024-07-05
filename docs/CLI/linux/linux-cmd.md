@@ -306,7 +306,11 @@ bash
 
 export HISTSIZE=0
 cd ~/Documents/
-rsync -avr --delete ./work-notes stevenpan@10.68.69.100:/Users/stevenpan/Documents/
+rsync -avr --delete \
+    ./work-notes \
+    ./SA-Baseline-50-12 \
+    ./customers \
+    stevenpan@10.68.69.100:/Users/stevenpan/Documents/
 
 ```
 

@@ -1,6 +1,6 @@
 ---
 title: lambda
-description: 
+description: 常用命令
 created: 2022-08-19 10:57:53.314
 last_modified: 2024-02-05
 icon: simple/awslambda
@@ -8,8 +8,8 @@ tags:
   - aws/serverless/lambda
   - aws/cmd
 ---
-# lambda-cmd
 
+# lambda-cmd
 ## create execute role 
 - https://docs.aws.amazon.com/lambda/latest/dg/lambda-intro-execution-role.html#permissions-executionrole-console
 ```sh

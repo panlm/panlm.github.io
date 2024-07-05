@@ -23,9 +23,9 @@ export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-iden
 eksdemo create cluster ${CLUSTER_NAME} \
     --instance m5.large \
     --nodes 3 \
-    --version 1.28 \
+    --version 1.29 \
     --vpc-cidr 10.10.0.0/16
-;
+
 ```
 
 ## create node group
@@ -33,7 +33,6 @@ eksdemo create cluster ${CLUSTER_NAME} \
 eksdemo create ng mng1 \
     -c ekscluster1 -i m5.large -N 3 
 ```
-
 
 ## fargate-profile-
 ```sh
@@ -52,11 +51,9 @@ eksdemo create fargate-profile fp-game-2048 \
 - aws load balancer controller ([[git/git-mkdocs/EKS/addons/aws-load-balancer-controller#install-with-eksdemo-]])
 
 - 2 certificates, one for each domain name in original region
-![[../awscli/acm-cmd#^kresvp]]
-
-refer: [[../awscli/acm-cmd#create-certificate-with-eksdemo-]]
-
-
+??? note "right-click & open-in-new-tab: "
+    ![[../awscli/acm-cmd#^kresvp]]
+refer: [[../awscli/acm-cmd#create-certificate-with-eksdemo-|create-certificate-with-eksdemo]]
 
 ## refer
 - when create broken due to role change in cloud9, add another admin user to eks cluster and try create nodegroup ([[../../EKS/solutions/security/eks-access-api|eks-access-api]])

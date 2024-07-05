@@ -438,12 +438,9 @@ aws ssm get-parameter \
 ```
 
 
-
 ### sample
-
 - create asg & launch template first
     - [[auto-scaling-cmd#launch-template-and-auto-scaling-group-]]
-
 ```sh
 ECS_CLUSTER_NAME=MyCluster
 aws ecs create-cluster \
@@ -462,5 +459,6 @@ aws ecs put-cluster-capacity-providers \
 ```
 
 
-
+### ecsctl
+- [[../../../../ecsctl|ecsctl]]
 
