@@ -11,7 +11,7 @@ tags:
 # ebs-for-eks
 
 ## install
-### install-using-eksdemo-
+### using-eksdemo-
 - if you already have a service account called `ebs-csi-controller-sa`, delete it
 ```sh
 echo ${CLUSTER_NAME}
@@ -26,7 +26,7 @@ echo ${AWS_DEFAULT_REGION}
 eksdemo install storage-ebs-csi -c ${CLUSTER_NAME} --namespace kube-system
 ```
 
-### install
+### manual
 https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/docs/install.md
 
 #### ebs-csi
@@ -83,7 +83,6 @@ for i in ${ROLE_ARNS[@]}; do
 done
 
 ```
-
 
 ## verify
 ```sh

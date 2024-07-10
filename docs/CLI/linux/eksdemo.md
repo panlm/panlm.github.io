@@ -47,8 +47,9 @@ eksdemo create fargate-profile fp-game-2048 \
 ```
 
 ## addons-
-- externaldns ([[../../EKS/addons/externaldns-for-route53#install-with-eksdemo-]])
-- aws load balancer controller ([[git/git-mkdocs/EKS/addons/aws-load-balancer-controller#install-with-eksdemo-]])
+- externaldns ([[../../EKS/addons/externaldns-for-route53#install-with-eksdemo-|externaldns-for-route53]])
+- aws load balancer controller ([[git/git-mkdocs/EKS/addons/aws-load-balancer-controller#install-with-eksdemo-|aws-load-balancer-controller]])
+- metrics-server ([[../../EKS/addons/metrics-server|metrics-server]])
 
 - 2 certificates, one for each domain name in original region
 ??? note "right-click & open-in-new-tab: "

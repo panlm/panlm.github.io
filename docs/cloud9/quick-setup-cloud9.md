@@ -23,7 +23,7 @@ tags:
     - C9 instance owner: role/WSParticipantRole (assumed-role/WSParticipantRole/Participant)
     - AWS managed temporary credentials: <mark style="background: #BBFABBA6;">Enabled</mark>
     - `aws sts get-caller-identity` in cloud9 is owner role
-- 如果 role/panlm 存在 (参考[[../CLI/linux/assume-tool|这里]]创建)，可以指定 `ExampleC9EnvOwner` 为 `3rdParty`  设置 Owner 为 role/panlm
+- 如果 role/panlm 存在 (参考[[../CLI/linux/granted-assume|这里]]创建)，可以指定 `ExampleC9EnvOwner` 为 `3rdParty`  设置 Owner 为 role/panlm
     - C9 instance owner: role/panlm (assumed-role/panlm/granted)
     - AWS managed temporary credentials: <mark style="background: #FF5582A6;">Disabled</mark>
     - `aws sts get-caller-identity` in cloud9 is EC2 instance role
@@ -333,7 +333,7 @@ aws sts get-caller-identity
 ```
 
 ## refer
-- open console from local [[../CLI/linux/assume-tool]] 
+- open console from local [[../CLI/linux/granted-assume]] 
 
 
 

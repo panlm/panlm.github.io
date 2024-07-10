@@ -38,7 +38,7 @@ ecr_login
 ## create-repo-
 
 ```sh
-REPO_NAME=osarch
+REPO_NAME=lambda-promtail
 aws ecr create-repository --repository-name ${REPO_NAME}
 REPO_URI=$(aws ecr describe-repositories --repository-names ${REPO_NAME} --query repositories[0].repositoryUri --output text)
 

@@ -75,7 +75,7 @@ jq '. += { "cpuManagerPolicy":"static"}' /etc/kubernetes/kubelet/kubelet-config.
     - [[../awscli/ecs-cmd#modify-task-definition-]]
     - [[../awscli/apigw-cmd#update-access-log-for-rest-api-]]
     - [[../../cloud9/setup-cloud9-for-eks]]
-    - [[assume-tool]]
+    - [[granted-assume]]
     - [[../awscli/route53-cmd#create-ns-record-]]
 
 ### good sample

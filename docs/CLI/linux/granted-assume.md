@@ -98,9 +98,14 @@ echo ${CREDENTIAL_ENTITY_NAME}
 ```
 
 
-## install
+## install on mac
 - https://docs.commonfate.io/granted/getting-started#installing-the-cli
-- still has issue until 0.20.7
+```sh
+brew tap common-fate/granted
+brew install granted
+```
+
+- ~~still has issue until 0.20.7~~
 ```sh
 VERSION=0.20.3
 curl -OL https://releases.commonfate.io/granted/v${VERSION}/granted_${VERSION}_darwin_x86_64.tar.gz
@@ -115,7 +120,7 @@ ln -s /usr/local/bin/granted /usr/local/bin/assumego
 granted credentials import example
 ```
 
-![[../../git-attachment/assume-tool-png-1.png]]
+![[attachments/granted-assume/IMG-granted-assume.png]]
 
 ### export to aws credentials file
 - This command can be used to return your credentials to the original insecure plaintext format in the AWS credentials file.

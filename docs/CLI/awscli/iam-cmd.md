@@ -81,7 +81,7 @@ EOF
 
 ### create role for account
 
-- [[../linux/assume-tool]]
+- [[../linux/granted-assume]]
 
 ### create service-linked role
 

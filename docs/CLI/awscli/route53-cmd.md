@@ -18,7 +18,7 @@ tags:
 
 ## func-create-ns-record-
 - create host zone in your child account and get NS (previous chapter)
-- [[../linux/assume-tool|assume]] to your parent account to execute this function to add NS record to upstream route53 host zone
+- [[../linux/granted-assume|assume]] to your parent account to execute this function to add NS record to upstream route53 host zone
 - [[../functions/func-create-ns-record.sh|func-create-ns-record]]
 ```sh title="func-create-ns-record" linenums="1"
 --8<-- "docs/CLI/functions/func-create-ns-record.sh"

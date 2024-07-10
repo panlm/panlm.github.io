@@ -10,7 +10,7 @@ tags:
 ---
 # install-prometheus-grafana
 ## prep
-- [[../../addons/ebs-for-eks#install-using-eksdemo-]] 
+- [[../../addons/ebs-for-eks#using-eksdemo-]] 
 
 ## (Prefer) install-prometheus-operator
 

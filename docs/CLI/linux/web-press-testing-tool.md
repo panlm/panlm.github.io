@@ -12,7 +12,7 @@ tags:
 ## ab
 ```sh
 sudo yum install httpd-tools
-
+ab -kc 150 -t 600 http://k8s-loki-lokiloki-6ece7e0eb3-1692301772.us-east-1.elb.amazonaws.com
 ```
 
 ## hey

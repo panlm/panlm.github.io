@@ -13,7 +13,7 @@ number headings: first-level 2, max 3, 1.1, auto
 (["status":"myblog"] OR ["status":"awsblog"])
 - [$frontmatter:title]($filename): $frontmatter:description
 ```
-- [assume](assume-tool): assume 工具，可以以另一个账号角色，快速打开 web console，或者执行命令
+- [assume](CLI/linux/granted-assume.md): assume 工具，可以以另一个账号角色，快速打开 web console，或者执行命令
 - [Cross Region Reverse Proxy with NLB and Cloudfront](others/network/cross-region-reverse-proxy-with-nlb-cloudfront.md): 跨区域的 Layer 4 反向代理，并使用 nlb + cloudfront，考察证书使用需求
 - [Enable scan on push in ECR and send notification to SNS](EKS/ecr/ecr-scan-on-push-notification-sns.md): 启用 ECR 的 Scan on push 之后，自动将扫描结果中 CRITICAL 的信息发送到目标 SNS 告警
 - [eks-audit-log-security-lake](eks-audit-log-security-lake): 
