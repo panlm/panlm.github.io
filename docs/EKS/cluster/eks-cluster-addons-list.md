@@ -20,7 +20,7 @@ tags:
     - [[../addons/externaldns-for-route53|externaldns]] 
     - [[../addons/cert-manager]] 
     - [[../addons/ebs-for-eks|ebs-csi-driver]] 
-    - [[../solutions/monitor/install-prometheus-grafana|prometheus operator]] / grafana operator
+    - [[../solutions/monitor/install-prometheus-operator|prometheus operator]] / grafana operator
     - [[splunk-otel-collector]] 
     - [[../addons/nginx-ingress-controller]] 
     - [[../addons/metrics-server]] 

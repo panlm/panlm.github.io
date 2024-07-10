@@ -2,7 +2,7 @@
 title: web-press-testing-tool
 description: 
 created: 2022-10-01 08:27:42.926
-last_modified: 2024-04-04
+last_modified: 2024-07-04
 tags:
   - cmd
   - linux
@@ -12,7 +12,11 @@ tags:
 ## ab
 ```sh
 sudo yum install httpd-tools
+
 ab -kc 150 -t 600 http://k8s-loki-lokiloki-6ece7e0eb3-1692301772.us-east-1.elb.amazonaws.com
+
+while true ; do ab -kc 250 -t 3600 -n 1000000 http://k8s-loki-lokigate-42e5f864af-1843259072.us-east-1.elb.amazonaws.com/ ; done
+
 ```
 
 ## hey

@@ -16,7 +16,9 @@ tags:
 ```sh
 echo ${CLUSTER_NAME}
 eksctl delete iamserviceaccount -c ${CLUSTER_NAME} \
---name ebs-csi-controller-sa --namespace kube-system
+    --name ebs-csi-controller-sa --namespace kube-system
+eksctl delete iamserviceaccount -c ${CLUSTER_NAME} \
+    --name ebs-csi-node-sa --namespace kube-system
 ```
 - install ebs plugin
 ```sh

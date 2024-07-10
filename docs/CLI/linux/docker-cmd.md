@@ -2,16 +2,14 @@
 title: docker
 description: 常用命令
 created: 2022-03-23 13:58:01.257
-last_modified: 2024-04-23
+last_modified: 2024-07-23
 tags:
   - docker
   - linux
   - cmd
 ---
 # docker cmd
-
 ## docker build
-
 ```
 docker build --tag panlm/ntnx:app2 .
 docker run -d --name app2 -p 5000:5000 app2
@@ -50,10 +48,10 @@ docker buildx build \
 --push .
 ```
 - refer: [[../../../../WebClip/How to quickly setup an experimental environment to run containers on x86 and AWS Graviton2 based Amazon EC2 instances]]
+- refer: [[../awscli/ecr-cmd#multi-architecture-image-|multi-architecture-image]]
 
 ## docker image
 ### clean
-
 ```
 docker image prune -a
 
@@ -61,7 +59,6 @@ docker image prune -a
 
 ### samples
 #### flask app
-
 - python_app.py
 ```python
 #!/usr/bin/env python3
@@ -101,7 +98,6 @@ docker run --rm -d -p 8080:5000 --name osarch ${REPO_URI}:latest
 ```
 
 #### build-colorapp-
-
 - v1
 ```sh
 export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document |jq -r '.region')
@@ -135,7 +131,6 @@ docker push ${ECR_IMAGE_NAME}:v2
 - refer: https://github.com/sanjeevrg89/samplecolorapp
 
 #### ubuntu-based
-
 ```
 FROM python:2.7
 #RUN ["apt-get", "update"]
@@ -149,7 +144,6 @@ CMD python ./app.py
 ```
 
 #### centos-based
-
 ```
 FROM centos:7
 RUN ["yum", "install", "-y", "epel-release", "gcc", "python-devel", "python2-pip"]
@@ -166,22 +160,18 @@ CMD python ./app.py
 
 
 ## docker run 
-
 - [[docker-run]]
-
 ```sh
 docker run --restart=unless-stopped redis
 
 ```
 
 ## docker push
-
 - https://docs.aws.amazon.com/AmazonECR/latest/userguide/docker-push-ecr-image.html
 
 
 ## docker environment variable
-
 https://phoenixnap.com/kb/docker-environment-variables
 
-ENV SPARK_VERSION=3.3.3
+`ENV SPARK_VERSION=3.3.3`
 

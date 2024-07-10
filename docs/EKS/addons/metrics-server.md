@@ -22,7 +22,6 @@ refer: [[kube-state-metrics]]
 ## install
 ### from helm
 - https://artifacthub.io/packages/helm/metrics-server/metrics-server
-
 ```sh
 helm repo add metrics-server https://kubernetes-sigs.github.io/metrics-server/
 helm upgrade --install metrics-server metrics-server/metrics-server -n kube-system
@@ -30,8 +29,8 @@ helm upgrade --install metrics-server metrics-server/metrics-server -n kube-syst
 ```
 
 ### from yaml
+- support 1.30+
 - https://docs.aws.amazon.com/zh_cn/eks/latest/userguide/metrics-server.html
-
 ```sh
 kubectl apply -f https://github.com/kubernetes-sigs/metrics-server/releases/latest/download/components.yaml
 

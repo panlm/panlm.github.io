@@ -16,10 +16,20 @@ Loki is a backend store for long-term log retention
 ## walkthrough
 ### prerequisites
 - addons needed 
-    - [[../../addons/ebs-for-eks|ebs-for-eks]]
-    - [[../../addons/aws-load-balancer-controller|aws-load-balancer-controller]]
-    - [[../../addons/metrics-server|metrics-server]]
-- install minio
+    - [[../../addons/ebs-for-eks|ebs-for-eks]] 
+    - [[../../addons/aws-load-balancer-controller|aws-load-balancer-controller]] 
+    - [[../../addons/metrics-server|metrics-server]] 
+    - [[../monitor/install-prometheus-operator|install-prometheus-operator]] 
+
+- this lab will ingest ELB access log for performance testing (see [[#tools-]])
+```sh
+ELB_LOG_BUCKET=elb-access-log-$RANDOM
+LOKI_BUCKET=loki-bucket-$RANDOM
+aws s3 mb s3://${ELB_LOG_BUCKET}
+aws s3 mb s3://${LOKI_BUCKET}
+```
+
+- add helm repo
 ```sh
 helm repo add grafana https://grafana.github.io/helm-charts
 
@@ -39,48 +49,108 @@ helm repo add grafana https://grafana.github.io/helm-charts
 #### simple-scalable
 - create sa for loki ([[git/git-mkdocs/CLI/linux/eksctl#func-create-iamserviceaccount-]])
 ```sh
-CLUSTER_NAME=ekscluster1
-export AWS_DEFAULT_REGION=us-east-1
+CLUSTER_NAME=ekscluster2
+export AWS_DEFAULT_REGION=us-west-2
 NAMESPACE=loki
 LOKI_SA_NAME=role-loki-sa
-LOKI_BUCKET_NAME=store-loki-eks0708
 create-iamserviceaccount -s ${LOKI_SA_NAME} -c ${CLUSTER_NAME} -n ${NAMESPACE} -r 0
 
 ```
 - values yaml file for install
 ```sh
 echo ${AWS_DEFAULT_REGION}
-envsubst > loki-1.yaml <<-EOF
-loki:
-  auth_enabled: false
-  storage:
-    bucketNames:
-      chunks: ${LOKI_BUCKET_NAME}
-      ruler: ${LOKI_BUCKET_NAME}
-      admin: ${LOKI_BUCKET_NAME}
-    type: s3
-    s3:
-      region: ${AWS_DEFAULT_REGION}
-      insecure: false
-      s3ForcePathStyle: false
+echo ${ELB_LOG_BUCKET}
+echo ${LOKI_BUCKET}
+echo ${LOKI_SA_NAME}
+
+# values based on grafana/loki chat, not grafana/loki-simple-scalable chat
+envsubst > loki-simple.yaml <<-EOF
+deploymentMode: SimpleScalable
+
 serviceAccount:
   create: false
   name: ${LOKI_SA_NAME}
+
+loki:
+  auth_enabled: false
+  useTestSchema: true
+  testSchemaConfig:
+    configs:
+      - from: 2024-04-01
+        store: tsdb
+        object_store: s3
+        schema: v13
+        index:
+          prefix: index_
+          period: 24h
+  storage:
+    bucketNames:
+      chunks: '${LOKI_BUCKET}'	
+      ruler: '${LOKI_BUCKET}'
+      admin: '${LOKI_BUCKET}'
+    type: s3
+    s3:
+      region: '${AWS_DEFAULT_REGION}'
+      insecure: false
+      s3ForcePathStyle: false
+
+  storageConfig:
+    # boltdb_shipper:
+    #   shared_store: filesystem
+    #   active_index_directory: /var/loki/index
+    #   cache_location: /var/loki/cache
+    #   cache_ttl: 168h
+    tsdb_shipper:
+      active_index_directory: /loki/index
+      cache_location: /loki/index_cache
+    aws:
+      s3: s3://${AWS_DEFAULT_REGION}/${LOKI_BUCKET}
+
+  commonConfig:
+    path_prefix: /var/loki
+    replication_factor: 1
+  limits_config:
+    ingestion_rate_mb: 20
+    ingestion_burst_size_mb: 30
+  compactor:
+    apply_retention_interval: 1h
+    compaction_interval: 5m
+    retention_delete_worker_count: 500
+    retention_enabled: true
+    shared_store: s3
+
 chunksCache:
   enabled: false
 write:
   replicas: 3
 read:
   replicas: 2
-gateway: 
-  enabled: true
-  replicas: 2
 backend:
   replicas: 2
+gateway:
+  replicas: 2
+  # autoscaling:
+  #   enabled: true
+  #   minReplicas: 1
+  #   maxReplicas: 3
+  #   targetCPUUtilizationPercentage: 60
+  #   targetMemoryUtilizationPercentage: null
+  ingress:
+    enabled: true
+    ingressClassName: 'alb'
+    annotations: 
+      alb.ingress.kubernetes.io/scheme: internet-facing
+      alb.ingress.kubernetes.io/load-balancer-attributes: access_logs.s3.enabled=true,access_logs.s3.bucket=${ELB_LOG_BUCKET},access_logs.s3.prefix=
+    hosts:
+      - host: '*.${AWS_DEFAULT_REGION}.elb.amazonaws.com'
+        paths:
+          - path: /
+            pathType: Prefix
+  basicAuth:
+    enabled: false
 EOF
 
-helm upgrade -i -f loki-1.yaml loki grafana/loki -n ${NAMESPACE} \
-    --set loki.useTestSchema=true
+helm upgrade -i -f loki-simple.yaml loki grafana/loki -n ${NAMESPACE}
 
 ```
 
@@ -104,123 +174,15 @@ Default Installed components:
 
 ```
 
-### promtail
-- alternatives: fluent-bit / fluentd 
-- customized for promtail, change client url if you deploy loki components with distributed mode
+- use customized values to install
 ```sh
-cat >promtail.values <<-EOF
-config:
-  clients:
-    - url: http://loki-loki-distributed-gateway/loki/api/v1/push
-EOF
-helm upgrade -i promtail -f promtail.values grafana/promtail -n loki
+echo ${AWS_DEFAULT_REGION}
+echo ${ELB_LOG_BUCKET}
+echo ${LOKI_BUCKET}
+echo ${LOKI_SA_NAME}
 
-```
-
-### dashboard-
-- 18042 v2 loki dashboard
-- 12019 - quick search - good for try
-    - change to `{namespace="$namespace", pod=~"$pod"} |~ "$search"` in Logs Panel definition
-- loki-stack will have some predefined dashboard - https://artifacthub.io/packages/helm/grafana/loki-stack 
-
-
-## 3 Modes
-### Monolithic
-- NO IG / QS in this mode
-![[attachments/grafana-loki/IMG-grafana-loki-1.png|500]]
-
-### SimpleScalable Mode
-- easy to use
-![[attachments/grafana-loki/IMG-grafana-loki-2.png|500]]
-
-- reference values based on <mark style="background: #ADCCFFA6;">grafana/loki</mark> chat, not grafana/loki-simple-scalable chat
-```yaml
-deploymentMode: SimpleScalable
-
-serviceAccount:
-  create: false
-  name: role-loki-sa
-
-loki:
-  auth_enabled: false
-  useTestSchema: true
-  testSchemaConfig:
-    configs:
-      - from: 2024-04-01
-        store: tsdb
-        object_store: s3
-        schema: v13
-        index:
-          prefix: index_
-          period: 24h
-  storage:
-    bucketNames:
-      chunks: 'store-loki-eks0708'	
-      ruler: 'store-loki-eks0708'
-      admin: 'store-loki-eks0708'
-    type: s3
-    s3:
-      region: 'us-east-1'
-      insecure: false
-      s3ForcePathStyle: false
-
-  storageConfig:
-    # boltdb_shipper:
-    #   shared_store: filesystem
-    #   active_index_directory: /var/loki/index
-    #   cache_location: /var/loki/cache
-    #   cache_ttl: 168h
-    tsdb_shipper:
-      active_index_directory: /loki/index
-      cache_location: /loki/index_cache
-    aws:
-      s3: s3://us-east-1/store-loki-eks0708
-
-  commonConfig:
-    path_prefix: /var/loki
-    replication_factor: 1
-
-chunksCache:
-  enabled: false
-write:
-  replicas: 3
-read:
-  replicas: 2
-backend:
-  replicas: 2
-gateway:
-  replicas: 2
-  # autoscaling:
-  #   enabled: true
-  #   minReplicas: 1
-  #   maxReplicas: 3
-  #   targetCPUUtilizationPercentage: 60
-  #   targetMemoryUtilizationPercentage: null
-  ingress:
-    enabled: true
-    ingressClassName: 'alb'
-    annotations: 
-      alb.ingress.kubernetes.io/scheme: internet-facing
-      alb.ingress.kubernetes.io/load-balancer-attributes: access_logs.s3.enabled=true,access_logs.s3.bucket=lb-access-log-1350,access_logs.s3.prefix=
-    hosts:
-      - host: '*.us-east-1.elb.amazonaws.com'
-        paths:
-          - path: /
-            pathType: Prefix
-  basicAuth:
-    enabled: false
-
-```
-
-### Microservices Mode
-- little hard to config
-![[attachments/grafana-loki/IMG-grafana-loki.png|500]]
-
-- ingester: sts / per node affinity
-- querier: sts / per node affinity
-
-- reference values based on <mark style="background: #ADCCFFA6;">grafana/loki</mark> chat, not grafana/loki-distributed chat
-```yaml
+# values based on grafana/loki chat, not grafana/loki-distributed chat
+envsubst > loki-distributed.yaml <<-EOF
 deploymentMode: Distributed
 
 # global:
@@ -230,7 +192,7 @@ deploymentMode: Distributed
 
 serviceAccount:
   create: false
-  name: role-loki-sa
+  name: ${LOKI_SA_NAME}
 
 loki:
   auth_enabled: false
@@ -251,12 +213,12 @@ loki:
         server_address: '{{ include "loki.indexGatewayAddress" . }}'
   storage:
     bucketNames:
-      chunks: 'store-loki-eks0708'	
-      ruler: 'store-loki-eks0708'
-      admin: 'store-loki-eks0708'
+      chunks: '${LOKI_BUCKET}'	
+      ruler: '${LOKI_BUCKET}'
+      admin: '${LOKI_BUCKET}'
     type: s3
     s3:
-      region: 'us-east-1'
+      region: '${AWS_DEFAULT_REGION}'
       insecure: false
       s3ForcePathStyle: false
 
@@ -270,11 +232,20 @@ loki:
       active_index_directory: /loki/index
       cache_location: /loki/index_cache
     aws:
-      s3: s3://us-east-1/store-loki-eks0708
+      s3: s3://${AWS_DEFAULT_REGION}/${LOKI_BUCKET}
 
   commonConfig:
     path_prefix: /var/loki
     replication_factor: 1
+  limits_config:
+    ingestion_rate_mb: 20
+    ingestion_burst_size_mb: 30
+  compactor:
+    apply_retention_interval: 1h
+    compaction_interval: 5m
+    retention_delete_worker_count: 500
+    retention_enabled: true
+    shared_store: s3
 
 
 chunksCache:
@@ -291,7 +262,7 @@ backend:
 
 gateway:
   enabled: true
-  replicas: 1
+  replicas: 2
   # autoscaling:
   #   enabled: true
   #   minReplicas: 1
@@ -303,9 +274,9 @@ gateway:
     ingressClassName: 'alb'
     annotations: 
       alb.ingress.kubernetes.io/scheme: internet-facing
-      alb.ingress.kubernetes.io/load-balancer-attributes: access_logs.s3.enabled=true,access_logs.s3.bucket=lb-access-log-1350,access_logs.s3.prefix=
+      alb.ingress.kubernetes.io/load-balancer-attributes: access_logs.s3.enabled=true,access_logs.s3.bucket=${ELB_LOG_BUCKET},access_logs.s3.prefix=
     hosts:
-      - host: '*.us-east-1.elb.amazonaws.com'
+      - host: '*.${AWS_DEFAULT_REGION}.elb.amazonaws.com'
         paths:
           - path: /
             pathType: Prefix
@@ -327,22 +298,14 @@ ingester:
     claims:
       - name: data
         size: 50Gi
-        #   -- Storage class to be used.
-        #   If defined, storageClassName: <storageClass>.
-        #   If set to "-", storageClassName: "", which disables dynamic provisioning.
-        #   If empty or set to null, no storageClassName spec is
-        #   set, choosing the default provisioner (gp2 on AWS, standard on GKE, AWS, and OpenStack).
-        storageClass: gp2
-      # - name: wal
-      #   size: 150Gi
-    # -- Enable StatefulSetAutoDeletePVC feature
-    enableStatefulSetAutoDeletePVC: true
-    whenDeleted: Delete
+    enableStatefulSetAutoDeletePVC: true # default false
+    whenDeleted: Delete # default Retain
     whenScaled: Retain
 
 distributor:
   enabled: true
   replicas: 2
+  maxUnavailable: 1
 
 querier:
   enabled: true
@@ -368,6 +331,63 @@ compactor:
 ruler:
   enabled: true
   replicas: 2
+  maxUnavailable: 1
+
+EOF
+
+helm upgrade -i -f loki-distributed.yaml loki grafana/loki -n ${NAMESPACE} --create-namespace
+
+```
+
+### promtail
+- alternatives: fluent-bit / fluentd 
+- customized for promtail, change client url if you deploy loki components with distributed mode
+```sh
+cat >promtail.values <<-EOF
+config:
+  clients:
+    - url: http://loki-loki-distributed-gateway/loki/api/v1/push
+EOF
+helm upgrade -i promtail -f promtail.values grafana/promtail -n loki
+
+```
+
+### dashboard-
+- 18042 v2 loki dashboard
+- 12019 - quick search - good for try
+    - change to `{namespace="$namespace", pod=~"$pod"} |~ "$search"` in Logs Panel definition
+- loki-stack will have some predefined dashboard - https://artifacthub.io/packages/helm/grafana/loki-stack 
+
+### tools-
+- using terraform to deploy promtail in lambda ([loki github](https://github.com/grafana/loki/tree/main/tools/lambda-promtail))
+![[attachments/grafana-loki/IMG-grafana-loki-3.png]]
+
+- change lambda execution time to 15min
+- enable access log in ELB (refer: [[aws-elb-elastic-load-balancer#access-log-]])
+
+## 3 Modes
+### Monolithic
+- NO IG / QS in this mode
+![[attachments/grafana-loki/IMG-grafana-loki-1.png|500]]
+
+### SimpleScalable Mode
+- easy to use
+![[attachments/grafana-loki/IMG-grafana-loki-2.png|500]]
+
+- reference 
+```yaml
+
+```
+
+### Microservices Mode
+- little hard to config
+![[attachments/grafana-loki/IMG-grafana-loki.png|500]]
+
+- ingester: sts / per node affinity
+- querier: sts / per node affinity
+
+- reference values based on <mark style="background: #ADCCFFA6;">grafana/loki</mark> chat, not grafana/loki-distributed chat
+```yaml
 
 ```
 

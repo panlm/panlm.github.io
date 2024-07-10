@@ -465,7 +465,7 @@ brew install sipcalc
 
 
 ## others
-- [[web-press-testing-tool]]
+- [[web-performance-testing-tool]]
 - [[httpbin.org]]
 - [[badssl.com]]
 

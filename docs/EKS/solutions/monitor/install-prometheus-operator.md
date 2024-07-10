@@ -8,7 +8,7 @@ tags:
   - prometheus
   - aws/container/eks
 ---
-# install-prometheus-grafana
+# install-prometheus-operator
 ## prep
 - [[../../addons/ebs-for-eks#using-eksdemo-]] 
 
@@ -16,10 +16,10 @@ tags:
 
 - https://blog.devgenius.io/step-by-step-guide-to-setting-up-prometheus-operator-in-your-kubernetes-cluster-7167a8228877
 
-![install-prometheus-grafana-png-1.png](install-prometheus-grafana-png-1.png)
+![IMG-install-prometheus-operator.png](attachments/install-prometheus-operator/IMG-install-prometheus-operator.png)
 
 ```sh
-DEPLOY_NAME=prom-0509
+DEPLOY_NAME=prom-0709
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
 
@@ -150,7 +150,7 @@ External labels are only attached when data is communicated to the outside so yo
 ### install with thanos
 - refer: [[TC-prometheus-ha-architect-with-thanos]]
 
-![[../../../git-attachment/install-prometheus-grafana-png-2.png]]
+![[attachments/install-prometheus-operator/IMG-install-prometheus-operator-1.png]]
 
 ## (DO NOT USE) install prometheus from github
 https://github.com/prometheus-operator/kube-prometheus

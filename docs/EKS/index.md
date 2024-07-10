@@ -51,7 +51,7 @@ number headings: first-level 2, max 3, 1.1, auto
 - [flux](flux-lab): gitops 工具
 - [Using Loki for Logging](grafana-loki): 使用 loki 收集日志
 - [Install Grafana on Beanstalk](install-grafana-on-beanstalk): 在 EC2 / beanstalk / EKS 上安装 grafana 
-- [install-prometheus-grafana-on-eks](install-prometheus-grafana): 安装 grafana 和 prometheus
+- [install-prometheus-grafana-on-eks](solutions/monitor/install-prometheus-operator.md): 安装 grafana 和 prometheus
 - [Stream EKS Control Panel Logs to S3](stream-k8s-control-panel-logs-to-s3): 目前 EKS 控制平面日志只支持发送到 cloudwatch，且在同一个 log group 中有5种类型6种前缀的 log stream 的日志，不利于统一查询。且只有 audit 日志是 json 格式其他均是单行日志，且字段各不相同。本解决方案提供思路统一保存日志供后续分析处理
 - [IRSA 中的 Token 剖析](TC-eks-irsa-token-deep-dive-lab): 本文档总结了将 AWS IAM 角色授予 AWS EKS 集群的服务账户的过程
 - [Building Prometheus HA Architect with Thanos](TC-prometheus-ha-architect-with-thanos): 用 Thanos 解决 Prometheus 在多集群大规模环境下的高可用性、可扩展性限制
