@@ -94,17 +94,17 @@ loki:
       insecure: false
       s3ForcePathStyle: false
 
-  storageConfig:
-    # boltdb_shipper:
-    #   shared_store: filesystem
-    #   active_index_directory: /var/loki/index
-    #   cache_location: /var/loki/cache
-    #   cache_ttl: 168h
-    tsdb_shipper:
-      active_index_directory: /loki/index
-      cache_location: /loki/index_cache
-    aws:
-      s3: s3://${AWS_DEFAULT_REGION}/${LOKI_BUCKET}
+  # storageConfig:
+  #   # boltdb_shipper:
+  #   #   shared_store: filesystem
+  #   #   active_index_directory: /var/loki/index
+  #   #   cache_location: /var/loki/cache
+  #   #   cache_ttl: 168h
+  #   tsdb_shipper:
+  #     active_index_directory: /loki/index
+  #     cache_location: /loki/index_cache
+  #   aws:
+  #     s3: s3://us-west-2/loki-bucket-16127
 
   commonConfig:
     path_prefix: /var/loki
@@ -156,7 +156,7 @@ helm upgrade -i -f loki-simple.yaml loki grafana/loki -n ${NAMESPACE}
 
 #### loki-stack
 - 新集群没有安装 prometheus 或者 grafana
-- 直接安装 `grafana/loki-stack`，并且enable 安装 grafana 和prometheus，默认 loki 的 datasource 就可以用，手工添加 data source 保存后验证失败，但是可以查询到数据
+- 直接安装 `grafana/loki-stack`，并且 enable 安装 grafana 和prometheus，默认 loki 的 datasource 就可以用，手工添加 data source 保存后验证失败，但是可以查询到数据
 
 #### loki-distributed
 - using default values of loki-distributed chat
@@ -222,17 +222,17 @@ loki:
       insecure: false
       s3ForcePathStyle: false
 
-  storageConfig:
-    # boltdb_shipper:
-    #   shared_store: filesystem
-    #   active_index_directory: /var/loki/index
-    #   cache_location: /var/loki/cache
-    #   cache_ttl: 168h
-    tsdb_shipper:
-      active_index_directory: /loki/index
-      cache_location: /loki/index_cache
-    aws:
-      s3: s3://${AWS_DEFAULT_REGION}/${LOKI_BUCKET}
+  # storageConfig:
+  #   # boltdb_shipper:
+  #   #   shared_store: filesystem
+  #   #   active_index_directory: /var/loki/index
+  #   #   cache_location: /var/loki/cache
+  #   #   cache_ttl: 168h
+  #   tsdb_shipper:
+  #     active_index_directory: /loki/index
+  #     cache_location: /loki/index_cache
+  #   aws:
+  #     s3: s3://us-west-2/loki-bucket-16127
 
   commonConfig:
     path_prefix: /var/loki
@@ -240,13 +240,6 @@ loki:
   limits_config:
     ingestion_rate_mb: 20
     ingestion_burst_size_mb: 30
-  compactor:
-    apply_retention_interval: 1h
-    compaction_interval: 5m
-    retention_delete_worker_count: 500
-    retention_enabled: true
-    shared_store: s3
-
 
 chunksCache:
   enabled: false
@@ -328,6 +321,13 @@ indexGateway:
 compactor:
   enabled: true
   replicas: 2
+  Config:
+    apply_retention_interval: 1h
+    compaction_interval: 5m
+    retention_delete_worker_count: 500
+    retention_enabled: true
+    shared_store: s3
+    working_directory: /loki/compactor
 ruler:
   enabled: true
   replicas: 2
@@ -335,7 +335,7 @@ ruler:
 
 EOF
 
-helm upgrade -i -f loki-distributed.yaml loki grafana/loki -n ${NAMESPACE} --create-namespace
+helm upgrade -i -f loki-distributed.yaml loki grafana/loki -n ${NAMESPACE} 
 
 ```
 
@@ -346,7 +346,7 @@ helm upgrade -i -f loki-distributed.yaml loki grafana/loki -n ${NAMESPACE} --cre
 cat >promtail.values <<-EOF
 config:
   clients:
-    - url: http://loki-loki-distributed-gateway/loki/api/v1/push
+    - url: http://loki-gateway/loki/api/v1/push
 EOF
 helm upgrade -i promtail -f promtail.values grafana/promtail -n loki
 
@@ -374,11 +374,6 @@ helm upgrade -i promtail -f promtail.values grafana/promtail -n loki
 - easy to use
 ![[attachments/grafana-loki/IMG-grafana-loki-2.png|500]]
 
-- reference 
-```yaml
-
-```
-
 ### Microservices Mode
 - little hard to config
 ![[attachments/grafana-loki/IMG-grafana-loki.png|500]]
@@ -386,15 +381,11 @@ helm upgrade -i promtail -f promtail.values grafana/promtail -n loki
 - ingester: sts / per node affinity
 - querier: sts / per node affinity
 
-- reference values based on <mark style="background: #ADCCFFA6;">grafana/loki</mark> chat, not grafana/loki-distributed chat
-```yaml
-
-```
-
 ## refer
 - https://cloud.tencent.com/developer/article/2307121
 - https://grafana.com/docs/loki/latest/get-started/components/
 - https://grafana.com/docs/loki/latest/setup/install/helm/install-microservices/
+- https://github.com/grafana/loki/issues/9131
 
 ## sample
 ```yaml 
