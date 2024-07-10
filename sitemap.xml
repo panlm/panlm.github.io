@@ -226,7 +226,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://panlm.github.io/CLI/linux/web-press-testing-tool/</loc>
+         <loc>https://panlm.github.io/CLI/linux/web-performance-testing-tool/</loc>
          <lastmod>2024-07-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -342,6 +342,11 @@
     </url>
     <url>
          <loc>https://panlm.github.io/EKS/addons/pluto/</loc>
+         <lastmod>2024-07-10</lastmod>
+         <changefreq>daily</changefreq>
+    </url>
+    <url>
+         <loc>https://panlm.github.io/EKS/addons/prometheus-adapter/</loc>
          <lastmod>2024-07-10</lastmod>
          <changefreq>daily</changefreq>
     </url>
@@ -491,7 +496,7 @@
          <changefreq>daily</changefreq>
     </url>
     <url>
-         <loc>https://panlm.github.io/EKS/solutions/monitor/install-prometheus-grafana/</loc>
+         <loc>https://panlm.github.io/EKS/solutions/monitor/install-prometheus-operator/</loc>
          <lastmod>2024-07-10</lastmod>
          <changefreq>daily</changefreq>
     </url>

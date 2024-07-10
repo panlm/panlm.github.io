@@ -970,6 +970,8 @@
       
         
       
+        
+      
     
     
       
@@ -1412,6 +1414,27 @@
   
   <span class="md-ellipsis">
     pluto
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/addons/prometheus-adapter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    prometheus-adapter
   </span>
   
 
@@ -2115,7 +2138,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../../EKS/solutions/monitor/install-prometheus-grafana/" class="md-nav__link">
+      <a href="../../../EKS/solutions/monitor/install-prometheus-operator/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4277,7 +4300,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../linux/web-press-testing-tool/" class="md-nav__link">
+      <a href="../../linux/web-performance-testing-tool/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
@@ -4761,9 +4784,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#multi-architecture-image" class="md-nav__link">
+  <a href="#multi-architecture-image-" class="md-nav__link">
     <span class="md-ellipsis">
-      multi architecture image
+      multi-architecture-image-
     </span>
   </a>
   
@@ -5352,9 +5375,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#multi-architecture-image" class="md-nav__link">
+  <a href="#multi-architecture-image-" class="md-nav__link">
     <span class="md-ellipsis">
-      multi architecture image
+      multi-architecture-image-
     </span>
   </a>
   
@@ -5431,24 +5454,34 @@
 <a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>docker<span class="w"> </span>tag<span class="w"> </span>nginx:latest<span class="w"> </span><span class="si">${</span><span class="nv">ECR_URL</span><span class="si">}</span>/nginx:latest
 </code></pre></div>
-<h2 id="multi-architecture-image">multi architecture image<a class="headerlink" href="#multi-architecture-image" title="Permanent link">&para;</a></h2>
+<h2 id="multi-architecture-image-">multi-architecture-image-<a class="headerlink" href="#multi-architecture-image-" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span>us-west-2
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nv">ACCOUNT_ID</span><span class="o">=</span><span class="m">123456789012</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nv">REPO_NAME</span><span class="o">=</span>brconnector
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
 <a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>aws<span class="w"> </span>ecr<span class="w"> </span>get-login-password<span class="w"> </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>docker<span class="w"> </span>login<span class="w"> </span>--username<span class="w"> </span>AWS<span class="w"> </span>--password-stdin<span class="w"> </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>docker<span class="w"> </span>pull<span class="w"> </span>--platform<span class="o">=</span>linux/arm64<span class="w"> </span>cloudbeer/sample-connector-for-bedrock-lambda
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>docker<span class="w"> </span>tag<span class="w"> </span>cloudbeer/sample-connector-for-bedrock-lambda<span class="w"> </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>:arm64
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>docker<span class="w"> </span>push<span class="w"> </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>:arm64
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>docker<span class="w"> </span>pull<span class="w"> </span>--platform<span class="o">=</span>linux/amd64<span class="w"> </span>cloudbeer/sample-connector-for-bedrock-lambda
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a>docker<span class="w"> </span>tag<span class="w"> </span>cloudbeer/sample-connector-for-bedrock-lambda<span class="w"> </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>:amd64
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>docker<span class="w"> </span>push<span class="w"> </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>:amd64
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="k">for</span><span class="w"> </span>i<span class="w"> </span><span class="k">in</span><span class="w"> </span>arm64<span class="w"> </span>amd64<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">    </span>docker<span class="w"> </span>pull<span class="w"> </span>--platform<span class="o">=</span>linux/<span class="si">${</span><span class="nv">i</span><span class="si">}</span><span class="w"> </span>cloudbeer/sample-connector-for-bedrock-lambda
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">    </span>docker<span class="w"> </span>tag<span class="w"> </span>cloudbeer/sample-connector-for-bedrock-lambda<span class="w"> </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>:<span class="si">${</span><span class="nv">i</span><span class="si">}</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">    </span>docker<span class="w"> </span>push<span class="w"> </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>:<span class="si">${</span><span class="nv">i</span><span class="si">}</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="k">done</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
 <a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>docker<span class="w"> </span>manifest<span class="w"> </span>create<span class="w"> </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>:latest<span class="w"> </span>--amend<span class="w"> </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>:arm64<span class="w"> </span>--amend<span class="w"> </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>:amd64
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>docker<span class="w"> </span>manifest<span class="w"> </span>annotate<span class="w"> </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>:latest<span class="w"> </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>:arm64<span class="w"> </span>--os<span class="w"> </span>linux<span class="w"> </span>--arch<span class="w"> </span>arm64
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>docker<span class="w"> </span>manifest<span class="w"> </span>annotate<span class="w"> </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>:latest<span class="w"> </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>:amd64<span class="w"> </span>--os<span class="w"> </span>linux<span class="w"> </span>--arch<span class="w"> </span>amd64
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a>docker<span class="w"> </span>manifest<span class="w"> </span>push<span class="w"> </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>:latest
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>docker<span class="w"> </span>manifest<span class="w"> </span>create<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">    </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>:latest<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">    </span>--amend<span class="w"> </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>:arm64<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">    </span>--amend<span class="w"> </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>:amd64
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a>docker<span class="w"> </span>manifest<span class="w"> </span>annotate<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">    </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>:latest<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">    </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>:arm64<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">    </span>--os<span class="w"> </span>linux<span class="w"> </span>--arch<span class="w"> </span>arm64
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a>docker<span class="w"> </span>manifest<span class="w"> </span>annotate<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">    </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>:latest<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">    </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>:amd64<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">    </span>--os<span class="w"> </span>linux<span class="w"> </span>--arch<span class="w"> </span>amd64
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>docker<span class="w"> </span>manifest<span class="w"> </span>push<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">    </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">REPO_NAME</span><span class="si">}</span>:latest
 </code></pre></div>
 
 
@@ -5472,7 +5505,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-07-10T08:23:20+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-07-10T12:08:00+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-10</span>
   </span>
 
     
