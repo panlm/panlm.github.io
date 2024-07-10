@@ -1176,22 +1176,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#install-using-eksdemo-" class="md-nav__link">
+  <a href="#using-eksdemo-" class="md-nav__link">
     <span class="md-ellipsis">
-      install-using-eksdemo-
+      using-eksdemo-
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#install_1" class="md-nav__link">
+  <a href="#manual" class="md-nav__link">
     <span class="md-ellipsis">
-      install
+      manual
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="install">
+    <nav class="md-nav" aria-label="manual">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -2066,6 +2066,14 @@
   <span class="md-ellipsis">
     Using Loki for Logging
   </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog" title="my blogs">
+    </span>
+  
+
   
 
       </a>
@@ -4074,6 +4082,8 @@
       
         
       
+        
+      
     
     
       
@@ -4118,35 +4128,6 @@
   <span class="md-ellipsis">
     linux-cmd
   </span>
-  
-
-      </a>
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../../CLI/linux/assume-tool/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    assume
-  </span>
-  
-    
-  
-  
-    <span class="md-status md-status--myblog" title="my blogs">
-    </span>
-  
-
   
 
       </a>
@@ -4230,6 +4211,56 @@
   
   <span class="md-ellipsis">
     ffmpeg
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/linux/granted-assume/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    assume
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog" title="my blogs">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/linux/helm-cmd/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    helm-cmd
   </span>
   
 
@@ -5371,22 +5402,22 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#install-using-eksdemo-" class="md-nav__link">
+  <a href="#using-eksdemo-" class="md-nav__link">
     <span class="md-ellipsis">
-      install-using-eksdemo-
+      using-eksdemo-
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#install_1" class="md-nav__link">
+  <a href="#manual" class="md-nav__link">
     <span class="md-ellipsis">
-      install
+      manual
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="install">
+    <nav class="md-nav" aria-label="manual">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -5499,7 +5530,7 @@
 
 <h1 id="ebs-for-eks">ebs-for-eks<a class="headerlink" href="#ebs-for-eks" title="Permanent link">&para;</a></h1>
 <h2 id="install">install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h2>
-<h3 id="install-using-eksdemo-">install-using-eksdemo-<a class="headerlink" href="#install-using-eksdemo-" title="Permanent link">&para;</a></h3>
+<h3 id="using-eksdemo-">using-eksdemo-<a class="headerlink" href="#using-eksdemo-" title="Permanent link">&para;</a></h3>
 <ul>
 <li>if you already have a service account called <code>ebs-csi-controller-sa</code>, delete it<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>
@@ -5513,7 +5544,7 @@
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>eksdemo<span class="w"> </span>install<span class="w"> </span>storage-ebs-csi<span class="w"> </span>-c<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span>--namespace<span class="w"> </span>kube-system
 </code></pre></div></li>
 </ul>
-<h3 id="install_1">install<a class="headerlink" href="#install_1" title="Permanent link">&para;</a></h3>
+<h3 id="manual">manual<a class="headerlink" href="#manual" title="Permanent link">&para;</a></h3>
 <p><a href="https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/docs/install.md">https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/docs/install.md</a></p>
 <h4 id="ebs-csi">ebs-csi<a class="headerlink" href="#ebs-csi" title="Permanent link">&para;</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="p">:=ekscluster1</span><span class="si">}</span>
@@ -5636,7 +5667,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-28T10:21:30+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-07-10T08:23:20+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-10</span>
   </span>
 
     
