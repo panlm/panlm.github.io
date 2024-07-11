@@ -19,6 +19,7 @@ eksctl delete iamserviceaccount -c ${CLUSTER_NAME} \
     --name ebs-csi-controller-sa --namespace kube-system
 eksctl delete iamserviceaccount -c ${CLUSTER_NAME} \
     --name ebs-csi-node-sa --namespace kube-system
+
 ```
 - install ebs plugin
 ```sh
@@ -26,6 +27,7 @@ echo ${CLUSTER_NAME}
 echo ${AWS_DEFAULT_REGION}
 
 eksdemo install storage-ebs-csi -c ${CLUSTER_NAME} --namespace kube-system
+
 ```
 
 ### manual

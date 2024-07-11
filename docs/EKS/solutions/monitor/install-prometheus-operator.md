@@ -19,7 +19,7 @@ tags:
 ![IMG-install-prometheus-operator.png](attachments/install-prometheus-operator/IMG-install-prometheus-operator.png)
 
 ```sh
-DEPLOY_NAME=prom-0709
+DEPLOY_NAME=prom-0710
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
 

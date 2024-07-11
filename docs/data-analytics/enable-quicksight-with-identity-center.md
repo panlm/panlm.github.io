@@ -15,7 +15,7 @@ tags:
 In BJS region, QS does not support SAML Authentication Method (refer Appendix chapter). If you try to integration with existing SSO, for example Microsoft Entra ID, you need enable Amazon IAM Identity Center (short for AWS-SSO) with SAML support to carry out ([[saml-2.0]])
 
 ### Walkthrough
-- One Microsoft Entra tenant, at least P1 license  ([link](https://www.microsoft.com/en-us/security/business/microsoft-entra-pricing))
+- One Microsoft Entra tenant, at least `Microsoft Entra ID P1`  license  ([link](https://www.microsoft.com/en-us/security/business/microsoft-entra-pricing))
 - Enable AWS-SSO account instance in this lab
     - If your account joined AWS Organizations, you could choose enable AWS-SSO with organization instance ([link](https://docs.aws.amazon.com/singlesignon/latest/userguide/identity-center-instances.html))
     - refer this blog for AWS-SSO deployment pattern ([link](https://aws.amazon.com/cn/blogs/security/how-to-use-multiple-instances-of-aws-iam-identity-center/))
