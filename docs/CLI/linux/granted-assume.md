@@ -10,6 +10,8 @@ tags:
 ---
 
 # assume
+https://www.granted.dev/
+
 ## create role for account to assume
 ```sh title="create-aws-config-entity" linenums="1"
 function create-aws-config-entity () {

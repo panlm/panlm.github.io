@@ -1,5 +1,5 @@
 ---
-title: obsidian-help
+title: Obsidian Tips
 description: obsidian 使用点滴
 last_modified: 2024-01-01
 status: myblog
@@ -7,7 +7,7 @@ tags:
   - obsidian
 ---
 
-# obsidian
+# Obsidian Tips
 文本笔记 第二大脑
 https://obsidian.md/
 

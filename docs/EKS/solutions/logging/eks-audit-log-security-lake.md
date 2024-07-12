@@ -1,5 +1,5 @@
 ---
-title: eks-audit-log-security-lake
+title: Security Lake Support Collecting Audit Logging from EKS
 description: 
 created: 2024-04-26 11:33:36.335
 last_modified: 2024-05-11
@@ -9,9 +9,9 @@ tags:
   - aws/security/security-lake
 ---
 
-# eks-audit-log-security-lake
-news:
-https://aws.amazon.com/about-aws/whats-new/2024/02/amazon-security-lake-audit-logs-eks/?nc1=h_ls
+# Security Lake Support Collecting Audit Logging from EKS
+
+news: https://aws.amazon.com/about-aws/whats-new/2024/02/amazon-security-lake-audit-logs-eks/?nc1=h_ls
 
 ## diagram 
 - both accounts in same Organizations

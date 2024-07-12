@@ -1,5 +1,5 @@
 ---
-title: Using Loki for Logging
+title: Using Grafana Loki for Logging
 description: 使用 loki 收集日志
 created: 2023-12-18 14:09:49.975
 last_modified: 2024-07-18
@@ -7,16 +7,17 @@ status: myblog
 tags:
   - grafana/loki
 ---
-# Grafana Loki
+
+# Using Grafana Loki for Logging
 Loki is a backend store for long-term log retention
 
-## diagram
-![[git/git-mkdocs/git-attachment/POC-loki-for-logging-png-1.png|500]]
+## diagram for distributed microservices
+![[attachments/grafana-loki/IMG-grafana-loki-6.png]]
 
 ## walkthrough
 ### prerequisites
 - ekscluster 
-    - [[../../../CLI/linux/eksdemo#create-eks-cluster-|eksdemo]]
+    - [[../../../CLI/linux/eksdemo#create-eks-cluster-|eks cluster]]
 - addons needed 
     - [[../../addons/ebs-for-eks|ebs-for-eks]] 
     - [[../../addons/aws-load-balancer-controller|aws-load-balancer-controller]] 
@@ -75,11 +76,6 @@ echo ${LOKI_SA_NAME}
 # values based on grafana/loki chat, not grafana/loki-distributed chat
 envsubst > loki-distributed.yaml <<-EOF
 deploymentMode: Distributed
-
-# global:
-#   image:
-#     # -- Overrides the Docker registry globally for all images
-#     registry: null
 
 serviceAccount:
   create: false
@@ -347,7 +343,7 @@ spec:
         command: 
         - 'bash'
         - '-c'
-        - 'while true ; do echo `date +%Y-%m-%dT%H:%M:%S.%NZ` "a682775d0d85649f5b0d42f3b9f6896a 35.95.65.104:${RANDOM} 10.10.108.62:${RANDOM} 0.000301 0.000009 0.000017 - - 135 163 \"- - - \" \"-\" - -"; sleep 0.05; done'
+        - 'while true ; do echo `date +%Y-%m-%dT%H:%M:%S.%NZ` "a682775d0d85649f5b0d42f3b9f6896a 35.95.65.104:${RANDOM} 10.10.108.62:${RANDOM} 0.000301 0.000009 0.000017 - - 135 163 \"- - - \" \"-\" - -"; sleep 0.02; done'
 
 ```
 ### dashboard-
@@ -377,6 +373,9 @@ spec:
 
 ### SimpleScalable Mode (deprecated)
 https://github.com/grafana/helm-charts/tree/main/charts/loki-simple-scalable
+
+- architecture
+![[git/git-mkdocs/git-attachment/POC-loki-for-logging-png-1.png|500]]
 
 - easy to use
 ![[attachments/grafana-loki/IMG-grafana-loki-2.png|500]]
