@@ -3,7 +3,7 @@ title: Prometheus With Thanos Manually
 description: POC-prometheus-with-thanos-manually
 created: 2024-01-04 11:38:42.971
 last_modified: 2024-01-19
-status: myblog
+status: deprecated
 tags:
   - prometheus
 ---

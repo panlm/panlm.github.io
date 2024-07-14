@@ -53,5 +53,5 @@ aws eks delete-access-entry --cluster-name ${CLUSTER_NAME} \
 ## refer
 https://www.wiz.io/blog/new-attack-vectors-emerge-via-recent-eks-access-entries-and-pod-identity-features
 
-![[../../../git-attachment/eks-access-api/IMG-20240510-081900-423.png]]
+![[attachments/eks-access-api/IMG-eks-access-api.png]]
 

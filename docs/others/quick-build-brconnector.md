@@ -2,12 +2,12 @@
 title: Quick Deploy BRConnector using Cloudformation
 description: 使用 Cloudformation 快速部署 BRConnector
 created: 2024-06-09 11:59:37.855
-last_modified: 2024-06-09
+last_modified: 2024-07-09
+status: myblog
 tags:
   - aws/mgmt/cloudformation
   - aws/compute/ec2
   - aws/network/cloudfront
-status: myblog
 ---
 
 # Quick Deploy BRConnector using Cloudformation
