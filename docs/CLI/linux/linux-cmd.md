@@ -411,7 +411,7 @@ ls |ts
 ```
 
 ## vim
-- [[../../../../vim-cmd|vim-cmd]]
+- [[vim-cmd|vim-cmd]]
 
 ## xfs
 ### xfs-mount-

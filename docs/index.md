@@ -26,7 +26,7 @@ number headings: first-level 2, max 3, 1.1, auto
 - [Obsidian Tips](obsidian): obsidian 使用点滴
 - [Migrating Filezilla to AWS Transfer Family](POC-mig-filezilla-to-transfer-family): 迁移 Filezilla 到 Transfer Family
 - [Prometheus With Thanos Manually](POC-prometheus-ha-architect-with-thanos-manually): POC-prometheus-with-thanos-manually
-- [Quick Deploy BRConnector using Cloudformation](quick-build-brconnector-on-ec2): 使用 Cloudformation 快速部署 BRConnector
+- [Quick Deploy BRConnector using Cloudformation](others/quick-build-brconnector.md): 使用 Cloudformation 快速部署 BRConnector
 - [Quick Setup Cloud9](quick-setup-cloud9): 简化创建 Cloud9 脚本，优先选择使用 Terraform 自动初始化；也可以使用脚本从 CloudShell 中完成初始化
 - [Setup Cloud9 for EKS](setup-cloud9-for-eks): 使用脚本完成实验环境初始化
 - [Stream EKS Control Panel Logs to S3](stream-k8s-control-panel-logs-to-s3): 目前 EKS 控制平面日志只支持发送到 cloudwatch，且在同一个 log group 中有5种类型6种前缀的 log stream 的日志，不利于统一查询。且只有 audit 日志是 json 格式其他均是单行日志，且字段各不相同。本解决方案提供思路统一保存日志供后续分析处理
