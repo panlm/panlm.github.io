@@ -3531,6 +3531,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#update-brconnector" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update BRConnector
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5407,6 +5416,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#update-brconnector" class="md-nav__link">
+    <span class="md-ellipsis">
+      Update BRConnector
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5465,10 +5483,14 @@
 <li>Cloudfront</li>
 <li>BRConnector on Lambda or EC2</li>
 <li>RDS PostgreSQL or PostgreSQL container on EC2</li>
+<li>ECR with pull through cache enabled</li>
 </ul>
 <h2 id="deploy-guide">Deploy Guide<a class="headerlink" href="#deploy-guide" title="Permanent link">&para;</a></h2>
 <ul>
-<li>Download <a href="../quick-build-brconnector.yaml">quick-build-brconnector.yaml</a> and upload to Cloudformation console.</li>
+<li>Download <a href="../quick-build-brconnector.yaml">quick-build-brconnector.yaml</a> and upload to Cloudformation console or click this button to launch directly</li>
+</ul>
+<p><a href="https://console.aws.amazon.com/cloudformation/home#/stacks/create/template?stackName=brconnector1&amp;templateURL=https://sample-connector-bedrock.s3.us-west-2.amazonaws.com/quick-build-brconnector.yaml"><img alt="attachments/quick-build-brconnector/launch-stack.png|100" src="../attachments/quick-build-brconnector/launch-stack.png" /></a></p>
+<ul>
 <li>VPC parameters<ul>
 <li>Choose a existing VPC with public subnets</li>
 <li>Choose one public subnet</li>
@@ -5488,7 +5510,7 @@
 <li>For Lambda settings<ul>
 <li><mark style="background: #ADCCFFA6;">PUBLIC Function URL</mark> will be used. Please ensure this security setting is acceptable</li>
 <li>Define your private repository name prefix string</li>
-<li>Always create RDS PostgreSQL</li>
+<li>Always create RDS PostgreSQL (<code>StandaloneDB</code> to true)</li>
 </ul>
 </li>
 </ul>
@@ -5508,16 +5530,49 @@
 <li>Debugging parameters<ul>
 <li>If you choose Lambda as ComputeType, you could choose to delete EC2 after all resources deploy successfully. This EC2 is used for compiling and building BRConnector container temporarily. </li>
 <li>Don&rsquo;t delete EC2 if you choose EC2 as ComputeType</li>
+<li>If you set <code>true</code> to AutoUpdateBRConnector, one script will be add to ec2 crontab</li>
 </ul>
 </li>
 </ul>
-<p><a class="glightbox" href="../attachments/quick-build-brconnector/IMG-quick-build-brconnector-8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="attachments/quick-build-brconnector/IMG-quick-build-brconnector-8.png" src="../attachments/quick-build-brconnector/IMG-quick-build-brconnector-8.png" /></a></p>
+<p><a class="glightbox" href="../attachments/quick-build-brconnector/IMG-quick-build-brconnector-11.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="attachments/quick-build-brconnector/IMG-quick-build-brconnector-11.png" src="../attachments/quick-build-brconnector/IMG-quick-build-brconnector-11.png" /></a></p>
 <ul>
-<li>Until deploy successfully, go to output page and copy cloudfront URL and first user key to your bedrock client settings page.</li>
+<li>Until deploy successfully, go to output page and copy Cloudfront URL and first user key to your bedrock client settings page.</li>
 </ul>
 <p><a class="glightbox" href="../attachments/quick-build-brconnector/IMG-quick-build-brconnector-9.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="attachments/quick-build-brconnector/IMG-quick-build-brconnector-9.png" src="../attachments/quick-build-brconnector/IMG-quick-build-brconnector-9.png" /></a></p>
 <ul>
 <li>Also you could connect to <code>BRConnector</code> EC2 instance with SSM Session Manager (<a href="https://docs.aws.amazon.com/systems-manager/latest/userguide/session-manager-working-with-sessions-start.html#start-ec2-console">docs</a>)</li>
+</ul>
+<h2 id="update-brconnector">Update BRConnector<a class="headerlink" href="#update-brconnector" title="Permanent link">&para;</a></h2>
+<ul>
+<li>Currently, we use ECR pull through cache to update ECR image with upstream automatically</li>
+<li>
+<p>following this script to update image manually if you do not enable ECR pull through cache<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span>us-west-2
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">ACCOUNT_ID</span><span class="o">=</span><span class="m">123456789012</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">PrivateECRRepository</span><span class="o">=</span>your_private_repo_name
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>aws<span class="w"> </span>ecr<span class="w"> </span>get-login-password<span class="w"> </span>--region<span class="w"> </span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>docker<span class="w"> </span>login<span class="w"> </span>--username<span class="w"> </span>AWS<span class="w"> </span>--password-stdin<span class="w"> </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># pull/tag/push arm64 image for lambda</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>docker<span class="w"> </span>pull<span class="w"> </span>--platform<span class="o">=</span>linux/arm64<span class="w"> </span>cloudbeer/sample-connector-for-bedrock-lambda
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>docker<span class="w"> </span>tag<span class="w"> </span>cloudbeer/sample-connector-for-bedrock-lambda<span class="w"> </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">PrivateECRRepository</span><span class="si">}</span>:arm64
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>docker<span class="w"> </span>push<span class="w"> </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">PrivateECRRepository</span><span class="si">}</span>:arm64
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="c1"># pull/tag/push amd64 image for lambda</span>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>docker<span class="w"> </span>pull<span class="w"> </span>--platform<span class="o">=</span>linux/amd64<span class="w"> </span>cloudbeer/sample-connector-for-bedrock-lambda
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>docker<span class="w"> </span>tag<span class="w"> </span>cloudbeer/sample-connector-for-bedrock-lambda<span class="w"> </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">PrivateECRRepository</span><span class="si">}</span>:amd64
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>docker<span class="w"> </span>push<span class="w"> </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">PrivateECRRepository</span><span class="si">}</span>:amd64
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a><span class="c1"># create/push manifest file</span>
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a>docker<span class="w"> </span>manifest<span class="w"> </span>create<span class="w"> </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">PrivateECRRepository</span><span class="si">}</span>:latest<span class="w"> </span>--amend<span class="w"> </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">PrivateECRRepository</span><span class="si">}</span>:arm64<span class="w"> </span>--amend<span class="w"> </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">PrivateECRRepository</span><span class="si">}</span>:amd64
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>docker<span class="w"> </span>manifest<span class="w"> </span>annotate<span class="w"> </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">PrivateECRRepository</span><span class="si">}</span>:latest<span class="w"> </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">PrivateECRRepository</span><span class="si">}</span>:arm64<span class="w"> </span>--os<span class="w"> </span>linux<span class="w"> </span>--arch<span class="w"> </span>arm64
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>docker<span class="w"> </span>manifest<span class="w"> </span>annotate<span class="w"> </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">PrivateECRRepository</span><span class="si">}</span>:latest<span class="w"> </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">PrivateECRRepository</span><span class="si">}</span>:amd64<span class="w"> </span>--os<span class="w"> </span>linux<span class="w"> </span>--arch<span class="w"> </span>amd64
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>docker<span class="w"> </span>manifest<span class="w"> </span>push<span class="w"> </span><span class="si">${</span><span class="nv">ACCOUNT_ID</span><span class="si">}</span>.dkr.ecr.<span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>.amazonaws.com/<span class="si">${</span><span class="nv">PrivateECRRepository</span><span class="si">}</span>:latest
+</code></pre></div></p>
+</li>
+<li>
+<p>update lambda image with correct architecture</p>
+</li>
 </ul>
 
 
@@ -5541,7 +5596,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-07-14T21:32:31+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-07-17T00:52:14+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-17</span>
   </span>
 
     
