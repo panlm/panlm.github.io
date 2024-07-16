@@ -162,9 +162,9 @@ ingester:
     whenScaled: Retain
   Config: 
     max_transfer_retries: 0
-    chunk_idle_period: 15m
-    chunk_target_size: 5242880
-    max_chunk_age: 15m
+    chunk_idle_period: 5m
+    chunk_target_size: 524288
+    max_chunk_age: 10m
     chunk_retain_period: 1m
 
 distributor:
@@ -385,6 +385,7 @@ https://github.com/grafana/helm-charts/tree/main/charts/loki-simple-scalable
 - https://grafana.com/docs/loki/latest/get-started/components/
 - https://grafana.com/docs/loki/latest/setup/install/helm/install-microservices/
 - https://github.com/grafana/loki/issues/9131
+- https://grafana.com/blog/2020/04/21/how-labels-in-loki-can-make-log-queries-faster-and-easier/
 
 ## sample
 ```yaml 

@@ -44,8 +44,8 @@ aws lambda create-function \
 - upload zip package from mac to lambda, seems works
 
 ```sh
-mkdir -p $$/python/lib/python3.8/site-packages
-pip install flatten_json -t $$/python/lib/python3.8/site-packages
+mkdir -p $$/python/lib/python3.11/site-packages
+pip install flatten_json -t $$/python/lib/python3.11/site-packages
 cd $$
 zip -r package.zip ./python
 
