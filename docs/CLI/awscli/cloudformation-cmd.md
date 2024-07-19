@@ -12,7 +12,9 @@ tags:
 
 ## validate
 ```sh
-aws cloudformation validate-template  --region us-east-1 --template-body file://./test.yaml
+aws cloudformation validate-template \
+    --region us-east-1 \
+    --template-body file://./test.yaml
 
 ```
 

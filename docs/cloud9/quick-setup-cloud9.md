@@ -28,33 +28,13 @@ tags:
     - AWS managed temporary credentials: <mark style="background: #FF5582A6;">Disabled</mark>
     - `aws sts get-caller-identity` in cloud9 is EC2 instance role
 - 在 CloudShell 中执行下面脚本
-```sh hl_lines="6-13 20"
-aws configure list
-export AWS_DEFAULT_REGION AWS_REGION
-export AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query "Account" --output text)
+```sh
+wget https://panlm.github.io/CLI/functions/func-create-c9-from-cloudshell.sh
 
-# check role/panlm exists or not
-aws iam get-role --role-name panlm 2>&1 >/dev/null
-if [[ $? -eq 0 ]]; then
-    echo "role/panlm existed"
-    PARAMETERS='--parameters ParameterKey=ExampleC9EnvOwner,ParameterValue="3rdParty" ParameterKey=ExampleOwnerArn,ParameterValue="arn:aws:sts::'"${AWS_ACCOUNT_ID}"':assumed-role/panlm/granted"'
-else
-    echo "role/panlm does not existed"
-    PARAMETERS=''
-fi
-
-wget -O example_instancestack_ubuntu.yaml 'https://panlm.github.io/cloud9/example_instancestack_ubuntu.yaml'
-
-STACK_NAME=cloud9-$(TZ=EAT-8 date +%m%d-%H%M)
-aws cloudformation create-stack --stack-name ${STACK_NAME} \
-    --template-body file://./example_instancestack_ubuntu.yaml \
-    --capabilities CAPABILITY_IAM \
-    --on-failure DO_NOTHING \
-    ${PARAMETERS}
-aws cloudformation wait stack-create-complete --stack-name ${STACK_NAME}
-
-aws cloudformation describe-stacks --stack-name ${STACK_NAME} \
-    --query 'Stacks[].Outputs[?OutputKey==`Cloud9IDE`].OutputValue' --output text
+```
+- [[../CLI/functions/func-create-c9-from-cloudshell.sh|func-create-c9-from-cloudshell]]
+```sh title="func-create-c9-from-cloudshell" linenums="1" hl_lines="8-15 22"
+--8<-- "docs/CLI/functions/func-create-c9-from-cloudshell.sh"
 ```
 - 如何 share cloud9 实例，可以参考 ([[git/git-mkdocs/CLI/awscli/cloud9-cmd#share-cloud9-with-other-users-]])
 
