@@ -29,8 +29,7 @@ tags:
     - `aws sts get-caller-identity` in cloud9 is EC2 instance role
 - 在 CloudShell 中执行下面脚本
 ```sh
-wget https://panlm.github.io/CLI/functions/func-create-c9-from-cloudshell.sh
-
+curl https://panlm.github.io/CLI/functions/func-create-c9-from-cloudshell.sh |sh
 ```
 - [[../CLI/functions/func-create-c9-from-cloudshell.sh|func-create-c9-from-cloudshell]]
 ```sh title="func-create-c9-from-cloudshell" linenums="1" hl_lines="8-15 22"

@@ -110,8 +110,23 @@ loki:
     path_prefix: /var/loki
     replication_factor: 1
   limits_config:
-    ingestion_rate_mb: 20
-    ingestion_burst_size_mb: 30
+    ingestion_rate_mb: 19
+    ingestion_burst_size_mb: 29
+  ingester: 
+    # max_transfer_retries: 0 # move this option to ingester.Config
+    chunk_encoding: snappy # gzip
+    chunk_idle_period: 5m
+    chunk_target_size: 133120
+    max_chunk_age: 10m
+    chunk_retain_period: 1m
+  compactor:
+    # shared_store: s3 # move this option to compactor.Config
+    apply_retention_interval: 1h
+    compaction_interval: 5m
+    retention_delete_worker_count: 500
+    retention_enabled: true
+    # working_directory: /loki/compactor
+    delete_request_store: s3
 
 chunksCache:
   enabled: false
@@ -144,12 +159,12 @@ gateway:
 
 ingester:
   enabled: true
-  replicas: 3
+  replicas: 2
   maxUnavailable: 1
   auth_enabled: false
   persistence:
     # -- Enable creating PVCs which is required when using boltdb-shipper
-    enabled: true
+    enabled: false
     # -- Use emptyDir with ramdisk for storage. **Please note that all data in ingester will be lost on pod restart**
     inMemory: false
     # -- List of the ingester PVCs
@@ -161,11 +176,10 @@ ingester:
     whenDeleted: Delete # default Retain
     whenScaled: Retain
   Config: 
-    max_transfer_retries: 0
-    chunk_idle_period: 5m
-    chunk_target_size: 524288
-    max_chunk_age: 10m
-    chunk_retain_period: 1m
+    max_transfer_retries: 0 # mandortory
+  zoneAwareReplication:
+    # -- Enable zone awareness.
+    enabled: false
 
 distributor:
   enabled: true
@@ -194,12 +208,7 @@ compactor:
   enabled: true
   replicas: 1
   Config:
-    apply_retention_interval: 1h
-    compaction_interval: 5m
-    retention_delete_worker_count: 500
-    retention_enabled: true
-    shared_store: s3
-    working_directory: /loki/compactor
+    shared_store: s3 # mandortory
 ruler:
   enabled: true
   replicas: 2
