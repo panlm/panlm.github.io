@@ -98,7 +98,7 @@ loki:
     object_prefix: "s3prefix"
   storage:
     bucketNames:
-      chunks: '${LOKI_BUCKET}'	
+      chunks: '${LOKI_BUCKET}'
       ruler: '${LOKI_BUCKET}'
       admin: '${LOKI_BUCKET}'
     type: s3
@@ -115,14 +115,14 @@ loki:
   ingester: 
     # max_transfer_retries: 0 # move this option to ingester.Config
     chunk_encoding: snappy # gzip
-    chunk_idle_period: 5m
-    chunk_target_size: 133120
-    max_chunk_age: 10m
-    chunk_retain_period: 1m
+    chunk_idle_period: 1h
+    chunk_target_size: 133120 # 130KB
+    max_chunk_age: 2h
+    chunk_retain_period: 5m
   compactor:
     # shared_store: s3 # move this option to compactor.Config
-    apply_retention_interval: 1h
-    compaction_interval: 5m
+    apply_retention_interval: 48h
+    compaction_interval: 2h
     retention_delete_worker_count: 500
     retention_enabled: true
     # working_directory: /loki/compactor
@@ -164,7 +164,7 @@ ingester:
   auth_enabled: false
   persistence:
     # -- Enable creating PVCs which is required when using boltdb-shipper
-    enabled: false
+    enabled: true
     # -- Use emptyDir with ramdisk for storage. **Please note that all data in ingester will be lost on pod restart**
     inMemory: false
     # -- List of the ingester PVCs
@@ -172,8 +172,8 @@ ingester:
     claims:
       - name: data
         size: 50Gi
-    enableStatefulSetAutoDeletePVC: true # default false
-    whenDeleted: Delete # default Retain
+    enableStatefulSetAutoDeletePVC: false # default false
+    whenDeleted: Retain # default Retain
     whenScaled: Retain
   Config: 
     max_transfer_retries: 0 # mandortory
