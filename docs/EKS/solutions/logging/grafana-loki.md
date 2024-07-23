@@ -114,19 +114,19 @@ loki:
     ingestion_burst_size_mb: 29
   ingester: 
     # max_transfer_retries: 0 # move this option to ingester.Config
-    chunk_encoding: snappy # gzip
+    chunk_encoding: snappy # gzip / flate
     chunk_idle_period: 1h
-    chunk_target_size: 133120 # 130KB
+    chunk_target_size: 524288 # default 1.5MB, advice 512KB - 1MB for lower amount of logging
     max_chunk_age: 2h
     chunk_retain_period: 5m
   compactor:
     # shared_store: s3 # move this option to compactor.Config
     apply_retention_interval: 48h
-    compaction_interval: 2h
-    retention_delete_worker_count: 500
+    compaction_interval: 2h # lower value will cause chunk update to s3 more frequently 
     retention_enabled: true
-    # working_directory: /loki/compactor
     delete_request_store: s3
+    # retention_delete_worker_count: 100
+    # working_directory: /loki/compactor
 
 chunksCache:
   enabled: false
@@ -164,7 +164,7 @@ ingester:
   auth_enabled: false
   persistence:
     # -- Enable creating PVCs which is required when using boltdb-shipper
-    enabled: true
+    enabled: true # best to have due to we keep chunk more logger time locally
     # -- Use emptyDir with ramdisk for storage. **Please note that all data in ingester will be lost on pod restart**
     inMemory: false
     # -- List of the ingester PVCs
