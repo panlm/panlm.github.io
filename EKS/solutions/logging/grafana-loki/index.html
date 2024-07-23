@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.29">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.30">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../../assets/stylesheets/main.76a95c52.min.css">
+      <link rel="stylesheet" href="../../../../assets/stylesheets/main.3cba04c6.min.css">
       
         
         <link rel="stylesheet" href="../../../../assets/stylesheets/palette.06af60db.min.css">
@@ -5824,19 +5824,19 @@
 <a id="__codelineno-4-45" name="__codelineno-4-45" href="#__codelineno-4-45"></a><span class="s">    ingestion_burst_size_mb: 29</span>
 <a id="__codelineno-4-46" name="__codelineno-4-46" href="#__codelineno-4-46"></a><span class="s">  ingester: </span>
 <a id="__codelineno-4-47" name="__codelineno-4-47" href="#__codelineno-4-47"></a><span class="s">    # max_transfer_retries: 0 # move this option to ingester.Config</span>
-<a id="__codelineno-4-48" name="__codelineno-4-48" href="#__codelineno-4-48"></a><span class="s">    chunk_encoding: snappy # gzip</span>
+<a id="__codelineno-4-48" name="__codelineno-4-48" href="#__codelineno-4-48"></a><span class="s">    chunk_encoding: snappy # gzip / flate</span>
 <a id="__codelineno-4-49" name="__codelineno-4-49" href="#__codelineno-4-49"></a><span class="s">    chunk_idle_period: 1h</span>
-<a id="__codelineno-4-50" name="__codelineno-4-50" href="#__codelineno-4-50"></a><span class="s">    chunk_target_size: 133120 # 130KB</span>
+<a id="__codelineno-4-50" name="__codelineno-4-50" href="#__codelineno-4-50"></a><span class="s">    chunk_target_size: 524288 # default 1.5MB, advice 512KB - 1MB for lower amount of logging</span>
 <a id="__codelineno-4-51" name="__codelineno-4-51" href="#__codelineno-4-51"></a><span class="s">    max_chunk_age: 2h</span>
 <a id="__codelineno-4-52" name="__codelineno-4-52" href="#__codelineno-4-52"></a><span class="s">    chunk_retain_period: 5m</span>
 <a id="__codelineno-4-53" name="__codelineno-4-53" href="#__codelineno-4-53"></a><span class="s">  compactor:</span>
 <a id="__codelineno-4-54" name="__codelineno-4-54" href="#__codelineno-4-54"></a><span class="s">    # shared_store: s3 # move this option to compactor.Config</span>
 <a id="__codelineno-4-55" name="__codelineno-4-55" href="#__codelineno-4-55"></a><span class="s">    apply_retention_interval: 48h</span>
-<a id="__codelineno-4-56" name="__codelineno-4-56" href="#__codelineno-4-56"></a><span class="s">    compaction_interval: 2h</span>
-<a id="__codelineno-4-57" name="__codelineno-4-57" href="#__codelineno-4-57"></a><span class="s">    retention_delete_worker_count: 500</span>
-<a id="__codelineno-4-58" name="__codelineno-4-58" href="#__codelineno-4-58"></a><span class="s">    retention_enabled: true</span>
-<a id="__codelineno-4-59" name="__codelineno-4-59" href="#__codelineno-4-59"></a><span class="s">    # working_directory: /loki/compactor</span>
-<a id="__codelineno-4-60" name="__codelineno-4-60" href="#__codelineno-4-60"></a><span class="s">    delete_request_store: s3</span>
+<a id="__codelineno-4-56" name="__codelineno-4-56" href="#__codelineno-4-56"></a><span class="s">    compaction_interval: 2h # lower value will cause chunk update to s3 more frequently </span>
+<a id="__codelineno-4-57" name="__codelineno-4-57" href="#__codelineno-4-57"></a><span class="s">    retention_enabled: true</span>
+<a id="__codelineno-4-58" name="__codelineno-4-58" href="#__codelineno-4-58"></a><span class="s">    delete_request_store: s3</span>
+<a id="__codelineno-4-59" name="__codelineno-4-59" href="#__codelineno-4-59"></a><span class="s">    # retention_delete_worker_count: 100</span>
+<a id="__codelineno-4-60" name="__codelineno-4-60" href="#__codelineno-4-60"></a><span class="s">    # working_directory: /loki/compactor</span>
 <a id="__codelineno-4-61" name="__codelineno-4-61" href="#__codelineno-4-61"></a>
 <a id="__codelineno-4-62" name="__codelineno-4-62" href="#__codelineno-4-62"></a><span class="s">chunksCache:</span>
 <a id="__codelineno-4-63" name="__codelineno-4-63" href="#__codelineno-4-63"></a><span class="s">  enabled: false</span>
@@ -5875,7 +5875,7 @@
 <a id="__codelineno-4-96" name="__codelineno-4-96" href="#__codelineno-4-96"></a><span class="s">  auth_enabled: false</span>
 <a id="__codelineno-4-97" name="__codelineno-4-97" href="#__codelineno-4-97"></a><span class="s">  persistence:</span>
 <a id="__codelineno-4-98" name="__codelineno-4-98" href="#__codelineno-4-98"></a><span class="s">    # -- Enable creating PVCs which is required when using boltdb-shipper</span>
-<a id="__codelineno-4-99" name="__codelineno-4-99" href="#__codelineno-4-99"></a><span class="s">    enabled: true</span>
+<a id="__codelineno-4-99" name="__codelineno-4-99" href="#__codelineno-4-99"></a><span class="s">    enabled: true # best to have due to we keep chunk more logger time locally</span>
 <a id="__codelineno-4-100" name="__codelineno-4-100" href="#__codelineno-4-100"></a><span class="s">    # -- Use emptyDir with ramdisk for storage. **Please note that all data in ingester will be lost on pod restart**</span>
 <a id="__codelineno-4-101" name="__codelineno-4-101" href="#__codelineno-4-101"></a><span class="s">    inMemory: false</span>
 <a id="__codelineno-4-102" name="__codelineno-4-102" href="#__codelineno-4-102"></a><span class="s">    # -- List of the ingester PVCs</span>
@@ -6152,7 +6152,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-07-21T10:41:23+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-21</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-07-23T15:46:27+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-23</span>
   </span>
 
     
