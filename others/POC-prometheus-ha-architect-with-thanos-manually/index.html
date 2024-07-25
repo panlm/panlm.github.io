@@ -171,6 +171,32 @@
       <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../../zh/others/POC-prometheus-ha-architect-with-thanos-manually/" hreflang="zh" class="md-select__link">
+              Chinese
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
     
       <label class="md-header__button md-icon" for="__search">
         
@@ -230,7 +256,7 @@
   
     
   
-  Welcome to panlm docs
+  Welcome
 
       </a>
     </li>
@@ -454,7 +480,7 @@
         
   
   <span class="md-ellipsis">
-    Welcome to panlm docs
+    Welcome
   </span>
   
 
@@ -2005,8 +2031,6 @@
       
         
       
-        
-      
     
     
       
@@ -2037,34 +2061,6 @@
             Monitor
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="../../EKS/solutions/monitor/TC-prometheus-ha-architect-with-thanos/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Building Prometheus HA Architect with Thanos
-  </span>
-  
-    
-  
-  
-    <span class="md-status md-status--deprecated"></span>
-  
-
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -5940,7 +5936,7 @@
 <p>[!WARNING]<br />
 just backup copy <br />
 no more update here<br />
-refer: <a href="../../EKS/solutions/monitor/TC-prometheus-ha-architect-with-thanos/" title="TC-prometheus-ha-architect-with-thanos">TC-prometheus-ha-architect-with-thanos</a></p>
+refer: <a href="../EKS/solutions/monitor/TC-prometheus-ha-architect-with-thanos.zh.md" title="TC-prometheus-ha-architect-with-thanos.zh">TC-prometheus-ha-architect-with-thanos.zh</a></p>
 </blockquote>
 <h1 id="prometheus-with-thanos-manually">Prometheus With Thanos Manually<a class="headerlink" href="#prometheus-with-thanos-manually" title="Permanent link">&para;</a></h1>
 <h2 id="_1">架构描述<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
@@ -5971,7 +5967,7 @@ refer: <a href="../../EKS/solutions/monitor/TC-prometheus-ha-architect-with-than
 <ul>
 <li>在多集群监控场景下，一般会在每个集群部署独立的 Prometheus 组件。Prometheus 提供 Agent Mode 针对这样的场景可以最小化资源占用，直接启用 Remote Write 功能将监控数据集中保存 （可以是另一个 Prometheus 集群，或者 Thanos Receive 组件）。在 AWS 上可以使用托管的 Prometheus 服务作为集中监控数据持久化，提供最好的性能和最低的维护成本。</li>
 </ul>
-<p><a class="glightbox" href="../../git-attachment/POC-prometheus-ha-architect-with-thanos-manually-png-diagram-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="../git-attachment/POC-prometheus-ha-architect-with-thanos-manually-png-diagram-1.png" src="../../git-attachment/POC-prometheus-ha-architect-with-thanos-manually-png-diagram-1.png" title="../git-attachment/POC-prometheus-ha-architect-with-thanos-manually-png-diagram-1.png" /></a></p>
+<p><a class="glightbox" href="../attachments/POC-prometheus-ha-architect-with-thanos-manually/IMG-POC-prometheus-ha-architect-with-thanos-manually.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="attachments/POC-prometheus-ha-architect-with-thanos-manually/IMG-POC-prometheus-ha-architect-with-thanos-manually.png" src="../attachments/POC-prometheus-ha-architect-with-thanos-manually/IMG-POC-prometheus-ha-architect-with-thanos-manually.png" title="attachments/POC-prometheus-ha-architect-with-thanos-manually/IMG-POC-prometheus-ha-architect-with-thanos-manually.png" /></a></p>
 <p>以下总结了基于 Thanos 的各种 Prometheus 监控架构所适合的场景：<br />
 第一种监控架构（对应上图蓝色和绿色集群及组件）：适合绝大部分生产环境，尤其在亚马逊中国区域没有托管 Prometheus 服务，此类架构也是客户首选。</p>
 <ul>
@@ -6223,8 +6219,8 @@ refer: <a href="../../EKS/solutions/monitor/TC-prometheus-ha-architect-with-than
 <a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="k">done</span>
 </code></pre></div></li>
 <li>(option) get receive svc domain name to: <ul>
-<li>add it to prometheus remote write in ekscluster2 and ekscluster3 (<a href="../../EKS/solutions/monitor/TC-prometheus-ha-architect-with-thanos/#observee-cluster-" title="git/git-mkdocs/EKS/solutions/monitor/TC-prometheus-ha-architect-with-thanos">git/git-mkdocs/EKS/solutions/monitor/TC-prometheus-ha-architect-with-thanos</a>)</li>
-<li>add it to query deployment yaml (<a href="../../EKS/solutions/monitor/TC-prometheus-ha-architect-with-thanos/#query-and-query-frontend-" title="git/git-mkdocs/EKS/solutions/monitor/TC-prometheus-ha-architect-with-thanos">git/git-mkdocs/EKS/solutions/monitor/TC-prometheus-ha-architect-with-thanos</a>)</li>
+<li>add it to prometheus remote write in ekscluster2 and ekscluster3 (<a href="../EKS/solutions/monitor/TC-prometheus-ha-architect-with-thanos.zh.md#observee-cluster-" title="../EKS/solutions/monitor/TC-prometheus-ha-architect-with-thanos.zh">../EKS/solutions/monitor/TC-prometheus-ha-architect-with-thanos.zh</a>)</li>
+<li>add it to query deployment yaml (<a href="../EKS/solutions/monitor/TC-prometheus-ha-architect-with-thanos.zh.md#query-and-query-frontend-" title="../EKS/solutions/monitor/TC-prometheus-ha-architect-with-thanos.zh">../EKS/solutions/monitor/TC-prometheus-ha-architect-with-thanos.zh</a>)</li>
 </ul>
 </li>
 </ul>
@@ -6240,7 +6236,7 @@ refer: <a href="../../EKS/solutions/monitor/TC-prometheus-ha-architect-with-than
 </ul>
 </li>
 <li>go this dashboard <code>Kubernetes / Networking / Namespace (Pods)</code><br />
-<a class="glightbox" href="../../git-attachment/POC-prometheus-ha-architect-with-thanos-manually-png-grafana-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="git/git-mkdocs/git-attachment/POC-prometheus-ha-architect-with-thanos-manually-png-grafana-1.png" src="../../git-attachment/POC-prometheus-ha-architect-with-thanos-manually-png-grafana-1.png" title="git/git-mkdocs/git-attachment/POC-prometheus-ha-architect-with-thanos-manually-png-grafana-1.png" /></a></li>
+<a class="glightbox" href="../attachments/POC-prometheus-ha-architect-with-thanos-manually/IMG-POC-prometheus-ha-architect-with-thanos-manually-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="attachments/POC-prometheus-ha-architect-with-thanos-manually/IMG-POC-prometheus-ha-architect-with-thanos-manually-1.png" src="../attachments/POC-prometheus-ha-architect-with-thanos-manually/IMG-POC-prometheus-ha-architect-with-thanos-manually-1.png" title="attachments/POC-prometheus-ha-architect-with-thanos-manually/IMG-POC-prometheus-ha-architect-with-thanos-manually-1.png" /></a></li>
 <li>we have history data, but no latest 2 hour metrics</li>
 <li>go to query deployment to add thanos sidecar svc (<code>xxx-kub-thanos-external</code>) to endpoint list with port <code>10901</code></li>
 <li>query again from grafana, we will get full metrics</li>
@@ -6249,7 +6245,7 @@ refer: <a href="../../EKS/solutions/monitor/TC-prometheus-ha-architect-with-than
 <ul>
 <li>modify existed variable to use cluster label<ul>
 <li>no need to change dashboard definitions <br />
-<a class="glightbox" href="../../git-attachment/POC-prometheus-ha-architect-with-thanos-manually-png-grafana-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="git/git-mkdocs/git-attachment/POC-prometheus-ha-architect-with-thanos-manually-png-grafana-2.png" src="../../git-attachment/POC-prometheus-ha-architect-with-thanos-manually-png-grafana-2.png" title="git/git-mkdocs/git-attachment/POC-prometheus-ha-architect-with-thanos-manually-png-grafana-2.png" /></a></li>
+<a class="glightbox" href="../attachments/POC-prometheus-ha-architect-with-thanos-manually/IMG-POC-prometheus-ha-architect-with-thanos-manually-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="attachments/POC-prometheus-ha-architect-with-thanos-manually/IMG-POC-prometheus-ha-architect-with-thanos-manually-2.png" src="../attachments/POC-prometheus-ha-architect-with-thanos-manually/IMG-POC-prometheus-ha-architect-with-thanos-manually-2.png" title="attachments/POC-prometheus-ha-architect-with-thanos-manually/IMG-POC-prometheus-ha-architect-with-thanos-manually-2.png" /></a></li>
 </ul>
 </li>
 <li>we already label data in prometheus yaml and receive yaml with <code>cluster=my_cluster_name</code></li>
@@ -6257,7 +6253,7 @@ refer: <a href="../../EKS/solutions/monitor/TC-prometheus-ha-architect-with-than
 <h4 id="query-by-externallabels-alternative">query by externalLabels (alternative)<a class="headerlink" href="#query-by-externallabels-alternative" title="Permanent link">&para;</a></h4>
 <ul>
 <li>custom dashboard<br />
-<a class="glightbox" href="../../git-attachment/POC-prometheus-ha-architect-with-thanos-manually-png-grafana-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="git/git-mkdocs/git-attachment/POC-prometheus-ha-architect-with-thanos-manually-png-grafana-3.png" src="../../git-attachment/POC-prometheus-ha-architect-with-thanos-manually-png-grafana-3.png" title="git/git-mkdocs/git-attachment/POC-prometheus-ha-architect-with-thanos-manually-png-grafana-3.png" /></a></li>
+<a class="glightbox" href="../attachments/POC-prometheus-ha-architect-with-thanos-manually/IMG-POC-prometheus-ha-architect-with-thanos-manually-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="attachments/POC-prometheus-ha-architect-with-thanos-manually/IMG-POC-prometheus-ha-architect-with-thanos-manually-3.png" src="../attachments/POC-prometheus-ha-architect-with-thanos-manually/IMG-POC-prometheus-ha-architect-with-thanos-manually-3.png" title="attachments/POC-prometheus-ha-architect-with-thanos-manually/IMG-POC-prometheus-ha-architect-with-thanos-manually-3.png" /></a></li>
 </ul>
 <h4 id="others">others<a class="headerlink" href="#others" title="Permanent link">&para;</a></h4>
 <ul>
@@ -6275,7 +6271,7 @@ refer: <a href="../../EKS/solutions/monitor/TC-prometheus-ha-architect-with-than
 </ul>
 </li>
 </ul>
-<p><a class="glightbox" href="../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-grafana-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="git/git-mkdocs/git-attachment/TC-prometheus-ha-architect-with-thanos-png-grafana-3.png" src="../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-grafana-3.png" title="git/git-mkdocs/git-attachment/TC-prometheus-ha-architect-with-thanos-png-grafana-3.png" /></a></p>
+<p><a class="glightbox" href="../../EKS/solutions/monitor/attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="../EKS/solutions/monitor/attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-6.png" src="../../EKS/solutions/monitor/attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-6.png" title="../EKS/solutions/monitor/attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-6.png" /></a></p>
 <h2 id="refer">refer<a class="headerlink" href="#refer" title="Permanent link">&para;</a></h2>
 <h3 id="prometheus-tsdb-block-duration">prometheus tsdb block duration<a class="headerlink" href="#prometheus-tsdb-block-duration" title="Permanent link">&para;</a></h3>
 <ul>
@@ -6407,7 +6403,7 @@ refer: <a href="../../EKS/solutions/monitor/TC-prometheus-ha-architect-with-than
 <li><a href="https://github.com/observatorium/thanos-receive-controller/tree/main">https://github.com/observatorium/thanos-receive-controller/tree/main</a></li>
 <li>receive controller does not included in this POC, it could based on header in remote write traffic to forward data to specific receive, refer (<a href="https://www.infracloud.io/blogs/multi-tenancy-monitoring-thanos-receiver/">https://www.infracloud.io/blogs/multi-tenancy-monitoring-thanos-receiver/</a>)</li>
 <li>In this POC we use dedicate receive. you could use receive route with receive controller project. refer (<a href="https://thanos.io/tip/proposals-accepted/202012-receive-split.md/">https://thanos.io/tip/proposals-accepted/202012-receive-split.md/</a>)</li>
-<li>download  <a href="../../git-attachment/receive-controller.tar.gz" title="receive-controller.tar.gz">receive-controller.tar.gz</a> </li>
+<li>download  <a href="../attachments/POC-prometheus-ha-architect-with-thanos-manually/receive-controller.gz" title="attachments/POC-prometheus-ha-architect-with-thanos-manually/receive-controller.gz">attachments/POC-prometheus-ha-architect-with-thanos-manually/receive-controller.gz</a> </li>
 <li>create receive controller in thanos namespace<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>kubectx<span class="w"> </span><span class="nv">$c1</span>
 <a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a>k<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>receive-controller/
@@ -6478,7 +6474,7 @@ refer: <a href="../../EKS/solutions/monitor/TC-prometheus-ha-architect-with-than
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-07-14T21:32:31+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-07-25T11:37:43+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-25</span>
   </span>
 
     
@@ -6561,11 +6557,11 @@ refer: <a href="../../EKS/solutions/monitor/TC-prometheus-ha-architect-with-than
     
       <script src="../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
-        <script src="../../js/mkdocs_pagetree_plugin.js"></script>
-      
         <script src="../../js/timeago.min.js"></script>
       
         <script src="../../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="../../js/mkdocs_pagetree_plugin.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": false, "loop": false, "zoomable": true, "draggable": false, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});

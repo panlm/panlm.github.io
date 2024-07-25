@@ -171,6 +171,32 @@
       <script>var media,input,key,value,palette=__md_get("__palette");if(palette&&palette.color){"(prefers-color-scheme)"===palette.color.media&&(media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']"),palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent"));for([key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
     
     
+      <div class="md-header__option">
+  <div class="md-select">
+    
+    <button class="md-header__button md-icon" aria-label="Select language">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.52 17.52 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11.76-2.04M18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2l-4.5-12m-2.62 7 1.62-4.33L19.12 17h-3.24Z"/></svg>
+    </button>
+    <div class="md-select__inner">
+      <ul class="md-select__list">
+        
+          <li class="md-select__item">
+            <a href="./" hreflang="en" class="md-select__link">
+              English
+            </a>
+          </li>
+        
+          <li class="md-select__item">
+            <a href="../zh/EKS/" hreflang="zh" class="md-select__link">
+              Chinese
+            </a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+</div>
+    
     
       <label class="md-header__button md-icon" for="__search">
         
@@ -230,7 +256,7 @@
   
     
   
-  Welcome to panlm docs
+  Welcome
 
       </a>
     </li>
@@ -454,7 +480,7 @@
         
   
   <span class="md-ellipsis">
-    Welcome to panlm docs
+    Welcome
   </span>
   
 
@@ -2010,8 +2036,6 @@
       
         
       
-        
-      
     
     
       
@@ -2042,34 +2066,6 @@
             Monitor
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
-            
-              
-                
-  
-  
-  
-  
-    <li class="md-nav__item">
-      <a href="solutions/monitor/TC-prometheus-ha-architect-with-thanos/" class="md-nav__link">
-        
-  
-  <span class="md-ellipsis">
-    Building Prometheus HA Architect with Thanos
-  </span>
-  
-    
-  
-  
-    <span class="md-status md-status--deprecated"></span>
-  
-
-  
-
-      </a>
-    </li>
-  
-
-              
             
               
                 
@@ -5420,7 +5416,7 @@
 - <a href="solutions/monitor/install-prometheus-operator/">install-prometheus-grafana-on-eks</a>: 安装 grafana 和 prometheus<br />
 - <a href="solutions/logging/stream-k8s-control-panel-logs-to-s3/">Stream EKS Control Panel Logs to S3</a>: 目前 EKS 控制平面日志只支持发送到 cloudwatch，且在同一个 log group 中有5种类型6种前缀的 log stream 的日志，不利于统一查询。且只有 audit 日志是 json 格式其他均是单行日志，且字段各不相同。本解决方案提供思路统一保存日志供后续分析处理<br />
 - <a href="solutions/security/TC-eks-irsa-token-deep-dive-lab/">IRSA 中的 Token 剖析</a>: 本文档总结了将 AWS IAM 角色授予 AWS EKS 集群的服务账户的过程<br />
-- <a href="solutions/monitor/TC-prometheus-ha-architect-with-thanos/">Building Prometheus HA Architect with Thanos</a>: 用 Thanos 解决 Prometheus 在多集群大规模环境下的高可用性、可扩展性限制<br />
+- <a href="solutions/monitor/TC-prometheus-ha-architect-with-thanos.zh.md">Building Prometheus HA Architect with Thanos</a>: 用 Thanos 解决 Prometheus 在多集群大规模环境下的高可用性、可扩展性限制<br />
 - <a href="solutions/network/TC-security-group-for-eks-deepdive/">EKS Security Group Deepdive</a>: 深入 EKS 安全组<br />
 &lt;&ndash;&gt;</p>
 <h3 id="14-addons">1.4 addons<a class="headerlink" href="#14-addons" title="Permanent link">&para;</a></h3>
@@ -5488,7 +5484,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-07-10T12:08:00+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-07-25T11:37:43+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-25</span>
   </span>
 
     
@@ -5571,11 +5567,11 @@
     
       <script src="../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
       
-        <script src="../js/mkdocs_pagetree_plugin.js"></script>
-      
         <script src="../js/timeago.min.js"></script>
       
         <script src="../js/timeago_mkdocs_material.js"></script>
+      
+        <script src="../js/mkdocs_pagetree_plugin.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": false, "loop": false, "zoomable": true, "draggable": false, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
