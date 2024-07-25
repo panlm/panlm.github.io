@@ -1,6 +1,6 @@
 title: Container
 nav:
-  - index.md
+  - ... | index*.md
   - EKS:
     - cluster
     - addons

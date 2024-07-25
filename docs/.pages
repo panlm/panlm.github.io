@@ -1,5 +1,5 @@
 nav:
-  - index.md
+  - ... | index*.md
   - cloud9
   - EKS
   - data-analytics
