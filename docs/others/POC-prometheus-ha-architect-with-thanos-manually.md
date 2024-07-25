@@ -10,7 +10,7 @@ tags:
 > [!WARNING]
 > just backup copy 
 > no more update here
-> refer: [[git/git-mkdocs/EKS/solutions/monitor/TC-prometheus-ha-architect-with-thanos|TC-prometheus-ha-architect-with-thanos]]
+> refer: [[../EKS/solutions/monitor/TC-prometheus-ha-architect-with-thanos.zh|TC-prometheus-ha-architect-with-thanos.zh]]
 # Prometheus With Thanos Manually
 ## 架构描述
 Prometheus 是一款开源的监控和报警工具，专为容器化和云原生架构的设计，通过基于 HTTP 的 Pull 模式采集时序数据，提供功能强大的查询语言 PromQL，并可视化呈现监控指标与生成报警信息。客户普遍采用其用于 Kubernetes 的监控体系建设。Amazon 也在 2021 年 9 月正式发布了托管的 Prometheus 服务（Amazon Managed Service for Prometheus）简化客户部署和使用。并且在 2023 年 11 月针对 EKS 发布了托管的 Prometheus 服务的无代理采集功能（[新闻稿](https://aws.amazon.com/about-aws/whats-new/2023/11/amazon-managed-service-prometheus-agentless-collector-metrics-eks/)），进一步方便客户无需提前规划，从而可以开箱即用的使用 Prometheus 的相关组件。
@@ -40,7 +40,7 @@ Thanos是一套开源组件，构建在 Prometheus 之上，用以解决 Prometh
 第三种监控架构（对应下图黄色集群及组件）：
 - 在多集群监控场景下，一般会在每个集群部署独立的 Prometheus 组件。Prometheus 提供 Agent Mode 针对这样的场景可以最小化资源占用，直接启用 Remote Write 功能将监控数据集中保存 （可以是另一个 Prometheus 集群，或者 Thanos Receive 组件）。在 AWS 上可以使用托管的 Prometheus 服务作为集中监控数据持久化，提供最好的性能和最低的维护成本。
 
-![[../git-attachment/POC-prometheus-ha-architect-with-thanos-manually-png-diagram-1.png]]
+![[attachments/POC-prometheus-ha-architect-with-thanos-manually/IMG-POC-prometheus-ha-architect-with-thanos-manually.png]]
 
 以下总结了基于 Thanos 的各种 Prometheus 监控架构所适合的场景：
 第一种监控架构（对应上图蓝色和绿色集群及组件）：适合绝大部分生产环境，尤其在亚马逊中国区域没有托管 Prometheus 服务，此类架构也是客户首选。
@@ -276,8 +276,8 @@ for i in thanos-receive-cluster2 thanos-receive-cluster3 ; do
 done
 ```
 - (option) get receive svc domain name to: 
-    - add it to prometheus remote write in ekscluster2 and ekscluster3 ([[git/git-mkdocs/EKS/solutions/monitor/TC-prometheus-ha-architect-with-thanos#observee-cluster-]])
-    - add it to query deployment yaml ([[git/git-mkdocs/EKS/solutions/monitor/TC-prometheus-ha-architect-with-thanos#query-and-query-frontend-]])
+    - add it to prometheus remote write in ekscluster2 and ekscluster3 ([[../EKS/solutions/monitor/TC-prometheus-ha-architect-with-thanos.zh#observee-cluster-]])
+    - add it to query deployment yaml ([[../EKS/solutions/monitor/TC-prometheus-ha-architect-with-thanos.zh#query-and-query-frontend-]])
 
 ### Grafana
 使用 Prometheus Operator 部署 Grafana 将自带一些常用的 Dashboard，我们可以进行简单配置实现多集群数据查询。此处提供一个 sample 可以直接导入使用。
@@ -288,7 +288,7 @@ done
     - 直接使用 Kubernetes 内部域名: http://thanos-query-frontend.thanos.svc.cluster.local:9090
     - 或者上文提到的 Query Frontend Service 绑定的域名访问
 - go this dashboard `Kubernetes / Networking / Namespace (Pods)`
-![[git/git-mkdocs/git-attachment/POC-prometheus-ha-architect-with-thanos-manually-png-grafana-1.png]]
+![[attachments/POC-prometheus-ha-architect-with-thanos-manually/IMG-POC-prometheus-ha-architect-with-thanos-manually-1.png]]
 - we have history data, but no latest 2 hour metrics
 - go to query deployment to add thanos sidecar svc (`xxx-kub-thanos-external`) to endpoint list with port `10901`
 - query again from grafana, we will get full metrics
@@ -296,12 +296,12 @@ done
 #### query by label cluster (prefer)
 - modify existed variable to use cluster label
     - no need to change dashboard definitions 
-![[git/git-mkdocs/git-attachment/POC-prometheus-ha-architect-with-thanos-manually-png-grafana-2.png]]
+![[attachments/POC-prometheus-ha-architect-with-thanos-manually/IMG-POC-prometheus-ha-architect-with-thanos-manually-2.png]]
 - we already label data in prometheus yaml and receive yaml with `cluster=my_cluster_name`
 
 #### query by externalLabels (alternative)
 - custom dashboard
-![[git/git-mkdocs/git-attachment/POC-prometheus-ha-architect-with-thanos-manually-png-grafana-3.png]]
+![[attachments/POC-prometheus-ha-architect-with-thanos-manually/IMG-POC-prometheus-ha-architect-with-thanos-manually-3.png]]
 
 #### others
 - 刷新 receive 数据时抖动严重
@@ -313,7 +313,7 @@ done
     - min time in sidecar table: data in thanos local before duration, 2 hr will write data from WAL to duration, if < 2hrs "-" will display. if over 2hrs, oldest data in local will be display
     - min time in store table: data has been store to s3, check labelset to identify data was written by receive or sidecar
 
-![[git/git-mkdocs/git-attachment/TC-prometheus-ha-architect-with-thanos-png-grafana-3.png]]
+![[../EKS/solutions/monitor/attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-6.png]]
 
 ## refer
 
@@ -445,7 +445,7 @@ grafana:
 - https://github.com/observatorium/thanos-receive-controller/tree/main
 - receive controller does not included in this POC, it could based on header in remote write traffic to forward data to specific receive, refer (https://www.infracloud.io/blogs/multi-tenancy-monitoring-thanos-receiver/)
 - In this POC we use dedicate receive. you could use receive route with receive controller project. refer (https://thanos.io/tip/proposals-accepted/202012-receive-split.md/)
-- download  [[receive-controller.tar.gz]] 
+- download  [[attachments/POC-prometheus-ha-architect-with-thanos-manually/receive-controller.gz]] 
 - create receive controller in thanos namespace
 ```sh
 kubectx $c1

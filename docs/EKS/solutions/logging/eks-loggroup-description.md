@@ -73,7 +73,7 @@ log for windows pod
 $matchline:+27
 ```
 ### ==Metric-指标-==
-- 使用开源 prometheus 监控 ([[git/git-mkdocs/EKS/solutions/monitor/TC-prometheus-ha-architect-with-thanos|TC-prometheus-ha-architect-with-thanos]])
+- 使用开源 prometheus 监控 ([[../monitor/TC-prometheus-ha-architect-with-thanos.zh|TC-prometheus-ha-architect-with-thanos.zh]])
 - cloudwatch原始监控ec2 metric
 - 使用cloudwatch container insight ([[git/git-mkdocs/EKS/solutions/monitor/eks-container-insights|eks-container-insights]])
     - Enable Prometheus Metrics in CloudWatch ([[git/git-mkdocs/EKS/solutions/monitor/enable-prometheus-in-cloudwatch|enable-prometheus-in-cloudwatch]])

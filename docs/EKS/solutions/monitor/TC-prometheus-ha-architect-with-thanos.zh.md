@@ -34,20 +34,20 @@ Thanos是一套开源组件，构建在 Prometheus 之上，用以解决 Prometh
 - Query Frontend（查询前端）：实现 Prometheus 的 v1 API，将其代理给查询器，同时缓存响应，并可以拆分查询以提高性能。
 
 第一种监控架构（对应下图蓝色集群及组件）：
-![[../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-arch-1.png]]
+![[attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh.png]]
 - 被监控集群（Observee）部署 Prometheus 且启用 Thanos 的 Sidecar 方式将监控的历史数据定期归档到 S3，通过部署 Thanos Store 组件查询历史数据（图中 Store 组件部署在集中监控集群中）；
 - 集中监控集群（Observer）除了部署 Thanos 组件之外，将统一部署 Grafana 作为 Dashboard 展示。
 
 第二种监控架构（对应下图红色集群及组件）：
-![[../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-arch-2.png]]
+![[attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-1.png]]
 - 被监控集群（Observee）除了启用 Thanos Sidecar 之外，还启用了 Prometheus 的 Remote Write 功能，将未归档的数据以 WAL 方式远程传输到部署在集中监控集群（Observer）上的 Thanos Receiver，以保证数据的冗余度。 Thanos Receiver 同样可以将历史监控数据归档到 S3 上，且支持被 Thanos Query 直接查询，同时避免直接查询 Sidecar 而给被监控集群带来额外的性能损耗。
 
 第三种监控架构（对应下图黄色集群及组件）：
-![[../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-arch-3.png]]
+![[attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-2.png]]
 - 在多集群监控场景下，一般会在每个集群部署独立的 Prometheus 组件。Prometheus 提供 Agent Mode 针对这样的场景可以最小化资源占用，直接启用 Remote Write 功能将监控数据集中保存 （可以是另一个 Prometheus 集群，或者 Thanos Receiver 组件）。
 
 第四种监控架构（对应上图绿色集群及组件）：
-![[../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-arch-4.png]]
+![[attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-3.png]]
 - 在 AWS 上可以使用托管的 Prometheus 服务作为集中监控数据持久化，提供最好的性能和最低的维护成本。每个被监控集群可以使用无代理采集功能（[新闻稿](https://aws.amazon.com/about-aws/whats-new/2023/11/amazon-managed-service-prometheus-agentless-collector-metrics-eks/)），进一步方便客户无需提前规划，从而可以开箱即用的使用 Prometheus 的相关组件。
 
 以下总结了各种 Prometheus 监控架构所适合的场景：
@@ -205,7 +205,7 @@ Query Frontend 对外提供与 Prometheus 兼容的 API，可以直接作为 Pro
     - 直接使用 Kubernetes 内部域名: `http://thanoslab-query-frontend.thanos.svc.cluster.local:9090`
     - 或者上文提到的 Query Frontend Service 绑定的域名访问
 - 查看预置的 dashboard： `Kubernetes / Compute Resources / Multi-Cluster` 
-![[../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-grafana-1.png]]
+![[attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-4.png]]
 
 #### 查看其他 Dashboard
 通过简单修改即可将其他预置 dashboard 修改为支持多集群查询：
@@ -214,7 +214,7 @@ Query Frontend 对外提供与 Prometheus 兼容的 API，可以直接作为 Pro
 - 在 Variable 中 找到 `cluster` 变量，按照下面截图修改
     - Show on dashboard 设置为 `Label and value`
     - Data source 设置为 `thanoslab`
-![[../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-grafana-2.png]]
+![[attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-5.png]]
 - 点击 Apply 保存变量修改
 - 点击 Save As 保存 Dashboard 即可
 
@@ -225,7 +225,7 @@ Query Frontend 对外提供与 Prometheus 兼容的 API，可以直接作为 Pro
     - Store 表中，Min Time 有值表示数据被写入 S3，且显示最早数据的时间戳
 - 数据通过 Label 标注来源的集群名称以及采集数据的 Pod 名称
 - 本实验在 Prometheus 中设置了 3 个 `ExternalLabel`，包括 `cluster`、`cluster_name`、`origin_prometheus`
-![[../../../git-attachment/TC-prometheus-ha-architect-with-thanos-png-grafana-3.png]]
+![[attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-6.png]]
 ### 清理环境
 - 按照下面步骤清理集群 `ekscluster1` 相关内容
 ```sh

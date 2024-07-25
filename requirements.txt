@@ -14,6 +14,7 @@ mkdocs-meta-descriptions-plugin
 mkdocs-glightbox
 mkdocs-pagetree-plugin
 mkdocs-file-filter-plugin
+mkdocs-static-i18n
 
 #mkdocs-section-index
 #obsidiantools

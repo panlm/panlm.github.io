@@ -148,7 +148,7 @@ External labels are only attached when data is communicated to the outside so yo
 
 
 ### install with thanos
-- refer: [[TC-prometheus-ha-architect-with-thanos]]
+- refer: [[TC-prometheus-ha-architect-with-thanos.zh]]
 
 ![[attachments/install-prometheus-operator/IMG-install-prometheus-operator-1.png]]
 

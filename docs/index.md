@@ -41,9 +41,9 @@ number headings: first-level 2, max 3, 1.1, auto
 - [$frontmatter:title]($filename) -- $frontmatter:description
 ```
 - [appmesh-workshop-eks](appmesh-workshop-eks) -- appmesh workshop
-- [Prometheus With Thanos Manually](POC-prometheus-ha-architect-with-thanos-manually) -- POC-prometheus-with-thanos-manually
+- [Prometheus With Thanos Manually](others/POC-prometheus-ha-architect-with-thanos-manually.md) -- POC-prometheus-with-thanos-manually
 - [script-api-resource-method](script-api-resource-method) -- 每个 api 的每个 resource 的每个 method 都需要单独通过命令行启用“tlsConfig/insecureSkipVerification”，通过这个脚本简化工作
-- [Building Prometheus HA Architect with Thanos](TC-prometheus-ha-architect-with-thanos) -- 用 Thanos 解决 Prometheus 在多集群大规模环境下的高可用性、可扩展性限制
+- [Building Prometheus HA Architect with Thanos](EKS/solutions/monitor/TC-prometheus-ha-architect-with-thanos.zh.md) -- 用 Thanos 解决 Prometheus 在多集群大规模环境下的高可用性、可扩展性限制
 <-->
 
 ## 5 rendered
