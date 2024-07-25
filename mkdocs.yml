@@ -38,7 +38,7 @@ theme:
         # - navigation.sections
         # - navigation.expand # auto expand folder in navi
         - search.suggest
-        - search.highlight
+        # - search.highlight
         - toc.follow
         - content.code.copy
 
