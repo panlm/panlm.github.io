@@ -288,7 +288,9 @@ time seq 1 1024 | parallel --will-cite -j 128 touch /mnt/efs/01/tutorial/touch/$
 ## regctl
 ```sh
 # login
-aws ecr get-login-password --region us-west-2 |regctl registry login 123456789012.dkr.ecr.us-west-2.amazonaws.com -u AWS --pass-stdin
+aws ecr get-login-password --region us-west-2 |regctl registry login 123456789012.dkr.ecr.us-west-2.amazonaws.com --user AWS --pass-stdin
+
+regctl image export 123456789012.dkr.ecr.us-west-2.amazonaws.com/$REPO_PREFIX/$IMG_LAMBDA:latest /dev/null
 
 IMG_LAMBDA=x6u9o2u4/sample-connector-for-bedrock-lambda
 regctl image copy public.ecr.aws/${IMG_LAMBDA}:latest 123456789012.dkr.ecr.us-west-2.amazonaws.com/brconn/${IMG_LAMBDA}:latest
