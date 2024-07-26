@@ -3,6 +3,7 @@ title: Fargate on EKS
 description: 在 EKS 集群中使用 Fargate
 created: 2022-06-25 09:17:05.835
 last_modified: 2024-02-03
+locale: zh
 tags:
   - aws/container/eks
   - aws/container/fargate
