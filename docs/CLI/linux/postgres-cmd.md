@@ -13,7 +13,7 @@ tags:
 ```sh
 yum install -y gcc readline-devel libicu-devel zlib-devel openssl-devel systemd-devel
 wget https://ftp.postgresql.org/pub/source/v16.3/postgresql-16.3.tar.gz  # PostgreSQL 16.1
-tar -xvzf postgresql-16.3.tar.gz
+tar -xzf postgresql-16.3.tar.gz
 cd postgresql-16.3
 
 ./configure --with-systemd --with-openssl

@@ -113,7 +113,7 @@ plugins:
           name: English
           build: true
         - locale: zh
-          name: Chinese
+          name: 中文
           build: true
   - git-revision-date-localized:
       type: timeago

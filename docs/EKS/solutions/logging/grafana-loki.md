@@ -14,6 +14,8 @@ Loki is a backend store for long-term log retention
 ## diagram for distributed microservices
 ![[attachments/grafana-loki/IMG-grafana-loki-6.png]]
 
+refer: [[../../../../../Excalidraw/loki.excalidraw|loki.excalidraw]]
+
 ## walkthrough
 ### prerequisites
 - ekscluster 

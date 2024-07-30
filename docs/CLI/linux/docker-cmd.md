@@ -175,3 +175,10 @@ https://phoenixnap.com/kb/docker-environment-variables
 
 `ENV SPARK_VERSION=3.3.3`
 
+## compose
+
+```sh
+sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
+
+```
+
