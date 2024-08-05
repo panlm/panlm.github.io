@@ -8,6 +8,7 @@ tags:
 ---
 
 # prometheus-adapter
+- cannot see cpu/mem in k9s, using metrics-server to instead
 
 ## install
 - https://github.com/kubernetes-sigs/prometheus-adapter
@@ -21,3 +22,6 @@ helm install prom-adapter prometheus-community/prometheus-adapter -n kube-system
 
 ## alternative
 - [[metrics-server]]
+
+
+

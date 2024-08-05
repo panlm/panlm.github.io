@@ -18,13 +18,13 @@ tags:
 
 ![[attachments/ecr-scan-on-push-notification-sns/IMG-ecr-scan-on-push-notification-sns.png]]
 
-下载 cloudformation 模板：[[../../git-attachment/ecr-scan-on-push-notification-sns-template-ecr.yml|template-ecr.yml]]
+下载 cloudformation 模板：[[attachments/ecr-scan-on-push-notification-sns/ecr-scan-on-push-notification-sns-template-ecr.yml|template-ecr.yml]]
 
 我们在上述架构基础上做了额外手工修改：
 - 创建特定的 SNS topic，注册邮箱并接收告警
 - 给 Lambda 的执行 role 添加 SNS topic 的权限
 - 更新了 lambda 函数直接将 CRITICAL 的消息同时发送到 SNS 告警
-    - 下载参考 [[../../git-attachment/ecr-scan-on-push-notification-sns-new-lambda.py|new-lambda.py]]
+    - 下载参考 [[attachments/ecr-scan-on-push-notification-sns/ecr-scan-on-push-notification-sns-new-lambda.py|new-lambda.py]]
 
 ## 参考
 - https://aws.amazon.com/blogs/containers/logging-image-scan-findings-from-amazon-ecr-in-cloudwatch-using-an-aws-lambda-function/

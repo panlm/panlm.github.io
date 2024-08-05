@@ -48,7 +48,9 @@ REPO_URI=$(aws ecr describe-repositories --repository-names ${REPO_NAME} --query
 ## create ecr repo nginx
 
 ```sh
-export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document |jq -r '.region') export AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text) ECR_URL=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com
+export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document |jq -r '.region') 
+export AWS_ACCOUNT_ID=$(aws sts get-caller-identity --query Account --output text) 
+ECR_URL=${AWS_ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com
 
 aws ecr get-login-password --region ${AWS_DEFAULT_REGION} | docker login --username AWS --password-stdin ${ECR_URL}
 

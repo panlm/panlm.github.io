@@ -18,11 +18,14 @@ tags:
 ## create cluster
 ```sh
 aws redshift create-cluster \
---cluster-identifier my-redshift-cluster \
---node-type dc2.large \
---master-username myadmin \
---master-user-password passworD.1 \
---number-of-nodes 3 
+    --cluster-identifier my-redshift-test \
+    --node-type dc2.large \
+    --master-username awsuser \
+    --master-user-password passworD.1 \
+    --cluster-type single-node \
+    --number-of-nodes 1 \
+    --publicly-accessible
+    # --load-sample-data ??
 
 ```
 
