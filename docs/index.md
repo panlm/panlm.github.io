@@ -12,7 +12,7 @@ number headings: first-level 2, max 3, 1.1, auto
 (["status":"myblog"] OR ["status":"awsblog"])
 - [$frontmatter:title]($filename) -- $frontmatter:description
 ```
-- [datahub](datahub) -- 部署 Datahub
+- [Datahub](datahub) -- 部署 Datahub，从 Redshift 和 Glue job 中获取数据血缘
 - [Enable scan on push in ECR and send notification to SNS](ecr-scan-on-push-notification-sns) -- 启用 ECR 的 Scan on push 之后，自动将扫描结果中 CRITICAL 的信息发送到目标 SNS 告警
 - [Using Grafana Loki for Logging](grafana-loki) -- 使用 loki 收集日志
 - [Quick Setup Cloud9](quick-setup-cloud9) -- 简化创建 Cloud9 脚本，优先选择使用 Terraform 自动初始化；也可以使用脚本从 CloudShell 中完成初始化

@@ -1,11 +1,11 @@
 ---
-title: datahub
-description: 部署 Datahub
+title: Datahub
+description: 部署 Datahub，从 Redshift 和 Glue job 中获取数据血缘
 created: 2024-07-31 08:28:11.479
 last_modified: 2024-08-05
+status: myblog
 tags:
   - aws/analytics
-status: myblog
 ---
 
 # datahub
