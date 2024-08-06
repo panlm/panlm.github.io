@@ -6831,44 +6831,55 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a><span class="nb">time</span><span class="w"> </span>seq<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="m">1024</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>parallel<span class="w"> </span>--will-cite<span class="w"> </span>-j<span class="w"> </span><span class="m">128</span><span class="w"> </span>touch<span class="w"> </span>/mnt/efs/01/tutorial/touch/<span class="si">${</span><span class="nv">directory</span><span class="si">}</span>/test-1.4-<span class="o">{}</span>
 </code></pre></div></p>
 <h2 id="regctl">regctl<a class="headerlink" href="#regctl" title="Permanent link">&para;</a></h2>
+<ul>
+<li>login<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a><span class="c1"># login</span>
 <a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a>aws<span class="w"> </span>ecr<span class="w"> </span>get-login-password<span class="w"> </span>--region<span class="w"> </span>us-west-2<span class="w"> </span><span class="p">|</span>regctl<span class="w"> </span>registry<span class="w"> </span>login<span class="w"> </span><span class="m">123456789012</span>.dkr.ecr.us-west-2.amazonaws.com<span class="w"> </span>--user<span class="w"> </span>AWS<span class="w"> </span>--pass-stdin
-<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a>
-<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a>regctl<span class="w"> </span>image<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="m">123456789012</span>.dkr.ecr.us-west-2.amazonaws.com/<span class="nv">$REPO_PREFIX</span>/<span class="nv">$IMG_LAMBDA</span>:latest<span class="w"> </span>/dev/null
-<a id="__codelineno-26-5" name="__codelineno-26-5" href="#__codelineno-26-5"></a>
-<a id="__codelineno-26-6" name="__codelineno-26-6" href="#__codelineno-26-6"></a><span class="nv">IMG_LAMBDA</span><span class="o">=</span>x6u9o2u4/sample-connector-for-bedrock-lambda
-<a id="__codelineno-26-7" name="__codelineno-26-7" href="#__codelineno-26-7"></a>regctl<span class="w"> </span>image<span class="w"> </span>copy<span class="w"> </span>public.ecr.aws/<span class="si">${</span><span class="nv">IMG_LAMBDA</span><span class="si">}</span>:latest<span class="w"> </span><span class="m">123456789012</span>.dkr.ecr.us-west-2.amazonaws.com/brconn/<span class="si">${</span><span class="nv">IMG_LAMBDA</span><span class="si">}</span>:latest
-</code></pre></div>
+</code></pre></div></li>
+<li>
+<p>export<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>regctl<span class="w"> </span>image<span class="w"> </span><span class="nb">export</span><span class="w"> </span><span class="m">123456789012</span>.dkr.ecr.us-west-2.amazonaws.com/<span class="nv">$REPO_PREFIX</span>/<span class="nv">$IMG_LAMBDA</span>:latest<span class="w"> </span>/dev/null
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="nv">IMG_LAMBDA</span><span class="o">=</span>x6u9o2u4/sample-connector-for-bedrock-lambda
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a>regctl<span class="w"> </span>image<span class="w"> </span>copy<span class="w"> </span>public.ecr.aws/<span class="si">${</span><span class="nv">IMG_LAMBDA</span><span class="si">}</span>:latest<span class="w"> </span><span class="m">123456789012</span>.dkr.ecr.us-west-2.amazonaws.com/brconn/<span class="si">${</span><span class="nv">IMG_LAMBDA</span><span class="si">}</span>:latest
+</code></pre></div></p>
+</li>
+<li>
+<p>copy to private registry<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>regctl<span class="w"> </span>image<span class="w"> </span>copy<span class="w">  </span>nginx:latest<span class="w"> </span><span class="m">908572210082</span>.dkr.ecr.us-west-2.amazonaws.com/nginx
+</code></pre></div></p>
+</li>
+</ul>
 <h2 id="rsync">rsync<a class="headerlink" href="#rsync" title="Permanent link">&para;</a></h2>
 <h3 id="notable-folder">notable folder<a class="headerlink" href="#notable-folder" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a>rsync<span class="w"> </span>-narv<span class="w"> </span>--delete<span class="w"> </span>/home/ubuntu/.notable<span class="w"> </span>/home/ubuntu/OneDrive/CrossSync/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>rsync<span class="w"> </span>-narv<span class="w"> </span>--delete<span class="w"> </span>/home/ubuntu/.notable<span class="w"> </span>/home/ubuntu/OneDrive/CrossSync/
 </code></pre></div>
 <h3 id="sync-to-s3">sync to s3<a class="headerlink" href="#sync-to-s3" title="Permanent link">&para;</a></h3>
 <p>upload only md file to s3</p>
 <ul>
 <li>&ndash;exclude 参数必须放在 &ndash;include 参数之前。</li>
 <li>如果您需要上传多个类型文件，可以使用多个 &ndash;include 参数。<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>aws<span class="w"> </span>s3<span class="w"> </span>sync<span class="w"> </span>./work-notes<span class="w"> </span>s3://knowledge-base-quick-worknotes-1350/work-notes<span class="w"> </span>--delete<span class="w">  </span>--exclude<span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.md&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>aws<span class="w"> </span>s3<span class="w"> </span>sync<span class="w"> </span>./work-notes<span class="w"> </span>s3://knowledge-base-quick-worknotes-1350/work-notes<span class="w"> </span>--delete<span class="w">  </span>--exclude<span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="w"> </span>--include<span class="w"> </span><span class="s2">&quot;*.md&quot;</span>
 </code></pre></div></li>
 </ul>
 <h3 id="work-notes">work-notes<a class="headerlink" href="#work-notes" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>bash
-<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>
-<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">HISTSIZE</span><span class="o">=</span><span class="m">0</span>
-<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a><span class="nb">cd</span><span class="w"> </span>~/Documents/
-<a id="__codelineno-29-5" name="__codelineno-29-5" href="#__codelineno-29-5"></a>rsync<span class="w"> </span>-avr<span class="w"> </span>--delete<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-29-6" name="__codelineno-29-6" href="#__codelineno-29-6"></a><span class="w">    </span>./work-notes<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-29-7" name="__codelineno-29-7" href="#__codelineno-29-7"></a><span class="w">    </span>./SA-Baseline-50-12<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-29-8" name="__codelineno-29-8" href="#__codelineno-29-8"></a><span class="w">    </span>./customers<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-29-9" name="__codelineno-29-9" href="#__codelineno-29-9"></a><span class="w">    </span>stevenpan@10.68.69.100:/Users/stevenpan/Documents/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>bash
+<a id="__codelineno-31-2" name="__codelineno-31-2" href="#__codelineno-31-2"></a>
+<a id="__codelineno-31-3" name="__codelineno-31-3" href="#__codelineno-31-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">HISTSIZE</span><span class="o">=</span><span class="m">0</span>
+<a id="__codelineno-31-4" name="__codelineno-31-4" href="#__codelineno-31-4"></a><span class="nb">cd</span><span class="w"> </span>~/Documents/
+<a id="__codelineno-31-5" name="__codelineno-31-5" href="#__codelineno-31-5"></a>rsync<span class="w"> </span>-avr<span class="w"> </span>--delete<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-31-6" name="__codelineno-31-6" href="#__codelineno-31-6"></a><span class="w">    </span>./work-notes<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-31-7" name="__codelineno-31-7" href="#__codelineno-31-7"></a><span class="w">    </span>./SA-Baseline-50-12<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-31-8" name="__codelineno-31-8" href="#__codelineno-31-8"></a><span class="w">    </span>./customers<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-31-9" name="__codelineno-31-9" href="#__codelineno-31-9"></a><span class="w">    </span>stevenpan@10.68.69.100:/Users/stevenpan/Documents/
 </code></pre></div>
 <h2 id="sed">sed<a class="headerlink" href="#sed" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a><span class="nv">file</span><span class="o">=</span>file.md
-<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a>gsed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/^!\[\[\([^]]\+\)\]\]/![](\1)/&#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">file</span><span class="si">}</span>
-<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="c1"># change </span>
-<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="c1"># ![[stream-k8s-control-panel-logs-to-s3-21.png]]</span>
-<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="c1"># to </span>
-<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="c1"># ![](stream-k8s-control-panel-logs-to-s3-21.png)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="nv">file</span><span class="o">=</span>file.md
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>gsed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;s/^!\[\[\([^]]\+\)\]\]/![](\1)/&#39;</span><span class="w"> </span><span class="si">${</span><span class="nv">file</span><span class="si">}</span>
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a><span class="c1"># change </span>
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="c1"># ![[stream-k8s-control-panel-logs-to-s3-21.png]]</span>
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a><span class="c1"># to </span>
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a><span class="c1"># ![](stream-k8s-control-panel-logs-to-s3-21.png)</span>
 </code></pre></div>
 <h2 id="sponge-tee-redirect-to-same-file">sponge &amp; tee &amp; redirect to same file<a class="headerlink" href="#sponge-tee-redirect-to-same-file" title="Permanent link">&para;</a></h2>
 <p>sponge  reads  standard input and writes it out to the specified file. Unlike a shell redirect, sponge soaks up all its input before opening the output file. This allows constructing pipelines that read from and write to the same file.</p>
@@ -6877,57 +6888,57 @@
 <li><a href="../../../../../../ssh-cmd" title="ssh-cmd">ssh-cmd</a></li>
 </ul>
 <h2 id="stress-ng">stress-ng<a class="headerlink" href="#stress-ng" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>stress-ng --vm-bytes $(awk &#39;_MemFree_{printf &quot;%d\n&quot;, $2 * 0.95;}&#39; &lt; _proc_meminfo)k --vm-keep -m 1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>stress-ng --vm-bytes $(awk &#39;_MemFree_{printf &quot;%d\n&quot;, $2 * 0.95;}&#39; &lt; _proc_meminfo)k --vm-keep -m 1
 </code></pre></div>
 <h3 id="container">container<a class="headerlink" href="#container" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a>apiVersion: apps/v1
-<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a>kind: Deployment
-<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>metadata:
-<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a>  name: cpu-stress-deployment
-<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>spec:
-<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>  replicas: 1
-<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>  selector:
-<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a>    matchLabels:
-<a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a>      app: stress-ng
-<a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a>  template:
-<a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a>    metadata:
-<a id="__codelineno-32-12" name="__codelineno-32-12" href="#__codelineno-32-12"></a>      labels:
-<a id="__codelineno-32-13" name="__codelineno-32-13" href="#__codelineno-32-13"></a>        app: stress-ng
-<a id="__codelineno-32-14" name="__codelineno-32-14" href="#__codelineno-32-14"></a>    spec:
-<a id="__codelineno-32-15" name="__codelineno-32-15" href="#__codelineno-32-15"></a>      containers:
-<a id="__codelineno-32-16" name="__codelineno-32-16" href="#__codelineno-32-16"></a>
-<a id="__codelineno-32-17" name="__codelineno-32-17" href="#__codelineno-32-17"></a>      - name: stress-ng-container
-<a id="__codelineno-32-18" name="__codelineno-32-18" href="#__codelineno-32-18"></a>        image: polinux/stress-ng # progrium/stress
-<a id="__codelineno-32-19" name="__codelineno-32-19" href="#__codelineno-32-19"></a>        command:
-<a id="__codelineno-32-20" name="__codelineno-32-20" href="#__codelineno-32-20"></a>        - &#39;sh&#39;
-<a id="__codelineno-32-21" name="__codelineno-32-21" href="#__codelineno-32-21"></a>        - &#39;-c&#39;
-<a id="__codelineno-32-22" name="__codelineno-32-22" href="#__codelineno-32-22"></a>        - |
-<a id="__codelineno-32-23" name="__codelineno-32-23" href="#__codelineno-32-23"></a>          while true ; do
-<a id="__codelineno-32-24" name="__codelineno-32-24" href="#__codelineno-32-24"></a>            echo &quot;start stress (10 min)&quot;
-<a id="__codelineno-32-25" name="__codelineno-32-25" href="#__codelineno-32-25"></a>            stress-ng --cpu 2 --timeout 600
-<a id="__codelineno-32-26" name="__codelineno-32-26" href="#__codelineno-32-26"></a>            echo &quot;start sleep (10min)&quot;
-<a id="__codelineno-32-27" name="__codelineno-32-27" href="#__codelineno-32-27"></a>            sleep 600
-<a id="__codelineno-32-28" name="__codelineno-32-28" href="#__codelineno-32-28"></a>          done
-<a id="__codelineno-32-29" name="__codelineno-32-29" href="#__codelineno-32-29"></a>        resources:
-<a id="__codelineno-32-30" name="__codelineno-32-30" href="#__codelineno-32-30"></a>          limits:
-<a id="__codelineno-32-31" name="__codelineno-32-31" href="#__codelineno-32-31"></a>            cpu: &quot;1&quot;
-<a id="__codelineno-32-32" name="__codelineno-32-32" href="#__codelineno-32-32"></a>          requests:
-<a id="__codelineno-32-33" name="__codelineno-32-33" href="#__codelineno-32-33"></a>            cpu: &quot;1&quot;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>apiVersion: apps/v1
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>kind: Deployment
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>metadata:
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>  name: cpu-stress-deployment
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>spec:
+<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>  replicas: 1
+<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>  selector:
+<a id="__codelineno-34-8" name="__codelineno-34-8" href="#__codelineno-34-8"></a>    matchLabels:
+<a id="__codelineno-34-9" name="__codelineno-34-9" href="#__codelineno-34-9"></a>      app: stress-ng
+<a id="__codelineno-34-10" name="__codelineno-34-10" href="#__codelineno-34-10"></a>  template:
+<a id="__codelineno-34-11" name="__codelineno-34-11" href="#__codelineno-34-11"></a>    metadata:
+<a id="__codelineno-34-12" name="__codelineno-34-12" href="#__codelineno-34-12"></a>      labels:
+<a id="__codelineno-34-13" name="__codelineno-34-13" href="#__codelineno-34-13"></a>        app: stress-ng
+<a id="__codelineno-34-14" name="__codelineno-34-14" href="#__codelineno-34-14"></a>    spec:
+<a id="__codelineno-34-15" name="__codelineno-34-15" href="#__codelineno-34-15"></a>      containers:
+<a id="__codelineno-34-16" name="__codelineno-34-16" href="#__codelineno-34-16"></a>
+<a id="__codelineno-34-17" name="__codelineno-34-17" href="#__codelineno-34-17"></a>      - name: stress-ng-container
+<a id="__codelineno-34-18" name="__codelineno-34-18" href="#__codelineno-34-18"></a>        image: polinux/stress-ng # progrium/stress
+<a id="__codelineno-34-19" name="__codelineno-34-19" href="#__codelineno-34-19"></a>        command:
+<a id="__codelineno-34-20" name="__codelineno-34-20" href="#__codelineno-34-20"></a>        - &#39;sh&#39;
+<a id="__codelineno-34-21" name="__codelineno-34-21" href="#__codelineno-34-21"></a>        - &#39;-c&#39;
+<a id="__codelineno-34-22" name="__codelineno-34-22" href="#__codelineno-34-22"></a>        - |
+<a id="__codelineno-34-23" name="__codelineno-34-23" href="#__codelineno-34-23"></a>          while true ; do
+<a id="__codelineno-34-24" name="__codelineno-34-24" href="#__codelineno-34-24"></a>            echo &quot;start stress (10 min)&quot;
+<a id="__codelineno-34-25" name="__codelineno-34-25" href="#__codelineno-34-25"></a>            stress-ng --cpu 2 --timeout 600
+<a id="__codelineno-34-26" name="__codelineno-34-26" href="#__codelineno-34-26"></a>            echo &quot;start sleep (10min)&quot;
+<a id="__codelineno-34-27" name="__codelineno-34-27" href="#__codelineno-34-27"></a>            sleep 600
+<a id="__codelineno-34-28" name="__codelineno-34-28" href="#__codelineno-34-28"></a>          done
+<a id="__codelineno-34-29" name="__codelineno-34-29" href="#__codelineno-34-29"></a>        resources:
+<a id="__codelineno-34-30" name="__codelineno-34-30" href="#__codelineno-34-30"></a>          limits:
+<a id="__codelineno-34-31" name="__codelineno-34-31" href="#__codelineno-34-31"></a>            cpu: &quot;1&quot;
+<a id="__codelineno-34-32" name="__codelineno-34-32" href="#__codelineno-34-32"></a>          requests:
+<a id="__codelineno-34-33" name="__codelineno-34-33" href="#__codelineno-34-33"></a>            cpu: &quot;1&quot;
 </code></pre></div>
 <h2 id="tar">tar<a class="headerlink" href="#tar" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a>tar<span class="w"> </span>cf<span class="w"> </span>a.tar<span class="w"> </span>./blue-green-upgrade/<span class="w"> </span>--exclude<span class="o">=</span><span class="s2">&quot;.terraform&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>tar<span class="w"> </span>cf<span class="w"> </span>a.tar<span class="w"> </span>./blue-green-upgrade/<span class="w"> </span>--exclude<span class="o">=</span><span class="s2">&quot;.terraform&quot;</span>
 </code></pre></div>
 <h2 id="tcp-setting-time_wiat">tcp setting - TIME_WIAT<a class="headerlink" href="#tcp-setting-time_wiat" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>net.ipv4.tcp_fin_timeout<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">30</span>
-<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>net.ipv4.ip_local_port_range<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">15000</span><span class="w"> </span><span class="m">65000</span>
-<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>net.ipv4.tcp_tw_recycle<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
-<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>net.ipv4.tcp_tw_reuse<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
-<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>
-<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>net.ipv4.ip_forward<span class="o">=</span><span class="m">1</span>
-<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>net.ipv4.conf.all.accept_source_route<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>net.ipv4.tcp_fin_timeout<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">30</span>
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>net.ipv4.ip_local_port_range<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">15000</span><span class="w"> </span><span class="m">65000</span>
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>net.ipv4.tcp_tw_recycle<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>net.ipv4.tcp_tw_reuse<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>
+<a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>net.ipv4.ip_forward<span class="o">=</span><span class="m">1</span>
+<a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a>net.ipv4.conf.all.accept_source_route<span class="w"> </span><span class="o">=</span><span class="w"> </span><span class="m">1</span>
 </code></pre></div>
 <h2 id="tc-traffic-control">tc - traffic control<a class="headerlink" href="#tc-traffic-control" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a>yum<span class="w"> </span>install<span class="w"> </span>iproute-tc
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>yum<span class="w"> </span>install<span class="w"> </span>iproute-tc
 </code></pre></div>
 <h3 id="doc">doc<a class="headerlink" href="#doc" title="Permanent link">&para;</a></h3>
 <ul>
@@ -6939,8 +6950,8 @@
 </ul>
 <h2 id="ts">ts<a class="headerlink" href="#ts" title="Permanent link">&para;</a></h2>
 <p>add timestamp at the front of every command output<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>yum<span class="w"> </span>install<span class="w"> </span>moreutils
-<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>ls<span class="w"> </span><span class="p">|</span>ts
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>yum<span class="w"> </span>install<span class="w"> </span>moreutils
+<a id="__codelineno-38-2" name="__codelineno-38-2" href="#__codelineno-38-2"></a>ls<span class="w"> </span><span class="p">|</span>ts
 </code></pre></div></p>
 <h2 id="vim">vim<a class="headerlink" href="#vim" title="Permanent link">&para;</a></h2>
 <ul>
@@ -6948,10 +6959,10 @@
 </ul>
 <h2 id="xfs">xfs<a class="headerlink" href="#xfs" title="Permanent link">&para;</a></h2>
 <h3 id="xfs-mount-">xfs-mount-<a class="headerlink" href="#xfs-mount-" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>mount<span class="w"> </span>-t<span class="w"> </span>xfs<span class="w"> </span>-o<span class="w"> </span>nouuid<span class="w"> </span>/dev/nvme1n1<span class="w"> </span>/mnt
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>mount<span class="w"> </span>-t<span class="w"> </span>xfs<span class="w"> </span>-o<span class="w"> </span>nouuid<span class="w"> </span>/dev/nvme1n1<span class="w"> </span>/mnt
 </code></pre></div>
 <h3 id="get-uuid">get uuid<a class="headerlink" href="#get-uuid" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>xfs_db<span class="w"> </span>-c<span class="w"> </span>uuid<span class="w"> </span>/dev/nvme1n1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>xfs_db<span class="w"> </span>-c<span class="w"> </span>uuid<span class="w"> </span>/dev/nvme1n1
 </code></pre></div>
 <h2 id="xtop">xtop<a class="headerlink" href="#xtop" title="Permanent link">&para;</a></h2>
 <ul>
@@ -6959,31 +6970,31 @@
 <li>htop</li>
 <li><a href="../../atop" title="atop">atop</a></li>
 <li>iftop<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>iftop -t -s 10 &gt; output
+<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>iftop -t -s 10 &gt; output
 </code></pre></div></li>
 </ul>
 <h2 id="yum">yum<a class="headerlink" href="#yum" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-40-1" name="__codelineno-40-1" href="#__codelineno-40-1"></a>yum<span class="w"> </span>--showduplicates<span class="w"> </span>list<span class="w"> </span>terraform
-<a id="__codelineno-40-2" name="__codelineno-40-2" href="#__codelineno-40-2"></a>yum<span class="w"> </span>install<span class="w"> </span>terraform-1.5.7-1
-<a id="__codelineno-40-3" name="__codelineno-40-3" href="#__codelineno-40-3"></a>yum<span class="w"> </span>versionlock<span class="w"> </span>terraform
+<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>yum<span class="w"> </span>--showduplicates<span class="w"> </span>list<span class="w"> </span>terraform
+<a id="__codelineno-42-2" name="__codelineno-42-2" href="#__codelineno-42-2"></a>yum<span class="w"> </span>install<span class="w"> </span>terraform-1.5.7-1
+<a id="__codelineno-42-3" name="__codelineno-42-3" href="#__codelineno-42-3"></a>yum<span class="w"> </span>versionlock<span class="w"> </span>terraform
 </code></pre></div>
 <h3 id="fixed-version">fixed version<a class="headerlink" href="#fixed-version" title="Permanent link">&para;</a></h3>
 <div class="tabbed-set tabbed-alternate" data-tabs="1:2"><input checked="checked" id="__tabbed_1_1" name="__tabbed_1" type="radio" /><input id="__tabbed_1_2" name="__tabbed_1" type="radio" /><div class="tabbed-labels"><label for="__tabbed_1_1">centos7</label><label for="__tabbed_1_2">centos8/9</label></div>
 <div class="tabbed-content">
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-41-1" name="__codelineno-41-1" href="#__codelineno-41-1"></a>yum<span class="w"> </span>install<span class="w"> </span>yum-plugin-versionlock
+<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>yum<span class="w"> </span>install<span class="w"> </span>yum-plugin-versionlock
 </code></pre></div>
 </div>
 <div class="tabbed-block">
-<div class="highlight"><pre><span></span><code><a id="__codelineno-42-1" name="__codelineno-42-1" href="#__codelineno-42-1"></a>yum<span class="w"> </span>install<span class="w"> </span>python3-dnf-plugin-versionlock
+<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>yum<span class="w"> </span>install<span class="w"> </span>python3-dnf-plugin-versionlock
 </code></pre></div>
 </div>
 </div>
 </div>
 <h2 id="ip-address-calc">ip address calc<a class="headerlink" href="#ip-address-calc" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-43-1" name="__codelineno-43-1" href="#__codelineno-43-1"></a>yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>sipcalc<span class="w"> </span>--enablerepo<span class="o">=</span>epel
+<div class="highlight"><pre><span></span><code><a id="__codelineno-45-1" name="__codelineno-45-1" href="#__codelineno-45-1"></a>yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>sipcalc<span class="w"> </span>--enablerepo<span class="o">=</span>epel
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-44-1" name="__codelineno-44-1" href="#__codelineno-44-1"></a>brew<span class="w"> </span>install<span class="w"> </span>sipcalc<span class="w"> </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-46-1" name="__codelineno-46-1" href="#__codelineno-46-1"></a>brew<span class="w"> </span>install<span class="w"> </span>sipcalc<span class="w"> </span>
 </code></pre></div>
 <h2 id="others">others<a class="headerlink" href="#others" title="Permanent link">&para;</a></h2>
 <ul>
@@ -7013,7 +7024,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-07-25T09:27:35+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-07-25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-08-06T08:21:03+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-08-06</span>
   </span>
 
     
