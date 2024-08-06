@@ -6,7 +6,7 @@ number headings: first-level 2, max 3, 1.1, auto
 
 # 欢迎来到我的文档
 
-我大部分文档是英文的，这个是测试页面
+大部分文档是英文的，这个是测试页面
 
 ```expander
 (path:git/git-mkdocs/ file:.zh.md)
