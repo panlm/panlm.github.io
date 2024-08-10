@@ -2080,6 +2080,8 @@
       
         
       
+        
+      
     
     
       
@@ -2186,6 +2188,27 @@
   
   <span class="md-ellipsis">
     install-prometheus-grafana-on-eks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/solutions/monitor/k8s-event-exporter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    kubernetes events exporter
   </span>
   
 
@@ -2499,6 +2522,8 @@
       
         
       
+        
+      
     
     
       
@@ -2563,6 +2588,27 @@
   
   <span class="md-ellipsis">
     k8s-liveness-readiness-startup-probes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/kubernetes/k8s-request-limit-best-practices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes Best Practices - Resource Requests and Limits
   </span>
   
 
@@ -2760,6 +2806,8 @@
       
         
       
+        
+      
     
     
       
@@ -2790,6 +2838,27 @@
             ECR
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/ecr/aws-signer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    aws-signer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -4037,6 +4106,8 @@
       
         
       
+        
+      
     
     
       
@@ -4340,6 +4411,27 @@
   
   <span class="md-ellipsis">
     python-cmd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../linux/regctl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    regctl
   </span>
   
 
@@ -5821,7 +5913,7 @@ refer: <a href="../../functions/func-create-launch-template.sh" title="func-crea
 <a id="__codelineno-1-31" name="__codelineno-1-31"></a><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">VPC_IDS</span><span class="o">=(</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-security-groups<span class="w"> </span>--group-ids<span class="w"> </span><span class="si">${</span><span class="nv">SG_IDS</span><span class="p">[@]</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.SecurityGroups[].VpcId&#39;</span><span class="k">)</span><span class="o">)</span>
 <a id="__codelineno-1-32" name="__codelineno-1-32"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${#</span><span class="nv">VPC_IDS</span><span class="p">[@]</span><span class="si">}</span><span class="w"> </span>-ne<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 <a id="__codelineno-1-33" name="__codelineno-1-33"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;SG belongs to different VPC&#39;</span>
-<a id="__codelineno-1-34" name="__codelineno-1-34"></a><span class="w">        </span><span class="k">return</span>
+<a id="__codelineno-1-34" name="__codelineno-1-34"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="m">9</span>
 <a id="__codelineno-1-35" name="__codelineno-1-35"></a><span class="w">    </span><span class="k">fi</span>
 <a id="__codelineno-1-36" name="__codelineno-1-36"></a>
 <a id="__codelineno-1-37" name="__codelineno-1-37"></a><span class="w">    </span><span class="c1"># get private subnets or public subnets</span>

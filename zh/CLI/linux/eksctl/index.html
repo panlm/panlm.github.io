@@ -2084,6 +2084,8 @@
       
         
       
+        
+      
     
     
       
@@ -2218,6 +2220,27 @@
   
   <span class="md-ellipsis">
     install-prometheus-grafana-on-eks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/solutions/monitor/k8s-event-exporter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    kubernetes events exporter
   </span>
   
 
@@ -2531,6 +2554,8 @@
       
         
       
+        
+      
     
     
       
@@ -2595,6 +2620,27 @@
   
   <span class="md-ellipsis">
     k8s-liveness-readiness-startup-probes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/kubernetes/k8s-request-limit-best-practices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes Best Practices - Resource Requests and Limits
   </span>
   
 
@@ -2792,6 +2838,8 @@
       
         
       
+        
+      
     
     
       
@@ -2822,6 +2870,27 @@
             ECR
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../EKS/ecr/aws-signer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    aws-signer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -4071,6 +4140,8 @@
       
         
       
+        
+      
     
     
       
@@ -4519,6 +4590,27 @@
   
   <span class="md-ellipsis">
     python-cmd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../regctl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    regctl
   </span>
   
 
@@ -5785,7 +5877,7 @@
 <a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">    </span><span class="si">${</span><span class="nv">NODEGROUP_NAME</span><span class="si">}</span>
 </code></pre></div>
 <h2 id="func-create-iamserviceaccount-">func-create-iamserviceaccount-<a class="headerlink" href="#func-create-iamserviceaccount-" title="Permanent link">&para;</a></h2>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">func-create-iamserviceaccount</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">func-create-iamserviceaccount.sh</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-7-1"> 1</a></span>
 <span class="normal"><a href="#__codelineno-7-2"> 2</a></span>
 <span class="normal"><a href="#__codelineno-7-3"> 3</a></span>
 <span class="normal"><a href="#__codelineno-7-4"> 4</a></span>
@@ -5829,52 +5921,63 @@
 <span class="normal"><a href="#__codelineno-7-42">42</a></span>
 <span class="normal"><a href="#__codelineno-7-43">43</a></span>
 <span class="normal"><a href="#__codelineno-7-44">44</a></span>
-<span class="normal"><a href="#__codelineno-7-45">45</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">NAMESPACE_NAME</span><span class="si">}</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3"></a>
-<a id="__codelineno-7-4" name="__codelineno-7-4"></a><span class="k">function</span><span class="w"> </span>create-iamserviceaccount<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">{</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="w">    </span><span class="nv">OPTIND</span><span class="o">=</span><span class="m">1</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="w">    </span><span class="nv">OPTSTRING</span><span class="o">=</span><span class="s2">&quot;h?s:c:n:r:&quot;</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">SA_NAME</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">CLUSTER_NAME</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">NAMESPACE_NAME</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">ROLE_ONLY</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<a id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="nb">getopts</span><span class="w"> </span><span class="si">${</span><span class="nv">OPTSTRING</span><span class="si">}</span><span class="w"> </span>opt<span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">opt</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="k">in</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13"></a><span class="w">            </span>s<span class="o">)</span><span class="w"> </span><span class="nv">SA_NAME</span><span class="o">=</span><span class="si">${</span><span class="nv">OPTARG</span><span class="si">}</span><span class="w"> </span><span class="p">;;</span>
-<a id="__codelineno-7-14" name="__codelineno-7-14"></a><span class="w">            </span>c<span class="o">)</span><span class="w"> </span><span class="nv">CLUSTER_NAME</span><span class="o">=</span><span class="si">${</span><span class="nv">OPTARG</span><span class="si">}</span><span class="w"> </span><span class="p">;;</span>
-<a id="__codelineno-7-15" name="__codelineno-7-15"></a><span class="w">            </span>n<span class="o">)</span><span class="w"> </span><span class="nv">NAMESPACE_NAME</span><span class="o">=</span><span class="si">${</span><span class="nv">OPTARG</span><span class="si">}</span><span class="w"> </span><span class="p">;;</span>
-<a id="__codelineno-7-16" name="__codelineno-7-16"></a><span class="w">            </span>r<span class="o">)</span><span class="w"> </span><span class="nv">ROLE_ONLY</span><span class="o">=</span><span class="si">${</span><span class="nv">OPTARG</span><span class="si">}</span><span class="w"> </span><span class="p">;;</span>
-<a id="__codelineno-7-17" name="__codelineno-7-17"></a><span class="w">            </span>h<span class="p">|</span><span class="se">\?</span><span class="o">)</span><span class="w"> </span>
-<a id="__codelineno-7-18" name="__codelineno-7-18"></a><span class="w">                </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;format: create-iamserviceaccount -s SERVICE_ACCOUNT_NAME -c CLUSTER_NAME -n NAMESPACE_NAME -r [0|1] &quot;</span>
-<a id="__codelineno-7-19" name="__codelineno-7-19"></a><span class="w">                </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;\tsample: create-iamserviceaccount -s sa_name -c ekscluster1 -n monitoring -r 1 &quot;</span>
-<a id="__codelineno-7-20" name="__codelineno-7-20"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="m">0</span>
-<a id="__codelineno-7-21" name="__codelineno-7-21"></a><span class="w">            </span><span class="p">;;</span>
-<a id="__codelineno-7-22" name="__codelineno-7-22"></a><span class="w">        </span><span class="k">esac</span>
-<a id="__codelineno-7-23" name="__codelineno-7-23"></a><span class="w">    </span><span class="k">done</span>
-<a id="__codelineno-7-24" name="__codelineno-7-24"></a><span class="w">    </span>:<span class="w"> </span><span class="si">${</span><span class="nv">SA_NAME</span><span class="p">:?Missing -s</span><span class="si">}</span>
-<a id="__codelineno-7-25" name="__codelineno-7-25"></a><span class="w">    </span>:<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="p">:?Missing -c</span><span class="si">}</span>
-<a id="__codelineno-7-26" name="__codelineno-7-26"></a><span class="w">    </span>:<span class="w"> </span><span class="si">${</span><span class="nv">NAMESPACE_NAME</span><span class="p">:?Missing -n</span><span class="si">}</span>
-<a id="__codelineno-7-27" name="__codelineno-7-27"></a><span class="w">    </span>:<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_ONLY</span><span class="p">:?Missing -r</span><span class="si">}</span>
-<a id="__codelineno-7-28" name="__codelineno-7-28"></a>
-<a id="__codelineno-7-29" name="__codelineno-7-29"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>ROLE_ONLY<span class="w"> </span>-eq<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-7-30" name="__codelineno-7-30"></a><span class="w">        </span><span class="nb">local</span><span class="w"> </span><span class="nv">ROLE_OPTION</span><span class="o">=</span><span class="s2">&quot;--role-only&quot;</span>
-<a id="__codelineno-7-31" name="__codelineno-7-31"></a><span class="w">    </span><span class="k">else</span>
-<a id="__codelineno-7-32" name="__codelineno-7-32"></a><span class="w">        </span><span class="nb">local</span><span class="w"> </span><span class="nv">ROLE_OPTION</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<a id="__codelineno-7-33" name="__codelineno-7-33"></a><span class="w">    </span><span class="k">fi</span>
-<a id="__codelineno-7-34" name="__codelineno-7-34"></a>
-<a id="__codelineno-7-35" name="__codelineno-7-35"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">SA_NAME</span><span class="p">:=sa-s3-admin-</span><span class="k">$(</span><span class="nv">TZ</span><span class="o">=</span>EAT-8<span class="w"> </span>date<span class="w"> </span>+%Y%m%d-%H%M%S<span class="k">)</span><span class="si">}</span>
-<a id="__codelineno-7-36" name="__codelineno-7-36"></a><span class="w">    </span>eksctl<span class="w"> </span>create<span class="w"> </span>iamserviceaccount<span class="w"> </span>-c<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-37" name="__codelineno-7-37"></a><span class="w">        </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">SA_NAME</span><span class="si">}</span><span class="w"> </span>--namespace<span class="w"> </span><span class="si">${</span><span class="nv">NAMESPACE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-38" name="__codelineno-7-38"></a><span class="w">        </span>--attach-policy-arn<span class="w"> </span>arn:aws:iam::aws:policy/AmazonS3FullAccess<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-39" name="__codelineno-7-39"></a><span class="w">        </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">SA_NAME</span><span class="si">}</span>-<span class="k">$(</span><span class="nv">TZ</span><span class="o">=</span>EAT-8<span class="w"> </span>date<span class="w"> </span>+%Y%m%d-%H%M%S<span class="k">)</span><span class="w"> </span><span class="si">${</span><span class="nv">ROLE_OPTION</span><span class="si">}</span><span class="w"> </span>--approve<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-40" name="__codelineno-7-40"></a><span class="w">        </span>--override-existing-serviceaccounts
-<a id="__codelineno-7-41" name="__codelineno-7-41"></a><span class="w">    </span><span class="nb">unset</span><span class="w"> </span>S3_ADMIN_ROLE_ARN
-<a id="__codelineno-7-42" name="__codelineno-7-42"></a><span class="w">    </span><span class="nv">S3_ADMIN_ROLE_ARN</span><span class="o">=</span><span class="k">$(</span>eksctl<span class="w"> </span>get<span class="w"> </span>iamserviceaccount<span class="w"> </span>-c<span class="w"> </span><span class="nv">$CLUSTER_NAME</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-43" name="__codelineno-7-43"></a><span class="w">        </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">SA_NAME</span><span class="si">}</span><span class="w"> </span>-o<span class="w"> </span>json<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.[].status.roleARN&#39;</span><span class="k">)</span>
-<a id="__codelineno-7-44" name="__codelineno-7-44"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">S3_ADMIN_ROLE_ARN</span><span class="si">}</span>
-<a id="__codelineno-7-45" name="__codelineno-7-45"></a><span class="o">}</span>
+<span class="normal"><a href="#__codelineno-7-45">45</a></span>
+<span class="normal"><a href="#__codelineno-7-46">46</a></span>
+<span class="normal"><a href="#__codelineno-7-47">47</a></span>
+<span class="normal"><a href="#__codelineno-7-48">48</a></span>
+<span class="normal"><a href="#__codelineno-7-49">49</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1"></a><span class="c1"># depends on: CLUSTER_NAME / NAMESPACE_NAME</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2"></a><span class="c1"># output variable: S3_ADMIN_ROLE_ARN</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3"></a><span class="c1"># quick link: https://panlm.github.io/CLI/functions/func-create-iamserviceaccount.sh</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4"></a>
+<a id="__codelineno-7-5" name="__codelineno-7-5"></a><span class="k">function</span><span class="w"> </span>create-iamserviceaccount<span class="w"> </span><span class="o">()</span><span class="w"> </span><span class="o">{</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6"></a><span class="w">    </span><span class="nv">OPTIND</span><span class="o">=</span><span class="m">1</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7"></a><span class="w">    </span><span class="nv">OPTSTRING</span><span class="o">=</span><span class="s2">&quot;h?s:c:n:r:&quot;</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8"></a><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">SA_NAME</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9"></a><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">CLUSTER_NAME</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10"></a><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">NAMESPACE_NAME</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11"></a><span class="w">    </span><span class="nb">local</span><span class="w"> </span><span class="nv">ROLE_ONLY</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12"></a><span class="w">    </span><span class="k">while</span><span class="w"> </span><span class="nb">getopts</span><span class="w"> </span><span class="si">${</span><span class="nv">OPTSTRING</span><span class="si">}</span><span class="w"> </span>opt<span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13"></a><span class="w">        </span><span class="k">case</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">opt</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="k">in</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14"></a><span class="w">            </span>s<span class="o">)</span><span class="w"> </span><span class="nv">SA_NAME</span><span class="o">=</span><span class="si">${</span><span class="nv">OPTARG</span><span class="si">}</span><span class="w"> </span><span class="p">;;</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15"></a><span class="w">            </span>c<span class="o">)</span><span class="w"> </span><span class="nv">CLUSTER_NAME</span><span class="o">=</span><span class="si">${</span><span class="nv">OPTARG</span><span class="si">}</span><span class="w"> </span><span class="p">;;</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16"></a><span class="w">            </span>n<span class="o">)</span><span class="w"> </span><span class="nv">NAMESPACE_NAME</span><span class="o">=</span><span class="si">${</span><span class="nv">OPTARG</span><span class="si">}</span><span class="w"> </span><span class="p">;;</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17"></a><span class="w">            </span>r<span class="o">)</span><span class="w"> </span><span class="nv">ROLE_ONLY</span><span class="o">=</span><span class="si">${</span><span class="nv">OPTARG</span><span class="si">}</span><span class="w"> </span><span class="p">;;</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18"></a><span class="w">            </span>h<span class="p">|</span><span class="se">\?</span><span class="o">)</span><span class="w"> </span>
+<a id="__codelineno-7-19" name="__codelineno-7-19"></a><span class="w">                </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;format: create-iamserviceaccount -s SERVICE_ACCOUNT_NAME -c CLUSTER_NAME -n NAMESPACE_NAME -r [true|false] &quot;</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20"></a><span class="w">                </span><span class="nb">echo</span><span class="w"> </span>-e<span class="w"> </span><span class="s2">&quot;\tsample: create-iamserviceaccount -s sa_name -c ekscluster1 -n monitoring -r true &quot;</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21"></a><span class="w">                </span><span class="k">return</span><span class="w"> </span><span class="m">0</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22"></a><span class="w">            </span><span class="p">;;</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23"></a><span class="w">        </span><span class="k">esac</span>
+<a id="__codelineno-7-24" name="__codelineno-7-24"></a><span class="w">    </span><span class="k">done</span>
+<a id="__codelineno-7-25" name="__codelineno-7-25"></a><span class="w">    </span>:<span class="w"> </span><span class="si">${</span><span class="nv">SA_NAME</span><span class="p">:?Missing -s</span><span class="si">}</span>
+<a id="__codelineno-7-26" name="__codelineno-7-26"></a><span class="w">    </span>:<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="p">:?Missing -c</span><span class="si">}</span>
+<a id="__codelineno-7-27" name="__codelineno-7-27"></a><span class="w">    </span>:<span class="w"> </span><span class="si">${</span><span class="nv">NAMESPACE_NAME</span><span class="p">:?Missing -n</span><span class="si">}</span>
+<a id="__codelineno-7-28" name="__codelineno-7-28"></a><span class="w">    </span>:<span class="w"> </span><span class="si">${</span><span class="nv">ROLE_ONLY</span><span class="p">:?Missing -r</span><span class="si">}</span>
+<a id="__codelineno-7-29" name="__codelineno-7-29"></a>
+<a id="__codelineno-7-30" name="__codelineno-7-30"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">ROLE_ONLY</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-7-31" name="__codelineno-7-31"></a><span class="w">        </span><span class="nb">local</span><span class="w"> </span><span class="nv">ROLE_OPTION</span><span class="o">=</span><span class="s2">&quot;--role-only&quot;</span>
+<a id="__codelineno-7-32" name="__codelineno-7-32"></a><span class="w">    </span><span class="k">elif</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">ROLE_ONLY</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-7-33" name="__codelineno-7-33"></a><span class="w">        </span><span class="nb">local</span><span class="w"> </span><span class="nv">ROLE_OPTION</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
+<a id="__codelineno-7-34" name="__codelineno-7-34"></a><span class="w">    </span><span class="k">else</span>
+<a id="__codelineno-7-35" name="__codelineno-7-35"></a><span class="w">        </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;only true/false allow in parameter &#39;-r&#39; &quot;</span>
+<a id="__codelineno-7-36" name="__codelineno-7-36"></a><span class="w">        </span><span class="k">return</span><span class="w"> </span><span class="m">9</span>
+<a id="__codelineno-7-37" name="__codelineno-7-37"></a><span class="w">    </span><span class="k">fi</span>
+<a id="__codelineno-7-38" name="__codelineno-7-38"></a>
+<a id="__codelineno-7-39" name="__codelineno-7-39"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">SA_NAME</span><span class="p">:=sa-s3-admin-</span><span class="k">$(</span><span class="nv">TZ</span><span class="o">=</span>EAT-8<span class="w"> </span>date<span class="w"> </span>+%Y%m%d-%H%M%S<span class="k">)</span><span class="si">}</span>
+<a id="__codelineno-7-40" name="__codelineno-7-40"></a><span class="w">    </span>eksctl<span class="w"> </span>create<span class="w"> </span>iamserviceaccount<span class="w"> </span>-c<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-41" name="__codelineno-7-41"></a><span class="w">        </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">SA_NAME</span><span class="si">}</span><span class="w"> </span>--namespace<span class="w"> </span><span class="si">${</span><span class="nv">NAMESPACE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-42" name="__codelineno-7-42"></a><span class="w">        </span>--attach-policy-arn<span class="w"> </span>arn:aws:iam::aws:policy/AmazonS3FullAccess<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-43" name="__codelineno-7-43"></a><span class="w">        </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">SA_NAME</span><span class="si">}</span>-<span class="k">$(</span><span class="nv">TZ</span><span class="o">=</span>EAT-8<span class="w"> </span>date<span class="w"> </span>+%Y%m%d-%H%M%S<span class="k">)</span><span class="w"> </span><span class="si">${</span><span class="nv">ROLE_OPTION</span><span class="si">}</span><span class="w"> </span>--approve<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-44" name="__codelineno-7-44"></a><span class="w">        </span>--override-existing-serviceaccounts
+<a id="__codelineno-7-45" name="__codelineno-7-45"></a><span class="w">    </span><span class="nb">unset</span><span class="w"> </span>S3_ADMIN_ROLE_ARN
+<a id="__codelineno-7-46" name="__codelineno-7-46"></a><span class="w">    </span><span class="nv">S3_ADMIN_ROLE_ARN</span><span class="o">=</span><span class="k">$(</span>eksctl<span class="w"> </span>get<span class="w"> </span>iamserviceaccount<span class="w"> </span>-c<span class="w"> </span><span class="nv">$CLUSTER_NAME</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-47" name="__codelineno-7-47"></a><span class="w">        </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">SA_NAME</span><span class="si">}</span><span class="w"> </span>-o<span class="w"> </span>json<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.[].status.roleARN&#39;</span><span class="k">)</span>
+<a id="__codelineno-7-48" name="__codelineno-7-48"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">S3_ADMIN_ROLE_ARN</span><span class="si">}</span>
+<a id="__codelineno-7-49" name="__codelineno-7-49"></a><span class="o">}</span>
 </code></pre></div></td></tr></table></div>
+<ul>
+<li>refer: <a href="../../../../CLI/functions/func-create-iamserviceaccount.sh" title="func-create-iamserviceaccount">func-create-iamserviceaccount</a></li>
+</ul>
 <h2 id="appmesh-cluster"><del>appmesh cluster</del><a class="headerlink" href="#appmesh-cluster" title="Permanent link">&para;</a></h2>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>eksctl<span class="w"> </span>create<span class="w"> </span>cluster<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>--name<span class="w"> </span>appmeshtest<span class="w"> </span><span class="se">\</span>
@@ -5949,7 +6052,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-06-22T10:42:34+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-22</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-08-10T10:20:13+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-08-10</span>
   </span>
 
     

@@ -28,6 +28,7 @@ function create-ns-record () {
         echo 'typical NS record should has more than one record'
         echo 'use double quotes when you use variable for -s '
         create-ns-record -h
+        return 9
     fi
 
     PARENT_DOMAIN_NAME=${DOMAIN_NAME#*.}

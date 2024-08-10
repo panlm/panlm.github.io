@@ -1432,9 +1432,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#kubernetes-native-policy-management" class="md-nav__link">
+  <a href="#install" class="md-nav__link">
     <span class="md-ellipsis">
-      Kubernetes Native Policy Management
+      install
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-from-nirmata" class="md-nav__link">
+    <span class="md-ellipsis">
+      install from nirmata
     </span>
   </a>
   
@@ -2140,6 +2149,8 @@
       
         
       
+        
+      
     
     
       
@@ -2274,6 +2285,27 @@
   
   <span class="md-ellipsis">
     install-prometheus-grafana-on-eks
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../solutions/monitor/k8s-event-exporter/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    kubernetes events exporter
   </span>
   
 
@@ -2587,6 +2619,8 @@
       
         
       
+        
+      
     
     
       
@@ -2651,6 +2685,27 @@
   
   <span class="md-ellipsis">
     k8s-liveness-readiness-startup-probes
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../kubernetes/k8s-request-limit-best-practices/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    Kubernetes Best Practices - Resource Requests and Limits
   </span>
   
 
@@ -2848,6 +2903,8 @@
       
         
       
+        
+      
     
     
       
@@ -2878,6 +2935,27 @@
             ECR
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../ecr/aws-signer/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    aws-signer
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -4120,6 +4198,8 @@
       
         
       
+        
+      
     
     
       
@@ -4423,6 +4503,27 @@
   
   <span class="md-ellipsis">
     python-cmd
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../CLI/linux/regctl/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    regctl
   </span>
   
 
@@ -5470,9 +5571,18 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#kubernetes-native-policy-management" class="md-nav__link">
+  <a href="#install" class="md-nav__link">
     <span class="md-ellipsis">
-      Kubernetes Native Policy Management
+      install
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#install-from-nirmata" class="md-nav__link">
+    <span class="md-ellipsis">
+      install from nirmata
     </span>
   </a>
   
@@ -5508,7 +5618,16 @@
 
 
 <h1 id="kyverno">Kyverno<a class="headerlink" href="#kyverno" title="Permanent link">&para;</a></h1>
-<h2 id="kubernetes-native-policy-management">Kubernetes Native Policy Management<a class="headerlink" href="#kubernetes-native-policy-management" title="Permanent link">&para;</a></h2>
+<p>Kubernetes Native Policy Management</p>
+<h2 id="install">install<a class="headerlink" href="#install" title="Permanent link">&para;</a></h2>
+<p><a href="https://kyverno.io/docs/installation/methods/">https://kyverno.io/docs/installation/methods/</a><br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>kyverno<span class="w"> </span>https://kyverno.github.io/kyverno/
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>helm<span class="w"> </span>repo<span class="w"> </span>update
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>helm<span class="w"> </span>install<span class="w"> </span>kyverno<span class="w"> </span>kyverno/kyverno<span class="w"> </span>-n<span class="w"> </span>kyverno<span class="w"> </span>--create-namespace
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>helm<span class="w"> </span>install<span class="w"> </span>kyverno-policies<span class="w"> </span>kyverno/kyverno-policies<span class="w"> </span>-n<span class="w"> </span>kyverno
+</code></pre></div></p>
+<h2 id="install-from-nirmata">install from nirmata<a class="headerlink" href="#install-from-nirmata" title="Permanent link">&para;</a></h2>
+<p><a href="https://github.com/nirmata/kyverno-notation-aws#install">https://github.com/nirmata/kyverno-notation-aws#install</a></p>
 
 
 
@@ -5531,7 +5650,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-08-05T15:02:04+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-08-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-08-10T10:20:13+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-08-10</span>
   </span>
 
     
