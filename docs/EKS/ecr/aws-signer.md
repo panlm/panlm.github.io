@@ -23,7 +23,7 @@ profile supported platform:
 ```sh
 export NOTATION_PASSWORD=$(aws ecr get-login-password --region us-west-2)
 export NOTATION_USERNAME=AWS
-notation sign 908572210082.dkr.ecr.us-west-2.amazonaws.com/nginx:latest \
+notation sign 123456789012.dkr.ecr.us-west-2.amazonaws.com/nginx:latest \
     --plugin com.amazonaws.signer.notation.plugin \
     --id arn:aws:signer:us-west-2:123456789012:/signing-profiles/profile1
 ```
