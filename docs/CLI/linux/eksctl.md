@@ -105,53 +105,10 @@ eksctl scale nodegroup \
 ```
 
 ## func-create-iamserviceaccount-
-```sh title="func-create-iamserviceaccount" linenums="1"
-echo ${CLUSTER_NAME}
-echo ${NAMESPACE_NAME}
-
-function create-iamserviceaccount () {
-    OPTIND=1
-    OPTSTRING="h?s:c:n:r:"
-    local SA_NAME=""
-    local CLUSTER_NAME=""
-    local NAMESPACE_NAME=""
-    local ROLE_ONLY=""
-    while getopts ${OPTSTRING} opt; do
-        case "${opt}" in
-            s) SA_NAME=${OPTARG} ;;
-            c) CLUSTER_NAME=${OPTARG} ;;
-            n) NAMESPACE_NAME=${OPTARG} ;;
-            r) ROLE_ONLY=${OPTARG} ;;
-            h|\?) 
-                echo "format: create-iamserviceaccount -s SERVICE_ACCOUNT_NAME -c CLUSTER_NAME -n NAMESPACE_NAME -r [0|1] "
-                echo -e "\tsample: create-iamserviceaccount -s sa_name -c ekscluster1 -n monitoring -r 1 "
-                return 0
-            ;;
-        esac
-    done
-    : ${SA_NAME:?Missing -s}
-    : ${CLUSTER_NAME:?Missing -c}
-    : ${NAMESPACE_NAME:?Missing -n}
-    : ${ROLE_ONLY:?Missing -r}
-
-    if [[ ROLE_ONLY -eq 1 ]]; then
-        local ROLE_OPTION="--role-only"
-    else
-        local ROLE_OPTION=""
-    fi
-
-    echo ${SA_NAME:=sa-s3-admin-$(TZ=EAT-8 date +%Y%m%d-%H%M%S)}
-    eksctl create iamserviceaccount -c ${CLUSTER_NAME} \
-        --name ${SA_NAME} --namespace ${NAMESPACE_NAME} \
-        --attach-policy-arn arn:aws:iam::aws:policy/AmazonS3FullAccess \
-        --role-name ${SA_NAME}-$(TZ=EAT-8 date +%Y%m%d-%H%M%S) ${ROLE_OPTION} --approve \
-        --override-existing-serviceaccounts
-    unset S3_ADMIN_ROLE_ARN
-    S3_ADMIN_ROLE_ARN=$(eksctl get iamserviceaccount -c $CLUSTER_NAME \
-        --name ${SA_NAME} -o json |jq -r '.[].status.roleARN')
-    echo ${S3_ADMIN_ROLE_ARN}
-}
+```sh title="func-create-iamserviceaccount.sh" linenums="1"
+--8<-- "docs/CLI/functions/func-create-iamserviceaccount.sh"
 ```
+- refer: [[../functions/func-create-iamserviceaccount.sh|func-create-iamserviceaccount]]
 
 ## ~~appmesh cluster~~
 

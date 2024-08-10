@@ -8,8 +8,21 @@ tags:
 ---
 
 # Kyverno
+Kubernetes Native Policy Management
 
-## Kubernetes Native Policy Management
+## install
+https://kyverno.io/docs/installation/methods/
+```sh
+helm repo add kyverno https://kyverno.github.io/kyverno/
+helm repo update
+helm install kyverno kyverno/kyverno -n kyverno --create-namespace
+helm install kyverno-policies kyverno/kyverno-policies -n kyverno
+```
+
+
+## install from nirmata
+https://github.com/nirmata/kyverno-notation-aws#install
+
 
 
 

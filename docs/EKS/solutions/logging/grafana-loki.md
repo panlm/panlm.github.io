@@ -150,7 +150,7 @@ gateway:
     ingressClassName: 'alb'
     annotations: 
       alb.ingress.kubernetes.io/scheme: internet-facing
-      alb.ingress.kubernetes.io/load-balancer-attributes: access_logs.s3.enabled=true,access_logs.s3.bucket=${ELB_LOG_BUCKET},access_logs.s3.prefix=
+      # alb.ingress.kubernetes.io/load-balancer-attributes: access_logs.s3.enabled=true,access_logs.s3.bucket=${ELB_LOG_BUCKET},access_logs.s3.prefix=
     hosts:
       - host: '*.${AWS_DEFAULT_REGION}.elb.amazonaws.com'
         paths:
@@ -326,7 +326,7 @@ helm upgrade -i -f loki-simple.yaml loki grafana/loki -n ${NAMESPACE}
 cat >promtail.values <<-EOF
 config:
   clients:
-    - url: http://loki-gateway/loki/api/v1/push
+    - url: http://loki-gateway/loki/api/v1/push # loki-gateway.loki.svc.cluster.local
 EOF
 helm upgrade -i promtail -f promtail.values grafana/promtail -n loki
 

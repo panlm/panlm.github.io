@@ -31,7 +31,7 @@ function create-auto-scaling-group () {
     local VPC_IDS=($(aws ec2 describe-security-groups --group-ids ${SG_IDS[@]} |jq -r '.SecurityGroups[].VpcId'))
     if [[ ${#VPC_IDS[@]} -ne 1 ]]; then
         echo 'SG belongs to different VPC'
-        return
+        return 9
     fi
 
     # get private subnets or public subnets
