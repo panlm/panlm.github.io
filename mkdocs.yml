@@ -89,10 +89,14 @@ plugins:
   - search
   - meta-descriptions
   - ezlinks:
-        wikilinks: true
+      wikilinks: true
   - awesome-pages
   - tags:
       tags_file: tags.md
+      # tags_hierarchy: true
+      # shadow: false
+      # shadow_tags:
+      #   - aws/security
   - pagetree
   - glightbox:
       touchNavigation: false
@@ -105,6 +109,7 @@ plugins:
   # - file-filter:
   #     exclude_tag:
   #       - draft
+  #       - aws/security
   - i18n:
       docs_structure: suffix
       languages:
@@ -127,8 +132,6 @@ plugins:
         - index.zh.md
       enabled: true
       strict: true
-
-
 
 extra:
   status:
