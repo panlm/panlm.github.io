@@ -397,6 +397,8 @@ https://github.com/grafana/helm-charts/tree/main/charts/loki-simple-scalable
 - https://grafana.com/docs/loki/latest/setup/install/helm/install-microservices/
 - https://github.com/grafana/loki/issues/9131
 - https://grafana.com/blog/2020/04/21/how-labels-in-loki-can-make-log-queries-faster-and-easier/
+- flowlog: https://medium.com/qonto-way/building-a-comprehensive-and-cost-efficient-network-observability-platform-using-grafana-loki-aad4f4d9a7f
+- 
 
 ## sample
 ```yaml 

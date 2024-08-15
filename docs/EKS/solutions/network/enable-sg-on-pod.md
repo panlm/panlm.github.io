@@ -23,7 +23,7 @@ https://docs.amazonaws.cn/en_us/eks/latest/userguide/security-groups-for-pods.ht
 
 第一个参数允许pod 挂sg
 第二个参数允许有sg的pod同时遵守network policy控制
-第三个参数snat disable，允许跨vpc保留pod ip，不会转成primary eni ip ([[eks-external-snat]])
+第三个参数snat disable，允许跨vpc保留pod ip，不会转成primary eni ip ([[../../addons/eks-external-snat]])
 
 ```sh
 kubectl -n kube-system set env daemonset aws-node ENABLE_POD_ENI=true
@@ -238,7 +238,7 @@ EoF
 ```
 
 ## refer
-- [[../../../../../eks-external-snat|eks-external-snat]]
+- [[../../addons/eks-external-snat|eks-external-snat]]
 
 
 
