@@ -15,7 +15,35 @@ tags:
 
 ## install
 - https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/
+### using helm
+- create sqs for interrupt event
+```sh
+aws sqs  create-queue --queue-name sqs-${CLUSTER_NAME}
+```
+- create service account (script: [[../../CLI/functions/func-create-iamserviceaccount.sh|func-create-iamserviceaccount]])
+- install
+```sh
+helm upgrade --install karpenter oci://public.ecr.aws/karpenter/karpenter \
+    --version "${KARPENTER_VERSION}" \
+    --namespace "${KARPENTER_NAMESPACE}" --create-namespace  \
+    --set "settings.clusterName=${CLUSTER_NAME}"   \
+    --set "settings.interruptionQueue=sqs-${CLUSTER_NAME}"   \
+    --set controller.resources.requests.cpu=1   \
+    --set controller.resources.requests.memory=1Gi   \
+    --set controller.resources.limits.cpu=1   \
+    --set controller.resources.limits.memory=1Gi   \
+    --set serviceAccount.create=false \
+    --set serviceAccount.name=karpenter 
+    
+```
 
+```sh
+helm upgrade -i -f a.value.yaml karpenter oci://public.ecr.aws/karpenter/karpenter \
+    --version "${KARPENTER_VERSION}" \
+    --namespace "${KARPENTER_NAMESPACE}" --create-namespace 
+```
+
+### previous version
 ```sh
 
 echo ${CLUSTER_NAME:=eks-upgrade-demo}

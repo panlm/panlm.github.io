@@ -129,4 +129,11 @@ If you turn off AWS managed temporary credentials, by default the environment ca
 - Store your permanent AWS access credentials in the environment, for example, by setting special environment variables or by running the `aws configure` command. For instructions, see [Create and store permanent access credentials in an Environment](https://docs.aws.amazon.com/cloud9/latest/user-guide/credentials.html#credentials-permanent-create).
 
 
+##  cloud9 will be retire 
+- news: [link](https://github.com/SummitRoute/aws_breaking_changes)
+- alternative: [[../../cloud9/vscode]]
+- 
+
+
+
 

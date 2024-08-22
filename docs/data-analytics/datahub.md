@@ -136,7 +136,16 @@ Dependent JAR (acryl-spark-lineage): [download](https://repo1.maven.org/maven2/i
 ![[attachments/datahub/IMG-datahub.png]]
 
 ### redshift
-![[attachments/datahub/IMG-datahub-1.png]]
+- create table
+```sql
+CREATE TABLE new_table AS
+SELECT t1.eventid, t1.starttime, t2.holiday
+FROM event t1
+JOIN date t2
+ON t1.dateid = t2.dateid;
+
+```
+![[attachments/datahub/IMG-datahub-2.png]]
 
 ## refer 
 ### error message
