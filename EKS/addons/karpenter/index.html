@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.32">
     
     
       
@@ -532,6 +532,8 @@
       
         
       
+        
+      
     
     
       
@@ -652,6 +654,27 @@
     </span>
   
 
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud9/vscode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    vscode
+  </span>
   
 
       </a>
@@ -1031,6 +1054,8 @@
       
         
       
+        
+      
     
     
       
@@ -1279,6 +1304,27 @@
   
   
     <li class="md-nav__item">
+      <a href="../eks-external-snat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-external-snat
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../eksup/" class="md-nav__link">
         
   
@@ -1381,6 +1427,30 @@
       install
     </span>
   </a>
+  
+    <nav class="md-nav" aria-label="install">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-helm" class="md-nav__link">
+    <span class="md-ellipsis">
+      using helm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#previous-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      previous version
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
   
 </li>
       
@@ -3833,6 +3903,8 @@
       
         
       
+        
+      
     
     
       
@@ -3906,6 +3978,27 @@
     </span>
   
 
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../others/network/openswan-s2svpn-tgw/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    openswan-s2svpn-tgw-lab
+  </span>
   
 
       </a>
@@ -5622,6 +5715,30 @@
     </span>
   </a>
   
+    <nav class="md-nav" aria-label="install">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#using-helm" class="md-nav__link">
+    <span class="md-ellipsis">
+      using helm
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#previous-version" class="md-nav__link">
+    <span class="md-ellipsis">
+      previous version
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
 </li>
       
         <li class="md-nav__item">
@@ -5711,34 +5828,59 @@
 <ul>
 <li><a href="https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/">https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/</a></li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="p">:=eks-upgrade-demo</span><span class="si">}</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="p">:=us-east-2</span><span class="si">}</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">KARPENTER_VERSION</span><span class="o">=</span>v0.27.5
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_ACCOUNT_ID</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span>--query<span class="w"> </span>Account<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span><span class="s2">&quot;</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nb">export</span><span class="w"> </span><span class="nv">TEMPOUT</span><span class="o">=</span><span class="k">$(</span>mktemp<span class="k">)</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$KARPENTER_VERSION</span><span class="w"> </span><span class="nv">$CLUSTER_NAME</span><span class="w"> </span><span class="nv">$AWS_DEFAULT_REGION</span><span class="w"> </span><span class="nv">$AWS_ACCOUNT_ID</span><span class="w"> </span><span class="nv">$TEMPOUT</span>
+<h3 id="using-helm">using helm<a class="headerlink" href="#using-helm" title="Permanent link">&para;</a></h3>
+<ul>
+<li>create sqs for interrupt event<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>aws<span class="w"> </span>sqs<span class="w">  </span>create-queue<span class="w"> </span>--queue-name<span class="w"> </span>sqs-<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>
+</code></pre></div></li>
+<li>create service account (script: <a href="../../../CLI/functions/func-create-iamserviceaccount.sh" title="func-create-iamserviceaccount">func-create-iamserviceaccount</a>)</li>
+<li>install<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>helm<span class="w"> </span>upgrade<span class="w"> </span>--install<span class="w"> </span>karpenter<span class="w"> </span>oci://public.ecr.aws/karpenter/karpenter<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">    </span>--version<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">KARPENTER_VERSION</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">    </span>--namespace<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">KARPENTER_NAMESPACE</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>--create-namespace<span class="w">  </span><span class="se">\</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">    </span>--set<span class="w"> </span><span class="s2">&quot;settings.clusterName=</span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">   </span><span class="se">\</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span>--set<span class="w"> </span><span class="s2">&quot;settings.interruptionQueue=sqs-</span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="s2">&quot;</span><span class="w">   </span><span class="se">\</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span>--set<span class="w"> </span>controller.resources.requests.cpu<span class="o">=</span><span class="m">1</span><span class="w">   </span><span class="se">\</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span>--set<span class="w"> </span>controller.resources.requests.memory<span class="o">=</span>1Gi<span class="w">   </span><span class="se">\</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span>--set<span class="w"> </span>controller.resources.limits.cpu<span class="o">=</span><span class="m">1</span><span class="w">   </span><span class="se">\</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span>--set<span class="w"> </span>controller.resources.limits.memory<span class="o">=</span>1Gi<span class="w">   </span><span class="se">\</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">    </span>--set<span class="w"> </span>serviceAccount.create<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">    </span>--set<span class="w"> </span>serviceAccount.name<span class="o">=</span>karpenter<span class="w"> </span>
+</code></pre></div></li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>helm<span class="w"> </span>upgrade<span class="w"> </span>-i<span class="w"> </span>-f<span class="w"> </span>a.value.yaml<span class="w"> </span>karpenter<span class="w"> </span>oci://public.ecr.aws/karpenter/karpenter<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span>--version<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">KARPENTER_VERSION</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">    </span>--namespace<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">KARPENTER_NAMESPACE</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span>--create-namespace<span class="w"> </span>
 </code></pre></div>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://karpenter.sh/<span class="s2">&quot;</span><span class="si">${</span><span class="nv">KARPENTER_VERSION</span><span class="si">}</span><span class="s2">&quot;</span>/getting-started/getting-started-with-karpenter/cloudformation.yaml<span class="w">  </span>&gt;<span class="w"> </span><span class="nv">$TEMPOUT</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="o">&amp;&amp;</span><span class="w"> </span>aws<span class="w"> </span>cloudformation<span class="w"> </span>deploy<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span>--stack-name<span class="w"> </span><span class="s2">&quot;Karpenter-</span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span>--template-file<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TEMPOUT</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span>--capabilities<span class="w"> </span>CAPABILITY_NAMED_IAM<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span>--parameter-overrides<span class="w"> </span><span class="s2">&quot;ClusterName=</span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="s2">&quot;</span>
+<h3 id="previous-version">previous version<a class="headerlink" href="#previous-version" title="Permanent link">&para;</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="p">:=eks-upgrade-demo</span><span class="si">}</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="p">:=us-east-2</span><span class="si">}</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">KARPENTER_VERSION</span><span class="o">=</span>v0.27.5
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_ACCOUNT_ID</span><span class="o">=</span><span class="s2">&quot;</span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span>--query<span class="w"> </span>Account<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span><span class="s2">&quot;</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="nb">export</span><span class="w"> </span><span class="nv">TEMPOUT</span><span class="o">=</span><span class="k">$(</span>mktemp<span class="k">)</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$KARPENTER_VERSION</span><span class="w"> </span><span class="nv">$CLUSTER_NAME</span><span class="w"> </span><span class="nv">$AWS_DEFAULT_REGION</span><span class="w"> </span><span class="nv">$AWS_ACCOUNT_ID</span><span class="w"> </span><span class="nv">$TEMPOUT</span>
+</code></pre></div>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>https://karpenter.sh/<span class="s2">&quot;</span><span class="si">${</span><span class="nv">KARPENTER_VERSION</span><span class="si">}</span><span class="s2">&quot;</span>/getting-started/getting-started-with-karpenter/cloudformation.yaml<span class="w">  </span>&gt;<span class="w"> </span><span class="nv">$TEMPOUT</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="o">&amp;&amp;</span><span class="w"> </span>aws<span class="w"> </span>cloudformation<span class="w"> </span>deploy<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span>--stack-name<span class="w"> </span><span class="s2">&quot;Karpenter-</span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span>--template-file<span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">TEMPOUT</span><span class="si">}</span><span class="s2">&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span>--capabilities<span class="w"> </span>CAPABILITY_NAMED_IAM<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span>--parameter-overrides<span class="w"> </span><span class="s2">&quot;ClusterName=</span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="s2">&quot;</span>
 </code></pre></div>
 <h2 id="instance-family">instance family<a class="headerlink" href="#instance-family" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nt">spec</span><span class="p">:</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span><span class="nt">requirements</span><span class="p">:</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/instance-family</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">    </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">    </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">c5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">m5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">r5</span><span class="p p-Indicator">]</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nt">spec</span><span class="p">:</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span><span class="nt">requirements</span><span class="p">:</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">key</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">karpenter.k8s.aws/instance-family</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="w">    </span><span class="nt">operator</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">In</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="w">    </span><span class="nt">values</span><span class="p">:</span><span class="w"> </span><span class="p p-Indicator">[</span><span class="nv">c5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">m5</span><span class="p p-Indicator">,</span><span class="w"> </span><span class="nv">r5</span><span class="p p-Indicator">]</span>
 </code></pre></div>
 <p><a class="glightbox" href="../attachments/karpenter/IMG-karpenter-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="attachments/karpenter/IMG-karpenter-1.png" src="../attachments/karpenter/IMG-karpenter-1.png" title="attachments/karpenter/IMG-karpenter-1.png" /></a></p>
 <h2 id="install-eks-node-viewer">install eks-node-viewer<a class="headerlink" href="#install-eks-node-viewer" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>go<span class="w"> </span>install<span class="w"> </span>github.com/awslabs/eks-node-viewer/cmd/eks-node-viewer@latest
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>sudo<span class="w"> </span>mv<span class="w"> </span>-v<span class="w"> </span>~/go/bin/eks-node-viewer<span class="w"> </span>/usr/local/bin
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>go<span class="w"> </span>install<span class="w"> </span>github.com/awslabs/eks-node-viewer/cmd/eks-node-viewer@latest
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>sudo<span class="w"> </span>mv<span class="w"> </span>-v<span class="w"> </span>~/go/bin/eks-node-viewer<span class="w"> </span>/usr/local/bin
 </code></pre></div>
 <h2 id="lab">Lab<a class="headerlink" href="#lab" title="Permanent link">&para;</a></h2>
 <ul>
@@ -5776,7 +5918,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-06-06T10:27:15+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-08-22T11:27:09+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-08-22</span>
   </span>
 
     
@@ -5857,7 +5999,7 @@
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "toc.follow", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.471ce7a9.min.js"></script>
       
         <script src="../../../js/timeago.min.js"></script>
       

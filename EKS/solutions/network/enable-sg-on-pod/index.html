@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.31">
+      <meta name="generator" content="mkdocs-1.6.0, mkdocs-material-9.5.32">
     
     
       
@@ -532,6 +532,8 @@
       
         
       
+        
+      
     
     
       
@@ -652,6 +654,27 @@
     </span>
   
 
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../cloud9/vscode/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    vscode
+  </span>
   
 
       </a>
@@ -1029,6 +1052,8 @@
       
         
       
+        
+      
     
     
       
@@ -1261,6 +1286,27 @@
   
   <span class="md-ellipsis">
     eks-addons-vpc-cni
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../addons/eks-external-snat/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    eks-external-snat
   </span>
   
 
@@ -3799,6 +3845,8 @@
       
         
       
+        
+      
     
     
       
@@ -3872,6 +3920,27 @@
     </span>
   
 
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../others/network/openswan-s2svpn-tgw/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    openswan-s2svpn-tgw-lab
+  </span>
   
 
       </a>
@@ -5643,7 +5712,7 @@
 <p><a class="glightbox" href="../attachments/enable-sg-on-pod/IMG-enable-sg-on-pod-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="IMG-enable-sg-on-pod-1.png" src="../attachments/enable-sg-on-pod/IMG-enable-sg-on-pod-1.png" /></a></p>
 <p>第一个参数允许pod 挂sg<br />
 第二个参数允许有sg的pod同时遵守network policy控制<br />
-第三个参数snat disable，允许跨vpc保留pod ip，不会转成primary eni ip (<a href="../../../eks-external-snat" title="eks-external-snat">eks-external-snat</a>)</p>
+第三个参数snat disable，允许跨vpc保留pod ip，不会转成primary eni ip (<a href="../../../addons/eks-external-snat/" title="../../addons/eks-external-snat">../../addons/eks-external-snat</a>)</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>kubectl<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="nb">set</span><span class="w"> </span>env<span class="w"> </span>daemonset<span class="w"> </span>aws-node<span class="w"> </span><span class="nv">ENABLE_POD_ENI</span><span class="o">=</span><span class="nb">true</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>kubectl<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="nb">set</span><span class="w"> </span>env<span class="w"> </span>daemonset<span class="w"> </span>aws-node<span class="w"> </span><span class="nv">POD_SECURITY_GROUP_ENFORCING_MODE</span><span class="o">=</span>standard
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>kubectl<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="nb">set</span><span class="w"> </span>env<span class="w"> </span>daemonset<span class="w"> </span>aws-node<span class="w"> </span><span class="nv">AWS_VPC_K8S_CNI_EXTERNALSNAT</span><span class="o">=</span><span class="nb">true</span>
@@ -5851,7 +5920,7 @@ refer <a href="../../../awslbc-ingress-settings-ingress-group" title="awslbc-ing
 </ul>
 <h2 id="refer">refer<a class="headerlink" href="#refer" title="Permanent link">&para;</a></h2>
 <ul>
-<li><a href="../../../../../../../../eks-external-snat" title="eks-external-snat">eks-external-snat</a></li>
+<li><a href="../../../addons/eks-external-snat/" title="eks-external-snat">eks-external-snat</a></li>
 </ul>
 
 
@@ -5875,7 +5944,7 @@ refer <a href="../../../awslbc-ingress-settings-ingress-group" title="awslbc-ing
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1-2.1-2M12.5 7v5.2l4 2.4-1 1L11 13V7h1.5M11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2v1.8Z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-06-13T09:33:13+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-06-13</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-08-16T05:13:34+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-08-16</span>
   </span>
 
     
@@ -5956,7 +6025,7 @@ refer <a href="../../../awslbc-ingress-settings-ingress-group" title="awslbc-ing
     <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "toc.follow", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.b8dbb3d2.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../../assets/javascripts/bundle.fe8b6f2b.min.js"></script>
+      <script src="../../../../assets/javascripts/bundle.471ce7a9.min.js"></script>
       
         <script src="../../../../js/timeago.min.js"></script>
       

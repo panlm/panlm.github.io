@@ -27,9 +27,9 @@ function create-iamserviceaccount () {
     : ${NAMESPACE_NAME:?Missing -n}
     : ${ROLE_ONLY:?Missing -r}
 
-    if [[ ROLE_ONLY == "true" ]]; then
+    if [[ ${ROLE_ONLY} == "true" ]]; then
         local ROLE_OPTION="--role-only"
-    elif [[ ROLE_ONLY == "false" ]]; then
+    elif [[ ${ROLE_ONLY} == "false" ]]; then
         local ROLE_OPTION=""
     else
         echo "only true/false allow in parameter '-r' "
