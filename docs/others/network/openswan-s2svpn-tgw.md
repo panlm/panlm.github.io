@@ -3,6 +3,7 @@ title: openswan-s2svpn-tgw-lab
 description: connect to global site-2-site vpn service
 created: 2023-01-19 22:00:04.389
 last_modified: 2024-08-19
+status: myblog
 tags:
   - openswan
   - aws/network/tgw

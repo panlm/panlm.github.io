@@ -133,7 +133,7 @@ source:
 script: [download](https://github.com/panlm/deploy-datahub-using-aws-managed-services-ingest-metadata/blob/datahub-v0.13.2/aws-dataplatform-meta-data-ingestion/examples/code/glue_data_lineage.py)
 Dependent JAR (acryl-spark-lineage): [download](https://repo1.maven.org/maven2/io/acryl/acryl-spark-lineage/0.2.16/)
 
-![[attachments/datahub/IMG-datahub.png]]
+![[attachments/datahub/IMG-datahub.png|800]]
 
 ### redshift
 - create table
@@ -145,7 +145,7 @@ JOIN date t2
 ON t1.dateid = t2.dateid;
 
 ```
-![[attachments/datahub/IMG-datahub-2.png]]
+![[attachments/datahub/IMG-datahub-2.png|700]]
 
 ## refer 
 ### error message

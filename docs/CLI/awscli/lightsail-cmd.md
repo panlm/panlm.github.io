@@ -16,3 +16,9 @@ tags:
 aws --profile nutanix lightsail --region=ap-northeast-2 open-instance-public-ports  --instance-name Ubuntu-Seoul --port-info='fromPort=443,toPort=443,protocol="TCP",cidrs=["0.0.0.0/0"],cidrListAliases=[]'
 ```
 
+## list
+```sh
+export AW
+aws lightsail get-instances --region ap-northeast-2
+```
+
