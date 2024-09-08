@@ -14,6 +14,13 @@ https://aws.amazon.com/about-aws/whats-new/2023/12/amazon-eks-controls-iam-clust
 blog:
 https://aws.amazon.com/blogs/containers/a-deep-dive-into-simplified-amazon-eks-access-management-controls/
 
+## console walkthrough 
+- when use eksdemo, you use sts credential will cause failed after create cluster success. 
+- go `access` tab in eks cluster page
+- add instance's role to it as `AmazonEKSClusterAdminPolicy`
+- switch back to instance to update kube-config and create node group using eksdemo 
+- add role to aws-auth config map
+
 ## walkthrough
 ```sh
 export AWS_DEFAULT_REGION=

@@ -2,7 +2,7 @@
 title: karpenter
 description: 使用 Karpenter 代替 Cluster Autoscaler
 created: 2023-05-29 08:42:40.334
-last_modified: 2023-11-22
+last_modified: 2024-08-22
 tags:
   - aws/container/karpenter
   - aws/container/eks
@@ -15,14 +15,26 @@ tags:
 
 ## install
 - https://karpenter.sh/docs/getting-started/getting-started-with-karpenter/
+
+### using eksdemo
+- https://github.com/awslabs/eksdemo/blob/main/docs/install-karpenter.md
+```sh
+eksdemo install karpenter -c ekscluster --dry-run
+
+```
+
 ### using helm
 - create sqs for interrupt event
 ```sh
 aws sqs  create-queue --queue-name sqs-${CLUSTER_NAME}
 ```
-- create service account (script: [[../../CLI/functions/func-create-iamserviceaccount.sh|func-create-iamserviceaccount]])
+- create service account (refer: [[../../CLI/linux/eksctl#func-create-iamserviceaccount-|func-create-iamserviceaccount]])
 - install
 ```sh
+echo ${KARPENTER_VERSION:=1.0.0}
+echo ${KARPENTER_NAMESPACE:=karpenter}
+echo ${CLUSTER_NAME:=ekscluster1}
+
 helm upgrade --install karpenter oci://public.ecr.aws/karpenter/karpenter \
     --version "${KARPENTER_VERSION}" \
     --namespace "${KARPENTER_NAMESPACE}" --create-namespace  \
@@ -34,7 +46,7 @@ helm upgrade --install karpenter oci://public.ecr.aws/karpenter/karpenter \
     --set controller.resources.limits.memory=1Gi   \
     --set serviceAccount.create=false \
     --set serviceAccount.name=karpenter 
-    
+
 ```
 
 ```sh
@@ -101,6 +113,5 @@ sudo mv -v ~/go/bin/eks-node-viewer /usr/local/bin
 
 ![[attachments/karpenter/IMG-karpenter-2.png]]
 
-
-
+- [[../../../../ec2-spot-instance|ec2-spot-instance]]
 

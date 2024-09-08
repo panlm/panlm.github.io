@@ -3,6 +3,7 @@ title: Welcome
 last_modified: 2024-03-30
 number headings: first-level 2, max 3, 1.1, auto
 ---
+
 # Welcome to panlm docs
 ## 1 start from
 - [[cloud9/quick-setup-cloud9|Quick Setup Cloud9]] -- 简化创建 Cloud9 脚本，优先选择使用 Terraform 自动初始化；也可以使用脚本从 CloudShell 中完成初始化
@@ -22,7 +23,7 @@ number headings: first-level 2, max 3, 1.1, auto
 - [Create Standard VPC for Lab in China Region or Global Region](create-standard-vpc-for-lab-in-china-region) -- 创建实验环境所需要的 VPC ，并且支持直接 attach 到 TGW 方便网络访问
 - [IRSA 中的 Token 剖析](TC-eks-irsa-token-deep-dive-lab) -- 本文档总结了将 AWS IAM 角色授予 AWS EKS 集群的服务账户的过程
 - [EKS Security Group Deepdive](TC-security-group-for-eks-deepdive) -- 深入 EKS 安全组
-- [Using Grafana Loki for Logging](grafana-loki) -- 使用 loki 收集日志
+- [Using Grafana Loki for Logging](grafana-loki) -- 使用 Loki 收集日志
 - [Stream EKS Control Panel Logs to S3](stream-k8s-control-panel-logs-to-s3) -- 目前 EKS 控制平面日志只支持发送到 cloudwatch，且在同一个 log group 中有5种类型6种前缀的 log stream 的日志，不利于统一查询。且只有 audit 日志是 json 格式其他均是单行日志，且字段各不相同。本解决方案提供思路统一保存日志供后续分析处理
 - [Export Cloudwatch Log Group to S3](export-cloudwatch-log-group-to-s3) -- 导出 cloudwatch 日志到 s3
 - [Create Public Access EKS Cluster](eks-public-access-cluster) -- 创建公有访问的 EKS 集群
@@ -30,6 +31,7 @@ number headings: first-level 2, max 3, 1.1, auto
 - [Quick Setup Cloud9](quick-setup-cloud9) -- 简化创建 Cloud9 脚本，优先选择使用 Terraform 自动初始化；也可以使用脚本从 CloudShell 中完成初始化
 - [Setup Cloud9 for EKS](setup-cloud9-for-eks) -- 使用脚本完成实验环境初始化
 - [assume](granted-assume) -- assume 工具，可以以另一个账号角色，快速打开 web console，或者执行命令
+- [openswan-s2svpn-tgw-lab](openswan-s2svpn-tgw) -- connect to global site-2-site vpn service
 - [Obsidian Tips](obsidian) -- obsidian 使用点滴
 <-->
 

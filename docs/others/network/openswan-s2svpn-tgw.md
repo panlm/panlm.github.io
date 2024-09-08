@@ -1,7 +1,7 @@
 ---
 title: openswan-s2svpn-tgw-lab
-description: connect to global site-2-site vpn service
-created: 2023-01-19 22:00:04.389
+description: connect to global aws using site-2-site vpn service
+created: 2024-01-19 22:00:04.389
 last_modified: 2024-08-19
 status: myblog
 tags:
@@ -11,6 +11,16 @@ tags:
 ---
 
 # openswan-s2svpn-tgw
+
+需求：
+- 从中国区域访问 global bedrock 服务的域名，希望流量保留在 aws 骨干网内部
+- 希望部署 brconnector 在中国区域
+
+优点
+- traffic 不走公网
+
+缺点
+- 只能通过 aksk 访问 bedrock
 
 ![[attachments/openswan-s2svpn-tgw/IMG-openswan-s2svpn-tgw.png]]
 

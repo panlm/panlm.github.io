@@ -1,6 +1,6 @@
 ---
 title: Using Grafana Loki for Logging
-description: 使用 loki 收集日志
+description: 使用 Loki 收集日志
 created: 2023-12-18 14:09:49.975
 last_modified: 2024-07-18
 status: myblog

@@ -11,6 +11,7 @@ tags:
 ---
 
 # Enable Quicksight with Identity Center
+
 ## Using Microsoft Entra as External IdP
 In BJS region, QS does not support SAML Authentication Method (refer Appendix chapter). If you try to integration with existing SSO, for example Microsoft Entra ID, you need enable Amazon IAM Identity Center (short for AWS-SSO) with SAML support to carry out ([[saml-2.0]])
 
@@ -20,7 +21,7 @@ In BJS region, QS does not support SAML Authentication Method (refer Appendix ch
     - If your account joined AWS Organizations, you could choose enable AWS-SSO with organization instance ([link](https://docs.aws.amazon.com/singlesignon/latest/userguide/identity-center-instances.html))
     - refer this blog for AWS-SSO deployment pattern ([link](https://aws.amazon.com/cn/blogs/security/how-to-use-multiple-instances-of-aws-iam-identity-center/))
 - Using SAML IdP for AWS-SSO, integration with existing Microsoft Entra tenant 
-    - Following this [link](https://docs.aws.amazon.com/singlesignon/latest/userguide/idp-microsoft-entra.html)
+    - Following this [link](https://docs.aws.amazon.com/singlesignon/latest/userguide/idp-microsoft-entra.html) 
     - Complete `Step 1`, and
         - New a Microsoft 365 Group for Quicksight and assign user to this group
         - assign group to SSO application in Microsoft Entra directly (P1 license needed)
