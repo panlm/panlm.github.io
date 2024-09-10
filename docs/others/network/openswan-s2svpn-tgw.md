@@ -1,6 +1,6 @@
 ---
 title: openswan-s2svpn-tgw-lab
-description: connect to global aws using site-2-site vpn service
+description: connect to global aws using site-2-site vpn service, for example access global bedrock service
 created: 2024-01-19 22:00:04.389
 last_modified: 2024-08-19
 status: myblog
@@ -23,6 +23,8 @@ tags:
 - 只能通过 aksk 访问 bedrock
 
 ![[attachments/openswan-s2svpn-tgw/IMG-openswan-s2svpn-tgw.png]]
+
+refer: [[../../../../Excalidraw/bedrock-runtime-endpoint|bedrock-runtime-endpoint]]
 
 ## aws commercial region
 - create customer gateway with your public ip address in your china region

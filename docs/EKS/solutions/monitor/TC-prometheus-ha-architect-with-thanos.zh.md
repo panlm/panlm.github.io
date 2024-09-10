@@ -254,4 +254,10 @@ Prometheus 是一款开源的监控和报警工具，专为容器化和云原生
 ## 文档版本
 - [[../../../others/POC-prometheus-ha-architect-with-thanos-manually|POC-prometheus-ha-architect-with-thanos-manually]]
 
+## Next Step
+- thanos component
+    - download s3 files for down-samplings and compact continually
+    - using EBS instead of EFS for cost saving
+    - need s3 gateway for internal traffic due to large mount of data transfer
+
 

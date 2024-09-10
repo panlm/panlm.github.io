@@ -28,7 +28,8 @@ curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64
 sudo dpkg -i /tmp/session-manager-plugin.deb
 
 # your default region 
-export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
+TOKEN=$(curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
+export AWS_DEFAULT_REGION=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
 
 # change root volume size
 if [[ -c /dev/nvme0 ]]; then
@@ -36,7 +37,7 @@ if [[ -c /dev/nvme0 ]]; then
   VOLUME_ID=$(sudo python3 /tmp/ebsnvme-id -v /dev/nvme0 |awk '{print $NF}')
   DEVICE_NAME=/dev/nvme0n1
 else
-  C9_INST_ID=$(curl 169.254.169.254/latest/meta-data/instance-id)
+  C9_INST_ID=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/meta-data/instance-id)
   VOLUME_ID=$(aws ec2 describe-volumes --filters Name=attachment.instance-id,Values=${C9_INST_ID} --query "Volumes[0].VolumeId" --output text)
   DEVICE_NAME=/dev/xvda
 fi

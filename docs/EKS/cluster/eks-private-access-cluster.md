@@ -217,25 +217,25 @@ aws ssm get-parameter --name /aws/service/eks/optimized-ami/${EKS_VERSION}/amazo
 
 ```
 
-### endpoint
+### endpoint-
 https://docs.aws.amazon.com/eks/latest/userguide/private-clusters.html#private-cluster-requirements
 
 - 设置 `skipEndpointCreation: false`，集群创建完成后将自动创建以下 endpoint，并且绑定 `sharedNodeSecurityGroup` 中指定的安全组
 	- logs
 	- s3 (gw)
 	- sts
-	- ecr.api
-	- ec2
-	- ecr.dkr
+	- ec2 / ec2messages
+	- ecr.dkr / ecr.api
 - 你可以自己创建以下 endpoint，并且绑定安全组允许 80 443 访问
-	- ssm
-	- ssmmessages
+	- ssm / ssmmessages
 - 另外还需要提前创建以下 endpoint，并且绑定安全组
 	- eks （使用自管节点组时需要）
 	- elasticfilesystem （使用 efs 时需要）
 	- elasticloadbalancing （使用 aws lb controller时需要）
 	- kms （待验证）
 	- ebs （待验证）
+	- cloudformation (additional)
+	- autoscaling (hpa)
 
 ## access cluster
 - [[create-kubeconfig-manually]]

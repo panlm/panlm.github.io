@@ -31,8 +31,6 @@ notation sign 123456789012.dkr.ecr.us-west-2.amazonaws.com/nginx:latest \
 
 
 
-
-
 ## not in china region
 N/A
 

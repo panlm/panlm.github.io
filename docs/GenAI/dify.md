@@ -23,4 +23,5 @@ chatbot 输入问题，直接 request 到 google CSE，返回一堆 json，用 l
 
 ![[attachments/dify/IMG-dify.png]]
 
-
+## workshop
+https://catalog.us-east-1.prod.workshops.aws/workshops/2c19fcb1-1f1c-4f52-b759-0ca4d2ae2522/zh-CN

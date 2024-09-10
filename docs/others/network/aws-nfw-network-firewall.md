@@ -1,6 +1,6 @@
 ---
 title: aws-nfw-network-firewall
-description: 
+description: AWS Network Firewall
 created: 2023-07-22 10:07:37.041
 last_modified: 2024-04-19
 tags:
