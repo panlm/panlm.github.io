@@ -14,6 +14,13 @@ sudo yum install -y yum-utils shadow-utils
 sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinux/hashicorp.repo
 sudo yum -y install terraform
 
+# install code-server
+CODE_SERVER_VER=4.92.2
+wget -O code-server.rpm https://github.com/coder/code-server/releases/download/v$CODE_SERVER_VER/code-server-$CODE_SERVER_VER-amd64.rpm
+sudo yum install -y code-server.rpm
+sudo systemctl enable --now code-server@ec2-user
+sudo systemctl restart code-server@ec2-user
+
 # install awscli v2
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o /tmp/awscliv2.zip
 echo A |unzip /tmp/awscliv2.zip -d /tmp

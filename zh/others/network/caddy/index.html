@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.34">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.35">
     
     
       
@@ -3956,6 +3956,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      plugins
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5757,6 +5766,15 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#plugins" class="md-nav__link">
+    <span class="md-ellipsis">
+      plugins
+    </span>
+  </a>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -5799,37 +5817,46 @@ refer: <a href="https://github.com/ollama/ollama/issues/849#issuecomment-1773697
 </ul>
 <h2 id="sample">sample<a class="headerlink" href="#sample" title="Permanent link">&para;</a></h2>
 <h3 id="tls-and-acme_server">tls and acme_server<a class="headerlink" href="#tls-and-acme_server" title="Permanent link">&para;</a></h3>
+<ul>
+<li>
+<p>cannot work (if certificate error): client &ndash;https&ndash;&gt; caddy server &ndash;http&ndash;&gt; service</p>
+</li>
+<li>
 <p>Caddyfile<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>{
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    pki {
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>        ca home {
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>            name &quot;My Home CA&quot;
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>        }
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    }
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>}
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>api.panlm.com {
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    acme_server {
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>        ca home
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    }
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    tls {
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>        issuer internal {
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>            ca home
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>        }
-<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>    }
-<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>    handle {
-<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>        reverse_proxy localhost:11434
-<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>    }
-<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>}
-<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>
-<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>localhost {
-<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>    handle {
-<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>        reverse_proxy localhost:11434
-<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>    }
-<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>}
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>    default_sni api.panlm.xyz
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>    debug
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>    admin off
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>    auto_https on
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>    pki {
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>        ca home {
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>            name &quot;My Home CA&quot;
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>        }
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>    }
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>}
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>api.panlm.xyz {
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    acme_server {
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>        ca home
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>    }
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>    tls {
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>        issuer internal {
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>            ca home
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>        }
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a>    }
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a>    handle {
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>        basic_auth {
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>            apitoken $214$ccccc
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>        }
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a>        reverse_proxy localhost:11434
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>    }
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a>}
 </code></pre></div></p>
+</li>
+</ul>
 <h3 id="basic-http-auth-">basic-http-auth-<a class="headerlink" href="#basic-http-auth-" title="Permanent link">&para;</a></h3>
 <ul>
+<li>works: client &ndash;http&ndash;&gt; caddy server &ndash;http&ndash;&gt; service</li>
 <li>
 <p>save your plain text password in password.txt<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>caddy<span class="w"> </span>hash-password<span class="w"> </span>&lt;<span class="w"> </span>./password.txt
@@ -5837,16 +5864,26 @@ refer: <a href="https://github.com/ollama/ollama/issues/849#issuecomment-1773697
 </li>
 <li>
 <p>forward<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>localhost {
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    handle {
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>        basic_auth {
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>            apitoken $214$ccccc
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>        }
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>        reverse_proxy localhost:11434
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    }
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>}
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>{
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>    debug
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>    admin off
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>    auto_https off
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>}
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>:4040 {
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>    handle {
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>        basic_auth {
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>            apitoken $214$ccccc
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>        }
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>        reverse_proxy localhost:11434
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    }
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>}
 </code></pre></div></p>
 </li>
+</ul>
+<h2 id="plugins">plugins<a class="headerlink" href="#plugins" title="Permanent link">&para;</a></h2>
+<ul>
+<li>build with plugins: <a href="../../caddy-build" title="caddy-build">caddy-build</a></li>
+<li><a href="../../caddy-route53-plugin" title="caddy-route53-plugin">caddy-route53-plugin</a></li>
 </ul>
 
 
@@ -5870,7 +5907,7 @@ refer: <a href="https://github.com/ollama/ollama/issues/849#issuecomment-1773697
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-09-08T11:20:38+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-08</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-09-21T14:18:40+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-09-21</span>
   </span>
 
     
@@ -5948,7 +5985,7 @@ refer: <a href="https://github.com/ollama/ollama/issues/849#issuecomment-1773697
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "toc.follow", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.07f07601.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
+    <script id="__config" type="application/json">{"base": "../../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "toc.follow", "content.code.copy"], "search": "../../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
       <script src="../../../../assets/javascripts/bundle.56dfad97.min.js"></script>

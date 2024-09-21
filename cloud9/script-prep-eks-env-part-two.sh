@@ -5,15 +5,15 @@ echo "SCRIPT-PART-TWO-BEGIN"
 echo "###"
 
 mv -f ~/.bash_completion ~/.bash_completion.$(date +%N)
-# install kubectl with +/- 1 cluster version 1.28.12 / 1.29.7 / 1.30.3
+# install kubectl with +/- 1 cluster version 1.28.14 / 1.29.9 / 1.30.5 / 1.31.1
 # refer: https://kubernetes.io/releases/
 # sudo curl --location -o /usr/local/bin/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
-sudo curl --silent --location -o /usr/local/bin/kubectl "https://storage.googleapis.com/kubernetes-release/release/v1.28.12/bin/linux/amd64/kubectl"
+sudo curl --silent --location -o /usr/local/bin/kubectl "https://storage.googleapis.com/kubernetes-release/release/v1.29.9/bin/linux/amd64/kubectl"
 sudo chmod +x /usr/local/bin/kubectl
 
 /usr/local/bin/kubectl completion bash >>  ~/.bash_completion
-source /etc/profile.d/bash_completion.sh
-source ~/.bash_completion
+# source /etc/profile.d/bash_completion.sh
+# source ~/.bash_completion
 alias k=kubectl 
 complete -F __start_kubectl k
 echo "alias k=kubectl" >> ~/.bashrc
@@ -26,8 +26,8 @@ echo "complete -F __start_kubectl k" >> ~/.bashrc
 curl -L "https://github.com/weaveworks/eksctl/releases/latest/download/eksctl_$(uname -s)_amd64.tar.gz" | tar xz -C /tmp/
 sudo mv -v /tmp/eksctl /usr/local/bin
 /usr/local/bin/eksctl completion bash >> ~/.bash_completion
-source /etc/profile.d/bash_completion.sh
-source ~/.bash_completion
+# source /etc/profile.d/bash_completion.sh
+# source ~/.bash_completion
 
 # install kubectx
 curl -L "https://github.com/ahmetb/kubectx/releases/download/v0.9.5/kubectx_v0.9.5_linux_x86_64.tar.gz" |tar xz -C /tmp/
@@ -44,8 +44,8 @@ sudo mv -f /tmp/k9s /usr/local/bin/
 curl -L "https://github.com/awslabs/eksdemo/releases/latest/download/eksdemo_$(uname -s)_$(uname -p).tar.gz" |tar xz -C /tmp/
 sudo mv -v /tmp/eksdemo /usr/local/bin
 /usr/local/bin/eksdemo completion bash >> ~/.bash_completion
-source /etc/profile.d/bash_completion.sh
-source ~/.bash_completion
+# source /etc/profile.d/bash_completion.sh
+# source ~/.bash_completion
 
 # helm newest version (3.15.4)
 curl -sSL https://raw.githubusercontent.com/helm/helm/master/scripts/get-helm-3 | bash
