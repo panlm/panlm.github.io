@@ -9,7 +9,7 @@ number headings: first-level 2, max 3, 1.1, auto
 (path:git/git-mkdocs/others/network file:.md)
 - [$frontmatter:title]($filename): $frontmatter:description
 ```
-- [caddy](caddy): a fast, multi-platform web server with automatic HTTPS.
+- [caddy](network/caddy.md): a fast, multi-platform web server with automatic HTTPS.
 - [Cross Region Reverse Proxy with NLB and Cloudfront](cross-region-reverse-proxy-with-nlb-cloudfront): 跨区域的 Layer 4 反向代理，并使用 nlb + cloudfront，考察证书使用需求
 - [aws-nfw-network-firewall](aws-nfw-network-firewall): AWS Network Firewall
 - [openswan-s2svpn-tgw-lab](openswan-s2svpn-tgw): connect to global aws using site-2-site vpn service, for example access global bedrock service

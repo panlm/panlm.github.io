@@ -368,7 +368,7 @@ Resources:
       Name:
         Ref: AWS::StackName
       OwnerArn: !If [Create3rdPartyResources, !Ref ExampleOwnerArn, !Ref "AWS::NoValue"]
-#      OwnerArn: !If [Create3rdPartyResources, !Ref ExampleOwnerArn, !Join ["", ["arn:aws:sts::", Ref: AWS::AccountId, ":assumed-role/panlm/granted"]]]
+      # OwnerArn: !If [Create3rdPartyResources, !Ref ExampleOwnerArn, !Join ["", ["arn:aws:sts::", Ref: AWS::AccountId, ":assumed-role/panlm/granted"]]]
       Repositories:
         - PathComponent: /eks-blueprints-clusters
           RepositoryUrl: https://github.com/panlm/eks-blueprints-clusters.git

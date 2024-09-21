@@ -6,6 +6,7 @@ number headings: first-level 2, max 3, 1.1, auto
 
 # Welcome to panlm docs
 ## 1 start from
+- [[cloud9/vscode|vscode]] -- due to cloud9 has been deprecated 
 - [[cloud9/quick-setup-cloud9|Quick Setup Cloud9]] -- 简化创建 Cloud9 脚本，优先选择使用 Terraform 自动初始化；也可以使用脚本从 CloudShell 中完成初始化
 
 ## 2 highlights
