@@ -21,7 +21,7 @@ sudo apt-mark hold terraform
 
 # install code-server
 CODE_SERVER_VER=4.92.2
-wget -O /tmp/code-server.deb https://github.com/coder/code-server/releases/download/v${CODE_SERVER_VER}/code-server_${CODE_SERVER_VER}_amd64.deb
+wget -qO /tmp/code-server.deb https://github.com/coder/code-server/releases/download/v${CODE_SERVER_VER}/code-server_${CODE_SERVER_VER}_amd64.deb
 sudo dpkg -i /tmp/code-server.deb
 sudo systemctl enable --now code-server@ubuntu
 sudo systemctl restart code-server@ubuntu
