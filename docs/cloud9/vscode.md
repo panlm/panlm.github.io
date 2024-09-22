@@ -1,14 +1,17 @@
 ---
 title: vscode
-description: 
+description: code-server on EC2
 created: 2024-08-19 09:36:24.009
-last_modified: 2024-08-19
+last_modified: 2024-09-19
 tags:
   - draft
 ---
 
 # vscode
 https://github.com/coder/code-server
+
+## cloudformation template for deploy
+-  on ec2 ([[example_instancestack_vscode.yaml]])
 
 ## deploy on al2023
 - ec2-user user
@@ -24,7 +27,7 @@ tee ~/.config/code-server/config.yaml <<EOF
 cert: true 
 auth: password
 password: "$IDE_PASSWORD"
-# bind-addr: 0.0.0.0:9090
+bind-addr: 0.0.0.0:9090
 EOF
 
 sudo systemctl restart code-server@$USER

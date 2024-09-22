@@ -16,7 +16,7 @@ sudo yum -y install terraform
 
 # install code-server
 CODE_SERVER_VER=4.92.2
-wget -O /tmp/code-server.rpm https://github.com/coder/code-server/releases/download/v${CODE_SERVER_VER}/code-server-${CODE_SERVER_VER}-amd64.rpm
+wget -qO /tmp/code-server.rpm https://github.com/coder/code-server/releases/download/v${CODE_SERVER_VER}/code-server-${CODE_SERVER_VER}-amd64.rpm
 sudo yum install -y /tmp/code-server.rpm
 sudo systemctl enable --now code-server@ec2-user
 sudo systemctl restart code-server@ec2-user

@@ -9,11 +9,11 @@ tags:
 ---
 # ecs-windows-gmsa
 
-| ecs node | ec2          | fargate        |     |
-| -------- | ------------ | -------------- | --- |
-| windows  | support gMSA | do not support |     |
-| linux    | support gMSA | support gMSA   |     |
-|          |              |                |     |
+| ecs node | ec2          | fargate             |     |
+| -------- | ------------ | ------------------- | --- |
+| windows  | support gMSA | do not support gMSA |     |
+| linux    | support gMSA | support gMSA        |     |
+|          |              |                     |     |
 
 
 - ecs
