@@ -11,7 +11,40 @@ tags:
 https://github.com/coder/code-server
 
 ## cloudformation template for deploy
--  on ec2 ([[example_instancestack_vscode.yaml]])
+-  deploy vscode on ec2 ([[example_instancestack_vscode.yaml]])
+- run command on cloudshell
+```sh
+wget -O example_instancestack_vscode.yaml https://panlm.github.io/cloud9/example_instancestack_vscode.yaml
+aws configure list
+export AWS_DEFAULT_REGION AWS_REGION
+DEFAULT_VPC_ID=$(aws ec2 describe-vpcs \
+    --filter Name=is-default,Values=true \
+    --query 'Vpcs[0].VpcId' --output text \
+    --region ${AWS_DEFAULT_REGION})
+VPC_ID=${VPC_ID:=$DEFAULT_VPC_ID}
+
+if [[ ! -z ${VPC_ID} ]]; then
+    FIRST_SUBNET=$(aws ec2 describe-subnets \
+        --filters "Name=vpc-id,Values=${VPC_ID}" \
+        --query 'Subnets[?(MapPublicIpOnLaunch==`true`)].SubnetId' \
+        --output text \
+        --region ${AWS_DEFAULT_REGION} |\
+        xargs -n 1 |tail -n 1)
+    STACK_NAME=vscode-$(TZ=EAT-8 date +%Y%m%d-%H%M%S)
+    aws cloudformation create-stack --stack-name ${STACK_NAME} \
+        --parameters ParameterKey=VpcId,ParameterValue="${VPC_ID}" \
+                     ParameterKey=PublicSubnetId,ParameterValue="${FIRST_SUBNET}" \
+        --capabilities CAPABILITY_IAM --region ${AWS_DEFAULT_REGION} \
+        --template-body file://./example_instancestack_vscode.yaml
+else
+    echo "you have no default vpc in ${AWS_DEFAULT_REGION}"
+fi
+
+aws cloudformation wait stack-create-complete --stack-name ${STACK_NAME}
+aws cloudformation describe-stacks --stack-name ${STACK_NAME} \
+    --query 'Stacks[0].Outputs[?OutputKey==`AccessURL` || OutputKey==`MySSMParameterAdminKey`].OutputValue'
+
+```
 
 ## deploy on al2023
 - ec2-user user

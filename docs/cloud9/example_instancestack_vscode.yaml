@@ -273,5 +273,4 @@ Outputs:
     Value: !Ref MyEC2Instance
   AccessURL:
     Description: URL for vscode
-    Value: !Join ["", ["https://", !GetAtt MyEC2Instance.PublicIp, ":8443/" ]]
-
+    Value: !Join ["", ["https://", !GetAtt MyEC2Instance.PublicIp, ":8443/?folder=/home/ec2-user" ]]
