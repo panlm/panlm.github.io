@@ -9,7 +9,7 @@ echo "###"
 # install others
 export DEBIAN_FRONTEND=noninteractive
 sudo -E apt update
-sudo -E apt-get -yq install jq gettext bash-completion moreutils wget
+sudo -E apt-get -yq install jq gettext bash-completion moreutils wget argon2
 
 # install terraform 
 sudo rm -f /usr/share/keyrings/hashicorp-archive-keyring.gpg
@@ -20,7 +20,37 @@ sudo -E apt-get -yq install terraform=1.5.7-1
 sudo apt-mark hold terraform
 
 # install code-server
-CODE_SERVER_VER=4.92.2
+IDE_PASSWORD=$(echo -n $(aws sts get-caller-identity --query "Account" --output text) | argon2 $(uuidgen) -e)
+mkdir -p ~/.config/code-server
+tee ~/.config/code-server/config.yaml <<-EOF
+cert: false
+auth: password
+hashed-password: "${IDE_PASSWORD}"
+bind-addr: 0.0.0.0:8088
+EOF
+mkdir -p ~/.local/share/code-server/User
+tee ~/.local/share/code-server/User/settings.json <<EOF
+{
+"extensions.autoUpdate": false,
+"extensions.autoCheckUpdates": false,
+"terminal.integrated.cwd": "/home/$USER",
+"telemetry.telemetryLevel": "off",
+"security.workspace.trust.startupPrompt": "never",
+"security.workspace.trust.enabled": false,
+"security.workspace.trust.banner": "never",
+"security.workspace.trust.emptyWindow": false,
+"editor.indentSize": "tabSize",
+"editor.tabSize": 2,
+"python.testing.pytestEnabled": true,
+"auto-run-command.rules": [
+    {
+    "command": "workbench.action.terminal.new"
+    }
+]
+}
+EOF
+
+CODE_SERVER_VER=4.93.1
 wget -qO /tmp/code-server.deb https://github.com/coder/code-server/releases/download/v${CODE_SERVER_VER}/code-server_${CODE_SERVER_VER}_amd64.deb
 sudo dpkg -i /tmp/code-server.deb
 sudo systemctl enable --now code-server@ubuntu

@@ -45,7 +45,7 @@ Parameters:
     Default: amazonlinux2023
   EC2InstanceVolumeSize: 
     Type: Number
-    Description: The Size in GB of the Cloud9 Instance Volume. 
+    Description: The Size in GB of the Instance Volume. 
     Default: 50
 
 # Mappings:
@@ -73,7 +73,11 @@ Mappings:
     m5.large:
       ubuntu22: /aws/service/canonical/ubuntu/server/22.04/stable/current/amd64/hvm/ebs-gp2/ami-id
       amazonlinux2023: /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64
-
+  CloudfrontPrefixListMapping:
+    us-east-1:
+      pl: pl-3b927c52
+    us-west-2:
+      pl: pl-82a045eb
 
 Conditions: 
   CreateUbuntuResources: !Equals [!Ref EC2InstanceOS, "ubuntu22"]
@@ -116,8 +120,8 @@ Resources:
           ToPort: 22
           CidrIp: 0.0.0.0/0
         - IpProtocol: tcp
-          FromPort: 8443
-          ToPort: 8443
+          FromPort: 8088
+          ToPort: 8088
           CidrIp: 0.0.0.0/0
       VpcId: !Ref VpcId
   MyEC2Instance:
@@ -157,35 +161,21 @@ Resources:
           Value: !Join ["", ["Instance-", !Ref AWS::StackName]]
         - Key: Environment
           Value: !Ref AWS::StackName
-
-      UserData:
-        Fn::Base64: !Sub |-
-          #!/bin/bash -xe
-          if [[ -f /etc/os-release ]] && grep -q "Amazon Linux" /etc/os-release; then
-            USERNAME=ec2-user
-            yum install -y aws-cfn-bootstrap
-          else
-            USERNAME=ubuntu
-            apt update
-            apt install -y python3 python3-pip heat-cfntools awscli
-            # pip3 install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-py3-latest.tar.gz
-            pip3 install heat_cfntools
-          fi
-
-          IDE_PASSWORD=$(uuidgen)
-          mkdir -p /home/$USERNAME/.config/code-server
-          touch /home/$USERNAME/.config/code-server/config.yaml
-          tee /home/$USERNAME/.config/code-server/config.yaml <<-EOF
-          cert: true 
-          auth: password
-          password: "$IDE_PASSWORD"
-          bind-addr: 0.0.0.0:8443
-          EOF
-          aws ssm put-parameter --name admin-key-${AWS::StackName} --value "$IDE_PASSWORD" --type String --overwrite --region ${AWS::Region} 
-
-          # call back to cfn # /opt/aws/bin/cfn-signal
-          cfn-signal -s true '${PrivateWaitHandle}' # variable handled by cfn
-
+    #   UserData:
+    #     Fn::Base64: !Sub |-
+    #       #!/bin/bash -xe
+    #       if [[ -f /etc/os-release ]] && grep -q "Amazon Linux" /etc/os-release; then
+    #         USERNAME=ec2-user
+    #         yum install -y aws-cfn-bootstrap
+    #       else
+    #         USERNAME=ubuntu
+    #         apt update
+    #         apt install -y python3 python3-pip heat-cfntools awscli
+    #         # pip3 install https://s3.amazonaws.com/cloudformation-examples/aws-cfn-bootstrap-py3-latest.tar.gz
+    #         pip3 install heat_cfntools
+    #       fi
+    #       # call back to cfn # /opt/aws/bin/cfn-signal
+    #       cfn-signal -s true '${PrivateWaitHandle}' # variable handled by cfn
 
   PrivateWaitHandle:
     Type: AWS::CloudFormation::WaitConditionHandle
@@ -197,16 +187,6 @@ Resources:
       Handle: !Ref PrivateWaitHandle
       Timeout: '600' # about 2-4 min will receive signal
       Count: 1
-
-  MySSMParameterAdminKey:
-    Type: AWS::SSM::Parameter
-    Properties:
-      Name: !Join ["", ["admin-key-", !Ref AWS::StackName]]
-      Type: String
-      Value: Hello World
-      Description: A parameter created by CloudFormation and updated by ec2
-      Tier: Standard
-      DataType: text
 
   OutputBucket:
     Type: AWS::S3::Bucket
@@ -249,7 +229,15 @@ Resources:
             - !If [CreateAL2Resources, "sudo -u ec2-user bash -x ${TMPFILE}-TWO.sh 2>&1", ""]
             - ""
             - "echo 0"
-  
+        - action: aws:runShellScript
+        name: NotifyCloudFormation
+        inputs:
+            runCommand:
+            - export UNIQUE_ID=$(uuidgen | sed 's/[-]//g';)
+            - echo $UNIQUE_ID
+            - !Sub 'export CFN_RESPONSE_URL="${PrivateWaitHandle}"'
+            - !Sub curl -v -X PUT -H 'Content-Type:' --data-binary '{"Status":"SUCCESS","Reason":"Creation Complete","UniqueId":"$UNIQUE_ID","Data":"Creation complete"}' $CFN_RESPONSE_URL
+
   BootstrapAssociation: 
     Type: AWS::SSM::Association
     DependsOn: OutputBucket 
@@ -264,13 +252,42 @@ Resources:
           Values:
           - !Ref AWS::StackName
 
+  Ec2CloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Origins:
+          - Id: myEC2Origin
+            DomainName: !GetAtt MyEC2Instance.PublicDnsName          
+            CustomOriginConfig:
+              HTTPPort: '8088'
+              OriginProtocolPolicy: http-only
+        Enabled: 'true'
+        Comment: CloudFront distribution in front of EC2
+        DefaultCacheBehavior:
+          AllowedMethods:
+            - GET
+            - HEAD
+            - OPTIONS
+            - PUT
+            - POST
+            - PATCH
+            - DELETE
+          TargetOriginId: myEC2Origin
+          CachePolicyId: 4135ea2d-6df8-44a3-9df3-4b5a84be39ad # Disable caching https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html#managed-cache-policy-caching-disabled
+          OriginRequestPolicyId: 216adef6-5c7f-47e4-b989-5492eafa07d3 # Allow all Viewer https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-origin-request-policies.html#managed-origin-request-policy-all-viewer
+          ViewerProtocolPolicy: redirect-to-https
+        ViewerCertificate:
+          CloudFrontDefaultCertificate: 'true'
+
 Outputs: 
-  MySSMParameterAdminKey:
+  Password:
     Description: Admin Key
-    Value: !GetAtt MySSMParameterAdminKey.Value
+    Value: !Sub AWS::AccountId
   EC2InstanceId:
     Description: The ID of the EC2 instance
     Value: !Ref MyEC2Instance
   AccessURL:
     Description: URL for vscode
-    Value: !Join ["", ["https://", !GetAtt MyEC2Instance.PublicIp, ":8443/?folder=/home/ec2-user" ]]
+    # Value: !Join ["", ["https://", !GetAtt MyEC2Instance.PublicIp, ":8443/?folder=/home/ec2-user" ]]
+    Value: !Sub https://${Ec2CloudFrontDistribution.DomainName}/?folder=/home/ec2-user

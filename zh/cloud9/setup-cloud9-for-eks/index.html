@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.36">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.37">
     
     
       
@@ -28,7 +28,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.06209087.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.8c3ca2c6.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
@@ -5855,80 +5855,110 @@
 <ul>
 <li><a href="../../../cloud9/script-prep-eks-env-part-one.sh" title="script-prep-eks-env-part-one.sh">script-prep-eks-env-part-one.sh</a> </li>
 </ul>
-<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">script-prep-eks-env-part-one.sh</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1"> 1</a></span>
-<span class="normal"><a href="#__codelineno-2-2"> 2</a></span>
-<span class="normal"><a href="#__codelineno-2-3"> 3</a></span>
-<span class="normal"><a href="#__codelineno-2-4"> 4</a></span>
-<span class="normal"><a href="#__codelineno-2-5"> 5</a></span>
-<span class="normal"><a href="#__codelineno-2-6"> 6</a></span>
-<span class="normal"><a href="#__codelineno-2-7"> 7</a></span>
-<span class="normal"><a href="#__codelineno-2-8"> 8</a></span>
-<span class="normal"><a href="#__codelineno-2-9"> 9</a></span>
-<span class="normal"><a href="#__codelineno-2-10">10</a></span>
-<span class="normal"><a href="#__codelineno-2-11">11</a></span>
-<span class="normal"><a href="#__codelineno-2-12">12</a></span>
-<span class="normal"><a href="#__codelineno-2-13">13</a></span>
-<span class="normal"><a href="#__codelineno-2-14">14</a></span>
-<span class="normal"><a href="#__codelineno-2-15">15</a></span>
-<span class="normal"><a href="#__codelineno-2-16">16</a></span>
-<span class="normal"><a href="#__codelineno-2-17">17</a></span>
-<span class="normal"><a href="#__codelineno-2-18">18</a></span>
-<span class="normal"><a href="#__codelineno-2-19">19</a></span>
-<span class="normal"><a href="#__codelineno-2-20">20</a></span>
-<span class="normal"><a href="#__codelineno-2-21">21</a></span>
-<span class="normal"><a href="#__codelineno-2-22">22</a></span>
-<span class="normal"><a href="#__codelineno-2-23">23</a></span>
-<span class="normal"><a href="#__codelineno-2-24">24</a></span>
-<span class="normal"><a href="#__codelineno-2-25">25</a></span>
-<span class="normal"><a href="#__codelineno-2-26">26</a></span>
-<span class="normal"><a href="#__codelineno-2-27">27</a></span>
-<span class="normal"><a href="#__codelineno-2-28">28</a></span>
-<span class="normal"><a href="#__codelineno-2-29">29</a></span>
-<span class="normal"><a href="#__codelineno-2-30">30</a></span>
-<span class="normal"><a href="#__codelineno-2-31">31</a></span>
-<span class="normal"><a href="#__codelineno-2-32">32</a></span>
-<span class="normal"><a href="#__codelineno-2-33">33</a></span>
-<span class="normal"><a href="#__codelineno-2-34">34</a></span>
-<span class="normal"><a href="#__codelineno-2-35">35</a></span>
-<span class="normal"><a href="#__codelineno-2-36">36</a></span>
-<span class="normal"><a href="#__codelineno-2-37">37</a></span>
-<span class="normal"><a href="#__codelineno-2-38">38</a></span>
-<span class="normal"><a href="#__codelineno-2-39">39</a></span>
-<span class="normal"><a href="#__codelineno-2-40">40</a></span>
-<span class="normal"><a href="#__codelineno-2-41">41</a></span>
-<span class="normal"><a href="#__codelineno-2-42">42</a></span>
-<span class="normal"><a href="#__codelineno-2-43">43</a></span>
-<span class="normal"><a href="#__codelineno-2-44">44</a></span>
-<span class="normal"><a href="#__codelineno-2-45">45</a></span>
-<span class="normal"><a href="#__codelineno-2-46">46</a></span>
-<span class="normal"><a href="#__codelineno-2-47">47</a></span>
-<span class="normal"><a href="#__codelineno-2-48">48</a></span>
-<span class="normal"><a href="#__codelineno-2-49">49</a></span>
-<span class="normal"><a href="#__codelineno-2-50">50</a></span>
-<span class="normal"><a href="#__codelineno-2-51">51</a></span>
-<span class="normal"><a href="#__codelineno-2-52">52</a></span>
-<span class="normal"><a href="#__codelineno-2-53">53</a></span>
-<span class="normal"><a href="#__codelineno-2-54">54</a></span>
-<span class="normal"><a href="#__codelineno-2-55">55</a></span>
-<span class="normal"><a href="#__codelineno-2-56">56</a></span>
-<span class="normal"><a href="#__codelineno-2-57">57</a></span>
-<span class="normal"><a href="#__codelineno-2-58">58</a></span>
-<span class="normal"><a href="#__codelineno-2-59">59</a></span>
-<span class="normal"><a href="#__codelineno-2-60">60</a></span>
-<span class="normal"><a href="#__codelineno-2-61">61</a></span>
-<span class="normal"><a href="#__codelineno-2-62">62</a></span>
-<span class="normal"><a href="#__codelineno-2-63">63</a></span>
-<span class="normal"><a href="#__codelineno-2-64">64</a></span>
-<span class="normal"><a href="#__codelineno-2-65">65</a></span>
-<span class="normal"><a href="#__codelineno-2-66">66</a></span>
-<span class="normal"><a href="#__codelineno-2-67">67</a></span>
-<span class="normal"><a href="#__codelineno-2-68">68</a></span>
-<span class="normal"><a href="#__codelineno-2-69">69</a></span>
-<span class="normal"><a href="#__codelineno-2-70">70</a></span>
-<span class="normal"><a href="#__codelineno-2-71">71</a></span>
-<span class="normal"><a href="#__codelineno-2-72">72</a></span>
-<span class="normal"><a href="#__codelineno-2-73">73</a></span>
-<span class="normal"><a href="#__codelineno-2-74">74</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="ch">#!/bin/bash</span>
+<div class="highlight"><table class="highlighttable"><tr><th colspan="2" class="filename"><span class="filename">script-prep-eks-env-part-one.sh</span></th></tr><tr><td class="linenos"><div class="linenodiv"><pre><span></span><span class="normal"><a href="#__codelineno-2-1">  1</a></span>
+<span class="normal"><a href="#__codelineno-2-2">  2</a></span>
+<span class="normal"><a href="#__codelineno-2-3">  3</a></span>
+<span class="normal"><a href="#__codelineno-2-4">  4</a></span>
+<span class="normal"><a href="#__codelineno-2-5">  5</a></span>
+<span class="normal"><a href="#__codelineno-2-6">  6</a></span>
+<span class="normal"><a href="#__codelineno-2-7">  7</a></span>
+<span class="normal"><a href="#__codelineno-2-8">  8</a></span>
+<span class="normal"><a href="#__codelineno-2-9">  9</a></span>
+<span class="normal"><a href="#__codelineno-2-10"> 10</a></span>
+<span class="normal"><a href="#__codelineno-2-11"> 11</a></span>
+<span class="normal"><a href="#__codelineno-2-12"> 12</a></span>
+<span class="normal"><a href="#__codelineno-2-13"> 13</a></span>
+<span class="normal"><a href="#__codelineno-2-14"> 14</a></span>
+<span class="normal"><a href="#__codelineno-2-15"> 15</a></span>
+<span class="normal"><a href="#__codelineno-2-16"> 16</a></span>
+<span class="normal"><a href="#__codelineno-2-17"> 17</a></span>
+<span class="normal"><a href="#__codelineno-2-18"> 18</a></span>
+<span class="normal"><a href="#__codelineno-2-19"> 19</a></span>
+<span class="normal"><a href="#__codelineno-2-20"> 20</a></span>
+<span class="normal"><a href="#__codelineno-2-21"> 21</a></span>
+<span class="normal"><a href="#__codelineno-2-22"> 22</a></span>
+<span class="normal"><a href="#__codelineno-2-23"> 23</a></span>
+<span class="normal"><a href="#__codelineno-2-24"> 24</a></span>
+<span class="normal"><a href="#__codelineno-2-25"> 25</a></span>
+<span class="normal"><a href="#__codelineno-2-26"> 26</a></span>
+<span class="normal"><a href="#__codelineno-2-27"> 27</a></span>
+<span class="normal"><a href="#__codelineno-2-28"> 28</a></span>
+<span class="normal"><a href="#__codelineno-2-29"> 29</a></span>
+<span class="normal"><a href="#__codelineno-2-30"> 30</a></span>
+<span class="normal"><a href="#__codelineno-2-31"> 31</a></span>
+<span class="normal"><a href="#__codelineno-2-32"> 32</a></span>
+<span class="normal"><a href="#__codelineno-2-33"> 33</a></span>
+<span class="normal"><a href="#__codelineno-2-34"> 34</a></span>
+<span class="normal"><a href="#__codelineno-2-35"> 35</a></span>
+<span class="normal"><a href="#__codelineno-2-36"> 36</a></span>
+<span class="normal"><a href="#__codelineno-2-37"> 37</a></span>
+<span class="normal"><a href="#__codelineno-2-38"> 38</a></span>
+<span class="normal"><a href="#__codelineno-2-39"> 39</a></span>
+<span class="normal"><a href="#__codelineno-2-40"> 40</a></span>
+<span class="normal"><a href="#__codelineno-2-41"> 41</a></span>
+<span class="normal"><a href="#__codelineno-2-42"> 42</a></span>
+<span class="normal"><a href="#__codelineno-2-43"> 43</a></span>
+<span class="normal"><a href="#__codelineno-2-44"> 44</a></span>
+<span class="normal"><a href="#__codelineno-2-45"> 45</a></span>
+<span class="normal"><a href="#__codelineno-2-46"> 46</a></span>
+<span class="normal"><a href="#__codelineno-2-47"> 47</a></span>
+<span class="normal"><a href="#__codelineno-2-48"> 48</a></span>
+<span class="normal"><a href="#__codelineno-2-49"> 49</a></span>
+<span class="normal"><a href="#__codelineno-2-50"> 50</a></span>
+<span class="normal"><a href="#__codelineno-2-51"> 51</a></span>
+<span class="normal"><a href="#__codelineno-2-52"> 52</a></span>
+<span class="normal"><a href="#__codelineno-2-53"> 53</a></span>
+<span class="normal"><a href="#__codelineno-2-54"> 54</a></span>
+<span class="normal"><a href="#__codelineno-2-55"> 55</a></span>
+<span class="normal"><a href="#__codelineno-2-56"> 56</a></span>
+<span class="normal"><a href="#__codelineno-2-57"> 57</a></span>
+<span class="normal"><a href="#__codelineno-2-58"> 58</a></span>
+<span class="normal"><a href="#__codelineno-2-59"> 59</a></span>
+<span class="normal"><a href="#__codelineno-2-60"> 60</a></span>
+<span class="normal"><a href="#__codelineno-2-61"> 61</a></span>
+<span class="normal"><a href="#__codelineno-2-62"> 62</a></span>
+<span class="normal"><a href="#__codelineno-2-63"> 63</a></span>
+<span class="normal"><a href="#__codelineno-2-64"> 64</a></span>
+<span class="normal"><a href="#__codelineno-2-65"> 65</a></span>
+<span class="normal"><a href="#__codelineno-2-66"> 66</a></span>
+<span class="normal"><a href="#__codelineno-2-67"> 67</a></span>
+<span class="normal"><a href="#__codelineno-2-68"> 68</a></span>
+<span class="normal"><a href="#__codelineno-2-69"> 69</a></span>
+<span class="normal"><a href="#__codelineno-2-70"> 70</a></span>
+<span class="normal"><a href="#__codelineno-2-71"> 71</a></span>
+<span class="normal"><a href="#__codelineno-2-72"> 72</a></span>
+<span class="normal"><a href="#__codelineno-2-73"> 73</a></span>
+<span class="normal"><a href="#__codelineno-2-74"> 74</a></span>
+<span class="normal"><a href="#__codelineno-2-75"> 75</a></span>
+<span class="normal"><a href="#__codelineno-2-76"> 76</a></span>
+<span class="normal"><a href="#__codelineno-2-77"> 77</a></span>
+<span class="normal"><a href="#__codelineno-2-78"> 78</a></span>
+<span class="normal"><a href="#__codelineno-2-79"> 79</a></span>
+<span class="normal"><a href="#__codelineno-2-80"> 80</a></span>
+<span class="normal"><a href="#__codelineno-2-81"> 81</a></span>
+<span class="normal"><a href="#__codelineno-2-82"> 82</a></span>
+<span class="normal"><a href="#__codelineno-2-83"> 83</a></span>
+<span class="normal"><a href="#__codelineno-2-84"> 84</a></span>
+<span class="normal"><a href="#__codelineno-2-85"> 85</a></span>
+<span class="normal"><a href="#__codelineno-2-86"> 86</a></span>
+<span class="normal"><a href="#__codelineno-2-87"> 87</a></span>
+<span class="normal"><a href="#__codelineno-2-88"> 88</a></span>
+<span class="normal"><a href="#__codelineno-2-89"> 89</a></span>
+<span class="normal"><a href="#__codelineno-2-90"> 90</a></span>
+<span class="normal"><a href="#__codelineno-2-91"> 91</a></span>
+<span class="normal"><a href="#__codelineno-2-92"> 92</a></span>
+<span class="normal"><a href="#__codelineno-2-93"> 93</a></span>
+<span class="normal"><a href="#__codelineno-2-94"> 94</a></span>
+<span class="normal"><a href="#__codelineno-2-95"> 95</a></span>
+<span class="normal"><a href="#__codelineno-2-96"> 96</a></span>
+<span class="normal"><a href="#__codelineno-2-97"> 97</a></span>
+<span class="normal"><a href="#__codelineno-2-98"> 98</a></span>
+<span class="normal"><a href="#__codelineno-2-99"> 99</a></span>
+<span class="normal"><a href="#__codelineno-2-100">100</a></span>
+<span class="normal"><a href="#__codelineno-2-101">101</a></span>
+<span class="normal"><a href="#__codelineno-2-102">102</a></span>
+<span class="normal"><a href="#__codelineno-2-103">103</a></span>
+<span class="normal"><a href="#__codelineno-2-104">104</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2"></a><span class="c1">###-SCRIPT-PART-ONE-BEGIN-###</span>
 <a id="__codelineno-2-3" name="__codelineno-2-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;SCRIPT-PART-ONE-BEGIN&quot;</span>
@@ -5937,7 +5967,7 @@
 <a id="__codelineno-2-7" name="__codelineno-2-7"></a><span class="c1"># size=200</span>
 <a id="__codelineno-2-8" name="__codelineno-2-8"></a>
 <a id="__codelineno-2-9" name="__codelineno-2-9"></a><span class="c1"># install others</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10"></a>sudo<span class="w"> </span>yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>jq<span class="w"> </span>gettext<span class="w"> </span>bash-completion<span class="w"> </span>moreutils<span class="w"> </span>wget
+<a id="__codelineno-2-10" name="__codelineno-2-10"></a>sudo<span class="w"> </span>yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>jq<span class="w"> </span>gettext<span class="w"> </span>bash-completion<span class="w"> </span>moreutils<span class="w"> </span>wget<span class="w"> </span>argon2
 <a id="__codelineno-2-11" name="__codelineno-2-11"></a>
 <a id="__codelineno-2-12" name="__codelineno-2-12"></a><span class="c1"># install terraform </span>
 <a id="__codelineno-2-13" name="__codelineno-2-13"></a>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>yum-utils<span class="w"> </span>shadow-utils
@@ -5945,63 +5975,93 @@
 <a id="__codelineno-2-15" name="__codelineno-2-15"></a>sudo<span class="w"> </span>yum<span class="w"> </span>-y<span class="w"> </span>install<span class="w"> </span>terraform
 <a id="__codelineno-2-16" name="__codelineno-2-16"></a>
 <a id="__codelineno-2-17" name="__codelineno-2-17"></a><span class="c1"># install code-server</span>
-<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="nv">CODE_SERVER_VER</span><span class="o">=</span><span class="m">4</span>.92.2
-<a id="__codelineno-2-19" name="__codelineno-2-19"></a>wget<span class="w"> </span>-qO<span class="w"> </span>/tmp/code-server.rpm<span class="w"> </span>https://github.com/coder/code-server/releases/download/v<span class="si">${</span><span class="nv">CODE_SERVER_VER</span><span class="si">}</span>/code-server-<span class="si">${</span><span class="nv">CODE_SERVER_VER</span><span class="si">}</span>-amd64.rpm
-<a id="__codelineno-2-20" name="__codelineno-2-20"></a>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>/tmp/code-server.rpm
-<a id="__codelineno-2-21" name="__codelineno-2-21"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>code-server@ec2-user
-<a id="__codelineno-2-22" name="__codelineno-2-22"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>code-server@ec2-user
-<a id="__codelineno-2-23" name="__codelineno-2-23"></a>
-<a id="__codelineno-2-24" name="__codelineno-2-24"></a><span class="c1"># install awscli v2</span>
-<a id="__codelineno-2-25" name="__codelineno-2-25"></a>curl<span class="w"> </span><span class="s2">&quot;https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip&quot;</span><span class="w"> </span>-o<span class="w"> </span>/tmp/awscliv2.zip
-<a id="__codelineno-2-26" name="__codelineno-2-26"></a><span class="nb">echo</span><span class="w"> </span>A<span class="w"> </span><span class="p">|</span>unzip<span class="w"> </span>/tmp/awscliv2.zip<span class="w"> </span>-d<span class="w"> </span>/tmp
-<a id="__codelineno-2-27" name="__codelineno-2-27"></a>sudo<span class="w"> </span>/tmp/aws/install<span class="w"> </span>--update<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span>&gt;/tmp/awscli-install.log
-<a id="__codelineno-2-28" name="__codelineno-2-28"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;complete -C &#39;/usr/local/bin/aws_completer&#39; aws&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bash_profile
-<a id="__codelineno-2-29" name="__codelineno-2-29"></a>
-<a id="__codelineno-2-30" name="__codelineno-2-30"></a><span class="c1"># remove existed aws</span>
-<a id="__codelineno-2-31" name="__codelineno-2-31"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-2-32" name="__codelineno-2-32"></a><span class="w">  </span>sudo<span class="w"> </span>yum<span class="w"> </span>remove<span class="w"> </span>-y<span class="w"> </span>awscli
-<a id="__codelineno-2-33" name="__codelineno-2-33"></a><span class="w">  </span><span class="nb">source</span><span class="w"> </span>~/.bash_profile
-<a id="__codelineno-2-34" name="__codelineno-2-34"></a><span class="w">  </span>aws<span class="w"> </span>--version
-<a id="__codelineno-2-35" name="__codelineno-2-35"></a><span class="k">fi</span>
-<a id="__codelineno-2-36" name="__codelineno-2-36"></a>
-<a id="__codelineno-2-37" name="__codelineno-2-37"></a><span class="c1"># install awscli v1</span>
-<a id="__codelineno-2-38" name="__codelineno-2-38"></a><span class="c1"># curl &quot;https://s3.amazonaws.com/aws-cli/awscli-bundle.zip&quot; -o &quot;awscli-bundle.zip&quot;</span>
-<a id="__codelineno-2-39" name="__codelineno-2-39"></a><span class="c1"># unzip awscli-bundle.zip</span>
-<a id="__codelineno-2-40" name="__codelineno-2-40"></a><span class="c1"># sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws</span>
-<a id="__codelineno-2-41" name="__codelineno-2-41"></a>
-<a id="__codelineno-2-42" name="__codelineno-2-42"></a><span class="c1"># install ssm session plugin</span>
-<a id="__codelineno-2-43" name="__codelineno-2-43"></a>curl<span class="w"> </span><span class="s2">&quot;https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm&quot;</span><span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;/tmp/session-manager-plugin.rpm&quot;</span>
-<a id="__codelineno-2-44" name="__codelineno-2-44"></a>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>/tmp/session-manager-plugin.rpm
-<a id="__codelineno-2-45" name="__codelineno-2-45"></a>
-<a id="__codelineno-2-46" name="__codelineno-2-46"></a><span class="c1"># your default region </span>
-<a id="__codelineno-2-47" name="__codelineno-2-47"></a><span class="nv">TOKEN</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span><span class="s2">&quot;http://169.254.169.254/latest/api/token&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;X-aws-ec2-metadata-token-ttl-seconds: 21600&quot;</span><span class="k">)</span>
-<a id="__codelineno-2-48" name="__codelineno-2-48"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;X-aws-ec2-metadata-token: </span><span class="nv">$TOKEN</span><span class="s2">&quot;</span><span class="w"> </span>-s<span class="w"> </span>http://169.254.169.254/latest/dynamic/instance-identity/document<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.region&#39;</span><span class="k">)</span>
-<a id="__codelineno-2-49" name="__codelineno-2-49"></a>
-<a id="__codelineno-2-50" name="__codelineno-2-50"></a><span class="c1"># change root volume size</span>
-<a id="__codelineno-2-51" name="__codelineno-2-51"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-c<span class="w"> </span>/dev/nvme0<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-2-52" name="__codelineno-2-52"></a><span class="w">  </span>wget<span class="w"> </span>-qO-<span class="w"> </span>https://github.com/amazonlinux/amazon-ec2-utils/raw/main/ebsnvme-id<span class="w"> </span>&gt;/tmp/ebsnvme-id
-<a id="__codelineno-2-53" name="__codelineno-2-53"></a><span class="w">  </span><span class="nv">VOLUME_ID</span><span class="o">=</span><span class="k">$(</span>sudo<span class="w"> </span>python3<span class="w"> </span>/tmp/ebsnvme-id<span class="w"> </span>-v<span class="w"> </span>/dev/nvme0<span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $NF}&#39;</span><span class="k">)</span>
-<a id="__codelineno-2-54" name="__codelineno-2-54"></a><span class="w">  </span><span class="nv">DEVICE_NAME</span><span class="o">=</span>/dev/nvme0n1
-<a id="__codelineno-2-55" name="__codelineno-2-55"></a><span class="k">else</span>
-<a id="__codelineno-2-56" name="__codelineno-2-56"></a><span class="w">  </span><span class="nv">C9_INST_ID</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;X-aws-ec2-metadata-token: </span><span class="nv">$TOKEN</span><span class="s2">&quot;</span><span class="w"> </span>http://169.254.169.254/latest/meta-data/instance-id<span class="k">)</span>
-<a id="__codelineno-2-57" name="__codelineno-2-57"></a><span class="w">  </span><span class="nv">VOLUME_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-volumes<span class="w"> </span>--filters<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>attachment.instance-id,Values<span class="o">=</span><span class="si">${</span><span class="nv">C9_INST_ID</span><span class="si">}</span><span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;Volumes[0].VolumeId&quot;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-2-58" name="__codelineno-2-58"></a><span class="w">  </span><span class="nv">DEVICE_NAME</span><span class="o">=</span>/dev/xvda
-<a id="__codelineno-2-59" name="__codelineno-2-59"></a><span class="k">fi</span>
-<a id="__codelineno-2-60" name="__codelineno-2-60"></a>
-<a id="__codelineno-2-61" name="__codelineno-2-61"></a>aws<span class="w"> </span>ec2<span class="w"> </span>modify-volume<span class="w"> </span>--volume-id<span class="w"> </span><span class="si">${</span><span class="nv">VOLUME_ID</span><span class="si">}</span><span class="w"> </span>--size<span class="w"> </span><span class="si">${</span><span class="nv">size</span><span class="k">:-</span><span class="nv">100</span><span class="si">}</span>
-<a id="__codelineno-2-62" name="__codelineno-2-62"></a>sleep<span class="w"> </span><span class="m">10</span>
-<a id="__codelineno-2-63" name="__codelineno-2-63"></a>sudo<span class="w"> </span>growpart<span class="w"> </span><span class="si">${</span><span class="nv">DEVICE_NAME</span><span class="si">}</span><span class="w"> </span><span class="m">1</span>
-<a id="__codelineno-2-64" name="__codelineno-2-64"></a>sudo<span class="w"> </span>xfs_growfs<span class="w"> </span>-d<span class="w"> </span>/
-<a id="__codelineno-2-65" name="__codelineno-2-65"></a>
-<a id="__codelineno-2-66" name="__codelineno-2-66"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-2-67" name="__codelineno-2-67"></a><span class="w">  </span><span class="nv">ROOT_PART</span><span class="o">=</span><span class="k">$(</span>df<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>-w<span class="w"> </span>/<span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $1}&#39;</span><span class="k">)</span>
-<a id="__codelineno-2-68" name="__codelineno-2-68"></a><span class="w">  </span>sudo<span class="w"> </span>resize2fs<span class="w"> </span><span class="si">${</span><span class="nv">ROOT_PART</span><span class="si">}</span>
-<a id="__codelineno-2-69" name="__codelineno-2-69"></a><span class="k">fi</span>
-<a id="__codelineno-2-70" name="__codelineno-2-70"></a>
-<a id="__codelineno-2-71" name="__codelineno-2-71"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
-<a id="__codelineno-2-72" name="__codelineno-2-72"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;SCRIPT-PART-ONE-END&quot;</span>
-<a id="__codelineno-2-73" name="__codelineno-2-73"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
-<a id="__codelineno-2-74" name="__codelineno-2-74"></a><span class="c1">###-SCRIPT-PART-ONE-END-###</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18"></a><span class="nv">IDE_PASSWORD</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;Account&quot;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>argon2<span class="w"> </span><span class="k">$(</span>uuidgen<span class="k">)</span><span class="w"> </span>-e<span class="k">)</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.config/code-server
+<a id="__codelineno-2-20" name="__codelineno-2-20"></a>tee<span class="w"> </span>~/.config/code-server/config.yaml<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21"></a><span class="s">cert: false</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22"></a><span class="s">auth: password</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23"></a><span class="s">hashed-password: &quot;$IDE_PASSWORD&quot;</span>
+<a id="__codelineno-2-24" name="__codelineno-2-24"></a><span class="s">bind-addr: 0.0.0.0:8088</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25"></a><span class="s">EOF</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.local/share/code-server/User
+<a id="__codelineno-2-27" name="__codelineno-2-27"></a>tee<span class="w"> </span>~/.local/share/code-server/User/settings.json<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28"></a><span class="s">{</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29"></a><span class="s">&quot;extensions.autoUpdate&quot;: false,</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30"></a><span class="s">&quot;extensions.autoCheckUpdates&quot;: false,</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31"></a><span class="s">&quot;terminal.integrated.cwd&quot;: &quot;/home/$USER&quot;,</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32"></a><span class="s">&quot;telemetry.telemetryLevel&quot;: &quot;off&quot;,</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33"></a><span class="s">&quot;security.workspace.trust.startupPrompt&quot;: &quot;never&quot;,</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34"></a><span class="s">&quot;security.workspace.trust.enabled&quot;: false,</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35"></a><span class="s">&quot;security.workspace.trust.banner&quot;: &quot;never&quot;,</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36"></a><span class="s">&quot;security.workspace.trust.emptyWindow&quot;: false,</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37"></a><span class="s">&quot;editor.indentSize&quot;: &quot;tabSize&quot;,</span>
+<a id="__codelineno-2-38" name="__codelineno-2-38"></a><span class="s">&quot;editor.tabSize&quot;: 2,</span>
+<a id="__codelineno-2-39" name="__codelineno-2-39"></a><span class="s">&quot;python.testing.pytestEnabled&quot;: true,</span>
+<a id="__codelineno-2-40" name="__codelineno-2-40"></a><span class="s">&quot;auto-run-command.rules&quot;: [</span>
+<a id="__codelineno-2-41" name="__codelineno-2-41"></a><span class="s">    {</span>
+<a id="__codelineno-2-42" name="__codelineno-2-42"></a><span class="s">    &quot;command&quot;: &quot;workbench.action.terminal.new&quot;</span>
+<a id="__codelineno-2-43" name="__codelineno-2-43"></a><span class="s">    }</span>
+<a id="__codelineno-2-44" name="__codelineno-2-44"></a><span class="s">]</span>
+<a id="__codelineno-2-45" name="__codelineno-2-45"></a><span class="s">}</span>
+<a id="__codelineno-2-46" name="__codelineno-2-46"></a><span class="s">EOF</span>
+<a id="__codelineno-2-47" name="__codelineno-2-47"></a>
+<a id="__codelineno-2-48" name="__codelineno-2-48"></a><span class="nv">CODE_SERVER_VER</span><span class="o">=</span><span class="m">4</span>.93.1
+<a id="__codelineno-2-49" name="__codelineno-2-49"></a>wget<span class="w"> </span>-qO<span class="w"> </span>/tmp/code-server.rpm<span class="w"> </span>https://github.com/coder/code-server/releases/download/v<span class="si">${</span><span class="nv">CODE_SERVER_VER</span><span class="si">}</span>/code-server-<span class="si">${</span><span class="nv">CODE_SERVER_VER</span><span class="si">}</span>-amd64.rpm
+<a id="__codelineno-2-50" name="__codelineno-2-50"></a>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>/tmp/code-server.rpm
+<a id="__codelineno-2-51" name="__codelineno-2-51"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>code-server@ec2-user
+<a id="__codelineno-2-52" name="__codelineno-2-52"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>code-server@ec2-user
+<a id="__codelineno-2-53" name="__codelineno-2-53"></a>
+<a id="__codelineno-2-54" name="__codelineno-2-54"></a><span class="c1"># install awscli v2</span>
+<a id="__codelineno-2-55" name="__codelineno-2-55"></a>curl<span class="w"> </span><span class="s2">&quot;https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip&quot;</span><span class="w"> </span>-o<span class="w"> </span>/tmp/awscliv2.zip
+<a id="__codelineno-2-56" name="__codelineno-2-56"></a><span class="nb">echo</span><span class="w"> </span>A<span class="w"> </span><span class="p">|</span>unzip<span class="w"> </span>/tmp/awscliv2.zip<span class="w"> </span>-d<span class="w"> </span>/tmp
+<a id="__codelineno-2-57" name="__codelineno-2-57"></a>sudo<span class="w"> </span>/tmp/aws/install<span class="w"> </span>--update<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span>&gt;/tmp/awscli-install.log
+<a id="__codelineno-2-58" name="__codelineno-2-58"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;complete -C &#39;/usr/local/bin/aws_completer&#39; aws&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bash_profile
+<a id="__codelineno-2-59" name="__codelineno-2-59"></a>
+<a id="__codelineno-2-60" name="__codelineno-2-60"></a><span class="c1"># remove existed aws</span>
+<a id="__codelineno-2-61" name="__codelineno-2-61"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">0</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-2-62" name="__codelineno-2-62"></a><span class="w">  </span>sudo<span class="w"> </span>yum<span class="w"> </span>remove<span class="w"> </span>-y<span class="w"> </span>awscli
+<a id="__codelineno-2-63" name="__codelineno-2-63"></a><span class="w">  </span><span class="nb">source</span><span class="w"> </span>~/.bash_profile
+<a id="__codelineno-2-64" name="__codelineno-2-64"></a><span class="w">  </span>aws<span class="w"> </span>--version
+<a id="__codelineno-2-65" name="__codelineno-2-65"></a><span class="k">fi</span>
+<a id="__codelineno-2-66" name="__codelineno-2-66"></a>
+<a id="__codelineno-2-67" name="__codelineno-2-67"></a><span class="c1"># install awscli v1</span>
+<a id="__codelineno-2-68" name="__codelineno-2-68"></a><span class="c1"># curl &quot;https://s3.amazonaws.com/aws-cli/awscli-bundle.zip&quot; -o &quot;awscli-bundle.zip&quot;</span>
+<a id="__codelineno-2-69" name="__codelineno-2-69"></a><span class="c1"># unzip awscli-bundle.zip</span>
+<a id="__codelineno-2-70" name="__codelineno-2-70"></a><span class="c1"># sudo ./awscli-bundle/install -i /usr/local/aws -b /usr/local/bin/aws</span>
+<a id="__codelineno-2-71" name="__codelineno-2-71"></a>
+<a id="__codelineno-2-72" name="__codelineno-2-72"></a><span class="c1"># install ssm session plugin</span>
+<a id="__codelineno-2-73" name="__codelineno-2-73"></a>curl<span class="w"> </span><span class="s2">&quot;https://s3.amazonaws.com/session-manager-downloads/plugin/latest/linux_64bit/session-manager-plugin.rpm&quot;</span><span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;/tmp/session-manager-plugin.rpm&quot;</span>
+<a id="__codelineno-2-74" name="__codelineno-2-74"></a>sudo<span class="w"> </span>yum<span class="w"> </span>install<span class="w"> </span>-y<span class="w"> </span>/tmp/session-manager-plugin.rpm
+<a id="__codelineno-2-75" name="__codelineno-2-75"></a>
+<a id="__codelineno-2-76" name="__codelineno-2-76"></a><span class="c1"># your default region </span>
+<a id="__codelineno-2-77" name="__codelineno-2-77"></a><span class="nv">TOKEN</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span><span class="s2">&quot;http://169.254.169.254/latest/api/token&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;X-aws-ec2-metadata-token-ttl-seconds: 21600&quot;</span><span class="k">)</span>
+<a id="__codelineno-2-78" name="__codelineno-2-78"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;X-aws-ec2-metadata-token: </span><span class="nv">$TOKEN</span><span class="s2">&quot;</span><span class="w"> </span>-s<span class="w"> </span>http://169.254.169.254/latest/dynamic/instance-identity/document<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.region&#39;</span><span class="k">)</span>
+<a id="__codelineno-2-79" name="__codelineno-2-79"></a>
+<a id="__codelineno-2-80" name="__codelineno-2-80"></a><span class="c1"># change root volume size</span>
+<a id="__codelineno-2-81" name="__codelineno-2-81"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-c<span class="w"> </span>/dev/nvme0<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-2-82" name="__codelineno-2-82"></a><span class="w">  </span>wget<span class="w"> </span>-qO-<span class="w"> </span>https://github.com/amazonlinux/amazon-ec2-utils/raw/main/ebsnvme-id<span class="w"> </span>&gt;/tmp/ebsnvme-id
+<a id="__codelineno-2-83" name="__codelineno-2-83"></a><span class="w">  </span><span class="nv">VOLUME_ID</span><span class="o">=</span><span class="k">$(</span>sudo<span class="w"> </span>python3<span class="w"> </span>/tmp/ebsnvme-id<span class="w"> </span>-v<span class="w"> </span>/dev/nvme0<span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $NF}&#39;</span><span class="k">)</span>
+<a id="__codelineno-2-84" name="__codelineno-2-84"></a><span class="w">  </span><span class="nv">DEVICE_NAME</span><span class="o">=</span>/dev/nvme0n1
+<a id="__codelineno-2-85" name="__codelineno-2-85"></a><span class="k">else</span>
+<a id="__codelineno-2-86" name="__codelineno-2-86"></a><span class="w">  </span><span class="nv">C9_INST_ID</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;X-aws-ec2-metadata-token: </span><span class="nv">$TOKEN</span><span class="s2">&quot;</span><span class="w"> </span>http://169.254.169.254/latest/meta-data/instance-id<span class="k">)</span>
+<a id="__codelineno-2-87" name="__codelineno-2-87"></a><span class="w">  </span><span class="nv">VOLUME_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-volumes<span class="w"> </span>--filters<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>attachment.instance-id,Values<span class="o">=</span><span class="si">${</span><span class="nv">C9_INST_ID</span><span class="si">}</span><span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;Volumes[0].VolumeId&quot;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-2-88" name="__codelineno-2-88"></a><span class="w">  </span><span class="nv">DEVICE_NAME</span><span class="o">=</span>/dev/xvda
+<a id="__codelineno-2-89" name="__codelineno-2-89"></a><span class="k">fi</span>
+<a id="__codelineno-2-90" name="__codelineno-2-90"></a>
+<a id="__codelineno-2-91" name="__codelineno-2-91"></a>aws<span class="w"> </span>ec2<span class="w"> </span>modify-volume<span class="w"> </span>--volume-id<span class="w"> </span><span class="si">${</span><span class="nv">VOLUME_ID</span><span class="si">}</span><span class="w"> </span>--size<span class="w"> </span><span class="si">${</span><span class="nv">size</span><span class="k">:-</span><span class="nv">100</span><span class="si">}</span>
+<a id="__codelineno-2-92" name="__codelineno-2-92"></a>sleep<span class="w"> </span><span class="m">10</span>
+<a id="__codelineno-2-93" name="__codelineno-2-93"></a>sudo<span class="w"> </span>growpart<span class="w"> </span><span class="si">${</span><span class="nv">DEVICE_NAME</span><span class="si">}</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-2-94" name="__codelineno-2-94"></a>sudo<span class="w"> </span>xfs_growfs<span class="w"> </span>-d<span class="w"> </span>/
+<a id="__codelineno-2-95" name="__codelineno-2-95"></a>
+<a id="__codelineno-2-96" name="__codelineno-2-96"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-2-97" name="__codelineno-2-97"></a><span class="w">  </span><span class="nv">ROOT_PART</span><span class="o">=</span><span class="k">$(</span>df<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>-w<span class="w"> </span>/<span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $1}&#39;</span><span class="k">)</span>
+<a id="__codelineno-2-98" name="__codelineno-2-98"></a><span class="w">  </span>sudo<span class="w"> </span>resize2fs<span class="w"> </span><span class="si">${</span><span class="nv">ROOT_PART</span><span class="si">}</span>
+<a id="__codelineno-2-99" name="__codelineno-2-99"></a><span class="k">fi</span>
+<a id="__codelineno-2-100" name="__codelineno-2-100"></a>
+<a id="__codelineno-2-101" name="__codelineno-2-101"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
+<a id="__codelineno-2-102" name="__codelineno-2-102"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;SCRIPT-PART-ONE-END&quot;</span>
+<a id="__codelineno-2-103" name="__codelineno-2-103"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
+<a id="__codelineno-2-104" name="__codelineno-2-104"></a><span class="c1">###-SCRIPT-PART-ONE-END-###</span>
 </code></pre></div></td></tr></table></div>
 </div>
 <div class="tabbed-block">
@@ -6073,7 +6133,37 @@
 <span class="normal"><a href="#__codelineno-3-63">63</a></span>
 <span class="normal"><a href="#__codelineno-3-64">64</a></span>
 <span class="normal"><a href="#__codelineno-3-65">65</a></span>
-<span class="normal"><a href="#__codelineno-3-66">66</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="ch">#!/bin/bash</span>
+<span class="normal"><a href="#__codelineno-3-66">66</a></span>
+<span class="normal"><a href="#__codelineno-3-67">67</a></span>
+<span class="normal"><a href="#__codelineno-3-68">68</a></span>
+<span class="normal"><a href="#__codelineno-3-69">69</a></span>
+<span class="normal"><a href="#__codelineno-3-70">70</a></span>
+<span class="normal"><a href="#__codelineno-3-71">71</a></span>
+<span class="normal"><a href="#__codelineno-3-72">72</a></span>
+<span class="normal"><a href="#__codelineno-3-73">73</a></span>
+<span class="normal"><a href="#__codelineno-3-74">74</a></span>
+<span class="normal"><a href="#__codelineno-3-75">75</a></span>
+<span class="normal"><a href="#__codelineno-3-76">76</a></span>
+<span class="normal"><a href="#__codelineno-3-77">77</a></span>
+<span class="normal"><a href="#__codelineno-3-78">78</a></span>
+<span class="normal"><a href="#__codelineno-3-79">79</a></span>
+<span class="normal"><a href="#__codelineno-3-80">80</a></span>
+<span class="normal"><a href="#__codelineno-3-81">81</a></span>
+<span class="normal"><a href="#__codelineno-3-82">82</a></span>
+<span class="normal"><a href="#__codelineno-3-83">83</a></span>
+<span class="normal"><a href="#__codelineno-3-84">84</a></span>
+<span class="normal"><a href="#__codelineno-3-85">85</a></span>
+<span class="normal"><a href="#__codelineno-3-86">86</a></span>
+<span class="normal"><a href="#__codelineno-3-87">87</a></span>
+<span class="normal"><a href="#__codelineno-3-88">88</a></span>
+<span class="normal"><a href="#__codelineno-3-89">89</a></span>
+<span class="normal"><a href="#__codelineno-3-90">90</a></span>
+<span class="normal"><a href="#__codelineno-3-91">91</a></span>
+<span class="normal"><a href="#__codelineno-3-92">92</a></span>
+<span class="normal"><a href="#__codelineno-3-93">93</a></span>
+<span class="normal"><a href="#__codelineno-3-94">94</a></span>
+<span class="normal"><a href="#__codelineno-3-95">95</a></span>
+<span class="normal"><a href="#__codelineno-3-96">96</a></span></pre></div></td><td class="code"><div><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1"></a><span class="ch">#!/bin/bash</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2"></a><span class="o">(</span><span class="c1">###-SCRIPT-PART-ONE-BEGIN-###</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;SCRIPT-PART-ONE-BEGIN&quot;</span>
@@ -6084,7 +6174,7 @@
 <a id="__codelineno-3-9" name="__codelineno-3-9"></a><span class="c1"># install others</span>
 <a id="__codelineno-3-10" name="__codelineno-3-10"></a><span class="nb">export</span><span class="w"> </span><span class="nv">DEBIAN_FRONTEND</span><span class="o">=</span>noninteractive
 <a id="__codelineno-3-11" name="__codelineno-3-11"></a>sudo<span class="w"> </span>-E<span class="w"> </span>apt<span class="w"> </span>update
-<a id="__codelineno-3-12" name="__codelineno-3-12"></a>sudo<span class="w"> </span>-E<span class="w"> </span>apt-get<span class="w"> </span>-yq<span class="w"> </span>install<span class="w"> </span>jq<span class="w"> </span>gettext<span class="w"> </span>bash-completion<span class="w"> </span>moreutils<span class="w"> </span>wget
+<a id="__codelineno-3-12" name="__codelineno-3-12"></a>sudo<span class="w"> </span>-E<span class="w"> </span>apt-get<span class="w"> </span>-yq<span class="w"> </span>install<span class="w"> </span>jq<span class="w"> </span>gettext<span class="w"> </span>bash-completion<span class="w"> </span>moreutils<span class="w"> </span>wget<span class="w"> </span>argon2
 <a id="__codelineno-3-13" name="__codelineno-3-13"></a>
 <a id="__codelineno-3-14" name="__codelineno-3-14"></a><span class="c1"># install terraform </span>
 <a id="__codelineno-3-15" name="__codelineno-3-15"></a>sudo<span class="w"> </span>rm<span class="w"> </span>-f<span class="w"> </span>/usr/share/keyrings/hashicorp-archive-keyring.gpg
@@ -6095,50 +6185,80 @@
 <a id="__codelineno-3-20" name="__codelineno-3-20"></a>sudo<span class="w"> </span>apt-mark<span class="w"> </span>hold<span class="w"> </span>terraform
 <a id="__codelineno-3-21" name="__codelineno-3-21"></a>
 <a id="__codelineno-3-22" name="__codelineno-3-22"></a><span class="c1"># install code-server</span>
-<a id="__codelineno-3-23" name="__codelineno-3-23"></a><span class="nv">CODE_SERVER_VER</span><span class="o">=</span><span class="m">4</span>.92.2
-<a id="__codelineno-3-24" name="__codelineno-3-24"></a>wget<span class="w"> </span>-qO<span class="w"> </span>/tmp/code-server.deb<span class="w"> </span>https://github.com/coder/code-server/releases/download/v<span class="si">${</span><span class="nv">CODE_SERVER_VER</span><span class="si">}</span>/code-server_<span class="si">${</span><span class="nv">CODE_SERVER_VER</span><span class="si">}</span>_amd64.deb
-<a id="__codelineno-3-25" name="__codelineno-3-25"></a>sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>/tmp/code-server.deb
-<a id="__codelineno-3-26" name="__codelineno-3-26"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>code-server@ubuntu
-<a id="__codelineno-3-27" name="__codelineno-3-27"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>code-server@ubuntu
-<a id="__codelineno-3-28" name="__codelineno-3-28"></a>
-<a id="__codelineno-3-29" name="__codelineno-3-29"></a><span class="c1"># install awscli v2</span>
-<a id="__codelineno-3-30" name="__codelineno-3-30"></a>sudo<span class="w"> </span>-E<span class="w"> </span>apt-get<span class="w"> </span>-yq<span class="w"> </span>install<span class="w"> </span>awscli
-<a id="__codelineno-3-31" name="__codelineno-3-31"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;complete -C &#39;/usr/bin/aws_completer&#39; aws&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bash_profile
-<a id="__codelineno-3-32" name="__codelineno-3-32"></a>
-<a id="__codelineno-3-33" name="__codelineno-3-33"></a><span class="c1"># install ssm session plugin</span>
-<a id="__codelineno-3-34" name="__codelineno-3-34"></a>curl<span class="w"> </span><span class="s2">&quot;https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb&quot;</span><span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;/tmp/session-manager-plugin.deb&quot;</span>
-<a id="__codelineno-3-35" name="__codelineno-3-35"></a>sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>/tmp/session-manager-plugin.deb
-<a id="__codelineno-3-36" name="__codelineno-3-36"></a>
-<a id="__codelineno-3-37" name="__codelineno-3-37"></a><span class="c1"># your default region </span>
-<a id="__codelineno-3-38" name="__codelineno-3-38"></a><span class="nv">TOKEN</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span><span class="s2">&quot;http://169.254.169.254/latest/api/token&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;X-aws-ec2-metadata-token-ttl-seconds: 21600&quot;</span><span class="k">)</span>
-<a id="__codelineno-3-39" name="__codelineno-3-39"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;X-aws-ec2-metadata-token: </span><span class="nv">$TOKEN</span><span class="s2">&quot;</span><span class="w"> </span>-s<span class="w"> </span>http://169.254.169.254/latest/dynamic/instance-identity/document<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.region&#39;</span><span class="k">)</span>
-<a id="__codelineno-3-40" name="__codelineno-3-40"></a>
-<a id="__codelineno-3-41" name="__codelineno-3-41"></a><span class="c1"># change root volume size</span>
-<a id="__codelineno-3-42" name="__codelineno-3-42"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-c<span class="w"> </span>/dev/nvme0<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-3-43" name="__codelineno-3-43"></a><span class="w">  </span>wget<span class="w"> </span>-qO-<span class="w"> </span>https://github.com/amazonlinux/amazon-ec2-utils/raw/main/ebsnvme-id<span class="w"> </span>&gt;/tmp/ebsnvme-id
-<a id="__codelineno-3-44" name="__codelineno-3-44"></a><span class="w">  </span><span class="nv">VOLUME_ID</span><span class="o">=</span><span class="k">$(</span>sudo<span class="w"> </span>python3<span class="w"> </span>/tmp/ebsnvme-id<span class="w"> </span>-v<span class="w"> </span>/dev/nvme0<span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $NF}&#39;</span><span class="k">)</span>
-<a id="__codelineno-3-45" name="__codelineno-3-45"></a><span class="w">  </span><span class="nv">DEVICE_NAME</span><span class="o">=</span>/dev/nvme0n1
-<a id="__codelineno-3-46" name="__codelineno-3-46"></a><span class="k">else</span>
-<a id="__codelineno-3-47" name="__codelineno-3-47"></a><span class="w">  </span><span class="nv">C9_INST_ID</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;X-aws-ec2-metadata-token: </span><span class="nv">$TOKEN</span><span class="s2">&quot;</span><span class="w"> </span>http://169.254.169.254/latest/meta-data/instance-id<span class="k">)</span>
-<a id="__codelineno-3-48" name="__codelineno-3-48"></a><span class="w">  </span><span class="nv">VOLUME_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-volumes<span class="w"> </span>--filters<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>attachment.instance-id,Values<span class="o">=</span><span class="si">${</span><span class="nv">C9_INST_ID</span><span class="si">}</span><span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;Volumes[0].VolumeId&quot;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-3-49" name="__codelineno-3-49"></a><span class="w">  </span><span class="nv">DEVICE_NAME</span><span class="o">=</span>/dev/xvda
-<a id="__codelineno-3-50" name="__codelineno-3-50"></a><span class="k">fi</span>
-<a id="__codelineno-3-51" name="__codelineno-3-51"></a>
-<a id="__codelineno-3-52" name="__codelineno-3-52"></a>aws<span class="w"> </span>ec2<span class="w"> </span>modify-volume<span class="w"> </span>--volume-id<span class="w"> </span><span class="si">${</span><span class="nv">VOLUME_ID</span><span class="si">}</span><span class="w"> </span>--size<span class="w"> </span><span class="si">${</span><span class="nv">size</span><span class="k">:-</span><span class="nv">100</span><span class="si">}</span>
-<a id="__codelineno-3-53" name="__codelineno-3-53"></a>sleep<span class="w"> </span><span class="m">10</span>
-<a id="__codelineno-3-54" name="__codelineno-3-54"></a>sudo<span class="w"> </span>growpart<span class="w"> </span><span class="si">${</span><span class="nv">DEVICE_NAME</span><span class="si">}</span><span class="w"> </span><span class="m">1</span>
-<a id="__codelineno-3-55" name="__codelineno-3-55"></a>sudo<span class="w"> </span>xfs_growfs<span class="w"> </span>-d<span class="w"> </span>/
-<a id="__codelineno-3-56" name="__codelineno-3-56"></a>
-<a id="__codelineno-3-57" name="__codelineno-3-57"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-3-58" name="__codelineno-3-58"></a><span class="w">  </span><span class="nv">ROOT_PART</span><span class="o">=</span><span class="k">$(</span>df<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>-w<span class="w"> </span>/<span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $1}&#39;</span><span class="k">)</span>
-<a id="__codelineno-3-59" name="__codelineno-3-59"></a><span class="w">  </span>sudo<span class="w"> </span>resize2fs<span class="w"> </span><span class="si">${</span><span class="nv">ROOT_PART</span><span class="si">}</span>
-<a id="__codelineno-3-60" name="__codelineno-3-60"></a><span class="k">fi</span>
-<a id="__codelineno-3-61" name="__codelineno-3-61"></a>
-<a id="__codelineno-3-62" name="__codelineno-3-62"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
-<a id="__codelineno-3-63" name="__codelineno-3-63"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;SCRIPT-PART-ONE-END&quot;</span>
-<a id="__codelineno-3-64" name="__codelineno-3-64"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
-<a id="__codelineno-3-65" name="__codelineno-3-65"></a><span class="c1">###-SCRIPT-PART-ONE-END-###</span>
-<a id="__codelineno-3-66" name="__codelineno-3-66"></a><span class="o">)</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23"></a><span class="nv">IDE_PASSWORD</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span>-n<span class="w"> </span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;Account&quot;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>argon2<span class="w"> </span><span class="k">$(</span>uuidgen<span class="k">)</span><span class="w"> </span>-e<span class="k">)</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.config/code-server
+<a id="__codelineno-3-25" name="__codelineno-3-25"></a>tee<span class="w"> </span>~/.config/code-server/config.yaml<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26"></a><span class="s">cert: false</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27"></a><span class="s">auth: password</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28"></a><span class="s">hashed-password: &quot;${IDE_PASSWORD}&quot;</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29"></a><span class="s">bind-addr: 0.0.0.0:8088</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30"></a><span class="s">EOF</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>~/.local/share/code-server/User
+<a id="__codelineno-3-32" name="__codelineno-3-32"></a>tee<span class="w"> </span>~/.local/share/code-server/User/settings.json<span class="w"> </span><span class="s">&lt;&lt;EOF</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33"></a><span class="s">{</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34"></a><span class="s">&quot;extensions.autoUpdate&quot;: false,</span>
+<a id="__codelineno-3-35" name="__codelineno-3-35"></a><span class="s">&quot;extensions.autoCheckUpdates&quot;: false,</span>
+<a id="__codelineno-3-36" name="__codelineno-3-36"></a><span class="s">&quot;terminal.integrated.cwd&quot;: &quot;/home/$USER&quot;,</span>
+<a id="__codelineno-3-37" name="__codelineno-3-37"></a><span class="s">&quot;telemetry.telemetryLevel&quot;: &quot;off&quot;,</span>
+<a id="__codelineno-3-38" name="__codelineno-3-38"></a><span class="s">&quot;security.workspace.trust.startupPrompt&quot;: &quot;never&quot;,</span>
+<a id="__codelineno-3-39" name="__codelineno-3-39"></a><span class="s">&quot;security.workspace.trust.enabled&quot;: false,</span>
+<a id="__codelineno-3-40" name="__codelineno-3-40"></a><span class="s">&quot;security.workspace.trust.banner&quot;: &quot;never&quot;,</span>
+<a id="__codelineno-3-41" name="__codelineno-3-41"></a><span class="s">&quot;security.workspace.trust.emptyWindow&quot;: false,</span>
+<a id="__codelineno-3-42" name="__codelineno-3-42"></a><span class="s">&quot;editor.indentSize&quot;: &quot;tabSize&quot;,</span>
+<a id="__codelineno-3-43" name="__codelineno-3-43"></a><span class="s">&quot;editor.tabSize&quot;: 2,</span>
+<a id="__codelineno-3-44" name="__codelineno-3-44"></a><span class="s">&quot;python.testing.pytestEnabled&quot;: true,</span>
+<a id="__codelineno-3-45" name="__codelineno-3-45"></a><span class="s">&quot;auto-run-command.rules&quot;: [</span>
+<a id="__codelineno-3-46" name="__codelineno-3-46"></a><span class="s">    {</span>
+<a id="__codelineno-3-47" name="__codelineno-3-47"></a><span class="s">    &quot;command&quot;: &quot;workbench.action.terminal.new&quot;</span>
+<a id="__codelineno-3-48" name="__codelineno-3-48"></a><span class="s">    }</span>
+<a id="__codelineno-3-49" name="__codelineno-3-49"></a><span class="s">]</span>
+<a id="__codelineno-3-50" name="__codelineno-3-50"></a><span class="s">}</span>
+<a id="__codelineno-3-51" name="__codelineno-3-51"></a><span class="s">EOF</span>
+<a id="__codelineno-3-52" name="__codelineno-3-52"></a>
+<a id="__codelineno-3-53" name="__codelineno-3-53"></a><span class="nv">CODE_SERVER_VER</span><span class="o">=</span><span class="m">4</span>.93.1
+<a id="__codelineno-3-54" name="__codelineno-3-54"></a>wget<span class="w"> </span>-qO<span class="w"> </span>/tmp/code-server.deb<span class="w"> </span>https://github.com/coder/code-server/releases/download/v<span class="si">${</span><span class="nv">CODE_SERVER_VER</span><span class="si">}</span>/code-server_<span class="si">${</span><span class="nv">CODE_SERVER_VER</span><span class="si">}</span>_amd64.deb
+<a id="__codelineno-3-55" name="__codelineno-3-55"></a>sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>/tmp/code-server.deb
+<a id="__codelineno-3-56" name="__codelineno-3-56"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span><span class="nb">enable</span><span class="w"> </span>--now<span class="w"> </span>code-server@ubuntu
+<a id="__codelineno-3-57" name="__codelineno-3-57"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>code-server@ubuntu
+<a id="__codelineno-3-58" name="__codelineno-3-58"></a>
+<a id="__codelineno-3-59" name="__codelineno-3-59"></a><span class="c1"># install awscli v2</span>
+<a id="__codelineno-3-60" name="__codelineno-3-60"></a>sudo<span class="w"> </span>-E<span class="w"> </span>apt-get<span class="w"> </span>-yq<span class="w"> </span>install<span class="w"> </span>awscli
+<a id="__codelineno-3-61" name="__codelineno-3-61"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;complete -C &#39;/usr/bin/aws_completer&#39; aws&quot;</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>~/.bash_profile
+<a id="__codelineno-3-62" name="__codelineno-3-62"></a>
+<a id="__codelineno-3-63" name="__codelineno-3-63"></a><span class="c1"># install ssm session plugin</span>
+<a id="__codelineno-3-64" name="__codelineno-3-64"></a>curl<span class="w"> </span><span class="s2">&quot;https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb&quot;</span><span class="w"> </span>-o<span class="w"> </span><span class="s2">&quot;/tmp/session-manager-plugin.deb&quot;</span>
+<a id="__codelineno-3-65" name="__codelineno-3-65"></a>sudo<span class="w"> </span>dpkg<span class="w"> </span>-i<span class="w"> </span>/tmp/session-manager-plugin.deb
+<a id="__codelineno-3-66" name="__codelineno-3-66"></a>
+<a id="__codelineno-3-67" name="__codelineno-3-67"></a><span class="c1"># your default region </span>
+<a id="__codelineno-3-68" name="__codelineno-3-68"></a><span class="nv">TOKEN</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-X<span class="w"> </span>PUT<span class="w"> </span><span class="s2">&quot;http://169.254.169.254/latest/api/token&quot;</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;X-aws-ec2-metadata-token-ttl-seconds: 21600&quot;</span><span class="k">)</span>
+<a id="__codelineno-3-69" name="__codelineno-3-69"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;X-aws-ec2-metadata-token: </span><span class="nv">$TOKEN</span><span class="s2">&quot;</span><span class="w"> </span>-s<span class="w"> </span>http://169.254.169.254/latest/dynamic/instance-identity/document<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.region&#39;</span><span class="k">)</span>
+<a id="__codelineno-3-70" name="__codelineno-3-70"></a>
+<a id="__codelineno-3-71" name="__codelineno-3-71"></a><span class="c1"># change root volume size</span>
+<a id="__codelineno-3-72" name="__codelineno-3-72"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-c<span class="w"> </span>/dev/nvme0<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-3-73" name="__codelineno-3-73"></a><span class="w">  </span>wget<span class="w"> </span>-qO-<span class="w"> </span>https://github.com/amazonlinux/amazon-ec2-utils/raw/main/ebsnvme-id<span class="w"> </span>&gt;/tmp/ebsnvme-id
+<a id="__codelineno-3-74" name="__codelineno-3-74"></a><span class="w">  </span><span class="nv">VOLUME_ID</span><span class="o">=</span><span class="k">$(</span>sudo<span class="w"> </span>python3<span class="w"> </span>/tmp/ebsnvme-id<span class="w"> </span>-v<span class="w"> </span>/dev/nvme0<span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $NF}&#39;</span><span class="k">)</span>
+<a id="__codelineno-3-75" name="__codelineno-3-75"></a><span class="w">  </span><span class="nv">DEVICE_NAME</span><span class="o">=</span>/dev/nvme0n1
+<a id="__codelineno-3-76" name="__codelineno-3-76"></a><span class="k">else</span>
+<a id="__codelineno-3-77" name="__codelineno-3-77"></a><span class="w">  </span><span class="nv">C9_INST_ID</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-H<span class="w"> </span><span class="s2">&quot;X-aws-ec2-metadata-token: </span><span class="nv">$TOKEN</span><span class="s2">&quot;</span><span class="w"> </span>http://169.254.169.254/latest/meta-data/instance-id<span class="k">)</span>
+<a id="__codelineno-3-78" name="__codelineno-3-78"></a><span class="w">  </span><span class="nv">VOLUME_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-volumes<span class="w"> </span>--filters<span class="w"> </span><span class="nv">Name</span><span class="o">=</span>attachment.instance-id,Values<span class="o">=</span><span class="si">${</span><span class="nv">C9_INST_ID</span><span class="si">}</span><span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;Volumes[0].VolumeId&quot;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-3-79" name="__codelineno-3-79"></a><span class="w">  </span><span class="nv">DEVICE_NAME</span><span class="o">=</span>/dev/xvda
+<a id="__codelineno-3-80" name="__codelineno-3-80"></a><span class="k">fi</span>
+<a id="__codelineno-3-81" name="__codelineno-3-81"></a>
+<a id="__codelineno-3-82" name="__codelineno-3-82"></a>aws<span class="w"> </span>ec2<span class="w"> </span>modify-volume<span class="w"> </span>--volume-id<span class="w"> </span><span class="si">${</span><span class="nv">VOLUME_ID</span><span class="si">}</span><span class="w"> </span>--size<span class="w"> </span><span class="si">${</span><span class="nv">size</span><span class="k">:-</span><span class="nv">100</span><span class="si">}</span>
+<a id="__codelineno-3-83" name="__codelineno-3-83"></a>sleep<span class="w"> </span><span class="m">10</span>
+<a id="__codelineno-3-84" name="__codelineno-3-84"></a>sudo<span class="w"> </span>growpart<span class="w"> </span><span class="si">${</span><span class="nv">DEVICE_NAME</span><span class="si">}</span><span class="w"> </span><span class="m">1</span>
+<a id="__codelineno-3-85" name="__codelineno-3-85"></a>sudo<span class="w"> </span>xfs_growfs<span class="w"> </span>-d<span class="w"> </span>/
+<a id="__codelineno-3-86" name="__codelineno-3-86"></a>
+<a id="__codelineno-3-87" name="__codelineno-3-87"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$?</span><span class="w"> </span>-eq<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-3-88" name="__codelineno-3-88"></a><span class="w">  </span><span class="nv">ROOT_PART</span><span class="o">=</span><span class="k">$(</span>df<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>-w<span class="w"> </span>/<span class="w"> </span><span class="p">|</span>awk<span class="w"> </span><span class="s1">&#39;{print $1}&#39;</span><span class="k">)</span>
+<a id="__codelineno-3-89" name="__codelineno-3-89"></a><span class="w">  </span>sudo<span class="w"> </span>resize2fs<span class="w"> </span><span class="si">${</span><span class="nv">ROOT_PART</span><span class="si">}</span>
+<a id="__codelineno-3-90" name="__codelineno-3-90"></a><span class="k">fi</span>
+<a id="__codelineno-3-91" name="__codelineno-3-91"></a>
+<a id="__codelineno-3-92" name="__codelineno-3-92"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
+<a id="__codelineno-3-93" name="__codelineno-3-93"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;SCRIPT-PART-ONE-END&quot;</span>
+<a id="__codelineno-3-94" name="__codelineno-3-94"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;###&quot;</span>
+<a id="__codelineno-3-95" name="__codelineno-3-95"></a><span class="c1">###-SCRIPT-PART-ONE-END-###</span>
+<a id="__codelineno-3-96" name="__codelineno-3-96"></a><span class="o">)</span>
 </code></pre></div></td></tr></table></div>
 </div>
 </div>
@@ -6629,7 +6749,7 @@
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "toc.follow", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.56dfad97.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.d6f25eb3.min.js"></script>
       
         <script src="../../../js/timeago.min.js"></script>
       
