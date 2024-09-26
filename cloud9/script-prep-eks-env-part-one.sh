@@ -7,7 +7,7 @@ echo "###"
 # size=200
 
 # install others
-sudo yum -y install jq gettext bash-completion moreutils wget argon2
+sudo yum -y install jq gettext bash-completion wget argon2 # moreutils
 
 # install terraform 
 sudo yum install -y yum-utils shadow-utils
