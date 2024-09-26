@@ -125,8 +125,6 @@ Resources:
           CidrIp: 0.0.0.0/0
       VpcId: !Ref VpcId
   MyEC2Instance:
-    DependsOn: 
-      - MySSMParameterAdminKey
     Type: AWS::EC2::Instance
     Properties:
       InstanceType: 
@@ -230,8 +228,8 @@ Resources:
             - ""
             - "echo 0"
         - action: aws:runShellScript
-        name: NotifyCloudFormation
-        inputs:
+          name: NotifyCloudFormation
+          inputs:
             runCommand:
             - export UNIQUE_ID=$(uuidgen | sed 's/[-]//g';)
             - echo $UNIQUE_ID

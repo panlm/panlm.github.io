@@ -9,7 +9,7 @@ echo "###"
 # install others
 export DEBIAN_FRONTEND=noninteractive
 sudo -E apt update
-sudo -E apt-get -yq install jq gettext bash-completion moreutils wget argon2
+sudo -E apt-get -yq install jq gettext bash-completion wget argon2 moreutils
 
 # install terraform 
 sudo rm -f /usr/share/keyrings/hashicorp-archive-keyring.gpg
