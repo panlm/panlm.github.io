@@ -46,7 +46,7 @@ Parameters:
   EC2InstanceVolumeSize: 
     Type: Number
     Description: The Size in GB of the Instance Volume. 
-    Default: 50
+    Default: 100
 
 # Mappings:
 #   EC2InstanceAMIMapping:
@@ -63,6 +63,11 @@ Parameters:
 #       EC2SSMPath: resolve:ssm:/aws/service/ami-amazon-linux-latest/
 
 Mappings:
+  DefaultUser:
+    ubuntu22:
+      username: ubuntu
+    amazonlinux2023:
+      username: ec2-user
   EC2InstanceAMIMapping:
     t3.medium:
       ubuntu22: /aws/service/canonical/ubuntu/server/22.04/stable/current/amd64/hvm/ebs-gp2/ami-id
@@ -288,4 +293,10 @@ Outputs:
   AccessURL:
     Description: URL for vscode
     # Value: !Join ["", ["https://", !GetAtt MyEC2Instance.PublicIp, ":8443/?folder=/home/ec2-user" ]]
-    Value: !Sub https://${Ec2CloudFrontDistribution.DomainName}/?folder=/home/ec2-user
+    Value: !Join ["", ["https://", !GetAtt MyEC2Instance.PublicIp, ":8443/?folder=/home/", !FindInMap [DefaultUser, !Ref EC2InstanceOS, username]]]
+    # Value: !Sub https://${Ec2CloudFrontDistribution.DomainName}/?folder=/home/ec2-user
+
+
+
+
+

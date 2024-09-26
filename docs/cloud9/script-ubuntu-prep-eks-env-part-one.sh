@@ -6,6 +6,9 @@ echo "###"
 # set size as your expectation, otherwize 100g as default volume size
 # size=200
 
+# default execute this script in EC2, not Cloud9
+echo ${EXECUTE_IN_CLOUD9:=false}
+
 # install others
 export DEBIAN_FRONTEND=noninteractive
 sudo -E apt update
@@ -68,7 +71,8 @@ sudo dpkg -i /tmp/session-manager-plugin.deb
 TOKEN=$(curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600")
 export AWS_DEFAULT_REGION=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" -s http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
 
-# change root volume size
+# change root volume size in cloud9
+if [[ ${EXECUTE_IN_CLOUD9} == "true" ]]; then
 if [[ -c /dev/nvme0 ]]; then
   wget -qO- https://github.com/amazonlinux/amazon-ec2-utils/raw/main/ebsnvme-id >/tmp/ebsnvme-id
   VOLUME_ID=$(sudo python3 /tmp/ebsnvme-id -v /dev/nvme0 |awk '{print $NF}')
@@ -87,6 +91,7 @@ sudo xfs_growfs -d /
 if [[ $? -eq 1 ]]; then
   ROOT_PART=$(df |grep -w / |awk '{print $1}')
   sudo resize2fs ${ROOT_PART}
+fi
 fi
 
 echo "###"
