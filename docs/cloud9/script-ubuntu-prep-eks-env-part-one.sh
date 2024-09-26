@@ -12,7 +12,7 @@ echo ${EXECUTE_IN_CLOUD9:=false}
 # install others
 export DEBIAN_FRONTEND=noninteractive
 sudo -E apt update
-sudo -E apt-get -yq install jq gettext bash-completion wget argon2 moreutils
+sudo -E apt-get -yq install jq gettext bash-completion wget argon2 moreutils awscli
 
 # install terraform 
 sudo rm -f /usr/share/keyrings/hashicorp-archive-keyring.gpg
@@ -60,7 +60,7 @@ sudo systemctl enable --now code-server@ubuntu
 sudo systemctl restart code-server@ubuntu
 
 # install awscli v2
-sudo -E apt-get -yq install awscli
+# sudo -E apt-get -yq install awscli
 echo "complete -C '/usr/bin/aws_completer' aws" >> ~/.bash_profile
 
 # install ssm session plugin

@@ -34,6 +34,7 @@ if [[ ! -z ${VPC_ID} ]]; then
     aws cloudformation create-stack --stack-name ${STACK_NAME} \
         --parameters ParameterKey=VpcId,ParameterValue="${VPC_ID}" \
                      ParameterKey=PublicSubnetId,ParameterValue="${FIRST_SUBNET}" \
+                     ParameterKey=EC2InstanceOS,ParameterValue="ubuntu22" \
         --capabilities CAPABILITY_IAM --region ${AWS_DEFAULT_REGION} \
         --template-body file://./example_instancestack_vscode.yaml
 else
