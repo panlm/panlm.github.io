@@ -7,7 +7,7 @@ echo "###"
 # size=200
 
 # install others
-sudo yum -y install jq gettext bash-completion moreutils wget
+sudo yum -y install jq gettext bash-completion moreutils wget argon2
 
 # install terraform 
 sudo yum install -y yum-utils shadow-utils
@@ -15,7 +15,37 @@ sudo yum-config-manager --add-repo https://rpm.releases.hashicorp.com/AmazonLinu
 sudo yum -y install terraform
 
 # install code-server
-CODE_SERVER_VER=4.92.2
+IDE_PASSWORD=$(echo -n $(aws sts get-caller-identity --query "Account" --output text) | argon2 $(uuidgen) -e)
+mkdir -p ~/.config/code-server
+tee ~/.config/code-server/config.yaml <<-EOF
+cert: false
+auth: password
+hashed-password: "$IDE_PASSWORD"
+bind-addr: 0.0.0.0:8088
+EOF
+mkdir -p ~/.local/share/code-server/User
+tee ~/.local/share/code-server/User/settings.json <<EOF
+{
+"extensions.autoUpdate": false,
+"extensions.autoCheckUpdates": false,
+"terminal.integrated.cwd": "/home/$USER",
+"telemetry.telemetryLevel": "off",
+"security.workspace.trust.startupPrompt": "never",
+"security.workspace.trust.enabled": false,
+"security.workspace.trust.banner": "never",
+"security.workspace.trust.emptyWindow": false,
+"editor.indentSize": "tabSize",
+"editor.tabSize": 2,
+"python.testing.pytestEnabled": true,
+"auto-run-command.rules": [
+    {
+    "command": "workbench.action.terminal.new"
+    }
+]
+}
+EOF
+
+CODE_SERVER_VER=4.93.1
 wget -qO /tmp/code-server.rpm https://github.com/coder/code-server/releases/download/v${CODE_SERVER_VER}/code-server-${CODE_SERVER_VER}-amd64.rpm
 sudo yum install -y /tmp/code-server.rpm
 sudo systemctl enable --now code-server@ec2-user
