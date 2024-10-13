@@ -80,7 +80,6 @@ curl -fsSL https://karpenter.sh/"${KARPENTER_VERSION}"/getting-started/getting-s
 ```
 
 ## instance family
-
 ```yaml
 spec:
   requirements:
@@ -93,25 +92,47 @@ spec:
 ![[attachments/karpenter/IMG-karpenter-1.png]]
 
 ## install eks-node-viewer
-
 ```sh
 go install github.com/awslabs/eks-node-viewer/cmd/eks-node-viewer@latest
 sudo mv -v ~/go/bin/eks-node-viewer /usr/local/bin
 
 ```
 
-## Lab
-- [workshop](https://www.eksworkshop.com/beginner/085_scaling_karpenter/)
+## workshop
+- https://catalog.workshops.aws/karpenter/
+- https://www.eksworkshop.com/beginner/085_scaling_karpenter/
 
 ## run gpu pod
 - https://kubernetes.io/docs/tasks/manage-gpus/scheduling-gpus/
 
 ## refer
-- https://karpenter.sh/v0.32/
 - [[Creating Kubernetes Auto Scaling Groups for Multiple Availability Zones]]
-
+- https://stormforge.io/kubernetes-autoscaling/eks-karpenter/
+- https://medium.com/@gajaoncloud/karpenter-mastery-nodepools-nodeclasses-for-workload-nirvana-bc89850fa934
 
 ![[attachments/karpenter/IMG-karpenter-2.png]]
 
 - [[../../../../ec2-spot-instance|ec2-spot-instance]]
 
+## sample
+
+```
+---
+apiVersion: karpenter.k8s.aws/v1
+kind: EC2NodeClass
+metadata:
+  name: default
+spec:
+  amiSelectorTerms:
+    - alias: al2023@latest
+  role: KarpenterNodeRole-ekscluster1
+  securityGroupSelectorTerms:
+  - tags:
+      aws:eks:cluster-name: ekscluster1
+  subnetSelectorTerms:
+  - tags:
+      Name: eksctl-ekscluster1-cluster/SubnetPrivate*
+  tags:
+    intent: apps
+
+```

@@ -41,6 +41,7 @@ pip install --upgrade pip
 ```sh
 python -m http.server -d output/html 80
 python3 -m http.server 80 &
+disown
 ```
 
 ## refer

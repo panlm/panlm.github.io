@@ -156,5 +156,3 @@ An error occurred while calling None.org.apache.spark.api.java.JavaSparkContext.
 
 - using io.acryl:acryl-spark-lineage:0.2.16 to instead of datahub-spark-lineage
 
-
-

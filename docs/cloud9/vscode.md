@@ -1,8 +1,9 @@
 ---
-title: vscode
-description: code-server on EC2
+title: CodeServer
+description: Using code-server on EC2 instead of Cloud9 due to it has been deprecated
 created: 2024-08-19 09:36:24.009
 last_modified: 2024-09-19
+status: myblog
 tags:
   - draft
 ---

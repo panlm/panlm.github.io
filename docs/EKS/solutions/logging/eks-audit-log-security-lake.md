@@ -1,6 +1,6 @@
 ---
 title: Security Lake Support Collecting Audit Logging from EKS
-description: 
+description: 使用 Security Lake 收集 EKS Audit 日志
 created: 2024-04-26 11:33:36.335
 last_modified: 2024-05-11
 status: myblog
