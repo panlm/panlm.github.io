@@ -1,6 +1,6 @@
 ---
-title: elb-cmd
-description: 
+title: elb
+description: 常用命令
 created: 2022-09-20 16:10:45.855
 last_modified: 2023-12-07
 icon: simple/awselasticloadbalancing
@@ -50,29 +50,51 @@ aws elbv2 create-listener --load-balancer-arn ${nlb1_arn} \
 ```
 
 ## func-alb-and-tg-
-```sh title="func-alb-and-tg"
+```sh title="func-alb-and-tg" linenums="1"
+# depends on: VPC_ID / CERTIFICATE_ARN
+# output variable: ALB_ARN
+# quick link: https://panlm.github.io/CLI/functions/create-alb-and-tg.sh
+
 function create-alb-and-tg () {
     OPTIND=1
-    OPTSTRING="h?v:c:i"
+    OPTSTRING="h?v:c:it:"
     local VPC_ID=""
     local CERTIFICATE_ARN=""
-    local INTERNAL_LB=false
+    local LB_SCHEME="internet-facing"
+    local TYPE=""
     while getopts ${OPTSTRING} opt; do
         case "${opt}" in
             v) VPC_ID=${OPTARG} ;;
             c) CERTIFICATE_ARN=${OPTARG} ;;
-            i) INTERNAL_LB=true
+            i) LB_SCHEME="internal" ;;
+            t) TYPE=${OPTARG} ;;
             h|\?) 
-                echo "format: $0 -v VPC_ID [ -c CERTIFICATE_ARN ] [ -i ]"
+                echo "format: $0 -v VPC_ID -t [alb|nlb] [ -c CERTIFICATE_ARN ] [ -i ] "
                 echo -e "\tsample: $0 -c vpc-xxxx "
                 echo 
                 return 0
             ;;
         esac
     done
-    : ${VPC_ID:?Missing -v}
-    
-    local UNIQ_STR=$(TZ=EAT-8 date +%Y%m%d-%H%M)
+    : ${AWS_DEFAULT_REGION:?Missing AWS_DEFAULT_REGION}
+
+    if [[ -z ${VPC_ID} ]]; then
+        VPC_ID=$(aws ec2 describe-vpcs --filter Name=is-default,Values=true \
+        --query 'Vpcs[0].VpcId' --output text)
+    fi
+
+    if [[ ${TYPE} == "alb" ]]; then
+        local LB_PROTO=HTTP
+        local LB_TYPE=application
+    elif [[ ${TYPE} == "nlb" ]]; then
+        local LB_PROTO=TCP
+        local LB_TYPE=network
+    else
+        echo "only alb or nlb allowed in -t parameter"
+        return 1
+    fi
+
+    local UNIQ_STR=$(TZ=EAT-8 date +%m%d-%H%M%S)
     local PORT80=80
     local PORT443=443
 
@@ -98,29 +120,35 @@ function create-alb-and-tg () {
     done
 
     # create external alb
-    aws elbv2 create-load-balancer --name alb-${UNIQ_STR} \
+    aws elbv2 create-load-balancer --name ${TYPE}-${UNIQ_STR} \
+        --type ${LB_TYPE} \
         --subnets ${SUBNETS_IDS} \
-        --scheme $( [[ ${INTERNAL_LB} == "true" ]] && echo "internal" || echo "internet-facing" )
-        --security-groups ${DEFAULT_SG_ID} |tee /tmp/$$-alb
-    ALB_ARN=$(cat /tmp/$$-alb |jq -r '.LoadBalancers[0].LoadBalancerArn')
-    ALB_DNSNAME=$(cat /tmp/$$-alb |jq -r '.LoadBalancers[0].DNSName')
+        --scheme ${LB_SCHEME} \
+        --security-groups ${DEFAULT_SG_ID} |tee /tmp/$$-lb
+    LB_ARN=$(cat /tmp/$$-lb |jq -r '.LoadBalancers[0].LoadBalancerArn')
+    LB_DNSNAME=$(cat /tmp/$$-lb |jq -r '.LoadBalancers[0].DNSName')
 
+    if [[ ${TYPE} == "alb" ]]; then
+        MATCHER_OPTION='--matcher HttpCode="200-202,400-404"'
+    else
+        MATCHER_OPTION=""
+    fi
     aws elbv2 create-target-group \
-        --name alb-tg-${PORT80}-${UNIQ_STR} \
-        --protocol HTTP \
+        --name ${TYPE}-tg-${PORT80}-${UNIQ_STR} \
+        --protocol ${LB_PROTO} \
         --port ${PORT80} \
         --target-type ip \
-        --vpc-id ${VPC_ID} \
-        --matcher HttpCode="200-202\,400-404" |tee /tmp/$$-tg80
+        --vpc-id ${VPC_ID} ${MATCHER_OPTION} |tee /tmp/$$-tg80
     TG80_ARN=$(cat /tmp/$$-tg80 |jq -r '.TargetGroups[0].TargetGroupArn')
 
-    aws elbv2 create-listener --load-balancer-arn ${ALB_ARN} \
-        --protocol HTTP --port ${PORT80}  \
-        --default-actions Type=fixed-response,FixedResponseConfig="{MessageBody=,StatusCode=404,ContentType=text/plain}" |tee /tmp/$$-lsnr80
-    local LSNR80_ARN=$(cat /tmp/$$-lsnr80 |jq -r '.Listeners[0].ListenerArn')
-
-    # rules with path pattern in listener 
-    envsubst >/tmp/path-pattern.json <<-EOF
+    if [[ ${TYPE} == "alb" ]]; then
+        aws elbv2 create-listener --load-balancer-arn ${LB_ARN} \
+            --protocol ${LB_PROTO} --port ${PORT80}  \
+            --default-actions Type=fixed-response,FixedResponseConfig="{MessageBody=,StatusCode=404,ContentType=text/plain}" |tee /tmp/$$-lsnr80
+        local LSNR80_ARN=$(cat /tmp/$$-lsnr80 |jq -r '.Listeners[0].ListenerArn')
+    
+        # rules with path pattern in listener 
+        envsubst >/tmp/path-pattern.json <<-EOF
 [{
     "Field": "path-pattern",
     "PathPatternConfig": {
@@ -129,14 +157,19 @@ function create-alb-and-tg () {
 }]
 EOF
 
-    aws elbv2 create-rule --listener-arn ${LSNR80_ARN} \
-    --conditions file:///tmp/path-pattern.json \
-    --priority 5 \
-    --actions Type=forward,TargetGroupArn=${TG80_ARN}
-
+        aws elbv2 create-rule --listener-arn ${LSNR80_ARN} \
+            --conditions file:///tmp/path-pattern.json \
+            --priority 5 \
+            --actions Type=forward,TargetGroupArn=${TG80_ARN}
+    else 
+        aws elbv2 create-listener --load-balancer-arn ${LB_ARN} \
+            --protocol ${LB_PROTO} --port ${PORT80}  \
+            --default-actions Type=forward,TargetGroupArn=${TG80_ARN}
+    fi
+    
     if [[ ! -z ${CERTIFICATE_ARN} ]]; then
         aws elbv2 create-target-group \
-            --name alb-tg-${PORT443}-${UNIQ_STR} \
+            --name ${TYPE}-tg-${PORT443}-${UNIQ_STR} \
             --protocol HTTPS \
             --port ${PORT443} \
             --target-type ip \
@@ -155,7 +188,7 @@ EOF
             --priority 5 \
             --actions Type=forward,TargetGroupArn=${TG443_ARN}
     fi
-    echo "ALB_ARN="${ALB_ARN}
+    echo "LB_ARN="${LB_ARN}
 }
 ```
 

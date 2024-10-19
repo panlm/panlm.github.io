@@ -1,6 +1,6 @@
 ---
 title: lightsail
-description: lightsail-cmd
+description: 常用命令
 created: 2023-08-24 18:29:22.661
 last_modified: 2024-02-05
 icon: simple/amazon
