@@ -6,6 +6,7 @@ last_modified: 2024-08-05
 status: myblog
 tags:
   - aws/analytics
+  - datahub
 ---
 
 # datahub

@@ -50,12 +50,12 @@ aws elbv2 create-listener --load-balancer-arn ${nlb1_arn} \
 ```
 
 ## func-alb-and-tg-
-```sh title="func-alb-and-tg" linenums="1"
+```sh title="func-elb-and-tg" linenums="1"
 # depends on: VPC_ID / CERTIFICATE_ARN
 # output variable: ALB_ARN
 # quick link: https://panlm.github.io/CLI/functions/create-alb-and-tg.sh
 
-function create-alb-and-tg () {
+function create-elb-and-tg () {
     OPTIND=1
     OPTSTRING="h?v:c:it:"
     local VPC_ID=""
@@ -168,16 +168,16 @@ EOF
     fi
     
     if [[ ! -z ${CERTIFICATE_ARN} ]]; then
-        aws elbv2 create-target-group \
-            --name ${TYPE}-tg-${PORT443}-${UNIQ_STR} \
-            --protocol HTTPS \
-            --port ${PORT443} \
-            --target-type ip \
-            --vpc-id ${VPC_ID} \
-            --matcher HttpCode="200-202\,400-404" |tee /tmp/$$-tg443
-        TG443_ARN=$(cat /tmp/$$-tg443 |jq -r '.TargetGroups[0].TargetGroupArn')
+        # aws elbv2 create-target-group \
+        #     --name ${TYPE}-tg-${PORT443}-${UNIQ_STR} \
+        #     --protocol HTTPS \
+        #     --port ${PORT443} \
+        #     --target-type ip \
+        #     --vpc-id ${VPC_ID} \
+        #     --matcher HttpCode="200-202\,400-404" |tee /tmp/$$-tg443
+        # TG443_ARN=$(cat /tmp/$$-tg443 |jq -r '.TargetGroups[0].TargetGroupArn')
     
-        aws elbv2 create-listener --load-balancer-arn ${ALB_ARN} \
+        aws elbv2 create-listener --load-balancer-arn ${LB_ARN} \
             --protocol HTTPS --port ${PORT443}  \
             --certificates CertificateArn=${CERTIFICATE_ARN} \
             --default-actions Type=fixed-response,FixedResponseConfig="{MessageBody=,StatusCode=404,ContentType=text/plain}" |tee /tmp/$$-lsnr443
@@ -186,7 +186,7 @@ EOF
         aws elbv2 create-rule --listener-arn ${LSNR443_ARN} \
             --conditions file:///tmp/path-pattern.json \
             --priority 5 \
-            --actions Type=forward,TargetGroupArn=${TG443_ARN}
+            --actions Type=forward,TargetGroupArn=${TG80_ARN}
     fi
     echo "LB_ARN="${LB_ARN}
 }

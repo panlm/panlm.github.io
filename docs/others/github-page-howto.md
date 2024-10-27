@@ -63,6 +63,9 @@ mkdocs serve
 > [!NOTE]  
 > Critical content demanding immediate user attention due to potential risks.
 
+> [!example] 
+
+
 
 ## remove custom domain
 - remove `static/CNAME` file
