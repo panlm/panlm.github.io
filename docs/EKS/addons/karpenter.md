@@ -98,6 +98,29 @@ sudo mv -v ~/go/bin/eks-node-viewer /usr/local/bin
 
 ```
 
+
+## scenario
+### coredns
+```sh
+kubectl get deploy -n kube-system coredns -o yaml
+
+apiVersion: apps/v1
+kind: Deployment
+...
+  template:
+    metadata:
+      annotations:
+        cluster-autoscaler.kubernetes.io/safe-to-evict: "false"
+        karpenter.sh/do-not-evict: "true"
+      creationTimestamp: null
+      labels:
+        eks.amazonaws.com/component: coredns
+        foo: bar
+        k8s-app: kube-dns
+        ...
+
+```
+
 ## workshop
 - https://catalog.workshops.aws/karpenter/
 - https://www.eksworkshop.com/beginner/085_scaling_karpenter/

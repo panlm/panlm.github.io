@@ -416,6 +416,14 @@ ls |ts
 ## vim
 - [[vim-cmd|vim-cmd]]
 
+## wscat-
+
+```sh
+sudo apt install -y npm
+npm install wscat
+
+```
+
 ## xfs
 ### xfs-mount-
 ```sh

@@ -9,8 +9,10 @@ function create-auto-scaling-group () {
     local NUM=""
     while getopts ${OPTSTRING} opt; do
         case "${opt}" in
-            l) LAUNCH_TEMPLATE_ID=${OPTARG} ;;
-            n) NUM=${OPTARG}
+            l) LAUNCH_TEMPLATE_ID=${OPTARG} 
+            ;;
+            n) NUM=${OPTARG} 
+            ;;
             h|\?) 
                 echo "format: create-auto-scaling-group -l LAUNCH_TEMPLATE_ID [-n NUM]"
                 echo -e "\tsample: create-auto-scaling-group "

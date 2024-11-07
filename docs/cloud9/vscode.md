@@ -18,6 +18,9 @@ https://github.com/coder/code-server
 wget -O example_instancestack_vscode.yaml https://panlm.github.io/cloud9/example_instancestack_vscode.yaml
 aws configure list
 export AWS_DEFAULT_REGION AWS_REGION
+# TOKEN=`curl -X PUT "http://169.254.169.254/latest/api/token" -H "X-aws-ec2-metadata-token-ttl-seconds: 21600"`
+# export AWS_DEFAULT_REGION=$(curl -H "X-aws-ec2-metadata-token: $TOKEN" http://169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
+# export AWS_REGION=${AWS_DEFAULT_REGION}
 DEFAULT_VPC_ID=$(aws ec2 describe-vpcs \
     --filter Name=is-default,Values=true \
     --query 'Vpcs[0].VpcId' --output text \

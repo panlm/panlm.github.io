@@ -21,7 +21,7 @@ sudo chmod +x /usr/local/bin/docker-compose
 ## sample workflow
 chatbot 输入问题，直接 request 到 google CSE，返回一堆 json，用 llm 提示词进行处理，返回title 和link，然后用大语言模型返回
 
-![[attachments/dify/IMG-dify.png]]
+![[attachments/dify-sample/IMG-dify-sample.png]]
 
 ## workshop
 https://catalog.us-east-1.prod.workshops.aws/workshops/2c19fcb1-1f1c-4f52-b759-0ca4d2ae2522/zh-CN

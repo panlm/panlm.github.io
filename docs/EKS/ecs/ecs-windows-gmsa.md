@@ -9,11 +9,11 @@ tags:
 ---
 # ecs-windows-gmsa
 
-| ecs node | ec2          | fargate             |     |
-| -------- | ------------ | ------------------- | --- |
-| windows  | support gMSA | do not support gMSA |     |
-| linux    | support gMSA | support gMSA        |     |
-|          |              |                     |     |
+| ecs node | ec2          | fargate                     |     |
+| -------- | ------------ | --------------------------- | --- |
+| windows  | support gMSA | do not support gMSA         |     |
+| linux    | support gMSA | support gMSA (cn supported) |     |
+|          |              |                             |     |
 
 
 - ecs
@@ -107,5 +107,6 @@ klist get krbtgt
 klist sessions
 ```
 
-
+## refer
+https://www.amazonaws.cn/en/new/2024/amazon-ecs-adds-gmsa-authentication-for-linux-containers-for-amazon-fargate/
 

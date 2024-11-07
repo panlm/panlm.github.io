@@ -11,9 +11,9 @@ tags:
 ---
 
 # Quick Deploy BRConnector using Cloudformation
-https://github.com/aws-samples/sample-connector-for-bedrock/blob/cloudformation-deployment/cloudformation/README.md
+https://github.com/aws-samples/sample-connector-for-bedrock/blob/main/cloudformation/README.md
 
-## todo
+## TODO
  - enhance security: control cloudfront access lambda url only using prefix list: com.amazonaws.global.cloudfront.origin-facing  
 
 ## Supported Region

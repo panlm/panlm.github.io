@@ -14,9 +14,8 @@ tags:
 - https://github.com/awslabs/eksdemo/blob/main/docs/create-acm-cert.md
 ```sh
 echo ${DOMAIN_NAME}
-echo ${AWS_REGION}
 
-eksdemo create acm-certificate "*.${DOMAIN_NAME}" --region ${AWS_REGION}
+eksdemo create acm-certificate "*.${DOMAIN_NAME}" 
 # eksdemo get hosted-zone
 # eksdemo get dns-records -z poc1009.aws.panlm.xyz
 

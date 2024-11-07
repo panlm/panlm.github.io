@@ -10,7 +10,7 @@ tags:
 ---
 # ecs-cmd
 ## get ami list
-### al2
+### amazon linux 2
 - get full list
 ```sh
 aws ssm get-parameters-by-path \
@@ -39,6 +39,17 @@ aws ssm get-parameters-by-path \
 OLD_AMI_ID=${AMI_IDS[0]}
 NEW_AMI_ID=${AMI_IDS[1]}
 echo ${AMI_IDS[@]}
+```
+
+### amazon linux 2023
+```sh
+AMI_IDS=($(
+aws ssm get-parameters-by-path \
+    --path /aws/service/ecs/optimized-ami/amazon-linux-2023 \
+    --query 'sort_by(Parameters,&LastModifiedDate)[?contains(ARN, `arn:aws:ssm:'"${AWS_DEFAULT_REGION}"'::parameter/aws/service/ecs/optimized-ami/amazon-linux-2023/ami-`)==`true`]' \
+    |jq -r '.[].Value' |jq -r '.image_id' \
+    |tail -n 2
+))
 ```
 
 ### windows 2019
@@ -77,7 +88,7 @@ echo ${SG_ID}
 ```sh
 echo ${SG_ID}
 echo ${OLD_AMI_ID}
-create-launch-template ${SG_ID} ${OLD_AMI_ID} # call my function
+create-launch-template -s ${SG_ID} -a ${OLD_AMI_ID} # call my function
 echo ${LAUNCH_TEMPLATE_ID}
 
 ```
@@ -169,7 +180,7 @@ aws ec2 modify-launch-template --launch-template-id ${LAUNCH_TEMPLATE_ID} --defa
 - execute function to create auto scaling group ([[auto-scaling-cmd#func-create-auto-scaling-group-]])
 - ASG's desire number is zero
 ```sh
-create-auto-scaling-group ${LAUNCH_TEMPLATE_ID} # call my function
+create-auto-scaling-group -l ${LAUNCH_TEMPLATE_ID} # call my function
 echo ${ASG_ARN}
 
 ```
@@ -198,6 +209,7 @@ aws ecs put-cluster-capacity-providers \
     --cluster ${ECS_CLUSTER} \
     --capacity-providers ${ECS_CAP_PROVIDER} \
     --default-capacity-provider-strategy capacityProvider=${ECS_CAP_PROVIDER},weight=1
+
 ```
 
 #### change asg desire number to non-zero

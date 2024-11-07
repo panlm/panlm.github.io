@@ -3,7 +3,7 @@ title: elb
 description: 常用命令
 created: 2022-09-20 16:10:45.855
 last_modified: 2023-12-07
-icon: simple/awselasticloadbalancing
+icon: simple/amazon
 tags:
   - aws/network/elb
   - aws/cmd
@@ -167,7 +167,7 @@ EOF
             --default-actions Type=forward,TargetGroupArn=${TG80_ARN}
     fi
     
-    if [[ ! -z ${CERTIFICATE_ARN} ]]; then
+    if [[ ! -z ${CERTIFICATE_ARN} && ${TYPE} == "alb" ]]; then
         # aws elbv2 create-target-group \
         #     --name ${TYPE}-tg-${PORT443}-${UNIQ_STR} \
         #     --protocol HTTPS \
@@ -295,7 +295,7 @@ done
 
 ## refer
 - https://cloudaffaire.com/network-load-balancer-target-group-health-checks/
-
+- icon: simple/awselasticloadbalancing
 
 
 

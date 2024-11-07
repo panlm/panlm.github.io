@@ -19,7 +19,8 @@ sudo mv -v /tmp/eksdemo /usr/local/bin
 ## create-eks-cluster-
 ```sh
 CLUSTER_NAME=ekscluster1
-export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
+export AWS_DEFAULT_REGION=us-west-2
+
 eksdemo create cluster ${CLUSTER_NAME} \
     --instance m5.large \
     --nodes 3 \

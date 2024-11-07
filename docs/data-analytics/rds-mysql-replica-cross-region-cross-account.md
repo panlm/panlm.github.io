@@ -32,7 +32,7 @@ tags:
 - 如果跨账号复制的测试环境，你需要同样的 cloud9 在另一个环境中，并且安装下面软件
 ```sh
 sudo yum install -y jq 
-sudo rpm -Uvh https://repo.mysql.com/mysql80-community-release-el7.rpm
+sudo rpm -Uvh https://repo.mysql.com/mysql80-community-release-el7.rpm # for amazon linux 2, mysql80-community-release-el9.rpm for amazon linux 2023
 sudo yum install -y mysql-community-client --enablerepo=mysql80-community
 
 export AWS_PAGER=""

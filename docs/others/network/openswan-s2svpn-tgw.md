@@ -27,17 +27,17 @@ tags:
 refer: [[../../../../Excalidraw/bedrock-runtime-endpoint|bedrock-runtime-endpoint]]
 
 ## aws commercial region
-- create customer gateway with your public ip address in your china region
-- create tgw
+- create customer gateway (CGW) with your public ip address in your china region
+- create TGW
 - create attachment for your existed vpc
 - create s2svpn connection
-    - choose tgw
-    - choose customer gw
-    - choose static routing
+    - choose TGW
+    - choose CGW
+    - choose static routing (NO dynamic)
     - keep default for others 
-- download vpn configuration
-    - vendor: generic
-    - platform: generic
+- download VPN configuration
+    - vendor: generic (or openswan)
+    - platform: generic (or openswan)
     - ikev1
 - you need understand how to setup route tables
 
