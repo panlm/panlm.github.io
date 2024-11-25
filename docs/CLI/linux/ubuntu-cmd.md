@@ -47,5 +47,14 @@ sudo apt-mark hold terraform
 ```
 
 
+## install develop packages
+```sh
+sudo apt-get install build-essential
+```
+类似 `yum -y groupinstall "Development Tools"`
 
+## install docker
+https://docs.docker.com/engine/install/ubuntu/
+```
+```
 

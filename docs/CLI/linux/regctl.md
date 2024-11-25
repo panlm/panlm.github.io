@@ -21,7 +21,7 @@ curl https://github.com/regclient/regclient/releases/download/v0.7.1/regctl-linu
 - login
 ```sh
 # login
-aws ecr get-login-password --region ${AWS_DEFAULT_REGION} |regctl registry login ${ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com --user AWS --pass-stdin
+aws ecr-public get-login-password --region us-east-1 |regctl registry login ${ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com --user AWS --pass-stdin
 ```
 - export
 ```sh

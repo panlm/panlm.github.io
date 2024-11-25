@@ -47,7 +47,7 @@ CLUSTER_NAME=ekscluster1
 export AWS_DEFAULT_REGION=us-east-1
 NAMESPACE=loki
 LOKI_SA_NAME=role-loki-sa
-create-iamserviceaccount -s ${LOKI_SA_NAME} -c ${CLUSTER_NAME} -n ${NAMESPACE} -r 0
+create-iamserviceaccount -s ${LOKI_SA_NAME} -c ${CLUSTER_NAME} -n ${NAMESPACE} -r false
 
 ```
 
@@ -364,6 +364,19 @@ spec:
 - loki-stack will have some predefined dashboard - https://artifacthub.io/packages/helm/grafana/loki-stack 
 
 ### tools-
+- docker build
+- cloudformation
+```sh
+aws cloudformation create-stack --stack-name lambda-promtail-stack \
+--template-body file://template.yaml \
+--capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM \
+--region ap-southeast-1 \
+--parameters ParameterKey=WriteAddress,ParameterValue=http://k8s-loki-lokigate-xxxx.elb.amazonaws.com/loki/api/v1/push \
+ParameterKey=LambdaPromtailImage,ParameterValue=123456789012.dkr.ecr.ap-southeast-1.amazonaws.com/lambda-promtail:latest \
+ParameterKey=TenantID,ParameterValue=tenant-a \
+ParameterKey=SkipTlsVerify,ParameterValue="true"
+
+```
 - using terraform to deploy promtail in lambda ([loki github](https://github.com/grafana/loki/tree/main/tools/lambda-promtail))
 ![[attachments/grafana-loki/IMG-grafana-loki-3.png]]
 

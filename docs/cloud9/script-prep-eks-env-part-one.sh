@@ -37,6 +37,8 @@ tee ~/.local/share/code-server/User/settings.json <<EOF
 "security.workspace.trust.enabled": false,
 "security.workspace.trust.banner": "never",
 "security.workspace.trust.emptyWindow": false,
+"workbench.startupEditor": "terminal",
+"task.allowAutomaticTasks": "on",
 "editor.indentSize": "tabSize",
 "editor.tabSize": 2,
 "python.testing.pytestEnabled": true,
