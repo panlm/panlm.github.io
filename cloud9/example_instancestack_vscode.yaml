@@ -63,11 +63,13 @@ Parameters:
 #       EC2SSMPath: resolve:ssm:/aws/service/ami-amazon-linux-latest/
 
 Mappings:
-  DefaultUser:
+  DefaultValue:
     ubuntu22:
-      username: ubuntu
+      Username: ubuntu
+      RootDevice: /dev/sda1
     amazonlinux2023:
-      username: ec2-user
+      Username: ec2-user
+      RootDevice: /dev/xvda
   EC2InstanceAMIMapping:
     t3.medium:
       ubuntu22: /aws/service/canonical/ubuntu/server/22.04/stable/current/amd64/hvm/ebs-gp2/ami-id
@@ -154,7 +156,7 @@ Resources:
             - !Ref InstanceSecurityGroup
           SubnetId: !Ref PublicSubnetId
       BlockDeviceMappings:
-        - DeviceName: /dev/xvda
+        - DeviceName: !FindInMap [DefaultValue, !Ref EC2InstanceOS, RootDevice]
           Ebs:
             VolumeSize: !Ref EC2InstanceVolumeSize
             VolumeType: gp2
@@ -293,7 +295,7 @@ Outputs:
   AccessURL:
     Description: URL for vscode
     # Value: !Join ["", ["https://", !GetAtt MyEC2Instance.PublicIp, ":8443/?folder=/home/ec2-user" ]]
-    Value: !Join ["", ["https://", !GetAtt Ec2CloudFrontDistribution.DomainName, "/?folder=/home/", !FindInMap [DefaultUser, !Ref EC2InstanceOS, username]]]
+    Value: !Join ["", ["https://", !GetAtt Ec2CloudFrontDistribution.DomainName, "/?folder=/home/", !FindInMap [DefaultValue, !Ref EC2InstanceOS, Username]]]
     # Value: !Sub https://${Ec2CloudFrontDistribution.DomainName}/?folder=/home/ec2-user
 
 
