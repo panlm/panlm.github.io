@@ -58,6 +58,12 @@ aws ec2 describe-images --region ${region} --owners 137112412989 \
   --filters Name=name,Values=amzn2-ami-hvm-*2021*gp2*  \
   --query 'Images[*].[ImageId,CreationDate,Name]' --output text |sort -k2 -r |column -t
 
+# al2023
+export region=us-west-2
+aws ec2 describe-images --region ${region} --owners 137112412989 \
+  --filters Name=name,Values=al2023-ami-*2024*gp2*  \
+  --query 'Images[*].[ImageId,CreationDate,Name]' --output text |sort -k2 -r |column -t
+
 # centos
 export AWS_DEFAULT_REGION=us-east-2
 aws ec2 describe-images \
@@ -366,6 +372,35 @@ aws ec2-instance-connect send-ssh-public-key \
 --instance-id i-xxx \
 --instance-os-user ec2-user
 
+```
+
+## transfer ami between region
+https://www.amazonaws.cn/en/new/2021/amazon-ec2-allows-copy-amazon-machine-images-across-amazon-web-services-china-regions-other-regions/
+https://docs.aws.amazon.com/AWSEC2/latest/UserGuide/ami-store-restore.html#copy-to-partition
+
+- image to s3
+```sh
+BUCKET_NAME=test-image-1234
+AMI_ID=ami-09eexxx443
+aws ec2 create-store-image-task \
+  --image-id ${AMI_ID} \
+  --bucket ${BUCKET_NAME}
+
+```
+- describe progress
+```sh
+aws ec2 describe-store-image-tasks
+
+```
+- s3 to image
+```sh
+BUCKET_FILE=${AMI_ID}.bin
+aws ec2 create-restore-image-task \
+    --object-key ${BUCKET_FILE} \
+    --bucket ${BUCKET_NAME} \
+    --name "image-test-restore"
+
+# check process from ami web ui
 ```
 
 

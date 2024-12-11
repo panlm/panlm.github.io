@@ -56,5 +56,10 @@ sudo apt-get install build-essential
 ## install docker
 https://docs.docker.com/engine/install/ubuntu/
 ```
+sudo getent group docker
+sudo groupadd docker
+sudo usermod -aG docker $USER
+newgrp docker
+
 ```
 

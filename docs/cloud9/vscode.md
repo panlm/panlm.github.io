@@ -15,6 +15,7 @@ https://github.com/coder/code-server
 -  deploy vscode on ec2 ([[example_instancestack_vscode.yaml]])
 - run command on cloudshell
 ```sh
+OS=amazonlinux2023
 wget -O example_instancestack_vscode.yaml https://panlm.github.io/cloud9/example_instancestack_vscode.yaml
 aws configure list
 export AWS_DEFAULT_REGION AWS_REGION
@@ -38,7 +39,8 @@ if [[ ! -z ${VPC_ID} ]]; then
     aws cloudformation create-stack --stack-name ${STACK_NAME} \
         --parameters ParameterKey=VpcId,ParameterValue="${VPC_ID}" \
                      ParameterKey=PublicSubnetId,ParameterValue="${FIRST_SUBNET}" \
-                     ParameterKey=EC2InstanceOS,ParameterValue="ubuntu22" \
+                     ParameterKey=EC2InstanceOS,ParameterValue="${OS:-ubuntu22}" \
+                     ParameterKey=EC2InstanceType,ParameterValue="m5.large" \
         --capabilities CAPABILITY_IAM --region ${AWS_DEFAULT_REGION} \
         --template-body file://./example_instancestack_vscode.yaml
 else

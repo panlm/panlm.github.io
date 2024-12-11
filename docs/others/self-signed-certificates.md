@@ -94,6 +94,7 @@ git clone https://github.com/OpenVPN/easy-rsa.git
 # create root ca and no password
 ./easy-rsa/easyrsa3/easyrsa init-pki
 ./easy-rsa/easyrsa3/easyrsa build-ca nopass
+# return directly
 
 # create cert req
 openssl genrsa -out my-server.key
@@ -106,6 +107,7 @@ openssl req -in my-server.req -noout -subject
 ./easy-rsa/easyrsa3/easyrsa import-req my-server.req my-server
 ./easy-rsa/easyrsa3/easyrsa sign-req server my-server
 # need root ca password
+# input YES
 
 # convert to pem
 openssl x509 -inform PEM -in pki/issued/my-server.crt >my-server.pem

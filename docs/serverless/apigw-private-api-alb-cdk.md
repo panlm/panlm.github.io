@@ -58,6 +58,7 @@ cdk deploy --all --require-approval never
 
 
 ## refer
+- https://aws.amazon.com/cn/blogs/compute/implementing-custom-domain-names-for-private-endpoints-with-amazon-api-gateway/
 - https://georgemao.medium.com/enabling-private-apis-with-custom-domain-names-aws-api-gateway-df1b62b0ba7c
 - https://serverlessland.com/repos/apigw-private-custom-domain-name
 
