@@ -35,7 +35,7 @@ Parameters:
       - t4g.medium
       - m5.large
     ConstraintDescription: Must be a valid instance type
-    Default: t3.medium
+    Default: m5.large
   EC2InstanceOS:
     Description: instance AMI
     Type: String
