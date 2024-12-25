@@ -20,7 +20,7 @@
       
       
       <link rel="icon" href="../../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.48">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
     
     
       
@@ -5848,27 +5848,41 @@
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>sudo<span class="w"> </span>mv<span class="w"> </span>-v<span class="w"> </span>/tmp/eksdemo<span class="w"> </span>/usr/local/bin
 </code></pre></div>
 <h2 id="create-eks-cluster-">create-eks-cluster-<a class="headerlink" href="#create-eks-cluster-" title="Permanent link">&para;</a></h2>
+<ul>
+<li>
+<p>create cluster<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">CLUSTER_NAME</span><span class="o">=</span>ekscluster1
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span>us-west-2
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>eksdemo<span class="w"> </span>create<span class="w"> </span>cluster<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">    </span>--instance<span class="w"> </span>m5.large<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">    </span>--nodes<span class="w"> </span><span class="m">3</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span>--version<span class="w"> </span><span class="m">1</span>.29<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">    </span>--version<span class="w"> </span><span class="m">1</span>.31<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span>--vpc-cidr<span class="w"> </span><span class="m">10</span>.10.0.0/16
-</code></pre></div>
+</code></pre></div></p>
+</li>
+<li>
+<p>create hosted zone (<a href="../../functions/func-create-hosted-zone.sh" title="func-create-hosted-zone">func-create-hosted-zone</a>)</p>
+</li>
+<li>create ACM (<a href="../../awscli/acm-cmd/#create-certificate-with-eksdemo-" title="create-certificate-with-eksdemo">create-certificate-with-eksdemo</a>)</li>
+<li>install alb controller (<a href="../../../EKS/addons/aws-load-balancer-controller/#install-with-eksdemo-" title="install alb controller">install alb controller</a>) </li>
+<li>install external dns (<a href="../../../EKS/addons/externaldns-for-route53/#install-with-eksdemo-" title="install externaldns">install externaldns</a>)</li>
+<li>install game-2048 (<a href="https://github.com/awslabs/eksdemo/blob/main/docs/install-game-2048.md#install-game-2048-example-application">link</a>)<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>eksdemo<span class="w"> </span>install<span class="w"> </span>example-game-2048<span class="w"> </span>-c<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span>-I<span class="w"> </span>game2048.<span class="si">${</span><span class="nv">DOMAIN_NAME</span><span class="si">}</span><span class="w"> </span>--dry-run
+</code></pre></div></li>
+</ul>
 <h2 id="create-node-group">create node group<a class="headerlink" href="#create-node-group" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>eksdemo<span class="w"> </span>create<span class="w"> </span>ng<span class="w"> </span>mng1<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">    </span>-c<span class="w"> </span>ekscluster1<span class="w"> </span>-i<span class="w"> </span>m5.large<span class="w"> </span>-N<span class="w"> </span><span class="m">3</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>eksdemo<span class="w"> </span>create<span class="w"> </span>ng<span class="w"> </span>mng1<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">    </span>-c<span class="w"> </span>ekscluster1<span class="w"> </span>-i<span class="w"> </span>m5.large<span class="w"> </span>-N<span class="w"> </span><span class="m">3</span><span class="w"> </span>
 </code></pre></div>
 <h2 id="fargate-profile-">fargate-profile-<a class="headerlink" href="#fargate-profile-" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">CLUSTER_NAME</span><span class="o">=</span>ekscluster1
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span>us-west-2
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nv">NAMESPACE</span><span class="o">=</span>game-2048
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>eksdemo<span class="w"> </span>create<span class="w"> </span>fargate-profile<span class="w"> </span>fp-game-2048<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">    </span>-c<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">    </span>--namespaces<span class="w"> </span><span class="si">${</span><span class="nv">NAMESPACE</span><span class="si">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">CLUSTER_NAME</span><span class="o">=</span>ekscluster1
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span>us-west-2
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nv">NAMESPACE</span><span class="o">=</span>game-2048
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>eksdemo<span class="w"> </span>create<span class="w"> </span>fargate-profile<span class="w"> </span>fp-game-2048<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">    </span>-c<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">    </span>--namespaces<span class="w"> </span><span class="si">${</span><span class="nv">NAMESPACE</span><span class="si">}</span>
 </code></pre></div>
 <h2 id="addons-">addons-<a class="headerlink" href="#addons-" title="Permanent link">&para;</a></h2>
 <ul>
@@ -5885,7 +5899,7 @@
 <summary>right-click &amp; open-in-new-tab: </summary>
 <p><a class="glightbox" href="../../awscli/acm-cmd/#^kresvp" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="../awscli/acm-cmd" src="../../awscli/acm-cmd/#^kresvp" title="../awscli/acm-cmd" /></a></p>
 </details>
-<p>refer: <a href="../../awscli/acm-cmd/#create-certificate-with-eksdemo-" title="create-certificate-with-eksdemo">create-certificate-with-eksdemo</a></p>
+<p>refer: <a href="../../awscli/acm-cmd/#create-certificate-with-eksdemo-" title="create-certificate-with-eksdemo">create-certificate-with-eksdemo</a> </p>
 <h2 id="refer">refer<a class="headerlink" href="#refer" title="Permanent link">&para;</a></h2>
 <ul>
 <li>when create broken due to role change in cloud9, add another admin user to eks cluster and try create nodegroup (<a href="../../../EKS/solutions/security/eks-access-api/" title="eks-access-api">eks-access-api</a>)</li>
@@ -5912,7 +5926,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-11-07T13:51:02+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-11-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-12-25T15:55:24+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-25</span>
   </span>
 
     
@@ -5993,7 +6007,7 @@
     <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "toc.follow", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.83f73b43.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
       
         <script src="../../../js/timeago.min.js"></script>
       
