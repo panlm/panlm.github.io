@@ -13,20 +13,20 @@ tags:
 # openswan-s2svpn-tgw
 
 需求：
-- 从中国区域访问 global bedrock 服务的域名，希望流量保留在 aws 骨干网内部
-- 希望部署 brconnector 在中国区域
+- 从中国区域访问 aws global 服务的域名（例如，bedrock），希望流量保留在 aws 骨干网内部
+- 希望部署前端在中国区域（例如，brconnector、GenBI）
 
 优点
-- traffic 不走公网
+- Traffic 不走公网
 
 缺点
-- 只能通过 aksk 访问 bedrock
+- 只能通过 AKSK 访问 global 服务
 
 ![[attachments/openswan-s2svpn-tgw/IMG-openswan-s2svpn-tgw.png]]
 
 refer: [[../../../../Excalidraw/bedrock-runtime-endpoint|bedrock-runtime-endpoint]]
 
-## aws commercial region
+## sample 1 - aws commercial region peering
 - create customer gateway (CGW) with your public ip address in your china region
 - create TGW
 - create attachment for your existed vpc
@@ -45,7 +45,7 @@ LEFT IP is public ip of your openswan
 RIGHT IP is vpn public ip in your vpn configuration
 SECRET in your vpn configuration
 
-## china region
+## sample 2 - china region to commercial region peering
 - spin up instance to install openswan (refer: [[../../../../notes/openswan]])
 - 中国区域对于 vpn 端口有限制，建议使用global 区域模拟
 - openswan 参考配置

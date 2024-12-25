@@ -14,6 +14,7 @@ tags:
 - https://github.com/awslabs/eksdemo/blob/main/docs/create-acm-cert.md
 ```sh
 echo ${DOMAIN_NAME}
+echo ${AWS_DEFAULT_REGION}
 
 eksdemo create acm-certificate "*.${DOMAIN_NAME}" 
 # eksdemo get hosted-zone

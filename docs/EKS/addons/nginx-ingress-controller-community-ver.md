@@ -10,10 +10,8 @@ tags:
 ---
 
 # nginx-ingress-controller-community-ver
-
 ## install
 ### install with eksdemo
-
 - https://github.com/awslabs/eksdemo/blob/main/docs/install-ingress-nginx.md
 ```sh
 echo ${CLUSTER_NAME}
@@ -21,7 +19,6 @@ eksdemo install ingress-nginx -c ${CLUSTER_NAME} --namespace kube-system
 ```
 
 ### install manually
-
 - link
 ```sh
 helm repo add ingress-nginx https://kubernetes.github.io/ingress-nginx

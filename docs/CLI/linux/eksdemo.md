@@ -17,6 +17,7 @@ sudo mv -v /tmp/eksdemo /usr/local/bin
 ```
 
 ## create-eks-cluster-
+- create cluster
 ```sh
 CLUSTER_NAME=ekscluster1
 export AWS_DEFAULT_REGION=us-west-2
@@ -24,10 +25,20 @@ export AWS_DEFAULT_REGION=us-west-2
 eksdemo create cluster ${CLUSTER_NAME} \
     --instance m5.large \
     --nodes 3 \
-    --version 1.29 \
+    --version 1.31 \
     --vpc-cidr 10.10.0.0/16
 
 ```
+
+- create hosted zone ([[../functions/func-create-hosted-zone.sh|func-create-hosted-zone]])
+- create ACM ([[../awscli/acm-cmd#create-certificate-with-eksdemo-|create-certificate-with-eksdemo]])
+- install alb controller ([[git/git-mkdocs/EKS/addons/aws-load-balancer-controller#install-with-eksdemo-|install alb controller]]) 
+- install external dns ([[git/git-mkdocs/EKS/addons/externaldns-for-route53#install-with-eksdemo-|install externaldns]])
+- install game-2048 ([link](https://github.com/awslabs/eksdemo/blob/main/docs/install-game-2048.md#install-game-2048-example-application))
+```sh
+eksdemo install example-game-2048 -c ${CLUSTER_NAME} -I game2048.${DOMAIN_NAME} --dry-run
+```
+
 
 ## create node group
 ```sh
@@ -55,7 +66,7 @@ eksdemo create fargate-profile fp-game-2048 \
 - 2 certificates, one for each domain name in original region
 ??? note "right-click & open-in-new-tab: "
     ![[../awscli/acm-cmd#^kresvp]]
-refer: [[../awscli/acm-cmd#create-certificate-with-eksdemo-|create-certificate-with-eksdemo]]
+refer: [[../awscli/acm-cmd#create-certificate-with-eksdemo-|create-certificate-with-eksdemo]] 
 
 ## refer
 - when create broken due to role change in cloud9, add another admin user to eks cluster and try create nodegroup ([[../../EKS/solutions/security/eks-access-api|eks-access-api]])

@@ -13,7 +13,7 @@ sync registry tool, support multi architecture container images
 
 ## install
 ```sh
-curl https://github.com/regclient/regclient/releases/download/v0.7.1/regctl-linux-amd64
+curl -L https://github.com/regclient/regclient/releases/download/v0.7.1/regctl-linux-amd64
 
 ```
 
