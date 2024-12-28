@@ -1,5 +1,5 @@
 ---
-title: aos-migration
+title: AWS Opensearch / Elasticsearch Migration
 description: 使用 snapshot 迁移 elasticsearch
 created: 2024-12-28 16:56:47.742
 last_modified: 2024-12-28
@@ -8,8 +8,9 @@ tags:
 ---
 
 # aos-migration
-- create aos-mig-role, see detail in refer chapter
-- put role (using by awscurl) to opensearch --> security --> role --> all_access --> mapping user/role, 
+- create role-a aos-mig-role, see detail in refer chapter
+- put role-b (using by awscurl) to opensearch --> security --> role --> all_access --> mapped users
+- put `iam:PassRole` to role-b
 
 ## es 7.10 snapshot
 - create snapshot repo
