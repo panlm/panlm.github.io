@@ -38,15 +38,15 @@ kubectl annotate service/my-ing1-ingress-nginx-controller \
 
 ## resources
 ```sh
-$ kubectl apply -f https://raw.githubusercontent.com/cornellanthony/nlb-nginxIngress-eks/master/apple.yaml 
-$ kubectl apply -f https://raw.githubusercontent.com/cornellanthony/nlb-nginxIngress-eks/master/banana.yaml
+kubectl apply -f https://raw.githubusercontent.com/cornellanthony/nlb-nginxIngress-eks/master/apple.yaml 
+kubectl apply -f https://raw.githubusercontent.com/cornellanthony/nlb-nginxIngress-eks/master/banana.yaml
 
 ```
 
-## tls certificate
+## tls certificate (option)
 for nlb
 ```sh
-openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls-n.key -out tls-n.crt -subj "/CN=*elb.us-east-2.amazonaws.com/O=*.elb.us-east-2.amazonaws.com"
+openssl req -x509 -nodes -days 365 -newkey rsa:2048 -keyout tls-n.key -out tls-n.crt -subj "/CN=*elb.us-west-2.amazonaws.com/O=*.elb.us-west-2.amazonaws.com"
 
 kubectl create secret tls tls-secret-n --key tls-n.key --cert tls-n.crt
 
@@ -72,10 +72,10 @@ spec:
   ingressClassName: nginx
   tls:
   - hosts:
-    - '*.elb.us-east-2.amazonaws.com'
+    - '*.elb.us-west-2.amazonaws.com'
     secretName: tls-secret-n
   rules:
-  - host: '*.elb.us-east-2.amazonaws.com'
+  - host: '*.elb.us-west-2.amazonaws.com'
     http:
       paths:
         - path: /apple
@@ -92,6 +92,7 @@ spec:
               name: banana-service
               port: 
                 number: 5678
+
 ```
 (refer: appendix)
 
