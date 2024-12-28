@@ -1562,9 +1562,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tls-certificate" class="md-nav__link">
+  <a href="#tls-certificate-option" class="md-nav__link">
     <span class="md-ellipsis">
-      tls certificate
+      tls certificate (option)
     </span>
   </a>
   
@@ -3209,6 +3209,8 @@
       
         
       
+        
+      
     
     
       
@@ -3248,6 +3250,27 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../data-analytics/aos-migration/" class="md-nav__link">
+        
+  
+  <span class="md-ellipsis">
+    aos-migration
+  </span>
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -5900,9 +5923,9 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#tls-certificate" class="md-nav__link">
+  <a href="#tls-certificate-option" class="md-nav__link">
     <span class="md-ellipsis">
-      tls certificate
+      tls certificate (option)
     </span>
   </a>
   
@@ -6050,12 +6073,12 @@
 </code></pre></div></li>
 </ul>
 <h2 id="resources">resources<a class="headerlink" href="#resources" title="Permanent link">&para;</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/cornellanthony/nlb-nginxIngress-eks/master/apple.yaml<span class="w"> </span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>$<span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/cornellanthony/nlb-nginxIngress-eks/master/banana.yaml
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/cornellanthony/nlb-nginxIngress-eks/master/apple.yaml<span class="w"> </span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://raw.githubusercontent.com/cornellanthony/nlb-nginxIngress-eks/master/banana.yaml
 </code></pre></div>
-<h2 id="tls-certificate">tls certificate<a class="headerlink" href="#tls-certificate" title="Permanent link">&para;</a></h2>
+<h2 id="tls-certificate-option">tls certificate (option)<a class="headerlink" href="#tls-certificate-option" title="Permanent link">&para;</a></h2>
 <p>for nlb<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>openssl<span class="w"> </span>req<span class="w"> </span>-x509<span class="w"> </span>-nodes<span class="w"> </span>-days<span class="w"> </span><span class="m">365</span><span class="w"> </span>-newkey<span class="w"> </span>rsa:2048<span class="w"> </span>-keyout<span class="w"> </span>tls-n.key<span class="w"> </span>-out<span class="w"> </span>tls-n.crt<span class="w"> </span>-subj<span class="w"> </span><span class="s2">&quot;/CN=*elb.us-east-2.amazonaws.com/O=*.elb.us-east-2.amazonaws.com&quot;</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>openssl<span class="w"> </span>req<span class="w"> </span>-x509<span class="w"> </span>-nodes<span class="w"> </span>-days<span class="w"> </span><span class="m">365</span><span class="w"> </span>-newkey<span class="w"> </span>rsa:2048<span class="w"> </span>-keyout<span class="w"> </span>tls-n.key<span class="w"> </span>-out<span class="w"> </span>tls-n.crt<span class="w"> </span>-subj<span class="w"> </span><span class="s2">&quot;/CN=*elb.us-west-2.amazonaws.com/O=*.elb.us-west-2.amazonaws.com&quot;</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>kubectl<span class="w"> </span>create<span class="w"> </span>secret<span class="w"> </span>tls<span class="w"> </span>tls-secret-n<span class="w"> </span>--key<span class="w"> </span>tls-n.key<span class="w"> </span>--cert<span class="w"> </span>tls-n.crt
 </code></pre></div></p>
@@ -6080,10 +6103,10 @@
 <a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">  </span><span class="nt">tls</span><span class="p">:</span>
 <a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>
 <a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">hosts</span><span class="p">:</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;*.elb.us-east-2.amazonaws.com&#39;</span>
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="w">    </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="s">&#39;*.elb.us-west-2.amazonaws.com&#39;</span>
 <a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="w">    </span><span class="nt">secretName</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">tls-secret-n</span>
 <a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">  </span><span class="nt">rules</span><span class="p">:</span>
-<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;*.elb.us-east-2.amazonaws.com&#39;</span>
+<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="w">  </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">host</span><span class="p">:</span><span class="w"> </span><span class="s">&#39;*.elb.us-west-2.amazonaws.com&#39;</span>
 <a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="w">    </span><span class="nt">http</span><span class="p">:</span>
 <a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="w">      </span><span class="nt">paths</span><span class="p">:</span>
 <a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="nt">path</span><span class="p">:</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">/apple</span>
@@ -6294,7 +6317,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-12-25T15:55:24+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-12-28T17:30:05+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-28</span>
   </span>
 
     
