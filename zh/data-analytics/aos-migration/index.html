@@ -3105,6 +3105,14 @@
     AWS Opensearch / Elasticsearch Migration
   </span>
   
+    
+  
+  
+    <span class="md-status md-status--myblog" title="my blogs">
+    </span>
+  
+
+  
 
           <span class="md-nav__icon md-icon"></span>
         </label>
@@ -3115,6 +3123,14 @@
   <span class="md-ellipsis">
     AWS Opensearch / Elasticsearch Migration
   </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog" title="my blogs">
+    </span>
+  
+
   
 
       </a>
@@ -5872,39 +5888,44 @@
 <h1 id="aos-migration">aos-migration<a class="headerlink" href="#aos-migration" title="Permanent link">&para;</a></h1>
 <ul>
 <li>create role-a aos-mig-role, see detail in refer chapter</li>
-<li>put role-b (using by awscurl) to opensearch &ndash;&gt; security &ndash;&gt; role &ndash;&gt; all_access &ndash;&gt; mapped users</li>
-<li>put <code>iam:PassRole</code> to role-b</li>
+<li>ad <code>iam:PassRole</code> to role-b</li>
+<li>(only for kibana) add role-b (using by awscurl) to opensearch &ndash;&gt; security &ndash;&gt; role &ndash;&gt; all_access &ndash;&gt; mapped users</li>
+<li>增量做快照，恢复时候指定最新快照名，全量恢复</li>
 </ul>
 <h2 id="es-710-snapshot">es 7.10 snapshot<a class="headerlink" href="#es-710-snapshot" title="Permanent link">&para;</a></h2>
 <ul>
-<li>create snapshot repo<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>awscurl<span class="w"> </span>-XPUT<span class="w"> </span>--service<span class="w"> </span>es<span class="w"> </span>--region<span class="w"> </span>ap-southeast-1<span class="w"> </span>https://vpc-src2-xxx.ap-southeast-1.es.amazonaws.com/_snapshot/snapshot-repo-1<span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39; </span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="s1">{</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="s1">  &quot;type&quot;: &quot;s3&quot;,</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="s1">  &quot;settings&quot;: {</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="s1">    &quot;bucket&quot;: &quot;aos-mig-20241226&quot;,</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="s1">    &quot;base_path&quot;: &quot;snapshot&quot;,</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="s1">    &quot;region&quot;: &quot;ap-southeast-1&quot;,</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="s1">    &quot;role_arn&quot;: &quot;arn:aws:iam::123456789012:role/aos-mig-role&quot;</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="s1">  }</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="s1">}&#39;</span>
-</code></pre></div></li>
+<li>only could use iam role in cli to execute awscurl </li>
+<li>
+<p>create snapshot repo<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">DOMAIN_NAME</span><span class="o">=</span>vpc-src2-xxx.ap-southeast-1.es.amazonaws.com
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>awscurl<span class="w"> </span>-XPUT<span class="w"> </span>--service<span class="w"> </span>es<span class="w"> </span>--region<span class="w"> </span>ap-southeast-1<span class="w"> </span>https://<span class="si">${</span><span class="nv">DOMAIN_NAME</span><span class="si">}</span>/_snapshot/snapshot-repo-1<span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39; </span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="s1">{</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="s1">  &quot;type&quot;: &quot;s3&quot;,</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="s1">  &quot;settings&quot;: {</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="s1">    &quot;bucket&quot;: &quot;aos-mig-20241226&quot;,</span>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="s1">    &quot;base_path&quot;: &quot;snapshot&quot;,</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="s1">    &quot;region&quot;: &quot;ap-southeast-1&quot;,</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="s1">    &quot;role_arn&quot;: &quot;arn:aws:iam::123456789012:role/aos-mig-role&quot;</span>
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="s1">  }</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="s1">}&#39;</span>
+</code></pre></div></p>
+</li>
 <li>
 <p>do snapshot<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>awscurl<span class="w"> </span>-XPUT<span class="w"> </span>--service<span class="w"> </span>es<span class="w"> </span>--region<span class="w"> </span>ap-southeast-1<span class="w"> </span>https://vpc-src2-xxx.ap-southeast-1.es.amazonaws.com/_snapshot/snapshot-repo-1/snapshot-1
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>awscurl<span class="w"> </span>-XPUT<span class="w"> </span>--service<span class="w"> </span>es<span class="w"> </span>--region<span class="w"> </span>ap-southeast-1<span class="w"> </span>https://<span class="si">${</span><span class="nv">DOMAIN_NAME</span><span class="si">}</span>/_snapshot/snapshot-repo-1/snapshot-1
 </code></pre></div></p>
 </li>
 <li>
 <p>get snapshot<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>awscurl<span class="w"> </span>-XGET<span class="w"> </span>--service<span class="w"> </span>es<span class="w"> </span>--region<span class="w"> </span>ap-southeast-1<span class="w"> </span>https://vpc-src2-xxx.ap-southeast-1.es.amazonaws.com/_snapshot/_status
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>awscurl<span class="w"> </span>-XGET<span class="w"> </span>--service<span class="w"> </span>es<span class="w"> </span>--region<span class="w"> </span>ap-southeast-1<span class="w"> </span>https://<span class="si">${</span><span class="nv">DOMAIN_NAME</span><span class="si">}</span>/_snapshot/_status
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>awscurl<span class="w"> </span>-XGET<span class="w"> </span>--service<span class="w"> </span>es<span class="w"> </span>--region<span class="w"> </span>ap-southeast-1<span class="w"> </span>https://vpc-src2-xxx.ap-southeast-1.es.amazonaws.com/_snapshot/snapshot-repo-1/_all?pretty
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>awscurl<span class="w"> </span>-XGET<span class="w"> </span>--service<span class="w"> </span>es<span class="w"> </span>--region<span class="w"> </span>ap-southeast-1<span class="w"> </span>https://<span class="si">${</span><span class="nv">DOMAIN_NAME</span><span class="si">}</span>/_snapshot/snapshot-repo-1/_all?pretty
 </code></pre></div></p>
 </li>
 </ul>
 <h2 id="es-710-restore">es 7.10 restore<a class="headerlink" href="#es-710-restore" title="Permanent link">&para;</a></h2>
 <ul>
-<li>put role/user to all_access</li>
+<li>(option) put role/user to all_access</li>
 <li>
 <p>create repo<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">DOMAIN_NAME</span><span class="o">=</span>vpc-target2-xxx.ap-southeast-1.es.amazonaws.com
@@ -5935,14 +5956,15 @@
 <li>
 <p>restore<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>awscurl<span class="w"> </span>-XPOST<span class="w"> </span>--service<span class="w"> </span>es<span class="w"> </span>--region<span class="w"> </span>ap-southeast-1<span class="w"> </span><span class="s2">&quot;https://</span><span class="si">${</span><span class="nv">DOMAIN_NAME</span><span class="si">}</span><span class="s2">/_snapshot/snapshot-repo-1/snapshot-1/_restore&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>-d<span class="w"> </span><span class="s1">&#39;{&quot;indices&quot;: &quot;.kibana_1&quot;}&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>-d<span class="w"> </span><span class="s1">&#39;{&quot;indices&quot;: &quot;-.kibana_1&quot;}&#39;</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span>
 </code></pre></div></p>
 </li>
 </ul>
 <h2 id="es-68-snapshot">es 6.8 snapshot<a class="headerlink" href="#es-68-snapshot" title="Permanent link">&para;</a></h2>
 <ul>
-<li>it works in es 6.8<br />
+<li>could use iam role / user in cli to execute awscurl </li>
+<li>follow steps in es 7.10<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nv">DOMAIN_NAME</span><span class="o">=</span>vpc-src1-xxx.ap-southeast-1.es.amazonaws.com
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>awscurl<span class="w"> </span>-XPUT<span class="w"> </span>--service<span class="w"> </span>es<span class="w"> </span>--region<span class="w"> </span>ap-southeast-1<span class="w"> </span>http://<span class="si">${</span><span class="nv">DOMAIN_NAME</span><span class="si">}</span>/_snapshot/snapshot-repo-1<span class="w"> </span>-H<span class="w"> </span><span class="s1">&#39;Content-Type: application/json&#39;</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">&#39; </span>
@@ -5959,12 +5981,36 @@
 </ul>
 <h2 id="error">error<a class="headerlink" href="#error" title="Permanent link">&para;</a></h2>
 <ul>
-<li>使用 curl 用 admin 登录，只能做查询，无法创建 repo，需要使用 awscurl<br />
+<li>
+<p>创建 opensearch repo 只能使用本 region 的 s3 桶</p>
+</li>
+<li>
+<p>使用 curl 用 admin 登录，只能做查询，无法创建 repo，需要使用 awscurl<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>{&quot;Message&quot;:&quot;User: anonymous is not authorized to perform: iam:PassRole on resource: arn:aws:iam::123456789012:role/aos-mig-role because no resource-based policy allows the iam:PassRole action&quot;}
-</code></pre></div></li>
+</code></pre></div></p>
+</li>
+<li>
+<p>iam user could not access ES cluster 7.10 directly, assume to another iam role <br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>{
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>  &quot;error&quot; : {
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    &quot;root_cause&quot; : [
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>      {
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>        &quot;type&quot; : &quot;security_exception&quot;,
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>        &quot;reason&quot; : &quot;no permissions for [cluster:admin/repository/get] and User [name=arn:aws:iam::123456789012:user/panlm, backend_roles=[], requestedTenant=null]&quot;
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>      }
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>    ],
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>    &quot;type&quot; : &quot;security_exception&quot;,
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>    &quot;reason&quot; : &quot;no permissions for [cluster:admin/repository/get] and User [name=arn:aws:iam::123456789012:user/panlm, backend_roles=[], requestedTenant=null]&quot;
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>  },
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>  &quot;status&quot; : 403
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>}
+</code></pre></div></p>
+</li>
 </ul>
 <h2 id="refer">refer<a class="headerlink" href="#refer" title="Permanent link">&para;</a></h2>
-<p><a href="https://docs.amazonaws.cn/opensearch-service/latest/developerguide/managedomains-snapshots.html">https://docs.amazonaws.cn/opensearch-service/latest/developerguide/managedomains-snapshots.html</a></p>
+<ul>
+<li><a href="https://docs.amazonaws.cn/opensearch-service/latest/developerguide/managedomains-snapshots.html">https://docs.amazonaws.cn/opensearch-service/latest/developerguide/managedomains-snapshots.html</a></li>
+</ul>
 
 
 
@@ -5987,7 +6033,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-12-28T17:43:14+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-12-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-01-03T07:52:35+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-01-03</span>
   </span>
 
     
