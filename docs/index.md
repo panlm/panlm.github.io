@@ -14,6 +14,7 @@ number headings: first-level 2, max 3, 1.1, auto
 (["status":"myblog"] OR ["status":"awsblog"])
 - [$frontmatter:title]($filename) -- $frontmatter:description
 ```
+- [AWS Opensearch / Elasticsearch Migration](aos-migration) -- 使用 snapshot 迁移 elasticsearch
 - [CodeServer](vscode) -- Using code-server on EC2 instead of Cloud9 due to it has been deprecated
 - [Datahub](datahub) -- 部署 Datahub，从 Redshift 和 Glue job 中获取数据血缘
 - [Quick Deploy BRConnector using Cloudformation](quick-build-brconnector) -- 使用 Cloudformation 快速部署 BRConnector
@@ -55,8 +56,5 @@ number headings: first-level 2, max 3, 1.1, auto
 ## 5 rendered
 
 {{ pagetree }}
-
-
-
 
 
