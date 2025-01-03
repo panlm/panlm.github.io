@@ -32,7 +32,7 @@ tee ~/.local/share/code-server/User/settings.json <<EOF
 "extensions.autoUpdate": false,
 "extensions.autoCheckUpdates": false,
 "terminal.integrated.cwd": "/home/$USER",
-"terminal.integrated.wordSeparators": " ()[]{}',\"`─‘’“”|=",
+"terminal.integrated.wordSeparators": " ()[]{}',.`-─‘’“”|=",
 "telemetry.telemetryLevel": "off",
 "security.workspace.trust.startupPrompt": "never",
 "security.workspace.trust.enabled": false,
