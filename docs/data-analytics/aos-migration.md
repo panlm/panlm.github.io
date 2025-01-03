@@ -9,12 +9,14 @@ tags:
 ---
 
 # aos-migration
+
+## snapshot
 - create role-a aos-mig-role, see detail in refer chapter
 - ad `iam:PassRole` to role-b
 - (only for kibana) add role-b (using by awscurl) to opensearch --> security --> role --> all_access --> mapped users
 - 增量做快照，恢复时候指定最新快照名，全量恢复
-
-## es 7.10 snapshot
+- refer: https://docs.amazonaws.cn/opensearch-service/latest/developerguide/managedomains-snapshots.html
+### es 7.10 snapshot
 - only could use iam role in cli to execute awscurl 
 - create snapshot repo
 ```sh
@@ -44,7 +46,7 @@ awscurl -XGET --service es --region ap-southeast-1 https://${DOMAIN_NAME}/_snaps
 
 ```
 
-## es 7.10 restore
+### es 7.10 restore
 - (option) put role/user to all_access
 - create repo
 ```sh
@@ -81,7 +83,7 @@ awscurl -XPOST --service es --region ap-southeast-1 "https://${DOMAIN_NAME}/_sna
 
 ```
 
-## es 6.8 snapshot
+### es 6.8 snapshot
 - could use iam role / user in cli to execute awscurl 
 - follow steps in es 7.10
 ```sh
@@ -100,7 +102,7 @@ awscurl -XPUT --service es --region ap-southeast-1 http://${DOMAIN_NAME}/_snapsh
 
 ```
 
-## error
+### error
 - 创建 opensearch repo 只能使用本 region 的 s3 桶
 
 - 使用 curl 用 admin 登录，只能做查询，无法创建 repo，需要使用 awscurl
@@ -126,7 +128,31 @@ awscurl -XPUT --service es --region ap-southeast-1 http://${DOMAIN_NAME}/_snapsh
 }
 ```
 
-## refer
-- https://docs.amazonaws.cn/opensearch-service/latest/developerguide/managedomains-snapshots.html
+
+## replication
+- refer: https://docs.aws.amazon.com/opensearch-service/latest/developerguide/replication.html
+- 增量复制
+- create connection from target, approve connection in source
+
+```sh
+DOMAIN_NAME=
+INDEX_NAME=leader-99
+CONNECTION_NAME=src2-target-test
+awscurl -XPUT --service es --region ap-southeast-1 "https://${DOMAIN_NAME}/_plugins/_replication/${INDEX_NAME}/_start" -H 'Content-Type: application/json' -d ' 
+{
+  "leader_alias": "'"${CONNECTION_NAME}"'",
+  "leader_index": "'"${INDEX_NAME}"'",
+  "use_roles":{
+    "leader_cluster_role": "all_access",
+    "follower_cluster_role": "all_access"
+  }
+}'
+
+awscurl -XGET --service es --region ap-southeast-1 "https://${DOMAIN_NAME}/_plugins/_replication/${INDEX_NAME}/_status?pretty"
+
+awscurl -XGET --service es --region ap-southeast-1 "https://${DOMAIN_NAME}/${INDEX_NAME}/_search?pretty"
+
+```
+
 
 

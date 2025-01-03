@@ -104,6 +104,9 @@ aws sts assume-role --role-arn ${role_arn} \
 export AWS_ACCESS_KEY_ID=$(cat ${tmp_file} |jq -r '.Credentials.AccessKeyId' )
 export AWS_SECRET_ACCESS_KEY=$(cat ${tmp_file} |jq -r '.Credentials.SecretAccessKey' )
 export AWS_SESSION_TOKEN=$(cat ${tmp_file} |jq -r '.Credentials.SessionToken' )
+# compatibility for old version 
+export AWS_SECURITY_TOKEN=$(cat ${tmp_file} |jq -r '.Credentials.SessionToken' )
+
 export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-identity/document | jq -r '.region')
 
 ```
