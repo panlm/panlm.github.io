@@ -27,7 +27,7 @@ hashed-password: "$IDE_PASSWORD"
 bind-addr: 0.0.0.0:8088
 EOF
 mkdir -p ~/.local/share/code-server/User
-tee ~/.local/share/code-server/User/settings.json <<EOF
+tee ~/.local/share/code-server/User/settings.json <<-'EOF'
 {
 "extensions.autoUpdate": false,
 "extensions.autoCheckUpdates": false,
@@ -46,7 +46,8 @@ tee ~/.local/share/code-server/User/settings.json <<EOF
     {
     "command": "workbench.action.terminal.new"
     }
-]
+],
+"terminal.integrated.wordSeparators": " ()[]{}',\"`─‘’“”|="
 }
 EOF
 
