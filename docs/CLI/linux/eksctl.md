@@ -23,6 +23,11 @@ eksctl completion bash >> ~/.bash_completion
 
 refer: [[../../cloud9/setup-cloud9-for-eks#install-in-cloud9-]] 
 
+## auto-mode-
+```sh
+eksctl create cluster --name=ekscluster1 --enable-auto-mode
+```
+
 ## oidc
 ```sh
 eksctl utils associate-iam-oidc-provider --cluster $EKS_CLUSTER_NAME --region $AWS_REGION --approve

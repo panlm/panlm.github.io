@@ -43,11 +43,12 @@ eksdemo install aws-lb-controller -c ${CLUSTER_NAME} --namespace kube-system
 ```
 
 ### install-
-- https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.4/deploy/installation/
+- https://kubernetes-sigs.github.io/aws-load-balancer-controller/latest/deploy/installation/
 - Install AWS Load Balancer Controller
 ```sh
 CLUSTER_NAME=ekscluster1
-AWS_REGION=us-east-2
+AWS_REGION=us-west-2
+VPC_ID=$(aws cloudformation describe-stacks --stack-name eksctl-${CLUSTER_NAME}-cluster  --query 'Stacks[0].Outputs[?OutputKey==`VPC`].OutputValue' --output text)
 export AWS_DEFAULT_REGION=${AWS_REGION}
 export AWS_PAGER=""
 
@@ -104,15 +105,17 @@ if [[ ${AWS_REGION%%-*} == "cn" ]]; then
 	--set serviceAccount.create=false \
 	--set serviceAccount.name=aws-load-balancer-controller \
 	--set image.repository=961992271922.dkr.ecr.cn-northwest-1.amazonaws.com.cn/amazon/aws-load-balancer-controller \
-	# --set region=${AWS_DEFAULT_REGION} \
-	# --set vpcId=${VPC_ID} 
+	--set region=${AWS_DEFAULT_REGION} \
+	--set vpcId=${VPC_ID} 
 else
   # aws commercial region
   helm install aws-load-balancer-controller eks/aws-load-balancer-controller \
 	-n kube-system \
 	--set clusterName=${CLUSTER_NAME} \
 	--set serviceAccount.create=false \
-	--set serviceAccount.name=aws-load-balancer-controller 
+	--set serviceAccount.name=aws-load-balancer-controller \
+	--set region=${AWS_DEFAULT_REGION} \
+	--set vpcId=${VPC_ID} 
 fi
 
 kubectl get deployment -n kube-system aws-load-balancer-controller

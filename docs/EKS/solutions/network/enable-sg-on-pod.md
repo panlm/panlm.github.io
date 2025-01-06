@@ -37,7 +37,6 @@ more explanation for ENV on vpc cni github
 - https://github.com/aws/amazon-vpc-cni-k8s/blob/master/README.md#:~:text=recycle%20the%20instance.-,POD_SECURITY_GROUP_ENFORCING_MODE,-(v1.11.0%2B)
 
 
-
 ## workshop
 https://www.eksworkshop.com/beginner/115_sg-per-pod/
 

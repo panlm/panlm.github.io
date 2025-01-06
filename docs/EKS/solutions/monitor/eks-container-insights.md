@@ -17,7 +17,7 @@ tags:
 - install cloudwatch observibility addon
 ```sh
 CLUSTER_NAME=
-ADDON_DEFAULT_VERSION=$(aws eks describe-addon-versions --addon-name amazon-cloudwatch-observability --kubernetes-version "1.29" --query 'addons[].addonVersions[?compatibilities[?defaultVersion==`true`]].addonVersion' --output text)
+ADDON_DEFAULT_VERSION=$(aws eks describe-addon-versions --addon-name amazon-cloudwatch-observability --kubernetes-version "1.30" --query 'addons[].addonVersions[?compatibilities[?defaultVersion==`true`]].addonVersion' --output text)
 aws eks create-addon --cluster-name ${CLUSTER_NAME} \
 --addon-name amazon-cloudwatch-observability --addon-version ${ADDON_DEFAULT_VERSION} \
 --resolve-conflicts OVERWRITE
