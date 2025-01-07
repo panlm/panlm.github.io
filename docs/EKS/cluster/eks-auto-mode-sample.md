@@ -33,6 +33,8 @@ tags:
 - Network Policy configurations such as conntrack timer customization (default is 300s).
 - Exporting network event logs to CloudWatch.
 
+## pricing
+- 额外收取 auto mode 管理的 EC2 节点的 Ondemond 价格 12% ([link](https://aws.amazon.com/eks/pricing/))
 
 ## sample
 ### load balancer controller
