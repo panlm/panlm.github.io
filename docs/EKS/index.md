@@ -10,6 +10,7 @@ number headings: first-level 2, max 3, 1.1, auto
 (path:git/git-mkdocs/EKS/cluster file:.md)
 - [$frontmatter:title]($filename): $frontmatter:description
 ```
+- [EKS Auto Mode](eks-auto-mode-sample): EKS Auto Mode
 - [EKS Addons](eks-cluster-addons-list): EKS 常用插件清单
 - [Create EKS Cluster with Terraform](eks-cluster-with-terraform): 使用 Terraform 创建 EKS 集群
 - [Create Private Only EKS Cluster](eks-private-access-cluster): 在已有 VPC 中创建私有访问的 EKS 集群

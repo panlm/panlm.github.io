@@ -12,6 +12,8 @@ tags:
 - https://aws.amazon.com/blogs/aws/streamline-kubernetes-cluster-management-with-new-amazon-eks-auto-mode/
 - https://aws.amazon.com/blogs/containers/getting-started-with-amazon-eks-auto-mode/
 
+![[attachments/eks-auto-mode-sample/IMG-eks-auto-mode-sample.png]]
+
 ## components 
 - https://docs.aws.amazon.com/eks/latest/userguide/automode.html#_automated_components
 - Karpenter 
