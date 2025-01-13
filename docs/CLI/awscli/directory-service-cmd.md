@@ -24,9 +24,9 @@ aws ds create-microsoft-ad \
     --short-name ${AD%%.*} \
     --password ${PASS} \
     --edition Standard \
-    --vpc-settings VpcId=${VPC},SubnetIds=${SUBNETS}
+    --vpc-settings VpcId=${VPC},SubnetIds=${SUBNETS} |tee /tmp/$$.ds.log
 
-MSDS_ID=d-xxxx
+MSDS_ID=$(cat /tmp/$$.ds.log |jq -r '.DirectoryId')
 aws ds describe-directories \
     --directory-ids ${MSDS_ID} \
     --query DirectoryDescriptions[0].[Stage,DnsIpAddrs] \
@@ -45,34 +45,3 @@ aws ds describe-directories \
 ![[Enabling Federation to AWS Using Windows Active Directory ADFS and SAML 2.0#^zfsdkd]]
 
 
-## get compute name
-```powershell
-# 导入 Active Directory 模块
-Import-Module ActiveDirectory
-
-# 获取所有计算机对象
-$allComputers = Get-ADComputer -Filter * -Properties Name, LastLogonDate, OperatingSystem
-
-# 设置一个时间阈值，例如 90 天
-$threshold = (Get-Date).AddDays(-90)
-
-# 筛选出最近登录的计算机
-$activeComputers = $allComputers | Where-Object { $_.LastLogonDate -gt $threshold }
-
-# 创建一个空数组来存储在线计算机
-$onlineComputers = @()
-
-# 遍历活跃计算机列表，检查是否在线
-foreach ($computer in $activeComputers) {
-    if (Test-Connection -ComputerName $computer.Name -Count 1 -Quiet) {
-        $onlineComputers += $computer
-    }
-}
-
-# 输出结果到 CSV 文件
-$onlineComputers | Select-Object Name, OperatingSystem, LastLogonDate | 
-    Export-Csv -Path "C:\ActiveComputers.csv" -NoTypeInformation
-
-Write-Host "Active computers list has been exported to C:\ActiveComputers.csv"
-
-```

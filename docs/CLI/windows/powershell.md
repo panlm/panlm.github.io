@@ -94,4 +94,63 @@ Site                             :
 Container                        :
 ```
 
+## get compute name
+### lab1
+```powershell
+# 导入 Active Directory 模块
+Import-Module ActiveDirectory
 
+# 获取所有计算机对象
+$allComputers = Get-ADComputer -Filter * -Properties Name, LastLogonDate, OperatingSystem
+
+# 设置一个时间阈值，例如 90 天
+$threshold = (Get-Date).AddDays(-90)
+
+# 筛选出最近登录的计算机
+$activeComputers = $allComputers | Where-Object { $_.LastLogonDate -gt $threshold }
+
+# 创建一个空数组来存储在线计算机
+$onlineComputers = @()
+
+# 遍历活跃计算机列表，检查是否在线
+foreach ($computer in $activeComputers) {
+    if (Test-Connection -ComputerName $computer.Name -Count 1 -Quiet) {
+        $onlineComputers += $computer
+    }
+}
+
+# 输出结果到 CSV 文件
+$onlineComputers | Select-Object Name, OperatingSystem, LastLogonDate | 
+    Export-Csv -Path "C:\ActiveComputers.csv" -NoTypeInformation
+
+Write-Host "Active computers list has been exported to C:\ActiveComputers.csv"
+
+```
+
+### lab2
+```powershell
+# 导入 Active Directory 模块
+Import-Module ActiveDirectory
+
+# 设置时间阈值，例如 90 天
+$threshold = (Get-Date).AddDays(-90)
+
+# 获取所有计算机账户
+$computers = Get-ADComputer -Filter * -Properties Name, LastLogonDate, Enabled
+
+# 筛选有效的计算机账户
+$activeComputers = $computers | Where-Object {
+    $_.Enabled -eq $true -and
+    $_.LastLogonDate -gt $threshold
+}
+
+# 导出结果到 CSV 文件
+$activeComputers | Select-Object Name, LastLogonDate |
+    Export-Csv -Path "C:\ActiveComputers.csv" -NoTypeInformation
+
+# 显示结果摘要
+Write-Host "总计算机数量: $($computers.Count)"
+Write-Host "有效计算机数量: $($activeComputers.Count)"
+Write-Host "结果已导出到 C:\ActiveComputers.csv"
+
+```

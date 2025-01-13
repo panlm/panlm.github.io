@@ -30,7 +30,7 @@ eksdemo create cluster ${CLUSTER_NAME} \
 
 ```
 
-- create hosted zone ([[../functions/func-create-hosted-zone.sh|func-create-hosted-zone]])
+- create hosted zone ([[../awscli/route53-cmd#func-create-hosted-zone-|route53-cmd]])
 - create ACM ([[../awscli/acm-cmd#create-certificate-with-eksdemo-|create-certificate-with-eksdemo]])
 - install alb controller ([[git/git-mkdocs/EKS/addons/aws-load-balancer-controller#install-with-eksdemo-|install alb controller]]) 
 - install external dns ([[git/git-mkdocs/EKS/addons/externaldns-for-route53#install-with-eksdemo-|install externaldns]])
