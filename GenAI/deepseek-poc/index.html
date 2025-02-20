@@ -6,29 +6,29 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="https://aws.amazon.com/blogs/networking-and-content-delivery/deployment-models-for-aws-network-firewall-with-vpc-routing-enhancements/">
+        <meta name="description" content="Deepseek POC">
       
       
       
-        <link rel="canonical" href="https://panlm.github.io/git-attachment/blog-deployment-models-for-aws-network-firewall/">
+        <link rel="canonical" href="https://panlm.github.io/GenAI/deepseek-poc/">
       
       
-        <link rel="prev" href="../Securely%20share%20your%20data%20across%20AWS%20accounts%20using%20AWS%20Lake%20Formation/">
+        <link rel="prev" href="../">
       
       
-        <link rel="next" href="../blog-design-your-firewall-deployment-for-internet-ingress-traffic-flows/">
+        <link rel="next" href="../dify-sample/">
       
       
       <link rel="icon" href="../../assets/images/favicon.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.5.49">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.5">
     
     
       
-        <title>Deployment models for AWS Network Firewall - panlm</title>
+        <title>deepseek-poc - panlm</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.6f8fc17f.min.css">
+      <link rel="stylesheet" href="../../assets/stylesheets/main.8608ea7d.min.css">
       
         
         <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
@@ -51,6 +51,8 @@
     
     
       <link rel="stylesheet" href="../../css/timeago.css">
+    
+      <link rel="stylesheet" href="../../assets/mkdocs_pagetree_plugin.css">
     
       <link rel="stylesheet" href="../../extra.css">
     
@@ -99,7 +101,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#deployment-models-for-aws-network-firewall-with-vpc-routing-enhancements" class="md-skip">
+        <a href="#deepseek-poc" class="md-skip">
           Skip to content
         </a>
       
@@ -117,7 +119,7 @@
   <nav class="md-header__inner md-grid" aria-label="Header">
     <a href="../.." title="panlm" class="md-header__button md-logo" aria-label="panlm" data-md-component="logo">
       
-  <img src="../AWS_Logo.png" alt="logo">
+  <img src="../../git-attachment/AWS_Logo.png" alt="logo">
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
@@ -134,7 +136,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Deployment models for AWS Network Firewall
+              deepseek-poc
             
           </span>
         </div>
@@ -187,7 +189,7 @@
           </li>
         
           <li class="md-select__item">
-            <a href="../../zh/git-attachment/blog-deployment-models-for-aws-network-firewall/" hreflang="zh" class="md-select__link">
+            <a href="../../zh/GenAI/deepseek-poc/" hreflang="zh" class="md-select__link">
               中文
             </a>
           </li>
@@ -242,7 +244,7 @@
         <a href="https://github.com/panlm/panlm.github.io" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     panlm/panlm.github.io
@@ -358,11 +360,13 @@
         
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../GenAI/dify-sample/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="../" class="md-tabs__link">
           
   
     
@@ -471,7 +475,7 @@
   <label class="md-nav__title" for="__drawer">
     <a href="../.." title="panlm" class="md-nav__button md-logo" aria-label="panlm" data-md-component="logo">
       
-  <img src="../AWS_Logo.png" alt="logo">
+  <img src="../../git-attachment/AWS_Logo.png" alt="logo">
 
     </a>
     panlm
@@ -481,7 +485,7 @@
       <a href="https://github.com/panlm/panlm.github.io" title="Go to repository" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
   </div>
   <div class="md-source__repository">
     panlm/panlm.github.io
@@ -503,6 +507,7 @@
   
   <span class="md-ellipsis">
     Welcome
+    
   </span>
   
 
@@ -552,6 +557,7 @@
   
   <span class="md-ellipsis">
     Cloud9
+    
   </span>
   
 
@@ -583,6 +589,7 @@
   
   <span class="md-ellipsis">
     Quick Setup Cloud9
+    
   </span>
   
     
@@ -612,6 +619,7 @@
   
   <span class="md-ellipsis">
     Setup Cloud9 for EKS
+    
   </span>
   
     
@@ -643,6 +651,7 @@
   
   <span class="md-ellipsis">
     Create Standard VPC for Lab in China Region or Global Region
+    
   </span>
   
     
@@ -672,6 +681,7 @@
   
   <span class="md-ellipsis">
     CodeServer
+    
   </span>
   
     
@@ -735,6 +745,7 @@
   
   <span class="md-ellipsis">
     Container
+    
   </span>
   
 
@@ -791,6 +802,7 @@
   
   <span class="md-ellipsis">
     EKS
+    
   </span>
   
 
@@ -845,6 +857,7 @@
   
   <span class="md-ellipsis">
     Cluster
+    
   </span>
   
 
@@ -870,6 +883,7 @@
   
   <span class="md-ellipsis">
     Create EKS Cluster with Terraform
+    
   </span>
   
 
@@ -891,6 +905,7 @@
   
   <span class="md-ellipsis">
     Create Public Access EKS Cluster in China Region
+    
   </span>
   
 
@@ -912,6 +927,7 @@
   
   <span class="md-ellipsis">
     Create Public Access EKS Cluster
+    
   </span>
   
 
@@ -933,6 +949,7 @@
   
   <span class="md-ellipsis">
     Create Private Only EKS Cluster
+    
   </span>
   
 
@@ -954,6 +971,7 @@
   
   <span class="md-ellipsis">
     EKS Upgrade Procedure
+    
   </span>
   
 
@@ -975,6 +993,7 @@
   
   <span class="md-ellipsis">
     EKS Addons
+    
   </span>
   
 
@@ -996,6 +1015,7 @@
   
   <span class="md-ellipsis">
     EKS Auto Mode
+    
   </span>
   
 
@@ -1086,6 +1106,7 @@
   
   <span class="md-ellipsis">
     Addons
+    
   </span>
   
 
@@ -1111,6 +1132,7 @@
   
   <span class="md-ellipsis">
     aws-for-fluent-bit
+    
   </span>
   
 
@@ -1132,6 +1154,7 @@
   
   <span class="md-ellipsis">
     aws-load-balancer-controller
+    
   </span>
   
 
@@ -1153,6 +1176,7 @@
   
   <span class="md-ellipsis">
     cert-manager
+    
   </span>
   
 
@@ -1174,6 +1198,7 @@
   
   <span class="md-ellipsis">
     cluster-autoscaler
+    
   </span>
   
 
@@ -1195,6 +1220,7 @@
   
   <span class="md-ellipsis">
     cni-metrics-helper
+    
   </span>
   
 
@@ -1216,6 +1242,7 @@
   
   <span class="md-ellipsis">
     ebs-for-eks
+    
   </span>
   
 
@@ -1237,6 +1264,7 @@
   
   <span class="md-ellipsis">
     EFS CSI on EKS
+    
   </span>
   
 
@@ -1258,6 +1286,7 @@
   
   <span class="md-ellipsis">
     eks-addons-coredns
+    
   </span>
   
 
@@ -1279,6 +1308,7 @@
   
   <span class="md-ellipsis">
     eks-addons-kube-proxy
+    
   </span>
   
 
@@ -1300,6 +1330,7 @@
   
   <span class="md-ellipsis">
     eks-addons-vpc-cni
+    
   </span>
   
 
@@ -1321,6 +1352,7 @@
   
   <span class="md-ellipsis">
     eks-external-snat
+    
   </span>
   
 
@@ -1342,6 +1374,7 @@
   
   <span class="md-ellipsis">
     eksup
+    
   </span>
   
 
@@ -1363,6 +1396,7 @@
   
   <span class="md-ellipsis">
     externaldns-for-route53
+    
   </span>
   
 
@@ -1384,6 +1418,7 @@
   
   <span class="md-ellipsis">
     karpenter
+    
   </span>
   
 
@@ -1405,6 +1440,7 @@
   
   <span class="md-ellipsis">
     kube-no-trouble
+    
   </span>
   
 
@@ -1426,6 +1462,7 @@
   
   <span class="md-ellipsis">
     kube-state-metrics
+    
   </span>
   
 
@@ -1447,6 +1484,7 @@
   
   <span class="md-ellipsis">
     Kyverno
+    
   </span>
   
 
@@ -1468,6 +1506,7 @@
   
   <span class="md-ellipsis">
     Metrics Server
+    
   </span>
   
 
@@ -1489,6 +1528,7 @@
   
   <span class="md-ellipsis">
     nginx-ingress-controller-community-ver
+    
   </span>
   
 
@@ -1510,6 +1550,7 @@
   
   <span class="md-ellipsis">
     nginx-ingress-controller-nginx-ver
+    
   </span>
   
 
@@ -1531,6 +1572,7 @@
   
   <span class="md-ellipsis">
     nginx-ingress-controller
+    
   </span>
   
 
@@ -1552,6 +1594,7 @@
   
   <span class="md-ellipsis">
     pluto
+    
   </span>
   
 
@@ -1573,6 +1616,7 @@
   
   <span class="md-ellipsis">
     prometheus-adapter
+    
   </span>
   
 
@@ -1631,6 +1675,7 @@
   
   <span class="md-ellipsis">
     Solutions
+    
   </span>
   
 
@@ -1675,6 +1720,7 @@
   
   <span class="md-ellipsis">
     Appmesh
+    
   </span>
   
 
@@ -1700,6 +1746,7 @@
   
   <span class="md-ellipsis">
     appmesh-workshop-eks
+    
   </span>
   
     
@@ -1728,6 +1775,7 @@
   
   <span class="md-ellipsis">
     automated-canary-deployment-using-flagger
+    
   </span>
   
 
@@ -1774,6 +1822,7 @@
   
   <span class="md-ellipsis">
     Compute
+    
   </span>
   
 
@@ -1799,6 +1848,7 @@
   
   <span class="md-ellipsis">
     Fargate on EKS
+    
   </span>
   
 
@@ -1847,6 +1897,7 @@
   
   <span class="md-ellipsis">
     Gitops
+    
   </span>
   
 
@@ -1872,6 +1923,7 @@
   
   <span class="md-ellipsis">
     argocd
+    
   </span>
   
 
@@ -1893,6 +1945,7 @@
   
   <span class="md-ellipsis">
     flux
+    
   </span>
   
 
@@ -1949,6 +2002,7 @@
   
   <span class="md-ellipsis">
     Logging
+    
   </span>
   
 
@@ -1974,6 +2028,7 @@
   
   <span class="md-ellipsis">
     cloudwatch-to-firehose-python
+    
   </span>
   
 
@@ -1995,6 +2050,7 @@
   
   <span class="md-ellipsis">
     Security Lake Support Collecting Audit Logging from EKS
+    
   </span>
   
     
@@ -2024,6 +2080,7 @@
   
   <span class="md-ellipsis">
     eks-loggroup-description
+    
   </span>
   
 
@@ -2045,6 +2102,7 @@
   
   <span class="md-ellipsis">
     Export Cloudwatch Log Group to S3
+    
   </span>
   
     
@@ -2074,6 +2132,7 @@
   
   <span class="md-ellipsis">
     Using Grafana Loki for Logging
+    
   </span>
   
     
@@ -2103,6 +2162,7 @@
   
   <span class="md-ellipsis">
     Stream EKS Control Panel Logs to S3
+    
   </span>
   
     
@@ -2165,6 +2225,7 @@
   
   <span class="md-ellipsis">
     Monitor
+    
   </span>
   
 
@@ -2190,6 +2251,7 @@
   
   <span class="md-ellipsis">
     EKS Container Insights
+    
   </span>
   
 
@@ -2211,6 +2273,7 @@
   
   <span class="md-ellipsis">
     enable-prometheus-in-cloudwatch
+    
   </span>
   
 
@@ -2232,6 +2295,7 @@
   
   <span class="md-ellipsis">
     Install Grafana on Beanstalk
+    
   </span>
   
 
@@ -2253,6 +2317,7 @@
   
   <span class="md-ellipsis">
     install-prometheus-grafana-on-eks
+    
   </span>
   
 
@@ -2274,6 +2339,7 @@
   
   <span class="md-ellipsis">
     kubernetes events exporter
+    
   </span>
   
 
@@ -2326,6 +2392,7 @@
   
   <span class="md-ellipsis">
     Network
+    
   </span>
   
 
@@ -2351,6 +2418,7 @@
   
   <span class="md-ellipsis">
     EKS Security Group Deepdive
+    
   </span>
   
     
@@ -2380,6 +2448,7 @@
   
   <span class="md-ellipsis">
     eks-custom-network
+    
   </span>
   
 
@@ -2401,6 +2470,7 @@
   
   <span class="md-ellipsis">
     eks-prefix-assignment
+    
   </span>
   
 
@@ -2422,6 +2492,7 @@
   
   <span class="md-ellipsis">
     enable-sg-on-pod
+    
   </span>
   
 
@@ -2472,6 +2543,7 @@
   
   <span class="md-ellipsis">
     Security
+    
   </span>
   
 
@@ -2497,6 +2569,7 @@
   
   <span class="md-ellipsis">
     IRSA 中的 Token 剖析
+    
   </span>
   
     
@@ -2526,6 +2599,7 @@
   
   <span class="md-ellipsis">
     EKS Access API
+    
   </span>
   
 
@@ -2547,6 +2621,7 @@
   
   <span class="md-ellipsis">
     eks-aws-auth
+    
   </span>
   
 
@@ -2607,6 +2682,7 @@
   
   <span class="md-ellipsis">
     Kubernetes
+    
   </span>
   
 
@@ -2632,6 +2708,7 @@
   
   <span class="md-ellipsis">
     horizontal pod autoscaler
+    
   </span>
   
 
@@ -2653,6 +2730,7 @@
   
   <span class="md-ellipsis">
     k8s-liveness-readiness-startup-probes
+    
   </span>
   
 
@@ -2674,6 +2752,7 @@
   
   <span class="md-ellipsis">
     Kubernetes Best Practices - Resource Requests and Limits
+    
   </span>
   
 
@@ -2695,6 +2774,7 @@
   
   <span class="md-ellipsis">
     topology spread constraints
+    
   </span>
   
 
@@ -2755,6 +2835,7 @@
   
   <span class="md-ellipsis">
     ECS
+    
   </span>
   
 
@@ -2780,6 +2861,7 @@
   
   <span class="md-ellipsis">
     Migrating .NET Classic Applications to Amazon ECS Using Windows Containers
+    
   </span>
   
 
@@ -2801,6 +2883,7 @@
   
   <span class="md-ellipsis">
     ecs-windows-gmsa
+    
   </span>
   
 
@@ -2822,6 +2905,7 @@
   
   <span class="md-ellipsis">
     poc-container-on-domainless-windows-in-ecs
+    
   </span>
   
 
@@ -2843,6 +2927,7 @@
   
   <span class="md-ellipsis">
     Windows Authentication with gMSA for .NET Linux Containers in Amazon ECS
+    
   </span>
   
 
@@ -2893,6 +2978,7 @@
   
   <span class="md-ellipsis">
     ECR
+    
   </span>
   
 
@@ -2918,6 +3004,7 @@
   
   <span class="md-ellipsis">
     aws-signer
+    
   </span>
   
 
@@ -2939,6 +3026,7 @@
   
   <span class="md-ellipsis">
     Enable scan on push in ECR and send notification to SNS
+    
   </span>
   
     
@@ -2968,6 +3056,7 @@
   
   <span class="md-ellipsis">
     Mutating Webhook for Kubernetes in China
+    
   </span>
   
     
@@ -3045,6 +3134,7 @@
   
   <span class="md-ellipsis">
     Database and Analytics
+    
   </span>
   
 
@@ -3078,6 +3168,7 @@
   
   <span class="md-ellipsis">
     AWS Opensearch / Elasticsearch Migration
+    
   </span>
   
     
@@ -3107,6 +3198,7 @@
   
   <span class="md-ellipsis">
     Datahub
+    
   </span>
   
     
@@ -3136,6 +3228,7 @@
   
   <span class="md-ellipsis">
     Enable Quicksight with Identity Center
+    
   </span>
   
     
@@ -3165,6 +3258,7 @@
   
   <span class="md-ellipsis">
     rds-mysql-replica-cross-region-cross-account
+    
   </span>
   
 
@@ -3186,6 +3280,7 @@
   
   <span class="md-ellipsis">
     redshift-data-api-lab
+    
   </span>
   
 
@@ -3207,6 +3302,7 @@
   
   <span class="md-ellipsis">
     Using MWAA in Private Network
+    
   </span>
   
 
@@ -3260,6 +3356,7 @@
   
   <span class="md-ellipsis">
     Serverless
+    
   </span>
   
 
@@ -3285,6 +3382,7 @@
   
   <span class="md-ellipsis">
     apigw-cross-account-private-endpoint
+    
   </span>
   
 
@@ -3306,6 +3404,7 @@
   
   <span class="md-ellipsis">
     Custom Domain Name in API Gateway
+    
   </span>
   
 
@@ -3327,6 +3426,7 @@
   
   <span class="md-ellipsis">
     Get Source IP in API Gateway
+    
   </span>
   
 
@@ -3348,6 +3448,7 @@
   
   <span class="md-ellipsis">
     apigw-private-api-alb-cdk
+    
   </span>
   
 
@@ -3369,6 +3470,7 @@
   
   <span class="md-ellipsis">
     apigw-regional-api-access-from-vpc
+    
   </span>
   
 
@@ -3389,45 +3491,157 @@
       
   
   
+    
   
   
+  
     
     
       
-        
-      
-        
-      
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
         
           
-          <label class="md-nav__link" for="__nav_6" id="__nav_6_label" tabindex="0">
-            
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        
+          
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
   
   <span class="md-ellipsis">
     GenAI
+    
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_6" id="__nav_6_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_6_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_6">
             <span class="md-nav__icon md-icon"></span>
             GenAI
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  <span class="md-ellipsis">
+    deepseek-poc
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  <span class="md-ellipsis">
+    deepseek-poc
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#llamacpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      llama.cpp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vllm" class="md-nav__link">
+    <span class="md-ellipsis">
+      vllm
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#djl" class="md-nav__link">
+    <span class="md-ellipsis">
+      djl
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
             
               
                 
@@ -3436,11 +3650,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GenAI/dify-sample/" class="md-nav__link">
+      <a href="../dify-sample/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     dify.ai
+    
   </span>
   
 
@@ -3457,11 +3672,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GenAI/llm-llama2-llama3/" class="md-nav__link">
+      <a href="../llm-llama2-llama3/" class="md-nav__link">
         
   
   <span class="md-ellipsis">
     llm-llama3
+    
   </span>
   
 
@@ -3539,6 +3755,7 @@
   
   <span class="md-ellipsis">
     Others
+    
   </span>
   
 
@@ -3572,6 +3789,7 @@
   
   <span class="md-ellipsis">
     Migrating Filezilla to AWS Transfer Family
+    
   </span>
   
     
@@ -3601,6 +3819,7 @@
   
   <span class="md-ellipsis">
     Prometheus With Thanos Manually
+    
   </span>
   
     
@@ -3629,6 +3848,7 @@
   
   <span class="md-ellipsis">
     Storage File Gateway
+    
   </span>
   
 
@@ -3650,6 +3870,7 @@
   
   <span class="md-ellipsis">
     Using Global SSO to Login China AWS Accounts
+    
   </span>
   
     
@@ -3679,6 +3900,7 @@
   
   <span class="md-ellipsis">
     create-dashboard-for-instance-cpu-matrics
+    
   </span>
   
 
@@ -3700,6 +3922,7 @@
   
   <span class="md-ellipsis">
     Obsidian Tips
+    
   </span>
   
     
@@ -3729,6 +3952,7 @@
   
   <span class="md-ellipsis">
     Quick Deploy BRConnector using Cloudformation
+    
   </span>
   
     
@@ -3758,6 +3982,7 @@
   
   <span class="md-ellipsis">
     Rescue EC2 Instance
+    
   </span>
   
 
@@ -3779,6 +4004,7 @@
   
   <span class="md-ellipsis">
     script-api-resource-method
+    
   </span>
   
     
@@ -3807,6 +4033,7 @@
   
   <span class="md-ellipsis">
     script-convert-mp3-to-text
+    
   </span>
   
 
@@ -3828,6 +4055,7 @@
   
   <span class="md-ellipsis">
     self-signed-certificates
+    
   </span>
   
 
@@ -3872,6 +4100,7 @@
   
   <span class="md-ellipsis">
     Network
+    
   </span>
   
 
@@ -3897,6 +4126,7 @@
   
   <span class="md-ellipsis">
     aws-nfw-network-firewall
+    
   </span>
   
 
@@ -3918,6 +4148,7 @@
   
   <span class="md-ellipsis">
     caddy
+    
   </span>
   
 
@@ -3939,6 +4170,7 @@
   
   <span class="md-ellipsis">
     Cross Region Reverse Proxy with NLB and Cloudfront
+    
   </span>
   
     
@@ -3968,6 +4200,7 @@
   
   <span class="md-ellipsis">
     openswan-s2svpn-tgw-lab
+    
   </span>
   
     
@@ -4032,6 +4265,7 @@
   
   <span class="md-ellipsis">
     Well architected
+    
   </span>
   
 
@@ -4057,6 +4291,7 @@
   
   <span class="md-ellipsis">
     WA-卓越运营-Operational-Excellence-202310-Summary
+    
   </span>
   
 
@@ -4078,6 +4313,7 @@
   
   <span class="md-ellipsis">
     WA-可持续性-Sustainability-202310-Summary
+    
   </span>
   
 
@@ -4099,6 +4335,7 @@
   
   <span class="md-ellipsis">
     WA-可靠性-Reliability-202310-Summary
+    
   </span>
   
 
@@ -4120,6 +4357,7 @@
   
   <span class="md-ellipsis">
     WA-安全-Security-202310-Summary
+    
   </span>
   
 
@@ -4141,6 +4379,7 @@
   
   <span class="md-ellipsis">
     WA-性能效率-Performance-Efficiency-202310-Summary
+    
   </span>
   
 
@@ -4162,6 +4401,7 @@
   
   <span class="md-ellipsis">
     WA-成本优化-Cost-Optimization-202310-Summary
+    
   </span>
   
 
@@ -4193,6 +4433,7 @@
   
   <span class="md-ellipsis">
     github-page-howto
+    
   </span>
   
     
@@ -4249,6 +4490,7 @@
   
   <span class="md-ellipsis">
     CLI
+    
   </span>
   
 
@@ -4325,6 +4567,7 @@
   
   <span class="md-ellipsis">
     Linux Commands
+    
   </span>
   
 
@@ -4350,6 +4593,7 @@
   
   <span class="md-ellipsis">
     linux-cmd
+    
   </span>
   
 
@@ -4371,6 +4615,7 @@
   
   <span class="md-ellipsis">
     docker
+    
   </span>
   
 
@@ -4392,6 +4637,7 @@
   
   <span class="md-ellipsis">
     eksctl
+    
   </span>
   
 
@@ -4413,6 +4659,7 @@
   
   <span class="md-ellipsis">
     eksdemo
+    
   </span>
   
 
@@ -4434,6 +4681,7 @@
   
   <span class="md-ellipsis">
     ffmpeg
+    
   </span>
   
 
@@ -4455,6 +4703,7 @@
   
   <span class="md-ellipsis">
     assume
+    
   </span>
   
     
@@ -4484,6 +4733,7 @@
   
   <span class="md-ellipsis">
     helm-cmd
+    
   </span>
   
 
@@ -4505,6 +4755,7 @@
   
   <span class="md-ellipsis">
     iptables
+    
   </span>
   
 
@@ -4526,6 +4777,7 @@
   
   <span class="md-ellipsis">
     jq
+    
   </span>
   
 
@@ -4547,6 +4799,7 @@
   
   <span class="md-ellipsis">
     kubectx
+    
   </span>
   
 
@@ -4568,6 +4821,7 @@
   
   <span class="md-ellipsis">
     kubernetes-cmd
+    
   </span>
   
 
@@ -4589,6 +4843,7 @@
   
   <span class="md-ellipsis">
     postgres-cmd
+    
   </span>
   
 
@@ -4610,6 +4865,7 @@
   
   <span class="md-ellipsis">
     python-cmd
+    
   </span>
   
 
@@ -4631,6 +4887,7 @@
   
   <span class="md-ellipsis">
     regctl
+    
   </span>
   
 
@@ -4652,6 +4909,7 @@
   
   <span class="md-ellipsis">
     terraform
+    
   </span>
   
 
@@ -4673,6 +4931,7 @@
   
   <span class="md-ellipsis">
     ubuntu
+    
   </span>
   
 
@@ -4694,6 +4953,7 @@
   
   <span class="md-ellipsis">
     vim-cmd
+    
   </span>
   
 
@@ -4715,6 +4975,7 @@
   
   <span class="md-ellipsis">
     web-press-testing-tool
+    
   </span>
   
 
@@ -4821,6 +5082,7 @@
   
   <span class="md-ellipsis">
     AWS CLI
+    
   </span>
   
 
@@ -4848,6 +5110,7 @@
   
   <span class="md-ellipsis">
     acm
+    
   </span>
   
 
@@ -4871,6 +5134,7 @@
   
   <span class="md-ellipsis">
     api-gateway
+    
   </span>
   
 
@@ -4894,6 +5158,7 @@
   
   <span class="md-ellipsis">
     auto-scaling-group
+    
   </span>
   
 
@@ -4917,6 +5182,7 @@
   
   <span class="md-ellipsis">
     ip-ranges
+    
   </span>
   
 
@@ -4940,6 +5206,7 @@
   
   <span class="md-ellipsis">
     aws-nuke
+    
   </span>
   
 
@@ -4963,6 +5230,7 @@
   
   <span class="md-ellipsis">
     cloud9
+    
   </span>
   
 
@@ -4986,6 +5254,7 @@
   
   <span class="md-ellipsis">
     cloudformation
+    
   </span>
   
 
@@ -5009,6 +5278,7 @@
   
   <span class="md-ellipsis">
     cloudwatch
+    
   </span>
   
 
@@ -5032,6 +5302,7 @@
   
   <span class="md-ellipsis">
     copilot
+    
   </span>
   
 
@@ -5055,6 +5326,7 @@
   
   <span class="md-ellipsis">
     directory service
+    
   </span>
   
 
@@ -5078,6 +5350,7 @@
   
   <span class="md-ellipsis">
     ebs
+    
   </span>
   
 
@@ -5101,6 +5374,7 @@
   
   <span class="md-ellipsis">
     ec2
+    
   </span>
   
 
@@ -5124,6 +5398,7 @@
   
   <span class="md-ellipsis">
     ecr
+    
   </span>
   
 
@@ -5147,6 +5422,7 @@
   
   <span class="md-ellipsis">
     ecs
+    
   </span>
   
 
@@ -5170,6 +5446,7 @@
   
   <span class="md-ellipsis">
     efs
+    
   </span>
   
 
@@ -5193,6 +5470,7 @@
   
   <span class="md-ellipsis">
     eks
+    
   </span>
   
 
@@ -5216,6 +5494,7 @@
   
   <span class="md-ellipsis">
     elasticache-redis
+    
   </span>
   
 
@@ -5239,6 +5518,7 @@
   
   <span class="md-ellipsis">
     elb
+    
   </span>
   
 
@@ -5262,6 +5542,7 @@
   
   <span class="md-ellipsis">
     iam
+    
   </span>
   
 
@@ -5285,6 +5566,7 @@
   
   <span class="md-ellipsis">
     lambda
+    
   </span>
   
 
@@ -5308,6 +5590,7 @@
   
   <span class="md-ellipsis">
     lightsail
+    
   </span>
   
 
@@ -5331,6 +5614,7 @@
   
   <span class="md-ellipsis">
     rds
+    
   </span>
   
 
@@ -5354,6 +5638,7 @@
   
   <span class="md-ellipsis">
     redshift
+    
   </span>
   
 
@@ -5377,6 +5662,7 @@
   
   <span class="md-ellipsis">
     route53
+    
   </span>
   
 
@@ -5400,6 +5686,7 @@
   
   <span class="md-ellipsis">
     s3
+    
   </span>
   
 
@@ -5423,6 +5710,7 @@
   
   <span class="md-ellipsis">
     sam
+    
   </span>
   
 
@@ -5446,6 +5734,7 @@
   
   <span class="md-ellipsis">
     sns
+    
   </span>
   
 
@@ -5469,6 +5758,7 @@
   
   <span class="md-ellipsis">
     sqs
+    
   </span>
   
 
@@ -5492,6 +5782,7 @@
   
   <span class="md-ellipsis">
     ssm
+    
   </span>
   
 
@@ -5515,6 +5806,7 @@
   
   <span class="md-ellipsis">
     sts
+    
   </span>
   
 
@@ -5538,6 +5830,7 @@
   
   <span class="md-ellipsis">
     vpc
+    
   </span>
   
 
@@ -5586,6 +5879,7 @@
   
   <span class="md-ellipsis">
     Windows
+    
   </span>
   
 
@@ -5611,6 +5905,7 @@
   
   <span class="md-ellipsis">
     docker-on-windows
+    
   </span>
   
 
@@ -5632,6 +5927,7 @@
   
   <span class="md-ellipsis">
     powershell
+    
   </span>
   
 
@@ -5668,6 +5964,7 @@
   
   <span class="md-ellipsis">
     Tags
+    
   </span>
   
 
@@ -5696,6 +5993,41 @@
     
   
   
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#llamacpp" class="md-nav__link">
+    <span class="md-ellipsis">
+      llama.cpp
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#vllm" class="md-nav__link">
+    <span class="md-ellipsis">
+      vllm
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#djl" class="md-nav__link">
+    <span class="md-ellipsis">
+      djl
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
 </nav>
                   </div>
                 </div>
@@ -5707,39 +6039,112 @@
               <article class="md-content__inner md-typeset">
                 
                   
-  
-<nav class="md-tags" >
-  
+
+  <nav class="md-tags" >
     
+      
+      
+      
+        <a href="../../tags/#tag:llmdeepseek" class="md-tag">llm/deepseek</a>
+      
     
-    
-      <a href="../../tags/#awsnetworknfw" class="md-tag">aws/network/nfw</a>
-    
-  
-</nav>
+  </nav>
 
 
   
   
 
 
-<h1 id="deployment-models-for-aws-network-firewall-with-vpc-routing-enhancements">Deployment models for AWS Network Firewall with VPC routing enhancements<a class="headerlink" href="#deployment-models-for-aws-network-firewall-with-vpc-routing-enhancements" title="Permanent link">&para;</a></h1>
-<p><a href="https://aws.amazon.com/blogs/networking-and-content-delivery/deployment-models-for-aws-network-firewall-with-vpc-routing-enhancements/">https://aws.amazon.com/blogs/networking-and-content-delivery/deployment-models-for-aws-network-firewall-with-vpc-routing-enhancements/</a></p>
-<h1 id="deployment-models-for-aws-network-firewall">Deployment models for AWS Network Firewall<a class="headerlink" href="#deployment-models-for-aws-network-firewall" title="Permanent link">&para;</a></h1>
-<p><a href="https://aws.amazon.com/blogs/networking-and-content-delivery/deployment-models-for-aws-network-firewall/">https://aws.amazon.com/blogs/networking-and-content-delivery/deployment-models-for-aws-network-firewall/</a></p>
-<p><a class="glightbox" href="../deployment-models-for-aws-network-firewall-png-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../deployment-models-for-aws-network-firewall-png-1.png" /></a></p>
-<h2 id="distributed-aws-network-firewall-deployment-model">Distributed AWS Network Firewall deployment model<a class="headerlink" href="#distributed-aws-network-firewall-deployment-model" title="Permanent link">&para;</a></h2>
-<p>AWS Network Firewall is deployed into each individual VPC.</p>
-<p><a class="glightbox" href="../deployment-models-for-aws-network-firewall-png-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../deployment-models-for-aws-network-firewall-png-2.png" /></a></p>
-<h2 id="centralized-aws-network-firewall-deployment-model">Centralized AWS Network Firewall deployment model<a class="headerlink" href="#centralized-aws-network-firewall-deployment-model" title="Permanent link">&para;</a></h2>
-<p>AWS Network Firewall is deployed into centralized VPC for East-West (VPC-to-VPC) and/or North-South (internet egress and ingress, on-premises) traffic. We refer to this VPC as inspection VPC throughout this blog post.</p>
-<p><a class="glightbox" href="../deployment-models-for-aws-network-firewall-png-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../deployment-models-for-aws-network-firewall-png-3.png" /></a></p>
-<h2 id="combined-aws-network-firewall-deployment-model">Combined AWS Network Firewall deployment model<a class="headerlink" href="#combined-aws-network-firewall-deployment-model" title="Permanent link">&para;</a></h2>
-<p>AWS Network Firewall is deployed into centralized inspection VPC for East-West (VPC-to-VPC) and subset of North-South (On Premises/Egress) traffic. Internet ingress is distributed to VPCs which require dedicated inbound access from the internet and AWS Network Firewall is deployed accordingly.</p>
-<p><a class="glightbox" href="../deployment-models-for-aws-network-firewall-png-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../deployment-models-for-aws-network-firewall-png-4.png" /></a></p>
-<h1 id="deploy-centralized-traffic-filtering-using-aws-network-firewall">Deploy centralized traffic filtering using AWS Network Firewall<a class="headerlink" href="#deploy-centralized-traffic-filtering-using-aws-network-firewall" title="Permanent link">&para;</a></h1>
-<p><a href="https://aws.amazon.com/blogs/networking-and-content-delivery/deploy-centralized-traffic-filtering-using-aws-network-firewall/">https://aws.amazon.com/blogs/networking-and-content-delivery/deploy-centralized-traffic-filtering-using-aws-network-firewall/</a></p>
-<p><a href="https://aws.amazon.com/solutions/implementations/aws-network-firewall-deployment-automations-for-aws-transit-gateway/">https://aws.amazon.com/solutions/implementations/aws-network-firewall-deployment-automations-for-aws-transit-gateway/</a></p>
+<h1 id="deepseek-poc">deepseek-poc<a class="headerlink" href="#deepseek-poc" title="Permanent link">&para;</a></h1>
+<h2 id="llamacpp">llama.cpp<a class="headerlink" href="#llamacpp" title="Permanent link">&para;</a></h2>
+<p>量化版本 on sagemaker<br />
+<a href="https://github.com/aws-samples/llm_deploy_gcr/tree/main/sagemaker/DeepSeek-R1-671b_dynamic-quants">https://github.com/aws-samples/llm_deploy_gcr/tree/main/sagemaker/DeepSeek-R1-671b_dynamic-quants</a></p>
+<h2 id="vllm">vllm<a class="headerlink" href="#vllm" title="Permanent link">&para;</a></h2>
+<p>refer: <a href="https://github.com/aws-samples/llm_deploy_gcr/tree/main/sagemaker/sagemaker_vllm">https://github.com/aws-samples/llm_deploy_gcr/tree/main/sagemaker/sagemaker_vllm</a><br />
+edited version: <a href="file:///Users/panlm/Documents/customers/C-CDFSunrise/202501-deepseek/deploy_and_test_vllm_djl.ipynb">deploy_and_test_vllm_djl.ipynb</a><br />
+in chapter 3.3<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>endpoint_model_name = sagemaker.utils.name_from_base(model_name, short=True)
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>local_code_path = endpoint_model_name
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>s3_code_path = f&quot;s3://{default_bucket}/endpoint_code/vllm_byoc/{endpoint_model_name}.tar.gz&quot;
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>%mkdir -p {local_code_path}
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>print(&quot;local_code_path:&quot;, local_code_path)
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>with open(f&quot;{local_code_path}/start.sh&quot;, &quot;w&quot;) as f:
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>    f.write(f&quot;&quot;&quot;
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>#!/bin/bash
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a># download model to local
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>s5cmd sync --concurrency 64 \
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>    {s3_model_path}/* /temp/model_weight
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a># the start script need to be adjust as you needed
+<a id="__codelineno-0-18" name="__codelineno-0-18" href="#__codelineno-0-18"></a># port needs to be $SAGEMAKER_BIND_TO_PORT
+<a id="__codelineno-0-19" name="__codelineno-0-19" href="#__codelineno-0-19"></a>
+<a id="__codelineno-0-20" name="__codelineno-0-20" href="#__codelineno-0-20"></a>python3 -m vllm.entrypoints.openai.api_server \\
+<a id="__codelineno-0-21" name="__codelineno-0-21" href="#__codelineno-0-21"></a>    --port $SAGEMAKER_BIND_TO_PORT \\
+<a id="__codelineno-0-22" name="__codelineno-0-22" href="#__codelineno-0-22"></a>    --trust-remote-code \\
+<a id="__codelineno-0-23" name="__codelineno-0-23" href="#__codelineno-0-23"></a>    --tensor-parallel-size 1 --max-model-len 8192 --enable-chunked-prefill=False \\
+<a id="__codelineno-0-24" name="__codelineno-0-24" href="#__codelineno-0-24"></a>    --served-model-name {MODEL_ID} \\
+<a id="__codelineno-0-25" name="__codelineno-0-25" href="#__codelineno-0-25"></a>    --model /temp/model_weight
+<a id="__codelineno-0-26" name="__codelineno-0-26" href="#__codelineno-0-26"></a>&quot;&quot;&quot;)
+<a id="__codelineno-0-27" name="__codelineno-0-27" href="#__codelineno-0-27"></a>
+<a id="__codelineno-0-28" name="__codelineno-0-28" href="#__codelineno-0-28"></a># delete --enforce-eager
+<a id="__codelineno-0-29" name="__codelineno-0-29" href="#__codelineno-0-29"></a># change model len 65536
+<a id="__codelineno-0-30" name="__codelineno-0-30" href="#__codelineno-0-30"></a># parallel size from 4 to 1
+<a id="__codelineno-0-31" name="__codelineno-0-31" href="#__codelineno-0-31"></a># no chunked prefill
+</code></pre></div></p>
+<h2 id="djl">djl<a class="headerlink" href="#djl" title="Permanent link">&para;</a></h2>
+<p>same notebook with previous chapter <br />
+<a href="file:///Users/panlm/Documents/customers/C-CDFSunrise/202501-deepseek/deploy_and_test_vllm_djl.ipynb">deploy_and_test_vllm_djl.ipynb</a><br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a># import dotenv
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>import os
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>import sagemaker
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>import boto3
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a># dotenv.load_dotenv(&quot;.env&quot;, override=True)
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a># role_name = os.environ.get(&quot;role_name&quot;)
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>model_id=&quot;deepseek-ai/DeepSeek-R1-Distill-Qwen-1.5B&quot;
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>endpoint_name = &quot;deepseek-15&quot;
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a># model_id=&quot;llava-hf/llava-1.5-7b-hf&quot;
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>sagemaker_session = sagemaker.session.Session()
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>region = sagemaker_session._region_name
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>try:
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a>    role = sagemaker.get_execution_role() # If you online sagemaker notebook
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a>except ValueError:
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>    iam = boto3.client(&quot;iam&quot;)
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>    role = iam.get_role(RoleName=role_name)[&quot;Role&quot;][&quot;Arn&quot;]
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a>image_uri = sagemaker.image_uris.retrieve(framework=&quot;djl-lmi&quot;, version=&quot;0.28.0&quot;, region=region)
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a>instance_type = &quot;ml.g5.2xlarge&quot;
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a>role_name, model_id, image_uri
+</code></pre></div></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>model = sagemaker.Model(
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>  image_uri=image_uri,
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>  role=role,
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>  env={
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>      &quot;HF_MODEL_ID&quot;: model_id,
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>      # &quot;OPTION_ROLLING_BATCH&quot;: &quot;vllm&quot;,
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>      &quot;HF_MODEL_TRUST_REMOTE_CODE&quot;: &quot;True&quot;,
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>      # &quot;GPU_MEMORY_UTILIZATION&quot;: &quot;0.99&quot;
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>  }
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>)
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>model.deploy(
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>  instance_type=instance_type, 
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>  initial_instance_count=1, 
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>  endpoint_name=endpoint_name
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>)
+</code></pre></div>
 
 
 
@@ -5762,7 +6167,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-28T22:33:21+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-20T11:51:50+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-20</span>
   </span>
 
     
@@ -5772,7 +6177,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2024-04-28T22:33:21+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2024-04-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago"><span class="timeago" datetime="2025-02-20T11:51:50+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date">2025-02-20</span>
   </span>
 
     
@@ -5840,16 +6245,16 @@
     </div>
     
     
-    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "toc.follow", "content.code.copy"], "search": "../../assets/javascripts/workers/search.6ce7567c.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
+    <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "toc.follow", "content.code.copy"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}}</script>
     
     
-      <script src="../../assets/javascripts/bundle.88dd0f4e.min.js"></script>
+      <script src="../../assets/javascripts/bundle.f1b6f286.min.js"></script>
       
         <script src="../../js/timeago.min.js"></script>
       
         <script src="../../js/timeago_mkdocs_material.js"></script>
       
-        <script src="../../js/mkdocs_pagetree_plugin.js"></script>
+        <script src="../../assets/mkdocs_pagetree_plugin.js"></script>
       
     
   <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": false, "loop": false, "zoomable": true, "draggable": false, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
