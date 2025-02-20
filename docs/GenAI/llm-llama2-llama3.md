@@ -1,6 +1,6 @@
 ---
 title: llm-llama3
-description: 
+description: llama info
 created: 2024-04-29 11:36:37.548
 last_modified: 2024-04-29
 tags:
