@@ -21,10 +21,10 @@ sudo yum -y install terraform
 IDE_PASSWORD=$(echo -n $(aws sts get-caller-identity --query "Account" --output text) | argon2 $(uuidgen) -e)
 mkdir -p ~/.config/code-server
 tee ~/.config/code-server/config.yaml <<-EOF
-cert: false
+cert: true
 auth: password
 hashed-password: "$IDE_PASSWORD"
-bind-addr: 0.0.0.0:8088
+bind-addr: 0.0.0.0:8443
 EOF
 mkdir -p ~/.local/share/code-server/User
 tee ~/.local/share/code-server/User/settings.json <<-'EOF'
@@ -51,7 +51,7 @@ tee ~/.local/share/code-server/User/settings.json <<-'EOF'
 }
 EOF
 
-CODE_SERVER_VER=4.96.2
+CODE_SERVER_VER=4.97.2
 wget -qO /tmp/code-server.rpm https://github.com/coder/code-server/releases/download/v${CODE_SERVER_VER}/code-server-${CODE_SERVER_VER}-amd64.rpm
 sudo yum install -y /tmp/code-server.rpm
 sudo systemctl enable --now code-server@ec2-user

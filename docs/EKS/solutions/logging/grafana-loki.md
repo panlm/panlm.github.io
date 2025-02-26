@@ -44,7 +44,7 @@ helm repo add grafana https://grafana.github.io/helm-charts
 - create sa for loki ([[git/git-mkdocs/CLI/linux/eksctl#func-create-iamserviceaccount-]])
 ```sh
 CLUSTER_NAME=ekscluster1
-export AWS_DEFAULT_REGION=us-east-1
+export AWS_DEFAULT_REGION=ap-southeast-1
 NAMESPACE=loki
 LOKI_SA_NAME=role-loki-sa
 create-iamserviceaccount -s ${LOKI_SA_NAME} -c ${CLUSTER_NAME} -n ${NAMESPACE} -r false

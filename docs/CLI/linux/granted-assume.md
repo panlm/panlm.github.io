@@ -135,6 +135,9 @@ granted credentials export-plaintext example
 - https://docs.commonfate.io/granted/introduction
 - https://awsu.me/
 
-
+- open console in chrome browser
+```sh
+granted console
+```
 
 

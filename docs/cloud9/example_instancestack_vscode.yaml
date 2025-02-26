@@ -127,8 +127,8 @@ Resources:
           ToPort: 22
           CidrIp: 0.0.0.0/0
         - IpProtocol: tcp
-          FromPort: 8088
-          ToPort: 8088
+          FromPort: 8443
+          ToPort: 8443
           CidrIp: 0.0.0.0/0
       VpcId: !Ref VpcId
   MyEC2Instance:
@@ -257,33 +257,33 @@ Resources:
           Values:
           - !Ref AWS::StackName
 
-  Ec2CloudFrontDistribution:
-    Type: AWS::CloudFront::Distribution
-    Properties:
-      DistributionConfig:
-        Origins:
-          - Id: myEC2Origin
-            DomainName: !GetAtt MyEC2Instance.PublicDnsName          
-            CustomOriginConfig:
-              HTTPPort: '8088'
-              OriginProtocolPolicy: http-only
-        Enabled: 'true'
-        Comment: CloudFront distribution in front of EC2
-        DefaultCacheBehavior:
-          AllowedMethods:
-            - GET
-            - HEAD
-            - OPTIONS
-            - PUT
-            - POST
-            - PATCH
-            - DELETE
-          TargetOriginId: myEC2Origin
-          CachePolicyId: 4135ea2d-6df8-44a3-9df3-4b5a84be39ad # Disable caching https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html#managed-cache-policy-caching-disabled
-          OriginRequestPolicyId: 216adef6-5c7f-47e4-b989-5492eafa07d3 # Allow all Viewer https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-origin-request-policies.html#managed-origin-request-policy-all-viewer
-          ViewerProtocolPolicy: redirect-to-https
-        ViewerCertificate:
-          CloudFrontDefaultCertificate: 'true'
+  # Ec2CloudFrontDistribution:
+  #   Type: AWS::CloudFront::Distribution
+  #   Properties:
+  #     DistributionConfig:
+  #       Origins:
+  #         - Id: myEC2Origin
+  #           DomainName: !GetAtt MyEC2Instance.PublicDnsName          
+  #           CustomOriginConfig:
+  #             HTTPPort: '8088'
+  #             OriginProtocolPolicy: http-only
+  #       Enabled: 'true'
+  #       Comment: CloudFront distribution in front of EC2
+  #       DefaultCacheBehavior:
+  #         AllowedMethods:
+  #           - GET
+  #           - HEAD
+  #           - OPTIONS
+  #           - PUT
+  #           - POST
+  #           - PATCH
+  #           - DELETE
+  #         TargetOriginId: myEC2Origin
+  #         CachePolicyId: 4135ea2d-6df8-44a3-9df3-4b5a84be39ad # Disable caching https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html#managed-cache-policy-caching-disabled
+  #         OriginRequestPolicyId: 216adef6-5c7f-47e4-b989-5492eafa07d3 # Allow all Viewer https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-origin-request-policies.html#managed-origin-request-policy-all-viewer
+  #         ViewerProtocolPolicy: redirect-to-https
+  #       ViewerCertificate:
+  #         CloudFrontDefaultCertificate: 'true'
 
 Outputs: 
   Password:
@@ -292,11 +292,14 @@ Outputs:
   EC2InstanceId:
     Description: The ID of the EC2 instance
     Value: !Ref MyEC2Instance
-  AccessURL:
-    Description: URL for vscode
-    # Value: !Join ["", ["https://", !GetAtt MyEC2Instance.PublicIp, ":8443/?folder=/home/ec2-user" ]]
-    Value: !Join ["", ["https://", !GetAtt Ec2CloudFrontDistribution.DomainName, "/?folder=/home/", !FindInMap [DefaultValue, !Ref EC2InstanceOS, Username]]]
-    # Value: !Sub https://${Ec2CloudFrontDistribution.DomainName}/?folder=/home/ec2-user
+  EC2PublicIp:
+    Description: Public IP of EC2
+    Value: !Join ["", ["https://", !GetAtt MyEC2Instance.PublicIp, ":8443/?folder=/home/", !If [CreateUbuntuResources, "ubuntu", "ec2-user"] ]]
+    
+  # AccessURL:
+  #   Description: URL for vscode
+  #   Value: !Join ["", ["https://", !GetAtt Ec2CloudFrontDistribution.DomainName, "/?folder=/home/", !FindInMap [DefaultValue, !Ref EC2InstanceOS, Username]]]
+  #   # Value: !Sub https://${Ec2CloudFrontDistribution.DomainName}/?folder=/home/ec2-user
 
 
 
