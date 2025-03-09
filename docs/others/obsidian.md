@@ -11,8 +11,6 @@ tags:
 文本笔记 第二大脑
 https://obsidian.md/
 
-
-
 ## useful plugins
 ### Obsidian Attachment Management
 https://github.com/trganda/obsidian-attachment-management
@@ -61,6 +59,46 @@ https://github.com/mrjackphil/obsidian-text-expand
 https://github.com/chetachiezikeuzor/Highlightr-Plugin
 
 通过不同颜色高亮文本
+
+
+### share notes
+https://docs.note.sx/running-your-own-server
+
+#### php
+https://github.com/note-sx/server
+- request apikey first, and put apikey to data.json
+```
+curl -L 'https://xxxxxx.aws.panlm.click/v1/account/get-key?id=12341234'
+```
+- shared notes will be in `db` folder, this folder will be keep in folder which run `docker-compose up -d` from
+
+#### python
+https://github.com/tannercollin/sharenote-py
+
+- sample settings
+```
+{
+  "server": "https://xxxxx.aws.panlm.click",
+  "uid": "13241234",
+  "apiKey": "ba29b4e8fc",
+  "yamlField": "share",
+  "noteWidth": "100",
+  "theme": "Minimal",
+  "themeMode": 0,
+  "titleSource": 0,
+  "removeYaml": true,
+  "removeBacklinksFooter": true,
+  "expiry": "2 days",
+  "clipboard": true,
+  "shareUnencrypted": true,
+  "authRedirect": "share",
+  "debug": 0
+}
+
+```
+- shared notes will be in `static` folder
+- seems not stable when upload same note twice 
+
 
 ### others 
 - [Quiet Outline](https://github.com/guopenghui/obsidian-quiet-outline)

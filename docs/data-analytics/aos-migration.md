@@ -17,6 +17,7 @@ tags:
 - 增量做快照，恢复时候指定最新快照名，全量恢复
 - refer: https://docs.amazonaws.cn/opensearch-service/latest/developerguide/managedomains-snapshots.html
 ### es 7.10 snapshot
+- 增量快照
 - only could use iam role in cli to execute awscurl 
 - create snapshot repo
 ```sh
@@ -47,6 +48,7 @@ awscurl -XGET --service es --region ap-southeast-1 https://${DOMAIN_NAME}/_snaps
 ```
 
 ### es 7.10 restore
+- 全量恢复
 - (option) put role/user to all_access
 - create repo
 ```sh

@@ -35,9 +35,10 @@ aws s3api delete-objects \
 
 ### delete s3 without versioning
 ```bash
+a=
 for i in $a ; do 
-aws s3 rm s3://$i --region us-east-1 --recursive
-aws s3 rb s3://$i --force --region us-east-1
+    aws s3 rm s3://$i --region us-east-1 --recursive
+    aws s3 rb s3://$i --force --region us-east-1
 done
 
 aws s3api delete-objects --bucket panlm-test-object-1234 --delete '{"Objects":[{"Key":"def"}]}'

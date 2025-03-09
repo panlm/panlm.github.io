@@ -182,3 +182,6 @@ sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-c
 
 ```
 
+## install
+- ubuntu 
+    - https://docs.docker.com/engine/install/ubuntu/

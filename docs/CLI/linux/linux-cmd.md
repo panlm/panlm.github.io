@@ -405,6 +405,11 @@ yum install iproute-tc
 ### scenario
 - [[connection-network-with-overlap-cidrs#Solution for Overlapping CIDRs using AWS Transit Gateway in VPC and NAT Instances]]
 
+## tcpdump
+dump multicast packages
+```
+tcpdump -i ens5 -s0 -vv net 224.0.0.0/4 -A
+```
 
 ## ts
 add timestamp at the front of every command output

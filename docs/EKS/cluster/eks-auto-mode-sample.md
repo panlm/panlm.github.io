@@ -36,6 +36,10 @@ tags:
 ## pricing
 - 额外收取 auto mode 管理的 EC2 节点的 Ondemond 价格 12% ([link](https://aws.amazon.com/eks/pricing/))
 
+## workshop
+
+https://catalog.us-east-1.prod.workshops.aws/workshops/aadbd25d-43fa-4ac3-ae88-32d729af8ed4/
+
 ## sample
 ### load balancer controller
 - test pod with service and ingress
