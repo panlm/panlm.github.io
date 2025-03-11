@@ -6,7 +6,7 @@ repo_url: https://github.com/panlm/panlm.github.io
 
 theme:
     name: material
-    logo: git-attachment/AWS_Logo.png #favicons.png
+    logo: git-attachment/skill-builder.png #favicons.png
     # favicon: assets/meta/AWS_Logo.png #favicons.png
     custom_dir: overrides
     font:

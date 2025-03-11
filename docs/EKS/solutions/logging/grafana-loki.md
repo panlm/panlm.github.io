@@ -301,7 +301,7 @@ gateway:
     ingressClassName: 'alb'
     annotations: 
       alb.ingress.kubernetes.io/scheme: internet-facing
-      alb.ingress.kubernetes.io/load-balancer-attributes: access_logs.s3.enabled=true,access_logs.s3.bucket=${ELB_LOG_BUCKET},access_logs.s3.prefix=
+      #alb.ingress.kubernetes.io/load-balancer-attributes: access_logs.s3.enabled=true,access_logs.s3.bucket=${ELB_LOG_BUCKET},access_logs.s3.prefix=
     hosts:
       - host: '*.${AWS_DEFAULT_REGION}.elb.amazonaws.com'
         paths:
@@ -364,17 +364,28 @@ spec:
 - loki-stack will have some predefined dashboard - https://artifacthub.io/packages/helm/grafana/loki-stack 
 
 ### tools-
-- docker build
-- cloudformation
+- docker build from git root
 ```sh
+docker build . -f tools/lambda-promtail/Dockerfile -t lambda-promtail
+
+```
+- login ecr and put to repo [[../../../CLI/awscli/ecr-cmd|ecr-cmd]]
+- cloudformation for s3
+```sh
+WRITE_ADDR=http://k8s-loki-lokigate-xxxx.elb.amazonaws.com/loki/api/v1/push
+ECR_URI=123456789012.dkr.ecr.ap-southeast-1.amazonaws.com/lambda-promtail:latest
+echo ${AWS_DEFAULT_REGION}
+echo ${ELB_LOG_BUCKET}
+
 aws cloudformation create-stack --stack-name lambda-promtail-stack \
---template-body file://template.yaml \
---capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM \
---region ap-southeast-1 \
---parameters ParameterKey=WriteAddress,ParameterValue=http://k8s-loki-lokigate-xxxx.elb.amazonaws.com/loki/api/v1/push \
-ParameterKey=LambdaPromtailImage,ParameterValue=123456789012.dkr.ecr.ap-southeast-1.amazonaws.com/lambda-promtail:latest \
-ParameterKey=TenantID,ParameterValue=tenant-a \
-ParameterKey=SkipTlsVerify,ParameterValue="true"
+    --template-body file://./tools/lambda-promtail/template.yaml \
+    --capabilities CAPABILITY_IAM CAPABILITY_NAMED_IAM \
+    --disable-rollback \
+    --parameters ParameterKey=WriteAddress,ParameterValue=${WRITE_ADDR} \
+    ParameterKey=LambdaPromtailImage,ParameterValue=${ECR_URI} \
+    ParameterKey=TenantID,ParameterValue=tenant-a \
+    ParameterKey=SkipTlsVerify,ParameterValue="true" \
+    ParameterKey=EventSourceS3Bucket,ParameterValue="${ELB_LOG_BUCKET}"
 
 ```
 - using terraform to deploy promtail in lambda ([loki github](https://github.com/grafana/loki/tree/main/tools/lambda-promtail))
