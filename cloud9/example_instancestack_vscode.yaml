@@ -292,7 +292,7 @@ Outputs:
   EC2InstanceId:
     Description: The ID of the EC2 instance
     Value: !Ref MyEC2Instance
-  EC2PublicIp:
+  AccessURL:
     Description: Public IP of EC2
     Value: !Join ["", ["https://", !GetAtt MyEC2Instance.PublicIp, ":8443/?folder=/home/", !If [CreateUbuntuResources, "ubuntu", "ec2-user"] ]]
     
