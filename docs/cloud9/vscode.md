@@ -15,7 +15,7 @@ https://github.com/coder/code-server
 -  deploy vscode on ec2 ([[example_instancestack_vscode.yaml]])
 - run command on cloudshell
 ```sh
-OS=amazonlinux2023
+# OS=amazonlinux2023
 wget -O example_instancestack_vscode.yaml https://panlm.github.io/cloud9/example_instancestack_vscode.yaml
 aws configure list
 export AWS_DEFAULT_REGION AWS_REGION
