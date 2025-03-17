@@ -5,7 +5,7 @@ echo "SCRIPT-PART-TWO-BEGIN"
 echo "###"
 
 mv -f ~/.bash_completion ~/.bash_completion.$(date +%N)
-# install kubectl with +/- 1 cluster version 1.28.14 / 1.29.9 / 1.30.4 / 1.31.1
+# install kubectl with +/- 1 cluster version 1.28.14 / 1.29.9 / 1.30.9 / 1.31.6
 # refer: https://kubernetes.io/releases/
 # sudo curl --location -o /usr/local/bin/kubectl "https://dl.k8s.io/release/$(curl -L -s https://dl.k8s.io/release/stable.txt)/bin/linux/amd64/kubectl"
 sudo curl --silent --location -o /usr/local/bin/kubectl "https://storage.googleapis.com/kubernetes-release/release/v1.30.4/bin/linux/amd64/kubectl"

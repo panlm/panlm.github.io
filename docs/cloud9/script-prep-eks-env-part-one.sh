@@ -61,6 +61,7 @@ sudo systemctl restart code-server@ec2-user
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o /tmp/awscliv2.zip
 echo A |unzip /tmp/awscliv2.zip -d /tmp
 sudo /tmp/aws/install --update 2>&1 >/tmp/awscli-install.log
+hash -r # refresh path cache
 echo "complete -C '/usr/local/bin/aws_completer' aws" >> ~/.bash_profile
 
 # remove existed aws

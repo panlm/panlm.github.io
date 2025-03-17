@@ -63,8 +63,13 @@ sudo systemctl enable --now code-server@ubuntu
 sudo systemctl restart code-server@ubuntu
 
 # install awscli v2
-# sudo -E apt-get -yq install awscli
-echo "complete -C '/usr/bin/aws_completer' aws" >> ~/.bash_profile
+sudo -E apt-get -yq install unzip
+sudo apt remove -y awscli
+curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o /tmp/awscliv2.zip
+echo A |unzip /tmp/awscliv2.zip -d /tmp
+sudo /tmp/aws/install --update 2>&1 >/tmp/awscli-install.log
+hash -r # refresh path cache
+echo "complete -C '/usr/local/bin/aws_completer' aws" >> ~/.bash_profile
 
 # install ssm session plugin
 curl "https://s3.amazonaws.com/session-manager-downloads/plugin/latest/ubuntu_64bit/session-manager-plugin.deb" -o "/tmp/session-manager-plugin.deb"

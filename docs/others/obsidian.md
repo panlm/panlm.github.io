@@ -105,7 +105,8 @@ https://github.com/tannercollin/sharenote-py
 - [dataview doc](https://blacksmithgu.github.io/obsidian-dataview/)
 - [Better PDF Plugin](https://github.com/MSzturc/obsidian-better-pdf-plugin/)
 - [admonition](https://github.com/valentine195/obsidian-admonition)
-- [[export-util-obsidianhtml]]
+- [[../../../notes/ob-export-util-obsidianhtml|ob-export-util-obsidianhtml]]
+- [[ob-quip-upload]]
 
 
 ## Tips
