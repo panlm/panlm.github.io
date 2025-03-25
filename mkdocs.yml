@@ -1,13 +1,14 @@
 site_name: panlm
 site_description: notes from obsidian
 site_url: https://panlm.github.io/ # Change this to your site URL
+
 repo_name: panlm/panlm.github.io
 repo_url: https://github.com/panlm/panlm.github.io
 
 theme:
     name: material
-    logo: git-attachment/skill-builder.png #favicons.png
-    # favicon: assets/meta/AWS_Logo.png #favicons.png
+    # logo: git-attachment/skill-builder.png #favicons.png
+    favicon: git-attachment/favicons.png
     custom_dir: overrides
     font:
         text: Ubuntu

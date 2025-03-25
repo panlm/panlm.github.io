@@ -5,6 +5,8 @@ last_modified: 2024-01-01
 status: myblog
 tags:
   - obsidian
+share_link: https://notes-share.aws.panlm.click/mr0ypyu5
+share_updated: 2025-03-21T11:41:01+08:00
 ---
 
 # Obsidian Tips
