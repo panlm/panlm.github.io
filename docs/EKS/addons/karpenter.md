@@ -159,3 +159,39 @@ spec:
     intent: apps
 
 ```
+
+
+## sample - no amd
+https://docs.aws.amazon.com/eks/latest/userguide/create-node-pool.html
+```yaml
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: my-app
+spec:
+  replicas: 3
+  selector:
+    matchLabels:
+      app: my-app
+  template:
+    metadata:
+      labels:
+        app: my-app
+    spec:
+      nodeSelector:
+        kubernetes.io/arch: amd64
+      affinity:
+        nodeAffinity:
+          requiredDuringSchedulingIgnoredDuringExecution:
+            nodeSelectorTerms:
+            - matchExpressions:
+              - key: eks.amazonaws.com/instance-cpu-manufacturer
+                operator: In
+                values:
+                - aws
+                - intel
+      containers:
+      - name: my-app
+        image: nginx:latest
+
+```

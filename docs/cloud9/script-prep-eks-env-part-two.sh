@@ -1,4 +1,6 @@
 #!/bin/bash
+# curl --location https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/script-prep-eks-env-part-two.sh |sh
+
 ###-SCRIPT-PART-TWO-BEGIN-###
 echo "###"
 echo "SCRIPT-PART-TWO-BEGIN"

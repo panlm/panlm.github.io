@@ -26,10 +26,10 @@ sudo apt-mark hold terraform
 IDE_PASSWORD=$(echo -n $(aws sts get-caller-identity --query "Account" --output text) | argon2 $(uuidgen) -e)
 mkdir -p ~/.config/code-server
 tee ~/.config/code-server/config.yaml <<-EOF
-cert: true
+cert: false
 auth: password
 hashed-password: "${IDE_PASSWORD}"
-bind-addr: 0.0.0.0:8443
+bind-addr: 0.0.0.0:8088
 EOF
 mkdir -p ~/.local/share/code-server/User
 tee ~/.local/share/code-server/User/settings.json <<-'EOF'
