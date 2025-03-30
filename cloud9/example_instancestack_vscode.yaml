@@ -256,13 +256,13 @@ Resources:
             runCommand:
             - "#!/bin/bash -x"
             - "TMPFILE=$(mktemp)"
-            - !If [CreateUbuntuResources, "curl --location -o ${TMPFILE}-ONE.sh https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/script-ubuntu-prep-eks-env-part-one.sh", ""]
-            - !If [CreateAL2Resources, "curl --location -o ${TMPFILE}-ONE.sh https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/script-prep-eks-env-part-one.sh", ""]
+            - !If [CreateUbuntuResources, "curl --location -o ${TMPFILE}-ONE.sh https://github.com/panlm/panlm.github.io/raw/refs/heads/main/docs/cloud9/script-ubuntu-prep-eks-env-part-one.sh", ""]
+            - !If [CreateAL2Resources, "curl --location -o ${TMPFILE}-ONE.sh https://github.com/panlm/panlm.github.io/raw/refs/heads/main/docs/cloud9/script-prep-eks-env-part-one.sh", ""]
             - "chmod a+x ${TMPFILE}-ONE.sh"
             - !If [CreateUbuntuResources, "sudo -u ubuntu bash -x ${TMPFILE}-ONE.sh 2>&1", ""]
             - !If [CreateAL2Resources, "sudo -u ec2-user bash -x ${TMPFILE}-ONE.sh 2>&1", ""]
             - ""
-            - "curl --location -o ${TMPFILE}-TWO.sh https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/script-prep-eks-env-part-two.sh"
+            - "curl --location -o ${TMPFILE}-TWO.sh https://github.com/panlm/panlm.github.io/raw/refs/heads/main/docs/cloud9/script-prep-eks-env-part-two.sh"
             - "chmod a+x ${TMPFILE}-TWO.sh"
             - !If [CreateUbuntuResources, "sudo -u ubuntu bash -x  ${TMPFILE}-TWO.sh 2>&1", ""]
             - !If [CreateAL2Resources, "sudo -u ec2-user bash -x ${TMPFILE}-TWO.sh 2>&1", ""]
