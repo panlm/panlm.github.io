@@ -23,10 +23,12 @@ Parameters:
     Description: select VPC 
     Type: AWS::EC2::VPC::Id
     AllowedPattern: '(^$|^vpc-[a-z0-9]+$)'
+    Default: ''
   PublicSubnetId:
     Description: select one PUBLIC subnet 
     Type: AWS::EC2::Subnet::Id
     AllowedPattern: '(^$|^subnet-[a-z0-9]+$)'
+    Default: ''
   EC2InstanceType:
     Description: instance type
     Type: String
@@ -42,7 +44,7 @@ Parameters:
     AllowedValues:
       - ubuntu22
       - amazonlinux2023
-    Default: amazonlinux2023
+    Default: ubuntu22
   EC2InstanceVolumeSize: 
     Type: Number
     Description: The Size in GB of the Instance Volume. 
@@ -80,11 +82,42 @@ Mappings:
     m5.large:
       ubuntu22: /aws/service/canonical/ubuntu/server/22.04/stable/current/amd64/hvm/ebs-gp2/ami-id
       amazonlinux2023: /aws/service/ami-amazon-linux-latest/al2023-ami-kernel-default-x86_64
-  CloudfrontPrefixListMapping:
+  AWSRegionsPrefixListID:
+  # aws ec2 describe-managed-prefix-lists  --region <REGION> | jq -r '.PrefixLists[] | select (.PrefixListName == "com.amazonaws.global.cloudfront.origin-facing") | .PrefixListId'
+    ap-northeast-1:
+      PrefixList: pl-58a04531
+    ap-northeast-2:
+      PrefixList: pl-22a6434b
+    ap-south-1:
+      PrefixList: pl-9aa247f3
+    ap-southeast-1:
+      PrefixList: pl-31a34658
+    ap-southeast-2:
+      PrefixList: pl-b8a742d1
+    ca-central-1:
+      PrefixList: pl-38a64351
+    eu-central-1:
+      PrefixList: pl-a3a144ca
+    eu-north-1:
+      PrefixList: pl-fab65393
+    eu-west-1:
+      PrefixList: pl-4fa04526
+    eu-west-2:
+      PrefixList: pl-93a247fa
+    eu-west-3:
+      PrefixList: pl-75b1541c
+    sa-east-1:
+      PrefixList: pl-5da64334
     us-east-1:
-      pl: pl-3b927c52
+      PrefixList: pl-3b927c52
+    us-east-2:
+      PrefixList: pl-b6a144df
+    us-west-1:
+      PrefixList: pl-4ea04527
     us-west-2:
-      pl: pl-82a045eb
+      PrefixList: pl-82a045eb
+
+
 
 Conditions: 
   CreateUbuntuResources: !Equals [!Ref EC2InstanceOS, "ubuntu22"]
@@ -126,10 +159,11 @@ Resources:
           FromPort: 22
           ToPort: 22
           CidrIp: 0.0.0.0/0
-        - IpProtocol: tcp
-          FromPort: 8443
-          ToPort: 8443
-          CidrIp: 0.0.0.0/0
+        - Description: Allow HTTP from com.amazonaws.global.cloudfront.origin-facing
+          IpProtocol: tcp
+          FromPort: 8088
+          ToPort: 8088
+          SourcePrefixListId: !FindInMap [AWSRegionsPrefixListID, !Ref 'AWS::Region', PrefixList]
       VpcId: !Ref VpcId
   MyEC2Instance:
     Type: AWS::EC2::Instance
@@ -257,33 +291,33 @@ Resources:
           Values:
           - !Ref AWS::StackName
 
-  # Ec2CloudFrontDistribution:
-  #   Type: AWS::CloudFront::Distribution
-  #   Properties:
-  #     DistributionConfig:
-  #       Origins:
-  #         - Id: myEC2Origin
-  #           DomainName: !GetAtt MyEC2Instance.PublicDnsName          
-  #           CustomOriginConfig:
-  #             HTTPPort: '8088'
-  #             OriginProtocolPolicy: http-only
-  #       Enabled: 'true'
-  #       Comment: CloudFront distribution in front of EC2
-  #       DefaultCacheBehavior:
-  #         AllowedMethods:
-  #           - GET
-  #           - HEAD
-  #           - OPTIONS
-  #           - PUT
-  #           - POST
-  #           - PATCH
-  #           - DELETE
-  #         TargetOriginId: myEC2Origin
-  #         CachePolicyId: 4135ea2d-6df8-44a3-9df3-4b5a84be39ad # Disable caching https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html#managed-cache-policy-caching-disabled
-  #         OriginRequestPolicyId: 216adef6-5c7f-47e4-b989-5492eafa07d3 # Allow all Viewer https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-origin-request-policies.html#managed-origin-request-policy-all-viewer
-  #         ViewerProtocolPolicy: redirect-to-https
-  #       ViewerCertificate:
-  #         CloudFrontDefaultCertificate: 'true'
+  Ec2CloudFrontDistribution:
+    Type: AWS::CloudFront::Distribution
+    Properties:
+      DistributionConfig:
+        Origins:
+          - Id: myEC2Origin
+            DomainName: !GetAtt MyEC2Instance.PublicDnsName          
+            CustomOriginConfig:
+              HTTPPort: '8088'
+              OriginProtocolPolicy: http-only
+        Enabled: 'true'
+        Comment: CloudFront distribution in front of EC2
+        DefaultCacheBehavior:
+          AllowedMethods:
+            - GET
+            - HEAD
+            - OPTIONS
+            - PUT
+            - POST
+            - PATCH
+            - DELETE
+          TargetOriginId: myEC2Origin
+          CachePolicyId: 4135ea2d-6df8-44a3-9df3-4b5a84be39ad # Disable caching https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-cache-policies.html#managed-cache-policy-caching-disabled
+          OriginRequestPolicyId: 216adef6-5c7f-47e4-b989-5492eafa07d3 # Allow all Viewer https://docs.aws.amazon.com/AmazonCloudFront/latest/DeveloperGuide/using-managed-origin-request-policies.html#managed-origin-request-policy-all-viewer
+          ViewerProtocolPolicy: redirect-to-https
+        ViewerCertificate:
+          CloudFrontDefaultCertificate: 'true'
 
 Outputs: 
   Password:
@@ -293,13 +327,11 @@ Outputs:
     Description: The ID of the EC2 instance
     Value: !Ref MyEC2Instance
   AccessURL:
-    Description: Public IP of EC2
-    Value: !Join ["", ["https://", !GetAtt MyEC2Instance.PublicIp, ":8443/?folder=/home/", !If [CreateUbuntuResources, "ubuntu", "ec2-user"] ]]
+    Description: URL for vscode
+    Value: !Join ["", ["https://", !GetAtt Ec2CloudFrontDistribution.DomainName, "/?folder=/home/", !If [CreateUbuntuResources, "ubuntu", "ec2-user"]]]
+    # Description: Public IP of EC2
+    # Value: !Join ["", ["https://", !GetAtt MyEC2Instance.PublicIp, ":8443/?folder=/home/", !If [CreateUbuntuResources, "ubuntu", "ec2-user"] ]]
     
-  # AccessURL:
-  #   Description: URL for vscode
-  #   Value: !Join ["", ["https://", !GetAtt Ec2CloudFrontDistribution.DomainName, "/?folder=/home/", !FindInMap [DefaultValue, !Ref EC2InstanceOS, Username]]]
-  #   # Value: !Sub https://${Ec2CloudFrontDistribution.DomainName}/?folder=/home/ec2-user
 
 
 
