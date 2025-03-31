@@ -56,7 +56,7 @@ tee ~/.local/share/code-server/User/settings.json <<-'EOF'
 }
 EOF
 
-CODE_SERVER_VER=4.96.2
+CODE_SERVER_VER=4.98.2
 wget -qO /tmp/code-server.deb https://github.com/coder/code-server/releases/download/v${CODE_SERVER_VER}/code-server_${CODE_SERVER_VER}_amd64.deb
 sudo dpkg -i /tmp/code-server.deb
 sudo systemctl enable --now code-server@ubuntu
