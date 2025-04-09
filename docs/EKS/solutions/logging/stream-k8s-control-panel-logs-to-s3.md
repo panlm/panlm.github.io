@@ -60,7 +60,7 @@ aws s3 mb s3://${ATHENA_BUCKET_NAME}
 - 创建函数所需角色
 - 下载定制 lambda 代码 和 layer （参见[[cloudwatch-to-firehose-python]]）
     - [lambda_function.py](attachments/stream-k8s-control-panel-logs-to-s3/lambda_function.py) 
-    - [package.zip](package.zip) 
+    - [package.zip](attachments/stream-k8s-control-panel-logs-to-s3/package.zip) 
 - 创建函数并获取arn
 
 ```sh

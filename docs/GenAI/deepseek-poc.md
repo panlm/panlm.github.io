@@ -17,7 +17,7 @@ https://github.com/aws-samples/llm_deploy_gcr/tree/main/sagemaker/DeepSeek-R1-67
 refer: https://github.com/aws-samples/llm_deploy_gcr/tree/main/sagemaker/sagemaker_vllm
 edited version: [deploy_and_test_vllm_djl.ipynb](file:///Users/panlm/Documents/customers/C-CDFSunrise/202501-deepseek/deploy_and_test_vllm_djl.ipynb)
 in chapter 3.3
-```
+```python
 endpoint_model_name = sagemaker.utils.name_from_base(model_name, short=True)
 local_code_path = endpoint_model_name
 s3_code_path = f"s3://{default_bucket}/endpoint_code/vllm_byoc/{endpoint_model_name}.tar.gz"
@@ -55,7 +55,7 @@ python3 -m vllm.entrypoints.openai.api_server \\
 ## djl
 same notebook with previous chapter 
 [deploy_and_test_vllm_djl.ipynb](file:///Users/panlm/Documents/customers/C-CDFSunrise/202501-deepseek/deploy_and_test_vllm_djl.ipynb)
-```
+```python
 # import dotenv
 import os
 import sagemaker
@@ -88,7 +88,7 @@ role_name, model_id, image_uri
 
 ```
 
-```
+```python
 model = sagemaker.Model(
   image_uri=image_uri,
   role=role,

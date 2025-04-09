@@ -26,7 +26,7 @@ Amazon Redshift Data API 不能替代 JDBC 和 ODBC 驱动程序，适用于不�
 - 调度 SQL 脚本以简化物化视图的数据加载、卸载和刷新。
 
 ## 初始化-redshift-集群-
-- 创建 redshift 集群 ([link](https://catalog.us-east-1.prod.workshops.aws/workshops/9f29cdba-66c0-445e-8cbb-28a092cb5ba7/en-US/lab1#cloud-formation)), or open this [cloudformation template](../git-attachment/redshift-immersion.yaml) directly
+- 创建 redshift 集群 ([link](https://catalog.us-east-1.prod.workshops.aws/workshops/9f29cdba-66c0-445e-8cbb-28a092cb5ba7/en-US/lab1#cloud-formation)), or open this [cloudformation template](attachments/redshift-data-api-lab/redshift-immersion.yaml) directly
     - 创建 vpc 加 2 个公有子网，并且创建 public access 的 redshift 集群
     - InboundTraffic --> `0.0.0.0/0`
     - EETeamRoleArn --> `arn:aws:iam::xxxxxxxxxxxx:role/TeamRole`

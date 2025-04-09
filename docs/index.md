@@ -14,6 +14,7 @@ number headings: first-level 2, max 3, 1.1, auto
 (["status":"myblog"] OR ["status":"awsblog"])
 - [$frontmatter:title]($filename) -- $frontmatter:description
 ```
+- [Configure MCP Server in Cline for SearxNG](searxng-mcp-server-for-cline) -- 在 Cline 中配置 SearxNG MCP Server 实现搜索功能
 - [AWS Opensearch / Elasticsearch Migration](aos-migration) -- 使用 snapshot 迁移 elasticsearch
 - [CodeServer](vscode) -- Using code-server on EC2 instead of Cloud9 due to it has been deprecated
 - [Datahub](datahub) -- 部署 Datahub，从 Redshift 和 Glue job 中获取数据血缘
