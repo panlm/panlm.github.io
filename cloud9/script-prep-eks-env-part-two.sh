@@ -1,5 +1,6 @@
 #!/bin/bash
 # curl --location https://github.com/panlm/panlm.github.io/raw/main/docs/cloud9/script-prep-eks-env-part-two.sh |sh
+# curl --location https://panlm.github.io/cloud9/script-prep-eks-env-part-two.sh |sh
 
 ###-SCRIPT-PART-TWO-BEGIN-###
 echo "###"
@@ -79,9 +80,9 @@ rm /tmp/kubectl-convert /tmp/kubectl-convert.sha256
 # sudo ln -sf ~/.cargo/bin/jwt /usr/local/bin/jwt
 
 # install flux & fluxctl
-curl -s https://fluxcd.io/install.sh | sudo -E bash
-/usr/local/bin/flux -v
-source <(/usr/local/bin/flux completion bash)
+# curl -s https://fluxcd.io/install.sh | sudo -E bash
+# /usr/local/bin/flux -v
+# source <(/usr/local/bin/flux completion bash)
 
 # sudo wget -O /usr/local/bin/fluxctl $(curl https://api.github.com/repos/fluxcd/flux/releases/latest | jq -r ".assets[] | select(.name | test(\"linux_amd64\")) | .browser_download_url")
 # sudo chmod 755 /usr/local/bin/fluxctl

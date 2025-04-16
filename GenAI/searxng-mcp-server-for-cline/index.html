@@ -24,7 +24,7 @@
     
     
       
-        <title>Configure MCP Server in Cline for SearxNG - panlm</title>
+        <title>Configure SearxNG MCP Server in Cline - panlm</title>
       
     
     
@@ -137,7 +137,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Configure MCP Server in Cline for SearxNG
+              Configure SearxNG MCP Server in Cline
             
           </span>
         </div>
@@ -3783,7 +3783,7 @@
   
   
   <span class="md-ellipsis">
-    Configure MCP Server in Cline for SearxNG
+    Configure SearxNG MCP Server in Cline
     
   </span>
   
@@ -3804,7 +3804,7 @@
   
   
   <span class="md-ellipsis">
-    Configure MCP Server in Cline for SearxNG
+    Configure SearxNG MCP Server in Cline
     
   </span>
   
@@ -3853,6 +3853,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#mcp-server-on-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      mcp server on ec2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#refer" class="md-nav__link">
     <span class="md-ellipsis">
       refer
@@ -3893,6 +3902,15 @@
   <a href="#another-sample" class="md-nav__link">
     <span class="md-ellipsis">
       another sample
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blog" class="md-nav__link">
+    <span class="md-ellipsis">
+      blog
     </span>
   </a>
   
@@ -6355,6 +6373,15 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#mcp-server-on-ec2" class="md-nav__link">
+    <span class="md-ellipsis">
+      mcp server on ec2
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#refer" class="md-nav__link">
     <span class="md-ellipsis">
       refer
@@ -6395,6 +6422,15 @@
   <a href="#another-sample" class="md-nav__link">
     <span class="md-ellipsis">
       another sample
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#blog" class="md-nav__link">
+    <span class="md-ellipsis">
+      blog
     </span>
   </a>
   
@@ -6509,6 +6545,10 @@
 </code></pre></div></p>
 </li>
 </ul>
+<h2 id="mcp-server-on-ec2">mcp server on ec2<a class="headerlink" href="#mcp-server-on-ec2" title="Permanent link">&para;</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>curl<span class="w"> </span>-LsSf<span class="w"> </span>https://astral.sh/uv/install.sh<span class="w"> </span><span class="p">|</span><span class="w"> </span>sh
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>uv<span class="w"> </span>python<span class="w"> </span>install<span class="w"> </span><span class="m">3</span>.10
+</code></pre></div>
 <h2 id="refer">refer<a class="headerlink" href="#refer" title="Permanent link">&para;</a></h2>
 <p><a href="https://docs.searxng.org/admin/installation-searxng.html#configuration">https://docs.searxng.org/admin/installation-searxng.html#configuration</a></p>
 <h3 id="what-is-mcp">what is mcp<a class="headerlink" href="#what-is-mcp" title="Permanent link">&para;</a></h3>
@@ -6521,22 +6561,24 @@
 <h3 id="workflow">workflow<a class="headerlink" href="#workflow" title="Permanent link">&para;</a></h3>
 <p><a class="glightbox" href="../attachments/searxng-mcp-server-for-cline/IMG-searxng-mcp-server-for-cline-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="attachments/searxng-mcp-server-for-cline/IMG-searxng-mcp-server-for-cline-3.png" src="../attachments/searxng-mcp-server-for-cline/IMG-searxng-mcp-server-for-cline-3.png" title="attachments/searxng-mcp-server-for-cline/IMG-searxng-mcp-server-for-cline-3.png" /></a></p>
 <h3 id="another-sample">another sample<a class="headerlink" href="#another-sample" title="Permanent link">&para;</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="p">{</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">    </span><span class="nt">&quot;searxng&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="w">      </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uvx&quot;</span><span class="p">,</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">        </span><span class="s2">&quot;mcp-searxng&quot;</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">      </span><span class="p">],</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="w">        </span><span class="nt">&quot;SEARXNG_URL&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.hostname.domainname&quot;</span>
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="w">      </span><span class="p">},</span>
-<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="w">      </span><span class="nt">&quot;transportType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stdio&quot;</span>
-<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="w">    </span><span class="p">}</span>
-<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="w">  </span><span class="p">}</span>
-<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="p">{</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="nt">&quot;mcpServers&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nt">&quot;searxng&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="w">      </span><span class="nt">&quot;timeout&quot;</span><span class="p">:</span><span class="w"> </span><span class="mi">60</span><span class="p">,</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">      </span><span class="nt">&quot;command&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;uvx&quot;</span><span class="p">,</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="w">      </span><span class="nt">&quot;args&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">[</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="w">        </span><span class="s2">&quot;mcp-searxng&quot;</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="w">      </span><span class="p">],</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="w">      </span><span class="nt">&quot;env&quot;</span><span class="p">:</span><span class="w"> </span><span class="p">{</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="w">        </span><span class="nt">&quot;SEARXNG_URL&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;https://www.hostname.domainname&quot;</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="w">      </span><span class="p">},</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">      </span><span class="nt">&quot;transportType&quot;</span><span class="p">:</span><span class="w"> </span><span class="s2">&quot;stdio&quot;</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">    </span><span class="p">}</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="w">  </span><span class="p">}</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="p">}</span>
 </code></pre></div>
+<h3 id="blog">blog<a class="headerlink" href="#blog" title="Permanent link">&para;</a></h3>
+<p><a href="https://aws.amazon.com/blogs/machine-learning/harness-the-power-of-mcp-servers-with-amazon-bedrock-agents/">https://aws.amazon.com/blogs/machine-learning/harness-the-power-of-mcp-servers-with-amazon-bedrock-agents/</a></p>
 
 
 
@@ -6559,7 +6601,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="April 9, 2025 08:15:39"><span class="timeago" datetime="2025-04-09T08:15:39+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="April 9, 2025 08:15:39">2025-04-09</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="April 16, 2025 15:10:14"><span class="timeago" datetime="2025-04-16T15:10:14+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="April 16, 2025 15:10:14">2025-04-16</span>
   </span>
 
     
