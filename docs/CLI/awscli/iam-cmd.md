@@ -114,6 +114,7 @@ export AWS_DEFAULT_REGION=$(curl -s 169.254.169.254/latest/dynamic/instance-iden
 ### assume in credentials file
 
 - https://docs.aws.amazon.com/sdkref/latest/guide/feature-assume-role-credentials.html
+- sample 1 
 ```txt
 [profile A]
 source_profile = B
@@ -122,9 +123,15 @@ role_arn =  arn:aws:iam::123456789012:role/RoleA
 [profile B]
 aws_access_key_id=AKIAIOSFODNN7EXAMPLE
 aws_secret_access_key=wJalrXUtnFEMI/K7MDENG/bPxRfiCYEXAMPLEKEY
+```
+- sample 2 - use ec2 instance profile
+```
+[account2]
+credential_source = Ec2InstanceMetadata
+role_arn =  arn:aws:iam::123456789012:role/assume-role-b
+role_session_name = Account2RoleSession
 
 ```
-
 
 ## reference
 

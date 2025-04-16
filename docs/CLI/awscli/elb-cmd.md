@@ -244,7 +244,7 @@ aws elbv2 create-listener --load-balancer-arn ${alb1_arn} \
 
 ### example
 - [[TC-private-apigw-dataflow#步骤 1-2]]
-- ~~[[../../../../Work/C-MK/apigw/POC-apigw-dataflow#external alb]]~~
+- ~~[[../../../../gitlab/handover/C-MK/apigw/POC-apigw-dataflow#external alb]]~~
 
 ## create tg and listener
 

@@ -12,8 +12,8 @@ tags:
 
 ## link
 - https://docs.aws.amazon.com/zh_cn/eks/latest/userguide/cni-custom-network.html
-- [[Leveraging CNI custom networking alongside security groups for pods in Amazon EKS]]
-- [[../../../../../notes/blog/Automating custom networking to solve IPv4 exhaustion in Amazon EKS]]
+- [[../../../../../notes/blog/Leveraging CNI custom networking alongside security groups for pods in Amazon EKS|Leveraging CNI custom networking alongside security groups for pods in Amazon EKS]]
+- [[../../../../../notes/blog/Automating custom networking to solve IPv4 exhaustion in Amazon EKS|Automating custom networking to solve IPv4 exhaustion in Amazon EKS]]
 
 - There are a limited number of IP addresses available in a subnet. Using different subnets for pods allows you to increase the number of available IP addresses
 - For security reasons, your pods must use different security groups or subnets than the node's primary network interface.

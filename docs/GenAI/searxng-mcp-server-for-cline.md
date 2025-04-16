@@ -1,5 +1,5 @@
 ---
-title: Configure MCP Server in Cline for SearxNG
+title: Configure SearxNG MCP Server in Cline
 description: 在 Cline 中配置 SearxNG MCP Server 实现搜索功能
 created: 2025-04-08 21:21:49.447
 last_modified: 2025-04-08
@@ -87,6 +87,15 @@ ls ./dist/index.js
 ```
 
 
+## mcp server on ec2
+
+```sh
+curl -LsSf https://astral.sh/uv/install.sh | sh
+uv python install 3.10
+```
+
+
+
 ## refer
 https://docs.searxng.org/admin/installation-searxng.html#configuration
 
@@ -126,5 +135,9 @@ https://docs.searxng.org/admin/installation-searxng.html#configuration
   }
 }
 ```
+
+
+### blog
+https://aws.amazon.com/blogs/machine-learning/harness-the-power-of-mcp-servers-with-amazon-bedrock-agents/
 
 

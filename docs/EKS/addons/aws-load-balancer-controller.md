@@ -181,6 +181,7 @@ helm list -n kube-system
 ## blog
 - [[How To Expose Multiple Applications on Amazon EKS Using a Single Application Load Balancer]]
 - [[Expose Amazon EKS pods through cross-account load balancer]] 
+    - https://aws.amazon.com/blogs/networking-and-content-delivery/implement-a-central-ingress-application-load-balancer-supporting-private-amazon-elastic-kubernetes-service-vpcs/
 - [[../../../../WebClip/Enabling mTLS with ALB in Amazon EKS  Containers|Enabling mTLS with ALB in Amazon EKS  Containers]] 
 
 

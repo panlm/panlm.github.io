@@ -197,7 +197,7 @@ VPC_ID=$(aws ec2 describe-instances --instance-ids ${INST_ID} --query 'Reservati
 ```
 
 ## create vpc endpoint
-![[../../../../Work/C-MK/apigw/POC-apigw-dataflow#^gdy8eb]]
+![[../../../../gitlab/handover/C-MK/apigw/POC-apigw-dataflow#^gdy8eb]]
 
 
 another sample: [[ssm-cmd#^ssm-vpce-0513]]

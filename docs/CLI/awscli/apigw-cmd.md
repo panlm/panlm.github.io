@@ -137,7 +137,7 @@ aws apigateway put-integration \
 ### using api definition
 
 - refer: [[git/blog-private-api-gateway-dataflow/TC-private-apigw-dataflow#步骤 9-10 -- Private API Custom Domain Name Access Logging]]
-- refer: [[../../../../Work/C-MK/apigw/POC-apigw-dataflow#create api to use vpclink]]
+- refer: [[../../../../gitlab/handover/C-MK/apigw/POC-apigw-dataflow#create api to use vpclink]]
 
 ## update-access-log-for-rest-api-
 
