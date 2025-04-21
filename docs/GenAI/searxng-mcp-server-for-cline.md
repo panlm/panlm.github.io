@@ -58,7 +58,7 @@ docker-compose up -d
 ![[attachments/searxng-mcp-server-for-cline/IMG-searxng-mcp-server-for-cline.png]]
 
 
-## MCP for searxng
+## MCP for SearxNG
 - you need node 20/22 on you laptop ([[../CLI/linux/nodejs-cmd|nodejs-cmd]])
 - clone https://github.com/ihor-sokoliuk/mcp-searxng
 - build it
@@ -87,7 +87,7 @@ ls ./dist/index.js
 ```
 
 
-## MCP server on EC2
+## MCP Server on EC2
 
 ```sh
 curl -LsSf https://astral.sh/uv/install.sh | sh
@@ -128,7 +128,9 @@ nohup mcp-proxy --sse-host=0.0.0.0 --sse-port=8810 --env SEARXNG_URL https://sea
 
 ```
 
-- mcp-server json for SSE in Cline 
+## Use SSE MCP Server in VSCode Cline
+
+- mcp-server json sample
 ```json
     "mcp-server-fetch-remote": {
       "autoApprove": [
@@ -159,10 +161,10 @@ nohup mcp-proxy --sse-host=0.0.0.0 --sse-port=8810 --env SEARXNG_URL https://sea
 
 ```
 
-## Use SSE MCP server in Dify
+## Use SSE MCP Server in Dify
 
 - install MCP tools Via SSE plugin in Dify marketplace
-![[attachments/searxng-mcp-server-for-cline/IMG-searxng-mcp-server-for-cline-7.png|500]]
+![[attachments/searxng-mcp-server-for-cline/IMG-searxng-mcp-server-for-cline-9.png|500]]
 
 - Set up authorization
 ```json
@@ -192,7 +194,7 @@ nohup mcp-proxy --sse-host=0.0.0.0 --sse-port=8810 --env SEARXNG_URL https://sea
 ![[attachments/searxng-mcp-server-for-cline/IMG-searxng-mcp-server-for-cline-8.png]]
 
 
-## refer
+## Refer
 https://docs.searxng.org/admin/installation-searxng.html#configuration
 
 ### what is mcp

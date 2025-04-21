@@ -54,12 +54,6 @@ sudo apt-get install build-essential
 类似 `yum -y groupinstall "Development Tools"`
 
 ## install docker
-https://docs.docker.com/engine/install/ubuntu/
-```
-sudo getent group docker
-sudo groupadd docker
-sudo usermod -aG docker $USER
-newgrp docker
+- [[git/git-mkdocs/CLI/linux/docker-cmd#install-]]
 
-```
 

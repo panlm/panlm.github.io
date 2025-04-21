@@ -17,7 +17,7 @@ work node in private subnet ([LINK](https://aws.github.io/aws-eks-best-practices
 kubectl set env daemonset -n kube-system aws-node AWS_VPC_K8S_CNI_EXTERNALSNAT=true
 ```
 
-## snat enabled
+## snat enabled 
 work node in public subnet
 
 ![[attachments/eks-external-snat/IMG-eks-external-snat-1.png|600]]

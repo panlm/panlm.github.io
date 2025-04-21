@@ -211,7 +211,8 @@ sysctl -p
 ## iptables-
 ### MASQUERADE-
 ```sh
-iptables -t nat -A POSTROUTING  -j MASQUERADE
+iptables -t nat -A POSTROUTING -j MASQUERADE
+iptables -t nat -A POSTROUTING -s 192.168.1.0/24 -o eth0 -j MASQUERADE
 ```
 
 ### iptables
@@ -310,6 +311,7 @@ bash
 export HISTSIZE=0
 cd ~/Documents/
 rsync -avr --delete \
+    ./git \
     ./work-notes \
     ./SA-Baseline-50-12 \
     ./customers \
