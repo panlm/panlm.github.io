@@ -431,6 +431,15 @@ npm install wscat
 
 ```
 
+
+## webi.sh
+### go-
+```sh
+curl -sS https://webi.sh/golang | sh
+source ~/.config/envman/PATH.env
+
+```
+
 ## xfs
 ### xfs-mount-
 ```sh
