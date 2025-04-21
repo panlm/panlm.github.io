@@ -260,6 +260,13 @@
         <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/CLI/linux/ffmpeg/"/>
     </url>
     <url>
+        <loc>https://panlm.github.io/CLI/linux/go-cmd/</loc>
+        <lastmod>2025-04-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/CLI/linux/go-cmd/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/CLI/linux/go-cmd/"/>
+    </url>
+    <url>
         <loc>https://panlm.github.io/CLI/linux/granted-assume/</loc>
         <lastmod>2025-04-21</lastmod>
         <changefreq>daily</changefreq>
@@ -841,6 +848,13 @@
         <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/GenAI/"/>
     </url>
     <url>
+        <loc>https://panlm.github.io/GenAI/build-mcp-server-on-ec2/</loc>
+        <lastmod>2025-04-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/GenAI/build-mcp-server-on-ec2/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/GenAI/build-mcp-server-on-ec2/"/>
+    </url>
+    <url>
         <loc>https://panlm.github.io/GenAI/deepseek-poc/</loc>
         <lastmod>2025-04-21</lastmod>
         <changefreq>daily</changefreq>
@@ -853,6 +867,13 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/GenAI/dify-sample/"/>
         <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/GenAI/dify-sample/"/>
+    </url>
+    <url>
+        <loc>https://panlm.github.io/GenAI/grafana-mcp-server/</loc>
+        <lastmod>2025-04-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/GenAI/grafana-mcp-server/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/GenAI/grafana-mcp-server/"/>
     </url>
     <url>
         <loc>https://panlm.github.io/GenAI/llm-llama2-llama3/</loc>
@@ -1434,6 +1455,13 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/CLI/linux/ffmpeg/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/CLI/linux/ffmpeg/"/>
+    </url>
+    <url>
+        <loc>https://panlm.github.io/zh/CLI/linux/go-cmd/</loc>
+        <lastmod>2025-04-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/CLI/linux/go-cmd/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/CLI/linux/go-cmd/"/>
     </url>
     <url>
         <loc>https://panlm.github.io/zh/CLI/linux/granted-assume/</loc>
@@ -2023,6 +2051,13 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/GenAI/"/>
     </url>
     <url>
+        <loc>https://panlm.github.io/zh/GenAI/build-mcp-server-on-ec2/</loc>
+        <lastmod>2025-04-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/GenAI/build-mcp-server-on-ec2/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/GenAI/build-mcp-server-on-ec2/"/>
+    </url>
+    <url>
         <loc>https://panlm.github.io/zh/GenAI/deepseek-poc/</loc>
         <lastmod>2025-04-21</lastmod>
         <changefreq>daily</changefreq>
@@ -2035,6 +2070,13 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/GenAI/dify-sample/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/GenAI/dify-sample/"/>
+    </url>
+    <url>
+        <loc>https://panlm.github.io/zh/GenAI/grafana-mcp-server/</loc>
+        <lastmod>2025-04-21</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/GenAI/grafana-mcp-server/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/GenAI/grafana-mcp-server/"/>
     </url>
     <url>
         <loc>https://panlm.github.io/zh/GenAI/llm-llama2-llama3/</loc>
