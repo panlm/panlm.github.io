@@ -5,6 +5,7 @@ created: 2025-02-20 08:45:09.344
 last_modified: 2025-02-20
 tags:
   - llm/deepseek
+status: myblog
 ---
 
 # deepseek-poc
@@ -107,4 +108,5 @@ model.deploy(
 )
 ```
 
-
+support BRConnector sagemaker-lmi provider
+https://aws-samples.github.io/sample-connector-for-bedrock/providers/sagemaker-lmi/

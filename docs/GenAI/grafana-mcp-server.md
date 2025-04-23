@@ -6,6 +6,7 @@ last_modified: 2025-04-21
 tags:
   - draft
   - llm/mcp
+status: myblog
 ---
 
 # grafana-mcp-server
