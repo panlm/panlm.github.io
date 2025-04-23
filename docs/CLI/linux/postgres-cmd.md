@@ -65,6 +65,7 @@ docker exec -it postgres01 /bin/sh
 CREATE DATABASE nutanix with owner postgres;
 
 \l list database
+\c connect to database
 \q quit psql
 
 ```
@@ -86,5 +87,15 @@ docker run -d --name postgres01 -p 5432:5432 --volume-driver nutanix -v pgdata01
 ```
 docker ps
 `docker exec -it NutanixVolumePlugin /bin/sh`
+```
+
+
+### update tables
+```sql
+docker exec -it postgres psql -U postgres
+
+\c brconnector_db
+update eiai_key set api_key = 'br-xxx' where id = 2;
+
 ```
 
