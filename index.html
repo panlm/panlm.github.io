@@ -3793,6 +3793,14 @@
     
   </span>
   
+    
+  
+  
+    <span class="md-status md-status--myblog" title="my blogs">
+    </span>
+  
+
+  
 
       </a>
     </li>
@@ -3815,6 +3823,14 @@
     deepseek-poc
     
   </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog" title="my blogs">
+    </span>
+  
+
   
 
       </a>
@@ -3861,6 +3877,14 @@
     MCP Server for Grafana
     
   </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog" title="my blogs">
+    </span>
+  
+
   
 
       </a>
@@ -6445,31 +6469,34 @@
 <h2 id="2-highlights">2 highlights<a class="headerlink" href="#2-highlights" title="Permanent link">&para;</a></h2>
 <p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>([&quot;status&quot;:&quot;myblog&quot;] OR [&quot;status&quot;:&quot;awsblog&quot;])
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>- [$frontmatter:title]($filename) -- $frontmatter:description
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>- ($frontmatter:last_modified) [$frontmatter:title]($filename) -- $frontmatter:description
 </code></pre></div><br />
-- <a href="GenAI/searxng-mcp-server-for-cline/">Configure MCP Server in Cline for SearxNG</a> &ndash; 在 Cline 中配置 SearxNG MCP Server 实现搜索功能<br />
-- <a href="data-analytics/aos-migration/">AWS Opensearch / Elasticsearch Migration</a> &ndash; 使用 snapshot 迁移 elasticsearch<br />
-- <a href="cloud9/vscode/">CodeServer</a> &ndash; Using code-server on EC2 instead of Cloud9 due to it has been deprecated<br />
-- <a href="data-analytics/datahub/">Datahub</a> &ndash; 部署 Datahub，从 Redshift 和 Glue job 中获取数据血缘<br />
-- <a href="others/quick-build-brconnector.yaml">Quick Deploy BRConnector using Cloudformation</a> &ndash; 使用 Cloudformation 快速部署 BRConnector<br />
-- <a href="data-analytics/enable-quicksight-with-identity-center/">Enable Quicksight with Identity Center</a> &ndash; 中国区域启用 Quicksight 并且集成 Microsoft Entra<br />
-- <a href="others/global-sso-and-china-aws-accounts/">Using Global SSO to Login China AWS Accounts</a> &ndash; 使用 global sso 登录中国区域 aws 账号<br />
-- <a href="others/network/cross-region-reverse-proxy-with-nlb-cloudfront/">Cross Region Reverse Proxy with NLB and Cloudfront</a> &ndash; 跨区域的 Layer 4 反向代理，并使用 nlb + cloudfront，考察证书使用需求<br />
-- <a href="others/POC-mig-filezilla-to-transfer-family/">Migrating Filezilla to AWS Transfer Family</a> &ndash; 迁移 Filezilla 到 Transfer Family<br />
-- <a href="EKS/ecr/ecr-scan-on-push-notification-sns/">Enable scan on push in ECR and send notification to SNS</a> &ndash; 启用 ECR 的 Scan on push 之后，自动将扫描结果中 CRITICAL 的信息发送到目标 SNS 告警<br />
-- <a href="cloud9/create-standard-vpc-for-lab-in-china-region/">Create Standard VPC for Lab in China Region or Global Region</a> &ndash; 创建实验环境所需要的 VPC ，并且支持直接 attach 到 TGW 方便网络访问<br />
-- <a href="EKS/solutions/security/TC-eks-irsa-token-deep-dive-lab/">IRSA 中的 Token 剖析</a> &ndash; 本文档总结了将 AWS IAM 角色授予 AWS EKS 集群的服务账户的过程<br />
-- <a href="EKS/solutions/network/TC-security-group-for-eks-deepdive/">EKS Security Group Deepdive</a> &ndash; 深入 EKS 安全组<br />
-- <a href="EKS/solutions/logging/grafana-loki/">Using Grafana Loki for Logging</a> &ndash; 使用 Loki 收集日志<br />
-- <a href="EKS/solutions/logging/stream-k8s-control-panel-logs-to-s3/">Stream EKS Control Panel Logs to S3</a> &ndash; 目前 EKS 控制平面日志只支持发送到 cloudwatch，且在同一个 log group 中有5种类型6种前缀的 log stream 的日志，不利于统一查询。且只有 audit 日志是 json 格式其他均是单行日志，且字段各不相同。本解决方案提供思路统一保存日志供后续分析处理<br />
-- <a href="EKS/solutions/logging/export-cloudwatch-log-group-to-s3/">Export Cloudwatch Log Group to S3</a> &ndash; 导出 cloudwatch 日志到 s3<br />
-- <a href="EKS/solutions/logging/eks-audit-log-security-lake/">Security Lake Support Collecting Audit Logging from EKS</a> &ndash; 使用 Security Lake 收集 EKS Audit 日志<br />
-- <a href="cloud9/quick-setup-cloud9/">Quick Setup Cloud9</a> &ndash; 简化创建 Cloud9 脚本，优先选择使用 Terraform 自动初始化；也可以使用脚本从 CloudShell 中完成初始化<br />
-- <a href="cloud9/setup-cloud9-for-eks/">Setup Cloud9 for EKS</a> &ndash; 使用脚本完成实验环境初始化<br />
-- <a href="CLI/linux/granted-assume/">assume</a> &ndash; assume 工具，可以以另一个账号角色，快速打开 web console，或者执行命令<br />
-- <a href="others/network/openswan-s2svpn-tgw/">openswan-s2svpn-tgw-lab</a> &ndash; connect to global aws using site-2-site vpn service, for example access global bedrock service<br />
-- <a href="EKS/ecr/mutating-webhook-for-k8s-in-china/">Mutating Webhook for Kubernetes in China</a> &ndash; 中国区域 k8s 集群 webhook ，自动修改海外镜像到国内地址<br />
-- <a href="others/obsidian/">Obsidian Tips</a> &ndash; obsidian 使用点滴<br />
+- (2025-04-21) <a href="GenAI/grafana-mcp-server/">MCP Server for Grafana</a> &ndash; MCP Server for Grafana<br />
+- (2025-04-21) <a href="GenAI/build-mcp-server-on-ec2/">MCP Server on EC2</a> &ndash; 将 MCP Server 移动到远端，减少本地资源占用<br />
+- (2025-04-16) <a href="GenAI/searxng-mcp-server-for-cline/">Configure SearxNG MCP Server in Cline</a> &ndash; 在 Cline 中配置 SearxNG MCP Server 实现搜索功能<br />
+- (2025-02-20) <a href="GenAI/deepseek-poc/">deepseek-poc</a> &ndash; Deepseek POC<br />
+- (2025-01-02) <a href="data-analytics/aos-migration/">AWS Opensearch / Elasticsearch Migration</a> &ndash; 使用 snapshot 迁移 elasticsearch<br />
+- (2024-09-19) <a href="cloud9/vscode/">CodeServer</a> &ndash; Using code-server on EC2 instead of Cloud9 due to it has been deprecated<br />
+- (2024-08-05) <a href="data-analytics/datahub/">Datahub</a> &ndash; 部署 Datahub，从 Redshift 和 Glue job 中获取数据血缘<br />
+- (2024-07-09) <a href="others/quick-build-brconnector.yaml">Quick Deploy BRConnector using Cloudformation</a> &ndash; 使用 Cloudformation 快速部署 BRConnector<br />
+- (2024-06-28) <a href="data-analytics/enable-quicksight-with-identity-center/">Enable Quicksight with Identity Center</a> &ndash; 中国区域启用 Quicksight 并且集成 Microsoft Entra<br />
+- (2024-01-21) <a href="others/global-sso-and-china-aws-accounts/">Using Global SSO to Login China AWS Accounts</a> &ndash; 使用 global sso 登录中国区域 aws 账号<br />
+- (2024-02-04) <a href="others/network/cross-region-reverse-proxy-with-nlb-cloudfront/">Cross Region Reverse Proxy with NLB and Cloudfront</a> &ndash; 跨区域的 Layer 4 反向代理，并使用 nlb + cloudfront，考察证书使用需求<br />
+- (2024-04-04) <a href="others/POC-mig-filezilla-to-transfer-family/">Migrating Filezilla to AWS Transfer Family</a> &ndash; 迁移 Filezilla 到 Transfer Family<br />
+- (2023-12-31) <a href="EKS/ecr/ecr-scan-on-push-notification-sns/">Enable scan on push in ECR and send notification to SNS</a> &ndash; 启用 ECR 的 Scan on push 之后，自动将扫描结果中 CRITICAL 的信息发送到目标 SNS 告警<br />
+- (2024-03-27) <a href="cloud9/create-standard-vpc-for-lab-in-china-region/">Create Standard VPC for Lab in China Region or Global Region</a> &ndash; 创建实验环境所需要的 VPC ，并且支持直接 attach 到 TGW 方便网络访问<br />
+- (2024-02-18) <a href="EKS/solutions/security/TC-eks-irsa-token-deep-dive-lab/">IRSA 中的 Token 剖析</a> &ndash; 本文档总结了将 AWS IAM 角色授予 AWS EKS 集群的服务账户的过程<br />
+- (2024-02-25) <a href="EKS/solutions/network/TC-security-group-for-eks-deepdive/">EKS Security Group Deepdive</a> &ndash; 深入 EKS 安全组<br />
+- (2024-07-18) <a href="EKS/solutions/logging/grafana-loki/">Using Grafana Loki for Logging</a> &ndash; 使用 Loki 收集日志<br />
+- (2024-01-08) <a href="EKS/solutions/logging/stream-k8s-control-panel-logs-to-s3/">Stream EKS Control Panel Logs to S3</a> &ndash; 目前 EKS 控制平面日志只支持发送到 cloudwatch，且在同一个 log group 中有5种类型6种前缀的 log stream 的日志，不利于统一查询。且只有 audit 日志是 json 格式其他均是单行日志，且字段各不相同。本解决方案提供思路统一保存日志供后续分析处理<br />
+- (2023-12-31) <a href="EKS/solutions/logging/export-cloudwatch-log-group-to-s3/">Export Cloudwatch Log Group to S3</a> &ndash; 导出 cloudwatch 日志到 s3<br />
+- (2024-05-11) <a href="EKS/solutions/logging/eks-audit-log-security-lake/">Security Lake Support Collecting Audit Logging from EKS</a> &ndash; 使用 Security Lake 收集 EKS Audit 日志<br />
+- (2024-04-02) <a href="cloud9/quick-setup-cloud9/">Quick Setup Cloud9</a> &ndash; 简化创建 Cloud9 脚本，优先选择使用 Terraform 自动初始化；也可以使用脚本从 CloudShell 中完成初始化<br />
+- (2024-02-11) <a href="cloud9/setup-cloud9-for-eks/">Setup Cloud9 for EKS</a> &ndash; 使用脚本完成实验环境初始化<br />
+- (2024-02-12) <a href="CLI/linux/granted-assume/">assume</a> &ndash; assume 工具，可以以另一个账号角色，快速打开 web console，或者执行命令<br />
+- (2024-08-19) <a href="others/network/openswan-s2svpn-tgw/">openswan-s2svpn-tgw-lab</a> &ndash; connect to global aws using site-2-site vpn service, for example access global bedrock service<br />
+- (2023-11-22) <a href="EKS/ecr/mutating-webhook-for-k8s-in-china/">Mutating Webhook for Kubernetes in China</a> &ndash; 中国区域 k8s 集群 webhook ，自动修改海外镜像到国内地址<br />
+- (2024-01-01) <a href="others/obsidian/">Obsidian Tips</a> &ndash; obsidian 使用点滴<br />
 &lt;&ndash;&gt;</p>
 <h2 id="3-my-aws-blogs">3 my aws blogs<a class="headerlink" href="#3-my-aws-blogs" title="Permanent link">&para;</a></h2>
 <ul>
@@ -7901,12 +7928,12 @@
 
 
 <a
-    class="pagetree-navlink "
-    data-page-status=""
+    class="pagetree-navlink  pagetree-pagestatus "
+    data-page-status="myblog"
     href="GenAI/build-mcp-server-on-ec2/"
 >
     MCP Server on EC2
-    
+    <strong title="Status: myblog">myblog</strong>
 </a>
 </li>
                 
@@ -7916,12 +7943,12 @@
 
 
 <a
-    class="pagetree-navlink "
-    data-page-status=""
+    class="pagetree-navlink  pagetree-pagestatus "
+    data-page-status="myblog"
     href="GenAI/deepseek-poc/"
 >
     deepseek-poc
-    
+    <strong title="Status: myblog">myblog</strong>
 </a>
 </li>
                 
@@ -7946,12 +7973,12 @@
 
 
 <a
-    class="pagetree-navlink "
-    data-page-status=""
+    class="pagetree-navlink  pagetree-pagestatus "
+    data-page-status="myblog"
     href="GenAI/grafana-mcp-server/"
 >
     MCP Server for Grafana
-    
+    <strong title="Status: myblog">myblog</strong>
 </a>
 </li>
                 
