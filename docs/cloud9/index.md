@@ -10,9 +10,14 @@ number headings: first-level 2, max 3, 1.1, auto
     - [[bootstrapping-python.py]]
 - [Setup Cloud9 for EKS](setup-cloud9-for-eks): 使用脚本完成实验环境初始化
     - [[script-prep-eks-env-part-one.sh]]
-    - [[script-prep-eks-env-part-three.sh]]
+        - [[script-ubuntu-prep-eks-env-part-one.sh]]
     - [[script-prep-eks-env-part-two.sh]]
-    - [[script-ubuntu-prep-eks-env-part-one.sh]]
+        ```sh
+curl --location https://panlm.github.io/cloud9/script-prep-eks-env-part-two.sh |sh
+```
+    - [[script-prep-eks-env-part-three.sh]]
+
+
 
 ## 2 Others
 - [create standard vpc for lab in china region](create-standard-vpc-for-lab-in-china-region.md): 创建实验环境所需要的 VPC ，并且支持直接 attach 到 TGW 方便网络访问
