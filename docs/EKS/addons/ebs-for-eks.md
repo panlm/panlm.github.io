@@ -111,7 +111,7 @@ spec:
 #    topology.kubernetes.io/zone: cn-northwest-1b
   containers:
   - name: app
-    image: centos
+    image: public.ecr.aws/docker/library/centos:centos7.9.2009
     command: ["/bin/sh"]
     args: ["-c", "while true; do echo $(date -u) >> /data/out.txt; sleep 5; done"]
     volumeMounts:

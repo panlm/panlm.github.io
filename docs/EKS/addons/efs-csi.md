@@ -67,6 +67,12 @@ done
 ```
 
 ## install efs-csi
+### install using eksdemo
+```sh
+eksdemo  install storage efs-csi -c ekscluster1
+
+```
+
 ### install from github
 直接安装不额外配置权限的话，只能验证静态 provision
 如果验证动态 provision，会有权限不够的告警，因为需要动态创建 access point，可以通过节点 role方式加载权限，或者重新部署为 irsa
@@ -300,41 +306,59 @@ spec:
     requests:
       storage: 5Gi                      # soft limit
 ---
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: efs-app-dy1
 spec:
-  containers:
-    - name: app
-      image: centos
-      command: ["/bin/sh"]
-      args: ["-c", "while true; do echo $(date -u) >> /data/out1; sleep 5; done"]
-      volumeMounts:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: efs-app-dy1
+  template:
+    metadata:
+      labels:
+        app: efs-app-dy1
+    spec:
+      containers:
+        - name: app
+          image: public.ecr.aws/docker/library/centos:centos7.9.2009
+          command: ["/bin/sh"]
+          args: ["-c", "while true; do echo $(date -u) >> /data/out1; sleep 5; done"]
+          volumeMounts:
+            - name: persistent-storage
+              mountPath: /data
+      volumes:
         - name: persistent-storage
-          mountPath: /data
-  volumes:
-    - name: persistent-storage
-      persistentVolumeClaim:
-        claimName: efs-claim
+          persistentVolumeClaim:
+            claimName: efs-claim
 ---
-apiVersion: v1
-kind: Pod
+apiVersion: apps/v1
+kind: Deployment
 metadata:
   name: efs-app-dy2
 spec:
-  containers:
-    - name: app
-      image: centos
-      command: ["/bin/sh"]
-      args: ["-c", "while true; do echo $(date -u) >> /data/out2; sleep 5; done"]
-      volumeMounts:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: efs-app-dy2
+  template:
+    metadata:
+      labels:
+        app: efs-app-dy2
+    spec:
+      containers:
+        - name: app
+          image: public.ecr.aws/docker/library/centos:centos7.9.2009
+          command: ["/bin/sh"]
+          args: ["-c", "while true; do echo $(date -u) >> /data/out2; sleep 5; done"]
+          volumeMounts:
+            - name: persistent-storage
+              mountPath: /data
+      volumes:
         - name: persistent-storage
-          mountPath: /data
-  volumes:
-    - name: persistent-storage
-      persistentVolumeClaim:
-        claimName: efs-claim
+          persistentVolumeClaim:
+            claimName: efs-claim
 ' |tee ./dy-pod.yaml
 
 kubectl apply -f dy-storageclass.yaml

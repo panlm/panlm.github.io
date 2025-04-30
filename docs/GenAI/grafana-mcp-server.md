@@ -4,9 +4,7 @@ description: MCP Server for Grafana
 created: 2025-04-21 14:05:47.674
 last_modified: 2025-04-21
 tags:
-  - draft
   - llm/mcp
-status: myblog
 ---
 
 # grafana-mcp-server
