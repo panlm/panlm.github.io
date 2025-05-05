@@ -65,7 +65,9 @@ mkdocs serve
 
 > [!example] 
 
-
+```ad-summary
+summary
+```
 
 ## remove custom domain
 - remove `static/CNAME` file
