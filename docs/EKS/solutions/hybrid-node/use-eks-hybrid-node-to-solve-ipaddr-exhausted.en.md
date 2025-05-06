@@ -9,7 +9,7 @@ status: myblog
 ---
 
 > [!WARNING] 
-> This is a translate version from [[use-eks-hybrid-node-to-solve-ipaddr-exhausted.zh]]
+> This is a translate version from [use-eks-hybrid-node-to-solve-ipaddr-exhausted.zh](use-eks-hybrid-node-to-solve-ipaddr-exhausted.zh)
 
 
 # Breaking Through VPC Address Limitations: EKS Hybrid Node Architecture Implementation Guide

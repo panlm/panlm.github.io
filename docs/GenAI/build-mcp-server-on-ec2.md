@@ -14,6 +14,8 @@ status: myblog
 ```sh
 curl -LsSf https://astral.sh/uv/install.sh | sh
 uv python install 3.10
+uv tool install git+https://github.com/sparfenyuk/mcp-proxy
+
 ```
 
 we will use [mcp-proxy](https://github.com/sparfenyuk/mcp-proxy) to move mcp server to ec2 and let client access mcp server through SSE
