@@ -263,6 +263,15 @@ sudo iperf -s
 ```sh
 iperf -c 172.31.30.41 --parallel 40 -i 1 -t 2
 ```
+or
+```sh
+iperf -c 172.31.26.3 -t 30 -P 8
+```
+
+#### install
+```sh
+sudo apt install -y iperf iptraf tcpdump netperf tmux htop atop  net-tools traceroute tcptraceroute ngrep 
+```
 
 
 ## openssl

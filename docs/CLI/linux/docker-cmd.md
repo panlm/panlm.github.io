@@ -176,10 +176,20 @@ https://phoenixnap.com/kb/docker-environment-variables
 `ENV SPARK_VERSION=3.3.3`
 
 ## compose
-
+### cmd
 ```sh
 sudo curl -L https://github.com/docker/compose/releases/latest/download/docker-compose-$(uname -s)-$(uname -m) -o /usr/local/bin/docker-compose
 sudo chmod a+x /usr/local/bin/docker-compose
+```
+
+### plugin
+https://docs.docker.com/compose/install/linux/#install-the-plugin-manually
+```sh
+DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
+mkdir -p $DOCKER_CONFIG/cli-plugins
+curl -SL https://github.com/docker/compose/releases/download/v2.36.0/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
+chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
+
 ```
 
 ## install-

@@ -2,21 +2,15 @@
 title: MCP Server on EC2
 description: 将 MCP Server 移动到远端，减少本地资源占用
 created: 2025-04-21 10:45:11.160
-last_modified: 2025-04-21
+last_modified: 2025-05-15
 tags:
-  - draft
   - llm/mcp
 status: myblog
 ---
 
 # MCP Server on EC2
 
-```sh
-curl -LsSf https://astral.sh/uv/install.sh | sh
-uv python install 3.10
-uv tool install git+https://github.com/sparfenyuk/mcp-proxy
-
-```
+## what is mcp-proxy
 
 we will use [mcp-proxy](https://github.com/sparfenyuk/mcp-proxy) to move mcp server to ec2 and let client access mcp server through SSE
 
@@ -44,7 +38,12 @@ graph LR
 
 ```
 
-- start mcp-proxy 
+当前 amazon Q Dev CLI 只支持 STDIO协议，不支持 SSE，因此在将 mcp server 放到 EC2 上之后，不仅需要将 mcp server 通过 mcp-proxy 暴露成 SSE，在 Q DEV CLI 本地需要通过 mcp-proxy 将远程 SSE，在转换成本地的 STDIO，提供 Q Dev CLI 访问。如下图：
+
+![[attachments/build-mcp-server-on-ec2/IMG-20250515-150819.png|800]]
+
+## manual -- start mcp server using mcp-proxy 
+
 ```sh
 nohup mcp-proxy --sse-host=0.0.0.0 --sse-port=8808 uvx mcp-server-fetch 2>&1 1>/tmp/mcp-proxy-8808.log &
 nohup mcp-proxy --sse-host=0.0.0.0 --sse-port=8809 --env FASTMCP_LOG_LEVEL ERROR uvx awslabs.aws-documentation-mcp-server@latest 2>&1 1>/tmp/mcp-proxy-8809.log &
@@ -52,7 +51,99 @@ nohup mcp-proxy --sse-host=0.0.0.0 --sse-port=8810 --env SEARXNG_URL https://sea
 
 ```
 
-## Use SSE to MCP Server in VSCode Cline
+## recommend -- put mcp-server in docker with mcp-proxy endpoint
+
+```sh
+# git clone https://github.com/sparfenyuk/mcp-proxy
+# git clone https://github.com/ihor-sokoliuk/mcp-searxng
+
+cat > mcp-proxy-uv.Dockerfile <<-'EOF'
+# file: mcp-proxy.Dockerfile
+
+FROM ghcr.io/sparfenyuk/mcp-proxy:latest
+
+# Install the 'uv' package
+RUN python3 -m ensurepip && pip install --no-cache-dir uv
+
+ENV PATH="/usr/local/bin:$PATH" \
+    UV_PYTHON_PREFERENCE=only-system
+
+ENTRYPOINT [ "mcp-proxy" ]
+EOF
+
+cat > mcp-proxy-npx.Dockerfile <<-'EOF'
+FROM node:20-slim
+
+# Install Python and required packages
+RUN apt-get update && apt-get install -y python3 curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install uv and mcp-proxy using pipx
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+RUN ~/.local/bin/uv python install 3.10
+RUN ~/.local/bin/uv tool install mcp-proxy
+
+# Add pipx binaries to PATH
+ENV PATH="/root/.local/bin:$PATH" \
+    NODE_ENV=production
+
+ENTRYPOINT ["mcp-proxy"]
+EOF
+
+cat > docker-compose.yaml <<-'EOF'
+services:
+  fetch-mcp:
+    build:
+      context: .
+      dockerfile: mcp-proxy-uv.Dockerfile
+    network_mode: host
+    restart: unless-stopped
+    ports:
+      - 8096:8096
+    command: "--pass-environment --port=8096 --sse-host 0.0.0.0 uvx mcp-server-fetch"
+  aws-doc-mcp:
+    build:
+      context: .
+      dockerfile: mcp-proxy-uv.Dockerfile
+    network_mode: host
+    restart: unless-stopped
+    ports:
+      - 8097:8097
+    command: "--pass-environment --port=8097 --sse-host 0.0.0.0 --env FASTMCP_LOG_LEVEL ERROR uvx awslabs.aws-documentation-mcp-server@latest"    
+  searxng-mcp:
+    build:
+      context: .
+      dockerfile: mcp-proxy-npx.Dockerfile
+    network_mode: host
+    restart: unless-stopped
+    ports:
+      - 8098:8098
+    command: "--pass-environment --port=8098 --sse-host 0.0.0.0 --env SEARXNG_URL https://searx -- npx -y mcp-searxng"
+EOF
+
+docker compose up -d
+
+```
+
+- add another mcp-server
+```yaml
+  confluence-mcp:
+    build:
+      context: .
+      dockerfile: mcp-proxy-uv.Dockerfile
+    network_mode: host
+    restart: unless-stopped
+    environment:
+      - CONFLUENCE_URL="https://your-company.atlassian.net/wiki"
+      - CONFLUENCE_USERNAME="your.email@company.com"
+      - CONFLUENCE_API_TOKEN="your_confluence_api_token"
+    ports:
+      - 8099:8099
+    command: "--pass-environment --port=8099 --sse-host 0.0.0.0 -- uvx mcp-atlassian"
+```
+
+## Config samples
+### Use SSE to Access MCP Server in VSCode Cline
 
 - mcp-server json sample
 ```json
@@ -85,7 +176,7 @@ nohup mcp-proxy --sse-host=0.0.0.0 --sse-port=8810 --env SEARXNG_URL https://sea
 
 ```
 
-## Use SSE to MCP Server in Dify
+### Use SSE to access MCP Server in Dify
 
 - install MCP tools Via SSE plugin in Dify marketplace
 ![[attachments/build-mcp-server-on-ec2/IMG-build-mcp-server-on-ec2.png|500]]
@@ -118,6 +209,30 @@ nohup mcp-proxy --sse-host=0.0.0.0 --sse-port=8810 --env SEARXNG_URL https://sea
 ![[attachments/build-mcp-server-on-ec2/IMG-build-mcp-server-on-ec2-1.png]]
 
 
+### Q Dev CLI sample
+#### install-mcp-proxy-
 
+```sh
+curl -LsSf https://astral.sh/uv/install.sh | sh
+uv python install 3.10
+uv tool install git+https://github.com/sparfenyuk/mcp-proxy
 
+# if you change python version
+# uv tool install mcp-proxy --reinstall
+
+```
+
+#### config file: ~/.aws/amazonq/mcp.json
+
+```json
+{
+  "mcpServers": {
+    "fetch-mcp": {
+        "command": "mcp-proxy",
+        "args": ["httpx://xxx:8808/sse"],
+        "env": {}
+    }
+  }
+}
+```
 

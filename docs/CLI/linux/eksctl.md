@@ -115,6 +115,14 @@ eksctl scale nodegroup \
 ```
 - refer: [[../functions/func-create-iamserviceaccount.sh|func-create-iamserviceaccount]]
 
+```sh
+    eksctl create iamserviceaccount -c ekscluster1 \
+        --name sa-s3 --namespace default \
+        --attach-policy-arn arn:aws:iam::aws:policy/AmazonS3FullAccess \
+        --role-name sa-s3-$(TZ=EAT-8 date +%Y%m%d-%H%M%S)  --approve \
+        --override-existing-serviceaccounts
+```
+
 ## ~~appmesh cluster~~
 
 ```sh
