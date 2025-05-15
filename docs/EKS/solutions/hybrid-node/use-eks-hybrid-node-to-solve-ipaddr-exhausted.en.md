@@ -5,11 +5,10 @@ created: 2025-04-20 10:53:34.032
 last_modified: 2025-05-01
 tags:
   - aws/container/eks
-status: myblog
 ---
 
 > [!WARNING] 
-> This is a translate version from [use-eks-hybrid-node-to-solve-ipaddr-exhausted.zh](use-eks-hybrid-node-to-solve-ipaddr-exhausted.zh)
+> This is a translate version from [[use-eks-hybrid-node-to-solve-ipaddr-exhausted.zh]]
 
 
 # Breaking Through VPC Address Limitations: EKS Hybrid Node Architecture Implementation Guide
