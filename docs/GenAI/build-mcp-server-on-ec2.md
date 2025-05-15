@@ -3,9 +3,9 @@ title: MCP Server on EC2
 description: 将 MCP Server 移动到远端，减少本地资源占用
 created: 2025-04-21 10:45:11.160
 last_modified: 2025-05-15
+status: myblog
 tags:
   - llm/mcp
-status: myblog
 ---
 
 # MCP Server on EC2
@@ -42,7 +42,7 @@ graph LR
 
 ![[attachments/build-mcp-server-on-ec2/IMG-20250515-150819.png|800]]
 
-## manual -- start mcp server using mcp-proxy 
+## 手工部署 -- start mcp server using mcp-proxy 
 
 ```sh
 nohup mcp-proxy --sse-host=0.0.0.0 --sse-port=8808 uvx mcp-server-fetch 2>&1 1>/tmp/mcp-proxy-8808.log &
@@ -51,7 +51,7 @@ nohup mcp-proxy --sse-host=0.0.0.0 --sse-port=8810 --env SEARXNG_URL https://sea
 
 ```
 
-## recommend -- put mcp-server in docker with mcp-proxy endpoint
+## 推荐部署 -- put mcp-server in docker with mcp-proxy endpoint
 
 ```sh
 # git clone https://github.com/sparfenyuk/mcp-proxy
@@ -143,7 +143,7 @@ docker compose up -d
 ```
 
 ## Config samples
-### Use SSE to Access MCP Server in VSCode Cline
+### Use SSE in VSCode Cline
 
 - mcp-server json sample
 ```json
@@ -176,7 +176,7 @@ docker compose up -d
 
 ```
 
-### Use SSE to access MCP Server in Dify
+### Use SSE in Dify
 
 - install MCP tools Via SSE plugin in Dify marketplace
 ![[attachments/build-mcp-server-on-ec2/IMG-build-mcp-server-on-ec2.png|500]]
@@ -209,7 +209,7 @@ docker compose up -d
 ![[attachments/build-mcp-server-on-ec2/IMG-build-mcp-server-on-ec2-1.png]]
 
 
-### Q Dev CLI sample
+### In Q Dev CLI
 #### install-mcp-proxy-
 
 ```sh
