@@ -6,7 +6,7 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="A real-world case study on how to elegantly solve VPC address space shortage using EKS hybrid node functionality">
+        <meta name="description" content="一个关于如何使用EKS混合节点功能优雅地解决VPC地址空间不足的真实案例">
       
       
       
@@ -24,7 +24,7 @@
     
     
       
-        <title>Breaking Through VPC Address Limitations - EKS Hybrid Node Architecture Implementation Guide - panlm</title>
+        <title>Breaking Through VPC Address Limitations Using EKS Hybrid Node Architecture - panlm</title>
       
     
     
@@ -101,7 +101,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#breaking-through-vpc-address-limitations-eks-hybrid-node-architecture-implementation-guide" class="md-skip">
+        <a href="#vpceks" class="md-skip">
           Skip to content
         </a>
       
@@ -137,7 +137,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Breaking Through VPC Address Limitations - EKS Hybrid Node Architecture Implementation Guide
+              Breaking Through VPC Address Limitations Using EKS Hybrid Node Architecture
             
           </span>
         </div>
@@ -2122,9 +2122,17 @@
   
   
   <span class="md-ellipsis">
-    Breaking Through VPC Address Limitations - EKS Hybrid Node Architecture Implementation Guide
+    Breaking Through VPC Address Limitations Using EKS Hybrid Node Architecture
     
   </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog" title="my blogs">
+    </span>
+  
+
   
 
           <span class="md-nav__icon md-icon"></span>
@@ -2135,9 +2143,17 @@
   
   
   <span class="md-ellipsis">
-    Breaking Through VPC Address Limitations - EKS Hybrid Node Architecture Implementation Guide
+    Breaking Through VPC Address Limitations Using EKS Hybrid Node Architecture
     
   </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog" title="my blogs">
+    </span>
+  
+
   
 
       </a>
@@ -2158,64 +2174,64 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduction-when-vpc-address-exhaustion-meets-containerization" class="md-nav__link">
+  <a href="#vpc" class="md-nav__link">
     <span class="md-ellipsis">
-      Introduction: When VPC Address Exhaustion Meets Containerization
+      引言：当VPC地址耗尽遇上容器化浪潮
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-is-this-a-challenging-problem" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Why Is This a Challenging Problem?
+      为什么这是一个棘手的问题？
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#first-attempt-the-pitfalls-of-overlay-networks" class="md-nav__link">
+  <a href="#overlay" class="md-nav__link">
     <span class="md-ellipsis">
-      First Attempt: The Pitfalls of Overlay Networks
+      初次尝试：Overlay网络的陷阱
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#designing-a-new-solution-balancing-multiple-requirements" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      Designing a New Solution: Balancing Multiple Requirements
+      设计新方案：平衡多方需求
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#innovative-solutions-breaking-through-traditional-architecture-limitations" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      Innovative Solutions: Breaking Through Traditional Architecture Limitations
+      创新解决方案：突破传统架构的限制
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Innovative Solutions: Breaking Through Traditional Architecture Limitations">
+    <nav class="md-nav" aria-label="创新解决方案：突破传统架构的限制">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#solution-1-clever-use-of-alb-cross-vpc-deployment" class="md-nav__link">
+  <a href="#albvpc" class="md-nav__link">
     <span class="md-ellipsis">
-      Solution 1: Clever Use of ALB Cross-VPC Deployment
+      方案一：巧用ALB跨VPC部署
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#solution-2-the-innovation-of-hybrid-node-architecture" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      Solution 2: The Innovation of Hybrid Node Architecture
+      方案二：混合节点架构的创新之道
     </span>
   </a>
   
@@ -2227,65 +2243,65 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation-deployment-guide-from-theory-to-practice" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      Implementation Deployment Guide: From Theory to Practice
+      实施部署指南：从理论到实践
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Implementation Deployment Guide: From Theory to Practice">
+    <nav class="md-nav" aria-label="实施部署指南：从理论到实践">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#network-architecture-design-building-a-solid-foundation" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      Network Architecture Design: Building a Solid Foundation
+      网络架构设计：构建稳固的基础
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#infrastructure-deployment-step-by-step-implementation-guide" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      Infrastructure Deployment: Step-by-Step Implementation Guide
+      基础设施部署：分步实施指南
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Infrastructure Deployment: Step-by-Step Implementation Guide">
+    <nav class="md-nav" aria-label="基础设施部署：分步实施指南">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#phase-one-creating-the-eks-cluster" class="md-nav__link">
+  <a href="#eks" class="md-nav__link">
     <span class="md-ellipsis">
-      Phase One: Creating the EKS Cluster
+      第一阶段：创建EKS集群
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#phase-two-configuring-the-network-environment" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      Phase Two: Configuring the Network Environment
+      第二阶段：配置网络环境
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#phase-three-configuring-eks-cluster-network" class="md-nav__link">
+  <a href="#eks_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Phase Three: Configuring EKS Cluster Network
+      第三阶段：配置EKS集群网络
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#phase-four-configuring-systems-manager" class="md-nav__link">
+  <a href="#systems-manager" class="md-nav__link">
     <span class="md-ellipsis">
-      Phase Four: Configuring Systems Manager
+      第四阶段：配置Systems Manager
     </span>
   </a>
   
@@ -2297,37 +2313,37 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#installing-and-configuring-cluster-components" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
-      Installing and Configuring Cluster Components
+      安装和配置集群组件
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Installing and Configuring Cluster Components">
+    <nav class="md-nav" aria-label="安装和配置集群组件">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#configuring-load-balancer" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
-      Configuring Load Balancer
+      配置负载均衡
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#configuring-network-plugin" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-      Configuring Network Plugin
+      配置网络插件
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#deployment-verification" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
-      Deployment Verification
+      验证部署
     </span>
   </a>
   
@@ -2339,28 +2355,28 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#network-routing-configuration-building-reliable-communication-channels" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
-      Network Routing Configuration: Building Reliable Communication Channels
+      网络路由配置：构建可靠的通信通道
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Network Routing Configuration: Building Reliable Communication Channels">
+    <nav class="md-nav" aria-label="网络路由配置：构建可靠的通信通道">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#pod-network-routing-architecture" class="md-nav__link">
+  <a href="#pod" class="md-nav__link">
     <span class="md-ellipsis">
-      Pod Network Routing Architecture
+      Pod网络路由架构
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#routing-configuration-steps" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
-      Routing Configuration Steps
+      路由配置步骤
     </span>
   </a>
   
@@ -2372,28 +2388,28 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#automation-tool-route-table-synchronization-script" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
-      Automation Tool: Route Table Synchronization Script
+      自动化工具：路由表同步脚本
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Automation Tool: Route Table Synchronization Script">
+    <nav class="md-nav" aria-label="自动化工具：路由表同步脚本">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#background" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
-      Background
+      背景说明
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#script-functionality" class="md-nav__link">
+  <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
-      Script Functionality
+      脚本功能
     </span>
   </a>
   
@@ -2401,84 +2417,6 @@
         
       </ul>
     </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#environment-cleanup-dismantling-architecture-in-dependency-order" class="md-nav__link">
-    <span class="md-ellipsis">
-      Environment Cleanup: Dismantling Architecture in Dependency Order
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Environment Cleanup: Dismantling Architecture in Dependency Order">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#application-cleanup" class="md-nav__link">
-    <span class="md-ellipsis">
-      Application Cleanup
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#node-cleanup" class="md-nav__link">
-    <span class="md-ellipsis">
-      Node Cleanup
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cluster-component-cleanup" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cluster Component Cleanup
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#network-resource-cleanup" class="md-nav__link">
-    <span class="md-ellipsis">
-      Network Resource Cleanup
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#compute-resource-cleanup" class="md-nav__link">
-    <span class="md-ellipsis">
-      Compute Resource Cleanup
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#infrastructure-cleanup" class="md-nav__link">
-    <span class="md-ellipsis">
-      Infrastructure Cleanup
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cleanup-verification" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cleanup Verification
-    </span>
-  </a>
   
 </li>
         
@@ -2488,37 +2426,115 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
-      References
+      环境清理：按依赖顺序拆除架构
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="References">
+    <nav class="md-nav" aria-label="环境清理：按依赖顺序拆除架构">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#aws-official-documentation" class="md-nav__link">
+  <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
-      AWS Official Documentation
+      应用清理
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#technical-blogs" class="md-nav__link">
+  <a href="#_20" class="md-nav__link">
     <span class="md-ellipsis">
-      Technical Blogs
+      节点清理
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#community-resources" class="md-nav__link">
+  <a href="#_21" class="md-nav__link">
     <span class="md-ellipsis">
-      Community Resources
+      集群组件清理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      网络资源清理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      计算资源清理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      基础设施清理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      清理验证
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考资料
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="参考资料">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS官方文档
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      技术博客
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      社区资源
     </span>
   </a>
   
@@ -6807,64 +6823,64 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#introduction-when-vpc-address-exhaustion-meets-containerization" class="md-nav__link">
+  <a href="#vpc" class="md-nav__link">
     <span class="md-ellipsis">
-      Introduction: When VPC Address Exhaustion Meets Containerization
+      引言：当VPC地址耗尽遇上容器化浪潮
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#why-is-this-a-challenging-problem" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Why Is This a Challenging Problem?
+      为什么这是一个棘手的问题？
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#first-attempt-the-pitfalls-of-overlay-networks" class="md-nav__link">
+  <a href="#overlay" class="md-nav__link">
     <span class="md-ellipsis">
-      First Attempt: The Pitfalls of Overlay Networks
+      初次尝试：Overlay网络的陷阱
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#designing-a-new-solution-balancing-multiple-requirements" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
-      Designing a New Solution: Balancing Multiple Requirements
+      设计新方案：平衡多方需求
     </span>
   </a>
   
 </li>
       
         <li class="md-nav__item">
-  <a href="#innovative-solutions-breaking-through-traditional-architecture-limitations" class="md-nav__link">
+  <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
-      Innovative Solutions: Breaking Through Traditional Architecture Limitations
+      创新解决方案：突破传统架构的限制
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Innovative Solutions: Breaking Through Traditional Architecture Limitations">
+    <nav class="md-nav" aria-label="创新解决方案：突破传统架构的限制">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#solution-1-clever-use-of-alb-cross-vpc-deployment" class="md-nav__link">
+  <a href="#albvpc" class="md-nav__link">
     <span class="md-ellipsis">
-      Solution 1: Clever Use of ALB Cross-VPC Deployment
+      方案一：巧用ALB跨VPC部署
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#solution-2-the-innovation-of-hybrid-node-architecture" class="md-nav__link">
+  <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
-      Solution 2: The Innovation of Hybrid Node Architecture
+      方案二：混合节点架构的创新之道
     </span>
   </a>
   
@@ -6876,65 +6892,65 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#implementation-deployment-guide-from-theory-to-practice" class="md-nav__link">
+  <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
-      Implementation Deployment Guide: From Theory to Practice
+      实施部署指南：从理论到实践
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Implementation Deployment Guide: From Theory to Practice">
+    <nav class="md-nav" aria-label="实施部署指南：从理论到实践">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#network-architecture-design-building-a-solid-foundation" class="md-nav__link">
+  <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
-      Network Architecture Design: Building a Solid Foundation
+      网络架构设计：构建稳固的基础
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#infrastructure-deployment-step-by-step-implementation-guide" class="md-nav__link">
+  <a href="#_7" class="md-nav__link">
     <span class="md-ellipsis">
-      Infrastructure Deployment: Step-by-Step Implementation Guide
+      基础设施部署：分步实施指南
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Infrastructure Deployment: Step-by-Step Implementation Guide">
+    <nav class="md-nav" aria-label="基础设施部署：分步实施指南">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#phase-one-creating-the-eks-cluster" class="md-nav__link">
+  <a href="#eks" class="md-nav__link">
     <span class="md-ellipsis">
-      Phase One: Creating the EKS Cluster
+      第一阶段：创建EKS集群
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#phase-two-configuring-the-network-environment" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
-      Phase Two: Configuring the Network Environment
+      第二阶段：配置网络环境
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#phase-three-configuring-eks-cluster-network" class="md-nav__link">
+  <a href="#eks_1" class="md-nav__link">
     <span class="md-ellipsis">
-      Phase Three: Configuring EKS Cluster Network
+      第三阶段：配置EKS集群网络
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#phase-four-configuring-systems-manager" class="md-nav__link">
+  <a href="#systems-manager" class="md-nav__link">
     <span class="md-ellipsis">
-      Phase Four: Configuring Systems Manager
+      第四阶段：配置Systems Manager
     </span>
   </a>
   
@@ -6946,37 +6962,37 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#installing-and-configuring-cluster-components" class="md-nav__link">
+  <a href="#_9" class="md-nav__link">
     <span class="md-ellipsis">
-      Installing and Configuring Cluster Components
+      安装和配置集群组件
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Installing and Configuring Cluster Components">
+    <nav class="md-nav" aria-label="安装和配置集群组件">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#configuring-load-balancer" class="md-nav__link">
+  <a href="#_10" class="md-nav__link">
     <span class="md-ellipsis">
-      Configuring Load Balancer
+      配置负载均衡
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#configuring-network-plugin" class="md-nav__link">
+  <a href="#_11" class="md-nav__link">
     <span class="md-ellipsis">
-      Configuring Network Plugin
+      配置网络插件
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#deployment-verification" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
-      Deployment Verification
+      验证部署
     </span>
   </a>
   
@@ -6988,28 +7004,28 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#network-routing-configuration-building-reliable-communication-channels" class="md-nav__link">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
-      Network Routing Configuration: Building Reliable Communication Channels
+      网络路由配置：构建可靠的通信通道
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Network Routing Configuration: Building Reliable Communication Channels">
+    <nav class="md-nav" aria-label="网络路由配置：构建可靠的通信通道">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#pod-network-routing-architecture" class="md-nav__link">
+  <a href="#pod" class="md-nav__link">
     <span class="md-ellipsis">
-      Pod Network Routing Architecture
+      Pod网络路由架构
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#routing-configuration-steps" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
-      Routing Configuration Steps
+      路由配置步骤
     </span>
   </a>
   
@@ -7021,28 +7037,28 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#automation-tool-route-table-synchronization-script" class="md-nav__link">
+  <a href="#_15" class="md-nav__link">
     <span class="md-ellipsis">
-      Automation Tool: Route Table Synchronization Script
+      自动化工具：路由表同步脚本
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="Automation Tool: Route Table Synchronization Script">
+    <nav class="md-nav" aria-label="自动化工具：路由表同步脚本">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#background" class="md-nav__link">
+  <a href="#_16" class="md-nav__link">
     <span class="md-ellipsis">
-      Background
+      背景说明
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#script-functionality" class="md-nav__link">
+  <a href="#_17" class="md-nav__link">
     <span class="md-ellipsis">
-      Script Functionality
+      脚本功能
     </span>
   </a>
   
@@ -7050,84 +7066,6 @@
         
       </ul>
     </nav>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#environment-cleanup-dismantling-architecture-in-dependency-order" class="md-nav__link">
-    <span class="md-ellipsis">
-      Environment Cleanup: Dismantling Architecture in Dependency Order
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="Environment Cleanup: Dismantling Architecture in Dependency Order">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#application-cleanup" class="md-nav__link">
-    <span class="md-ellipsis">
-      Application Cleanup
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#node-cleanup" class="md-nav__link">
-    <span class="md-ellipsis">
-      Node Cleanup
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cluster-component-cleanup" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cluster Component Cleanup
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#network-resource-cleanup" class="md-nav__link">
-    <span class="md-ellipsis">
-      Network Resource Cleanup
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#compute-resource-cleanup" class="md-nav__link">
-    <span class="md-ellipsis">
-      Compute Resource Cleanup
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#infrastructure-cleanup" class="md-nav__link">
-    <span class="md-ellipsis">
-      Infrastructure Cleanup
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cleanup-verification" class="md-nav__link">
-    <span class="md-ellipsis">
-      Cleanup Verification
-    </span>
-  </a>
   
 </li>
         
@@ -7137,37 +7075,115 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#references" class="md-nav__link">
+  <a href="#_18" class="md-nav__link">
     <span class="md-ellipsis">
-      References
+      环境清理：按依赖顺序拆除架构
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="References">
+    <nav class="md-nav" aria-label="环境清理：按依赖顺序拆除架构">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#aws-official-documentation" class="md-nav__link">
+  <a href="#_19" class="md-nav__link">
     <span class="md-ellipsis">
-      AWS Official Documentation
+      应用清理
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#technical-blogs" class="md-nav__link">
+  <a href="#_20" class="md-nav__link">
     <span class="md-ellipsis">
-      Technical Blogs
+      节点清理
     </span>
   </a>
   
 </li>
         
           <li class="md-nav__item">
-  <a href="#community-resources" class="md-nav__link">
+  <a href="#_21" class="md-nav__link">
     <span class="md-ellipsis">
-      Community Resources
+      集群组件清理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_22" class="md-nav__link">
+    <span class="md-ellipsis">
+      网络资源清理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_23" class="md-nav__link">
+    <span class="md-ellipsis">
+      计算资源清理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_24" class="md-nav__link">
+    <span class="md-ellipsis">
+      基础设施清理
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_25" class="md-nav__link">
+    <span class="md-ellipsis">
+      清理验证
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_26" class="md-nav__link">
+    <span class="md-ellipsis">
+      参考资料
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="参考资料">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws" class="md-nav__link">
+    <span class="md-ellipsis">
+      AWS官方文档
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_27" class="md-nav__link">
+    <span class="md-ellipsis">
+      技术博客
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_28" class="md-nav__link">
+    <span class="md-ellipsis">
+      社区资源
     </span>
   </a>
   
@@ -7207,139 +7223,135 @@
   
 
 
+<h1 id="vpceks">突破VPC地址限制：EKS混合节点架构实战指南<a class="headerlink" href="#vpceks" title="Permanent link">&para;</a></h1>
 <blockquote>
-<p>[!WARNING] <br />
-This is a translate version from <a href="use-eks-hybrid-node-to-solve-ipaddr-exhausted.zh.md" title="use-eks-hybrid-node-to-solve-ipaddr-exhausted.zh">use-eks-hybrid-node-to-solve-ipaddr-exhausted.zh</a></p>
+<p>&ldquo;在软件架构中，限制往往催生创新。&rdquo; </p>
 </blockquote>
-<h1 id="breaking-through-vpc-address-limitations-eks-hybrid-node-architecture-implementation-guide">Breaking Through VPC Address Limitations: EKS Hybrid Node Architecture Implementation Guide<a class="headerlink" href="#breaking-through-vpc-address-limitations-eks-hybrid-node-architecture-implementation-guide" title="Permanent link">&para;</a></h1>
-<blockquote>
-<p>&ldquo;In software architecture, limitations often inspire innovation.&rdquo;</p>
-</blockquote>
-<h2 id="introduction-when-vpc-address-exhaustion-meets-containerization">Introduction: When VPC Address Exhaustion Meets Containerization<a class="headerlink" href="#introduction-when-vpc-address-exhaustion-meets-containerization" title="Permanent link">&para;</a></h2>
-<p>Imagine this scenario: you&rsquo;re implementing a containerized solution for a large retail enterprise. Everything seems perfect until you encounter a challenging problem - insufficient VPC address space. This isn&rsquo;t a hypothetical situation, but a real challenge we faced when implementing an EKS project in the Hong Kong region.</p>
-<p>Let&rsquo;s start with a specific case: the customer planned to migrate their core business applications to a container platform. This application needed to be deployed in an already planned VPC, but the existing VPC had very limited address space. If we adopted the standard EKS deployment with AWS VPC CNI, the available IP addresses would quickly be exhausted.</p>
-<h2 id="why-is-this-a-challenging-problem">Why Is This a Challenging Problem?<a class="headerlink" href="#why-is-this-a-challenging-problem" title="Permanent link">&para;</a></h2>
-<p>You might wonder: &ldquo;Why not simply extend the VPC&rsquo;s address space?&rdquo; Indeed, AWS VPC supports attaching secondary CIDRs, which seems like an intuitive solution. However, real-world situations are often more complex than we imagine:</p>
+<h2 id="vpc">引言：当VPC地址耗尽遇上容器化浪潮<a class="headerlink" href="#vpc" title="Permanent link">&para;</a></h2>
+<p>想象一下这个场景：你正在为一个大型零售企业上线容器化解决方案。一切看起来都很完美，直到你发现一个棘手的问题 - VPC地址空间不足。这不是一个假设的情况，而是我们在香港区域实施EKS项目时真实遇到的挑战。</p>
+<p>让我们从一个具体的案例开始：客户计划将其核心业务应用迁移到容器平台。这个应用需要部署在已经规划好的VPC中，但现有VPC的地址空间十分有限。如果采用标准的EKS配合AWS VPC CNI的部署方案，可用的IP地址将很快耗尽。</p>
+<h2 id="_1">为什么这是一个棘手的问题？<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<p>你可能会想：&rdquo;为什么不直接扩展VPC的地址空间呢？&rdquo;确实，AWS VPC支持附加次要CIDR，这看起来是一个直观的解决方案。但现实情况往往比我们想象的更复杂：</p>
 <ol>
 <li>
-<p><strong>Technical Limitations</strong>: AWS has strict limitations on VPC CIDR expansion. For example, according to <a href="https://docs.aws.amazon.com/vpc/latest/userguide/vpc-cidr-blocks.html#add-cidr-block-restrictions">AWS official documentation</a>, when a VPC&rsquo;s primary CIDR is within the 10.0.0.0/8 range, only 100.64.0.0/10 can be attached as a secondary CIDR, and other ranges like 198.19.0.0/16 cannot be attached as secondary CIDRs.</p>
+<p><strong>技术限制</strong>：AWS对VPC CIDR的扩展有严格的限制。例如，根据<a href="https://docs.aws.amazon.com/zh_cn/vpc/latest/userguide/vpc-cidr-blocks.html#add-cidr-block-restrictions">AWS官方文档</a>，当VPC的主要CIDR在10.0.0.0/8范围内时，只能附加100.64.0.0/10作为次要CIDR，无法附加其他网段，例如198.19.0.0/16作为次要CIDR。</p>
 </li>
 <li>
-<p><strong>Enterprise Network Planning</strong>: More critically, the enterprise already had a strict global IP address allocation policy:<br />
-   - 10.0.0.0/8 range: Reserved for AWS cloud environments and data centers<br />
-   - 100.64.0.0/10 range: Specifically used for store networks</p>
+<p><strong>企业网络规划</strong>：更关键的是，企业已经有严格的全球IP地址分配策略：<br />
+   - 10.0.0.0/8网段：预留给AWS云环境和数据中心<br />
+   - 100.64.0.0/10网段：专门用于店铺网络</p>
 </li>
 </ol>
-<p>This carefully designed network planning made the available address space extremely precious.</p>
-<h2 id="first-attempt-the-pitfalls-of-overlay-networks">First Attempt: The Pitfalls of Overlay Networks<a class="headerlink" href="#first-attempt-the-pitfalls-of-overlay-networks" title="Permanent link">&para;</a></h2>
-<p>So we first thought of using an overlay network solution. This seemed like a good idea: using CNI plugins like Calico or Cilium to create an overlay network, which would allow running a large number of Pods on limited VPC address space. However, during implementation, we encountered another challenge: the Pod&rsquo;s overlay network addresses were completely invisible to the EKS control plane. This caused network communication issues between the api-server and pods. Although we could temporarily solve this problem by setting <code>hostNetwork: true</code> in some critical Pods (such as admission controller webhooks), this solution was not perfect.</p>
-<h2 id="designing-a-new-solution-balancing-multiple-requirements">Designing a New Solution: Balancing Multiple Requirements<a class="headerlink" href="#designing-a-new-solution-balancing-multiple-requirements" title="Permanent link">&para;</a></h2>
-<p>Faced with these challenges, we needed to rethink the entire architecture design. The new solution had to simultaneously meet several key requirements:</p>
+<p>这种精心设计的网络规划让可用的地址空间变得极其珍贵。</p>
+<h2 id="overlay">初次尝试：Overlay网络的陷阱<a class="headerlink" href="#overlay" title="Permanent link">&para;</a></h2>
+<p>于是我们首先想到了使用overlay网络方案。这看起来是个不错的主意：使用Calico或Cilium这样的CNI插件来创建Overlay网络，这样就可以在有限的VPC地址空间上运行大量Pod。然而，实施过程中我们遇到了另一个挑战：Pod的overlay网络地址对EKS控制平面完全不可见。这导致了api-server和pod之间的网络通信问题。虽然我们可以通过在某些关键Pod（如准入控制器webhook）中设置<code>hostNetwork: true</code>来临时解决这个问题，但这种方案并不完美。</p>
+<h2 id="_2">设计新方案：平衡多方需求<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h2>
+<p>面对这些挑战，我们需要重新思考整个架构设计。新的解决方案必须同时满足多个关键需求：</p>
 <ol>
 <li>
-<p><strong>Enterprise Internal Access Capability</strong>: All application components in the EKS VPC (including databases) must support enterprise internal access, or be accessible by other applications within the enterprise<br />
-   - Need to support bastion host access to databases for database auditing<br />
-   - Allow applications to expose services to other businesses through ingress</p>
+<p><strong>企业内部访问能力</strong>：所有EKS VPC中的应用组件（包括数据库）必须支持企业内部访问，或者被企业内部其他应用访问<br />
+   - 需要支持堡垒机访问数据库，进行数据库审计<br />
+   - 允许应用通过ingress暴露服务给其他业务使用</p>
 </li>
 <li>
-<p><strong>Network Connectivity</strong><br />
-   - Pods must be able to access the enterprise&rsquo;s two core network segments: 10.0.0.0/8 and 100.64.0.0/10<br />
-   - Maintain enterprise network stability without introducing additional CIDR announcements</p>
+<p><strong>网络连通性</strong><br />
+   - Pod必须能访问企业的两个核心网段：10.0.0.0/8和100.64.0.0/10<br />
+   - 保持企业网络的稳定性，不引入额外的CIDR通告</p>
 </li>
 <li>
-<p><strong>Cost Effectiveness</strong><br />
-   - Balance the overall cost while meeting technical requirements<br />
-   - Consider the convenience of long-term maintenance and expansion</p>
+<p><strong>成本效益</strong><br />
+   - 在满足技术要求的同时，需要权衡方案的总体成本<br />
+   - 考虑长期维护和扩展的便利性</p>
 </li>
 </ol>
-<h2 id="innovative-solutions-breaking-through-traditional-architecture-limitations">Innovative Solutions: Breaking Through Traditional Architecture Limitations<a class="headerlink" href="#innovative-solutions-breaking-through-traditional-architecture-limitations" title="Permanent link">&para;</a></h2>
-<p>After deep thinking and repeated validation, we found that solving this problem required thinking outside the box. Eventually, we designed two innovative solutions, each cleverly solving the IP address space shortage problem from different angles. Let&rsquo;s look at the ingenuity of these two solutions.</p>
-<h3 id="solution-1-clever-use-of-alb-cross-vpc-deployment">Solution 1: Clever Use of ALB Cross-VPC Deployment<a class="headerlink" href="#solution-1-clever-use-of-alb-cross-vpc-deployment" title="Permanent link">&para;</a></h3>
-<p>The inspiration for the first solution came from a little-known feature of the AWS Load Balancer Controller - cross-VPC deployment mode. The idea of this solution is very clever: instead of struggling to squeeze more address space out of the existing VPC, we took a different approach by deploying the EKS cluster and application PODs in a brand new VPC. Let&rsquo;s look at the specific design of this solution:</p>
-<p><a class="glightbox" href="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted.en/IMG-20250505-090108-408.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="800" src="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted.en/IMG-20250505-090108-408.png" title="800" /></a></p>
-<p>For more technical details, refer to the AWS official blog: <a href="https://aws.amazon.com/blogs/containers/expose-amazon-eks-pods-through-cross-account-load-balancer/">Expose Amazon EKS pods through cross-account load balancer</a></p>
-<p>In this solution, we created a separate VPC (shown as 172.16 in the diagram) and connected it to the original VPC (shown as 10.255) through VPC Peering, while the EKS cluster was deployed in the newly created VPC (using 172.16.0.0/16 as the CIDR). This separated architecture design brings several key advantages:</p>
-<p>First, by deploying the EKS cluster in a separate VPC, we can allocate sufficient IP address space for container workloads without affecting existing business applications. Second, when deploying the AWS Load Balancer Controller, we configured it to use the original VPC, ensuring that the load balancer can correctly handle inbound and outbound traffic. Specifically, inbound traffic will go through the load balancer deployed in the business application A&rsquo;s VPC, accessing the application Pods in the EKS VPC via VPC Peering.</p>
-<p>To handle outbound traffic, we deployed an internal NAT device in the original VPC. This device is equipped with two elastic network interfaces (ENIs), connected to the two VPCs respectively, for handling traffic from application Pods. This design ensures that application Pods can normally access external resources while maintaining the controllability and security of network traffic. (feature blog)</p>
-<p>Additionally, we placed the database and other components required by the business application backend in the original VPC (10.255), ensuring direct access from other enterprise internal applications, such as bastion hosts.</p>
-<h3 id="solution-2-the-innovation-of-hybrid-node-architecture">Solution 2: The Innovation of Hybrid Node Architecture<a class="headerlink" href="#solution-2-the-innovation-of-hybrid-node-architecture" title="Permanent link">&para;</a></h3>
-<p>The second solution demonstrates another innovation by AWS in the field of container orchestration. It cleverly utilizes the Hybrid Node feature of Amazon EKS, released at the 2024 re:Invent conference, providing us with a workaround solution.</p>
-<p>Let&rsquo;s look at the architecture of this solution:</p>
-<p><a class="glightbox" href="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted.en/IMG-20250505-090108-542.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="800" src="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted.en/IMG-20250505-090108-542.png" title="800" /></a></p>
-<p>The core of this solution lies in its flexibility and scalability. We create a separate VPC (shown as 172.16 in the diagram) and interconnect it with the original VPC (shown as 10.255) using TGW. The main reason for using TGW instead of VPC Peering is that we need fine-grained control over the routing of invisible Overlay segments (RemotePODNetwork).</p>
-<p>Components that need to be directly accessed by other enterprise applications, including databases and specific applications not suitable for running in an Overlay environment, are deployed in the original VPC. Applications that can run on the Overlay network are deployed in the separate VPC and exposed to the original VPC through the AWS Load Balancer Controller.</p>
-<p>Similarly, to handle outbound traffic, we deployed an internal NAT device in the original VPC. This device is equipped with two elastic network interfaces (ENIs), connected to the two VPCs respectively, for handling traffic from application Pods. This design ensures that application Pods can normally access external resources while maintaining the controllability and security of network traffic.</p>
-<p><mark style="background: #FF5582A6;">When using this solution, the following additional considerations need to be taken into account</mark>:</p>
+<h2 id="_3">创新解决方案：突破传统架构的限制<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<p>经过深入思考和反复验证，我们发现解决这个问题需要跳出传统思维的束缚。最终，我们设计了两种创新方案，每种方案都从不同角度巧妙地解决了IP地址空间不足的问题。让我们一起来看看这两种方案的精妙之处。</p>
+<h3 id="albvpc">方案一：巧用ALB跨VPC部署<a class="headerlink" href="#albvpc" title="Permanent link">&para;</a></h3>
+<p>第一个方案的灵感来自于AWS Load Balancer Controller的一个鲜为人知的特性 - 跨VPC部署模式。这个方案的思路非常巧妙：我们不再执着于在现有VPC中挤出更多地址空间，而是另辟蹊径，在一个全新的VPC中部署EKS集群和应用POD。让我们看看这个方案的具体设计：</p>
+<p><a class="glightbox" href="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081201.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="800" src="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081201.png" title="800" /></a></p>
+<p>更多技术细节可以参考AWS官方博客：<a href="https://aws.amazon.com/blogs/containers/expose-amazon-eks-pods-through-cross-account-load-balancer/">Expose Amazon EKS pods through cross-account load balancer</a></p>
+<p>在这个方案中，我们新建了一个独立的VPC（图中显示为172.16）并通过VPC Peering与原有VPC（图中显示为10.255）实现互联，而EKS集群则部署在新建的VPC中（使用172.16.0.0/16作为CIDR）。这种分离式的架构设计带来了几个关键优势：</p>
+<p>首先，通过将EKS集群部署在独立的VPC中，我们可以为容器工作负载分配充足的IP地址空间，而不会影响现有的业务应用。其次，在部署AWS Load Balancer Controller时，我们将其配置为使用原有的VPC，这样可以确保负载均衡器能够正确处理进出流量。具体来说，入栈流量将通过部署在业务应用A的VPC中的负载均衡器，经由VPC Peering访问EKS VPC中的应用Pod。</p>
+<p>为了处理出栈流量，我们在原有VPC中部署了一个内部NAT设备。这个设备配备了两个弹性网络接口（ENI），分别连接到两个VPC中，用于处理从应用Pod发出的流量。这种设计确保了应用Pod能够正常访问外部资源，同时保持了网络流量的可控性和安全性。(feature blog)</p>
+<p>另外，我们将业务应用后台所需要的数据库等组件放到原有VPC（10.255）中，这样可以保证企业内部其他应用直接访问，例如堡垒机等。</p>
+<h3 id="_4">方案二：混合节点架构的创新之道<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h3>
+<p>第二个方案展现了AWS在容器编排领域的又一次创新。它巧妙地利用了Amazon EKS在2024年re:Invent大会上发布的混合节点（Hybrid Node）功能，为我们带来了一个变通的解决方案。</p>
+<p>让我们来看看这个方案的架构：</p>
+<p><a class="glightbox" href="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081202.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="800" src="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081202.png" title="800" /></a></p>
+<p>这个方案的核心在于其灵活性和可扩展性。我们新建一个独立的VPC（图中显示为172.16），并且使用TGW与原有 VPC（图中显示为10.255）互联。使用 TGW 代替 VPC Peering 的主要原因在与我们需要精细化控制不可见的Overlay网段（RemotePODNetwork）路由。</p>
+<p>将需要被企业内部其他应用直接访问的组件，包括数据库、不适合运行在 Overlay 环境中的特定应用等部署在原有 VPC中。将可以运行在 Overlay 网络上的应用部署在独立的 vpc 中。通过AWS Load Balancer Controller暴露到原有 vpc 中。</p>
+<p>同样为了处理出栈流量，我们在原有VPC中部署了一个内部NAT设备。这个设备配备了两个弹性网络接口（ENI），分别连接到两个VPC中，用于处理从应用Pod发出的流量。这种设计确保了应用Pod能够正常访问外部资源，同时保持了网络流量的可控性和安全性。</p>
+<p><mark style="background: #FF5582A6;">使用该方案需要额外考虑以下内容</mark>：</p>
 <ul>
-<li>According to <a href="https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-overview.html">AWS official documentation</a>: Amazon EKS hybrid node functionality is not supported for running in cloud infrastructure (including AWS Regions, AWS Local Zones, AWS Outposts, or other clouds). If you run hybrid nodes on Amazon EC2 instances, you will be charged for using the hybrid node functionality.</li>
-<li>Cannot use the 100.64 network segment as the CIDR for the remote POD network</li>
-<li>Cannot use a CIDR that overlaps with existing VPCs as the CIDR for the remote node network</li>
-<li>Additional cost of the TGW network component</li>
+<li>从<a href="https://docs.aws.amazon.com/zh_cn/eks/latest/userguide/hybrid-nodes-overview.html">AWS官方文档</a>来看：不支持在云基础设施（包括 AWS 区域、AWS Local Zones、AWS Outposts 或其他云）中运行 Amazon EKS 混合节点功能。如果您在 Amazon EC2 实例上运行混合节点，则需要支付混合节点功能使用费。</li>
+<li>不能使用100.64网段作为远程POD网络的 CIDR</li>
+<li>不能使用与现有 VPC 重叠的 CIDR 作为远程节点网络的 CIDR</li>
+<li>额外的网络组件 TGW 的成本</li>
 </ul>
-<p>In the following sections, we will detail the specific implementation steps of this workaround solution, including environment preparation, network configuration, node deployment, and the installation and configuration of related components.</p>
-<h2 id="implementation-deployment-guide-from-theory-to-practice">Implementation Deployment Guide: From Theory to Practice<a class="headerlink" href="#implementation-deployment-guide-from-theory-to-practice" title="Permanent link">&para;</a></h2>
-<p>In this section, we will guide you step by step through implementing the EKS hybrid node architecture. To ensure a clear and controlled deployment process, we have designed a complete test environment as a practical foundation. This environment consists of two core VPCs:</p>
+<p>在接下来的章节中，我们将详细介绍这个变通方案的具体实施步骤，包括环境准备、网络配置、节点部署以及相关组件的安装和配置。</p>
+<h2 id="_5">实施部署指南：从理论到实践<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<p>在本节中，我们将带您一步步实现EKS混合节点架构。为了确保部署过程清晰可控，我们设计了一个完整的测试环境作为实践基础。这个环境由两个核心VPC组成：</p>
 <ul>
-<li>Original VPC (CIDR: 10.10.0.0/16): Used for deploying the EKS control plane and management components</li>
-<li>Newly created separate VPC (CIDR: 10.20.0.0/16): Used for deploying hybrid nodes and business applications</li>
+<li>原有 VPC（CIDR: 10.10.0.0/16）：用于部署EKS控制平面和管理组件</li>
+<li>新建独立 VPC（CIDR: 10.20.0.0/16）：用于部署混合节点和业务应用</li>
 </ul>
-<p>This configuration perfectly corresponds to our previously discussed architecture design, allowing us to validate the effectiveness of each technical decision in practice. Next, we will follow clear steps to complete the entire process from infrastructure building to application deployment.</p>
-<h3 id="network-architecture-design-building-a-solid-foundation">Network Architecture Design: Building a Solid Foundation<a class="headerlink" href="#network-architecture-design-building-a-solid-foundation" title="Permanent link">&para;</a></h3>
-<p>Before starting the specific deployment, let&rsquo;s first understand the design of the entire network architecture. The following diagram shows our complete network architecture design, including VPC configuration, subnet division, routing settings, and connection relationships between components:</p>
-<p><a class="glightbox" href="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted.en/IMG-20250505-090108-702.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="800" src="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted.en/IMG-20250505-090108-702.png" title="800" /></a></p>
-<h3 id="infrastructure-deployment-step-by-step-implementation-guide">Infrastructure Deployment: Step-by-Step Implementation Guide<a class="headerlink" href="#infrastructure-deployment-step-by-step-implementation-guide" title="Permanent link">&para;</a></h3>
-<p>Before deploying hybrid nodes, we need to first complete the infrastructure deployment. This process includes creating an EKS cluster, configuring network resources, and preparing hybrid node instances. Let&rsquo;s explore each step in detail.</p>
-<h4 id="phase-one-creating-the-eks-cluster">Phase One: Creating the EKS Cluster<a class="headerlink" href="#phase-one-creating-the-eks-cluster" title="Permanent link">&para;</a></h4>
-<p>First, we use the <a href="https://github.com/awslabs/eksdemo">eksdemo</a> tool to create a standard EKS cluster. This tool not only simplifies the cluster creation process but also automatically creates a VPC with CIDR 10.10.0.0/16. Detailed creation commands can be referenced at: <a href="../../../../CLI/linux/eksdemo/#create-eks-cluster-" title="git/git-mkdocs/CLI/linux/eksdemo">git/git-mkdocs/CLI/linux/eksdemo</a></p>
-<h4 id="phase-two-configuring-the-network-environment">Phase Two: Configuring the Network Environment<a class="headerlink" href="#phase-two-configuring-the-network-environment" title="Permanent link">&para;</a></h4>
-<p>Next, we need to create and configure the network environment for business applications. This includes creating a dedicated VPC and setting up network interconnection.</p>
+<p>这个配置完美对应了我们前面讨论的架构设计，让我们能够在实践中验证每个技术决策的有效性。接下来，我们将按照明确的步骤，逐一完成从基础设施搭建到应用部署的全过程。</p>
+<h3 id="_6">网络架构设计：构建稳固的基础<a class="headerlink" href="#_6" title="Permanent link">&para;</a></h3>
+<p>在开始具体部署之前，让我们先深入了解整个网络架构的设计。下图展示了我们的完整网络架构设计，包括VPC配置、子网划分、路由设置以及各组件之间的连接关系：</p>
+<p><a class="glightbox" href="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081203.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="800" src="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081203.png" title="800" /></a></p>
+<h3 id="_7">基础设施部署：分步实施指南<a class="headerlink" href="#_7" title="Permanent link">&para;</a></h3>
+<p>在开始部署混合节点之前，我们需要先完成基础设施的部署。这个过程包括创建EKS集群、配置网络资源以及准备混合节点实例。让我们逐一深入了解。</p>
+<h4 id="eks">第一阶段：创建EKS集群<a class="headerlink" href="#eks" title="Permanent link">&para;</a></h4>
+<p>首先，我们使用<a href="https://github.com/awslabs/eksdemo">eksdemo</a>工具创建标准的EKS集群。这个工具不仅简化了集群创建过程，还会自动创建一个CIDR为10.10.0.0/16的VPC。详细的创建命令可以参考：<a href="../../../../CLI/linux/eksdemo/#create-eks-cluster-" title="git/git-mkdocs/CLI/linux/eksdemo">git/git-mkdocs/CLI/linux/eksdemo</a></p>
+<h4 id="_8">第二阶段：配置网络环境<a class="headerlink" href="#_8" title="Permanent link">&para;</a></h4>
+<p>接下来，我们需要创建和配置业务应用的网络环境。这包括创建专用VPC和设置网络互联。</p>
 <ol>
 <li>
-<p>Creating the IDC VPC<br />
-   Using the <a href="https://github.com/aws/amazon-q-developer-cli">Amazon Q Developer CLI</a> tool, we can quickly create a well-structured VPC:<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>In the us-west-2 region, create a vpc named idc with CIDR 10.20.0.0/16. The vpc needs 3 public subnets, 3 private subnets, and 3 tgw subnets. Public subnets share 1 route table with default route pointing to igw, private subnets share 1 route table with default route pointing to nat, and tgw subnets share 1 route table with no default route.
+<p>创建IDC VPC<br />
+   使用<a href="https://github.com/aws/amazon-q-developer-cli">Amazon Q Developer CLI</a>工具，我们可以快速创建一个结构完善的VPC：<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>在us-west-2区域，创建 vpc 名为 idc，CIDR 使用 10.20.0.0/16，vpc 需要3个公有子网，3个私有子网，3个 tgw 子网，公有子网共享1个路由表并且默认路由指向 igw，私有子网共享1个路由表并且默认路由指向 nat，tgw 子网共享1个路由表没有默认路由
 </code></pre></div></p>
 </li>
 <li>
-<p>Configuring Network Interconnection<br />
-   Next is a key step: establishing a communication bridge between VPCs. We choose to use Transit Gateway as the core network hub to achieve efficient interconnection between VPCs. Using the Amazon Q Developer CLI tool, we can complete this configuration with one command:</p>
+<p>配置网络互联<br />
+   接下来是一个关键步骤：建立VPC之间的通信桥梁。我们选择使用Transit Gateway作为核心网络枢纽，通过它来实现VPC间的高效互联。使用Amazon Q Developer CLI工具，我们可以一键完成这个配置：</p>
 </li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>In the us-west-2 region, now interconnect the ekscluster1 vpc and idc vpc using tgw. The idc vpc already has dedicated tgw subnets. You need to create dedicated tgw subnets in the ekscluster1 vpc and automatically set up all route tables so that networks can interconnect and communicate.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>在 us-west-2 区域，现在把 ekscluster1 vpc 和 idc vpc 用 tgw 做互联，idc vpc 里已经有专用的 tgw 子网，你需要在 ekscluster1 vpc 里创建专用 tgw 子网，自动设置所有路由表使得网络可以互联互通
 </code></pre></div>
 <ol start="3">
-<li>Deploying Hybrid Node Instances<br />
-   After the network infrastructure is ready, we need to deploy EC2 instances in the IDC VPC that will serve as hybrid nodes. These instances need to meet specific requirements to ensure they can successfully join the EKS cluster:</li>
+<li>部署混合节点实例<br />
+   在网络基础设施就绪后，我们需要在IDC VPC中部署将要作为混合节点的EC2实例。这些实例需要满足特定的要求，以确保它们能够顺利加入EKS集群：</li>
 </ol>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>In the us-west-2 region idc vpc, create 1 ec2 in each private subnet using ubuntu22 AMI with instance type m5.large. Then create an EC2 Instance Connect Endpoint in the idc vpc.
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>在 us-west-2 区域 idc vpc 里，每个 private 子网中创建 1 个 ec2，使用 ubuntu22 AMI，机型为 m5.large。然后在 idc vpc 里创建一个 EC2 Instance Connect Endpoint
 </code></pre></div>
 <ol start="4">
-<li>Configuring Instance Network<br />
-   To ensure hybrid nodes can work properly, we need to make some special network configurations for the EC2 instances:</li>
+<li>配置实例网络<br />
+   为了确保混合节点能够正常工作，我们需要对EC2实例进行一些特殊的网络配置：</li>
 </ol>
 <ul>
 <li>
-<p><strong>Security Group Settings</strong></p>
+<p><strong>安全组设置</strong></p>
 <ul>
-<li>Configure inbound rules: Allow all traffic from the 10.0.0.0/8 segment</li>
-<li>Purpose: Ensure smooth communication between cluster components</li>
+<li>配置入站规则：允许来自10.0.0.0/8网段的所有流量</li>
+<li>目的：确保集群内部组件之间的通信畅通</li>
 </ul>
 </li>
 <li>
-<p><strong>Network Interface Optimization</strong></p>
+<p><strong>网络接口优化</strong></p>
 <ul>
-<li>Disable source/destination check</li>
-<li>Reason: This is a necessary condition for overlay networks to work properly</li>
+<li>关闭源/目的地址检查</li>
+<li>原因：这是overlay网络正常工作的必要条件</li>
 </ul>
 </li>
 </ul>
-<h4 id="phase-three-configuring-eks-cluster-network">Phase Three: Configuring EKS Cluster Network<a class="headerlink" href="#phase-three-configuring-eks-cluster-network" title="Permanent link">&para;</a></h4>
-<p>After completing the basic network setup, we need to make specific network configurations for the EKS cluster to support the integration of hybrid nodes:</p>
+<h4 id="eks_1">第三阶段：配置EKS集群网络<a class="headerlink" href="#eks_1" title="Permanent link">&para;</a></h4>
+<p>完成基础网络设置后，我们需要对EKS集群进行特定的网络配置，以支持混合节点的接入：</p>
 <ol>
 <li>
-<p><strong>Cluster Security Group Configuration</strong><br />
-   Configure security group rules to allow necessary network communications:<br />
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># Allow all traffic from the 10.0.0.0/8 segment</span>
+<p><strong>集群安全组配置</strong><br />
+   配置安全组规则以允许必要的网络通信：<br />
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># 允许来自10.0.0.0/8网段的所有流量</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>aws<span class="w"> </span>ec2<span class="w"> </span>authorize-security-group-ingress<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span>--group-id<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_SG_ID</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span>--protocol<span class="w"> </span>all<span class="w"> </span><span class="se">\</span>
@@ -7347,20 +7359,20 @@ This is a translate version from <a href="use-eks-hybrid-node-to-solve-ipaddr-ex
 </code></pre></div></p>
 </li>
 <li>
-<p><strong>Hybrid Node Network Settings</strong><br />
-   Enable hybrid node support in the EKS cluster configuration, setting two key parameters:<br />
-   - remoteNodeNetworks: Specify the range of private subnets in the IDC VPC<br />
-   - remotePodNetworks: Define the Overlay CIDR range that Cilium will use</p>
+<p><strong>混合节点网络设置</strong><br />
+   在EKS集群配置中启用混合节点支持，设置两个关键参数：<br />
+   - remoteNodeNetworks：指定IDC VPC中的私有子网范围<br />
+   - remotePodNetworks：定义Cilium将使用的Overlay CIDR范围</p>
 </li>
 </ol>
-<p>As shown in the figure below, these settings will be configured in the EKS console:<br />
-<a class="glightbox" href="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted.en/IMG-20250505-090108-848.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="800" src="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted.en/IMG-20250505-090108-848.png" title="800" /></a></p>
-<h4 id="phase-four-configuring-systems-manager">Phase Four: Configuring Systems Manager<a class="headerlink" href="#phase-four-configuring-systems-manager" title="Permanent link">&para;</a></h4>
-<p>AWS Systems Manager (SSM) plays a key role in the hybrid node architecture, responsible for establishing and maintaining secure communication channels between the EKS control plane and remote nodes.</p>
+<p>如下图所示，这些设置将在EKS控制台中配置：<br />
+<a class="glightbox" href="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081203-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="800" src="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081203-1.png" title="800" /></a></p>
+<h4 id="systems-manager">第四阶段：配置Systems Manager<a class="headerlink" href="#systems-manager" title="Permanent link">&para;</a></h4>
+<p>AWS Systems Manager（SSM）在混合节点架构中扮演着关键角色，它负责建立和维护EKS控制平面与远程节点之间的安全通信通道。</p>
 <ol>
 <li>
-<p><strong>Creating SSM Activation Configuration</strong><br />
-   First, we need to create an SSM activation configuration, which will generate credentials for node registration:<br />
+<p><strong>创建SSM激活配置</strong><br />
+   首先，我们需要创建SSM激活配置，这将生成用于节点注册的凭证：<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>aws ssm create-activation \
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>     --region us-west-2 \
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>     --default-instance-name eks-hybrid-nodes \
@@ -7371,8 +7383,8 @@ This is a translate version from <a href="use-eks-hybrid-node-to-solve-ipaddr-ex
 </code></pre></div></p>
 </li>
 <li>
-<p><strong>Initializing Hybrid Nodes</strong><br />
-   After obtaining the activation credentials, we need to perform initialization configuration on each hybrid node. This process is divided into three main steps:</p>
+<p><strong>初始化混合节点</strong><br />
+   获取激活凭证后，我们需要在每个混合节点上执行初始化配置。这个过程分为三个主要步骤：</p>
 </li>
 </ol>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="c1"># 1. install nodeadm</span>
@@ -7397,15 +7409,15 @@ This is a translate version from <a href="use-eks-hybrid-node-to-solve-ipaddr-ex
 <a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a>./nodeadm<span class="w"> </span>init<span class="w"> </span>-c<span class="w"> </span>file://./nodeConfig.yaml
 </code></pre></div>
 <blockquote>
-<p>Note: This initialization process needs to be repeated on each hybrid node. Make sure the node&rsquo;s network and security group settings are correctly configured before execution.</p>
+<p>注意：这个初始化过程需要在每个混合节点上重复执行。确保在执行前已经正确配置了节点的网络和安全组设置。</p>
 </blockquote>
-<h3 id="installing-and-configuring-cluster-components">Installing and Configuring Cluster Components<a class="headerlink" href="#installing-and-configuring-cluster-components" title="Permanent link">&para;</a></h3>
-<p>After completing the basic configuration of hybrid nodes, we need to install and configure some necessary cluster components to ensure the entire environment can run normally. These components include load balancer controllers and network plugins.</p>
-<h4 id="configuring-load-balancer">Configuring Load Balancer<a class="headerlink" href="#configuring-load-balancer" title="Permanent link">&para;</a></h4>
-<p>First, we need to install the AWS Load Balancer Controller to manage application load balancers:<br />
+<h3 id="_9">安装和配置集群组件<a class="headerlink" href="#_9" title="Permanent link">&para;</a></h3>
+<p>在完成混合节点的基础配置后，我们需要安装和配置一些必要的集群组件，以确保整个环境能够正常运行。这些组件包括负载均衡控制器和网络插件。</p>
+<h4 id="_10">配置负载均衡<a class="headerlink" href="#_10" title="Permanent link">&para;</a></h4>
+<p>首先，我们需要安装AWS Load Balancer Controller来管理应用负载均衡器：<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>eksdemo<span class="w"> </span>install<span class="w"> </span>aws-lb-controller<span class="w"> </span>-c<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span>--namespace<span class="w"> </span>awslb
 </code></pre></div></p>
-<p>To ensure the stable operation of the load balancer controller, we can control its deployment location through node affinity configuration. If you don&rsquo;t want to deploy the controller on hybrid nodes, you can add the following configuration:<br />
+<p>为了确保负载均衡控制器的稳定运行，我们可以通过配置节点亲和性来控制其部署位置。如果不希望将控制器部署在混合节点上，可以添加以下配置：<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nt">spec</span><span class="p">:</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span><span class="nt">template</span><span class="p">:</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="w">    </span><span class="nt">spec</span><span class="p">:</span>
@@ -7420,13 +7432,13 @@ This is a translate version from <a href="use-eks-hybrid-node-to-solve-ipaddr-ex
 <a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="w">                </span><span class="nt">values</span><span class="p">:</span>
 <a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="w">                </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">hybrid</span>
 </code></pre></div></p>
-<h4 id="configuring-network-plugin">Configuring Network Plugin<a class="headerlink" href="#configuring-network-plugin" title="Permanent link">&para;</a></h4>
-<p>Next, we need to install and configure Cilium as the cluster&rsquo;s network plugin. Cilium is a powerful CNI plugin that not only provides basic network connectivity but also supports advanced network policies and observability features. In our hybrid node architecture, Cilium will be responsible for managing Pod network communications across VPCs.</p>
-<p>Here&rsquo;s an explanation of the key parts of the Cilium configuration:</p>
+<h4 id="_11">配置网络插件<a class="headerlink" href="#_11" title="Permanent link">&para;</a></h4>
+<p>接下来，我们需要安装和配置Cilium作为集群的网络插件。Cilium是一个功能强大的CNI插件，它不仅提供了基本的网络连接，还支持高级的网络策略和可观测性功能。在我们的混合节点架构中，Cilium将负责管理跨VPC的Pod网络通信。</p>
+<p>以下是Cilium配置的关键部分说明：</p>
 <ol>
-<li><strong>Node Affinity Configuration</strong>: Through affinity settings, ensure that Cilium Agent only runs on hybrid nodes, while Operator components run on non-hybrid nodes, optimizing network performance and management efficiency.</li>
-<li><strong>IP Address Management</strong>: Using the cluster-pool mode for IP allocation, each node gets a <code>/24</code> segment, allowing for more granular address management while maintaining network scalability.</li>
-<li><strong>Network Optimization</strong>: Disabled unnecessary Envoy components and configured unmanagedPodWatcher to optimize Pod network management, improving overall performance.</li>
+<li><strong>节点亲和性配置</strong>：通过affinity设置确保Cilium Agent只运行在混合节点上，而Operator组件则运行在非混合节点上，这样可以优化网络性能和管理效率。</li>
+<li><strong>IP地址管理</strong>：采用cluster-pool模式进行IP分配，每个节点获得一个<code>/24</code>网段，这样可以实现更精细的地址管理，同时保持网络的可扩展性。</li>
+<li><strong>网络优化</strong>：禁用了不必要的Envoy组件，并配置了unmanagedPodWatcher来优化Pod网络管理，提高整体性能。</li>
 </ol>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>cilium<span class="w"> </span>https://helm.cilium.io/
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>cat<span class="w"> </span>&gt;cilium-values.yaml<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
@@ -7467,143 +7479,144 @@ This is a translate version from <a href="use-eks-hybrid-node-to-solve-ipaddr-ex
 <a id="__codelineno-8-37" name="__codelineno-8-37" href="#__codelineno-8-37"></a><span class="w">    </span>--namespace<span class="w"> </span>kube-system<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-8-38" name="__codelineno-8-38" href="#__codelineno-8-38"></a><span class="w">    </span>--values<span class="w"> </span>cilium-values.yaml<span class="w"> </span>
 </code></pre></div>
-<p>After completing the installation and configuration of Cilium, we can verify the status of hybrid nodes. At this point, the hybrid nodes previously added to the cluster should transition from NotReady to Ready status. Use the following command to check node status:<br />
+<p>完成Cilium的安装和配置后，我们可以验证混合节点的状态。此时，之前添加到集群的混合节点应该会从NotReady状态转变为Ready状态。使用以下命令查看节点状态：<br />
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>ciliumnode
 </code></pre></div></p>
-<h4 id="deployment-verification">Deployment Verification<a class="headerlink" href="#deployment-verification" title="Permanent link">&para;</a></h4>
-<p>To verify the functionality of the entire environment, we can deploy a test Nginx Pod and create an Ingress resource through the AWS Load Balancer Controller. During this process, we will observe a phenomenon: although the ALB can be successfully created, the Pod addresses in the Target Group will show as unreachable. This issue will be resolved in the subsequent network routing configuration section.</p>
-<p>Deploy the verification nginx POD (<a href="../../../others/nginx-sample/#sample-for-hybrid-node-" title="../../others/nginx-sample">../../others/nginx-sample</a>)</p>
-<h3 id="network-routing-configuration-building-reliable-communication-channels">Network Routing Configuration: Building Reliable Communication Channels<a class="headerlink" href="#network-routing-configuration-building-reliable-communication-channels" title="Permanent link">&para;</a></h3>
-<p>In the hybrid node architecture, network routing configuration is the core of the entire system. Proper routing settings not only ensure communication between Pods but also maintain the network connectivity of the entire cluster. Let&rsquo;s delve into this critical configuration process.</p>
-<h4 id="pod-network-routing-architecture">Pod Network Routing Architecture<a class="headerlink" href="#pod-network-routing-architecture" title="Permanent link">&para;</a></h4>
-<p>In our design, the Pod network uses 10.30.0.0/16 as the overall CIDR range, with each hybrid node getting a /24 subnet. This design both ensures effective utilization of address space and facilitates fine-grained traffic control.</p>
-<h4 id="routing-configuration-steps">Routing Configuration Steps<a class="headerlink" href="#routing-configuration-steps" title="Permanent link">&para;</a></h4>
+<h4 id="_12">验证部署<a class="headerlink" href="#_12" title="Permanent link">&para;</a></h4>
+<p>为了验证整个环境的功能，我们可以部署一个测试用的Nginx Pod并通过AWS Load Balancer Controller创建Ingress资源。在这个过程中，我们会观察到一个现象：虽然ALB能够成功创建，但Target Group中的Pod地址会显示为不可达状态。这个问题将在后续的网络路由配置部分得到解决。</p>
+<p>部署验证的 nginx POD (<a href="../../../others/nginx-sample/#sample-for-hybrid-node-" title="../../others/nginx-sample">../../others/nginx-sample</a>)</p>
+<h3 id="_13">网络路由配置：构建可靠的通信通道<a class="headerlink" href="#_13" title="Permanent link">&para;</a></h3>
+<p>在混合节点架构中，网络路由配置是整个系统的核心。正确的路由设置不仅确保了Pod间的通信，还维护了整个集群的网络连通性。让我们深入了解这个关键的配置过程。</p>
+<h4 id="pod">Pod网络路由架构<a class="headerlink" href="#pod" title="Permanent link">&para;</a></h4>
+<p>在我们的设计中，Pod网络使用10.30.0.0/16作为总体CIDR范围，每个混合节点获得一个/24子网。这种设计既保证了地址空间的有效利用，又便于进行细粒度的流量控制。</p>
+<h4 id="_14">路由配置步骤<a class="headerlink" href="#_14" title="Permanent link">&para;</a></h4>
 <ol>
 <li>
-<p><strong>EKS VPC Routing Configuration</strong><br />
-   Configure the routing table in the public subnets of the EKS VPC, mainly used for handling inbound traffic from ALB:<br />
-<a class="glightbox" href="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted.en/IMG-20250505-090108-981.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="800" src="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted.en/IMG-20250505-090108-981.png" title="800" /></a></p>
+<p><strong>EKS VPC路由配置</strong><br />
+   在EKS VPC的公有子网中配置路由表，主要用于处理来自ALB的入站流量：<br />
+<a class="glightbox" href="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="800" src="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204.png" title="800" /></a></p>
 </li>
 <li>
-<p><strong>Transit Gateway Core Routing</strong><br />
-   Configure Transit Gateway as the central hub of the network:<br />
-   - Forward all traffic destined for 10.30.0.0/16 to the IDC VPC<br />
-   - Ensure Pod network traffic can correctly reach the target nodes<br />
-<a class="glightbox" href="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted.en/IMG-20250505-090109-172.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="800" src="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted.en/IMG-20250505-090109-172.png" title="800" /></a></p>
+<p><strong>Transit Gateway核心路由</strong><br />
+   配置Transit Gateway作为网络的中央枢纽：<br />
+   - 将所有目标为10.30.0.0/16的流量转发到IDC VPC<br />
+   - 确保Pod网络流量能够正确到达目标节点<br />
+<a class="glightbox" href="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="800" src="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204-1.png" title="800" /></a></p>
 </li>
 <li>
-<p><strong>IDC VPC Fine-Grained Routing</strong><br />
-   Configure fine-grained Pod network routing in the TGW subnets of the IDC VPC:<br />
-   - Configure a dedicated /24 segment for each hybrid node<br />
-   - For example: 10.30.0.0/24 → Hybrid Node 1<br />
-   - Ensure traffic can accurately reach the target Pods<br />
-<a class="glightbox" href="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted.en/IMG-20250505-090109-293.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="800" src="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted.en/IMG-20250505-090109-293.png" title="800" /></a></p>
+<p><strong>IDC VPC精细路由</strong><br />
+   在IDC VPC的TGW子网中配置细粒度的Pod网络路由：<br />
+   - 为每个混合节点配置专属的/24网段<br />
+   - 例如：10.30.0.0/24 → 混合节点1<br />
+   - 确保流量能够准确到达目标Pod<br />
+<a class="glightbox" href="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="800" src="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204-2.png" title="800" /></a></p>
 </li>
 <li>
-<p><strong>Bidirectional Communication Guarantee</strong><br />
-   To ensure bidirectional connectivity of the network, the following routes need to be configured:</p>
+<p><strong>双向通信保障</strong><br />
+   为确保网络的双向连通性，需要配置以下路由：</p>
 </li>
 </ol>
-<p>a. IDC VPC Return Route:</p>
-<div class="highlight"><pre><span></span><code>  - Destination: 10.10.0.0/16 (EKS VPC)
-  - Next Hop: Transit Gateway
-  - Function: Ensure traffic from Pods can return to the EKS cluster
+<p>a. IDC VPC回程路由：</p>
+<div class="highlight"><pre><span></span><code>  - 目标：10.10.0.0/16（EKS VPC）
+  - 下一跳：Transit Gateway
+  - 作用：确保从Pod发出的流量能够返回EKS集群
 </code></pre></div>
-<p>b. Transit Gateway Return Configuration:</p>
-<div class="highlight"><pre><span></span><code>  - Maintain routes to EKS VPC (10.10.0.0/16)
-  - Ensure bidirectional communication between cluster components
+<p>b. Transit Gateway回程配置：</p>
+<div class="highlight"><pre><span></span><code>  - 维护到EKS VPC（10.10.0.0/16）的路由
+  - 确保集群组件间的双向通信
 </code></pre></div>
-<h3 id="automation-tool-route-table-synchronization-script">Automation Tool: Route Table Synchronization Script<a class="headerlink" href="#automation-tool-route-table-synchronization-script" title="Permanent link">&para;</a></h3>
-<p>In the hybrid node architecture, Pod CIDR routing configuration needs to be updated as nodes change. To automate this process, we developed a route table synchronization script. This script can monitor the status of Cilium nodes and automatically update the corresponding routing configuration.</p>
-<h4 id="background">Background<a class="headerlink" href="#background" title="Permanent link">&para;</a></h4>
-<p>When using Cilium as the CNI plugin, each node is assigned an overlay network CIDR (such as 10.30.x.0/24). This CIDR information can be viewed using the <code>kubectl get ciliumnode</code> command. To ensure the network works properly, we need to synchronize this CIDR information to the VPC&rsquo;s route table and set the target to the corresponding node&rsquo;s ENI.</p>
-<h4 id="script-functionality">Script Functionality<a class="headerlink" href="#script-functionality" title="Permanent link">&para;</a></h4>
-<p>This automation script provides the following functions:</p>
+<h3 id="_15">自动化工具：路由表同步脚本<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
+<p>在混合节点架构中，Pod CIDR的路由配置需要随着节点的变化而更新。为了自动化这个过程，我们开发了一个路由表同步脚本。这个脚本可以监控Cilium节点的状态，并自动更新相应的路由配置。</p>
+<h4 id="_16">背景说明<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
+<p>在使用Cilium作为CNI插件时，每个节点都会被分配一个overlay网络CIDR（如10.30.x.0/24）。这些CIDR信息可以通过<code>kubectl get ciliumnode</code>命令查看。为了确保网络的正常工作，我们需要将这些CIDR信息同步到VPC的路由表中，并将目标设置为对应节点的ENI。</p>
+<h4 id="_17">脚本功能<a class="headerlink" href="#_17" title="Permanent link">&para;</a></h4>
+<p>这个自动化脚本提供以下功能：</p>
 <ul>
-<li>Automatically obtain Cilium node information and assigned CIDRs</li>
-<li>Update route entries in the route table</li>
-<li>Clean up expired route configurations</li>
-<li>Keep the route table synchronized with the current cluster state<br />
+<li>自动获取Cilium节点信息和分配的CIDR</li>
+<li>更新路由表中的路由条目</li>
+<li>清理过期的路由配置</li>
+<li>保持路由表与当前集群状态的同步</li>
+</ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="ch">#!/bin/bash -x</span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1"># Configuration - please replace with your actual values</span>
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="nv">REGION</span><span class="o">=</span><span class="s2">&quot;us-west-2&quot;</span><span class="w">  </span><span class="c1"># Please replace with your actual region</span>
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="nv">ROUTE_TABLE_ID</span><span class="o">=</span><span class="s2">&quot;rtb-074975b4268607ffd&quot;</span><span class="w">  </span><span class="c1"># Please replace with the route table ID used by TGW</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a><span class="c1"># 配置 - 请替换为您的实际值</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="nv">REGION</span><span class="o">=</span><span class="s2">&quot;us-west-2&quot;</span><span class="w">  </span><span class="c1"># 请替换为您的实际区域</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a><span class="nv">ROUTE_TABLE_ID</span><span class="o">=</span><span class="s2">&quot;rtb-074975b4268607ffd&quot;</span><span class="w">  </span><span class="c1"># 请替换为 TGW 使用的路由表 ID</span>
 <a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
-<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Starting to sync Cilium routes to route table </span><span class="nv">$ROUTE_TABLE_ID</span><span class="s2">...&quot;</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;开始同步 Cilium 路由到路由表 </span><span class="nv">$ROUTE_TABLE_ID</span><span class="s2">...&quot;</span>
 <a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>
-<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="c1"># Get Cilium node information</span>
-<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Getting Cilium node information...&quot;</span>
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="c1"># 获取 Cilium 节点信息</span>
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;获取 Cilium 节点信息...&quot;</span>
 <a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="nv">CILIUM_NODES</span><span class="o">=</span><span class="k">$(</span>kubectl<span class="w"> </span>get<span class="w"> </span>ciliumnode<span class="w"> </span>-o<span class="w"> </span>json<span class="k">)</span>
 <a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>
-<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="c1"># Create an array to store valid Cilium CIDRs</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a><span class="c1"># 创建一个数组来存储有效的 Cilium CIDR</span>
 <a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="nb">declare</span><span class="w"> </span>-a<span class="w"> </span>VALID_CIDRS
 <a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>
-<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="c1"># Traverse each Cilium node, collecting valid CIDRs</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a><span class="c1"># 遍历每个 Cilium 节点，收集有效的 CIDR</span>
 <a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a><span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>node<span class="p">;</span><span class="w"> </span><span class="k">do</span>
 <a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a><span class="w">  </span><span class="nv">OVERLAY_CIDR</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="nv">$node</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.spec.ipam.podCIDRs[0]&#39;</span><span class="k">)</span>
 <a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OVERLAY_CIDR</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OVERLAY_CIDR</span><span class="s2">&quot;</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="s2">&quot;null&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 <a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="w">    </span><span class="nv">VALID_CIDRS</span><span class="o">+=(</span><span class="s2">&quot;</span><span class="nv">$OVERLAY_CIDR</span><span class="s2">&quot;</span><span class="o">)</span>
-<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Valid CIDR: </span><span class="nv">$OVERLAY_CIDR</span><span class="s2">&quot;</span>
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;有效 CIDR: </span><span class="nv">$OVERLAY_CIDR</span><span class="s2">&quot;</span>
 <a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a><span class="w">  </span><span class="k">fi</span>
 <a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="k">done</span><span class="w"> </span>&lt;<span class="w"> </span>&lt;<span class="o">(</span><span class="nb">echo</span><span class="w"> </span><span class="nv">$CILIUM_NODES</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;.items[]&#39;</span><span class="o">)</span>
 <a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a>
-<a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a><span class="c1"># Get current route table information</span>
-<a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Getting current routes for route table </span><span class="nv">$ROUTE_TABLE_ID</span><span class="s2">...&quot;</span>
+<a id="__codelineno-10-25" name="__codelineno-10-25" href="#__codelineno-10-25"></a><span class="c1"># 获取当前路由表信息</span>
+<a id="__codelineno-10-26" name="__codelineno-10-26" href="#__codelineno-10-26"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;获取路由表 </span><span class="nv">$ROUTE_TABLE_ID</span><span class="s2"> 的当前路由...&quot;</span>
 <a id="__codelineno-10-27" name="__codelineno-10-27" href="#__codelineno-10-27"></a><span class="nv">CURRENT_ROUTES</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-route-tables<span class="w"> </span>--route-table-ids<span class="w"> </span><span class="nv">$ROUTE_TABLE_ID</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;RouteTables[0].Routes&#39;</span><span class="w"> </span>--output<span class="w"> </span>json<span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="k">)</span>
 <a id="__codelineno-10-28" name="__codelineno-10-28" href="#__codelineno-10-28"></a>
-<a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a><span class="c1"># Traverse each Cilium node, update routes</span>
+<a id="__codelineno-10-29" name="__codelineno-10-29" href="#__codelineno-10-29"></a><span class="c1"># 遍历每个 Cilium 节点，更新路由</span>
 <a id="__codelineno-10-30" name="__codelineno-10-30" href="#__codelineno-10-30"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$CILIUM_NODES</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;.items[]&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>node<span class="p">;</span><span class="w"> </span><span class="k">do</span>
 <a id="__codelineno-10-31" name="__codelineno-10-31" href="#__codelineno-10-31"></a><span class="w">  </span><span class="nv">NODE_NAME</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="nv">$node</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.metadata.name&#39;</span><span class="k">)</span>
 <a id="__codelineno-10-32" name="__codelineno-10-32" href="#__codelineno-10-32"></a><span class="w">  </span><span class="nv">OVERLAY_CIDR</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="nv">$node</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.spec.ipam.podCIDRs[0]&#39;</span><span class="k">)</span>
 <a id="__codelineno-10-33" name="__codelineno-10-33" href="#__codelineno-10-33"></a><span class="w">  </span><span class="nv">NODE_IP</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="nv">$node</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.spec.addresses[] | select(.type==&quot;InternalIP&quot;).ip&#39;</span><span class="k">)</span>
 <a id="__codelineno-10-34" name="__codelineno-10-34" href="#__codelineno-10-34"></a>
-<a id="__codelineno-10-35" name="__codelineno-10-35" href="#__codelineno-10-35"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Node: </span><span class="nv">$NODE_NAME</span><span class="s2">, IP: </span><span class="nv">$NODE_IP</span><span class="s2">, CIDR: </span><span class="nv">$OVERLAY_CIDR</span><span class="s2">&quot;</span>
+<a id="__codelineno-10-35" name="__codelineno-10-35" href="#__codelineno-10-35"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;节点: </span><span class="nv">$NODE_NAME</span><span class="s2">, IP: </span><span class="nv">$NODE_IP</span><span class="s2">, CIDR: </span><span class="nv">$OVERLAY_CIDR</span><span class="s2">&quot;</span>
 <a id="__codelineno-10-36" name="__codelineno-10-36" href="#__codelineno-10-36"></a>
-<a id="__codelineno-10-37" name="__codelineno-10-37" href="#__codelineno-10-37"></a><span class="w">  </span><span class="c1"># Find instance ID through node IP</span>
+<a id="__codelineno-10-37" name="__codelineno-10-37" href="#__codelineno-10-37"></a><span class="w">  </span><span class="c1"># 通过节点 IP 查找实例 ID</span>
 <a id="__codelineno-10-38" name="__codelineno-10-38" href="#__codelineno-10-38"></a><span class="w">  </span><span class="nv">INSTANCE_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span>--filters<span class="w"> </span><span class="s2">&quot;Name=private-ip-address,Values=</span><span class="nv">$NODE_IP</span><span class="s2">&quot;</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Reservations[0].Instances[0].InstanceId&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="k">)</span>
 <a id="__codelineno-10-39" name="__codelineno-10-39" href="#__codelineno-10-39"></a>
 <a id="__codelineno-10-40" name="__codelineno-10-40" href="#__codelineno-10-40"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$INSTANCE_ID</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$INSTANCE_ID</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;None&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-10-41" name="__codelineno-10-41" href="#__codelineno-10-41"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Warning: Cannot find instance ID through IP </span><span class="nv">$NODE_IP</span><span class="s2">, skipping this node&quot;</span>
+<a id="__codelineno-10-41" name="__codelineno-10-41" href="#__codelineno-10-41"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;警告: 无法通过 IP </span><span class="nv">$NODE_IP</span><span class="s2"> 找到实例 ID，跳过此节点&quot;</span>
 <a id="__codelineno-10-42" name="__codelineno-10-42" href="#__codelineno-10-42"></a><span class="w">    </span><span class="k">continue</span>
 <a id="__codelineno-10-43" name="__codelineno-10-43" href="#__codelineno-10-43"></a><span class="w">  </span><span class="k">fi</span>
 <a id="__codelineno-10-44" name="__codelineno-10-44" href="#__codelineno-10-44"></a>
-<a id="__codelineno-10-45" name="__codelineno-10-45" href="#__codelineno-10-45"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Found instance ID: </span><span class="nv">$INSTANCE_ID</span><span class="s2">&quot;</span>
+<a id="__codelineno-10-45" name="__codelineno-10-45" href="#__codelineno-10-45"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;找到实例 ID: </span><span class="nv">$INSTANCE_ID</span><span class="s2">&quot;</span>
 <a id="__codelineno-10-46" name="__codelineno-10-46" href="#__codelineno-10-46"></a>
-<a id="__codelineno-10-47" name="__codelineno-10-47" href="#__codelineno-10-47"></a><span class="w">  </span><span class="c1"># Check if route needs to be updated</span>
+<a id="__codelineno-10-47" name="__codelineno-10-47" href="#__codelineno-10-47"></a><span class="w">  </span><span class="c1"># 检查是否需要更新路由</span>
 <a id="__codelineno-10-48" name="__codelineno-10-48" href="#__codelineno-10-48"></a><span class="w">  </span><span class="nv">ROUTE_EXISTS</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="nv">$CURRENT_ROUTES</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>--arg<span class="w"> </span>cidr<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$OVERLAY_CIDR</span><span class="s2">&quot;</span><span class="w"> </span><span class="s1">&#39;any(.[] | .DestinationCidrBlock == $cidr)&#39;</span><span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="k">)</span>
 <a id="__codelineno-10-49" name="__codelineno-10-49" href="#__codelineno-10-49"></a>
 <a id="__codelineno-10-50" name="__codelineno-10-50" href="#__codelineno-10-50"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ROUTE_EXISTS</span><span class="s2">&quot;</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="s2">&quot;true&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-10-51" name="__codelineno-10-51" href="#__codelineno-10-51"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Adding or updating route: </span><span class="nv">$OVERLAY_CIDR</span><span class="s2"> -&gt; </span><span class="nv">$INSTANCE_ID</span><span class="s2">&quot;</span>
+<a id="__codelineno-10-51" name="__codelineno-10-51" href="#__codelineno-10-51"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;添加或更新路由: </span><span class="nv">$OVERLAY_CIDR</span><span class="s2"> -&gt; </span><span class="nv">$INSTANCE_ID</span><span class="s2">&quot;</span>
 <a id="__codelineno-10-52" name="__codelineno-10-52" href="#__codelineno-10-52"></a>
-<a id="__codelineno-10-53" name="__codelineno-10-53" href="#__codelineno-10-53"></a><span class="w">    </span><span class="c1"># Get ENI ID of the instance</span>
+<a id="__codelineno-10-53" name="__codelineno-10-53" href="#__codelineno-10-53"></a><span class="w">    </span><span class="c1"># 获取实例的 ENI ID</span>
 <a id="__codelineno-10-54" name="__codelineno-10-54" href="#__codelineno-10-54"></a><span class="w">    </span><span class="nv">ENI_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-instances<span class="w"> </span>--instance-ids<span class="w"> </span><span class="nv">$INSTANCE_ID</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;Reservations[0].Instances[0].NetworkInterfaces[0].NetworkInterfaceId&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="k">)</span>
 <a id="__codelineno-10-55" name="__codelineno-10-55" href="#__codelineno-10-55"></a>
 <a id="__codelineno-10-56" name="__codelineno-10-56" href="#__codelineno-10-56"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span>-n<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ENI_ID</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$ENI_ID</span><span class="s2">&quot;</span><span class="w"> </span>!<span class="o">=</span><span class="w"> </span><span class="s2">&quot;None&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-10-57" name="__codelineno-10-57" href="#__codelineno-10-57"></a><span class="w">      </span><span class="c1"># Add or replace route</span>
+<a id="__codelineno-10-57" name="__codelineno-10-57" href="#__codelineno-10-57"></a><span class="w">      </span><span class="c1"># 添加或替换路由</span>
 <a id="__codelineno-10-58" name="__codelineno-10-58" href="#__codelineno-10-58"></a><span class="w">      </span>aws<span class="w"> </span>ec2<span class="w"> </span>replace-route<span class="w"> </span>--route-table-id<span class="w"> </span><span class="nv">$ROUTE_TABLE_ID</span><span class="w"> </span>--destination-cidr-block<span class="w"> </span><span class="nv">$OVERLAY_CIDR</span><span class="w"> </span>--network-interface-id<span class="w"> </span><span class="nv">$ENI_ID</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-10-59" name="__codelineno-10-59" href="#__codelineno-10-59"></a><span class="w">      </span>aws<span class="w"> </span>ec2<span class="w"> </span>create-route<span class="w"> </span>--route-table-id<span class="w"> </span><span class="nv">$ROUTE_TABLE_ID</span><span class="w"> </span>--destination-cidr-block<span class="w"> </span><span class="nv">$OVERLAY_CIDR</span><span class="w"> </span>--network-interface-id<span class="w"> </span><span class="nv">$ENI_ID</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span>
 <a id="__codelineno-10-60" name="__codelineno-10-60" href="#__codelineno-10-60"></a>
-<a id="__codelineno-10-61" name="__codelineno-10-61" href="#__codelineno-10-61"></a><span class="w">      </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Route updated: </span><span class="nv">$OVERLAY_CIDR</span><span class="s2"> -&gt; </span><span class="nv">$ENI_ID</span><span class="s2">&quot;</span>
+<a id="__codelineno-10-61" name="__codelineno-10-61" href="#__codelineno-10-61"></a><span class="w">      </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;路由已更新: </span><span class="nv">$OVERLAY_CIDR</span><span class="s2"> -&gt; </span><span class="nv">$ENI_ID</span><span class="s2">&quot;</span>
 <a id="__codelineno-10-62" name="__codelineno-10-62" href="#__codelineno-10-62"></a><span class="w">    </span><span class="k">else</span>
-<a id="__codelineno-10-63" name="__codelineno-10-63" href="#__codelineno-10-63"></a><span class="w">      </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Warning: Cannot get ENI ID for </span><span class="nv">$INSTANCE_ID</span><span class="s2">&quot;</span>
+<a id="__codelineno-10-63" name="__codelineno-10-63" href="#__codelineno-10-63"></a><span class="w">      </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;警告: 无法获取 </span><span class="nv">$INSTANCE_ID</span><span class="s2"> 的 ENI ID&quot;</span>
 <a id="__codelineno-10-64" name="__codelineno-10-64" href="#__codelineno-10-64"></a><span class="w">    </span><span class="k">fi</span>
 <a id="__codelineno-10-65" name="__codelineno-10-65" href="#__codelineno-10-65"></a><span class="w">  </span><span class="k">else</span>
-<a id="__codelineno-10-66" name="__codelineno-10-66" href="#__codelineno-10-66"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Route already exists: </span><span class="nv">$OVERLAY_CIDR</span><span class="s2">&quot;</span>
+<a id="__codelineno-10-66" name="__codelineno-10-66" href="#__codelineno-10-66"></a><span class="w">    </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;路由已存在: </span><span class="nv">$OVERLAY_CIDR</span><span class="s2">&quot;</span>
 <a id="__codelineno-10-67" name="__codelineno-10-67" href="#__codelineno-10-67"></a><span class="w">  </span><span class="k">fi</span>
 <a id="__codelineno-10-68" name="__codelineno-10-68" href="#__codelineno-10-68"></a><span class="k">done</span>
 <a id="__codelineno-10-69" name="__codelineno-10-69" href="#__codelineno-10-69"></a>
-<a id="__codelineno-10-70" name="__codelineno-10-70" href="#__codelineno-10-70"></a><span class="c1"># Get the latest route table information again (as it may have been updated)</span>
+<a id="__codelineno-10-70" name="__codelineno-10-70" href="#__codelineno-10-70"></a><span class="c1"># 重新获取最新的路由表信息（因为可能已经更新了）</span>
 <a id="__codelineno-10-71" name="__codelineno-10-71" href="#__codelineno-10-71"></a><span class="nv">UPDATED_ROUTES</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>ec2<span class="w"> </span>describe-route-tables<span class="w"> </span>--route-table-ids<span class="w"> </span><span class="nv">$ROUTE_TABLE_ID</span><span class="w"> </span>--query<span class="w"> </span><span class="s1">&#39;RouteTables[0].Routes&#39;</span><span class="w"> </span>--output<span class="w"> </span>json<span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="k">)</span>
 <a id="__codelineno-10-72" name="__codelineno-10-72" href="#__codelineno-10-72"></a>
-<a id="__codelineno-10-73" name="__codelineno-10-73" href="#__codelineno-10-73"></a><span class="c1"># Check and delete excess 10.30.x.0/24 routes</span>
-<a id="__codelineno-10-74" name="__codelineno-10-74" href="#__codelineno-10-74"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Checking and deleting excess 10.30.x.0/24 routes...&quot;</span>
+<a id="__codelineno-10-73" name="__codelineno-10-73" href="#__codelineno-10-73"></a><span class="c1"># 检查并删除多余的 10.30.x.0/24 路由</span>
+<a id="__codelineno-10-74" name="__codelineno-10-74" href="#__codelineno-10-74"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;检查并删除多余的 10.30.x.0/24 路由...&quot;</span>
 <a id="__codelineno-10-75" name="__codelineno-10-75" href="#__codelineno-10-75"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$UPDATED_ROUTES</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-c<span class="w"> </span><span class="s1">&#39;.[]&#39;</span><span class="w"> </span><span class="p">|</span><span class="w"> </span><span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>-r<span class="w"> </span>route<span class="p">;</span><span class="w"> </span><span class="k">do</span>
 <a id="__codelineno-10-76" name="__codelineno-10-76" href="#__codelineno-10-76"></a><span class="w">  </span><span class="nv">CIDR</span><span class="o">=</span><span class="k">$(</span><span class="nb">echo</span><span class="w"> </span><span class="nv">$route</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.DestinationCidrBlock // &quot;&quot;&#39;</span><span class="k">)</span>
 <a id="__codelineno-10-77" name="__codelineno-10-77" href="#__codelineno-10-77"></a>
-<a id="__codelineno-10-78" name="__codelineno-10-78" href="#__codelineno-10-78"></a><span class="w">  </span><span class="c1"># Check if it&#39;s a route in 10.30.x.0/24 format</span>
+<a id="__codelineno-10-78" name="__codelineno-10-78" href="#__codelineno-10-78"></a><span class="w">  </span><span class="c1"># 检查是否是 10.30.x.0/24 格式的路由</span>
 <a id="__codelineno-10-79" name="__codelineno-10-79" href="#__codelineno-10-79"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="nv">$CIDR</span><span class="w"> </span><span class="o">=</span>~<span class="w"> </span>^10<span class="se">\.</span><span class="m">30</span><span class="se">\.</span><span class="o">[</span><span class="m">0</span>-9<span class="o">]</span>+<span class="se">\.</span><span class="m">0</span>/24$<span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-10-80" name="__codelineno-10-80" href="#__codelineno-10-80"></a><span class="w">    </span><span class="c1"># Check if this CIDR is in the valid CIDR list</span>
+<a id="__codelineno-10-80" name="__codelineno-10-80" href="#__codelineno-10-80"></a><span class="w">    </span><span class="c1"># 检查此 CIDR 是否在有效 CIDR 列表中</span>
 <a id="__codelineno-10-81" name="__codelineno-10-81" href="#__codelineno-10-81"></a><span class="w">    </span><span class="nv">FOUND</span><span class="o">=</span><span class="nb">false</span>
 <a id="__codelineno-10-82" name="__codelineno-10-82" href="#__codelineno-10-82"></a><span class="w">    </span><span class="k">for</span><span class="w"> </span>VALID_CIDR<span class="w"> </span><span class="k">in</span><span class="w"> </span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">VALID_CIDRS</span><span class="p">[@]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
 <a id="__codelineno-10-83" name="__codelineno-10-83" href="#__codelineno-10-83"></a><span class="w">      </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$VALID_CIDR</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$CIDR</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
@@ -7612,109 +7625,108 @@ This is a translate version from <a href="use-eks-hybrid-node-to-solve-ipaddr-ex
 <a id="__codelineno-10-86" name="__codelineno-10-86" href="#__codelineno-10-86"></a><span class="w">      </span><span class="k">fi</span>
 <a id="__codelineno-10-87" name="__codelineno-10-87" href="#__codelineno-10-87"></a><span class="w">    </span><span class="k">done</span>
 <a id="__codelineno-10-88" name="__codelineno-10-88" href="#__codelineno-10-88"></a>
-<a id="__codelineno-10-89" name="__codelineno-10-89" href="#__codelineno-10-89"></a><span class="w">    </span><span class="c1"># If not in the valid list, delete this route</span>
+<a id="__codelineno-10-89" name="__codelineno-10-89" href="#__codelineno-10-89"></a><span class="w">    </span><span class="c1"># 如果不在有效列表中，删除此路由</span>
 <a id="__codelineno-10-90" name="__codelineno-10-90" href="#__codelineno-10-90"></a><span class="w">    </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="s2">&quot;</span><span class="nv">$FOUND</span><span class="s2">&quot;</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;false&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-10-91" name="__codelineno-10-91" href="#__codelineno-10-91"></a><span class="w">      </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Deleting excess route: </span><span class="nv">$CIDR</span><span class="s2">&quot;</span>
+<a id="__codelineno-10-91" name="__codelineno-10-91" href="#__codelineno-10-91"></a><span class="w">      </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;删除多余路由: </span><span class="nv">$CIDR</span><span class="s2">&quot;</span>
 <a id="__codelineno-10-92" name="__codelineno-10-92" href="#__codelineno-10-92"></a><span class="w">      </span>aws<span class="w"> </span>ec2<span class="w"> </span>delete-route<span class="w"> </span>--route-table-id<span class="w"> </span><span class="nv">$ROUTE_TABLE_ID</span><span class="w"> </span>--destination-cidr-block<span class="w"> </span><span class="nv">$CIDR</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span>
 <a id="__codelineno-10-93" name="__codelineno-10-93" href="#__codelineno-10-93"></a><span class="w">    </span><span class="k">else</span>
-<a id="__codelineno-10-94" name="__codelineno-10-94" href="#__codelineno-10-94"></a><span class="w">      </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Keeping valid route: </span><span class="nv">$CIDR</span><span class="s2">&quot;</span>
+<a id="__codelineno-10-94" name="__codelineno-10-94" href="#__codelineno-10-94"></a><span class="w">      </span><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;保留有效路由: </span><span class="nv">$CIDR</span><span class="s2">&quot;</span>
 <a id="__codelineno-10-95" name="__codelineno-10-95" href="#__codelineno-10-95"></a><span class="w">    </span><span class="k">fi</span>
 <a id="__codelineno-10-96" name="__codelineno-10-96" href="#__codelineno-10-96"></a><span class="w">  </span><span class="k">fi</span>
 <a id="__codelineno-10-97" name="__codelineno-10-97" href="#__codelineno-10-97"></a><span class="k">done</span>
 <a id="__codelineno-10-98" name="__codelineno-10-98" href="#__codelineno-10-98"></a>
-<a id="__codelineno-10-99" name="__codelineno-10-99" href="#__codelineno-10-99"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;Synchronization complete!&quot;</span>
-</code></pre></div></li>
-</ul>
-<h2 id="environment-cleanup-dismantling-architecture-in-dependency-order">Environment Cleanup: Dismantling Architecture in Dependency Order<a class="headerlink" href="#environment-cleanup-dismantling-architecture-in-dependency-order" title="Permanent link">&para;</a></h2>
-<p>After completing the testing, to avoid unnecessary resource costs, we need to clean up the environment in the correct order. This process requires special attention to the dependencies between resources, ensuring that cleanup operations do not fail due to dependency conflicts.</p>
-<h3 id="application-cleanup">Application Cleanup<a class="headerlink" href="#application-cleanup" title="Permanent link">&para;</a></h3>
-<p>First, clean up application resources running in the cluster:<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># Delete all application-level resources</span>
+<a id="__codelineno-10-99" name="__codelineno-10-99" href="#__codelineno-10-99"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;同步完成!&quot;</span>
+</code></pre></div>
+<h2 id="_18">环境清理：按依赖顺序拆除架构<a class="headerlink" href="#_18" title="Permanent link">&para;</a></h2>
+<p>在完成测试后，为了避免产生不必要的资源费用，我们需要按照正确的顺序清理环境。这个过程需要特别注意资源之间的依赖关系，确保清理操作不会因为依赖冲突而失败。</p>
+<h3 id="_19">应用清理<a class="headerlink" href="#_19" title="Permanent link">&para;</a></h3>
+<p>首先清理运行在集群中的应用资源：<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="c1"># 删除所有应用级资源</span>
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>deployment,service,ingress<span class="w"> </span>--all
 </code></pre></div></p>
-<h3 id="node-cleanup">Node Cleanup<a class="headerlink" href="#node-cleanup" title="Permanent link">&para;</a></h3>
-<p>Before deleting the cluster, you need to first clean up hybrid nodes and their related configurations:<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># Reset hybrid nodes (execute on each node)</span>
+<h3 id="_20">节点清理<a class="headerlink" href="#_20" title="Permanent link">&para;</a></h3>
+<p>在删除集群之前，需要先清理混合节点及其相关配置：<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a><span class="c1"># 重置混合节点（在每个节点上执行）</span>
 <a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>sudo<span class="w"> </span>./nodeadm<span class="w"> </span>reset
 <a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># Clean up SSM activation configuration</span>
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a><span class="c1"># 清理SSM激活配置</span>
 <a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>aws<span class="w"> </span>ssm<span class="w"> </span>delete-activation<span class="w"> </span>--activation-id<span class="w"> </span>&lt;your-activation-id&gt;
 </code></pre></div></p>
-<h3 id="cluster-component-cleanup">Cluster Component Cleanup<a class="headerlink" href="#cluster-component-cleanup" title="Permanent link">&para;</a></h3>
-<p>Following the dependency relationship, start cleaning from the upper-layer components:<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># 1. Delete load balancer controller</span>
+<h3 id="_21">集群组件清理<a class="headerlink" href="#_21" title="Permanent link">&para;</a></h3>
+<p>按照依赖关系，从上层组件开始清理：<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="c1"># 1. 删除负载均衡控制器</span>
 <a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>eksdemo<span class="w"> </span>delete<span class="w"> </span>aws-lb-controller<span class="w"> </span>-c<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>
 <a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>
-<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># 2. Delete network plugin</span>
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a><span class="c1"># 2. 删除网络插件</span>
 <a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>helm<span class="w"> </span>delete<span class="w"> </span>cilium<span class="w"> </span>-n<span class="w"> </span>kube-system
 </code></pre></div></p>
-<h3 id="network-resource-cleanup">Network Resource Cleanup<a class="headerlink" href="#network-resource-cleanup" title="Permanent link">&para;</a></h3>
-<p>Network resource cleanup needs to follow an inside-out order:</p>
+<h3 id="_22">网络资源清理<a class="headerlink" href="#_22" title="Permanent link">&para;</a></h3>
+<p>网络资源的清理需要遵循从内到外的顺序：</p>
 <ol>
 <li>
-<p><strong>Route Configuration</strong><br />
-   - Delete route entries in the Transit Gateway route table<br />
-   - Clean up custom routes in the VPC route tables</p>
+<p><strong>路由配置</strong><br />
+   - 删除Transit Gateway路由表中的路由条目<br />
+   - 清理VPC路由表中的自定义路由</p>
 </li>
 <li>
-<p><strong>Network Connections</strong><br />
-   - Detach and delete Transit Gateway Attachments<br />
-   - Delete Transit Gateway<br />
-   - Clean up TGW subnet route tables</p>
+<p><strong>网络连接</strong><br />
+   - 分离并删除Transit Gateway Attachments<br />
+   - 删除Transit Gateway<br />
+   - 清理TGW子网路由表</p>
 </li>
 </ol>
-<h3 id="compute-resource-cleanup">Compute Resource Cleanup<a class="headerlink" href="#compute-resource-cleanup" title="Permanent link">&para;</a></h3>
-<p>Delete all compute resources in the IDC VPC:</p>
+<h3 id="_23">计算资源清理<a class="headerlink" href="#_23" title="Permanent link">&para;</a></h3>
+<p>删除IDC VPC中的所有计算资源：</p>
 <ol>
 <li>
-<p><strong>Instance Resources</strong><br />
-   - Terminate hybrid node EC2 instances<br />
-   - Delete EC2 Instance Connect Endpoint</p>
+<p><strong>实例资源</strong><br />
+   - 终止混合节点EC2实例<br />
+   - 删除EC2 Instance Connect Endpoint</p>
 </li>
 <li>
-<p><strong>Network Security</strong><br />
-   - Delete custom security group rules<br />
-   - Delete security groups</p>
+<p><strong>网络安全</strong><br />
+   - 删除自定义安全组规则<br />
+   - 删除安全组</p>
 </li>
 </ol>
-<h3 id="infrastructure-cleanup">Infrastructure Cleanup<a class="headerlink" href="#infrastructure-cleanup" title="Permanent link">&para;</a></h3>
-<p>Finally, clean up basic network resources:</p>
+<h3 id="_24">基础设施清理<a class="headerlink" href="#_24" title="Permanent link">&para;</a></h3>
+<p>最后清理基础网络资源：</p>
 <ol>
-<li><strong>VPC Resources</strong><br />
-   <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># Delete IDC VPC</span>
+<li><strong>VPC资源</strong><br />
+   <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># 删除IDC VPC</span>
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>aws<span class="w"> </span>ec2<span class="w"> </span>delete-vpc<span class="w"> </span>--vpc-id<span class="w"> </span><span class="si">${</span><span class="nv">IDC_VPC_ID</span><span class="si">}</span>
 <a id="__codelineno-14-3" name="__codelineno-14-3" href="#__codelineno-14-3"></a>
-<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1"># Delete EKS cluster (this will also delete the EKS VPC)</span>
+<a id="__codelineno-14-4" name="__codelineno-14-4" href="#__codelineno-14-4"></a><span class="c1"># 删除EKS集群（这将同时删除EKS VPC）</span>
 <a id="__codelineno-14-5" name="__codelineno-14-5" href="#__codelineno-14-5"></a>eksdemo<span class="w"> </span>delete<span class="w"> </span>cluster<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>
 </code></pre></div></li>
 </ol>
-<h3 id="cleanup-verification">Cleanup Verification<a class="headerlink" href="#cleanup-verification" title="Permanent link">&para;</a></h3>
-<p>Execute the following commands to ensure all resources have been properly cleaned up:<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># Verify EKS cluster</span>
+<h3 id="_25">清理验证<a class="headerlink" href="#_25" title="Permanent link">&para;</a></h3>
+<p>执行以下命令确保所有资源已正确清理：<br />
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="c1"># 验证EKS集群</span>
 <a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>aws<span class="w"> </span>eks<span class="w"> </span>describe-cluster<span class="w"> </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>
 <a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>
-<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1"># Verify VPC resources</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="c1"># 验证VPC资源</span>
 <a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a>aws<span class="w"> </span>ec2<span class="w"> </span>describe-vpcs<span class="w"> </span>--filters<span class="w"> </span><span class="s2">&quot;Name=tag:Name,Values=idc&quot;</span>
 <a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a>
-<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="c1"># Verify network components</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="c1"># 验证网络组件</span>
 <a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a>aws<span class="w"> </span>ec2<span class="w"> </span>describe-transit-gateways
 </code></pre></div></p>
 <blockquote>
-<p>Tip: When performing cleanup operations, it&rsquo;s recommended to keep track of the resource deletion order. If deletion fails, it&rsquo;s usually because of undiscovered resource dependencies, which need to be found and deleted first.</p>
+<p>提示：在执行清理操作时，建议保持对资源删除顺序的跟踪。如果遇到删除失败，通常是因为存在未发现的资源依赖，需要先找到并删除依赖资源。</p>
 </blockquote>
-<h2 id="references">References<a class="headerlink" href="#references" title="Permanent link">&para;</a></h2>
-<h3 id="aws-official-documentation">AWS Official Documentation<a class="headerlink" href="#aws-official-documentation" title="Permanent link">&para;</a></h3>
+<h2 id="_26">参考资料<a class="headerlink" href="#_26" title="Permanent link">&para;</a></h2>
+<h3 id="aws">AWS官方文档<a class="headerlink" href="#aws" title="Permanent link">&para;</a></h3>
 <ul>
-<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-overview.html">EKS Hybrid Nodes Overview</a> - Official guide for comprehensive understanding of EKS hybrid node functionality</li>
+<li><a href="https://docs.aws.amazon.com/eks/latest/userguide/hybrid-nodes-overview.html">EKS混合节点概述</a> - 全面了解EKS混合节点功能的官方指南</li>
 </ul>
-<h3 id="technical-blogs">Technical Blogs<a class="headerlink" href="#technical-blogs" title="Permanent link">&para;</a></h3>
+<h3 id="_27">技术博客<a class="headerlink" href="#_27" title="Permanent link">&para;</a></h3>
 <ul>
-<li><a href="https://aws.amazon.com/blogs/containers/a-deep-dive-into-amazon-eks-hybrid-nodes/">Deep Dive into EKS Hybrid Nodes</a> - AWS official blog, detailing the technical principles of hybrid nodes</li>
-<li><a href="https://aws.amazon.com/blogs/containers/expose-amazon-eks-pods-through-cross-account-load-balancer/">Expose EKS Pods through Cross-Account Load Balancer</a> - Detailed implementation of cross-VPC deployment solutions</li>
+<li><a href="https://aws.amazon.com/blogs/containers/a-deep-dive-into-amazon-eks-hybrid-nodes/">深入理解EKS混合节点</a> - AWS官方博客，详细介绍混合节点的技术原理</li>
+<li><a href="https://aws.amazon.com/blogs/containers/expose-amazon-eks-pods-through-cross-account-load-balancer/">通过跨账户负载均衡器暴露EKS Pod</a> - 介绍跨VPC部署方案的详细实现</li>
 </ul>
-<h3 id="community-resources">Community Resources<a class="headerlink" href="#community-resources" title="Permanent link">&para;</a></h3>
+<h3 id="_28">社区资源<a class="headerlink" href="#_28" title="Permanent link">&para;</a></h3>
 <ul>
-<li><a href="https://repost.aws/articles/ARL44xuau6TG2t-JoJ3mJ5Mw/unpacking-the-cluster-networking-for-amazon-eks-hybrid-nodes">Unpacking the Cluster Networking for Amazon EKS Hybrid Nodes</a> - Technical article on AWS re:Post, in-depth analysis of network architecture</li>
+<li><a href="https://repost.aws/articles/ARL44xuau6TG2t-JoJ3mJ5Mw/unpacking-the-cluster-networking-for-amazon-eks-hybrid-nodes">解析EKS混合节点的集群网络</a> - AWS re:Post上的技术文章，深入分析网络架构</li>
 </ul>
 
 
@@ -7738,7 +7750,7 @@ This is a translate version from <a href="use-eks-hybrid-node-to-solve-ipaddr-ex
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="May 16, 2025 07:59:43"><span class="timeago" datetime="2025-05-16T07:59:43+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="May 16, 2025 07:59:43">2025-05-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="May 16, 2025 08:13:22"><span class="timeago" datetime="2025-05-16T08:13:22+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="May 16, 2025 08:13:22">2025-05-16</span>
   </span>
 
     
@@ -7748,7 +7760,7 @@ This is a translate version from <a href="use-eks-hybrid-node-to-solve-ipaddr-ex
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="May 5, 2025 09:06:40"><span class="timeago" datetime="2025-05-05T09:06:40+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="May 5, 2025 09:06:40">2025-05-05</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="April 30, 2025 19:33:04"><span class="timeago" datetime="2025-04-30T19:33:04+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="April 30, 2025 19:33:04">2025-04-30</span>
   </span>
 
     
