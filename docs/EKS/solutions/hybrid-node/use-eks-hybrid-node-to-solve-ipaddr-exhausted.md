@@ -140,7 +140,6 @@ tags:
    - **安全组设置**
      - 配置入站规则：允许来自10.0.0.0/8网段的所有流量
      - 目的：确保集群内部组件之间的通信畅通
-
    - **网络接口优化**
      - 关闭源/目的地址检查
      - 原因：这是overlay网络正常工作的必要条件
@@ -159,6 +158,7 @@ tags:
 ```
 
 2. **混合节点网络设置**：在EKS集群配置中启用混合节点支持，设置两个关键参数：
+
 - remoteNodeNetworks：指定IDC VPC中的私有子网范围
 - remotePodNetworks：定义Cilium将使用的Overlay CIDR范围
 - 如下图所示，这些设置将在EKS控制台中配置：
@@ -306,17 +306,20 @@ kubectl get ciliumnode
    ![[attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204.png|800]]
 
 2. **Transit Gateway核心路由**：配置Transit Gateway作为网络的中央枢纽：
+
 - 将所有目标为10.30.0.0/16的流量转发到IDC VPC
 - 确保Pod网络流量能够正确到达目标节点
    ![[attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204-1.png|800]]
 
 2. **IDC VPC精细路由**：在IDC VPC的TGW子网中配置细粒度的Pod网络路由：
+
 - 为每个混合节点配置专属的/24网段
 - 例如：10.30.0.0/24 → 混合节点1
 - 确保流量能够准确到达目标Pod
    ![[attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204-2.png|800]]
 
 2. **双向通信保障**：为确保网络的双向连通性，需要配置以下路由：
+
 - a. IDC VPC回程路由：
     - 目标：10.10.0.0/16（EKS VPC）
     - 下一跳：Transit Gateway
@@ -472,24 +475,22 @@ helm delete cilium -n kube-system
 
 网络资源的清理需要遵循从内到外的顺序：
 
-1. **路由配置**
-- 删除Transit Gateway路由表中的路由条目
-- 清理VPC路由表中的自定义路由
-
-2. **网络连接**
-- 分离并删除Transit Gateway Attachments
-- 删除Transit Gateway
-- 清理TGW子网路由表
+- **路由配置**
+    - 删除Transit Gateway路由表中的路由条目
+    - 清理VPC路由表中的自定义路由
+- **网络连接**
+    - 分离并删除Transit Gateway Attachments
+    - 删除Transit Gateway
+    - 清理TGW子网路由表
 
 删除IDC VPC中的所有计算资源：
 
-1. **实例资源**
-- 终止混合节点EC2实例
-- 删除EC2 Instance Connect Endpoint
-
-2. **网络安全**
-- 删除自定义安全组规则
-- 删除安全组
+- **实例资源**
+    - 终止混合节点EC2实例
+    - 删除EC2 Instance Connect Endpoint
+- **网络安全**
+    - 删除自定义安全组规则
+    - 删除安全组
 
 最后清理集群和网络资源：
 
