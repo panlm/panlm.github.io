@@ -1,11 +1,11 @@
 ---
-title: 突破VPC地址限制：EKS混合节点架构实战指南
+title: Breaking Through VPC Address Limitations Using EKS Hybrid Node Architecture
 description: 一个关于如何使用EKS混合节点功能优雅地解决VPC地址空间不足的真实案例
 created: 2025-04-20 10:53:34.032
 last_modified: 2025-05-01
+status: myblog
 tags:
   - aws/container/eks
-status: myblog
 ---
 
 # 突破VPC地址限制：EKS混合节点架构实战指南
@@ -58,7 +58,7 @@ status: myblog
 
 第一个方案的灵感来自于AWS Load Balancer Controller的一个鲜为人知的特性 - 跨VPC部署模式。这个方案的思路非常巧妙：我们不再执着于在现有VPC中挤出更多地址空间，而是另辟蹊径，在一个全新的VPC中部署EKS集群和应用POD。让我们看看这个方案的具体设计：
 
-![[attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted.en/IMG-20250505-090108-408.png|800]]
+![[attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081201.png|800]]
 
 更多技术细节可以参考AWS官方博客：[Expose Amazon EKS pods through cross-account load balancer](https://aws.amazon.com/blogs/containers/expose-amazon-eks-pods-through-cross-account-load-balancer/)
 
@@ -76,7 +76,7 @@ status: myblog
 
 让我们来看看这个方案的架构：
 
-![[attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted.en/IMG-20250505-090108-542.png|800]]
+![[attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081202.png|800]]
 
 这个方案的核心在于其灵活性和可扩展性。我们新建一个独立的VPC（图中显示为172.16），并且使用TGW与原有 VPC（图中显示为10.255）互联。使用 TGW 代替 VPC Peering 的主要原因在与我们需要精细化控制不可见的Overlay网段（RemotePODNetwork）路由。
 
@@ -105,7 +105,7 @@ status: myblog
 
 在开始具体部署之前，让我们先深入了解整个网络架构的设计。下图展示了我们的完整网络架构设计，包括VPC配置、子网划分、路由设置以及各组件之间的连接关系：
 
-![[attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted.en/IMG-20250505-090108-702.png|800]]
+![[attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081203.png|800]]
 
 
 ### 基础设施部署：分步实施指南
@@ -171,7 +171,7 @@ status: myblog
    - remotePodNetworks：定义Cilium将使用的Overlay CIDR范围
 
    如下图所示，这些设置将在EKS控制台中配置：
-![[attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted.en/IMG-20250505-090108-848.png|800]]
+![[attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081203-1.png|800]]
 
 #### 第四阶段：配置Systems Manager
 
@@ -316,20 +316,20 @@ kubectl get ciliumnode
 
 1. **EKS VPC路由配置**
    在EKS VPC的公有子网中配置路由表，主要用于处理来自ALB的入站流量：
-   ![[attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted.en/IMG-20250505-090108-981.png|800]]
+   ![[attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204.png|800]]
 
 2. **Transit Gateway核心路由**
    配置Transit Gateway作为网络的中央枢纽：
    - 将所有目标为10.30.0.0/16的流量转发到IDC VPC
    - 确保Pod网络流量能够正确到达目标节点
-   ![[attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted.en/IMG-20250505-090109-172.png|800]]
+   ![[attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204-1.png|800]]
 
 3. **IDC VPC精细路由**
    在IDC VPC的TGW子网中配置细粒度的Pod网络路由：
    - 为每个混合节点配置专属的/24网段
    - 例如：10.30.0.0/24 → 混合节点1
    - 确保流量能够准确到达目标Pod
-   ![[attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted.en/IMG-20250505-090109-293.png|800]]
+   ![[attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204-2.png|800]]
 
 4. **双向通信保障**
    为确保网络的双向连通性，需要配置以下路由：

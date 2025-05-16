@@ -15,7 +15,7 @@ number headings: first-level 2, max 3, 1.1, auto
 - ($frontmatter:last_modified) [$frontmatter:title]($filename) -- $frontmatter:description
 ```
 - (2025-05-15) [MCP Server on EC2](build-mcp-server-on-ec2) -- 将 MCP Server 移动到远端，减少本地资源占用
-- (2025-05-01) [突破VPC地址限制：EKS混合节点架构实战指南](use-eks-hybrid-node-to-solve-ipaddr-exhausted.zh) -- 一个关于如何使用EKS混合节点功能优雅地解决VPC地址空间不足的真实案例
+- (2025-05-01) [突破VPC地址限制：EKS混合节点架构实战指南](EKS/solutions/hybrid-node/use-eks-hybrid-node-to-solve-ipaddr-exhausted.md) -- 一个关于如何使用EKS混合节点功能优雅地解决VPC地址空间不足的真实案例
 - (2025-02-20) [deepseek-poc](deepseek-poc) -- Deepseek POC
 - (2025-04-16) [Configure SearxNG MCP Server in Cline](searxng-mcp-server-for-cline) -- 在 Cline 中配置 SearxNG MCP Server 实现搜索功能
 - (2024-01-08) [Stream EKS Control Panel Logs to S3](stream-k8s-control-panel-logs-to-s3) -- 目前 EKS 控制平面日志只支持发送到 cloudwatch，且在同一个 log group 中有5种类型6种前缀的 log stream 的日志，不利于统一查询。且只有 audit 日志是 json 格式其他均是单行日志，且字段各不相同。本解决方案提供思路统一保存日志供后续分析处理
