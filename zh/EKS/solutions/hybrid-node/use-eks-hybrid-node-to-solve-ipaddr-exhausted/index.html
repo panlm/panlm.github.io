@@ -7222,16 +7222,12 @@
 </li>
 </ol>
 <ul>
-<li>
-<p><strong>安全组设置</strong></p>
-<ul>
+<li><strong>安全组设置</strong><ul>
 <li>配置入站规则：允许来自10.0.0.0/8网段的所有流量</li>
 <li>目的：确保集群内部组件之间的通信畅通</li>
 </ul>
 </li>
-<li>
-<p><strong>网络接口优化</strong></p>
-<ul>
+<li><strong>网络接口优化</strong><ul>
 <li>关闭源/目的地址检查</li>
 <li>原因：这是overlay网络正常工作的必要条件</li>
 </ul>
@@ -7250,13 +7246,15 @@
 </code></pre></div></p>
 </li>
 <li>
-<p><strong>混合节点网络设置</strong>：在EKS集群配置中启用混合节点支持，设置两个关键参数：<br />
-- remoteNodeNetworks：指定IDC VPC中的私有子网范围<br />
-- remotePodNetworks：定义Cilium将使用的Overlay CIDR范围<br />
-- 如下图所示，这些设置将在EKS控制台中配置：<br />
-<a class="glightbox" href="../../../../../EKS/solutions/hybrid-node/attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081203-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="800" src="../../../../../EKS/solutions/hybrid-node/attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081203-1.png" title="800" /></a></p>
+<p><strong>混合节点网络设置</strong>：在EKS集群配置中启用混合节点支持，设置两个关键参数：</p>
 </li>
 </ol>
+<ul>
+<li>remoteNodeNetworks：指定IDC VPC中的私有子网范围</li>
+<li>remotePodNetworks：定义Cilium将使用的Overlay CIDR范围</li>
+<li>如下图所示，这些设置将在EKS控制台中配置：<br />
+<a class="glightbox" href="../../../../../EKS/solutions/hybrid-node/attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081203-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="800" src="../../../../../EKS/solutions/hybrid-node/attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081203-1.png" title="800" /></a></li>
+</ul>
 <h4 id="systems-manager">配置Systems Manager<a class="headerlink" href="#systems-manager" title="Permanent link">&para;</a></h4>
 <p>AWS Systems Manager（SSM）在混合节点架构中扮演着关键角色，它负责建立和维护EKS控制平面与远程节点之间的安全通信通道。</p>
 <ol>
@@ -7384,31 +7382,39 @@
 <a class="glightbox" href="../../../../../EKS/solutions/hybrid-node/attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="800" src="../../../../../EKS/solutions/hybrid-node/attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204.png" title="800" /></a></p>
 </li>
 <li>
-<p><strong>Transit Gateway核心路由</strong>：配置Transit Gateway作为网络的中央枢纽：<br />
-- 将所有目标为10.30.0.0/16的流量转发到IDC VPC<br />
-- 确保Pod网络流量能够正确到达目标节点<br />
-<a class="glightbox" href="../../../../../EKS/solutions/hybrid-node/attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="800" src="../../../../../EKS/solutions/hybrid-node/attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204-1.png" title="800" /></a></p>
+<p><strong>Transit Gateway核心路由</strong>：配置Transit Gateway作为网络的中央枢纽：</p>
 </li>
-<li>
-<p><strong>IDC VPC精细路由</strong>：在IDC VPC的TGW子网中配置细粒度的Pod网络路由：<br />
-- 为每个混合节点配置专属的/24网段<br />
-- 例如：10.30.0.0/24 → 混合节点1<br />
-- 确保流量能够准确到达目标Pod<br />
-<a class="glightbox" href="../../../../../EKS/solutions/hybrid-node/attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="800" src="../../../../../EKS/solutions/hybrid-node/attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204-2.png" title="800" /></a></p>
-</li>
-<li>
-<p><strong>双向通信保障</strong>：为确保网络的双向连通性，需要配置以下路由：<br />
-- a. IDC VPC回程路由：</p>
+</ol>
 <ul>
+<li>将所有目标为10.30.0.0/16的流量转发到IDC VPC</li>
+<li>确保Pod网络流量能够正确到达目标节点<br />
+<a class="glightbox" href="../../../../../EKS/solutions/hybrid-node/attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="800" src="../../../../../EKS/solutions/hybrid-node/attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204-1.png" title="800" /></a></li>
+</ul>
+<ol start="2">
+<li><strong>IDC VPC精细路由</strong>：在IDC VPC的TGW子网中配置细粒度的Pod网络路由：</li>
+</ol>
+<ul>
+<li>为每个混合节点配置专属的/24网段</li>
+<li>例如：10.30.0.0/24 → 混合节点1</li>
+<li>确保流量能够准确到达目标Pod<br />
+<a class="glightbox" href="../../../../../EKS/solutions/hybrid-node/attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="800" src="../../../../../EKS/solutions/hybrid-node/attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204-2.png" title="800" /></a></li>
+</ul>
+<ol start="2">
+<li><strong>双向通信保障</strong>：为确保网络的双向连通性，需要配置以下路由：</li>
+</ol>
+<ul>
+<li>a. IDC VPC回程路由：<ul>
 <li>目标：10.10.0.0/16（EKS VPC）</li>
 <li>下一跳：Transit Gateway</li>
 <li>作用：确保从Pod发出的流量能够返回EKS集群</li>
-<li>b. Transit Gateway回程配置：</li>
+</ul>
+</li>
+<li>b. Transit Gateway回程配置：<ul>
 <li>维护到EKS VPC（10.10.0.0/16）的路由</li>
 <li>确保集群组件间的双向通信</li>
 </ul>
 </li>
-</ol>
+</ul>
 <h3 id="_15">自动化工具：路由表同步脚本<a class="headerlink" href="#_15" title="Permanent link">&para;</a></h3>
 <p>在混合节点架构中，Pod CIDR的路由配置需要随着节点的变化而更新。为了自动化这个过程，我们开发了一个路由表同步脚本。这个脚本可以监控Cilium节点的状态，并自动更新相应的路由配置。</p>
 <h4 id="_16">背景说明<a class="headerlink" href="#_16" title="Permanent link">&para;</a></h4>
@@ -7542,32 +7548,32 @@
 <a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>helm<span class="w"> </span>delete<span class="w"> </span>cilium<span class="w"> </span>-n<span class="w"> </span>kube-system
 </code></pre></div></p>
 <p>网络资源的清理需要遵循从内到外的顺序：</p>
-<ol>
-<li>
-<p><strong>路由配置</strong><br />
-- 删除Transit Gateway路由表中的路由条目<br />
-- 清理VPC路由表中的自定义路由</p>
+<ul>
+<li><strong>路由配置</strong><ul>
+<li>删除Transit Gateway路由表中的路由条目</li>
+<li>清理VPC路由表中的自定义路由</li>
+</ul>
 </li>
-<li>
-<p><strong>网络连接</strong><br />
-- 分离并删除Transit Gateway Attachments<br />
-- 删除Transit Gateway<br />
-- 清理TGW子网路由表</p>
+<li><strong>网络连接</strong><ul>
+<li>分离并删除Transit Gateway Attachments</li>
+<li>删除Transit Gateway</li>
+<li>清理TGW子网路由表</li>
+</ul>
 </li>
-</ol>
+</ul>
 <p>删除IDC VPC中的所有计算资源：</p>
-<ol>
-<li>
-<p><strong>实例资源</strong><br />
-- 终止混合节点EC2实例<br />
-- 删除EC2 Instance Connect Endpoint</p>
+<ul>
+<li><strong>实例资源</strong><ul>
+<li>终止混合节点EC2实例</li>
+<li>删除EC2 Instance Connect Endpoint</li>
+</ul>
 </li>
-<li>
-<p><strong>网络安全</strong><br />
-- 删除自定义安全组规则<br />
-- 删除安全组</p>
+<li><strong>网络安全</strong><ul>
+<li>删除自定义安全组规则</li>
+<li>删除安全组</li>
+</ul>
 </li>
-</ol>
+</ul>
 <p>最后清理集群和网络资源：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a><span class="c1"># 删除EKS集群（这将同时删除EKS VPC）</span>
 <a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a>eksdemo<span class="w"> </span>delete<span class="w"> </span>cluster<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>
@@ -7608,7 +7614,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="May 16, 2025 08:39:46"><span class="timeago" datetime="2025-05-16T08:39:46+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="May 16, 2025 08:39:46">2025-05-16</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="May 16, 2025 08:45:37"><span class="timeago" datetime="2025-05-16T08:45:37+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="May 16, 2025 08:45:37">2025-05-16</span>
   </span>
 
     
