@@ -52,6 +52,8 @@ nohup mcp-proxy --sse-host=0.0.0.0 --sse-port=8810 --env SEARXNG_URL https://sea
 ```
 
 ## 推荐部署 -- put mcp-server in container with mcp-proxy endpoint
+### General MCPs
+- in this chapter, we will deploy general mcp server for you, including fetch, aws-doc, searxng mcp
 - put all files in folder `mymcp`
 - use mcp-proxy docker file, run mcp-server in container (minor version provider by mcp-proxy) 
 ```sh
@@ -157,7 +159,8 @@ docker compose up -d
 
 ```
 
-- add another mcp-server to docker compose file
+### another MCP server
+- add [confluence](https://github.com/sooperset/mcp-atlassian) mcp-server to docker compose file
 ```yaml
   confluence-mcp:
     build:
@@ -174,7 +177,7 @@ docker compose up -d
     command: "--pass-environment --port=8099 --sse-host 0.0.0.0 -- uvx mcp-atlassian"
 ```
 
-- git repo research mcp and terraform mcp need ubuntu docker file 
+- [git repo research](https://github.com/awslabs/mcp/tree/main/src/git-repo-research-mcp-server) and [terraform](https://github.com/awslabs/mcp/tree/main/src/terraform-mcp-server) mcp server cannot use uv docker file, need ubuntu docker file instead.
 ```yaml
   terraform-mcp:
     build:
@@ -198,11 +201,10 @@ docker compose up -d
 
 ```
 
-- get mcp grafana to folder `mcp-grafana`
+- grafana mcp server ([[../../../../git/git-mkdocs/GenAI/grafana-mcp-server|grafana-mcp-server]]) has standalone dockerfile, we could use it directly. clone to folder `mcp-grafana`, and add following to `docker-compose.yaml`
 ```sh
 git clone https://github.com/grafana/mcp-grafana.git
 ```
-- add following to `mymcp/docker-compose.yaml`
 ```yaml
   grafana-mcp:
     build:
