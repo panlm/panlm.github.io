@@ -56,7 +56,6 @@ nohup mcp-proxy --sse-host=0.0.0.0 --sse-port=8810 --env SEARXNG_URL https://sea
 - use mcp-proxy docker file, run mcp-server in container (minor version provider by mcp-proxy) 
 ```sh
 # git clone https://github.com/sparfenyuk/mcp-proxy
-# git clone https://github.com/ihor-sokoliuk/mcp-searxng
 
 cat > mcp-proxy-uv.Dockerfile <<-'EOF'
 # file: mcp-proxy-uv.Dockerfile
@@ -75,6 +74,8 @@ EOF
 
 - customize mcp-proxy docker file, run mcp-server in container (node version) 
 ```sh
+# git clone https://github.com/ihor-sokoliuk/mcp-searxng
+
 cat > mcp-proxy-npx.Dockerfile <<-'EOF'
 # file: mcp-proxy-npx.Dockerfile
 FROM node:20-slim
