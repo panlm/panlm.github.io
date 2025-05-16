@@ -62,7 +62,6 @@ https://github.com/chetachiezikeuzor/Highlightr-Plugin
 
 通过不同颜色高亮文本
 
-
 ### share notes
 https://docs.note.sx/running-your-own-server
 
@@ -101,7 +100,6 @@ https://github.com/tannercollin/sharenote-py
 - shared notes will be in `static` folder
 - seems not stable when upload same note twice 
 
-
 ### others 
 - [Quiet Outline](https://github.com/guopenghui/obsidian-quiet-outline)
 - [dataview doc](https://blacksmithgu.github.io/obsidian-dataview/)
@@ -109,6 +107,7 @@ https://github.com/tannercollin/sharenote-py
 - [admonition](https://github.com/valentine195/obsidian-admonition)
 - [[../../../notes/ob-export-util-obsidianhtml|ob-export-util-obsidianhtml]]
 - [[ob-quip-upload]]
+- MCP Server for Obsidian: https://github.com/MarkusPfundstein/mcp-obsidian
 
 
 ## Tips

@@ -52,13 +52,14 @@ nohup mcp-proxy --sse-host=0.0.0.0 --sse-port=8810 --env SEARXNG_URL https://sea
 ```
 
 ## 推荐部署 -- put mcp-server in docker with mcp-proxy endpoint
-- use mcp-proxy docker file, run mcp-server in container (python version) 
+- put all files in folder `mymcp`
+- use mcp-proxy docker file, run mcp-server in container (minor version provider by mcp-proxy) 
 ```sh
 # git clone https://github.com/sparfenyuk/mcp-proxy
 # git clone https://github.com/ihor-sokoliuk/mcp-searxng
 
 cat > mcp-proxy-uv.Dockerfile <<-'EOF'
-# file: mcp-proxy.Dockerfile
+# file: mcp-proxy-uv.Dockerfile
 
 FROM ghcr.io/sparfenyuk/mcp-proxy:latest
 
@@ -75,10 +76,34 @@ EOF
 - customize mcp-proxy docker file, run mcp-server in container (node version) 
 ```sh
 cat > mcp-proxy-npx.Dockerfile <<-'EOF'
+# file: mcp-proxy-npx.Dockerfile
 FROM node:20-slim
 
 # Install Python and required packages
 RUN apt-get update && apt-get install -y python3 curl \
+    && rm -rf /var/lib/apt/lists/*
+
+# Install uv and mcp-proxy using pipx
+RUN curl -LsSf https://astral.sh/uv/install.sh | sh
+RUN ~/.local/bin/uv python install 3.10
+RUN ~/.local/bin/uv tool install mcp-proxy
+
+# Add pipx binaries to PATH
+ENV PATH="/root/.local/bin:$PATH" \
+    NODE_ENV=production
+
+ENTRYPOINT ["mcp-proxy"]
+EOF
+```
+
+- customize a general version (ubuntu version)
+```sh
+cat > mcp-proxy-ubuntu.Dockerfile <<-'EOF'
+# file: mcp-proxy-ubuntu.Dockerfile
+FROM ubuntu:22.04
+
+# Install Python and required packages
+RUN apt-get update && apt-get install -y python3 curl swig git\
     && rm -rf /var/lib/apt/lists/*
 
 # Install uv and mcp-proxy using pipx
@@ -147,6 +172,51 @@ docker compose up -d
       - 8099:8099
     command: "--pass-environment --port=8099 --sse-host 0.0.0.0 -- uvx mcp-atlassian"
 ```
+
+- git repo research mcp and terraform mcp need ubuntu docker file 
+```yaml
+  terraform-mcp:
+    build:
+      context: .
+      dockerfile: mcp-proxy-ubuntu.Dockerfile
+    network_mode: host
+    restart: unless-stopped
+    ports:
+      - 8815:8815
+    command: "--pass-environment --port=8815 --sse-host 0.0.0.0 --env FASTMCP_LOG_LEVEL ERROR --env AWS_REGION us-east-1 uvx awslabs.terraform-mcp-server@latest"
+
+  git-repo-research-mcp:
+    build:
+      context: .
+      dockerfile: mcp-proxy-ubuntu.Dockerfile
+    network_mode: host
+    restart: unless-stopped
+    ports:
+      - 8818:8818
+    command: "--pass-environment --port=8818 --sse-host 0.0.0.0 --env FASTMCP_LOG_LEVEL ERROR --env AWS_REGION us-east-1 --env GITHUB_TOKEN ghp_xxx uvx awslabs.git-repo-research-mcp-server@latest"
+
+```
+
+- get mcp grafana to folder `mcp-grafana`
+```sh
+git clone https://github.com/grafana/mcp-grafana.git
+```
+- add following to `mymcp/docker-compose.yaml`
+```yaml
+  grafana-mcp:
+    build:
+      context: ../mcp-grafana
+      dockerfile: Dockerfile
+    network_mode: host
+    restart: unless-stopped
+    ports:
+      - 8816:8816
+    environment:
+      - GRAFANA_URL=https://grafana.endpoint
+      - GRAFANA_API_KEY=glsa_xxx
+    command: "--transport sse --sse-address 0.0.0.0:8816"
+```
+
 
 ## Config samples
 ### Use SSE in VSCode Cline
