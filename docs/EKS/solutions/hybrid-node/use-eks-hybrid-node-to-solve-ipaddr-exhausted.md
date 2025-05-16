@@ -120,26 +120,22 @@ tags:
 
 接下来，我们需要创建和配置业务应用的网络环境。这包括创建专用VPC和设置网络互联。
 
-1. 创建IDC VPC
-   使用[Amazon Q Developer CLI](https://github.com/aws/amazon-q-developer-cli)工具，我们可以<mark style="background: #FFB86CA6;">使用自然语言</mark>快速创建一个结构完善的VPC：
+1. 创建IDC VPC，我们可以使用[Amazon Q Developer CLI](https://github.com/aws/amazon-q-developer-cli)工具，<mark style="background: #FFB86CA6;">通过自然语言</mark>快速创建一个结构完善的VPC：
 ```text
 在us-west-2区域，创建 vpc 名为 idc，CIDR 使用 10.20.0.0/16，vpc 需要3个公有子网，3个私有子网，3个 tgw 子网，公有子网共享1个路由表并且默认路由指向 igw，私有子网共享1个路由表并且默认路由指向 nat，tgw 子网共享1个路由表没有默认路由
 ```
 
-2. 配置网络互联
-   接下来是一个关键步骤：建立VPC之间的通信桥梁。我们选择使用Transit Gateway作为核心网络枢纽，通过它来实现VPC间的高效互联。同样我们使用<mark style="background: #FFB86CA6;">使用自然语言</mark>快速完成这个配置：
+2. 配置网络互联，接下来是一个关键步骤：建立VPC之间的通信桥梁。我们选择使用Transit Gateway作为核心网络枢纽，通过它来实现VPC间的高效互联。同样我们<mark style="background: #FFB86CA6;">使用自然语言</mark>快速完成这个配置：
 ```text
    在 us-west-2 区域，现在把 ekscluster1 vpc 和 idc vpc 用 tgw 做互联，idc vpc 里已经有专用的 tgw 子网，你需要在 ekscluster1 vpc 里创建专用 tgw 子网，自动设置所有路由表使得网络可以互联互通
 ```
 
-3. 部署混合节点实例
-   在网络基础设施就绪后，我们需要在IDC VPC中部署将要作为混合节点的EC2实例。这些实例需要满足特定的要求，以确保它们能够顺利加入EKS集群：
+3. 部署混合节点实例，在网络基础设施就绪后，我们需要在IDC VPC中部署将要作为混合节点的EC2实例。这些实例需要满足特定的要求，以确保它们能够顺利加入EKS集群：
 ```text
    在 us-west-2 区域 idc vpc 里，每个 private 子网中创建 1 个 ec2，使用 ubuntu22 AMI，机型为 m5.large。然后在 idc vpc 里创建一个 EC2 Instance Connect Endpoint
 ```
 
-4. 配置实例网络
-   为了确保混合节点能够正常工作，我们需要对EC2实例进行一些特殊的网络配置：
+4. 配置实例网络，为了确保混合节点能够正常工作，我们需要对EC2实例进行一些特殊的网络配置：
 
    - **安全组设置**
      - 配置入站规则：允许来自10.0.0.0/8网段的所有流量
@@ -153,8 +149,7 @@ tags:
 
 完成基础网络设置后，我们需要对EKS集群进行特定的网络配置，以支持混合节点的接入：
 
-1. **集群安全组配置**
-   配置安全组规则以允许必要的网络通信：
+1. **集群安全组配置**：配置安全组规则以允许必要的网络通信：
 ```sh
    # 允许来自10.0.0.0/8网段的所有流量
    aws ec2 authorize-security-group-ingress \
@@ -163,8 +158,7 @@ tags:
      --cidr 10.0.0.0/8
 ```
 
-2. **混合节点网络设置**
-   在EKS集群配置中启用混合节点支持，设置两个关键参数：
+2. **混合节点网络设置**：在EKS集群配置中启用混合节点支持，设置两个关键参数：
 - remoteNodeNetworks：指定IDC VPC中的私有子网范围
 - remotePodNetworks：定义Cilium将使用的Overlay CIDR范围
 - 如下图所示，这些设置将在EKS控制台中配置：
@@ -174,8 +168,7 @@ tags:
 
 AWS Systems Manager（SSM）在混合节点架构中扮演着关键角色，它负责建立和维护EKS控制平面与远程节点之间的安全通信通道。
 
-1. **创建SSM激活配置**
-   首先，我们需要创建SSM激活配置，这将生成用于节点注册的凭证：
+1. **创建SSM激活配置**：首先，我们需要创建SSM激活配置，这将生成用于节点注册的凭证：
 ```sh
 aws ssm create-activation \
      --region us-west-2 \
@@ -186,8 +179,7 @@ aws ssm create-activation \
      --registration-limit 100
 ```
 
-2. **初始化混合节点**
-   获取激活凭证后，我们需要在每个混合节点上执行初始化配置。这个过程分为三个主要步骤：
+2. **初始化混合节点**：获取激活凭证后，我们需要在每个混合节点上执行初始化配置。这个过程分为三个主要步骤：
 ```sh
 # 1. install nodeadm
 curl -OL 'https://hybrid-assets.eks.amazonaws.com/releases/latest/bin/linux/amd64/nodeadm'
@@ -310,25 +302,21 @@ kubectl get ciliumnode
 
 #### 路由配置步骤
 
-1. **EKS VPC路由配置**
-   在EKS VPC的公有子网中配置路由表，主要用于处理来自ALB的入站流量：
+1. **EKS VPC路由配置**：在EKS VPC的公有子网中配置路由表，主要用于处理来自ALB的入站流量：
    ![[attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204.png|800]]
 
-2. **Transit Gateway核心路由**
-   配置Transit Gateway作为网络的中央枢纽：
+2. **Transit Gateway核心路由**：配置Transit Gateway作为网络的中央枢纽：
 - 将所有目标为10.30.0.0/16的流量转发到IDC VPC
 - 确保Pod网络流量能够正确到达目标节点
    ![[attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204-1.png|800]]
 
-3. **IDC VPC精细路由**
-   在IDC VPC的TGW子网中配置细粒度的Pod网络路由：
+2. **IDC VPC精细路由**：在IDC VPC的TGW子网中配置细粒度的Pod网络路由：
 - 为每个混合节点配置专属的/24网段
 - 例如：10.30.0.0/24 → 混合节点1
 - 确保流量能够准确到达目标Pod
    ![[attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204-2.png|800]]
 
-4. **双向通信保障**
-   为确保网络的双向连通性，需要配置以下路由：
+2. **双向通信保障**：为确保网络的双向连通性，需要配置以下路由：
 - a. IDC VPC回程路由：
     - 目标：10.10.0.0/16（EKS VPC）
     - 下一跳：Transit Gateway
