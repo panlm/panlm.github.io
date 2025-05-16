@@ -51,7 +51,7 @@ nohup mcp-proxy --sse-host=0.0.0.0 --sse-port=8810 --env SEARXNG_URL https://sea
 
 ```
 
-## 推荐部署 -- put mcp-server in docker with mcp-proxy endpoint
+## 推荐部署 -- put mcp-server in container with mcp-proxy endpoint
 - put all files in folder `mymcp`
 - use mcp-proxy docker file, run mcp-server in container (minor version provider by mcp-proxy) 
 ```sh
