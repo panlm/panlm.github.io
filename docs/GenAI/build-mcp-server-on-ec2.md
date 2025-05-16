@@ -12,7 +12,7 @@ tags:
 
 ## what is mcp-proxy
 
-we will use [mcp-proxy](https://github.com/sparfenyuk/mcp-proxy) to move mcp server to ec2 and let client access mcp server through SSE
+we move mcp servers to ec2 and use [mcp-proxy](https://github.com/sparfenyuk/mcp-proxy) to convert STDIO to SSE, and let mcp client access mcp server through SSE
 
 ```mermaid
 graph LR
@@ -38,12 +38,12 @@ graph LR
 
 ```
 
-当前 amazon Q Dev CLI 只支持 STDIO协议，不支持 SSE，因此在将 mcp server 放到 EC2 上之后，不仅需要将 mcp server 通过 mcp-proxy 暴露成 SSE，在 Q DEV CLI 本地需要通过 mcp-proxy 将远程 SSE，在转换成本地的 STDIO，提供 Q Dev CLI 访问。如下图：
+当前 amazon Q Dev CLI 只支持 STDIO协议，不支持 SSE，因此在将 mcp server 放到 EC2 上之后，不仅需要将 mcp server 通过 mcp-proxy 暴露成 SSE，在 Q DEV CLI 本地需要通过 mcp-proxy 将远程 SSE，再转换成本地的 STDIO，提供 Q Dev CLI 访问。如下图：
 
 ![[attachments/build-mcp-server-on-ec2/IMG-20250515-150819.png|800]]
 
 ## 手工部署 -- start mcp server using mcp-proxy 
-
+- use mcp-proxy command directly
 ```sh
 nohup mcp-proxy --sse-host=0.0.0.0 --sse-port=8808 uvx mcp-server-fetch 2>&1 1>/tmp/mcp-proxy-8808.log &
 nohup mcp-proxy --sse-host=0.0.0.0 --sse-port=8809 --env FASTMCP_LOG_LEVEL ERROR uvx awslabs.aws-documentation-mcp-server@latest 2>&1 1>/tmp/mcp-proxy-8809.log &
@@ -52,7 +52,7 @@ nohup mcp-proxy --sse-host=0.0.0.0 --sse-port=8810 --env SEARXNG_URL https://sea
 ```
 
 ## 推荐部署 -- put mcp-server in docker with mcp-proxy endpoint
-
+- use mcp-proxy docker file, run mcp-server in container (python version) 
 ```sh
 # git clone https://github.com/sparfenyuk/mcp-proxy
 # git clone https://github.com/ihor-sokoliuk/mcp-searxng
@@ -70,7 +70,10 @@ ENV PATH="/usr/local/bin:$PATH" \
 
 ENTRYPOINT [ "mcp-proxy" ]
 EOF
+```
 
+- customize mcp-proxy docker file, run mcp-server in container (node version) 
+```sh
 cat > mcp-proxy-npx.Dockerfile <<-'EOF'
 FROM node:20-slim
 
@@ -89,7 +92,10 @@ ENV PATH="/root/.local/bin:$PATH" \
 
 ENTRYPOINT ["mcp-proxy"]
 EOF
+```
 
+- use a docker-compose file to orchestrate
+```sh
 cat > docker-compose.yaml <<-'EOF'
 services:
   fetch-mcp:
@@ -125,7 +131,7 @@ docker compose up -d
 
 ```
 
-- add another mcp-server
+- add another mcp-server to docker compose file
 ```yaml
   confluence-mcp:
     build:
