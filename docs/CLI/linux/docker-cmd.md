@@ -213,14 +213,12 @@ echo \
 sudo apt-get update
 sudo apt-get install -y docker-ce docker-ce-cli containerd.io docker-buildx-plugin docker-compose-plugin
 
-sudo getent group docker
-sudo groupadd docker
+# sudo getent group docker
+# sudo groupadd docker
 sudo usermod -aG docker $USER
-newgrp docker
+newgrp docker # 应用组更改（不需要注销）
 
 ```
-
-
 
 
 

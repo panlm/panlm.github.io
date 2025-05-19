@@ -34,33 +34,35 @@ EOF
 mkdir -p ~/.local/share/code-server/User
 tee ~/.local/share/code-server/User/settings.json <<-'EOF'
 {
-"extensions.autoUpdate": false,
-"extensions.autoCheckUpdates": false,
-"terminal.integrated.cwd": "/home/ubuntu",
-"telemetry.telemetryLevel": "off",
-"security.workspace.trust.startupPrompt": "never",
-"security.workspace.trust.enabled": false,
-"security.workspace.trust.banner": "never",
-"security.workspace.trust.emptyWindow": false,
-"workbench.startupEditor": "terminal",
-"task.allowAutomaticTasks": "on",
-"editor.indentSize": "tabSize",
-"editor.tabSize": 2,
-"python.testing.pytestEnabled": true,
-"auto-run-command.rules": [
+  "extensions.autoUpdate": false,
+  "extensions.autoCheckUpdates": false,
+  "terminal.integrated.cwd": "/home/ubuntu",
+  "telemetry.telemetryLevel": "off",
+  "security.workspace.trust.startupPrompt": "never",
+  "security.workspace.trust.enabled": false,
+  "security.workspace.trust.banner": "never",
+  "security.workspace.trust.emptyWindow": false,
+  "workbench.startupEditor": "terminal",
+  "task.allowAutomaticTasks": "on",
+  "editor.indentSize": "tabSize",
+  "editor.tabSize": 2,
+  "python.testing.pytestEnabled": true,
+  "auto-run-command.rules": [
     {
-    "command": "workbench.action.terminal.new"
+      "command": "workbench.action.terminal.new"
     }
-],
-"terminal.integrated.wordSeparators": " ()[]{}',\"`─‘’“”|="
+  ]
 }
 EOF
 
-CODE_SERVER_VER=4.98.2
-wget -qO /tmp/code-server.deb https://github.com/coder/code-server/releases/download/v${CODE_SERVER_VER}/code-server_${CODE_SERVER_VER}_amd64.deb
-sudo dpkg -i /tmp/code-server.deb
-sudo systemctl enable --now code-server@ubuntu
-sudo systemctl restart code-server@ubuntu
+# CODE_SERVER_VER=4.98.2
+# wget -qO /tmp/code-server.deb https://github.com/coder/code-server/releases/download/v${CODE_SERVER_VER}/code-server_${CODE_SERVER_VER}_amd64.deb
+# sudo dpkg -i /tmp/code-server.deb
+# sudo systemctl enable --now code-server@ubuntu
+# sudo systemctl restart code-server@ubuntu
+
+wget -O- https://github.com/coder/code-server/raw/refs/heads/main/install.sh |sh
+sudo systemctl enable --now code-server@$USER
 
 # install awscli v2
 sudo -E apt-get -yq install unzip

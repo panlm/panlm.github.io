@@ -12,11 +12,10 @@ number headings: first-level 2, max 3, 1.1, auto
     - [[script-prep-eks-env-part-one.sh]]
         - [[script-ubuntu-prep-eks-env-part-one.sh]]
     - [[script-prep-eks-env-part-two.sh]]
-        ```sh
+```sh
 curl --location https://panlm.github.io/cloud9/script-prep-eks-env-part-two.sh |sh
 ```
     - [[script-prep-eks-env-part-three.sh]]
-
 
 
 ## 2 Others

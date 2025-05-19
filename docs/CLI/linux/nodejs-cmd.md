@@ -11,9 +11,10 @@ tags:
 
 ## install
 https://github.com/nvm-sh/nvm/releases
-```
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.2/install.sh | bash
+```sh
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
 nvm install 20
+# nvm use 20
 node -v
 npm -v
 ```
