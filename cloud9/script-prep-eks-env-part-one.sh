@@ -46,16 +46,18 @@ tee ~/.local/share/code-server/User/settings.json <<-'EOF'
     {
     "command": "workbench.action.terminal.new"
     }
-],
-"terminal.integrated.wordSeparators": " ()[]{}',\"`─‘’“”|="
+]
 }
 EOF
 
-CODE_SERVER_VER=4.98.2
-wget -qO /tmp/code-server.rpm https://github.com/coder/code-server/releases/download/v${CODE_SERVER_VER}/code-server-${CODE_SERVER_VER}-amd64.rpm
-sudo yum install -y /tmp/code-server.rpm
-sudo systemctl enable --now code-server@ec2-user
-sudo systemctl restart code-server@ec2-user
+# CODE_SERVER_VER=4.98.2 
+# wget -qO /tmp/code-server.rpm https://github.com/coder/code-server/releases/download/v${CODE_SERVER_VER}/code-server-${CODE_SERVER_VER}-amd64.rpm
+# sudo yum install -y /tmp/code-server.rpm
+# sudo systemctl enable --now code-server@ec2-user
+# sudo systemctl restart code-server@ec2-user
+
+wget -O- https://github.com/coder/code-server/raw/refs/heads/main/install.sh |sh
+sudo systemctl enable --now code-server@$USER
 
 # install awscli v2
 curl "https://awscli.amazonaws.com/awscli-exe-linux-x86_64.zip" -o /tmp/awscliv2.zip
