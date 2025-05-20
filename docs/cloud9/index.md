@@ -5,6 +5,7 @@ number headings: first-level 2, max 3, 1.1, auto
 
 #  Cloud9
 ## 1 Quick start
+- [[vscode|CodeServer]]: Using code-server on EC2 instead of Cloud9 due to it has been deprecated
 - [Quick Setup Cloud9](quick-setup-cloud9): 简化创建 Cloud9 脚本，优先选择使用 Terraform 自动初始化；也可以使用脚本从 CloudShell 中完成初始化
     - [[example_instancestack_ubuntu.yaml]]
     - [[bootstrapping-python.py]]

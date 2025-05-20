@@ -2,7 +2,7 @@
 title: CodeServer
 description: Using code-server on EC2 instead of Cloud9 due to it has been deprecated
 created: 2024-08-19 09:36:24.009
-last_modified: 2024-09-19
+last_modified: 2025-05-20
 status: myblog
 tags:
   - draft
@@ -10,6 +10,54 @@ tags:
 
 # vscode
 https://github.com/coder/code-server
+
+## manual install vscode
+```sh
+sudo apt-get -yq install argon2 moreutils awscli
+# install code-server
+IDE_PASSWORD=$(echo -n $(aws sts get-caller-identity --query "Account" --output text) | argon2 $(uuidgen) -e)
+mkdir -p ~/.config/code-server
+tee ~/.config/code-server/config.yaml <<-EOF
+cert: false
+auth: password
+hashed-password: "${IDE_PASSWORD}"
+bind-addr: 0.0.0.0:8088
+EOF
+
+mkdir -p ~/.local/share/code-server/User
+tee ~/.local/share/code-server/User/settings.json <<-'EOF'
+{
+  "extensions.autoUpdate": false,
+  "extensions.autoCheckUpdates": false,
+  "terminal.integrated.cwd": "/home/ubuntu",
+  "telemetry.telemetryLevel": "off",
+  "security.workspace.trust.startupPrompt": "never",
+  "security.workspace.trust.enabled": false,
+  "security.workspace.trust.banner": "never",
+  "security.workspace.trust.emptyWindow": false,
+  "workbench.startupEditor": "terminal",
+  "task.allowAutomaticTasks": "on",
+  "editor.indentSize": "tabSize",
+  "editor.tabSize": 2,
+  "python.testing.pytestEnabled": true,
+  "auto-run-command.rules": [
+    {
+      "command": "workbench.action.terminal.new"
+    }
+  ]
+}
+EOF
+
+# CODE_SERVER_VER=4.100.2
+# wget -qO /tmp/code-server.deb https://github.com/coder/code-server/releases/download/v${CODE_SERVER_VER}/code-server_${CODE_SERVER_VER}_amd64.deb
+# sudo dpkg -i /tmp/code-server.deb
+# sudo systemctl enable --now code-server@ubuntu
+# sudo systemctl restart code-server@ubuntu
+
+wget -O- https://github.com/coder/code-server/raw/refs/heads/main/install.sh |sh
+sudo systemctl enable --now code-server@$USER
+
+```
 
 ## cloudformation template for deploy
 -  deploy vscode on ec2 ([[example_instancestack_vscode.yaml]])
@@ -56,7 +104,7 @@ aws cloudformation describe-stacks --stack-name ${STACK_NAME} \
 ## deploy on al2023
 - ec2-user user
 ```sh
-codeServerVersion=4.92.2
+codeServerVersion=4.100.2
 curl -fsSL https://code-server.dev/install.sh | sh -s -- --version ${codeServerVersion}
 sudo systemctl enable --now code-server@$USER
 
@@ -77,7 +125,6 @@ sudo systemctl restart code-server@$USER
 ## extension
 ### continue
 integrate with brconnector ([link](https://docs.continue.dev/reference/Model%20Providers/openai))
-
 
 
 ## ~~install on ubuntu~~
