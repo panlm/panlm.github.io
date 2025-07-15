@@ -27,6 +27,12 @@ make altinstall
 ```
 
 ## venv
+
+```sh
+python -m venv venv --system-site-packages
+
+```
+
 ```sh
 python3 -m venv venv
 source ./venv/bin/activate
@@ -42,6 +48,17 @@ pip install --upgrade pip
 python -m http.server -d output/html 80
 python3 -m http.server 80 &
 disown
+```
+
+
+## uv / uvx
+
+```sh
+curl -LsSf https://astral.sh/uv/install.sh | sh
+export PATH=~/.local/bin:$PATH
+uv python install 3.10
+uv tool install ~/Downloads/MultiQ/multiq-mcp-server/
+
 ```
 
 ## refer

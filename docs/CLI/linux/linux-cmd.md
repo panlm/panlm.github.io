@@ -320,11 +320,14 @@ bash
 export HISTSIZE=0
 cd ~/Documents/
 rsync -avr --delete \
+    --exclude='**/.venv' \
     ./git \
     ./work-notes \
     ./SA-Baseline-50-12 \
     ./customers \
-    stevenpan@10.68.69.100:/Users/stevenpan/Documents/
+    stevenpan@10.68.69.100:/Users/stevenpan/Documents/ 
+
+# -ni # check any files will be deleted
 
 ```
 
@@ -337,6 +340,18 @@ gsed -i 's/^!\[\[\([^]]\+\)\]\]/![](\1)/' ${file}
 # ![[stream-k8s-control-panel-logs-to-s3-21.png]]
 # to 
 # ![](stream-k8s-control-panel-logs-to-s3-21.png)
+```
+
+## snapd
+```sh
+sudo mkdir -p /etc/systemd/system/snapd.service.d/
+echo -e '[Service]\nEnvironment="http_proxy=http://1.2.3.4:3128/"' \
+      | sudo tee /etc/systemd/system/snapd.service.d/http-proxy.conf
+echo -e '[Service]\nEnvironment="https_proxy=http://1.2.3.4:3128/"' \
+      | sudo tee /etc/systemd/system/snapd.service.d/https-proxy.conf
+sudo systemctl daemon-reload
+sudo systemctl restart snapd
+
 ```
 
 ## sponge & tee & redirect to same file

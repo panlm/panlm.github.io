@@ -13,7 +13,7 @@ tags:
 
 Administrator --> Users and access --> Service accounts --> Add service account --> Add service account token
 
-![[attachments/grafana-mcp-server/IMG-grafana-mcp-server.png]]
+![[attachments/mcp-grafana-prometheus-loki/IMG-20250603-140400.png]]
 
 verify your token
 ```sh

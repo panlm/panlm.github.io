@@ -122,7 +122,7 @@ ENTRYPOINT ["mcp-proxy"]
 EOF
 ```
 
-- use a docker-compose file to orchestrate
+- use a docker-compose file to orchestrate, the last one is use streamable http and use multi mcp server in single port.
 ```sh
 cat > docker-compose.yaml <<-'EOF'
 services:
@@ -153,6 +153,17 @@ services:
     ports:
       - 8098:8098
     command: "--pass-environment --port=8098 --sse-host 0.0.0.0 --env SEARXNG_URL https://searx -- npx -y mcp-searxng"
+  cw-mcp:
+    build:
+      context: .
+      dockerfile: mcp-proxy-uv.Dockerfile
+    network_mode: host
+    restart: unless-stopped
+    ports:
+      - 8099:8099
+    environment:
+      - FASTMCP_LOG_LEVEL=ERROR
+    command: "--debug --transport streamablehttp --port=8097 --host 0.0.0.0 --stateless --named-server cloudwatch-logs 'uvx awslabs.cloudwatch-logs-mcp-server@latest' --named-server cloudwatch 'uvx awslabs.cloudwatch-mcp-server@latest'"
 EOF
 
 docker compose up -d
@@ -201,7 +212,7 @@ docker compose up -d
 
 ```
 
-- grafana mcp server ([[../../../../git/git-mkdocs/GenAI/grafana-mcp-server|grafana-mcp-server]]) has standalone dockerfile, we could use it directly. clone to folder `mcp-grafana`, and add following to `docker-compose.yaml`
+- grafana mcp server ([[mcp-grafana-prometheus-loki|mcp-grafana-prometheus-loki]]) has standalone dockerfile, we could use it directly. clone to folder `mcp-grafana`, and add following to `docker-compose.yaml`
 ```sh
 git clone https://github.com/grafana/mcp-grafana.git
 ```
@@ -314,4 +325,7 @@ uv tool install git+https://github.com/sparfenyuk/mcp-proxy
   }
 }
 ```
+
+## Reference
+[[deploy-mcp-server-to-ecs|deploy-mcp-server-to-ecs]]
 

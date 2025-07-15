@@ -29,9 +29,12 @@ docker exec -it app2 /bin/bash
 ## docker-buildx-
 - download binary from https://github.com/docker/buildx/
 ```sh
+# download binary for your existed platform
+wget -O docker-buildx https://github.com/docker/buildx/releases/download/v0.24.0/buildx-v0.24.0.linux-amd64
 mkdir -p ~/.docker/cli-plugins
 mv <buildx> ~/.docker/cli-plugins/docker-buildx
 chmod a+x ~/.docker/cli-plugins/docker-buildx
+
 ```
 - check qemu emulators
 ```sh
@@ -39,6 +42,7 @@ docker buildx ls
 docker run -t --rm --privileged tonistiigi/binfmt --install all
 docker buildx create --use --platform=linux/arm64,linux/amd64 --name multi-platform-builder
 docker buildx inspect --bootstrap
+
 ```
 - build multi arch
 ```sh
@@ -189,6 +193,20 @@ DOCKER_CONFIG=${DOCKER_CONFIG:-$HOME/.docker}
 mkdir -p $DOCKER_CONFIG/cli-plugins
 curl -SL https://github.com/docker/compose/releases/download/v2.36.0/docker-compose-linux-x86_64 -o $DOCKER_CONFIG/cli-plugins/docker-compose
 chmod +x $DOCKER_CONFIG/cli-plugins/docker-compose
+
+```
+
+## proxy
+```sh
+sudo mkdir /etc/systemd/system/docker.service.d/
+cat > /etc/systemd/system/docker.service.d/http-proxy.conf <<-'EOF'
+[Service]
+Environment="HTTP_PROXY=http://1.2.3.4:1234"
+Environment="HTTPS_PROXY=http://1.2.3.4:1234"
+Environment="NO_PROXY=localhost,127.0.0.1"
+EOF
+sudo systemctl daemon-reload
+sudo systemctl restart snapd
 
 ```
 

@@ -134,3 +134,9 @@ https://docs.searxng.org/admin/installation-searxng.html#configuration
 https://aws.amazon.com/blogs/machine-learning/harness-the-power-of-mcp-servers-with-amazon-bedrock-agents/
 
 
+
+
+## refer
+
+https://github.com/exa-labs/exa-mcp-server
+
