@@ -3,7 +3,6 @@ title: api-gateway
 description: api-gateway
 created: 2023-03-03 09:25:15.137
 last_modified: 2024-02-05
-icon: simple/amazonapigateway
 tags:
   - cmd
   - aws/cmd

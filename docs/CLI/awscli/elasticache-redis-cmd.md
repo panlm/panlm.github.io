@@ -3,7 +3,6 @@ title: elasticache-redis
 description: 常用命令
 created: 2022-12-02 19:04:02.899
 last_modified: 2024-04-15
-icon: simple/redis
 tags:
   - aws/database/elasticache/redis
   - aws/cmd

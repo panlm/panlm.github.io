@@ -3,7 +3,6 @@ title: ec2
 description: 常用命令
 created: 2021-07-17T04:01:46.968Z
 last_modified: 2024-03-05
-icon: simple/amazonec2
 tags:
   - aws/compute/ec2
   - aws/cmd

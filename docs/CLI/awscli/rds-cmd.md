@@ -3,7 +3,6 @@ title: rds
 description: 常用命令
 created: 2022-07-22 20:22:12.985
 last_modified: 2024-04-23
-icon: simple/amazonrds
 tags:
   - aws/database/rds
   - aws/cmd

@@ -3,7 +3,6 @@ title: redshift
 description: 常用命令
 created: 2022-11-23 23:18:21.581
 last_modified: 2024-04-15
-icon: simple/amazonredshift
 tags:
   - aws/database/redshift
 ---

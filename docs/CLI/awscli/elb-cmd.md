@@ -3,7 +3,6 @@ title: elb
 description: 常用命令
 created: 2022-09-20 16:10:45.855
 last_modified: 2023-12-07
-icon: simple/amazon
 tags:
   - aws/network/elb
   - aws/cmd
@@ -295,7 +294,7 @@ done
 
 ## refer
 - https://cloudaffaire.com/network-load-balancer-target-group-health-checks/
-- icon: simple/awselasticloadbalancing
+
 
 
 

@@ -3,7 +3,6 @@ title: s3
 description: 常用命令
 created: 2021-07-10 02:23:54.765
 last_modified: 2024-03-19
-icon: simple/amazons3
 tags:
   - aws/storage/s3
   - aws/cmd

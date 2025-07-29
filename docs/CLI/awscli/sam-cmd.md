@@ -3,7 +3,6 @@ title: sam
 description: 常用命令
 created: 2021-12-13T03:44:40.679Z
 last_modified: 2021-12-13
-icon: simple/amazon
 tags:
   - aws/serverless
   - aws/cmd

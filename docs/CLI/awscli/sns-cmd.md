@@ -3,7 +3,6 @@ title: sns
 description: 常用命令
 created: 2021-08-22T01:08:41.391Z
 last_modified: 2024-02-05
-icon: simple/amazon
 tags:
   - aws/integration/sns
 ---

@@ -3,7 +3,6 @@ title: ecs
 description: 常用命令
 created: 2023-02-22 22:46:31.539
 last_modified: 2024-03-19
-icon: simple/amazonecs
 tags:
   - aws/container/ecs
   - aws/cmd

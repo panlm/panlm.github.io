@@ -3,7 +3,6 @@ title: efs
 description: 1/ 在默认 vpc 中创建 efs
 created: 2023-02-24 08:03:38.967
 last_modified: 2024-02-20
-icon: simple/amazon
 tags:
   - aws/cmd
   - aws/storage/efs
