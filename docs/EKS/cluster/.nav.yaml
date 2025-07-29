@@ -1,0 +1,7 @@
+nav:
+  - "*terraform*"
+  - "eks.*public.*.md"
+  - "*private*"
+  - "*upgrade*"
+  - "*addons*"
+  - "*"

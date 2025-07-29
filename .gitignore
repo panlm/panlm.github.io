@@ -34,3 +34,6 @@ msbuild.wrn
 
 # Node Modules
 node_modules/
+
+# mkdocs build --clean --strict will generate site folder
+site/

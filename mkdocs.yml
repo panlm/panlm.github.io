@@ -91,7 +91,7 @@ plugins:
   - meta-descriptions
   - ezlinks:
       wikilinks: true
-  - awesome-pages
+  - awesome-nav
   - tags:
       tags_file: tags.md
       # tags_hierarchy: true

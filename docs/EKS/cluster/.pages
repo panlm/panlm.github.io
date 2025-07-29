@@ -1,7 +1,0 @@
-nav:
-  - ... | *terraform*
-  - ... | regex=eks.*public.*.md
-  - ... | *private*
-  - ... | *upgrade*
-  - ... | *addons*
-  - ...
