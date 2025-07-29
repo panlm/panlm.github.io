@@ -163,7 +163,9 @@ services:
       - 8099:8099
     environment:
       - FASTMCP_LOG_LEVEL=ERROR
-    command: "--debug --transport streamablehttp --port=8097 --host 0.0.0.0 --stateless --named-server cloudwatch-logs 'uvx awslabs.cloudwatch-logs-mcp-server@latest' --named-server cloudwatch 'uvx awslabs.cloudwatch-mcp-server@latest'"
+    command: "--debug --transport streamablehttp --port=8097 --host 0.0.0.0 --stateless 
+              --named-server cloudwatch-logs 'uvx awslabs.cloudwatch-logs-mcp-server@latest' 
+              --named-server cloudwatch 'uvx awslabs.cloudwatch-mcp-server@latest'"
 EOF
 
 docker compose up -d

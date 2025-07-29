@@ -29,3 +29,8 @@ chatbot 输入问题，直接 request 到 google CSE，返回一堆 json，用 l
 ## dify on eks
 - https://github.com/BorisPolonsky/dify-helm
 
+## other resources
+- https://github.com/aws-samples/dify-aws-tool
+- https://github.com/aws-samples/solution-for-deploying-dify-on-aws
+
+
