@@ -1,5 +1,5 @@
 ---
-title: claude-code
+title: Claude Code
 description:
 created: 2025-09-08 14:20:22.908
 last_modified: 2025-09-08
