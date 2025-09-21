@@ -9,9 +9,11 @@ tags:
 ---
 
 # vscode
+
 https://github.com/coder/code-server
 
-## manual install vscode
+## manual install vscode in ubuntu
+
 ```sh
 sudo apt-get -yq install argon2 moreutils awscli
 # install code-server
@@ -48,7 +50,7 @@ tee ~/.local/share/code-server/User/settings.json <<-'EOF'
 }
 EOF
 
-# CODE_SERVER_VER=4.100.2
+# CODE_SERVER_VER=4.102.3
 # wget -qO /tmp/code-server.deb https://github.com/coder/code-server/releases/download/v${CODE_SERVER_VER}/code-server_${CODE_SERVER_VER}_amd64.deb
 # sudo dpkg -i /tmp/code-server.deb
 # sudo systemctl enable --now code-server@ubuntu
@@ -60,6 +62,7 @@ sudo systemctl enable --now code-server@$USER
 ```
 
 ## cloudformation template for deploy
+
 -  deploy vscode on ec2 ([[example_instancestack_vscode.yaml]])
 - run command on cloudshell
 ```sh
@@ -102,9 +105,10 @@ aws cloudformation describe-stacks --stack-name ${STACK_NAME} \
 ```
 
 ## deploy on al2023
+
 - ec2-user user
 ```sh
-codeServerVersion=4.100.2
+codeServerVersion=4.102.3
 curl -fsSL https://code-server.dev/install.sh | sh -s -- --version ${codeServerVersion}
 sudo systemctl enable --now code-server@$USER
 

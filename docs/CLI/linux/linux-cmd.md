@@ -321,10 +321,12 @@ export HISTSIZE=0
 cd ~/Documents/
 rsync -avr --delete \
     --exclude='**/.venv' \
+    --exclude='**/node_modules' \
     ./git \
     ./work-notes \
     ./SA-Baseline-50-12 \
     ./customers \
+    ./myq \
     stevenpan@10.68.69.100:/Users/stevenpan/Documents/ 
 
 # -ni # check any files will be deleted

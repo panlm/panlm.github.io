@@ -1,0 +1,1 @@
+- use chinese to response in all chat and discussion

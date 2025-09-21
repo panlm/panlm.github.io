@@ -13,9 +13,11 @@ tags:
 # Enable Quicksight with Identity Center
 
 ## Using Microsoft Entra as External IdP
-In BJS region, QS does not support SAML Authentication Method (refer Appendix chapter). If you try to integration with existing SSO, for example Microsoft Entra ID, you need enable Amazon IAM Identity Center (short for AWS-SSO) with SAML support to carry out ([[saml-2.0]])
+
+In BJS region, Quicksight does not support SAML Authentication Method (refer Appendix chapter). If you try to integration with existing SSO, for example Microsoft Entra ID, you need enable Amazon IAM Identity Center (short for AWS-SSO) with SAML support to carry out ([[saml-2.0]])
 
 ### Walkthrough
+
 - One Microsoft Entra tenant, at least `Microsoft Entra ID P1`  license  ([link](https://www.microsoft.com/en-us/security/business/microsoft-entra-pricing))
 - Enable AWS-SSO account instance in this lab
     - If your account joined AWS Organizations, you could choose enable AWS-SSO with organization instance ([link](https://docs.aws.amazon.com/singlesignon/latest/userguide/identity-center-instances.html))
@@ -26,7 +28,8 @@ In BJS region, QS does not support SAML Authentication Method (refer Appendix ch
         - New a Microsoft 365 Group for Quicksight and assign user to this group
         - assign group to SSO application in Microsoft Entra directly (P1 license needed)
         - verify sign in URL: ([account portal](https://myaccount.microsoft.com) & [app portal](https://myapplications.microsoft.com/))
-        - Dont forgot firstName and lastName. If missing these properties will cause SCIM sync failure
+        - Dont forgot firstName and lastName. If missing these properties will cause 
+        - SCIM sync failure
     - Complete `Step 2.2` (Other steps is only for AWS-SSO organization instance)
     - Complete `Step 3` and `Step 4`
 - Enable Quicksight 
@@ -38,6 +41,7 @@ In BJS region, QS does not support SAML Authentication Method (refer Appendix ch
 - [Open Quicksight](cn-north-1.quicksight.amazonaws.cn)
 
 ### Another sample - use Okta as IdP for AWS-SSO to login Quicksight
+
 In this sample, use Okta as IdP for AWS-SSO. Just like our lab using Microsoft Entra ID instead of. Put sign-in process here for your reference.
 
 - blog: [[WebClip/Simplify business intelligence identity management with Amazon QuickSight and AWS IAM Identity Center|Simplify business intelligence identity management with Amazon QuickSight and AWS IAM Identity Center]] ([link](https://aws.amazon.com/cn/blogs/business-intelligence/simplify-business-intelligence-identity-management-with-amazon-quicksight-and-aws-iam-identity-center/))
@@ -48,9 +52,11 @@ In this sample, use Okta as IdP for AWS-SSO. Just like our lab using Microsoft E
 
 
 ## Using Identity Center local directory
+
 Using AWS-SSO local directory as identity source. This mode works both in global region and BJS region. No AWS Organizations needed.
 
 ### Walkthrough
+
 - create user `abcdeabcdeab` in identity center (length need 12+)
 - create group with any name
 - enable Quicksight in account level with user name and group name
@@ -58,6 +64,7 @@ Using AWS-SSO local directory as identity source. This mode works both in global
 
 
 ## Appendix
+
 - Supported Authentication Method for Quicksight in global region ([link](https://docs.aws.amazon.com/quicksight/latest/user/identity.html))
     - Use IAM federated identities & QuickSight-managed users
     - Use AWS IAM Identity Center

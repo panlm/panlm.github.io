@@ -113,6 +113,8 @@ plugins:
   #       - aws/security
   - i18n:
       docs_structure: suffix
+      fallback_to_default: true
+      reconfigure_material: true
       languages:
         - locale: en
           default: true
@@ -121,6 +123,7 @@ plugins:
         - locale: zh
           name: 中文
           build: true
+          site_name: "panlm - 中文文档"
   - git-revision-date-localized:
       type: timeago
       timezone: Asia/Shanghai
