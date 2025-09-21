@@ -1,7 +1,4 @@
-
-<!doctype html>
-<html lang="zh" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="zh" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -20,15 +17,15 @@
       
       
       <link rel="icon" href="../../../../../git-attachment/favicons.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
     
     
       
-        <title>Stream EKS Control Panel Logs to S3 - panlm</title>
+        <title>Stream EKS Control Panel Logs to S3 - panlm - 中文文档</title>
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.e53b48f4.min.css">
       
         
         <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
@@ -45,7 +42,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,700,700i%7CUbuntu+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,700,700i%7CUbuntu+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Ubuntu";--md-code-font:"Ubuntu Mono"}</style>
       
     
@@ -75,16 +72,17 @@
     
     
     
-   <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
-    html.glightbox-open { overflow: initial; height: 100%; }
-    .gslide-title { margin-top: 0px; user-select: text; }
-    .gslide-desc { color: #666; user-select: text; }
-    .gslide-image img { background: white; }
-    .gscrollbar-fixer { padding-right: 15px; }
-    .gdesc-inner { font-size: 0.75rem; }
-    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
-    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
+  <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -119,21 +117,21 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../../../" title="panlm" class="md-header__button md-logo" aria-label="panlm" data-md-component="logo">
+    <a href="../../../../" title="panlm - 中文文档" class="md-header__button md-logo" aria-label="panlm - 中文文档" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            panlm
+            panlm - 中文文档
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -152,20 +150,20 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="light-blue" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"></path></svg>
       </label>
     
   
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="light-blue" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_1">
     
       <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"></path></svg>
       </label>
     
   
@@ -180,7 +178,7 @@
   <div class="md-select">
     
     <button class="md-header__button md-icon" aria-label="选择当前语言">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"></path></svg>
     </button>
     <div class="md-select__inner">
       <ul class="md-select__list">
@@ -207,7 +205,7 @@
       
         <label class="md-header__button md-icon" for="__search">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         </label>
         <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -216,15 +214,15 @@
       <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="查找">
         
         <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -250,7 +248,7 @@
         <a href="https://github.com/panlm/panlm.github.io" title="前往仓库" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
   </div>
   <div class="md-source__repository">
     panlm/panlm.github.io
@@ -487,7 +485,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -498,20 +496,20 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../../" title="panlm" class="md-nav__button md-logo" aria-label="panlm" data-md-component="logo">
+    <a href="../../../../" title="panlm - 中文文档" class="md-nav__button md-logo" aria-label="panlm - 中文文档" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
-    panlm
+    panlm - 中文文档
   </label>
   
     <div class="md-nav__source">
       <a href="https://github.com/panlm/panlm.github.io" title="前往仓库" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
   </div>
   <div class="md-source__repository">
     panlm/panlm.github.io
@@ -575,7 +573,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
         
           
           <div class="md-nav__link md-nav__container">
@@ -892,7 +890,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_1">
         
           
           <label class="md-nav__link" for="__nav_3_2_1" id="__nav_3_2_1_label" tabindex="0">
@@ -1150,7 +1148,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2">
         
           
           <label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
@@ -1795,7 +1793,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_1">
         
           
           <label class="md-nav__link" for="__nav_3_2_3_1" id="__nav_3_2_3_1_label" tabindex="0">
@@ -1901,7 +1899,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_2">
         
           
           <label class="md-nav__link" for="__nav_3_2_3_2" id="__nav_3_2_3_2_label" tabindex="0">
@@ -1979,7 +1977,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_3">
         
           
           <label class="md-nav__link" for="__nav_3_2_3_3" id="__nav_3_2_3_3_label" tabindex="0">
@@ -2078,7 +2076,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_4">
         
           
           <label class="md-nav__link" for="__nav_3_2_3_4" id="__nav_3_2_3_4_label" tabindex="0">
@@ -2646,7 +2644,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_6">
         
           
           <label class="md-nav__link" for="__nav_3_2_3_6" id="__nav_3_2_3_6_label" tabindex="0">
@@ -2850,7 +2848,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_7">
         
           
           <label class="md-nav__link" for="__nav_3_2_3_7" id="__nav_3_2_3_7_label" tabindex="0">
@@ -3007,7 +3005,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_8">
         
           
           <label class="md-nav__link" for="__nav_3_2_3_8" id="__nav_3_2_3_8_label" tabindex="0">
@@ -3151,7 +3149,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_4">
         
           
           <label class="md-nav__link" for="__nav_3_2_4" id="__nav_3_2_4_label" tabindex="0">
@@ -3310,7 +3308,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3">
         
           
           <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
@@ -3459,7 +3457,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4">
         
           
           <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
@@ -3618,7 +3616,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
         
           
           <div class="md-nav__link md-nav__container">
@@ -3849,7 +3847,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5">
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -4021,6 +4019,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -4032,7 +4034,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
         
           
           <div class="md-nav__link md-nav__container">
@@ -4087,6 +4089,29 @@
     </span>
   
 
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../GenAI/claude-code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    claude-code
+    
+  </span>
   
 
       </a>
@@ -4162,6 +4187,29 @@
   
   <span class="md-ellipsis">
     dify.ai
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../GenAI/litellm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    litellm
     
   </span>
   
@@ -4308,7 +4356,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
         
           
           <div class="md-nav__link md-nav__container">
@@ -4372,7 +4420,7 @@
         
   
   
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"></path></svg>
   
   <span class="md-ellipsis">
     github-page-howto
@@ -4699,7 +4747,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_14" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_14">
         
           
           <label class="md-nav__link" for="__nav_7_14" id="__nav_7_14_label" tabindex="0">
@@ -4870,7 +4918,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_15" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_15">
         
           
           <label class="md-nav__link" for="__nav_7_15" id="__nav_7_15_label" tabindex="0">
@@ -5072,7 +5120,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
         
           
           <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
@@ -5155,7 +5203,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1">
         
           
           <label class="md-nav__link" for="__nav_8_1" id="__nav_8_1_label" tabindex="0">
@@ -5736,7 +5784,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2">
         
           
           <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
@@ -5862,7 +5910,7 @@
         
   
   
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m7.17 7.91 1.73 1 3.18-5.49 2.25 3.89-2.6 1.5 5.46 1.46 1.47-5.46-2.6 1.5-2.25-3.9a1.99 1.99 0 0 0-2.73-.73c-.27.15-.5.37-.67.63M10 20v-2H3.66l2.24-3.9 2.6 1.5-1.46-5.46-5.47 1.46 2.6 1.5L1.92 17a2.003 2.003 0 0 0 1.62 3m15.52-8.5-1.74 1L20.5 18H16v-3l-4 4 4 4v-3h4.5c1.11 0 2-.89 2-2 0-.31-.08-.62-.22-.89Z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m7.17 7.91 1.73 1 3.18-5.49 2.25 3.89-2.6 1.5 5.46 1.46 1.47-5.46-2.6 1.5-2.25-3.9a1.99 1.99 0 0 0-2.73-.73c-.27.15-.5.37-.67.63M10 20v-2H3.66l2.24-3.9 2.6 1.5-1.46-5.46-5.47 1.46 2.6 1.5L1.92 17a2.003 2.003 0 0 0 1.62 3m15.52-8.5-1.74 1L20.5 18H16v-3l-4 4 4 4v-3h4.5c1.11 0 2-.89 2-2 0-.31-.08-.62-.22-.89Z"></path></svg>
   
   <span class="md-ellipsis">
     aws-nuke
@@ -6506,7 +6554,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_3">
         
           
           <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
@@ -6620,7 +6668,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -6841,7 +6889,7 @@
                 
                   
 
-  <nav class="md-tags" >
+  <nav class="md-tags">
     
       
       
@@ -6874,8 +6922,8 @@
   
 
 
-<h1 id="stream-eks-control-panel-logs-to-s3">Stream EKS Control Panel Logs to S3<a class="headerlink" href="#stream-eks-control-panel-logs-to-s3" title="Permanent link">&para;</a></h1>
-<h2 id="background">background<a class="headerlink" href="#background" title="Permanent link">&para;</a></h2>
+<h1 id="stream-eks-control-panel-logs-to-s3">Stream EKS Control Panel Logs to S3<a class="headerlink" href="#stream-eks-control-panel-logs-to-s3" title="Permanent link">¶</a></h1>
+<h2 id="background">background<a class="headerlink" href="#background" title="Permanent link">¶</a></h2>
 <p>目前 eks 控制平面日志只支持发送到 cloudwatch，且在同一个 log group 中有 5 种类型 6种前缀的 log stream 的日志，不利于统一查询。且只有 audit 日志是 json 格式其他均是单行日志，且字段各不相同。</p>
 <ul>
 <li>kube-apiserver-audit</li>
@@ -6885,7 +6933,7 @@
 <li>kube-controller-manager</li>
 <li>cloud-controller-manager</li>
 </ul>
-<h2 id="requirement">requirement<a class="headerlink" href="#requirement" title="Permanent link">&para;</a></h2>
+<h2 id="requirement">requirement<a class="headerlink" href="#requirement" title="Permanent link">¶</a></h2>
 <p>客户需求：</p>
 <ol>
 <li>简单 - 已有 splunk 日志平台，不希望使用 opensearch 等其他日志平台，保证运维简化</li>
@@ -6893,32 +6941,32 @@
 <li>二次处理 - 未来可以实现对日志进行查询及关键字段提取方便进行分析和告警</li>
 <li>成本和安全 - 成本控制，高安全性，支持多账号</li>
 </ol>
-<h2 id="architecture">architecture<a class="headerlink" href="#architecture" title="Permanent link">&para;</a></h2>
-<p><a class="glightbox" href="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3.png" /></a></p>
-<h2 id="walkthrough">walkthrough<a class="headerlink" href="#walkthrough" title="Permanent link">&para;</a></h2>
-<h3 id="eks-cluster">eks cluster<a class="headerlink" href="#eks-cluster" title="Permanent link">&para;</a></h3>
+<h2 id="architecture">architecture<a class="headerlink" href="#architecture" title="Permanent link">¶</a></h2>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3.png" data-desc-position="bottom"><img alt="" src="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3.png"></a></p>
+<h2 id="walkthrough">walkthrough<a class="headerlink" href="#walkthrough" title="Permanent link">¶</a></h2>
+<h3 id="eks-cluster">eks cluster<a class="headerlink" href="#eks-cluster" title="Permanent link">¶</a></h3>
 <ul>
 <li>need an EKS cluster and enable log to cloudwatch</li>
 </ul>
-<h3 id="s3">s3<a class="headerlink" href="#s3" title="Permanent link">&para;</a></h3>
+<h3 id="s3">s3<a class="headerlink" href="#s3" title="Permanent link">¶</a></h3>
 <ul>
 <li>创建s3桶</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PAGER</span><span class="o">=</span><span class="s2">&quot;&quot;</span>
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_REGION</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span><span class="m">169</span>.254.169.254/latest/dynamic/instance-identity/document<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.region&#39;</span><span class="k">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PAGER</span><span class="o">=</span><span class="s2">""</span>
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_REGION</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span><span class="m">169</span>.254.169.254/latest/dynamic/instance-identity/document<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.region'</span><span class="k">)</span>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_ACCOUNT_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>--query<span class="w"> </span><span class="s2">&quot;Account&quot;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>--query<span class="w"> </span><span class="s2">"Account"</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="nv">UNIQ</span><span class="o">=</span><span class="k">$(</span>date<span class="w"> </span>+%Y%m%d%H%M<span class="k">)</span>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="nv">BUCKET_NAME</span><span class="o">=</span>centrallog-<span class="nv">$UNIQ</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nv">S3_PREFIX</span><span class="o">=</span><span class="s2">&quot;CentralizedAccountLogs&quot;</span>
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nv">S3_PREFIX</span><span class="o">=</span><span class="s2">"CentralizedAccountLogs"</span>
 <a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>aws<span class="w"> </span>s3<span class="w"> </span>mb<span class="w"> </span>s3://<span class="si">${</span><span class="nv">BUCKET_NAME</span><span class="si">}</span>
 <a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>
 <a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a><span class="nv">ATHENA_BUCKET_NAME</span><span class="o">=</span>athena-<span class="nv">$UNIQ</span>
 <a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a>aws<span class="w"> </span>s3<span class="w"> </span>mb<span class="w"> </span>s3://<span class="si">${</span><span class="nv">ATHENA_BUCKET_NAME</span><span class="si">}</span>
 </code></pre></div>
-<h3 id="lambda">lambda<a class="headerlink" href="#lambda" title="Permanent link">&para;</a></h3>
+<h3 id="lambda">lambda<a class="headerlink" href="#lambda" title="Permanent link">¶</a></h3>
 <ul>
 <li>创建函数所需角色</li>
 <li>下载定制 lambda 代码 和 layer （参见<a href="../cloudwatch-to-firehose-python/" title="cloudwatch-to-firehose-python">cloudwatch-to-firehose-python</a>）<ul>
@@ -6931,28 +6979,28 @@
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="w"> </span><span class="si">${</span><span class="nv">UNIQ</span><span class="si">}</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">LAMBDA_NAME</span><span class="o">=</span>firehose-lambda-<span class="si">${</span><span class="nv">UNIQ</span><span class="si">}</span>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="p">%%-*</span><span class="si">}</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;cn&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="nv">ARN_PREFIX</span><span class="o">=</span><span class="s2">&quot;aws-cn&quot;</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="p">%%-*</span><span class="si">}</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"cn"</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span><span class="nv">ARN_PREFIX</span><span class="o">=</span><span class="s2">"aws-cn"</span>
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="k">else</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="nv">ARN_PREFIX</span><span class="o">=</span><span class="s2">&quot;aws&quot;</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span><span class="nv">ARN_PREFIX</span><span class="o">=</span><span class="s2">"aws"</span>
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="k">fi</span>
 <a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a>
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c1"># create lambda role</span>
 <a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="nv">LAMBDA_ROLE_NAME</span><span class="o">=</span><span class="si">${</span><span class="nv">LAMBDA_NAME</span><span class="si">}</span>-role-<span class="si">${</span><span class="nv">UNIQ</span><span class="si">}</span>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;{&quot;Version&quot;: &quot;2012-10-17&quot;,&quot;Statement&quot;: [{ &quot;Effect&quot;: &quot;Allow&quot;, &quot;Principal&quot;: {&quot;Service&quot;: &quot;lambda.amazonaws.com&quot;}, &quot;Action&quot;: &quot;sts:AssumeRole&quot;}]}&#39;</span><span class="w"> </span><span class="p">|</span>tee<span class="w"> </span>lambda-role-trust-policy.json
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">'{"Version": "2012-10-17","Statement": [{ "Effect": "Allow", "Principal": {"Service": "lambda.amazonaws.com"}, "Action": "sts:AssumeRole"}]}'</span><span class="w"> </span><span class="p">|</span>tee<span class="w"> </span>lambda-role-trust-policy.json
 <a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a>aws<span class="w"> </span>iam<span class="w"> </span>create-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">LAMBDA_ROLE_NAME</span><span class="si">}</span><span class="w"> </span>--assume-role-policy-document<span class="w"> </span>file://lambda-role-trust-policy.json
 <a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>
 <a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>envsubst<span class="w"> </span>&gt;lambda-role-policy.json<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
 <a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="s">{</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="s">    &quot;Version&quot;: &quot;2012-10-17&quot;,</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="s">    &quot;Statement&quot;: [</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="s">    "Version": "2012-10-17",</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="s">    "Statement": [</span>
 <a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="s">        {</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="s">            &quot;Action&quot;: [</span>
-<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="s">                &quot;firehose:PutRecord&quot;,</span>
-<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="s">                &quot;firehose:PutRecordBatch&quot;</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="s">            "Action": [</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="s">                "firehose:PutRecord",</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="s">                "firehose:PutRecordBatch"</span>
 <a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="s">            ],</span>
-<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="s">            &quot;Effect&quot;: &quot;Allow&quot;,</span>
-<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="s">            &quot;Resource&quot;: &quot;arn:${ARN_PREFIX}:firehose:${AWS_REGION}:${AWS_ACCOUNT_ID}:deliverystream/*&quot;</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="s">            "Effect": "Allow",</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="s">            "Resource": "arn:${ARN_PREFIX}:firehose:${AWS_REGION}:${AWS_ACCOUNT_ID}:deliverystream/*"</span>
 <a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="s">        }</span>
 <a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="s">    ]</span>
 <a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="s">}</span>
@@ -6960,12 +7008,12 @@
 <a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a>
 <a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a><span class="nv">LAMBDA_POLICY_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>iam<span class="w"> </span>create-policy<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a>--policy-name<span class="w"> </span><span class="si">${</span><span class="nv">LAMBDA_ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>--policy-document<span class="w"> </span>file://lambda-role-policy.json<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Policy.Arn&#39;</span><span class="k">)</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a>--policy-document<span class="w"> </span>file://lambda-role-policy.json<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.Policy.Arn'</span><span class="k">)</span>
 <a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a>
 <a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a>aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">LAMBDA_ROLE_NAME</span><span class="si">}</span><span class="w"> </span>--policy-arn<span class="w"> </span><span class="si">${</span><span class="nv">LAMBDA_POLICY_ARN</span><span class="si">}</span>
 <a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a>aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">LAMBDA_ROLE_NAME</span><span class="si">}</span><span class="w"> </span>--policy-arn<span class="w"> </span>arn:<span class="si">${</span><span class="nv">ARN_PREFIX</span><span class="si">}</span>:iam::aws:policy/service-role/AWSLambdaBasicExecutionRole
 <a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a>aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">LAMBDA_ROLE_NAME</span><span class="si">}</span><span class="w"> </span>--policy-arn<span class="w"> </span>arn:<span class="si">${</span><span class="nv">ARN_PREFIX</span><span class="si">}</span>:iam::aws:policy/service-role/AWSLambdaKinesisExecutionRole
-<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="nv">LAMBDA_ROLE_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>iam<span class="w"> </span>get-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">LAMBDA_ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Role.Arn&#39;</span><span class="k">)</span>
+<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a><span class="nv">LAMBDA_ROLE_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>iam<span class="w"> </span>get-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">LAMBDA_ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.Role.Arn'</span><span class="k">)</span>
 <a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>
 <a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a><span class="c1"># download code and create lambda</span>
 <a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="c1"># wget -O lambda_function.py https://github.com/panlm/aws-labs/raw/main/eks-cloudwatch-log-firehose-s3/lambda_function.py</span>
@@ -6982,25 +7030,25 @@
 <a id="__codelineno-1-52" name="__codelineno-1-52" href="#__codelineno-1-52"></a>
 <a id="__codelineno-1-53" name="__codelineno-1-53" href="#__codelineno-1-53"></a><span class="nv">LAMBDA_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>lambda<span class="w"> </span>get-function<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-1-54" name="__codelineno-1-54" href="#__codelineno-1-54"></a><span class="w">    </span>--function-name<span class="w"> </span><span class="si">${</span><span class="nv">LAMBDA_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a><span class="w">    </span>--query<span class="w"> </span><span class="s1">&#39;Configuration.FunctionArn&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-1-55" name="__codelineno-1-55" href="#__codelineno-1-55"></a><span class="w">    </span>--query<span class="w"> </span><span class="s1">'Configuration.FunctionArn'</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
 <a id="__codelineno-1-56" name="__codelineno-1-56" href="#__codelineno-1-56"></a>
 <a id="__codelineno-1-57" name="__codelineno-1-57" href="#__codelineno-1-57"></a><span class="c1"># download package and create lambda layer</span>
 <a id="__codelineno-1-58" name="__codelineno-1-58" href="#__codelineno-1-58"></a><span class="c1"># wget -O package.zip https://github.com/panlm/aws-labs/raw/main/eks-cloudwatch-log-firehose-s3/package.zip</span>
 <a id="__codelineno-1-59" name="__codelineno-1-59" href="#__codelineno-1-59"></a>
 <a id="__codelineno-1-60" name="__codelineno-1-60" href="#__codelineno-1-60"></a>aws<span class="w"> </span>lambda<span class="w"> </span>publish-layer-version<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-1-61" name="__codelineno-1-61" href="#__codelineno-1-61"></a><span class="w">    </span>--layer-name<span class="w"> </span>layer_flatten_json<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a><span class="w">    </span>--description<span class="w"> </span><span class="s2">&quot;flatten_json&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-62" name="__codelineno-1-62" href="#__codelineno-1-62"></a><span class="w">    </span>--description<span class="w"> </span><span class="s2">"flatten_json"</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-1-63" name="__codelineno-1-63" href="#__codelineno-1-63"></a><span class="w">    </span>--zip-file<span class="w"> </span>fileb://package.zip<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-1-64" name="__codelineno-1-64" href="#__codelineno-1-64"></a><span class="w">    </span>--compatible-runtimes<span class="w"> </span>python3.8
 <a id="__codelineno-1-65" name="__codelineno-1-65" href="#__codelineno-1-65"></a><span class="nv">LAYER_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>lambda<span class="w"> </span>list-layer-versions<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-1-66" name="__codelineno-1-66" href="#__codelineno-1-66"></a><span class="w">    </span>--layer-name<span class="w"> </span>layer_flatten_json<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-67" name="__codelineno-1-67" href="#__codelineno-1-67"></a><span class="w">    </span>--query<span class="w"> </span><span class="s1">&#39;LayerVersions[0].LayerVersionArn&#39;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-1-67" name="__codelineno-1-67" href="#__codelineno-1-67"></a><span class="w">    </span>--query<span class="w"> </span><span class="s1">'LayerVersions[0].LayerVersionArn'</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
 <a id="__codelineno-1-68" name="__codelineno-1-68" href="#__codelineno-1-68"></a>
 <a id="__codelineno-1-69" name="__codelineno-1-69" href="#__codelineno-1-69"></a><span class="c1"># add layer to lambda</span>
 <a id="__codelineno-1-70" name="__codelineno-1-70" href="#__codelineno-1-70"></a>aws<span class="w"> </span>lambda<span class="w"> </span>update-function-configuration<span class="w"> </span>--function-name<span class="w"> </span><span class="si">${</span><span class="nv">LAMBDA_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-1-71" name="__codelineno-1-71" href="#__codelineno-1-71"></a>--layers<span class="w"> </span><span class="si">${</span><span class="nv">LAYER_ARN</span><span class="si">}</span>
 </code></pre></div>
-<h3 id="firehose">firehose<a class="headerlink" href="#firehose" title="Permanent link">&para;</a></h3>
+<h3 id="firehose">firehose<a class="headerlink" href="#firehose" title="Permanent link">¶</a></h3>
 <ul>
 <li>创建firehose所需角色</li>
 <li>创建firehose并且关联 transform 函数</li>
@@ -7008,125 +7056,125 @@
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">FIREHOSE_NAME</span><span class="o">=</span>firehose-<span class="si">${</span><span class="nv">UNIQ</span><span class="si">}</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nv">FIREHOSE_ROLE_NAME</span><span class="o">=</span><span class="si">${</span><span class="nv">FIREHOSE_NAME</span><span class="si">}</span>-role-<span class="si">${</span><span class="nv">UNIQ</span><span class="si">}</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;LAMBDA_NAME:&quot;</span><span class="si">${</span><span class="nv">LAMBDA_NAME</span><span class="si">}</span><span class="w"> </span><span class="s2">&quot;LAMBDA_ARN:&quot;</span><span class="si">${</span><span class="nv">LAMBDA_ARN</span><span class="si">}</span><span class="w"> </span><span class="s2">&quot;AWS_REGION:&quot;</span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="w"> </span><span class="s2">&quot;ARN_PREFIX:&quot;</span><span class="si">${</span><span class="nv">ARN_PREFIX</span><span class="si">}</span><span class="w"> </span><span class="s2">&quot;AWS_ACCOUNT_ID:&quot;</span><span class="si">${</span><span class="nv">AWS_ACCOUNT_ID</span><span class="si">}</span><span class="w"> </span><span class="s2">&quot;BUCKET_NAME:&quot;</span><span class="si">${</span><span class="nv">BUCKET_NAME</span><span class="si">}</span><span class="w"> </span><span class="s2">&quot;S3_PREFIX:&quot;</span><span class="si">${</span><span class="nv">S3_PREFIX</span><span class="si">}</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"LAMBDA_NAME:"</span><span class="si">${</span><span class="nv">LAMBDA_NAME</span><span class="si">}</span><span class="w"> </span><span class="s2">"LAMBDA_ARN:"</span><span class="si">${</span><span class="nv">LAMBDA_ARN</span><span class="si">}</span><span class="w"> </span><span class="s2">"AWS_REGION:"</span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="w"> </span><span class="s2">"ARN_PREFIX:"</span><span class="si">${</span><span class="nv">ARN_PREFIX</span><span class="si">}</span><span class="w"> </span><span class="s2">"AWS_ACCOUNT_ID:"</span><span class="si">${</span><span class="nv">AWS_ACCOUNT_ID</span><span class="si">}</span><span class="w"> </span><span class="s2">"BUCKET_NAME:"</span><span class="si">${</span><span class="nv">BUCKET_NAME</span><span class="si">}</span><span class="w"> </span><span class="s2">"S3_PREFIX:"</span><span class="si">${</span><span class="nv">S3_PREFIX</span><span class="si">}</span>
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">&#39;{</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="s1">    &quot;Version&quot;: &quot;2012-10-17&quot;,</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="s1">    &quot;Statement&quot;: [</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nb">echo</span><span class="w"> </span><span class="s1">'{</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="s1">    "Version": "2012-10-17",</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="s1">    "Statement": [</span>
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="s1">        {</span>
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="s1">            &quot;Effect&quot;: &quot;Allow&quot;,</span>
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="s1">            &quot;Principal&quot;: {</span>
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="s1">                &quot;Service&quot;: &quot;firehose.amazonaws.com&quot;</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="s1">            "Effect": "Allow",</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="s1">            "Principal": {</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="s1">                "Service": "firehose.amazonaws.com"</span>
 <a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="s1">            },</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="s1">            &quot;Action&quot;: &quot;sts:AssumeRole&quot;</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="s1">            "Action": "sts:AssumeRole"</span>
 <a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="s1">        }</span>
 <a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="s1">    ]</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="s1">}&#39;</span><span class="w"> </span><span class="p">|</span>tee<span class="w"> </span>firehose-role-trust-policy.json
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="s1">}'</span><span class="w"> </span><span class="p">|</span>tee<span class="w"> </span>firehose-role-trust-policy.json
 <a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a>aws<span class="w"> </span>iam<span class="w"> </span>create-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">FIREHOSE_ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">  </span>--assume-role-policy-document<span class="w"> </span>file://firehose-role-trust-policy.json
 <a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a>
 <a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a>envsubst<span class="w"> </span>&gt;firehose-role-policy.json<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
 <a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="s">{</span>
-<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="s">    &quot;Version&quot;: &quot;2012-10-17&quot;,</span>
-<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="s">    &quot;Statement&quot;: [</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="s">    "Version": "2012-10-17",</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="s">    "Statement": [</span>
 <a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="s">        {</span>
-<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="s">            &quot;Sid&quot;: &quot;&quot;,</span>
-<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="s">            &quot;Effect&quot;: &quot;Allow&quot;,</span>
-<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="s">            &quot;Action&quot;: [</span>
-<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="s">                &quot;s3:AbortMultipartUpload&quot;,</span>
-<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="s">                &quot;s3:GetBucketLocation&quot;,</span>
-<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="s">                &quot;s3:GetObject&quot;,</span>
-<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="s">                &quot;s3:ListBucket&quot;,</span>
-<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="s">                &quot;s3:ListBucketMultipartUploads&quot;,</span>
-<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="s">                &quot;s3:PutObject&quot;</span>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a><span class="s">            "Sid": "",</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="s">            "Effect": "Allow",</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="s">            "Action": [</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="s">                "s3:AbortMultipartUpload",</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="s">                "s3:GetBucketLocation",</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="s">                "s3:GetObject",</span>
+<a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="s">                "s3:ListBucket",</span>
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a><span class="s">                "s3:ListBucketMultipartUploads",</span>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a><span class="s">                "s3:PutObject"</span>
 <a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="s">            ],</span>
-<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="s">            &quot;Resource&quot;: [</span>
-<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="s">                &quot;arn:${ARN_PREFIX}:s3:::${BUCKET_NAME}&quot;,</span>
-<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="s">                &quot;arn:${ARN_PREFIX}:s3:::${BUCKET_NAME}/*&quot;</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="s">            "Resource": [</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="s">                "arn:${ARN_PREFIX}:s3:::${BUCKET_NAME}",</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="s">                "arn:${ARN_PREFIX}:s3:::${BUCKET_NAME}/*"</span>
 <a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a><span class="s">            ]</span>
 <a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="s">        },</span>
 <a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="s">        {</span>
-<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a><span class="s">            &quot;Sid&quot;: &quot;&quot;,</span>
-<a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a><span class="s">            &quot;Effect&quot;: &quot;Allow&quot;,</span>
-<a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a><span class="s">            &quot;Action&quot;: [</span>
-<a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a><span class="s">                &quot;lambda:InvokeFunction&quot;,</span>
-<a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a><span class="s">                &quot;lambda:GetFunctionConfiguration&quot;</span>
+<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a><span class="s">            "Sid": "",</span>
+<a id="__codelineno-2-42" name="__codelineno-2-42" href="#__codelineno-2-42"></a><span class="s">            "Effect": "Allow",</span>
+<a id="__codelineno-2-43" name="__codelineno-2-43" href="#__codelineno-2-43"></a><span class="s">            "Action": [</span>
+<a id="__codelineno-2-44" name="__codelineno-2-44" href="#__codelineno-2-44"></a><span class="s">                "lambda:InvokeFunction",</span>
+<a id="__codelineno-2-45" name="__codelineno-2-45" href="#__codelineno-2-45"></a><span class="s">                "lambda:GetFunctionConfiguration"</span>
 <a id="__codelineno-2-46" name="__codelineno-2-46" href="#__codelineno-2-46"></a><span class="s">            ],</span>
-<a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a><span class="s">            &quot;Resource&quot;: &quot;arn:${ARN_PREFIX}:lambda:${AWS_REGION}:${AWS_ACCOUNT_ID}:function:%FIREHOSE_POLICY_TEMPLATE_PLACEHOLDER%&quot;</span>
+<a id="__codelineno-2-47" name="__codelineno-2-47" href="#__codelineno-2-47"></a><span class="s">            "Resource": "arn:${ARN_PREFIX}:lambda:${AWS_REGION}:${AWS_ACCOUNT_ID}:function:%FIREHOSE_POLICY_TEMPLATE_PLACEHOLDER%"</span>
 <a id="__codelineno-2-48" name="__codelineno-2-48" href="#__codelineno-2-48"></a><span class="s">        },</span>
 <a id="__codelineno-2-49" name="__codelineno-2-49" href="#__codelineno-2-49"></a><span class="s">        {</span>
-<a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a><span class="s">            &quot;Sid&quot;: &quot;&quot;,</span>
-<a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a><span class="s">            &quot;Effect&quot;: &quot;Allow&quot;,</span>
-<a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a><span class="s">            &quot;Action&quot;: [</span>
-<a id="__codelineno-2-53" name="__codelineno-2-53" href="#__codelineno-2-53"></a><span class="s">                &quot;logs:PutLogEvents&quot;</span>
+<a id="__codelineno-2-50" name="__codelineno-2-50" href="#__codelineno-2-50"></a><span class="s">            "Sid": "",</span>
+<a id="__codelineno-2-51" name="__codelineno-2-51" href="#__codelineno-2-51"></a><span class="s">            "Effect": "Allow",</span>
+<a id="__codelineno-2-52" name="__codelineno-2-52" href="#__codelineno-2-52"></a><span class="s">            "Action": [</span>
+<a id="__codelineno-2-53" name="__codelineno-2-53" href="#__codelineno-2-53"></a><span class="s">                "logs:PutLogEvents"</span>
 <a id="__codelineno-2-54" name="__codelineno-2-54" href="#__codelineno-2-54"></a><span class="s">            ],</span>
-<a id="__codelineno-2-55" name="__codelineno-2-55" href="#__codelineno-2-55"></a><span class="s">            &quot;Resource&quot;: [</span>
-<a id="__codelineno-2-56" name="__codelineno-2-56" href="#__codelineno-2-56"></a><span class="s">                &quot;arn:${ARN_PREFIX}:logs:${AWS_REGION}:${AWS_ACCOUNT_ID}:log-group:/aws/kinesisfirehose/${FIREHOSE_NAME}:log-stream:*&quot;,</span>
-<a id="__codelineno-2-57" name="__codelineno-2-57" href="#__codelineno-2-57"></a><span class="s">                &quot;arn:${ARN_PREFIX}:logs:${AWS_REGION}:${AWS_ACCOUNT_ID}:log-group:%FIREHOSE_POLICY_TEMPLATE_PLACEHOLDER%:log-stream:*&quot;</span>
+<a id="__codelineno-2-55" name="__codelineno-2-55" href="#__codelineno-2-55"></a><span class="s">            "Resource": [</span>
+<a id="__codelineno-2-56" name="__codelineno-2-56" href="#__codelineno-2-56"></a><span class="s">                "arn:${ARN_PREFIX}:logs:${AWS_REGION}:${AWS_ACCOUNT_ID}:log-group:/aws/kinesisfirehose/${FIREHOSE_NAME}:log-stream:*",</span>
+<a id="__codelineno-2-57" name="__codelineno-2-57" href="#__codelineno-2-57"></a><span class="s">                "arn:${ARN_PREFIX}:logs:${AWS_REGION}:${AWS_ACCOUNT_ID}:log-group:%FIREHOSE_POLICY_TEMPLATE_PLACEHOLDER%:log-stream:*"</span>
 <a id="__codelineno-2-58" name="__codelineno-2-58" href="#__codelineno-2-58"></a><span class="s">            ]</span>
 <a id="__codelineno-2-59" name="__codelineno-2-59" href="#__codelineno-2-59"></a><span class="s">        }</span>
 <a id="__codelineno-2-60" name="__codelineno-2-60" href="#__codelineno-2-60"></a><span class="s">    ]</span>
 <a id="__codelineno-2-61" name="__codelineno-2-61" href="#__codelineno-2-61"></a><span class="s">}</span>
 <a id="__codelineno-2-62" name="__codelineno-2-62" href="#__codelineno-2-62"></a><span class="s">EOF</span>
 <a id="__codelineno-2-63" name="__codelineno-2-63" href="#__codelineno-2-63"></a>
-<a id="__codelineno-2-64" name="__codelineno-2-64" href="#__codelineno-2-64"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">&#39;/:function:/s/%FIREHOSE_POLICY_TEMPLATE_PLACEHOLDER%/&#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">LAMBDA_NAME</span><span class="si">}</span><span class="s2">&quot;</span><span class="s1">&#39;:$LATEST/&#39;</span><span class="w"> </span>firehose-role-policy.json
+<a id="__codelineno-2-64" name="__codelineno-2-64" href="#__codelineno-2-64"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">'/:function:/s/%FIREHOSE_POLICY_TEMPLATE_PLACEHOLDER%/'</span><span class="s2">"</span><span class="si">${</span><span class="nv">LAMBDA_NAME</span><span class="si">}</span><span class="s2">"</span><span class="s1">':$LATEST/'</span><span class="w"> </span>firehose-role-policy.json
 <a id="__codelineno-2-65" name="__codelineno-2-65" href="#__codelineno-2-65"></a>
 <a id="__codelineno-2-66" name="__codelineno-2-66" href="#__codelineno-2-66"></a><span class="nv">FIREHOSE_POLICY_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>iam<span class="w"> </span>create-policy<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-2-67" name="__codelineno-2-67" href="#__codelineno-2-67"></a>--policy-name<span class="w"> </span><span class="si">${</span><span class="nv">FIREHOSE_ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-68" name="__codelineno-2-68" href="#__codelineno-2-68"></a>--policy-document<span class="w"> </span>file://firehose-role-policy.json<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Policy.Arn&#39;</span><span class="k">)</span>
+<a id="__codelineno-2-68" name="__codelineno-2-68" href="#__codelineno-2-68"></a>--policy-document<span class="w"> </span>file://firehose-role-policy.json<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.Policy.Arn'</span><span class="k">)</span>
 <a id="__codelineno-2-69" name="__codelineno-2-69" href="#__codelineno-2-69"></a>
 <a id="__codelineno-2-70" name="__codelineno-2-70" href="#__codelineno-2-70"></a>aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-2-71" name="__codelineno-2-71" href="#__codelineno-2-71"></a>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">FIREHOSE_ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-2-72" name="__codelineno-2-72" href="#__codelineno-2-72"></a>--policy-arn<span class="w"> </span><span class="si">${</span><span class="nv">FIREHOSE_POLICY_ARN</span><span class="si">}</span>
 <a id="__codelineno-2-73" name="__codelineno-2-73" href="#__codelineno-2-73"></a>aws<span class="w"> </span>iam<span class="w"> </span>list-attached-role-policies<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">FIREHOSE_ROLE_NAME</span><span class="si">}</span>
 <a id="__codelineno-2-74" name="__codelineno-2-74" href="#__codelineno-2-74"></a>
-<a id="__codelineno-2-75" name="__codelineno-2-75" href="#__codelineno-2-75"></a><span class="nv">FIREHOSE_ROLE_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>iam<span class="w"> </span>get-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">FIREHOSE_ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Role.Arn&#39;</span><span class="k">)</span>
+<a id="__codelineno-2-75" name="__codelineno-2-75" href="#__codelineno-2-75"></a><span class="nv">FIREHOSE_ROLE_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>iam<span class="w"> </span>get-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">FIREHOSE_ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.Role.Arn'</span><span class="k">)</span>
 <a id="__codelineno-2-76" name="__codelineno-2-76" href="#__codelineno-2-76"></a>
 <a id="__codelineno-2-77" name="__codelineno-2-77" href="#__codelineno-2-77"></a>sleep<span class="w"> </span><span class="m">10</span>
 <a id="__codelineno-2-78" name="__codelineno-2-78" href="#__codelineno-2-78"></a>aws<span class="w"> </span>firehose<span class="w"> </span>create-delivery-stream<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-2-79" name="__codelineno-2-79" href="#__codelineno-2-79"></a>--delivery-stream-name<span class="w"> </span><span class="si">${</span><span class="nv">FIREHOSE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-80" name="__codelineno-2-80" href="#__codelineno-2-80"></a>--delivery-stream-type<span class="w"> </span><span class="s2">&quot;DirectPut&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-81" name="__codelineno-2-81" href="#__codelineno-2-81"></a>--extended-s3-destination-configuration<span class="w"> </span><span class="s2">&quot;RoleARN=</span><span class="si">${</span><span class="nv">FIREHOSE_ROLE_ARN</span><span class="si">}</span><span class="s2">,BucketARN=arn:aws:s3:::</span><span class="si">${</span><span class="nv">BUCKET_NAME</span><span class="si">}</span><span class="s2">,Prefix=</span><span class="si">${</span><span class="nv">S3_PREFIX</span><span class="si">}</span><span class="s2">/,ErrorOutputPrefix=</span><span class="si">${</span><span class="nv">S3_PREFIX</span><span class="si">}</span><span class="s2">_failed/,BufferingHints={SizeInMBs=2,IntervalInSeconds=120},CompressionFormat=GZIP,EncryptionConfiguration={NoEncryptionConfig=NoEncryption},CloudWatchLoggingOptions={Enabled=true,LogGroupName=</span><span class="si">${</span><span class="nv">FIREHOSE_ROLE_NAME</span><span class="si">}</span><span class="s2">,LogStreamName=</span><span class="si">${</span><span class="nv">FIREHOSE_ROLE_NAME</span><span class="si">}</span><span class="s2">},ProcessingConfiguration={Enabled=true,Processors=[{Type=Lambda,Parameters=[{ParameterName=LambdaArn,ParameterValue=</span><span class="si">${</span><span class="nv">LAMBDA_ARN</span><span class="si">}</span><span class="s2">:\$LATEST},{ParameterName=BufferSizeInMBs,ParameterValue=1},{ParameterName=BufferIntervalInSeconds,ParameterValue=60}]}]}&quot;</span>
+<a id="__codelineno-2-80" name="__codelineno-2-80" href="#__codelineno-2-80"></a>--delivery-stream-type<span class="w"> </span><span class="s2">"DirectPut"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-81" name="__codelineno-2-81" href="#__codelineno-2-81"></a>--extended-s3-destination-configuration<span class="w"> </span><span class="s2">"RoleARN=</span><span class="si">${</span><span class="nv">FIREHOSE_ROLE_ARN</span><span class="si">}</span><span class="s2">,BucketARN=arn:aws:s3:::</span><span class="si">${</span><span class="nv">BUCKET_NAME</span><span class="si">}</span><span class="s2">,Prefix=</span><span class="si">${</span><span class="nv">S3_PREFIX</span><span class="si">}</span><span class="s2">/,ErrorOutputPrefix=</span><span class="si">${</span><span class="nv">S3_PREFIX</span><span class="si">}</span><span class="s2">_failed/,BufferingHints={SizeInMBs=2,IntervalInSeconds=120},CompressionFormat=GZIP,EncryptionConfiguration={NoEncryptionConfig=NoEncryption},CloudWatchLoggingOptions={Enabled=true,LogGroupName=</span><span class="si">${</span><span class="nv">FIREHOSE_ROLE_NAME</span><span class="si">}</span><span class="s2">,LogStreamName=</span><span class="si">${</span><span class="nv">FIREHOSE_ROLE_NAME</span><span class="si">}</span><span class="s2">},ProcessingConfiguration={Enabled=true,Processors=[{Type=Lambda,Parameters=[{ParameterName=LambdaArn,ParameterValue=</span><span class="si">${</span><span class="nv">LAMBDA_ARN</span><span class="si">}</span><span class="s2">:\$LATEST},{ParameterName=BufferSizeInMBs,ParameterValue=1},{ParameterName=BufferIntervalInSeconds,ParameterValue=60}]}]}"</span>
 <a id="__codelineno-2-82" name="__codelineno-2-82" href="#__codelineno-2-82"></a>
 <a id="__codelineno-2-83" name="__codelineno-2-83" href="#__codelineno-2-83"></a><span class="c1"># no lambda for data transform</span>
-<a id="__codelineno-2-84" name="__codelineno-2-84" href="#__codelineno-2-84"></a><span class="c1"># --s3-destination-configuration &quot;RoleARN=${role_arn},BucketARN=arn:aws:s3:::${bucket_name},Prefix=CentralizedAccountLogs/,ErrorOutputPrefix=CentralizedAccountLogs_failed/,BufferingHints={SizeInMBs=1,IntervalInSeconds=60},CompressionFormat=UNCOMPRESSED,EncryptionConfiguration={NoEncryptionConfig=NoEncryption},CloudWatchLoggingOptions={Enabled=true,LogGroupName=${role_name},LogStreamName=${role_name}}&quot;</span>
+<a id="__codelineno-2-84" name="__codelineno-2-84" href="#__codelineno-2-84"></a><span class="c1"># --s3-destination-configuration "RoleARN=${role_arn},BucketARN=arn:aws:s3:::${bucket_name},Prefix=CentralizedAccountLogs/,ErrorOutputPrefix=CentralizedAccountLogs_failed/,BufferingHints={SizeInMBs=1,IntervalInSeconds=60},CompressionFormat=UNCOMPRESSED,EncryptionConfiguration={NoEncryptionConfig=NoEncryption},CloudWatchLoggingOptions={Enabled=true,LogGroupName=${role_name},LogStreamName=${role_name}}"</span>
 <a id="__codelineno-2-85" name="__codelineno-2-85" href="#__codelineno-2-85"></a>
 <a id="__codelineno-2-86" name="__codelineno-2-86" href="#__codelineno-2-86"></a><span class="nv">FIREHOSE_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>firehose<span class="w"> </span>describe-delivery-stream<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-2-87" name="__codelineno-2-87" href="#__codelineno-2-87"></a>--delivery-stream-name<span class="w"> </span><span class="si">${</span><span class="nv">FIREHOSE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-88" name="__codelineno-2-88" href="#__codelineno-2-88"></a>--query<span class="w"> </span><span class="s2">&quot;DeliveryStreamDescription.DeliveryStreamARN&quot;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-2-88" name="__codelineno-2-88" href="#__codelineno-2-88"></a>--query<span class="w"> </span><span class="s2">"DeliveryStreamDescription.DeliveryStreamARN"</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
 <a id="__codelineno-2-89" name="__codelineno-2-89" href="#__codelineno-2-89"></a>
 <a id="__codelineno-2-90" name="__codelineno-2-90" href="#__codelineno-2-90"></a><span class="k">while</span><span class="w"> </span><span class="nb">true</span><span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-2-91" name="__codelineno-2-91" href="#__codelineno-2-91"></a><span class="w">  </span><span class="nv">FIREHOSE_STATUS</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>firehose<span class="w"> </span>describe-delivery-stream<span class="w"> </span>--delivery-stream-name<span class="w"> </span><span class="si">${</span><span class="nv">FIREHOSE_NAME</span><span class="si">}</span><span class="w"> </span>--query<span class="w"> </span><span class="s2">&quot;DeliveryStreamDescription.DeliveryStreamStatus&quot;</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-2-91" name="__codelineno-2-91" href="#__codelineno-2-91"></a><span class="w">  </span><span class="nv">FIREHOSE_STATUS</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>firehose<span class="w"> </span>describe-delivery-stream<span class="w"> </span>--delivery-stream-name<span class="w"> </span><span class="si">${</span><span class="nv">FIREHOSE_NAME</span><span class="si">}</span><span class="w"> </span>--query<span class="w"> </span><span class="s2">"DeliveryStreamDescription.DeliveryStreamStatus"</span><span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
 <a id="__codelineno-2-92" name="__codelineno-2-92" href="#__codelineno-2-92"></a><span class="w">  </span><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">FIREHOSE_STATUS</span><span class="si">}</span>
-<a id="__codelineno-2-93" name="__codelineno-2-93" href="#__codelineno-2-93"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${</span><span class="nv">FIREHOSE_STATUS</span><span class="si">}</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;ACTIVE&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-2-93" name="__codelineno-2-93" href="#__codelineno-2-93"></a><span class="w">  </span><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${</span><span class="nv">FIREHOSE_STATUS</span><span class="si">}</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"ACTIVE"</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
 <a id="__codelineno-2-94" name="__codelineno-2-94" href="#__codelineno-2-94"></a><span class="w">    </span><span class="k">break</span>
 <a id="__codelineno-2-95" name="__codelineno-2-95" href="#__codelineno-2-95"></a><span class="w">  </span><span class="k">fi</span>
 <a id="__codelineno-2-96" name="__codelineno-2-96" href="#__codelineno-2-96"></a><span class="w">  </span>sleep<span class="w"> </span><span class="m">10</span>
 <a id="__codelineno-2-97" name="__codelineno-2-97" href="#__codelineno-2-97"></a><span class="k">done</span>
 </code></pre></div>
-<h3 id="cloudwatch">cloudwatch<a class="headerlink" href="#cloudwatch" title="Permanent link">&para;</a></h3>
+<h3 id="cloudwatch">cloudwatch<a class="headerlink" href="#cloudwatch" title="Permanent link">¶</a></h3>
 <ul>
 <li>创建cwl所需角色来访问firehose</li>
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">CWL_ROLE_NAME</span><span class="o">=</span>cwl-firehose-role-<span class="nv">$UNIQ</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">&quot;AWS_REGION:&quot;</span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="w"> </span><span class="s2">&quot;AWS_ACCOUNT_ID:&quot;</span><span class="si">${</span><span class="nv">AWS_ACCOUNT_ID</span><span class="si">}</span><span class="w"> </span><span class="s2">&quot;ARN_PREFIX:&quot;</span><span class="si">${</span><span class="nv">ARN_PREFIX</span><span class="si">}</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"AWS_REGION:"</span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="si">}</span><span class="w"> </span><span class="s2">"AWS_ACCOUNT_ID:"</span><span class="si">${</span><span class="nv">AWS_ACCOUNT_ID</span><span class="si">}</span><span class="w"> </span><span class="s2">"ARN_PREFIX:"</span><span class="si">${</span><span class="nv">ARN_PREFIX</span><span class="si">}</span>
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="p">%%-*</span><span class="si">}</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">&quot;cn&quot;</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="nv">DN_SUFFIX</span><span class="o">=</span><span class="s2">&quot;com.cn&quot;</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="k">if</span><span class="w"> </span><span class="o">[[</span><span class="w"> </span><span class="si">${</span><span class="nv">AWS_REGION</span><span class="p">%%-*</span><span class="si">}</span><span class="w"> </span><span class="o">==</span><span class="w"> </span><span class="s2">"cn"</span><span class="w"> </span><span class="o">]]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span><span class="nv">DN_SUFFIX</span><span class="o">=</span><span class="s2">"com.cn"</span>
 <a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="k">else</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="nv">DN_SUFFIX</span><span class="o">=</span><span class="s2">&quot;com&quot;</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span><span class="nv">DN_SUFFIX</span><span class="o">=</span><span class="s2">"com"</span>
 <a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="k">fi</span>
 <a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
 <a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a>envsubst<span class="w"> </span>&gt;<span class="w"> </span>cwl-role-trust-policy.json<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
 <a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="s">{</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="s">  &quot;Version&quot;: &quot;2012-10-17&quot;,</span>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="s">  &quot;Statement&quot;: [</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="s">  "Version": "2012-10-17",</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="s">  "Statement": [</span>
 <a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="s">    {</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="s">      &quot;Effect&quot;: &quot;Allow&quot;,</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="s">      &quot;Principal&quot;: {</span>
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="s">        &quot;Service&quot;: &quot;logs.${AWS_REGION}.amazonaws.${DN_SUFFIX}&quot;</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="s">      "Effect": "Allow",</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="s">      "Principal": {</span>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="s">        "Service": "logs.${AWS_REGION}.amazonaws.${DN_SUFFIX}"</span>
 <a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="s">      },</span>
-<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="s">      &quot;Action&quot;: &quot;sts:AssumeRole&quot;</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="s">      "Action": "sts:AssumeRole"</span>
 <a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="s">    }</span>
 <a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="s">  ]</span>
 <a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="s">}</span>
@@ -7136,27 +7184,27 @@
 <a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a>
 <a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a>envsubst<span class="w"> </span>&gt;<span class="w"> </span>cwl-role-policy.json<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
 <a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="s">{</span>
-<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="s">    &quot;Version&quot;: &quot;2012-10-17&quot;,</span>
-<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="s">    &quot;Statement&quot;: [</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="s">    "Version": "2012-10-17",</span>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="s">    "Statement": [</span>
 <a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="s">        {</span>
-<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="s">            &quot;Action&quot;: [</span>
-<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="s">                &quot;firehose:PutRecord&quot;,</span>
-<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="s">                &quot;firehose:PutRecordBatch&quot;</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="s">            "Action": [</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="s">                "firehose:PutRecord",</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="s">                "firehose:PutRecordBatch"</span>
 <a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="s">            ],</span>
-<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a><span class="s">            &quot;Effect&quot;: &quot;Allow&quot;,</span>
-<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a><span class="s">            &quot;Resource&quot;: &quot;arn:${ARN_PREFIX}:firehose:${AWS_REGION}:${AWS_ACCOUNT_ID}:deliverystream/*&quot;</span>
+<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a><span class="s">            "Effect": "Allow",</span>
+<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a><span class="s">            "Resource": "arn:${ARN_PREFIX}:firehose:${AWS_REGION}:${AWS_ACCOUNT_ID}:deliverystream/*"</span>
 <a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a><span class="s">        }</span>
 <a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a><span class="s">    ]</span>
 <a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a><span class="s">}</span>
 <a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a><span class="s">EOF</span>
 <a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a><span class="nv">CWL_POLICY_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>iam<span class="w"> </span>create-policy<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a>--policy-name<span class="w"> </span><span class="si">${</span><span class="nv">CWL_ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a>--policy-document<span class="w"> </span>file://cwl-role-policy.json<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Policy.Arn&#39;</span><span class="k">)</span>
+<a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a>--policy-document<span class="w"> </span>file://cwl-role-policy.json<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.Policy.Arn'</span><span class="k">)</span>
 <a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a>aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">CWL_ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a><span class="w">  </span>--policy-arn<span class="w"> </span><span class="si">${</span><span class="nv">CWL_POLICY_ARN</span><span class="si">}</span>
 <a id="__codelineno-3-47" name="__codelineno-3-47" href="#__codelineno-3-47"></a>aws<span class="w"> </span>iam<span class="w"> </span>list-attached-role-policies<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">CWL_ROLE_NAME</span><span class="si">}</span>
 <a id="__codelineno-3-48" name="__codelineno-3-48" href="#__codelineno-3-48"></a>
-<a id="__codelineno-3-49" name="__codelineno-3-49" href="#__codelineno-3-49"></a><span class="nv">CWL_ROLE_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>iam<span class="w"> </span>get-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">CWL_ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Role.Arn&#39;</span><span class="k">)</span>
+<a id="__codelineno-3-49" name="__codelineno-3-49" href="#__codelineno-3-49"></a><span class="nv">CWL_ROLE_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>iam<span class="w"> </span>get-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">CWL_ROLE_NAME</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.Role.Arn'</span><span class="k">)</span>
 </code></pre></div>
 <ul>
 <li>注册 firehose 到 eks 集群的 log group 上</li>
@@ -7171,36 +7219,36 @@
 <a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
 <a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>aws<span class="w"> </span>logs<span class="w"> </span>put-subscription-filter<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>--log-group-name<span class="w"> </span><span class="si">${</span><span class="nv">LOG_GROUP_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>--filter-name<span class="w"> </span><span class="s2">&quot;to-firehose&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>--filter-pattern<span class="w"> </span><span class="s2">&quot;&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>--filter-name<span class="w"> </span><span class="s2">"to-firehose"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>--filter-pattern<span class="w"> </span><span class="s2">""</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>--destination-arn<span class="w"> </span><span class="si">${</span><span class="nv">FIREHOSE_ARN</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>--role-arn<span class="w"> </span><span class="si">${</span><span class="nv">CWL_ROLE_ARN</span><span class="si">}</span>
 </code></pre></div>
-<h3 id="glue">glue<a class="headerlink" href="#glue" title="Permanent link">&para;</a></h3>
+<h3 id="glue">glue<a class="headerlink" href="#glue" title="Permanent link">¶</a></h3>
 <ul>
 <li>create database in glue catalog <code>testdb</code></li>
 <li>create crawler</li>
 </ul>
-<h4 id="using-cli">using cli<a class="headerlink" href="#using-cli" title="Permanent link">&para;</a></h4>
+<h4 id="using-cli">using cli<a class="headerlink" href="#using-cli" title="Permanent link">¶</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nv">database_name</span><span class="o">=</span>testdb
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nv">s3_uri</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">bucket_name</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">s3_prefix</span><span class="si">}</span><span class="s2">/&quot;</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="nv">s3_uri</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">bucket_name</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">s3_prefix</span><span class="si">}</span><span class="s2">/"</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>
 <a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="nv">crawler_role_name</span><span class="o">=</span>AWSGlueServiceRole-<span class="nv">$RANDOM</span>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>aws<span class="w"> </span>iam<span class="w"> </span>create-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">crawler_role_name</span><span class="si">}</span><span class="w"> </span>--assume-role-policy-document<span class="w"> </span><span class="s1">&#39;{&quot;Version&quot;:&quot;2012-10-17&quot;,&quot;Statement&quot;:[{&quot;Effect&quot;:&quot;Allow&quot;,&quot;Principal&quot;:{&quot;Service&quot;:&quot;glue.amazonaws.com&quot;},&quot;Action&quot;:&quot;sts:AssumeRole&quot;}]}&#39;</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>aws<span class="w"> </span>iam<span class="w"> </span>create-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">crawler_role_name</span><span class="si">}</span><span class="w"> </span>--assume-role-policy-document<span class="w"> </span><span class="s1">'{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Principal":{"Service":"glue.amazonaws.com"},"Action":"sts:AssumeRole"}]}'</span>
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">crawler_role_name</span><span class="si">}</span><span class="w"> </span>--policy-arn<span class="w"> </span>arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>
 <a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>envsubst<span class="w"> </span>&gt;<span class="w"> </span>crawler-role-policy.json<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
 <a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="s">{</span>
-<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="s">    &quot;Version&quot;: &quot;2012-10-17&quot;,</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="s">    &quot;Statement&quot;: [</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="s">    "Version": "2012-10-17",</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="s">    "Statement": [</span>
 <a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="s">        {</span>
-<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="s">            &quot;Effect&quot;: &quot;Allow&quot;,</span>
-<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="s">            &quot;Action&quot;: [</span>
-<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="s">                &quot;s3:GetObject&quot;,</span>
-<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="s">                &quot;s3:PutObject&quot;</span>
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="s">            "Effect": "Allow",</span>
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="s">            "Action": [</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="s">                "s3:GetObject",</span>
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="s">                "s3:PutObject"</span>
 <a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="s">            ],</span>
-<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="s">            &quot;Resource&quot;: [</span>
-<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="s">                &quot;arn:aws:s3:::${s3_uri}*&quot;</span>
+<a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="s">            "Resource": [</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="s">                "arn:aws:s3:::${s3_uri}*"</span>
 <a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="s">            ]</span>
 <a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="s">        }</span>
 <a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="s">    ]</span>
@@ -7208,51 +7256,51 @@
 <a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="s">EOF</span>
 <a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="nv">crawler_policy_arn</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>iam<span class="w"> </span>create-policy<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a>--policy-name<span class="w"> </span><span class="si">${</span><span class="nv">crawler_role_name</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>--policy-document<span class="w"> </span>file://crawler-role-policy.json<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Policy.Arn&#39;</span><span class="k">)</span>
+<a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a>--policy-document<span class="w"> </span>file://crawler-role-policy.json<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.Policy.Arn'</span><span class="k">)</span>
 <a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a>aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">crawler_role_name</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-5-29" name="__codelineno-5-29" href="#__codelineno-5-29"></a><span class="w">  </span>--policy-arn<span class="w"> </span><span class="si">${</span><span class="nv">crawler_policy_arn</span><span class="si">}</span>
-<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="nv">crawler_role_arn</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>iam<span class="w"> </span>get-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">crawler_role_name</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Role.Arn&#39;</span><span class="k">)</span>
+<a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="nv">crawler_role_arn</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>iam<span class="w"> </span>get-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">crawler_role_name</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.Role.Arn'</span><span class="k">)</span>
 <a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a>
 <a id="__codelineno-5-32" name="__codelineno-5-32" href="#__codelineno-5-32"></a>aws<span class="w"> </span>glue<span class="w"> </span>create-database<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="w">    </span>--database-input<span class="w"> </span><span class="s1">&#39;{&quot;Name&quot;:&quot;&#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">database_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="s1">&#39;&quot;}&#39;</span>
+<a id="__codelineno-5-33" name="__codelineno-5-33" href="#__codelineno-5-33"></a><span class="w">    </span>--database-input<span class="w"> </span><span class="s1">'{"Name":"'</span><span class="s2">"</span><span class="si">${</span><span class="nv">database_name</span><span class="si">}</span><span class="s2">"</span><span class="s1">'"}'</span>
 <a id="__codelineno-5-34" name="__codelineno-5-34" href="#__codelineno-5-34"></a>
 <a id="__codelineno-5-35" name="__codelineno-5-35" href="#__codelineno-5-35"></a>sleep<span class="w"> </span><span class="m">10</span>
 <a id="__codelineno-5-36" name="__codelineno-5-36" href="#__codelineno-5-36"></a><span class="nv">crawler_name</span><span class="o">=</span>c1-<span class="nv">$RANDOM</span>
 <a id="__codelineno-5-37" name="__codelineno-5-37" href="#__codelineno-5-37"></a>aws<span class="w"> </span>glue<span class="w"> </span>create-crawler<span class="w"> </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">crawler_name</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-5-38" name="__codelineno-5-38" href="#__codelineno-5-38"></a>--role<span class="w"> </span><span class="si">${</span><span class="nv">crawler_role_arn</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-5-39" name="__codelineno-5-39" href="#__codelineno-5-39"></a>--database-name<span class="w"> </span><span class="si">${</span><span class="nv">database_name</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-40" name="__codelineno-5-40" href="#__codelineno-5-40"></a>--targets<span class="w"> </span><span class="s1">&#39;{</span>
-<a id="__codelineno-5-41" name="__codelineno-5-41" href="#__codelineno-5-41"></a><span class="s1">  &quot;S3Targets&quot;: [</span>
+<a id="__codelineno-5-40" name="__codelineno-5-40" href="#__codelineno-5-40"></a>--targets<span class="w"> </span><span class="s1">'{</span>
+<a id="__codelineno-5-41" name="__codelineno-5-41" href="#__codelineno-5-41"></a><span class="s1">  "S3Targets": [</span>
 <a id="__codelineno-5-42" name="__codelineno-5-42" href="#__codelineno-5-42"></a><span class="s1">    {</span>
-<a id="__codelineno-5-43" name="__codelineno-5-43" href="#__codelineno-5-43"></a><span class="s1">      &quot;Path&quot;: &quot;s3://&#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">s3_uri</span><span class="si">}</span><span class="s2">&quot;</span><span class="s1">&#39;&quot;</span>
+<a id="__codelineno-5-43" name="__codelineno-5-43" href="#__codelineno-5-43"></a><span class="s1">      "Path": "s3://'</span><span class="s2">"</span><span class="si">${</span><span class="nv">s3_uri</span><span class="si">}</span><span class="s2">"</span><span class="s1">'"</span>
 <a id="__codelineno-5-44" name="__codelineno-5-44" href="#__codelineno-5-44"></a><span class="s1">    }</span>
 <a id="__codelineno-5-45" name="__codelineno-5-45" href="#__codelineno-5-45"></a><span class="s1">  ]</span>
-<a id="__codelineno-5-46" name="__codelineno-5-46" href="#__codelineno-5-46"></a><span class="s1">}&#39;</span>
+<a id="__codelineno-5-46" name="__codelineno-5-46" href="#__codelineno-5-46"></a><span class="s1">}'</span>
 <a id="__codelineno-5-47" name="__codelineno-5-47" href="#__codelineno-5-47"></a>
 <a id="__codelineno-5-48" name="__codelineno-5-48" href="#__codelineno-5-48"></a><span class="c1"># run crawler later</span>
 <a id="__codelineno-5-49" name="__codelineno-5-49" href="#__codelineno-5-49"></a><span class="c1"># aws glue start-crawler --name ${crawler_name}</span>
 </code></pre></div>
-<h4 id="using-ui">using ui<a class="headerlink" href="#using-ui" title="Permanent link">&para;</a></h4>
-<p><a class="glightbox" href="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-1.png" /></a></p>
-<p><a class="glightbox" href="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-2.png" /></a></p>
-<p><a class="glightbox" href="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-3.png" /></a></p>
-<p><a class="glightbox" href="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-4.png" /></a></p>
-<h3 id="databrew">databrew<a class="headerlink" href="#databrew" title="Permanent link">&para;</a></h3>
-<h4 id="using-cli_1">using cli<a class="headerlink" href="#using-cli_1" title="Permanent link">&para;</a></h4>
+<h4 id="using-ui">using ui<a class="headerlink" href="#using-ui" title="Permanent link">¶</a></h4>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-1.png" data-desc-position="bottom"><img alt="" src="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-1.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-2.png" data-desc-position="bottom"><img alt="" src="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-2.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-3.png" data-desc-position="bottom"><img alt="" src="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-3.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-4.png" data-desc-position="bottom"><img alt="" src="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-4.png"></a></p>
+<h3 id="databrew">databrew<a class="headerlink" href="#databrew" title="Permanent link">¶</a></h3>
+<h4 id="using-cli_1">using cli<a class="headerlink" href="#using-cli_1" title="Permanent link">¶</a></h4>
 <ul>
 <li>download recipe first<ul>
-<li><a href="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/cwl-recipe.json">cwl-recipe.json</a> <br />
+<li><a href="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/cwl-recipe.json">cwl-recipe.json</a> <br>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nv">databrew_name</span><span class="o">=</span>cwl-<span class="nv">$RANDOM</span>
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nv">databrew_output</span><span class="o">=</span>parquet-<span class="nv">$RANDOM</span>
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># &quot;Json={MultiLine=false}&quot;: json line, not json document</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="c1"># "Json={MultiLine=false}": json line, not json document</span>
 <a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>aws<span class="w"> </span>databrew<span class="w"> </span>create-dataset<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>--name<span class="w"> </span><span class="si">${</span><span class="nv">databrew_name</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a>--format<span class="w"> </span>JSON<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>--format-options<span class="w"> </span><span class="s2">&quot;Json={MultiLine=false}&quot;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>--input<span class="w"> </span><span class="s2">&quot;S3InputDefinition={Bucket=</span><span class="si">${</span><span class="nv">bucket_name</span><span class="si">}</span><span class="s2">,Key=</span><span class="si">${</span><span class="nv">s3_prefix</span><span class="si">}</span><span class="s2">/}&quot;</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a>--format-options<span class="w"> </span><span class="s2">"Json={MultiLine=false}"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a>--input<span class="w"> </span><span class="s2">"S3InputDefinition={Bucket=</span><span class="si">${</span><span class="nv">bucket_name</span><span class="si">}</span><span class="s2">,Key=</span><span class="si">${</span><span class="nv">s3_prefix</span><span class="si">}</span><span class="s2">/}"</span>
 <a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a>
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="c1"># wget -O cwl-recipe.json &#39;https://github.com/panlm/aws-labs/raw/main/eks-cloudwatch-log-firehose-s3/cwl-recipe.json&#39;</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="c1"># wget -O cwl-recipe.json 'https://github.com/panlm/aws-labs/raw/main/eks-cloudwatch-log-firehose-s3/cwl-recipe.json'</span>
 <a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a>aws<span class="w"> </span>databrew<span class="w"> </span>create-recipe<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a>--name<span class="w"> </span><span class="si">${</span><span class="nv">databrew_name</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a>--steps<span class="w"> </span>file://cwl-recipe.json
@@ -7261,10 +7309,10 @@
 <a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a>--name<span class="w"> </span><span class="si">${</span><span class="nv">databrew_name</span><span class="si">}</span>
 <a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a>
 <a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="nv">databrew_role_name</span><span class="o">=</span>AWSGlueDataBrewServiceRole-<span class="nv">$RANDOM</span>
-<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>aws<span class="w"> </span>iam<span class="w"> </span>create-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">databrew_role_name</span><span class="si">}</span><span class="w"> </span>--assume-role-policy-document<span class="w"> </span><span class="s1">&#39;{&quot;Version&quot;:&quot;2012-10-17&quot;,&quot;Statement&quot;:[{&quot;Effect&quot;:&quot;Allow&quot;,&quot;Principal&quot;:{&quot;Service&quot;:&quot;databrew.amazonaws.com&quot;},&quot;Action&quot;:&quot;sts:AssumeRole&quot;}]}&#39;</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a>aws<span class="w"> </span>iam<span class="w"> </span>create-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">databrew_role_name</span><span class="si">}</span><span class="w"> </span>--assume-role-policy-document<span class="w"> </span><span class="s1">'{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Principal":{"Service":"databrew.amazonaws.com"},"Action":"sts:AssumeRole"}]}'</span>
 <a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a>aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">databrew_role_name</span><span class="si">}</span><span class="w"> </span>--policy-arn<span class="w"> </span>arn:aws:iam::aws:policy/service-role/AWSGlueDataBrewServiceRole
 <a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a>aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">databrew_role_name</span><span class="si">}</span><span class="w"> </span>--policy-arn<span class="w"> </span>arn:aws:iam::aws:policy/AmazonS3FullAccess
-<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="nv">databrew_role_arn</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>iam<span class="w"> </span>get-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">databrew_role_name</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Role.Arn&#39;</span><span class="k">)</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="nv">databrew_role_arn</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>iam<span class="w"> </span>get-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">databrew_role_name</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.Role.Arn'</span><span class="k">)</span>
 <a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a>
 <a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a>sleep<span class="w"> </span><span class="m">10</span>
 <a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="c1"># this command will failed when bucket is empty</span>
@@ -7272,37 +7320,37 @@
 <a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a>aws<span class="w"> </span>databrew<span class="w"> </span>create-recipe-job<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a>--dataset-name<span class="w"> </span><span class="si">${</span><span class="nv">databrew_name</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a>--name<span class="w"> </span><span class="si">${</span><span class="nv">databrew_name</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a>--recipe-reference<span class="w"> </span><span class="s1">&#39;Name=&#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">databrew_name</span><span class="si">}</span><span class="s2">&quot;</span><span class="s1">&#39;,RecipeVersion=1.0&#39;</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a>--outputs<span class="w"> </span><span class="s2">&quot;Format=PARQUET,Location={Bucket=</span><span class="si">${</span><span class="nv">bucket_name</span><span class="si">}</span><span class="s2">,Key=</span><span class="si">${</span><span class="nv">databrew_output</span><span class="si">}</span><span class="s2">/},Overwrite=true&quot;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a>--recipe-reference<span class="w"> </span><span class="s1">'Name='</span><span class="s2">"</span><span class="si">${</span><span class="nv">databrew_name</span><span class="si">}</span><span class="s2">"</span><span class="s1">',RecipeVersion=1.0'</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a>--outputs<span class="w"> </span><span class="s2">"Format=PARQUET,Location={Bucket=</span><span class="si">${</span><span class="nv">bucket_name</span><span class="si">}</span><span class="s2">,Key=</span><span class="si">${</span><span class="nv">databrew_output</span><span class="si">}</span><span class="s2">/},Overwrite=true"</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a>--role-arn<span class="w"> </span><span class="si">${</span><span class="nv">databrew_role_arn</span><span class="si">}</span>
 <a id="__codelineno-6-34" name="__codelineno-6-34" href="#__codelineno-6-34"></a>
 <a id="__codelineno-6-35" name="__codelineno-6-35" href="#__codelineno-6-35"></a>aws<span class="w"> </span>databrew<span class="w"> </span>create-schedule<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a>--cron-expression<span class="w"> </span><span class="s1">&#39;Cron(*/15 * * * ? *)&#39;</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-36" name="__codelineno-6-36" href="#__codelineno-6-36"></a>--cron-expression<span class="w"> </span><span class="s1">'Cron(*/15 * * * ? *)'</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-6-37" name="__codelineno-6-37" href="#__codelineno-6-37"></a>--name<span class="w"> </span>per15min-<span class="si">${</span><span class="nv">databrew_name</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-6-38" name="__codelineno-6-38" href="#__codelineno-6-38"></a>--job-names<span class="w"> </span><span class="si">${</span><span class="nv">databrew_name</span><span class="si">}</span>
 </code></pre></div></li>
 </ul>
 </li>
 </ul>
-<p>create another crawler and query with athena<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nv">s3_uri_2</span><span class="o">=</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">bucket_name</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">databrew_output</span><span class="si">}</span><span class="s2">/&quot;</span>
+<p>create another crawler and query with athena<br>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nv">s3_uri_2</span><span class="o">=</span><span class="s2">"</span><span class="si">${</span><span class="nv">bucket_name</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">databrew_output</span><span class="si">}</span><span class="s2">/"</span>
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a><span class="nv">crawler_role_name_2</span><span class="o">=</span>AWSGlueServiceRole-<span class="nv">$RANDOM</span>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>aws<span class="w"> </span>iam<span class="w"> </span>create-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">crawler_role_name_2</span><span class="si">}</span><span class="w"> </span>--assume-role-policy-document<span class="w"> </span><span class="s1">&#39;{&quot;Version&quot;:&quot;2012-10-17&quot;,&quot;Statement&quot;:[{&quot;Effect&quot;:&quot;Allow&quot;,&quot;Principal&quot;:{&quot;Service&quot;:&quot;glue.amazonaws.com&quot;},&quot;Action&quot;:&quot;sts:AssumeRole&quot;}]}&#39;</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>aws<span class="w"> </span>iam<span class="w"> </span>create-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">crawler_role_name_2</span><span class="si">}</span><span class="w"> </span>--assume-role-policy-document<span class="w"> </span><span class="s1">'{"Version":"2012-10-17","Statement":[{"Effect":"Allow","Principal":{"Service":"glue.amazonaws.com"},"Action":"sts:AssumeRole"}]}'</span>
 <a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a>aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">crawler_role_name_2</span><span class="si">}</span><span class="w"> </span>--policy-arn<span class="w"> </span>arn:aws:iam::aws:policy/service-role/AWSGlueServiceRole
 <a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>
 <a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a>envsubst<span class="w"> </span>&gt;<span class="w"> </span>crawler-role-policy.json<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
 <a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="s">{</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="s">    &quot;Version&quot;: &quot;2012-10-17&quot;,</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="s">    &quot;Statement&quot;: [</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="s">    "Version": "2012-10-17",</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="s">    "Statement": [</span>
 <a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="s">        {</span>
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="s">            &quot;Effect&quot;: &quot;Allow&quot;,</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="s">            &quot;Action&quot;: [</span>
-<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="s">                &quot;s3:GetObject&quot;,</span>
-<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="s">                &quot;s3:PutObject&quot;</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="s">            "Effect": "Allow",</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="s">            "Action": [</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="s">                "s3:GetObject",</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="s">                "s3:PutObject"</span>
 <a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="s">            ],</span>
-<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="s">            &quot;Resource&quot;: [</span>
-<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="s">                &quot;arn:aws:s3:::${s3_uri_2}*&quot;</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="s">            "Resource": [</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="s">                "arn:aws:s3:::${s3_uri_2}*"</span>
 <a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="s">            ]</span>
 <a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="s">        }</span>
 <a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="s">    ]</span>
@@ -7310,69 +7358,69 @@
 <a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="s">EOF</span>
 <a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="nv">crawler_policy_arn_2</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>iam<span class="w"> </span>create-policy<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a>--policy-name<span class="w"> </span><span class="si">${</span><span class="nv">crawler_role_name_2</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a>--policy-document<span class="w"> </span>file://crawler-role-policy.json<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Policy.Arn&#39;</span><span class="k">)</span>
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a>--policy-document<span class="w"> </span>file://crawler-role-policy.json<span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.Policy.Arn'</span><span class="k">)</span>
 <a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a>aws<span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">crawler_role_name_2</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="w">  </span>--policy-arn<span class="w"> </span><span class="si">${</span><span class="nv">crawler_policy_arn_2</span><span class="si">}</span>
-<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a><span class="nv">crawler_role_arn_2</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>iam<span class="w"> </span>get-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">crawler_role_name_2</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.Role.Arn&#39;</span><span class="k">)</span>
+<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a><span class="nv">crawler_role_arn_2</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>iam<span class="w"> </span>get-role<span class="w"> </span>--role-name<span class="w"> </span><span class="si">${</span><span class="nv">crawler_role_name_2</span><span class="si">}</span><span class="w"> </span><span class="p">|</span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.Role.Arn'</span><span class="k">)</span>
 <a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a>
 <a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a>sleep<span class="w"> </span><span class="m">10</span>
 <a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a><span class="nv">crawler_name_2</span><span class="o">=</span>parquet-<span class="si">${</span><span class="nv">crawler_name</span><span class="si">}</span>
 <a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a>aws<span class="w"> </span>glue<span class="w"> </span>create-crawler<span class="w"> </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">crawler_name_2</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a>--role<span class="w"> </span><span class="si">${</span><span class="nv">crawler_role_arn_2</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-7-35" name="__codelineno-7-35" href="#__codelineno-7-35"></a>--database-name<span class="w"> </span><span class="si">${</span><span class="nv">database_name</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a>--targets<span class="w"> </span><span class="s1">&#39;{</span>
-<a id="__codelineno-7-37" name="__codelineno-7-37" href="#__codelineno-7-37"></a><span class="s1">  &quot;S3Targets&quot;: [</span>
+<a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a>--targets<span class="w"> </span><span class="s1">'{</span>
+<a id="__codelineno-7-37" name="__codelineno-7-37" href="#__codelineno-7-37"></a><span class="s1">  "S3Targets": [</span>
 <a id="__codelineno-7-38" name="__codelineno-7-38" href="#__codelineno-7-38"></a><span class="s1">    {</span>
-<a id="__codelineno-7-39" name="__codelineno-7-39" href="#__codelineno-7-39"></a><span class="s1">      &quot;Path&quot;: &quot;s3://&#39;</span><span class="s2">&quot;</span><span class="si">${</span><span class="nv">s3_uri_2</span><span class="si">}</span><span class="s2">&quot;</span><span class="s1">&#39;&quot;</span>
+<a id="__codelineno-7-39" name="__codelineno-7-39" href="#__codelineno-7-39"></a><span class="s1">      "Path": "s3://'</span><span class="s2">"</span><span class="si">${</span><span class="nv">s3_uri_2</span><span class="si">}</span><span class="s2">"</span><span class="s1">'"</span>
 <a id="__codelineno-7-40" name="__codelineno-7-40" href="#__codelineno-7-40"></a><span class="s1">    }</span>
 <a id="__codelineno-7-41" name="__codelineno-7-41" href="#__codelineno-7-41"></a><span class="s1">  ]</span>
-<a id="__codelineno-7-42" name="__codelineno-7-42" href="#__codelineno-7-42"></a><span class="s1">}&#39;</span>
+<a id="__codelineno-7-42" name="__codelineno-7-42" href="#__codelineno-7-42"></a><span class="s1">}'</span>
 <a id="__codelineno-7-43" name="__codelineno-7-43" href="#__codelineno-7-43"></a>
 <a id="__codelineno-7-44" name="__codelineno-7-44" href="#__codelineno-7-44"></a><span class="c1"># run crawler later</span>
 <a id="__codelineno-7-45" name="__codelineno-7-45" href="#__codelineno-7-45"></a><span class="c1"># awtart-crawler --name ${crawler_name_2}</span>
-</code></pre></div></p>
-<p>check databrew job status<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>aws<span class="w"> </span>databrew<span class="w"> </span>start-job-run<span class="w"> </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">databrew_name</span><span class="si">}</span>
+</code></pre></div><p></p>
+<p>check databrew job status<br>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>aws<span class="w"> </span>databrew<span class="w"> </span>start-job-run<span class="w"> </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">databrew_name</span><span class="si">}</span>
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>aws<span class="w"> </span>databrew<span class="w"> </span>list-job-runs<span class="w"> </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">databrew_name</span><span class="si">}</span>
-</code></pre></div></p>
-<p>if job status is <code>SUCCEEDED</code>, start crawler to create catalog in glue<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>aws<span class="w"> </span>glue<span class="w"> </span>start-crawler<span class="w"> </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">crawler_name</span><span class="si">}</span>
+</code></pre></div><p></p>
+<p>if job status is <code>SUCCEEDED</code>, start crawler to create catalog in glue<br>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>aws<span class="w"> </span>glue<span class="w"> </span>start-crawler<span class="w"> </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">crawler_name</span><span class="si">}</span>
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>aws<span class="w"> </span>glue<span class="w"> </span>start-crawler<span class="w"> </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">crawler_name_2</span><span class="si">}</span>
-</code></pre></div></p>
-<h4 id="using-ui_1">using ui<a class="headerlink" href="#using-ui_1" title="Permanent link">&para;</a></h4>
+</code></pre></div><p></p>
+<h4 id="using-ui_1">using ui<a class="headerlink" href="#using-ui_1" title="Permanent link">¶</a></h4>
 <ul>
 <li>
 <p>import recipe</p>
 <ul>
-<li><a href="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/cwl-recipe.json">download</a><br />
-<a class="glightbox" href="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-5.png" /></a></li>
+<li><a href="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/cwl-recipe.json">download</a><br>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-5.png" data-desc-position="bottom"><img alt="" src="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-5.png"></a></li>
 </ul>
 </li>
 <li>
-<p>create dataset from s3 or glue catalog<br />
-<a class="glightbox" href="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-6.png" /></a></p>
+<p>create dataset from s3 or glue catalog<br>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-6.png" data-desc-position="bottom"><img alt="" src="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-6.png"></a></p>
 </li>
 <li>
-<p>create project from this dataset and using existed recipe<br />
-<a class="glightbox" href="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-7.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-7.png" /></a></p>
+<p>create project from this dataset and using existed recipe<br>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-7.png" data-desc-position="bottom"><img alt="" src="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-7.png"></a></p>
 </li>
 </ul>
-<p><a class="glightbox" href="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-8.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-8.png" /></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-8.png" data-desc-position="bottom"><img alt="" src="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-8.png"></a></p>
 <ul>
 <li>create job as you need</li>
 </ul>
-<h3 id="athena">athena<a class="headerlink" href="#athena" title="Permanent link">&para;</a></h3>
-<p>this table is created by firehose<br />
-<a class="glightbox" href="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-9.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-9.png" /></a></p>
-<p>this table is created by databrew job<br />
-<a class="glightbox" href="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-10.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="" src="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-10.png" /></a></p>
-<h2 id="conclusion">conclusion<a class="headerlink" href="#conclusion" title="Permanent link">&para;</a></h2>
+<h3 id="athena">athena<a class="headerlink" href="#athena" title="Permanent link">¶</a></h3>
+<p>this table is created by firehose<br>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-9.png" data-desc-position="bottom"><img alt="" src="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-9.png"></a></p>
+<p>this table is created by databrew job<br>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-10.png" data-desc-position="bottom"><img alt="" src="../../../../../EKS/solutions/logging/attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-10.png"></a></p>
+<h2 id="conclusion">conclusion<a class="headerlink" href="#conclusion" title="Permanent link">¶</a></h2>
 <p>满足客户需求，基于目前s3中保存的原始数据，并且可以进行字段拆分等二次处理，未来可以使用aws databrew进行更复杂的处理</p>
-<h2 id="alternative">alternative<a class="headerlink" href="#alternative" title="Permanent link">&para;</a></h2>
+<h2 id="alternative">alternative<a class="headerlink" href="#alternative" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="../export-cloudwatch-log-group-to-s3/" title="export-cloudwatch-log-group-to-s3">export-cloudwatch-log-group-to-s3</a> </li>
 </ul>
-<h2 id="reference">reference<a class="headerlink" href="#reference" title="Permanent link">&para;</a></h2>
+<h2 id="reference">reference<a class="headerlink" href="#reference" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="https://aws.amazon.com/blogs/architecture/stream-amazon-cloudwatch-logs-to-a-centralized-account-for-audit-and-analysis/">https://aws.amazon.com/blogs/architecture/stream-amazon-cloudwatch-logs-to-a-centralized-account-for-audit-and-analysis/</a><ul>
 <li><a href="https://github.com/aws-samples/amazon-cloudwatch-log-centralizer">https://github.com/aws-samples/amazon-cloudwatch-log-centralizer</a></li>
@@ -7415,7 +7463,7 @@
       
   <span class="md-source-file__fact">
     <span class="md-icon" title="最后更新">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
     <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="April 9, 2025 08:15:39 CST"><span class="timeago" datetime="2025-04-09T08:15:39+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="April 9, 2025 08:15:39 CST">2025-04-09</span>
   </span>
@@ -7425,7 +7473,7 @@
       
   <span class="md-source-file__fact">
     <span class="md-icon" title="创建日期">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
     </span>
     <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="January 2, 2023 13:44:52 CST"><span class="timeago" datetime="2023-01-02T13:44:52+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="January 2, 2023 13:44:52 CST">2023-01-02</span>
   </span>
@@ -7440,20 +7488,7 @@
 
 
 
-<script src="https://giscus.app/client.js"
-        data-repo="panlm/panlm.github.io"
-        data-repo-id="R_kgDOItMQOQ"
-        data-category="General"
-        data-category-id="DIC_kwDOItMQOc4CgKfp"
-        data-mapping="pathname"
-        data-strict="1"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="light"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
+<script src="https://giscus.app/client.js" data-repo="panlm/panlm.github.io" data-repo-id="R_kgDOItMQOQ" data-category="General" data-category-id="DIC_kwDOItMQOc4CgKfp" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="light" data-lang="en" crossorigin="anonymous" async>
 </script>
                 
               </article>
@@ -7465,7 +7500,7 @@
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   回到页面顶部
 </button>
         
@@ -7497,10 +7532,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "toc.follow", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "toc.follow", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../../../../assets/javascripts/bundle.50899def.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
         <script src="../../../../../js/timeago.min.js"></script>
       
@@ -7513,7 +7548,7 @@
         <script src="../../../../../assets/mkdocs_pagetree_plugin.js"></script>
       
     
-  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": false, "loop": false, "zoomable": true, "draggable": false, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
-document$.subscribe(() => { lightbox.reload() });
-</script></body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": false, "loop": false, "zoomable": true, "draggable": false, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>

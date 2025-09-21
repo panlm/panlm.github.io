@@ -13,6 +13,9 @@ echo ${EXECUTE_IN_CLOUD9:=false}
 export DEBIAN_FRONTEND=noninteractive
 sudo -E apt update
 sudo -E apt-get -yq install jq gettext bash-completion wget argon2 moreutils awscli
+sudo apt install software-properties-common
+sudo add-apt-repository ppa:deadsnakes/ppa -y
+sudo apt update
 
 # install terraform 
 sudo rm -f /usr/share/keyrings/hashicorp-archive-keyring.gpg

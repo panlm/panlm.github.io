@@ -1,7 +1,4 @@
-
-<!doctype html>
-<html lang="zh" class="no-js">
-  <head>
+<!DOCTYPE html><html lang="zh" class="no-js"><head>
     
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
@@ -20,15 +17,15 @@
       
       
       <link rel="icon" href="../../../../../git-attachment/favicons.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.16">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.20">
     
     
       
-        <title>Building Prometheus HA Architect with Thanos - panlm</title>
+        <title>Building Prometheus HA Architect with Thanos - panlm - 中文文档</title>
       
     
     
-      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.7e37652d.min.css">
+      <link rel="stylesheet" href="../../../../../assets/stylesheets/main.e53b48f4.min.css">
       
         
         <link rel="stylesheet" href="../../../../../assets/stylesheets/palette.06af60db.min.css">
@@ -45,7 +42,7 @@
         
         
         <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,700,700i%7CUbuntu+Mono:400,400i,700,700i&display=fallback">
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,700,700i%7CUbuntu+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Ubuntu";--md-code-font:"Ubuntu Mono"}</style>
       
     
@@ -75,16 +72,17 @@
     
     
     
-   <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"/><style>
-    html.glightbox-open { overflow: initial; height: 100%; }
-    .gslide-title { margin-top: 0px; user-select: text; }
-    .gslide-desc { color: #666; user-select: text; }
-    .gslide-image img { background: white; }
-    .gscrollbar-fixer { padding-right: 15px; }
-    .gdesc-inner { font-size: 0.75rem; }
-    body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color);}
-    body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color);}
-    body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color);}</style> <script src="../../../../../assets/javascripts/glightbox.min.js"></script></head>
+  <link href="../../../../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../../../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+            html.glightbox-open { overflow: initial; height: 100%; }
+            .gslide-title { margin-top: 0px; user-select: text; }
+            .gslide-desc { color: #666; user-select: text; }
+            .gslide-image img { background: white; }
+            .gscrollbar-fixer { padding-right: 15px; }
+            .gdesc-inner { font-size: 0.75rem; }
+            body[data-md-color-scheme="slate"] .gdesc-inner { background: var(--md-default-bg-color); }
+            body[data-md-color-scheme="slate"] .gslide-title { color: var(--md-default-fg-color); }
+            body[data-md-color-scheme="slate"] .gslide-desc { color: var(--md-default-fg-color); }
+        </style></head>
   
   
     
@@ -119,21 +117,21 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="页眉">
-    <a href="../../../../" title="panlm" class="md-header__button md-logo" aria-label="panlm" data-md-component="logo">
+    <a href="../../../../" title="panlm - 中文文档" class="md-header__button md-logo" aria-label="panlm - 中文文档" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
     <label class="md-header__button md-icon" for="__drawer">
       
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"></path></svg>
     </label>
     <div class="md-header__title" data-md-component="header-title">
       <div class="md-header__ellipsis">
         <div class="md-header__topic">
           <span class="md-ellipsis">
-            panlm
+            panlm - 中文文档
           </span>
         </div>
         <div class="md-header__topic" data-md-component="header-topic">
@@ -152,20 +150,20 @@
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="light-blue"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_0">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="light-blue" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_0">
     
       <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"></path></svg>
       </label>
     
   
     
     
     
-    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="light-blue"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_1">
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="light-blue" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_1">
     
       <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"></path></svg>
       </label>
     
   
@@ -180,7 +178,7 @@
   <div class="md-select">
     
     <button class="md-header__button md-icon" aria-label="选择当前语言">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m12.87 15.07-2.54-2.51.03-.03A17.5 17.5 0 0 0 14.07 6H17V4h-7V2H8v2H1v2h11.17C11.5 7.92 10.44 9.75 9 11.35 8.07 10.32 7.3 9.19 6.69 8h-2c.73 1.63 1.73 3.17 2.98 4.56l-5.09 5.02L4 19l5-5 3.11 3.11zM18.5 10h-2L12 22h2l1.12-3h4.75L21 22h2zm-2.62 7 1.62-4.33L19.12 17z"></path></svg>
     </button>
     <div class="md-select__inner">
       <ul class="md-select__list">
@@ -207,7 +205,7 @@
       
         <label class="md-header__button md-icon" for="__search">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         </label>
         <div class="md-search" data-md-component="search" role="dialog">
   <label class="md-search__overlay" for="__search"></label>
@@ -216,15 +214,15 @@
       <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
       <label class="md-search__icon md-icon" for="__search">
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
         
-        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"></path></svg>
       </label>
       <nav class="md-search__options" aria-label="查找">
         
         <button type="reset" class="md-search__icon md-icon" title="清空当前内容" aria-label="清空当前内容" tabindex="-1">
           
-          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"></path></svg>
         </button>
       </nav>
       
@@ -250,7 +248,7 @@
         <a href="https://github.com/panlm/panlm.github.io" title="前往仓库" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
   </div>
   <div class="md-source__repository">
     panlm/panlm.github.io
@@ -487,7 +485,7 @@
           
             
               
-              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -498,20 +496,20 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="导航栏" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../../../../" title="panlm" class="md-nav__button md-logo" aria-label="panlm" data-md-component="logo">
+    <a href="../../../../" title="panlm - 中文文档" class="md-nav__button md-logo" aria-label="panlm - 中文文档" data-md-component="logo">
       
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
 
     </a>
-    panlm
+    panlm - 中文文档
   </label>
   
     <div class="md-nav__source">
       <a href="https://github.com/panlm/panlm.github.io" title="前往仓库" class="md-source" data-md-component="source">
   <div class="md-source__icon md-icon">
     
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path fill="currentColor" d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 7.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2025 Fonticons, Inc.--><path d="M439.6 236.1 244 40.5c-5.4-5.5-12.8-8.5-20.4-8.5s-15 3-20.4 8.4L162.5 81l51.5 51.5c27.1-9.1 52.7 16.8 43.4 43.7l49.7 49.7c34.2-11.8 61.2 31 35.5 56.7-26.5 26.5-70.2-2.9-56-37.3L240.3 199v121.9c25.3 12.5 22.3 41.8 9.1 55-6.4 6.4-15.2 10.1-24.3 10.1s-17.8-3.6-24.3-10.1c-17.6-17.6-11.1-46.9 11.2-56v-123c-20.8-8.5-24.6-30.7-18.6-45L142.6 101 8.5 235.1C3 240.6 0 247.9 0 255.5s3 15 8.5 20.4l195.6 195.7c5.4 5.4 12.7 8.4 20.4 8.4s15-3 20.4-8.4l194.7-194.7c5.4-5.4 8.4-12.8 8.4-20.4s-3-15-8.4-20.4"></path></svg>
   </div>
   <div class="md-source__repository">
     panlm/panlm.github.io
@@ -575,7 +573,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2">
         
           
           <div class="md-nav__link md-nav__container">
@@ -892,7 +890,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_1">
         
           
           <label class="md-nav__link" for="__nav_3_2_1" id="__nav_3_2_1_label" tabindex="0">
@@ -1150,7 +1148,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_2">
         
           
           <label class="md-nav__link" for="__nav_3_2_2" id="__nav_3_2_2_label" tabindex="0">
@@ -1795,7 +1793,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_1">
         
           
           <label class="md-nav__link" for="__nav_3_2_3_1" id="__nav_3_2_3_1_label" tabindex="0">
@@ -1901,7 +1899,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_2">
         
           
           <label class="md-nav__link" for="__nav_3_2_3_2" id="__nav_3_2_3_2_label" tabindex="0">
@@ -1979,7 +1977,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_3">
         
           
           <label class="md-nav__link" for="__nav_3_2_3_3" id="__nav_3_2_3_3_label" tabindex="0">
@@ -2078,7 +2076,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_4">
         
           
           <label class="md-nav__link" for="__nav_3_2_3_4" id="__nav_3_2_3_4_label" tabindex="0">
@@ -2172,7 +2170,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_5">
         
           
           <label class="md-nav__link" for="__nav_3_2_3_5" id="__nav_3_2_3_5_label" tabindex="0">
@@ -2822,7 +2820,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_7">
         
           
           <label class="md-nav__link" for="__nav_3_2_3_7" id="__nav_3_2_3_7_label" tabindex="0">
@@ -2979,7 +2977,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_3_8">
         
           
           <label class="md-nav__link" for="__nav_3_2_3_8" id="__nav_3_2_3_8_label" tabindex="0">
@@ -3123,7 +3121,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_4">
         
           
           <label class="md-nav__link" for="__nav_3_2_4" id="__nav_3_2_4_label" tabindex="0">
@@ -3282,7 +3280,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_3">
         
           
           <label class="md-nav__link" for="__nav_3_3" id="__nav_3_3_label" tabindex="0">
@@ -3431,7 +3429,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_4">
         
           
           <label class="md-nav__link" for="__nav_3_4" id="__nav_3_4_label" tabindex="0">
@@ -3590,7 +3588,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
         
           
           <div class="md-nav__link md-nav__container">
@@ -3821,7 +3819,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5">
         
           
           <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
@@ -3993,6 +3991,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -4004,7 +4006,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6">
         
           
           <div class="md-nav__link md-nav__container">
@@ -4059,6 +4061,29 @@
     </span>
   
 
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../GenAI/claude-code/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    claude-code
+    
+  </span>
   
 
       </a>
@@ -4134,6 +4159,29 @@
   
   <span class="md-ellipsis">
     dify.ai
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../../GenAI/litellm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    litellm
     
   </span>
   
@@ -4280,7 +4328,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7">
         
           
           <div class="md-nav__link md-nav__container">
@@ -4344,7 +4392,7 @@
         
   
   
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 12a8 8 0 0 0-8-8 8 8 0 0 0-8 8 8 8 0 0 0 8 8 8 8 0 0 0 8-8m2 0a10 10 0 0 1-10 10A10 10 0 0 1 2 12 10 10 0 0 1 12 2a10 10 0 0 1 10 10M10 9.5c0 .8-.7 1.5-1.5 1.5S7 10.3 7 9.5 7.7 8 8.5 8s1.5.7 1.5 1.5m7 0c0 .8-.7 1.5-1.5 1.5S14 10.3 14 9.5 14.7 8 15.5 8s1.5.7 1.5 1.5m-5 7.73c-1.75 0-3.29-.73-4.19-1.81L9.23 14c.45.72 1.52 1.23 2.77 1.23s2.32-.51 2.77-1.23l1.42 1.42c-.9 1.08-2.44 1.81-4.19 1.81"></path></svg>
   
   <span class="md-ellipsis">
     github-page-howto
@@ -4671,7 +4719,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_14" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_14">
         
           
           <label class="md-nav__link" for="__nav_7_14" id="__nav_7_14_label" tabindex="0">
@@ -4842,7 +4890,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_15" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_15">
         
           
           <label class="md-nav__link" for="__nav_7_15" id="__nav_7_15_label" tabindex="0">
@@ -5044,7 +5092,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8">
         
           
           <label class="md-nav__link" for="__nav_8" id="__nav_8_label" tabindex="0">
@@ -5127,7 +5175,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_1">
         
           
           <label class="md-nav__link" for="__nav_8_1" id="__nav_8_1_label" tabindex="0">
@@ -5708,7 +5756,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_2">
         
           
           <label class="md-nav__link" for="__nav_8_2" id="__nav_8_2_label" tabindex="0">
@@ -5834,7 +5882,7 @@
         
   
   
-    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m7.17 7.91 1.73 1 3.18-5.49 2.25 3.89-2.6 1.5 5.46 1.46 1.47-5.46-2.6 1.5-2.25-3.9a1.99 1.99 0 0 0-2.73-.73c-.27.15-.5.37-.67.63M10 20v-2H3.66l2.24-3.9 2.6 1.5-1.46-5.46-5.47 1.46 2.6 1.5L1.92 17a2.003 2.003 0 0 0 1.62 3m15.52-8.5-1.74 1L20.5 18H16v-3l-4 4 4 4v-3h4.5c1.11 0 2-.89 2-2 0-.31-.08-.62-.22-.89Z"/></svg>
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="m7.17 7.91 1.73 1 3.18-5.49 2.25 3.89-2.6 1.5 5.46 1.46 1.47-5.46-2.6 1.5-2.25-3.9a1.99 1.99 0 0 0-2.73-.73c-.27.15-.5.37-.67.63M10 20v-2H3.66l2.24-3.9 2.6 1.5-1.46-5.46-5.47 1.46 2.6 1.5L1.92 17a2.003 2.003 0 0 0 1.62 3m15.52-8.5-1.74 1L20.5 18H16v-3l-4 4 4 4v-3h4.5c1.11 0 2-.89 2-2 0-.31-.08-.62-.22-.89Z"></path></svg>
   
   <span class="md-ellipsis">
     aws-nuke
@@ -6478,7 +6526,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_3" >
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_8_3">
         
           
           <label class="md-nav__link" for="__nav_8_3" id="__nav_8_3_label" tabindex="0">
@@ -6592,7 +6640,7 @@
             
             
               
-              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc">
                 <div class="md-sidebar__scrollwrap">
                   <div class="md-sidebar__inner">
                     
@@ -6786,7 +6834,7 @@
                 
                   
 
-  <nav class="md-tags" >
+  <nav class="md-tags">
     
       
       
@@ -6815,11 +6863,11 @@
 
 <div class="admonition warning">
 <p class="admonition-title">This pages has been obseleted.</p>
-<p>released on aws<br />
+<p>released on aws<br>
 <a href="https://aws.amazon.com/cn/blogs/china/extending-the-prometheus-high-availability-monitoring-architecture-using-thanos/">https://aws.amazon.com/cn/blogs/china/extending-the-prometheus-high-availability-monitoring-architecture-using-thanos/</a></p>
 </div>
-<h1 id="thanos-prometheus">使用 Thanos 扩展 Prometheus 高可用监控架构<a class="headerlink" href="#thanos-prometheus" title="Permanent link">&para;</a></h1>
-<h2 id="_1">架构描述<a class="headerlink" href="#_1" title="Permanent link">&para;</a></h2>
+<h1 id="thanos-prometheus">使用 Thanos 扩展 Prometheus 高可用监控架构<a class="headerlink" href="#thanos-prometheus" title="Permanent link">¶</a></h1>
+<h2 id="_1">架构描述<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
 <p>Prometheus 是一款开源的监控和报警工具，专为容器化和云原生架构的设计，通过基于 HTTP 的 Pull 模式采集时序数据，提供功能强大的查询语言 PromQL，并可视化呈现监控指标与生成报警信息。客户普遍采用其用于 Kubernetes 的监控体系建设。Amazon 也在 2021 年 9 月正式发布了托管的 Prometheus 服务（Amazon Managed Service for Prometheus）简化客户部署和使用。并且在 2023 年 11 月针对 EKS 发布了托管的 Prometheus 服务的无代理采集功能（<a href="https://aws.amazon.com/about-aws/whats-new/2023/11/amazon-managed-service-prometheus-agentless-collector-metrics-eks/">新闻稿</a>），进一步方便客户无需提前规划，从而可以开箱即用的使用 Prometheus 的相关组件。</p>
 <p>截止本文发布之日，在亚马逊中国区域暂时没有发布托管的 Prometheus 服务。因此针对中国客户如何部署一套 Prometheus 监控平台的最佳实践指导可以帮助客户快速使用 Prometheus，从而将精力专注于业务需求。</p>
 <p>独立 Kubernetes 集群通常使用 <a href="https://github.com/prometheus-operator/prometheus-operator">Prometheus Operator</a> 部署所有相关组件包括 Alert Manager、Grafana 等。这种独立部署的监控架构优点是部署方便，数据持久化使用 EBS 也可以满足大部分场景下查询性能的要求，但缺点也显而易见，即无法保存太长时间的历史数据。而且当客户环境中集群数量较多，监控平台自身的可用性和可靠性要求较高，同时希望提供全局查询时，管理和维护的工作量也随之增加。</p>
@@ -6834,24 +6882,24 @@
 <li>Query（查询器）：实现 Prometheus 的 v1 API，查询并汇总来自底层组件的数据。将所有数据源添加为 Query 的 Endpoint，包括 Sidecar、 Store、 Receiver 等。</li>
 <li>Query Frontend（查询前端）：实现 Prometheus 的 v1 API，将其代理给查询器，同时缓存响应，并可以拆分查询以提高性能。</li>
 </ul>
-<p>第一种监控架构（对应下图蓝色集群及组件）：<br />
-<a class="glightbox" href="../attachments/TC-prometheus-ha-architect-with-thanos/IMG-TC-prometheus-ha-architect-with-thanos.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh.png" src="../attachments/TC-prometheus-ha-architect-with-thanos/IMG-TC-prometheus-ha-architect-with-thanos.png" title="attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh.png" /></a></p>
+<p>第一种监控架构（对应下图蓝色集群及组件）：<br>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../attachments/TC-prometheus-ha-architect-with-thanos/IMG-TC-prometheus-ha-architect-with-thanos.png" data-desc-position="bottom"><img alt="attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh.png" src="../attachments/TC-prometheus-ha-architect-with-thanos/IMG-TC-prometheus-ha-architect-with-thanos.png" title="attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh.png"></a></p>
 <ul>
 <li>被监控集群（Observee）部署 Prometheus 且启用 Thanos 的 Sidecar 方式将监控的历史数据定期归档到 S3，通过部署 Thanos Store 组件查询历史数据（图中 Store 组件部署在集中监控集群中）；</li>
 <li>集中监控集群（Observer）除了部署 Thanos 组件之外，将统一部署 Grafana 作为 Dashboard 展示。</li>
 </ul>
-<p>第二种监控架构（对应下图红色集群及组件）：<br />
-<a class="glightbox" href="../../../../../EKS/solutions/monitor/attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-1.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-1.png" src="../../../../../EKS/solutions/monitor/attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-1.png" title="attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-1.png" /></a></p>
+<p>第二种监控架构（对应下图红色集群及组件）：<br>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../../EKS/solutions/monitor/attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-1.png" data-desc-position="bottom"><img alt="attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-1.png" src="../../../../../EKS/solutions/monitor/attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-1.png" title="attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-1.png"></a></p>
 <ul>
 <li>被监控集群（Observee）除了启用 Thanos Sidecar 之外，还启用了 Prometheus 的 Remote Write 功能，将未归档的数据以 WAL 方式远程传输到部署在集中监控集群（Observer）上的 Thanos Receiver，以保证数据的冗余度。 Thanos Receiver 同样可以将历史监控数据归档到 S3 上，且支持被 Thanos Query 直接查询，同时避免直接查询 Sidecar 而给被监控集群带来额外的性能损耗。</li>
 </ul>
-<p>第三种监控架构（对应下图黄色集群及组件）：<br />
-<a class="glightbox" href="../../../../../EKS/solutions/monitor/attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-2.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-2.png" src="../../../../../EKS/solutions/monitor/attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-2.png" title="attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-2.png" /></a></p>
+<p>第三种监控架构（对应下图黄色集群及组件）：<br>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../../EKS/solutions/monitor/attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-2.png" data-desc-position="bottom"><img alt="attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-2.png" src="../../../../../EKS/solutions/monitor/attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-2.png" title="attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-2.png"></a></p>
 <ul>
 <li>在多集群监控场景下，一般会在每个集群部署独立的 Prometheus 组件。Prometheus 提供 Agent Mode 针对这样的场景可以最小化资源占用，直接启用 Remote Write 功能将监控数据集中保存 （可以是另一个 Prometheus 集群，或者 Thanos Receiver 组件）。</li>
 </ul>
-<p>第四种监控架构（对应上图绿色集群及组件）：<br />
-<a class="glightbox" href="../../../../../EKS/solutions/monitor/attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-3.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-3.png" src="../../../../../EKS/solutions/monitor/attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-3.png" title="attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-3.png" /></a></p>
+<p>第四种监控架构（对应上图绿色集群及组件）：<br>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../../EKS/solutions/monitor/attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-3.png" data-desc-position="bottom"><img alt="attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-3.png" src="../../../../../EKS/solutions/monitor/attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-3.png" title="attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-3.png"></a></p>
 <ul>
 <li>在 AWS 上可以使用托管的 Prometheus 服务作为集中监控数据持久化，提供最好的性能和最低的维护成本。每个被监控集群可以使用无代理采集功能（<a href="https://aws.amazon.com/about-aws/whats-new/2023/11/amazon-managed-service-prometheus-agentless-collector-metrics-eks/">新闻稿</a>），进一步方便客户无需提前规划，从而可以开箱即用的使用 Prometheus 的相关组件。</li>
 </ul>
@@ -6872,8 +6920,8 @@
 </ul>
 </li>
 </ul>
-<p>第二种监控架构（对应上图红色集群及组件）<br />
-    适用场景<br />
+<p>第二种监控架构（对应上图红色集群及组件）<br>
+    适用场景<br>
         在 Thanos 0.19 版本之前，Sidecar 还没有实现 StoreAPI 时，只能通过 Receive 查询最新的性能数据。适合需要多副本监控数据的特殊场景。</p>
 <ul>
 <li>优点<ul>
@@ -6918,20 +6966,20 @@
 </ul>
 </li>
 </ul>
-<h2 id="walkthrough">walkthrough<a class="headerlink" href="#walkthrough" title="Permanent link">&para;</a></h2>
-<h3 id="prometheus-on-eks">Prometheus on EKS<a class="headerlink" href="#prometheus-on-eks" title="Permanent link">&para;</a></h3>
+<h2 id="walkthrough">walkthrough<a class="headerlink" href="#walkthrough" title="Permanent link">¶</a></h2>
+<h3 id="prometheus-on-eks">Prometheus on EKS<a class="headerlink" href="#prometheus-on-eks" title="Permanent link">¶</a></h3>
 <p>Prometheus Operator（<a href="https://github.com/prometheus-operator/prometheus-operator">link</a>）提供 Kubernetes 原生部署和管理 Prometheus 及相关监控组件的功能。该项目的目的是简化和自动配置 Kubernetes 集群基于 Prometheus 的监控堆栈。本实验基于 Prometheus Operator 部署作为基础，并通过 values.yaml 参数文件定制。 本实验中将使用 Terraform 快速创建 EKS 集群，并且自动部署上图中相关的 Prometheus 监控架构。</p>
 <ul>
-<li>本实验中使用了预设的子域名用于简化服务之间的访问和对外暴露。需要提前在 Route53 中创建该子域名（复制<a href="https://panlm.github.io/EKS/addons/externaldns-for-route53/#func-setup-hosted-zone-">链接</a>中的函数并粘贴到命令行）<br />
+<li>本实验中使用了预设的子域名用于简化服务之间的访问和对外暴露。需要提前在 Route53 中创建该子域名（复制<a href="https://panlm.github.io/EKS/addons/externaldns-for-route53/#func-setup-hosted-zone-">链接</a>中的函数并粘贴到命令行）<br>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">PARENT_DOMAIN_NAME</span><span class="o">=</span>eks0103.aws.panlm.xyz
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>create-hosted-zone<span class="w"> </span>-n<span class="w"> </span><span class="si">${</span><span class="nv">PARENT_DOMAIN_NAME</span><span class="si">}</span>
 </code></pre></div></li>
-<li>然后在上游 Route53 中创建对应的 NS 记录（复制<a href="https://panlm.github.io/CLI/awscli/route53-cmd/?h=create+ns#func-create-ns-record-">链接</a>中的函数并粘贴到命令行），此处离开 Cloud9 窗口，或者确保命令行有上游 Route53 相应的权限<br />
+<li>然后在上游 Route53 中创建对应的 NS 记录（复制<a href="https://panlm.github.io/CLI/awscli/route53-cmd/?h=create+ns#func-create-ns-record-">链接</a>中的函数并粘贴到命令行），此处离开 Cloud9 窗口，或者确保命令行有上游 Route53 相应的权限<br>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">PARENT_DOMAIN_NAME</span><span class="o">=</span>eks0103.panlm.xyz
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">NS</span><span class="o">=</span><span class="s2">&quot;copy NS records from previous output and paste here&quot;</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>create-ns-record<span class="w"> </span>-n<span class="w"> </span><span class="nv">$PARENT_DOMAIN_NAME</span><span class="w"> </span>-s<span class="w"> </span><span class="s2">&quot;</span><span class="nv">$NS</span><span class="s2">&quot;</span><span class="w"> </span><span class="c1"># double quote is mandortory</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nv">NS</span><span class="o">=</span><span class="s2">"copy NS records from previous output and paste here"</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>create-ns-record<span class="w"> </span>-n<span class="w"> </span><span class="nv">$PARENT_DOMAIN_NAME</span><span class="w"> </span>-s<span class="w"> </span><span class="s2">"</span><span class="nv">$NS</span><span class="s2">"</span><span class="w"> </span><span class="c1"># double quote is mandortory</span>
 </code></pre></div></li>
-<li>创建本实验的目录，后续将在此路径下克隆 2 个 REPO，分别用于创建 EKS 集群的 Terraform 代码和 Thanos 配置示例<br />
+<li>创建本实验的目录，后续将在此路径下克隆 2 个 REPO，分别用于创建 EKS 集群的 Terraform 代码和 Thanos 配置示例<br>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nv">LAB_HOME</span><span class="o">=</span>~/environment/lab-thanos
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>mkdir<span class="w"> </span>-p<span class="w"> </span><span class="si">${</span><span class="nv">LAB_HOME</span><span class="si">}</span>
 </code></pre></div></li>
@@ -6939,7 +6987,7 @@
 <li>prometheus: 包含针对 Prometheus Operator 的定制 Values</li>
 <li>s3-config: 提供 Thanos 组件访问 S3 的相关配置信息，这些配置将会被创建成 kubernetes 的 secret</li>
 <li>thanos-values: 包含针对 <a href="https://github.com/bitnami/charts/tree/main/bitnami/thanos">bitnami thanos chart</a> 的定制 Values</li>
-<li>thanos-yaml: 包含自建 Thanos 使用的相关 Yaml 定义文件。更多模板参考 <a href="https://github.com/thanos-io/kube-thanos">link</a><br />
+<li>thanos-yaml: 包含自建 Thanos 使用的相关 Yaml 定义文件。更多模板参考 <a href="https://github.com/thanos-io/kube-thanos">link</a><br>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">LAB_HOME</span><span class="si">}</span>
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/panlm/thanos-example.git
 <a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">cd</span><span class="w"> </span>thanos-example
@@ -6947,25 +6995,25 @@
 </ul>
 </li>
 <li>
-<p>使用下面参数进行创建本实验使用的配置文件，位于 <code>POC</code> 目录下。子域名 <code>thanos</code> 对应下一步中的 <code>environment_name</code><br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">CLUSTER_NAME_1</span><span class="o">=</span>ekscluster1
+<p>使用下面参数进行创建本实验使用的配置文件，位于 <code>POC</code> 目录下。子域名 <code>thanos</code> 对应下一步中的 <code>environment_name</code><br>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">CLUSTER_NAME_1</span><span class="o">=</span>ekscluster1
 <a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="nv">CLUSTER_NAME_2</span><span class="o">=</span>ekscluster2
 <a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="nv">CLUSTER_NAME_3</span><span class="o">=</span>ekscluster3
 <a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="nv">DOMAIN_NAME</span><span class="o">=</span>thanos.<span class="si">${</span><span class="nv">PARENT_DOMAIN_NAME</span><span class="si">}</span><span class="w"> </span><span class="c1"># this domain will be created by terraform</span>
 <a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="nv">THANOS_BUCKET_NAME</span><span class="o">=</span>thanos-store-<span class="k">$(</span><span class="nv">TZ</span><span class="o">=</span>EAT-8<span class="w"> </span>date<span class="w"> </span>+%Y%m%d-%H%M%S<span class="k">)</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span><span class="m">169</span>.254.169.254/latest/dynamic/instance-identity/document<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">&#39;.region&#39;</span><span class="k">)</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span><span class="m">169</span>.254.169.254/latest/dynamic/instance-identity/document<span class="w"> </span><span class="p">|</span><span class="w"> </span>jq<span class="w"> </span>-r<span class="w"> </span><span class="s1">'.region'</span><span class="k">)</span>
 <a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="nb">export</span><span class="w"> </span>CLUSTER_NAME_1<span class="w"> </span>CLUSTER_NAME_2<span class="w"> </span>CLUSTER_NAME_3<span class="w"> </span>DOMAIN_NAME<span class="w"> </span>THANOS_BUCKET_NAME<span class="w"> </span>AWS_DEFAULT_REGION
 <a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>
 <a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>aws<span class="w"> </span>s3<span class="w"> </span>mb<span class="w"> </span>s3://<span class="si">${</span><span class="nv">THANOS_BUCKET_NAME</span><span class="si">}</span>
 <a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>
 <a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>mkdir<span class="w"> </span>POC
 <a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="nb">cd</span><span class="w"> </span>POC-template
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>find<span class="w"> </span>./<span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;[a-z]*&quot;</span><span class="w"> </span>-exec<span class="w"> </span>mkdir<span class="w"> </span>../POC/<span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>find<span class="w"> </span>./<span class="w"> </span>-type<span class="w"> </span>d<span class="w"> </span>-name<span class="w"> </span><span class="s2">"[a-z]*"</span><span class="w"> </span>-exec<span class="w"> </span>mkdir<span class="w"> </span>../POC/<span class="o">{}</span><span class="w"> </span><span class="se">\;</span>
 <a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>find<span class="w"> </span>./<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="s2">&quot;*&quot;</span><span class="w"> </span><span class="p">|</span><span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>filename<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">  </span>cat<span class="w"> </span><span class="nv">$filename</span><span class="w"> </span><span class="p">|</span>envsubst<span class="w"> </span><span class="s1">&#39;$CLUSTER_NAME_1 $CLUSTER_NAME_2 $CLUSTER_NAME_3 $DOMAIN_NAME $THANOS_BUCKET_NAME $AWS_DEFAULT_REGION&#39;</span><span class="w"> </span>&gt;<span class="w"> </span>../POC/<span class="nv">$filename</span>
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>find<span class="w"> </span>./<span class="w"> </span>-type<span class="w"> </span>f<span class="w"> </span>-name<span class="w"> </span><span class="s2">"*"</span><span class="w"> </span><span class="p">|</span><span class="k">while</span><span class="w"> </span><span class="nb">read</span><span class="w"> </span>filename<span class="w"> </span><span class="p">;</span><span class="w"> </span><span class="k">do</span>
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="w">  </span>cat<span class="w"> </span><span class="nv">$filename</span><span class="w"> </span><span class="p">|</span>envsubst<span class="w"> </span><span class="s1">'$CLUSTER_NAME_1 $CLUSTER_NAME_2 $CLUSTER_NAME_3 $DOMAIN_NAME $THANOS_BUCKET_NAME $AWS_DEFAULT_REGION'</span><span class="w"> </span>&gt;<span class="w"> </span>../POC/<span class="nv">$filename</span>
 <a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="k">done</span>
-</code></pre></div></p>
+</code></pre></div><p></p>
 </li>
 <li>
 <p>获取 Terraform 代码开始创建环境。目录说明如下：</p>
@@ -6973,59 +7021,59 @@
 <li>environment 目录：创建实验公用的 VPC 等资源；</li>
 <li>ekscluster1 目录：创建目录同名 EKS 集群，对应第一种监控架构图中所有组件；</li>
 <li>ekscluster2 目录：创建目录同名 EKS 集群，对应第二种监控架构图中红色集群及组件；</li>
-<li>ekscluster3 目录：创建目录同名 EKS 集群，对应第三种监控架构图中黄色集群及组件；<br />
+<li>ekscluster3 目录：创建目录同名 EKS 集群，对应第三种监控架构图中黄色集群及组件；<br>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">LAB_HOME</span><span class="si">}</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/panlm/eks-blueprints-clusters.git
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="nb">cd</span><span class="w"> </span>eks-blueprints-clusters/multi-cluster-thanos
 </code></pre></div></li>
 </ul>
 </li>
-<li>修改 <code>terraform.tfvars</code> 配置如下<br />
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>aws_region          = &quot;us-east-2&quot;
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>environment_name    = &quot;thanos&quot; # sub-domain will be created by terraform
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>cluster_version     = &quot;1.27&quot;
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>hosted_zone_name    = &quot;eks0103.aws.panlm.xyz&quot; # your existing hosted zone
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>eks_admin_role_name = &quot;&quot; # Additional role admin in the cluster 
+<li>修改 <code>terraform.tfvars</code> 配置如下<br>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>aws_region          = "us-east-2"
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>environment_name    = "thanos" # sub-domain will be created by terraform
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>cluster_version     = "1.27"
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>hosted_zone_name    = "eks0103.aws.panlm.xyz" # your existing hosted zone
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a>eks_admin_role_name = "" # Additional role admin in the cluster 
 </code></pre></div></li>
-<li>创建独立的环境用于本实验，包括 VPC，Secret，环境特定的子域名等<br />
+<li>创建独立的环境用于本实验，包括 VPC，Secret，环境特定的子域名等<br>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">cd</span><span class="w"> </span>environment
 <a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>terraform<span class="w"> </span>init
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>terraform<span class="w"> </span>apply<span class="w"> </span>-auto-approve
 </code></pre></div></li>
-<li>创建 ekscluster1（目录名即为 EKS 集群名），并根据命令行输出保存 kubeconfig 配置。创建集群后将自动检查 <code>thanos-example/POC</code> 路径下相关文件存在，则安装 Prometheus 和 Thanos 组件。<br />
+<li>创建 ekscluster1（目录名即为 EKS 集群名），并根据命令行输出保存 kubeconfig 配置。创建集群后将自动检查 <code>thanos-example/POC</code> 路径下相关文件存在，则安装 Prometheus 和 Thanos 组件。<br>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">cd</span><span class="w"> </span>../ekscluster1
 <a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>terraform<span class="w"> </span>init
 <a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>terraform<span class="w"> </span>apply<span class="w"> </span>-auto-approve
 </code></pre></div></li>
 <li>按照上述操作分别进入其他两个目录创建 ekscluster2 和 ekscluster3，可以通过其他 terminal 同时操作。</li>
 </ul>
-<h3 id="thanos">Thanos 组件<a class="headerlink" href="#thanos" title="Permanent link">&para;</a></h3>
+<h3 id="thanos">Thanos 组件<a class="headerlink" href="#thanos" title="Permanent link">¶</a></h3>
 <p>方便大家了解 Thanos 的配置和工作原理，简要说明下 <code>thanos-example/thanos-yaml</code> 目录下的相关配置，方便按需修改并使用。</p>
-<h4 id="store">Store<a class="headerlink" href="#store" title="Permanent link">&para;</a></h4>
+<h4 id="store">Store<a class="headerlink" href="#store" title="Permanent link">¶</a></h4>
 <p>Store 组件将只用于访问 S3 上的历史数据，每个 Store 使用独立的 secret 配置，且对应一个被监控集群。</p>
 <ul>
-<li>查看创建的 s3 的 secret 和 service account<br />
+<li>查看创建的 s3 的 secret 和 service account<br>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>kubectl<span class="w"> </span>get<span class="w"> </span>secret<span class="w"> </span>-n<span class="w"> </span>thanos
 <a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>kubectl<span class="w"> </span>get<span class="w"> </span>sa<span class="w"> </span>-n<span class="w"> </span>thanos
 <a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>kubectl<span class="w"> </span>get<span class="w"> </span>po<span class="w"> </span>-n<span class="w"> </span>thanos<span class="w"> </span><span class="p">|</span>grep<span class="w"> </span>store
 </code></pre></div></li>
 </ul>
-<h4 id="query-query-frontend">Query 和 Query Frontend<a class="headerlink" href="#query-query-frontend" title="Permanent link">&para;</a></h4>
+<h4 id="query-query-frontend">Query 和 Query Frontend<a class="headerlink" href="#query-query-frontend" title="Permanent link">¶</a></h4>
 <p>Query Frontend 对外提供与 Prometheus 兼容的 API，可以直接作为 Prometheus 类型的数据源添加到 Grafana 中；Query 是无状态且可以横向扩展，对外提供 Prometheus 兼容的 API 供外部工具查询，例如 Grafana，本实验中 Query Frontend 实现将查询分片（split），使用 Query 组件提供查询的横向扩展能力。</p>
 <ul>
-<li><code>query-frontend-deployment</code> 文件中指定了如下分割查询的参数，对外域名定义在 <code>query-frontend-service</code> 文件中<br />
+<li><code>query-frontend-deployment</code> 文件中指定了如下分割查询的参数，对外域名定义在 <code>query-frontend-service</code> 文件中<br>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--query-range.split-interval=4h</span>
 <a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a><span class="w">        </span><span class="p p-Indicator">-</span><span class="w"> </span><span class="l l-Scalar l-Scalar-Plain">--labels.split-interval=4h</span>
 </code></pre></div></li>
 <li><code>query-deployment</code> 文件中指定了 Query 组件查询目标端点，包括 Sidecar，Receiver，Store 等，本实验均通过域名访问</li>
 </ul>
-<h4 id="receive">Receive<a class="headerlink" href="#receive" title="Permanent link">&para;</a></h4>
+<h4 id="receive">Receive<a class="headerlink" href="#receive" title="Permanent link">¶</a></h4>
 <ul>
 <li>部署独立的 Thanos Receive 组件，分别对应 ekscluster2 和 ekscluster3。建议分配 Receive 组件的资源和数量需要和被监控集群中 Prometheus 采集组件的资源和数量相当。</li>
 </ul>
-<h3 id="grafana">Grafana<a class="headerlink" href="#grafana" title="Permanent link">&para;</a></h3>
+<h3 id="grafana">Grafana<a class="headerlink" href="#grafana" title="Permanent link">¶</a></h3>
 <p>使用 Prometheus Operator 部署 Grafana 将自带一些常用的 Dashboard，我们可以进行简单配置实现多集群数据查询。</p>
-<h4 id="dashboard">查看多集群 Dashboard<a class="headerlink" href="#dashboard" title="Permanent link">&para;</a></h4>
+<h4 id="dashboard">查看多集群 Dashboard<a class="headerlink" href="#dashboard" title="Permanent link">¶</a></h4>
 <ul>
 <li>访问 Grafana 域名，可以通过 <code>thanos-example/POC/prometheus/values-ekscluster1-1.yaml</code> 中查看</li>
 <li>修改 Grafana 默认密码 <code>prom-operator</code></li>
@@ -7035,24 +7083,24 @@
 <li>或者上文提到的 Query Frontend Service 绑定的域名访问</li>
 </ul>
 </li>
-<li>查看预置的 dashboard： <code>Kubernetes / Compute Resources / Multi-Cluster</code> <br />
-<a class="glightbox" href="../../../../../EKS/solutions/monitor/attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-4.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-4.png" src="../../../../../EKS/solutions/monitor/attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-4.png" title="attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-4.png" /></a></li>
+<li>查看预置的 dashboard： <code>Kubernetes / Compute Resources / Multi-Cluster</code> <br>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../../EKS/solutions/monitor/attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-4.png" data-desc-position="bottom"><img alt="attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-4.png" src="../../../../../EKS/solutions/monitor/attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-4.png" title="attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-4.png"></a></li>
 </ul>
-<h4 id="dashboard_1">查看其他 Dashboard<a class="headerlink" href="#dashboard_1" title="Permanent link">&para;</a></h4>
+<h4 id="dashboard_1">查看其他 Dashboard<a class="headerlink" href="#dashboard_1" title="Permanent link">¶</a></h4>
 <p>通过简单修改即可将其他预置 dashboard 修改为支持多集群查询：</p>
 <ul>
 <li>打开预置的 dashboard：<code>Kubernetes / Compute Resources / Namespace (Pods)</code></li>
 <li>点击齿轮图标进入 Dashboard Settings 界面</li>
 <li>在 Variable 中 找到 <code>cluster</code> 变量，按照下面截图修改<ul>
 <li>Show on dashboard 设置为 <code>Label and value</code></li>
-<li>Data source 设置为 <code>thanoslab</code><br />
-<a class="glightbox" href="../../../../../EKS/solutions/monitor/attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-5.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-5.png" src="../../../../../EKS/solutions/monitor/attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-5.png" title="attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-5.png" /></a></li>
+<li>Data source 设置为 <code>thanoslab</code><br>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../../EKS/solutions/monitor/attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-5.png" data-desc-position="bottom"><img alt="attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-5.png" src="../../../../../EKS/solutions/monitor/attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-5.png" title="attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-5.png"></a></li>
 </ul>
 </li>
 <li>点击 Apply 保存变量修改</li>
 <li>点击 Save As 保存 Dashboard 即可</li>
 </ul>
-<h4 id="thanos-query-frontend">查看 Thanos Query Frontend 数据源接口<a class="headerlink" href="#thanos-query-frontend" title="Permanent link">&para;</a></h4>
+<h4 id="thanos-query-frontend">查看 Thanos Query Frontend 数据源接口<a class="headerlink" href="#thanos-query-frontend" title="Permanent link">¶</a></h4>
 <ul>
 <li>打开 Frontend Service 的外部域名: <code>thanos-query-frontend.${DOMAIN_NAME}</code><ul>
 <li>Receive 表中，Min Time 有值表示 Prometheus 使用 Remote Write 将数据写入 Receive 成功</li>
@@ -7061,21 +7109,21 @@
 </ul>
 </li>
 <li>数据通过 Label 标注来源的集群名称以及采集数据的 Pod 名称</li>
-<li>本实验在 Prometheus 中设置了 3 个 <code>ExternalLabel</code>，包括 <code>cluster</code>、<code>cluster_name</code>、<code>origin_prometheus</code><br />
-<a class="glightbox" href="../../../../../EKS/solutions/monitor/attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-6.png" data-type="image" data-width="auto" data-height="auto" data-desc-position="bottom"><img alt="attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-6.png" src="../../../../../EKS/solutions/monitor/attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-6.png" title="attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-6.png" /></a></li>
+<li>本实验在 Prometheus 中设置了 3 个 <code>ExternalLabel</code>，包括 <code>cluster</code>、<code>cluster_name</code>、<code>origin_prometheus</code><br>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../../EKS/solutions/monitor/attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-6.png" data-desc-position="bottom"><img alt="attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-6.png" src="../../../../../EKS/solutions/monitor/attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-6.png" title="attachments/TC-prometheus-ha-architect-with-thanos.zh/IMG-TC-prometheus-ha-architect-with-thanos.zh-6.png"></a></li>
 </ul>
-<h3 id="_2">清理环境<a class="headerlink" href="#_2" title="Permanent link">&para;</a></h3>
+<h3 id="_2">清理环境<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
 <ul>
-<li>按照下面步骤清理集群 <code>ekscluster1</code> 相关内容<br />
+<li>按照下面步骤清理集群 <code>ekscluster1</code> 相关内容<br>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="nb">cd</span><span class="w"> </span><span class="si">${</span><span class="nv">LAB_HOME</span><span class="si">}</span>
 <a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="nb">cd</span><span class="w"> </span>eks-blueprints-clusters/multi-cluster-thanos/<span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>
 <a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>../tear-down.sh
 </code></pre></div></li>
 <li>同理进入 <code>ekscluster2</code> 和 <code>ekscluster3</code> 目录执行脚本清理集群资源 </li>
 </ul>
-<h2 id="_3">结论<a class="headerlink" href="#_3" title="Permanent link">&para;</a></h2>
+<h2 id="_3">结论<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>Prometheus 是一款开源的监控和报警工具，专为容器化和云原生架构的设计。客户普遍采用其用于 Kubernetes 的监控体系建设。Thanos是一套开源组件，构建在 Prometheus 之上，用以解决 Prometheus 在多集群大规模环境下的高可用性、可扩展性限制。当需要做历史性能数据分析，或者使用 Prometheus 进行成本分析的场景都会依赖于较长时间的历史数据。Thanos 主要通过接收并存储 Prometheus 的多集群数据副本，并提供全局查询和一致性数据访问接口的方式，实现了对于 Prometheus 的可靠性、一致性和可用性保障，从而解决了 Prometheus 单集群在存储、查询历史数据和备份等方面的扩展性挑战。</p>
-<h2 id="_4">参考链接<a class="headerlink" href="#_4" title="Permanent link">&para;</a></h2>
+<h2 id="_4">参考链接<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="https://observability.thomasriley.co.uk/prometheus/using-thanos/high-availability/">https://observability.thomasriley.co.uk/prometheus/using-thanos/high-availability/</a></li>
 <li><a href="https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/high-availability.md">https://github.com/prometheus-operator/prometheus-operator/blob/main/Documentation/high-availability.md</a></li>
@@ -7089,11 +7137,11 @@
 <li><a href="../../../../../../../../../prometheus-agent" title="prometheus-agent">prometheus-agent</a></li>
 <li><a href="https://p8s.io/docs/operator/install/">https://p8s.io/docs/operator/install/</a></li>
 </ul>
-<h2 id="_5">文档版本<a class="headerlink" href="#_5" title="Permanent link">&para;</a></h2>
+<h2 id="_5">文档版本<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="../../../../others/POC-prometheus-ha-architect-with-thanos-manually/" title="POC-prometheus-ha-architect-with-thanos-manually">POC-prometheus-ha-architect-with-thanos-manually</a></li>
 </ul>
-<h2 id="next-step">Next Step<a class="headerlink" href="#next-step" title="Permanent link">&para;</a></h2>
+<h2 id="next-step">Next Step<a class="headerlink" href="#next-step" title="Permanent link">¶</a></h2>
 <ul>
 <li>thanos component<ul>
 <li>download s3 files for down-samplings and compact continually</li>
@@ -7122,7 +7170,7 @@
       
   <span class="md-source-file__fact">
     <span class="md-icon" title="最后更新">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
     <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2024年9月11日 07:37:02 CST"><span class="timeago" datetime="2024-09-11T07:37:02+08:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2024年9月11日 07:37:02 CST">2024-09-11</span>
   </span>
@@ -7132,7 +7180,7 @@
       
   <span class="md-source-file__fact">
     <span class="md-icon" title="创建日期">
-      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"/></svg>
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
     </span>
     <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="2024年1月13日 10:42:38 CST"><span class="timeago" datetime="2024-01-13T10:42:38+08:00" locale="zh"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="2024年1月13日 10:42:38 CST">2024-01-13</span>
   </span>
@@ -7147,20 +7195,7 @@
 
 
 
-<script src="https://giscus.app/client.js"
-        data-repo="panlm/panlm.github.io"
-        data-repo-id="R_kgDOItMQOQ"
-        data-category="General"
-        data-category-id="DIC_kwDOItMQOc4CgKfp"
-        data-mapping="pathname"
-        data-strict="1"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="bottom"
-        data-theme="light"
-        data-lang="en"
-        crossorigin="anonymous"
-        async>
+<script src="https://giscus.app/client.js" data-repo="panlm/panlm.github.io" data-repo-id="R_kgDOItMQOQ" data-category="General" data-category-id="DIC_kwDOItMQOc4CgKfp" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="light" data-lang="en" crossorigin="anonymous" async>
 </script>
                 
               </article>
@@ -7172,7 +7207,7 @@
         
           <button type="button" class="md-top md-icon" data-md-component="top" hidden>
   
-  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"/></svg>
+  <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   回到页面顶部
 </button>
         
@@ -7204,10 +7239,10 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "toc.follow", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.d50fe291.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "../../../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "toc.follow", "content.code.copy"], "search": "../../../../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "\u5df2\u590d\u5236", "clipboard.copy": "\u590d\u5236", "search.result.more.one": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.more.other": "\u5728\u8be5\u9875\u4e0a\u8fd8\u6709 # \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.none": "\u6ca1\u6709\u627e\u5230\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.one": "\u627e\u5230 1 \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.other": "# \u4e2a\u7b26\u5408\u6761\u4ef6\u7684\u7ed3\u679c", "search.result.placeholder": "\u952e\u5165\u4ee5\u5f00\u59cb\u641c\u7d22", "search.result.term.missing": "\u7f3a\u5c11", "select.version": "\u9009\u62e9\u5f53\u524d\u7248\u672c"}, "version": null}</script>
     
     
-      <script src="../../../../../assets/javascripts/bundle.50899def.min.js"></script>
+      <script src="../../../../../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
         <script src="../../../../../js/timeago.min.js"></script>
       
@@ -7220,7 +7255,7 @@
         <script src="../../../../../assets/mkdocs_pagetree_plugin.js"></script>
       
     
-  <script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": false, "loop": false, "zoomable": true, "draggable": false, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
-document$.subscribe(() => { lightbox.reload() });
-</script></body>
-</html>
+  
+<script id="init-glightbox">const lightbox = GLightbox({"touchNavigation": false, "loop": false, "zoomable": true, "draggable": false, "openEffect": "zoom", "closeEffect": "zoom", "slideEffect": "slide"});
+document$.subscribe(()=>{ lightbox.reload(); });
+</script></body></html>
