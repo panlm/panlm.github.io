@@ -10,6 +10,14 @@ tags:
 
 # claude-code
 
+```mermaid
+flowchart LR
+    A[Claude Code] --> B[LiteLLM]
+    B --> C[OpenAI Compatible API]
+    C --> D[大型语言模型]
+
+```
+
 ## use litellm directly
 
 https://docs.anthropic.com/en/docs/claude-code/llm-gateway
