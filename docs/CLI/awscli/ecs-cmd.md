@@ -69,6 +69,20 @@ echo ${AMI_IDS[@]}
 ```
 
 ## create-ecs-cluster-
+
+```mermaid
+graph TD
+    VPC_ID --> SG_ID
+    SG_ID --> LAUNCH_TEMPLATE_ID
+    OLD_AMI_ID --> LAUNCH_TEMPLATE_ID
+    INSTANCE_PROFILE_ARN --> set-LaunchTemplate-default-version2
+    LAUNCH_TEMPLATE_ID --> set-LaunchTemplate-default-version2
+    LAUNCH_TEMPLATE_ID --> ASG_ARN
+    ASG_ARN --> ECS_CAP_PROVIDER
+    ECS_CAP_PROVIDER --> ClusterCapacityProvider
+    ECS_CLUSTER --> ClusterCapacityProvider
+```
+
 ### create launch template v1
 ```sh
 ECS_CLUSTER=myecs1
@@ -231,6 +245,19 @@ cat /tmp/$$-instance |jq -r '.containerInstances[] | [.ec2InstanceId, .versionIn
 
 
 ## sample for ami upgrade / replace 
+
+```mermaid
+graph TD
+    TG80_ARN --> ServiceCreation
+    ECS_CLUSTER --> ServiceCreation
+    TaskDefinition --> ServiceCreation
+    VPC_ID --> DEFAULT_SG_ID
+    VPC_ID --> ALL_SUBNET_ID
+    DEFAULT_SG_ID --> ServiceCreation
+    ALL_SUBNET_ID --> ServiceCreation
+
+```
+
 ### register task definition
 ```sh
 TASK_NAME=task2-$(TZ=EAT-8 date +%Y%m%d-%H%M)

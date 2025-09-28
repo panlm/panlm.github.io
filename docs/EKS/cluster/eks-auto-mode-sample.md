@@ -9,6 +9,7 @@ tags:
 ---
 
 # eks-auto-mode-sample
+
 - https://aws.amazon.com/blogs/aws/streamline-kubernetes-cluster-management-with-new-amazon-eks-auto-mode/
 - https://aws.amazon.com/blogs/containers/getting-started-with-amazon-eks-auto-mode/
 
@@ -23,6 +24,7 @@ tags:
 - Identity and Access Management
 
 ## limitation
+
 - https://docs.aws.amazon.com/eks/latest/userguide/auto-networking.html
 - Security Groups per Pod (SGPP).
 - Custom Networking. The IP Addresses of Pods and Nodes must be from the same CIDR Block.
@@ -34,11 +36,12 @@ tags:
 - Exporting network event logs to CloudWatch.
 
 ## pricing
+
 - 额外收取 auto mode 管理的 EC2 节点的 Ondemond 价格 12% ([link](https://aws.amazon.com/eks/pricing/))
 
 ## workshop
 
-https://catalog.us-east-1.prod.workshops.aws/workshops/aadbd25d-43fa-4ac3-ae88-32d729af8ed4/
+- https://catalog.us-east-1.prod.workshops.aws/workshops/aadbd25d-43fa-4ac3-ae88-32d729af8ed4/
 
 ## sample
 ### load balancer controller

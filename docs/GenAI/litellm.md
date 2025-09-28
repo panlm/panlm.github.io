@@ -1,6 +1,6 @@
 ---
 title: litellm
-description:
+description: vs Openrouter
 created: 2025-09-07 21:34:39.492
 last_modified: 2025-09-07
 tags:
@@ -66,11 +66,3 @@ litellm-proxy chat completions 'us.anthropic.claude-3-5-sonnet-20241022-v2:0' \
 ## todo
 
 - integration with sagemaker
-
-
-
-
-
-
-
-
