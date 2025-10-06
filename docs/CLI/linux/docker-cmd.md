@@ -238,7 +238,21 @@ newgrp docker # 应用组更改（不需要注销）
 
 ```
 
+## bosicloud 加速 CN
 
+```sh
+sudo touch /etc/docker/daemon.json
+sudo tee /etc/docker/daemon.json <<-EOF
+{
+  "registry-mirrors":["https://mirror-docker.bosicloud.com"],
+  "insecure-registries":["mirror-docker.bosicloud.com"]
+}
+EOF
+
+sudo systemctl daemon-reload
+sudo systemctl restart docker
+
+```
 
 
 

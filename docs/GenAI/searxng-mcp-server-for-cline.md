@@ -86,7 +86,9 @@ ls ./dist/index.js
 }
 ```
 
+## Alternative for SearxNG UI
 
+- https://github.com/ItzCrazyKns/Perplexica
 
 
 ## Refer
@@ -131,12 +133,13 @@ https://docs.searxng.org/admin/installation-searxng.html#configuration
 
 
 ### blog
-https://aws.amazon.com/blogs/machine-learning/harness-the-power-of-mcp-servers-with-amazon-bedrock-agents/
+
+- https://aws.amazon.com/blogs/machine-learning/harness-the-power-of-mcp-servers-with-amazon-bedrock-agents/
 
 
 
 
-## refer
+## alternative 
 
-https://github.com/exa-labs/exa-mcp-server
+- https://github.com/exa-labs/exa-mcp-server
 
