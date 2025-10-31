@@ -44,7 +44,42 @@ tags:
 - https://catalog.us-east-1.prod.workshops.aws/workshops/aadbd25d-43fa-4ac3-ae88-32d729af8ed4/
 
 ## sample
-### load balancer controller
+
+### eksctl sample
+
+```yaml
+apiVersion: eksctl.io/v1alpha5
+kind: ClusterConfig
+
+metadata:
+  name: ekscluster5
+  region: us-west-2
+  version: "1.33"
+
+autoModeConfig:
+  enabled: true
+
+vpc:
+  id: vpc-default
+  subnets:
+    public:
+      us-west-2a:
+        id: subnet-1
+      us-west-2b:
+        id: subnet-2
+      us-west-2c:
+        id: subnet-3
+    private:
+      us-west-2a:
+        id: subnet-1
+      us-west-2b:
+        id: subnet-2
+      us-west-2c:
+        id: subnet-3
+
+```
+
+### test load balancer controller
 - test pod with service and ingress
 ```yaml
 ---
@@ -121,7 +156,7 @@ spec:
 
 ```
 
-### ebs csi
+### test ebs csi
 - storage class ([doc](https://docs.aws.amazon.com/eks/latest/userguide/create-storage-class.html))
 ```
 apiVersion: storage.k8s.io/v1

@@ -10,10 +10,12 @@ tags:
 
 # spec-driven-development
 
-## H1
+## github spec-kit
 
 https://github.com/github/spec-kit
 
+## integration with q cli
 
+https://github.com/DiscreteTom/shinkuro
 
 

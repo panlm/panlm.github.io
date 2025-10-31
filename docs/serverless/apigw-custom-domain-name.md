@@ -10,6 +10,7 @@ tags:
 # Custom Domain Name in API Gateway
 
 ## for-private-api-
+
 - 在 acm 中发布证书 `*.api.aws.panlm.xyz`
 - 在与 API 同区域中创建 route53 的 public host zone `api.aws.panlm.xyz`
 - 创建 私有 API 
@@ -23,6 +24,7 @@ tags:
 ![apigw-custom-domain-name-png-1.png](apigw-custom-domain-name-png-1.png)
 
 ### dns 解析
+
 使用 route 53 将自定义域名（例如： `api1.api.aws.panlm.xyz` ）按下表进行解析
 
 |          | enable endpoint private dns name | disable endpoint private dns name |
@@ -41,16 +43,23 @@ tags:
 上述操作，分别使用 启用/禁用 endpoint 的私有 dns 名称，均无法正常访问 api。访问禁止，或者 certificate issue （"no alternative certificate subject name matches target host name"）
 
 ### refer
+
 - https://serverlessland.com/repos/apigw-private-custom-domain-name
 - https://github.com/aws-samples/serverless-patterns/tree/main/public-alb-private-api-terraform
 
 ## for regional api 
-- 如果该 api 是 regional ，创建定制域名，记录下定制域名配置中的 `API Gateway domain name`，不是 api stage 页面中的域名，参照 [apigw-regional-api-access-from-vpc](apigw-regional-api-access-from-vpc.md) 
+
+- doc
+    - https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-regional-api-custom-domain-create.html
+    - https://docs.aws.amazon.com/apigateway/latest/developerguide/rest-api-disable-default-endpoint.html
+
+- 如果该 api 是 regional ，创建定制域名(Custom domain names)，记录下定制域名配置中的 `API Gateway domain name`，不是 api stage 页面中的域名，参照 [apigw-regional-api-access-from-vpc](apigw-regional-api-access-from-vpc.md) 
 - 使用 route53 alias（或 cname） 将定制域名指向 `API Gateway domain name`
 - 访问定制域名，浏览器将显示证书有效
 - 如果定制域名指向 api 的 url （在 api stage 页面中），将遇到证书验证不通过的问题
 
 ### dns 解析
+
 使用 route 53 将自定义域名（例如： `api1.api.aws.panlm.xyz` ）按下表进行解析
 
 |          | regional api      |
@@ -68,6 +77,7 @@ tags:
 前两者可以正常访问 api
 
 ### refer
+
 - https://aws.amazon.com/premiumsupport/knowledge-center/api-gateway-domain-certificate/
 
 

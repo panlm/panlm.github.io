@@ -329,5 +329,6 @@ uv tool install git+https://github.com/sparfenyuk/mcp-proxy
 ```
 
 ## Reference
-[[deploy-mcp-server-to-ecs|deploy-mcp-server-to-ecs]]
+- [[deploy-mcp-server-to-ecs|deploy-mcp-server-to-ecs]]
+- build mcp on aws agentcore runtime ([docs](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/runtime-mcp.html))
 

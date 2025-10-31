@@ -13,6 +13,22 @@ tags:
 openrouter vs litellm 
 - saas vs self-managed
 
+## roocode with litellm
+
+[doc link](https://docs.roocode.com/providers/litellm?utm_source=extension&utm_medium=ide&utm_campaign=provider_docs)
+
+（首选）在 litellm 中添加 AWS AKSK 后，通过 Bedrock 添加的模型 `us.anthropic.claude-3-7-sonnet-20250219-v1:0`，在 roocode 中如何使用它
+
+![[attachments/litellm/IMG-20251010-1249787.png|300]]
+
+（存在多次调用）在 litellm 中添加 openai compatible API 后，例如 litellm 中调用 brconnector 中的 `cr-claude-3-5-sonnet-v2`，在 roocode 中如何使用它
+
+![[attachments/litellm/IMG-20251010-1245407.png|300]]
+
+（不稳定）如果下面配置无法生效，或者显示刷新模型失败，考虑直接访问远程4000端口，或先禁用代理再启用
+
+![[attachments/litellm/IMG-20251010-1309170.png|300]]
+
 ## Setup 
 
 https://github.com/BerriAI/litellm?tab=readme-ov-file#proxy-key-management-docs
@@ -66,3 +82,13 @@ litellm-proxy chat completions 'us.anthropic.claude-3-5-sonnet-20241022-v2:0' \
 ## todo
 
 - integration with sagemaker
+
+
+
+
+
+
+
+
+
+
