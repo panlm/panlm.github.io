@@ -22,7 +22,7 @@ number headings: first-level 2, max 3, 1.1, auto
 - (2024-01-01) [Obsidian Tips](obsidian) -- obsidian 使用点滴
 - (2024-09-19) [CodeServer](vscode) -- Using code-server on EC2 instead of Cloud9 due to it has been deprecated
 - (2024-06-28) [Enable Quicksight with Identity Center](enable-quicksight-with-identity-center) -- 中国区域启用 Quicksight 并且集成 Microsoft Entra
-- (2025-01-02) [AWS Opensearch / Elasticsearch Migration](aos-migration) -- 使用 snapshot 迁移 elasticsearch
+- (2025-01-02) [AWS Opensearch / Elasticsearch Migration](data-analytics/opensearch-migration.md) -- 使用 snapshot 迁移 elasticsearch
 - (2024-07-18) [Using Grafana Loki for Logging](grafana-loki) -- 使用 Loki 收集日志
 - (2024-02-12) [assume](granted-assume) -- assume 工具，可以以另一个账号角色，快速打开 web console，或者执行命令
 - (2024-08-19) [openswan-s2svpn-tgw-lab](openswan-s2svpn-tgw) -- connect to global aws using site-2-site vpn service, for example access global bedrock service

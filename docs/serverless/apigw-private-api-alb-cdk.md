@@ -1,6 +1,6 @@
 ---
-title: apigw-private-api-alb-cdk
-description: 通过 alb 访问 private api 的例子
+title: Private API and ALB Demo
+description: 通过 ALB 访问 Private API 的例子
 created: 2023-03-07 22:09:46.587
 last_modified: 2023-12-03
 tags:

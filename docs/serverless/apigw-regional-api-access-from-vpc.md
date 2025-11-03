@@ -1,12 +1,14 @@
 ---
-title: apigw-regional-api-access-from-vpc
-description: apigw-regional-api-access-from-vpc
+title: Access Regional API From VPC
+description: 从 VPC 访问 Regional API
 created: 2023-03-14 08:56:36.285
-last_modified: 2023-03-14 08:56:36.285
+last_modified: 2023-03-14
 tags:
   - aws/serverless/api-gateway
 ---
-# apigw-regional-api-access-from-vpc
+
+# Access Regional API From VPC
+
 - https://aws.amazon.com/premiumsupport/knowledge-center/api-gateway-vpc-connections/
 
 Connect to public APIs with private DNS enabled

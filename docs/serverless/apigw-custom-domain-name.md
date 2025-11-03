@@ -1,8 +1,8 @@
 ---
 title: Custom Domain Name in API Gateway
-description: 为私有 api 创建定制域名
+description: 为私有 API 创建定制域名
 created: 2023-03-07 23:01:19.519
-last_modified: 2024-01-15
+last_modified: 2025-10-31
 tags:
   - aws/serverless/api-gateway
 ---
@@ -62,11 +62,11 @@ tags:
 
 使用 route 53 将自定义域名（例如： `api1.api.aws.panlm.xyz` ）按下表进行解析
 
-|          | regional api      |
-| -------- | ----------------- |
-| alias    | success           |
-| cname    | success           | 
-| api name | certificate issue |
+|          | regional api      |     |
+| -------- | ----------------- | --- |
+| alias    | success           |     |
+| cname    | success           |     |
+| api name | certificate issue |     |
 
 - 自定义域名通过 alias 指向 api gateway 中配置的 custom domain name 的域名
 - 自定义域名通过 cname 指向 api gateway 中配置的 custom domain name 的域名

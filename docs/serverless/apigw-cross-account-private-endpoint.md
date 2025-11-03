@@ -1,8 +1,8 @@
 ---
-title: apigw-cross-account-private-endpoint
-description: 跨账号访问私有api
+title: Account Private REST API Cross-account
+description: 跨账号访问私有 API
 created: 2023-03-05 22:05:10.532
-last_modified: 2023-03-05 22:05:10.532
+last_modified: 2023-03-05
 tags:
   - aws/serverless/api-gateway
 ---
