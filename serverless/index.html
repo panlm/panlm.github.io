@@ -3,32 +3,41 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="使用 snapshot 迁移 elasticsearch">
+        <meta name="description" content="(path:git/git-mkdocs/serverless file:.md)
+
+- ($frontmatter:last_modified) [$frontmatter:title]($filename): $frontmatter:description
+
+- (2025-10-31) Custom Domain Name in API Gateway: 为私有 API 创建定制域名
+- (2023-03-05) Account Private REST API Cross-account: 跨账号访问私有 API
+- (2023-03-14) Access Regional API From VPC: 从 VPC 访问 Regional API
+- (2023-12-03) Private API and ALB Demo: 通过 ALB 访问 Private API 的例子
+- (2023-12-24) Get Source IP in API Gateway: 获取客户端源地址
+&lt;–&gt;">
       
       
       
-        <link rel="canonical" href="https://panlm.github.io/data-analytics/aos-migration/">
+        <link rel="canonical" href="https://panlm.github.io/serverless/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../data-analytics/using-mwaa-in-private-network/">
       
       
-        <link rel="next" href="../datahub/">
+        <link rel="next" href="apigw-cross-account-private-endpoint/">
       
       
-      <link rel="icon" href="../../git-attachment/favicons.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.22">
+      <link rel="icon" href="../git-attachment/favicons.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.23">
     
     
       
-        <title>AWS Opensearch / Elasticsearch Migration - panlm</title>
+        <title>Serverless - panlm</title>
       
     
     
-      <link rel="stylesheet" href="../../assets/stylesheets/main.84d31ad4.min.css">
+      <link rel="stylesheet" href="../assets/stylesheets/main.84d31ad4.min.css">
       
         
-        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+        <link rel="stylesheet" href="../assets/stylesheets/palette.06af60db.min.css">
       
       
 
@@ -47,13 +56,13 @@
       
     
     
-      <link rel="stylesheet" href="../../css/timeago.css">
+      <link rel="stylesheet" href="../css/timeago.css">
     
-      <link rel="stylesheet" href="../../assets/mkdocs_pagetree_plugin.css">
+      <link rel="stylesheet" href="../assets/mkdocs_pagetree_plugin.css">
     
-      <link rel="stylesheet" href="../../extra.css">
+      <link rel="stylesheet" href="../extra.css">
     
-    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    <script>__md_scope=new URL("..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
     
       
   
@@ -70,7 +79,7 @@
     
     
     
-  <link href="../../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
+  <link href="../assets/stylesheets/glightbox.min.css" rel="stylesheet"><script src="../assets/javascripts/glightbox.min.js"></script><style id="glightbox-style">
             html.glightbox-open { overflow: initial; height: 100%; }
             .gslide-title { margin-top: 0px; user-select: text; }
             .gslide-desc { color: #666; user-select: text; }
@@ -99,7 +108,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#aos-migration" class="md-skip">
+        <a href="#serverless" class="md-skip">
           Skip to content
         </a>
       
@@ -115,7 +124,7 @@
 
 <header class="md-header md-header--shadow md-header--lifted" data-md-component="header">
   <nav class="md-header__inner md-grid" aria-label="Header">
-    <a href="../.." title="panlm" class="md-header__button md-logo" aria-label="panlm" data-md-component="logo">
+    <a href=".." title="panlm" class="md-header__button md-logo" aria-label="panlm" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
@@ -135,7 +144,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              AWS Opensearch / Elasticsearch Migration
+              Serverless
             
           </span>
         </div>
@@ -188,7 +197,7 @@
           </li>
         
           <li class="md-select__item">
-            <a href="../../zh/data-analytics/aos-migration/" hreflang="zh" class="md-select__link">
+            <a href="../zh/serverless/" hreflang="zh" class="md-select__link">
               中文
             </a>
           </li>
@@ -268,7 +277,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../.." class="md-tabs__link">
+      <a href=".." class="md-tabs__link">
         
   
   
@@ -289,7 +298,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../cloud9/" class="md-tabs__link">
+        <a href="../cloud9/" class="md-tabs__link">
           
   
   
@@ -311,7 +320,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../EKS/" class="md-tabs__link">
+        <a href="../EKS/" class="md-tabs__link">
           
   
   
@@ -329,13 +338,11 @@
   
   
   
-    
-  
   
     
     
-      <li class="md-tabs__item md-tabs__item--active">
-        <a href="../" class="md-tabs__link">
+      <li class="md-tabs__item">
+        <a href="../data-analytics/" class="md-tabs__link">
           
   
   
@@ -353,11 +360,13 @@
   
   
   
+    
+  
   
     
     
-      <li class="md-tabs__item">
-        <a href="../../serverless/apigw-cross-account-private-endpoint/" class="md-tabs__link">
+      <li class="md-tabs__item md-tabs__item--active">
+        <a href="./" class="md-tabs__link">
           
   
   
@@ -379,7 +388,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../GenAI/" class="md-tabs__link">
+        <a href="../GenAI/" class="md-tabs__link">
           
   
   
@@ -401,7 +410,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../others/file-storage-gateway-lab/" class="md-tabs__link">
+        <a href="../others/file-storage-gateway-lab/" class="md-tabs__link">
           
   
   
@@ -430,7 +439,7 @@
     
     
       <li class="md-tabs__item">
-        <a href="../../CLI/linux/linux-cmd/" class="md-tabs__link">
+        <a href="../CLI/linux/linux-cmd/" class="md-tabs__link">
           
   
   
@@ -453,7 +462,7 @@
   
   
     <li class="md-tabs__item">
-      <a href="../../tags/" class="md-tabs__link">
+      <a href="../tags/" class="md-tabs__link">
         
   
   
@@ -494,7 +503,7 @@
 
 <nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
   <label class="md-nav__title" for="__drawer">
-    <a href="../.." title="panlm" class="md-nav__button md-logo" aria-label="panlm" data-md-component="logo">
+    <a href=".." title="panlm" class="md-nav__button md-logo" aria-label="panlm" data-md-component="logo">
       
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a3 3 0 0 0 3-3 3 3 0 0 0-3-3 3 3 0 0 0-3 3 3 3 0 0 0 3 3m0 3.54C9.64 9.35 6.5 8 3 8v11c3.5 0 6.64 1.35 9 3.54 2.36-2.19 5.5-3.54 9-3.54V8c-3.5 0-6.64 1.35-9 3.54"></path></svg>
@@ -524,7 +533,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../.." class="md-nav__link">
+      <a href=".." class="md-nav__link">
         
   
   
@@ -575,7 +584,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../cloud9/" class="md-nav__link ">
+            <a href="../cloud9/" class="md-nav__link ">
               
   
   
@@ -610,7 +619,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cloud9/vscode/" class="md-nav__link">
+      <a href="../cloud9/vscode/" class="md-nav__link">
         
   
   
@@ -641,7 +650,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cloud9/quick-setup-cloud9/" class="md-nav__link">
+      <a href="../cloud9/quick-setup-cloud9/" class="md-nav__link">
         
   
   
@@ -672,7 +681,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cloud9/setup-cloud9-for-eks/" class="md-nav__link">
+      <a href="../cloud9/setup-cloud9-for-eks/" class="md-nav__link">
         
   
   
@@ -703,7 +712,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../cloud9/create-standard-vpc-for-lab-in-china-region/" class="md-nav__link">
+      <a href="../cloud9/create-standard-vpc-for-lab-in-china-region/" class="md-nav__link">
         
   
   
@@ -768,7 +777,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../EKS/" class="md-nav__link ">
+            <a href="../EKS/" class="md-nav__link ">
               
   
   
@@ -911,7 +920,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/cluster/eks-cluster-with-terraform/" class="md-nav__link">
+      <a href="../EKS/cluster/eks-cluster-with-terraform/" class="md-nav__link">
         
   
   
@@ -934,7 +943,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/cluster/eks-private-access-cluster/" class="md-nav__link">
+      <a href="../EKS/cluster/eks-private-access-cluster/" class="md-nav__link">
         
   
   
@@ -957,7 +966,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/cluster/eks-upgrade-procedure/" class="md-nav__link">
+      <a href="../EKS/cluster/eks-upgrade-procedure/" class="md-nav__link">
         
   
   
@@ -980,7 +989,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/cluster/eks-cluster-addons-list/" class="md-nav__link">
+      <a href="../EKS/cluster/eks-cluster-addons-list/" class="md-nav__link">
         
   
   
@@ -1003,7 +1012,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/cluster/eks-auto-mode-sample/" class="md-nav__link">
+      <a href="../EKS/cluster/eks-auto-mode-sample/" class="md-nav__link">
         
   
   
@@ -1026,7 +1035,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/cluster/eks-public-access-cluster/" class="md-nav__link">
+      <a href="../EKS/cluster/eks-public-access-cluster/" class="md-nav__link">
         
   
   
@@ -1049,7 +1058,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/cluster/eks-public-access-cluster-in-china-region/" class="md-nav__link">
+      <a href="../EKS/cluster/eks-public-access-cluster-in-china-region/" class="md-nav__link">
         
   
   
@@ -1169,7 +1178,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/addons/aws-for-fluent-bit/" class="md-nav__link">
+      <a href="../EKS/addons/aws-for-fluent-bit/" class="md-nav__link">
         
   
   
@@ -1192,7 +1201,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/addons/aws-load-balancer-controller/" class="md-nav__link">
+      <a href="../EKS/addons/aws-load-balancer-controller/" class="md-nav__link">
         
   
   
@@ -1215,7 +1224,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/addons/cert-manager/" class="md-nav__link">
+      <a href="../EKS/addons/cert-manager/" class="md-nav__link">
         
   
   
@@ -1238,7 +1247,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/addons/cluster-autoscaler/" class="md-nav__link">
+      <a href="../EKS/addons/cluster-autoscaler/" class="md-nav__link">
         
   
   
@@ -1261,7 +1270,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/addons/cni-metrics-helper/" class="md-nav__link">
+      <a href="../EKS/addons/cni-metrics-helper/" class="md-nav__link">
         
   
   
@@ -1284,7 +1293,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/addons/ebs-for-eks/" class="md-nav__link">
+      <a href="../EKS/addons/ebs-for-eks/" class="md-nav__link">
         
   
   
@@ -1307,7 +1316,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/addons/efs-csi/" class="md-nav__link">
+      <a href="../EKS/addons/efs-csi/" class="md-nav__link">
         
   
   
@@ -1330,7 +1339,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/addons/eks-addons-coredns/" class="md-nav__link">
+      <a href="../EKS/addons/eks-addons-coredns/" class="md-nav__link">
         
   
   
@@ -1353,7 +1362,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/addons/eks-addons-kube-proxy/" class="md-nav__link">
+      <a href="../EKS/addons/eks-addons-kube-proxy/" class="md-nav__link">
         
   
   
@@ -1376,7 +1385,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/addons/eks-addons-vpc-cni/" class="md-nav__link">
+      <a href="../EKS/addons/eks-addons-vpc-cni/" class="md-nav__link">
         
   
   
@@ -1399,7 +1408,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/addons/eks-external-snat/" class="md-nav__link">
+      <a href="../EKS/addons/eks-external-snat/" class="md-nav__link">
         
   
   
@@ -1422,7 +1431,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/addons/eksup/" class="md-nav__link">
+      <a href="../EKS/addons/eksup/" class="md-nav__link">
         
   
   
@@ -1445,7 +1454,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/addons/externaldns-for-route53/" class="md-nav__link">
+      <a href="../EKS/addons/externaldns-for-route53/" class="md-nav__link">
         
   
   
@@ -1468,7 +1477,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/addons/karpenter/" class="md-nav__link">
+      <a href="../EKS/addons/karpenter/" class="md-nav__link">
         
   
   
@@ -1491,7 +1500,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/addons/kube-no-trouble/" class="md-nav__link">
+      <a href="../EKS/addons/kube-no-trouble/" class="md-nav__link">
         
   
   
@@ -1514,7 +1523,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/addons/kube-state-metrics/" class="md-nav__link">
+      <a href="../EKS/addons/kube-state-metrics/" class="md-nav__link">
         
   
   
@@ -1537,7 +1546,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/addons/kyverno/" class="md-nav__link">
+      <a href="../EKS/addons/kyverno/" class="md-nav__link">
         
   
   
@@ -1560,7 +1569,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/addons/metrics-server/" class="md-nav__link">
+      <a href="../EKS/addons/metrics-server/" class="md-nav__link">
         
   
   
@@ -1583,7 +1592,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/addons/nginx-ingress-controller/" class="md-nav__link">
+      <a href="../EKS/addons/nginx-ingress-controller/" class="md-nav__link">
         
   
   
@@ -1606,7 +1615,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/addons/nginx-ingress-controller-community-ver/" class="md-nav__link">
+      <a href="../EKS/addons/nginx-ingress-controller-community-ver/" class="md-nav__link">
         
   
   
@@ -1629,7 +1638,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/addons/nginx-ingress-controller-nginx-ver/" class="md-nav__link">
+      <a href="../EKS/addons/nginx-ingress-controller-nginx-ver/" class="md-nav__link">
         
   
   
@@ -1652,7 +1661,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/addons/pluto/" class="md-nav__link">
+      <a href="../EKS/addons/pluto/" class="md-nav__link">
         
   
   
@@ -1675,7 +1684,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/addons/prometheus-adapter/" class="md-nav__link">
+      <a href="../EKS/addons/prometheus-adapter/" class="md-nav__link">
         
   
   
@@ -1812,7 +1821,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/solutions/appmesh/appmesh-workshop-eks/" class="md-nav__link">
+      <a href="../EKS/solutions/appmesh/appmesh-workshop-eks/" class="md-nav__link">
         
   
   
@@ -1842,7 +1851,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/solutions/appmesh/automated-canary-deployment-using-flagger/" class="md-nav__link">
+      <a href="../EKS/solutions/appmesh/automated-canary-deployment-using-flagger/" class="md-nav__link">
         
   
   
@@ -1918,7 +1927,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/solutions/compute/eks-fargate-lab/" class="md-nav__link">
+      <a href="../EKS/solutions/compute/eks-fargate-lab/" class="md-nav__link">
         
   
   
@@ -1996,7 +2005,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/solutions/gitops/argocd-lab/" class="md-nav__link">
+      <a href="../EKS/solutions/gitops/argocd-lab/" class="md-nav__link">
         
   
   
@@ -2019,7 +2028,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/solutions/gitops/flux-lab/" class="md-nav__link">
+      <a href="../EKS/solutions/gitops/flux-lab/" class="md-nav__link">
         
   
   
@@ -2095,7 +2104,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/solutions/hybrid-node/use-eks-hybrid-node-to-solve-ipaddr-exhausted/" class="md-nav__link">
+      <a href="../EKS/solutions/hybrid-node/use-eks-hybrid-node-to-solve-ipaddr-exhausted/" class="md-nav__link">
         
   
   
@@ -2189,7 +2198,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/solutions/logging/cloudwatch-to-firehose-python/" class="md-nav__link">
+      <a href="../EKS/solutions/logging/cloudwatch-to-firehose-python/" class="md-nav__link">
         
   
   
@@ -2212,7 +2221,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/solutions/logging/eks-audit-log-security-lake/" class="md-nav__link">
+      <a href="../EKS/solutions/logging/eks-audit-log-security-lake/" class="md-nav__link">
         
   
   
@@ -2243,7 +2252,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/solutions/logging/eks-loggroup-description/" class="md-nav__link">
+      <a href="../EKS/solutions/logging/eks-loggroup-description/" class="md-nav__link">
         
   
   
@@ -2266,7 +2275,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/solutions/logging/export-cloudwatch-log-group-to-s3/" class="md-nav__link">
+      <a href="../EKS/solutions/logging/export-cloudwatch-log-group-to-s3/" class="md-nav__link">
         
   
   
@@ -2297,7 +2306,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/solutions/logging/grafana-loki/" class="md-nav__link">
+      <a href="../EKS/solutions/logging/grafana-loki/" class="md-nav__link">
         
   
   
@@ -2328,7 +2337,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/solutions/logging/stream-k8s-control-panel-logs-to-s3/" class="md-nav__link">
+      <a href="../EKS/solutions/logging/stream-k8s-control-panel-logs-to-s3/" class="md-nav__link">
         
   
   
@@ -2420,7 +2429,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/solutions/monitor/eks-container-insights/" class="md-nav__link">
+      <a href="../EKS/solutions/monitor/eks-container-insights/" class="md-nav__link">
         
   
   
@@ -2443,7 +2452,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/solutions/monitor/enable-prometheus-in-cloudwatch/" class="md-nav__link">
+      <a href="../EKS/solutions/monitor/enable-prometheus-in-cloudwatch/" class="md-nav__link">
         
   
   
@@ -2466,7 +2475,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/solutions/monitor/install-grafana-on-beanstalk/" class="md-nav__link">
+      <a href="../EKS/solutions/monitor/install-grafana-on-beanstalk/" class="md-nav__link">
         
   
   
@@ -2489,7 +2498,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/solutions/monitor/install-prometheus-operator/" class="md-nav__link">
+      <a href="../EKS/solutions/monitor/install-prometheus-operator/" class="md-nav__link">
         
   
   
@@ -2512,7 +2521,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/solutions/monitor/k8s-event-exporter/" class="md-nav__link">
+      <a href="../EKS/solutions/monitor/k8s-event-exporter/" class="md-nav__link">
         
   
   
@@ -2594,7 +2603,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/solutions/network/eks-custom-network/" class="md-nav__link">
+      <a href="../EKS/solutions/network/eks-custom-network/" class="md-nav__link">
         
   
   
@@ -2617,7 +2626,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/solutions/network/eks-prefix-assignment/" class="md-nav__link">
+      <a href="../EKS/solutions/network/eks-prefix-assignment/" class="md-nav__link">
         
   
   
@@ -2640,7 +2649,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/solutions/network/enable-sg-on-pod/" class="md-nav__link">
+      <a href="../EKS/solutions/network/enable-sg-on-pod/" class="md-nav__link">
         
   
   
@@ -2663,7 +2672,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/solutions/network/TC-security-group-for-eks-deepdive/" class="md-nav__link">
+      <a href="../EKS/solutions/network/TC-security-group-for-eks-deepdive/" class="md-nav__link">
         
   
   
@@ -2751,7 +2760,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/solutions/security/eks-access-api/" class="md-nav__link">
+      <a href="../EKS/solutions/security/eks-access-api/" class="md-nav__link">
         
   
   
@@ -2774,7 +2783,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/solutions/security/eks-aws-auth/" class="md-nav__link">
+      <a href="../EKS/solutions/security/eks-aws-auth/" class="md-nav__link">
         
   
   
@@ -2797,7 +2806,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/solutions/security/TC-eks-irsa-token-deep-dive-lab/" class="md-nav__link">
+      <a href="../EKS/solutions/security/TC-eks-irsa-token-deep-dive-lab/" class="md-nav__link">
         
   
   
@@ -2895,7 +2904,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/kubernetes/k8s-hpa-horizontal-pod-autoscaler/" class="md-nav__link">
+      <a href="../EKS/kubernetes/k8s-hpa-horizontal-pod-autoscaler/" class="md-nav__link">
         
   
   
@@ -2918,7 +2927,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/kubernetes/k8s-liveness-readiness-startup-probes/" class="md-nav__link">
+      <a href="../EKS/kubernetes/k8s-liveness-readiness-startup-probes/" class="md-nav__link">
         
   
   
@@ -2941,7 +2950,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/kubernetes/k8s-request-limit-best-practices/" class="md-nav__link">
+      <a href="../EKS/kubernetes/k8s-request-limit-best-practices/" class="md-nav__link">
         
   
   
@@ -2964,7 +2973,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/kubernetes/k8s-topology-spread-constraints/" class="md-nav__link">
+      <a href="../EKS/kubernetes/k8s-topology-spread-constraints/" class="md-nav__link">
         
   
   
@@ -3054,7 +3063,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/ecs/blog-migrating-net-classic-applications-to-amazon-ecs-using-windows-containers/" class="md-nav__link">
+      <a href="../EKS/ecs/blog-migrating-net-classic-applications-to-amazon-ecs-using-windows-containers/" class="md-nav__link">
         
   
   
@@ -3077,7 +3086,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/ecs/ecs-windows-gmsa/" class="md-nav__link">
+      <a href="../EKS/ecs/ecs-windows-gmsa/" class="md-nav__link">
         
   
   
@@ -3100,7 +3109,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/ecs/poc-container-on-domainless-windows-node-in-ecs/" class="md-nav__link">
+      <a href="../EKS/ecs/poc-container-on-domainless-windows-node-in-ecs/" class="md-nav__link">
         
   
   
@@ -3123,7 +3132,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/ecs/ws-gmsa-linux-containers-ecs/" class="md-nav__link">
+      <a href="../EKS/ecs/ws-gmsa-linux-containers-ecs/" class="md-nav__link">
         
   
   
@@ -3203,7 +3212,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/ecr/aws-signer/" class="md-nav__link">
+      <a href="../EKS/ecr/aws-signer/" class="md-nav__link">
         
   
   
@@ -3226,7 +3235,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/ecr/ecr-scan-on-push-notification-sns/" class="md-nav__link">
+      <a href="../EKS/ecr/ecr-scan-on-push-notification-sns/" class="md-nav__link">
         
   
   
@@ -3257,7 +3266,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../EKS/ecr/mutating-webhook-for-k8s-in-china/" class="md-nav__link">
+      <a href="../EKS/ecr/mutating-webhook-for-k8s-in-china/" class="md-nav__link">
         
   
   
@@ -3300,8 +3309,6 @@
       
   
   
-    
-  
   
   
     
@@ -3327,21 +3334,18 @@
     
     
       
-        
-        
-      
       
     
     
-    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+    <li class="md-nav__item md-nav__item--nested">
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_4">
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../" class="md-nav__link ">
+            <a href="../data-analytics/" class="md-nav__link ">
               
   
   
@@ -3354,13 +3358,13 @@
             </a>
             
               
-              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="">
+              <label class="md-nav__link " for="__nav_4" id="__nav_4_label" tabindex="0">
                 <span class="md-nav__icon md-icon"></span>
               </label>
             
           </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="true">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_4_label" aria-expanded="false">
           <label class="md-nav__title" for="__nav_4">
             <span class="md-nav__icon md-icon"></span>
             Database and Analytics
@@ -3373,151 +3377,10 @@
                 
   
   
-    
-  
-  
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    AWS Opensearch / Elasticsearch Migration
-    
-  </span>
-  
-    
-  
-  
-    <span class="md-status md-status--myblog" title="my blogs">
-    </span>
-  
-
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
-        
-  
-  
-  <span class="md-ellipsis">
-    AWS Opensearch / Elasticsearch Migration
-    
-  </span>
-  
-    
-  
-  
-    <span class="md-status md-status--myblog" title="my blogs">
-    </span>
-  
-
-  
-
-      </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#snapshot" class="md-nav__link">
-    <span class="md-ellipsis">
-      snapshot
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="snapshot">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#es-710-snapshot" class="md-nav__link">
-    <span class="md-ellipsis">
-      es 7.10 snapshot
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#es-710-restore" class="md-nav__link">
-    <span class="md-ellipsis">
-      es 7.10 restore
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#es-68-snapshot" class="md-nav__link">
-    <span class="md-ellipsis">
-      es 6.8 snapshot
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#error" class="md-nav__link">
-    <span class="md-ellipsis">
-      error
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#replication" class="md-nav__link">
-    <span class="md-ellipsis">
-      replication
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
-    </li>
-  
-
-              
-            
-              
-                
-  
-  
   
   
     <li class="md-nav__item">
-      <a href="../datahub/" class="md-nav__link">
+      <a href="../data-analytics/datahub/" class="md-nav__link">
         
   
   
@@ -3548,7 +3411,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../enable-quicksight-with-identity-center/" class="md-nav__link">
+      <a href="../data-analytics/enable-quicksight-with-identity-center/" class="md-nav__link">
         
   
   
@@ -3579,7 +3442,38 @@
   
   
     <li class="md-nav__item">
-      <a href="../rds-mysql-replica-cross-region-cross-account/" class="md-nav__link">
+      <a href="../data-analytics/opensearch-migration/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    AWS Opensearch / Elasticsearch Migration
+    
+  </span>
+  
+    
+  
+  
+    <span class="md-status md-status--myblog" title="my blogs">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../data-analytics/rds-mysql-replica-cross-region-cross-account/" class="md-nav__link">
         
   
   
@@ -3602,7 +3496,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../redshift-data-api-lab/" class="md-nav__link">
+      <a href="../data-analytics/redshift-data-api-lab/" class="md-nav__link">
         
   
   
@@ -3625,7 +3519,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../using-mwaa-in-private-network/" class="md-nav__link">
+      <a href="../data-analytics/using-mwaa-in-private-network/" class="md-nav__link">
         
   
   
@@ -3652,37 +3546,47 @@
       
   
   
+    
   
   
+  
     
     
       
-        
-      
-        
-      
-        
-      
-        
-      
-        
-      
-    
-    
-    
-      
-      
-    
-    
-    <li class="md-nav__item md-nav__item--nested">
-      
-        
-        
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5">
         
           
-          <label class="md-nav__link" for="__nav_5" id="__nav_5_label" tabindex="0">
-            
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_5" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="./" class="md-nav__link md-nav__link--active">
+              
   
   
   <span class="md-ellipsis">
@@ -3691,15 +3595,23 @@
   </span>
   
 
-            <span class="md-nav__icon md-icon"></span>
-          </label>
+            </a>
+            
+              
+              <label class="md-nav__link md-nav__link--active" for="__nav_5" id="__nav_5_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
         
-        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="false">
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_5_label" aria-expanded="true">
           <label class="md-nav__title" for="__nav_5">
             <span class="md-nav__icon md-icon"></span>
             Serverless
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
             
               
                 
@@ -3708,12 +3620,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../serverless/apigw-cross-account-private-endpoint/" class="md-nav__link">
+      <a href="apigw-cross-account-private-endpoint/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    apigw-cross-account-private-endpoint
+    Account Private REST API Cross-account
     
   </span>
   
@@ -3731,7 +3643,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../serverless/apigw-custom-domain-name/" class="md-nav__link">
+      <a href="apigw-custom-domain-name/" class="md-nav__link">
         
   
   
@@ -3754,7 +3666,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../serverless/apigw-get-sourceip/" class="md-nav__link">
+      <a href="apigw-get-sourceip/" class="md-nav__link">
         
   
   
@@ -3777,12 +3689,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../serverless/apigw-private-api-alb-cdk/" class="md-nav__link">
+      <a href="apigw-private-api-alb-cdk/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    apigw-private-api-alb-cdk
+    Private API and ALB Demo
     
   </span>
   
@@ -3800,12 +3712,12 @@
   
   
     <li class="md-nav__item">
-      <a href="../../serverless/apigw-regional-api-access-from-vpc/" class="md-nav__link">
+      <a href="apigw-regional-api-access-from-vpc/" class="md-nav__link">
         
   
   
   <span class="md-ellipsis">
-    apigw-regional-api-access-from-vpc
+    Access Regional API From VPC
     
   </span>
   
@@ -3873,7 +3785,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../GenAI/" class="md-nav__link ">
+            <a href="../GenAI/" class="md-nav__link ">
               
   
   
@@ -3908,7 +3820,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GenAI/build-mcp-server-on-ec2/" class="md-nav__link">
+      <a href="../GenAI/build-mcp-server-on-ec2/" class="md-nav__link">
         
   
   
@@ -3939,7 +3851,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GenAI/claude-code/" class="md-nav__link">
+      <a href="../GenAI/claude-code/" class="md-nav__link">
         
   
   
@@ -3962,7 +3874,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GenAI/deepseek-poc/" class="md-nav__link">
+      <a href="../GenAI/deepseek-poc/" class="md-nav__link">
         
   
   
@@ -3993,7 +3905,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GenAI/deploy-mcp-server-to-ecs/" class="md-nav__link">
+      <a href="../GenAI/deploy-mcp-server-to-ecs/" class="md-nav__link">
         
   
   
@@ -4016,7 +3928,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GenAI/dify-sample/" class="md-nav__link">
+      <a href="../GenAI/dify-sample/" class="md-nav__link">
         
   
   
@@ -4039,7 +3951,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GenAI/litellm/" class="md-nav__link">
+      <a href="../GenAI/litellm/" class="md-nav__link">
         
   
   
@@ -4062,7 +3974,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GenAI/llm-llama2-llama3/" class="md-nav__link">
+      <a href="../GenAI/llm-llama2-llama3/" class="md-nav__link">
         
   
   
@@ -4085,7 +3997,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GenAI/mcp-grafana-prometheus-loki/" class="md-nav__link">
+      <a href="../GenAI/mcp-grafana-prometheus-loki/" class="md-nav__link">
         
   
   
@@ -4108,7 +4020,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GenAI/searxng-mcp-server-for-cline/" class="md-nav__link">
+      <a href="../GenAI/searxng-mcp-server-for-cline/" class="md-nav__link">
         
   
   
@@ -4139,7 +4051,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GenAI/spec-driven-development/" class="md-nav__link">
+      <a href="../GenAI/spec-driven-development/" class="md-nav__link">
         
   
   
@@ -4162,7 +4074,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../GenAI/vibe-vs-spec/" class="md-nav__link">
+      <a href="../GenAI/vibe-vs-spec/" class="md-nav__link">
         
   
   
@@ -4241,7 +4153,7 @@
         
           
           <div class="md-nav__link md-nav__container">
-            <a href="../../others/" class="md-nav__link ">
+            <a href="../others/" class="md-nav__link ">
               
   
   
@@ -4274,7 +4186,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/file-storage-gateway-lab/" class="md-nav__link">
+      <a href="../others/file-storage-gateway-lab/" class="md-nav__link">
         
   
   
@@ -4297,7 +4209,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/github-page-howto/" class="md-nav__link">
+      <a href="../others/github-page-howto/" class="md-nav__link">
         
   
   
@@ -4329,7 +4241,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/global-sso-and-china-aws-accounts/" class="md-nav__link">
+      <a href="../others/global-sso-and-china-aws-accounts/" class="md-nav__link">
         
   
   
@@ -4362,7 +4274,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/lab-create-cloudwatch-dashboard-cpu-metric/" class="md-nav__link">
+      <a href="../others/lab-create-cloudwatch-dashboard-cpu-metric/" class="md-nav__link">
         
   
   
@@ -4385,7 +4297,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/obsidian/" class="md-nav__link">
+      <a href="../others/obsidian/" class="md-nav__link">
         
   
   
@@ -4416,7 +4328,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/POC-mig-filezilla-to-transfer-family/" class="md-nav__link">
+      <a href="../others/POC-mig-filezilla-to-transfer-family/" class="md-nav__link">
         
   
   
@@ -4447,7 +4359,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/POC-prometheus-ha-architect-with-thanos-manually/" class="md-nav__link">
+      <a href="../others/POC-prometheus-ha-architect-with-thanos-manually/" class="md-nav__link">
         
   
   
@@ -4477,7 +4389,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/quick-build-brconnector/" class="md-nav__link">
+      <a href="../others/quick-build-brconnector/" class="md-nav__link">
         
   
   
@@ -4508,7 +4420,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/rescue-ec2-instance/" class="md-nav__link">
+      <a href="../others/rescue-ec2-instance/" class="md-nav__link">
         
   
   
@@ -4531,7 +4443,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/script-api-resource-method/" class="md-nav__link">
+      <a href="../others/script-api-resource-method/" class="md-nav__link">
         
   
   
@@ -4561,7 +4473,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/script-convert-mp3-to-text/" class="md-nav__link">
+      <a href="../others/script-convert-mp3-to-text/" class="md-nav__link">
         
   
   
@@ -4584,7 +4496,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/self-signed-certificates/" class="md-nav__link">
+      <a href="../others/self-signed-certificates/" class="md-nav__link">
         
   
   
@@ -4658,7 +4570,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/network/aws-nfw-network-firewall/" class="md-nav__link">
+      <a href="../others/network/aws-nfw-network-firewall/" class="md-nav__link">
         
   
   
@@ -4681,7 +4593,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/network/caddy/" class="md-nav__link">
+      <a href="../others/network/caddy/" class="md-nav__link">
         
   
   
@@ -4704,7 +4616,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/network/cross-region-reverse-proxy-with-nlb-cloudfront/" class="md-nav__link">
+      <a href="../others/network/cross-region-reverse-proxy-with-nlb-cloudfront/" class="md-nav__link">
         
   
   
@@ -4735,7 +4647,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/network/openswan-s2svpn-tgw/" class="md-nav__link">
+      <a href="../others/network/openswan-s2svpn-tgw/" class="md-nav__link">
         
   
   
@@ -4829,7 +4741,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/well-architected/WA-%E5%8D%93%E8%B6%8A%E8%BF%90%E8%90%A5-Operational-Excellence-202310-Summary/" class="md-nav__link">
+      <a href="../others/well-architected/WA-%E5%8D%93%E8%B6%8A%E8%BF%90%E8%90%A5-Operational-Excellence-202310-Summary/" class="md-nav__link">
         
   
   
@@ -4852,7 +4764,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/well-architected/WA-%E5%8F%AF%E6%8C%81%E7%BB%AD%E5%8F%91%E5%B1%95-Sustainability-202310-Summary/" class="md-nav__link">
+      <a href="../others/well-architected/WA-%E5%8F%AF%E6%8C%81%E7%BB%AD%E5%8F%91%E5%B1%95-Sustainability-202310-Summary/" class="md-nav__link">
         
   
   
@@ -4875,7 +4787,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/well-architected/WA-%E5%8F%AF%E9%9D%A0%E6%80%A7-Reliability-202310-Summary/" class="md-nav__link">
+      <a href="../others/well-architected/WA-%E5%8F%AF%E9%9D%A0%E6%80%A7-Reliability-202310-Summary/" class="md-nav__link">
         
   
   
@@ -4898,7 +4810,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/well-architected/WA-%E5%AE%89%E5%85%A8-Security-202310-Summary/" class="md-nav__link">
+      <a href="../others/well-architected/WA-%E5%AE%89%E5%85%A8-Security-202310-Summary/" class="md-nav__link">
         
   
   
@@ -4921,7 +4833,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/well-architected/WA-%E6%80%A7%E8%83%BD%E6%95%88%E7%8E%87-Performance-Efficiency-202310-Summary/" class="md-nav__link">
+      <a href="../others/well-architected/WA-%E6%80%A7%E8%83%BD%E6%95%88%E7%8E%87-Performance-Efficiency-202310-Summary/" class="md-nav__link">
         
   
   
@@ -4944,7 +4856,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../others/well-architected/WA-%E6%88%90%E6%9C%AC%E4%BC%98%E5%8C%96-Cost-Optimization-202310-Summary/" class="md-nav__link">
+      <a href="../others/well-architected/WA-%E6%88%90%E6%9C%AC%E4%BC%98%E5%8C%96-Cost-Optimization-202310-Summary/" class="md-nav__link">
         
   
   
@@ -5114,7 +5026,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/linux/linux-cmd/" class="md-nav__link">
+      <a href="../CLI/linux/linux-cmd/" class="md-nav__link">
         
   
   
@@ -5137,7 +5049,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/linux/docker-cmd/" class="md-nav__link">
+      <a href="../CLI/linux/docker-cmd/" class="md-nav__link">
         
   
   
@@ -5160,7 +5072,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/linux/eksctl/" class="md-nav__link">
+      <a href="../CLI/linux/eksctl/" class="md-nav__link">
         
   
   
@@ -5183,7 +5095,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/linux/eksdemo/" class="md-nav__link">
+      <a href="../CLI/linux/eksdemo/" class="md-nav__link">
         
   
   
@@ -5206,7 +5118,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/linux/ffmpeg/" class="md-nav__link">
+      <a href="../CLI/linux/ffmpeg/" class="md-nav__link">
         
   
   
@@ -5229,7 +5141,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/linux/go-cmd/" class="md-nav__link">
+      <a href="../CLI/linux/go-cmd/" class="md-nav__link">
         
   
   
@@ -5252,7 +5164,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/linux/granted-assume/" class="md-nav__link">
+      <a href="../CLI/linux/granted-assume/" class="md-nav__link">
         
   
   
@@ -5283,7 +5195,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/linux/helm-cmd/" class="md-nav__link">
+      <a href="../CLI/linux/helm-cmd/" class="md-nav__link">
         
   
   
@@ -5306,7 +5218,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/linux/iptables/" class="md-nav__link">
+      <a href="../CLI/linux/iptables/" class="md-nav__link">
         
   
   
@@ -5329,7 +5241,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/linux/jq-cmd/" class="md-nav__link">
+      <a href="../CLI/linux/jq-cmd/" class="md-nav__link">
         
   
   
@@ -5352,7 +5264,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/linux/kubectx/" class="md-nav__link">
+      <a href="../CLI/linux/kubectx/" class="md-nav__link">
         
   
   
@@ -5375,7 +5287,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/linux/kubernetes-cmd/" class="md-nav__link">
+      <a href="../CLI/linux/kubernetes-cmd/" class="md-nav__link">
         
   
   
@@ -5398,7 +5310,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/linux/nodejs-cmd/" class="md-nav__link">
+      <a href="../CLI/linux/nodejs-cmd/" class="md-nav__link">
         
   
   
@@ -5421,7 +5333,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/linux/postgres-cmd/" class="md-nav__link">
+      <a href="../CLI/linux/postgres-cmd/" class="md-nav__link">
         
   
   
@@ -5444,7 +5356,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/linux/python-cmd/" class="md-nav__link">
+      <a href="../CLI/linux/python-cmd/" class="md-nav__link">
         
   
   
@@ -5467,7 +5379,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/linux/regctl/" class="md-nav__link">
+      <a href="../CLI/linux/regctl/" class="md-nav__link">
         
   
   
@@ -5490,7 +5402,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/linux/terraform-cmd/" class="md-nav__link">
+      <a href="../CLI/linux/terraform-cmd/" class="md-nav__link">
         
   
   
@@ -5513,7 +5425,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/linux/ubuntu-cmd/" class="md-nav__link">
+      <a href="../CLI/linux/ubuntu-cmd/" class="md-nav__link">
         
   
   
@@ -5536,7 +5448,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/linux/vim-cmd/" class="md-nav__link">
+      <a href="../CLI/linux/vim-cmd/" class="md-nav__link">
         
   
   
@@ -5559,7 +5471,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/linux/web-performance-testing-tool/" class="md-nav__link">
+      <a href="../CLI/linux/web-performance-testing-tool/" class="md-nav__link">
         
   
   
@@ -5695,7 +5607,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/acm-cmd/" class="md-nav__link">
+      <a href="../CLI/awscli/acm-cmd/" class="md-nav__link">
         
   
   
@@ -5718,7 +5630,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/apigw-cmd/" class="md-nav__link">
+      <a href="../CLI/awscli/apigw-cmd/" class="md-nav__link">
         
   
   
@@ -5741,7 +5653,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/auto-scaling-cmd/" class="md-nav__link">
+      <a href="../CLI/awscli/auto-scaling-cmd/" class="md-nav__link">
         
   
   
@@ -5764,7 +5676,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/aws-ip-range/" class="md-nav__link">
+      <a href="../CLI/awscli/aws-ip-range/" class="md-nav__link">
         
   
   
@@ -5787,7 +5699,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/aws-nuke/" class="md-nav__link">
+      <a href="../CLI/awscli/aws-nuke/" class="md-nav__link">
         
   
   
@@ -5812,7 +5724,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/cloud9-cmd/" class="md-nav__link">
+      <a href="../CLI/awscli/cloud9-cmd/" class="md-nav__link">
         
   
   
@@ -5835,7 +5747,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/cloudformation-cmd/" class="md-nav__link">
+      <a href="../CLI/awscli/cloudformation-cmd/" class="md-nav__link">
         
   
   
@@ -5858,7 +5770,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/cloudwatch-cmd/" class="md-nav__link">
+      <a href="../CLI/awscli/cloudwatch-cmd/" class="md-nav__link">
         
   
   
@@ -5881,7 +5793,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/copilot-cmd/" class="md-nav__link">
+      <a href="../CLI/awscli/copilot-cmd/" class="md-nav__link">
         
   
   
@@ -5904,7 +5816,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/directory-service-cmd/" class="md-nav__link">
+      <a href="../CLI/awscli/directory-service-cmd/" class="md-nav__link">
         
   
   
@@ -5927,7 +5839,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/ebs-cmd/" class="md-nav__link">
+      <a href="../CLI/awscli/ebs-cmd/" class="md-nav__link">
         
   
   
@@ -5950,7 +5862,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/ec2-cmd/" class="md-nav__link">
+      <a href="../CLI/awscli/ec2-cmd/" class="md-nav__link">
         
   
   
@@ -5973,7 +5885,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/ecr-cmd/" class="md-nav__link">
+      <a href="../CLI/awscli/ecr-cmd/" class="md-nav__link">
         
   
   
@@ -5996,7 +5908,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/ecs-cmd/" class="md-nav__link">
+      <a href="../CLI/awscli/ecs-cmd/" class="md-nav__link">
         
   
   
@@ -6019,7 +5931,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/efs-cmd/" class="md-nav__link">
+      <a href="../CLI/awscli/efs-cmd/" class="md-nav__link">
         
   
   
@@ -6042,7 +5954,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/eks-cmd/" class="md-nav__link">
+      <a href="../CLI/awscli/eks-cmd/" class="md-nav__link">
         
   
   
@@ -6065,7 +5977,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/elasticache-redis-cmd/" class="md-nav__link">
+      <a href="../CLI/awscli/elasticache-redis-cmd/" class="md-nav__link">
         
   
   
@@ -6088,7 +6000,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/elb-cmd/" class="md-nav__link">
+      <a href="../CLI/awscli/elb-cmd/" class="md-nav__link">
         
   
   
@@ -6111,7 +6023,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/iam-cmd/" class="md-nav__link">
+      <a href="../CLI/awscli/iam-cmd/" class="md-nav__link">
         
   
   
@@ -6134,7 +6046,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/lambda-cmd/" class="md-nav__link">
+      <a href="../CLI/awscli/lambda-cmd/" class="md-nav__link">
         
   
   
@@ -6157,7 +6069,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/lightsail-cmd/" class="md-nav__link">
+      <a href="../CLI/awscli/lightsail-cmd/" class="md-nav__link">
         
   
   
@@ -6180,7 +6092,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/rds-cmd/" class="md-nav__link">
+      <a href="../CLI/awscli/rds-cmd/" class="md-nav__link">
         
   
   
@@ -6203,7 +6115,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/redshift-cmd/" class="md-nav__link">
+      <a href="../CLI/awscli/redshift-cmd/" class="md-nav__link">
         
   
   
@@ -6226,7 +6138,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/route53-cmd/" class="md-nav__link">
+      <a href="../CLI/awscli/route53-cmd/" class="md-nav__link">
         
   
   
@@ -6249,7 +6161,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/s3-cmd/" class="md-nav__link">
+      <a href="../CLI/awscli/s3-cmd/" class="md-nav__link">
         
   
   
@@ -6272,7 +6184,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/sam-cmd/" class="md-nav__link">
+      <a href="../CLI/awscli/sam-cmd/" class="md-nav__link">
         
   
   
@@ -6295,7 +6207,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/sns-cmd/" class="md-nav__link">
+      <a href="../CLI/awscli/sns-cmd/" class="md-nav__link">
         
   
   
@@ -6318,7 +6230,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/sqs-cmd/" class="md-nav__link">
+      <a href="../CLI/awscli/sqs-cmd/" class="md-nav__link">
         
   
   
@@ -6341,7 +6253,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/ssm-cmd/" class="md-nav__link">
+      <a href="../CLI/awscli/ssm-cmd/" class="md-nav__link">
         
   
   
@@ -6364,7 +6276,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/sts-cmd/" class="md-nav__link">
+      <a href="../CLI/awscli/sts-cmd/" class="md-nav__link">
         
   
   
@@ -6387,7 +6299,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/awscli/vpc-cmd/" class="md-nav__link">
+      <a href="../CLI/awscli/vpc-cmd/" class="md-nav__link">
         
   
   
@@ -6465,7 +6377,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/windows/docker-on-windows/" class="md-nav__link">
+      <a href="../CLI/windows/docker-on-windows/" class="md-nav__link">
         
   
   
@@ -6488,7 +6400,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../CLI/windows/powershell/" class="md-nav__link">
+      <a href="../CLI/windows/powershell/" class="md-nav__link">
         
   
   
@@ -6526,7 +6438,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../../tags/" class="md-nav__link">
+      <a href="../tags/" class="md-nav__link">
         
   
   
@@ -6561,74 +6473,6 @@
     
   
   
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#snapshot" class="md-nav__link">
-    <span class="md-ellipsis">
-      snapshot
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="snapshot">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#es-710-snapshot" class="md-nav__link">
-    <span class="md-ellipsis">
-      es 7.10 snapshot
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#es-710-restore" class="md-nav__link">
-    <span class="md-ellipsis">
-      es 7.10 restore
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#es-68-snapshot" class="md-nav__link">
-    <span class="md-ellipsis">
-      es 6.8 snapshot
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#error" class="md-nav__link">
-    <span class="md-ellipsis">
-      error
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#replication" class="md-nav__link">
-    <span class="md-ellipsis">
-      replication
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
 </nav>
                   </div>
                 </div>
@@ -6641,170 +6485,22 @@
                 
                   
 
-  <nav class="md-tags">
-    
-      
-      
-      
-        <a href="../../tags/#tag:awsanalyticsopensearch" class="md-tag">aws/analytics/opensearch</a>
-      
-    
-  </nav>
-
 
   
   
 
 
-<h1 id="aos-migration">aos-migration<a class="headerlink" href="#aos-migration" title="Permanent link">¶</a></h1>
-<h2 id="snapshot">snapshot<a class="headerlink" href="#snapshot" title="Permanent link">¶</a></h2>
-<ul>
-<li>create role-a aos-mig-role, see detail in refer chapter</li>
-<li>ad <code>iam:PassRole</code> to role-b</li>
-<li>(only for kibana) add role-b (using by awscurl) to opensearch –&gt; security –&gt; role –&gt; all_access –&gt; mapped users</li>
-<li>增量做快照，恢复时候指定最新快照名，全量恢复</li>
-<li>refer: <a href="https://docs.amazonaws.cn/opensearch-service/latest/developerguide/managedomains-snapshots.html">https://docs.amazonaws.cn/opensearch-service/latest/developerguide/managedomains-snapshots.html</a></li>
-</ul>
-<h3 id="es-710-snapshot">es 7.10 snapshot<a class="headerlink" href="#es-710-snapshot" title="Permanent link">¶</a></h3>
-<ul>
-<li>增量快照</li>
-<li>only could use iam role in cli to execute awscurl </li>
-<li>
-<p>create snapshot repo<br>
-</p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">DOMAIN_NAME</span><span class="o">=</span>vpc-src2-xxx.ap-southeast-1.es.amazonaws.com
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>awscurl<span class="w"> </span>-XPUT<span class="w"> </span>--service<span class="w"> </span>es<span class="w"> </span>--region<span class="w"> </span>ap-southeast-1<span class="w"> </span>https://<span class="si">${</span><span class="nv">DOMAIN_NAME</span><span class="si">}</span>/_snapshot/snapshot-repo-1<span class="w"> </span>-H<span class="w"> </span><span class="s1">'Content-Type: application/json'</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">' </span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="s1">{</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="s1">  "type": "s3",</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="s1">  "settings": {</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="s1">    "bucket": "aos-mig-20241226",</span>
-<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="s1">    "base_path": "snapshot",</span>
-<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="s1">    "region": "ap-southeast-1",</span>
-<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="s1">    "role_arn": "arn:aws:iam::123456789012:role/aos-mig-role"</span>
-<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="s1">  }</span>
-<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="s1">}'</span>
-</code></pre></div><p></p>
-</li>
-<li>
-<p>do snapshot<br>
-</p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>awscurl<span class="w"> </span>-XPUT<span class="w"> </span>--service<span class="w"> </span>es<span class="w"> </span>--region<span class="w"> </span>ap-southeast-1<span class="w"> </span>https://<span class="si">${</span><span class="nv">DOMAIN_NAME</span><span class="si">}</span>/_snapshot/snapshot-repo-1/snapshot-1
-</code></pre></div><p></p>
-</li>
-<li>
-<p>get snapshot<br>
-</p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>awscurl<span class="w"> </span>-XGET<span class="w"> </span>--service<span class="w"> </span>es<span class="w"> </span>--region<span class="w"> </span>ap-southeast-1<span class="w"> </span>https://<span class="si">${</span><span class="nv">DOMAIN_NAME</span><span class="si">}</span>/_snapshot/_status
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>awscurl<span class="w"> </span>-XGET<span class="w"> </span>--service<span class="w"> </span>es<span class="w"> </span>--region<span class="w"> </span>ap-southeast-1<span class="w"> </span>https://<span class="si">${</span><span class="nv">DOMAIN_NAME</span><span class="si">}</span>/_snapshot/snapshot-repo-1/_all?pretty
-</code></pre></div><p></p>
-</li>
-</ul>
-<h3 id="es-710-restore">es 7.10 restore<a class="headerlink" href="#es-710-restore" title="Permanent link">¶</a></h3>
-<ul>
-<li>全量恢复</li>
-<li>(option) put role/user to all_access</li>
-<li>
-<p>create repo<br>
-</p><div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nv">DOMAIN_NAME</span><span class="o">=</span>vpc-target2-xxx.ap-southeast-1.es.amazonaws.com
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>awscurl<span class="w"> </span>-XPUT<span class="w"> </span>--service<span class="w"> </span>es<span class="w"> </span>--region<span class="w"> </span>ap-southeast-1<span class="w"> </span>https://<span class="si">${</span><span class="nv">DOMAIN_NAME</span><span class="si">}</span>/_snapshot/snapshot-repo-1<span class="w"> </span>-H<span class="w"> </span><span class="s1">'Content-Type: application/json'</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">' </span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="s1">{</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="s1">  "type": "s3",</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="s1">  "settings": {</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="s1">    "bucket": "aos-mig-20241226",</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="s1">    "base_path": "snapshot",</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="s1">    "region": "ap-southeast-1",</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="s1">    "role_arn": "arn:aws:iam::123456789012:role/aos-mig-role"</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="s1">  }</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="s1">}'</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>awscurl<span class="w"> </span>-XGET<span class="w"> </span>--service<span class="w"> </span>es<span class="w"> </span>--region<span class="w"> </span>ap-southeast-1<span class="w"> </span><span class="s2">"https://</span><span class="si">${</span><span class="nv">DOMAIN_NAME</span><span class="si">}</span><span class="s2">/_snapshot/snapshot-repo-1/_all?pretty"</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a>
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a>awscurl<span class="w"> </span>-XGET<span class="w"> </span>--service<span class="w"> </span>es<span class="w"> </span>--region<span class="w"> </span>ap-southeast-1<span class="w"> </span><span class="s2">"https://</span><span class="si">${</span><span class="nv">DOMAIN_NAME</span><span class="si">}</span><span class="s2">/_snapshot?pretty"</span>
-</code></pre></div><p></p>
-</li>
-<li>
-<p>get all indice and delete one of them<br>
-</p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="c1"># get all indice</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>awscurl<span class="w"> </span>-XGET<span class="w"> </span>--service<span class="w"> </span>es<span class="w"> </span>--region<span class="w"> </span>ap-southeast-1<span class="w"> </span><span class="s2">"https://</span><span class="si">${</span><span class="nv">DOMAIN_NAME</span><span class="si">}</span><span class="s2">/_all"</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="c1"># delete one of them </span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>awscurl<span class="w"> </span>-XDELETE<span class="w"> </span>--service<span class="w"> </span>es<span class="w"> </span>--region<span class="w"> </span>ap-southeast-1<span class="w"> </span><span class="s2">"https://</span><span class="si">${</span><span class="nv">DOMAIN_NAME</span><span class="si">}</span><span class="s2">/.kibana_1"</span>
-</code></pre></div><p></p>
-</li>
-<li>
-<p>restore<br>
-</p><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>awscurl<span class="w"> </span>-XPOST<span class="w"> </span>--service<span class="w"> </span>es<span class="w"> </span>--region<span class="w"> </span>ap-southeast-1<span class="w"> </span><span class="s2">"https://</span><span class="si">${</span><span class="nv">DOMAIN_NAME</span><span class="si">}</span><span class="s2">/_snapshot/snapshot-repo-1/snapshot-1/_restore"</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>-d<span class="w"> </span><span class="s1">'{"indices": "-.kibana_1"}'</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>-H<span class="w"> </span><span class="s1">'Content-Type: application/json'</span>
-</code></pre></div><p></p>
-</li>
-</ul>
-<h3 id="es-68-snapshot">es 6.8 snapshot<a class="headerlink" href="#es-68-snapshot" title="Permanent link">¶</a></h3>
-<ul>
-<li>could use iam role / user in cli to execute awscurl </li>
-<li>follow steps in es 7.10<br>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nv">DOMAIN_NAME</span><span class="o">=</span>vpc-src1-xxx.ap-southeast-1.es.amazonaws.com
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>awscurl<span class="w"> </span>-XPUT<span class="w"> </span>--service<span class="w"> </span>es<span class="w"> </span>--region<span class="w"> </span>ap-southeast-1<span class="w"> </span>http://<span class="si">${</span><span class="nv">DOMAIN_NAME</span><span class="si">}</span>/_snapshot/snapshot-repo-1<span class="w"> </span>-H<span class="w"> </span><span class="s1">'Content-Type: application/json'</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">' </span>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="s1">{</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="s1">  "type": "s3",</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="s1">  "settings": {</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="s1">    "bucket": "aos-mig-20241226",</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="s1">    "base_path": "snapshot-src1",</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="s1">    "region": "ap-southeast-1",</span>
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="s1">    "role_arn": "arn:aws:iam::123456789012:role/aos-mig-role"</span>
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="s1">  }</span>
-<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="s1">}'</span>
-</code></pre></div></li>
-</ul>
-<h3 id="error">error<a class="headerlink" href="#error" title="Permanent link">¶</a></h3>
-<ul>
-<li>
-<p>创建 opensearch repo 只能使用本 region 的 s3 桶</p>
-</li>
-<li>
-<p>使用 curl 用 admin 登录，只能做查询，无法创建 repo，需要使用 awscurl<br>
-</p><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>{"Message":"User: anonymous is not authorized to perform: iam:PassRole on resource: arn:aws:iam::123456789012:role/aos-mig-role because no resource-based policy allows the iam:PassRole action"}
-</code></pre></div><p></p>
-</li>
-<li>
-<p>iam user could not access ES cluster 7.10 directly, assume to another iam role <br>
-</p><div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>{
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>  "error" : {
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>    "root_cause" : [
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>      {
-<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>        "type" : "security_exception",
-<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a>        "reason" : "no permissions for [cluster:admin/repository/get] and User [name=arn:aws:iam::123456789012:user/panlm, backend_roles=[], requestedTenant=null]"
-<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a>      }
-<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>    ],
-<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>    "type" : "security_exception",
-<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a>    "reason" : "no permissions for [cluster:admin/repository/get] and User [name=arn:aws:iam::123456789012:user/panlm, backend_roles=[], requestedTenant=null]"
-<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>  },
-<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a>  "status" : 403
-<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a>}
-</code></pre></div><p></p>
-</li>
-</ul>
-<h2 id="replication">replication<a class="headerlink" href="#replication" title="Permanent link">¶</a></h2>
-<ul>
-<li>refer: <a href="https://docs.aws.amazon.com/opensearch-service/latest/developerguide/replication.html">https://docs.aws.amazon.com/opensearch-service/latest/developerguide/replication.html</a></li>
-<li>增量复制</li>
-<li>create connection from target, approve connection in source</li>
-</ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="nv">DOMAIN_NAME</span><span class="o">=</span>
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a><span class="nv">INDEX_NAME</span><span class="o">=</span>leader-99
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="nv">CONNECTION_NAME</span><span class="o">=</span>src2-target-test
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>awscurl<span class="w"> </span>-XPUT<span class="w"> </span>--service<span class="w"> </span>es<span class="w"> </span>--region<span class="w"> </span>ap-southeast-1<span class="w"> </span><span class="s2">"https://</span><span class="si">${</span><span class="nv">DOMAIN_NAME</span><span class="si">}</span><span class="s2">/_plugins/_replication/</span><span class="si">${</span><span class="nv">INDEX_NAME</span><span class="si">}</span><span class="s2">/_start"</span><span class="w"> </span>-H<span class="w"> </span><span class="s1">'Content-Type: application/json'</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">' </span>
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="s1">{</span>
-<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="s1">  "leader_alias": "'</span><span class="s2">"</span><span class="si">${</span><span class="nv">CONNECTION_NAME</span><span class="si">}</span><span class="s2">"</span><span class="s1">'",</span>
-<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a><span class="s1">  "leader_index": "'</span><span class="s2">"</span><span class="si">${</span><span class="nv">INDEX_NAME</span><span class="si">}</span><span class="s2">"</span><span class="s1">'",</span>
-<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="s1">  "use_roles":{</span>
-<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="s1">    "leader_cluster_role": "all_access",</span>
-<a id="__codelineno-9-10" name="__codelineno-9-10" href="#__codelineno-9-10"></a><span class="s1">    "follower_cluster_role": "all_access"</span>
-<a id="__codelineno-9-11" name="__codelineno-9-11" href="#__codelineno-9-11"></a><span class="s1">  }</span>
-<a id="__codelineno-9-12" name="__codelineno-9-12" href="#__codelineno-9-12"></a><span class="s1">}'</span>
-<a id="__codelineno-9-13" name="__codelineno-9-13" href="#__codelineno-9-13"></a>
-<a id="__codelineno-9-14" name="__codelineno-9-14" href="#__codelineno-9-14"></a>awscurl<span class="w"> </span>-XGET<span class="w"> </span>--service<span class="w"> </span>es<span class="w"> </span>--region<span class="w"> </span>ap-southeast-1<span class="w"> </span><span class="s2">"https://</span><span class="si">${</span><span class="nv">DOMAIN_NAME</span><span class="si">}</span><span class="s2">/_plugins/_replication/</span><span class="si">${</span><span class="nv">INDEX_NAME</span><span class="si">}</span><span class="s2">/_status?pretty"</span>
-<a id="__codelineno-9-15" name="__codelineno-9-15" href="#__codelineno-9-15"></a>
-<a id="__codelineno-9-16" name="__codelineno-9-16" href="#__codelineno-9-16"></a>awscurl<span class="w"> </span>-XGET<span class="w"> </span>--service<span class="w"> </span>es<span class="w"> </span>--region<span class="w"> </span>ap-southeast-1<span class="w"> </span><span class="s2">"https://</span><span class="si">${</span><span class="nv">DOMAIN_NAME</span><span class="si">}</span><span class="s2">/</span><span class="si">${</span><span class="nv">INDEX_NAME</span><span class="si">}</span><span class="s2">/_search?pretty"</span>
-</code></pre></div>
+<h1 id="serverless">Serverless<a class="headerlink" href="#serverless" title="Permanent link">¶</a></h1>
+<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>(path:git/git-mkdocs/serverless file:.md)
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>- ($frontmatter:last_modified) [$frontmatter:title]($filename): $frontmatter:description
+</code></pre></div><br>
+- (2025-10-31) <a href="apigw-custom-domain-name/">Custom Domain Name in API Gateway</a>: 为私有 API 创建定制域名<br>
+- (2023-03-05) <a href="apigw-cross-account-private-endpoint/">Account Private REST API Cross-account</a>: 跨账号访问私有 API<br>
+- (2023-03-14) <a href="apigw-regional-api-access-from-vpc/">Access Regional API From VPC</a>: 从 VPC 访问 Regional API<br>
+- (2023-12-03) <a href="apigw-private-api-alb-cdk/">Private API and ALB Demo</a>: 通过 ALB 访问 Private API 的例子<br>
+- (2023-12-24) <a href="apigw-get-sourceip/">Get Source IP in API Gateway</a>: 获取客户端源地址<br>
+&lt;–&gt;<p></p>
 
 
 
@@ -6827,7 +6523,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 9, 2025 21:14:37 CST"><span class="timeago" datetime="2025-03-09T21:14:37+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 9, 2025 21:14:37 CST">2025-03-09</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="November 3, 2025 13:23:29 CST"><span class="timeago" datetime="2025-11-03T13:23:29+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="November 3, 2025 13:23:29 CST">2025-11-03</span>
   </span>
 
     
@@ -6837,7 +6533,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="December 28, 2024 17:30:05 CST"><span class="timeago" datetime="2024-12-28T17:30:05+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="December 28, 2024 17:30:05 CST">2024-12-28</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="November 3, 2025 13:23:29 CST"><span class="timeago" datetime="2025-11-03T13:23:29+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="November 3, 2025 13:23:29 CST">2025-11-03</span>
   </span>
 
     
@@ -6894,16 +6590,16 @@
     
     
       
-      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "toc.follow", "content.code.copy"], "search": "../../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"base": "..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "toc.follow", "content.code.copy"], "search": "../assets/javascripts/workers/search.973d3a69.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../assets/javascripts/bundle.f55a23d4.min.js"></script>
+      <script src="../assets/javascripts/bundle.f55a23d4.min.js"></script>
       
-        <script src="../../js/timeago.min.js"></script>
+        <script src="../js/timeago.min.js"></script>
       
-        <script src="../../js/timeago_mkdocs_material.js"></script>
+        <script src="../js/timeago_mkdocs_material.js"></script>
       
-        <script src="../../assets/mkdocs_pagetree_plugin.js"></script>
+        <script src="../assets/mkdocs_pagetree_plugin.js"></script>
       
     
   
