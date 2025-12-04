@@ -7,7 +7,7 @@ tags:
   - draft
 ---
 
-# wa-blogs-and-reference
+# well-architected blogs and reference
 
 ## customer success 
 
@@ -47,5 +47,14 @@ tags:
 | [What is observability and Why does it matter? – Part 1](https://aws.amazon.com/blogs/mt/what-is-observability-and-why-does-it-matter-part-1/)                                                                                              | Yes                   | 4/5/2022          |
 
 
+## docs
+
+WA: https://aws.amazon.com/architecture/well-architected/
+frame work: https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome.html
+
+- 6 Pillar
+- Lenses
+- Customer Lenses
+- Guidance
 
 
