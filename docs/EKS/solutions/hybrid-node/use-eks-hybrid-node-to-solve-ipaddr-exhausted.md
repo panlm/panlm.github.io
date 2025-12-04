@@ -2,10 +2,11 @@
 title: Breaking Through VPC Address Limitations Using EKS Hybrid Node Architecture
 description: 一个关于如何使用EKS混合节点功能优雅地解决VPC地址空间不足的真实案例
 created: 2025-04-20 10:53:34.032
-last_modified: 2025-05-01
+last_modified: 2025-12-02
 status: myblog
 tags:
   - aws/container/eks
+  - kubernetes/calico
 ---
 
 # 突破VPC地址限制：EKS混合节点架构实战指南
@@ -54,9 +55,15 @@ tags:
 
 经过深入思考和反复验证，我们发现解决这个问题需要跳出传统思维的束缚。最终，我们设计了两种创新方案，每种方案都从不同角度巧妙地解决了IP地址空间不足的问题。让我们一起来看看这两种方案的精妙之处。
 
-### 方案一：巧用ALB跨VPC部署
+### 方案一： 使用 Calico Overlay 网络 CNI
 
-第一个方案的灵感来自于AWS Load Balancer Controller的一个鲜为人知的特性 - 跨VPC部署模式。这个方案的思路非常巧妙：我们不再执着于在现有VPC中挤出更多地址空间，而是另辟蹊径，在一个全新的VPC中部署EKS集群和应用POD。让我们看看这个方案的具体设计：
+![[attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20251202-1545881.png]]
+
+refer: [[../../addons/calico-cni-overlay|calico-cni-overlay]]
+
+### 方案二：巧用ALB跨VPC部署
+
+这个方案的灵感来自于AWS Load Balancer Controller的一个鲜为人知的特性 - 跨VPC部署模式。这个方案的思路非常巧妙：我们不再执着于在现有VPC中挤出更多地址空间，而是另辟蹊径，在一个全新的VPC中部署EKS集群和应用POD。让我们看看这个方案的具体设计：
 
 ![[attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081201.png|800]]
 
@@ -70,9 +77,9 @@ tags:
 
 另外，我们将业务应用后台所需要的数据库等组件放到原有VPC（10.255）中，这样可以保证企业内部其他应用直接访问，例如堡垒机等。
 
-### 方案二：混合节点架构的创新之道
+### 方案三：混合节点架构的创新之道
 
-第二个方案展现了AWS在容器编排领域的又一次创新。它巧妙地利用了Amazon EKS在2024年re:Invent大会上发布的混合节点（Hybrid Node）功能，为我们带来了一个变通的解决方案。
+这个方案展现了AWS在容器编排领域的又一次创新。它巧妙地利用了Amazon EKS在2024年re:Invent大会上发布的混合节点（Hybrid Node）功能，为我们带来了一个变通的解决方案。
 
 让我们来看看这个方案的架构：
 

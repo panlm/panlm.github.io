@@ -69,6 +69,14 @@ aws eks create-addon --cluster-name ${CLUSTER_NAME} \
 ```
 
 
+## pod num on node
+
+ENI numbers of instance
+IP addresses of ENI
+https://github.com/aws/amazon-vpc-cni-k8s/blob/master/pkg/vpc/vpc_ip_resource_limit.go
+_the number of ENIs for the instance type × (the number of IPs per ENI - 1)) + 2_
+
+
 ## additional
 - [[security-group-for-pod]]
 	- [[../solutions/network/enable-sg-on-pod]]

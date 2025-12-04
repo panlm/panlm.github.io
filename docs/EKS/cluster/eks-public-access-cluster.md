@@ -8,6 +8,7 @@ tags:
 ---
 
 # Create Public Access EKS Cluster
+
 本文指导快速创建 EKS 集群实验环境
 - 创建单个集群，可以参考章节 [[#create cluster from scratch]]
 - 如果希望创建多个集群在同一个 VPC 内部，可以参考章节 [[#create cluster in specific VPC]]
@@ -15,12 +16,14 @@ tags:
 参考 [[../../cloud9/quick-setup-cloud9|quick-setup-cloud9]] 快速设置实验用 Cloud9 环境
 
 ## create cluster from scratch
+
 - don't put `subnets`/`sharedNodeSecurityGroup` in your `vpc` section. eksctl will create a clean vpc for you
 - don't use `privateCluster` section, you could make cluster api server endpoint `public` or `public and private`
 - you still could put your group node in private subnet for security consideration
 - recommend for most of POC environment
 
 ### create eks cluster
+
 - 将在下面区域创建 EKS 集群 (prepare to create eks cluster)
 ```sh
 export AWS_PAGER=""
@@ -129,6 +132,7 @@ iam:
 ```
 
 ### get-newest-ami
+
 - get newest ami id for your self-managed node group, for GPU or Graviton instance ([link](https://docs.aws.amazon.com/eks/latest/userguide/retrieve-ami-id.html))
 ```sh
 echo ${AWS_REGION}
@@ -180,6 +184,7 @@ done
 
 
 ## create cluster in specific VPC
+
 - get target vpc id
     - or create new vpc ([[../../cloud9/create-standard-vpc-for-lab-in-china-region#using-cloudformation-template-|create-standard-vpc-for-lab-in-china-region]])
 ```sh

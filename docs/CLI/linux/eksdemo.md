@@ -7,9 +7,11 @@ tags:
   - aws/container/eks
   - aws/cmd
 ---
+
 # eksdemo
 
 ## install
+
 ```sh
 curl --location "https://github.com/awslabs/eksdemo/releases/latest/download/eksdemo_$(uname -s)_x86_64.tar.gz" |tar xz -C /tmp
 sudo mv -v /tmp/eksdemo /usr/local/bin
@@ -17,6 +19,7 @@ sudo mv -v /tmp/eksdemo /usr/local/bin
 ```
 
 ## create-eks-cluster-
+
 - create cluster
 ```sh
 CLUSTER_NAME=ekscluster1
@@ -25,7 +28,7 @@ export AWS_DEFAULT_REGION=us-west-2
 eksdemo create cluster ${CLUSTER_NAME} \
     --instance m5.large \
     --nodes 3 \
-    --version 1.31 \
+    --version 1.33 \
     --vpc-cidr 10.10.0.0/16
 
 ```

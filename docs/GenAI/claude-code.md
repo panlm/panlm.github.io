@@ -95,9 +95,9 @@ npm install -g @anthropic-ai/claude-code
 build skills
 - https://github.com/yusufkaraaslan/Skill_Seekers
 
-agent skills mcp
+agent skills mcp for Q and kiro
 - https://builder.aws.com/content/34NW7Wl1gpOl2E4jeJQ6iytovSM/how-to-use-agent-skills-with-amazon-q-developer-and-kiro
-    - https://github.com/DiscreteTom/agent-skills-mcp
+    - https://github.com/DiscreteTom/agent-skills-mcp 
 
 anthropoics skills
 - https://github.com/anthropics/skills

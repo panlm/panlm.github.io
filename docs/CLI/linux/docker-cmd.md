@@ -51,8 +51,8 @@ docker buildx build \
 -t 123456789012.dkr.ecr.us-east-2.amazonaws.com/osarch:latest \
 --push .
 ```
-- refer: [[../../../../WebClip/How to quickly setup an experimental environment to run containers on x86 and AWS Graviton2 based Amazon EC2 instances]]
-- refer: [[../awscli/ecr-cmd#multi-architecture-image-|multi-architecture-image]]
+- refer: [[../../../../WebClip/How to quickly setup an experimental environment to run containers on x86 and AWS Graviton2 based Amazon EC2 instances]] 
+- refer: [[../awscli/ecr-cmd#multi-architecture-image-|multi-architecture-image]] 
 
 ## docker image
 ### clean

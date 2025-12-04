@@ -20,12 +20,13 @@ number headings: first-level 2, max 3, 1.1, auto
 (path:git/git-mkdocs/others/well-architected file:.md)
 - [$frontmatter:title]($filename): $frontmatter:description
 ```
-- [WA-卓越运营-Operational-Excellence-202310-Summary](WA-卓越运营-Operational-Excellence-202310-Summary): 
+- [wa-blogs-and-reference](wa-blogs-and-reference): well architected 相关客户案例和 blog
 - [WA-可持续性-Sustainability-202310-Summary](WA-可持续发展-Sustainability-202310-Summary): 
+- [WA-性能效率-Performance-Efficiency-202310-Summary](WA-性能效率-Performance-Efficiency-202310-Summary): 
+- [WA-卓越运营-Operational-Excellence-202310-Summary](WA-卓越运营-Operational-Excellence-202310-Summary): 
+- [WA-成本优化-Cost-Optimization-202310-Summary](WA-成本优化-Cost-Optimization-202310-Summary): 
 - [WA-可靠性-Reliability-202310-Summary](WA-可靠性-Reliability-202310-Summary): 
 - [WA-安全-Security-202310-Summary](WA-安全-Security-202310-Summary): 
-- [WA-性能效率-Performance-Efficiency-202310-Summary](WA-性能效率-Performance-Efficiency-202310-Summary): 
-- [WA-成本优化-Cost-Optimization-202310-Summary](WA-成本优化-Cost-Optimization-202310-Summary): 
 <-->
 
 ## 3 others

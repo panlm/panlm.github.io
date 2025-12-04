@@ -21,7 +21,9 @@ To improve the stability and availability of the CoreDNS Deployment, versions `
 - Remove your existing `PodDisruptionBudget` and try the upgrade again.
 
 ## updating
+
 ### from cli
+
 ```sh
 CLUSTER_NAME=ekscluster1
 export AWS_DEFAULT_REGION=us-east-2
@@ -36,12 +38,22 @@ aws eks update-addon --cluster-name ${CLUSTER_NAME} \
 ```
 
 ### from webui
+
 select `PRESERVE` 
 
 ## others
+
 - [[managed-coredns]]
 - [[self-managed-coredns]]
 
+## monitoring
+
+- https://coredns.io/plugins/metrics/
+- https://docs.aws.amazon.com/eks/latest/best-practices/monitoring_eks_workloads_for_network_performance_issues.html
+    - conntrack_allowance_exceeded
+- https://aws.amazon.com/blogs/mt/monitoring-coredns-for-dns-throttling-issues-using-aws-open-source-monitoring-services/
+
 ## refer
+
 - https://github.com/coredns/deployment/blob/master/kubernetes/Upgrading_CoreDNS.md
 

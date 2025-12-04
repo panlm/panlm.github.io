@@ -56,6 +56,10 @@ docker compose up -d
 
 ```
 
+### get more latest stable version
+
+- https://github.com/BerriAI/litellm/pkgs/container/litellm
+
 ## Add OpenAI Compatibile API
 
 - add models in BRConnector 
