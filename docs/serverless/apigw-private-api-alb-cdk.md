@@ -63,6 +63,3 @@ cdk deploy --all --require-approval never
 - https://serverlessland.com/repos/apigw-private-custom-domain-name
 
 
-
-
-

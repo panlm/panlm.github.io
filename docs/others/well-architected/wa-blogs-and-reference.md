@@ -1,5 +1,5 @@
 ---
-title: wa-blogs-and-reference
+title: well-architected blogs and reference
 description: well architected 相关客户案例和 blog
 created: 2025-12-04 12:58:39.015
 last_modified: 2025-12-04
