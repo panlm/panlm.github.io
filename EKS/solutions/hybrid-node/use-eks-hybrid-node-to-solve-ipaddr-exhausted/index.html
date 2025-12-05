@@ -6155,7 +6155,7 @@
   <span class="md-ellipsis">
     
   
-    wa-blogs-and-reference
+    well-architected blogs and reference
   
 
     
@@ -8536,11 +8536,11 @@
 <h2 id="_3">创新解决方案：突破传统架构的限制<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <p>经过深入思考和反复验证，我们发现解决这个问题需要跳出传统思维的束缚。最终，我们设计了两种创新方案，每种方案都从不同角度巧妙地解决了IP地址空间不足的问题。让我们一起来看看这两种方案的精妙之处。</p>
 <h3 id="calico-overlay-cni">方案一： 使用 Calico Overlay 网络 CNI<a class="headerlink" href="#calico-overlay-cni" title="Permanent link">¶</a></h3>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20251202-1545881.png" data-desc-position="bottom"><img alt="attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20251202-1545881.png" src="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20251202-1545881.png" title="attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20251202-1545881.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20251205-1026944.png" data-desc-position="bottom"><img alt="attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20251205-1026944.png" src="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20251205-1026944.png" title="attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20251205-1026944.png"></a></p>
 <p>refer: <a href="../../../addons/calico-cni-overlay/" title="calico-cni-overlay">calico-cni-overlay</a></p>
 <h3 id="albvpc">方案二：巧用ALB跨VPC部署<a class="headerlink" href="#albvpc" title="Permanent link">¶</a></h3>
 <p>这个方案的灵感来自于AWS Load Balancer Controller的一个鲜为人知的特性 - 跨VPC部署模式。这个方案的思路非常巧妙：我们不再执着于在现有VPC中挤出更多地址空间，而是另辟蹊径，在一个全新的VPC中部署EKS集群和应用POD。让我们看看这个方案的具体设计：</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081201.png" data-desc-position="bottom"><img alt="800" src="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081201.png" title="800"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20251205-1026027.png" data-desc-position="bottom"><img alt="800" src="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20251205-1026027.png" title="800"></a></p>
 <p>更多技术细节可以参考AWS官方博客：<a href="https://aws.amazon.com/blogs/containers/expose-amazon-eks-pods-through-cross-account-load-balancer/">Expose Amazon EKS pods through cross-account load balancer</a></p>
 <p>在这个方案中，我们新建了一个独立的VPC（图中显示为172.16）并通过VPC Peering与原有VPC（图中显示为10.255）实现互联，而EKS集群则部署在新建的VPC中（使用172.16.0.0/16作为CIDR）。这种分离式的架构设计带来了几个关键优势：</p>
 <p>首先，通过将EKS集群部署在独立的VPC中，我们可以为容器工作负载分配充足的IP地址空间，而不会影响现有的业务应用。其次，在部署AWS Load Balancer Controller时，我们将其配置为使用原有的VPC，这样可以确保负载均衡器能够正确处理进出流量。具体来说，入栈流量将通过部署在业务应用A的VPC中的负载均衡器，经由VPC Peering访问EKS VPC中的应用Pod。</p>
@@ -8549,7 +8549,7 @@
 <h3 id="_4">方案三：混合节点架构的创新之道<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
 <p>这个方案展现了AWS在容器编排领域的又一次创新。它巧妙地利用了Amazon EKS在2024年re:Invent大会上发布的混合节点（Hybrid Node）功能，为我们带来了一个变通的解决方案。</p>
 <p>让我们来看看这个方案的架构：</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081202.png" data-desc-position="bottom"><img alt="800" src="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081202.png" title="800"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20251205-1026116.png" data-desc-position="bottom"><img alt="800" src="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20251205-1026116.png" title="800"></a></p>
 <p>这个方案的核心在于其灵活性和可扩展性。我们新建一个独立的VPC（图中显示为172.16），并且使用TGW与原有 VPC（图中显示为10.255）互联。使用 TGW 代替 VPC Peering 的主要原因在与我们需要精细化控制不可见的Overlay网段（RemotePODNetwork）路由。</p>
 <p>将需要被企业内部其他应用直接访问的组件，包括数据库、不适合运行在 Overlay 环境中的特定应用等部署在原有 VPC中。将可以运行在 Overlay 网络上的应用部署在独立的 vpc 中。通过AWS Load Balancer Controller暴露到原有 vpc 中。</p>
 <p>同样为了处理出栈流量，我们在原有VPC中部署了一个内部NAT设备。这个设备配备了两个弹性网络接口（ENI），分别连接到两个VPC中，用于处理从应用Pod发出的流量。这种设计确保了应用Pod能够正常访问外部资源，同时保持了网络流量的可控性和安全性。</p>
@@ -8570,7 +8570,7 @@
 <p>这个配置完美对应了我们前面讨论的架构设计，让我们能够在实践中验证每个技术决策的有效性。接下来，我们将按照明确的步骤，逐一完成从基础设施搭建到应用部署的全过程。</p>
 <h3 id="_6">网络架构设计：构建稳固的基础<a class="headerlink" href="#_6" title="Permanent link">¶</a></h3>
 <p>在开始具体部署之前，让我们先深入了解整个网络架构的设计。下图展示了我们的完整网络架构设计，包括VPC配置、子网划分、路由设置以及各组件之间的连接关系：</p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081203.png" data-desc-position="bottom"><img alt="800" src="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081203.png" title="800"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20251205-1026211.png" data-desc-position="bottom"><img alt="800" src="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20251205-1026211.png" title="800"></a></p>
 <h3 id="_7">基础设施部署：分步实施指南<a class="headerlink" href="#_7" title="Permanent link">¶</a></h3>
 <p>在开始部署混合节点之前，我们需要先完成基础设施的部署。这个过程包括创建EKS集群、配置网络资源以及准备混合节点实例。让我们逐一深入了解。</p>
 <h4 id="eks">创建EKS集群<a class="headerlink" href="#eks" title="Permanent link">¶</a></h4>
@@ -8629,7 +8629,7 @@
 <li>remoteNodeNetworks：指定IDC VPC中的私有子网范围</li>
 <li>remotePodNetworks：定义Cilium将使用的Overlay CIDR范围</li>
 <li>如下图所示，这些设置将在EKS控制台中配置：<br>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081203-1.png" data-desc-position="bottom"><img alt="800" src="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081203-1.png" title="800"></a></li>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20251205-1026272.png" data-desc-position="bottom"><img alt="800" src="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20251205-1026272.png" title="800"></a></li>
 </ul>
 <h4 id="systems-manager">配置Systems Manager<a class="headerlink" href="#systems-manager" title="Permanent link">¶</a></h4>
 <p>AWS Systems Manager（SSM）在混合节点架构中扮演着关键角色，它负责建立和维护EKS控制平面与远程节点之间的安全通信通道。</p>
@@ -8755,7 +8755,7 @@
 <ol>
 <li>
 <p><strong>EKS VPC路由配置</strong>：在EKS VPC的公有子网中配置路由表，主要用于处理来自ALB的入站流量：<br>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204.png" data-desc-position="bottom"><img alt="800" src="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204.png" title="800"></a></p>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20251205-1026348.png" data-desc-position="bottom"><img alt="800" src="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20251205-1026348.png" title="800"></a></p>
 </li>
 <li>
 <p><strong>Transit Gateway核心路由</strong>：配置Transit Gateway作为网络的中央枢纽：</p>
@@ -8764,7 +8764,7 @@
 <ul>
 <li>将所有目标为10.30.0.0/16的流量转发到IDC VPC</li>
 <li>确保Pod网络流量能够正确到达目标节点<br>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204-1.png" data-desc-position="bottom"><img alt="800" src="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204-1.png" title="800"></a></li>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20251205-1026463.png" data-desc-position="bottom"><img alt="800" src="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20251205-1026463.png" title="800"></a></li>
 </ul>
 <ol start="2">
 <li><strong>IDC VPC精细路由</strong>：在IDC VPC的TGW子网中配置细粒度的Pod网络路由：</li>
@@ -8773,7 +8773,7 @@
 <li>为每个混合节点配置专属的/24网段</li>
 <li>例如：10.30.0.0/24 → 混合节点1</li>
 <li>确保流量能够准确到达目标Pod<br>
-<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204-2.png" data-desc-position="bottom"><img alt="800" src="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20250516-081204-2.png" title="800"></a></li>
+<a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20251205-1026537.png" data-desc-position="bottom"><img alt="800" src="../attachments/use-eks-hybrid-node-to-solve-ipaddr-exhausted/IMG-20251205-1026537.png" title="800"></a></li>
 </ul>
 <ol start="2">
 <li><strong>双向通信保障</strong>：为确保网络的双向连通性，需要配置以下路由：</li>
@@ -8990,7 +8990,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="December 4, 2025 13:08:57 CST"><span class="timeago" datetime="2025-12-04T13:08:57+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="December 4, 2025 13:08:57 CST">2025-12-04</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="December 5, 2025 10:31:06 CST"><span class="timeago" datetime="2025-12-05T10:31:06+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="December 5, 2025 10:31:06 CST">2025-12-05</span>
   </span>
 
     
