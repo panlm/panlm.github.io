@@ -21,7 +21,7 @@ number headings: first-level 2, max 3, 1.1, auto
     - 初始化 eks 相关命令行
         - [[script-prep-eks-env-part-two.sh]]
 
-    ```sh
+```bash
 curl --location https://panlm.github.io/cloud9/script-prep-eks-env-part-two.sh |sh
 ```
 

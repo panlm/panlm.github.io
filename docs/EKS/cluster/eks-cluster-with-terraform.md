@@ -44,7 +44,7 @@ source /tmp/func-create-hosted-zone.sh
 DOMAIN_NAME=eks1224.aws.panlm.xyz
 create-hosted-zone -n ${DOMAIN_NAME}
 ```
-- need setup upstream domain registry from your labtop ([[git/git-mkdocs/CLI/awscli/route53-cmd#func-create-ns-record-]])
+- need setup upstream domain registry from your labtop ([[../../CLI/awscli/route53-cmd#func-create-ns-record-]])
 
 - terraform.tfvars
 ```text

@@ -33,8 +33,8 @@ eksdemo install external-dns -c ${CLUSTER_NAME}
 	- 确保域名匹配所需 (ensure domain name is correct)
 ```sh
 CLUSTER_NAME=ekscluster1
-AWS_REGION=us-east-2
-DOMAIN_NAME=api0413.aws.panlm.xyz
+AWS_REGION=us-west-2
+DOMAIN_NAME=poc1207.xxx.xxx.xxx
 EXTERNALDNS_NS=externaldns
 export AWS_PAGER=""
 
@@ -84,9 +84,23 @@ eksctl create iamserviceaccount \
   --attach-policy-arn $POLICY_ARN \
   --approve
 
+
 ```
 
-- 使用上述服务账号安装 ExternalDNS (install ExternalDNS with existed SA)
+#### HELM INSTALL
+
+```sh
+helm repo add --force-update external-dns https://kubernetes-sigs.github.io/external-dns/
+
+helm upgrade --install external-dns external-dns/external-dns \
+  --namespace ${EXTERNALDNS_NS:-"default"} \
+  --set serviceAccount.create=false \
+  --set serviceAccount.name=external-dns 
+
+```
+
+#### ~~MANUAL INSTALL -- 使用上述服务账号安装 ExternalDNS (install ExternalDNS with existed SA)~~
+
 ```sh
 echo ${EXTERNALDNS_NS}
 echo ${DOMAIN_NAME}
@@ -184,7 +198,7 @@ kubectl create --filename externaldns-with-rbac.yaml \
 ## sample
 - https://github.com/panlm/thanos-example/blob/main/POC-template/query/thanos-query-frontend-service.yaml
 
-## verify
+## verify-
 - create namespace
 ```sh
 NS=verify
@@ -195,6 +209,8 @@ kubectl create ns ${NS}
 
 - create nlb (no more clb, 20230423) with service definition
 ```sh
+echo ${DOMAIN_NAME}
+
 envsubst >verify-nginx.yaml <<-EOF
 apiVersion: v1
 kind: Service
