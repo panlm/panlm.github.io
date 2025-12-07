@@ -32,6 +32,7 @@ function create-hosted-zone () {
     echo '# get bash function from here: https://panlm.github.io/CLI/awscli/route53-cmd/#func-create-ns-record-'
     echo '# copy below output to add NS record on your upstream domain registrar'
     echo '###'
+    echo 'export AWS_PROFILE='
     echo 'DOMAIN_NAME='${DOMAIN_NAME}
     echo 'NS="'${NS}'"'
     echo 'curl -sL -o /tmp/func-create-ns-record.sh https://panlm.github.io/CLI/functions/func-create-ns-record.sh'
