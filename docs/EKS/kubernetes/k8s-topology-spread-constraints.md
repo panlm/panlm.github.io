@@ -1,13 +1,13 @@
 ---
-title: topology spread constraints
-description: topology spread constraints
+title: Topology Spread Constraints
+description: Kubernetes Topology Spread Constraints
 created: 2023-07-10 12:53:37.606
 last_modified: 2023-12-20
 tags:
   - kubernetes
 ---
 
-# k8s-topology-spread-constraints
+# K8S Topology Spread Constraints
 
 ## link
 - https://kubernetes.io/zh-cn/docs/concepts/scheduling-eviction/topology-spread-constraints/

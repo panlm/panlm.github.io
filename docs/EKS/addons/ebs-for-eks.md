@@ -11,6 +11,32 @@ tags:
 # ebs-for-eks
 
 ## install
+
+- https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/docs/install.md
+
+### using helm
+
+```sh
+CLUSTER_NAME=
+SA_NAME=ebs-csi-controller-sa
+
+eksctl create iamserviceaccount -c ${CLUSTER_NAME} \
+    --name ${SA_NAME} --namespace kube-system \
+    --attach-policy-arn arn:aws:iam::aws:policy/service-role/AmazonEBSCSIDriverPolicy \
+    --role-name ${SA_NAME}-$(TZ=EAT-8 date +%Y%m%d-%H%M%S) \
+    --approve \
+    --override-existing-serviceaccounts
+
+helm repo add aws-ebs-csi-driver https://kubernetes-sigs.github.io/aws-ebs-csi-driver
+helm repo update
+
+helm upgrade --install aws-ebs-csi-driver aws-ebs-csi-driver/aws-ebs-csi-driver \
+    --namespace kube-system \
+    --set serviceAccount.create=false \
+    --set serviceAccount.name=ebs-csi-controller-sa 
+
+```
+
 ### using-eksdemo-
 - if you already have a service account called `ebs-csi-controller-sa`, delete it
 ```sh
@@ -31,7 +57,6 @@ eksdemo install storage-ebs-csi -c ${CLUSTER_NAME} --namespace kube-system
 ```
 
 ### manual
-https://github.com/kubernetes-sigs/aws-ebs-csi-driver/blob/master/docs/install.md
 
 #### ebs-csi
 ```sh
@@ -90,6 +115,7 @@ done
 
 ## verify
 ```sh
+# git clone https://github.com/kubernetes-sigs/aws-ebs-csi-driver.git
 kubectl apply -f aws-ebs-csi-driver/examples/kubernetes/dynamic-provisioning/manifests/
 
 ```

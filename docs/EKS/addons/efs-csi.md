@@ -68,12 +68,14 @@ done
 
 ## install efs-csi
 ### install using eksdemo
+
 ```sh
-eksdemo  install storage efs-csi -c ekscluster1
+eksdemo  install storage efs-csi -c ${CLUSTER_NAME}
 
 ```
 
 ### install from github
+
 直接安装不额外配置权限的话，只能验证静态 provision
 如果验证动态 provision，会有权限不够的告警，因为需要动态创建 access point，可以通过节点 role方式加载权限，或者重新部署为 irsa
 
@@ -98,6 +100,7 @@ kubectl kustomize |kubectl delete -f -
 
 
 ### install from helm
+
 https://github.com/kubernetes-sigs/aws-efs-csi-driver/blob/master/docs/README.md#installation
 
 #### node role (alternative)
@@ -270,6 +273,7 @@ kubectl apply -f pod.yaml
 ```
 
 ### dynamic provisioning with efs access point 
+
 https://github.com/kubernetes-sigs/aws-efs-csi-driver/tree/master/examples/kubernetes/dynamic_provisioning
 need additional iam policy, execute `node role` part, or reinstall with irsa
 
