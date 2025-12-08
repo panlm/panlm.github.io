@@ -1441,10 +1441,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#aws-load-balancer-controller" class="md-nav__link">
+  <a href="#cni" class="md-nav__link">
     <span class="md-ellipsis">
       
-        aws load balancer controller
+        CNI 插件本身
       
     </span>
   </a>
@@ -1463,10 +1463,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#cni-calico-node" class="md-nav__link">
+  <a href="#aws-load-balancer-controller" class="md-nav__link">
     <span class="md-ellipsis">
       
-        CNI 插件本身 (Calico Node)
+        AWS Load Balancer Controller
       
     </span>
   </a>
@@ -1527,7 +1527,7 @@
   <a href="#coredns" class="md-nav__link">
     <span class="md-ellipsis">
       
-        CoreDNS (可选但推荐)
+        CoreDNS
       
     </span>
   </a>
@@ -3533,6 +3533,8 @@
       
         
       
+        
+      
     
     
     
@@ -3639,6 +3641,34 @@
   
   
     <li class="md-nav__item">
+      <a href="../../kubernetes/k8s-pdb-pod-disruption-budget/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Pod Disruption Budget
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../kubernetes/k8s-request-limit-best-practices/" class="md-nav__link">
         
   
@@ -3674,7 +3704,7 @@
   <span class="md-ellipsis">
     
   
-    topology spread constraints
+    Topology Spread Constraints
   
 
     
@@ -7931,10 +7961,10 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#aws-load-balancer-controller" class="md-nav__link">
+  <a href="#cni" class="md-nav__link">
     <span class="md-ellipsis">
       
-        aws load balancer controller
+        CNI 插件本身
       
     </span>
   </a>
@@ -7953,10 +7983,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#cni-calico-node" class="md-nav__link">
+  <a href="#aws-load-balancer-controller" class="md-nav__link">
     <span class="md-ellipsis">
       
-        CNI 插件本身 (Calico Node)
+        AWS Load Balancer Controller
       
     </span>
   </a>
@@ -8017,7 +8047,7 @@
   <a href="#coredns" class="md-nav__link">
     <span class="md-ellipsis">
       
-        CoreDNS (可选但推荐)
+        CoreDNS
       
     </span>
   </a>
@@ -8102,6 +8132,8 @@
 
 <h1 id="calico-cni-overlay">calico-cni-overlay<a class="headerlink" href="#calico-cni-overlay" title="Permanent link">¶</a></h1>
 <h2 id="eks-cluster">eks cluster<a class="headerlink" href="#eks-cluster" title="Permanent link">¶</a></h2>
+<ul>
+<li>create cluster and delete default aws vpc cni<br>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">CLUSTER_NAME</span><span class="o">=</span>my-calico-cluster
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>eksctl<span class="w"> </span>create<span class="w"> </span>cluster<span class="w"> </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
@@ -8109,7 +8141,8 @@
 <a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span>--enable-auto-mode<span class="o">=</span><span class="nb">false</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>daemonset<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span>aws-node
-</code></pre></div>
+</code></pre></div></li>
+</ul>
 <h2 id="calico-cni">calico cni<a class="headerlink" href="#calico-cni" title="Permanent link">¶</a></h2>
 <ul>
 <li>refer: <a href="https://docs.tigera.io/calico/latest/getting-started/kubernetes/managed-public-cloud/eks#install-eks-with-calico-networking">calico doc</a> <br>
@@ -8121,7 +8154,7 @@
 <a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>helm<span class="w"> </span>install<span class="w"> </span>calico<span class="w"> </span>projectcalico/tigera-operator<span class="w"> </span>--version<span class="w"> </span>v3.31.2<span class="w"> </span>--namespace<span class="w"> </span>tigera-operator
 <a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>kubectl<span class="w"> </span>patch<span class="w"> </span>installation<span class="w"> </span>default<span class="w"> </span>--type<span class="o">=</span><span class="s1">'json'</span><span class="w"> </span>-p<span class="o">=</span><span class="s1">'[{"op": "replace", "path": "/spec/cni", "value": {"type":"Calico"} }]'</span>
 <a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1"># 确认使用节点 ip 作为出向 nat</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1"># 确认使用节点 ip 作为出向 nat (natOutgoing=true)</span>
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c1"># kubectl get ippool default-ipv4-ippool -o jsonpath='{.spec.natOutgoing}' </span>
 <a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
 <a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>eksctl<span class="w"> </span>create<span class="w"> </span>nodegroup<span class="w"> </span><span class="se">\</span>
@@ -8132,78 +8165,127 @@
 </code></pre></div></li>
 </ul>
 <h2 id="hostnetwork">必须使用 hostNetwork 的组件<a class="headerlink" href="#hostnetwork" title="Permanent link">¶</a></h2>
-<h3 id="aws-load-balancer-controller">aws load balancer controller<a class="headerlink" href="#aws-load-balancer-controller" title="Permanent link">¶</a></h3>
+<h3 id="cni">CNI 插件本身<a class="headerlink" href="#cni" title="Permanent link">¶</a></h3>
 <ul>
-<li>原因: 需要直接访问 AWS API 和 VPC 资源，overlay IP 无法被 AWS 服务识别</li>
-<li><a href="../aws-load-balancer-controller/#install-" title="git/git-mkdocs/EKS/addons/aws-load-balancer-controller">git/git-mkdocs/EKS/addons/aws-load-balancer-controller</a></li>
+<li>原因：需要配置节点网络，在网络初始化之前运行</li>
+<li>实测：需要</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>NAME                                      READY   STATUS    RESTARTS   AGE    IP                NODE                                            NOMINATED NODE   READINESS GATES
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>calico-apiserver-565867495-ft8w2          1/1     Running   0          2d3h   192.168.153.130   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>calico-apiserver-565867495-ld47h          1/1     Running   0          2d3h   192.168.179.147   ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>calico-kube-controllers-578677b48-b5fgt   1/1     Running   0          2d3h   172.16.28.6       ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>calico-node-d92rg                         1/1     Running   0          2d3h   192.168.179.147   ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>calico-node-fxhmc                         1/1     Running   0          2d3h   192.168.153.130   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>calico-typha-68c49cdb58-wwldh             1/1     Running   0          2d3h   192.168.153.130   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>goldmane-65dcd4f69b-cpnwm                 1/1     Running   0          2d3h   172.16.28.1       ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>whisker-785fcbb6fb-d6hm8                  2/2     Running   0          2d3h   172.16.186.65     ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+</code></pre></div>
+<h3 id="kube-proxy">Kube-proxy<a class="headerlink" href="#kube-proxy" title="Permanent link">¶</a></h3>
+<ul>
+<li>原因：需要管理节点的 iptables/ipvs 规则</li>
+<li>实测：需要</li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ubuntu:~$ kubectl get pod -A  -l k8s-app=kube-proxy -o wide
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>NAMESPACE     NAME               READY   STATUS    RESTARTS   AGE    IP                NODE                                            NOMINATED NODE   READINESS GATES
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>kube-system   kube-proxy-dxfx5   1/1     Running   0          2d3h   192.168.179.147   ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>kube-system   kube-proxy-w9vtm   1/1     Running   0          2d3h   192.168.153.130   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+</code></pre></div>
+<h3 id="aws-load-balancer-controller">AWS Load Balancer Controller<a class="headerlink" href="#aws-load-balancer-controller" title="Permanent link">¶</a></h3>
+<ul>
+<li>原因：需要直接访问 AWS API 和 VPC 资源，overlay IP 无法被 AWS 服务识别</li>
+<li>实测：需要</li>
+<li><a href="../aws-load-balancer-controller/#install-" title="install">install</a> it</li>
 <li>
 <p>patch it<br>
-</p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>kubectl<span class="w"> </span>patch<span class="w"> </span>deployment<span class="w"> </span>aws-load-balancer-controller<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="w">  </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">  </span>-p<span class="w"> </span><span class="s1">'{"spec":{"template":{"spec":{"hostNetwork":true}}}}'</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># verify</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>kubectl<span class="w"> </span>get<span class="w"> </span>deployment<span class="w"> </span>aws-load-balancer-controller<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.spec.template.spec.hostNetwork}'</span><span class="w"> </span>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>kubectl<span class="w"> </span>patch<span class="w"> </span>deployment<span class="w"> </span>aws-load-balancer-controller<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span>-p<span class="w"> </span><span class="s1">'{"spec":{"template":{"spec":{"hostNetwork":true}}}}'</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># verify</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>kubectl<span class="w"> </span>get<span class="w"> </span>deployment<span class="w"> </span>aws-load-balancer-controller<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">  </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.spec.template.spec.hostNetwork}'</span><span class="w"> </span>
 </code></pre></div><p></p>
 </li>
 <li>
 <p>install external dns for route53 (chapter <a href="./#external-dns" title="External DNS">External DNS</a>)</p>
 </li>
-<li>install app to verify (<a href="../externaldns-for-route53/#verify-" title="git/git-mkdocs/EKS/addons/externaldns-for-route53">git/git-mkdocs/EKS/addons/externaldns-for-route53</a>)</li>
-</ul>
-<h3 id="kube-proxy">Kube-proxy<a class="headerlink" href="#kube-proxy" title="Permanent link">¶</a></h3>
-<ul>
-<li>原因: 需要管理节点的 iptables/ipvs 规则</li>
-</ul>
-<h3 id="cni-calico-node">CNI 插件本身 (Calico Node)<a class="headerlink" href="#cni-calico-node" title="Permanent link">¶</a></h3>
-<ul>
-<li>原因: 需要配置节点网络，在网络初始化之前运行</li>
+<li>install app to <a href="../externaldns-for-route53/#verify-" title="verify">verify</a> </li>
 </ul>
 <h3 id="metrics-server">Metrics Server<a class="headerlink" href="#metrics-server" title="Permanent link">¶</a></h3>
 <ul>
 <li>原因: 需要从 kubelet 收集指标，使用 hostNetwork 可以避免网络层问题</li>
-<li>启用后才能看到 cpu memory 等指标</li>
+<li>实测：启用后才能看到 cpu memory 等指标，不启用也没有报错</li>
 <li>refer: <a href="../metrics-server/" title="metrics-server">metrics-server</a><br>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>kubectl<span class="w"> </span>patch<span class="w"> </span>deployment<span class="w"> </span>metrics-server<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span>-p<span class="w"> </span><span class="s1">'{"spec":{"template":{"spec":{"hostNetwork":true}}}}'</span>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># verify</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>kubectl<span class="w"> </span>get<span class="w"> </span>deployment<span class="w"> </span>metrics-server<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.spec.template.spec.hostNetwork}'</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>kubectl<span class="w"> </span>patch<span class="w"> </span>deployment<span class="w"> </span>metrics-server<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span>-p<span class="w"> </span><span class="s1">'{"spec":{"template":{"spec":{"hostNetwork":true}}}}'</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># verify</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>kubectl<span class="w"> </span>get<span class="w"> </span>deployment<span class="w"> </span>metrics-server<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">  </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.spec.template.spec.hostNetwork}'</span><span class="w"> </span>
 </code></pre></div></li>
 </ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>NAMESPACE     NAME                              READY   STATUS    RESTARTS   AGE   IP                NODE                                            NOMINATED NODE   READINESS GATES
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>kube-system   metrics-server-5cd97b659b-8mjgj   1/1     Running   0          58s   192.168.179.147   ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>kube-system   metrics-server-5cd97b659b-fbp77   1/1     Running   0          58s   192.168.153.130   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+</code></pre></div>
 <h2 id="hostnetwork_1">推荐使用 hostNetwork 的组件:<a class="headerlink" href="#hostnetwork_1" title="Permanent link">¶</a></h2>
 <h3 id="cluster-autoscaler">Cluster Autoscaler<a class="headerlink" href="#cluster-autoscaler" title="Permanent link">¶</a></h3>
 <ul>
 <li>原因: 需要调用 AWS API 管理 Auto Scaling Groups</li>
+<li>实测：</li>
 </ul>
 <h3 id="node-problem-detector">Node Problem Detector<a class="headerlink" href="#node-problem-detector" title="Permanent link">¶</a></h3>
 <ul>
-<li>原因: 需要监控节点级别的问题</li>
+<li>原因：需要监控节点级别的问题</li>
+<li>实测：</li>
 </ul>
-<h3 id="coredns">CoreDNS (可选但推荐)<a class="headerlink" href="#coredns" title="Permanent link">¶</a></h3>
+<h3 id="coredns">CoreDNS<a class="headerlink" href="#coredns" title="Permanent link">¶</a></h3>
 <ul>
-<li>原因: DNS 解析是关键服务，hostNetwork 可以提高可靠性</li>
-<li>不使用 hostNetwork 也可以成功解析</li>
+<li>原因：DNS 解析是关键服务，hostNetwork 可以提高可靠性，(可选但推荐)</li>
+<li>实测：不使用 hostNetwork 也可以成功解析</li>
 </ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ubuntu:~$ kubectl get pod -A  -l eks.amazonaws.com/component=coredns -o wide
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>NAMESPACE     NAME                       READY   STATUS    RESTARTS   AGE    IP            NODE                                            NOMINATED NODE   READINESS GATES
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>kube-system   coredns-5449774944-2d4jb   1/1     Running   0          2d4h   172.16.28.5   ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>kube-system   coredns-5449774944-dnskk   1/1     Running   0          2d4h   172.16.28.4   ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+</code></pre></div>
 <h3 id="external-dns">External DNS<a class="headerlink" href="#external-dns" title="Permanent link">¶</a></h3>
 <ul>
-<li>原因: 需要访问 AWS Route53 API</li>
+<li>原因：需要访问 AWS Route53 API</li>
+<li>实测：不使用 hostNetwork 也可以成功创建 dns 记录</li>
 <li>refer: <a href="../externaldns-for-route53/" title="externaldns-for-route53">externaldns-for-route53</a> </li>
-<li>不使用 hostNetwork 也可以成功创建 dns 记录</li>
 </ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ubuntu:~$ kubectl get pod -A  -l "app.kubernetes.io/instance=external-dns,app.kubernetes.io/name=external-dns" -o wide
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>NAMESPACE     NAME                            READY   STATUS    RESTARTS   AGE   IP              NODE                                            NOMINATED NODE   READINESS GATES
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>externaldns   external-dns-596bf4886b-lkg7k   1/1     Running   0          28h   172.16.186.69   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+</code></pre></div>
 <h3 id="ebs-csi-driver-node-plugin">EBS CSI Driver Node Plugin<a class="headerlink" href="#ebs-csi-driver-node-plugin" title="Permanent link">¶</a></h3>
 <ul>
-<li>原因: 需要直接访问节点的块设备</li>
+<li>原因：需要直接访问节点的块设备</li>
+<li>实测：不使用 hostNetwork 也可以使用</li>
+<li>refer: <a href="../ebs-for-eks/" title="ebs-for-eks">ebs-for-eks</a></li>
 </ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ubuntu:~$ kubectl get pod -n kube-system -l "app.kubernetes.io/name=aws-ebs-csi-driver,app.kubernetes.io/instance=storage-ebs-csi" -o wide
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>NAME                                 READY   STATUS    RESTARTS   AGE   IP              NODE                                            NOMINATED NODE   READINESS GATES
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>ebs-csi-controller-97758bb7c-gnb45   5/5     Running   0          26m   172.16.186.72   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>ebs-csi-node-255gc                   3/3     Running   0          26m   172.16.28.8     ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>ebs-csi-node-t48tp                   3/3     Running   0          26m   172.16.186.71   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+</code></pre></div>
 <h3 id="efs-csi-driver-node-plugin">EFS CSI Driver Node Plugin<a class="headerlink" href="#efs-csi-driver-node-plugin" title="Permanent link">¶</a></h3>
 <ul>
-<li>原因: 需要挂载 EFS 到节点</li>
+<li>原因：需要挂载 EFS 到节点</li>
+<li>实测：不使用 hostNetwork 也可以使用，但是 efs csi node pod 自动使用 hostNetwork</li>
+<li>refer: <a href="../efs-csi/" title="efs-csi">efs-csi</a></li>
 </ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ubuntu:~$ kubectl get pod -n kube-system -l "app.kubernetes.io/name=aws-efs-csi-driver,app.kubernetes.io/instance=storage-efs-csi" -o wide
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>NAME                                  READY   STATUS    RESTARTS   AGE     IP                NODE                                            NOMINATED NODE   READINESS GATES
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>efs-csi-controller-784c568b8b-qgrh2   3/3     Running   0          8m46s   172.16.186.74     ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>efs-csi-node-kq96r                    3/3     Running   0          8m46s   192.168.179.147   ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>efs-csi-node-qfrhk                    3/3     Running   0          8m46s   192.168.153.130   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+</code></pre></div>
 
 
 
@@ -8226,7 +8308,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="December 7, 2025 10:46:09 CST"><span class="timeago" datetime="2025-12-07T10:46:09+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="December 7, 2025 10:46:09 CST">2025-12-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="December 8, 2025 17:19:50 CST"><span class="timeago" datetime="2025-12-08T17:19:50+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="December 8, 2025 17:19:50 CST">2025-12-08</span>
   </span>
 
     
