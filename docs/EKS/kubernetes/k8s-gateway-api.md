@@ -13,7 +13,8 @@ status: myblog
 
 ## 概述
 
-本项目展示了在 EKS 上暴露服务的三种方式:
+本项目展示了在 EKS 上暴露服务的三种方式：
+
 1. **传统 Service (LoadBalancer)** - 创建 NLB
 2. **Ingress** - 创建 ALB
 3. **Gateway API** - 新一代 Kubernetes 流量管理 API
@@ -36,9 +37,9 @@ Service (后端服务)
 
 ## L4 Gateway (NLB) 配置
 
-### 文件: gateway-api-l4-nlb-deploy.yaml
+文件: gateway-api-l4-nlb-deploy.yaml
 
-#### 1. GatewayClass
+### 1. GatewayClass
 ```yaml
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: GatewayClass
@@ -48,7 +49,7 @@ spec:
   controllerName: gateway.k8s.aws/nlb # aws nlb controller
 ```
 
-#### 2. LoadBalancerConfiguration
+### 2. LoadBalancerConfiguration
 ```yaml
 apiVersion: gateway.k8s.aws/v1beta1
 kind: LoadBalancerConfiguration
@@ -60,7 +61,7 @@ spec:
   targetType: instance  # 显式指定
 ```
 
-#### 3. Gateway
+### 3. Gateway
 ```yaml
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
@@ -85,7 +86,7 @@ spec:
         from: Same
 ```
 
-#### 4. TCPRoute
+### 4. TCPRoute
 ```yaml
 apiVersion: gateway.networking.k8s.io/v1alpha2
 kind: TCPRoute
@@ -111,9 +112,9 @@ spec:
 
 ## L7 Gateway (ALB) 配置
 
-### 文件: gateway-api-l7-alb-deploy.yaml
+文件: gateway-api-l7-alb-deploy.yaml
 
-#### 1. GatewayClass
+### 1. GatewayClass
 ```yaml
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: GatewayClass
@@ -123,7 +124,7 @@ spec:
   controllerName: gateway.k8s.aws/alb
 ```
 
-#### 2. LoadBalancerConfiguration
+### 2. LoadBalancerConfiguration
 ```yaml
 apiVersion: gateway.k8s.aws/v1beta1
 kind: LoadBalancerConfiguration
@@ -138,7 +139,7 @@ spec:
       defaultCertificate: <CERTIFICATE_ARN>
 ```
 
-#### 3. Gateway
+### 3. Gateway
 ```yaml
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: Gateway
@@ -169,7 +170,7 @@ spec:
         from: Same
 ```
 
-#### 4. HTTPRoute
+### 4. HTTPRoute
 ```yaml
 apiVersion: gateway.networking.k8s.io/v1beta1
 kind: HTTPRoute
