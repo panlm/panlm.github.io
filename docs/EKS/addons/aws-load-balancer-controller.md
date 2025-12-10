@@ -120,6 +120,9 @@ fi
 
 kubectl get deployment -n kube-system aws-load-balancer-controller
 
+# --set controllerConfig.featureGates.NLBGatewayAPI=true
+# --set controllerConfig.featureGates.ALBGatewayAPI=true
+
 ```
 
 - [[awslbc-ingress-controller-lab-issue]]
@@ -157,10 +160,14 @@ REGISTRY=602401143452.dkr.ecr.us-east-1.amazonaws.com
 ```
 
 
+### work with k8s gateway api
+- [[../kubernetes/k8s-gateway-api|k8s-gateway-api]]
+
 ## upgrade
 - [Migrate v1 to v2](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.5/deploy/upgrade/migrate_v1_v2/) 
 
 ### Supported Kubernetes versions
+
 - AWS Load Balancer Controller v2.0.0~v2.1.3 requires Kubernetes 1.15+
 - AWS Load Balancer Controller v2.2.0~v2.3.1 requires Kubernetes 1.16-1.21
 - AWS Load Balancer Controller v2.4.0+ requires Kubernetes 1.19+
@@ -175,10 +182,12 @@ helm list -n kube-system
 
 
 ## in private cluster
+
 如果节点组无法访问公网，则创建 ingress 时感觉很慢，约 5-6 分钟才能看到 alb，分析日志看到，创建 alb 过程中会访问 `shield` 和 `wafv2` 等服务时超时导致
 
 
 ## blog
+
 - [[How To Expose Multiple Applications on Amazon EKS Using a Single Application Load Balancer]]
 - [[Expose Amazon EKS pods through cross-account load balancer]] 
     - https://aws.amazon.com/blogs/networking-and-content-delivery/implement-a-central-ingress-application-load-balancer-supporting-private-amazon-elastic-kubernetes-service-vpcs/
@@ -188,5 +197,8 @@ helm list -n kube-system
 ## refer
 
 ![aws-load-balancer-controller-png-2.png](../../git-attachment/aws-load-balancer-controller-png-2.png)
+
+
+
 
 

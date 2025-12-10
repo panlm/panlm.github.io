@@ -1,5 +1,5 @@
 ---
-title: k8s-liveness-readiness-startup-probes
+title: Liveness Readiness Startup Probes
 description: Liveness probes, readiness probes and startup probes
 created: 2024-05-07 10:22:26.304
 last_modified: 2024-05-07
@@ -7,7 +7,7 @@ tags:
   - kubernetes
 ---
 
-# k8s-liveness-readiness-startup-probes
+# Liveness Readiness Startup Probes
 
 **readiness probe** - This is simply a signal to inform Kubernetes when to <mark style="background: #BBFABBA6;">put this pod behind the load balancer</mark> and when to put this service behind the proxy to serve traffic. If you put an application behind the load balancer before it’s ready, then a user can reach this pod but won’t get the expected response of a healthy server.
 

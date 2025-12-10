@@ -12,17 +12,21 @@ tags:
 # how to put workshop on github 
 
 ## obsidian tips
+
 - [[obsidian|obsidian]]
 
 ## Material for mkdocs 
+
 https://github.com/squidfunk/mkdocs-material
 
 ### review local
+
 ```sh
 mkdocs serve
 ```
 
 ### status in front matter
+
 - get icons: https://pictogrammers.com/library/mdi/
 - copy paste to extra.css
 
@@ -30,19 +34,26 @@ mkdocs serve
     - https://squidfunk.github.io/mkdocs-material/reference/icons-emojis/#using-emojis
 
 ### plugins for mkdocs
+
 - https://github.com/mkdocs/catalog
 - For full documentation visit [mkdocs.org](https://www.mkdocs.org)
 
 ### enable discussion 
+
 - start from this page ([link](https://squidfunk.github.io/mkdocs-material/setup/adding-a-comment-system/))
 - generate config file ([link](https://giscus.app/))
 - add `comment: true` to all pages ([link](https://squidfunk.github.io/mkdocs-material/plugins/meta/))
 
 ## awesome pages plugin
+
 - https://github.com/lukasgeiter/mkdocs-awesome-pages-plugin
+- analytics google
+    - https://analytics.google.com 
 
 ## highlight block
+
 ### in material for mkdocs
+
 - https://squidfunk.github.io/mkdocs-material/reference/admonitions/
 ```
 !!! warning "This is a github note"
@@ -70,6 +81,7 @@ summary
 ```
 
 ## remove custom domain
+
 - remove `static/CNAME` file
     - this file include line: `aws-labs.panlm.xyz`
 - remove custom domain from github `Pages` page
@@ -79,11 +91,13 @@ summary
 
 
 ## ~~hosted on github page~~
+
 - https://gohugo.io/hosting-and-deployment/hosting-on-github/
 
 ![github-page-howto-1.png](../git-attachment/github-page-howto-1.png)
 
 ## ~~build local~~ 
+
 - https://aws-samples.github.io/aws-modernization-workshop-sample/20_build/1_setup/
 
 ```sh
@@ -92,3 +106,8 @@ git submodule update
 ```
 
 ## other :material-ab-testing: :smile:
+
+
+
+
+

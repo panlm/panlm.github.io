@@ -1,6 +1,6 @@
 ---
-title: ebs-for-eks
-description: "使用 ebs 作为 pod 持久化存储 "
+title: EBS CSI on EKS
+description: 使用 EBS 作为 Pod 持久化存储
 created: 2022-06-24 14:41:33.643
 last_modified: 2024-03-27
 tags:
@@ -8,7 +8,7 @@ tags:
   - aws/container/eks
 ---
 
-# ebs-for-eks
+# EBS CSI on EKS
 
 ## install
 

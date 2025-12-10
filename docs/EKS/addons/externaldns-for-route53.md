@@ -1,5 +1,5 @@
 ---
-title: externaldns-for-route53
+title: ExternalDNS for Route53
 description: 使用 externaldns 组件
 created: 2022-08-04 13:24:34.806
 last_modified: 2024-03-27
@@ -90,12 +90,24 @@ eksctl create iamserviceaccount \
 #### HELM INSTALL
 
 ```sh
+echo ${EXTERNALDNS_NS}
+
 helm repo add --force-update external-dns https://kubernetes-sigs.github.io/external-dns/
+
+# support gateway api
+cat >externaldns-values.yaml <<-EOF
+sources:
+  - service
+  - ingress
+  - gateway-httproute
+  - gateway-tcproute
+EOF
 
 helm upgrade --install external-dns external-dns/external-dns \
   --namespace ${EXTERNALDNS_NS:-"default"} \
   --set serviceAccount.create=false \
-  --set serviceAccount.name=external-dns 
+  --set serviceAccount.name=external-dns \
+  -f externaldns-values.yaml
 
 ```
 

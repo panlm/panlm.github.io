@@ -1,6 +1,6 @@
 ---
-title: calico-cni-overlay
-description:
+title: Calico CNI Overlay
+description: Using Calico CNI overlay mode on EKS
 created: 2025-12-02 10:48:26.233
 last_modified: 2025-12-02
 tags:
@@ -8,7 +8,7 @@ tags:
   - kubernetes/calico
 ---
 
-# calico-cni-overlay
+# Calico CNI Overlay
 
 ## eks cluster 
 
@@ -94,7 +94,10 @@ kubectl patch deployment aws-load-balancer-controller \
 kubectl get deployment aws-load-balancer-controller \
   -n kube-system \
   -o jsonpath='{.spec.template.spec.hostNetwork}' 
-  
+
+# enable gateway api support
+# kubectl patch deployment aws-load-balancer-controller -n kube-system --type='json' -p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--feature-gates=NLBGatewayAPI=true,ALBGatewayAPI=true"}]'
+
 ```
 - install external dns for route53 (chapter [[#External DNS]])
 - install app to [[git/git-mkdocs/EKS/addons/externaldns-for-route53#verify-|verify]] 
@@ -188,4 +191,9 @@ efs-csi-node-qfrhk                    3/3     Running   0          8m46s   192.1
 ```
 
 
+### cert-manager
+
+- 原因：
+- 实测：
+- refer: 
 
