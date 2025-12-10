@@ -94,6 +94,8 @@ Mappings:
       PrefixList: pl-31a34658
     ap-southeast-2:
       PrefixList: pl-b8a742d1
+    ap-southeast-3:
+      PrefixList: pl-0b8932aa3ef329011
     ca-central-1:
       PrefixList: pl-38a64351
     eu-central-1:
