@@ -28,7 +28,7 @@
     
     
       
-        <title>externaldns-for-route53 - panlm</title>
+        <title>ExternalDNS for Route53 - panlm</title>
       
     
     
@@ -141,7 +141,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              externaldns-for-route53
+              ExternalDNS for Route53
             
           </span>
         </div>
@@ -1354,7 +1354,7 @@
   <span class="md-ellipsis">
     
   
-    calico-cni-overlay
+    Calico CNI Overlay
   
 
     
@@ -1466,7 +1466,7 @@
   <span class="md-ellipsis">
     
   
-    ebs-for-eks
+    EBS CSI on EKS
   
 
     
@@ -1671,7 +1671,7 @@
   <span class="md-ellipsis">
     
   
-    externaldns-for-route53
+    ExternalDNS for Route53
   
 
     
@@ -1689,7 +1689,7 @@
   <span class="md-ellipsis">
     
   
-    externaldns-for-route53
+    ExternalDNS for Route53
   
 
     
@@ -3469,6 +3469,8 @@
       
         
       
+        
+      
     
     
     
@@ -3519,6 +3521,42 @@
   
   
     <li class="md-nav__item">
+      <a href="../../kubernetes/k8s-gateway-api/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Gateway API
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--myblog" title="my blogs">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
       <a href="../../kubernetes/k8s-hpa-horizontal-pod-autoscaler/" class="md-nav__link">
         
   
@@ -3554,7 +3592,7 @@
   <span class="md-ellipsis">
     
   
-    k8s-liveness-readiness-startup-probes
+    Liveness Readiness Startup Probes
   
 
     
@@ -8079,12 +8117,25 @@
 </li>
 </ul>
 <h4 id="helm-install">HELM INSTALL<a class="headerlink" href="#helm-install" title="Permanent link">¶</a></h4>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>--force-update<span class="w"> </span>external-dns<span class="w"> </span>https://kubernetes-sigs.github.io/external-dns/
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">EXTERNALDNS_NS</span><span class="si">}</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>helm<span class="w"> </span>upgrade<span class="w"> </span>--install<span class="w"> </span>external-dns<span class="w"> </span>external-dns/external-dns<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="w">  </span>--namespace<span class="w"> </span><span class="si">${</span><span class="nv">EXTERNALDNS_NS</span><span class="k">:-</span><span class="s2">"default"</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">  </span>--set<span class="w"> </span>serviceAccount.create<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span>--set<span class="w"> </span>serviceAccount.name<span class="o">=</span>external-dns<span class="w"> </span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>--force-update<span class="w"> </span>external-dns<span class="w"> </span>https://kubernetes-sigs.github.io/external-dns/
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># support gateway api</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>cat<span class="w"> </span>&gt;externaldns-values.yaml<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="s">sources:</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="s">  - service</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="s">  - ingress</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="s">  - gateway-httproute</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="s">  - gateway-tcproute</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="s">EOF</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>helm<span class="w"> </span>upgrade<span class="w"> </span>--install<span class="w"> </span>external-dns<span class="w"> </span>external-dns/external-dns<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">  </span>--namespace<span class="w"> </span><span class="si">${</span><span class="nv">EXTERNALDNS_NS</span><span class="k">:-</span><span class="s2">"default"</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">  </span>--set<span class="w"> </span>serviceAccount.create<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">  </span>--set<span class="w"> </span>serviceAccount.name<span class="o">=</span>external-dns<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">  </span>-f<span class="w"> </span>externaldns-values.yaml
 </code></pre></div>
 <h4 id="manual-install-externaldns-install-externaldns-with-existed-sa"><del>MANUAL INSTALL – 使用上述服务账号安装 ExternalDNS (install ExternalDNS with existed SA)</del><a class="headerlink" href="#manual-install-externaldns-install-externaldns-with-existed-sa" title="Permanent link">¶</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">EXTERNALDNS_NS</span><span class="si">}</span>
@@ -8323,7 +8374,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="December 7, 2025 10:46:09 CST"><span class="timeago" datetime="2025-12-07T10:46:09+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="December 7, 2025 10:46:09 CST">2025-12-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="December 10, 2025 09:42:10 CST"><span class="timeago" datetime="2025-12-10T09:42:10+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="December 10, 2025 09:42:10 CST">2025-12-10</span>
   </span>
 
     
