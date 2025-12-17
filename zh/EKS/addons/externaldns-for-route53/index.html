@@ -1243,6 +1243,8 @@
       
         
       
+        
+      
     
     
     
@@ -1717,10 +1719,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#func-create-hosted-zone" class="md-nav__link">
+  <a href="#create-hosted-zone" class="md-nav__link">
     <span class="md-ellipsis">
       
-        func create hosted zone
+        create hosted zone
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-cerntificates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        create cerntificates
       
     </span>
   </a>
@@ -1952,6 +1965,34 @@
     
   
     Metrics Server
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../nginx-gateway-fabric/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    nginx-gateway-fabric
   
 
     
@@ -7938,10 +7979,21 @@
     <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
       
         <li class="md-nav__item">
-  <a href="#func-create-hosted-zone" class="md-nav__link">
+  <a href="#create-hosted-zone" class="md-nav__link">
     <span class="md-ellipsis">
       
-        func create hosted zone
+        create hosted zone
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#create-cerntificates" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        create cerntificates
       
     </span>
   </a>
@@ -8076,12 +8128,16 @@
 
 
 <h1 id="externaldns-for-route53">ExternalDNS for Route53<a class="headerlink" href="#externaldns-for-route53" title="Permanent link">¶</a></h1>
-<h2 id="func-create-hosted-zone">func create hosted zone<a class="headerlink" href="#func-create-hosted-zone" title="Permanent link">¶</a></h2>
+<h2 id="create-hosted-zone">create hosted zone<a class="headerlink" href="#create-hosted-zone" title="Permanent link">¶</a></h2>
 <ul>
 <li>refer: <a href="../../../CLI/awscli/route53-cmd/#func-create-hosted-zone-" title="../../CLI/awscli/route53-cmd">../../CLI/awscli/route53-cmd</a></li>
 <li>refer: <a href="../../../CLI/awscli/route53-cmd/#func-create-ns-record-" title="../../CLI/awscli/route53-cmd">../../CLI/awscli/route53-cmd</a> </li>
 <li>refer: <a href="../../route53-subdomian" title="route53-subdomian">route53-subdomian</a></li>
 <li>you also could create private hosted zone and associate to your vpc. plugin will insert/update record in your private hosted zone. (<a href="https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-private.html">link</a>)</li>
+</ul>
+<h2 id="create-cerntificates">create cerntificates<a class="headerlink" href="#create-cerntificates" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="../../../CLI/awscli/acm-cmd/#create-certificate-" title="create certficate">create certficate</a> </li>
 </ul>
 <h2 id="install">install<a class="headerlink" href="#install" title="Permanent link">¶</a></h2>
 <h3 id="install-with-eksdemo-">install-with-eksdemo-<a class="headerlink" href="#install-with-eksdemo-" title="Permanent link">¶</a></h3>
@@ -8161,20 +8217,30 @@
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>--force-update<span class="w"> </span>external-dns<span class="w"> </span>https://kubernetes-sigs.github.io/external-dns/
 <a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>
 <a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="c1"># support gateway api</span>
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>cat<span class="w"> </span>&gt;externaldns-values.yaml<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>cat<span class="w"> </span>&gt;externaldns-values-aws-lb-controller.yaml<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
 <a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="s">sources:</span>
 <a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>
 <a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="s">  - service</span>
 <a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="s">  - ingress</span>
 <a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="s">  - gateway-httproute</span>
 <a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="s">  - gateway-tcproute</span>
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="s">EOF</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>helm<span class="w"> </span>upgrade<span class="w"> </span>--install<span class="w"> </span>external-dns<span class="w"> </span>external-dns/external-dns<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a><span class="w">  </span>--namespace<span class="w"> </span><span class="si">${</span><span class="nv">EXTERNALDNS_NS</span><span class="k">:-</span><span class="s2">"default"</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="w">  </span>--set<span class="w"> </span>serviceAccount.create<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a><span class="w">  </span>--set<span class="w"> </span>serviceAccount.name<span class="o">=</span>external-dns<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="w">  </span>-f<span class="w"> </span>externaldns-values.yaml
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="s">#  - gateway-grpcroute # TLSRoute UDPRoute</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="s">EOF</span>
+<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>
+<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>cat<span class="w"> </span>&gt;externaldns-values-nginx-gateway-fabric.yaml<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
+<a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="s">sources:</span>
+<a id="__codelineno-2-18" name="__codelineno-2-18" href="#__codelineno-2-18"></a>
+<a id="__codelineno-2-19" name="__codelineno-2-19" href="#__codelineno-2-19"></a><span class="s">  - service</span>
+<a id="__codelineno-2-20" name="__codelineno-2-20" href="#__codelineno-2-20"></a><span class="s">  - ingress</span>
+<a id="__codelineno-2-21" name="__codelineno-2-21" href="#__codelineno-2-21"></a><span class="s">  - gateway-httproute</span>
+<a id="__codelineno-2-22" name="__codelineno-2-22" href="#__codelineno-2-22"></a><span class="s">EOF</span>
+<a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a>
+<a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a>
+<a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>helm<span class="w"> </span>upgrade<span class="w"> </span>--install<span class="w"> </span>external-dns<span class="w"> </span>external-dns/external-dns<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="w">  </span>--namespace<span class="w"> </span><span class="si">${</span><span class="nv">EXTERNALDNS_NS</span><span class="k">:-</span><span class="s2">"default"</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a><span class="w">  </span>--set<span class="w"> </span>serviceAccount.create<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">  </span>--set<span class="w"> </span>serviceAccount.name<span class="o">=</span>external-dns<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">  </span>-f<span class="w"> </span>externaldns-values-xxxxxxxx.yaml
 </code></pre></div>
 <h4 id="manual-install-externaldns-install-externaldns-with-existed-sa"><del>MANUAL INSTALL – 使用上述服务账号安装 ExternalDNS (install ExternalDNS with existed SA)</del><a class="headerlink" href="#manual-install-externaldns-install-externaldns-with-existed-sa" title="Permanent link">¶</a></h4>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">EXTERNALDNS_NS</span><span class="si">}</span>
@@ -8413,7 +8479,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="December 10, 2025 09:42:10 CST"><span class="timeago" datetime="2025-12-10T09:42:10+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="December 10, 2025 09:42:10 CST">2025-12-10</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="December 17, 2025 17:00:11 CST"><span class="timeago" datetime="2025-12-17T17:00:11+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="December 17, 2025 17:00:11 CST">2025-12-17</span>
   </span>
 
     
