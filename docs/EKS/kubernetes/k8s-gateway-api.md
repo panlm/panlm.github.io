@@ -345,6 +345,30 @@ backendRefs:
 4. **避免冲突**: 不同厂商的扩展资源通过 API Group 隔离
 
 
+## 检查集群是否启用-gateway-api-
+
+```sh
+# 检查是否安装了Gateway API CRDs：
+kubectl get crd | grep gateway.networking.k8s.io
+
+
+# 检查Gateway API版本：
+kubectl get crd gateways.gateway.networking.k8s.io -o jsonpath='{.metadata.annotations.gateway\.networking\.k8s\.io/bundle-version}'
+
+
+# 查看所有Gateway API资源：
+kubectl api-resources --api-group=gateway.networking.k8s.io
+
+
+# 检查Gateway API详细信息：
+kubectl get crd gateways.gateway.networking.k8s.io -o yaml | grep -A3 -B3 bundle-version
+
+
+# 查看Gateway Classes（如果有安装Gateway控制器）：
+kubectl get gatewayclass
+
+```
+
 ## 启用 Gateway API 支持
 
 ### Helm 安装时启用

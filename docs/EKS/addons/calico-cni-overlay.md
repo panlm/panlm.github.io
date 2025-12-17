@@ -15,6 +15,7 @@ tags:
 - create cluster and delete default aws vpc cni
 ```bash
 CLUSTER_NAME=my-calico-cluster
+export AWS_DEFAULT_REGION=us-west-2
 
 eksctl create cluster --name ${CLUSTER_NAME} \
   --without-nodegroup \

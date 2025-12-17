@@ -46,7 +46,7 @@ RIGHT IP is vpn public ip in your vpn configuration
 SECRET in your vpn configuration
 
 ## sample 2 - china region to commercial region peering
-- spin up instance to install openswan (refer: [[../../../../notes/openswan]])
+- spin up instance to install openswan (refer: [[../../../../notes/openswan-lab]])
 - 中国区域对于 vpn 端口有限制，建议使用global 区域模拟
 - openswan 参考配置
     - `/etc/ipsec.d/aws.conf`

@@ -9,14 +9,22 @@ tags:
 ---
 
 # ExternalDNS for Route53
-## func create hosted zone
+
+## create hosted zone
+
 - refer: [[../../CLI/awscli/route53-cmd#func-create-hosted-zone-]]
 - refer: [[../../CLI/awscli/route53-cmd#func-create-ns-record-]] 
 - refer: [[route53-subdomian]]
 - you also could create private hosted zone and associate to your vpc. plugin will insert/update record in your private hosted zone. ([link](https://docs.aws.amazon.com/Route53/latest/DeveloperGuide/hosted-zones-private.html))
 
+## create cerntificates 
+
+- [[git/git-mkdocs/CLI/awscli/acm-cmd#create-certificate-|create certficate]] 
+
 ## install 
+
 ### install-with-eksdemo-
+
 - https://github.com/awslabs/eksdemo/blob/main/docs/install-edns.md
 ```sh
 echo ${CLUSTER_NAME}
@@ -26,6 +34,7 @@ eksdemo install external-dns -c ${CLUSTER_NAME}
 ```
 
 ### install-
+
 - https://github.com/kubernetes-sigs/external-dns/blob/master/docs/tutorials/aws.md
 - 创建所需要的服务账号 (create service account)
 	- 确保 EKS 集群名称正确 (ensure eks cluster name is correct)
@@ -95,19 +104,28 @@ echo ${EXTERNALDNS_NS}
 helm repo add --force-update external-dns https://kubernetes-sigs.github.io/external-dns/
 
 # support gateway api
-cat >externaldns-values.yaml <<-EOF
+cat >externaldns-values-aws-lb-controller.yaml <<-EOF
 sources:
   - service
   - ingress
   - gateway-httproute
   - gateway-tcproute
+#  - gateway-grpcroute # TLSRoute UDPRoute
 EOF
+
+cat >externaldns-values-nginx-gateway-fabric.yaml <<-EOF
+sources:
+  - service
+  - ingress
+  - gateway-httproute
+EOF
+
 
 helm upgrade --install external-dns external-dns/external-dns \
   --namespace ${EXTERNALDNS_NS:-"default"} \
   --set serviceAccount.create=false \
   --set serviceAccount.name=external-dns \
-  -f externaldns-values.yaml
+  -f externaldns-values-xxxxxxxx.yaml
 
 ```
 
@@ -208,9 +226,11 @@ kubectl create --filename externaldns-with-rbac.yaml \
 ```
 
 ## sample
+
 - https://github.com/panlm/thanos-example/blob/main/POC-template/query/thanos-query-frontend-service.yaml
 
 ## verify-
+
 - create namespace
 ```sh
 NS=verify
