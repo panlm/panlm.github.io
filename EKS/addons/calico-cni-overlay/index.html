@@ -24,7 +24,7 @@
       
       
       <link rel="icon" href="../../../git-attachment/favicons.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.0">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.1">
     
     
       
@@ -32,7 +32,7 @@
       
     
     
-      <link rel="stylesheet" href="../../../assets/stylesheets/main.618322db.min.css">
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.484c7ddc.min.css">
       
         
         <link rel="stylesheet" href="../../../assets/stylesheets/palette.ab4e12ef.min.css">
@@ -1328,7 +1328,7 @@
   <span class="md-ellipsis">
     
   
-    aws-load-balancer-controller
+    AWS Load Balancer Controller
   
 
     
@@ -1431,6 +1431,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#oidc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        oidc
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#hostnetwork" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1486,6 +1497,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#nginx-ingress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nginx ingress
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -1495,12 +1517,12 @@
   <a href="#hostnetwork_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        推荐使用 hostNetwork 的组件:
+        推荐使用 hostNetwork 的组件
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="推荐使用 hostNetwork 的组件:">
+    <nav class="md-nav" aria-label="推荐使用 hostNetwork 的组件">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -1570,10 +1592,21 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#nginx-gateway-fabric" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nginx Gateway Fabric
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#cert-manager" class="md-nav__link">
     <span class="md-ellipsis">
       
-        cert-manager
+        Cert Manager
       
     </span>
   </a>
@@ -1608,7 +1641,7 @@
   <span class="md-ellipsis">
     
   
-    cert-manager
+    Cert Manager
   
 
     
@@ -2056,7 +2089,7 @@
   <span class="md-ellipsis">
     
   
-    nginx-gateway-fabric
+    Nginx Gateway Fabric
   
 
     
@@ -8028,6 +8061,17 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#oidc" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        oidc
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#hostnetwork" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -8083,6 +8127,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#nginx-ingress" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        nginx ingress
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -8092,12 +8147,12 @@
   <a href="#hostnetwork_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        推荐使用 hostNetwork 的组件:
+        推荐使用 hostNetwork 的组件
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="推荐使用 hostNetwork 的组件:">
+    <nav class="md-nav" aria-label="推荐使用 hostNetwork 的组件">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
@@ -8167,10 +8222,21 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#nginx-gateway-fabric" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Nginx Gateway Fabric
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#cert-manager" class="md-nav__link">
     <span class="md-ellipsis">
       
-        cert-manager
+        Cert Manager
       
     </span>
   </a>
@@ -8237,29 +8303,37 @@
 <h2 id="calico-cni">calico cni<a class="headerlink" href="#calico-cni" title="Permanent link">¶</a></h2>
 <ul>
 <li>refer: <a href="https://docs.tigera.io/calico/latest/getting-started/kubernetes/managed-public-cloud/eks#install-eks-with-calico-networking">calico doc</a> <br>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>projectcalico<span class="w"> </span>https://docs.tigera.io/calico/charts
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>helm<span class="w"> </span>repo<span class="w"> </span>update
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># install calico using helm</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>tigera-operator
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>helm<span class="w"> </span>install<span class="w"> </span>calico<span class="w"> </span>projectcalico/tigera-operator<span class="w"> </span>--version<span class="w"> </span>v3.31.2<span class="w"> </span>--namespace<span class="w"> </span>tigera-operator
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>kubectl<span class="w"> </span>patch<span class="w"> </span>installation<span class="w"> </span>default<span class="w"> </span>--type<span class="o">=</span><span class="s1">'json'</span><span class="w"> </span>-p<span class="o">=</span><span class="s1">'[{"op": "replace", "path": "/spec/cni", "value": {"type":"Calico"} }]'</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="c1"># 确认使用节点 ip 作为出向 nat (natOutgoing=true)</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="c1"># kubectl get ippool default-ipv4-ippool -o jsonpath='{.spec.natOutgoing}' </span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>
-<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>eksctl<span class="w"> </span>create<span class="w"> </span>nodegroup<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="w">  </span>--cluster<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="w">  </span>--node-type<span class="w"> </span>m5.large<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">  </span>--max-pods-per-node<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">  </span>--node-private-networking<span class="w"> </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">CALICO_VERSION</span><span class="o">=</span>v3.31.3<span class="w"> </span><span class="c1"># update 1224</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>projectcalico<span class="w"> </span>https://docs.tigera.io/calico/charts
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>helm<span class="w"> </span>repo<span class="w"> </span>update
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1"># install calico using helm</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>helm<span class="w"> </span>install<span class="w"> </span>calico<span class="w"> </span>projectcalico/tigera-operator<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span>--version<span class="w"> </span><span class="si">${</span><span class="nv">CALICO_VERSION</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span>--namespace<span class="w"> </span>tigera-operator<span class="w"> </span>--create-namespace
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>kubectl<span class="w"> </span>patch<span class="w"> </span>installation<span class="w"> </span>default<span class="w"> </span>--type<span class="o">=</span><span class="s1">'json'</span><span class="w"> </span>-p<span class="o">=</span><span class="s1">'[{"op": "replace", "path": "/spec/cni", "value": {"type":"Calico"} }]'</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="c1"># 确认使用节点 ip 作为出向 nat (natOutgoing=true)</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="c1"># kubectl get ippool default-ipv4-ippool -o jsonpath='{.spec.natOutgoing}' </span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>eksctl<span class="w"> </span>create<span class="w"> </span>nodegroup<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span>--cluster<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span>--node-type<span class="w"> </span>m5.large<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span>--max-pods-per-node<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span>--node-private-networking<span class="w"> </span>
 </code></pre></div></li>
+</ul>
+<h2 id="oidc">oidc<a class="headerlink" href="#oidc" title="Permanent link">¶</a></h2>
+<ul>
+<li><a href="../../../CLI/linux/eksctl/#oidc-" title="git/git-mkdocs/CLI/linux/eksctl">git/git-mkdocs/CLI/linux/eksctl</a></li>
 </ul>
 <h2 id="hostnetwork">必须使用 hostNetwork 的组件<a class="headerlink" href="#hostnetwork" title="Permanent link">¶</a></h2>
 <h3 id="cni">CNI 插件本身<a class="headerlink" href="#cni" title="Permanent link">¶</a></h3>
 <ul>
 <li>原因：需要配置节点网络，在网络初始化之前运行</li>
-<li>实测：需要</li>
+<li>实测：默认已修改</li>
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>NAME                                      READY   STATUS    RESTARTS   AGE    IP                NODE                                            NOMINATED NODE   READINESS GATES
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>calico-apiserver-565867495-ft8w2          1/1     Running   0          2d3h   192.168.153.130   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
@@ -8274,7 +8348,7 @@
 <h3 id="kube-proxy">Kube-proxy<a class="headerlink" href="#kube-proxy" title="Permanent link">¶</a></h3>
 <ul>
 <li>原因：需要管理节点的 iptables/ipvs 规则</li>
-<li>实测：需要</li>
+<li>实测：默认已修改</li>
 </ul>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ubuntu:~$ kubectl get pod -A  -l k8s-app=kube-proxy -o wide
 <a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>NAMESPACE     NAME               READY   STATUS    RESTARTS   AGE    IP                NODE                                            NOMINATED NODE   READINESS GATES
@@ -8284,7 +8358,7 @@
 <h3 id="aws-load-balancer-controller">AWS Load Balancer Controller<a class="headerlink" href="#aws-load-balancer-controller" title="Permanent link">¶</a></h3>
 <ul>
 <li>原因：需要直接访问 AWS API 和 VPC 资源，overlay IP 无法被 AWS 服务识别</li>
-<li>实测：需要</li>
+<li>实测：需要手工修改</li>
 <li><a href="../aws-load-balancer-controller/#install-" title="install">install</a> it</li>
 <li>
 <p>patch it<br>
@@ -8309,7 +8383,7 @@
 <h3 id="metrics-server">Metrics Server<a class="headerlink" href="#metrics-server" title="Permanent link">¶</a></h3>
 <ul>
 <li>原因: 需要从 kubelet 收集指标，使用 hostNetwork 可以避免网络层问题</li>
-<li>实测：启用后才能看到 cpu memory 等指标，不启用也没有报错</li>
+<li>实测：需要手工修改。启用后才能看到 cpu memory 等指标，不启用也没有报错</li>
 <li>refer: <a href="../metrics-server/" title="metrics-server">metrics-server</a><br>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>kubectl<span class="w"> </span>patch<span class="w"> </span>deployment<span class="w"> </span>metrics-server<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="se">\</span>
@@ -8325,7 +8399,12 @@
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>kube-system   metrics-server-5cd97b659b-8mjgj   1/1     Running   0          58s   192.168.179.147   ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>kube-system   metrics-server-5cd97b659b-fbp77   1/1     Running   0          58s   192.168.153.130   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
 </code></pre></div>
-<h2 id="hostnetwork_1">推荐使用 hostNetwork 的组件:<a class="headerlink" href="#hostnetwork_1" title="Permanent link">¶</a></h2>
+<h3 id="nginx-ingress">nginx ingress<a class="headerlink" href="#nginx-ingress" title="Permanent link">¶</a></h3>
+<ul>
+<li>原因：</li>
+<li>实测：</li>
+</ul>
+<h2 id="hostnetwork_1">推荐使用 hostNetwork 的组件<a class="headerlink" href="#hostnetwork_1" title="Permanent link">¶</a></h2>
 <h3 id="cluster-autoscaler">Cluster Autoscaler<a class="headerlink" href="#cluster-autoscaler" title="Permanent link">¶</a></h3>
 <ul>
 <li>原因: 需要调用 AWS API 管理 Auto Scaling Groups</li>
@@ -8380,7 +8459,20 @@
 <a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>efs-csi-node-kq96r                    3/3     Running   0          8m46s   192.168.179.147   ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
 <a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>efs-csi-node-qfrhk                    3/3     Running   0          8m46s   192.168.153.130   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
 </code></pre></div>
-<h3 id="cert-manager">cert-manager<a class="headerlink" href="#cert-manager" title="Permanent link">¶</a></h3>
+<h3 id="nginx-gateway-fabric">Nginx Gateway Fabric<a class="headerlink" href="#nginx-gateway-fabric" title="Permanent link">¶</a></h3>
+<ul>
+<li>原因：</li>
+<li>实测：不需要 hostNetwork 也可以使用</li>
+<li>refer: <a href="../nginx-gateway-fabric/" title="nginx-gateway-fabric">nginx-gateway-fabric</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ubuntu:~$ kubectl get pod -A  -l app.kubernetes.io/instance=ngf -o wide
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>NAMESPACE       NAME                                        READY   STATUS    RESTARTS   AGE   IP               NODE                                            NOMINATED NODE   READINESS GATES
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>nginx-gateway   ngf-nginx-gateway-fabric-7d5b85c8b4-69bzl   1/1     Running   0          46h   172.16.176.16    ip-192-168-138-158.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>nginx-gateway   ngf-nginx-gateway-fabric-7d5b85c8b4-f6rwv   1/1     Running   0          46h   172.16.144.200   ip-192-168-100-127.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>nginx-gateway   production-gateway-nginx-846766b468-7nnz8   1/1     Running   0          40h   172.16.144.205   ip-192-168-100-127.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>nginx-gateway   production-gateway-nginx-846766b468-m4xt7   1/1     Running   0          40h   172.16.176.26    ip-192-168-138-158.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+</code></pre></div>
+<h3 id="cert-manager">Cert Manager<a class="headerlink" href="#cert-manager" title="Permanent link">¶</a></h3>
 <ul>
 <li>原因：</li>
 <li>实测：</li>
@@ -8408,7 +8500,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="December 17, 2025 17:00:11 CST"><span class="timeago" datetime="2025-12-17T17:00:11+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="December 17, 2025 17:00:11 CST">2025-12-17</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="January 1, 2026 10:36:15 CST"><span class="timeago" datetime="2026-01-01T10:36:15+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="January 1, 2026 10:36:15 CST">2026-01-01</span>
   </span>
 
     
@@ -8476,10 +8568,10 @@
     
       
       
-      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "toc.follow", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.7a47a382.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+      <script id="__config" type="application/json">{"annotate": null, "base": "../../..", "features": ["navigation.indexes", "navigation.top", "navigation.tabs", "navigation.tabs.sticky", "search.suggest", "toc.follow", "content.code.copy"], "search": "../../../assets/javascripts/workers/search.2c215733.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
     
     
-      <script src="../../../assets/javascripts/bundle.e71a0d61.min.js"></script>
+      <script src="../../../assets/javascripts/bundle.79ae519e.min.js"></script>
       
         <script src="../../../js/timeago.min.js"></script>
       
