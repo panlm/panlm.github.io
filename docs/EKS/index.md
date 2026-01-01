@@ -64,26 +64,31 @@ number headings: first-level 2, max 3, 1.1, auto
 (file:.md path:git/git-mkdocs/EKS/addons) 
 - [$frontmatter:title]($filename): $frontmatter:description
 ```
-- [aws-for-fluent-bit](aws-for-fluent-bit): 
-- [aws-load-balancer-controller](aws-load-balancer-controller): 使用 aws 负载均衡控制器
-- [cert-manager](cert-manager): 证书管理插件
-- [cluster-autoscaler](cluster-autoscaler): EKS 集群中安装 Cluster Autoscaler
-- [cni-metrics-helper](cni-metrics-helper): cni-metrics-helper
-- [ebs-for-eks](ebs-for-eks): 使用 ebs 作为 pod 持久化存储 
-- [EFS CSI on EKS](efs-csi): 使用 EFS 作为 Pod 持久化存储
-- [eks-addons-coredns](eks-addons-coredns): eks-addons-coredns
-- [eks-addons-kube-proxy](eks-addons-kube-proxy): eks-addons-kube-proxy
-- [eks-addons-vpc-cni](eks-addons-vpc-cni): eks-addons-vpc-cni
-- [eksup](eksup): EKS 升级小工具
-- [externaldns-for-route53](externaldns-for-route53): 使用 externaldns 组件
-- [karpenter](karpenter): 使用 Karpenter 代替 Cluster Autoscaler
-- [kube-no-trouble](kube-no-trouble): Kubernetes 升级小工具
-- [kube-state-metrics](kube-state-metrics): EKS 集群中用于性能监控使用的指标服务
-- [Metrics Server](metrics-server): EKS 集群中用于弹性扩展使用的指标服务
+- [Cert Manager](cert-manager): 证书管理插件
+- [Nginx Gateway Fabric](nginx-gateway-fabric): Nginx Ingress 的继任者
+- [AWS Load Balancer Controller](aws-load-balancer-controller): 使用 aws 负载均衡控制器
+- [ExternalDNS for Route53](externaldns-for-route53): 使用 externaldns 组件
 - [nginx-ingress-controller](nginx-ingress-controller): nginx-ingress-controller
+- [Calico CNI Overlay](calico-cni-overlay): Using Calico CNI overlay mode on EKS
+- [EBS CSI on EKS](ebs-for-eks): 使用 EBS 作为 Pod 持久化存储
+- [EFS CSI on EKS](efs-csi): 使用 EFS 作为 Pod 持久化存储
+- [eks-addons-kube-proxy](eks-addons-kube-proxy): eks-addons-kube-proxy
+- [eks-addons-coredns](eks-addons-coredns): eks-addons-coredns
+- [eks-addons-vpc-cni](eks-addons-vpc-cni): eks-addons-vpc-cni
+- [eks-external-snat](eks-external-snat): 
+- [karpenter](karpenter): 使用 Karpenter 代替 Cluster Autoscaler
 - [nginx-ingress-controller-community-ver](nginx-ingress-controller-community-ver): 使用 nginx ingress
+- [Kyverno](kyverno): Kyverno
+- [prometheus-adapter](prometheus-adapter): 
+- [Metrics Server](metrics-server): EKS 集群中用于弹性扩展使用的指标服务
+- [kube-state-metrics](kube-state-metrics): EKS 集群中用于性能监控使用的指标服务
+- [cluster-autoscaler](cluster-autoscaler): EKS 集群中安装 Cluster Autoscaler
 - [nginx-ingress-controller-nginx-ver](nginx-ingress-controller-nginx-ver): nginx-ingress-controller-nginx-ver
+- [aws-for-fluent-bit](aws-for-fluent-bit): 
 - [pluto](pluto): Kubernetes 升级小工具
+- [eksup](eksup): EKS 升级小工具
+- [kube-no-trouble](kube-no-trouble): Kubernetes 升级小工具
+- [cni-metrics-helper](cni-metrics-helper): cni-metrics-helper
 <-->
 
 ## 2 ECS

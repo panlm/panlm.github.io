@@ -1,6 +1,6 @@
 ---
 title: eks-external-snat
-description: 
+description: eks-external-snat
 created: 2022-03-08 09:12:23.947
 last_modified: 2022-03-08 09:12:23.947
 tags:

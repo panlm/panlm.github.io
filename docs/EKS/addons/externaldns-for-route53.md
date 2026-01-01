@@ -110,7 +110,7 @@ sources:
   - ingress
   - gateway-httproute
   - gateway-tcproute
-#  - gateway-grpcroute # TLSRoute UDPRoute
+#  - gateway-grpcroute # tlsroute udproute
 EOF
 
 cat >externaldns-values-nginx-gateway-fabric.yaml <<-EOF
@@ -128,6 +128,8 @@ helm upgrade --install external-dns external-dns/external-dns \
   -f externaldns-values-xxxxxxxx.yaml
 
 ```
+
+refer: gateway api route sources ([link](https://kubernetes-sigs.github.io/external-dns/latest/docs/sources/gateway-api/))
 
 #### ~~MANUAL INSTALL -- 使用上述服务账号安装 ExternalDNS (install ExternalDNS with existed SA)~~
 

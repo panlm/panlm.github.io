@@ -1,6 +1,6 @@
 ---
-title: nginx-gateway-fabric
-description:
+title: Nginx Gateway Fabric
+description: Nginx Ingress 的继任者
 created: 2025-12-17 09:12:06.087
 last_modified: 2025-12-17
 tags:
@@ -8,13 +8,17 @@ tags:
   - nginx
 ---
 
-# nginx-gateway-fabric
+# Nginx Gateway Fabric
+
+- 不支持OpenResty
 
 ## Install with HELM
+
 - [official doc](https://docs.nginx.com/nginx-gateway-fabric/install/helm/) 
 - install gateway api 
 ```sh
-kubectl kustomize "https://github.com/nginx/nginx-gateway-fabric/config/crd/gateway-api/standard?ref=v2.2.2" | kubectl apply -f -
+VERSION=v2.2.2 # v2.3.0
+kubectl kustomize "https://github.com/nginx/nginx-gateway-fabric/config/crd/gateway-api/standard?ref=${VERSION}" | kubectl apply -f -
 
 ```
 - check gateway api version ([[git/git-mkdocs/EKS/kubernetes/k8s-gateway-api#检查集群是否启用-gateway-api-|check-gateway-api]])
@@ -299,5 +303,14 @@ spec:
       port: 80
 
 ```
+
+
+## refer
+
+Gateway API TCPRoute does not support
+https://docs.nginx.com/nginx-gateway-fabric/overview/gateway-api-compatibility/
+
+
+
 
 

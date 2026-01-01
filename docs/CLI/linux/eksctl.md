@@ -25,12 +25,12 @@ refer: [[../../cloud9/setup-cloud9-for-eks#install-in-cloud9-]]
 
 ## auto-mode-
 ```sh
-eksctl create cluster --name=ekscluster1 --enable-auto-mode
+eksctl create cluster --name=ekscluster1 --enable-auto-mode=true
 ```
 
-## oidc
+## oidc-
 ```sh
-eksctl utils associate-iam-oidc-provider --cluster $EKS_CLUSTER_NAME --region $AWS_REGION --approve
+eksctl utils associate-iam-oidc-provider --cluster $CLUSTER_NAME --region $AWS_DEFAULT_REGION --approve
 ```
 
 ## iamidentitymapping-

@@ -1,5 +1,5 @@
 ---
-title: aws-load-balancer-controller
+title: AWS Load Balancer Controller
 description: 使用 aws 负载均衡控制器
 created: 2022-05-21 13:18:53.303
 last_modified: 2024-04-02
@@ -8,7 +8,7 @@ tags:
   - kubernetes/ingress
 ---
 
-# aws-load-balancer-controller
+# AWS Load Balancer Controller
 
 ## github
 - https://github.com/kubernetes-sigs/aws-load-balancer-controller

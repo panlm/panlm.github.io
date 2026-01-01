@@ -29,31 +29,39 @@ kubectl delete daemonset -n kube-system aws-node
 
 - refer: [calico doc](https://docs.tigera.io/calico/latest/getting-started/kubernetes/managed-public-cloud/eks#install-eks-with-calico-networking) 
 ```bash
+CALICO_VERSION=v3.31.3 # update 1224
+
 helm repo add projectcalico https://docs.tigera.io/calico/charts
 helm repo update
 
 # install calico using helm
-kubectl create namespace tigera-operator
-helm install calico projectcalico/tigera-operator --version v3.31.2 --namespace tigera-operator
+helm install calico projectcalico/tigera-operator \
+    --version ${CALICO_VERSION} \
+    --namespace tigera-operator --create-namespace
+
 kubectl patch installation default --type='json' -p='[{"op": "replace", "path": "/spec/cni", "value": {"type":"Calico"} }]'
 
 # 确认使用节点 ip 作为出向 nat (natOutgoing=true)
 # kubectl get ippool default-ipv4-ippool -o jsonpath='{.spec.natOutgoing}' 
 
 eksctl create nodegroup \
-  --cluster ${CLUSTER_NAME} \
-  --node-type m5.large \
-  --max-pods-per-node 100 \
-  --node-private-networking 
+    --cluster ${CLUSTER_NAME} \
+    --node-type m5.large \
+    --max-pods-per-node 100 \
+    --node-private-networking 
 
 ```
+
+## oidc
+
+- [[git/git-mkdocs/CLI/linux/eksctl#oidc-]]
 
 ## 必须使用 hostNetwork 的组件
 
 ### CNI 插件本身
 
 - 原因：需要配置节点网络，在网络初始化之前运行
-- 实测：需要
+- 实测：默认已修改
 
 ```text
 NAME                                      READY   STATUS    RESTARTS   AGE    IP                NODE                                            NOMINATED NODE   READINESS GATES
@@ -70,7 +78,7 @@ whisker-785fcbb6fb-d6hm8                  2/2     Running   0          2d3h   17
 ### Kube-proxy 
 
 - 原因：需要管理节点的 iptables/ipvs 规则
-- 实测：需要
+- 实测：默认已修改
 
 ```text
 ubuntu:~$ kubectl get pod -A  -l k8s-app=kube-proxy -o wide
@@ -82,7 +90,7 @@ kube-system   kube-proxy-w9vtm   1/1     Running   0          2d3h   192.168.153
 ### AWS Load Balancer Controller
 
 - 原因：需要直接访问 AWS API 和 VPC 资源，overlay IP 无法被 AWS 服务识别
-- 实测：需要
+- 实测：需要手工修改
 - [[git/git-mkdocs/EKS/addons/aws-load-balancer-controller#install-|install]] it
 - patch it
 ```bash
@@ -106,7 +114,7 @@ kubectl get deployment aws-load-balancer-controller \
 ### Metrics Server
 
 - 原因: 需要从 kubelet 收集指标，使用 hostNetwork 可以避免网络层问题
-- 实测：启用后才能看到 cpu memory 等指标，不启用也没有报错
+- 实测：需要手工修改。启用后才能看到 cpu memory 等指标，不启用也没有报错
 - refer: [[metrics-server]]
 ```sh
 
@@ -127,7 +135,12 @@ kube-system   metrics-server-5cd97b659b-8mjgj   1/1     Running   0          58s
 kube-system   metrics-server-5cd97b659b-fbp77   1/1     Running   0          58s   192.168.153.130   ip-192-168-153-130.us-west-2.compute.internal   <none>           <none>
 ```
 
-## 推荐使用 hostNetwork 的组件:
+### nginx ingress
+
+- 原因：
+- 实测：
+
+## 推荐使用 hostNetwork 的组件
 
 ### Cluster Autoscaler
 
@@ -191,8 +204,23 @@ efs-csi-node-kq96r                    3/3     Running   0          8m46s   192.1
 efs-csi-node-qfrhk                    3/3     Running   0          8m46s   192.168.153.130   ip-192-168-153-130.us-west-2.compute.internal   <none>           <none>
 ```
 
+### Nginx Gateway Fabric 
 
-### cert-manager
+- 原因：
+- 实测：不需要 hostNetwork 也可以使用
+- refer: [[nginx-gateway-fabric]]
+
+```text
+ubuntu:~$ kubectl get pod -A  -l app.kubernetes.io/instance=ngf -o wide
+NAMESPACE       NAME                                        READY   STATUS    RESTARTS   AGE   IP               NODE                                            NOMINATED NODE   READINESS GATES
+nginx-gateway   ngf-nginx-gateway-fabric-7d5b85c8b4-69bzl   1/1     Running   0          46h   172.16.176.16    ip-192-168-138-158.us-west-2.compute.internal   <none>           <none>
+nginx-gateway   ngf-nginx-gateway-fabric-7d5b85c8b4-f6rwv   1/1     Running   0          46h   172.16.144.200   ip-192-168-100-127.us-west-2.compute.internal   <none>           <none>
+nginx-gateway   production-gateway-nginx-846766b468-7nnz8   1/1     Running   0          40h   172.16.144.205   ip-192-168-100-127.us-west-2.compute.internal   <none>           <none>
+nginx-gateway   production-gateway-nginx-846766b468-m4xt7   1/1     Running   0          40h   172.16.176.26    ip-192-168-138-158.us-west-2.compute.internal   <none>           <none>
+```
+
+
+### Cert Manager
 
 - 原因：
 - 实测：

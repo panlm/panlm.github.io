@@ -1,5 +1,5 @@
 ---
-title: cert-manager
+title: Cert Manager
 description: 证书管理插件
 created: 2023-07-31 15:36:34.121
 last_modified: 2024-04-02
@@ -8,7 +8,7 @@ tags:
   - aws/container/eks
 ---
 
-# cert-manager
+# Cert Manager
 ## install
 ### install with eksdemo
 - https://github.com/awslabs/eksdemo/blob/main/docs/install-cert-manager.md
