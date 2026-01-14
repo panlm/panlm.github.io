@@ -21,7 +21,7 @@ refer: [[../../../../../Excalidraw/loki.excalidraw|loki.excalidraw]]
 - ekscluster 
     - [[../../../CLI/linux/eksdemo#create-eks-cluster-|eks cluster]]
 - addons needed 
-    - [[../../addons/ebs-for-eks|ebs-for-eks]] 
+    - [[../../addons/ebs-csi|ebs-csi]] 
     - [[../../addons/aws-load-balancer-controller|aws-load-balancer-controller]] 
     - [[../../addons/metrics-server|metrics-server]] 
     - [[../monitor/install-prometheus-operator|install-prometheus-operator]] 

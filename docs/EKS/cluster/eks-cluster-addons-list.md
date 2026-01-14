@@ -19,7 +19,7 @@ tags:
     - [[../addons/aws-load-balancer-controller]] 
     - [[../addons/externaldns-for-route53|externaldns]] 
     - [[../addons/cert-manager]] 
-    - [[../addons/ebs-for-eks|ebs-csi-driver]] 
+    - [[../addons/ebs-csi|ebs-csi-driver]] 
     - [[../solutions/monitor/install-prometheus-operator|prometheus operator]] / grafana operator
     - [[splunk-otel-collector]] 
     - [[../addons/nginx-ingress-controller]] 

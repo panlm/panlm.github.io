@@ -32,8 +32,8 @@ helm repo update
 
 helm upgrade --install aws-ebs-csi-driver aws-ebs-csi-driver/aws-ebs-csi-driver \
     --namespace kube-system \
-    --set serviceAccount.create=false \
-    --set serviceAccount.name=ebs-csi-controller-sa 
+    --set controller.serviceAccount.create=false \
+    --set controller.serviceAccount.name=ebs-csi-controller-sa 
 
 ```
 

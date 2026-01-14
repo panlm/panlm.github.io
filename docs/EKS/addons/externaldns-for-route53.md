@@ -125,7 +125,10 @@ helm upgrade --install external-dns external-dns/external-dns \
   --namespace ${EXTERNALDNS_NS:-"default"} \
   --set serviceAccount.create=false \
   --set serviceAccount.name=external-dns \
+  --policy=sync \
   -f externaldns-values-xxxxxxxx.yaml
+
+# kubectl set env deploy/external-dns -n externaldns --containers='*' EXTERNAL_DNS_POLICY=sync
 
 ```
 

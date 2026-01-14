@@ -70,7 +70,7 @@ number headings: first-level 2, max 3, 1.1, auto
 - [ExternalDNS for Route53](externaldns-for-route53): 使用 externaldns 组件
 - [nginx-ingress-controller](nginx-ingress-controller): nginx-ingress-controller
 - [Calico CNI Overlay](calico-cni-overlay): Using Calico CNI overlay mode on EKS
-- [EBS CSI on EKS](ebs-for-eks): 使用 EBS 作为 Pod 持久化存储
+- [EBS CSI on EKS](addons/ebs-csi.md): 使用 EBS 作为 Pod 持久化存储
 - [EFS CSI on EKS](efs-csi): 使用 EFS 作为 Pod 持久化存储
 - [eks-addons-kube-proxy](eks-addons-kube-proxy): eks-addons-kube-proxy
 - [eks-addons-coredns](eks-addons-coredns): eks-addons-coredns

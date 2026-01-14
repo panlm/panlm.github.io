@@ -10,9 +10,11 @@ tags:
 # nodejs-cmd
 
 ## install
-https://github.com/nvm-sh/nvm/releases
+https://github.com/nvm-sh/nvm/releases 
 ```sh
 curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+
+source ~/.bashrc
 nvm install 20
 # nvm use 20
 node -v

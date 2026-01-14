@@ -75,7 +75,7 @@ Prometheus Operator 提供 Kubernetes 原生部署和管理 Prometheus 及相关
 - following addons will be included in each cluster
     - argocd
     - [[../EKS/addons/aws-load-balancer-controller#install-with-eksdemo-|aws load balancer controller]] 
-    - [[../EKS/addons/ebs-for-eks#using-eksdemo-|ebs csi]] 
+    - [[../EKS/addons/ebs-csi#using-eksdemo-|ebs csi]] 
     - [[../EKS/addons/externaldns-for-route53|externaldns-for-route53]] 
     - metrics-server
     - cluster-autoscaler

@@ -180,7 +180,7 @@ externaldns   external-dns-596bf4886b-lkg7k   1/1     Running   0          28h  
 
 - 原因：需要直接访问节点的块设备
 - 实测：不使用 hostNetwork 也可以使用
-- refer: [[ebs-for-eks]]
+- refer: [[ebs-csi]]
 
 ```text
 ubuntu:~$ kubectl get pod -n kube-system -l "app.kubernetes.io/name=aws-ebs-csi-driver,app.kubernetes.io/instance=storage-ebs-csi" -o wide

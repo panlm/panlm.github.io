@@ -10,7 +10,7 @@ tags:
 ---
 # install-prometheus-operator
 ## prep
-- [[../../addons/ebs-for-eks#using-eksdemo-]] 
+- [[../../addons/ebs-csi#using-eksdemo-]] 
 
 ## (Prefer) install-prometheus-operator
 

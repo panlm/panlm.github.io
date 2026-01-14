@@ -11,6 +11,7 @@ tags:
 # Cert Manager
 ## install
 ### install with eksdemo
+
 - https://github.com/awslabs/eksdemo/blob/main/docs/install-cert-manager.md
 ```sh
 echo ${CLUSTER_NAME}
@@ -22,9 +23,40 @@ kubectl get clusterissuer
 ```
 
 ### install with helm
+
 - https://cert-manager.io/docs/installation/helm/
+```sh
+helm upgrade --install \
+  cert-manager oci://quay.io/jetstack/charts/cert-manager \
+  --version v1.19.2 \
+  --namespace cert-manager \
+  --create-namespace \
+  --set crds.enabled=true \
+  --set startupapicheck.enabled=true \
+  --set webhook.hostNetwork=true \
+  --set webhook.securePort=10260 \
+  --timeout=5m \
+  --wait
+  
+```
+
+```sh
+Error: INSTALLATION FAILED: failed post-install: 1 error occurred:
+        * timed out waiting for the condition
+Error: INSTALLATION FAILED: failed post-install: 1 error occurred:
+        * timed out waiting for the condition
+
+
+
+```
+
+![[../../../../attachments/Pasted image 20260112124327.png]]
+
+![[../../../../attachments/Pasted image 20260112125043.png]]
+
 
 ### install manually
+
 - https://cert-manager.io/docs/installation/
 - install newest version 
 ```sh
