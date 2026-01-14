@@ -458,6 +458,28 @@
   
   
   
+    
+    
+      <li class="md-tabs__item">
+        <a href="../../../book/" class="md-tabs__link">
+          
+  
+  
+    
+  
+  Book
+
+        </a>
+      </li>
+    
+  
+
+      
+        
+  
+  
+  
+  
     <li class="md-tabs__item">
       <a href="../../../tags/" class="md-tabs__link">
         
@@ -1243,6 +1265,8 @@
       
         
       
+        
+      
     
     
     
@@ -1285,6 +1309,34 @@
 
           </label>
           <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../apisix-on-eks/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    apisix-on-eks
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
             
               
                 
@@ -1580,7 +1632,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../ebs-for-eks/" class="md-nav__link">
+      <a href="../ebs-csi/" class="md-nav__link">
         
   
   
@@ -4594,6 +4646,8 @@
       
         
       
+        
+      
     
     
     
@@ -4873,6 +4927,34 @@
     
   
     MCP Server for Grafana
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../GenAI/opencode/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    opencode
   
 
     
@@ -7853,6 +7935,138 @@
   
   
   
+    
+    
+      
+        
+          
+        
+      
+        
+      
+        
+      
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_9">
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../book/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Book
+  
+
+    
+  </span>
+  
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_9" id="__nav_9_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_9_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_9">
+            <span class="md-nav__icon md-icon"></span>
+            
+  
+    Book
+  
+
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book/book-12%E7%A7%8D%E6%99%BA%E6%85%A7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    book-12种智慧
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../book/book-%E5%A4%A9%E6%89%8D%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    book-天才的学习方法
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
     <li class="md-nav__item">
       <a href="../../../tags/" class="md-nav__link">
         
@@ -8025,36 +8239,56 @@
 </ul>
 <h3 id="install-with-helm">install with helm<a class="headerlink" href="#install-with-helm" title="Permanent link">¶</a></h3>
 <ul>
-<li><a href="https://cert-manager.io/docs/installation/helm/">https://cert-manager.io/docs/installation/helm/</a></li>
+<li><a href="https://cert-manager.io/docs/installation/helm/">https://cert-manager.io/docs/installation/helm/</a><br>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>helm<span class="w"> </span>upgrade<span class="w"> </span>--install<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span>cert-manager<span class="w"> </span>oci://quay.io/jetstack/charts/cert-manager<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span>--version<span class="w"> </span>v1.19.2<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span>--namespace<span class="w"> </span>cert-manager<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span>--create-namespace<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span>--set<span class="w"> </span>crds.enabled<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span>--set<span class="w"> </span>startupapicheck.enabled<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span>--set<span class="w"> </span>webhook.hostNetwork<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span>--set<span class="w"> </span>webhook.securePort<span class="o">=</span><span class="m">10260</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span>--timeout<span class="o">=</span>5m<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span>--wait
+</code></pre></div></li>
 </ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Error:<span class="w"> </span>INSTALLATION<span class="w"> </span>FAILED:<span class="w"> </span>failed<span class="w"> </span>post-install:<span class="w"> </span><span class="m">1</span><span class="w"> </span>error<span class="w"> </span>occurred:
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span>*<span class="w"> </span>timed<span class="w"> </span>out<span class="w"> </span>waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>condition
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>Error:<span class="w"> </span>INSTALLATION<span class="w"> </span>FAILED:<span class="w"> </span>failed<span class="w"> </span>post-install:<span class="w"> </span><span class="m">1</span><span class="w"> </span>error<span class="w"> </span>occurred:
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span>*<span class="w"> </span>timed<span class="w"> </span>out<span class="w"> </span>waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>condition
+</code></pre></div>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../../../attachments/Pasted%20image%2020260112124327.png" data-desc-position="bottom"><img alt="../../../../attachments/Pasted image 20260112124327.png" src="../../../../../../attachments/Pasted%20image%2020260112124327.png" title="../../../../attachments/Pasted image 20260112124327.png"></a></p>
+<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../../../attachments/Pasted%20image%2020260112125043.png" data-desc-position="bottom"><img alt="../../../../attachments/Pasted image 20260112125043.png" src="../../../../../../attachments/Pasted%20image%2020260112125043.png" title="../../../../attachments/Pasted image 20260112125043.png"></a></p>
 <h3 id="install-manually">install manually<a class="headerlink" href="#install-manually" title="Permanent link">¶</a></h3>
 <ul>
 <li><a href="https://cert-manager.io/docs/installation/">https://cert-manager.io/docs/installation/</a></li>
 <li>install newest version <br>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>kubectl<span class="w"> </span>create<span class="w"> </span>ns<span class="w"> </span>cert-manager
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://github.com/cert-manager/cert-manager/releases/latest/download/cert-manager.yaml<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>-n<span class="w"> </span>cert-manager
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># CM_VERSION=v1.12.3 (2023/07)</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># https://github.com/cert-manager/cert-manager/releases/download/${CM_VERSION}/cert-manager.yaml</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>kubectl<span class="w"> </span>create<span class="w"> </span>ns<span class="w"> </span>cert-manager
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://github.com/cert-manager/cert-manager/releases/latest/download/cert-manager.yaml<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>-n<span class="w"> </span>cert-manager
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># CM_VERSION=v1.12.3 (2023/07)</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># https://github.com/cert-manager/cert-manager/releases/download/${CM_VERSION}/cert-manager.yaml</span>
 </code></pre></div></li>
 </ul>
 <h2 id="issuer-certificates-">issuer-certificates-<a class="headerlink" href="#issuer-certificates-" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>TEST_DOMAIN=thanos-gateway.poc1109.aws.panlm.xyz
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>cat &lt;&lt;EOF | kubectl apply -f -
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>apiVersion: cert-manager.io/v1
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>kind: Certificate
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>metadata:
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>  name: ${TEST_DOMAIN}
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>  namespace: monitoring
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>spec:
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>  secretName: thanos-gateway-tls
-<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a>  dnsNames:
-<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>
-<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a>    - ${TEST_DOMAIN}
-<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>  issuerRef:
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a>    name: letsencrypt-prod
-<a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a>    kind: ClusterIssuer
-<a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>EOF
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>TEST_DOMAIN=thanos-gateway.poc1109.aws.panlm.xyz
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>cat &lt;&lt;EOF | kubectl apply -f -
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>apiVersion: cert-manager.io/v1
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>kind: Certificate
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>metadata:
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>  name: ${TEST_DOMAIN}
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>  namespace: monitoring
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>spec:
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>  secretName: thanos-gateway-tls
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>  dnsNames:
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
+<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    - ${TEST_DOMAIN}
+<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>  issuerRef:
+<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>    name: letsencrypt-prod
+<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>    kind: ClusterIssuer
+<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>EOF
 </code></pre></div>
 <h2 id="newest-version-v1123-202404">newest version v1.12.3 (2024/04)<a class="headerlink" href="#newest-version-v1123-202404" title="Permanent link">¶</a></h2>
 <p><a href="https://cert-manager.io/docs/releases/">https://cert-manager.io/docs/releases/</a></p>
@@ -8081,7 +8315,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="January 1, 2026 10:36:15 CST"><span class="timeago" datetime="2026-01-01T10:36:15+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="January 1, 2026 10:36:15 CST">2026-01-01</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="January 14, 2026 08:23:58 CST"><span class="timeago" datetime="2026-01-14T08:23:58+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="January 14, 2026 08:23:58 CST">2026-01-14</span>
   </span>
 
     
