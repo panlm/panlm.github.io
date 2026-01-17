@@ -582,6 +582,13 @@
         <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/EKS/addons/prometheus-adapter/"/>
     </url>
     <url>
+        <loc>https://panlm.github.io/EKS/addons/rancher/</loc>
+        <lastmod>2026-01-17</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/EKS/addons/rancher/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/EKS/addons/rancher/"/>
+    </url>
+    <url>
         <loc>https://panlm.github.io/EKS/cluster/eks-auto-mode-sample/</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>daily</changefreq>
@@ -988,25 +995,25 @@
         <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/GenAI/vibe-vs-spec/"/>
     </url>
     <url>
-        <loc>https://panlm.github.io/book/</loc>
+        <loc>https://panlm.github.io/books/</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/book/"/>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/book/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/books/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/books/"/>
     </url>
     <url>
-        <loc>https://panlm.github.io/book/book-12%E7%A7%8D%E6%99%BA%E6%85%A7/</loc>
+        <loc>https://panlm.github.io/books/book-12%E7%A7%8D%E6%99%BA%E6%85%A7/</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/book/book-12%E7%A7%8D%E6%99%BA%E6%85%A7/"/>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/book/book-12%E7%A7%8D%E6%99%BA%E6%85%A7/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/books/book-12%E7%A7%8D%E6%99%BA%E6%85%A7/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/books/book-12%E7%A7%8D%E6%99%BA%E6%85%A7/"/>
     </url>
     <url>
-        <loc>https://panlm.github.io/book/book-%E5%A4%A9%E6%89%8D%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/</loc>
+        <loc>https://panlm.github.io/books/book-%E5%A4%A9%E6%89%8D%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/book/book-%E5%A4%A9%E6%89%8D%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/"/>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/book/book-%E5%A4%A9%E6%89%8D%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/books/book-%E5%A4%A9%E6%89%8D%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/books/book-%E5%A4%A9%E6%89%8D%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/"/>
     </url>
     <url>
         <loc>https://panlm.github.io/cloud9/</loc>
@@ -1919,6 +1926,13 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/EKS/addons/prometheus-adapter/"/>
     </url>
     <url>
+        <loc>https://panlm.github.io/zh/EKS/addons/rancher/</loc>
+        <lastmod>2026-01-17</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/EKS/addons/rancher/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/EKS/addons/rancher/"/>
+    </url>
+    <url>
         <loc>https://panlm.github.io/zh/EKS/cluster/eks-auto-mode-sample/</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>daily</changefreq>
@@ -2331,25 +2345,25 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/GenAI/vibe-vs-spec/"/>
     </url>
     <url>
-        <loc>https://panlm.github.io/zh/book/</loc>
+        <loc>https://panlm.github.io/zh/books/</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/book/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/book/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/books/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/books/"/>
     </url>
     <url>
-        <loc>https://panlm.github.io/zh/book/book-12%E7%A7%8D%E6%99%BA%E6%85%A7/</loc>
+        <loc>https://panlm.github.io/zh/books/book-12%E7%A7%8D%E6%99%BA%E6%85%A7/</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/book/book-12%E7%A7%8D%E6%99%BA%E6%85%A7/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/book/book-12%E7%A7%8D%E6%99%BA%E6%85%A7/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/books/book-12%E7%A7%8D%E6%99%BA%E6%85%A7/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/books/book-12%E7%A7%8D%E6%99%BA%E6%85%A7/"/>
     </url>
     <url>
-        <loc>https://panlm.github.io/zh/book/book-%E5%A4%A9%E6%89%8D%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/</loc>
+        <loc>https://panlm.github.io/zh/books/book-%E5%A4%A9%E6%89%8D%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/</loc>
         <lastmod>2026-01-17</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/book/book-%E5%A4%A9%E6%89%8D%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/book/book-%E5%A4%A9%E6%89%8D%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/books/book-%E5%A4%A9%E6%89%8D%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/books/book-%E5%A4%A9%E6%89%8D%E7%9A%84%E5%AD%A6%E4%B9%A0%E6%96%B9%E6%B3%95/"/>
     </url>
     <url>
         <loc>https://panlm.github.io/zh/cloud9/</loc>
