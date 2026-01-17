@@ -135,6 +135,29 @@ kube-system   metrics-server-5cd97b659b-8mjgj   1/1     Running   0          58s
 kube-system   metrics-server-5cd97b659b-fbp77   1/1     Running   0          58s   192.168.153.130   ip-192-168-153-130.us-west-2.compute.internal   <none>           <none>
 ```
 
+### Cert-Manager-
+
+- 原因：api server 需要通讯 webhook 验证证书
+- 实测：需要手工修改。
+- refer: [[cert-manager]]
+
+```sh
+
+kubectl patch deployment cert-manager-webhook -n cert-manager \
+  -p '{"spec":{"template":{"spec":{"hostNetwork":true}}}}'
+
+kubectl patch deployment cert-manager-webhook -n cert-manager \
+  --type=json -p='[
+    {"op":"replace","path":"/spec/template/spec/containers/0/args/1","value":"--secure-port=10260"},
+    {"op":"replace","path":"/spec/template/spec/containers/0/ports/0/containerPort","value":10260}
+  ]'
+  
+# verify
+kubectl get deployment cert-manager-webhook -n cert-manager -o jsonpath='{.spec.template.spec.hostNetwork}' && echo
+
+```
+- or refer: [[git/git-mkdocs/EKS/addons/cert-manager#install-for-overlay-cni-]]
+
 ### nginx ingress
 
 - 原因：
@@ -220,9 +243,5 @@ nginx-gateway   production-gateway-nginx-846766b468-m4xt7   1/1     Running   0 
 ```
 
 
-### Cert Manager
 
-- 原因：
-- 实测：
-- refer: 
 

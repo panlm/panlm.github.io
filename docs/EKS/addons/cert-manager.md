@@ -23,37 +23,95 @@ kubectl get clusterissuer
 ```
 
 ### install with helm
+- sa (https://cert-manager.io/docs/configuration/acme/dns01/route53/)
+```sh
+echo ${CLUSTER_NAME}
+echo ${AWS_DEFAULT_REGION}
+echo ${CERT_MANAGER_NS:=cert-manager}
+echo ${CERT_MANAGER_SA:=cert-manager-sa}
+
+cat >cert-manager-policy.json <<-EOF
+{
+  "Version": "2012-10-17",
+  "Statement": [
+    {
+      "Effect": "Allow",
+      "Action": "route53:GetChange",
+      "Resource": "arn:aws:route53:::change/*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": [
+        "route53:ChangeResourceRecordSets",
+        "route53:ListResourceRecordSets"
+      ],
+      "Resource": "arn:aws:route53:::hostedzone/*"
+    },
+    {
+      "Effect": "Allow",
+      "Action": "route53:ListHostedZonesByName",
+      "Resource": "*"
+    }
+  ]
+}
+EOF
+
+policy_name=CertManagerIAMPolicy-`date +%m%d%H%M`
+policy_arn=$(aws iam create-policy \
+  --policy-name ${policy_name}  \
+  --policy-document file://cert-manager-policy.json \
+  --query 'Policy.Arn' \
+  --output text)
+
+kubectl create ns ${CERT_MANAGER_NS}
+eksctl create iamserviceaccount \
+  --cluster=${CLUSTER_NAME} \
+  --namespace ${CERT_MANAGER_NS} \
+  --name=${CERT_MANAGER_SA} \
+  --role-name=${policy_name/Policy/Role} \
+  --attach-policy-arn=${policy_arn} \
+  --override-existing-serviceaccounts \
+  --approve
+```
 
 - https://cert-manager.io/docs/installation/helm/
 ```sh
+echo ${CERT_MANAGER_NS:=cert-manager}
+echo ${CERT_MANAGER_SA:=cert-manager-sa}
+
+CERT_MANAGER_VER=v1.19.2
 helm upgrade --install \
   cert-manager oci://quay.io/jetstack/charts/cert-manager \
-  --version v1.19.2 \
-  --namespace cert-manager \
-  --create-namespace \
+  --version ${CERT_MANAGER_VER} \
+  --namespace ${CERT_MANAGER_NS} --create-namespace \
   --set crds.enabled=true \
   --set startupapicheck.enabled=true \
+  --set serviceAccount.create=false \
+  --set serviceAccount.name=${CERT_MANAGER_SA} \
+  --timeout=5m \
+  --wait
+```
+
+### install-for-overlay-cni-
+
+```sh
+helm upgrade --install \
+  cert-manager oci://quay.io/jetstack/charts/cert-manager \
+  --version ${CERT_MANAGER_VER} \
+  --namespace ${CERT_MANAGER_NS} --create-namespace \
+  --set crds.enabled=true \
+  --set startupapicheck.enabled=true \
+  --set serviceAccount.create=false \
+  --set serviceAccount.name=${CERT_MANAGER_SA} \
   --set webhook.hostNetwork=true \
   --set webhook.securePort=10260 \
   --timeout=5m \
   --wait
   
-```
-
-```sh
-Error: INSTALLATION FAILED: failed post-install: 1 error occurred:
-        * timed out waiting for the condition
-Error: INSTALLATION FAILED: failed post-install: 1 error occurred:
-        * timed out waiting for the condition
-
-
+# defult port is 10250, conflict to kubelet port 
 
 ```
-
-![[../../../../attachments/Pasted image 20260112124327.png]]
-
-![[../../../../attachments/Pasted image 20260112125043.png]]
-
+- or refer: [[git/git-mkdocs/EKS/addons/calico-cni-overlay#Cert-Manager-]]
 
 ### install manually
 

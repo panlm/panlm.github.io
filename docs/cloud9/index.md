@@ -23,7 +23,7 @@ number headings: first-level 2, max 3, 1.1, auto
 
         ```bash
 curl --location https://panlm.github.io/cloud9/script-prep-eks-env-part-two.sh |sh
-```
+        ```
 
     - 初始化其他内容
         - [[script-prep-eks-env-part-three.sh]]

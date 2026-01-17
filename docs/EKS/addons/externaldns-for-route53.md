@@ -103,6 +103,12 @@ echo ${EXTERNALDNS_NS}
 
 helm repo add --force-update external-dns https://kubernetes-sigs.github.io/external-dns/
 
+cat >externaldns-values-default.yaml <<-EOF
+sources:
+  - service
+  - ingress
+EOF
+
 # support gateway api
 cat >externaldns-values-aws-lb-controller.yaml <<-EOF
 sources:
@@ -125,8 +131,8 @@ helm upgrade --install external-dns external-dns/external-dns \
   --namespace ${EXTERNALDNS_NS:-"default"} \
   --set serviceAccount.create=false \
   --set serviceAccount.name=external-dns \
-  --policy=sync \
-  -f externaldns-values-xxxxxxxx.yaml
+  --set policy=sync \
+  -f externaldns-values-default.yaml
 
 # kubectl set env deploy/external-dns -n externaldns --containers='*' EXTERNAL_DNS_POLICY=sync
 

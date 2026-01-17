@@ -50,6 +50,30 @@ sudo cp brew/bin/brew /usr/local/bin/
 
 ```
 
+## crane
+
+```sh
+# 1. 安装 crane（如果还没装）
+brew install crane
+
+# 2. 登录两个 ECR
+aws ecr get-login-password --profile profileA --region us-west-2 | \
+    crane auth login 111111111111.dkr.ecr.us-west-2.amazonaws.com -u AWS --password-stdin
+aws ecr get-login-password --profile profileB --region us-west-2 | \
+    crane auth login 222222222222.dkr.ecr.us-west-2.amazonaws.com -u AWS --password-stdin
+
+# 3. 查看源仓库所有标签 sample repo: awscli
+crane ls 111111111111.dkr.ecr.us-west-2.amazonaws.com/awscli
+
+# 4. 一键复制所有标签到目标账户
+crane copy --all-tags \
+    111111111111.dkr.ecr.us-west-2.amazonaws.com/awscli \
+    222222222222.dkr.ecr.us-west-2.amazonaws.com/awscli
+
+# 5. 验证目标仓库
+crane ls 222222222222.dkr.ecr.us-west-2.amazonaws.com/awscli
+
+```
 
 ## column
 ```sh
