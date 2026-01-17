@@ -9,7 +9,9 @@ tags:
 ---
 
 # acm-cmd
+
 ## create-certificate-with-eksdemo-
+
 - https://github.com/awslabs/eksdemo/blob/main/docs/create-acm-cert.md
 ```sh
 echo ${DOMAIN_NAME}
@@ -25,6 +27,7 @@ eksdemo get acm-certificate # get certificate arn
 ^kresvp
 
 ## create-certificate-
+
 - 创建并通过添加 dns 记录验证证书 (create certificate with DNS verification)
 ```sh
 echo ${DOMAIN_NAME}
