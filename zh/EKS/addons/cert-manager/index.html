@@ -1525,6 +1525,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#install-for-overlay-cni-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        install-for-overlay-cni-
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#install-manually" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -8188,6 +8199,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#install-for-overlay-cni-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        install-for-overlay-cni-
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#install-manually" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -8278,56 +8300,123 @@
 </ul>
 <h3 id="install-with-helm">install with helm<a class="headerlink" href="#install-with-helm" title="Permanent link">¶</a></h3>
 <ul>
-<li><a href="https://cert-manager.io/docs/installation/helm/">https://cert-manager.io/docs/installation/helm/</a><br>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>helm<span class="w"> </span>upgrade<span class="w"> </span>--install<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="w">  </span>cert-manager<span class="w"> </span>oci://quay.io/jetstack/charts/cert-manager<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="w">  </span>--version<span class="w"> </span>v1.19.2<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="w">  </span>--namespace<span class="w"> </span>cert-manager<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="w">  </span>--create-namespace<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="w">  </span>--set<span class="w"> </span>crds.enabled<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="w">  </span>--set<span class="w"> </span>startupapicheck.enabled<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">  </span>--set<span class="w"> </span>webhook.hostNetwork<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">  </span>--set<span class="w"> </span>webhook.securePort<span class="o">=</span><span class="m">10260</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="w">  </span>--timeout<span class="o">=</span>5m<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="w">  </span>--wait
-</code></pre></div></li>
+<li>
+<p>sa (<a href="https://cert-manager.io/docs/configuration/acme/dns01/route53/">https://cert-manager.io/docs/configuration/acme/dns01/route53/</a>)<br>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span>
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">AWS_DEFAULT_REGION</span><span class="si">}</span>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">CERT_MANAGER_NS</span><span class="p">:=cert-manager</span><span class="si">}</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">CERT_MANAGER_SA</span><span class="p">:=cert-manager-sa</span><span class="si">}</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a>cat<span class="w"> </span>&gt;cert-manager-policy.json<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="s">{</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="s">  "Version": "2012-10-17",</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="s">  "Statement": [</span>
+<a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a><span class="s">    {</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a><span class="s">      "Effect": "Allow",</span>
+<a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a><span class="s">      "Action": "route53:GetChange",</span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="s">      "Resource": "arn:aws:route53:::change/*"</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="s">    },</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="s">    {</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="s">      "Effect": "Allow",</span>
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="s">      "Action": [</span>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="s">        "route53:ChangeResourceRecordSets",</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="s">        "route53:ListResourceRecordSets"</span>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="s">      ],</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="s">      "Resource": "arn:aws:route53:::hostedzone/*"</span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a><span class="s">    },</span>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a><span class="s">    {</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="s">      "Effect": "Allow",</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="s">      "Action": "route53:ListHostedZonesByName",</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="s">      "Resource": "*"</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="s">    }</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="s">  ]</span>
+<a id="__codelineno-1-29" name="__codelineno-1-29" href="#__codelineno-1-29"></a><span class="s">}</span>
+<a id="__codelineno-1-30" name="__codelineno-1-30" href="#__codelineno-1-30"></a><span class="s">EOF</span>
+<a id="__codelineno-1-31" name="__codelineno-1-31" href="#__codelineno-1-31"></a>
+<a id="__codelineno-1-32" name="__codelineno-1-32" href="#__codelineno-1-32"></a><span class="nv">policy_name</span><span class="o">=</span>CertManagerIAMPolicy-<span class="sb">`</span>date<span class="w"> </span>+%m%d%H%M<span class="sb">`</span>
+<a id="__codelineno-1-33" name="__codelineno-1-33" href="#__codelineno-1-33"></a><span class="nv">policy_arn</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>iam<span class="w"> </span>create-policy<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-34" name="__codelineno-1-34" href="#__codelineno-1-34"></a><span class="w">  </span>--policy-name<span class="w"> </span><span class="si">${</span><span class="nv">policy_name</span><span class="si">}</span><span class="w">  </span><span class="se">\</span>
+<a id="__codelineno-1-35" name="__codelineno-1-35" href="#__codelineno-1-35"></a><span class="w">  </span>--policy-document<span class="w"> </span>file://cert-manager-policy.json<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-36" name="__codelineno-1-36" href="#__codelineno-1-36"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">'Policy.Arn'</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-37" name="__codelineno-1-37" href="#__codelineno-1-37"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-1-38" name="__codelineno-1-38" href="#__codelineno-1-38"></a>
+<a id="__codelineno-1-39" name="__codelineno-1-39" href="#__codelineno-1-39"></a>kubectl<span class="w"> </span>create<span class="w"> </span>ns<span class="w"> </span><span class="si">${</span><span class="nv">CERT_MANAGER_NS</span><span class="si">}</span>
+<a id="__codelineno-1-40" name="__codelineno-1-40" href="#__codelineno-1-40"></a>eksctl<span class="w"> </span>create<span class="w"> </span>iamserviceaccount<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-41" name="__codelineno-1-41" href="#__codelineno-1-41"></a><span class="w">  </span>--cluster<span class="o">=</span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-42" name="__codelineno-1-42" href="#__codelineno-1-42"></a><span class="w">  </span>--namespace<span class="w"> </span><span class="si">${</span><span class="nv">CERT_MANAGER_NS</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-43" name="__codelineno-1-43" href="#__codelineno-1-43"></a><span class="w">  </span>--name<span class="o">=</span><span class="si">${</span><span class="nv">CERT_MANAGER_SA</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-44" name="__codelineno-1-44" href="#__codelineno-1-44"></a><span class="w">  </span>--role-name<span class="o">=</span><span class="si">${</span><span class="nv">policy_name</span><span class="p">/Policy/Role</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-45" name="__codelineno-1-45" href="#__codelineno-1-45"></a><span class="w">  </span>--attach-policy-arn<span class="o">=</span><span class="si">${</span><span class="nv">policy_arn</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-46" name="__codelineno-1-46" href="#__codelineno-1-46"></a><span class="w">  </span>--override-existing-serviceaccounts<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-47" name="__codelineno-1-47" href="#__codelineno-1-47"></a><span class="w">  </span>--approve
+</code></pre></div><p></p>
+</li>
+<li>
+<p><a href="https://cert-manager.io/docs/installation/helm/">https://cert-manager.io/docs/installation/helm/</a><br>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">CERT_MANAGER_NS</span><span class="p">:=cert-manager</span><span class="si">}</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">CERT_MANAGER_SA</span><span class="p">:=cert-manager-sa</span><span class="si">}</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="nv">CERT_MANAGER_VER</span><span class="o">=</span>v1.19.2
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>helm<span class="w"> </span>upgrade<span class="w"> </span>--install<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a><span class="w">  </span>cert-manager<span class="w"> </span>oci://quay.io/jetstack/charts/cert-manager<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="w">  </span>--version<span class="w"> </span><span class="si">${</span><span class="nv">CERT_MANAGER_VER</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="w">  </span>--namespace<span class="w"> </span><span class="si">${</span><span class="nv">CERT_MANAGER_NS</span><span class="si">}</span><span class="w"> </span>--create-namespace<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="w">  </span>--set<span class="w"> </span>crds.enabled<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="w">  </span>--set<span class="w"> </span>startupapicheck.enabled<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="w">  </span>--set<span class="w"> </span>serviceAccount.create<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="w">  </span>--set<span class="w"> </span>serviceAccount.name<span class="o">=</span><span class="si">${</span><span class="nv">CERT_MANAGER_SA</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a><span class="w">  </span>--timeout<span class="o">=</span>5m<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="w">  </span>--wait
+</code></pre></div><p></p>
+</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>Error:<span class="w"> </span>INSTALLATION<span class="w"> </span>FAILED:<span class="w"> </span>failed<span class="w"> </span>post-install:<span class="w"> </span><span class="m">1</span><span class="w"> </span>error<span class="w"> </span>occurred:
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="w">        </span>*<span class="w"> </span>timed<span class="w"> </span>out<span class="w"> </span>waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>condition
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>Error:<span class="w"> </span>INSTALLATION<span class="w"> </span>FAILED:<span class="w"> </span>failed<span class="w"> </span>post-install:<span class="w"> </span><span class="m">1</span><span class="w"> </span>error<span class="w"> </span>occurred:
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="w">        </span>*<span class="w"> </span>timed<span class="w"> </span>out<span class="w"> </span>waiting<span class="w"> </span><span class="k">for</span><span class="w"> </span>the<span class="w"> </span>condition
+<h3 id="install-for-overlay-cni-">install-for-overlay-cni-<a class="headerlink" href="#install-for-overlay-cni-" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>helm<span class="w"> </span>upgrade<span class="w"> </span>--install<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="w">  </span>cert-manager<span class="w"> </span>oci://quay.io/jetstack/charts/cert-manager<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span>--version<span class="w"> </span><span class="si">${</span><span class="nv">CERT_MANAGER_VER</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span>--namespace<span class="w"> </span><span class="si">${</span><span class="nv">CERT_MANAGER_NS</span><span class="si">}</span><span class="w"> </span>--create-namespace<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span>--set<span class="w"> </span>crds.enabled<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span>--set<span class="w"> </span>startupapicheck.enabled<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span>--set<span class="w"> </span>serviceAccount.create<span class="o">=</span><span class="nb">false</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span>--set<span class="w"> </span>serviceAccount.name<span class="o">=</span><span class="si">${</span><span class="nv">CERT_MANAGER_SA</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">  </span>--set<span class="w"> </span>webhook.hostNetwork<span class="o">=</span><span class="nb">true</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">  </span>--set<span class="w"> </span>webhook.securePort<span class="o">=</span><span class="m">10260</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="w">  </span>--timeout<span class="o">=</span>5m<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">  </span>--wait
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="c1"># defult port is 10250, conflict to kubelet port </span>
 </code></pre></div>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../../../attachments/Pasted%20image%2020260112124327.png" data-desc-position="bottom"><img alt="../../../../attachments/Pasted image 20260112124327.png" src="../../../../../../attachments/Pasted%20image%2020260112124327.png" title="../../../../attachments/Pasted image 20260112124327.png"></a></p>
-<p><a class="glightbox" data-type="image" data-width="auto" data-height="auto" href="../../../../../../attachments/Pasted%20image%2020260112125043.png" data-desc-position="bottom"><img alt="../../../../attachments/Pasted image 20260112125043.png" src="../../../../../../attachments/Pasted%20image%2020260112125043.png" title="../../../../attachments/Pasted image 20260112125043.png"></a></p>
+<ul>
+<li>or refer: <a href="../calico-cni-overlay/#cert-manager-" title="git/git-mkdocs/EKS/addons/calico-cni-overlay">git/git-mkdocs/EKS/addons/calico-cni-overlay</a></li>
+</ul>
 <h3 id="install-manually">install manually<a class="headerlink" href="#install-manually" title="Permanent link">¶</a></h3>
 <ul>
 <li><a href="https://cert-manager.io/docs/installation/">https://cert-manager.io/docs/installation/</a></li>
 <li>install newest version <br>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>kubectl<span class="w"> </span>create<span class="w"> </span>ns<span class="w"> </span>cert-manager
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://github.com/cert-manager/cert-manager/releases/latest/download/cert-manager.yaml<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>-n<span class="w"> </span>cert-manager
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># CM_VERSION=v1.12.3 (2023/07)</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># https://github.com/cert-manager/cert-manager/releases/download/${CM_VERSION}/cert-manager.yaml</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>kubectl<span class="w"> </span>create<span class="w"> </span>ns<span class="w"> </span>cert-manager
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>kubectl<span class="w"> </span>apply<span class="w"> </span>-f<span class="w"> </span>https://github.com/cert-manager/cert-manager/releases/latest/download/cert-manager.yaml<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>-n<span class="w"> </span>cert-manager
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="c1"># CM_VERSION=v1.12.3 (2023/07)</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># https://github.com/cert-manager/cert-manager/releases/download/${CM_VERSION}/cert-manager.yaml</span>
 </code></pre></div></li>
 </ul>
 <h2 id="issuer-certificates-">issuer-certificates-<a class="headerlink" href="#issuer-certificates-" title="Permanent link">¶</a></h2>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>TEST_DOMAIN=thanos-gateway.poc1109.aws.panlm.xyz
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>cat &lt;&lt;EOF | kubectl apply -f -
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>apiVersion: cert-manager.io/v1
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>kind: Certificate
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a>metadata:
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>  name: ${TEST_DOMAIN}
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a>  namespace: monitoring
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>spec:
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>  secretName: thanos-gateway-tls
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a>  dnsNames:
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a>    - ${TEST_DOMAIN}
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a>  issuerRef:
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a>    name: letsencrypt-prod
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a>    kind: ClusterIssuer
-<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a>EOF
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>TEST_DOMAIN=thanos-gateway.poc1109.aws.panlm.xyz
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>cat &lt;&lt;EOF | kubectl apply -f -
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a>apiVersion: cert-manager.io/v1
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>kind: Certificate
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a>metadata:
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>  name: ${TEST_DOMAIN}
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a>  namespace: monitoring
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a>spec:
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>  secretName: thanos-gateway-tls
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a>  dnsNames:
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a>
+<a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a>    - ${TEST_DOMAIN}
+<a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a>  issuerRef:
+<a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a>    name: letsencrypt-prod
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a>    kind: ClusterIssuer
+<a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a>EOF
 </code></pre></div>
 <h2 id="newest-version-v1123-202404">newest version v1.12.3 (2024/04)<a class="headerlink" href="#newest-version-v1123-202404" title="Permanent link">¶</a></h2>
 <p><a href="https://cert-manager.io/docs/releases/">https://cert-manager.io/docs/releases/</a></p>
@@ -8354,7 +8443,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="January 14, 2026 08:23:58 CST"><span class="timeago" datetime="2026-01-14T08:23:58+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="January 14, 2026 08:23:58 CST">2026-01-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="January 17, 2026 09:59:32 CST"><span class="timeago" datetime="2026-01-17T09:59:32+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="January 17, 2026 09:59:32 CST">2026-01-17</span>
   </span>
 
     

@@ -1552,6 +1552,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#cert-manager-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cert-Manager-
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#nginx-ingress" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -1650,17 +1661,6 @@
     <span class="md-ellipsis">
       
         Nginx Gateway Fabric
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cert-manager" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cert Manager
       
     </span>
   </a>
@@ -8381,6 +8381,17 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#cert-manager-" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Cert-Manager-
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
   <a href="#nginx-ingress" class="md-nav__link">
     <span class="md-ellipsis">
       
@@ -8479,17 +8490,6 @@
     <span class="md-ellipsis">
       
         Nginx Gateway Fabric
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#cert-manager" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Cert Manager
       
     </span>
   </a>
@@ -8652,6 +8652,27 @@
 <a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>kube-system   metrics-server-5cd97b659b-8mjgj   1/1     Running   0          58s   192.168.179.147   ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
 <a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>kube-system   metrics-server-5cd97b659b-fbp77   1/1     Running   0          58s   192.168.153.130   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
 </code></pre></div>
+<h3 id="cert-manager-">Cert-Manager-<a class="headerlink" href="#cert-manager-" title="Permanent link">¶</a></h3>
+<ul>
+<li>原因：api server 需要通讯 webhook 验证证书</li>
+<li>实测：需要手工修改。</li>
+<li>refer: <a href="../cert-manager/" title="cert-manager">cert-manager</a></li>
+</ul>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>kubectl<span class="w"> </span>patch<span class="w"> </span>deployment<span class="w"> </span>cert-manager-webhook<span class="w"> </span>-n<span class="w"> </span>cert-manager<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span>-p<span class="w"> </span><span class="s1">'{"spec":{"template":{"spec":{"hostNetwork":true}}}}'</span>
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>kubectl<span class="w"> </span>patch<span class="w"> </span>deployment<span class="w"> </span>cert-manager-webhook<span class="w"> </span>-n<span class="w"> </span>cert-manager<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">  </span>--type<span class="o">=</span>json<span class="w"> </span>-p<span class="o">=</span><span class="s1">'[</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="s1">    {"op":"replace","path":"/spec/template/spec/containers/0/args/1","value":"--secure-port=10260"},</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="s1">    {"op":"replace","path":"/spec/template/spec/containers/0/ports/0/containerPort","value":10260}</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="s1">  ]'</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="c1"># verify</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>kubectl<span class="w"> </span>get<span class="w"> </span>deployment<span class="w"> </span>cert-manager-webhook<span class="w"> </span>-n<span class="w"> </span>cert-manager<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.spec.template.spec.hostNetwork}'</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span>
+</code></pre></div>
+<ul>
+<li>or refer: <a href="../cert-manager/#install-for-overlay-cni-" title="git/git-mkdocs/EKS/addons/cert-manager">git/git-mkdocs/EKS/addons/cert-manager</a></li>
+</ul>
 <h3 id="nginx-ingress">nginx ingress<a class="headerlink" href="#nginx-ingress" title="Permanent link">¶</a></h3>
 <ul>
 <li>原因：</li>
@@ -8673,10 +8694,10 @@
 <li>原因：DNS 解析是关键服务，hostNetwork 可以提高可靠性，(可选但推荐)</li>
 <li>实测：不使用 hostNetwork 也可以成功解析</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>ubuntu:~$ kubectl get pod -A  -l eks.amazonaws.com/component=coredns -o wide
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>NAMESPACE     NAME                       READY   STATUS    RESTARTS   AGE    IP            NODE                                            NOMINATED NODE   READINESS GATES
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>kube-system   coredns-5449774944-2d4jb   1/1     Running   0          2d4h   172.16.28.5   ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>kube-system   coredns-5449774944-dnskk   1/1     Running   0          2d4h   172.16.28.4   ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ubuntu:~$ kubectl get pod -A  -l eks.amazonaws.com/component=coredns -o wide
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>NAMESPACE     NAME                       READY   STATUS    RESTARTS   AGE    IP            NODE                                            NOMINATED NODE   READINESS GATES
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>kube-system   coredns-5449774944-2d4jb   1/1     Running   0          2d4h   172.16.28.5   ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>kube-system   coredns-5449774944-dnskk   1/1     Running   0          2d4h   172.16.28.4   ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
 </code></pre></div>
 <h3 id="external-dns">External DNS<a class="headerlink" href="#external-dns" title="Permanent link">¶</a></h3>
 <ul>
@@ -8684,9 +8705,9 @@
 <li>实测：不使用 hostNetwork 也可以成功创建 dns 记录</li>
 <li>refer: <a href="../externaldns-for-route53/" title="externaldns-for-route53">externaldns-for-route53</a> </li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ubuntu:~$ kubectl get pod -A  -l "app.kubernetes.io/instance=external-dns,app.kubernetes.io/name=external-dns" -o wide
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>NAMESPACE     NAME                            READY   STATUS    RESTARTS   AGE   IP              NODE                                            NOMINATED NODE   READINESS GATES
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>externaldns   external-dns-596bf4886b-lkg7k   1/1     Running   0          28h   172.16.186.69   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ubuntu:~$ kubectl get pod -A  -l "app.kubernetes.io/instance=external-dns,app.kubernetes.io/name=external-dns" -o wide
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>NAMESPACE     NAME                            READY   STATUS    RESTARTS   AGE   IP              NODE                                            NOMINATED NODE   READINESS GATES
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>externaldns   external-dns-596bf4886b-lkg7k   1/1     Running   0          28h   172.16.186.69   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
 </code></pre></div>
 <h3 id="ebs-csi-driver-node-plugin">EBS CSI Driver Node Plugin<a class="headerlink" href="#ebs-csi-driver-node-plugin" title="Permanent link">¶</a></h3>
 <ul>
@@ -8694,11 +8715,11 @@
 <li>实测：不使用 hostNetwork 也可以使用</li>
 <li>refer: <a href="../ebs-csi/" title="ebs-csi">ebs-csi</a></li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ubuntu:~$ kubectl get pod -n kube-system -l "app.kubernetes.io/name=aws-ebs-csi-driver,app.kubernetes.io/instance=storage-ebs-csi" -o wide
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>NAME                                 READY   STATUS    RESTARTS   AGE   IP              NODE                                            NOMINATED NODE   READINESS GATES
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>ebs-csi-controller-97758bb7c-gnb45   5/5     Running   0          26m   172.16.186.72   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
-<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>ebs-csi-node-255gc                   3/3     Running   0          26m   172.16.28.8     ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
-<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a>ebs-csi-node-t48tp                   3/3     Running   0          26m   172.16.186.71   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ubuntu:~$ kubectl get pod -n kube-system -l "app.kubernetes.io/name=aws-ebs-csi-driver,app.kubernetes.io/instance=storage-ebs-csi" -o wide
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>NAME                                 READY   STATUS    RESTARTS   AGE   IP              NODE                                            NOMINATED NODE   READINESS GATES
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>ebs-csi-controller-97758bb7c-gnb45   5/5     Running   0          26m   172.16.186.72   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>ebs-csi-node-255gc                   3/3     Running   0          26m   172.16.28.8     ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>ebs-csi-node-t48tp                   3/3     Running   0          26m   172.16.186.71   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
 </code></pre></div>
 <h3 id="efs-csi-driver-node-plugin">EFS CSI Driver Node Plugin<a class="headerlink" href="#efs-csi-driver-node-plugin" title="Permanent link">¶</a></h3>
 <ul>
@@ -8706,11 +8727,11 @@
 <li>实测：不使用 hostNetwork 也可以使用，但是 efs csi node pod 自动使用 hostNetwork</li>
 <li>refer: <a href="../efs-csi/" title="efs-csi">efs-csi</a></li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ubuntu:~$ kubectl get pod -n kube-system -l "app.kubernetes.io/name=aws-efs-csi-driver,app.kubernetes.io/instance=storage-efs-csi" -o wide
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>NAME                                  READY   STATUS    RESTARTS   AGE     IP                NODE                                            NOMINATED NODE   READINESS GATES
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>efs-csi-controller-784c568b8b-qgrh2   3/3     Running   0          8m46s   172.16.186.74     ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>efs-csi-node-kq96r                    3/3     Running   0          8m46s   192.168.179.147   ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>efs-csi-node-qfrhk                    3/3     Running   0          8m46s   192.168.153.130   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ubuntu:~$ kubectl get pod -n kube-system -l "app.kubernetes.io/name=aws-efs-csi-driver,app.kubernetes.io/instance=storage-efs-csi" -o wide
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>NAME                                  READY   STATUS    RESTARTS   AGE     IP                NODE                                            NOMINATED NODE   READINESS GATES
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>efs-csi-controller-784c568b8b-qgrh2   3/3     Running   0          8m46s   172.16.186.74     ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>efs-csi-node-kq96r                    3/3     Running   0          8m46s   192.168.179.147   ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>efs-csi-node-qfrhk                    3/3     Running   0          8m46s   192.168.153.130   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
 </code></pre></div>
 <h3 id="nginx-gateway-fabric">Nginx Gateway Fabric<a class="headerlink" href="#nginx-gateway-fabric" title="Permanent link">¶</a></h3>
 <ul>
@@ -8718,19 +8739,13 @@
 <li>实测：不需要 hostNetwork 也可以使用</li>
 <li>refer: <a href="../nginx-gateway-fabric/" title="nginx-gateway-fabric">nginx-gateway-fabric</a></li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ubuntu:~$ kubectl get pod -A  -l app.kubernetes.io/instance=ngf -o wide
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>NAMESPACE       NAME                                        READY   STATUS    RESTARTS   AGE   IP               NODE                                            NOMINATED NODE   READINESS GATES
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>nginx-gateway   ngf-nginx-gateway-fabric-7d5b85c8b4-69bzl   1/1     Running   0          46h   172.16.176.16    ip-192-168-138-158.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>nginx-gateway   ngf-nginx-gateway-fabric-7d5b85c8b4-f6rwv   1/1     Running   0          46h   172.16.144.200   ip-192-168-100-127.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>nginx-gateway   production-gateway-nginx-846766b468-7nnz8   1/1     Running   0          40h   172.16.144.205   ip-192-168-100-127.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
-<a id="__codelineno-11-6" name="__codelineno-11-6" href="#__codelineno-11-6"></a>nginx-gateway   production-gateway-nginx-846766b468-m4xt7   1/1     Running   0          40h   172.16.176.26    ip-192-168-138-158.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>ubuntu:~$ kubectl get pod -A  -l app.kubernetes.io/instance=ngf -o wide
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>NAMESPACE       NAME                                        READY   STATUS    RESTARTS   AGE   IP               NODE                                            NOMINATED NODE   READINESS GATES
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>nginx-gateway   ngf-nginx-gateway-fabric-7d5b85c8b4-69bzl   1/1     Running   0          46h   172.16.176.16    ip-192-168-138-158.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>nginx-gateway   ngf-nginx-gateway-fabric-7d5b85c8b4-f6rwv   1/1     Running   0          46h   172.16.144.200   ip-192-168-100-127.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>nginx-gateway   production-gateway-nginx-846766b468-7nnz8   1/1     Running   0          40h   172.16.144.205   ip-192-168-100-127.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>nginx-gateway   production-gateway-nginx-846766b468-m4xt7   1/1     Running   0          40h   172.16.176.26    ip-192-168-138-158.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
 </code></pre></div>
-<h3 id="cert-manager">Cert Manager<a class="headerlink" href="#cert-manager" title="Permanent link">¶</a></h3>
-<ul>
-<li>原因：</li>
-<li>实测：</li>
-<li>refer: </li>
-</ul>
 
 
 
@@ -8753,7 +8768,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="January 14, 2026 08:23:58 CST"><span class="timeago" datetime="2026-01-14T08:23:58+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="January 14, 2026 08:23:58 CST">2026-01-14</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="January 17, 2026 09:59:32 CST"><span class="timeago" datetime="2026-01-17T09:59:32+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="January 17, 2026 09:59:32 CST">2026-01-17</span>
   </span>
 
     
