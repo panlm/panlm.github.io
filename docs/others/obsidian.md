@@ -1,6 +1,7 @@
 ---
 title: Obsidian Tips
 description: obsidian 使用点滴
+created: 2024-01-01
 last_modified: 2024-01-01
 status: myblog
 tags:
@@ -10,11 +11,14 @@ share_updated: 2025-03-21T11:41:01+08:00
 ---
 
 # Obsidian Tips
+
 文本笔记 第二大脑
 https://obsidian.md/
 
 ## useful plugins
+
 ### Obsidian Attachment Management
+
 https://github.com/trganda/obsidian-attachment-management
 
 推荐配置
@@ -25,6 +29,7 @@ https://github.com/trganda/obsidian-attachment-management
 ![[attachments/obsidian/IMG-obsidian.png|600]]
 
 ### Colorful Note Borders
+
 https://github.com/rusi/obsidian-colorful-note-borders
 增加笔记边框方便区别敏感笔记和其他笔记，当你经常讲笔记 publish 到 github 上时，可以作为自己的提醒
 
@@ -34,6 +39,7 @@ https://github.com/rusi/obsidian-colorful-note-borders
 ![[attachments/obsidian/IMG-obsidian-1.png|600]]
 
 ### File path to URI
+
 https://github.com/MichalBures/obsidian-file-path-to-uri
 
 hold `ctl` click filename, choose `copy`, paste in obsidian
@@ -43,19 +49,31 @@ right click file, then hold `option`, click `copy xxx as Pathname` ([link](https
 直接将文件以链接形式插入 obsidian，直接可以点击后，用第三方打开
 
 ### Tasks Plugin
+
 - https://github.com/obsidian-tasks-group/obsidian-tasks/discussions/442#discussioncomment-4215151
 
 ### Text Format
+
 https://github.com/Benature/obsidian-text-format
 
 快速切换文本格式，尤其是可以切换 `title with space` 到 `title-with-space` (slugify 格式)，方便跨文档引用，以及生成更友好的 github URL
 
 ### Text expander
+
 https://github.com/mrjackphil/obsidian-text-expand
 
 跨文档应用，主要用于：
 - 在单个项目文档中记录 weekly report
 - 在周报文档中通过正则表达式搜索并提取本周更新到当前位置
+
+#### sample
+
+- 列出 blog
+```
+expander
+(["status":"myblog"] OR ["status":"awsblog"])
+- ($frontmatter:last_modified) [$frontmatter:title]($filename) -- $frontmatter:description
+```
 
 ### Highlightr Plugin
 https://github.com/chetachiezikeuzor/Highlightr-Plugin
@@ -118,6 +136,17 @@ https://github.com/tannercollin/sharenote-py
 ## input emoji
 - press Control + Command + SPACE
 
+
+
+## troubleshooting
+
+### 卡在 load cache 起不来
+
+```
+rm -rf ~/Library/Application\ Support/obsidian/IndexedDB
+rm -rf ~/Library/Application\ Support/obsidian/Cache
+rm -rf ~/Library/Application\ Support/obsidian/GPUCache
+```
 
 
 

@@ -6,6 +6,7 @@ last_modified: 2026-01-01
 tags:
   - draft
   - aws/container/eks
+status: myblog
 ---
 
 # rancher
@@ -271,5 +272,9 @@ kubectl delete validatingwebhookconfiguration rancher.cattle.io 2>/dev/null
 kubectl delete mutatingwebhookconfiguration rancher.cattle.io 2>/dev/null
 kubectl -n cattle-system exec deploy/rancher -- reset-password
 ```
+
+
+## refer
+- install guide for overlay (for example alicloud)
 
 

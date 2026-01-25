@@ -6,6 +6,7 @@ last_modified: 2025-12-02
 tags:
   - draft
   - kubernetes/calico
+status: myblog
 ---
 
 # Calico CNI Overlay

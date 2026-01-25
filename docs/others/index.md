@@ -4,18 +4,22 @@ number headings: first-level 2, max 3, 1.1, auto
 ---
 
 # Others
+
 ## 1 network
+
 ```expander
 (path:git/git-mkdocs/others/network file:.md)
 - [$frontmatter:title]($filename): $frontmatter:description
 ```
-- [caddy](network/caddy.md): a fast, multi-platform web server with automatic HTTPS.
+- [跨 VPC 暴露内部服务的 PrivateLink 架构方案](解决 Target Group 中添加内部服务 IP 时遇到 Unsupported IP 的错误): 使用 AWS PrivateLink 实现 DMZ VPC 到内部 VPC 的安全流量转发
+- [openswan-s2svpn-tgw-lab](openswan-s2svpn-tgw): connect to global aws using site-2-site vpn service, for example access global bedrock service
 - [Cross Region Reverse Proxy with NLB and Cloudfront](cross-region-reverse-proxy-with-nlb-cloudfront): 跨区域的 Layer 4 反向代理，并使用 nlb + cloudfront，考察证书使用需求
 - [aws-nfw-network-firewall](aws-nfw-network-firewall): AWS Network Firewall
-- [openswan-s2svpn-tgw-lab](openswan-s2svpn-tgw): connect to global aws using site-2-site vpn service, for example access global bedrock service
+- [caddy](caddy): a fast, multi-platform web server with automatic HTTPS.
 <-->
 
 ## 2 well-architected
+
 ```expander
 (path:git/git-mkdocs/others/well-architected file:.md)
 - [$frontmatter:title]($filename): $frontmatter:description
@@ -30,6 +34,7 @@ number headings: first-level 2, max 3, 1.1, auto
 <-->
 
 ## 3 others
+
 ```expander
 (file:.md path:git/git-mkdocs/others -path:git/git-mkdocs/others/windows -path:git/git-mkdocs/others/network -path:git/git-mkdocs/others/well-architected)
 - [$frontmatter:title]($filename): $frontmatter:description
@@ -56,7 +61,6 @@ and  (!"git/git-mkdocs/others/network")
 and  (!"git/git-mkdocs/others/well-architected") 
 and  (!"git/git-mkdocs/others/windows")
 ```
-
 
 
 
