@@ -6,9 +6,11 @@ last_modified: 2026-01-24
 tags:
   - aws/network/privatelink
 status: myblog
+share_link: https://notes-share.aws.panlm.click/poxhzm60
+share_updated: 2026-01-25T10:34:42+08:00
 ---
 
-# 跨 VPC 暴露内部服务的 PrivateLink 架构方案
+# 解决 Target Group 中添加内部服务 IP 时遇到 Unsupported IP 的错误
 
 ## 背景与挑战
 

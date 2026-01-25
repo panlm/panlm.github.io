@@ -27,7 +27,7 @@ it.files.sort((a, b) => {
   return `- (${date}) [[${file.basename}]] -- ${file.frontmatter?.description}`;
 }).join('\n') %>
 ```
-- (2026-01-24) [[解决 Target Group 中添加内部服务 IP 时遇到 Unsupported IP 的错误]] -- 使用 AWS PrivateLink 实现 DMZ VPC 到内部 VPC 的安全流量转发
+- (2026-01-24) [[others/network/use-vpc-endpoint-service-to-expose-non-rfc1918-cidr-cross-vpc]] -- 使用 AWS PrivateLink 实现 DMZ VPC 到内部 VPC 的安全流量转发
 - (2026-01-01) [[rancher]] -- Rancher 安装部署指南
 - (2025-12-10) [[k8s-gateway-api]] -- K8S Gateway API 配置说明
 - (2025-12-02) [[calico-cni-overlay]] -- Using Calico CNI overlay mode on EKS
