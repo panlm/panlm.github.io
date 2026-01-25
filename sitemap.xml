@@ -1254,11 +1254,11 @@
         <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/others/network/openswan-s2svpn-tgw/"/>
     </url>
     <url>
-        <loc>https://panlm.github.io/others/network/%E8%A7%A3%E5%86%B3%20Target%20Group%20%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%86%85%E9%83%A8%E6%9C%8D%E5%8A%A1%20IP%20%E6%97%B6%E9%81%87%E5%88%B0%20Unsupported%20IP%20%E7%9A%84%E9%94%99%E8%AF%AF/</loc>
+        <loc>https://panlm.github.io/others/network/use-vpc-endpoint-service-to-expose-non-rfc1918-cidr-cross-vpc/</loc>
         <lastmod>2026-01-25</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/others/network/%E8%A7%A3%E5%86%B3%20Target%20Group%20%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%86%85%E9%83%A8%E6%9C%8D%E5%8A%A1%20IP%20%E6%97%B6%E9%81%87%E5%88%B0%20Unsupported%20IP%20%E7%9A%84%E9%94%99%E8%AF%AF/"/>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/others/network/%E8%A7%A3%E5%86%B3%20Target%20Group%20%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%86%85%E9%83%A8%E6%9C%8D%E5%8A%A1%20IP%20%E6%97%B6%E9%81%87%E5%88%B0%20Unsupported%20IP%20%E7%9A%84%E9%94%99%E8%AF%AF/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/others/network/use-vpc-endpoint-service-to-expose-non-rfc1918-cidr-cross-vpc/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/others/network/use-vpc-endpoint-service-to-expose-non-rfc1918-cidr-cross-vpc/"/>
     </url>
     <url>
         <loc>https://panlm.github.io/others/well-architected/WA-%E5%8D%93%E8%B6%8A%E8%BF%90%E8%90%A5-Operational-Excellence-202310-Summary/</loc>
@@ -2611,11 +2611,11 @@
         <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/others/network/openswan-s2svpn-tgw/"/>
     </url>
     <url>
-        <loc>https://panlm.github.io/zh/others/network/%E8%A7%A3%E5%86%B3%20Target%20Group%20%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%86%85%E9%83%A8%E6%9C%8D%E5%8A%A1%20IP%20%E6%97%B6%E9%81%87%E5%88%B0%20Unsupported%20IP%20%E7%9A%84%E9%94%99%E8%AF%AF/</loc>
+        <loc>https://panlm.github.io/zh/others/network/use-vpc-endpoint-service-to-expose-non-rfc1918-cidr-cross-vpc/</loc>
         <lastmod>2026-01-25</lastmod>
         <changefreq>daily</changefreq>
-        <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/others/network/%E8%A7%A3%E5%86%B3%20Target%20Group%20%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%86%85%E9%83%A8%E6%9C%8D%E5%8A%A1%20IP%20%E6%97%B6%E9%81%87%E5%88%B0%20Unsupported%20IP%20%E7%9A%84%E9%94%99%E8%AF%AF/"/>
-        <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/others/network/%E8%A7%A3%E5%86%B3%20Target%20Group%20%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%86%85%E9%83%A8%E6%9C%8D%E5%8A%A1%20IP%20%E6%97%B6%E9%81%87%E5%88%B0%20Unsupported%20IP%20%E7%9A%84%E9%94%99%E8%AF%AF/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/others/network/use-vpc-endpoint-service-to-expose-non-rfc1918-cidr-cross-vpc/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/others/network/use-vpc-endpoint-service-to-expose-non-rfc1918-cidr-cross-vpc/"/>
     </url>
     <url>
         <loc>https://panlm.github.io/zh/others/well-architected/WA-%E5%8D%93%E8%B6%8A%E8%BF%90%E8%90%A5-Operational-Excellence-202310-Summary/</loc>
