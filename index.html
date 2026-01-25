@@ -1508,6 +1508,14 @@
   </span>
   
   
+    
+  
+  
+    <span class="md-status md-status--myblog" title="my blogs">
+    </span>
+  
+
+  
 
       </a>
     </li>
@@ -2151,6 +2159,14 @@
     
   </span>
   
+  
+    
+  
+  
+    <span class="md-status md-status--myblog" title="my blogs">
+    </span>
+  
+
   
 
       </a>
@@ -5600,6 +5616,8 @@
       
         
       
+        
+      
     
     
     
@@ -5750,6 +5768,42 @@
     
   
     openswan-s2svpn-tgw-lab
+  
+
+    
+  </span>
+  
+  
+    
+  
+  
+    <span class="md-status md-status--myblog" title="my blogs">
+    </span>
+  
+
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="others/network/%E8%A7%A3%E5%86%B3%20Target%20Group%20%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%86%85%E9%83%A8%E6%9C%8D%E5%8A%A1%20IP%20%E6%97%B6%E9%81%87%E5%88%B0%20Unsupported%20IP%20%E7%9A%84%E9%94%99%E8%AF%AF/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    跨 VPC 暴露内部服务的 PrivateLink 架构方案
   
 
     
@@ -8198,37 +8252,52 @@
 <li><a href="cloud9/quick-setup-cloud9/" title="Quick Setup Cloud9">Quick Setup Cloud9</a> – 简化创建 Cloud9 脚本，优先选择使用 Terraform 自动初始化；也可以使用脚本从 CloudShell 中完成初始化</li>
 </ul>
 <h2 id="2-highlights">2 highlights<a class="headerlink" href="#2-highlights" title="Permanent link">¶</a></h2>
-<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>(["status":"myblog"] OR ["status":"awsblog"])
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>- ($frontmatter:last_modified) [$frontmatter:title]($filename) -- $frontmatter:description
-</code></pre></div><br>
-- (2025-05-15) <a href="GenAI/build-mcp-server-on-ec2/">MCP Server on EC2</a> – 将 MCP Server 移动到远端，减少本地资源占用<br>
-- (2025-05-01) <a href="EKS/solutions/hybrid-node/use-eks-hybrid-node-to-solve-ipaddr-exhausted/">突破VPC地址限制：EKS混合节点架构实战指南</a> – 一个关于如何使用EKS混合节点功能优雅地解决VPC地址空间不足的真实案例<br>
-- (2025-02-20) <a href="GenAI/deepseek-poc/">deepseek-poc</a> – Deepseek POC<br>
-- (2025-04-16) <a href="GenAI/searxng-mcp-server-for-cline/">Configure SearxNG MCP Server in Cline</a> – 在 Cline 中配置 SearxNG MCP Server 实现搜索功能<br>
-- (2024-01-08) <a href="EKS/solutions/logging/stream-k8s-control-panel-logs-to-s3/">Stream EKS Control Panel Logs to S3</a> – 目前 EKS 控制平面日志只支持发送到 cloudwatch，且在同一个 log group 中有5种类型6种前缀的 log stream 的日志，不利于统一查询。且只有 audit 日志是 json 格式其他均是单行日志，且字段各不相同。本解决方案提供思路统一保存日志供后续分析处理<br>
-- (2024-01-01) <a href="others/obsidian/">Obsidian Tips</a> – obsidian 使用点滴<br>
-- (2024-09-19) <a href="cloud9/vscode/">CodeServer</a> – Using code-server on EC2 instead of Cloud9 due to it has been deprecated<br>
-- (2024-06-28) <a href="data-analytics/enable-quicksight-with-identity-center/">Enable Quicksight with Identity Center</a> – 中国区域启用 Quicksight 并且集成 Microsoft Entra<br>
-- (2025-01-02) <a href="data-analytics/opensearch-migration/">AWS Opensearch / Elasticsearch Migration</a> – 使用 snapshot 迁移 elasticsearch<br>
-- (2024-07-18) <a href="EKS/solutions/logging/grafana-loki/">Using Grafana Loki for Logging</a> – 使用 Loki 收集日志<br>
-- (2024-02-12) <a href="CLI/linux/granted-assume/">assume</a> – assume 工具，可以以另一个账号角色，快速打开 web console，或者执行命令<br>
-- (2024-08-19) <a href="others/network/openswan-s2svpn-tgw/">openswan-s2svpn-tgw-lab</a> – connect to global aws using site-2-site vpn service, for example access global bedrock service<br>
-- (2024-02-04) <a href="others/network/cross-region-reverse-proxy-with-nlb-cloudfront/">Cross Region Reverse Proxy with NLB and Cloudfront</a> – 跨区域的 Layer 4 反向代理，并使用 nlb + cloudfront，考察证书使用需求<br>
-- (2024-07-09) <a href="others/quick-build-brconnector.yaml">Quick Deploy BRConnector using Cloudformation</a> – 使用 Cloudformation 快速部署 BRConnector<br>
-- (2024-08-05) <a href="data-analytics/datahub/">Datahub</a> – 部署 Datahub，从 Redshift 和 Glue job 中获取数据血缘<br>
-- (2023-11-22) <a href="EKS/ecr/mutating-webhook-for-k8s-in-china/">Mutating Webhook for Kubernetes in China</a> – 中国区域 k8s 集群 webhook ，自动修改海外镜像到国内地址<br>
-- (2024-05-11) <a href="EKS/solutions/logging/eks-audit-log-security-lake/">Security Lake Support Collecting Audit Logging from EKS</a> – 使用 Security Lake 收集 EKS Audit 日志<br>
-- (2023-12-31) <a href="EKS/ecr/ecr-scan-on-push-notification-sns/">Enable scan on push in ECR and send notification to SNS</a> – 启用 ECR 的 Scan on push 之后，自动将扫描结果中 CRITICAL 的信息发送到目标 SNS 告警<br>
-- (2024-04-02) <a href="cloud9/quick-setup-cloud9/">Quick Setup Cloud9</a> – 简化创建 Cloud9 脚本，优先选择使用 Terraform 自动初始化；也可以使用脚本从 CloudShell 中完成初始化<br>
-- (2024-03-27) <a href="cloud9/create-standard-vpc-for-lab-in-china-region/">Create Standard VPC for Lab in China Region or Global Region</a> – 创建实验环境所需要的 VPC ，并且支持直接 attach 到 TGW 方便网络访问<br>
-- (2024-04-04) <a href="others/POC-mig-filezilla-to-transfer-family/">Migrating Filezilla to AWS Transfer Family</a> – 迁移 Filezilla 到 Transfer Family<br>
-- (2024-02-11) <a href="cloud9/setup-cloud9-for-eks/">Setup Cloud9 for EKS</a> – 使用脚本完成实验环境初始化<br>
-- (2024-02-25) <a href="EKS/solutions/network/TC-security-group-for-eks-deepdive/">EKS Security Group Deepdive</a> – 深入 EKS 安全组<br>
-- (2024-01-21) <a href="others/global-sso-and-china-aws-accounts/">Using Global SSO to Login China AWS Accounts</a> – 使用 global sso 登录中国区域 aws 账号<br>
-- (2024-02-18) <a href="EKS/solutions/security/TC-eks-irsa-token-deep-dive-lab/">IRSA 中的 Token 剖析</a> – 本文档总结了将 AWS IAM 角色授予 AWS EKS 集群的服务账户的过程<br>
-- (2023-12-31) <a href="EKS/solutions/logging/export-cloudwatch-log-group-to-s3/">Export Cloudwatch Log Group to S3</a> – 导出 cloudwatch 日志到 s3<br>
-&lt;–&gt;<p></p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>(["status":"myblog"] OR ["status":"awsblog"])
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>&lt;%
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>it.files.sort((a, b) =&gt; {
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>  const dateA = new Date(a.frontmatter?.created || 0);
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>  const dateB = new Date(b.frontmatter?.created || 0);
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>  return dateB - dateA;
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>});
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>%&gt;
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a>&lt;%= it.files.map(file =&gt; {
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a>  const date = (file.frontmatter?.created || '').split(' ')[0];
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a>  return `- (${date}) [[${file.basename}]] -- ${file.frontmatter?.description}`;
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>}).join('\n') %&gt;
+</code></pre></div>
+<ul>
+<li>(2026-01-24) <a href="others/network/%E8%A7%A3%E5%86%B3%20Target%20Group%20%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%86%85%E9%83%A8%E6%9C%8D%E5%8A%A1%20IP%20%E6%97%B6%E9%81%87%E5%88%B0%20Unsupported%20IP%20%E7%9A%84%E9%94%99%E8%AF%AF/" title="解决 Target Group 中添加内部服务 IP 时遇到 Unsupported IP 的错误">解决 Target Group 中添加内部服务 IP 时遇到 Unsupported IP 的错误</a> – 使用 AWS PrivateLink 实现 DMZ VPC 到内部 VPC 的安全流量转发</li>
+<li>(2026-01-01) <a href="EKS/addons/rancher/" title="rancher">rancher</a> – Rancher 安装部署指南</li>
+<li>(2025-12-10) <a href="EKS/kubernetes/k8s-gateway-api/" title="k8s-gateway-api">k8s-gateway-api</a> – K8S Gateway API 配置说明</li>
+<li>(2025-12-02) <a href="EKS/addons/calico-cni-overlay/" title="calico-cni-overlay">calico-cni-overlay</a> – Using Calico CNI overlay mode on EKS</li>
+<li>(2025-04-21) <a href="GenAI/build-mcp-server-on-ec2/" title="build-mcp-server-on-ec2">build-mcp-server-on-ec2</a> – 将 MCP Server 移动到远端，减少本地资源占用</li>
+<li>(2025-04-20) <a href="EKS/solutions/hybrid-node/use-eks-hybrid-node-to-solve-ipaddr-exhausted/" title="use-eks-hybrid-node-to-solve-ipaddr-exhausted">use-eks-hybrid-node-to-solve-ipaddr-exhausted</a> – 一个关于如何使用EKS混合节点功能优雅地解决VPC地址空间不足的真实案例</li>
+<li>(2025-04-08) <a href="GenAI/searxng-mcp-server-for-cline/" title="searxng-mcp-server-for-cline">searxng-mcp-server-for-cline</a> – 在 Cline 中配置 SearxNG MCP Server 实现搜索功能</li>
+<li>(2025-02-20) <a href="GenAI/deepseek-poc/" title="deepseek-poc">deepseek-poc</a> – Deepseek POC</li>
+<li>(2024-12-28) <a href="data-analytics/opensearch-migration/" title="opensearch-migration">opensearch-migration</a> – 使用 snapshot 迁移 elasticsearch</li>
+<li>(2024-08-19) <a href="cloud9/vscode/" title="vscode">vscode</a> – Using code-server on EC2 instead of Cloud9 due to it has been deprecated</li>
+<li>(2024-07-31) <a href="data-analytics/datahub/" title="datahub">datahub</a> – 部署 Datahub，从 Redshift 和 Glue job 中获取数据血缘</li>
+<li>(2024-06-09) <a href="others/quick-build-brconnector.yaml" title="quick-build-brconnector">quick-build-brconnector</a> – 使用 Cloudformation 快速部署 BRConnector</li>
+<li>(2024-05-28) <a href="data-analytics/enable-quicksight-with-identity-center/" title="enable-quicksight-with-identity-center">enable-quicksight-with-identity-center</a> – 中国区域启用 Quicksight 并且集成 Microsoft Entra</li>
+<li>(2024-04-26) <a href="EKS/solutions/logging/eks-audit-log-security-lake/" title="eks-audit-log-security-lake">eks-audit-log-security-lake</a> – 使用 Security Lake 收集 EKS Audit 日志</li>
+<li>(2024-01-19) <a href="others/network/openswan-s2svpn-tgw/" title="openswan-s2svpn-tgw">openswan-s2svpn-tgw</a> – connect to global aws using site-2-site vpn service, for example access global bedrock service</li>
+<li>(2023-12-18) <a href="EKS/solutions/logging/grafana-loki/" title="grafana-loki">grafana-loki</a> – 使用 Loki 收集日志</li>
+<li>(2023-12-07) <a href="EKS/ecr/ecr-scan-on-push-notification-sns/" title="ecr-scan-on-push-notification-sns">ecr-scan-on-push-notification-sns</a> – 启用 ECR 的 Scan on push 之后，自动将扫描结果中 CRITICAL 的信息发送到目标 SNS 告警</li>
+<li>(2023-10-09) <a href="others/network/cross-region-reverse-proxy-with-nlb-cloudfront/" title="cross-region-reverse-proxy-with-nlb-cloudfront">cross-region-reverse-proxy-with-nlb-cloudfront</a> – 跨区域的 Layer 4 反向代理，并使用 nlb + cloudfront，考察证书使用需求</li>
+<li>(2023-09-26) <a href="others/global-sso-and-china-aws-accounts/" title="global-sso-and-china-aws-accounts">global-sso-and-china-aws-accounts</a> – 使用 global sso 登录中国区域 aws 账号</li>
+<li>(2023-09-15) <a href="CLI/linux/granted-assume/" title="granted-assume">granted-assume</a> – assume 工具，可以以另一个账号角色，快速打开 web console，或者执行命令</li>
+<li>(2023-08-04) <a href="cloud9/quick-setup-cloud9/" title="quick-setup-cloud9">quick-setup-cloud9</a> – 简化创建 Cloud9 脚本，优先选择使用 Terraform 自动初始化；也可以使用脚本从 CloudShell 中完成初始化</li>
+<li>(2023-03-25) <a href="others/POC-mig-filezilla-to-transfer-family/" title="POC-mig-filezilla-to-transfer-family">POC-mig-filezilla-to-transfer-family</a> – 迁移 Filezilla 到 Transfer Family</li>
+<li>(2022-10-24) <a href="EKS/solutions/security/TC-eks-irsa-token-deep-dive-lab/" title="TC-eks-irsa-token-deep-dive-lab">TC-eks-irsa-token-deep-dive-lab</a> – 本文档总结了将 AWS IAM 角色授予 AWS EKS 集群的服务账户的过程</li>
+<li>(2022-10-02) <a href="EKS/solutions/logging/stream-k8s-control-panel-logs-to-s3/" title="stream-k8s-control-panel-logs-to-s3">stream-k8s-control-panel-logs-to-s3</a> – 目前 EKS 控制平面日志只支持发送到 cloudwatch，且在同一个 log group 中有5种类型6种前缀的 log stream 的日志，不利于统一查询。且只有 audit 日志是 json 格式其他均是单行日志，且字段各不相同。本解决方案提供思路统一保存日志供后续分析处理</li>
+<li>(2022-08-17) <a href="EKS/solutions/logging/export-cloudwatch-log-group-to-s3/" title="export-cloudwatch-log-group-to-s3">export-cloudwatch-log-group-to-s3</a> – 导出 cloudwatch 日志到 s3</li>
+<li>(2022-06-23) <a href="EKS/ecr/mutating-webhook-for-k8s-in-china/" title="mutating-webhook-for-k8s-in-china">mutating-webhook-for-k8s-in-china</a> – 中国区域 k8s 集群 webhook ，自动修改海外镜像到国内地址</li>
+<li>(2022-05-21) <a href="cloud9/setup-cloud9-for-eks/" title="setup-cloud9-for-eks">setup-cloud9-for-eks</a> – 使用脚本完成实验环境初始化</li>
+<li>(2022-05-17) <a href="EKS/solutions/network/TC-security-group-for-eks-deepdive/" title="TC-security-group-for-eks-deepdive">TC-security-group-for-eks-deepdive</a> – 深入 EKS 安全组</li>
+<li>(2022-04-10) <a href="cloud9/create-standard-vpc-for-lab-in-china-region/" title="create-standard-vpc-for-lab-in-china-region">create-standard-vpc-for-lab-in-china-region</a> – 创建实验环境所需要的 VPC ，并且支持直接 attach 到 TGW 方便网络访问</li>
+<li>() <a href="others/obsidian/" title="obsidian">obsidian</a> – obsidian 使用点滴<br>
+&lt;–&gt;</li>
+</ul>
 <h2 id="3-my-aws-blogs">3 my aws blogs<a class="headerlink" href="#3-my-aws-blogs" title="Permanent link">¶</a></h2>
 <ul>
 <li><a href="https://github.com/panlm/blog-private-api-gateway-dataflow">https://github.com/panlm/blog-private-api-gateway-dataflow</a></li>
@@ -8470,9 +8539,9 @@
 
 
 
-<a class="pagetree-navlink " data-page-status="" href="EKS/addons/calico-cni-overlay/">
+<a class="pagetree-navlink  pagetree-pagestatus " data-page-status="myblog" href="EKS/addons/calico-cni-overlay/">
     Calico CNI Overlay
-    
+    <strong title="Status: myblog">myblog</strong>
 </a>
 </li>
             
@@ -8723,9 +8792,9 @@
 
 
 
-<a class="pagetree-navlink " data-page-status="" href="EKS/addons/rancher/">
+<a class="pagetree-navlink  pagetree-pagestatus " data-page-status="myblog" href="EKS/addons/rancher/">
     Rancher
-    
+    <strong title="Status: myblog">myblog</strong>
 </a>
 </li>
     </ul>
@@ -9751,6 +9820,17 @@
 
 <a class="pagetree-navlink  pagetree-pagestatus " data-page-status="myblog" href="others/network/openswan-s2svpn-tgw/">
     openswan-s2svpn-tgw-lab
+    <strong title="Status: myblog">myblog</strong>
+</a>
+</li>
+            
+<li>
+  
+
+
+
+<a class="pagetree-navlink  pagetree-pagestatus " data-page-status="myblog" href="others/network/%E8%A7%A3%E5%86%B3%20Target%20Group%20%E4%B8%AD%E6%B7%BB%E5%8A%A0%E5%86%85%E9%83%A8%E6%9C%8D%E5%8A%A1%20IP%20%E6%97%B6%E9%81%87%E5%88%B0%20Unsupported%20IP%20%E7%9A%84%E9%94%99%E8%AF%AF/">
+    跨 VPC 暴露内部服务的 PrivateLink 架构方案
     <strong title="Status: myblog">myblog</strong>
 </a>
 </li>
