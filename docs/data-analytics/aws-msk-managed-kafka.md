@@ -1,6 +1,6 @@
 ---
 title: aws-msk-managed-kafka
-description: 
+description: aws MSK
 created: 2023-06-01 11:41:18.866
 last_modified: 2023-10-15 11:41:14.323
 tags:
@@ -37,7 +37,7 @@ https://docs.aws.amazon.com/msk/latest/developerguide/bestpractices.html
 
 - 直接使用 MSK Replicator  MSK 复制器
 
-心推荐博客
+推荐博客
 
 | 博客 | 内容简介 | 链接 |
 |-----|---------|------|
