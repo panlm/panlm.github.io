@@ -29,8 +29,8 @@ tags:
 - 其他插件
     - [[../addons/efs-csi|efs-csi-driver]] 
     - cloudwatch-agent / [[../addons/aws-for-fluent-bit|fluentbit]] 
-    - [[k8s-dashboard-on-eks|kubernetes-dashboard]] 
-    - tigera-operator for [[calico]]  
+    - [[../addons/k8s-dashboard-on-eks|kubernetes-dashboard]] 
+    - tigera-operator for [[../addons/calico]]  
     - [[../addons/cni-metrics-helper]] 
     - [[../addons/kube-state-metrics]] 
 
