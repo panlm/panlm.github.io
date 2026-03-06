@@ -30,7 +30,7 @@ tags:
 4. 成本和安全 - 成本控制，高安全性，支持多账号
 
 ## architecture
-![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3.png)
+![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-20260306-1152297.png)
 
 ## walkthrough
 ### eks cluster
@@ -380,13 +380,13 @@ aws glue create-crawler --name ${crawler_name} \
 ```
 
 #### using ui
-![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-1.png)
+![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-20260306-1152417.png)
 
-![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-2.png)
+![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-20260306-1152559.png)
 
-![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-3.png)
+![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-20260306-1152683.png)
 
-![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-4.png)
+![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-20260306-1152897.png)
 
 
 ### databrew
@@ -502,24 +502,24 @@ aws glue start-crawler --name ${crawler_name_2}
 #### using ui
 - import recipe
     - [download](attachments/stream-k8s-control-panel-logs-to-s3/cwl-recipe.json)
-![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-5.png)
+![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-20260306-1152147.png)
 
 - create dataset from s3 or glue catalog
-![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-6.png)
+![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-20260306-1152303.png)
 
 - create project from this dataset and using existed recipe
-![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-7.png)
+![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-20260306-1152411.png)
 
-![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-8.png)
+![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-20260306-1152525.png)
 
 - create job as you need
 
 ### athena
 this table is created by firehose
-![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-9.png)
+![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-20260306-1152651.png)
 
 this table is created by databrew job
-![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-stream-k8s-control-panel-logs-to-s3-10.png)
+![](attachments/stream-k8s-control-panel-logs-to-s3/IMG-20260306-1152776.png)
 
 ## conclusion
 满足客户需求，基于目前s3中保存的原始数据，并且可以进行字段拆分等二次处理，未来可以使用aws databrew进行更复杂的处理

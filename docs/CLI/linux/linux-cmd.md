@@ -342,6 +342,7 @@ aws s3 sync ./work-notes s3://knowledge-base-quick-worknotes-1350/work-notes --d
 bash
 
 export HISTSIZE=0
+
 cd ~/Documents/
 rsync -avr --delete \
     --exclude='**/.venv' \
