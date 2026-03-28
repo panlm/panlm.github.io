@@ -9,6 +9,13 @@ tags:
   - cmd
 ---
 # docker cmd
+
+## alternative on mac
+
+- colima
+    - [DevLake-Local-Setup-with-Colima](../../GenAI/DevLake-Local-Setup-with-Colima.md)
+
+
 ## docker build
 ```
 docker build --tag panlm/ntnx:app2 .

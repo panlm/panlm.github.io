@@ -26,12 +26,12 @@ https://github.com/cameronsjo/spec-compare
 ## BMAD
 
 https://docs.bmad-method.org/tutorials/getting-started/
-
+https://github.com/bmad-code-org/BMAD-METHOD 
 
 ## refer
 
-[Spec-Kit 竞品分析报告](Spec-Kit%20竞品分析报告.md)
-[BMAD Method Repos Analysis](BMAD%20Method%20Repos%20Analysis.md)
+[Spec-Kit-竞品分析报告](Spec-Kit-竞品分析报告.md)
+[BMAD-Method-Repos-Analysis](BMAD-Method-Repos-Analysis.md)
 
 
 
