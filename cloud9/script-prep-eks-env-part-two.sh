@@ -100,6 +100,40 @@ rm /tmp/kubectl-convert /tmp/kubectl-convert.sha256
 # fluxctl version
 # fluxctl identity --k8s-fwd-ns flux
 
+# install nvm and Node.js 22 LTS
+echo "Installing nvm and Node.js 22 LTS..."
+curl -fsSL https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.3/install.sh | bash
+export NVM_DIR="$HOME/.nvm"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"
+nvm install 22
+nvm alias default 22
+nvm use default
+echo "Node.js version: $(node --version)"
+echo "npm version: $(npm --version)"
+
+# install opencode cli
+echo "Installing OpenCode CLI..."
+npm install -g opencode-ai
+echo "OpenCode version: $(opencode --version || echo installed)"
+
+# install claude code cli
+echo "Installing Claude Code CLI..."
+npm install -g @anthropic-ai/claude-code
+echo "Claude Code version: $(claude --version || echo installed)"
+
+# install kiro cli
+echo "Installing Kiro CLI..."
+curl -fsSL https://cli.kiro.dev/install | bash
+export PATH="$HOME/.local/bin:$PATH"
+echo "Kiro CLI version: $(kiro-cli --version || echo installed)"
+
+# install uv and uvx (Python package manager, useful for MCP server tools)
+echo "Installing uv..."
+curl -LsSf https://astral.sh/uv/install.sh | sh
+export PATH="$HOME/.local/bin:$PATH"
+echo "uv version: $(uv --version || echo installed)"
+echo "uvx version: $(uvx --version || echo installed)"
+
 echo "###"
 echo "SCRIPT-PART-TWO-END"
 echo "###"
