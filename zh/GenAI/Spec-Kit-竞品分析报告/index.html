@@ -3,32 +3,33 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="notes from obsidian">
+        <meta name="description" content="分析日期：2026-03-03
+分析对象：GitHub Spec-Kit 及同类竞品项目">
       
       
       
-        <link rel="canonical" href="https://panlm.github.io/zh/GenAI/BMAD%20Method%20Repos%20Analysis/">
+        <link rel="canonical" href="https://panlm.github.io/zh/GenAI/Spec-Kit-%E7%AB%9E%E5%93%81%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/">
       
       
-        <link rel="prev" href="../">
+        <link rel="prev" href="../opencode/">
       
       
-        <link rel="next" href="../build-mcp-server-on-ec2/">
+        <link rel="next" href="../searxng-mcp-server-for-cline/">
       
       
         
-          <link rel="alternate" href="../../../GenAI/BMAD%20Method%20Repos%20Analysis/" hreflang="en">
+          <link rel="alternate" href="../../../GenAI/Spec-Kit-%E7%AB%9E%E5%93%81%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/" hreflang="en">
         
           <link rel="alternate" href="./" hreflang="zh">
         
       
       
       <link rel="icon" href="../../../git-attachment/favicons.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>BMAD Method Repos Analysis - panlm - 中文文档</title>
+        <title>Spec-Kit 竞品分析报告 - panlm - 中文文档</title>
       
     
     
@@ -48,7 +49,7 @@
       
         
         
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,700,700i%7CUbuntu+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Ubuntu";--md-code-font:"Ubuntu Mono"}</style>
       
@@ -107,7 +108,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#bmad-method" class="md-skip">
+        <a href="#spec-driven-development" class="md-skip">
           跳转至
         </a>
       
@@ -143,7 +144,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              BMAD Method Repos Analysis
+              Spec-Kit 竞品分析报告
             
           </span>
         </div>
@@ -158,7 +159,7 @@
     
     <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="light-blue" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden="">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"></path></svg>
       </label>
     
@@ -168,7 +169,7 @@
     
     <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="light-blue" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden="">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"></path></svg>
       </label>
     
@@ -190,7 +191,7 @@
       <ul class="md-select__list">
         
           <li class="md-select__item">
-            <a href="../../../GenAI/BMAD%20Method%20Repos%20Analysis/" hreflang="en" class="md-select__link">
+            <a href="../../../GenAI/Spec-Kit-%E7%AB%9E%E5%93%81%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/" hreflang="en" class="md-select__link">
               English
             </a>
           </li>
@@ -217,7 +218,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="搜索" placeholder="搜索" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
@@ -236,7 +237,7 @@
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             正在初始化搜索引擎
@@ -545,7 +546,7 @@
 </a>
     </div>
   
-  <ul class="md-nav__list" data-md-scrollfix>
+  <ul class="md-nav__list" data-md-scrollfix="">
     
       
       
@@ -643,7 +644,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -865,7 +866,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -927,7 +928,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -993,7 +994,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -1307,7 +1308,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2211,7 +2212,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2267,7 +2268,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2392,7 +2393,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2484,7 +2485,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2602,7 +2603,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2710,7 +2711,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2982,7 +2983,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -3225,7 +3226,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -3411,7 +3412,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -3583,7 +3584,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -3835,7 +3836,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -4013,7 +4014,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -4205,7 +4206,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -4507,7 +4508,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -4701,6 +4702,8 @@
       
         
       
+        
+      
     
     
     
@@ -4715,7 +4718,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked="">
         
           
           <div class="md-nav__link md-nav__container">
@@ -4752,7 +4755,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -4760,37 +4763,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    BMAD Method Repos Analysis
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../BMAD-Method-Repos-Analysis/" class="md-nav__link">
         
   
   
@@ -4806,308 +4782,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="目录">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      目录
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        概述
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#1-bmadcodebmad-method-v5-legacy-v5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        1. bmadcode/BMAD-METHOD-v5 (Legacy v5)
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="1. bmadcode/BMAD-METHOD-v5 (Legacy v5)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        定位
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        核心创新
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        工作流
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        安装方式
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        特色功能
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        适用场景
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-amalikbmad-enhanced" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. amalik/BMAD-Enhanced
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. amalik/BMAD-Enhanced">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        定位
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        核心理念
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#7-agentvortex" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7 个 Agent（Vortex 流）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bmad-core" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        与 BMAD Core 的关系
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        安装方式
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        特色功能
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        适用场景
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-aj-geddesclaude-code-bmad-skills" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. aj-geddes/claude-code-bmad-skills
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. aj-geddes/claude-code-bmad-skills">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        定位
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        核心特点
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        安装方式
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        安装目录
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        适用场景
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        三者对比总结
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        选择建议
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -5164,6 +4838,34 @@
     
   
     Claude Code
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../DevLake-Local-Setup-with-Colima/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DevLake-Local-Setup-with-Colima
   
 
     
@@ -5385,10 +5087,37 @@
                 
   
   
+    
   
   
-    <li class="md-nav__item">
-      <a href="../Spec-Kit%20%E7%AB%9E%E5%93%81%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/" class="md-nav__link">
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Spec-Kit 竞品分析报告
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
         
   
   
@@ -5404,6 +5133,197 @@
   
 
       </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="目录">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      目录
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        执行摘要
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#sdd-martin-fowler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SDD 三级模型（Martin Fowler）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github-spec-kit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitHub Spec-Kit
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        竞品项目
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="竞品项目">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws-kiro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AWS Kiro
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bmad-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BMAD-METHOD
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tessl-framework-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tessl Framework &amp; Registry
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specsmd-fabriqai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        specs.md (fabriqai)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traycer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Traycer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specstory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SpecStory
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        综合对比
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        选型建议
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        关键趋势
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#martin-fowler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        业界批评（Martin Fowler）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_6" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        参考
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -5601,7 +5521,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -6112,7 +6032,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -6350,7 +6270,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -6619,7 +6539,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -6711,7 +6631,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -7403,7 +7323,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -8365,7 +8285,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -8503,7 +8423,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -8621,13 +8541,13 @@
       <span class="md-nav__icon md-icon"></span>
       目录
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
   <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        概述
+        执行摘要
       
     </span>
   </a>
@@ -8635,22 +8555,44 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#1-bmadcodebmad-method-v5-legacy-v5" class="md-nav__link">
+  <a href="#sdd-martin-fowler" class="md-nav__link">
     <span class="md-ellipsis">
       
-        1. bmadcode/BMAD-METHOD-v5 (Legacy v5)
+        SDD 三级模型（Martin Fowler）
       
     </span>
   </a>
   
-    <nav class="md-nav" aria-label="1. bmadcode/BMAD-METHOD-v5 (Legacy v5)">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#github-spec-kit" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        GitHub Spec-Kit
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        定位
+        竞品项目
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="竞品项目">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#aws-kiro" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        AWS Kiro
       
     </span>
   </a>
@@ -8658,247 +8600,114 @@
 </li>
         
           <li class="md-nav__item">
+  <a href="#bmad-method" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        BMAD-METHOD
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tessl-framework-registry" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Tessl Framework &amp; Registry
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specsmd-fabriqai" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        specs.md (fabriqai)
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#traycer" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Traycer
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#specstory" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        SpecStory
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        核心创新
+        综合对比
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        工作流
+        选型建议
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        安装方式
+        关键趋势
       
     </span>
   </a>
   
 </li>
-        
-          <li class="md-nav__item">
+      
+        <li class="md-nav__item">
+  <a href="#martin-fowler" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        业界批评（Martin Fowler）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
   <a href="#_6" class="md-nav__link">
     <span class="md-ellipsis">
       
-        特色功能
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        适用场景
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#2-amalikbmad-enhanced" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        2. amalik/BMAD-Enhanced
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="2. amalik/BMAD-Enhanced">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        定位
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        核心理念
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#7-agentvortex" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        7 个 Agent（Vortex 流）
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bmad-core" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        与 BMAD Core 的关系
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        安装方式
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_11" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        特色功能
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_12" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        适用场景
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#3-aj-geddesclaude-code-bmad-skills" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        3. aj-geddes/claude-code-bmad-skills
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="3. aj-geddes/claude-code-bmad-skills">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#_13" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        定位
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_14" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        核心特点
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_15" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        安装方式
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_16" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        安装目录
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#_17" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        适用场景
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_18" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        三者对比总结
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_19" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        选择建议
+        参考
       
     </span>
   </a>
@@ -8926,14 +8735,14 @@
       
       
       
-        <a href="../../tags/#tag:agile" class="md-tag">agile</a>
+        <a href="../../tags/#tag:sdd" class="md-tag">SDD</a>
       
     
       
       
       
       
-        <a href="../../tags/#tag:ai-agents" class="md-tag">ai-agents</a>
+        <a href="../../tags/#tag:ai-coding" class="md-tag">ai-coding</a>
       
     
       
@@ -8947,21 +8756,42 @@
       
       
       
-        <a href="../../tags/#tag:claude-code" class="md-tag">claude-code</a>
+        <a href="../../tags/#tag:competitive-analysis" class="md-tag">competitive-analysis</a>
       
     
       
       
       
       
-        <a href="../../tags/#tag:methodology" class="md-tag">methodology</a>
+        <a href="../../tags/#tag:kiro" class="md-tag">kiro</a>
       
     
       
       
       
       
-        <a href="../../tags/#tag:product-discovery" class="md-tag">product-discovery</a>
+        <a href="../../tags/#tag:spec-driven-development" class="md-tag">spec-driven-development</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../tags/#tag:spec-kit" class="md-tag">spec-kit</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../tags/#tag:tessl" class="md-tag">tessl</a>
+      
+    
+      
+      
+      
+      
+        <a href="../../tags/#tag:traycer" class="md-tag">traycer</a>
       
     
   </nav>
@@ -8971,269 +8801,171 @@
   
 
 
-<h1 id="bmad-method">BMAD Method 相关仓库分析<a class="headerlink" href="#bmad-method" title="Permanent link">¶</a></h1>
-<h2 id="_1">概述<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p>BMAD (Breakthrough Method of Agile AI-Driven Development) 是一套面向 AI 驱动开发的敏捷方法论框架。以下是三个相关仓库的对比分析。</p>
-<hr>
-<h2 id="1-bmadcodebmad-method-v5-legacy-v5">1. bmadcode/BMAD-METHOD-v5 (Legacy v5)<a class="headerlink" href="#1-bmadcodebmad-method-v5-legacy-v5" title="Permanent link">¶</a></h2>
+<h1 id="spec-driven-development">Spec-Driven Development 工具竞品分析报告<a class="headerlink" href="#spec-driven-development" title="Permanent link">¶</a></h1>
+<blockquote>
+<p>分析日期：2026-03-03<br>
+分析对象：GitHub Spec-Kit 及同类竞品项目</p>
+</blockquote>
+<h2 id="_1">执行摘要<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
+<p>Spec-Driven Development (SDD) 是 2025 下半年至 2026 年初在 AI 辅助编程领域迅速兴起的方法论。核心理念：<strong>在 AI 时代，规范（而非代码）应成为软件开发的首要产物</strong>。</p>
 <ul>
-<li><strong>GitHub</strong>: <a href="https://github.com/bmadcode/BMAD-METHOD-v5">https://github.com/bmadcode/BMAD-METHOD-v5</a></li>
-<li><strong>Stars</strong>: 177 ⭐</li>
-<li><strong>License</strong>: MIT</li>
-<li><strong>依赖</strong>: Node.js v20+</li>
+<li><a href="https://github.com/github/spec-kit">GitHub Spec-Kit</a> 是该领域最受关注的开源项目（73,443 stars）</li>
+<li>本报告对比了 Spec-Kit 及 6 个主要竞品</li>
 </ul>
-<h3 id="_2">定位<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
-<p>原始的 BMAD Method 框架，提供完整的 AI Agent 全栈敏捷团队。</p>
-<h3 id="_3">核心创新<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
-<ol>
-<li><strong>Agentic Planning (智能体规划)</strong>: 专用 Agent（Analyst、PM、Architect）协同用户创建 PRD 和架构文档</li>
-<li><strong>Context-Engineered Development (上下文工程化开发)</strong>: Scrum Master Agent 将计划转化为超详细开发 Story，Dev Agent 直接使用</li>
-</ol>
-<h3 id="_4">工作流<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
+<h2 id="sdd-martin-fowler">SDD 三级模型（Martin Fowler）<a class="headerlink" href="#sdd-martin-fowler" title="Permanent link">¶</a></h2>
 <ul>
-<li><strong>规划阶段 (Web UI)</strong>: 创建 PRD + Architecture 文档</li>
-<li><strong>开发阶段 (IDE)</strong>: SM → Dev → QA 协作，通过 story 文件传递上下文</li>
+<li><strong>Spec-First</strong>（规范优先）：先写规范再开发，任务完成后规范可丢弃</li>
+<li><strong>Spec-Anchored</strong>（规范锚定）：规范在功能生命周期内持续维护</li>
+<li><strong>Spec-as-Source</strong>（规范即源码）：规范是唯一由人类编辑的产物，代码由 AI 生成</li>
 </ul>
-<h3 id="_5">安装方式<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>npx<span class="w"> </span>bmad-method<span class="w"> </span>install
-<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="c1"># 或</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/bmadcode/bmad-method.git
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>npm<span class="w"> </span>run<span class="w"> </span>install:bmad
-</code></pre></div>
-<h3 id="_6">特色功能<a class="headerlink" href="#_6" title="Permanent link">¶</a></h3>
+<h2 id="github-spec-kit">GitHub Spec-Kit<a class="headerlink" href="#github-spec-kit" title="Permanent link">¶</a></h2>
 <ul>
-<li><strong>Expansion Packs</strong>: 可扩展到非技术领域（创意写作、商业策略、健康等）</li>
-<li><strong>Codebase Flattener</strong>: 将项目代码打包成 XML，方便 AI 分析</li>
-<li>支持 Gemini Gem / CustomGPT 等 Web UI 部署</li>
-<li>Discord 社区支持</li>
+<li><a href="https://github.com/github/spec-kit">Spec-Kit</a> has 73,443 stars, Python, MIT license</li>
+<li>工作流：Constitution → Specify → Plan → Tasks → Implement</li>
+<li>支持 20+ 种 AI 编码代理（Copilot, Claude Code, Gemini CLI, Cursor 等）</li>
+<li>优势：GitHub 官方背书、开源可定制、最广泛的 AI 代理兼容性</li>
+<li>不足：文件冗余审查负担重、问题规模适配差、实际为 Spec-first 级别</li>
 </ul>
-<h3 id="_7">适用场景<a class="headerlink" href="#_7" title="Permanent link">¶</a></h3>
+<h2 id="_2">竞品项目<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
+<h3 id="aws-kiro">AWS Kiro<a class="headerlink" href="#aws-kiro" title="Permanent link">¶</a></h3>
 <ul>
-<li>需要完整敏捷流程的中大型项目</li>
-<li>需要多 Agent 协作的团队</li>
-<li>想要在 Web UI (Gemini/GPT) 中使用</li>
+<li><a href="https://kiro.dev">Kiro</a> is 闭源 AI IDE by AWS</li>
+<li>三步工作流：Requirements → Design → Tasks</li>
+<li>最轻量级 SDD 工具，IDE 深度集成</li>
+<li>不足：闭源、AWS 生态绑定、对小问题过重</li>
 </ul>
-<hr>
-<h2 id="2-amalikbmad-enhanced">2. amalik/BMAD-Enhanced<a class="headerlink" href="#2-amalikbmad-enhanced" title="Permanent link">¶</a></h2>
+<h3 id="bmad-method">BMAD-METHOD<a class="headerlink" href="#bmad-method" title="Permanent link">¶</a></h3>
 <ul>
-<li><strong>GitHub</strong>: <a href="https://github.com/amalik/BMAD-Enhanced">https://github.com/amalik/BMAD-Enhanced</a></li>
-<li><strong>Version</strong>: 1.7.1</li>
-<li><strong>License</strong>: MIT</li>
-<li><strong>Agents</strong>: 7 个</li>
-<li><strong>Workflows</strong>: 22 个</li>
+<li><a href="https://github.com/bmad-code-org/BMAD-METHOD">BMAD-METHOD</a> has 38,826 stars</li>
+<li>多代理敏捷框架：Analyst、PM、Architect、Dev、QA 角色分工</li>
+<li>优势：角色分工明确、敏捷融合深、社区活跃</li>
+<li>不足：学习曲线陡、无官方 CLI、单独使用不足</li>
 </ul>
-<h3 id="_8">定位<a class="headerlink" href="#_8" title="Permanent link">¶</a></h3>
-<p>BMAD 的增强版，专注于 <strong>产品发现与验证</strong> 阶段，在写代码之前验证产品想法。</p>
-<h3 id="_9">核心理念<a class="headerlink" href="#_9" title="Permanent link">¶</a></h3>
-<p>“Validate your product ideas before writing a single line of code”（在写一行代码之前验证你的产品想法）</p>
-<h3 id="7-agentvortex">7 个 Agent（Vortex 流）<a class="headerlink" href="#7-agentvortex" title="Permanent link">¶</a></h3>
+<h3 id="tessl-framework-registry">Tessl Framework &amp; Registry<a class="headerlink" href="#tessl-framework-registry" title="Permanent link">¶</a></h3>
+<ul>
+<li><a href="https://tessl.io">Tessl</a> is 商业产品 by Guy Podjarny (Snyk 创始人)</li>
+<li>唯一追求 Spec-as-Source 级别的工具</li>
+<li>Spec Registry 含 10,000+ 预构建库规范，解决 API 幻觉问题</li>
+<li>不足：Beta 阶段、LLM 非确定性挑战、1:1 文件映射限制</li>
+</ul>
+<h3 id="specsmd-fabriqai">specs.md (fabriqai)<a class="headerlink" href="#specsmd-fabriqai" title="Permanent link">¶</a></h3>
+<ul>
+<li><a href="https://github.com/fabriqaai/specsmd">specs.md</a> has 69 stars, TypeScript, MIT</li>
+<li>三种 Flow：Simple（轻量）、FIRE（自适应）、AI-DLC（完整 DDD）</li>
+<li>FIRE 的自适应检查点是唯一解决”问题规模适配”的方案</li>
+<li>不足：极早期、社区很小</li>
+</ul>
+<h3 id="traycer">Traycer<a class="headerlink" href="#traycer" title="Permanent link">¶</a></h3>
+<ul>
+<li><a href="https://traycer.ai">Traycer</a> is 商业 VS Code 扩展，100K+ 用户</li>
+<li>核心哲学：Plan → Execute → Verify（独特的验证环节）</li>
+<li>定位为 AI 代理的规划和验证补充层</li>
+<li>不足：闭源、Credit 消费模式</li>
+</ul>
+<h3 id="specstory">SpecStory<a class="headerlink" href="#specstory" title="Permanent link">¶</a></h3>
+<ul>
+<li><a href="https://github.com/specstoryai/getspecstory">SpecStory</a> has 1,087 stars, Go</li>
+<li>AI 编码会话的捕获、索引和知识管理平台</li>
+<li>本地优先，跨工具统一会话记录</li>
+<li>定位为辅助工具而非核心 SDD 框架</li>
+</ul>
+<h2 id="_3">综合对比<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
 <table>
 <thead>
 <tr>
-<th>Agent</th>
-<th>Stream</th>
-<th>功能</th>
+<th>工具</th>
+<th>类型</th>
+<th>开源</th>
+<th>Stars</th>
+<th>SDD 级别</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td><strong>Emma</strong> 🎯</td>
-<td>Contextualize</td>
-<td>问题定位：Personas、产品愿景、范围</td>
+<td>Spec-Kit</td>
+<td>CLI 工具包</td>
+<td>MIT</td>
+<td>73,443</td>
+<td>Spec-first</td>
 </tr>
 <tr>
-<td><strong>Isla</strong> 🔍</td>
-<td>Empathize</td>
-<td>用户理解：同理心地图、访谈、发现研究</td>
+<td>Kiro</td>
+<td>AI IDE</td>
+<td>闭源</td>
+<td>~3,100</td>
+<td>Spec-first</td>
 </tr>
 <tr>
-<td><strong>Mila</strong> 🔬</td>
-<td>Synthesize</td>
-<td>研究聚合：收敛为清晰的问题定义</td>
+<td>BMAD-METHOD</td>
+<td>方法论框架</td>
+<td>开源</td>
+<td>38,826</td>
+<td>Spec-first</td>
 </tr>
 <tr>
-<td><strong>Liam</strong> 💡</td>
-<td>Hypothesize</td>
-<td>假设生成：将问题转为可测试假设</td>
+<td>Tessl</td>
+<td>商业平台</td>
+<td>Beta</td>
+<td>N/A</td>
+<td>Spec-as-source</td>
 </tr>
 <tr>
-<td><strong>Wade</strong> 🧪</td>
-<td>Externalize</td>
-<td>测试验证：MVP、实验、原型</td>
+<td>specs.md</td>
+<td>CLI 框架</td>
+<td>MIT</td>
+<td>69</td>
+<td>Spec-first~Anchored</td>
 </tr>
 <tr>
-<td><strong>Noah</strong> 📡</td>
-<td>Sensitize</td>
-<td>信号解读：生产环境信号和用户行为分析</td>
+<td>Traycer</td>
+<td>VS Code 扩展</td>
+<td>闭源</td>
+<td>N/A</td>
+<td>Spec-first</td>
 </tr>
 <tr>
-<td><strong>Max</strong> 🧭</td>
-<td>Systematize</td>
-<td>决策制定：Pivot / Patch / Persevere</td>
+<td>SpecStory</td>
+<td>知识管理</td>
+<td>部分开源</td>
+<td>1,087</td>
+<td>N/A</td>
 </tr>
 </tbody>
 </table>
-<h3 id="bmad-core">与 BMAD Core 的关系<a class="headerlink" href="#bmad-core" title="Permanent link">¶</a></h3>
-<p></p><div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>BMAD-Enhanced → 前期验证 ("Should we build this?")
-<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>BMAD Core     → 后期实施 ("Let's build it")
-</code></pre></div><br>
-可独立使用，也可作为 BMAD 的扩展。<p></p>
-<h3 id="_10">安装方式<a class="headerlink" href="#_10" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>npm<span class="w"> </span>install<span class="w"> </span>bmad-enhanced<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>npx<span class="w"> </span>bmad-install-vortex-agents
-</code></pre></div>
-<h3 id="_11">特色功能<a class="headerlink" href="#_11" title="Permanent link">¶</a></h3>
+<h2 id="_4">选型建议<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
 <ul>
-<li>Vortex Compass 智能导航（根据当前学习成果推荐下一步）</li>
-<li>10 个 Handoff Contracts (HC1-HC10) 确保 Agent 间数据传递</li>
-<li>非线性流程，按需跳转</li>
-<li>自动备份和版本更新</li>
+<li><strong>开源 + 可定制</strong> → Spec-Kit</li>
+<li><strong>一体化 IDE</strong> → Kiro</li>
+<li><strong>多代理协作 + 敏捷</strong> → BMAD-METHOD</li>
+<li><strong>前沿探索 + 库规范</strong> → Tessl</li>
+<li><strong>灵活度 + 棕地项目</strong> → specs.md</li>
+<li><strong>验证补充</strong> → Traycer</li>
+<li><strong>AI 会话知识管理</strong> → SpecStory</li>
 </ul>
-<h3 id="_12">适用场景<a class="headerlink" href="#_12" title="Permanent link">¶</a></h3>
-<ul>
-<li>产品发现和验证阶段</li>
-<li>需要验证产品假设再开始开发</li>
-<li>精益创业方法论实践者</li>
-</ul>
-<hr>
-<h2 id="3-aj-geddesclaude-code-bmad-skills">3. aj-geddes/claude-code-bmad-skills<a class="headerlink" href="#3-aj-geddesclaude-code-bmad-skills" title="Permanent link">¶</a></h2>
-<ul>
-<li><strong>GitHub</strong>: <a href="https://github.com/aj-geddes/claude-code-bmad-skills">https://github.com/aj-geddes/claude-code-bmad-skills</a></li>
-<li><strong>License</strong>: MIT</li>
-<li><strong>平台</strong>: Windows / Linux / macOS / WSL</li>
-<li><strong>文档站</strong>: <a href="https://aj-geddes.github.io/claude-code-bmad-skills">https://aj-geddes.github.io/claude-code-bmad-skills</a></li>
-</ul>
-<h3 id="_13">定位<a class="headerlink" href="#_13" title="Permanent link">¶</a></h3>
-<p>将 BMAD Method 原生适配为 <strong>Claude Code 的 Skills/Commands/Hooks</strong>，无外部依赖。</p>
-<h3 id="_14">核心特点<a class="headerlink" href="#_14" title="Permanent link">¶</a></h3>
-<p><strong>Token 优化</strong>:</p>
-<ul>
-<li>Helper Pattern 减少 70-85% Token 使用</li>
-<li>技能文件总计 ~45.9KB (~11,475 tokens)</li>
-<li>每次对话实际使用 ~15-25KB (~3,750-6,250 tokens)</li>
-</ul>
-<p><strong>9 个 Skills</strong>:</p>
+<h2 id="_5">关键趋势<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
 <ol>
-<li>BMad Master（编排器）</li>
-<li>Business Analyst（产品发现）</li>
-<li>Product Manager（需求）</li>
-<li>System Architect（设计）</li>
-<li>Scrum Master（Sprint 规划）</li>
-<li>Developer（实现）</li>
-<li>UX Designer（用户体验）</li>
-<li>Builder（可扩展性）</li>
-<li>Creative Intelligence（头脑风暴/研究）</li>
+<li>SDD 定义仍在演化，术语已”语义扩散”</li>
+<li>从 Spec-first 到 Spec-anchored 是近期竞争焦点</li>
+<li>自适应复杂度是关键差异化（specs.md FIRE flow）</li>
+<li>验证环节被低估（Traycer 的独特价值）</li>
+<li>工具整合加速（BMAD + Spec-Kit 组合已出现）</li>
+<li>Thoughtworks 技术雷达将 SDD 列入”评估”阶段</li>
 </ol>
-<p><strong>15 个 Workflow Commands</strong>:</p>
+<h2 id="martin-fowler">业界批评（Martin Fowler）<a class="headerlink" href="#martin-fowler" title="Permanent link">¶</a></h2>
 <ul>
-<li><code>/workflow-init</code> - 初始化 BMAD</li>
-<li><code>/workflow-status</code> - 检查状态</li>
-<li><code>/product-brief</code> - Phase 1: 产品发现</li>
-<li><code>/prd</code> - Phase 2: 详细需求</li>
-<li><code>/tech-spec</code> - Phase 2: 轻量需求</li>
-<li><code>/architecture</code> - Phase 3: 系统设计</li>
-<li><code>/sprint-planning</code> - Phase 4: 计划 Sprint</li>
-<li><code>/create-story</code> - Phase 4: 创建用户故事</li>
-<li><code>/dev-story</code> - Phase 4: 实现故事</li>
-<li><code>/create-agent</code> - 自定义 Agent</li>
-<li><code>/create-workflow</code> - 自定义工作流</li>
-<li><code>/brainstorm</code> - 结构化头脑风暴</li>
-<li><code>/research</code> - 市场/技术研究</li>
-<li><code>/create-ux-design</code> - UX 设计</li>
+<li>问题规模适配差：对小任务过重、对大任务不够</li>
+<li>审查 Markdown 不如审查代码</li>
+<li>AI 仍不完全遵循指令，存在”虚假控制感”</li>
+<li>Spec-as-source 面临 MDD 历史教训的风险</li>
+<li>“Verschlimmbesserung”：是否在试图改善中让事情更糟？</li>
 </ul>
-<h3 id="_15">安装方式<a class="headerlink" href="#_15" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="nb">cd</span><span class="w"> </span>/tmp
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>git<span class="w"> </span>clone<span class="w"> </span>https://github.com/aj-geddes/claude-code-bmad-skills.git
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="nb">cd</span><span class="w"> </span>claude-code-bmad-skills
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>chmod<span class="w"> </span>+x<span class="w"> </span>install-v6.sh<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>./install-v6.sh<span class="w">  </span><span class="c1"># Linux/macOS</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="c1"># 或 .\install-v6.ps1  # Windows</span>
-</code></pre></div>
-<h3 id="_16">安装目录<a class="headerlink" href="#_16" title="Permanent link">¶</a></h3>
+<h2 id="_6">参考<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
 <ul>
-<li>Skills: <code>~/.claude/skills/bmad/</code></li>
-<li>Config: <code>~/.claude/config/bmad/</code></li>
+<li><a href="../Users/panlm/claw/spec-kit-analysis.md">完整报告</a> — 本地文件</li>
+<li><a href="https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html">Martin Fowler: Understanding SDD</a></li>
+<li><a href="https://www.thoughtworks.com/en-us/radar/techniques/spec-driven-development">Thoughtworks Technology Radar</a></li>
+<li><a href="https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit">GitHub Blog: SDD with AI</a></li>
 </ul>
-<h3 id="_17">适用场景<a class="headerlink" href="#_17" title="Permanent link">¶</a></h3>
-<ul>
-<li>使用 Claude Code 作为主力开发工具</li>
-<li>注重 Token 效率</li>
-<li>不想依赖 Node.js / npm</li>
-<li>需要跨平台支持</li>
-</ul>
-<hr>
-<h2 id="_18">三者对比总结<a class="headerlink" href="#_18" title="Permanent link">¶</a></h2>
-<table>
-<thead>
-<tr>
-<th>维度</th>
-<th>BMAD-METHOD-v5</th>
-<th>BMAD-Enhanced</th>
-<th>claude-code-bmad-skills</th>
-</tr>
-</thead>
-<tbody>
-<tr>
-<td><strong>关注阶段</strong></td>
-<td>全流程（规划+开发）</td>
-<td>前期验证</td>
-<td>全流程（规划+开发）</td>
-</tr>
-<tr>
-<td><strong>Agent 数量</strong></td>
-<td>~6（Analyst/PM/Arch/SM/Dev/QA）</td>
-<td>7（Vortex 流）</td>
-<td>9（含 UX/Builder/Creative）</td>
-</tr>
-<tr>
-<td><strong>目标平台</strong></td>
-<td>Web UI + IDE</td>
-<td>Claude.ai / Claude Code</td>
-<td>Claude Code 原生</td>
-</tr>
-<tr>
-<td><strong>依赖</strong></td>
-<td>Node.js v20+</td>
-<td>Node.js 18+</td>
-<td>无外部依赖</td>
-</tr>
-<tr>
-<td><strong>Token 优化</strong></td>
-<td>无特别优化</td>
-<td>无特别优化</td>
-<td>70-85% 优化</td>
-</tr>
-<tr>
-<td><strong>安装方式</strong></td>
-<td>npx / npm</td>
-<td>npm</td>
-<td>Shell 脚本</td>
-</tr>
-<tr>
-<td><strong>核心差异</strong></td>
-<td>原版框架，社区最大</td>
-<td>产品发现 7 流</td>
-<td>Claude Code 原生集成</td>
-</tr>
-<tr>
-<td><strong>可扩展性</strong></td>
-<td>Expansion Packs</td>
-<td>Agent 自定义</td>
-<td>Builder 模块</td>
-</tr>
-<tr>
-<td><strong>社区活跃度</strong></td>
-<td>177⭐ Discord 社区</td>
-<td>较新项目</td>
-<td>较新项目</td>
-</tr>
-</tbody>
-</table>
-<h2 id="_19">选择建议<a class="headerlink" href="#_19" title="Permanent link">¶</a></h2>
-<ol>
-<li><strong>如果你使用 Claude Code 开发</strong>: 选 <code>claude-code-bmad-skills</code>（原生集成，Token 最优）</li>
-<li><strong>如果需要产品验证再开发</strong>: 选 <code>BMAD-Enhanced</code>（Vortex 7 流验证流程）</li>
-<li><strong>如果需要完整生态和社区</strong>: 选 <code>BMAD-METHOD-v5</code>（最成熟，社区最大）</li>
-<li><strong>组合使用</strong>: <code>BMAD-Enhanced</code>（验证） → <code>BMAD-METHOD-v5</code> 或 <code>claude-code-bmad-skills</code>（实施）</li>
-</ol>
 
 
 
@@ -9279,7 +9011,7 @@
 
 
 
-<script src="https://giscus.app/client.js" data-repo="panlm/panlm.github.io" data-repo-id="R_kgDOItMQOQ" data-category="General" data-category-id="DIC_kwDOItMQOc4CgKfp" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="light" data-lang="en" crossorigin="anonymous" async>
+<script src="https://giscus.app/client.js" data-repo="panlm/panlm.github.io" data-repo-id="R_kgDOItMQOQ" data-category="General" data-category-id="DIC_kwDOItMQOc4CgKfp" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
 </script>
                 
               </article>
@@ -9289,7 +9021,7 @@
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
-          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   回到页面顶部

@@ -3,33 +3,32 @@
       <meta charset="utf-8">
       <meta name="viewport" content="width=device-width,initial-scale=1">
       
-        <meta name="description" content="分析日期：2026-03-03
-分析对象：GitHub Spec-Kit 及同类竞品项目">
+        <meta name="description" content="notes from obsidian">
       
       
       
-        <link rel="canonical" href="https://panlm.github.io/GenAI/Spec-Kit%20%E7%AB%9E%E5%93%81%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/">
+        <link rel="canonical" href="https://panlm.github.io/GenAI/DevLake-Local-Setup-with-Colima/">
       
       
-        <link rel="prev" href="../opencode/">
+        <link rel="prev" href="../claude-code/">
       
       
-        <link rel="next" href="../searxng-mcp-server-for-cline/">
+        <link rel="next" href="../deepseek-poc/">
       
       
         
           <link rel="alternate" href="./" hreflang="en">
         
-          <link rel="alternate" href="../../zh/GenAI/Spec-Kit%20%E7%AB%9E%E5%93%81%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/" hreflang="zh">
+          <link rel="alternate" href="../../zh/GenAI/DevLake-Local-Setup-with-Colima/" hreflang="zh">
         
       
       
       <link rel="icon" href="../../git-attachment/favicons.png">
-      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.4">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.7.6">
     
     
       
-        <title>Spec-Kit 竞品分析报告 - panlm</title>
+        <title>DevLake-Local-Setup-with-Colima - panlm</title>
       
     
     
@@ -49,7 +48,7 @@
       
         
         
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="">
         <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Ubuntu:300,300i,400,400i,700,700i%7CUbuntu+Mono:400,400i,700,700i&amp;display=fallback">
         <style>:root{--md-text-font:"Ubuntu";--md-code-font:"Ubuntu Mono"}</style>
       
@@ -106,7 +105,7 @@
     <div data-md-component="skip">
       
         
-        <a href="#spec-driven-development" class="md-skip">
+        <a href="#devlake-local-setup-with-colima" class="md-skip">
           Skip to content
         </a>
       
@@ -142,7 +141,7 @@
         <div class="md-header__topic" data-md-component="header-topic">
           <span class="md-ellipsis">
             
-              Spec-Kit 竞品分析报告
+              DevLake-Local-Setup-with-Colima
             
           </span>
         </div>
@@ -157,7 +156,7 @@
     
     <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="blue" data-md-color-accent="light-blue" aria-label="Switch to light mode" type="radio" name="__palette" id="__palette_0">
     
-      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden>
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_1" hidden="">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 7H7a5 5 0 0 0-5 5 5 5 0 0 0 5 5h10a5 5 0 0 0 5-5 5 5 0 0 0-5-5m0 8a3 3 0 0 1-3-3 3 3 0 0 1 3-3 3 3 0 0 1 3 3 3 3 0 0 1-3 3"></path></svg>
       </label>
     
@@ -167,7 +166,7 @@
     
     <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="teal" data-md-color-accent="light-blue" aria-label="Switch to dark mode" type="radio" name="__palette" id="__palette_1">
     
-      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden>
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_0" hidden="">
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M17 6H7c-3.31 0-6 2.69-6 6s2.69 6 6 6h10c3.31 0 6-2.69 6-6s-2.69-6-6-6m0 10H7c-2.21 0-4-1.79-4-4s1.79-4 4-4h10c2.21 0 4 1.79 4 4s-1.79 4-4 4M7 9c-1.66 0-3 1.34-3 3s1.34 3 3 3 3-1.34 3-3-1.34-3-3-3"></path></svg>
       </label>
     
@@ -195,7 +194,7 @@
           </li>
         
           <li class="md-select__item">
-            <a href="../../zh/GenAI/Spec-Kit%20%E7%AB%9E%E5%93%81%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/" hreflang="zh" class="md-select__link">
+            <a href="../../zh/GenAI/DevLake-Local-Setup-with-Colima/" hreflang="zh" class="md-select__link">
               中文
             </a>
           </li>
@@ -216,7 +215,7 @@
   <label class="md-search__overlay" for="__search"></label>
   <div class="md-search__inner" role="search">
     <form class="md-search__form" name="search">
-      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required="">
       <label class="md-search__icon md-icon" for="__search">
         
         <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"></path></svg>
@@ -235,7 +234,7 @@
       
     </form>
     <div class="md-search__output">
-      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix="">
         <div class="md-search-result" data-md-component="search-result">
           <div class="md-search-result__meta">
             Initializing search
@@ -544,7 +543,7 @@
 </a>
     </div>
   
-  <ul class="md-nav__list" data-md-scrollfix>
+  <ul class="md-nav__list" data-md-scrollfix="">
     
       
       
@@ -642,7 +641,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -864,7 +863,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -926,7 +925,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -992,7 +991,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -1306,7 +1305,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2210,7 +2209,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2266,7 +2265,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2391,7 +2390,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2483,7 +2482,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2601,7 +2600,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2709,7 +2708,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -2979,7 +2978,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -3187,7 +3186,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -3373,7 +3372,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -3545,7 +3544,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -3797,7 +3796,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -3975,7 +3974,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -4167,7 +4166,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -4469,7 +4468,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -4663,6 +4662,8 @@
       
         
       
+        
+      
     
     
     
@@ -4677,7 +4678,7 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked>
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_6" checked="">
         
           
           <div class="md-nav__link md-nav__container">
@@ -4714,7 +4715,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -4725,7 +4726,7 @@
   
   
     <li class="md-nav__item">
-      <a href="../BMAD%20Method%20Repos%20Analysis/" class="md-nav__link">
+      <a href="../BMAD-Method-Repos-Analysis/" class="md-nav__link">
         
   
   
@@ -4805,6 +4806,325 @@
   
 
       </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DevLake-Local-Setup-with-Colima
+  
+
+    
+  </span>
+  
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    DevLake-Local-Setup-with-Colima
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
+      
+        <li class="md-nav__item">
+  <a href="#overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Overview
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#architecture" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Architecture
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Architecture">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        容器列表
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        访问地址
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker-composeyml-env" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        下载 docker-compose.yml 和 env 文件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#colimamacos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安装 Colima（macOS）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start-stop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Start / Stop
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Start / Stop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_3" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        启动
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_4" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        停止
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_5" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        完全清理（会丢失所有数据）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q_dev-connection-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        q_dev Connection Configuration
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#pipeline" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        触发数据采集 Pipeline
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#mysql" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        MySQL 直连查询
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Tables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-images-scarf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker Images（使用 Scarf 镜像源）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#config-ui-exit-code-137" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Config UI 容器未启动 (Exit Code 137)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#important-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Important Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version History
+      
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
     </li>
   
 
@@ -5018,37 +5338,10 @@
                 
   
   
-    
   
   
-  
-    <li class="md-nav__item md-nav__item--active">
-      
-      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
-      
-      
-        
-      
-      
-        <label class="md-nav__link md-nav__link--active" for="__toc">
-          
-  
-  
-  <span class="md-ellipsis">
-    
-  
-    Spec-Kit 竞品分析报告
-  
-
-    
-  </span>
-  
-  
-
-          <span class="md-nav__icon md-icon"></span>
-        </label>
-      
-      <a href="./" class="md-nav__link md-nav__link--active">
+    <li class="md-nav__item">
+      <a href="../Spec-Kit-%E7%AB%9E%E5%93%81%E5%88%86%E6%9E%90%E6%8A%A5%E5%91%8A/" class="md-nav__link">
         
   
   
@@ -5064,197 +5357,6 @@
   
 
       </a>
-      
-        
-
-<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
-  
-  
-  
-    
-  
-  
-    <label class="md-nav__title" for="__toc">
-      <span class="md-nav__icon md-icon"></span>
-      Table of contents
-    </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
-      
-        <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        执行摘要
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#sdd-martin-fowler" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SDD 三级模型（Martin Fowler）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#github-spec-kit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GitHub Spec-Kit
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        竞品项目
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="竞品项目">
-      <ul class="md-nav__list">
-        
-          <li class="md-nav__item">
-  <a href="#aws-kiro" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        AWS Kiro
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#bmad-method" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        BMAD-METHOD
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tessl-framework-registry" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tessl Framework &amp; Registry
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#specsmd-fabriqai" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        specs.md (fabriqai)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#traycer" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Traycer
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#specstory" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SpecStory
-      
-    </span>
-  </a>
-  
-</li>
-        
-      </ul>
-    </nav>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_3" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        综合对比
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_4" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        选型建议
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_5" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        关键趋势
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#martin-fowler" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        业界批评（Martin Fowler）
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        参考
-      
-    </span>
-  </a>
-  
-</li>
-      
-    </ul>
-  
-</nav>
-      
     </li>
   
 
@@ -5452,7 +5554,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -5963,7 +6065,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -6201,7 +6303,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -6470,7 +6572,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -6562,7 +6664,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -7254,7 +7356,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -8216,7 +8318,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
                 
@@ -8354,7 +8456,7 @@
   
 
           </label>
-          <ul class="md-nav__list" data-md-scrollfix>
+          <ul class="md-nav__list" data-md-scrollfix="">
             
               
             
@@ -8472,13 +8574,13 @@
       <span class="md-nav__icon md-icon"></span>
       Table of contents
     </label>
-    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix="">
       
         <li class="md-nav__item">
-  <a href="#_1" class="md-nav__link">
+  <a href="#overview" class="md-nav__link">
     <span class="md-ellipsis">
       
-        执行摘要
+        Overview
       
     </span>
   </a>
@@ -8486,44 +8588,22 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#sdd-martin-fowler" class="md-nav__link">
+  <a href="#architecture" class="md-nav__link">
     <span class="md-ellipsis">
       
-        SDD 三级模型（Martin Fowler）
+        Architecture
       
     </span>
   </a>
   
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#github-spec-kit" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        GitHub Spec-Kit
-      
-    </span>
-  </a>
-  
-</li>
-      
-        <li class="md-nav__item">
-  <a href="#_2" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        竞品项目
-      
-    </span>
-  </a>
-  
-    <nav class="md-nav" aria-label="竞品项目">
+    <nav class="md-nav" aria-label="Architecture">
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#aws-kiro" class="md-nav__link">
+  <a href="#_1" class="md-nav__link">
     <span class="md-ellipsis">
       
-        AWS Kiro
+        容器列表
       
     </span>
   </a>
@@ -8531,54 +8611,10 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#bmad-method" class="md-nav__link">
+  <a href="#_2" class="md-nav__link">
     <span class="md-ellipsis">
       
-        BMAD-METHOD
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#tessl-framework-registry" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Tessl Framework &amp; Registry
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#specsmd-fabriqai" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        specs.md (fabriqai)
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#traycer" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        Traycer
-      
-    </span>
-  </a>
-  
-</li>
-        
-          <li class="md-nav__item">
-  <a href="#specstory" class="md-nav__link">
-    <span class="md-ellipsis">
-      
-        SpecStory
+        访问地址
       
     </span>
   </a>
@@ -8591,32 +8627,99 @@
 </li>
       
         <li class="md-nav__item">
+  <a href="#installation" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Installation
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Installation">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#docker-composeyml-env" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        下载 docker-compose.yml 和 env 文件
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#colimamacos" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        安装 Colima（macOS）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#quick-start-stop" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Quick Start / Stop
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Quick Start / Stop">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
   <a href="#_3" class="md-nav__link">
     <span class="md-ellipsis">
       
-        综合对比
+        启动
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_4" class="md-nav__link">
     <span class="md-ellipsis">
       
-        选型建议
+        停止
       
     </span>
   </a>
   
 </li>
-      
-        <li class="md-nav__item">
+        
+          <li class="md-nav__item">
   <a href="#_5" class="md-nav__link">
     <span class="md-ellipsis">
       
-        关键趋势
+        完全清理（会丢失所有数据）
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#q_dev-connection-configuration" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        q_dev Connection Configuration
       
     </span>
   </a>
@@ -8624,10 +8727,10 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#martin-fowler" class="md-nav__link">
+  <a href="#pipeline" class="md-nav__link">
     <span class="md-ellipsis">
       
-        业界批评（Martin Fowler）
+        触发数据采集 Pipeline
       
     </span>
   </a>
@@ -8635,10 +8738,82 @@
 </li>
       
         <li class="md-nav__item">
-  <a href="#_6" class="md-nav__link">
+  <a href="#mysql" class="md-nav__link">
     <span class="md-ellipsis">
       
-        参考
+        MySQL 直连查询
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#key-tables" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Key Tables
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#docker-images-scarf" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Docker Images（使用 Scarf 镜像源）
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#troubleshooting" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Troubleshooting
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Troubleshooting">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#config-ui-exit-code-137" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Config UI 容器未启动 (Exit Code 137)
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#important-notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Important Notes
+      
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#version-history" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Version History
       
     </span>
   </a>
@@ -8666,28 +8841,28 @@
       
       
       
-        <a href="../../tags/#tag:sdd" class="md-tag">SDD</a>
+        <a href="../../tags/#tag:colima" class="md-tag">colima</a>
       
     
       
       
       
       
-        <a href="../../tags/#tag:ai-coding" class="md-tag">ai-coding</a>
+        <a href="../../tags/#tag:devlake" class="md-tag">devlake</a>
       
     
       
       
       
       
-        <a href="../../tags/#tag:bmad" class="md-tag">bmad</a>
+        <a href="../../tags/#tag:docker" class="md-tag">docker</a>
       
     
       
       
       
       
-        <a href="../../tags/#tag:competitive-analysis" class="md-tag">competitive-analysis</a>
+        <a href="../../tags/#tag:grafana" class="md-tag">grafana</a>
       
     
       
@@ -8697,34 +8872,6 @@
         <a href="../../tags/#tag:kiro" class="md-tag">kiro</a>
       
     
-      
-      
-      
-      
-        <a href="../../tags/#tag:spec-driven-development" class="md-tag">spec-driven-development</a>
-      
-    
-      
-      
-      
-      
-        <a href="../../tags/#tag:spec-kit" class="md-tag">spec-kit</a>
-      
-    
-      
-      
-      
-      
-        <a href="../../tags/#tag:tessl" class="md-tag">tessl</a>
-      
-    
-      
-      
-      
-      
-        <a href="../../tags/#tag:traycer" class="md-tag">traycer</a>
-      
-    
   </nav>
 
 
@@ -8732,170 +8879,229 @@
   
 
 
-<h1 id="spec-driven-development">Spec-Driven Development 工具竞品分析报告<a class="headerlink" href="#spec-driven-development" title="Permanent link">¶</a></h1>
-<blockquote>
-<p>分析日期：2026-03-03<br>
-分析对象：GitHub Spec-Kit 及同类竞品项目</p>
-</blockquote>
-<h2 id="_1">执行摘要<a class="headerlink" href="#_1" title="Permanent link">¶</a></h2>
-<p>Spec-Driven Development (SDD) 是 2025 下半年至 2026 年初在 AI 辅助编程领域迅速兴起的方法论。核心理念：<strong>在 AI 时代，规范（而非代码）应成为软件开发的首要产物</strong>。</p>
+<h1 id="devlake-local-setup-with-colima">DevLake Local Setup with Colima<a class="headerlink" href="#devlake-local-setup-with-colima" title="Permanent link">¶</a></h1>
+<h2 id="overview">Overview<a class="headerlink" href="#overview" title="Permanent link">¶</a></h2>
+<p>Apache DevLake 本地容器环境，使用 Colima 替代 Docker Desktop，用于展示 Kiro IDE 使用指标数据。</p>
+<h2 id="architecture">Architecture<a class="headerlink" href="#architecture" title="Permanent link">¶</a></h2>
 <ul>
-<li><a href="https://github.com/github/spec-kit">GitHub Spec-Kit</a> 是该领域最受关注的开源项目（73,443 stars）</li>
-<li>本报告对比了 Spec-Kit 及 6 个主要竞品</li>
+<li><strong>Colima</strong> - 轻量级 macOS 容器运行时，替代 Docker Desktop</li>
+<li>虚拟化框架: macOS Virtualization.Framework (vz)</li>
+<li>架构: aarch64 (Apple Silicon)</li>
+<li>挂载类型: virtiofs</li>
+<li>多架构支持: linux/arm64, linux/amd64, linux/386</li>
+<li><strong>DevLake v1.0.3-beta10</strong> - 数据平台（最新版本，2026-03-12 发布）</li>
+<li><strong>MySQL 8</strong> - 数据存储（数据库: lake）</li>
+<li><strong>Grafana</strong> - 仪表板可视化</li>
+<li><strong>q_dev 插件</strong> - 从 S3 采集 Kiro/Q Developer CSV 指标数据</li>
 </ul>
-<h2 id="sdd-martin-fowler">SDD 三级模型（Martin Fowler）<a class="headerlink" href="#sdd-martin-fowler" title="Permanent link">¶</a></h2>
-<ul>
-<li><strong>Spec-First</strong>（规范优先）：先写规范再开发，任务完成后规范可丢弃</li>
-<li><strong>Spec-Anchored</strong>（规范锚定）：规范在功能生命周期内持续维护</li>
-<li><strong>Spec-as-Source</strong>（规范即源码）：规范是唯一由人类编辑的产物，代码由 AI 生成</li>
-</ul>
-<h2 id="github-spec-kit">GitHub Spec-Kit<a class="headerlink" href="#github-spec-kit" title="Permanent link">¶</a></h2>
-<ul>
-<li><a href="https://github.com/github/spec-kit">Spec-Kit</a> has 73,443 stars, Python, MIT license</li>
-<li>工作流：Constitution → Specify → Plan → Tasks → Implement</li>
-<li>支持 20+ 种 AI 编码代理（Copilot, Claude Code, Gemini CLI, Cursor 等）</li>
-<li>优势：GitHub 官方背书、开源可定制、最广泛的 AI 代理兼容性</li>
-<li>不足：文件冗余审查负担重、问题规模适配差、实际为 Spec-first 级别</li>
-</ul>
-<h2 id="_2">竞品项目<a class="headerlink" href="#_2" title="Permanent link">¶</a></h2>
-<h3 id="aws-kiro">AWS Kiro<a class="headerlink" href="#aws-kiro" title="Permanent link">¶</a></h3>
-<ul>
-<li><a href="https://kiro.dev">Kiro</a> is 闭源 AI IDE by AWS</li>
-<li>三步工作流：Requirements → Design → Tasks</li>
-<li>最轻量级 SDD 工具，IDE 深度集成</li>
-<li>不足：闭源、AWS 生态绑定、对小问题过重</li>
-</ul>
-<h3 id="bmad-method">BMAD-METHOD<a class="headerlink" href="#bmad-method" title="Permanent link">¶</a></h3>
-<ul>
-<li><a href="https://github.com/bmad-code-org/BMAD-METHOD">BMAD-METHOD</a> has 38,826 stars</li>
-<li>多代理敏捷框架：Analyst、PM、Architect、Dev、QA 角色分工</li>
-<li>优势：角色分工明确、敏捷融合深、社区活跃</li>
-<li>不足：学习曲线陡、无官方 CLI、单独使用不足</li>
-</ul>
-<h3 id="tessl-framework-registry">Tessl Framework &amp; Registry<a class="headerlink" href="#tessl-framework-registry" title="Permanent link">¶</a></h3>
-<ul>
-<li><a href="https://tessl.io">Tessl</a> is 商业产品 by Guy Podjarny (Snyk 创始人)</li>
-<li>唯一追求 Spec-as-Source 级别的工具</li>
-<li>Spec Registry 含 10,000+ 预构建库规范，解决 API 幻觉问题</li>
-<li>不足：Beta 阶段、LLM 非确定性挑战、1:1 文件映射限制</li>
-</ul>
-<h3 id="specsmd-fabriqai">specs.md (fabriqai)<a class="headerlink" href="#specsmd-fabriqai" title="Permanent link">¶</a></h3>
-<ul>
-<li><a href="https://github.com/fabriqaai/specsmd">specs.md</a> has 69 stars, TypeScript, MIT</li>
-<li>三种 Flow：Simple（轻量）、FIRE（自适应）、AI-DLC（完整 DDD）</li>
-<li>FIRE 的自适应检查点是唯一解决”问题规模适配”的方案</li>
-<li>不足：极早期、社区很小</li>
-</ul>
-<h3 id="traycer">Traycer<a class="headerlink" href="#traycer" title="Permanent link">¶</a></h3>
-<ul>
-<li><a href="https://traycer.ai">Traycer</a> is 商业 VS Code 扩展，100K+ 用户</li>
-<li>核心哲学：Plan → Execute → Verify（独特的验证环节）</li>
-<li>定位为 AI 代理的规划和验证补充层</li>
-<li>不足：闭源、Credit 消费模式</li>
-</ul>
-<h3 id="specstory">SpecStory<a class="headerlink" href="#specstory" title="Permanent link">¶</a></h3>
-<ul>
-<li><a href="https://github.com/specstoryai/getspecstory">SpecStory</a> has 1,087 stars, Go</li>
-<li>AI 编码会话的捕获、索引和知识管理平台</li>
-<li>本地优先，跨工具统一会话记录</li>
-<li>定位为辅助工具而非核心 SDD 框架</li>
-</ul>
-<h2 id="_3">综合对比<a class="headerlink" href="#_3" title="Permanent link">¶</a></h2>
+<h3 id="_1">容器列表<a class="headerlink" href="#_1" title="Permanent link">¶</a></h3>
 <table>
 <thead>
 <tr>
-<th>工具</th>
-<th>类型</th>
-<th>开源</th>
-<th>Stars</th>
-<th>SDD 级别</th>
+<th>容器名</th>
+<th>镜像</th>
+<th>端口映射</th>
+<th>用途</th>
 </tr>
 </thead>
 <tbody>
 <tr>
-<td>Spec-Kit</td>
-<td>CLI 工具包</td>
-<td>MIT</td>
-<td>73,443</td>
-<td>Spec-first</td>
+<td>devlake-devlake-1</td>
+<td>apache/devlake:v1.0.3-beta10</td>
+<td>8080→8080</td>
+<td>API 后端</td>
 </tr>
 <tr>
-<td>Kiro</td>
-<td>AI IDE</td>
-<td>闭源</td>
-<td>~3,100</td>
-<td>Spec-first</td>
+<td>devlake-config-ui-1</td>
+<td>apache/devlake-config-ui:v1.0.3-beta10</td>
+<td>4000→4000</td>
+<td>配置界面</td>
 </tr>
 <tr>
-<td>BMAD-METHOD</td>
-<td>方法论框架</td>
-<td>开源</td>
-<td>38,826</td>
-<td>Spec-first</td>
+<td>devlake-grafana-1</td>
+<td>apache/devlake-dashboard:v1.0.3-beta10</td>
+<td>3002→3000</td>
+<td>Grafana 仪表盘</td>
 </tr>
 <tr>
-<td>Tessl</td>
-<td>商业平台</td>
-<td>Beta</td>
-<td>N/A</td>
-<td>Spec-as-source</td>
-</tr>
-<tr>
-<td>specs.md</td>
-<td>CLI 框架</td>
-<td>MIT</td>
-<td>69</td>
-<td>Spec-first~Anchored</td>
-</tr>
-<tr>
-<td>Traycer</td>
-<td>VS Code 扩展</td>
-<td>闭源</td>
-<td>N/A</td>
-<td>Spec-first</td>
-</tr>
-<tr>
-<td>SpecStory</td>
-<td>知识管理</td>
-<td>部分开源</td>
-<td>1,087</td>
-<td>N/A</td>
+<td>devlake-mysql-1</td>
+<td>mysql:8</td>
+<td>3306→3306</td>
+<td>数据库</td>
 </tr>
 </tbody>
 </table>
-<h2 id="_4">选型建议<a class="headerlink" href="#_4" title="Permanent link">¶</a></h2>
+<h3 id="_2">访问地址<a class="headerlink" href="#_2" title="Permanent link">¶</a></h3>
 <ul>
-<li><strong>开源 + 可定制</strong> → Spec-Kit</li>
-<li><strong>一体化 IDE</strong> → Kiro</li>
-<li><strong>多代理协作 + 敏捷</strong> → BMAD-METHOD</li>
-<li><strong>前沿探索 + 库规范</strong> → Tessl</li>
-<li><strong>灵活度 + 棕地项目</strong> → specs.md</li>
-<li><strong>验证补充</strong> → Traycer</li>
-<li><strong>AI 会话知识管理</strong> → SpecStory</li>
+<li>Config UI: <a href="http://localhost:4000">http://localhost:4000</a></li>
+<li>Grafana: <a href="http://localhost:3002">http://localhost:3002</a> (admin/admin)</li>
+<li>API: <a href="http://localhost:8080">http://localhost:8080</a></li>
+<li>MySQL: localhost:3306 (merico/merico, db: lake)</li>
 </ul>
-<h2 id="_5">关键趋势<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
-<ol>
-<li>SDD 定义仍在演化，术语已”语义扩散”</li>
-<li>从 Spec-first 到 Spec-anchored 是近期竞争焦点</li>
-<li>自适应复杂度是关键差异化（specs.md FIRE flow）</li>
-<li>验证环节被低估（Traycer 的独特价值）</li>
-<li>工具整合加速（BMAD + Spec-Kit 组合已出现）</li>
-<li>Thoughtworks 技术雷达将 SDD 列入”评估”阶段</li>
-</ol>
-<h2 id="martin-fowler">业界批评（Martin Fowler）<a class="headerlink" href="#martin-fowler" title="Permanent link">¶</a></h2>
+<h2 id="installation">Installation<a class="headerlink" href="#installation" title="Permanent link">¶</a></h2>
+<h3 id="docker-composeyml-env">下载 docker-compose.yml 和 env 文件<a class="headerlink" href="#docker-composeyml-env" title="Permanent link">¶</a></h3>
+<p>从 GitHub Release 页面下载对应版本的配置文件：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a>mkdir<span class="w"> </span>-p<span class="w"> </span>/private/tmp/devlake<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">cd</span><span class="w"> </span>/private/tmp/devlake
+<a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="c1"># 下载 docker-compose.yml 和 env.example</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>curl<span class="w"> </span>-sLO<span class="w"> </span>https://github.com/apache/incubator-devlake/releases/download/v1.0.3-beta10/docker-compose.yml
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a>curl<span class="w"> </span>-sLO<span class="w"> </span>https://github.com/apache/incubator-devlake/releases/download/v1.0.3-beta10/env.example
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a>
+<a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a><span class="c1"># 创建 .env 并生成加密密钥</span>
+<a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>cp<span class="w"> </span>env.example<span class="w"> </span>.env
+<a id="__codelineno-0-9" name="__codelineno-0-9" href="#__codelineno-0-9"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">""</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>.env
+<a id="__codelineno-0-10" name="__codelineno-0-10" href="#__codelineno-0-10"></a><span class="nv">ENCRYPTION_KEY</span><span class="o">=</span><span class="k">$(</span>openssl<span class="w"> </span>rand<span class="w"> </span>-base64<span class="w"> </span><span class="m">2000</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>tr<span class="w"> </span>-dc<span class="w"> </span><span class="s1">'A-Z'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>fold<span class="w"> </span>-w<span class="w"> </span><span class="m">128</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>head<span class="w"> </span>-n<span class="w"> </span><span class="m">1</span><span class="k">)</span>
+<a id="__codelineno-0-11" name="__codelineno-0-11" href="#__codelineno-0-11"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"ENCRYPTION_SECRET=\"</span><span class="si">${</span><span class="nv">ENCRYPTION_KEY</span><span class="si">}</span><span class="s2">\""</span><span class="w"> </span>&gt;&gt;<span class="w"> </span>.env
+<a id="__codelineno-0-12" name="__codelineno-0-12" href="#__codelineno-0-12"></a>
+<a id="__codelineno-0-13" name="__codelineno-0-13" href="#__codelineno-0-13"></a><span class="c1"># 设置 FORCE_MIGRATION=true（升级时需要）</span>
+<a id="__codelineno-0-14" name="__codelineno-0-14" href="#__codelineno-0-14"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">''</span><span class="w"> </span><span class="s1">'s/FORCE_MIGRATION=false/FORCE_MIGRATION=true/'</span><span class="w"> </span>.env
+<a id="__codelineno-0-15" name="__codelineno-0-15" href="#__codelineno-0-15"></a>
+<a id="__codelineno-0-16" name="__codelineno-0-16" href="#__codelineno-0-16"></a><span class="c1"># 替换镜像源为 scarf（Docker Hub 不稳定时用 scarf 前缀）</span>
+<a id="__codelineno-0-17" name="__codelineno-0-17" href="#__codelineno-0-17"></a>sed<span class="w"> </span>-i<span class="w"> </span><span class="s1">''</span><span class="w"> </span><span class="s1">'s|apache/devlake|devlake.docker.scarf.sh/apache/devlake|g'</span><span class="w"> </span>docker-compose.yml
+</code></pre></div>
+<p>Release 下载页：<a href="https://github.com/apache/incubator-devlake/releases">https://github.com/apache/incubator-devlake/releases</a></p>
+<h3 id="colimamacos">安装 Colima（macOS）<a class="headerlink" href="#colimamacos" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a>brew<span class="w"> </span>install<span class="w"> </span>colima<span class="w"> </span>docker<span class="w"> </span>docker-compose
+<a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
+<a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a><span class="c1"># 配置 docker-compose 插件路径，在 ~/.docker/config.json 中添加：</span>
+<a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a><span class="c1"># "cliPluginsExtraDirs": ["/opt/homebrew/lib/docker/cli-plugins"]</span>
+<a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a><span class="c1"># 同时移除 "credsStore": "desktop" 和 "currentContext": "desktop-linux"</span>
+</code></pre></div>
 <ul>
-<li>问题规模适配差：对小任务过重、对大任务不够</li>
-<li>审查 Markdown 不如审查代码</li>
-<li>AI 仍不完全遵循指令，存在”虚假控制感”</li>
-<li>Spec-as-source 面临 MDD 历史教训的风险</li>
-<li>“Verschlimmbesserung”：是否在试图改善中让事情更糟？</li>
+<li>Docker Compose: <code>/private/tmp/devlake/docker-compose.yml</code></li>
+<li>Environment: <code>/private/tmp/devlake/.env</code></li>
+<li>Docker Config: <code>~/.docker/config.json</code></li>
 </ul>
-<h2 id="_6">参考<a class="headerlink" href="#_6" title="Permanent link">¶</a></h2>
+<h2 id="quick-start-stop">Quick Start / Stop<a class="headerlink" href="#quick-start-stop" title="Permanent link">¶</a></h2>
+<h3 id="_3">启动<a class="headerlink" href="#_3" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="c1"># 1. 启动 Colima（4GB 内存，2 CPU，20GB 磁盘）</span>
+<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>colima<span class="w"> </span>start<span class="w"> </span>--cpu<span class="w"> </span><span class="m">2</span><span class="w"> </span>--memory<span class="w"> </span><span class="m">4</span><span class="w"> </span>--disk<span class="w"> </span><span class="m">20</span>
+<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>
+<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a><span class="c1"># 2. 启动 DevLake</span>
+<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a><span class="nb">cd</span><span class="w"> </span>/private/tmp/devlake<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span>up<span class="w"> </span>-d
+<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>
+<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a><span class="c1"># 3. 等待约 30 秒，然后访问</span>
+<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a><span class="c1"># Config UI: http://localhost:4000</span>
+<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a><span class="c1"># Grafana:   http://localhost:3002 (admin/admin)</span>
+<a id="__codelineno-2-10" name="__codelineno-2-10" href="#__codelineno-2-10"></a><span class="c1"># API:       http://localhost:8080</span>
+<a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a><span class="c1"># MySQL:     localhost:3306 (merico/merico, db: lake)</span>
+</code></pre></div>
+<h3 id="_4">停止<a class="headerlink" href="#_4" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># 1. 停止 DevLake 容器</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nb">cd</span><span class="w"> </span>/private/tmp/devlake<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span>down
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># 2. 停止 Colima（释放 4GB 内存）</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>colima<span class="w"> </span>stop
+</code></pre></div>
+<h3 id="_5">完全清理（会丢失所有数据）<a class="headerlink" href="#_5" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">cd</span><span class="w"> </span>/private/tmp/devlake<span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span>down<span class="w"> </span>-v
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>colima<span class="w"> </span>stop
+</code></pre></div>
+<h2 id="q_dev-connection-configuration">q_dev Connection Configuration<a class="headerlink" href="#q_dev-connection-configuration" title="Permanent link">¶</a></h2>
+<p>通过 API 创建 S3 连接：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8080/plugins/q_dev/connections<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span>-H<span class="w"> </span><span class="s1">'Content-Type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span>-d<span class="w"> </span><span class="s1">'{</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="s1">    "name": "kiro-metrics-iamuser",</span>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="s1">    "accessKeyId": "&lt;YOUR_ACCESS_KEY&gt;",</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="s1">    "secretAccessKey": "&lt;YOUR_SECRET_KEY&gt;",</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="s1">    "region": "us-east-1",</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="s1">    "bucket": "kiro-prompt-logging-xxxxx",</span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="s1">    "rateLimitPerHour": 10000</span>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="s1">  }'</span>
+</code></pre></div>
+<p>当前连接配置：</p>
 <ul>
-<li><a href="../Users/panlm/claw/spec-kit-analysis.md">完整报告</a> — 本地文件</li>
-<li><a href="https://martinfowler.com/articles/exploring-gen-ai/sdd-3-tools.html">Martin Fowler: Understanding SDD</a></li>
-<li><a href="https://www.thoughtworks.com/en-us/radar/techniques/spec-driven-development">Thoughtworks Technology Radar</a></li>
-<li><a href="https://github.blog/ai-and-ml/generative-ai/spec-driven-development-with-ai-get-started-with-a-new-open-source-toolkit">GitHub Blog: SDD with AI</a></li>
+<li>Connection ID: 1</li>
+<li>Name: kiro-metrics-iamuser<ul>
+<li>S3 Bucket: <code>kiro-prompt-logging-xxxxx</code></li>
+</ul>
+</li>
+<li>S3 Prefix: <code>prefix</code></li>
+<li>Region: us-east-1</li>
+<li>IAM User: <code>kiro-metrics-iamuser</code>（需要 s3:ListBucket + s3:GetObject 权限）</li>
+</ul>
+<h2 id="pipeline">触发数据采集 Pipeline<a class="headerlink" href="#pipeline" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>curl<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:8080/pipelines<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span>-H<span class="w"> </span><span class="s1">'Content-Type: application/json'</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span>-d<span class="w"> </span><span class="s1">'{</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="s1">    "name": "q_dev collect",</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="s1">    "plan": [[{</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="s1">      "plugin": "q_dev",</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="s1">      "options": {</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="s1">        "connectionId": 1,</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="s1">        "prefix": "prefix"</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="s1">      }</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="s1">    }]]</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="s1">  }'</span>
+</code></pre></div>
+<p>查看 pipeline 状态：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>http://localhost:8080/pipelines/&lt;PIPELINE_ID&gt;<span class="w"> </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-m<span class="w"> </span>json.tool
+</code></pre></div>
+<h2 id="mysql">MySQL 直连查询<a class="headerlink" href="#mysql" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="c1"># 通过 docker exec</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>-it<span class="w"> </span>devlake-mysql-1<span class="w"> </span>mysql<span class="w"> </span>-u<span class="w"> </span>merico<span class="w"> </span>-pmerico<span class="w"> </span>lake
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="c1"># 查看 Kiro 指标数据</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a>SELECT<span class="w"> </span>user_id,<span class="w"> </span>date,<span class="w"> </span>chat_ai_code_lines,<span class="w"> </span>chat_messages_sent<span class="w"> </span>FROM<span class="w"> </span>_tool_q_dev_user_data<span class="w"> </span>ORDER<span class="w"> </span>BY<span class="w"> </span>date<span class="p">;</span>
+</code></pre></div>
+<h2 id="key-tables">Key Tables<a class="headerlink" href="#key-tables" title="Permanent link">¶</a></h2>
+<table>
+<thead>
+<tr>
+<th>表名</th>
+<th>用途</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>_tool_q_dev_connections</code></td>
+<td>S3 连接配置</td>
+</tr>
+<tr>
+<td><code>_tool_q_dev_s3_file_meta</code></td>
+<td>已处理的 S3 CSV 文件</td>
+</tr>
+<tr>
+<td><code>_tool_q_dev_user_data</code></td>
+<td>按用户+日期的每日明细（46 字段）</td>
+</tr>
+<tr>
+<td><code>_tool_q_dev_user_report</code></td>
+<td>新格式用户报告（credits/messages）</td>
+</tr>
+</tbody>
+</table>
+<h2 id="docker-images-scarf">Docker Images（使用 Scarf 镜像源）<a class="headerlink" href="#docker-images-scarf" title="Permanent link">¶</a></h2>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>devlake.docker.scarf.sh/apache/devlake:v1.0.3-beta10
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>devlake.docker.scarf.sh/apache/devlake-config-ui:v1.0.3-beta10
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>devlake.docker.scarf.sh/apache/devlake-dashboard:v1.0.3-beta10
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>mysql:8
+</code></pre></div>
+<h2 id="troubleshooting">Troubleshooting<a class="headerlink" href="#troubleshooting" title="Permanent link">¶</a></h2>
+<h3 id="config-ui-exit-code-137">Config UI 容器未启动 (Exit Code 137)<a class="headerlink" href="#config-ui-exit-code-137" title="Permanent link">¶</a></h3>
+<p>Colima 重启后，config-ui 容器可能因之前关机或内存不足而处于 Exited 状态，其他容器会自动恢复但 config-ui 需要手动启动：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># 检查容器状态</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>docker<span class="w"> </span>ps<span class="w"> </span>-a<span class="w"> </span>--filter<span class="w"> </span><span class="s2">"name=config"</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a><span class="c1"># 手动启动</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>docker<span class="w"> </span>start<span class="w"> </span>devlake-config-ui-1
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a><span class="c1"># 验证是否可访问</span>
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>curl<span class="w"> </span>-s<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s2">"%{http_code}"</span><span class="w"> </span>http://localhost:4000
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a><span class="c1"># 应返回 200</span>
+</code></pre></div>
+<h2 id="important-notes">Important Notes<a class="headerlink" href="#important-notes" title="Permanent link">¶</a></h2>
+<ul>
+<li><code>.env</code> 中 <code>FORCE_MIGRATION=true</code> 用于升级时自动迁移数据库 schema</li>
+<li>Docker Hub 镜像拉取不稳定时，使用 <code>devlake.docker.scarf.sh</code> 镜像源</li>
+<li><code>~/.docker/config.json</code> 需要移除 <code>credsStore: desktop</code> 和 <code>currentContext: desktop-linux</code>，改为 Colima 配置</li>
+<li>q_dev 插件重复执行 pipeline 会追加数据（非 upsert），查询时注意去重</li>
+</ul>
+<h2 id="version-history">Version History<a class="headerlink" href="#version-history" title="Permanent link">¶</a></h2>
+<ul>
+<li>v1.0.2-beta9: 缺少 Chat_AICodeLines 等字段</li>
+<li>v1.0.3-beta10: 新增全部 46 个 CSV 字段支持，包括 Chat、CodeFix、Dev、DocGeneration、TestGeneration、Transformation</li>
 </ul>
 
 
@@ -8919,7 +9125,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 6, 2026 11:55:00 CST"><span class="timeago" datetime="2026-03-06T11:55:00+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 6, 2026 11:55:00 CST">2026-03-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 28, 2026 10:19:39 CST"><span class="timeago" datetime="2026-03-28T10:19:39+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 28, 2026 10:19:39 CST">2026-03-28</span>
   </span>
 
     
@@ -8929,7 +9135,7 @@
     <span class="md-icon" title="Created">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M14.47 15.08 11 13V7h1.5v5.25l3.08 1.83c-.41.28-.79.62-1.11 1m-1.39 4.84c-.36.05-.71.08-1.08.08-4.42 0-8-3.58-8-8s3.58-8 8-8 8 3.58 8 8c0 .37-.03.72-.08 1.08.69.1 1.33.32 1.92.64.1-.56.16-1.13.16-1.72 0-5.5-4.5-10-10-10S2 6.5 2 12s4.47 10 10 10c.59 0 1.16-.06 1.72-.16-.32-.59-.54-1.23-.64-1.92M18 15v3h-3v2h3v3h2v-3h3v-2h-3v-3z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 6, 2026 11:55:00 CST"><span class="timeago" datetime="2026-03-06T11:55:00+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 6, 2026 11:55:00 CST">2026-03-06</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="March 28, 2026 10:19:39 CST"><span class="timeago" datetime="2026-03-28T10:19:39+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="March 28, 2026 10:19:39 CST">2026-03-28</span>
   </span>
 
     
@@ -8942,7 +9148,7 @@
 
 
 
-<script src="https://giscus.app/client.js" data-repo="panlm/panlm.github.io" data-repo-id="R_kgDOItMQOQ" data-category="General" data-category-id="DIC_kwDOItMQOc4CgKfp" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="light" data-lang="en" crossorigin="anonymous" async>
+<script src="https://giscus.app/client.js" data-repo="panlm/panlm.github.io" data-repo-id="R_kgDOItMQOQ" data-category="General" data-category-id="DIC_kwDOItMQOc4CgKfp" data-mapping="pathname" data-strict="1" data-reactions-enabled="1" data-emit-metadata="0" data-input-position="bottom" data-theme="light" data-lang="en" crossorigin="anonymous" async="">
 </script>
                 
               </article>
@@ -8952,7 +9158,7 @@
 <script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
         </div>
         
-          <button type="button" class="md-top md-icon" data-md-component="top" hidden>
+          <button type="button" class="md-top md-icon" data-md-component="top" hidden="">
   
   <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M13 20h-2V8l-5.5 5.5-1.42-1.42L12 4.16l7.92 7.92-1.42 1.42L13 8z"></path></svg>
   Back to top
