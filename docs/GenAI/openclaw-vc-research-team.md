@@ -8,136 +8,17 @@ permalink: git-mkdocs/gen-ai/openclaw-vc-research-team
 
 一个完整的多智能体 VC 研究团队场景，适用于 [OpenClaw](https://openclaw.com)。5 个具有不同角色的 AI 智能体通过 Discord 协作，提供全面的创业项目/项目投资研究和决策支持。
 
-## 这是什么？
-
-这是一个即用型**场景**（一套智能体配置），可将 OpenClaw 转变为完整的 VC 研究团队。你在 Discord 中与 Atlas（团队负责人）对话，团队会自动研究、分析和评估你提交的任何创业项目。
-
-## 团队概览
-
-| 智能体 | 角色 | 模型 | 核心能力 |
-|-------|------|-------|----------------|
-| 🏛️ **Atlas** | 投资负责人 | Claude Opus | 任务协调、综合分析、投资决策 |
-| 🔬 **Scout** | 研究分析师 | Gemini 2.5 Pro | 深度研究、竞争对手分析、波特五力分析 |
-| 📐 **Quant** | 财务分析师 | Claude Sonnet | 估值、单位经济学、财务建模 |
-| 📡 **Radar** | 市场情报员 | Claude Sonnet | 新闻监控、社交信号、PESTEL 宏观分析 |
-| 🛡️ **Shield** | 尽职调查/风险官 | Claude Opus | 背景调查、风险评估、弱信号检测 |
-
-## 工作原理
-
-```
-你: "@atlas 评估 ProjectX"
-  │
-  ├→ Atlas 将任务分发给 4 个专业智能体（并行执行）
-  │
-  ├→ Scout: 深度研究报告        → #research-reports
-  ├→ Quant: 财务分析            → #financial-analysis
-  ├→ Radar: 社交热度追踪        → #market-signals
-  ├→ Shield: 尽职调查与风险报告 → #due-diligence
-  │
-  └→ Atlas 收集全部 4 份报告 → 综合分析 → 发布投资备忘录
-     决策: PASS（放弃）/ WATCH（观望）/ INVEST（投资）（5 维度评分，满分 50）
-```
-
-## 仓库结构
-
-```
-├── README.md                  # 本文件
-├── vc-research-team.md        # 完整设计文档（架构、工作流、技能）
-├── atlas/
-│   ├── IDENTITY.md            # Atlas 人设
-│   └── SOUL.md                # Atlas 行为指令
-├── scout/
-│   ├── IDENTITY.md
-│   └── SOUL.md
-├── quant/
-│   ├── IDENTITY.md
-│   └── SOUL.md
-├── radar/
-│   ├── IDENTITY.md
-│   └── SOUL.md
-└── shield/
-    ├── IDENTITY.md
-    └── SOUL.md
-```
-
-## 快速开始
-
-### 前置条件
-
-- 一个 [OpenClaw](https://openclaw.com) 实例（自托管或云端）
-- 一个具有下述频道结构的 Discord 服务器
-- 5 个 Discord 机器人账号（每个智能体一个）
-- 所选 LLM 提供商的 API 访问权限（Anthropic、Google）
-
-### 设置步骤
-
-1. **创建 Discord 服务器** — 设置频道结构（Deal Flow、Market Intelligence、Internal、Archive 分类）
-2. **创建 5 个 Discord 机器人** — 每个智能体一个，邀请它们加入你的服务器
-3. **配置 OpenClaw** — 创建 5 个智能体工作区，将 `IDENTITY.md` 和 `SOUL.md` 文件复制到各工作区
-4. **安装技能** — 参见下方技能注册表获取完整列表和安装命令
-5. **配置频道路由** — Atlas 监控所有频道；其他智能体只监控其指定频道 + #general
-6. **设置响应规则** — `requireMention: false`（在自己的频道自动响应），`allowBots: true`（智能体间通信）
-
-### Discord 频道结构
-
-```
-#general                — 你的主要交互入口
-#announcements          — Atlas 发布决策和周报
-#deal-intake            — 新项目提交入口
-#research-reports       — Scout 的深度研究
-#financial-analysis     — Quant 的财务分析
-#due-diligence          — Shield 的尽职调查报告
-#investment-memos       — Atlas 的最终投资备忘录
-#market-signals         — Radar 的市场信号
-#social-monitor         — 社交媒体亮点
-#news-digest            — 每日新闻摘要
-#agent-logs             — 调试日志
-#config                 — 配置状态
-#completed-deals        — 已归档的评估
-```
-
-## 使用的技能
-
-本场景使用了 OpenClaw 生态系统中的 28+ 个社区技能。主要亮点：
-
-- **波特五力分析** (`phuryn/pm-skills`) — Scout 的行业结构分析
-- **PESTEL 分析** (`deanpeters/Product-Manager-Skills`) — Radar 的宏观环境扫描
-- **PESTLE 分析** (`phuryn/pm-skills`) — Radar 的定量优先级排序补充
-- **学术深度研究** (`kesslerio/academic-deep-research`) — 带 APA 引用的系统性研究
-- **BlackSnow** (`sieershafilone/blacksnow`) — Shield 的弱信号风险检测
-
-## 预估成本
-
-| 项目 | 月度预估 |
-|------|-----------------|
-| Claude Opus (Atlas + Shield) | ~$200-400 |
-| Gemini 2.5 Pro (Scout) | ~$50-100 |
-| Claude Sonnet (Quant + Radar) | ~$100-200 |
-| VPS (1-4 节点) | ~$40-100 |
-| 第三方 API 密钥 | ~$50-200 |
-| **总计** | **~$440-1000** |
-
-## 许可证
-
-MIT
-
----
-
-# VC 研究团队 — OpenClaw 多智能体场景（设计文档）
-
-> 基于 OpenClaw 构建的完整多智能体 VC 研究团队。5 个 AI 智能体通过 Discord 协作，提供全面的投资研究和决策支持。
-
----
-
 ## 目录
 
 1. [团队架构](#团队架构)
-2. [Discord 协作](#discord-协作)
-3. [智能体详细设计](#智能体详细设计)
-4. [技能注册表](#技能注册表)
-5. [共享文件结构](#共享文件结构)
-6. [投资研究工作流](#投资研究工作流)
-7. [部署指南](#部署指南)
+2. [工作原理](#工作原理)
+3. [快速开始](#快速开始)
+4. [Discord 协作](#discord-协作)
+5. [智能体详细设计](#智能体详细设计)
+6. [技能注册表](#技能注册表)
+7. [共享文件结构](#共享文件结构)
+8. [投资研究工作流](#投资研究工作流)
+9. [部署指南](#部署指南)
 
 ---
 
@@ -173,10 +54,77 @@ MIT
                   └─────────────────┘
 ```
 
+| 智能体 | 角色 | 模型 | 核心能力 |
+|-------|------|-------|----------------|
+| 🏛️ **Atlas** | 投资负责人 | Claude Opus | 任务协调、综合分析、投资决策 |
+| 🔬 **Scout** | 研究分析师 | Gemini 2.5 Pro | 深度研究、竞争对手分析、波特五力分析 |
+| 📐 **Quant** | 财务分析师 | Claude Sonnet | 估值、单位经济学、财务建模 |
+| 📡 **Radar** | 市场情报员 | Claude Sonnet | 新闻监控、社交信号、PESTEL 宏观分析 |
+| 🛡️ **Shield** | 尽职调查/风险官 | Claude Opus | 背景调查、风险评估、弱信号检测 |
+
 **模型选择原则**：
 - **Claude Opus** — 需要深度推理和判断的角色（Atlas、Shield）
 - **Gemini** — 需要长上下文和大量网络研究的角色（Scout）
 - **Claude Sonnet** — 需要快速分析和频繁调用的角色（Quant、Radar）
+
+---
+
+## 工作原理
+
+```
+你: "@atlas 评估 ProjectX"
+  │
+  ├→ Atlas 将任务分发给 4 个专业智能体（并行执行）
+  │
+  ├→ Scout: 深度研究报告        → #research-reports
+  ├→ Quant: 财务分析            → #financial-analysis
+  ├→ Radar: 社交热度追踪        → #market-signals
+  ├→ Shield: 尽职调查与风险报告 → #due-diligence
+  │
+  └→ Atlas 收集全部 4 份报告 → 综合分析 → 发布投资备忘录
+     决策: PASS（放弃）/ WATCH（观望）/ INVEST（投资）（5 维度评分，满分 50）
+```
+
+---
+
+## 快速开始
+
+### 前置条件
+
+- 一个 [OpenClaw](https://openclaw.com) 实例（自托管或云端）
+- 一个具有下述频道结构的 Discord 服务器
+- 5 个 Discord 机器人账号（每个智能体一个）
+- 所选 LLM 提供商的 API 访问权限（Anthropic、Google）
+
+### 设置步骤
+
+1. **创建 Discord 服务器** — 设置频道结构（Deal Flow、Market Intelligence、Internal、Archive 分类）
+2. **创建 5 个 Discord 机器人** — 每个智能体一个，邀请它们加入你的服务器
+3. **配置 OpenClaw** — 创建 5 个智能体工作区，将 `IDENTITY.md` 和 `SOUL.md` 文件复制到各工作区
+4. **安装技能** — 参见 [技能注册表](#技能注册表) 获取完整列表
+5. **配置频道路由** — Atlas 监控所有频道；其他智能体只监控其指定频道 + #general
+6. **设置响应规则** — `requireMention: false`（在自己的频道自动响应），`allowBots: true`（智能体间通信）
+
+### 仓库结构
+
+```
+├── README.md                  # 本文件
+├── atlas/
+│   ├── IDENTITY.md            # Atlas 人设
+│   └── SOUL.md                # Atlas 行为指令
+├── scout/
+│   ├── IDENTITY.md
+│   └── SOUL.md
+├── quant/
+│   ├── IDENTITY.md
+│   └── SOUL.md
+├── radar/
+│   ├── IDENTITY.md
+│   └── SOUL.md
+└── shield/
+    ├── IDENTITY.md
+    └── SOUL.md
+```
 
 ---
 
@@ -948,15 +896,19 @@ Shield: model = claude-opus-4      # 审慎判断
 
 ---
 
-## 预估月成本
+## 预估成本
 
-| 项目 | 预估 |
+| 项目 | 月度预估 |
 |------|----------|
-| Claude Opus (Atlas + Shield) | ~$200-400/月 |
-| Gemini 2.5 Pro (Scout) | ~$50-100/月 |
-| Claude Sonnet (Quant + Radar) | ~$100-200/月 |
-| VPS (1-4 节点) | ~$40-100/月 |
-| API 密钥 (Apollo, Pilt 等) | ~$50-200/月 |
-| **总计** | **~$440-1000/月** |
+| Claude Opus (Atlas + Shield) | ~$200-400 |
+| Gemini 2.5 Pro (Scout) | ~$50-100 |
+| Claude Sonnet (Quant + Radar) | ~$100-200 |
+| VPS (1-4 节点) | ~$40-100 |
+| 第三方 API 密钥 (Apollo, Pilt 等) | ~$50-200 |
+| **总计** | **~$440-1000** |
 
 > 大约是一个初级分析师月薪的 1/10，但 24/7 工作。
+
+## 许可证
+
+MIT
