@@ -39,7 +39,8 @@ number headings: first-level 2, max 3, 1.1, auto
 (file:.md path:git/git-mkdocs/others -path:git/git-mkdocs/others/windows -path:git/git-mkdocs/others/network -path:git/git-mkdocs/others/well-architected)
 - [$frontmatter:title]($filename): $frontmatter:description
 ```
-- [s3-vectors](s3-vectors): 
+- [Cloudformation service role for FIS experiment setup guide](cfn-service-role-for-fis-experiment-setup-guide): 使用cloudformation服务角色实现最小化权限
+- [s3-vectors](s3-vectors): S3 Vectors
 - [Obsidian Tips](obsidian): obsidian 使用点滴
 - [Prometheus With Thanos Manually](POC-prometheus-ha-architect-with-thanos-manually): POC-prometheus-with-thanos-manually
 - [github-page-howto](github-page-howto): github-page-howto
