@@ -9,7 +9,7 @@ status: myblog
 
 # FIS 实验环境权限配置指南
 
-> **目的：** 为 EC2 实例配置最小权限，使其能通过 CloudFormation 部署 FIS 实验相关资源（IAM Role、FIS 实验模板、CloudWatch Dashboard），而 EC2 自身无需拥有 IAM/FIS/CloudWatch 写入权限。
+> **目的：** 为 EC2 实例配置最小权限，使其能通过 CloudFormation 部署 FIS 实验相关资源（IAM Role、FIS 实验模板、CloudWatch Dashboard、EKS Addon），而 EC2 自身无需拥有 IAM/FIS/CloudWatch 写入权限。
 >
 > **原理：** 采用 [CloudFormation Service Role](https://docs.aws.amazon.com/prescriptive-guidance/latest/least-privilege-cloudformation/service-roles-for-cloudformation.html) 模式，将资源创建权限委托给 CFN Service Role，EC2 只需 `iam:PassRole` 将该角色传递给 CloudFormation。
 
@@ -19,12 +19,14 @@ status: myblog
 
 ```
 EC2 Instance Profile                    CFN Service Role
-┌─────────────────────┐                ┌──────────────────────────────┐
-│ - cloudformation:*  │  --PassRole--> │ Trust: cloudformation.amazonaws.com │
-│ - iam:PassRole      │                │ - iam:CreateRole/DeleteRole  │
-│ - 只读权限 (已有)    │                │ - fis:Create/DeleteTemplate  │
-│                     │                │ - cloudwatch:Put/Delete      │
-└─────────────────────┘                └──────────────────────────────┘
+┌─────────────────────┐                ┌──────────────────────────────────────────┐
+│ - cloudformation:*  │  --PassRole--> │ Trust: cloudformation.amazonaws.com      │
+│ - iam:PassRole      │                │ - iam:CreateRole/DeleteRole              │
+│ - 只读权限 (已有)    │                │ - iam:AttachRolePolicy/DetachRolePolicy  │
+│                     │                │ - fis:Create/DeleteTemplate              │
+│                     │                │ - eks:CreateAddon/DeleteAddon            │
+│                     │                │ - cloudwatch:Put/Delete                  │
+└─────────────────────┘                └──────────────────────────────────────────┘
 ```
 
 ---
@@ -68,6 +70,9 @@ EC2 Instance Profile                    CFN Service Role
                 "iam:PutRolePolicy",
                 "iam:DeleteRolePolicy",
                 "iam:GetRolePolicy",
+                "iam:AttachRolePolicy",
+                "iam:DetachRolePolicy",
+                "iam:ListAttachedRolePolicies",
                 "iam:TagRole",
                 "iam:UntagRole"
             ],
@@ -95,6 +100,30 @@ EC2 Instance Profile                    CFN Service Role
             "Effect": "Allow",
             "Action": "cloudwatch:*",
             "Resource": "*"
+        },
+        {
+            "Sid": "EKSAddonManagement",
+            "Effect": "Allow",
+            "Action": [
+                "eks:CreateAddon",
+                "eks:UpdateAddon",
+                "eks:DeleteAddon",
+                "eks:DescribeAddon",
+                "eks:DescribeAddonVersions",
+                "eks:DescribeCluster"
+            ],
+            "Resource": "*"
+        },
+        {
+            "Sid": "IAMPassRoleToEKS",
+            "Effect": "Allow",
+            "Action": "iam:PassRole",
+            "Resource": "arn:aws:iam::123456789012:role/*",
+            "Condition": {
+                "StringEquals": {
+                    "iam:PassedToService": "eks.amazonaws.com"
+                }
+            }
         }
     ]
 }
@@ -239,6 +268,8 @@ aws cloudformation deploy \
 | CFN Service Role 只能创建 FIS 相关角色 | IAM 资源 ARN 限定 `*` |
 | CFN Service Role 只能被 CloudFormation 使用 | 信任策略仅允许 `cloudformation.amazonaws.com` |
 | CloudWatch 完全访问 | CFN Service Role 附加 `cloudwatch:*` |
+| EKS Addon 管理 | CFN Service Role 附加 `eks:CreateAddon`/`UpdateAddon`/`DeleteAddon` 等 |
+| IAM PassRole 到 EKS | 允许将 IRSA Role 传递给 EKS 服务 |
 
 ---
 
