@@ -1,7 +1,7 @@
 ---
-title: openclaw-vc-research-team
-type: note
-permalink: git-mkdocs/gen-ai/openclaw-vc-research-team
+title: OpenClaw 场景：VC 研究团队
+description: OpenClaw 场景：VC 研究团队
+status: myblog
 ---
 
 # OpenClaw 场景：VC 研究团队
