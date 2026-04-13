@@ -18,15 +18,22 @@ status: myblog
 ## 架构说明
 
 ```
-EC2 Instance Profile                    CFN Service Role
-┌─────────────────────┐                ┌──────────────────────────────────────────┐
-│ - cloudformation:*  │  --PassRole--> │ Trust: cloudformation.amazonaws.com      │
-│ - iam:PassRole      │                │ - iam:CreateRole/DeleteRole              │
-│ - 只读权限 (已有)    │                │ - iam:AttachRolePolicy/DetachRolePolicy  │
-│                     │                │ - fis:Create/DeleteTemplate              │
-│                     │                │ - eks:CreateAddon/DeleteAddon            │
-│                     │                │ - cloudwatch:Put/Delete                  │
-└─────────────────────┘                └──────────────────────────────────────────┘
+EC2 Instance Profile                         CFN Service Role
+┌──────────────────────────────────┐         ┌──────────────────────────────────────────┐
+│ 托管策略：                        │         │ Trust: cloudformation.amazonaws.com      │
+│ - ReadOnlyAccess                 │         │                                          │
+│ - AmazonSSMManagedInstanceCore   │         │ 托管策略：                               │
+│                                  │         │ - PowerUserAccess                        │
+│ 内联策略 FIS-CloudFormation-Access│         │                                          │
+│ - cloudformation:*              │PassRole │ 内联策略 FISDeploymentPolicy:            │
+│   (条件: RoleArn=右侧Role)       │────────>│ - iam:CreateRole/DeleteRole              │
+│ - iam:PassRole (to CFN)          │         │ - iam:AttachRolePolicy/DetachRolePolicy  │
+│ - fis:StartExperiment 等         │         │ - iam:PassRole (to FIS/EKS/Lambda)       │
+│                                  │         │ - fis:*                                  │
+│                                  │         │ - eks:CreateAddon/DeleteAddon 等         │
+│                                  │         │ - lambda:Create/Delete/Update 等         │
+│                                  │         │ - cloudwatch:*                           │
+└──────────────────────────────────┘         └──────────────────────────────────────────┘
 ```
 
 ---
@@ -124,6 +131,36 @@ EC2 Instance Profile                    CFN Service Role
                     "iam:PassedToService": "eks.amazonaws.com"
                 }
             }
+        },
+        {
+            "Sid": "IAMPassRoleToLambda",
+            "Effect": "Allow",
+            "Action": "iam:PassRole",
+            "Resource": "arn:aws:iam::123456789012:role/*",
+            "Condition": {
+                "StringEquals": {
+                    "iam:PassedToService": "lambda.amazonaws.com"
+                }
+            }
+        },
+        {
+            "Sid": "LambdaManagement",
+            "Effect": "Allow",
+            "Action": [
+                "lambda:CreateFunction",
+                "lambda:DeleteFunction",
+                "lambda:UpdateFunctionCode",
+                "lambda:UpdateFunctionConfiguration",
+                "lambda:GetFunction",
+                "lambda:GetFunctionConfiguration",
+                "lambda:ListFunctions",
+                "lambda:AddPermission",
+                "lambda:RemovePermission",
+                "lambda:InvokeFunction",
+                "lambda:TagResource",
+                "lambda:UntagResource"
+            ],
+            "Resource": "*"
         }
     ]
 }
@@ -150,6 +187,11 @@ aws iam put-role-policy \
     --role-name CFN-ServiceRole-FIS \
     --policy-name FISDeploymentPolicy \
     --policy-document file://cfn-service-role-policy.json
+
+# 3. 附加 PowerUserAccess 托管策略
+aws iam attach-role-policy \
+    --role-name CFN-ServiceRole-FIS \
+    --policy-arn arn:aws:iam::aws:policy/PowerUserAccess
 ```
 
 ---
@@ -162,6 +204,8 @@ aws iam put-role-policy \
 > `CreateChangeSet`/`ExecuteChangeSet` 等操作不支持此条件键，因此需要拆分为两个 Statement。
 > `CreateStack`/`UpdateStack`/`DeleteStack` 通过条件键强制必须使用指定的 Service Role，
 > 而 ChangeSet 操作本身不会直接创建资源（资源创建由关联的 Stack 操作完成，受条件键约束）。
+
+### 2.1 内联策略 FIS-CloudFormation-Access
 
 ```json
 {
@@ -241,6 +285,16 @@ aws iam put-role-policy \
     --policy-document file://ec2-fis-cfn-policy.json
 ```
 
+### 2.2 附加 ReadOnlyAccess
+
+为 EC2 角色附加 AWS 托管的 `ReadOnlyAccess` 策略，确保实验过程中可读取所有资源状态：
+
+```bash
+aws iam attach-role-policy \
+    --role-name <EC2_ROLE_NAME> \
+    --policy-arn arn:aws:iam::aws:policy/ReadOnlyAccess
+```
+
 ---
 
 ## 三、使用方式
@@ -270,6 +324,8 @@ aws cloudformation deploy \
 | CloudWatch 完全访问 | CFN Service Role 附加 `cloudwatch:*` |
 | EKS Addon 管理 | CFN Service Role 附加 `eks:CreateAddon`/`UpdateAddon`/`DeleteAddon` 等 |
 | IAM PassRole 到 EKS | 允许将 IRSA Role 传递给 EKS 服务 |
+| IAM PassRole 到 Lambda | 允许将执行角色传递给 Lambda 服务 |
+| Lambda 函数管理 | CFN Service Role 附加 `lambda:CreateFunction`/`DeleteFunction` 等 |
 
 ---
 
@@ -280,8 +336,10 @@ aws cloudformation deploy \
 ```bash
 # 1. 删除 EC2 上的附加策略
 aws iam delete-role-policy --role-name <EC2_ROLE_NAME> --policy-name FIS-CloudFormation-Access
+aws iam detach-role-policy --role-name <EC2_ROLE_NAME> --policy-arn arn:aws:iam::aws:policy/ReadOnlyAccess
 
 # 2. 删除 CFN Service Role
 aws iam delete-role-policy --role-name CFN-ServiceRole-FIS --policy-name FISDeploymentPolicy
+aws iam detach-role-policy --role-name CFN-ServiceRole-FIS --policy-arn arn:aws:iam::aws:policy/PowerUserAccess
 aws iam delete-role --role-name CFN-ServiceRole-FIS
 ```

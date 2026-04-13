@@ -9,8 +9,6 @@ status: myblog
 
 # AIClient-2-API 部署指南（Kiro OAuth）
 
-- https://github.com/justlovemaki/AIClient-2-API
-
 ## 前置条件
 
 - Ubuntu Linux（已在 22.04 上测试）
@@ -92,7 +90,7 @@ cp /home/ubuntu/kiro_credentials.json configs/kiro-auth-token.json
 
 ```json
 {
-    "REQUIRED_API_KEY": "123456",
+    "REQUIRED_API_KEY": "<your-api-key>",
     "SERVER_PORT": 3000,
     "HOST": "0.0.0.0",
     "MODEL_PROVIDER": "claude-kiro-oauth",
@@ -148,7 +146,7 @@ sudo docker compose up -d
 ```bash
 curl -s http://localhost:3000/v1/chat/completions \
   -H "Content-Type: application/json" \
-  -H "Authorization: Bearer 123456" \
+  -H "Authorization: Bearer <your-api-key>" \
   -d '{
     "model": "claude-sonnet-4-6",
     "messages": [{"role": "user", "content": "你好"}],
@@ -159,11 +157,11 @@ curl -s http://localhost:3000/v1/chat/completions \
 
 ## API 端点
 
-| 协议 | 地址 |
-|------|------|
-| OpenAI 兼容 | `http://localhost:3000/v1/chat/completions` |
-| Claude 兼容 | `http://localhost:3000/v1/messages` |
-| Web 管理界面 | `http://localhost:3000/`（密码：`admin123`） |
+| 协议        | 地址                                             |
+| --------- | ---------------------------------------------- |
+| OpenAI 兼容 | `http://localhost:3000/v1/chat/completions`    |
+| Claude 兼容 | `http://localhost:3000/v1/messages`            |
+| Web 管理界面  | `http://localhost:3000/`（密码：`<your-password>`） |
 
 ## 可用模型
 
@@ -193,4 +191,82 @@ cp /home/ubuntu/kiro_credentials.json /home/ubuntu/AIClient-2-API/docker/configs
 sudo docker compose restart
 ```
 
+## 添加更多 Kiro OAuth 账号
 
+如果需要添加额外的 Kiro 账号（多账号负载均衡），可以通过 API 导入。
+
+### 1. 提取新账号凭据
+
+在已登录新 Kiro 账号的机器上执行：
+
+```bash
+python3 /home/ubuntu/kiro-oauth-get-cred.py
+```
+
+### 2. 通过 API 导入
+
+由于 Kiro CLI 使用 builder-id 认证方式，需要用 `/api/kiro/import-aws-credentials` 接口（传完整凭据对象），而不是 `/api/kiro/batch-import-tokens`（仅支持 social auth）。
+
+先登录管理后台获取 token：
+
+```bash
+TOKEN=$(curl -s -X POST http://localhost:3000/api/login \
+  -H "Content-Type: application/json" \
+  -d '{"password":"<your-password>"}' | python3 -c "import sys,json; print(json.load(sys.stdin)['token'])")
+```
+
+导入凭据：
+
+```bash
+CREDS=$(cat /home/ubuntu/kiro_credentials.json)
+curl -s -X POST http://localhost:3000/api/kiro/import-aws-credentials \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d "{\"credentials\": [$CREDS]}"
+```
+
+成功后会返回类似：
+
+```
+event: complete
+data: {"success":true,"total":1,"successCount":1,"failedCount":0,...}
+```
+
+新账号会自动保存到 `configs/kiro/` 目录并关联到 provider pool，无需重启服务。
+
+## 配置 Caddy HTTPS 反向代理
+
+通过 Caddy 在 443 端口提供 HTTPS，反代到 AIClient-2-API 的 3000 端口。80 端口保留给 Nginx（code-server）。
+
+### 前置条件
+
+- 安装 Caddy：参考 https://caddyserver.com/docs/install
+- 域名 A 记录指向本机公网 IP
+- 安全组放行 443 端口入站
+
+### Caddyfile 配置（`/etc/caddy/Caddyfile`）
+
+```
+{
+	http_port 444
+}
+
+<your-domain> {
+	reverse_proxy localhost:3000
+}
+```
+
+`http_port 444` 避免与 Nginx 80 端口冲突，Caddy 通过 TLS-ALPN-01 在 443 端口自动申请和续期 Let's Encrypt 证书。
+
+### 启动
+
+```bash
+sudo systemctl restart caddy
+```
+
+### 验证
+
+```bash
+curl -s -o /dev/null -w "HTTP %{http_code}" https://<your-domain>/
+# 返回 HTTP 200 即成功
+```
