@@ -1212,6 +1212,13 @@
         <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/others/POC-prometheus-ha-architect-with-thanos-manually/"/>
     </url>
     <url>
+        <loc>https://panlm.github.io/others/aws-cn-to-aws-commercial-iam-role-anywhere/</loc>
+        <lastmod>2026-04-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/others/aws-cn-to-aws-commercial-iam-role-anywhere/"/>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/others/aws-cn-to-aws-commercial-iam-role-anywhere/"/>
+    </url>
+    <url>
         <loc>https://panlm.github.io/others/cfn-service-role-for-fis-experiment-setup-guide/</loc>
         <lastmod>2026-04-20</lastmod>
         <changefreq>daily</changefreq>
@@ -2644,6 +2651,13 @@
         <changefreq>daily</changefreq>
         <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/others/POC-prometheus-ha-architect-with-thanos-manually/"/>
         <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/others/POC-prometheus-ha-architect-with-thanos-manually/"/>
+    </url>
+    <url>
+        <loc>https://panlm.github.io/zh/others/aws-cn-to-aws-commercial-iam-role-anywhere/</loc>
+        <lastmod>2026-04-20</lastmod>
+        <changefreq>daily</changefreq>
+        <xhtml:link rel="alternate" hreflang="zh" href="https://panlm.github.io/zh/others/aws-cn-to-aws-commercial-iam-role-anywhere/"/>
+        <xhtml:link rel="alternate" hreflang="en" href="https://panlm.github.io/others/aws-cn-to-aws-commercial-iam-role-anywhere/"/>
     </url>
     <url>
         <loc>https://panlm.github.io/zh/others/cfn-service-role-for-fis-experiment-setup-guide/</loc>
