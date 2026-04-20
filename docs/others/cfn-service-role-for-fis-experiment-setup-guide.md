@@ -28,11 +28,13 @@ EC2 Instance Profile                         CFN Service Role
 │ - cloudformation:*              │PassRole │ 内联策略 FISDeploymentPolicy:            │
 │   (条件: RoleArn=右侧Role)       │────────>│ - iam:CreateRole/DeleteRole              │
 │ - iam:PassRole (to CFN)          │         │ - iam:AttachRolePolicy/DetachRolePolicy  │
-│ - fis:StartExperiment 等         │         │ - iam:PassRole (to FIS/EKS/Lambda)       │
+│ - fis:StartExperiment 等         │         │ - iam:PassRole (to FIS/EKS/Lambda/SSM)       │
 │                                  │         │ - fis:*                                  │
 │                                  │         │ - eks:CreateAddon/DeleteAddon 等         │
 │                                  │         │ - lambda:Create/Delete/Update 等         │
 │                                  │         │ - cloudwatch:*                           │
+│                                  │         │ - logs:*                                 │
+│                                  │         │ - iam:CreateServiceLinkedRole            │
 └──────────────────────────────────┘         └──────────────────────────────────────────┘
 ```
 
@@ -86,13 +88,18 @@ EC2 Instance Profile                         CFN Service Role
             "Resource": "arn:aws:iam::123456789012:role/*"
         },
         {
-            "Sid": "IAMPassRoleToFIS",
+            "Sid": "IAMPassRoleToServices",
             "Effect": "Allow",
             "Action": "iam:PassRole",
             "Resource": "arn:aws:iam::123456789012:role/*",
             "Condition": {
                 "StringEquals": {
-                    "iam:PassedToService": "fis.amazonaws.com"
+                    "iam:PassedToService": [
+                        "fis.amazonaws.com",
+                        "eks.amazonaws.com",
+                        "lambda.amazonaws.com",
+                        "ssm.amazonaws.com"
+                    ]
                 }
             }
         },
@@ -109,6 +116,18 @@ EC2 Instance Profile                         CFN Service Role
             "Resource": "*"
         },
         {
+            "Sid": "CloudWatchLogsFullAccess",
+            "Effect": "Allow",
+            "Action": "logs:*",
+            "Resource": "*"
+        },
+        {
+            "Sid": "CreateServiceLinkedRole",
+            "Effect": "Allow",
+            "Action": "iam:CreateServiceLinkedRole",
+            "Resource": "arn:aws:iam::*:role/aws-service-role/*"
+        },
+        {
             "Sid": "EKSAddonManagement",
             "Effect": "Allow",
             "Action": [
@@ -120,28 +139,6 @@ EC2 Instance Profile                         CFN Service Role
                 "eks:DescribeCluster"
             ],
             "Resource": "*"
-        },
-        {
-            "Sid": "IAMPassRoleToEKS",
-            "Effect": "Allow",
-            "Action": "iam:PassRole",
-            "Resource": "arn:aws:iam::123456789012:role/*",
-            "Condition": {
-                "StringEquals": {
-                    "iam:PassedToService": "eks.amazonaws.com"
-                }
-            }
-        },
-        {
-            "Sid": "IAMPassRoleToLambda",
-            "Effect": "Allow",
-            "Action": "iam:PassRole",
-            "Resource": "arn:aws:iam::123456789012:role/*",
-            "Condition": {
-                "StringEquals": {
-                    "iam:PassedToService": "lambda.amazonaws.com"
-                }
-            }
         },
         {
             "Sid": "LambdaManagement",
@@ -314,18 +311,22 @@ aws cloudformation deploy \
 
 ## 四、安全约束总结
 
-| 约束项 | 实现方式 |
-|-------|---------|
-| EC2 无 IAM/CloudWatch 写入权限 | 所有 IAM/CW 操作由 CFN Service Role 执行 |
-| EC2 可直接执行 FIS 实验 | `fis:StartExperiment`/`StopExperiment` 等执行权限 |
-| EC2 只能用指定的 Service Role 部署 | `cloudformation:RoleArn` 条件键限制 |
-| CFN Service Role 只能创建 FIS 相关角色 | IAM 资源 ARN 限定 `*` |
-| CFN Service Role 只能被 CloudFormation 使用 | 信任策略仅允许 `cloudformation.amazonaws.com` |
-| CloudWatch 完全访问 | CFN Service Role 附加 `cloudwatch:*` |
-| EKS Addon 管理 | CFN Service Role 附加 `eks:CreateAddon`/`UpdateAddon`/`DeleteAddon` 等 |
-| IAM PassRole 到 EKS | 允许将 IRSA Role 传递给 EKS 服务 |
-| IAM PassRole 到 Lambda | 允许将执行角色传递给 Lambda 服务 |
-| Lambda 函数管理 | CFN Service Role 附加 `lambda:CreateFunction`/`DeleteFunction` 等 |
+| 约束项                                    | 实现方式                                                                                                                                                           |
+| -------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------- |
+| EC2 无 IAM/CloudWatch 写入权限              | 所有 IAM/CW 操作由 CFN Service Role 执行                                                                                                                              |
+| EC2 可直接执行 FIS 实验                       | `fis:StartExperiment`/`StopExperiment` 等执行权限                                                                                                                   |
+| EC2 只能用指定的 Service Role 部署             | `cloudformation:RoleArn` 条件键限制                                                                                                                                 |
+| CFN Service Role 只能创建 FIS 相关角色         | IAM 资源 ARN 限定 `*`                                                                                                                                              |
+| CFN Service Role 只能被 CloudFormation 使用 | 信任策略仅允许 `cloudformation.amazonaws.com`                                                                                                                         |
+| CloudWatch 完全访问                        | CFN Service Role 附加 `cloudwatch:*`                                                                                                                             |
+| EKS Addon 管理                           | CFN Service Role 附加 `eks:CreateAddon`/`UpdateAddon`/`DeleteAddon` 等                                                                                            |
+| IAM PassRole 到 EKS                     | 允许将 IRSA Role 传递给 EKS 服务                                                                                                                                       |
+| IAM PassRole 到 Lambda                  | 允许将执行角色传递给 Lambda 服务                                                                                                                                           |
+| IAM PassRole 到 FIS                     | 允许将执行角色传递给 FIS 服务                                                                                                                                              |
+| IAM PassRole 到 SSM                     | 允许将执行角色传递给 SSM 服务                                                                                                                                              |
+| Lambda 函数管理                            | CFN Service Role 附加 `lambda:CreateFunction`/`DeleteFunction` 等                                                                                                 |
+| CloudWatch Logs 完全访问                   | CFN Service Role 附加 `logs:*`（FIS 实验日志记录）                                                                                                                       |
+| Service-Linked Role 创建                 | CFN Service Role 附加 `iam:CreateServiceLinkedRole`（FIS 首次运行需创建 `AWSServiceRoleForFIS`；AZ Power Interruption 场景需创建 `AWSServiceRoleForZonalAutoshiftPracticeRun`） |
 
 ---
 
