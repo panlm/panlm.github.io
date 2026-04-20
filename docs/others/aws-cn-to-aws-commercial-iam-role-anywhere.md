@@ -1,5 +1,5 @@
 ---
-title: aws-cn-to-aws-commercial-iam-role-anywhere
+title: 使用 iam-role-anywhere 在中国区访问 global 区域 secret manager
 description: aws 中国区用 role anywhere访问 aws global 区
 type: note
 permalink: work-notes/aws-cn-aws
