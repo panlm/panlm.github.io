@@ -167,6 +167,16 @@ curl -s http://localhost:3000/v1/chat/completions \
 
 `claude-opus-4-6`、`claude-sonnet-4-6`、`claude-opus-4-5`、`claude-sonnet-4-5`、`claude-haiku-4-5`
 
+## 首次运行 Claude CLI 跳过登录
+
+如果是第一次运行 Claude CLI，可以在 `~/.claude.json` 中添加以下配置，跳过登录流程：
+
+```json
+{
+  "hasCompletedOnboarding": true
+}
+```
+
 ## Token 刷新机制
 
 AIClient-2-API 内部自动处理 token 刷新（`CRON_REFRESH_TOKEN: true`）。它使用凭据文件中的 `refreshToken` + `clientId` + `clientSecret` 向 `oidc.us-east-1.amazonaws.com/token` 请求新的 `accessToken`，在当前 token 过期前自动完成续期。

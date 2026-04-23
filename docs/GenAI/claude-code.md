@@ -10,6 +10,15 @@ tags:
 
 # claude-code
 
+## first time
+
+在 ~/.claude.json 中设置即可跳过登录流程：
+```
+{
+  "hasCompletedOnboarding": true
+}
+```
+
 ## use litellm directly
 
 https://docs.anthropic.com/en/docs/claude-code/llm-gateway
