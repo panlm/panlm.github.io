@@ -4709,6 +4709,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -4762,6 +4766,62 @@
           </label>
           <ul class="md-nav__list" data-md-scrollfix="">
             
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../Agent%20Toolkit%20for%20AWS%20%E4%BA%A7%E5%93%81%E5%AF%B9%E6%AF%94%E4%B8%8E%E5%85%B3%E7%B3%BB%E6%A2%B3%E7%90%86/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Agent Toolkit for AWS 产品对比与关系梳理
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agentcore-harness-deployment-guide%201/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    agentcore-harness-deployment-guide 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
               
             
               
@@ -5094,6 +5154,17 @@
     <span class="md-ellipsis">
       
         6. 验证部署
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 清理资源
       
     </span>
   </a>
@@ -8717,6 +8788,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        7. 清理资源
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -8776,9 +8858,9 @@
 <h3 id="1-ecr">1. 创建 ECR 仓库并推送镜像<a class="headerlink" href="#1-ecr" title="Permanent link">¶</a></h3>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="c1"># 设置变量</span>
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_PAGER</span><span class="o">=</span><span class="s2">""</span>
-<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nv">PROFILE</span><span class="o">=</span><span class="s2">"0527"</span>
-<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nv">REGION</span><span class="o">=</span><span class="s2">"us-east-1"</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nv">ACCOUNT_ID</span><span class="o">=</span><span class="s2">"327xxx"</span>
+<a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a><span class="nv">PROFILE</span><span class="o">=</span><span class="s2">"your-profile"</span>
+<a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a><span class="nv">REGION</span><span class="o">=</span><span class="s2">"us-east-2"</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="nv">ACCOUNT_ID</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>sts<span class="w"> </span>get-caller-identity<span class="w"> </span>--query<span class="w"> </span>Account<span class="w"> </span>--output<span class="w"> </span>text<span class="k">)</span>
 <a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="nv">ECR_REPO</span><span class="o">=</span><span class="s2">"</span><span class="nv">$ACCOUNT_ID</span><span class="s2">.dkr.ecr.</span><span class="nv">$REGION</span><span class="s2">.amazonaws.com"</span>
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a><span class="c1"># 创建 ECR 仓库</span>
@@ -8836,177 +8918,143 @@
 <a id="__codelineno-2-23" name="__codelineno-2-23" href="#__codelineno-2-23"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
 <a id="__codelineno-2-24" name="__codelineno-2-24" href="#__codelineno-2-24"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"安全组 ID: </span><span class="nv">$SG_ID</span><span class="s2">"</span>
 <a id="__codelineno-2-25" name="__codelineno-2-25" href="#__codelineno-2-25"></a>
-<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="c1"># 添加安全组规则</span>
+<a id="__codelineno-2-26" name="__codelineno-2-26" href="#__codelineno-2-26"></a><span class="c1"># 添加安全组规则 - 开放 80 端口（ALB path-based 路由）和 8808-8810（直接端口访问）</span>
 <a id="__codelineno-2-27" name="__codelineno-2-27" href="#__codelineno-2-27"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>ec2<span class="w"> </span>authorize-security-group-ingress<span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-2-28" name="__codelineno-2-28" href="#__codelineno-2-28"></a><span class="w">  </span>--group-id<span class="w"> </span><span class="nv">$SG_ID</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-2-29" name="__codelineno-2-29" href="#__codelineno-2-29"></a><span class="w">  </span>--protocol<span class="w"> </span>tcp<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">  </span>--port<span class="w"> </span><span class="m">8808</span>-8810<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-30" name="__codelineno-2-30" href="#__codelineno-2-30"></a><span class="w">  </span>--port<span class="w"> </span><span class="m">80</span><span class="w"> </span><span class="se">\</span>
 <a id="__codelineno-2-31" name="__codelineno-2-31" href="#__codelineno-2-31"></a><span class="w">  </span>--cidr<span class="w"> </span><span class="m">0</span>.0.0.0/0
+<a id="__codelineno-2-32" name="__codelineno-2-32" href="#__codelineno-2-32"></a>
+<a id="__codelineno-2-33" name="__codelineno-2-33" href="#__codelineno-2-33"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>ec2<span class="w"> </span>authorize-security-group-ingress<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-34" name="__codelineno-2-34" href="#__codelineno-2-34"></a><span class="w">  </span>--group-id<span class="w"> </span><span class="nv">$SG_ID</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-35" name="__codelineno-2-35" href="#__codelineno-2-35"></a><span class="w">  </span>--protocol<span class="w"> </span>tcp<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="w">  </span>--port<span class="w"> </span><span class="m">8808</span>-8810<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="w">  </span>--cidr<span class="w"> </span><span class="m">0</span>.0.0.0/0
 </code></pre></div>
 <h3 id="4">4. 创建负载均衡器和目标组<a class="headerlink" href="#4" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># 设置变量</span>
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nv">DOMAIN</span><span class="o">=</span><span class="s2">"ecs.aws.xxx"</span><span class="w"> </span><span class="c1"># change to your domain name </span>
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="c1"># 创建 ALB (如果已存在则跳过此步骤)</span>
-<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="nv">ALB_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>elbv2<span class="w"> </span>create-load-balancer<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span>--name<span class="w"> </span>mcp-services-alb<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span>--subnets<span class="w"> </span><span class="nv">$SUBNET1</span><span class="w"> </span><span class="nv">$SUBNET2</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="w">  </span>--security-groups<span class="w"> </span><span class="nv">$SG_ID</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">'LoadBalancers[0].LoadBalancerArn'</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"ALB ARN: </span><span class="nv">$ALB_ARN</span><span class="s2">"</span>
-<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a>
-<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="c1"># 创建目标组</span>
-<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="nv">FETCH_TG_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>elbv2<span class="w"> </span>create-target-group<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="w">  </span>--name<span class="w"> </span>fetch-mcp-tg<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a><span class="w">  </span>--protocol<span class="w"> </span>HTTP<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="w">  </span>--port<span class="w"> </span><span class="m">8808</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="w">  </span>--vpc-id<span class="w"> </span><span class="nv">$VPC_ID</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">  </span>--target-type<span class="w"> </span>ip<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">  </span>--health-check-path<span class="w"> </span><span class="s1">'/messages'</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">  </span>--matcher<span class="w"> </span><span class="nv">HttpCode</span><span class="o">=</span><span class="m">200</span>-399<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">'TargetGroups[0].TargetGroupArn'</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Fetch MCP Target Group ARN: </span><span class="nv">$FETCH_TG_ARN</span><span class="s2">"</span>
-<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a>
-<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="nv">AWS_DOC_TG_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>elbv2<span class="w"> </span>create-target-group<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">  </span>--name<span class="w"> </span>aws-doc-mcp-tg<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="w">  </span>--protocol<span class="w"> </span>HTTP<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a><span class="w">  </span>--port<span class="w"> </span><span class="m">8809</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="w">  </span>--vpc-id<span class="w"> </span><span class="nv">$VPC_ID</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="w">  </span>--target-type<span class="w"> </span>ip<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="w">  </span>--health-check-path<span class="w"> </span><span class="s1">'/messages'</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="w">  </span>--matcher<span class="w"> </span><span class="nv">HttpCode</span><span class="o">=</span><span class="m">200</span>-399<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">'TargetGroups[0].TargetGroupArn'</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"AWS Doc MCP Target Group ARN: </span><span class="nv">$AWS_DOC_TG_ARN</span><span class="s2">"</span>
-<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a>
-<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a><span class="nv">SEARXNG_TG_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>elbv2<span class="w"> </span>create-target-group<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a><span class="w">  </span>--name<span class="w"> </span>searxng-mcp-tg<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a><span class="w">  </span>--protocol<span class="w"> </span>HTTP<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a><span class="w">  </span>--port<span class="w"> </span><span class="m">8810</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a><span class="w">  </span>--vpc-id<span class="w"> </span><span class="nv">$VPC_ID</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a><span class="w">  </span>--target-type<span class="w"> </span>ip<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a><span class="w">  </span>--health-check-path<span class="w"> </span><span class="s1">'/messages'</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a><span class="w">  </span>--matcher<span class="w"> </span><span class="nv">HttpCode</span><span class="o">=</span><span class="m">200</span>-399<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">'TargetGroups[0].TargetGroupArn'</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-47" name="__codelineno-3-47" href="#__codelineno-3-47"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-3-48" name="__codelineno-3-48" href="#__codelineno-3-48"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"SearXNG MCP Target Group ARN: </span><span class="nv">$SEARXNG_TG_ARN</span><span class="s2">"</span>
-<a id="__codelineno-3-49" name="__codelineno-3-49" href="#__codelineno-3-49"></a>
-<a id="__codelineno-3-50" name="__codelineno-3-50" href="#__codelineno-3-50"></a><span class="c1"># 创建监听器 - 为每个服务创建单独的监听器，默认返回403</span>
-<a id="__codelineno-3-51" name="__codelineno-3-51" href="#__codelineno-3-51"></a><span class="c1"># 为 fetch-mcp 创建监听器 (8808端口)</span>
-<a id="__codelineno-3-52" name="__codelineno-3-52" href="#__codelineno-3-52"></a><span class="nv">FETCH_LISTENER_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>elbv2<span class="w"> </span>create-listener<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-53" name="__codelineno-3-53" href="#__codelineno-3-53"></a><span class="w">  </span>--load-balancer-arn<span class="w"> </span><span class="nv">$ALB_ARN</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-54" name="__codelineno-3-54" href="#__codelineno-3-54"></a><span class="w">  </span>--protocol<span class="w"> </span>HTTP<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-55" name="__codelineno-3-55" href="#__codelineno-3-55"></a><span class="w">  </span>--port<span class="w"> </span><span class="m">8808</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-56" name="__codelineno-3-56" href="#__codelineno-3-56"></a><span class="w">  </span>--default-actions<span class="w"> </span><span class="nv">Type</span><span class="o">=</span>fixed-response,FixedResponseConfig<span class="o">=</span><span class="s2">"{StatusCode=403,ContentType=\"text/plain\",MessageBody=\"Hostname not allowed\"}"</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-57" name="__codelineno-3-57" href="#__codelineno-3-57"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">'Listeners[0].ListenerArn'</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-58" name="__codelineno-3-58" href="#__codelineno-3-58"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-3-59" name="__codelineno-3-59" href="#__codelineno-3-59"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Fetch MCP Listener ARN: </span><span class="nv">$FETCH_LISTENER_ARN</span><span class="s2">"</span>
-<a id="__codelineno-3-60" name="__codelineno-3-60" href="#__codelineno-3-60"></a>
-<a id="__codelineno-3-61" name="__codelineno-3-61" href="#__codelineno-3-61"></a><span class="c1"># 为 aws-doc-mcp 创建监听器 (8809端口)</span>
-<a id="__codelineno-3-62" name="__codelineno-3-62" href="#__codelineno-3-62"></a><span class="nv">AWS_DOC_LISTENER_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>elbv2<span class="w"> </span>create-listener<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-63" name="__codelineno-3-63" href="#__codelineno-3-63"></a><span class="w">  </span>--load-balancer-arn<span class="w"> </span><span class="nv">$ALB_ARN</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-64" name="__codelineno-3-64" href="#__codelineno-3-64"></a><span class="w">  </span>--protocol<span class="w"> </span>HTTP<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-65" name="__codelineno-3-65" href="#__codelineno-3-65"></a><span class="w">  </span>--port<span class="w"> </span><span class="m">8809</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-66" name="__codelineno-3-66" href="#__codelineno-3-66"></a><span class="w">  </span>--default-actions<span class="w"> </span><span class="nv">Type</span><span class="o">=</span>fixed-response,FixedResponseConfig<span class="o">=</span><span class="s2">"{StatusCode=403,ContentType=\"text/plain\",MessageBody=\"Hostname not allowed\"}"</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-67" name="__codelineno-3-67" href="#__codelineno-3-67"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">'Listeners[0].ListenerArn'</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-68" name="__codelineno-3-68" href="#__codelineno-3-68"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-3-69" name="__codelineno-3-69" href="#__codelineno-3-69"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"AWS Doc MCP Listener ARN: </span><span class="nv">$AWS_DOC_LISTENER_ARN</span><span class="s2">"</span>
-<a id="__codelineno-3-70" name="__codelineno-3-70" href="#__codelineno-3-70"></a>
-<a id="__codelineno-3-71" name="__codelineno-3-71" href="#__codelineno-3-71"></a><span class="c1"># 为 searxng-mcp 创建监听器 (8810端口)</span>
-<a id="__codelineno-3-72" name="__codelineno-3-72" href="#__codelineno-3-72"></a><span class="nv">SEARXNG_LISTENER_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>elbv2<span class="w"> </span>create-listener<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-73" name="__codelineno-3-73" href="#__codelineno-3-73"></a><span class="w">  </span>--load-balancer-arn<span class="w"> </span><span class="nv">$ALB_ARN</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-74" name="__codelineno-3-74" href="#__codelineno-3-74"></a><span class="w">  </span>--protocol<span class="w"> </span>HTTP<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-75" name="__codelineno-3-75" href="#__codelineno-3-75"></a><span class="w">  </span>--port<span class="w"> </span><span class="m">8810</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-76" name="__codelineno-3-76" href="#__codelineno-3-76"></a><span class="w">  </span>--default-actions<span class="w"> </span><span class="nv">Type</span><span class="o">=</span>fixed-response,FixedResponseConfig<span class="o">=</span><span class="s2">"{StatusCode=403,ContentType=\"text/plain\",MessageBody=\"Hostname not allowed\"}"</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-77" name="__codelineno-3-77" href="#__codelineno-3-77"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">'Listeners[0].ListenerArn'</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-78" name="__codelineno-3-78" href="#__codelineno-3-78"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-3-79" name="__codelineno-3-79" href="#__codelineno-3-79"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"SearXNG MCP Listener ARN: </span><span class="nv">$SEARXNG_LISTENER_ARN</span><span class="s2">"</span>
-<a id="__codelineno-3-80" name="__codelineno-3-80" href="#__codelineno-3-80"></a>
-<a id="__codelineno-3-81" name="__codelineno-3-81" href="#__codelineno-3-81"></a><span class="c1"># 为每个监听器添加基于主机名的规则</span>
-<a id="__codelineno-3-82" name="__codelineno-3-82" href="#__codelineno-3-82"></a><span class="c1"># 为 fetch-mcp 监听器添加主机名规则</span>
-<a id="__codelineno-3-83" name="__codelineno-3-83" href="#__codelineno-3-83"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>elbv2<span class="w"> </span>create-rule<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-84" name="__codelineno-3-84" href="#__codelineno-3-84"></a><span class="w">  </span>--listener-arn<span class="w"> </span><span class="nv">$FETCH_LISTENER_ARN</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-85" name="__codelineno-3-85" href="#__codelineno-3-85"></a><span class="w">  </span>--priority<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-86" name="__codelineno-3-86" href="#__codelineno-3-86"></a><span class="w">  </span>--conditions<span class="w"> </span><span class="nv">Field</span><span class="o">=</span>host-header,Values<span class="o">=</span><span class="s2">"fetch.</span><span class="nv">$DOMAIN</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-87" name="__codelineno-3-87" href="#__codelineno-3-87"></a><span class="w">  </span>--actions<span class="w"> </span><span class="nv">Type</span><span class="o">=</span>forward,TargetGroupArn<span class="o">=</span><span class="nv">$FETCH_TG_ARN</span>
-<a id="__codelineno-3-88" name="__codelineno-3-88" href="#__codelineno-3-88"></a>
-<a id="__codelineno-3-89" name="__codelineno-3-89" href="#__codelineno-3-89"></a><span class="c1"># 为 aws-doc-mcp 监听器添加主机名规则</span>
-<a id="__codelineno-3-90" name="__codelineno-3-90" href="#__codelineno-3-90"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>elbv2<span class="w"> </span>create-rule<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-91" name="__codelineno-3-91" href="#__codelineno-3-91"></a><span class="w">  </span>--listener-arn<span class="w"> </span><span class="nv">$AWS_DOC_LISTENER_ARN</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-92" name="__codelineno-3-92" href="#__codelineno-3-92"></a><span class="w">  </span>--priority<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-93" name="__codelineno-3-93" href="#__codelineno-3-93"></a><span class="w">  </span>--conditions<span class="w"> </span><span class="nv">Field</span><span class="o">=</span>host-header,Values<span class="o">=</span><span class="s2">"aws-doc.</span><span class="nv">$DOMAIN</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-94" name="__codelineno-3-94" href="#__codelineno-3-94"></a><span class="w">  </span>--actions<span class="w"> </span><span class="nv">Type</span><span class="o">=</span>forward,TargetGroupArn<span class="o">=</span><span class="nv">$AWS_DOC_TG_ARN</span>
-<a id="__codelineno-3-95" name="__codelineno-3-95" href="#__codelineno-3-95"></a>
-<a id="__codelineno-3-96" name="__codelineno-3-96" href="#__codelineno-3-96"></a><span class="c1"># 为 searxng-mcp 监听器添加主机名规则</span>
-<a id="__codelineno-3-97" name="__codelineno-3-97" href="#__codelineno-3-97"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>elbv2<span class="w"> </span>create-rule<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-98" name="__codelineno-3-98" href="#__codelineno-3-98"></a><span class="w">  </span>--listener-arn<span class="w"> </span><span class="nv">$SEARXNG_LISTENER_ARN</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-99" name="__codelineno-3-99" href="#__codelineno-3-99"></a><span class="w">  </span>--priority<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-100" name="__codelineno-3-100" href="#__codelineno-3-100"></a><span class="w">  </span>--conditions<span class="w"> </span><span class="nv">Field</span><span class="o">=</span>host-header,Values<span class="o">=</span><span class="s2">"searxng.</span><span class="nv">$DOMAIN</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-3-101" name="__codelineno-3-101" href="#__codelineno-3-101"></a><span class="w">  </span>--actions<span class="w"> </span><span class="nv">Type</span><span class="o">=</span>forward,TargetGroupArn<span class="o">=</span><span class="nv">$SEARXNG_TG_ARN</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a><span class="c1"># 创建 ALB</span>
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a><span class="nv">ALB_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>elbv2<span class="w"> </span>create-load-balancer<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a><span class="w">  </span>--name<span class="w"> </span>mcp-services-alb<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a><span class="w">  </span>--subnets<span class="w"> </span><span class="nv">$SUBNET1</span><span class="w"> </span><span class="nv">$SUBNET2</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a><span class="w">  </span>--security-groups<span class="w"> </span><span class="nv">$SG_ID</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">'LoadBalancers[0].LoadBalancerArn'</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"ALB ARN: </span><span class="nv">$ALB_ARN</span><span class="s2">"</span>
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>
+<a id="__codelineno-3-10" name="__codelineno-3-10" href="#__codelineno-3-10"></a><span class="c1"># 获取 ALB DNS 名称（后续访问使用）</span>
+<a id="__codelineno-3-11" name="__codelineno-3-11" href="#__codelineno-3-11"></a><span class="nv">ALB_DNS</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>elbv2<span class="w"> </span>describe-load-balancers<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-12" name="__codelineno-3-12" href="#__codelineno-3-12"></a><span class="w">  </span>--load-balancer-arns<span class="w"> </span><span class="nv">$ALB_ARN</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-13" name="__codelineno-3-13" href="#__codelineno-3-13"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">'LoadBalancers[0].DNSName'</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-14" name="__codelineno-3-14" href="#__codelineno-3-14"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-3-15" name="__codelineno-3-15" href="#__codelineno-3-15"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"ALB DNS: </span><span class="nv">$ALB_DNS</span><span class="s2">"</span>
+<a id="__codelineno-3-16" name="__codelineno-3-16" href="#__codelineno-3-16"></a>
+<a id="__codelineno-3-17" name="__codelineno-3-17" href="#__codelineno-3-17"></a><span class="c1"># 创建目标组</span>
+<a id="__codelineno-3-18" name="__codelineno-3-18" href="#__codelineno-3-18"></a><span class="nv">FETCH_TG_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>elbv2<span class="w"> </span>create-target-group<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-19" name="__codelineno-3-19" href="#__codelineno-3-19"></a><span class="w">  </span>--name<span class="w"> </span>fetch-mcp-tg<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-20" name="__codelineno-3-20" href="#__codelineno-3-20"></a><span class="w">  </span>--protocol<span class="w"> </span>HTTP<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-21" name="__codelineno-3-21" href="#__codelineno-3-21"></a><span class="w">  </span>--port<span class="w"> </span><span class="m">8808</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-22" name="__codelineno-3-22" href="#__codelineno-3-22"></a><span class="w">  </span>--vpc-id<span class="w"> </span><span class="nv">$VPC_ID</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-23" name="__codelineno-3-23" href="#__codelineno-3-23"></a><span class="w">  </span>--target-type<span class="w"> </span>ip<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-24" name="__codelineno-3-24" href="#__codelineno-3-24"></a><span class="w">  </span>--health-check-path<span class="w"> </span><span class="s1">'/messages'</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-25" name="__codelineno-3-25" href="#__codelineno-3-25"></a><span class="w">  </span>--matcher<span class="w"> </span><span class="nv">HttpCode</span><span class="o">=</span><span class="m">200</span>-399<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-26" name="__codelineno-3-26" href="#__codelineno-3-26"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">'TargetGroups[0].TargetGroupArn'</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-27" name="__codelineno-3-27" href="#__codelineno-3-27"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-3-28" name="__codelineno-3-28" href="#__codelineno-3-28"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Fetch MCP Target Group ARN: </span><span class="nv">$FETCH_TG_ARN</span><span class="s2">"</span>
+<a id="__codelineno-3-29" name="__codelineno-3-29" href="#__codelineno-3-29"></a>
+<a id="__codelineno-3-30" name="__codelineno-3-30" href="#__codelineno-3-30"></a><span class="nv">AWS_DOC_TG_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>elbv2<span class="w"> </span>create-target-group<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-31" name="__codelineno-3-31" href="#__codelineno-3-31"></a><span class="w">  </span>--name<span class="w"> </span>aws-doc-mcp-tg<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-32" name="__codelineno-3-32" href="#__codelineno-3-32"></a><span class="w">  </span>--protocol<span class="w"> </span>HTTP<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-33" name="__codelineno-3-33" href="#__codelineno-3-33"></a><span class="w">  </span>--port<span class="w"> </span><span class="m">8809</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-34" name="__codelineno-3-34" href="#__codelineno-3-34"></a><span class="w">  </span>--vpc-id<span class="w"> </span><span class="nv">$VPC_ID</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-35" name="__codelineno-3-35" href="#__codelineno-3-35"></a><span class="w">  </span>--target-type<span class="w"> </span>ip<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-36" name="__codelineno-3-36" href="#__codelineno-3-36"></a><span class="w">  </span>--health-check-path<span class="w"> </span><span class="s1">'/messages'</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-37" name="__codelineno-3-37" href="#__codelineno-3-37"></a><span class="w">  </span>--matcher<span class="w"> </span><span class="nv">HttpCode</span><span class="o">=</span><span class="m">200</span>-399<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-38" name="__codelineno-3-38" href="#__codelineno-3-38"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">'TargetGroups[0].TargetGroupArn'</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-39" name="__codelineno-3-39" href="#__codelineno-3-39"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-3-40" name="__codelineno-3-40" href="#__codelineno-3-40"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"AWS Doc MCP Target Group ARN: </span><span class="nv">$AWS_DOC_TG_ARN</span><span class="s2">"</span>
+<a id="__codelineno-3-41" name="__codelineno-3-41" href="#__codelineno-3-41"></a>
+<a id="__codelineno-3-42" name="__codelineno-3-42" href="#__codelineno-3-42"></a><span class="nv">SEARXNG_TG_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>elbv2<span class="w"> </span>create-target-group<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-43" name="__codelineno-3-43" href="#__codelineno-3-43"></a><span class="w">  </span>--name<span class="w"> </span>searxng-mcp-tg<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-44" name="__codelineno-3-44" href="#__codelineno-3-44"></a><span class="w">  </span>--protocol<span class="w"> </span>HTTP<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-45" name="__codelineno-3-45" href="#__codelineno-3-45"></a><span class="w">  </span>--port<span class="w"> </span><span class="m">8810</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-46" name="__codelineno-3-46" href="#__codelineno-3-46"></a><span class="w">  </span>--vpc-id<span class="w"> </span><span class="nv">$VPC_ID</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-47" name="__codelineno-3-47" href="#__codelineno-3-47"></a><span class="w">  </span>--target-type<span class="w"> </span>ip<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-48" name="__codelineno-3-48" href="#__codelineno-3-48"></a><span class="w">  </span>--health-check-path<span class="w"> </span><span class="s1">'/messages'</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-49" name="__codelineno-3-49" href="#__codelineno-3-49"></a><span class="w">  </span>--matcher<span class="w"> </span><span class="nv">HttpCode</span><span class="o">=</span><span class="m">200</span>-399<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-50" name="__codelineno-3-50" href="#__codelineno-3-50"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">'TargetGroups[0].TargetGroupArn'</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-51" name="__codelineno-3-51" href="#__codelineno-3-51"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-3-52" name="__codelineno-3-52" href="#__codelineno-3-52"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"SearXNG MCP Target Group ARN: </span><span class="nv">$SEARXNG_TG_ARN</span><span class="s2">"</span>
+<a id="__codelineno-3-53" name="__codelineno-3-53" href="#__codelineno-3-53"></a>
+<a id="__codelineno-3-54" name="__codelineno-3-54" href="#__codelineno-3-54"></a><span class="c1"># 创建 Port 80 监听器 - 使用 path-based 路由（推荐，无需自定义域名）</span>
+<a id="__codelineno-3-55" name="__codelineno-3-55" href="#__codelineno-3-55"></a><span class="c1"># 默认路由到 fetch-mcp</span>
+<a id="__codelineno-3-56" name="__codelineno-3-56" href="#__codelineno-3-56"></a><span class="nv">LISTENER_80_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>elbv2<span class="w"> </span>create-listener<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-57" name="__codelineno-3-57" href="#__codelineno-3-57"></a><span class="w">  </span>--load-balancer-arn<span class="w"> </span><span class="nv">$ALB_ARN</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-58" name="__codelineno-3-58" href="#__codelineno-3-58"></a><span class="w">  </span>--protocol<span class="w"> </span>HTTP<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-59" name="__codelineno-3-59" href="#__codelineno-3-59"></a><span class="w">  </span>--port<span class="w"> </span><span class="m">80</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-60" name="__codelineno-3-60" href="#__codelineno-3-60"></a><span class="w">  </span>--default-actions<span class="w"> </span><span class="nv">Type</span><span class="o">=</span>forward,TargetGroupArn<span class="o">=</span><span class="nv">$FETCH_TG_ARN</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-61" name="__codelineno-3-61" href="#__codelineno-3-61"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">'Listeners[0].ListenerArn'</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-62" name="__codelineno-3-62" href="#__codelineno-3-62"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-3-63" name="__codelineno-3-63" href="#__codelineno-3-63"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Port 80 Listener ARN: </span><span class="nv">$LISTENER_80_ARN</span><span class="s2">"</span>
+<a id="__codelineno-3-64" name="__codelineno-3-64" href="#__codelineno-3-64"></a>
+<a id="__codelineno-3-65" name="__codelineno-3-65" href="#__codelineno-3-65"></a><span class="c1"># 添加 path-based 路由规则</span>
+<a id="__codelineno-3-66" name="__codelineno-3-66" href="#__codelineno-3-66"></a><span class="c1"># /aws-doc/* 路由到 aws-doc-mcp</span>
+<a id="__codelineno-3-67" name="__codelineno-3-67" href="#__codelineno-3-67"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>elbv2<span class="w"> </span>create-rule<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-68" name="__codelineno-3-68" href="#__codelineno-3-68"></a><span class="w">  </span>--listener-arn<span class="w"> </span><span class="nv">$LISTENER_80_ARN</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-69" name="__codelineno-3-69" href="#__codelineno-3-69"></a><span class="w">  </span>--priority<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-70" name="__codelineno-3-70" href="#__codelineno-3-70"></a><span class="w">  </span>--conditions<span class="w"> </span><span class="nv">Field</span><span class="o">=</span>path-pattern,Values<span class="o">=</span><span class="s2">"/aws-doc/*"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-71" name="__codelineno-3-71" href="#__codelineno-3-71"></a><span class="w">  </span>--actions<span class="w"> </span><span class="nv">Type</span><span class="o">=</span>forward,TargetGroupArn<span class="o">=</span><span class="nv">$AWS_DOC_TG_ARN</span>
+<a id="__codelineno-3-72" name="__codelineno-3-72" href="#__codelineno-3-72"></a>
+<a id="__codelineno-3-73" name="__codelineno-3-73" href="#__codelineno-3-73"></a><span class="c1"># /searxng/* 路由到 searxng-mcp</span>
+<a id="__codelineno-3-74" name="__codelineno-3-74" href="#__codelineno-3-74"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>elbv2<span class="w"> </span>create-rule<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-75" name="__codelineno-3-75" href="#__codelineno-3-75"></a><span class="w">  </span>--listener-arn<span class="w"> </span><span class="nv">$LISTENER_80_ARN</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-76" name="__codelineno-3-76" href="#__codelineno-3-76"></a><span class="w">  </span>--priority<span class="w"> </span><span class="m">20</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-77" name="__codelineno-3-77" href="#__codelineno-3-77"></a><span class="w">  </span>--conditions<span class="w"> </span><span class="nv">Field</span><span class="o">=</span>path-pattern,Values<span class="o">=</span><span class="s2">"/searxng/*"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-3-78" name="__codelineno-3-78" href="#__codelineno-3-78"></a><span class="w">  </span>--actions<span class="w"> </span><span class="nv">Type</span><span class="o">=</span>forward,TargetGroupArn<span class="o">=</span><span class="nv">$SEARXNG_TG_ARN</span>
 </code></pre></div>
+<blockquote>
+<p><strong>可选方案：host-header 路由</strong></p>
+<p>如果你有自定义域名，也可以使用 host-header 路由。为每个服务创建独立端口监听器（8808/8809/8810），然后基于域名转发：<br>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nv">DOMAIN</span><span class="o">=</span><span class="s2">"ecs.aws.yourdomain.com"</span>
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="c1"># 创建 8808 监听器，默认返回 403</span>
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>elbv2<span class="w"> </span>create-listener<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="w">  </span>--load-balancer-arn<span class="w"> </span><span class="nv">$ALB_ARN</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="w">  </span>--protocol<span class="w"> </span>HTTP<span class="w"> </span>--port<span class="w"> </span><span class="m">8808</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="w">  </span>--default-actions<span class="w"> </span><span class="nv">Type</span><span class="o">=</span>fixed-response,FixedResponseConfig<span class="o">=</span><span class="s2">"{StatusCode=403,ContentType=\"text/plain\",MessageBody=\"Hostname not allowed\"}"</span>
+<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="c1"># 添加 host-header 规则</span>
+<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>elbv2<span class="w"> </span>create-rule<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="w">  </span>--listener-arn<span class="w"> </span><span class="nv">$FETCH_LISTENER_ARN</span><span class="w"> </span>--priority<span class="w"> </span><span class="m">10</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="w">  </span>--conditions<span class="w"> </span><span class="nv">Field</span><span class="o">=</span>host-header,Values<span class="o">=</span><span class="s2">"fetch.</span><span class="nv">$DOMAIN</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="w">  </span>--actions<span class="w"> </span><span class="nv">Type</span><span class="o">=</span>forward,TargetGroupArn<span class="o">=</span><span class="nv">$FETCH_TG_ARN</span>
+</code></pre></div><p></p>
+</blockquote>
 <h3 id="5-ecs">5. 创建 ECS 服务<a class="headerlink" href="#5-ecs" title="Permanent link">¶</a></h3>
 <p>首先创建任务定义文件：</p>
 <p>fetch-mcp-task.json:<br>
-</p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$ECR_REPO</span><span class="w"> </span><span class="nv">$REGION</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>envsubst<span class="w"> </span>&gt;<span class="w"> </span>/tmp/fetch-mcp-task.json<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="s">{</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a><span class="s">  "family": "fetch-mcp",</span>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="s">  "networkMode": "awsvpc",</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a><span class="s">  "requiresCompatibilities": ["FARGATE"],</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="s">  "cpu": "256",</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="s">  "memory": "512",</span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a><span class="s">  "containerDefinitions": [</span>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="s">    {</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="s">      "name": "fetch-mcp",</span>
-<a id="__codelineno-4-12" name="__codelineno-4-12" href="#__codelineno-4-12"></a><span class="s">      "image": "${ECR_REPO}/mcp-proxy-uv:latest",</span>
-<a id="__codelineno-4-13" name="__codelineno-4-13" href="#__codelineno-4-13"></a><span class="s">      "portMappings": [</span>
-<a id="__codelineno-4-14" name="__codelineno-4-14" href="#__codelineno-4-14"></a><span class="s">        {</span>
-<a id="__codelineno-4-15" name="__codelineno-4-15" href="#__codelineno-4-15"></a><span class="s">          "containerPort": 8808,</span>
-<a id="__codelineno-4-16" name="__codelineno-4-16" href="#__codelineno-4-16"></a><span class="s">          "protocol": "tcp"</span>
-<a id="__codelineno-4-17" name="__codelineno-4-17" href="#__codelineno-4-17"></a><span class="s">        }</span>
-<a id="__codelineno-4-18" name="__codelineno-4-18" href="#__codelineno-4-18"></a><span class="s">      ],</span>
-<a id="__codelineno-4-19" name="__codelineno-4-19" href="#__codelineno-4-19"></a><span class="s">      "command": ["--pass-environment", "--port=8808", "--sse-host", "0.0.0.0", "uvx", "mcp-server-fetch"],</span>
-<a id="__codelineno-4-20" name="__codelineno-4-20" href="#__codelineno-4-20"></a><span class="s">      "logConfiguration": {</span>
-<a id="__codelineno-4-21" name="__codelineno-4-21" href="#__codelineno-4-21"></a><span class="s">        "logDriver": "awslogs",</span>
-<a id="__codelineno-4-22" name="__codelineno-4-22" href="#__codelineno-4-22"></a><span class="s">        "options": {</span>
-<a id="__codelineno-4-23" name="__codelineno-4-23" href="#__codelineno-4-23"></a><span class="s">          "awslogs-group": "/ecs/mcp-services",</span>
-<a id="__codelineno-4-24" name="__codelineno-4-24" href="#__codelineno-4-24"></a><span class="s">          "awslogs-region": "${REGION}",</span>
-<a id="__codelineno-4-25" name="__codelineno-4-25" href="#__codelineno-4-25"></a><span class="s">          "awslogs-stream-prefix": "fetch-mcp"</span>
-<a id="__codelineno-4-26" name="__codelineno-4-26" href="#__codelineno-4-26"></a><span class="s">        }</span>
-<a id="__codelineno-4-27" name="__codelineno-4-27" href="#__codelineno-4-27"></a><span class="s">      }</span>
-<a id="__codelineno-4-28" name="__codelineno-4-28" href="#__codelineno-4-28"></a><span class="s">    }</span>
-<a id="__codelineno-4-29" name="__codelineno-4-29" href="#__codelineno-4-29"></a><span class="s">  ]</span>
-<a id="__codelineno-4-30" name="__codelineno-4-30" href="#__codelineno-4-30"></a><span class="s">}</span>
-<a id="__codelineno-4-31" name="__codelineno-4-31" href="#__codelineno-4-31"></a><span class="s">EOF</span>
-</code></pre></div><p></p>
-<p>aws-doc-mcp-task.json:<br>
 </p><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$ECR_REPO</span><span class="w"> </span><span class="nv">$REGION</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>envsubst<span class="w"> </span>&gt;<span class="w"> </span>/tmp/aws-doc-mcp-task.json<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a>envsubst<span class="w"> </span>&gt;<span class="w"> </span>/tmp/fetch-mcp-task.json<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
 <a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="s">{</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="s">  "family": "aws-doc-mcp",</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a><span class="s">  "family": "fetch-mcp",</span>
 <a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="s">  "networkMode": "awsvpc",</span>
 <a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a><span class="s">  "requiresCompatibilities": ["FARGATE"],</span>
 <a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="s">  "cpu": "256",</span>
 <a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="s">  "memory": "512",</span>
 <a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a><span class="s">  "containerDefinitions": [</span>
 <a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="s">    {</span>
-<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="s">      "name": "aws-doc-mcp",</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="s">      "name": "fetch-mcp",</span>
 <a id="__codelineno-5-12" name="__codelineno-5-12" href="#__codelineno-5-12"></a><span class="s">      "image": "${ECR_REPO}/mcp-proxy-uv:latest",</span>
 <a id="__codelineno-5-13" name="__codelineno-5-13" href="#__codelineno-5-13"></a><span class="s">      "portMappings": [</span>
 <a id="__codelineno-5-14" name="__codelineno-5-14" href="#__codelineno-5-14"></a><span class="s">        {</span>
-<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="s">          "containerPort": 8809,</span>
+<a id="__codelineno-5-15" name="__codelineno-5-15" href="#__codelineno-5-15"></a><span class="s">          "containerPort": 8808,</span>
 <a id="__codelineno-5-16" name="__codelineno-5-16" href="#__codelineno-5-16"></a><span class="s">          "protocol": "tcp"</span>
 <a id="__codelineno-5-17" name="__codelineno-5-17" href="#__codelineno-5-17"></a><span class="s">        }</span>
 <a id="__codelineno-5-18" name="__codelineno-5-18" href="#__codelineno-5-18"></a><span class="s">      ],</span>
-<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="s">      "command": ["--pass-environment", "--port=8809", "--sse-host", "0.0.0.0", "--env", "FASTMCP_LOG_LEVEL", "ERROR", "uvx", "awslabs.aws-documentation-mcp-server@latest"],</span>
+<a id="__codelineno-5-19" name="__codelineno-5-19" href="#__codelineno-5-19"></a><span class="s">      "command": ["--pass-environment", "--port=8808", "--sse-host", "0.0.0.0", "uvx", "mcp-server-fetch"],</span>
 <a id="__codelineno-5-20" name="__codelineno-5-20" href="#__codelineno-5-20"></a><span class="s">      "logConfiguration": {</span>
 <a id="__codelineno-5-21" name="__codelineno-5-21" href="#__codelineno-5-21"></a><span class="s">        "logDriver": "awslogs",</span>
 <a id="__codelineno-5-22" name="__codelineno-5-22" href="#__codelineno-5-22"></a><span class="s">        "options": {</span>
 <a id="__codelineno-5-23" name="__codelineno-5-23" href="#__codelineno-5-23"></a><span class="s">          "awslogs-group": "/ecs/mcp-services",</span>
 <a id="__codelineno-5-24" name="__codelineno-5-24" href="#__codelineno-5-24"></a><span class="s">          "awslogs-region": "${REGION}",</span>
-<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="s">          "awslogs-stream-prefix": "aws-doc-mcp"</span>
+<a id="__codelineno-5-25" name="__codelineno-5-25" href="#__codelineno-5-25"></a><span class="s">          "awslogs-stream-prefix": "fetch-mcp"</span>
 <a id="__codelineno-5-26" name="__codelineno-5-26" href="#__codelineno-5-26"></a><span class="s">        }</span>
 <a id="__codelineno-5-27" name="__codelineno-5-27" href="#__codelineno-5-27"></a><span class="s">      }</span>
 <a id="__codelineno-5-28" name="__codelineno-5-28" href="#__codelineno-5-28"></a><span class="s">    }</span>
@@ -9014,155 +9062,203 @@
 <a id="__codelineno-5-30" name="__codelineno-5-30" href="#__codelineno-5-30"></a><span class="s">}</span>
 <a id="__codelineno-5-31" name="__codelineno-5-31" href="#__codelineno-5-31"></a><span class="s">EOF</span>
 </code></pre></div><p></p>
-<p>searxng-mcp-task.json:<br>
+<p>aws-doc-mcp-task.json:<br>
 </p><div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$ECR_REPO</span><span class="w"> </span><span class="nv">$REGION</span>
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">YOUR_SEARXNG_URL</span><span class="p">:=https://searx.xxx</span><span class="si">}</span>
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>
-<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>envsubst<span class="w"> </span>&gt;<span class="w"> </span>/tmp/searxng-mcp-task.json<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
-<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="s">{</span>
-<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="s">  "family": "searxng-mcp",</span>
-<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="s">  "networkMode": "awsvpc",</span>
-<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="s">  "requiresCompatibilities": ["FARGATE"],</span>
-<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="s">  "cpu": "256",</span>
-<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="s">  "memory": "512",</span>
-<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="s">  "containerDefinitions": [</span>
-<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="s">    {</span>
-<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="s">      "name": "searxng-mcp",</span>
-<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="s">      "image": "${ECR_REPO}/mcp-proxy-npx:latest",</span>
-<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="s">      "portMappings": [</span>
-<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="s">        {</span>
-<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="s">          "containerPort": 8810,</span>
-<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="s">          "protocol": "tcp"</span>
-<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="s">        }</span>
-<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="s">      ],</span>
-<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="s">      "command": ["--pass-environment", "--port=8810", "--sse-host", "0.0.0.0", "--env", "SEARXNG_URL", "${YOUR_SEARXNG_URL}", "--", "npx", "-y", "mcp-searxng"],</span>
-<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="s">      "logConfiguration": {</span>
-<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="s">        "logDriver": "awslogs",</span>
-<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="s">        "options": {</span>
-<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="s">          "awslogs-group": "/ecs/mcp-services",</span>
-<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="s">          "awslogs-region": "${REGION}",</span>
-<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="s">          "awslogs-stream-prefix": "searxng-mcp"</span>
-<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="s">        }</span>
-<a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a><span class="s">      }</span>
-<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a><span class="s">    }</span>
-<a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a><span class="s">  ]</span>
-<a id="__codelineno-6-32" name="__codelineno-6-32" href="#__codelineno-6-32"></a><span class="s">}</span>
-<a id="__codelineno-6-33" name="__codelineno-6-33" href="#__codelineno-6-33"></a><span class="s">EOF</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>envsubst<span class="w"> </span>&gt;<span class="w"> </span>/tmp/aws-doc-mcp-task.json<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="s">{</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a><span class="s">  "family": "aws-doc-mcp",</span>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="s">  "networkMode": "awsvpc",</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a><span class="s">  "requiresCompatibilities": ["FARGATE"],</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="s">  "cpu": "256",</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="s">  "memory": "512",</span>
+<a id="__codelineno-6-9" name="__codelineno-6-9" href="#__codelineno-6-9"></a><span class="s">  "containerDefinitions": [</span>
+<a id="__codelineno-6-10" name="__codelineno-6-10" href="#__codelineno-6-10"></a><span class="s">    {</span>
+<a id="__codelineno-6-11" name="__codelineno-6-11" href="#__codelineno-6-11"></a><span class="s">      "name": "aws-doc-mcp",</span>
+<a id="__codelineno-6-12" name="__codelineno-6-12" href="#__codelineno-6-12"></a><span class="s">      "image": "${ECR_REPO}/mcp-proxy-uv:latest",</span>
+<a id="__codelineno-6-13" name="__codelineno-6-13" href="#__codelineno-6-13"></a><span class="s">      "portMappings": [</span>
+<a id="__codelineno-6-14" name="__codelineno-6-14" href="#__codelineno-6-14"></a><span class="s">        {</span>
+<a id="__codelineno-6-15" name="__codelineno-6-15" href="#__codelineno-6-15"></a><span class="s">          "containerPort": 8809,</span>
+<a id="__codelineno-6-16" name="__codelineno-6-16" href="#__codelineno-6-16"></a><span class="s">          "protocol": "tcp"</span>
+<a id="__codelineno-6-17" name="__codelineno-6-17" href="#__codelineno-6-17"></a><span class="s">        }</span>
+<a id="__codelineno-6-18" name="__codelineno-6-18" href="#__codelineno-6-18"></a><span class="s">      ],</span>
+<a id="__codelineno-6-19" name="__codelineno-6-19" href="#__codelineno-6-19"></a><span class="s">      "command": ["--pass-environment", "--port=8809", "--sse-host", "0.0.0.0", "--env", "FASTMCP_LOG_LEVEL", "ERROR", "uvx", "awslabs.aws-documentation-mcp-server@latest"],</span>
+<a id="__codelineno-6-20" name="__codelineno-6-20" href="#__codelineno-6-20"></a><span class="s">      "logConfiguration": {</span>
+<a id="__codelineno-6-21" name="__codelineno-6-21" href="#__codelineno-6-21"></a><span class="s">        "logDriver": "awslogs",</span>
+<a id="__codelineno-6-22" name="__codelineno-6-22" href="#__codelineno-6-22"></a><span class="s">        "options": {</span>
+<a id="__codelineno-6-23" name="__codelineno-6-23" href="#__codelineno-6-23"></a><span class="s">          "awslogs-group": "/ecs/mcp-services",</span>
+<a id="__codelineno-6-24" name="__codelineno-6-24" href="#__codelineno-6-24"></a><span class="s">          "awslogs-region": "${REGION}",</span>
+<a id="__codelineno-6-25" name="__codelineno-6-25" href="#__codelineno-6-25"></a><span class="s">          "awslogs-stream-prefix": "aws-doc-mcp"</span>
+<a id="__codelineno-6-26" name="__codelineno-6-26" href="#__codelineno-6-26"></a><span class="s">        }</span>
+<a id="__codelineno-6-27" name="__codelineno-6-27" href="#__codelineno-6-27"></a><span class="s">      }</span>
+<a id="__codelineno-6-28" name="__codelineno-6-28" href="#__codelineno-6-28"></a><span class="s">    }</span>
+<a id="__codelineno-6-29" name="__codelineno-6-29" href="#__codelineno-6-29"></a><span class="s">  ]</span>
+<a id="__codelineno-6-30" name="__codelineno-6-30" href="#__codelineno-6-30"></a><span class="s">}</span>
+<a id="__codelineno-6-31" name="__codelineno-6-31" href="#__codelineno-6-31"></a><span class="s">EOF</span>
 </code></pre></div><p></p>
-<p>注册任务定义：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="c1"># 设置变量</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$CLUSTER_NAME</span>
+<p>searxng-mcp-task.json:<br>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$ECR_REPO</span><span class="w"> </span><span class="nv">$REGION</span>
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="nb">echo</span><span class="w"> </span><span class="si">${</span><span class="nv">YOUR_SEARXNG_URL</span><span class="p">:=https://searx.yourdomain.com</span><span class="si">}</span>
 <a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a><span class="c1"># 创建 IAM 角色</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="c1"># 创建 ECS 任务执行角色 (ecsTaskExecutionRole)</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a>cat<span class="w"> </span>&gt;<span class="w"> </span>/tmp/task-execution-role-trust.json<span class="w"> </span><span class="s">&lt;&lt; EOF</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="s">{</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="s">  "Version": "2012-10-17",</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="s">  "Statement": [</span>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="s">    {</span>
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="s">      "Effect": "Allow",</span>
-<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="s">      "Principal": {</span>
-<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="s">        "Service": "ecs-tasks.amazonaws.com"</span>
-<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="s">      },</span>
-<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="s">      "Action": "sts:AssumeRole"</span>
-<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="s">    }</span>
-<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="s">  ]</span>
-<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="s">}</span>
-<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="s">EOF</span>
-<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a>
-<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="nv">EXECUTION_ROLE_NAME</span><span class="o">=</span><span class="s2">"ecsTaskExecutionRole-mcp"</span>
-<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="nv">EXECUTION_ROLE_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>iam<span class="w"> </span>create-role<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="w">  </span>--role-name<span class="w"> </span><span class="nv">$EXECUTION_ROLE_NAME</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="w">  </span>--assume-role-policy-document<span class="w"> </span>file:///tmp/task-execution-role-trust.json<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">'Role.Arn'</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Task Execution Role ARN: </span><span class="nv">$EXECUTION_ROLE_ARN</span><span class="s2">"</span>
-<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a>
-<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a><span class="c1"># 附加 ECS 任务执行角色策略</span>
-<a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a><span class="w">  </span>--role-name<span class="w"> </span><span class="nv">$EXECUTION_ROLE_NAME</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a><span class="w">  </span>--policy-arn<span class="w"> </span>arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy
-<a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a>
-<a id="__codelineno-7-34" name="__codelineno-7-34" href="#__codelineno-7-34"></a><span class="c1"># 创建 ECS 任务角色 (ecsTaskRole)</span>
-<a id="__codelineno-7-35" name="__codelineno-7-35" href="#__codelineno-7-35"></a>cat<span class="w"> </span>&gt;<span class="w"> </span>/tmp/task-role-trust.json<span class="w"> </span><span class="s">&lt;&lt; EOF</span>
-<a id="__codelineno-7-36" name="__codelineno-7-36" href="#__codelineno-7-36"></a><span class="s">{</span>
-<a id="__codelineno-7-37" name="__codelineno-7-37" href="#__codelineno-7-37"></a><span class="s">  "Version": "2012-10-17",</span>
-<a id="__codelineno-7-38" name="__codelineno-7-38" href="#__codelineno-7-38"></a><span class="s">  "Statement": [</span>
-<a id="__codelineno-7-39" name="__codelineno-7-39" href="#__codelineno-7-39"></a><span class="s">    {</span>
-<a id="__codelineno-7-40" name="__codelineno-7-40" href="#__codelineno-7-40"></a><span class="s">      "Effect": "Allow",</span>
-<a id="__codelineno-7-41" name="__codelineno-7-41" href="#__codelineno-7-41"></a><span class="s">      "Principal": {</span>
-<a id="__codelineno-7-42" name="__codelineno-7-42" href="#__codelineno-7-42"></a><span class="s">        "Service": "ecs-tasks.amazonaws.com"</span>
-<a id="__codelineno-7-43" name="__codelineno-7-43" href="#__codelineno-7-43"></a><span class="s">      },</span>
-<a id="__codelineno-7-44" name="__codelineno-7-44" href="#__codelineno-7-44"></a><span class="s">      "Action": "sts:AssumeRole"</span>
-<a id="__codelineno-7-45" name="__codelineno-7-45" href="#__codelineno-7-45"></a><span class="s">    }</span>
-<a id="__codelineno-7-46" name="__codelineno-7-46" href="#__codelineno-7-46"></a><span class="s">  ]</span>
-<a id="__codelineno-7-47" name="__codelineno-7-47" href="#__codelineno-7-47"></a><span class="s">}</span>
-<a id="__codelineno-7-48" name="__codelineno-7-48" href="#__codelineno-7-48"></a><span class="s">EOF</span>
-<a id="__codelineno-7-49" name="__codelineno-7-49" href="#__codelineno-7-49"></a>
-<a id="__codelineno-7-50" name="__codelineno-7-50" href="#__codelineno-7-50"></a><span class="nv">TASK_ROLE_NAME</span><span class="o">=</span><span class="s2">"ecsTaskRole-mcp"</span>
-<a id="__codelineno-7-51" name="__codelineno-7-51" href="#__codelineno-7-51"></a><span class="nv">TASK_ROLE_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>iam<span class="w"> </span>create-role<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-52" name="__codelineno-7-52" href="#__codelineno-7-52"></a><span class="w">  </span>--role-name<span class="w"> </span><span class="nv">$TASK_ROLE_NAME</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-53" name="__codelineno-7-53" href="#__codelineno-7-53"></a><span class="w">  </span>--assume-role-policy-document<span class="w"> </span>file:///tmp/task-role-trust.json<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-54" name="__codelineno-7-54" href="#__codelineno-7-54"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">'Role.Arn'</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-55" name="__codelineno-7-55" href="#__codelineno-7-55"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="k">)</span>
-<a id="__codelineno-7-56" name="__codelineno-7-56" href="#__codelineno-7-56"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Task Role ARN: </span><span class="nv">$TASK_ROLE_ARN</span><span class="s2">"</span>
-<a id="__codelineno-7-57" name="__codelineno-7-57" href="#__codelineno-7-57"></a>
-<a id="__codelineno-7-58" name="__codelineno-7-58" href="#__codelineno-7-58"></a><span class="c1"># 创建日志组</span>
-<a id="__codelineno-7-59" name="__codelineno-7-59" href="#__codelineno-7-59"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>logs<span class="w"> </span>create-log-group<span class="w"> </span>--log-group-name<span class="w"> </span>/ecs/mcp-services
-<a id="__codelineno-7-60" name="__codelineno-7-60" href="#__codelineno-7-60"></a>
-<a id="__codelineno-7-61" name="__codelineno-7-61" href="#__codelineno-7-61"></a><span class="c1"># 注册任务定义（在命令中指定角色）</span>
-<a id="__codelineno-7-62" name="__codelineno-7-62" href="#__codelineno-7-62"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>ecs<span class="w"> </span>register-task-definition<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-63" name="__codelineno-7-63" href="#__codelineno-7-63"></a><span class="w">  </span>--cli-input-json<span class="w"> </span>file:///tmp/fetch-mcp-task.json<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-64" name="__codelineno-7-64" href="#__codelineno-7-64"></a><span class="w">  </span>--execution-role-arn<span class="w"> </span><span class="nv">$EXECUTION_ROLE_ARN</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-65" name="__codelineno-7-65" href="#__codelineno-7-65"></a><span class="w">  </span>--task-role-arn<span class="w"> </span><span class="nv">$TASK_ROLE_ARN</span>
-<a id="__codelineno-7-66" name="__codelineno-7-66" href="#__codelineno-7-66"></a>
-<a id="__codelineno-7-67" name="__codelineno-7-67" href="#__codelineno-7-67"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>ecs<span class="w"> </span>register-task-definition<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-68" name="__codelineno-7-68" href="#__codelineno-7-68"></a><span class="w">  </span>--cli-input-json<span class="w"> </span>file:///tmp/aws-doc-mcp-task.json<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-69" name="__codelineno-7-69" href="#__codelineno-7-69"></a><span class="w">  </span>--execution-role-arn<span class="w"> </span><span class="nv">$EXECUTION_ROLE_ARN</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-70" name="__codelineno-7-70" href="#__codelineno-7-70"></a><span class="w">  </span>--task-role-arn<span class="w"> </span><span class="nv">$TASK_ROLE_ARN</span>
-<a id="__codelineno-7-71" name="__codelineno-7-71" href="#__codelineno-7-71"></a>
-<a id="__codelineno-7-72" name="__codelineno-7-72" href="#__codelineno-7-72"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>ecs<span class="w"> </span>register-task-definition<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-73" name="__codelineno-7-73" href="#__codelineno-7-73"></a><span class="w">  </span>--cli-input-json<span class="w"> </span>file:///tmp/searxng-mcp-task.json<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-74" name="__codelineno-7-74" href="#__codelineno-7-74"></a><span class="w">  </span>--execution-role-arn<span class="w"> </span><span class="nv">$EXECUTION_ROLE_ARN</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-75" name="__codelineno-7-75" href="#__codelineno-7-75"></a><span class="w">  </span>--task-role-arn<span class="w"> </span><span class="nv">$TASK_ROLE_ARN</span>
-<a id="__codelineno-7-76" name="__codelineno-7-76" href="#__codelineno-7-76"></a>
-<a id="__codelineno-7-77" name="__codelineno-7-77" href="#__codelineno-7-77"></a><span class="c1"># 创建服务</span>
-<a id="__codelineno-7-78" name="__codelineno-7-78" href="#__codelineno-7-78"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>ecs<span class="w"> </span>create-service<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-79" name="__codelineno-7-79" href="#__codelineno-7-79"></a><span class="w">  </span>--cluster<span class="w"> </span><span class="nv">$CLUSTER_NAME</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-80" name="__codelineno-7-80" href="#__codelineno-7-80"></a><span class="w">  </span>--service-name<span class="w"> </span>fetch-mcp<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-81" name="__codelineno-7-81" href="#__codelineno-7-81"></a><span class="w">  </span>--task-definition<span class="w"> </span>fetch-mcp<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-82" name="__codelineno-7-82" href="#__codelineno-7-82"></a><span class="w">  </span>--desired-count<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-83" name="__codelineno-7-83" href="#__codelineno-7-83"></a><span class="w">  </span>--launch-type<span class="w"> </span>FARGATE<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-84" name="__codelineno-7-84" href="#__codelineno-7-84"></a><span class="w">  </span>--network-configuration<span class="w"> </span><span class="s2">"awsvpcConfiguration={subnets=[</span><span class="nv">$SUBNET1</span><span class="s2">,</span><span class="nv">$SUBNET2</span><span class="s2">],securityGroups=[</span><span class="nv">$SG_ID</span><span class="s2">],assignPublicIp=ENABLED}"</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-85" name="__codelineno-7-85" href="#__codelineno-7-85"></a><span class="w">  </span>--load-balancers<span class="w"> </span><span class="s2">"targetGroupArn=</span><span class="nv">$FETCH_TG_ARN</span><span class="s2">,containerName=fetch-mcp,containerPort=8808"</span>
-<a id="__codelineno-7-86" name="__codelineno-7-86" href="#__codelineno-7-86"></a>
-<a id="__codelineno-7-87" name="__codelineno-7-87" href="#__codelineno-7-87"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>ecs<span class="w"> </span>create-service<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-88" name="__codelineno-7-88" href="#__codelineno-7-88"></a><span class="w">  </span>--cluster<span class="w"> </span><span class="nv">$CLUSTER_NAME</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-89" name="__codelineno-7-89" href="#__codelineno-7-89"></a><span class="w">  </span>--service-name<span class="w"> </span>aws-doc-mcp<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-90" name="__codelineno-7-90" href="#__codelineno-7-90"></a><span class="w">  </span>--task-definition<span class="w"> </span>aws-doc-mcp<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-91" name="__codelineno-7-91" href="#__codelineno-7-91"></a><span class="w">  </span>--desired-count<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-92" name="__codelineno-7-92" href="#__codelineno-7-92"></a><span class="w">  </span>--launch-type<span class="w"> </span>FARGATE<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-93" name="__codelineno-7-93" href="#__codelineno-7-93"></a><span class="w">  </span>--network-configuration<span class="w"> </span><span class="s2">"awsvpcConfiguration={subnets=[</span><span class="nv">$SUBNET1</span><span class="s2">,</span><span class="nv">$SUBNET2</span><span class="s2">],securityGroups=[</span><span class="nv">$SG_ID</span><span class="s2">],assignPublicIp=ENABLED}"</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-94" name="__codelineno-7-94" href="#__codelineno-7-94"></a><span class="w">  </span>--load-balancers<span class="w"> </span><span class="s2">"targetGroupArn=</span><span class="nv">$AWS_DOC_TG_ARN</span><span class="s2">,containerName=aws-doc-mcp,containerPort=8809"</span>
-<a id="__codelineno-7-95" name="__codelineno-7-95" href="#__codelineno-7-95"></a>
-<a id="__codelineno-7-96" name="__codelineno-7-96" href="#__codelineno-7-96"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>ecs<span class="w"> </span>create-service<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-97" name="__codelineno-7-97" href="#__codelineno-7-97"></a><span class="w">  </span>--cluster<span class="w"> </span><span class="nv">$CLUSTER_NAME</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-98" name="__codelineno-7-98" href="#__codelineno-7-98"></a><span class="w">  </span>--service-name<span class="w"> </span>searxng-mcp<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-99" name="__codelineno-7-99" href="#__codelineno-7-99"></a><span class="w">  </span>--task-definition<span class="w"> </span>searxng-mcp<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-100" name="__codelineno-7-100" href="#__codelineno-7-100"></a><span class="w">  </span>--desired-count<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-101" name="__codelineno-7-101" href="#__codelineno-7-101"></a><span class="w">  </span>--launch-type<span class="w"> </span>FARGATE<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-102" name="__codelineno-7-102" href="#__codelineno-7-102"></a><span class="w">  </span>--network-configuration<span class="w"> </span><span class="s2">"awsvpcConfiguration={subnets=[</span><span class="nv">$SUBNET1</span><span class="s2">,</span><span class="nv">$SUBNET2</span><span class="s2">],securityGroups=[</span><span class="nv">$SG_ID</span><span class="s2">],assignPublicIp=ENABLED}"</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-103" name="__codelineno-7-103" href="#__codelineno-7-103"></a><span class="w">  </span>--load-balancers<span class="w"> </span><span class="s2">"targetGroupArn=</span><span class="nv">$SEARXNG_TG_ARN</span><span class="s2">,containerName=searxng-mcp,containerPort=8810"</span>
+<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>envsubst<span class="w"> </span>&gt;<span class="w"> </span>/tmp/searxng-mcp-task.json<span class="w"> </span><span class="s">&lt;&lt;-EOF</span>
+<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="s">{</span>
+<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="s">  "family": "searxng-mcp",</span>
+<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="s">  "networkMode": "awsvpc",</span>
+<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="s">  "requiresCompatibilities": ["FARGATE"],</span>
+<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a><span class="s">  "cpu": "256",</span>
+<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="s">  "memory": "512",</span>
+<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a><span class="s">  "containerDefinitions": [</span>
+<a id="__codelineno-7-12" name="__codelineno-7-12" href="#__codelineno-7-12"></a><span class="s">    {</span>
+<a id="__codelineno-7-13" name="__codelineno-7-13" href="#__codelineno-7-13"></a><span class="s">      "name": "searxng-mcp",</span>
+<a id="__codelineno-7-14" name="__codelineno-7-14" href="#__codelineno-7-14"></a><span class="s">      "image": "${ECR_REPO}/mcp-proxy-npx:latest",</span>
+<a id="__codelineno-7-15" name="__codelineno-7-15" href="#__codelineno-7-15"></a><span class="s">      "portMappings": [</span>
+<a id="__codelineno-7-16" name="__codelineno-7-16" href="#__codelineno-7-16"></a><span class="s">        {</span>
+<a id="__codelineno-7-17" name="__codelineno-7-17" href="#__codelineno-7-17"></a><span class="s">          "containerPort": 8810,</span>
+<a id="__codelineno-7-18" name="__codelineno-7-18" href="#__codelineno-7-18"></a><span class="s">          "protocol": "tcp"</span>
+<a id="__codelineno-7-19" name="__codelineno-7-19" href="#__codelineno-7-19"></a><span class="s">        }</span>
+<a id="__codelineno-7-20" name="__codelineno-7-20" href="#__codelineno-7-20"></a><span class="s">      ],</span>
+<a id="__codelineno-7-21" name="__codelineno-7-21" href="#__codelineno-7-21"></a><span class="s">      "command": ["--pass-environment", "--port=8810", "--sse-host", "0.0.0.0", "--env", "SEARXNG_URL", "${YOUR_SEARXNG_URL}", "--", "npx", "-y", "mcp-searxng"],</span>
+<a id="__codelineno-7-22" name="__codelineno-7-22" href="#__codelineno-7-22"></a><span class="s">      "logConfiguration": {</span>
+<a id="__codelineno-7-23" name="__codelineno-7-23" href="#__codelineno-7-23"></a><span class="s">        "logDriver": "awslogs",</span>
+<a id="__codelineno-7-24" name="__codelineno-7-24" href="#__codelineno-7-24"></a><span class="s">        "options": {</span>
+<a id="__codelineno-7-25" name="__codelineno-7-25" href="#__codelineno-7-25"></a><span class="s">          "awslogs-group": "/ecs/mcp-services",</span>
+<a id="__codelineno-7-26" name="__codelineno-7-26" href="#__codelineno-7-26"></a><span class="s">          "awslogs-region": "${REGION}",</span>
+<a id="__codelineno-7-27" name="__codelineno-7-27" href="#__codelineno-7-27"></a><span class="s">          "awslogs-stream-prefix": "searxng-mcp"</span>
+<a id="__codelineno-7-28" name="__codelineno-7-28" href="#__codelineno-7-28"></a><span class="s">        }</span>
+<a id="__codelineno-7-29" name="__codelineno-7-29" href="#__codelineno-7-29"></a><span class="s">      }</span>
+<a id="__codelineno-7-30" name="__codelineno-7-30" href="#__codelineno-7-30"></a><span class="s">    }</span>
+<a id="__codelineno-7-31" name="__codelineno-7-31" href="#__codelineno-7-31"></a><span class="s">  ]</span>
+<a id="__codelineno-7-32" name="__codelineno-7-32" href="#__codelineno-7-32"></a><span class="s">}</span>
+<a id="__codelineno-7-33" name="__codelineno-7-33" href="#__codelineno-7-33"></a><span class="s">EOF</span>
+</code></pre></div><p></p>
+<p>注册任务定义并创建服务：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a><span class="nb">echo</span><span class="w"> </span><span class="nv">$CLUSTER_NAME</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a><span class="c1"># 使用已有的 ecsTaskExecutionRole，如果不存在则创建</span>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a><span class="nv">EXECUTION_ROLE_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>iam<span class="w"> </span>get-role<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">  </span>--role-name<span class="w"> </span>ecsTaskExecutionRole<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">'Role.Arn'</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="w">  </span>--output<span class="w"> </span>text<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="k">)</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a><span class="k">if</span><span class="w"> </span><span class="o">[</span><span class="w"> </span>-z<span class="w"> </span><span class="s2">"</span><span class="nv">$EXECUTION_ROLE_ARN</span><span class="s2">"</span><span class="w"> </span><span class="o">]</span><span class="p">;</span><span class="w"> </span><span class="k">then</span>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="w">  </span><span class="c1"># 创建 ECS 任务执行角色</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a><span class="w">  </span>cat<span class="w"> </span>&gt;<span class="w"> </span>/tmp/task-execution-role-trust.json<span class="w"> </span><span class="s">&lt;&lt; EOF</span>
+<a id="__codelineno-8-12" name="__codelineno-8-12" href="#__codelineno-8-12"></a><span class="s">{</span>
+<a id="__codelineno-8-13" name="__codelineno-8-13" href="#__codelineno-8-13"></a><span class="s">  "Version": "2012-10-17",</span>
+<a id="__codelineno-8-14" name="__codelineno-8-14" href="#__codelineno-8-14"></a><span class="s">  "Statement": [</span>
+<a id="__codelineno-8-15" name="__codelineno-8-15" href="#__codelineno-8-15"></a><span class="s">    {</span>
+<a id="__codelineno-8-16" name="__codelineno-8-16" href="#__codelineno-8-16"></a><span class="s">      "Effect": "Allow",</span>
+<a id="__codelineno-8-17" name="__codelineno-8-17" href="#__codelineno-8-17"></a><span class="s">      "Principal": {</span>
+<a id="__codelineno-8-18" name="__codelineno-8-18" href="#__codelineno-8-18"></a><span class="s">        "Service": "ecs-tasks.amazonaws.com"</span>
+<a id="__codelineno-8-19" name="__codelineno-8-19" href="#__codelineno-8-19"></a><span class="s">      },</span>
+<a id="__codelineno-8-20" name="__codelineno-8-20" href="#__codelineno-8-20"></a><span class="s">      "Action": "sts:AssumeRole"</span>
+<a id="__codelineno-8-21" name="__codelineno-8-21" href="#__codelineno-8-21"></a><span class="s">    }</span>
+<a id="__codelineno-8-22" name="__codelineno-8-22" href="#__codelineno-8-22"></a><span class="s">  ]</span>
+<a id="__codelineno-8-23" name="__codelineno-8-23" href="#__codelineno-8-23"></a><span class="s">}</span>
+<a id="__codelineno-8-24" name="__codelineno-8-24" href="#__codelineno-8-24"></a><span class="s">EOF</span>
+<a id="__codelineno-8-25" name="__codelineno-8-25" href="#__codelineno-8-25"></a>
+<a id="__codelineno-8-26" name="__codelineno-8-26" href="#__codelineno-8-26"></a><span class="w">  </span><span class="nv">EXECUTION_ROLE_ARN</span><span class="o">=</span><span class="k">$(</span>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>iam<span class="w"> </span>create-role<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-27" name="__codelineno-8-27" href="#__codelineno-8-27"></a><span class="w">    </span>--role-name<span class="w"> </span>ecsTaskExecutionRole<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-28" name="__codelineno-8-28" href="#__codelineno-8-28"></a><span class="w">    </span>--assume-role-policy-document<span class="w"> </span>file:///tmp/task-execution-role-trust.json<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-29" name="__codelineno-8-29" href="#__codelineno-8-29"></a><span class="w">    </span>--query<span class="w"> </span><span class="s1">'Role.Arn'</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-30" name="__codelineno-8-30" href="#__codelineno-8-30"></a><span class="w">    </span>--output<span class="w"> </span>text<span class="k">)</span>
+<a id="__codelineno-8-31" name="__codelineno-8-31" href="#__codelineno-8-31"></a>
+<a id="__codelineno-8-32" name="__codelineno-8-32" href="#__codelineno-8-32"></a><span class="w">  </span>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>iam<span class="w"> </span>attach-role-policy<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-33" name="__codelineno-8-33" href="#__codelineno-8-33"></a><span class="w">    </span>--role-name<span class="w"> </span>ecsTaskExecutionRole<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-34" name="__codelineno-8-34" href="#__codelineno-8-34"></a><span class="w">    </span>--policy-arn<span class="w"> </span>arn:aws:iam::aws:policy/service-role/AmazonECSTaskExecutionRolePolicy
+<a id="__codelineno-8-35" name="__codelineno-8-35" href="#__codelineno-8-35"></a><span class="k">fi</span>
+<a id="__codelineno-8-36" name="__codelineno-8-36" href="#__codelineno-8-36"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"Task Execution Role ARN: </span><span class="nv">$EXECUTION_ROLE_ARN</span><span class="s2">"</span>
+<a id="__codelineno-8-37" name="__codelineno-8-37" href="#__codelineno-8-37"></a>
+<a id="__codelineno-8-38" name="__codelineno-8-38" href="#__codelineno-8-38"></a><span class="c1"># 创建日志组</span>
+<a id="__codelineno-8-39" name="__codelineno-8-39" href="#__codelineno-8-39"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>logs<span class="w"> </span>create-log-group<span class="w"> </span>--log-group-name<span class="w"> </span>/ecs/mcp-services<span class="w"> </span><span class="m">2</span>&gt;/dev/null<span class="w"> </span><span class="o">||</span><span class="w"> </span><span class="nb">true</span>
+<a id="__codelineno-8-40" name="__codelineno-8-40" href="#__codelineno-8-40"></a>
+<a id="__codelineno-8-41" name="__codelineno-8-41" href="#__codelineno-8-41"></a><span class="c1"># 注册任务定义</span>
+<a id="__codelineno-8-42" name="__codelineno-8-42" href="#__codelineno-8-42"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>ecs<span class="w"> </span>register-task-definition<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-43" name="__codelineno-8-43" href="#__codelineno-8-43"></a><span class="w">  </span>--cli-input-json<span class="w"> </span>file:///tmp/fetch-mcp-task.json<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-44" name="__codelineno-8-44" href="#__codelineno-8-44"></a><span class="w">  </span>--execution-role-arn<span class="w"> </span><span class="nv">$EXECUTION_ROLE_ARN</span>
+<a id="__codelineno-8-45" name="__codelineno-8-45" href="#__codelineno-8-45"></a>
+<a id="__codelineno-8-46" name="__codelineno-8-46" href="#__codelineno-8-46"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>ecs<span class="w"> </span>register-task-definition<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-47" name="__codelineno-8-47" href="#__codelineno-8-47"></a><span class="w">  </span>--cli-input-json<span class="w"> </span>file:///tmp/aws-doc-mcp-task.json<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-48" name="__codelineno-8-48" href="#__codelineno-8-48"></a><span class="w">  </span>--execution-role-arn<span class="w"> </span><span class="nv">$EXECUTION_ROLE_ARN</span>
+<a id="__codelineno-8-49" name="__codelineno-8-49" href="#__codelineno-8-49"></a>
+<a id="__codelineno-8-50" name="__codelineno-8-50" href="#__codelineno-8-50"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>ecs<span class="w"> </span>register-task-definition<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-51" name="__codelineno-8-51" href="#__codelineno-8-51"></a><span class="w">  </span>--cli-input-json<span class="w"> </span>file:///tmp/searxng-mcp-task.json<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-52" name="__codelineno-8-52" href="#__codelineno-8-52"></a><span class="w">  </span>--execution-role-arn<span class="w"> </span><span class="nv">$EXECUTION_ROLE_ARN</span>
+<a id="__codelineno-8-53" name="__codelineno-8-53" href="#__codelineno-8-53"></a>
+<a id="__codelineno-8-54" name="__codelineno-8-54" href="#__codelineno-8-54"></a><span class="c1"># 创建服务</span>
+<a id="__codelineno-8-55" name="__codelineno-8-55" href="#__codelineno-8-55"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>ecs<span class="w"> </span>create-service<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-56" name="__codelineno-8-56" href="#__codelineno-8-56"></a><span class="w">  </span>--cluster<span class="w"> </span><span class="nv">$CLUSTER_NAME</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-57" name="__codelineno-8-57" href="#__codelineno-8-57"></a><span class="w">  </span>--service-name<span class="w"> </span>fetch-mcp<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-58" name="__codelineno-8-58" href="#__codelineno-8-58"></a><span class="w">  </span>--task-definition<span class="w"> </span>fetch-mcp<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-59" name="__codelineno-8-59" href="#__codelineno-8-59"></a><span class="w">  </span>--desired-count<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-60" name="__codelineno-8-60" href="#__codelineno-8-60"></a><span class="w">  </span>--launch-type<span class="w"> </span>FARGATE<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-61" name="__codelineno-8-61" href="#__codelineno-8-61"></a><span class="w">  </span>--network-configuration<span class="w"> </span><span class="s2">"awsvpcConfiguration={subnets=[</span><span class="nv">$SUBNET1</span><span class="s2">,</span><span class="nv">$SUBNET2</span><span class="s2">],securityGroups=[</span><span class="nv">$SG_ID</span><span class="s2">],assignPublicIp=ENABLED}"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-62" name="__codelineno-8-62" href="#__codelineno-8-62"></a><span class="w">  </span>--load-balancers<span class="w"> </span><span class="s2">"targetGroupArn=</span><span class="nv">$FETCH_TG_ARN</span><span class="s2">,containerName=fetch-mcp,containerPort=8808"</span>
+<a id="__codelineno-8-63" name="__codelineno-8-63" href="#__codelineno-8-63"></a>
+<a id="__codelineno-8-64" name="__codelineno-8-64" href="#__codelineno-8-64"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>ecs<span class="w"> </span>create-service<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-65" name="__codelineno-8-65" href="#__codelineno-8-65"></a><span class="w">  </span>--cluster<span class="w"> </span><span class="nv">$CLUSTER_NAME</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-66" name="__codelineno-8-66" href="#__codelineno-8-66"></a><span class="w">  </span>--service-name<span class="w"> </span>aws-doc-mcp<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-67" name="__codelineno-8-67" href="#__codelineno-8-67"></a><span class="w">  </span>--task-definition<span class="w"> </span>aws-doc-mcp<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-68" name="__codelineno-8-68" href="#__codelineno-8-68"></a><span class="w">  </span>--desired-count<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-69" name="__codelineno-8-69" href="#__codelineno-8-69"></a><span class="w">  </span>--launch-type<span class="w"> </span>FARGATE<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-70" name="__codelineno-8-70" href="#__codelineno-8-70"></a><span class="w">  </span>--network-configuration<span class="w"> </span><span class="s2">"awsvpcConfiguration={subnets=[</span><span class="nv">$SUBNET1</span><span class="s2">,</span><span class="nv">$SUBNET2</span><span class="s2">],securityGroups=[</span><span class="nv">$SG_ID</span><span class="s2">],assignPublicIp=ENABLED}"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-71" name="__codelineno-8-71" href="#__codelineno-8-71"></a><span class="w">  </span>--load-balancers<span class="w"> </span><span class="s2">"targetGroupArn=</span><span class="nv">$AWS_DOC_TG_ARN</span><span class="s2">,containerName=aws-doc-mcp,containerPort=8809"</span>
+<a id="__codelineno-8-72" name="__codelineno-8-72" href="#__codelineno-8-72"></a>
+<a id="__codelineno-8-73" name="__codelineno-8-73" href="#__codelineno-8-73"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>ecs<span class="w"> </span>create-service<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-74" name="__codelineno-8-74" href="#__codelineno-8-74"></a><span class="w">  </span>--cluster<span class="w"> </span><span class="nv">$CLUSTER_NAME</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-75" name="__codelineno-8-75" href="#__codelineno-8-75"></a><span class="w">  </span>--service-name<span class="w"> </span>searxng-mcp<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-76" name="__codelineno-8-76" href="#__codelineno-8-76"></a><span class="w">  </span>--task-definition<span class="w"> </span>searxng-mcp<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-77" name="__codelineno-8-77" href="#__codelineno-8-77"></a><span class="w">  </span>--desired-count<span class="w"> </span><span class="m">1</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-78" name="__codelineno-8-78" href="#__codelineno-8-78"></a><span class="w">  </span>--launch-type<span class="w"> </span>FARGATE<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-79" name="__codelineno-8-79" href="#__codelineno-8-79"></a><span class="w">  </span>--network-configuration<span class="w"> </span><span class="s2">"awsvpcConfiguration={subnets=[</span><span class="nv">$SUBNET1</span><span class="s2">,</span><span class="nv">$SUBNET2</span><span class="s2">],securityGroups=[</span><span class="nv">$SG_ID</span><span class="s2">],assignPublicIp=ENABLED}"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-80" name="__codelineno-8-80" href="#__codelineno-8-80"></a><span class="w">  </span>--load-balancers<span class="w"> </span><span class="s2">"targetGroupArn=</span><span class="nv">$SEARXNG_TG_ARN</span><span class="s2">,containerName=searxng-mcp,containerPort=8810"</span>
 </code></pre></div>
 <h3 id="6">6. 验证部署<a class="headerlink" href="#6" title="Permanent link">¶</a></h3>
-<p>服务访问地址：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a><span class="c1"># 检查服务状态</span>
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>ecs<span class="w"> </span>describe-services<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a><span class="w">  </span>--cluster<span class="w"> </span><span class="nv">$CLUSTER_NAME</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a><span class="w">  </span>--services<span class="w"> </span>fetch-mcp<span class="w"> </span>aws-doc-mcp<span class="w"> </span>searxng-mcp<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-5" name="__codelineno-9-5" href="#__codelineno-9-5"></a><span class="w">  </span>--query<span class="w"> </span><span class="s1">'services[*].[serviceName,runningCount,desiredCount]'</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-9-6" name="__codelineno-9-6" href="#__codelineno-9-6"></a><span class="w">  </span>--output<span class="w"> </span>table
+<a id="__codelineno-9-7" name="__codelineno-9-7" href="#__codelineno-9-7"></a>
+<a id="__codelineno-9-8" name="__codelineno-9-8" href="#__codelineno-9-8"></a><span class="c1"># 获取 ALB DNS</span>
+<a id="__codelineno-9-9" name="__codelineno-9-9" href="#__codelineno-9-9"></a><span class="nb">echo</span><span class="w"> </span><span class="s2">"ALB DNS: </span><span class="nv">$ALB_DNS</span><span class="s2">"</span>
+</code></pre></div>
+<p>服务访问地址（通过 ALB port 80 path-based 路由）：</p>
 <ul>
-<li>fetch-mcp: <a href="http://fetch.ecs.yourdomain:8808/">http://fetch.ecs.yourdomain:8808/</a></li>
-<li>aws-doc-mcp: <a href="http://aws-doc.ecs.yourdomain:8809/">http://aws-doc.ecs.yourdomain:8809/</a></li>
-<li>searxng-mcp: <a href="http://searxng.ecs.yourdomain:8810/">http://searxng.ecs.yourdomain:8810/</a></li>
+<li>fetch-mcp: <code>http://&lt;ALB_DNS&gt;/sse</code></li>
+<li>aws-doc-mcp: <code>http://&lt;ALB_DNS&gt;/aws-doc/sse</code></li>
+<li>searxng-mcp: <code>http://&lt;ALB_DNS&gt;/searxng/sse</code></li>
 </ul>
+<h3 id="7">7. 清理资源<a class="headerlink" href="#7" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a><span class="c1"># 停止服务（将 desired-count 设为 0）</span>
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>ecs<span class="w"> </span>update-service<span class="w"> </span>--cluster<span class="w"> </span><span class="nv">$CLUSTER_NAME</span><span class="w"> </span>--service<span class="w"> </span>fetch-mcp<span class="w"> </span>--desired-count<span class="w"> </span><span class="m">0</span>
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>ecs<span class="w"> </span>update-service<span class="w"> </span>--cluster<span class="w"> </span><span class="nv">$CLUSTER_NAME</span><span class="w"> </span>--service<span class="w"> </span>aws-doc-mcp<span class="w"> </span>--desired-count<span class="w"> </span><span class="m">0</span>
+<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>ecs<span class="w"> </span>update-service<span class="w"> </span>--cluster<span class="w"> </span><span class="nv">$CLUSTER_NAME</span><span class="w"> </span>--service<span class="w"> </span>searxng-mcp<span class="w"> </span>--desired-count<span class="w"> </span><span class="m">0</span>
+<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>
+<a id="__codelineno-10-6" name="__codelineno-10-6" href="#__codelineno-10-6"></a><span class="c1"># 删除服务</span>
+<a id="__codelineno-10-7" name="__codelineno-10-7" href="#__codelineno-10-7"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>ecs<span class="w"> </span>delete-service<span class="w"> </span>--cluster<span class="w"> </span><span class="nv">$CLUSTER_NAME</span><span class="w"> </span>--service<span class="w"> </span>fetch-mcp
+<a id="__codelineno-10-8" name="__codelineno-10-8" href="#__codelineno-10-8"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>ecs<span class="w"> </span>delete-service<span class="w"> </span>--cluster<span class="w"> </span><span class="nv">$CLUSTER_NAME</span><span class="w"> </span>--service<span class="w"> </span>aws-doc-mcp
+<a id="__codelineno-10-9" name="__codelineno-10-9" href="#__codelineno-10-9"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>ecs<span class="w"> </span>delete-service<span class="w"> </span>--cluster<span class="w"> </span><span class="nv">$CLUSTER_NAME</span><span class="w"> </span>--service<span class="w"> </span>searxng-mcp
+<a id="__codelineno-10-10" name="__codelineno-10-10" href="#__codelineno-10-10"></a>
+<a id="__codelineno-10-11" name="__codelineno-10-11" href="#__codelineno-10-11"></a><span class="c1"># 删除集群</span>
+<a id="__codelineno-10-12" name="__codelineno-10-12" href="#__codelineno-10-12"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>ecs<span class="w"> </span>delete-cluster<span class="w"> </span>--cluster<span class="w"> </span><span class="nv">$CLUSTER_NAME</span>
+<a id="__codelineno-10-13" name="__codelineno-10-13" href="#__codelineno-10-13"></a>
+<a id="__codelineno-10-14" name="__codelineno-10-14" href="#__codelineno-10-14"></a><span class="c1"># 删除 ALB 和目标组</span>
+<a id="__codelineno-10-15" name="__codelineno-10-15" href="#__codelineno-10-15"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>elbv2<span class="w"> </span>delete-load-balancer<span class="w"> </span>--load-balancer-arn<span class="w"> </span><span class="nv">$ALB_ARN</span>
+<a id="__codelineno-10-16" name="__codelineno-10-16" href="#__codelineno-10-16"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>elbv2<span class="w"> </span>delete-target-group<span class="w"> </span>--target-group-arn<span class="w"> </span><span class="nv">$FETCH_TG_ARN</span>
+<a id="__codelineno-10-17" name="__codelineno-10-17" href="#__codelineno-10-17"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>elbv2<span class="w"> </span>delete-target-group<span class="w"> </span>--target-group-arn<span class="w"> </span><span class="nv">$AWS_DOC_TG_ARN</span>
+<a id="__codelineno-10-18" name="__codelineno-10-18" href="#__codelineno-10-18"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>elbv2<span class="w"> </span>delete-target-group<span class="w"> </span>--target-group-arn<span class="w"> </span><span class="nv">$SEARXNG_TG_ARN</span>
+<a id="__codelineno-10-19" name="__codelineno-10-19" href="#__codelineno-10-19"></a>
+<a id="__codelineno-10-20" name="__codelineno-10-20" href="#__codelineno-10-20"></a><span class="c1"># 删除安全组</span>
+<a id="__codelineno-10-21" name="__codelineno-10-21" href="#__codelineno-10-21"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>ec2<span class="w"> </span>delete-security-group<span class="w"> </span>--group-id<span class="w"> </span><span class="nv">$SG_ID</span>
+<a id="__codelineno-10-22" name="__codelineno-10-22" href="#__codelineno-10-22"></a>
+<a id="__codelineno-10-23" name="__codelineno-10-23" href="#__codelineno-10-23"></a><span class="c1"># 删除日志组</span>
+<a id="__codelineno-10-24" name="__codelineno-10-24" href="#__codelineno-10-24"></a>aws<span class="w"> </span>--profile<span class="w"> </span><span class="nv">$PROFILE</span><span class="w"> </span>--region<span class="w"> </span><span class="nv">$REGION</span><span class="w"> </span>logs<span class="w"> </span>delete-log-group<span class="w"> </span>--log-group-name<span class="w"> </span>/ecs/mcp-services
+</code></pre></div>
 <h2 id="reference">Reference<a class="headerlink" href="#reference" title="Permanent link">¶</a></h2>
-<p><a href="https://aws.amazon.com/solutions/guidance/deploying-model-context-protocol-servers-on-aws/">https://aws.amazon.com/solutions/guidance/deploying-model-context-protocol-servers-on-aws/</a></p>
+<ul>
+<li><a href="https://aws.amazon.com/solutions/guidance/deploying-model-context-protocol-servers-on-aws/">Deploying Model Context Protocol Servers on AWS</a></li>
+</ul>
 
 
 
@@ -9185,7 +9281,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="July 15, 2025 20:54:49 CST"><span class="timeago" datetime="2025-07-15T20:54:49+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="July 15, 2025 20:54:49 CST">2025-07-15</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="May 7, 2026 15:28:21 CST"><span class="timeago" datetime="2026-05-07T15:28:21+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="May 7, 2026 15:28:21 CST">2026-05-07</span>
   </span>
 
     
