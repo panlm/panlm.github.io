@@ -144,7 +144,7 @@ sudo docker compose up -d
 测试 API 调用：
 
 ```bash
-curl -s http://localhost:3000/v1/chat/completions \
+curl -s http://localhost:3000/claude-kiro-oauth/v1/chat/completions \
   -H "Content-Type: application/json" \
   -H "Authorization: Bearer <your-api-key>" \
   -d '{
@@ -157,11 +157,43 @@ curl -s http://localhost:3000/v1/chat/completions \
 
 ## API 端点
 
-| 协议        | 地址                                             |
-| --------- | ---------------------------------------------- |
-| OpenAI 兼容 | `http://localhost:3000/v1/chat/completions`    |
-| Claude 兼容 | `http://localhost:3000/v1/messages`            |
-| Web 管理界面  | `http://localhost:3000/`（密码：`<your-password>`） |
+由于使用 Kiro OAuth 作为 provider，URL 路径需要带 `claude-kiro-oauth` 前缀进行显式路由：
+
+| 协议        | 地址                                                          |
+| --------- | ----------------------------------------------------------- |
+| OpenAI 兼容 | `http://localhost:3000/claude-kiro-oauth/v1/chat/completions` |
+| Claude 兼容 | `http://localhost:3000/claude-kiro-oauth/v1/messages`         |
+| Web 管理界面  | `http://localhost:3000/`（密码：`<your-password>`）              |
+
+> **说明**：如果 `config.json` 中 `MODEL_PROVIDER` 已设为 `claude-kiro-oauth`，不带前缀的 `/v1/chat/completions` 也会默认走 Kiro OAuth。带前缀是显式路由，适合多 provider 共存场景。
+
+## Proxy 配置
+
+如果服务器无法直接访问 AWS OIDC 端点或其他外部服务，可以配置代理。
+
+在 `configs/config.json` 中添加以下字段：
+
+```json
+{
+    "PROXY_URL": "http://127.0.0.1:7890",
+    "PROXY_ENABLED_PROVIDERS": ["claude-kiro-oauth"]
+}
+```
+
+**支持的代理类型**：
+
+| 类型     | 格式示例                      |
+| ------ | ------------------------- |
+| HTTP   | `http://127.0.0.1:7890`   |
+| HTTPS  | `https://127.0.0.1:7890`  |
+| SOCKS5 | `socks5://127.0.0.1:1080` |
+
+**配置方式**：
+
+1. **配置文件**（推荐）：直接修改 `configs/config.json`，添加 `PROXY_URL` 和 `PROXY_ENABLED_PROVIDERS`
+2. **Web UI**：在管理界面的「配置」页面 → "Proxy Settings" 区域填写代理地址，勾选需要走代理的 provider
+
+> **注意**：`PROXY_ENABLED_PROVIDERS` 是一个数组，可以指定多个 provider 使用代理，例如 `["claude-kiro-oauth", "gemini-cli-oauth"]`。
 
 ## 可用模型
 
