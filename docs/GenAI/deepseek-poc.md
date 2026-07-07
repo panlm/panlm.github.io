@@ -1,11 +1,12 @@
 ---
 title: deepseek-poc
 description: Deepseek POC
-created: 2025-02-20 08:45:09.344
+created: 2025-02-20 08:45:09.344000
 last_modified: 2025-02-20
 tags:
-  - llm/deepseek
+- llm/deepseek
 status: myblog
+permalink: git-mkdocs/gen-ai/deepseek-poc
 ---
 
 # deepseek-poc

@@ -1,6 +1,7 @@
 ---
 last_modified: 2025-02-20
 number headings: first-level 2, max 3, 1.1, auto
+permalink: git-mkdocs/gen-ai/index
 ---
 
 # GenAI
@@ -30,7 +31,3 @@ number headings: first-level 2, max 3, 1.1, auto
 - (2025-02-20) [deepseek-poc](deepseek-poc): Deepseek POC
 - (2024-04-29) [llm-llama3](llm-llama2-llama3): llama info
 <-->
-
-
-
-

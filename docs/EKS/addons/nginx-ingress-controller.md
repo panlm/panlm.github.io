@@ -1,10 +1,11 @@
 ---
 title: nginx-ingress-controller
 description: nginx-ingress-controller
-created: 2023-02-11 13:55:31.445
+created: 2023-02-11 13:55:31.445000
 last_modified: 2023-12-31
 tags:
-  - kubernetes/ingress
+- kubernetes/ingress
+permalink: git-mkdocs/eks/addons/nginx-ingress-controller
 ---
 
 # nginx-ingress-controller
@@ -28,5 +29,3 @@ tags:
 ## compatibility
 
 - https://github.com/kubernetes/ingress-nginx#supported-versions-table
-
-

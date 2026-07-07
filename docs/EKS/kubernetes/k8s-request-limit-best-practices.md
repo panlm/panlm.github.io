@@ -1,10 +1,11 @@
 ---
 title: Kubernetes Best Practices - Resource Requests and Limits
 description: Kubernetes 资源请求和限制的最佳实践
-created: 2024-08-09 09:04:48.377
+created: 2024-08-09 09:04:48.377000
 last_modified: 2024-08-09
 tags:
-  - kubernetes
+- kubernetes
+permalink: git-mkdocs/eks/kubernetes/k8s-request-limit-best-practices
 ---
 
 # k8s-request-limit-best-practices
@@ -28,6 +29,3 @@ The CPU resource is measured in _CPU_ units. One CPU, in Kubernetes, is equiva
 -   1 GCP Core
 -   1 Azure vCore
 -   1 Hyperthread on a bare-metal Intel processor with Hyperthreading
-
-
-

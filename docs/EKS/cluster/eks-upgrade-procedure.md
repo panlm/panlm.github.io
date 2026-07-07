@@ -1,10 +1,11 @@
 ---
 title: EKS Upgrade Procedure
 description: EKS 集群升级
-created: 2022-03-29 10:30:16.649
+created: 2022-03-29 10:30:16.649000
 last_modified: 2026-02-10
 tags:
-  - aws/container/eks
+- aws/container/eks
+permalink: git-mkdocs/eks/cluster/eks-upgrade-procedure
 ---
 
 # EKS Upgrade Procedure
@@ -90,6 +91,3 @@ A: 集群升级的本质是将各个相关组件**替换为期望的新版本**�
 -   AWS官方文档: [Amazon EKS Kubernetes versions](https://docs.aws.amazon.com/eks/latest/userguide/kubernetes-versions.html)
 -   AWS官方文档: [Updating a cluster](https://docs.aws.amazon.com/eks/latest/userguide/update-cluster.html)
 -   EKS最佳实践手册: [Handling Cluster Upgrades](https://aws.github.io/aws-eks-best-practices/reliability/docs/controlplane/#handling-cluster-upgrades)
-
-
-

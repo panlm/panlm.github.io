@@ -1,10 +1,11 @@
 ---
 title: argocd
 description: gitops 工具
-created: 2022-08-07 19:24:34.481
+created: 2022-08-07 19:24:34.481000
 last_modified: 2024-01-13
 tags:
-  - gitops/argo
+- gitops/argo
+permalink: git-mkdocs/eks/solutions/gitops/argocd-lab
 ---
 
 # argocd-lab
@@ -131,9 +132,3 @@ argocd app sync apps
 
 ## refer
 - [[argocd-cmd]]
-
-
-
-
-
-

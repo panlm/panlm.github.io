@@ -1,10 +1,11 @@
 ---
 title: eks-addons-vpc-cni
 description: eks-addons-vpc-cni
-created: 2023-07-31 08:44:28.400
+created: 2023-07-31 08:44:28.400000
 last_modified: 2024-04-18
 tags:
-  - aws/container/eks
+- aws/container/eks
+permalink: git-mkdocs/eks/addons/eks-addons-vpc-cni
 ---
 
 # eks-addons-vpc-cni
@@ -81,9 +82,3 @@ _the number of ENIs for the instance type × (the number of IPs per ENI - 1)) + 
 - [[security-group-for-pod]]
 	- [[../solutions/network/enable-sg-on-pod]]
 - [[upgrade-vpc-cni]]
-
-
-
-
-
-

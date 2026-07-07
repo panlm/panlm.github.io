@@ -1,10 +1,11 @@
 ---
 title: route53
 description: 常用命令
-created: 2022-09-20 09:02:35.112
+created: 2022-09-20 09:02:35.112000
 last_modified: 2024-03-13
 tags:
-  - aws/network/route53
+- aws/network/route53
+permalink: git-mkdocs/cli/awscli/route53-cmd
 ---
 
 # route53-cmd
@@ -105,6 +106,3 @@ aws route53 change-resource-record-sets \
 - https://serverfault.com/questions/815841/multiple-txt-fields-for-same-subdomain?rq=1
 - https://serverfault.com/questions/616407/tried-to-create-2-record-set-type-txt-in-route53
 - https://www.learnaws.org/2022/02/04/aws-cli-route53-guide/
-
-
-

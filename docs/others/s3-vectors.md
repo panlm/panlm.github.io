@@ -1,11 +1,12 @@
 ---
 title: s3-vectors
 description: S3 Vectors
-created: 2026-02-04 15:36:35.971
+created: 2026-02-04 15:36:35.971000
 last_modified: 2026-02-04
 tags:
-  - draft
-  - aws/analytics/opensearch
+- draft
+- aws/analytics/opensearch
+permalink: git-mkdocs/others/s3-vectors
 ---
 
 # s3-vectors
@@ -50,6 +51,3 @@ https://catalog.workshops.aws/s3vectors
 混合能力：兼具向量搜索和传统搜索的优势。向量存储在 S3 Vectors 中，元数据存储在 OpenSearch 中
 可扩展性：元数据和向量均可自动扩缩容，具备与 Amazon S3 相同的弹性和持久性
 标准 API：使用熟悉的 OpenSearch 操作和工具——无需学习新的查询语言
-
-
-

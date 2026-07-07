@@ -1,13 +1,14 @@
 ---
 title: 跨 VPC 暴露内部服务的 PrivateLink 架构方案
 description: 使用 AWS PrivateLink 实现 DMZ VPC 到内部 VPC 的安全流量转发
-created: 2026-01-24 20:58:16.024
+created: 2026-01-24 20:58:16.024000
 last_modified: 2026-01-24
 tags:
-  - aws/network/privatelink
+- aws/network/privatelink
 status: myblog
 share_link: https://notes-share.aws.panlm.click/poxhzm60
-share_updated: 2026-01-25T10:34:42+08:00
+share_updated: 2026-01-25 10:34:42+08:00
+permalink: git-mkdocs/others/network/use-vpc-endpoint-service-to-expose-non-rfc1918-cidr-cross-vpc
 ---
 
 # 解决 Target Group 中添加内部服务 IP 时遇到 Unsupported IP 的错误
@@ -413,6 +414,3 @@ aws elbv2 describe-target-health --target-group-arn $DMZ_TG_ARN
 # 测试访问
 curl http://$EXTERNAL_ALB_DNS
 ```
-
-
-

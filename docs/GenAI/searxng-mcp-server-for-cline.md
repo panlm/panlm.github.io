@@ -1,11 +1,12 @@
 ---
 title: Configure SearxNG MCP Server in Cline
 description: 在 Cline 中配置 SearxNG MCP Server 实现搜索功能
-created: 2025-04-08 21:21:49.447
+created: 2025-04-08 21:21:49.447000
 last_modified: 2025-04-16
 tags:
-  - llm/mcp
+- llm/mcp
 status: myblog
+permalink: git-mkdocs/gen-ai/searxng-mcp-server-for-cline
 ---
 
 # SearxNG MCP Server for Cline
@@ -142,4 +143,3 @@ https://docs.searxng.org/admin/installation-searxng.html#configuration
 ## alternative 
 
 - https://github.com/exa-labs/exa-mcp-server
-

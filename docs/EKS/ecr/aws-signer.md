@@ -1,13 +1,14 @@
 ---
 title: aws-signer
-description: 
-created: 2024-08-06 08:58:44.376
+description: null
+created: 2024-08-06 08:58:44.376000
 last_modified: 2024-08-06
 tags:
-  - draft
-  - aws/security/signer
-  - aws/NotInCN
-  - aws/container
+- draft
+- aws/security/signer
+- aws/NotInCN
+- aws/container
+permalink: git-mkdocs/eks/ecr/aws-signer
 ---
 
 # aws-signer
@@ -33,9 +34,3 @@ notation sign 123456789012.dkr.ecr.us-west-2.amazonaws.com/nginx:latest \
 
 ## not in china region
 N/A
-
-
-
-
-
-

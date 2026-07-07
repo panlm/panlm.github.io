@@ -1,10 +1,11 @@
 ---
 title: eks-addons-kube-proxy
 description: eks-addons-kube-proxy
-created: 2023-07-31 14:05:39.381
-last_modified: 2023-07-31 14:05:39.381
-tags: 
-- aws/container/eks 
+created: 2023-07-31 14:05:39.381000
+last_modified: 2023-07-31 14:05:39.381000
+tags:
+- aws/container/eks
+permalink: git-mkdocs/eks/addons/eks-addons-kube-proxy
 ---
 
 # eks-addons-kube-proxy
@@ -131,7 +132,3 @@ References:
 [3] cilium/k8s-iptables-diagram: Diagram of Kubernetes / kube-proxy iptables rules architecture - https://github.com/cilium/k8s-iptables-diagram
 [4] kube-proxy源代码分析 - https://www.cnblogs.com/yjbjingcha/p/8429979.html
 [5] The Kubernetes Networking Guide - https://www.tkng.io/services/clusterip/dataplane/iptables/
-
-
-
-

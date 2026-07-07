@@ -1,10 +1,11 @@
 ---
 title: Create Private Only EKS Cluster
 description: 在已有 VPC 中创建私有访问的 EKS 集群
-created: 2022-03-24 11:20:13.594
+created: 2022-03-24 11:20:13.594000
 last_modified: 2024-03-27
 tags:
-  - aws/container/eks
+- aws/container/eks
+permalink: git-mkdocs/eks/cluster/eks-private-access-cluster
 ---
 
 # Create Private Only EKS Cluster
@@ -264,4 +265,3 @@ eksctl utils write-kubeconfig --cluster ekscluster1
 - [[eks-public-access-cluster]]
 - [[eks-nodegroup]]
 - [[eksctl-sample-priv-addons]]
-

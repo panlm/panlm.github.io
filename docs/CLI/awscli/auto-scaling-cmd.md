@@ -1,11 +1,12 @@
 ---
 title: auto-scaling-group
 description: 常用命令
-created: 2022-06-02 15:49:26.940
+created: 2022-06-02 15:49:26.940000
 last_modified: 2024-06-13
 tags:
-  - aws/cmd
-  - aws/compute/autoscaling
+- aws/cmd
+- aws/compute/autoscaling
+permalink: git-mkdocs/cli/awscli/auto-scaling-cmd
 ---
 
 # auto-scaling-group-cmd
@@ -211,7 +212,3 @@ aws launchconfig
 aws autoscaling delete-auto-scaling-group --auto-scaling-group-name AutoScalingGroup --force-delete
 
 ```
-
-
-
-

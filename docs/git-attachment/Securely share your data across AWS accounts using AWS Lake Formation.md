@@ -1,12 +1,13 @@
 ---
 title: Securely share your data across AWS accounts using AWS Lake Formation
-description: 
+description: null
 created: 2024-04-28T13:25:37 (UTC +08:00)
 last_modified: 2024-04-28
 source: https://aws.amazon.com/blogs/big-data/securely-share-your-data-across-aws-accounts-using-aws-lake-formation/
-author: 
+author: null
 tags:
-  - aws/analytics/lake-formation
+- aws/analytics/lake-formation
+permalink: git-mkdocs/git-attachment/securely-share-your-data-across-aws-accounts-using-aws-lake-formation
 ---
 
 # Securely share your data across AWS accounts using AWS Lake Formation | AWS Big Data Blog
@@ -40,4 +41,3 @@ We recommend using named resources if the data lake administrator prefers granti
 When you use the named resource method to grant Lake Formation permissions on a Data Catalog resource to an external account, Lake Formation uses [AWS Resource Access Manager](http://aws.amazon.com/ram) (AWS RAM) to share the resource.
 
 Now, let’s take a closer look at how to configure cross-account access with these two options. We refer to the account that has the source table as the producer account, and refer to the account that needs access to the source table as consumer account.
-

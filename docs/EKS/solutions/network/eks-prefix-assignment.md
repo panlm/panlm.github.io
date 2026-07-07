@@ -1,10 +1,11 @@
 ---
 title: eks-prefix-assignment
-description: 
-created: 2022-05-07 09:54:31.890
-last_modified: 2023-10-05 12:33:08.924
+description: null
+created: 2022-05-07 09:54:31.890000
+last_modified: 2023-10-05 12:33:08.924000
 tags:
-  - aws/container/eks
+- aws/container/eks
+permalink: git-mkdocs/eks/solutions/network/eks-prefix-assignment
 ---
 
 # prefix-assignment
@@ -22,7 +23,3 @@ kubectl describe ds aws-node -n kube-system |grep -i PREFIX
 kubectl set env daemonset aws-node -n kube-system ENABLE_PREFIX_DELEGATION=true
 
 ```
-
-
-
-

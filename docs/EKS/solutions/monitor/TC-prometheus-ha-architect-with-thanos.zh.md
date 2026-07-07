@@ -1,13 +1,14 @@
 ---
 title: Building Prometheus HA Architect with Thanos
 description: 用 Thanos 解决 Prometheus 在多集群大规模环境下的高可用性、可扩展性限制
-created: 2023-11-09 08:41:02.494
+created: 2023-11-09 08:41:02.494000
 last_modified: 2024-02-22
 status: deprecated
 tags:
-  - kubernetes
-  - aws/container/eks
-  - prometheus
+- kubernetes
+- aws/container/eks
+- prometheus
+permalink: git-mkdocs/eks/solutions/monitor/tc-prometheus-ha-architect-with-thanos.zh
 ---
 
 !!! warning "This pages has been obseleted."
@@ -259,5 +260,3 @@ Prometheus 是一款开源的监控和报警工具，专为容器化和云原生
     - download s3 files for down-samplings and compact continually
     - using EBS instead of EFS for cost saving
     - need s3 gateway for internal traffic due to large mount of data transfer
-
-

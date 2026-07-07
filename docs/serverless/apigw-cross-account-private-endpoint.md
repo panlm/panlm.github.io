@@ -1,10 +1,11 @@
 ---
 title: Account Private REST API Cross-account
 description: 跨账号访问私有 API
-created: 2023-03-05 22:05:10.532
+created: 2023-03-05 22:05:10.532000
 last_modified: 2023-03-05
 tags:
-  - aws/serverless/api-gateway
+- aws/serverless/api-gateway
+permalink: git-mkdocs/serverless/apigw-cross-account-private-endpoint
 ---
 
 # How can I access an API Gateway private REST API in another AWS account using an interface VPC endpoint
@@ -107,6 +108,3 @@ tags:
 
 ## refer
 - https://docs.aws.amazon.com/apigateway/latest/developerguide/apigateway-authorization-flow.html
-
-
-

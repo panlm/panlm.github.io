@@ -8,6 +8,7 @@ tags:
 - aws-cn
 - devops-agent
 - comparison
+permalink: git-mkdocs/gen-ai/agent-toolkit-for-aws-产品对比与关系梳理
 ---
 
 # Agent Toolkit for AWS 产品对比与关系梳理

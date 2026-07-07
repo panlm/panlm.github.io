@@ -1,10 +1,11 @@
 ---
 title: WA-可靠性-Reliability-202310-Summary
-description: 
-created: 2022-02-10 23:14:12.028
+description: null
+created: 2022-02-10 23:14:12.028000
 last_modified: 2024-01-22
 tags:
-  - aws/well-architected
+- aws/well-architected
+permalink: git-mkdocs/others/well-architected/wa-可靠性-reliability-202310-summary
 ---
 
 ## 设计原则

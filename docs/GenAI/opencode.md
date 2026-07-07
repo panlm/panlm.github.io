@@ -1,10 +1,11 @@
 ---
 title: opencode
 description: opencode
-created: 2026-01-08 09:02:24.499
+created: 2026-01-08 09:02:24.499000
 last_modified: 2026-01-08
-tags: 
-  - draft
+tags:
+- draft
+permalink: git-mkdocs/gen-ai/opencode
 ---
 
 # opencode
@@ -62,7 +63,3 @@ export CONTEXT7_API_KEY=ctx7sk-xxx
   }
 }
 ```
-
-
-
-

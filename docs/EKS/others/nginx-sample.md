@@ -1,10 +1,11 @@
 ---
 title: nginx sample
-created: 2021-07-01T04:49:27.035Z
+created: 2021-07-01 04:49:27.035000+00:00
 last_modified: 2025-05-01
 tags:
-  - nginx
-  - kubernetes
+- nginx
+- kubernetes
+permalink: git-mkdocs/eks/others/nginx-sample
 ---
 
 # nginx sample
@@ -231,4 +232,3 @@ spec:
               number: 80
 
 ```
-

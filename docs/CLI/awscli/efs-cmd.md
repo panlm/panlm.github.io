@@ -1,11 +1,12 @@
 ---
 title: efs
 description: 1/ 在默认 vpc 中创建 efs
-created: 2023-02-24 08:03:38.967
+created: 2023-02-24 08:03:38.967000
 last_modified: 2024-02-20
 tags:
-  - aws/cmd
-  - aws/storage/efs
+- aws/cmd
+- aws/storage/efs
+permalink: git-mkdocs/cli/awscli/efs-cmd
 ---
 
 # efs-cmd
@@ -63,4 +64,3 @@ another example: [[../../EKS/addons/efs-csi#create-efs-]]
 
 ## refer
 - https://repost.aws/knowledge-center/efs-mount-automount-unmount-steps
-

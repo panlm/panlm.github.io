@@ -1,11 +1,12 @@
 ---
 title: EKS Access API
 description: eks-access-api
-created: 2024-01-08 08:35:17.895
+created: 2024-01-08 08:35:17.895000
 last_modified: 2024-02-16
 tags:
-  - aws/container/eks
-  - aws/security/iam
+- aws/container/eks
+- aws/security/iam
+permalink: git-mkdocs/eks/solutions/security/eks-access-api
 ---
 
 # EKS Access API
@@ -61,4 +62,3 @@ aws eks delete-access-entry --cluster-name ${CLUSTER_NAME} \
 https://www.wiz.io/blog/new-attack-vectors-emerge-via-recent-eks-access-entries-and-pod-identity-features
 
 ![[attachments/eks-access-api/IMG-eks-access-api.png]]
-

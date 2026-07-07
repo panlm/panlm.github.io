@@ -1,12 +1,13 @@
 ---
 title: Setup Cloud9 for EKS
 description: 使用脚本完成实验环境初始化
-created: 2022-05-21 12:46:05.435
+created: 2022-05-21 12:46:05.435000
 last_modified: 2024-02-11
 status: myblog
 tags:
-  - aws/container/eks
-  - aws/cloud9
+- aws/container/eks
+- aws/cloud9
+permalink: git-mkdocs/cloud9/setup-cloud9-for-eks
 ---
 
 # Setup Cloud9 for EKS
@@ -114,5 +115,3 @@ aws sts get-caller-identity
 
 - https://docs.amazonaws.cn/en_us/eks/latest/userguide/install-aws-iam-authenticator.html
 - [[switch-role-to-create-dedicate-cloud9]]
-
-

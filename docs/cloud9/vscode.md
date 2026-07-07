@@ -1,11 +1,12 @@
 ---
 title: CodeServer
 description: Using code-server on EC2 instead of Cloud9 due to it has been deprecated
-created: 2024-08-19 09:36:24.009
+created: 2024-08-19 09:36:24.009000
 last_modified: 2025-05-20
 status: myblog
 tags:
-  - draft
+- draft
+permalink: git-mkdocs/cloud9/vscode
 ---
 
 # vscode
@@ -170,5 +171,3 @@ http://public-ip-address:8080/?tkn=token-string
 
 ### ~~add basic auth~~
 - refer: [[../others/network/caddy#basic-http-auth-|basic auth]]
-
-

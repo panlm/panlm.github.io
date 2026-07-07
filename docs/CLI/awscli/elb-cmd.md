@@ -1,11 +1,12 @@
 ---
 title: elb
 description: 常用命令
-created: 2022-09-20 16:10:45.855
+created: 2022-09-20 16:10:45.855000
 last_modified: 2023-12-07
 tags:
-  - aws/network/elb
-  - aws/cmd
+- aws/network/elb
+- aws/cmd
+permalink: git-mkdocs/cli/awscli/elb-cmd
 ---
 
 # elb-cmd
@@ -294,7 +295,3 @@ done
 
 ## refer
 - https://cloudaffaire.com/network-load-balancer-target-group-health-checks/
-
-
-
-

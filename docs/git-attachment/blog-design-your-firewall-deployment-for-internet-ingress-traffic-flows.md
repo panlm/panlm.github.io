@@ -1,13 +1,14 @@
 ---
 title: Design your firewall deployment for Internet ingress traffic flows
-description: 
-created: 2022-05-26 07:45:20.570
+description: null
+created: 2022-05-26 07:45:20.570000
 last_modified: 2024-03-17
 tags:
-  - aws/network/nfw
-  - aws/network/gwlb
-  - aws/security/waf
-  - aws/network/elb
+- aws/network/nfw
+- aws/network/gwlb
+- aws/security/waf
+- aws/network/elb
+permalink: git-mkdocs/git-attachment/blog-design-your-firewall-deployment-for-internet-ingress-traffic-flows
 ---
 
 # Design your firewall deployment for Internet ingress traffic flows
@@ -72,7 +73,3 @@ The client IP preservation depends on the type of internet-facing ELB you use. N
 
 centralized
 ![[blog-design-your-firewall-deployment-for-internet-ingress-traffic-flows-png-8.png]]
-
-
-
-

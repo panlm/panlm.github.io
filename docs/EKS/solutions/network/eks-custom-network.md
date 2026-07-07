@@ -1,11 +1,12 @@
 ---
 title: eks-custom-network
 description: 可以解决子网地址段耗尽的问题
-created: 2023-08-21 17:56:37.517
+created: 2023-08-21 17:56:37.517000
 last_modified: 2024-03-18
 tags:
-  - aws/container/eks
-  - kubernetes/cni
+- aws/container/eks
+- kubernetes/cni
+permalink: git-mkdocs/eks/solutions/network/eks-custom-network
 ---
 
 # eks-custom-network-lab
@@ -126,8 +127,3 @@ kubectl apply -f pod-ubuntu1.yaml
 ```
 
 ^hennaq
-
-
-
-
-

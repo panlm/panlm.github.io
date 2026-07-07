@@ -1,6 +1,7 @@
 ---
 last_modified: 2024-01-13
 number headings: first-level 2, max 3, 1.1, auto
+permalink: git-mkdocs/others/index
 ---
 
 # Others
@@ -65,6 +66,3 @@ and  (!"git/git-mkdocs/others/network")
 and  (!"git/git-mkdocs/others/well-architected") 
 and  (!"git/git-mkdocs/others/windows")
 ```
-
-
-

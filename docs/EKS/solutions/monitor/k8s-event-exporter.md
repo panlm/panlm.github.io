@@ -1,12 +1,13 @@
 ---
 title: kubernetes events exporter
-description: 
-created: 2022-10-31 19:46:08.588
+description: null
+created: 2022-10-31 19:46:08.588000
 last_modified: 2024-08-06
 tags:
-  - kubernetes
-  - aws-containers-summit-2022q4
-  - aws/container/eks
+- kubernetes
+- aws-containers-summit-2022q4
+- aws/container/eks
+permalink: git-mkdocs/eks/solutions/monitor/k8s-event-exporter
 ---
 
 # kubernetes events exporter
@@ -84,5 +85,3 @@ config:
           - receiver: "dump"
 ...
 ```
-
-

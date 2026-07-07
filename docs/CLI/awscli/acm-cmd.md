@@ -1,11 +1,12 @@
 ---
 title: acm
 description: 常用命令
-created: 2023-03-15 11:58:12.994
+created: 2023-03-15 11:58:12.994000
 last_modified: 2024-02-05
 tags:
-  - aws/cmd
-  - aws/security/acm
+- aws/cmd
+- aws/security/acm
+permalink: git-mkdocs/cli/awscli/acm-cmd
 ---
 
 # acm-cmd
@@ -102,5 +103,3 @@ echo $DOMAIN_NAME
 CERTIFICATE_ARN=$(aws acm list-certificates --query 'CertificateSummaryList[?DomainName==`*.'"${DOMAIN_NAME}"'`].CertificateArn' --output text)
 
 ```
-
-

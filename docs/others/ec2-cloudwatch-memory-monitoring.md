@@ -1,11 +1,12 @@
 ---
 title: Use CloudWatch Agent to Collector EC2 Memory Metrics
 description: 使用 AWS CloudWatch Agent 监控 EC2 实例内存
-created: 2025-10-31 16:34:59.481
+created: 2025-10-31 16:34:59.481000
 last_modified: 2025-10-31
 tags:
-  - draft
-  - aws/mgmt/cloudwatch
+- draft
+- aws/mgmt/cloudwatch
+permalink: git-mkdocs/others/ec2-cloudwatch-memory-monitoring
 ---
 
 # 使用 AWS CloudWatch Agent 监控 EC2 实例内存

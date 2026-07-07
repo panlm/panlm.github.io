@@ -1,11 +1,12 @@
 ---
 title: Cert Manager
 description: 证书管理插件
-created: 2023-07-31 15:36:34.121
+created: 2023-07-31 15:36:34.121000
 last_modified: 2024-04-02
 tags:
-  - kubernetes
-  - aws/container/eks
+- kubernetes
+- aws/container/eks
+permalink: git-mkdocs/eks/addons/cert-manager
 ---
 
 # Cert Manager
@@ -151,5 +152,3 @@ EOF
 https://cert-manager.io/docs/releases/
 
 ![[../../git-attachment/cert-manager-png-1.png]]
-
-

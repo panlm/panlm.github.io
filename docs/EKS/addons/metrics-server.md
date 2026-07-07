@@ -1,11 +1,12 @@
 ---
 title: Metrics Server
 description: EKS 集群中用于弹性扩展使用的指标服务
-created: 2022-07-04 13:54:12.092
+created: 2022-07-04 13:54:12.092000
 last_modified: 2024-03-29
 tags:
-  - aws/container/eks
-  - kubernetes
+- aws/container/eks
+- kubernetes
+permalink: git-mkdocs/eks/addons/metrics-server
 ---
 
 # Metrics Server
@@ -42,6 +43,3 @@ kubectl get deployment metrics-server -n kube-system
 
 ## alternative 
 - [[prometheus-adapter]]
-
-
-

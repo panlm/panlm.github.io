@@ -1,11 +1,12 @@
 ---
 title: Create EKS Cluster with Terraform
 description: 使用 Terraform 创建 EKS 集群
-created: 2023-06-30 15:02:19.833
+created: 2023-06-30 15:02:19.833000
 last_modified: 2024-02-21
 tags:
-  - aws/container/eks
-  - terraform
+- aws/container/eks
+- terraform
+permalink: git-mkdocs/eks/cluster/eks-cluster-with-terraform
 ---
 
 # Create EKS Cluster with Terraform
@@ -87,6 +88,3 @@ terraform apply -auto-approve
 ## refer
 - [[eks-blueprints-blue-green-upgrade]]
 - [[../../../../../helm-in-terraform|helm-in-terraform]]
-
-
-

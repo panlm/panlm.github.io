@@ -1,11 +1,12 @@
 ---
 title: aws-for-fluent-bit
-description: 
-created: 2022-07-22 10:28:26.502
+description: null
+created: 2022-07-22 10:28:26.502000
 last_modified: 2024-04-13
 tags:
-  - kubernetes
-  - aws/container/eks
+- kubernetes
+- aws/container/eks
+permalink: git-mkdocs/eks/addons/aws-for-fluent-bit
 ---
 
 # aws-for-fluent-bit
@@ -36,5 +37,3 @@ aws eks describe-addon-configuration \
 
 ## refer
 [[../solutions/logging/eks-loggroup-description|eks-loggroup-description]]
-
-

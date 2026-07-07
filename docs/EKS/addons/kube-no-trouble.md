@@ -1,10 +1,11 @@
 ---
 title: kube-no-trouble
 description: Kubernetes 升级小工具
-created: 2023-06-23 11:18:10.512
+created: 2023-06-23 11:18:10.512000
 last_modified: 2024-01-13
 tags:
-  - kubernetes
+- kubernetes
+permalink: git-mkdocs/eks/addons/kube-no-trouble
 ---
 
 # kube-no-trouble
@@ -30,6 +31,3 @@ kubent -t 1.25
 ### windows
 
 - https://github.com/doitintl/kube-no-trouble/releases/download/nightly-0.7.0-53-g4fa4920/kubent-nightly-0.7.0-53-g4fa4920-windows-amd64.tar.gz
-
-
-

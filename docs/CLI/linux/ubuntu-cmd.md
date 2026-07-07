@@ -1,10 +1,11 @@
 ---
 title: ubuntu
-description: 
-created: 2023-01-23 13:08:13.012
+description: null
+created: 2023-01-23 13:08:13.012000
 last_modified: 2024-02-09
 tags:
-  - ubuntu
+- ubuntu
+permalink: git-mkdocs/cli/linux/ubuntu-cmd
 ---
 
 ## install missing kernel module
@@ -55,5 +56,3 @@ sudo apt-get install build-essential
 
 ## install docker
 - [[git/git-mkdocs/CLI/linux/docker-cmd#install-]]
-
-

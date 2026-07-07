@@ -1,11 +1,12 @@
 ---
 title: EBS CSI on EKS
 description: 使用 EBS 作为 Pod 持久化存储
-created: 2022-06-24 14:41:33.643
+created: 2022-06-24 14:41:33.643000
 last_modified: 2024-03-27
 tags:
-  - aws/storage/ebs
-  - aws/container/eks
+- aws/storage/ebs
+- aws/container/eks
+permalink: git-mkdocs/eks/addons/ebs-csi
 ---
 
 # EBS CSI on EKS
@@ -167,5 +168,3 @@ k logs -f deploy/ebs-csi-controller csi-provisioner -n kube-system
 - csi-snapshotter 
 - csi-resizer 
 - liveness-probe
-
-

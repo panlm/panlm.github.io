@@ -1,12 +1,13 @@
 ---
 title: appmesh-workshop-eks
 description: appmesh workshop
-created: 2023-01-06 12:22:19.360
+created: 2023-01-06 12:22:19.360000
 last_modified: 2024-04-23
 status: deprecated
 tags:
-  - aws/container/appmesh
-  - aws/container/eks
+- aws/container/appmesh
+- aws/container/eks
+permalink: git-mkdocs/eks/solutions/appmesh/appmesh-workshop-eks
 ---
 
 # appmesh-workshop-eks
@@ -123,5 +124,3 @@ cd aws-app-mesh-examples/walkthroughs/howto-k8s-http2/
 ## refer
 
 [[automated-canary-deployment-using-flagger]]
-
-

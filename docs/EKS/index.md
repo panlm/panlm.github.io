@@ -1,6 +1,7 @@
 ---
 last_modified: 2024-01-13
 number headings: first-level 2, max 3, 1.1, auto
+permalink: git-mkdocs/eks/index
 ---
 
 # Container
@@ -126,5 +127,3 @@ number headings: first-level 2, max 3, 1.1, auto
 - [aws-signer](aws-signer): 
 - [Enable scan on push in ECR and send notification to SNS](ecr-scan-on-push-notification-sns): 启用 ECR 的 Scan on push 之后，自动将扫描结果中 CRITICAL 的信息发送到目标 SNS 告警
 <-->
-
-

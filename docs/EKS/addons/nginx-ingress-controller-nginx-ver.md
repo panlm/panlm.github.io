@@ -1,12 +1,13 @@
 ---
 title: nginx-ingress-controller-nginx-ver
 description: nginx-ingress-controller-nginx-ver
-created: 2022-08-28 09:40:48.305
-last_modified: 2022-08-28 09:40:48.305
+created: 2022-08-28 09:40:48.305000
+last_modified: 2022-08-28 09:40:48.305000
 tags:
-  - aws/container/eks
-  - kubernetes/ingress
-  - nginx
+- aws/container/eks
+- kubernetes/ingress
+- nginx
+permalink: git-mkdocs/eks/addons/nginx-ingress-controller-nginx-ver
 ---
 
 # nginx-ingress-controller-nginx-version
@@ -43,7 +44,3 @@ helm install my-release .
 
 
 ```
-
-
-
-

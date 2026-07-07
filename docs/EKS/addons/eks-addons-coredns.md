@@ -1,10 +1,11 @@
 ---
 title: eks-addons-coredns
 description: eks-addons-coredns
-created: 2023-07-31 08:53:12.492
-last_modified: 2023-07-31 08:53:12.492
-tags: 
-- aws/container/eks 
+created: 2023-07-31 08:53:12.492000
+last_modified: 2023-07-31 08:53:12.492000
+tags:
+- aws/container/eks
+permalink: git-mkdocs/eks/addons/eks-addons-coredns
 ---
 
 # eks-addons-coredns
@@ -56,4 +57,3 @@ select `PRESERVE`
 ## refer
 
 - https://github.com/coredns/deployment/blob/master/kubernetes/Upgrading_CoreDNS.md
-

@@ -1,11 +1,12 @@
 ---
 title: flux
 description: gitops 工具
-created: 2022-04-06 19:28:05.118
+created: 2022-04-06 19:28:05.118000
 last_modified: 2024-01-13
 tags:
-  - aws/container/eks
-  - gitops/weaveworks/flux
+- aws/container/eks
+- gitops/weaveworks/flux
+permalink: git-mkdocs/eks/solutions/gitops/flux-lab
 ---
 
 # flux-lab
@@ -114,6 +115,3 @@ remove `sudo` before `apt-key add`
 
 ### workshop
 - [Accelerate software development lifecycles with GitOps](https://catalog.us-east-1.prod.workshops.aws/workshops/20f7b273-ed55-411f-8c9c-4dc9e5ff8677/en-US)
-
-
-

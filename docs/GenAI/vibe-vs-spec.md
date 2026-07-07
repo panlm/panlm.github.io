@@ -1,10 +1,11 @@
 ---
 title: vibe-vs-spec
-description: 
-created: 2025-10-24 07:58:59.074
+description: null
+created: 2025-10-24 07:58:59.074000
 last_modified: 2025-10-24
-tags: 
-  - draft
+tags:
+- draft
+permalink: git-mkdocs/gen-ai/vibe-vs-spec
 ---
 
 # vibe-vs-spec
@@ -38,4 +39,3 @@ flowchart TD
     F -->|yes| H[Implementation]
 
 ```
-

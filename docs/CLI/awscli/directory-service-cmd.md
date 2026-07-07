@@ -1,11 +1,12 @@
 ---
 title: directory service
 description: 常用命令
-created: 2023-03-24 21:46:35.822
+created: 2023-03-24 21:46:35.822000
 last_modified: 2024-02-05
 tags:
-  - aws/mgmt/directory-service
-  - aws/cmd
+- aws/mgmt/directory-service
+- aws/cmd
+permalink: git-mkdocs/cli/awscli/directory-service-cmd
 ---
 
 # directory-service-cmd
@@ -42,5 +43,3 @@ aws ds describe-directories \
 ## active directory - windows 2012
 
 ![[Enabling Federation to AWS Using Windows Active Directory ADFS and SAML 2.0#^zfsdkd]]
-
-

@@ -1,11 +1,12 @@
 ---
 title: Mutating Webhook for Kubernetes in China
 description: 中国区域 k8s 集群 webhook ，自动修改海外镜像到国内地址
-created: 2022-06-23 08:15:42.574
+created: 2022-06-23 08:15:42.574000
 last_modified: 2023-11-22
 status: myblog
 tags:
-  - kubernetes
+- kubernetes
+permalink: git-mkdocs/eks/ecr/mutating-webhook-for-k8s-in-china
 ---
 
 # Mutating Webhook for Kubernetes in China
@@ -96,6 +97,3 @@ kubectl get pod nginx-gcr-deployment-784bf76d96-hjmv4 -o=jsonpath='{.spec.contai
 
 ## install sam
 - https://docs.aws.amazon.com/serverless-application-model/latest/developerguide/serverless-sam-cli-install.html
-
-
-

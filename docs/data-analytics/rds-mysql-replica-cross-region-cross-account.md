@@ -1,10 +1,11 @@
 ---
 title: rds-mysql-replica-cross-region-cross-account
 description: 用于 1) 跨账号复制 RDS 数据库; 2) 或者将数据库转换成加密存储
-created: 2022-10-11 20:25:32.965
-last_modified: 2023-10-21 11:17:42.435
+created: 2022-10-11 20:25:32.965000
+last_modified: 2023-10-21 11:17:42.435000
 tags:
-  - aws/database/rds
+- aws/database/rds
+permalink: git-mkdocs/data-analytics/rds-mysql-replica-cross-region-cross-account
 ---
 
 # rds-mysql-replica-cross-region-cross-account
@@ -459,7 +460,3 @@ Query OK, 0 rows affected (0.00 sec)
 mysql> 
 
 ```
-
-
-
-

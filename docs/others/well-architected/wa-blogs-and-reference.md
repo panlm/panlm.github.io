@@ -1,10 +1,11 @@
 ---
 title: well-architected blogs and reference
 description: well architected 相关客户案例和 blog
-created: 2025-12-04 12:58:39.015
+created: 2025-12-04 12:58:39.015000
 last_modified: 2025-12-04
-tags: 
-  - draft
+tags:
+- draft
+permalink: git-mkdocs/others/well-architected/wa-blogs-and-reference
 ---
 
 # well-architected blogs and reference
@@ -56,5 +57,3 @@ frame work: https://docs.aws.amazon.com/wellarchitected/latest/framework/welcome
 - Lenses
 - Customer Lenses
 - Guidance
-
-

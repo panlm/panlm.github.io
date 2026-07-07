@@ -1,12 +1,13 @@
 ---
 title: nginx-ingress-controller-community-ver
 description: 使用 nginx ingress
-created: 2022-06-16 10:25:37.971
+created: 2022-06-16 10:25:37.971000
 last_modified: 2023-11-10
 tags:
-  - nginx
-  - kubernetes/ingress
-  - aws/container/eks
+- nginx
+- kubernetes/ingress
+- aws/container/eks
+permalink: git-mkdocs/eks/addons/nginx-ingress-controller-community-ver
 ---
 
 # nginx-ingress-controller-community-ver
@@ -275,4 +276,3 @@ spec:
                 number: 80
 
 ```
-

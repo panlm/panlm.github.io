@@ -1,10 +1,11 @@
 ---
 title: WA-可持续性-Sustainability-202310-Summary
-description: 
-created: 2022-02-10 23:07:37.057
+description: null
+created: 2022-02-10 23:07:37.057000
 last_modified: 2024-01-22
 tags:
-  - aws/well-architected
+- aws/well-architected
+permalink: git-mkdocs/others/well-architected/wa-可持续发展-sustainability-202310-summary
 ---
 
 ## 设计原则

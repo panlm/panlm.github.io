@@ -1,10 +1,11 @@
 ---
 title: Liveness Readiness Startup Probes
 description: Liveness probes, readiness probes and startup probes
-created: 2024-05-07 10:22:26.304
+created: 2024-05-07 10:22:26.304000
 last_modified: 2024-05-07
 tags:
-  - kubernetes
+- kubernetes
+permalink: git-mkdocs/eks/kubernetes/k8s-liveness-readiness-startup-probes
 ---
 
 # Liveness Readiness Startup Probes
@@ -123,6 +124,3 @@ spec:
 - https://www.datree.io/resources/kubernetes-readiness-and-liveness-probes-best-practices
 - https://kubernetes.io/docs/tasks/configure-pod-container/configure-liveness-readiness-startup-probes/
 - https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.7/deploy/pod_readiness_gate/
-
-
-

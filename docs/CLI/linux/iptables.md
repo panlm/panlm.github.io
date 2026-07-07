@@ -1,11 +1,12 @@
 ---
 title: iptables
 description: iptables
-created: 2023-07-17 11:42:00.257
-last_modified: 2023-10-26 22:16:30.085
+created: 2023-07-17 11:42:00.257000
+last_modified: 2023-10-26 22:16:30.085000
 tags:
-  - cmd
-  - linux
+- cmd
+- linux
+permalink: git-mkdocs/cli/linux/iptables
 ---
 
 # iptables
@@ -26,6 +27,3 @@ tags:
 ## compare with nginx 
 
 ![[git/git-mkdocs/git-attachment/iptables-performance-png-1.png]]
-
-
-

@@ -2,6 +2,7 @@
 title: Welcome
 last_modified: 2024-03-30
 number headings: first-level 2, max 3, 1.1, auto
+permalink: git-mkdocs/index.zh
 ---
 
 # 欢迎来到我的文档
@@ -14,5 +15,3 @@ number headings: first-level 2, max 3, 1.1, auto
 ```
 - [Building Prometheus HA Architect with Thanos](TC-prometheus-ha-architect-with-thanos.zh): 用 Thanos 解决 Prometheus 在多集群大规模环境下的高可用性、可扩展性限制
 <-->
-
-

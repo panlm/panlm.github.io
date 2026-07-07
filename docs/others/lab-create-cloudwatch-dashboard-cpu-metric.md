@@ -1,10 +1,11 @@
 ---
 title: create-dashboard-for-instance-cpu-matrics
 description: 快速创建 cloudwatch dashboard
-created: 2023-02-17 19:45:47.979
-last_modified: 2023-10-24 22:53:47.633
+created: 2023-02-17 19:45:47.979000
+last_modified: 2023-10-24 22:53:47.633000
 tags:
-  - aws/mgmt/cloudwatch
+- aws/mgmt/cloudwatch
+permalink: git-mkdocs/others/lab-create-cloudwatch-dashboard-cpu-metric
 ---
 
 # create-dashboard-for-instance-cpu-matrics
@@ -184,4 +185,3 @@ fi
 ## followup
 
 - [[aws-amg-managed-grafana]]
-

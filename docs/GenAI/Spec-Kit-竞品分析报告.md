@@ -11,6 +11,7 @@ tags:
 - bmad
 - tessl
 - traycer
+permalink: git-mkdocs/gen-ai/spec-kit-竞品分析报告
 ---
 
 # Spec-Driven Development 工具竞品分析报告

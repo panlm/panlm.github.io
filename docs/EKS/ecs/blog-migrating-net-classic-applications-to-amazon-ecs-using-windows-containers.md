@@ -1,13 +1,14 @@
 ---
 title: Migrating .NET Classic Applications to Amazon ECS Using Windows Containers
-description: 
+description: null
 created: 2024-02-19T13:36:47 (UTC +08:00)
 last_modified: 2024-04-04
 source: https://aws.amazon.com/blogs/compute/migrating-net-classic-applications-to-amazon-ecs-using-windows-containers/
-author: 
+author: null
 tags:
-  - aws/container/ecs
-  - microsoft/dotnet
+- aws/container/ecs
+- microsoft/dotnet
+permalink: git-mkdocs/eks/ecs/blog-migrating-net-classic-applications-to-amazon-ecs-using-windows-containers
 ---
 
 # Migrating .NET Classic Applications to Amazon ECS Using Windows Containers
@@ -41,4 +42,3 @@ tags:
 ## refer
 another ecs github 
 https://github.com/aws-samples/ecs-refarch-cloudformation-windows
-

@@ -1,11 +1,12 @@
 ---
 title: cluster-autoscaler
 description: EKS 集群中安装 Cluster Autoscaler
-created: 2022-02-19 11:57:07.687
-last_modified: 2022-02-19 11:57:07.6870
+created: 2022-02-19 11:57:07.687000
+last_modified: 2022-02-19 11:57:07.687000
 tags:
-  - kubernetes
-  - aws/container/eks
+- kubernetes
+- aws/container/eks
+permalink: git-mkdocs/eks/addons/cluster-autoscaler
 ---
 
 # cluster-autoscaler
@@ -146,4 +147,3 @@ helm list -n kube-system
 
 ## compatibility and upgrade
 https://github.com/kubernetes-sigs/metrics-server#compatibility-matrix
-

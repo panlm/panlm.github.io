@@ -1,10 +1,11 @@
 ---
 title: Topology Spread Constraints
 description: Kubernetes Topology Spread Constraints
-created: 2023-07-10 12:53:37.606
+created: 2023-07-10 12:53:37.606000
 last_modified: 2023-12-20
 tags:
-  - kubernetes
+- kubernetes
+permalink: git-mkdocs/eks/kubernetes/k8s-topology-spread-constraints
 ---
 
 # K8S Topology Spread Constraints
@@ -95,9 +96,3 @@ spec:
 
 - for hostname
 check up topology in previous diagram
-
-
-
-
-
-

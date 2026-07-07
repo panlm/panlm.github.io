@@ -1,10 +1,11 @@
 ---
 title: eks
 description: 常用命令
-created: 2022-04-22 08:17:31.190
+created: 2022-04-22 08:17:31.190000
 last_modified: 2024-04-23
 tags:
-  - aws/container/eks
+- aws/container/eks
+permalink: git-mkdocs/cli/awscli/eks-cmd
 ---
 
 # eks-cmd
@@ -32,6 +33,3 @@ aws eks describe-addon-versions \
 
 ### install addons
 - [[git/git-mkdocs/EKS/solutions/monitor/eks-container-insights|eks-container-insights]]
-
-
-

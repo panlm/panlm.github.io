@@ -1,10 +1,11 @@
 ---
 title: nodejs-cmd
-description: 
-created: 2024-03-04 08:53:55.117
+description: null
+created: 2024-03-04 08:53:55.117000
 last_modified: 2024-03-04
 tags:
-  - nodejs
+- nodejs
+permalink: git-mkdocs/cli/linux/nodejs-cmd
 ---
 
 # nodejs-cmd
@@ -53,11 +54,3 @@ npm install
 # Install the same exact dependency versions as recorded in 'package-lock.json'
 npm ci
 ```
-
-
-
-
-
-
-
-

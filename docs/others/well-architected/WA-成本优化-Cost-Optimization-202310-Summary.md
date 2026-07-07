@@ -1,10 +1,11 @@
 ---
 title: WA-成本优化-Cost-Optimization-202310-Summary
-description: 
-created: 2022-02-10 23:02:25.693
+description: null
+created: 2022-02-10 23:02:25.693000
 last_modified: 2024-01-22
 tags:
-  - aws/well-architected
+- aws/well-architected
+permalink: git-mkdocs/others/well-architected/wa-成本优化-cost-optimization-202310-summary
 ---
 
 ##  设计原则

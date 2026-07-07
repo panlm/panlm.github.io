@@ -1,10 +1,11 @@
 ---
 title: WA-安全-Security-202310-Summary
-description: 
-created: 2022-02-10 22:40:27.155
+description: null
+created: 2022-02-10 22:40:27.155000
 last_modified: 2024-01-22
 tags:
-  - aws/well-architected
+- aws/well-architected
+permalink: git-mkdocs/others/well-architected/wa-安全-security-202310-summary
 ---
 
 ## 设计原则
@@ -360,7 +361,3 @@ title:  为安全事件做好准备
 ##### 建立规程，让工作负载团队负责安全领域
 
 建立规程或机制，使构建者团队能够针对创建的软件作出安全决策。这些决策仍然需要由安全团队通过审查加以验证，但让构建者团队负责安全领域可以构建速度更快、安全性更高的工作负载。此机制还可促进负责任文化，进而对所构建系统的运营产生积极影响。
-
-
-
-

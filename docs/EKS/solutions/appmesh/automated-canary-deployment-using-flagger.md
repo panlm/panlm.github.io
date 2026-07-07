@@ -1,12 +1,13 @@
 ---
 title: automated-canary-deployment-using-flagger
 description: 自动化 canary 部署
-created: 2023-01-08 14:36:17.163
+created: 2023-01-08 14:36:17.163000
 last_modified: 2023-11-05
 tags:
-  - aws/container/eks
-  - aws/container/appmesh
-  - flagger
+- aws/container/eks
+- aws/container/appmesh
+- flagger
+permalink: git-mkdocs/eks/solutions/appmesh/automated-canary-deployment-using-flagger
 ---
 
 # flagger lab
@@ -266,7 +267,3 @@ kubectl describe canary webapp -n ${NS_NAME}
 ## refer 
 - https://docs.flagger.app/
 - https://aws.amazon.com/cn/blogs/containers/progressive-delivery-using-aws-app-mesh-and-flagger/
-
-
-
-

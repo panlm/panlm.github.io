@@ -1,10 +1,11 @@
 ---
 title: Using MWAA in Private Network
 description: 在中国区私有网络中启用 mwaa 服务
-created: 2023-06-09 22:25:25.533
-last_modified: 2023-11-02 08:24:53.028
+created: 2023-06-09 22:25:25.533000
+last_modified: 2023-11-02 08:24:53.028000
 tags:
-  - aws/analytics
+- aws/analytics
+permalink: git-mkdocs/data-analytics/using-mwaa-in-private-network
 ---
 
 # Using MWAA in Private Network
@@ -119,8 +120,3 @@ aws ec2 create-vpc-endpoint --vpc-id ${VPC_ID} \
 
 - 同时选择 “创建新安全组” 和 “之前命令行创建的安全组（用于 interface endpoint）”
 ![IMG-using-mwaa-in-private-network-2.png](attachments/using-mwaa-in-private-network/IMG-using-mwaa-in-private-network-2.png)
-
-
-
-
-

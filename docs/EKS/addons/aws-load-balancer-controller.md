@@ -1,11 +1,12 @@
 ---
 title: AWS Load Balancer Controller
 description: 使用 aws 负载均衡控制器
-created: 2022-05-21 13:18:53.303
+created: 2022-05-21 13:18:53.303000
 last_modified: 2024-04-02
 tags:
-  - aws/container/eks
-  - kubernetes/ingress
+- aws/container/eks
+- kubernetes/ingress
+permalink: git-mkdocs/eks/addons/aws-load-balancer-controller
 ---
 
 # AWS Load Balancer Controller
@@ -197,8 +198,3 @@ helm list -n kube-system
 ## refer
 
 ![aws-load-balancer-controller-png-2.png](../../git-attachment/aws-load-balancer-controller-png-2.png)
-
-
-
-
-

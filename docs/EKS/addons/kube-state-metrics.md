@@ -1,10 +1,11 @@
 ---
 title: kube-state-metrics
 description: EKS 集群中用于性能监控使用的指标服务
-created: 2023-08-01 08:46:22.190
+created: 2023-08-01 08:46:22.190000
 last_modified: 2024-06-29
 tags:
-  - kubernetes
+- kubernetes
+permalink: git-mkdocs/eks/addons/kube-state-metrics
 ---
 
 # kube-state-metrics
@@ -38,5 +39,3 @@ Having kube-state-metrics as a separate project also enables access to these met
 ## refer
 - https://medium.com/@seifeddinerajhi/monitoring-kubernetes-clusters-with-kube-state-metrics-2b9e73a67895#:~:text=Kube%2DState%2DMetrics%20vs%20Metrics%20Server%3A
 - [[metrics-server]]
-
-

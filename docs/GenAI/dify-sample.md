@@ -1,10 +1,11 @@
 ---
 title: dify.ai
 description: sample for dify
-created: 2024-05-17 09:31:12.388
+created: 2024-05-17 09:31:12.388000
 last_modified: 2024-07-28
 tags:
-  - llm
+- llm
+permalink: git-mkdocs/gen-ai/dify-sample
 ---
 
 # dify.ai
@@ -32,5 +33,3 @@ chatbot 输入问题，直接 request 到 google CSE，返回一堆 json，用 l
 ## other resources
 - https://github.com/aws-samples/dify-aws-tool
 - https://github.com/aws-samples/solution-for-deploying-dify-on-aws
-
-

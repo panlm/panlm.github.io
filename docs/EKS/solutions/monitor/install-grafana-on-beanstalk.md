@@ -1,10 +1,11 @@
 ---
 title: Install Grafana on Beanstalk
-description: "在 EC2 / beanstalk / EKS 上安装 grafana "
-created: 2023-02-25 08:35:55.725
+description: '在 EC2 / beanstalk / EKS 上安装 grafana '
+created: 2023-02-25 08:35:55.725000
 last_modified: 2024-03-19
 tags:
-  - grafana
+- grafana
+permalink: git-mkdocs/eks/solutions/monitor/install-grafana-on-beanstalk
 ---
 
 # Install Grafana on Beanstalk
@@ -147,5 +148,3 @@ cat >Dockerrun.aws.json <<-EOF
 }
 EOF
 ```
-
-

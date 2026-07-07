@@ -1,11 +1,12 @@
 ---
 title: spec-driven-development
 description: by Github
-created: 2025-09-22 21:46:09.477
+created: 2025-09-22 21:46:09.477000
 last_modified: 2025-09-22
 tags:
-  - draft
-  - llm
+- draft
+- llm
+permalink: git-mkdocs/gen-ai/spec-driven-development
 ---
 
 # spec-driven-development
@@ -32,7 +33,3 @@ https://github.com/bmad-code-org/BMAD-METHOD
 
 [Spec-Kit-竞品分析报告](Spec-Kit-竞品分析报告.md)
 [BMAD-Method-Repos-Analysis](BMAD-Method-Repos-Analysis.md)
-
-
-
-

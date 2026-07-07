@@ -1,6 +1,7 @@
 ---
 last_modified: 2024-01-13
 number headings: first-level 2, max 3, 1.1, auto
+permalink: git-mkdocs/serverless/index
 ---
 
 # Serverless
@@ -15,7 +16,3 @@ number headings: first-level 2, max 3, 1.1, auto
 - (2023-12-03) [Private API and ALB Demo](apigw-private-api-alb-cdk): 通过 ALB 访问 Private API 的例子
 - (2023-12-24) [Get Source IP in API Gateway](apigw-get-sourceip): 获取客户端源地址
 <-->
-
-
-
-

@@ -2,6 +2,7 @@
 title: OpenClaw 场景：VC 研究团队
 description: OpenClaw 场景：VC 研究团队
 status: myblog
+permalink: git-mkdocs/gen-ai/openclaw-vc-research-team
 ---
 
 # OpenClaw 场景：VC 研究团队

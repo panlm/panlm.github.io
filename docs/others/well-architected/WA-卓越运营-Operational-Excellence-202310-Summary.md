@@ -1,10 +1,11 @@
 ---
 title: WA-卓越运营-Operational-Excellence-202310-Summary
-description: 
-created: 2022-02-10 23:08:32.665
+description: null
+created: 2022-02-10 23:08:32.665000
 last_modified: 2024-01-22
 tags:
-  - aws/well-architected
+- aws/well-architected
+permalink: git-mkdocs/others/well-architected/wa-卓越运营-operational-excellence-202310-summary
 ---
 
 ## 设计原则
@@ -377,4 +378,3 @@ title:  实施可观察性以获得可行的见解
 ##### 分配时间进行改进
 
 流程中专用的时间和资源可以实现持续增量改进。
-

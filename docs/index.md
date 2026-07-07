@@ -2,6 +2,7 @@
 title: Welcome
 last_modified: 2024-03-30
 number headings: first-level 2, max 3, 1.1, auto
+permalink: git-mkdocs/index
 ---
 
 # Welcome to panlm docs
@@ -79,5 +80,3 @@ it.files.sort((a, b) => {
 ## 5 rendered
 
 {{ pagetree }}
-
-

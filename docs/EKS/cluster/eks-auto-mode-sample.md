@@ -1,11 +1,12 @@
 ---
 title: EKS Auto Mode
-description: EKS Auto Mode 
-created: 2025-01-06 11:32:14.727
+description: EKS Auto Mode
+created: 2025-01-06 11:32:14.727000
 last_modified: 2025-01-06
 tags:
-  - draft
-  - aws/container/eks
+- draft
+- aws/container/eks
+permalink: git-mkdocs/eks/cluster/eks-auto-mode-sample
 ---
 
 # eks-auto-mode-sample
@@ -204,5 +205,3 @@ spec:
       claimName: test-pvc
 
 ```
-
-

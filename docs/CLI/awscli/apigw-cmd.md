@@ -1,11 +1,12 @@
 ---
 title: api-gateway
 description: api-gateway
-created: 2023-03-03 09:25:15.137
+created: 2023-03-03 09:25:15.137000
 last_modified: 2024-02-05
 tags:
-  - cmd
-  - aws/cmd
+- cmd
+- aws/cmd
+permalink: git-mkdocs/cli/awscli/apigw-cmd
 ---
 
 # apigw-cmd
@@ -173,6 +174,3 @@ aws apigateway update-stage \
 ```
 
 refer: [[git/blog-private-api-gateway-dataflow/TC-private-apigw-dataflow#API Gateway-]]
-
-
-

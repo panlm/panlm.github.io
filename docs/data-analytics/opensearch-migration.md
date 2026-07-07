@@ -1,11 +1,12 @@
 ---
 title: AWS Opensearch / Elasticsearch Migration
 description: 使用 snapshot 迁移 elasticsearch
-created: 2024-12-28 16:56:47.742
+created: 2024-12-28 16:56:47.742000
 last_modified: 2025-01-02
 status: myblog
 tags:
-  - aws/analytics/opensearch
+- aws/analytics/opensearch
+permalink: git-mkdocs/data-analytics/opensearch-migration
 ---
 
 # aos-migration
@@ -155,6 +156,3 @@ awscurl -XGET --service es --region ap-southeast-1 "https://${DOMAIN_NAME}/_plug
 awscurl -XGET --service es --region ap-southeast-1 "https://${DOMAIN_NAME}/${INDEX_NAME}/_search?pretty"
 
 ```
-
-
-

@@ -1,12 +1,13 @@
 ---
 title: Datahub
 description: 部署 Datahub，从 Redshift 和 Glue job 中获取数据血缘
-created: 2024-07-31 08:28:11.479
+created: 2024-07-31 08:28:11.479000
 last_modified: 2024-08-05
 status: myblog
 tags:
-  - aws/analytics
-  - datahub
+- aws/analytics
+- datahub
+permalink: git-mkdocs/data-analytics/datahub
 ---
 
 # datahub
@@ -156,4 +157,3 @@ An error occurred while calling None.org.apache.spark.api.java.JavaSparkContext.
 ```
 
 - using io.acryl:acryl-spark-lineage:0.2.16 to instead of datahub-spark-lineage
-

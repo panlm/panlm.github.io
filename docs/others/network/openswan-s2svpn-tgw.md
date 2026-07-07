@@ -1,13 +1,15 @@
 ---
 title: openswan-s2svpn-tgw-lab
-description: connect to global aws using site-2-site vpn service, for example access global bedrock service
-created: 2024-01-19 22:00:04.389
+description: connect to global aws using site-2-site vpn service, for example access
+  global bedrock service
+created: 2024-01-19 22:00:04.389000
 last_modified: 2024-08-19
 status: myblog
 tags:
-  - openswan
-  - aws/network/tgw
-  - aws/network/vpn
+- openswan
+- aws/network/tgw
+- aws/network/vpn
+permalink: git-mkdocs/others/network/openswan-s2svpn-tgw
 ---
 
 # openswan-s2svpn-tgw
@@ -90,5 +92,3 @@ ipsec status
 - https://aws.amazon.com/blogs/networking-and-content-delivery/centralize-access-using-vpc-interface-endpoints/
 
 ![[attachments/openswan-s2svpn-tgw/IMG-openswan-s2svpn-tgw-1.png|800]]
-
-

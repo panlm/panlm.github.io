@@ -1,6 +1,7 @@
 ---
 last_modified: 2024-01-13
 number headings: first-level 2, max 3, 1.1, auto
+permalink: git-mkdocs/data-analytics/index
 ---
 
 #  Data and Analytics
@@ -18,4 +19,3 @@ number headings: first-level 2, max 3, 1.1, auto
 - [Datahub](datahub): 部署 Datahub，从 Redshift 和 Glue job 中获取数据血缘
 - [Using MWAA in Private Network](using-mwaa-in-private-network): 在中国区私有网络中启用 mwaa 服务
 <-->
-

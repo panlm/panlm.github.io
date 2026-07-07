@@ -1,11 +1,12 @@
 ---
 title: Private API and ALB Demo
 description: 通过 ALB 访问 Private API 的例子
-created: 2023-03-07 22:09:46.587
+created: 2023-03-07 22:09:46.587000
 last_modified: 2023-12-03
 tags:
-  - aws/serverless/api-gateway
-  - aws/mgmt/cdk
+- aws/serverless/api-gateway
+- aws/mgmt/cdk
+permalink: git-mkdocs/serverless/apigw-private-api-alb-cdk
 ---
 
 # AWS CDK Private API and Application Load Balancer Demo
@@ -61,5 +62,3 @@ cdk deploy --all --require-approval never
 - https://aws.amazon.com/cn/blogs/compute/implementing-custom-domain-names-for-private-endpoints-with-amazon-api-gateway/
 - https://georgemao.medium.com/enabling-private-apis-with-custom-domain-names-aws-api-gateway-df1b62b0ba7c
 - https://serverlessland.com/repos/apigw-private-custom-domain-name
-
-

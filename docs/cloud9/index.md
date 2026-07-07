@@ -1,6 +1,7 @@
 ---
 last_modified: 2024-01-13
 number headings: first-level 2, max 3, 1.1, auto
+permalink: git-mkdocs/cloud9/index
 ---
 
 #  Quick Start
@@ -32,4 +33,3 @@ curl --location https://panlm.github.io/cloud9/script-prep-eks-env-part-two.sh |
 ## 3 Others
 
 - [create standard vpc for lab in china region](create-standard-vpc-for-lab-in-china-region.md): 创建实验环境所需要的 VPC ，并且支持直接 attach 到 TGW 方便网络访问
-

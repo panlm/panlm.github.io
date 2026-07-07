@@ -1,11 +1,12 @@
 ---
 title: karpenter
 description: 使用 Karpenter 代替 Cluster Autoscaler
-created: 2023-05-29 08:42:40.334
+created: 2023-05-29 08:42:40.334000
 last_modified: 2024-08-22
 tags:
-  - aws/container/karpenter
-  - aws/container/eks
+- aws/container/karpenter
+- aws/container/eks
+permalink: git-mkdocs/eks/addons/karpenter
 ---
 
 # karpenter-lab

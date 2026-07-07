@@ -1,10 +1,11 @@
 ---
 title: MCP Server for Grafana
 description: MCP Server for Grafana
-created: 2025-04-21 14:05:47.674
+created: 2025-04-21 14:05:47.674000
 last_modified: 2025-04-21
 tags:
-  - llm/mcp
+- llm/mcp
+permalink: git-mkdocs/gen-ai/mcp-grafana-prometheus-loki
 ---
 
 # grafana-mcp-server
@@ -69,6 +70,3 @@ nohup mcp-proxy --sse-host=0.0.0.0 --sse-port=${PORT} \
     }
 
 ```
-
-
-

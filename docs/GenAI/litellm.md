@@ -1,11 +1,12 @@
 ---
 title: litellm
 description: vs Openrouter
-created: 2025-09-07 21:34:39.492
+created: 2025-09-07 21:34:39.492000
 last_modified: 2025-09-07
 tags:
-  - draft
-  - llm
+- draft
+- llm
+permalink: git-mkdocs/gen-ai/litellm
 ---
 
 # litellm
@@ -86,13 +87,3 @@ litellm-proxy chat completions 'us.anthropic.claude-3-5-sonnet-20241022-v2:0' \
 ## todo
 
 - integration with sagemaker
-
-
-
-
-
-
-
-
-
-

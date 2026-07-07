@@ -1,10 +1,11 @@
 ---
 title: Access Regional API From VPC
 description: 从 VPC 访问 Regional API
-created: 2023-03-14 08:56:36.285
+created: 2023-03-14 08:56:36.285000
 last_modified: 2023-03-14
 tags:
-  - aws/serverless/api-gateway
+- aws/serverless/api-gateway
+permalink: git-mkdocs/serverless/apigw-regional-api-access-from-vpc
 ---
 
 # Access Regional API From VPC
@@ -20,5 +21,3 @@ Important: Resources in your VPC that try to connect to your public APIs must ha
 
 ## refer
 - https://docs.aws.amazon.com/whitepapers/latest/best-practices-api-gateway-private-apis-integration/rest-api.html
-
-

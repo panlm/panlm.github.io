@@ -1,10 +1,11 @@
 ---
 title: Custom Domain Name in API Gateway
 description: 为私有 API 创建定制域名
-created: 2023-03-07 23:01:19.519
+created: 2023-03-07 23:01:19.519000
 last_modified: 2025-10-31
 tags:
-  - aws/serverless/api-gateway
+- aws/serverless/api-gateway
+permalink: git-mkdocs/serverless/apigw-custom-domain-name
 ---
 
 # Custom Domain Name in API Gateway
@@ -79,7 +80,3 @@ tags:
 ### refer
 
 - https://aws.amazon.com/premiumsupport/knowledge-center/api-gateway-domain-certificate/
-
-
-
-

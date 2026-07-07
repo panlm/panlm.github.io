@@ -1,12 +1,13 @@
 ---
 title: Breaking Through VPC Address Limitations Using EKS Hybrid Node Architecture
 description: 一个关于如何使用EKS混合节点功能优雅地解决VPC地址空间不足的真实案例
-created: 2025-04-20 10:53:34.032
+created: 2025-04-20 10:53:34.032000
 last_modified: 2025-12-02
 status: myblog
 tags:
-  - aws/container/eks
-  - kubernetes/calico
+- aws/container/eks
+- kubernetes/calico
+permalink: git-mkdocs/eks/solutions/hybrid-node/use-eks-hybrid-node-to-solve-ipaddr-exhausted
 ---
 
 # 突破VPC地址限制：EKS混合节点架构实战指南
@@ -518,4 +519,3 @@ eksdemo delete cluster ${CLUSTER_NAME}
 
 ### 社区资源
 - [解析EKS混合节点的集群网络](https://repost.aws/articles/ARL44xuau6TG2t-JoJ3mJ5Mw/unpacking-the-cluster-networking-for-amazon-eks-hybrid-nodes) - AWS re:Post上的技术文章，深入分析网络架构
-

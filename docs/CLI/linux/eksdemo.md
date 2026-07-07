@@ -1,11 +1,12 @@
 ---
 title: eksdemo
 description: 使用 eksdemo 快速搭建 eks 集群以及其他所需组件
-created: 2023-07-15 09:44:34.470
+created: 2023-07-15 09:44:34.470000
 last_modified: 2024-05-09
 tags:
-  - aws/container/eks
-  - aws/cmd
+- aws/container/eks
+- aws/cmd
+permalink: git-mkdocs/cli/linux/eksdemo
 ---
 
 # eksdemo
@@ -73,4 +74,3 @@ refer: [[../awscli/acm-cmd#create-certificate-with-eksdemo-|create-certificate-w
 
 ## refer
 - when create broken due to role change in cloud9, add another admin user to eks cluster and try create nodegroup ([[../../EKS/solutions/security/eks-access-api|eks-access-api]])
-

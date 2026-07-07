@@ -1,10 +1,11 @@
 ---
 title: eks-external-snat
 description: eks-external-snat
-created: 2022-03-08 09:12:23.947
-last_modified: 2022-03-08 09:12:23.947
+created: 2022-03-08 09:12:23.947000
+last_modified: 2022-03-08 09:12:23.947000
 tags:
-  - aws/container/eks
+- aws/container/eks
+permalink: git-mkdocs/eks/addons/eks-external-snat
 ---
 
 # eks-external-snat
@@ -33,6 +34,3 @@ kubectl set env daemonset -n kube-system aws-node AWS_VPC_K8S_CNI_EXTERNALSNAT=f
 ![[attachments/eks-external-snat/IMG-eks-external-snat-2.png|600]]
 
 https://broadcast.amazon.com/videos/388152
-
-
-

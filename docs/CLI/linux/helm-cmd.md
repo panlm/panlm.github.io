@@ -1,10 +1,11 @@
 ---
 title: helm-cmd
-description: 
-created: 2024-03-27 20:22:27.977
+description: null
+created: 2024-03-27 20:22:27.977000
 last_modified: 2024-03-27
 tags:
-  - kubernetes
+- kubernetes
+permalink: git-mkdocs/cli/linux/helm-cmd
 ---
 
 # helm-cmd
@@ -26,7 +27,3 @@ helm search repo <repo_name>
 helm show values prometheus-community/kube-prometheus-stack > values_default.yaml
 
 ```
-
-
-
-

@@ -1,10 +1,11 @@
 ---
 title: redshift
 description: 常用命令
-created: 2022-11-23 23:18:21.581
+created: 2022-11-23 23:18:21.581000
 last_modified: 2024-04-15
 tags:
-  - aws/database/redshift
+- aws/database/redshift
+permalink: git-mkdocs/cli/awscli/redshift-cmd
 ---
 
 # redshift-cmd
@@ -89,6 +90,3 @@ aws redshift describe-cluster-snapshots --cluster-identifier redshift-cluster-2
 
 ## others
 - https://github.com/awslabs/amazon-redshift-utils/tree/master/src/UnloadCopyUtility
-
-
-

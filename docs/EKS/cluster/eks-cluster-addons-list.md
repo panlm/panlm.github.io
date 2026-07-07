@@ -1,11 +1,12 @@
 ---
 title: EKS Addons
 description: EKS 常用插件清单
-created: 2022-07-20 09:00:03.399
+created: 2022-07-20 09:00:03.399000
 last_modified: 2023-12-31
 tags:
-  - aws/container/eks
-  - kubernetes
+- aws/container/eks
+- kubernetes
+permalink: git-mkdocs/eks/cluster/eks-cluster-addons-list
 ---
 
 # EKS Addons
@@ -52,8 +53,3 @@ aws eks update-addon \
 --resolve-conflicts PRESERVE
 
 ```
-
-
-
-
-

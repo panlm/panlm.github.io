@@ -4,8 +4,9 @@ description: 常用命令
 created: 2021-07-18
 last_modified: 2024-03-11
 tags:
-  - aws/security/iam
-  - aws/cmd
+- aws/security/iam
+- aws/cmd
+permalink: git-mkdocs/cli/awscli/iam-cmd
 ---
 
 # iam cmd
@@ -137,7 +138,3 @@ role_session_name = Account2RoleSession
 - [如何提供对 Amazon S3 存储桶中的对象的跨账户访问权限](https://aws.amazon.com/cn/premiumsupport/knowledge-center/cross-account-access-s3/)
 - [策略评估逻辑](https://docs.aws.amazon.com/zh_cn/IAM/latest/UserGuide/reference_policies_evaluation-logic.html)
 - https://docs.aws.amazon.com/IAM/latest/UserGuide/reference_policies_multi-value-conditions.html
-
-
-
-

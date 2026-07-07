@@ -1,11 +1,12 @@
 ---
 title: ec2
 description: 常用命令
-created: 2021-07-17T04:01:46.968Z
+created: 2021-07-17 04:01:46.968000+00:00
 last_modified: 2024-03-05
 tags:
-  - aws/compute/ec2
-  - aws/cmd
+- aws/compute/ec2
+- aws/cmd
+permalink: git-mkdocs/cli/awscli/ec2-cmd
 ---
 
 # ec2 cmd
@@ -401,7 +402,3 @@ aws ec2 create-restore-image-task \
 
 # check process from ami web ui
 ```
-
-
-
-

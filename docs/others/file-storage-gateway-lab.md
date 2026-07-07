@@ -1,10 +1,11 @@
 ---
 title: Storage File Gateway
 description: create file storage gateway from cli
-created: 2022-09-16 13:40:22.702
+created: 2022-09-16 13:40:22.702000
 last_modified: 2023-12-24
 tags:
-  - aws/storage/storage-gateway
+- aws/storage/storage-gateway
+permalink: git-mkdocs/others/file-storage-gateway-lab
 ---
 
 # Storage File Gateway 
@@ -190,8 +191,3 @@ echo "mount -t nfs -o nolock,hard ${INST_PRIV_IP}:/${BUCKET_NAME}-${PREFIX_NAME}
 - https://aws.amazon.com/blogs/storage/mounting-amazon-s3-to-an-amazon-ec2-instance-using-a-private-connection-to-s3-file-gateway/
 - using s3 gateway endpoint to enhance security of data transferring
     - https://aws.amazon.com/blogs/architecture/connect-amazon-s3-file-gateway-using-aws-privatelink-for-amazon-s3/
-
-
-
-
-

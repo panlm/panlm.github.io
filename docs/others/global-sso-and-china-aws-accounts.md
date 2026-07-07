@@ -1,11 +1,12 @@
 ---
 title: Using Global SSO to Login China AWS Accounts
 description: 使用 global sso 登录中国区域 aws 账号
-created: 2023-09-26 11:04:50.392
+created: 2023-09-26 11:04:50.392000
 last_modified: 2024-01-21
 tags:
-  - aws/security/identity-center
+- aws/security/identity-center
 status: myblog
+permalink: git-mkdocs/others/global-sso-and-china-aws-accounts
 ---
 
 # Using Global SSO to Login China AWS Accounts
@@ -68,5 +69,3 @@ assume --sso --sso-start-url https://xxx.awsapps.com/start \
 - https://static.global.sso.amazonaws.com/app-4a24b6fe5e450fa2/instructions/index.htm
 - https://aws.amazon.com/cn/blogs/china/use-amazon-cloud-technology-single-sign-on-service-for-amazon-cloud-technology-china/
 - https://static.global.sso.amazonaws.com/app-4a24b6fe5e450fa2/instructions/index.htm
-
-

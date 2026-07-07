@@ -1,11 +1,12 @@
 ---
 title: 天才的学习方法
 description: 这是一本基于脑科学的学习方法指南，作者通过获得五个学位的经历，揭示了高效学习的科学原理和实用方法
-created: 2026-01-02 08:41:37.963
+created: 2026-01-02 08:41:37.963000
 last_modified: 2026-01-02
 tags:
-  - draft
-  - book
+- draft
+- book
+permalink: git-mkdocs/books/book-天才的学习方法
 ---
 
 # 天才的学习方法

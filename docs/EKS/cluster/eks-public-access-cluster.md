@@ -1,10 +1,11 @@
 ---
 title: Create Public Access EKS Cluster
 description: 创建公有访问的 EKS 集群
-created: 2022-05-21 12:43:38.021
+created: 2022-05-21 12:43:38.021000
 last_modified: 2024-03-27
 tags:
-  - aws/container/eks
+- aws/container/eks
+permalink: git-mkdocs/eks/cluster/eks-public-access-cluster
 ---
 
 # Create Public Access EKS Cluster
@@ -261,5 +262,3 @@ addons:
 - [[eks-private-access-cluster]]
 - [[eks-nodegroup]]
 - [[eksctl-default-tags-on-subnet]]
-
-

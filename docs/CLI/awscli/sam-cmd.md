@@ -1,11 +1,12 @@
 ---
 title: sam
 description: 常用命令
-created: 2021-12-13T03:44:40.679Z
+created: 2021-12-13 03:44:40.679000+00:00
 last_modified: 2021-12-13
 tags:
-  - aws/serverless
-  - aws/cmd
+- aws/serverless
+- aws/cmd
+permalink: git-mkdocs/cli/awscli/sam-cmd
 ---
 
 # sam-cli
@@ -78,5 +79,3 @@ sam deploy --template-file packaged.yaml \
     --capabilities CAPABILITY_IAM
 
 ```
-
-

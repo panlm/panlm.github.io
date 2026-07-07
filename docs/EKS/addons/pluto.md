@@ -1,10 +1,11 @@
 ---
 title: pluto
 description: Kubernetes 升级小工具
-created: 2023-05-18 09:40:00.214
+created: 2023-05-18 09:40:00.214000
 last_modified: 2024-01-13
 tags:
-  - kubernetes
+- kubernetes
+permalink: git-mkdocs/eks/addons/pluto
 ---
 
 # pluto-cmd
@@ -39,9 +40,3 @@ asdf install pluto ${lastest_version}
 asdf local pluto ${lastest_version}
 pluto version
 ```
-
-
-
-
-
-

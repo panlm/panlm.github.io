@@ -1,11 +1,12 @@
 ---
 title: script-api-resource-method
 description: 每个 api 的每个 resource 的每个 method 都需要单独通过命令行启用“tlsConfig/insecureSkipVerification”，通过这个脚本简化工作
-created: 2023-04-05 21:49:56.309
+created: 2023-04-05 21:49:56.309000
 last_modified: 2024-02-22
 status: deprecated
 tags:
-  - aws/serverless/api-gateway
+- aws/serverless/api-gateway
+permalink: git-mkdocs/others/script-api-resource-method
 ---
 
 !!! warning "This pages has been obseleted."
@@ -56,6 +57,3 @@ done
 
 ## refer
 - https://aws.amazon.com/premiumsupport/knowledge-center/api-gateway-ssl-certificate-errors/
-
-
-

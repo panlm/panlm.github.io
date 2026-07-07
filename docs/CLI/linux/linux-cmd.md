@@ -1,11 +1,12 @@
 ---
 title: linux-cmd
 description: 常用命令
-created: 2023-01-03 12:05:10.533
+created: 2023-01-03 12:05:10.533000
 last_modified: 2024-03-27
 tags:
-  - cmd
-  - linux
+- cmd
+- linux
+permalink: git-mkdocs/cli/linux/linux-cmd
 ---
 
 # linux cmd
@@ -546,6 +547,3 @@ brew install sipcalc
 - [[web-performance-testing-tool]]
 - [[httpbin.org]]
 - [[badssl.com]]
-
-
-

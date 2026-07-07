@@ -1,11 +1,12 @@
 ---
 title: EKS Container Insights
 description: 启用 EKS 的 container insight 功能
-created: 2022-02-22 08:08:35.714
+created: 2022-02-22 08:08:35.714000
 last_modified: 2024-04-23
 tags:
-  - aws/container/eks
-  - aws/mgmt/cloudwatch
+- aws/container/eks
+- aws/mgmt/cloudwatch
+permalink: git-mkdocs/eks/solutions/monitor/eks-container-insights
 ---
 
 # EKS Container Insights
@@ -84,5 +85,3 @@ if you do 2 before 1, than need
 
 ## blog
 - https://aws.amazon.com/blogs/containers/diving-into-container-insights-cost-optimizations-for-amazon-eks/
-
-

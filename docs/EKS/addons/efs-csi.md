@@ -1,11 +1,12 @@
 ---
 title: EFS CSI on EKS
 description: 使用 EFS 作为 Pod 持久化存储
-created: 2022-05-23 09:57:50.932
+created: 2022-05-23 09:57:50.932000
 last_modified: 2024-04-19
 tags:
-  - aws/storage/efs
-  - aws/container/eks
+- aws/storage/efs
+- aws/container/eks
+permalink: git-mkdocs/eks/addons/efs-csi
 ---
 
 # EFS CSI on EKS
@@ -392,5 +393,3 @@ kubectl rollout restart ds efs-csi-node -n kube-system
 
 ## todo
 - [ ] #todo cross vpc efs csi mount
-
-

@@ -1,11 +1,12 @@
 ---
 title: llm-llama3
 description: llama info
-created: 2024-04-29 11:36:37.548
+created: 2024-04-29 11:36:37.548000
 last_modified: 2024-04-29
 tags:
-  - aws/aiml/llm
-  - aws/aiml/sagemaker
+- aws/aiml/llm
+- aws/aiml/sagemaker
+permalink: git-mkdocs/gen-ai/llm-llama2-llama3
 ---
 
 # llm-llama3
@@ -31,5 +32,3 @@ tags:
 | Llama 70B | (ml.)p4d.24xlarge | -            | 8                     |
 
 refer: https://www.philschmid.de/sagemaker-llama3
-
-

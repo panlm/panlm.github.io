@@ -1,10 +1,11 @@
 ---
 title: postgres-cmd
 description: 常用命令
-created: 2023-08-23 08:21:46.893
+created: 2023-08-23 08:21:46.893000
 last_modified: 2024-07-16
 tags:
-  - postgresql
+- postgresql
+permalink: git-mkdocs/cli/linux/postgres-cmd
 ---
 
 # postgres-cmd
@@ -98,4 +99,3 @@ docker exec -it postgres psql -U postgres
 update eiai_key set api_key = 'br-xxx' where id = 2;
 
 ```
-

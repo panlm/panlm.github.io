@@ -5,9 +5,10 @@ created: 2024-01-01
 last_modified: 2024-01-01
 status: myblog
 tags:
-  - obsidian
+- obsidian
 share_link: https://notes-share.aws.panlm.click/mr0ypyu5
-share_updated: 2025-03-21T11:41:01+08:00
+share_updated: 2025-03-21 11:41:01+08:00
+permalink: git-mkdocs/others/obsidian
 ---
 
 # Obsidian Tips
@@ -147,7 +148,3 @@ rm -rf ~/Library/Application\ Support/obsidian/IndexedDB
 rm -rf ~/Library/Application\ Support/obsidian/Cache
 rm -rf ~/Library/Application\ Support/obsidian/GPUCache
 ```
-
-
-
-

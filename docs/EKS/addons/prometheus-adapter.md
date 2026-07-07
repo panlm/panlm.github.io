@@ -1,10 +1,11 @@
 ---
 title: prometheus-adapter
-description: 
-created: 2024-05-27 09:00:14.525
+description: null
+created: 2024-05-27 09:00:14.525000
 last_modified: 2024-07-27
 tags:
-  - kubernetes
+- kubernetes
+permalink: git-mkdocs/eks/addons/prometheus-adapter
 ---
 
 # prometheus-adapter
@@ -22,6 +23,3 @@ helm install prom-adapter prometheus-community/prometheus-adapter -n kube-system
 
 ## alternative
 - [[metrics-server]]
-
-
-

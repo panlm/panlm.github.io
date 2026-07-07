@@ -1,12 +1,13 @@
 ---
 title: assume
 description: assume 工具，可以以另一个账号角色，快速打开 web console，或者执行命令
-created: 2023-09-15 09:40:01.442
+created: 2023-09-15 09:40:01.442000
 last_modified: 2024-02-12
 status: myblog
 tags:
-  - cmd
-  - aws/security/iam
+- cmd
+- aws/security/iam
+permalink: git-mkdocs/cli/linux/granted-assume
 ---
 
 # assume
@@ -139,5 +140,3 @@ granted credentials export-plaintext example
 ```sh
 granted console
 ```
-
-

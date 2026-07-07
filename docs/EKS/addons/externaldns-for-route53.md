@@ -1,11 +1,12 @@
 ---
 title: ExternalDNS for Route53
 description: 使用 externaldns 组件
-created: 2022-08-04 13:24:34.806
+created: 2022-08-04 13:24:34.806000
 last_modified: 2024-03-27
 tags:
-  - kubernetes
-  - aws/network/route53
+- kubernetes
+- aws/network/route53
+permalink: git-mkdocs/eks/addons/externaldns-for-route53
 ---
 
 # ExternalDNS for Route53
@@ -358,9 +359,3 @@ dig +short server.${DOMAIN_NAME}. A
 curl https://server.${DOMAIN_NAME}
 
 ```
-
-
-
-
-
-

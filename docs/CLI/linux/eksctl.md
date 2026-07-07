@@ -1,10 +1,11 @@
 ---
 title: eksctl
 description: 常用命令
-created: 2022-03-09 21:30:00.815
+created: 2022-03-09 21:30:00.815000
 last_modified: 2024-04-23
 tags:
-  - aws/container/eks
+- aws/container/eks
+permalink: git-mkdocs/cli/linux/eksctl
 ---
 
 # eksctl-cmd
@@ -182,6 +183,3 @@ eksctl create cluster \
 
 ## refer
 - https://eksctl.io/usage/minimum-iam-policies/
-
-
-

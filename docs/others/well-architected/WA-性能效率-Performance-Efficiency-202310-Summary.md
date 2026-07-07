@@ -1,10 +1,11 @@
 ---
 title: WA-性能效率-Performance-Efficiency-202310-Summary
-description: 
-created: 2022-02-10 23:14:42.251
+description: null
+created: 2022-02-10 23:14:42.251000
 last_modified: 2024-01-22
 tags:
-  - aws/well-architected
+- aws/well-architected
+permalink: git-mkdocs/others/well-architected/wa-性能效率-performance-efficiency-202310-summary
 ---
 
 ##  设计原则

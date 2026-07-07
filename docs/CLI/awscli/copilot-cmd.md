@@ -1,11 +1,12 @@
 ---
 title: copilot
 description: 常用命令
-created: 2023-11-02 22:33:07.464
-last_modified: 2023-11-03 09:23:03.789
+created: 2023-11-02 22:33:07.464000
+last_modified: 2023-11-03 09:23:03.789000
 tags:
-  - aws/cmd
-  - aws/container/copilot
+- aws/cmd
+- aws/container/copilot
+permalink: git-mkdocs/cli/awscli/copilot-cmd
 ---
 
 # copilot-cmd
@@ -23,7 +24,3 @@ copilot init
 copilot svc deploy
 
 ```
-
-
-
-

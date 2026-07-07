@@ -1,11 +1,12 @@
 ---
 title: regctl
 description: container registry 同步工具
-created: 2024-08-07 09:22:32.402
+created: 2024-08-07 09:22:32.402000
 last_modified: 2024-08-07
 tags:
-  - linux
-  - cmd
+- linux
+- cmd
+permalink: git-mkdocs/cli/linux/regctl
 ---
 
 # regctl
@@ -36,8 +37,3 @@ regctl image copy public.ecr.aws/${IMG_LAMBDA}:latest 123456789012.dkr.ecr.us-we
 regctl image copy  nginx:latest 123456789012.dkr.ecr.us-west-2.amazonaws.com/nginx
 
 ```
-
-
-
-
-

@@ -1,10 +1,11 @@
 ---
 title: kubernetes-cmd
-description: 
-created: 2024-06-20 08:46:42.613
+description: null
+created: 2024-06-20 08:46:42.613000
 last_modified: 2024-06-20
 tags:
-  - cmd
+- cmd
+permalink: git-mkdocs/cli/linux/kubernetes-cmd
 ---
 
 # kubernetes-cmd
@@ -17,5 +18,3 @@ tags:
 - [[eksdemo]]
 - [[kubectx|kubectx]]
 - [[eksctl]]
-
-

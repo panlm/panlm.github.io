@@ -1,13 +1,14 @@
 ---
 title: Enable Quicksight with Identity Center
 description: 中国区域启用 Quicksight 并且集成 Microsoft Entra
-created: 2024-05-28 23:30:40.961
+created: 2024-05-28 23:30:40.961000
 last_modified: 2024-06-28
 status: myblog
 tags:
-  - aws/analytics/quicksight
-  - aws/security/identity-center
-  - azure
+- aws/analytics/quicksight
+- aws/security/identity-center
+- azure
+permalink: git-mkdocs/data-analytics/enable-quicksight-with-identity-center
 ---
 
 # Enable Quicksight with Identity Center
@@ -76,4 +77,3 @@ Using AWS-SSO local directory as identity source. This mode works both in global
 - Other refer
     - https://docs.amazonaws.cn/aws/latest/userguide/iam-identity-center.html
     - https://learn.microsoft.com/en-us/entra/identity/saas-apps/aws-single-sign-on-tutorial
-

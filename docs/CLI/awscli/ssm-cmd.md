@@ -1,11 +1,12 @@
 ---
 title: ssm
 description: 常用命令
-created: 2022-12-06 14:58:34.056
+created: 2022-12-06 14:58:34.056000
 last_modified: 2024-02-05
 tags:
-  - aws/cmd
-  - aws/mgmt/systems-manager
+- aws/cmd
+- aws/mgmt/systems-manager
+permalink: git-mkdocs/cli/awscli/ssm-cmd
 ---
 
 # ssm-cmd
@@ -162,7 +163,3 @@ done
 
 ```
 ^ssm-vpce-0513
-
-
-
-

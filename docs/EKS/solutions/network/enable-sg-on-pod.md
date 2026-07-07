@@ -1,11 +1,12 @@
 ---
 title: enable-sg-on-pod
 description: 启用 pod 安全组
-created: 2022-06-15 09:40:23.381
+created: 2022-06-15 09:40:23.381000
 last_modified: 2023-12-31
 tags:
-  - aws/container/eks
-  - aws/network/security-group
+- aws/container/eks
+- aws/network/security-group
+permalink: git-mkdocs/eks/solutions/network/enable-sg-on-pod
 ---
 
 # enable-sg-on-pod
@@ -238,6 +239,3 @@ EoF
 
 ## refer
 - [[../../addons/eks-external-snat|eks-external-snat]]
-
-
-

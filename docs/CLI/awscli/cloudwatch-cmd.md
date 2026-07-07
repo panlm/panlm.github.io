@@ -1,10 +1,11 @@
 ---
 title: cloudwatch
 description: 常用命令
-created: 2022-08-18 21:42:04.979
+created: 2022-08-18 21:42:04.979000
 last_modified: 2024-02-05
 tags:
-  - aws/mgmt/cloudwatch
+- aws/mgmt/cloudwatch
+permalink: git-mkdocs/cli/awscli/cloudwatch-cmd
 ---
 
 # cloudwatch-cmd
@@ -135,7 +136,3 @@ aws cloudwatch put-metric-alarm \
 ## collector memory metrics
 
 - [[ec2-cloudwatch-memory-monitoring]]
-
-
-
-

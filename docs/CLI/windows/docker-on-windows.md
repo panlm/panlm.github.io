@@ -1,11 +1,12 @@
 ---
 title: docker-on-windows
-description: 
-created: 2024-02-18 15:25:34.650
+description: null
+created: 2024-02-18 15:25:34.650000
 last_modified: 2024-03-15
 tags:
-  - microsoft/windows
-  - docker
+- microsoft/windows
+- docker
+permalink: git-mkdocs/cli/windows/docker-on-windows
 ---
 
 # Docker On Windows
@@ -76,5 +77,3 @@ reg add HKLM\SOFTWARE\Microsoft\.NETFramework\v4.0.30319 /f /v SystemDefaultTlsV
 reg add HKLM\SOFTWARE\Microsoft\.NETFramework\v4.0.30319 /f /v SchUseStrongCrypto /t REG_DWORD /d 1 /reg:64  
 reg add HKLM\SOFTWARE\Microsoft\.NETFramework\v4.0.30319 /f /v SchUseStrongCrypto /t REG_DWORD /d 1 /reg:32
 ```
-
-

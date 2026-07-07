@@ -1,10 +1,11 @@
 ---
 title: ffmpeg
 description: 常用命令
-created: 2023-01-18 10:41:09.631
+created: 2023-01-18 10:41:09.631000
 last_modified: 2024-01-15
 tags:
-  - cmd/ffmpeg
+- cmd/ffmpeg
+permalink: git-mkdocs/cli/linux/ffmpeg
 ---
 
 # ffmpeg
@@ -13,10 +14,3 @@ tags:
 ```sh
 ffmpeg -i J3tfdcwb5U4.mp4 -ss 00:00:0.0 -c copy -t 18  "newfile.mp4"
 ```
-
-
-
-
-
-
-

@@ -1,12 +1,13 @@
 ---
 title: Security Lake Support Collecting Audit Logging from EKS
 description: 使用 Security Lake 收集 EKS Audit 日志
-created: 2024-04-26 11:33:36.335
+created: 2024-04-26 11:33:36.335000
 last_modified: 2024-05-11
 status: myblog
 tags:
-  - aws/container/eks
-  - aws/security/security-lake
+- aws/container/eks
+- aws/security/security-lake
+permalink: git-mkdocs/eks/solutions/logging/eks-audit-log-security-lake
 ---
 
 # Security Lake Support Collecting Audit Logging from EKS
@@ -56,6 +57,3 @@ news: https://aws.amazon.com/about-aws/whats-new/2024/02/amazon-security-lake-au
 - https://docs.splunk.com/Documentation/AddOns/released/AWS/SecurityLake
 - https://schema.ocsf.io/1.1.0/classes/api_activity?extensions=
 - https://docs.aws.amazon.com/security-lake/latest/userguide/open-cybersecurity-schema-framework.html
-
-
-

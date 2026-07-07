@@ -8,6 +8,7 @@ tags:
 - claude-code
 - product-discovery
 - methodology
+permalink: git-mkdocs/gen-ai/bmad-method-repos-analysis
 ---
 
 # BMAD Method 相关仓库分析

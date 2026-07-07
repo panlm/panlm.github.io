@@ -1,11 +1,12 @@
 ---
 title: s3
 description: 常用命令
-created: 2021-07-10 02:23:54.765
+created: 2021-07-10 02:23:54.765000
 last_modified: 2024-03-19
 tags:
-  - aws/storage/s3
-  - aws/cmd
+- aws/storage/s3
+- aws/cmd
+permalink: git-mkdocs/cli/awscli/s3-cmd
 ---
 
 # s3-cmd

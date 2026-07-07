@@ -1,12 +1,13 @@
 ---
 title: github-page-howto
 description: github-page-howto
-created: 2023-01-02 13:55:05.242
+created: 2023-01-02 13:55:05.242000
 last_modified: 2024-02-16
 icon: material/emoticon-happy-outline
 status: happy
 tags:
-  - github
+- github
+permalink: git-mkdocs/others/github-page-howto
 ---
 
 # how to put workshop on github 
@@ -106,8 +107,3 @@ git submodule update
 ```
 
 ## other :material-ab-testing: :smile:
-
-
-
-
-

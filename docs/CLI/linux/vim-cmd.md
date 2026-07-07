@@ -1,10 +1,11 @@
 ---
 title: vim-cmd
-description: 
-created: 2023-04-15 07:16:40.471
+description: null
+created: 2023-04-15 07:16:40.471000
 last_modified: 2024-03-02
 tags:
-  - cmd
+- cmd
+permalink: git-mkdocs/cli/linux/vim-cmd
 ---
 
 # vim-cmd
@@ -254,4 +255,3 @@ let g:XkbSwitchLib = '~/.vim/ISS-mac/input-source-switcher/build/libInputSourceS
 " vim:foldmethod=marker:foldenable:foldlevel=0:fileformat=unix
 
 ```
-

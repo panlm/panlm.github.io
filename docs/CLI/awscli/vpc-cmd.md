@@ -1,12 +1,13 @@
 ---
 title: vpc
 description: 常用命令
-created: 2021-11-05T01:08:29.064Z
+created: 2021-11-05 01:08:29.064000+00:00
 last_modified: 2024-02-05
 tags:
-  - aws/network/vpc
-  - aws/cmd
-  - todo
+- aws/network/vpc
+- aws/cmd
+- todo
+permalink: git-mkdocs/cli/awscli/vpc-cmd
 ---
 
 # vpc-cmd
@@ -201,4 +202,3 @@ VPC_ID=$(aws ec2 describe-instances --instance-ids ${INST_ID} --query 'Reservati
 
 another sample: [[ssm-cmd#^ssm-vpce-0513]]
 another sample: [[TC-private-apigw-dataflow#步骤 4]]
-

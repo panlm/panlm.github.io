@@ -3,8 +3,9 @@ title: Cloudformation service role for FIS experiment setup guide
 description: 使用cloudformation服务角色实现最小化权限
 type: note
 share_link: https://notes-share.aws.panlm.click/3qvt83ae
-share_updated: 2026-04-03T09:10:12+08:00
+share_updated: 2026-04-03 09:10:12+08:00
 status: myblog
+permalink: git-mkdocs/others/cfn-service-role-for-fis-experiment-setup-guide
 ---
 
 # FIS 实验环境权限配置指南

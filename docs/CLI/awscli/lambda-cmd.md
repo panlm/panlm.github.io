@@ -1,11 +1,12 @@
 ---
 title: lambda
 description: 常用命令
-created: 2022-08-19 10:57:53.314
+created: 2022-08-19 10:57:53.314000
 last_modified: 2024-02-05
 tags:
-  - aws/serverless/lambda
-  - aws/cmd
+- aws/serverless/lambda
+- aws/cmd
+permalink: git-mkdocs/cli/awscli/lambda-cmd
 ---
 
 # lambda-cmd
@@ -60,5 +61,3 @@ aws lambda update-function-configuration --function-name ${lambda_name} \
 --layers ${layer_arn}
 
 ```
-
-

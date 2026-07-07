@@ -1,13 +1,14 @@
 ---
 title: Quick Deploy BRConnector using Cloudformation
 description: 使用 Cloudformation 快速部署 BRConnector
-created: 2024-06-09 11:59:37.855
+created: 2024-06-09 11:59:37.855000
 last_modified: 2024-07-09
 status: myblog
 tags:
-  - aws/mgmt/cloudformation
-  - aws/compute/ec2
-  - aws/network/cloudfront
+- aws/mgmt/cloudformation
+- aws/compute/ec2
+- aws/network/cloudfront
+permalink: git-mkdocs/others/quick-build-brconnector
 ---
 
 # Quick Deploy BRConnector using Cloudformation
@@ -113,5 +114,3 @@ docker manifest push ${ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/$
 ## Migrating to new RDS PostgreSQL database
 
 working ...
-
-

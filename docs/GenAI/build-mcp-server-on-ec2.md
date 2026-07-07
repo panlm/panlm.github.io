@@ -1,11 +1,12 @@
 ---
 title: MCP Server on EC2
 description: 将 MCP Server 移动到远端，减少本地资源占用
-created: 2025-04-21 10:45:11.160
+created: 2025-04-21 10:45:11.160000
 last_modified: 2025-05-15
 status: myblog
 tags:
-  - llm/mcp
+- llm/mcp
+permalink: git-mkdocs/gen-ai/build-mcp-server-on-ec2
 ---
 
 # MCP Server on EC2
@@ -331,4 +332,3 @@ uv tool install git+https://github.com/sparfenyuk/mcp-proxy
 ## Reference
 - [[deploy-mcp-server-to-ecs|deploy-mcp-server-to-ecs]]
 - build mcp on aws agentcore runtime ([docs](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/runtime-mcp.html))
-
