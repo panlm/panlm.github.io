@@ -1,11 +1,13 @@
 ---
 title: sqs
 description: 常用命令
-created: 2023-08-31 20:18:28.430
+created: 2023-08-31 20:18:28.430000
 last_modified: 2024-06-05
 tags:
-  - aws/integration/sqs
+- aws/integration/sqs
+permalink: git-mkdocs/cli/awscli/sqs-cmd
 ---
+
 # sqs-cmd
 ## create 
 ```sh

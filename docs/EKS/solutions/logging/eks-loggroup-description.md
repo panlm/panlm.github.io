@@ -1,12 +1,14 @@
 ---
 title: eks-loggroup-description
 description: eks 日志类型分析
-created: 2022-03-18 13:22:59.039
+created: 2022-03-18 13:22:59.039000
 last_modified: 2024-04-18
 tags:
-  - aws/container/eks
-  - aws/mgmt/cloudwatch
+- aws/container/eks
+- aws/mgmt/cloudwatch
+permalink: git-mkdocs/eks/solutions/logging/eks-loggroup-description
 ---
+
 # eks-loggroup-description
 ## loggroup
 ### /aws/eks/cluster_name/cluster
@@ -100,4 +102,3 @@ $matchline:+27
 - 使用ADOT ([[adot-aws-distro-open-telemetry]])
 
 <-->
-

@@ -1,12 +1,14 @@
 ---
 title: Prometheus With Thanos Manually
 description: POC-prometheus-with-thanos-manually
-created: 2024-01-04 11:38:42.971
+created: 2024-01-04 11:38:42.971000
 last_modified: 2024-01-19
 status: deprecated
 tags:
-  - prometheus
+- prometheus
+permalink: git-mkdocs/others/poc-prometheus-ha-architect-with-thanos-manually
 ---
+
 > [!WARNING]
 > just backup copy 
 > no more update here

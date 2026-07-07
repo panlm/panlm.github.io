@@ -1,11 +1,13 @@
 ---
 title: kubernetes dashboard
-created: 2022-03-28 14:39:22.434
-last_modified: 2022-03-28 14:39:22.434
+created: 2022-03-28 14:39:22.434000
+last_modified: 2022-03-28 14:39:22.434000
 tags:
-  - kubernetes
-  - aws/container/eks
+- kubernetes
+- aws/container/eks
+permalink: git-mkdocs/eks/addons/k8s-dashboard-on-eks
 ---
+
 # k8s-dashboard-on-eks
 
 ## setup
@@ -24,4 +26,3 @@ refer: [LINK](https://stackoverflow.com/questions/46664104/how-to-sign-in-kubern
 3. access clb login with token 
 
 4. (option) kubectl proxy to localhost and browser it
-

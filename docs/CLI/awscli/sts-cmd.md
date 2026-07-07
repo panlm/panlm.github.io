@@ -1,11 +1,13 @@
 ---
 title: sts
 description: 常用命令
-created: 2023-09-10 22:52:34.617
+created: 2023-09-10 22:52:34.617000
 last_modified: 2024-03-14
 tags:
-  - aws/cmd
+- aws/cmd
+permalink: git-mkdocs/cli/awscli/sts-cmd
 ---
+
 # sts-cmd
 ## get session token
 
@@ -24,5 +26,3 @@ $Env:AWS_SECRET_ACCESS_KEY=""
 $Env:AWS_SESSION_TOKEN=""
 
 ```
-
-

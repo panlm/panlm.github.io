@@ -1,11 +1,13 @@
 ---
 title: terraform
-description: 
-created: 2022-07-05 21:52:16.279
+description: null
+created: 2022-07-05 21:52:16.279000
 last_modified: 2024-01-03
 tags:
-  - terraform
+- terraform
+permalink: git-mkdocs/cli/linux/terraform-cmd
 ---
+
 # terraform-cmd
 
 ## install-
@@ -53,5 +55,3 @@ terraform workspace list
 terraform state list
 terraform state show xxxxxx
 ```
-
-

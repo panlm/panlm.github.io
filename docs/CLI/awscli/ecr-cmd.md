@@ -1,12 +1,14 @@
 ---
 title: ecr
 description: 常用命令
-created: 2022-03-19 21:19:57.648
+created: 2022-03-19 21:19:57.648000
 last_modified: 2024-07-05
 tags:
-  - aws/container/ecr
-  - aws/cmd
+- aws/container/ecr
+- aws/cmd
+permalink: git-mkdocs/cli/awscli/ecr-cmd
 ---
+
 # ecr-cmd
 
 
@@ -90,6 +92,3 @@ docker manifest push \
     ${ACCOUNT_ID}.dkr.ecr.${AWS_DEFAULT_REGION}.amazonaws.com/${REPO_NAME}:latest
 
 ```
-
-
-

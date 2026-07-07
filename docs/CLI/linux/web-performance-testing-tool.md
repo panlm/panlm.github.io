@@ -1,12 +1,14 @@
 ---
 title: web-press-testing-tool
-description: 
-created: 2022-10-01 08:27:42.926
+description: null
+created: 2022-10-01 08:27:42.926000
 last_modified: 2024-07-04
 tags:
-  - cmd
-  - linux
+- cmd
+- linux
+permalink: git-mkdocs/cli/linux/web-performance-testing-tool
 ---
+
 # web-press-testing-tool
 
 ## ab
@@ -44,7 +46,3 @@ k6 is a load testing suite that allows you to synthetically load and monitor you
 
 ## wrk
 - https://github.com/wg/wrk
-
-
-
-

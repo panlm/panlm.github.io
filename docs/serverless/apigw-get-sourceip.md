@@ -1,11 +1,13 @@
 ---
 title: Get Source IP in API Gateway
 description: 获取客户端源地址
-created: 2023-03-11 22:57:11.866
+created: 2023-03-11 22:57:11.866000
 last_modified: 2023-12-24
 tags:
-  - aws/serverless/api-gateway
+- aws/serverless/api-gateway
+permalink: git-mkdocs/serverless/apigw-get-sourceip
 ---
+
 # Get Source IP in API Gateway
 
 ## client ip 
@@ -43,4 +45,3 @@ https://xxx.execute-api.us-east-2.amazonaws.com/prod/
 
 ## refer
 - https://dev.classmethod.jp/articles/api-gateway-client-ip/
-

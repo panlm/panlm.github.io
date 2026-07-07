@@ -1,12 +1,14 @@
 ---
 title: script-convert-mp3-to-text
 description: script-convert-mp3-to-text
-created: 2023-12-09 12:09:31.654
+created: 2023-12-09 12:09:31.654000
 last_modified: 2024-01-17
 tags:
-  - aws/aiml/transcribe
-  - aws/cmd
+- aws/aiml/transcribe
+- aws/cmd
+permalink: git-mkdocs/others/script-convert-mp3-to-text
 ---
+
 # script-convert-mp3-to-text
 
 i wrote this script several years ago. I have chance to use it in real life today and update to here
@@ -84,9 +86,3 @@ aws s3 rm s3://$bucket_name/$mp3file
 
 ## refer
 - https://github.com/panlm/NTNX/blob/master/scripts/translate/speechtext-aws.sh
-
-
-
-
-
-

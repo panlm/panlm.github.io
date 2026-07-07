@@ -1,12 +1,14 @@
 ---
 title: Create Public Access EKS Cluster in China Region
 description: 在中国区域，创建共有访问的 EKS 集群
-created: 2023-02-19 21:55:37.905
+created: 2023-02-19 21:55:37.905000
 last_modified: 2024-01-21
 tags:
-  - aws/container/eks
-  - aws/china
+- aws/container/eks
+- aws/china
+permalink: git-mkdocs/eks/cluster/eks-public-access-cluster-in-china-region
 ---
+
 # Create Public Access EKS Cluster in China Region
 
 - create cloud9
@@ -80,8 +82,3 @@ addons:
 ```
 
 ^8ir6w8
-
-
-
-
-

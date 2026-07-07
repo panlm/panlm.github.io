@@ -1,13 +1,15 @@
 ---
 title: Migrating Filezilla to AWS Transfer Family
 description: 迁移 Filezilla 到 Transfer Family
-created: 2023-03-25 10:08:47.022
+created: 2023-03-25 10:08:47.022000
 last_modified: 2024-04-04
 status: myblog
 tags:
-  - aws/storage/transfer-family
-  - aws/mgmt/directory-service
+- aws/storage/transfer-family
+- aws/mgmt/directory-service
+permalink: git-mkdocs/others/poc-mig-filezilla-to-transfer-family
 ---
+
 # Migrating Filezilla to AWS Transfer Family
 ## requirement
 - same domain for both sftp and ftps server
@@ -257,4 +259,3 @@ meeting requirement
 
 ## refer
 - https://repost.aws/knowledge-center/manage-ad-directory-from-ec2-windows
-

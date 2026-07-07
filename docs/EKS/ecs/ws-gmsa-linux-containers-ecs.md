@@ -1,12 +1,14 @@
 ---
 title: Windows Authentication with gMSA for .NET Linux Containers in Amazon ECS
-description: 
-created: 2024-02-27 08:24:49.808
+description: null
+created: 2024-02-27 08:24:49.808000
 last_modified: 2024-03-20
 tags:
-  - microsoft/gmsa
-  - aws/container/ecs
+- microsoft/gmsa
+- aws/container/ecs
+permalink: git-mkdocs/eks/ecs/ws-gmsa-linux-containers-ecs
 ---
+
 # Windows Authentication with gMSA for .NET Linux Containers in Amazon ECS
 
 workshop
@@ -72,5 +74,3 @@ $env:APP_TD_REVISION = 2
 cdk deploy "*" --require-approval "never" --verbose
 
 ```
-
-

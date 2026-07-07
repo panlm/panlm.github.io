@@ -1,12 +1,14 @@
 ---
 title: rds
 description: 常用命令
-created: 2022-07-22 20:22:12.985
+created: 2022-07-22 20:22:12.985000
 last_modified: 2024-04-23
 tags:
-  - aws/database/rds
-  - aws/cmd
+- aws/database/rds
+- aws/cmd
+permalink: git-mkdocs/cli/awscli/rds-cmd
 ---
+
 # rds-cmd
 ## create-postsql-
 - https://www.eksworkshop.com/beginner/115_sg-per-pod/10_secgroup/
@@ -190,7 +192,3 @@ dbhost=xxxx
 mysql -h $dbhost --ssl-ca=global-bundle.pem --ssl-mode=VERIFY_IDENTITY -P 3306 -u admin -p
 
 ```
-
-
-
-

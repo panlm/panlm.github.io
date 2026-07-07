@@ -1,12 +1,14 @@
 ---
 title: ecs-windows-gmsa
-description: 
-created: 2024-02-26 08:53:45.476
+description: null
+created: 2024-02-26 08:53:45.476000
 last_modified: 2024-04-04
 tags:
-  - microsoft/windows
-  - aws/container/ecs
+- microsoft/windows
+- aws/container/ecs
+permalink: git-mkdocs/eks/ecs/ecs-windows-gmsa
 ---
+
 # ecs-windows-gmsa
 
 | ecs node | ec2          | fargate                     |     |
@@ -109,4 +111,3 @@ klist sessions
 
 ## refer
 https://www.amazonaws.cn/en/new/2024/amazon-ecs-adds-gmsa-authentication-for-linux-containers-for-amazon-fargate/
-

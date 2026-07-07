@@ -1,14 +1,16 @@
 ---
 title: cloudwatch-to-firehose-python
 description: 在 firehose 上，处理从 cloudwatch 发送来的日志
-created: 2022-10-02 11:52:39.497
+created: 2022-10-02 11:52:39.497000
 last_modified: 2023-12-31
 tags:
-  - aws/serverless/lambda
-  - aws/mgmt/cloudwatch
-  - aws/analytics/kinesis/firehose
-  - python
+- aws/serverless/lambda
+- aws/mgmt/cloudwatch
+- aws/analytics/kinesis/firehose
+- python
+permalink: git-mkdocs/eks/solutions/logging/cloudwatch-to-firehose-python
 ---
+
 # cloudwatch-to-firehose-python
 
 ## create
@@ -31,7 +33,3 @@ download from [[attachments/stream-k8s-control-panel-logs-to-s3/package.zip]]
 
 ## layer version
 - [[../../../CLI/awscli/lambda-cmd#add-layer-to-lambda-]]
-
-
-
-

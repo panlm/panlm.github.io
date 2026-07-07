@@ -1,11 +1,13 @@
 ---
 title: Rescue EC2 Instance
 description: 恢复 EC2 实例步骤
-created: 2023-01-20 10:54:51.597
+created: 2023-01-20 10:54:51.597000
 last_modified: 2023-12-24
 tags:
-  - aws/compute/ec2
+- aws/compute/ec2
+permalink: git-mkdocs/others/rescue-ec2-instance
 ---
+
 # Rescue EC2 Instance
 
 - https://aws.amazon.com/premiumsupport/knowledge-center/ec2-instance-boot-issues/
@@ -48,4 +50,3 @@ umount $rescuemnt/{proc,sys,dev,run,}
 
 automation runbook
 - https://docs.aws.amazon.com/systems-manager/latest/userguide/automation-ec2rescue.html
-

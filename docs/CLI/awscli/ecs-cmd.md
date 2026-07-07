@@ -1,12 +1,14 @@
 ---
 title: ecs
 description: 常用命令
-created: 2023-02-22 22:46:31.539
+created: 2023-02-22 22:46:31.539000
 last_modified: 2024-03-19
 tags:
-  - aws/container/ecs
-  - aws/cmd
+- aws/container/ecs
+- aws/cmd
+permalink: git-mkdocs/cli/awscli/ecs-cmd
 ---
+
 # ecs-cmd
 ## get ami list
 ### amazon linux 2
@@ -499,4 +501,3 @@ aws ecs put-cluster-capacity-providers \
 
 ### ecsctl
 - [[../../../../ecsctl|ecsctl]]
-

@@ -1,14 +1,16 @@
 ---
 title: Cross Region Reverse Proxy with NLB and Cloudfront
 description: 跨区域的 Layer 4 反向代理，并使用 nlb + cloudfront，考察证书使用需求
-created: 2023-10-09 11:23:34.877
+created: 2023-10-09 11:23:34.877000
 last_modified: 2024-02-04
 status: myblog
 tags:
-  - aws/network/nlb
-  - aws/network/cloudfront
-  - aws/china
+- aws/network/nlb
+- aws/network/cloudfront
+- aws/china
+permalink: git-mkdocs/others/network/cross-region-reverse-proxy-with-nlb-cloudfront
 ---
+
 # Cross Region Reverse Proxy with NLB and Cloudfront
 使用 4 层反向代理访问 global 应用时，在 IPtables 中也可以实现流量分发到下游 NLB 的多个公网地址。解决反向代理的高可用性问题。如果在中国区域不使用 cloudfront 的话，可以不使用证书。
 
@@ -126,4 +128,3 @@ curl https://abc.${CN_DOMAIN_NAME}/ip
     - [[../../git-attachment/Extend Your Web Application Deployment to the China Region Using AWS Direct Connect]]
 - https://scalingo.com/blog/iptables
 - [[../../git-attachment/Building a Solution for China Cross-Border VPC Connection]]
-

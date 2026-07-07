@@ -1,13 +1,15 @@
 ---
 title: install-prometheus-grafana-on-eks
 description: 安装 grafana 和 prometheus
-created: 2023-02-18 21:31:31.678
+created: 2023-02-18 21:31:31.678000
 last_modified: 2024-05-02
 tags:
-  - grafana
-  - prometheus
-  - aws/container/eks
+- grafana
+- prometheus
+- aws/container/eks
+permalink: git-mkdocs/eks/solutions/monitor/install-prometheus-operator
 ---
+
 # install-prometheus-operator
 ## prep
 - [[../../addons/ebs-csi#using-eksdemo-]] 
@@ -219,5 +221,3 @@ kubectl get all -n grafana
 - https://archive.eksworkshop.com/intermediate/240_monitoring/prereqs/
 - External labels are only attached when data is communicated to the outside, including Outgoing alerts, remote write, remote read endpoint, `/federate` endpoint, etc.
     - https://github.com/prometheus-operator/prometheus-operator/issues/2918
-
-

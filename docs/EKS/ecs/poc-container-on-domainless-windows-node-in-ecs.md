@@ -1,12 +1,14 @@
 ---
 title: poc-container-on-domainless-windows-in-ecs
-description: 
-created: 2024-03-20 09:34:50.210
+description: null
+created: 2024-03-20 09:34:50.210000
 last_modified: 2024-03-20
 tags:
-  - microsoft/windows
-  - aws/container/ecs
+- microsoft/windows
+- aws/container/ecs
+permalink: git-mkdocs/eks/ecs/poc-container-on-domainless-windows-node-in-ecs
 ---
+
 # poc-container-on-domainless-windows-in-ecs
 
 ## walkthrough
@@ -26,6 +28,3 @@ tags:
     - script \\ shell script works fine
 - run task and verify access sqlserver in domain 
     - [[git/git-mkdocs/CLI/windows/powershell#connecting-to-sql-server-using-dotnet-framework-]]
-
-
-

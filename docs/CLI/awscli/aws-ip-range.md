@@ -1,12 +1,14 @@
 ---
 title: ip-ranges
-description: 
-created: 2022-03-26 10:25:49.147
+description: null
+created: 2022-03-26 10:25:49.147000
 last_modified: 2024-02-05
 tags:
-  - aws/network
-  - aws/cmd
+- aws/network
+- aws/cmd
+permalink: git-mkdocs/cli/awscli/aws-ip-range
 ---
+
 # ip-range
 
 ## blog
@@ -57,6 +59,3 @@ cat ip-ranges.json |jq -r '.prefixes[]  | select(.region=="us-east-2") | select(
 ```sh
 cat ip-ranges.json |jq -r '.prefixes[] | select(.region=="us-east-2") | select(.service=="API_GATEWAY")'
 ```
-
-
-

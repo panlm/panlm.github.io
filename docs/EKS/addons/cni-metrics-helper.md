@@ -1,17 +1,15 @@
 ---
 title: cni-metrics-helper
 description: cni-metrics-helper
-created: 2023-08-01 07:21:47.572
+created: 2023-08-01 07:21:47.572000
 last_modified: 2024-01-13
 tags:
-  - aws/container/eks
+- aws/container/eks
+permalink: git-mkdocs/eks/addons/cni-metrics-helper
 ---
+
 # cni-metrics-helper
 
 ## install
 - https://github.com/aws/amazon-vpc-cni-k8s
 - https://github.com/aws/amazon-vpc-cni-k8s/blob/master/cmd/cni-metrics-helper/README.md
-
-
-
-

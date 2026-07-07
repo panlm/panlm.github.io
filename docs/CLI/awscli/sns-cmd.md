@@ -1,11 +1,13 @@
 ---
 title: sns
 description: 常用命令
-created: 2021-08-22T01:08:41.391Z
+created: 2021-08-22 01:08:41.391000+00:00
 last_modified: 2024-02-05
 tags:
-  - aws/integration/sns
+- aws/integration/sns
+permalink: git-mkdocs/cli/awscli/sns-cmd
 ---
+
 # sns-cmd
 
 ## create sns
@@ -66,12 +68,3 @@ curl -X POST -d @$$.json \
   </ResponseMetadata>
 </ConfirmSubscriptionResponse>
 ```
-
-
-
-
-
-
-
-
-

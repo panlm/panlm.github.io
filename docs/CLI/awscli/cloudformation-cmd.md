@@ -1,12 +1,14 @@
 ---
 title: cloudformation
 description: 常用命令
-created: 2021-07-01T04:49:13.611Z
+created: 2021-07-01 04:49:13.611000+00:00
 last_modified: 2024-02-05
 tags:
-  - aws/mgmt/cloudformation
-  - aws/cmd
+- aws/mgmt/cloudformation
+- aws/cmd
+permalink: git-mkdocs/cli/awscli/cloudformation-cmd
 ---
+
 # cloudformation-cli
 
 ## validate
@@ -63,5 +65,3 @@ aws cloudformation create-stack --stack-name OELabStack2 \
     - https://github.com/aws-cloudformation/aws-cloudformation-templates/tree/main
 - snippts
     - https://docs.aws.amazon.com/AWSCloudFormation/latest/UserGuide/quickref-general.html
-
-

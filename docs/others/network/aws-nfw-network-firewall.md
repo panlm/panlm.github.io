@@ -1,11 +1,13 @@
 ---
 title: aws-nfw-network-firewall
 description: AWS Network Firewall
-created: 2023-07-22 10:07:37.041
+created: 2023-07-22 10:07:37.041000
 last_modified: 2024-04-19
 tags:
-  - aws/network/nfw
+- aws/network/nfw
+permalink: git-mkdocs/others/network/aws-nfw-network-firewall
 ---
+
 # AWS Network Firewall
 
 ## stateless-vs-stateful-
@@ -45,15 +47,3 @@ AWS Network Firewall支持有状态的规则（最大规则组容量50,000），
 
 ## refer
 - [[aws-nfw-network-firewall-internal]]
-
-
-
-
-
-
-
-
-
-
-
-

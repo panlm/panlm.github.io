@@ -1,12 +1,14 @@
 ---
 title: powershell
 description: 常用命令
-created: 2023-01-09 22:45:11.849
+created: 2023-01-09 22:45:11.849000
 last_modified: 2024-03-20
 tags:
-  - microsoft/windows
-  - microsoft/powershell
+- microsoft/windows
+- microsoft/powershell
+permalink: git-mkdocs/cli/windows/powershell
 ---
+
 # powershell
 
 ## download file

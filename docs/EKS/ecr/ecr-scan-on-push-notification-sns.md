@@ -1,13 +1,15 @@
 ---
 title: Enable scan on push in ECR and send notification to SNS
 description: 启用 ECR 的 Scan on push 之后，自动将扫描结果中 CRITICAL 的信息发送到目标 SNS 告警
-created: 2023-12-07 16:22:54.252
+created: 2023-12-07 16:22:54.252000
 last_modified: 2023-12-31
 status: myblog
 tags:
-  - aws/container/ecr
-  - aws/integration/sns
+- aws/container/ecr
+- aws/integration/sns
+permalink: git-mkdocs/eks/ecr/ecr-scan-on-push-notification-sns
 ---
+
 # Enable scan on push in ECR and send notification to SNS
 
 ## 需求
@@ -29,4 +31,3 @@ tags:
 ## 参考
 - https://aws.amazon.com/blogs/containers/logging-image-scan-findings-from-amazon-ecr-in-cloudwatch-using-an-aws-lambda-function/
 - https://aws.amazon.com/blogs/mt/get-notified-specific-lambda-function-error-patterns-using-cloudwatch/
-

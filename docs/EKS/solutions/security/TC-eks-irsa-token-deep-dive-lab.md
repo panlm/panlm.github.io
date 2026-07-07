@@ -1,12 +1,14 @@
 ---
 title: IRSA 中的 Token 剖析
 description: 本文档总结了将 AWS IAM 角色授予 AWS EKS 集群的服务账户的过程
-created: 2022-10-24 09:46:03.563
+created: 2022-10-24 09:46:03.563000
 last_modified: 2024-02-18
 status: myblog
 tags:
-  - aws/container/eks
+- aws/container/eks
+permalink: git-mkdocs/eks/solutions/security/tc-eks-irsa-token-deep-dive-lab
 ---
+
 # IRSA 中的 Token 剖析
 
 本文档总结了将 AWS IAM 角色授予 AWS EKS 集群的服务账户的过程。 这些功能称为 IRSA（服务帐户的 IAM 角色 - IAM Role for Service Account ）。
@@ -357,5 +359,3 @@ Projected SA Token 实际上是由 Kubernetes API Server 颁发，使用与 OIDC
 6. https://aws.amazon.com/blogs/containers/diving-into-iam-roles-for-service-accounts/
 7. https://github.com/aws/amazon-eks-pod-identity-webhook/blob/master/SELF_HOSTED_SETUP.md
 8. https://medium.com/dataseries/public-claims-and-how-to-validate-a-jwt-1d6c81823826
-
-

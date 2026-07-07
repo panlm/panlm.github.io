@@ -1,12 +1,14 @@
 ---
 title: elasticache-redis
 description: 常用命令
-created: 2022-12-02 19:04:02.899
+created: 2022-12-02 19:04:02.899000
 last_modified: 2024-04-15
 tags:
-  - aws/database/elasticache/redis
-  - aws/cmd
+- aws/database/elasticache/redis
+- aws/cmd
+permalink: git-mkdocs/cli/awscli/elasticache-redis-cmd
 ---
+
 # elasticache-redis-cmd
 ## create 6.2 in default vpc - cluster mode disabled
 
@@ -53,8 +55,3 @@ cd redis-stable
 make BUILD_TLS=yes MALLOC=libc
 
 ```
-
-
-
-
-

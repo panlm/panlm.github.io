@@ -1,12 +1,14 @@
 ---
 title: jq
 description: 常用命令
-created: 2021-07-25T03:45:39.000Z
+created: 2021-07-25 03:45:39+00:00
 last_modified: 2023-11-28
 tags:
-  - cmd/jq
-  - python
+- cmd/jq
+- python
+permalink: git-mkdocs/cli/linux/jq-cmd
 ---
+
 # how-to-use-jq
 ## reference 
 - https://programminghistorian.org/en/lessons/json-and-jq
@@ -213,7 +215,3 @@ pip install pyjq
 yum install python2-pip
 pip install —upgrade pip
 ```
-
-
-
-

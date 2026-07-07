@@ -1,13 +1,15 @@
 ---
 title: docker
 description: 常用命令
-created: 2022-03-23 13:58:01.257
+created: 2022-03-23 13:58:01.257000
 last_modified: 2024-07-23
 tags:
-  - docker
-  - linux
-  - cmd
+- docker
+- linux
+- cmd
+permalink: git-mkdocs/cli/linux/docker-cmd
 ---
+
 # docker cmd
 
 ## alternative on mac
@@ -260,6 +262,3 @@ sudo systemctl daemon-reload
 sudo systemctl restart docker
 
 ```
-
-
-

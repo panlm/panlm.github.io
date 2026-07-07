@@ -1,11 +1,13 @@
 ---
 title: horizontal pod autoscaler
 description: horizontal pod autoscaler
-created: 2022-05-17 15:41:26.222
+created: 2022-05-17 15:41:26.222000
 last_modified: 2023-12-22
 tags:
-  - kubernetes
+- kubernetes
+permalink: git-mkdocs/eks/kubernetes/k8s-hpa-horizontal-pod-autoscaler
 ---
+
 # hpa-horizontal-pod-autoscaler
 
 ## sample
@@ -47,6 +49,3 @@ spec:
 - [doc](https://docs.aws.amazon.com/ko_kr/eks/latest/userguide/horizontal-pod-autoscaler.html)
 - [workshop](https://www.eksworkshop.com/beginner/080_scaling/deploy_hpa/)
 - [[sysctl]]
-
-
-
