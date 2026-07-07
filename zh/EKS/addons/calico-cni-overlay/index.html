@@ -489,7 +489,7 @@
   
     
   
-  Tags
+  tags
 
       </a>
     </li>
@@ -1711,6 +1711,67 @@
     <span class="md-ellipsis">
       
         Nginx Gateway Fabric
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#poc-202607" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POC-202607
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="POC-202607">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rancher-eks-135-2026-07-07" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rancher 补充验证（另建 EKS 1.35 集群，2026-07-07）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neuvector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NeuVector 风险提示（未触发但要知道）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storageclass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        存储坑：集群默认 StorageClass 缺失
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apisix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        APISIX 安装坑
       
     </span>
   </a>
@@ -4985,6 +5046,8 @@
       
         
       
+        
+      
     
     
     
@@ -5504,6 +5567,34 @@
     
   
     opencode
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../GenAI/Quick%20Desktop%20Session%20%E8%A7%A3%E6%9E%90/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    Quick Desktop Session 解析
   
 
     
@@ -7765,7 +7856,7 @@
   <span class="md-ellipsis">
     
   
-    aws-transform
+    aws-transform-cmd
   
 
     
@@ -8788,7 +8879,7 @@
   <span class="md-ellipsis">
     
   
-    Tags
+    tags
   
 
     
@@ -9037,6 +9128,67 @@
   
 </li>
       
+        <li class="md-nav__item">
+  <a href="#poc-202607" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        POC-202607
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="POC-202607">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rancher-eks-135-2026-07-07" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        Rancher 补充验证（另建 EKS 1.35 集群，2026-07-07）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#neuvector" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        NeuVector 风险提示（未触发但要知道）
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#storageclass" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        存储坑：集群默认 StorageClass 缺失
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#apisix" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        APISIX 安装坑
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
     </ul>
   
 </nav>
@@ -9076,46 +9228,66 @@
 
 
 <h1 id="calico-cni-overlay">Calico CNI Overlay<a class="headerlink" href="#calico-cni-overlay" title="Permanent link">¶</a></h1>
+<blockquote>
+<p>已在 EKS 1.36 + eksctl 0.229.0 + Calico v3.32.1 实测验证 (2026-07-07)，其他组件版本见各节。Rancher 因 chart 拒装 1.36，另建 EKS 1.35 集群单独验证，见 POC 章节。</p>
+</blockquote>
 <h2 id="eks-cluster">eks cluster<a class="headerlink" href="#eks-cluster" title="Permanent link">¶</a></h2>
 <ul>
-<li>create cluster and delete default aws vpc cni<br>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">CLUSTER_NAME</span><span class="o">=</span>my-calico-cluster
+<li>
+<p>create cluster and delete default aws vpc cni<br>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-0-1" name="__codelineno-0-1" href="#__codelineno-0-1"></a><span class="nv">CLUSTER_NAME</span><span class="o">=</span>my-calico-cluster
 <a id="__codelineno-0-2" name="__codelineno-0-2" href="#__codelineno-0-2"></a><span class="nb">export</span><span class="w"> </span><span class="nv">AWS_DEFAULT_REGION</span><span class="o">=</span>us-west-2
 <a id="__codelineno-0-3" name="__codelineno-0-3" href="#__codelineno-0-3"></a>
 <a id="__codelineno-0-4" name="__codelineno-0-4" href="#__codelineno-0-4"></a>eksctl<span class="w"> </span>create<span class="w"> </span>cluster<span class="w"> </span>--name<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span>--without-nodegroup<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span>--enable-auto-mode<span class="o">=</span><span class="nb">false</span>
+<a id="__codelineno-0-5" name="__codelineno-0-5" href="#__codelineno-0-5"></a><span class="w">  </span>--version<span class="w"> </span><span class="m">1</span>.35<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-0-6" name="__codelineno-0-6" href="#__codelineno-0-6"></a><span class="w">  </span>--without-nodegroup
 <a id="__codelineno-0-7" name="__codelineno-0-7" href="#__codelineno-0-7"></a>
 <a id="__codelineno-0-8" name="__codelineno-0-8" href="#__codelineno-0-8"></a>kubectl<span class="w"> </span>delete<span class="w"> </span>daemonset<span class="w"> </span>-n<span class="w"> </span>kube-system<span class="w"> </span>aws-node
-</code></pre></div></li>
+</code></pre></div><p></p>
+</li>
+<li>
+<p>注: 已去掉 <code>--enable-auto-mode=false</code>，当前 eksctl (0.229.0) 加 <code>--without-nodegroup</code> 时默认不会开 auto mode，此参数已不需要</p>
+</li>
+<li>注: 当前 eksctl 默认会把 metrics-server / vpc-cni / kube-proxy / coredns 装成 <strong>EKS 托管 addon</strong>（即使加了 <code>--without-nodegroup</code>）。删除 <code>aws-node</code> daemonset 效果不变（不会被自动拉回），但 <code>vpc-cni</code> addon 对象本身仍会残留在 EKS 侧且状态显示 ACTIVE/无 health issue，这只是展示层的信息不一致，不影响 Calico 联网</li>
 </ul>
 <h2 id="calico-cni">calico cni<a class="headerlink" href="#calico-cni" title="Permanent link">¶</a></h2>
 <ul>
 <li>refer: <a href="https://docs.tigera.io/calico/latest/getting-started/kubernetes/managed-public-cloud/eks#install-eks-with-calico-networking">calico doc</a> <br>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">CALICO_VERSION</span><span class="o">=</span>v3.31.3<span class="w"> </span><span class="c1"># update 1224</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-1-1" name="__codelineno-1-1" href="#__codelineno-1-1"></a><span class="nv">CALICO_VERSION</span><span class="o">=</span>v3.32.1<span class="w"> </span><span class="c1"># update 0707, 官方声明测试过 k8s 1.34-1.36</span>
 <a id="__codelineno-1-2" name="__codelineno-1-2" href="#__codelineno-1-2"></a>
 <a id="__codelineno-1-3" name="__codelineno-1-3" href="#__codelineno-1-3"></a>helm<span class="w"> </span>repo<span class="w"> </span>add<span class="w"> </span>projectcalico<span class="w"> </span>https://docs.tigera.io/calico/charts
 <a id="__codelineno-1-4" name="__codelineno-1-4" href="#__codelineno-1-4"></a>helm<span class="w"> </span>repo<span class="w"> </span>update
 <a id="__codelineno-1-5" name="__codelineno-1-5" href="#__codelineno-1-5"></a>
-<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1"># install calico using helm</span>
-<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a>helm<span class="w"> </span>install<span class="w"> </span>calico<span class="w"> </span>projectcalico/tigera-operator<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a><span class="w">    </span>--version<span class="w"> </span><span class="si">${</span><span class="nv">CALICO_VERSION</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span>--namespace<span class="w"> </span>tigera-operator<span class="w"> </span>--create-namespace
+<a id="__codelineno-1-6" name="__codelineno-1-6" href="#__codelineno-1-6"></a><span class="c1"># Calico v3.32 起，CRD 已从 tigera-operator chart 中拆出，必须先单独装 CRD，否则 helm install 会报</span>
+<a id="__codelineno-1-7" name="__codelineno-1-7" href="#__codelineno-1-7"></a><span class="c1"># "no matches for kind APIServer/Installation/... in version operator.tigera.io/v1"</span>
+<a id="__codelineno-1-8" name="__codelineno-1-8" href="#__codelineno-1-8"></a>helm<span class="w"> </span>template<span class="w"> </span>calico-crds<span class="w"> </span>projectcalico/crd.projectcalico.org.v1<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-9" name="__codelineno-1-9" href="#__codelineno-1-9"></a><span class="w">    </span>--version<span class="w"> </span><span class="si">${</span><span class="nv">CALICO_VERSION</span><span class="si">}</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>kubectl<span class="w"> </span>apply<span class="w"> </span>--server-side<span class="w"> </span>-f<span class="w"> </span>-
 <a id="__codelineno-1-10" name="__codelineno-1-10" href="#__codelineno-1-10"></a>
-<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>kubectl<span class="w"> </span>patch<span class="w"> </span>installation<span class="w"> </span>default<span class="w"> </span>--type<span class="o">=</span><span class="s1">'json'</span><span class="w"> </span>-p<span class="o">=</span><span class="s1">'[{"op": "replace", "path": "/spec/cni", "value": {"type":"Calico"} }]'</span>
+<a id="__codelineno-1-11" name="__codelineno-1-11" href="#__codelineno-1-11"></a>kubectl<span class="w"> </span>create<span class="w"> </span>namespace<span class="w"> </span>tigera-operator
 <a id="__codelineno-1-12" name="__codelineno-1-12" href="#__codelineno-1-12"></a>
-<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="c1"># 确认使用节点 ip 作为出向 nat (natOutgoing=true)</span>
-<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a><span class="c1"># kubectl get ippool default-ipv4-ippool -o jsonpath='{.spec.natOutgoing}' </span>
-<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a>
-<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a>eksctl<span class="w"> </span>create<span class="w"> </span>nodegroup<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a><span class="w">    </span>--cluster<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a><span class="w">    </span>--node-type<span class="w"> </span>m5.large<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a><span class="w">    </span>--max-pods-per-node<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="w">    </span>--node-private-networking<span class="w"> </span>
+<a id="__codelineno-1-13" name="__codelineno-1-13" href="#__codelineno-1-13"></a><span class="c1"># install calico using helm</span>
+<a id="__codelineno-1-14" name="__codelineno-1-14" href="#__codelineno-1-14"></a>helm<span class="w"> </span>install<span class="w"> </span>calico<span class="w"> </span>projectcalico/tigera-operator<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-15" name="__codelineno-1-15" href="#__codelineno-1-15"></a><span class="w">    </span>--version<span class="w"> </span><span class="si">${</span><span class="nv">CALICO_VERSION</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-16" name="__codelineno-1-16" href="#__codelineno-1-16"></a><span class="w">    </span>--namespace<span class="w"> </span>tigera-operator
+<a id="__codelineno-1-17" name="__codelineno-1-17" href="#__codelineno-1-17"></a>
+<a id="__codelineno-1-18" name="__codelineno-1-18" href="#__codelineno-1-18"></a>kubectl<span class="w"> </span>patch<span class="w"> </span>installation<span class="w"> </span>default<span class="w"> </span>--type<span class="o">=</span><span class="s1">'json'</span><span class="w"> </span>-p<span class="o">=</span><span class="s1">'[{"op": "replace", "path": "/spec/cni", "value": {"type":"Calico"} }]'</span>
+<a id="__codelineno-1-19" name="__codelineno-1-19" href="#__codelineno-1-19"></a>
+<a id="__codelineno-1-20" name="__codelineno-1-20" href="#__codelineno-1-20"></a><span class="c1"># 确认使用节点 ip 作为出向 nat (natOutgoing=true)</span>
+<a id="__codelineno-1-21" name="__codelineno-1-21" href="#__codelineno-1-21"></a><span class="c1"># kubectl get ippool default-ipv4-ippool -o jsonpath='{.spec.natOutgoing}' </span>
+<a id="__codelineno-1-22" name="__codelineno-1-22" href="#__codelineno-1-22"></a>
+<a id="__codelineno-1-23" name="__codelineno-1-23" href="#__codelineno-1-23"></a>eksctl<span class="w"> </span>create<span class="w"> </span>nodegroup<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-24" name="__codelineno-1-24" href="#__codelineno-1-24"></a><span class="w">    </span>--cluster<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-25" name="__codelineno-1-25" href="#__codelineno-1-25"></a><span class="w">    </span>--node-type<span class="w"> </span>m6g.large<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-26" name="__codelineno-1-26" href="#__codelineno-1-26"></a><span class="w">    </span>--max-pods-per-node<span class="w"> </span><span class="m">100</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-27" name="__codelineno-1-27" href="#__codelineno-1-27"></a><span class="w">    </span>--node-private-networking<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-1-28" name="__codelineno-1-28" href="#__codelineno-1-28"></a><span class="w">    </span>--nodes<span class="w"> </span><span class="m">3</span>
 </code></pre></div></li>
 </ul>
 <h2 id="oidc">oidc<a class="headerlink" href="#oidc" title="Permanent link">¶</a></h2>
 <ul>
+<li>必须先执行，否则后面 ebs-csi / efs-csi / external-dns 等创建 iamserviceaccount 会报 <code>no IAM OIDC provider associated with cluster</code><br>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>eksctl<span class="w"> </span>utils<span class="w"> </span>associate-iam-oidc-provider<span class="w"> </span>--cluster<span class="w"> </span><span class="si">${</span><span class="nv">CLUSTER_NAME</span><span class="si">}</span><span class="w"> </span>--approve
+</code></pre></div></li>
 <li><a href="../../../CLI/linux/eksctl/#oidc-" title="git/git-mkdocs/CLI/linux/eksctl">git/git-mkdocs/CLI/linux/eksctl</a></li>
 </ul>
 <h2 id="hostnetwork">必须使用 hostNetwork 的组件<a class="headerlink" href="#hostnetwork" title="Permanent link">¶</a></h2>
@@ -9124,44 +9296,45 @@
 <li>原因：需要配置节点网络，在网络初始化之前运行</li>
 <li>实测：默认已修改</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a>NAME                                      READY   STATUS    RESTARTS   AGE    IP                NODE                                            NOMINATED NODE   READINESS GATES
-<a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>calico-apiserver-565867495-ft8w2          1/1     Running   0          2d3h   192.168.153.130   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
-<a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a>calico-apiserver-565867495-ld47h          1/1     Running   0          2d3h   192.168.179.147   ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
-<a id="__codelineno-2-4" name="__codelineno-2-4" href="#__codelineno-2-4"></a>calico-kube-controllers-578677b48-b5fgt   1/1     Running   0          2d3h   172.16.28.6       ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
-<a id="__codelineno-2-5" name="__codelineno-2-5" href="#__codelineno-2-5"></a>calico-node-d92rg                         1/1     Running   0          2d3h   192.168.179.147   ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
-<a id="__codelineno-2-6" name="__codelineno-2-6" href="#__codelineno-2-6"></a>calico-node-fxhmc                         1/1     Running   0          2d3h   192.168.153.130   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
-<a id="__codelineno-2-7" name="__codelineno-2-7" href="#__codelineno-2-7"></a>calico-typha-68c49cdb58-wwldh             1/1     Running   0          2d3h   192.168.153.130   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
-<a id="__codelineno-2-8" name="__codelineno-2-8" href="#__codelineno-2-8"></a>goldmane-65dcd4f69b-cpnwm                 1/1     Running   0          2d3h   172.16.28.1       ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
-<a id="__codelineno-2-9" name="__codelineno-2-9" href="#__codelineno-2-9"></a>whisker-785fcbb6fb-d6hm8                  2/2     Running   0          2d3h   172.16.186.65     ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>NAME                                      READY   STATUS    RESTARTS   AGE    IP                NODE                                            NOMINATED NODE   READINESS GATES
+<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>calico-apiserver-565867495-ft8w2          1/1     Running   0          2d3h   192.168.153.130   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>calico-apiserver-565867495-ld47h          1/1     Running   0          2d3h   192.168.179.147   ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>calico-kube-controllers-578677b48-b5fgt   1/1     Running   0          2d3h   172.16.28.6       ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-3-5" name="__codelineno-3-5" href="#__codelineno-3-5"></a>calico-node-d92rg                         1/1     Running   0          2d3h   192.168.179.147   ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-3-6" name="__codelineno-3-6" href="#__codelineno-3-6"></a>calico-node-fxhmc                         1/1     Running   0          2d3h   192.168.153.130   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-3-7" name="__codelineno-3-7" href="#__codelineno-3-7"></a>calico-typha-68c49cdb58-wwldh             1/1     Running   0          2d3h   192.168.153.130   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-3-8" name="__codelineno-3-8" href="#__codelineno-3-8"></a>goldmane-65dcd4f69b-cpnwm                 1/1     Running   0          2d3h   172.16.28.1       ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-3-9" name="__codelineno-3-9" href="#__codelineno-3-9"></a>whisker-785fcbb6fb-d6hm8                  2/2     Running   0          2d3h   172.16.186.65     ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
 </code></pre></div>
 <h3 id="kube-proxy">Kube-proxy<a class="headerlink" href="#kube-proxy" title="Permanent link">¶</a></h3>
 <ul>
 <li>原因：需要管理节点的 iptables/ipvs 规则</li>
 <li>实测：默认已修改</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>ubuntu:~$ kubectl get pod -A  -l k8s-app=kube-proxy -o wide
-<a id="__codelineno-3-2" name="__codelineno-3-2" href="#__codelineno-3-2"></a>NAMESPACE     NAME               READY   STATUS    RESTARTS   AGE    IP                NODE                                            NOMINATED NODE   READINESS GATES
-<a id="__codelineno-3-3" name="__codelineno-3-3" href="#__codelineno-3-3"></a>kube-system   kube-proxy-dxfx5   1/1     Running   0          2d3h   192.168.179.147   ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
-<a id="__codelineno-3-4" name="__codelineno-3-4" href="#__codelineno-3-4"></a>kube-system   kube-proxy-w9vtm   1/1     Running   0          2d3h   192.168.153.130   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>ubuntu:~$ kubectl get pod -A  -l k8s-app=kube-proxy -o wide
+<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a>NAMESPACE     NAME               READY   STATUS    RESTARTS   AGE    IP                NODE                                            NOMINATED NODE   READINESS GATES
+<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a>kube-system   kube-proxy-dxfx5   1/1     Running   0          2d3h   192.168.179.147   ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>kube-system   kube-proxy-w9vtm   1/1     Running   0          2d3h   192.168.153.130   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
 </code></pre></div>
 <h3 id="aws-load-balancer-controller">AWS Load Balancer Controller<a class="headerlink" href="#aws-load-balancer-controller" title="Permanent link">¶</a></h3>
 <ul>
 <li>原因：需要直接访问 AWS API 和 VPC 资源，overlay IP 无法被 AWS 服务识别</li>
 <li>实测：需要手工修改</li>
+<li>注：此组件非必需，按需安装（本次实测环境未安装验证）</li>
 <li><a href="../aws-load-balancer-controller/#install-" title="install">install</a> it</li>
 <li>
 <p>patch it<br>
-</p><div class="highlight"><pre><span></span><code><a id="__codelineno-4-1" name="__codelineno-4-1" href="#__codelineno-4-1"></a>kubectl<span class="w"> </span>patch<span class="w"> </span>deployment<span class="w"> </span>aws-load-balancer-controller<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-4-2" name="__codelineno-4-2" href="#__codelineno-4-2"></a><span class="w">  </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-4-3" name="__codelineno-4-3" href="#__codelineno-4-3"></a><span class="w">  </span>-p<span class="w"> </span><span class="s1">'{"spec":{"template":{"spec":{"hostNetwork":true}}}}'</span>
-<a id="__codelineno-4-4" name="__codelineno-4-4" href="#__codelineno-4-4"></a>
-<a id="__codelineno-4-5" name="__codelineno-4-5" href="#__codelineno-4-5"></a><span class="c1"># verify</span>
-<a id="__codelineno-4-6" name="__codelineno-4-6" href="#__codelineno-4-6"></a>kubectl<span class="w"> </span>get<span class="w"> </span>deployment<span class="w"> </span>aws-load-balancer-controller<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-4-7" name="__codelineno-4-7" href="#__codelineno-4-7"></a><span class="w">  </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-4-8" name="__codelineno-4-8" href="#__codelineno-4-8"></a><span class="w">  </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.spec.template.spec.hostNetwork}'</span><span class="w"> </span>
-<a id="__codelineno-4-9" name="__codelineno-4-9" href="#__codelineno-4-9"></a>
-<a id="__codelineno-4-10" name="__codelineno-4-10" href="#__codelineno-4-10"></a><span class="c1"># enable gateway api support</span>
-<a id="__codelineno-4-11" name="__codelineno-4-11" href="#__codelineno-4-11"></a><span class="c1"># kubectl patch deployment aws-load-balancer-controller -n kube-system --type='json' -p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--feature-gates=NLBGatewayAPI=true,ALBGatewayAPI=true"}]'</span>
+</p><div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>kubectl<span class="w"> </span>patch<span class="w"> </span>deployment<span class="w"> </span>aws-load-balancer-controller<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span>-p<span class="w"> </span><span class="s1">'{"spec":{"template":{"spec":{"hostNetwork":true}}}}'</span>
+<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
+<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># verify</span>
+<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>kubectl<span class="w"> </span>get<span class="w"> </span>deployment<span class="w"> </span>aws-load-balancer-controller<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">  </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.spec.template.spec.hostNetwork}'</span><span class="w"> </span>
+<a id="__codelineno-5-9" name="__codelineno-5-9" href="#__codelineno-5-9"></a>
+<a id="__codelineno-5-10" name="__codelineno-5-10" href="#__codelineno-5-10"></a><span class="c1"># enable gateway api support</span>
+<a id="__codelineno-5-11" name="__codelineno-5-11" href="#__codelineno-5-11"></a><span class="c1"># kubectl patch deployment aws-load-balancer-controller -n kube-system --type='json' -p='[{"op": "add", "path": "/spec/template/spec/containers/0/args/-", "value": "--feature-gates=NLBGatewayAPI=true,ALBGatewayAPI=true"}]'</span>
 </code></pre></div><p></p>
 </li>
 <li>
@@ -9172,39 +9345,41 @@
 <h3 id="metrics-server">Metrics Server<a class="headerlink" href="#metrics-server" title="Permanent link">¶</a></h3>
 <ul>
 <li>原因: 需要从 kubelet 收集指标，使用 hostNetwork 可以避免网络层问题</li>
-<li>实测：需要手工修改。启用后才能看到 cpu memory 等指标，不启用也没有报错</li>
+<li>实测：需要手工修改。启用后才能看到 cpu memory 等指标，不启用则 <code>kubectl top</code> 报 <code>Metrics API not available</code></li>
+<li>注: 现在 eksctl 建集群默认会把 metrics-server 装成 EKS 托管 addon，pod label 是 <code>app.kubernetes.io/name=metrics-server</code>（不是旧手工装法的 <code>k8s-app=metrics-server</code>），下面命令按新 label 查询</li>
 <li>refer: <a href="../metrics-server/" title="metrics-server">metrics-server</a><br>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-5-1" name="__codelineno-5-1" href="#__codelineno-5-1"></a>kubectl<span class="w"> </span>patch<span class="w"> </span>deployment<span class="w"> </span>metrics-server<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-2" name="__codelineno-5-2" href="#__codelineno-5-2"></a><span class="w">  </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-3" name="__codelineno-5-3" href="#__codelineno-5-3"></a><span class="w">  </span>-p<span class="w"> </span><span class="s1">'{"spec":{"template":{"spec":{"hostNetwork":true}}}}'</span>
-<a id="__codelineno-5-4" name="__codelineno-5-4" href="#__codelineno-5-4"></a>
-<a id="__codelineno-5-5" name="__codelineno-5-5" href="#__codelineno-5-5"></a><span class="c1"># verify</span>
-<a id="__codelineno-5-6" name="__codelineno-5-6" href="#__codelineno-5-6"></a>kubectl<span class="w"> </span>get<span class="w"> </span>deployment<span class="w"> </span>metrics-server<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-7" name="__codelineno-5-7" href="#__codelineno-5-7"></a><span class="w">  </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-5-8" name="__codelineno-5-8" href="#__codelineno-5-8"></a><span class="w">  </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.spec.template.spec.hostNetwork}'</span><span class="w"> </span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>kubectl<span class="w"> </span>patch<span class="w"> </span>deployment<span class="w"> </span>metrics-server<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a><span class="w">  </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a><span class="w">  </span>-p<span class="w"> </span><span class="s1">'{"spec":{"template":{"spec":{"hostNetwork":true}}}}'</span>
+<a id="__codelineno-6-4" name="__codelineno-6-4" href="#__codelineno-6-4"></a>
+<a id="__codelineno-6-5" name="__codelineno-6-5" href="#__codelineno-6-5"></a><span class="c1"># verify</span>
+<a id="__codelineno-6-6" name="__codelineno-6-6" href="#__codelineno-6-6"></a>kubectl<span class="w"> </span>get<span class="w"> </span>deployment<span class="w"> </span>metrics-server<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-7" name="__codelineno-6-7" href="#__codelineno-6-7"></a><span class="w">  </span>-n<span class="w"> </span>kube-system<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-6-8" name="__codelineno-6-8" href="#__codelineno-6-8"></a><span class="w">  </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.spec.template.spec.hostNetwork}'</span><span class="w"> </span>
 </code></pre></div></li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-6-1" name="__codelineno-6-1" href="#__codelineno-6-1"></a>NAMESPACE     NAME                              READY   STATUS    RESTARTS   AGE   IP                NODE                                            NOMINATED NODE   READINESS GATES
-<a id="__codelineno-6-2" name="__codelineno-6-2" href="#__codelineno-6-2"></a>kube-system   metrics-server-5cd97b659b-8mjgj   1/1     Running   0          58s   192.168.179.147   ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
-<a id="__codelineno-6-3" name="__codelineno-6-3" href="#__codelineno-6-3"></a>kube-system   metrics-server-5cd97b659b-fbp77   1/1     Running   0          58s   192.168.153.130   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>NAMESPACE     NAME                              READY   STATUS    RESTARTS   AGE   IP                NODE                                            NOMINATED NODE   READINESS GATES
+<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a>kube-system   metrics-server-7d4b87c6f7-csjw6   1/1     Running   0          32s   192.168.179.215   ip-192-168-179-215.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>kube-system   metrics-server-7d4b87c6f7-gnhvb   1/1     Running   0          32s   192.168.106.21    ip-192-168-106-21.us-west-2.compute.internal    &lt;none&gt;           &lt;none&gt;
 </code></pre></div>
 <h3 id="cert-manager-">Cert-Manager-<a class="headerlink" href="#cert-manager-" title="Permanent link">¶</a></h3>
 <ul>
 <li>原因：api server 需要通讯 webhook 验证证书</li>
-<li>实测：需要手工修改。</li>
+<li>实测：需要手工修改。（也可在 <code>helm install</code> 时直接带 <code>--set webhook.hostNetwork=true --set webhook.securePort=10260</code> 一步到位，效果相同，实测于 v1.19.2 通过）</li>
+<li>注：cert-manager 官方目前 tested 到 k8s 1.35（1.36 released 太新还没纳入测试矩阵），但实测在 1.36 上正常运行</li>
 <li>refer: <a href="../cert-manager/" title="cert-manager">cert-manager</a></li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-7-1" name="__codelineno-7-1" href="#__codelineno-7-1"></a>kubectl<span class="w"> </span>patch<span class="w"> </span>deployment<span class="w"> </span>cert-manager-webhook<span class="w"> </span>-n<span class="w"> </span>cert-manager<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-2" name="__codelineno-7-2" href="#__codelineno-7-2"></a><span class="w">  </span>-p<span class="w"> </span><span class="s1">'{"spec":{"template":{"spec":{"hostNetwork":true}}}}'</span>
-<a id="__codelineno-7-3" name="__codelineno-7-3" href="#__codelineno-7-3"></a>
-<a id="__codelineno-7-4" name="__codelineno-7-4" href="#__codelineno-7-4"></a>kubectl<span class="w"> </span>patch<span class="w"> </span>deployment<span class="w"> </span>cert-manager-webhook<span class="w"> </span>-n<span class="w"> </span>cert-manager<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-7-5" name="__codelineno-7-5" href="#__codelineno-7-5"></a><span class="w">  </span>--type<span class="o">=</span>json<span class="w"> </span>-p<span class="o">=</span><span class="s1">'[</span>
-<a id="__codelineno-7-6" name="__codelineno-7-6" href="#__codelineno-7-6"></a><span class="s1">    {"op":"replace","path":"/spec/template/spec/containers/0/args/1","value":"--secure-port=10260"},</span>
-<a id="__codelineno-7-7" name="__codelineno-7-7" href="#__codelineno-7-7"></a><span class="s1">    {"op":"replace","path":"/spec/template/spec/containers/0/ports/0/containerPort","value":10260}</span>
-<a id="__codelineno-7-8" name="__codelineno-7-8" href="#__codelineno-7-8"></a><span class="s1">  ]'</span>
-<a id="__codelineno-7-9" name="__codelineno-7-9" href="#__codelineno-7-9"></a>
-<a id="__codelineno-7-10" name="__codelineno-7-10" href="#__codelineno-7-10"></a><span class="c1"># verify</span>
-<a id="__codelineno-7-11" name="__codelineno-7-11" href="#__codelineno-7-11"></a>kubectl<span class="w"> </span>get<span class="w"> </span>deployment<span class="w"> </span>cert-manager-webhook<span class="w"> </span>-n<span class="w"> </span>cert-manager<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.spec.template.spec.hostNetwork}'</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>kubectl<span class="w"> </span>patch<span class="w"> </span>deployment<span class="w"> </span>cert-manager-webhook<span class="w"> </span>-n<span class="w"> </span>cert-manager<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a><span class="w">  </span>-p<span class="w"> </span><span class="s1">'{"spec":{"template":{"spec":{"hostNetwork":true}}}}'</span>
+<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>
+<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>kubectl<span class="w"> </span>patch<span class="w"> </span>deployment<span class="w"> </span>cert-manager-webhook<span class="w"> </span>-n<span class="w"> </span>cert-manager<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-8-5" name="__codelineno-8-5" href="#__codelineno-8-5"></a><span class="w">  </span>--type<span class="o">=</span>json<span class="w"> </span>-p<span class="o">=</span><span class="s1">'[</span>
+<a id="__codelineno-8-6" name="__codelineno-8-6" href="#__codelineno-8-6"></a><span class="s1">    {"op":"replace","path":"/spec/template/spec/containers/0/args/1","value":"--secure-port=10260"},</span>
+<a id="__codelineno-8-7" name="__codelineno-8-7" href="#__codelineno-8-7"></a><span class="s1">    {"op":"replace","path":"/spec/template/spec/containers/0/ports/0/containerPort","value":10260}</span>
+<a id="__codelineno-8-8" name="__codelineno-8-8" href="#__codelineno-8-8"></a><span class="s1">  ]'</span>
+<a id="__codelineno-8-9" name="__codelineno-8-9" href="#__codelineno-8-9"></a>
+<a id="__codelineno-8-10" name="__codelineno-8-10" href="#__codelineno-8-10"></a><span class="c1"># verify</span>
+<a id="__codelineno-8-11" name="__codelineno-8-11" href="#__codelineno-8-11"></a>kubectl<span class="w"> </span>get<span class="w"> </span>deployment<span class="w"> </span>cert-manager-webhook<span class="w"> </span>-n<span class="w"> </span>cert-manager<span class="w"> </span>-o<span class="w"> </span><span class="nv">jsonpath</span><span class="o">=</span><span class="s1">'{.spec.template.spec.hostNetwork}'</span><span class="w"> </span><span class="o">&amp;&amp;</span><span class="w"> </span><span class="nb">echo</span>
 </code></pre></div>
 <ul>
 <li>or refer: <a href="../cert-manager/#install-for-overlay-cni-" title="git/git-mkdocs/EKS/addons/cert-manager">git/git-mkdocs/EKS/addons/cert-manager</a></li>
@@ -9230,10 +9405,10 @@
 <li>原因：DNS 解析是关键服务，hostNetwork 可以提高可靠性，(可选但推荐)</li>
 <li>实测：不使用 hostNetwork 也可以成功解析</li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-8-1" name="__codelineno-8-1" href="#__codelineno-8-1"></a>ubuntu:~$ kubectl get pod -A  -l eks.amazonaws.com/component=coredns -o wide
-<a id="__codelineno-8-2" name="__codelineno-8-2" href="#__codelineno-8-2"></a>NAMESPACE     NAME                       READY   STATUS    RESTARTS   AGE    IP            NODE                                            NOMINATED NODE   READINESS GATES
-<a id="__codelineno-8-3" name="__codelineno-8-3" href="#__codelineno-8-3"></a>kube-system   coredns-5449774944-2d4jb   1/1     Running   0          2d4h   172.16.28.5   ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
-<a id="__codelineno-8-4" name="__codelineno-8-4" href="#__codelineno-8-4"></a>kube-system   coredns-5449774944-dnskk   1/1     Running   0          2d4h   172.16.28.4   ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ubuntu:~$ kubectl get pod -A  -l eks.amazonaws.com/component=coredns -o wide
+<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>NAMESPACE     NAME                       READY   STATUS    RESTARTS   AGE    IP            NODE                                            NOMINATED NODE   READINESS GATES
+<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>kube-system   coredns-5449774944-2d4jb   1/1     Running   0          2d4h   172.16.28.5   ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-9-4" name="__codelineno-9-4" href="#__codelineno-9-4"></a>kube-system   coredns-5449774944-dnskk   1/1     Running   0          2d4h   172.16.28.4   ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
 </code></pre></div>
 <h3 id="external-dns">External DNS<a class="headerlink" href="#external-dns" title="Permanent link">¶</a></h3>
 <ul>
@@ -9241,21 +9416,22 @@
 <li>实测：不使用 hostNetwork 也可以成功创建 dns 记录</li>
 <li>refer: <a href="../externaldns-for-route53/" title="externaldns-for-route53">externaldns-for-route53</a> </li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-9-1" name="__codelineno-9-1" href="#__codelineno-9-1"></a>ubuntu:~$ kubectl get pod -A  -l "app.kubernetes.io/instance=external-dns,app.kubernetes.io/name=external-dns" -o wide
-<a id="__codelineno-9-2" name="__codelineno-9-2" href="#__codelineno-9-2"></a>NAMESPACE     NAME                            READY   STATUS    RESTARTS   AGE   IP              NODE                                            NOMINATED NODE   READINESS GATES
-<a id="__codelineno-9-3" name="__codelineno-9-3" href="#__codelineno-9-3"></a>externaldns   external-dns-596bf4886b-lkg7k   1/1     Running   0          28h   172.16.186.69   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ubuntu:~$ kubectl get pod -A  -l "app.kubernetes.io/instance=external-dns,app.kubernetes.io/name=external-dns" -o wide
+<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>NAMESPACE     NAME                            READY   STATUS    RESTARTS   AGE   IP              NODE                                            NOMINATED NODE   READINESS GATES
+<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>externaldns   external-dns-596bf4886b-lkg7k   1/1     Running   0          28h   172.16.186.69   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
 </code></pre></div>
 <h3 id="ebs-csi-driver-node-plugin">EBS CSI Driver Node Plugin<a class="headerlink" href="#ebs-csi-driver-node-plugin" title="Permanent link">¶</a></h3>
 <ul>
 <li>原因：需要直接访问节点的块设备</li>
 <li>实测：不使用 hostNetwork 也可以使用</li>
+<li>注：helm chart 现在提示 <code>AmazonEBSCSIDriverPolicy</code> 已有更细粒度的替代品 <code>AmazonEBSCSIDriverPolicyV2</code> / <code>AmazonEBSCSIDriverEKSClusterScopedPolicy</code>，本文仍用旧 policy，验证可用，按需评估是否迁移</li>
 <li>refer: <a href="../ebs-csi/" title="ebs-csi">ebs-csi</a></li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-10-1" name="__codelineno-10-1" href="#__codelineno-10-1"></a>ubuntu:~$ kubectl get pod -n kube-system -l "app.kubernetes.io/name=aws-ebs-csi-driver,app.kubernetes.io/instance=storage-ebs-csi" -o wide
-<a id="__codelineno-10-2" name="__codelineno-10-2" href="#__codelineno-10-2"></a>NAME                                 READY   STATUS    RESTARTS   AGE   IP              NODE                                            NOMINATED NODE   READINESS GATES
-<a id="__codelineno-10-3" name="__codelineno-10-3" href="#__codelineno-10-3"></a>ebs-csi-controller-97758bb7c-gnb45   5/5     Running   0          26m   172.16.186.72   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
-<a id="__codelineno-10-4" name="__codelineno-10-4" href="#__codelineno-10-4"></a>ebs-csi-node-255gc                   3/3     Running   0          26m   172.16.28.8     ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
-<a id="__codelineno-10-5" name="__codelineno-10-5" href="#__codelineno-10-5"></a>ebs-csi-node-t48tp                   3/3     Running   0          26m   172.16.186.71   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ubuntu:~$ kubectl get pod -n kube-system -l "app.kubernetes.io/name=aws-ebs-csi-driver,app.kubernetes.io/instance=storage-ebs-csi" -o wide
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>NAME                                 READY   STATUS    RESTARTS   AGE   IP              NODE                                            NOMINATED NODE   READINESS GATES
+<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>ebs-csi-controller-97758bb7c-gnb45   5/5     Running   0          26m   172.16.186.72   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>ebs-csi-node-255gc                   3/3     Running   0          26m   172.16.28.8     ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>ebs-csi-node-t48tp                   3/3     Running   0          26m   172.16.186.71   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
 </code></pre></div>
 <h3 id="efs-csi-driver-node-plugin">EFS CSI Driver Node Plugin<a class="headerlink" href="#efs-csi-driver-node-plugin" title="Permanent link">¶</a></h3>
 <ul>
@@ -9263,11 +9439,11 @@
 <li>实测：不使用 hostNetwork 也可以使用，但是 efs csi node pod 自动使用 hostNetwork</li>
 <li>refer: <a href="../efs-csi/" title="efs-csi">efs-csi</a></li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>ubuntu:~$ kubectl get pod -n kube-system -l "app.kubernetes.io/name=aws-efs-csi-driver,app.kubernetes.io/instance=storage-efs-csi" -o wide
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a>NAME                                  READY   STATUS    RESTARTS   AGE     IP                NODE                                            NOMINATED NODE   READINESS GATES
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a>efs-csi-controller-784c568b8b-qgrh2   3/3     Running   0          8m46s   172.16.186.74     ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
-<a id="__codelineno-11-4" name="__codelineno-11-4" href="#__codelineno-11-4"></a>efs-csi-node-kq96r                    3/3     Running   0          8m46s   192.168.179.147   ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
-<a id="__codelineno-11-5" name="__codelineno-11-5" href="#__codelineno-11-5"></a>efs-csi-node-qfrhk                    3/3     Running   0          8m46s   192.168.153.130   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>ubuntu:~$ kubectl get pod -n kube-system -l "app.kubernetes.io/name=aws-efs-csi-driver,app.kubernetes.io/instance=storage-efs-csi" -o wide
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>NAME                                  READY   STATUS    RESTARTS   AGE     IP                NODE                                            NOMINATED NODE   READINESS GATES
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>efs-csi-controller-784c568b8b-qgrh2   3/3     Running   0          8m46s   172.16.186.74     ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>efs-csi-node-kq96r                    3/3     Running   0          8m46s   192.168.179.147   ip-192-168-179-147.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>efs-csi-node-qfrhk                    3/3     Running   0          8m46s   192.168.153.130   ip-192-168-153-130.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
 </code></pre></div>
 <h3 id="nginx-gateway-fabric">Nginx Gateway Fabric<a class="headerlink" href="#nginx-gateway-fabric" title="Permanent link">¶</a></h3>
 <ul>
@@ -9275,13 +9451,148 @@
 <li>实测：不需要 hostNetwork 也可以使用</li>
 <li>refer: <a href="../nginx-gateway-fabric/" title="nginx-gateway-fabric">nginx-gateway-fabric</a></li>
 </ul>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>ubuntu:~$ kubectl get pod -A  -l app.kubernetes.io/instance=ngf -o wide
-<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>NAMESPACE       NAME                                        READY   STATUS    RESTARTS   AGE   IP               NODE                                            NOMINATED NODE   READINESS GATES
-<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>nginx-gateway   ngf-nginx-gateway-fabric-7d5b85c8b4-69bzl   1/1     Running   0          46h   172.16.176.16    ip-192-168-138-158.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
-<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>nginx-gateway   ngf-nginx-gateway-fabric-7d5b85c8b4-f6rwv   1/1     Running   0          46h   172.16.144.200   ip-192-168-100-127.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
-<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>nginx-gateway   production-gateway-nginx-846766b468-7nnz8   1/1     Running   0          40h   172.16.144.205   ip-192-168-100-127.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
-<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>nginx-gateway   production-gateway-nginx-846766b468-m4xt7   1/1     Running   0          40h   172.16.176.26    ip-192-168-138-158.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>ubuntu:~$ kubectl get pod -A  -l app.kubernetes.io/instance=ngf -o wide
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>NAMESPACE       NAME                                        READY   STATUS    RESTARTS   AGE   IP               NODE                                            NOMINATED NODE   READINESS GATES
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>nginx-gateway   ngf-nginx-gateway-fabric-7d5b85c8b4-69bzl   1/1     Running   0          46h   172.16.176.16    ip-192-168-138-158.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-13-4" name="__codelineno-13-4" href="#__codelineno-13-4"></a>nginx-gateway   ngf-nginx-gateway-fabric-7d5b85c8b4-f6rwv   1/1     Running   0          46h   172.16.144.200   ip-192-168-100-127.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-13-5" name="__codelineno-13-5" href="#__codelineno-13-5"></a>nginx-gateway   production-gateway-nginx-846766b468-7nnz8   1/1     Running   0          40h   172.16.144.205   ip-192-168-100-127.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
+<a id="__codelineno-13-6" name="__codelineno-13-6" href="#__codelineno-13-6"></a>nginx-gateway   production-gateway-nginx-846766b468-m4xt7   1/1     Running   0          40h   172.16.176.26    ip-192-168-138-158.us-west-2.compute.internal   &lt;none&gt;           &lt;none&gt;
 </code></pre></div>
+<h2 id="poc-202607">POC-202607<a class="headerlink" href="#poc-202607" title="Permanent link">¶</a></h2>
+<ul>
+<li>环境：EKS 1.35 + eksctl 0.229.0，us-west-2</li>
+<li>节点：m6g.large (Graviton/arm64) x3，<code>--max-pods-per-node 100 --node-private-networking</code></li>
+<li>
+<p>已验证：全部组件在纯 arm64 节点上运行正常，无兼容问题</p>
+</li>
+<li>
+<p><strong>Calico (tigera-operator)</strong></p>
+<ul>
+<li>版本：v3.32.1</li>
+<li>安装：helm (先装 <code>crd.projectcalico.org.v1</code> chart 再装 tigera-operator)</li>
+<li>备注：overlay/VXLAN，CNI 已切换</li>
+</ul>
+</li>
+<li><strong>metrics-server</strong><ul>
+<li>版本：EKS 托管 addon</li>
+<li>安装：eksctl 建集群自动装</li>
+<li>备注：需手动 patch hostNetwork=true 才能用</li>
+</ul>
+</li>
+<li><strong>aws-ebs-csi-driver</strong><ul>
+<li>版本：helm 最新</li>
+<li>安装：helm</li>
+<li>备注：不需要 hostNetwork</li>
+</ul>
+</li>
+<li><strong>nginx-gateway-fabric (NGF)</strong><ul>
+<li>版本：v2.6.6</li>
+<li>安装：helm OCI chart，<strong>必须显式 <code>--version</code></strong></li>
+<li>备注：不指定版本号会卡住不报错</li>
+</ul>
+</li>
+<li><strong>vpc-cni / kube-proxy / coredns</strong><ul>
+<li>版本：EKS 托管 addon</li>
+<li>安装：eksctl 建集群自动装</li>
+<li>备注：vpc-cni 的 <code>aws-node</code> daemonset 已删除，addon 对象会显示 DEGRADED（预期，不影响）</li>
+</ul>
+</li>
+<li><strong>VictoriaMetrics (single)</strong><ul>
+<li>版本：chart 0.41.0 / app v1.146.0</li>
+<li>安装：helm (<code>vm/victoria-metrics-single</code>)</li>
+<li>备注：无 webhook，不受 Calico overlay 影响；需显式指定 <code>storageClassName=gp3</code>（见下方存储坑）；详见 <a href="../../VictoriaMetrics#on-calico-overlay-network" title="VictoriaMetrics">VictoriaMetrics</a></li>
+</ul>
+</li>
+<li><strong>Grafana Tempo (single binary)</strong><ul>
+<li>版本：chart 2.2.3 / app 2.10.7</li>
+<li>安装：helm (<strong><code>grafana-community/tempo</code></strong>，非 <code>grafana/tempo</code>)</li>
+<li>备注：<code>grafana/tempo</code> chart 已标记 deprecated，迁到 <code>grafana-community</code> repo；无 webhook；详见 <a href="../../grafana-tempo#on-calico-overlay-network" title="grafana-tempo">grafana-tempo</a></li>
+</ul>
+</li>
+<li><strong>Vault (dev mode)</strong><ul>
+<li>版本：chart 0.34.0 / app v2.0.3</li>
+<li>安装：helm (<code>hashicorp/vault</code>)</li>
+<li>备注：<strong>injector 有 mutating webhook，必须 <code>--set injector.hostNetwork=true</code></strong>，否则 Calico overlay 下 API server 连不到 injector pod。已实测验证 sidecar 注入生效；详见 <a href="../../vault#on-calico-overlay-network" title="vault">vault</a></li>
+</ul>
+</li>
+<li><strong>APISIX + ingress-controller</strong><ul>
+<li>版本：chart 2.15.0 / app 3.17.0</li>
+<li>安装：helm (<code>apisix/apisix</code>，<code>--skip-crds</code>)</li>
+<li>备注：见下方”坑”单独说明；validating webhook 默认 <code>enabled=false</code>，未触发 Calico 坑；详见 <a href="../apisix-on-eks/#on-calico-overlay-network" title="git/git-mkdocs/EKS/addons/apisix-on-eks">git/git-mkdocs/EKS/addons/apisix-on-eks</a></li>
+</ul>
+</li>
+<li><strong>Nacos (standalone)</strong><ul>
+<li>版本：chart 1.0.3 / app v3.0.1</li>
+<li>安装：helm (<code>nacos-yunye/nacos</code>，官方 repo 404，用此镜像)</li>
+<li>备注：无 webhook，无 kubeVersion 限制；默认 <code>persistence.enabled=false</code> 用 emptyDir，需手动开启+指定 <code>storageClassName=gp3</code>；详见 <a href="../../nacos#on-calico-overlay-network" title="nacos">nacos</a></li>
+</ul>
+</li>
+<li><strong>NeuVector</strong><ul>
+<li>版本：chart 2.10.3 / app 5.5.3</li>
+<li>安装：helm (<code>neuvector/core</code>)，需先给 ns 打 <code>pod-security.kubernetes.io/enforce=privileged</code> 标签</li>
+<li>备注：controller/enforcer/manager/scanner 全部 Running；enforcer 本来就需要 privileged+hostPID（跟 CNI 无关）；admission webhook <strong>默认关闭</strong>未触发 Calico 坑，但注意下方风险说明；详见 <a href="../../NeuVector#on-calico-overlay-network" title="NeuVector">NeuVector</a></li>
+</ul>
+</li>
+<li><strong>Rancher</strong><ul>
+<li>版本：chart 2.14.3 / app v2.14.3</li>
+<li>安装：helm (<code>rancher-stable/rancher</code>)</li>
+<li>备注：EKS 1.36 被 chart <code>kubeVersion: &lt; 1.36.0-0</code> 拒装，<strong>EKS 1.35 验证通过</strong>；需先装 cert-manager 提供 Issuer/Certificate CRD；rancher + rancher-webhook 均需 hostNetwork；详见 <a href="../rancher/#on-calico-overlay-network" title="git/git-mkdocs/EKS/addons/rancher">git/git-mkdocs/EKS/addons/rancher</a></li>
+</ul>
+</li>
+</ul>
+<p><strong>未装</strong>（按需评估）：</p>
+<ul>
+<li>AWS Load Balancer Controller — 本次不需要，跳过</li>
+<li>Cluster Autoscaler — 文档”推荐”分类，本次未装</li>
+<li>EFS 真实文件系统 / external-dns 的 IAM+route53 — 只验证了组件本身能装能跑，没接真实资源，本次测试不包含。</li>
+<li>cert-manager — EKS 1.36 环境本次测试不包含；EKS 1.35 环境为装 Rancher 而补装，见下方</li>
+</ul>
+<h3 id="rancher-eks-135-2026-07-07">Rancher 补充验证（另建 EKS 1.35 集群，2026-07-07）<a class="headerlink" href="#rancher-eks-135-2026-07-07" title="Permanent link">¶</a></h3>
+<ul>
+<li>环境：EKS <strong>1.35</strong> + eksctl 0.229.0 + Calico v3.32.1，us-west-2，<code>my-calico-cluster-135</code>，节点同上（m6g.large x3）</li>
+<li>rancher-stable/rancher chart 2.14.3 硬编码 <code>kubeVersion: &lt; 1.36.0-0</code>，EKS 1.36 直接被 chart 拒装（<code>helm install</code> 报错拒装），<strong>EKS 1.35 验证通过，<code>helm install</code> 正常执行</strong></li>
+<li>装 Rancher 前必须先装好 cert-manager（chart 依赖 <code>Issuer</code>/<code>Certificate</code> CRD），否则报 <code>no matches for kind "Issuer" in version cert-manager.io/v1</code>；cert-manager 装法见 <a href="../cert-manager/#install-for-overlay-cni-" title="git/git-mkdocs/EKS/addons/cert-manager">git/git-mkdocs/EKS/addons/cert-manager</a></li>
+<li>按文档 patch rancher + rancher-webhook 的 hostNetwork 后，<code>apiservice v1.ext.cattle.io</code> AVAILABLE=True，验证通过；详见 <a href="../rancher/#on-calico-overlay-network" title="git/git-mkdocs/EKS/addons/rancher">git/git-mkdocs/EKS/addons/rancher</a></li>
+</ul>
+<h3 id="neuvector">NeuVector 风险提示（未触发但要知道）<a class="headerlink" href="#neuvector" title="Permanent link">¶</a></h3>
+<ul>
+<li>NeuVector controller 的 admission webhook（Policy → Admission Control 功能）<strong>默认关闭</strong>，装的时候不会碰 Calico overlay 坑</li>
+<li>但如果以后在 web UI 里手动开启 Admission Control，webhook 会因为 controller pod 跑在 Calico overlay 网络上、control plane 连不到而失败（<code>context deadline exceeded</code> 或 <code>Address is not allowed</code>），跟 cert-manager/ALB controller 是同一类问题</li>
+<li>chart 里 <code>controller-deployment.yaml</code> <strong>没有 hostNetwork 开关</strong>（不像 cert-manager/vault 有现成 values 参数），需要手动 patch：<br>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>kubectl<span class="w"> </span>patch<span class="w"> </span>deployment<span class="w"> </span>neuvector-controller-pod<span class="w"> </span>-n<span class="w"> </span>neuvector<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-14-2" name="__codelineno-14-2" href="#__codelineno-14-2"></a><span class="w">  </span>-p<span class="w"> </span><span class="s1">'{"spec":{"template":{"spec":{"hostNetwork":true,"dnsPolicy":"ClusterFirstWithHostNet"}}}}'</span>
+</code></pre></div></li>
+<li>建议：真要用 Admission Control 前先执行上面 patch，再去 UI 里开启功能</li>
+</ul>
+<h3 id="storageclass">存储坑：集群默认 StorageClass 缺失<a class="headerlink" href="#storageclass" title="Permanent link">¶</a></h3>
+<ul>
+<li>集群自带的 <code>gp2</code> storageclass 是 <strong>in-tree provisioner</strong> (<code>kubernetes.io/aws-ebs</code>)，没有标记为 default，且没有对应 ebs-csi 驱动 (<code>ebs.csi.aws.com</code>) 的 storageclass</li>
+<li>需要有 PVC 的组件（VictoriaMetrics、Tempo）如果不显式指定 storageClassName，PVC 会一直 Pending (<code>no persistent volumes available for this claim and no storage class is set</code>)</li>
+<li>解决：手动建一个基于 <code>ebs.csi.aws.com</code> 的 gp3 storageclass 并设为默认<br>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>cat<span class="w"> </span><span class="s">&lt;&lt;EOF | kubectl apply -f -</span>
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="s">apiVersion: storage.k8s.io/v1</span>
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="s">kind: StorageClass</span>
+<a id="__codelineno-15-4" name="__codelineno-15-4" href="#__codelineno-15-4"></a><span class="s">metadata:</span>
+<a id="__codelineno-15-5" name="__codelineno-15-5" href="#__codelineno-15-5"></a><span class="s">  name: gp3</span>
+<a id="__codelineno-15-6" name="__codelineno-15-6" href="#__codelineno-15-6"></a><span class="s">  annotations:</span>
+<a id="__codelineno-15-7" name="__codelineno-15-7" href="#__codelineno-15-7"></a><span class="s">    storageclass.kubernetes.io/is-default-class: "true"</span>
+<a id="__codelineno-15-8" name="__codelineno-15-8" href="#__codelineno-15-8"></a><span class="s">provisioner: ebs.csi.aws.com</span>
+<a id="__codelineno-15-9" name="__codelineno-15-9" href="#__codelineno-15-9"></a><span class="s">volumeBindingMode: WaitForFirstConsumer</span>
+<a id="__codelineno-15-10" name="__codelineno-15-10" href="#__codelineno-15-10"></a><span class="s">reclaimPolicy: Delete</span>
+<a id="__codelineno-15-11" name="__codelineno-15-11" href="#__codelineno-15-11"></a><span class="s">parameters:</span>
+<a id="__codelineno-15-12" name="__codelineno-15-12" href="#__codelineno-15-12"></a><span class="s">  type: gp3</span>
+<a id="__codelineno-15-13" name="__codelineno-15-13" href="#__codelineno-15-13"></a><span class="s">EOF</span>
+</code></pre></div></li>
+<li>StatefulSet 的 <code>volumeClaimTemplate</code> 是不可变字段，如果先装错了 storageclass 再想改，<code>helm upgrade</code> 会报 <code>Forbidden: updates to statefulset spec...</code>，必须 <code>helm uninstall</code> + 删 PVC 重装</li>
+</ul>
+<h3 id="apisix">APISIX 安装坑<a class="headerlink" href="#apisix" title="Permanent link">¶</a></h3>
+<ul>
+<li>chart 自带的 <code>apisix-ingress-controller/crds/gwapi-crds.yaml</code> 里的 Gateway API CRD 版本比集群已装的（NGF 装的 v1.5.x）旧，k8s 1.36 新增的 <code>safe-upgrades.gateway.networking.k8s.io</code> ValidatingAdmissionPolicy 会拒绝降级安装，报 <code>Installing CRDs with version before v1.5.0 is prohibited</code></li>
+<li>解决：<code>helm install</code> 加 <code>--skip-crds</code>，因为集群已经有更新版本的 Gateway API CRD 了</li>
+<li><code>service.type=ClusterIP</code> 会报错 <code>spec.externalTrafficPolicy: Invalid value: "Cluster"</code>，因为 chart 默认给 gateway service 配了 externalTrafficPolicy（只对 NodePort/LoadBalancer 合法），本次用默认 NodePort</li>
+<li>ingress-controller 的 validating webhook 默认 <code>enabled=false</code>（调研阶段以为默认开启，实测是关的），所以本次没触发 Calico overlay 的 webhook 坑；如果以后要开这个 webhook，需要手动给 ingress-controller deployment patch hostNetwork（chart 没有现成开关）</li>
+</ul>
+<p>重建环境时按上表顺序装：cluster → CRD → calico → nodegroup → oidc → 其余 addon → 应用层组件（先建 gp3 storageclass）。</p>
 
 
 
@@ -9304,7 +9615,7 @@
     <span class="md-icon" title="最后更新">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="January 25, 2026 09:39:59 CST"><span class="timeago" datetime="2026-01-25T09:39:59+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="January 25, 2026 09:39:59 CST">2026-01-25</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="July 7, 2026 19:49:31 CST"><span class="timeago" datetime="2026-07-07T19:49:31+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="July 7, 2026 19:49:31 CST">2026-07-07</span>
   </span>
 
     
