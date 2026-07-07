@@ -1,12 +1,13 @@
 ---
 title: Rancher
 description: Rancher 安装部署指南
-created: 2026-01-01 10:52:16.443
+created: 2026-01-01 10:52:16.443000
 last_modified: 2026-01-01
 tags:
-  - draft
-  - aws/container/eks
+- draft
+- aws/container/eks
 status: myblog
+permalink: git-mkdocs/eks/addons/rancher
 ---
 
 # rancher
@@ -34,6 +35,13 @@ needed
 - [[cert-manager]] 
     - [[git/git-mkdocs/CLI/awscli/acm-cmd#create-certificate-]]
 - [[ebs-csi]] 
+
+## on-calico-overlay-network
+
+- 实测（2026-07-07，EKS 1.35 + eksctl 0.229.0 + Calico v3.32.1）：`rancher-stable/rancher` chart 2.14.3 硬编码 `kubeVersion: < 1.36.0-0`，EKS 1.36 直接被 chart 拒装（`helm install` 报错），EKS 1.35 验证通过，可正常 `helm install`
+- 前置依赖：必须先装好 cert-manager（chart 自带的 `Issuer`/`Certificate` CRD 依赖 cert-manager），否则 `helm install rancher` 报 `no matches for kind "Issuer" in version cert-manager.io/v1`
+- cert-manager 需按 [[git/git-mkdocs/EKS/addons/cert-manager#install-for-overlay-cni-]] 装好 hostNetwork webhook 后再装 Rancher
+- 其余步骤见下方「EKS + Calico Overlay 环境部署指南」
 
 ## EKS + Calico Overlay 环境部署指南
 
@@ -276,5 +284,3 @@ kubectl -n cattle-system exec deploy/rancher -- reset-password
 
 ## refer
 - install guide for overlay (for example alicloud)
-
-

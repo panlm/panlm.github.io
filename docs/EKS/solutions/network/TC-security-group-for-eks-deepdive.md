@@ -1,13 +1,15 @@
 ---
 title: EKS Security Group Deepdive
 description: 深入 EKS 安全组
-created: 2022-05-17 16:11:20.840
+created: 2022-05-17 16:11:20.840000
 last_modified: 2024-02-25
 status: myblog
 tags:
-  - aws/container/eks
-  - aws/network/security-group
+- aws/container/eks
+- aws/network/security-group
+permalink: git-mkdocs/eks/solutions/network/tc-security-group-for-eks-deepdive
 ---
+
 # 深入 EKS 安全组
 
 ## general
@@ -213,9 +215,4 @@ nodeGroups:
 
 ## TODO
 
-- endpoint for elb & appmesh-envoy-management 
-
-
-
-
-
+- endpoint for elb & appmesh-envoy-management

@@ -1,11 +1,12 @@
 ---
 title: Fargate on EKS
 description: 在 EKS 集群中使用 Fargate
-created: 2022-06-25 09:17:05.835
+created: 2022-06-25 09:17:05.835000
 last_modified: 2024-02-03
 tags:
-  - aws/container/eks
-  - aws/container/fargate
+- aws/container/eks
+- aws/container/fargate
+permalink: git-mkdocs/eks/solutions/compute/eks-fargate-lab
 ---
 
 # Fargate on EKS
@@ -86,6 +87,4 @@ kubectl get ing -n ${NAMESPACE} -o=custom-columns="URL":.status.loadBalancer.ing
 - [eksworkshop](https://www.eksworkshop.com/beginner/180_fargate/)
 
 
-## monitoring pods on fargate 
-
-
+## monitoring pods on fargate

@@ -1,9 +1,10 @@
 ---
 title: calico
-created: 2021-07-01T04:49:23.679Z
-last_modified: 2024-01-21
+created: 2021-07-01 04:49:23.679000+00:00
+last_modified: 2026-07-07
 tags:
-  - kubernetes/calico
+- kubernetes/calico
+permalink: git-mkdocs/eks/addons/calico
 ---
 
 # calico
@@ -14,7 +15,7 @@ tags:
 ```sh
 helm repo add projectcalico https://docs.tigera.io/calico/charts
 kubectl create namespace tigera-operator
-helm install calico projectcalico/tigera-operator --version v3.26.1 --namespace tigera-operator
+helm install calico projectcalico/tigera-operator --version v3.32.1 --namespace tigera-operator
 ```
 
 - [Install Calico](https://docs.aws.amazon.com/eks/latest/userguide/calico.html#calico-install)
@@ -58,5 +59,3 @@ helm list -n tigera-operator
 ## refer
 
 - [[calico-cni-overlay]]
-
-

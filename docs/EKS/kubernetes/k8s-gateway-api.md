@@ -1,12 +1,13 @@
 ---
 title: Gateway API
 description: K8S Gateway API 配置说明
-created: 2025-12-10 08:50:30.146
+created: 2025-12-10 08:50:30.146000
 last_modified: 2025-12-10
 tags:
-  - draft
-  - kubernetes
+- draft
+- kubernetes
 status: myblog
+permalink: git-mkdocs/eks/kubernetes/k8s-gateway-api
 ---
 
 # Gateway API 配置说明
@@ -392,9 +393,4 @@ controllerConfig:
 
 - [AWS Load Balancer Controller - L4 Gateway](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.16/guide/gateway/l4gateway/) 
 - [AWS Load Balancer Controller - L7 Gateway](https://kubernetes-sigs.github.io/aws-load-balancer-controller/v2.16/guide/gateway/l7gateway/) 
-- [Kubernetes Gateway API](https://gateway-api.sigs.k8s.io/) 
-
-
-
-
-
+- [Kubernetes Gateway API](https://gateway-api.sigs.k8s.io/)

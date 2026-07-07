@@ -1,12 +1,13 @@
 ---
 title: Quick Setup Cloud9
 description: 简化创建 Cloud9 脚本，优先选择使用 Terraform 自动初始化；也可以使用脚本从 CloudShell 中完成初始化
-created: 2023-08-04 15:56:59.747
+created: 2023-08-04 15:56:59.747000
 last_modified: 2024-04-02
 status: myblog
 tags:
-  - aws/cloud9
-  - aws/container/eks
+- aws/cloud9
+- aws/container/eks
+permalink: git-mkdocs/cloud9/quick-setup-cloud9
 ---
 
 # Quick Setup Cloud9 
@@ -312,7 +313,4 @@ aws sts get-caller-identity
 ```
 
 ## refer
-- open console from local [[../CLI/linux/granted-assume]] 
-
-
-
+- open console from local [[../CLI/linux/granted-assume]]

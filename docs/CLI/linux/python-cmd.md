@@ -1,9 +1,10 @@
 ---
 title: python-cmd
-created: 2022-12-05 10:37:03.829
+created: 2022-12-05 10:37:03.829000
 last_modified: 2024-02-06
 tags:
-  - python
+- python
+permalink: git-mkdocs/cli/linux/python-cmd
 ---
 
 # python-cmd
@@ -64,6 +65,4 @@ uv tool install ~/Downloads/MultiQ/multiq-mcp-server/
 ## refer
 - [[python-sample-phase-json]]
 - [[python-sample-to-create-upload]]
-- 
-
-
+-

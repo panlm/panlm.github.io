@@ -1,12 +1,13 @@
 ---
 title: Export Cloudwatch Log Group to S3
 description: 导出 cloudwatch 日志到 s3
-created: 2022-08-17 21:19:15.620
+created: 2022-08-17 21:19:15.620000
 last_modified: 2023-12-31
 status: myblog
 tags:
-  - aws/mgmt/cloudwatch
-  - aws/storage/s3
+- aws/mgmt/cloudwatch
+- aws/storage/s3
+permalink: git-mkdocs/eks/solutions/logging/export-cloudwatch-log-group-to-s3
 ---
 
 # Export Cloudwatch Log Group to S3
@@ -85,6 +86,4 @@ done
 - 导出后将在指定的 prefix 中，创建 task id 为 folder ，按照所有 log stream name 作为下一层的 folder ，日志文件为 gz 压缩格式
 - 可以省略 `log-stream-name-prefix` 参数，导出所有日志，考虑日志如何进行二次处理
 - k8s控制日志包含类似前缀，比如 `kube-apiserver-audit-xxx` 和 `kube-apiserver-xxxx` ，并且前者是json格式日志，后者是行日志，如何进行区分导出到不同 prefix 路径，或者导出后如何进行二次处理，参考： [[stream-k8s-control-panel-logs-to-s3]] 
-- 导出消息格式问题待解决 [[athena-sample-query#file-format-when-export-cwl-to-s3-]] 
-
-
+- 导出消息格式问题待解决 [[athena-sample-query#file-format-when-export-cwl-to-s3-]]

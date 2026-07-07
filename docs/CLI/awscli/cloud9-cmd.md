@@ -1,11 +1,12 @@
 ---
 title: cloud9
 description: cloud9 related commands
-created: 2022-07-01 09:18:29.572
+created: 2022-07-01 09:18:29.572000
 last_modified: 2024-04-09
 tags:
-  - aws/cloud9
-  - aws/cmd
+- aws/cloud9
+- aws/cmd
+permalink: git-mkdocs/cli/awscli/cloud9-cmd
 ---
 
 # cloud9-cmd
@@ -131,8 +132,4 @@ If you turn off AWS managed temporary credentials, by default the environment ca
 ##  cloud9 will be retire 
 - news: [link](https://github.com/SummitRoute/aws_breaking_changes)
 - alternative: [[../../cloud9/vscode]]
-- 
-
-
-
-
+-

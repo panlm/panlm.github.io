@@ -1,11 +1,12 @@
 ---
 title: Nginx Gateway Fabric
 description: Nginx Ingress 的继任者
-created: 2025-12-17 09:12:06.087
+created: 2025-12-17 09:12:06.087000
 last_modified: 2025-12-17
 tags:
-  - draft
-  - nginx
+- draft
+- nginx
+permalink: git-mkdocs/eks/addons/nginx-gateway-fabric
 ---
 
 # Nginx Gateway Fabric
@@ -126,9 +127,11 @@ EOF
 - install from OCI
 ```sh
 echo ${NGF_NS}
+NGF_VERSION=2.6.6 # update 0707, 必须显式指定 --version，否则 helm 解析 latest 时会长时间卡住无输出
 
-# helm show values oci://ghcr.io/nginx/charts/nginx-gateway-fabric
+# helm show values oci://ghcr.io/nginx/charts/nginx-gateway-fabric --version ${NGF_VERSION}
 helm upgrade -i ngf oci://ghcr.io/nginx/charts/nginx-gateway-fabric \
+    --version ${NGF_VERSION} \
     -n ${NGF_NS} --create-namespace \
 	-f nginx-gateway-values-default.yaml
 
@@ -309,8 +312,3 @@ spec:
 
 Gateway API TCPRoute does not support
 https://docs.nginx.com/nginx-gateway-fabric/overview/gateway-api-compatibility/
-
-
-
-
-

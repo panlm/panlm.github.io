@@ -1,11 +1,12 @@
 ---
 title: Claude Code
 description: Agentic AI
-created: 2025-09-08 14:20:22.908
+created: 2025-09-08 14:20:22.908000
 last_modified: 2025-10-14
 tags:
-  - draft
-  - llm
+- draft
+- llm
+permalink: git-mkdocs/gen-ai/claude-code
 ---
 
 # claude-code
@@ -113,5 +114,17 @@ anthropoics skills
 
 
 
+## other tools
 
-
+- [claude-code-log](https://github.com/daaain/claude-code-log) ⭐
+    - 原始位置查看，离线查看要下载整个 projects folder
+    - 折叠session并且有high level统计
+    - 支持 search 
+    - 单页大，可以 cmd-F
+    - 
+- https://github.com/simonw/claude-code-transcripts
+    - 导出到目录查看，离线查看只要下载导出的目录
+    - 进入session查看
+    - 没有search
+    - 
+- https://github.com/panlm/mlflow-skills

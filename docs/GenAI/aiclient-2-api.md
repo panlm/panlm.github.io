@@ -1,18 +1,14 @@
 ---
 title: AIClient-2-API 部署指南
 description: AIClient-2-API 部署指南
-created: 2026-03-28 20:42:44.649
+created: 2026-03-28 20:42:44.649000
 last_modified: 2026-04-04
 type: note
 status: myblog
+permalink: git-mkdocs/gen-ai/aiclient-2-api
 ---
 
 # AIClient-2-API 部署指南（Kiro OAuth）
-
-## 前置条件
-
-- Ubuntu Linux（已在 22.04 上测试）
-- Kiro CLI 已安装并登录（`~/.local/share/kiro-cli/data.sqlite3` 必须存在）
 
 ## 第一步：安装 Docker
 
@@ -30,12 +26,29 @@ git clone https://github.com/justlovemaki/AIClient-2-API.git
 
 ## 第三步：提取 Kiro 凭据
 
-脚本 `/home/ubuntu/kiro-oauth-get-cred.py` 从 Kiro CLI 的本地 SQLite 数据库中读取 `refreshToken`、`clientId`、`clientSecret`，输出凭据文件：
+脚本 `/home/ubuntu/kiro-oauth-get-cred.py` 从 Kiro CLI 的本地 SQLite 数据库中读取 `refreshToken`、`clientId`、`clientSecret`，输出凭据文件。
+
+**Kiro CLI 数据库路径**：
+
+| 操作系统   | 路径                                              |
+| ------- | ----------------------------------------------- |
+| Linux   | `~/.local/share/kiro-cli/data.sqlite3`          |
+| macOS   | `~/Library/Application Support/kiro-cli/data.sqlite3` |
 
 ```python
 import sqlite3, json, os
 
-db = os.path.expanduser("~/.local/share/kiro-cli/data.sqlite3")
+# Linux
+# db = os.path.expanduser("~/.local/share/kiro-cli/data.sqlite3")
+# macOS
+# db = os.path.expanduser("~/Library/Application Support/kiro-cli/data.sqlite3")
+
+# 自动检测平台
+import platform
+if platform.system() == "Darwin":
+    db = os.path.expanduser("~/Library/Application Support/kiro-cli/data.sqlite3")
+else:
+    db = os.path.expanduser("~/.local/share/kiro-cli/data.sqlite3")
 conn = sqlite3.connect(db)
 cursor = conn.cursor()
 
@@ -159,11 +172,11 @@ curl -s http://localhost:3000/claude-kiro-oauth/v1/chat/completions \
 
 由于使用 Kiro OAuth 作为 provider，URL 路径需要带 `claude-kiro-oauth` 前缀进行显式路由：
 
-| 协议        | 地址                                                          |
-| --------- | ----------------------------------------------------------- |
-| OpenAI 兼容 | `http://localhost:3000/claude-kiro-oauth/v1/chat/completions` |
-| Claude 兼容 | `http://localhost:3000/claude-kiro-oauth/v1/messages`         |
-| Web 管理界面  | `http://localhost:3000/`（密码：`<your-password>`）              |
+| 协议        | 地址                                                            |     |
+| --------- | ------------------------------------------------------------- | --- |
+| OpenAI 兼容 | `http://localhost:3000/claude-kiro-oauth/v1/chat/completions` |     |
+| Claude 兼容 | `http://localhost:3000/claude-kiro-oauth/v1/messages`         |     |
+| Web 管理界面  | `http://localhost:3000/`（密码：`<your-password>`）                |     |
 
 > **说明**：如果 `config.json` 中 `MODEL_PROVIDER` 已设为 `claude-kiro-oauth`，不带前缀的 `/v1/chat/completions` 也会默认走 Kiro OAuth。带前缀是显式路由，适合多 provider 共存场景。
 
@@ -197,7 +210,7 @@ curl -s http://localhost:3000/claude-kiro-oauth/v1/chat/completions \
 
 ## 可用模型
 
-`claude-opus-4-6`、`claude-sonnet-4-6`、`claude-opus-4-5`、`claude-sonnet-4-5`、`claude-haiku-4-5`
+`claude-opus-4-6`、`claude-sonnet-4-6`
 
 ## 首次运行 Claude CLI 跳过登录
 
@@ -235,7 +248,7 @@ sudo docker compose restart
 
 ## 添加更多 Kiro OAuth 账号
 
-如果需要添加额外的 Kiro 账号（多账号负载均衡），可以通过 API 导入。
+如果需要添加额外的 Kiro 账号（多账号负载均衡），可以通过 API 导入。支持本地和远程两种方式。
 
 ### 1. 提取新账号凭据
 
@@ -245,7 +258,9 @@ sudo docker compose restart
 python3 /home/ubuntu/kiro-oauth-get-cred.py
 ```
 
-### 2. 通过 API 导入
+> **macOS 用户**：脚本已支持自动检测平台，直接运行即可。凭据会输出到 `~/kiro_credentials.json`。
+
+### 2a. 本地导入（在服务器上操作）
 
 由于 Kiro CLI 使用 builder-id 认证方式，需要用 `/api/kiro/import-aws-credentials` 接口（传完整凭据对象），而不是 `/api/kiro/batch-import-tokens`（仅支持 social auth）。
 
@@ -266,6 +281,36 @@ curl -s -X POST http://localhost:3000/api/kiro/import-aws-credentials \
   -H "Content-Type: application/json" \
   -d "{\"credentials\": [$CREDS]}"
 ```
+
+### 2b. 远程导入（从本地机器通过 HTTPS 导入）
+
+适用于 Kiro CLI 安装在本地开发机（如 macOS），而 AIClient-2-API 部署在远程服务器的场景。
+
+先在本地提取凭据：
+
+```bash
+python3 kiro-oauth-get-cred.py
+```
+
+登录远程管理后台获取 token：
+
+```bash
+TOKEN=$(curl -s -X POST https://<your-domain>/api/login \
+  -H "Content-Type: application/json" \
+  -d '{"password":"<your-password>"}' | python3 -c "import sys,json; print(json.load(sys.stdin)['token'])")
+```
+
+远程导入凭据：
+
+```bash
+CREDS=$(cat ~/kiro_credentials.json)
+curl -s -X POST https://<your-domain>/api/kiro/import-aws-credentials \
+  -H "Authorization: Bearer $TOKEN" \
+  -H "Content-Type: application/json" \
+  -d "{\"credentials\": [$CREDS]}"
+```
+
+### 导入结果
 
 成功后会返回类似：
 
@@ -312,3 +357,12 @@ sudo systemctl restart caddy
 curl -s -o /dev/null -w "HTTP %{http_code}" https://<your-domain>/
 # 返回 HTTP 200 即成功
 ```
+
+## another solution
+
+https://github.com/jwadow/kiro-gateway
+
+
+
+
+

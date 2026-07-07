@@ -1,11 +1,12 @@
 ---
 title: MCP Server on ECS
 description: 将 MCP Server 移动到远端，减少本地资源占用
-created: 2025-05-29 13:10:24.336
+created: 2025-05-29 13:10:24.336000
 last_modified: 2026-04-30
 tags:
-  - draft
-  - llm/mcp
+- draft
+- llm/mcp
+permalink: git-mkdocs/gen-ai/deploy-mcp-server-to-ecs
 ---
 
 # 将 MCP 服务部署到 AWS ECS 的方案
@@ -443,4 +444,8 @@ aws --profile $PROFILE --region $REGION logs delete-log-group --log-group-name /
 ```
 
 ## Reference
+
 - [Deploying Model Context Protocol Servers on AWS](https://aws.amazon.com/solutions/guidance/deploying-model-context-protocol-servers-on-aws/)
+- [[../../../basic-memory/aws-api-mcp-server 源码深度剖析|aws-api-mcp-server 源码深度剖析]]
+
+

@@ -1,10 +1,11 @@
 ---
 title: caddy
 description: a fast, multi-platform web server with automatic HTTPS.
-created: 2024-09-06 23:26:53.318
+created: 2024-09-06 23:26:53.318000
 last_modified: 2024-09-06
 tags:
-  - draft
+- draft
+permalink: git-mkdocs/others/network/caddy
 ---
 
 # caddy
@@ -86,4 +87,11 @@ caddy hash-password < ./password.txt
 ## plugins
 - build with plugins: [[caddy-build]]
 - [[caddy-route53-plugin]]
+
+
+## refer
+
+https://github.com/williamjacksn/docker-caddy-route53
+
+
 

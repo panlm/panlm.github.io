@@ -1,11 +1,13 @@
 ---
-title: aws-transform
+title: aws-transform-cmd
 description: 常用命令
-created: 2025-12-04 11:55:07.225
+created: 2025-12-04 11:55:07.225000
 last_modified: 2025-12-04
-tags: 
-  - draft
-  - aws/cmd
+tags:
+- draft
+- aws/cmd
+permalink: git-mkdocs/cli/awscli/aws-transform-cmd
+type: note
 ---
 
 # aws-transform
@@ -32,10 +34,23 @@ atx custom def exec -n AWS/early-access-comprehensive-codebase-analysis -t -p .
 
 ```
 
+## transform-config.yaml
 
+```
+# transform-config.yaml
+codeRepositoryPath: ~/git/sample-connector-for-bedrock
+transformationName: AWS/comprehensive-codebase-analysis
+buildCommand: noop
+additionalPlanContext: |
+  Focus analysis on the following areas:
+  - Document the overall architecture and code structure
+  - Identify deprecated or outdated coding patterns
+  - Highlight areas that may benefit from modernization
+  - Analyze dependencies and their relationships
+```
 
+```
 
-
-
-
-
+执行：
+atx custom def exec -g file://transform-config.yaml -x -t
+```

@@ -1,11 +1,12 @@
 ---
 title: aws-msk-managed-kafka
 description: aws MSK
-created: 2023-06-01 11:41:18.866
-last_modified: 2023-10-15 11:41:14.323
+created: 2023-06-01 11:41:18.866000
+last_modified: 2023-10-15 11:41:14.323000
 tags:
-  - aws/analytics/msk
-  - aws/NotInCN
+- aws/analytics/msk
+- aws/NotInCN
+permalink: git-mkdocs/data-analytics/aws-msk-managed-kafka
 ---
 
 # msk-managed-kafka
@@ -88,7 +89,4 @@ https://kafka.apache.org/quickstart
 - Amazon MSK Express brokers (https://docs.aws.amazon.com/msk/latest/developerguide/msk-broker-types-express.html) - Express broker 详细文档
 
 
-- [aws-msk-kafka-streams-guide](aws-msk-kafka-streams-guide.md) 
-
-
-
+- [aws-msk-kafka-streams-guide](aws-msk-kafka-streams-guide.md)

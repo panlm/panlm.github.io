@@ -1,12 +1,13 @@
 ---
 title: Create Standard VPC for Lab in China Region or Global Region
 description: 创建实验环境所需要的 VPC ，并且支持直接 attach 到 TGW 方便网络访问
-created: 2022-04-10 22:12:29.404
+created: 2022-04-10 22:12:29.404000
 last_modified: 2024-03-27
 tags:
-  - aws/network/vpc
-  - aws/mgmt/cloudformation
+- aws/network/vpc
+- aws/mgmt/cloudformation
 status: myblog
+permalink: git-mkdocs/cloud9/create-standard-vpc-for-lab-in-china-region
 ---
 
 # Create Standard VPC for Lab in China Region or Global Region
@@ -165,8 +166,4 @@ fi
 
 ## refer
 - [[../CLI/awscli/cloudformation-cmd]] 
-- [quickstart-aws-vpc](https://aws-quickstart.github.io/quickstart-aws-vpc/) 
-
-
-
-
+- [quickstart-aws-vpc](https://aws-quickstart.github.io/quickstart-aws-vpc/)
