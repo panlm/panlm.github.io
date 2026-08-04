@@ -168,3 +168,10 @@ k logs -f deploy/ebs-csi-controller csi-provisioner -n kube-system
 - csi-snapshotter 
 - csi-resizer 
 - liveness-probe
+
+## on-calico-overlay-network
+
+- 实测（EKS 1.35，`my-calico-cluster-135`，m6g.large arm64 x3，2026-07-08，helm `aws-ebs-csi-driver/aws-ebs-csi-driver` chart 2.62.0 / app 1.62.0）：无 webhook，不受 Calico overlay 影响
+- 装法：先 `eksctl create iamserviceaccount` 建 `ebs-csi-controller-sa`（需要 [[git/git-mkdocs/EKS/addons/calico-cni-overlay#oidc]] 先关联好 OIDC provider），再 `helm install --set controller.serviceAccount.create=false --set controller.serviceAccount.name=ebs-csi-controller-sa`
+- 结果：`ebs-csi-controller` x2 + `ebs-csi-node` daemonset x3（每节点一个）全 5/5、3/3 Running，纯 arm64 无兼容问题
+- 是后续 VictoriaMetrics/Tempo/Nacos 等组件用 `storageClassName=gp3`（provisioner `ebs.csi.aws.com`）建 PVC 的前提，见 [[git/git-mkdocs/EKS/addons/calico-cni-overlay#存储坑集群默认-storageclass-缺失]]

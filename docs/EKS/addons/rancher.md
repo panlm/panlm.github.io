@@ -2,7 +2,7 @@
 title: Rancher
 description: Rancher 安装部署指南
 created: 2026-01-01 10:52:16.443000
-last_modified: 2026-01-01
+last_modified: 2026-07-01
 tags:
 - draft
 - aws/container/eks
@@ -48,14 +48,14 @@ needed
 ### 环境说明
 
 - EKS 集群使用 Calico CNI（overlay 模式：VXLAN/IPIP）
-- AWS Load Balancer Controller 使用 hostNetwork + 端口 9443
+- 已安装 AWS Load Balancer Controller ，并使用 hostNetwork + 端口 9443 （可能与rancher存在冲突）。如果没有安装 AWS Load Balancer Controller，则需要自动发现ingress controller，并且check 端口。
 - EKS API Server 无法直接访问 Pod CIDR（Calico overlay 网络）
 
 ### 已知限制
 
 在此环境下，需要注意：
 1. Rancher 和 rancher-webhook 都需要 hostNetwork
-2. ALBC 占用 9443 端口，rancher-webhook 必须改用 9444
+2. 如果 ALBC 占用 9443 端口，rancher-webhook 则改用 9444
 3. Webhook 的 patch 命令必须一次性执行，否则可能被 rancher 控制器重置
 
 ### rancher-values.yaml
@@ -246,11 +246,11 @@ kubectl patch deploy external-dns -n externaldns --type='json' -p='[
 
 ### 组件端口分配
 
-| 组件 | 端口 | hostNetwork | 说明 |
-|------|------|-------------|------|
-| rancher | 80, 443, 6666 | ✓ | 必须，API aggregation 需要 |
-| rancher-webhook | 9444 | ✓ | 必须，改端口避免与 ALBC 冲突 |
-| aws-load-balancer-controller | 9443 | ✓ | 已占用 |
+| 组件                           | 端口            | hostNetwork | 说明                    |
+| ---------------------------- | ------------- | ----------- | --------------------- |
+| rancher                      | 80, 443, 6666 | ✓           | 必须，API aggregation 需要 |
+| rancher-webhook              | 9444          | ✓           | 可改端口避免与 ALBC 冲突       |
+| aws-load-balancer-controller | 9443          | ✓           | 如果安装ALBC，可能已被占用       |
 
 ---
 

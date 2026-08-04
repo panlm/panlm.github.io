@@ -44,8 +44,11 @@ helm list -n tigera-operator
 
 ## limit
 
-- ~~calico ebpf mode could not support non-x86 host (2022/05) ([LINK](https://projectcalico.docs.tigera.io/maintenance/ebpf/enabling-ebpf#before-you-begin))~~
-- support ARM64 (community supported, not actively regression tested by the Calico team) (2023/07) - [link](https://docs.tigera.io/calico/latest/operations/ebpf/enabling-ebpf#supported) 
+- support ARM64  (little endian)
+    - 2024
+- ~~calico ebpf mode could not support non-x86 host~~ (2022/05) ([LINK](https://projectcalico.docs.tigera.io/maintenance/ebpf/enabling-ebpf#before-you-begin))
+- ~~support ARM64~~ (community supported, not actively regression tested by the Calico team) (2023/07) - [link](https://docs.tigera.io/calico/latest/operations/ebpf/enabling-ebpf#supported) 
+    - https://archive-os-3-26.netlify.app/calico/3.26/operations/ebpf/enabling-ebpf
 
 ## tigera operator
 

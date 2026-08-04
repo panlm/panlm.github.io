@@ -53,7 +53,7 @@ docker buildx create --use --platform=linux/arm64,linux/amd64 --name multi-platf
 docker buildx inspect --bootstrap
 
 ```
-- build multi arch
+- build multi arch （一条命令搞定）
 ```sh
 docker buildx build \
 --platform linux/amd64,linux/arm64 \
@@ -62,12 +62,12 @@ docker buildx build \
 ```
 - refer: [[../../../../WebClip/How to quickly setup an experimental environment to run containers on x86 and AWS Graviton2 based Amazon EC2 instances]] 
 - refer: [[../awscli/ecr-cmd#multi-architecture-image-|multi-architecture-image]] 
+- refer: https://docs.docker.com/build/building/multi-platform/
 
 ## docker image
 ### clean
 ```
 docker image prune -a
-
 ```
 
 ### samples

@@ -4,9 +4,11 @@ description: Nginx Ingress 的继任者
 created: 2025-12-17 09:12:06.087000
 last_modified: 2025-12-17
 tags:
-- draft
-- nginx
+  - draft
+  - nginx
 permalink: git-mkdocs/eks/addons/nginx-gateway-fabric
+share_link: https://notes-share.aws.panlm.click/vft0cdqp
+share_updated: 2026-07-07T22:35:19+08:00
 ---
 
 # Nginx Gateway Fabric
@@ -18,7 +20,7 @@ permalink: git-mkdocs/eks/addons/nginx-gateway-fabric
 - [official doc](https://docs.nginx.com/nginx-gateway-fabric/install/helm/) 
 - install gateway api 
 ```sh
-VERSION=v2.2.2 # v2.3.0
+VERSION=v2.2.2 # v2.6.6
 kubectl kustomize "https://github.com/nginx/nginx-gateway-fabric/config/crd/gateway-api/standard?ref=${VERSION}" | kubectl apply -f -
 
 ```

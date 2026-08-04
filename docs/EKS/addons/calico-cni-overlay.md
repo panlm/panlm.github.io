@@ -184,6 +184,17 @@ kubectl get deployment cert-manager-webhook -n cert-manager -o jsonpath='{.spec.
 - 原因：
 - 实测：
 
+### Rancher
+
+- 原因：已测
+- 实测：
+- refer：[[git/git-mkdocs/EKS/addons/rancher#EKS Calico Overlay 环境部署指南|EKS Calico Overlay 环境部署指南]]
+
+| 组件              | 端口            | hostNetwork | 说明                    |
+| --------------- | ------------- | ----------- | --------------------- |
+| rancher         | 80, 443, 6666 | ✓           | 必须，API aggregation 需要 |
+| rancher-webhook | 9444          | ✓           | 可改端口避免与 ALBC 冲突       |
+
 ## 推荐使用 hostNetwork 的组件
 
 ### Cluster Autoscaler
@@ -294,7 +305,7 @@ nginx-gateway   production-gateway-nginx-846766b468-m4xt7   1/1     Running   0 
 - **VictoriaMetrics (single)**
     - 版本：chart 0.41.0 / app v1.146.0
     - 安装：helm (`vm/victoria-metrics-single`)
-    - 备注：无 webhook，不受 Calico overlay 影响；需显式指定 `storageClassName=gp3`（见下方存储坑）；详见 [[VictoriaMetrics#on-calico-overlay-network]]
+    - 备注：无 webhook，不受 Calico overlay 影响；需显式指定 `storageClassName=gp3`（见下方存储坑）；详见 [[../../../../victoriametrics#on-calico-overlay-network]]
 - **Grafana Tempo (single binary)**
     - 版本：chart 2.2.3 / app 2.10.7
     - 安装：helm (**`grafana-community/tempo`**，非 `grafana/tempo`)
@@ -332,6 +343,19 @@ nginx-gateway   production-gateway-nginx-846766b468-m4xt7   1/1     Running   0 
 - rancher-stable/rancher chart 2.14.3 硬编码 `kubeVersion: < 1.36.0-0`，EKS 1.36 直接被 chart 拒装（`helm install` 报错拒装），**EKS 1.35 验证通过，`helm install` 正常执行**
 - 装 Rancher 前必须先装好 cert-manager（chart 依赖 `Issuer`/`Certificate` CRD），否则报 `no matches for kind "Issuer" in version cert-manager.io/v1`；cert-manager 装法见 [[git/git-mkdocs/EKS/addons/cert-manager#install-for-overlay-cni-]]
 - 按文档 patch rancher + rancher-webhook 的 hostNetwork 后，`apiservice v1.ext.cattle.io` AVAILABLE=True，验证通过；详见 [[git/git-mkdocs/EKS/addons/rancher#on-calico-overlay-network]]
+
+### 其余组件在 135 集群补充验证（`my-calico-cluster-135`，2026-07-08）
+
+- 同一个 EKS 1.35 集群（装完 Rancher 后）补装了 POC-202607 表格里除 Calico/metrics-server/NGF/vpc-cni 外的其余组件，逐一复测均在纯 arm64 节点上一次性跑通，无兼容问题：
+- **gp3 storageclass**：装其余组件前先建好并设为默认（见下方"存储坑"），135 集群本身自带的仍只有 `gp2`
+- **aws-ebs-csi-driver**：chart 2.62.0 / app 1.62.0；先 `eksctl create iamserviceaccount` 建 `ebs-csi-controller-sa`，再 helm install；controller x2 + node daemonset x3 全 Running；详见 [[git/git-mkdocs/EKS/addons/ebs-csi#on-calico-overlay-network]]
+- **VictoriaMetrics (single)**：装法与 POC-202607 一致（`server.persistentVolume.storageClassName=gp3`），一次装成功，PVC Bound；详见 [[../../../../victoriametrics#on-calico-overlay-network]]
+- **Grafana Tempo**：**踩坑** —— `persistence.enabled` chart 默认 `false`，光设 `storageClassName` 不生效、不建 PVC；必须同时 `--set persistence.enabled=true --set persistence.storageClassName=gp3`。第一次漏装了 `persistence.enabled`，`helm upgrade` 补参数报 `Forbidden: updates to statefulset spec...`（`volumeClaimTemplate` 不可变字段），最终 `helm uninstall` + 重新 `helm install` 才修复；详见 [[grafana-tempo#on-calico-overlay-network]]
+- **Vault (dev mode)**：装法与 POC-202607 一致，injector hostNetwork=true 一次生效；详见 [[vault#on-calico-overlay-network]]
+- **APISIX + ingress-controller**：`apisix/apisix --skip-crds` 装数据面，`apisix/apisix-ingress-controller`（chart 1.2.1 / app 2.1.0）单独装控制面；apisix-etcd 三副本约 50 秒后才全 Ready，其余同 POC-202607；详见 [[git/git-mkdocs/EKS/addons/apisix-on-eks#on-calico-overlay-network]]
+- **Nacos (standalone)**：**参数路径纠正** —— 开持久化要用 `persistence.data.storageClassName=gp3`，不是裸 `storageClassName`；一次装成功，PVC Bound；详见 [[nacos#on-calico-overlay-network]]
+- **NeuVector**：装法与 POC-202607 一致，controller x3 / enforcer x3 / manager / scanner x2 全 Running，cert-upgrader job Completed；详见 [[NeuVector#on-calico-overlay-network]]
+- 6 组件 + gp3 storageclass 全部装完后，全集群（含 Rancher 相关 cattle-* 命名空间）用 `kubectl get pods -A --field-selector=status.phase!=Running,status.phase!=Succeeded` 复查，零异常 pod，3 节点均 arm64
 
 ### NeuVector 风险提示（未触发但要知道）
 

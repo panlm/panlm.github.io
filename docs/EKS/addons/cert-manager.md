@@ -24,6 +24,7 @@ kubectl get clusterissuer
 ```
 
 ### install with helm
+
 - sa (https://cert-manager.io/docs/configuration/acme/dns01/route53/)
 ```sh
 echo ${CLUSTER_NAME}
@@ -128,6 +129,7 @@ kubectl apply -f https://github.com/cert-manager/cert-manager/releases/latest/do
 ```
 
 ## issuer-certificates-
+
 ```
 TEST_DOMAIN=thanos-gateway.poc1109.aws.panlm.xyz
 cat <<EOF | kubectl apply -f -
@@ -149,6 +151,7 @@ EOF
 
 
 ## newest version v1.12.3 (2024/04)
+
 https://cert-manager.io/docs/releases/
 
 ![[../../git-attachment/cert-manager-png-1.png]]
