@@ -13,7 +13,7 @@ permalink: git-mkdocs/cli/linux/nodejs-cmd
 ## install
 https://github.com/nvm-sh/nvm/releases 
 ```sh
-curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.4/install.sh | bash
+curl -o- https://raw.githubusercontent.com/nvm-sh/nvm/v0.40.6/install.sh | bash
 
 source ~/.bashrc
 nvm install 24

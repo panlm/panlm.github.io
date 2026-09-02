@@ -597,6 +597,57 @@ agentcore invoke --exec --harness my-agent --session-id "$SID" \
 
 ---
 
+## 10. InvokeHarness 触发验证方法（复现记录 2026-07-16）
+
+之前排查过一个容易误判的坑：**能拿到正确结果 ≠ 后端 runtime 真的被拉起了**。有些托管服务（如 DevOps Agent MCP 的 chat 工具）走的是托管侧执行，压根没触发你账号里绑定的 harness runtime，日志和指标纹丝不动。只有真正调 `InvokeHarness` 才会拉起后端 runtime。
+
+### 快速验证方法（比等 CloudWatch 3 分钟批处理延迟更快）
+
+用"调用前/调用后"隔离对照，查 runtime 日志组最新时间戳：
+
+```python
+import boto3, uuid
+
+session = boto3.Session(profile_name="panlm", region_name="us-east-1")
+logs = session.client("logs")
+LOG_GROUP = "/aws/bedrock-agentcore/runtimes/<runtime-id>-DEFAULT"
+
+def latest_log_ts():
+    resp = logs.describe_log_streams(
+        logGroupName=LOG_GROUP, orderBy="LastEventTime",
+        descending=True, limit=1,
+    )
+    streams = resp.get("logStreams", [])
+    return streams[0]["lastEventTimestamp"] if streams else 0
+
+# 1. 调用前单独查一次基线（不要跟 invoke 写在同一段连续跑，否则基线会等于上一次调用的残留时间戳）
+before = latest_log_ts()
+
+# 2. 单独发起 InvokeHarness（用带 uuid 的 sessionId 避免复用）
+agentcore = session.client("bedrock-agentcore")
+resp = agentcore.invoke_harness(
+    harnessArn="arn:aws:bedrock-agentcore:us-east-1:123456789012:harness/<your-harness-name>-<id>",
+    runtimeSessionId="verify-" + uuid.uuid4().hex,
+    messages=[{"role": "user", "content": [{"text": "ping"}]}],
+)
+for ev in resp["stream"]:
+    pass  # 消费掉 stream
+
+# 3. sleep ~190s（日志/指标批处理延迟）后再查一次
+after = latest_log_ts()
+assert after > before, "runtime 没被真正拉起"
+```
+
+### 2026-07-16 实测数据（第二重交叉验证：日志 + CloudWatch 指标）
+
+- harness: 一个已存在的 `READY` 状态 harness（本次用的是 4 个月前创建的旧 harness）
+- 调用前 runtime 日志流 `lastEventTimestamp`: `1784203437768` = `2026-07-16T12:03:57Z`
+- 独立发起新 `invoke_harness`（payload "say pong2"，收到回复 "pong2"）
+- 调用后日志流 `lastEventTimestamp`: `1784203749317` = `2026-07-16T12:09:09Z`（前进了，吻合调用时刻）
+- CloudWatch `ActiveSessionCount`（`{Service: AgentCore.Runtime}` 维度）：北京时间 20:07→20:08（UTC 12:07→12:08）期间 max 从 1.0 跳到 2.0，与两次独立调用的时间窗口吻合
+
+**结论**：两条独立证据（日志时间戳前进 + CloudWatch session 数增长）互相印证，`InvokeHarness` 每次调用确实真实触发后端 runtime 执行。日志时间戳法比等 CloudWatch 指标落点更快，排查时优先用它。
+
 ## 参考链接
 
 - [AgentCore Harness 文档](https://docs.aws.amazon.com/bedrock-agentcore/latest/devguide/harness.html)
