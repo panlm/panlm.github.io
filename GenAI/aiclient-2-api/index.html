@@ -10,7 +10,7 @@
         <link rel="canonical" href="https://panlm.github.io/GenAI/aiclient-2-api/">
       
       
-        <link rel="prev" href="../agentcore-harness-deployment-guide%201/">
+        <link rel="prev" href="../agentcore-identity-3lo-ecs-cognito/">
       
       
         <link rel="next" href="../BMAD-Method-Repos-Analysis/">
@@ -4676,6 +4676,10 @@
       
         
       
+        
+      
+        
+      
     
     
     
@@ -4774,6 +4778,62 @@
     
   
     agentcore-harness-deployment-guide 1
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agentcore-identity-3lo-auth-flow-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AgentCore Identity 3LO 授权全过程（日志还原）
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../agentcore-identity-3lo-ecs-cognito/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AgentCore Identity 3LO on ECS (Cognito 版)
   
 
     
@@ -5013,6 +5073,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        热加载配置（替代重启）
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -5064,10 +5135,110 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         导入结果
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        故障排查
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="故障排查">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        先分清两层：进程活 ≠ 能推理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-404-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        症状 1：客户端报 404 Not Found，提示”检查模型名”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-60-status-code-400" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        症状 2：日志每 60 秒刷一次 status code 400
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3curl-35-tlsv1-alert-internal-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        症状 3：curl: (35) tlsv1 alert internal error
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        清理死凭证
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#device-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用 device code 重新授权（备选方案）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="用 device code 重新授权（备选方案）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#idc-identity-center" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IdC（企业版 Identity Center）不被支持
       
     </span>
   </a>
@@ -5092,7 +5263,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
         前置条件
@@ -5114,7 +5285,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#ip-443-dns-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ 如果安全组按 IP 白名单收紧了 443，必须改用 DNS-01
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
         启动
@@ -5125,7 +5307,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
         验证
@@ -5752,6 +5934,8 @@
       
         
       
+        
+      
     
     
     
@@ -5819,6 +6003,34 @@
     
   
     使用 iam-role-anywhere 在中国区访问 global 区域 secret manager
+  
+
+    
+  </span>
+  
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../others/aws-well-architected-repo-landscape/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    
+  
+    AWS Well-Architected 相关 GitHub 仓库全景调研
   
 
     
@@ -6345,10 +6557,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_18">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_19">
         
           
-          <label class="md-nav__link" for="__nav_7_18" id="__nav_7_18_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_19" id="__nav_7_19_label" tabindex="0">
             
   
   
@@ -6366,8 +6578,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_18_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_18">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_19_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_19">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -6583,10 +6795,10 @@
       
         
         
-        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_19">
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_7_20">
         
           
-          <label class="md-nav__link" for="__nav_7_19" id="__nav_7_19_label" tabindex="0">
+          <label class="md-nav__link" for="__nav_7_20" id="__nav_7_20_label" tabindex="0">
             
   
   
@@ -6604,8 +6816,8 @@
             <span class="md-nav__icon md-icon"></span>
           </label>
         
-        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_19_label" aria-expanded="false">
-          <label class="md-nav__title" for="__nav_7_19">
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_7_20_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_7_20">
             <span class="md-nav__icon md-icon"></span>
             
   
@@ -9180,6 +9392,17 @@
   
 </li>
         
+          <li class="md-nav__item">
+  <a href="#_7" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        热加载配置（替代重启）
+      
+    </span>
+  </a>
+  
+</li>
+        
       </ul>
     </nav>
   
@@ -9231,10 +9454,110 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_7" class="md-nav__link">
+  <a href="#_8" class="md-nav__link">
     <span class="md-ellipsis">
       
         导入结果
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#_9" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        故障排查
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="故障排查">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#_10" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        先分清两层：进程活 ≠ 能推理
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#1-404-not-found" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        症状 1：客户端报 404 Not Found，提示”检查模型名”
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-60-status-code-400" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        症状 2：日志每 60 秒刷一次 status code 400
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3curl-35-tlsv1-alert-internal-error" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        症状 3：curl: (35) tlsv1 alert internal error
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_11" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        清理死凭证
+      
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#device-code" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        用 device code 重新授权（备选方案）
+      
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="用 device code 重新授权（备选方案）">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#idc-identity-center" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        IdC（企业版 Identity Center）不被支持
       
     </span>
   </a>
@@ -9259,7 +9582,7 @@
       <ul class="md-nav__list">
         
           <li class="md-nav__item">
-  <a href="#_8" class="md-nav__link">
+  <a href="#_12" class="md-nav__link">
     <span class="md-ellipsis">
       
         前置条件
@@ -9281,7 +9604,18 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_9" class="md-nav__link">
+  <a href="#ip-443-dns-01" class="md-nav__link">
+    <span class="md-ellipsis">
+      
+        ⚠️ 如果安全组按 IP 白名单收紧了 443，必须改用 DNS-01
+      
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#_13" class="md-nav__link">
     <span class="md-ellipsis">
       
         启动
@@ -9292,7 +9626,7 @@
 </li>
         
           <li class="md-nav__item">
-  <a href="#_10" class="md-nav__link">
+  <a href="#_14" class="md-nav__link">
     <span class="md-ellipsis">
       
         验证
@@ -9368,6 +9702,29 @@
 </tr>
 </tbody>
 </table>
+<p>凭据存在 <code>auth_kv</code> 表里，两个 key：</p>
+<table>
+<thead>
+<tr>
+<th>key</th>
+<th>提供字段</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><code>kirocli:odic:token</code></td>
+<td><code>access_token</code> / <code>refresh_token</code> / <code>expires_at</code></td>
+</tr>
+<tr>
+<td><code>kirocli:odic:device-registration</code></td>
+<td><code>client_id</code> / <code>client_secret</code></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p><strong>不要从 <code>~/.aws/sso/cache/</code> 取凭据</strong>。那里的 <code>kiro-auth-token.json</code> / <code>kiro-auth-token-cli.json</code> 是<strong>陈旧快照</strong>，即使 <code>kiro-cli whoami</code> 显示已登录，这些文件里的 <code>expiresAt</code> 也可能早已过期（实测差了 6 天）。sqlite 的 <code>auth_kv</code> 才是活数据。</p>
+<p>macOS 上 Keychain 里确实有同名条目（<code>kirocli:odic:token</code>、<code>kirocli:odic:device-registration</code>），但读它会弹系统授权框，直读 sqlite 更省事。</p>
+</blockquote>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-2-1" name="__codelineno-2-1" href="#__codelineno-2-1"></a><span class="kn">import</span><span class="w"> </span><span class="nn">sqlite3</span><span class="o">,</span><span class="w"> </span><span class="nn">json</span><span class="o">,</span><span class="w"> </span><span class="nn">os</span>
 <a id="__codelineno-2-2" name="__codelineno-2-2" href="#__codelineno-2-2"></a>
 <a id="__codelineno-2-3" name="__codelineno-2-3" href="#__codelineno-2-3"></a><span class="c1"># Linux</span>
@@ -9381,7 +9738,7 @@
 <a id="__codelineno-2-11" name="__codelineno-2-11" href="#__codelineno-2-11"></a>    <span class="n">db</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">"~/Library/Application Support/kiro-cli/data.sqlite3"</span><span class="p">)</span>
 <a id="__codelineno-2-12" name="__codelineno-2-12" href="#__codelineno-2-12"></a><span class="k">else</span><span class="p">:</span>
 <a id="__codelineno-2-13" name="__codelineno-2-13" href="#__codelineno-2-13"></a>    <span class="n">db</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">expanduser</span><span class="p">(</span><span class="s2">"~/.local/share/kiro-cli/data.sqlite3"</span><span class="p">)</span>
-<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="n">db</span><span class="p">)</span>
+<a id="__codelineno-2-14" name="__codelineno-2-14" href="#__codelineno-2-14"></a><span class="n">conn</span> <span class="o">=</span> <span class="n">sqlite3</span><span class="o">.</span><span class="n">connect</span><span class="p">(</span><span class="sa">f</span><span class="s2">"file:</span><span class="si">{</span><span class="n">db</span><span class="si">}</span><span class="s2">?mode=ro"</span><span class="p">,</span> <span class="n">uri</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>  <span class="c1"># 只读打开，避免锁住 kiro-cli 正在用的库</span>
 <a id="__codelineno-2-15" name="__codelineno-2-15" href="#__codelineno-2-15"></a><span class="n">cursor</span> <span class="o">=</span> <span class="n">conn</span><span class="o">.</span><span class="n">cursor</span><span class="p">()</span>
 <a id="__codelineno-2-16" name="__codelineno-2-16" href="#__codelineno-2-16"></a>
 <a id="__codelineno-2-17" name="__codelineno-2-17" href="#__codelineno-2-17"></a><span class="n">cursor</span><span class="o">.</span><span class="n">execute</span><span class="p">(</span><span class="s2">"SELECT value FROM auth_kv WHERE key='kirocli:odic:token'"</span><span class="p">)</span>
@@ -9406,9 +9763,13 @@
 <a id="__codelineno-2-36" name="__codelineno-2-36" href="#__codelineno-2-36"></a><span class="n">os</span><span class="o">.</span><span class="n">makedirs</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">path</span><span class="o">.</span><span class="n">dirname</span><span class="p">(</span><span class="n">out</span><span class="p">),</span> <span class="n">exist_ok</span><span class="o">=</span><span class="kc">True</span><span class="p">)</span>
 <a id="__codelineno-2-37" name="__codelineno-2-37" href="#__codelineno-2-37"></a><span class="k">with</span> <span class="nb">open</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="s2">"w"</span><span class="p">)</span> <span class="k">as</span> <span class="n">f</span><span class="p">:</span>
 <a id="__codelineno-2-38" name="__codelineno-2-38" href="#__codelineno-2-38"></a>    <span class="n">json</span><span class="o">.</span><span class="n">dump</span><span class="p">(</span><span class="n">creds</span><span class="p">,</span> <span class="n">f</span><span class="p">,</span> <span class="n">indent</span><span class="o">=</span><span class="mi">2</span><span class="p">)</span>
-<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a>
-<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Done: </span><span class="si">{</span><span class="n">out</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
+<a id="__codelineno-2-39" name="__codelineno-2-39" href="#__codelineno-2-39"></a><span class="n">os</span><span class="o">.</span><span class="n">chmod</span><span class="p">(</span><span class="n">out</span><span class="p">,</span> <span class="mo">0o600</span><span class="p">)</span>  <span class="c1"># 内含明文 refreshToken/clientSecret</span>
+<a id="__codelineno-2-40" name="__codelineno-2-40" href="#__codelineno-2-40"></a>
+<a id="__codelineno-2-41" name="__codelineno-2-41" href="#__codelineno-2-41"></a><span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">"Done: </span><span class="si">{</span><span class="n">out</span><span class="si">}</span><span class="s2">"</span><span class="p">)</span>
 </code></pre></div>
+<blockquote>
+<p>输出文件含明文 <code>refreshToken</code> + <code>clientSecret</code>，导入完成后建议 <code>shred -u ~/kiro_credentials.json</code> 删掉。</p>
+</blockquote>
 <p>执行：</p>
 <div class="highlight"><pre><span></span><code><a id="__codelineno-3-1" name="__codelineno-3-1" href="#__codelineno-3-1"></a>python3<span class="w"> </span>/home/ubuntu/kiro-oauth-get-cred.py
 </code></pre></div>
@@ -9547,31 +9908,67 @@
 <p><strong>注意</strong>：<code>PROXY_ENABLED_PROVIDERS</code> 是一个数组，可以指定多个 provider 使用代理，例如 <code>["claude-kiro-oauth", "gemini-cli-oauth"]</code>。</p>
 </blockquote>
 <h2 id="_5">可用模型<a class="headerlink" href="#_5" title="Permanent link">¶</a></h2>
-<p><code>claude-opus-4-6</code>、<code>claude-sonnet-4-6</code></p>
+<p>模型列表随镜像版本变化，别写死在配置里，实时查：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>https://&lt;your-domain&gt;/v1/models<span class="w"> </span>-H<span class="w"> </span><span class="s2">"x-api-key: &lt;your-api-key&gt;"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s1">'import sys,json;print("\n".join(m["id"] for m in json.load(sys.stdin)["data"]))'</span>
+</code></pre></div>
+<p>3.3.8 上实测 15 个：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>claude-haiku-4-5        claude-haiku-4-5-20251001
+<a id="__codelineno-12-2" name="__codelineno-12-2" href="#__codelineno-12-2"></a>claude-opus-4-5         claude-opus-4-5-20251101
+<a id="__codelineno-12-3" name="__codelineno-12-3" href="#__codelineno-12-3"></a>claude-opus-4-6         claude-opus-4-7         claude-opus-4-8
+<a id="__codelineno-12-4" name="__codelineno-12-4" href="#__codelineno-12-4"></a>claude-opus-5
+<a id="__codelineno-12-5" name="__codelineno-12-5" href="#__codelineno-12-5"></a>claude-sonnet-4-5       claude-sonnet-4-5-20250929
+<a id="__codelineno-12-6" name="__codelineno-12-6" href="#__codelineno-12-6"></a>claude-sonnet-4-6       claude-sonnet-5
+<a id="__codelineno-12-7" name="__codelineno-12-7" href="#__codelineno-12-7"></a>gpt-5.6-luna            gpt-5.6-sol             gpt-5.6-terra
+</code></pre></div>
+<blockquote>
+<p><strong>模型 ID 一律用连字符</strong>（<code>claude-opus-4-8</code>），网关内部会转成上游要的点号形式（<code>claude-opus-4.8</code>）。直接传点号形式会 400。</p>
+<p>老版本（如 2.16.3）的 <code>FULL_MODEL_MAPPING</code> 里没有新模型条目，靠 <code>customModels</code> 注入 ID <strong>绕不过去</strong> —— 真正生效的是 <code>FULL_MODEL_MAPPING ∩ KIRO_MODELS</code>，缺条目就会把 ID 原样发上游导致 400。要新模型只能升镜像。</p>
+</blockquote>
 <h2 id="claude-cli">首次运行 Claude CLI 跳过登录<a class="headerlink" href="#claude-cli" title="Permanent link">¶</a></h2>
 <p>如果是第一次运行 Claude CLI，可以在 <code>~/.claude.json</code> 中添加以下配置，跳过登录流程：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-11-1" name="__codelineno-11-1" href="#__codelineno-11-1"></a><span class="p">{</span>
-<a id="__codelineno-11-2" name="__codelineno-11-2" href="#__codelineno-11-2"></a><span class="w">  </span><span class="nt">"hasCompletedOnboarding"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
-<a id="__codelineno-11-3" name="__codelineno-11-3" href="#__codelineno-11-3"></a><span class="p">}</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a><span class="p">{</span>
+<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a><span class="w">  </span><span class="nt">"hasCompletedOnboarding"</span><span class="p">:</span><span class="w"> </span><span class="kc">true</span>
+<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a><span class="p">}</span>
 </code></pre></div>
 <h2 id="token">Token 刷新机制<a class="headerlink" href="#token" title="Permanent link">¶</a></h2>
-<p>AIClient-2-API 内部自动处理 token 刷新（<code>CRON_REFRESH_TOKEN: true</code>）。它使用凭据文件中的 <code>refreshToken</code> + <code>clientId</code> + <code>clientSecret</code> 向 <code>oidc.us-east-1.amazonaws.com/token</code> 请求新的 <code>accessToken</code>，在当前 token 过期前自动完成续期。</p>
+<p>AIClient-2-API 内部自动处理 token 刷新（<code>CRON_REFRESH_TOKEN: true</code>）。它使用凭据文件中的 <code>refreshToken</code> + <code>clientId</code> + <code>clientSecret</code> 向 <code>oidc.us-east-1.amazonaws.com/token</code> 请求新的 <code>accessToken</code>，在当前 token 过期前自动完成续期。<code>accessToken</code> 寿命 1 小时，<code>CRON_NEAR_MINUTES: 1</code> 表示距过期 30 分钟内就开始尝试刷新。</p>
+<blockquote>
+<p><strong>但 <code>refreshToken</code> 本身也有寿命。</strong> 它一旦失效，自动续期就永久失败，日志开始每 60 秒刷一次 <code>Token refresh failed: Request failed with status code 400</code>，且<strong>不会自愈</strong>。这时唯一的解法是重新从 Kiro CLI 同步一份新凭据（见下方「手动同步」）。排查见「<a href="./#故障排查">故障排查</a>」。</p>
+</blockquote>
 <h3 id="_6">手动触发内部刷新<a class="headerlink" href="#_6" title="Permanent link">¶</a></h3>
 <p>如果需要立即刷新 token，可以执行容器内的刷新脚本：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-12-1" name="__codelineno-12-1" href="#__codelineno-12-1"></a>sudo<span class="w"> </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>aiclient2api<span class="w"> </span>node<span class="w"> </span>src/scripts/kiro-idc-token-refresh.js<span class="w"> </span>configs/kiro-auth-token.json
+<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>sudo<span class="w"> </span>docker<span class="w"> </span><span class="nb">exec</span><span class="w"> </span>aiclient2api<span class="w"> </span>node<span class="w"> </span>src/scripts/kiro-idc-token-refresh.js<span class="w"> </span>configs/kiro-auth-token.json
 </code></pre></div>
 <p>该脚本读取 <code>configs/kiro-auth-token.json</code> 中的 <code>refreshToken</code> + <code>clientId</code> + <code>clientSecret</code>，向 AWS OIDC 端点请求新的 <code>accessToken</code>（有效期 1 小时），并将结果保存到容器内。</p>
 <h3 id="kiro-cli">手动同步 Kiro CLI 凭据<a class="headerlink" href="#kiro-cli" title="Permanent link">¶</a></h3>
-<p>如果重新登录了 Kiro CLI，需要重新提取凭据并同步：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-13-1" name="__codelineno-13-1" href="#__codelineno-13-1"></a>python3<span class="w"> </span>/home/ubuntu/kiro-oauth-get-cred.py
-<a id="__codelineno-13-2" name="__codelineno-13-2" href="#__codelineno-13-2"></a>cp<span class="w"> </span>/home/ubuntu/kiro_credentials.json<span class="w"> </span>/home/ubuntu/AIClient-2-API/docker/configs/kiro-auth-token.json
-<a id="__codelineno-13-3" name="__codelineno-13-3" href="#__codelineno-13-3"></a>sudo<span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span>restart
+<p>如果重新登录了 Kiro CLI，或 <code>refreshToken</code> 已失效，需要重新提取凭据并同步。<strong>推荐走 API 导入</strong>（见「<a href="./#添加更多-kiro-oauth-账号">添加更多 Kiro OAuth 账号</a>」），它会自动落到 <code>configs/kiro/&lt;timestamp&gt;_kiro-auth-token/</code> 并关联到 provider pool，<strong>无需重启</strong>。</p>
+<p>覆盖式同步（仅适用于单节点、且 pool 里引用的就是 <code>configs/kiro-auth-token.json</code> 的场景）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a>python3<span class="w"> </span>/home/ubuntu/kiro-oauth-get-cred.py
+<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a>cp<span class="w"> </span>/home/ubuntu/kiro_credentials.json<span class="w"> </span>/home/ubuntu/AIClient-2-API/docker/configs/kiro-auth-token.json
+<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a>sudo<span class="w"> </span>docker<span class="w"> </span>compose<span class="w"> </span>restart
 </code></pre></div>
+<blockquote>
+<p><strong>先确认 pool 引用的到底是哪个文件</strong>，否则覆盖了也不生效：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a>grep<span class="w"> </span>-o<span class="w"> </span><span class="s1">'configs/kiro[^"]*'</span><span class="w"> </span>/home/ubuntu/AIClient-2-API/docker/configs/provider_pools.json<span class="w"> </span><span class="p">|</span><span class="w"> </span>sort<span class="w"> </span>-u
+</code></pre></div>
+<p>多节点场景下 pool 引用的是 <code>configs/kiro/&lt;timestamp&gt;_kiro-auth-token/*.json</code>，此时 <code>configs/kiro-auth-token.json</code> 只是个不被引用的孤儿文件，覆盖它没有任何效果。</p>
+</blockquote>
+<h3 id="_7">热加载配置（替代重启）<a class="headerlink" href="#_7" title="Permanent link">¶</a></h3>
+<p>改完 <code>config.json</code> 或 <code>provider_pools.json</code> 后，不必 <code>docker compose restart</code>：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a><span class="nv">TOKEN</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://&lt;your-domain&gt;/api/login<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-17-2" name="__codelineno-17-2" href="#__codelineno-17-2"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-17-3" name="__codelineno-17-3" href="#__codelineno-17-3"></a><span class="w">  </span>-d<span class="w"> </span><span class="s1">'{"password":"&lt;your-password&gt;"}'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import sys,json; print(json.load(sys.stdin)['token'])"</span><span class="k">)</span>
+<a id="__codelineno-17-4" name="__codelineno-17-4" href="#__codelineno-17-4"></a>
+<a id="__codelineno-17-5" name="__codelineno-17-5" href="#__codelineno-17-5"></a>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://&lt;your-domain&gt;/api/reload-config<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-17-6" name="__codelineno-17-6" href="#__codelineno-17-6"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">"</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span>-d<span class="w"> </span><span class="s1">'{}'</span>
+</code></pre></div>
+<p>返回 <code>{"success":true,"message":"Configuration files reloaded successfully",...}</code> 即生效。</p>
 <h2 id="kiro-oauth">添加更多 Kiro OAuth 账号<a class="headerlink" href="#kiro-oauth" title="Permanent link">¶</a></h2>
 <p>如果需要添加额外的 Kiro 账号（多账号负载均衡），可以通过 API 导入。支持本地和远程两种方式。</p>
 <h3 id="1">1. 提取新账号凭据<a class="headerlink" href="#1" title="Permanent link">¶</a></h3>
 <p>在已登录新 Kiro 账号的机器上执行：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-14-1" name="__codelineno-14-1" href="#__codelineno-14-1"></a>python3<span class="w"> </span>/home/ubuntu/kiro-oauth-get-cred.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a>python3<span class="w"> </span>/home/ubuntu/kiro-oauth-get-cred.py
 </code></pre></div>
 <blockquote>
 <p><strong>macOS 用户</strong>：脚本已支持自动检测平台，直接运行即可。凭据会输出到 <code>~/kiro_credentials.json</code>。</p>
@@ -9579,64 +9976,237 @@
 <h3 id="2a">2a. 本地导入（在服务器上操作）<a class="headerlink" href="#2a" title="Permanent link">¶</a></h3>
 <p>由于 Kiro CLI 使用 builder-id 认证方式，需要用 <code>/api/kiro/import-aws-credentials</code> 接口（传完整凭据对象），而不是 <code>/api/kiro/batch-import-tokens</code>（仅支持 social auth）。</p>
 <p>先登录管理后台获取 token：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-15-1" name="__codelineno-15-1" href="#__codelineno-15-1"></a><span class="nv">TOKEN</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:3000/api/login<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-15-2" name="__codelineno-15-2" href="#__codelineno-15-2"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-15-3" name="__codelineno-15-3" href="#__codelineno-15-3"></a><span class="w">  </span>-d<span class="w"> </span><span class="s1">'{"password":"&lt;your-password&gt;"}'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import sys,json; print(json.load(sys.stdin)['token'])"</span><span class="k">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nv">TOKEN</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:3000/api/login<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">  </span>-d<span class="w"> </span><span class="s1">'{"password":"&lt;your-password&gt;"}'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import sys,json; print(json.load(sys.stdin)['token'])"</span><span class="k">)</span>
 </code></pre></div>
 <p>导入凭据：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-16-1" name="__codelineno-16-1" href="#__codelineno-16-1"></a><span class="nv">CREDS</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span>/home/ubuntu/kiro_credentials.json<span class="k">)</span>
-<a id="__codelineno-16-2" name="__codelineno-16-2" href="#__codelineno-16-2"></a>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:3000/api/kiro/import-aws-credentials<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-16-3" name="__codelineno-16-3" href="#__codelineno-16-3"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-16-4" name="__codelineno-16-4" href="#__codelineno-16-4"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-16-5" name="__codelineno-16-5" href="#__codelineno-16-5"></a><span class="w">  </span>-d<span class="w"> </span><span class="s2">"{\"credentials\": [</span><span class="nv">$CREDS</span><span class="s2">]}"</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a><span class="nv">CREDS</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span>/home/ubuntu/kiro_credentials.json<span class="k">)</span>
+<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>http://localhost:3000/api/kiro/import-aws-credentials<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-20-3" name="__codelineno-20-3" href="#__codelineno-20-3"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-20-4" name="__codelineno-20-4" href="#__codelineno-20-4"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-20-5" name="__codelineno-20-5" href="#__codelineno-20-5"></a><span class="w">  </span>-d<span class="w"> </span><span class="s2">"{\"credentials\": [</span><span class="nv">$CREDS</span><span class="s2">]}"</span>
 </code></pre></div>
 <h3 id="2b-https">2b. 远程导入（从本地机器通过 HTTPS 导入）<a class="headerlink" href="#2b-https" title="Permanent link">¶</a></h3>
 <p>适用于 Kiro CLI 安装在本地开发机（如 macOS），而 AIClient-2-API 部署在远程服务器的场景。</p>
 <p>先在本地提取凭据：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-17-1" name="__codelineno-17-1" href="#__codelineno-17-1"></a>python3<span class="w"> </span>kiro-oauth-get-cred.py
+<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>python3<span class="w"> </span>kiro-oauth-get-cred.py
 </code></pre></div>
 <p>登录远程管理后台获取 token：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-18-1" name="__codelineno-18-1" href="#__codelineno-18-1"></a><span class="nv">TOKEN</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://&lt;your-domain&gt;/api/login<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-18-2" name="__codelineno-18-2" href="#__codelineno-18-2"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-18-3" name="__codelineno-18-3" href="#__codelineno-18-3"></a><span class="w">  </span>-d<span class="w"> </span><span class="s1">'{"password":"&lt;your-password&gt;"}'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import sys,json; print(json.load(sys.stdin)['token'])"</span><span class="k">)</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a><span class="nv">TOKEN</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://&lt;your-domain&gt;/api/login<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-22-2" name="__codelineno-22-2" href="#__codelineno-22-2"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-22-3" name="__codelineno-22-3" href="#__codelineno-22-3"></a><span class="w">  </span>-d<span class="w"> </span><span class="s1">'{"password":"&lt;your-password&gt;"}'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import sys,json; print(json.load(sys.stdin)['token'])"</span><span class="k">)</span>
 </code></pre></div>
 <p>远程导入凭据：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-19-1" name="__codelineno-19-1" href="#__codelineno-19-1"></a><span class="nv">CREDS</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span>~/kiro_credentials.json<span class="k">)</span>
-<a id="__codelineno-19-2" name="__codelineno-19-2" href="#__codelineno-19-2"></a>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://&lt;your-domain&gt;/api/kiro/import-aws-credentials<span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-19-3" name="__codelineno-19-3" href="#__codelineno-19-3"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-19-4" name="__codelineno-19-4" href="#__codelineno-19-4"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
-<a id="__codelineno-19-5" name="__codelineno-19-5" href="#__codelineno-19-5"></a><span class="w">  </span>-d<span class="w"> </span><span class="s2">"{\"credentials\": [</span><span class="nv">$CREDS</span><span class="s2">]}"</span>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a><span class="nv">CREDS</span><span class="o">=</span><span class="k">$(</span>cat<span class="w"> </span>~/kiro_credentials.json<span class="k">)</span>
+<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://&lt;your-domain&gt;/api/kiro/import-aws-credentials<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-23-3" name="__codelineno-23-3" href="#__codelineno-23-3"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-23-4" name="__codelineno-23-4" href="#__codelineno-23-4"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-23-5" name="__codelineno-23-5" href="#__codelineno-23-5"></a><span class="w">  </span>-d<span class="w"> </span><span class="s2">"{\"credentials\": [</span><span class="nv">$CREDS</span><span class="s2">]}"</span>
 </code></pre></div>
-<h3 id="_7">导入结果<a class="headerlink" href="#_7" title="Permanent link">¶</a></h3>
+<h3 id="_8">导入结果<a class="headerlink" href="#_8" title="Permanent link">¶</a></h3>
 <p>成功后会返回类似：</p>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-20-1" name="__codelineno-20-1" href="#__codelineno-20-1"></a>event: complete
-<a id="__codelineno-20-2" name="__codelineno-20-2" href="#__codelineno-20-2"></a>data: {"success":true,"total":1,"successCount":1,"failedCount":0,...}
+<div class="highlight"><pre><span></span><code><a id="__codelineno-24-1" name="__codelineno-24-1" href="#__codelineno-24-1"></a>event: complete
+<a id="__codelineno-24-2" name="__codelineno-24-2" href="#__codelineno-24-2"></a>data: {"success":true,"total":1,"successCount":1,"failedCount":0,...}
 </code></pre></div>
 <p>新账号会自动保存到 <code>configs/kiro/</code> 目录并关联到 provider pool，无需重启服务。</p>
+<h2 id="_9">故障排查<a class="headerlink" href="#_9" title="Permanent link">¶</a></h2>
+<h3 id="_10">先分清两层：进程活 ≠ 能推理<a class="headerlink" href="#_10" title="Permanent link">¶</a></h3>
+<p><code>/health</code> 返回 <code>{"status":"healthy"}</code> <strong>只证明 Node 进程活着，不代表能推理</strong>。容器 <code>healthy</code>、<code>restarts=0</code>、HTTP 200、证书有效 —— 这些全绿的同时推理可能 100% 失败。</p>
+<p>判断「能不能真的用」看 provider pool 的 <code>isHealthy</code>：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-25-1" name="__codelineno-25-1" href="#__codelineno-25-1"></a>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">"</span>
+<a id="__codelineno-25-2" name="__codelineno-25-2" href="#__codelineno-25-2"></a><span class="s2">import json</span>
+<a id="__codelineno-25-3" name="__codelineno-25-3" href="#__codelineno-25-3"></a><span class="s2">d=json.load(open('/home/ubuntu/AIClient-2-API/docker/configs/provider_pools.json'))</span>
+<a id="__codelineno-25-4" name="__codelineno-25-4" href="#__codelineno-25-4"></a><span class="s2">for prov,lst in d.items():</span>
+<a id="__codelineno-25-5" name="__codelineno-25-5" href="#__codelineno-25-5"></a><span class="s2">    print(prov+':')</span>
+<a id="__codelineno-25-6" name="__codelineno-25-6" href="#__codelineno-25-6"></a><span class="s2">    for e in lst:</span>
+<a id="__codelineno-25-7" name="__codelineno-25-7" href="#__codelineno-25-7"></a><span class="s2">        print('  uuid=',str(e.get('uuid'))[:8],'healthy=',e.get('isHealthy'),</span>
+<a id="__codelineno-25-8" name="__codelineno-25-8" href="#__codelineno-25-8"></a><span class="s2">              'disabled=',e.get('isDisabled'),'err=',e.get('errorCount'),</span>
+<a id="__codelineno-25-9" name="__codelineno-25-9" href="#__codelineno-25-9"></a><span class="s2">              'creds=',e.get('KIRO_OAUTH_CREDS_FILE_PATH') or e.get('KIRO_OAUTH_CREDS_DIR_PATH'))</span>
+<a id="__codelineno-25-10" name="__codelineno-25-10" href="#__codelineno-25-10"></a><span class="s2">"</span>
+</code></pre></div>
+<p>再加一条端到端探活（最可靠）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-26-1" name="__codelineno-26-1" href="#__codelineno-26-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://&lt;your-domain&gt;/v1/messages<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-26-2" name="__codelineno-26-2" href="#__codelineno-26-2"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">"x-api-key: &lt;your-api-key&gt;"</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-26-3" name="__codelineno-26-3" href="#__codelineno-26-3"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">"anthropic-version: 2023-06-01"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-26-4" name="__codelineno-26-4" href="#__codelineno-26-4"></a><span class="w">  </span>-d<span class="w"> </span><span class="s1">'{"model":"claude-sonnet-4-6","max_tokens":16,"messages":[{"role":"user","content":"只回复：OK"}]}'</span>
+</code></pre></div>
+<h3 id="1-404-not-found">症状 1：客户端报 404 Not Found，提示”检查模型名”<a class="headerlink" href="#1-404-not-found" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-27-1" name="__codelineno-27-1" href="#__codelineno-27-1"></a><span class="p">{</span><span class="nt">"error"</span><span class="p">:{</span><span class="nt">"message"</span><span class="p">:</span><span class="s2">"Not Found"</span><span class="p">,</span><span class="nt">"code"</span><span class="p">:</span><span class="mi">404</span><span class="p">,</span><span class="nt">"suggestions"</span><span class="p">:[</span>
+<a id="__codelineno-27-2" name="__codelineno-27-2" href="#__codelineno-27-2"></a><span class="w">  </span><span class="s2">"Check your request format and parameters"</span><span class="p">,</span>
+<a id="__codelineno-27-3" name="__codelineno-27-3" href="#__codelineno-27-3"></a><span class="w">  </span><span class="s2">"Verify the model name is a valid Claude model"</span><span class="p">,</span>
+<a id="__codelineno-27-4" name="__codelineno-27-4" href="#__codelineno-27-4"></a><span class="w">  </span><span class="s2">"Ensure the message format follows Anthropic API specifications"</span><span class="p">]}}</span>
+</code></pre></div>
+<p><strong>这三条 suggestions 是死文案</strong>（出自 <code>src/utils/common.js</code>），跟模型名毫无关系，别顺着它查。</p>
+<p>真实原因看服务端日志：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-28-1" name="__codelineno-28-1" href="#__codelineno-28-1"></a>POST http://&lt;your-domain&gt;/messages
+<a id="__codelineno-28-2" name="__codelineno-28-2" href="#__codelineno-28-2"></a>[Config] Ignoring invalid MODEL_PROVIDER in path segment: messages
+<a id="__codelineno-28-3" name="__codelineno-28-3" href="#__codelineno-28-3"></a>[Server] Request failed (404): Not Found
+</code></pre></div>
+<p>请求路径少了 <code>/v1</code>。网关只注册 <code>/v1/messages</code>、<code>/v1/models</code>、<code>/v1/responses</code>，<code>/messages</code> 被当成 provider 名去解析，解析失败就 404。</p>
+<p>修法取决于客户端怎么拼路径：</p>
+<table>
+<thead>
+<tr>
+<th>客户端</th>
+<th>base URL 填法</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td>原生 Anthropic SDK、Claude Code（自己拼 <code>/v1/messages</code>）</td>
+<td><code>https://&lt;your-domain&gt;</code></td>
+</tr>
+<tr>
+<td>Vercel AI SDK、opencode 等（baseURL 默认自带 <code>/v1</code>，只拼 <code>/messages</code>）</td>
+<td><code>https://&lt;your-domain&gt;/v1</code></td>
+</tr>
+</tbody>
+</table>
+<p>判断方法：抓服务端日志看实际打进来的 path 是 <code>/messages</code> 还是 <code>/v1/messages</code>。</p>
+<h3 id="2-60-status-code-400">症状 2：日志每 60 秒刷一次 <code>status code 400</code><a class="headerlink" href="#2-60-status-code-400" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-29-1" name="__codelineno-29-1" href="#__codelineno-29-1"></a>[Kiro] Expiry date is near, refreshing token...
+<a id="__codelineno-29-2" name="__codelineno-29-2" href="#__codelineno-29-2"></a>[Kiro Auth] Successfully loaded OAuth credentials from ./configs/kiro/xxx_kiro-auth-token/xxx_kiro-auth-token.json
+<a id="__codelineno-29-3" name="__codelineno-29-3" href="#__codelineno-29-3"></a>[Kiro Auth] Token refresh failed: Request failed with status code 400
+<a id="__codelineno-29-4" name="__codelineno-29-4" href="#__codelineno-29-4"></a>[Token Refresh Error] Failed to refresh token for claude-kiro-oauth&lt;uuid&gt;: ...
+</code></pre></div>
+<p><code>refreshToken</code> 已失效，自动续期永久失败，<strong>不会自愈</strong>（实测累计刷了 5736 次）。</p>
+<p>确认凭据过期时间：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-30-1" name="__codelineno-30-1" href="#__codelineno-30-1"></a>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">"</span>
+<a id="__codelineno-30-2" name="__codelineno-30-2" href="#__codelineno-30-2"></a><span class="s2">import json,glob,datetime</span>
+<a id="__codelineno-30-3" name="__codelineno-30-3" href="#__codelineno-30-3"></a><span class="s2">now=datetime.datetime.now(datetime.timezone.utc)</span>
+<a id="__codelineno-30-4" name="__codelineno-30-4" href="#__codelineno-30-4"></a><span class="s2">for f in sorted(glob.glob('/home/ubuntu/AIClient-2-API/docker/configs/kiro/*/*.json'))+\</span>
+<a id="__codelineno-30-5" name="__codelineno-30-5" href="#__codelineno-30-5"></a><span class="s2">         sorted(glob.glob('/home/ubuntu/AIClient-2-API/docker/configs/kiro-auth-token.json')):</span>
+<a id="__codelineno-30-6" name="__codelineno-30-6" href="#__codelineno-30-6"></a><span class="s2">    d=json.load(open(f)); e=d.get('expiresAt','?')</span>
+<a id="__codelineno-30-7" name="__codelineno-30-7" href="#__codelineno-30-7"></a><span class="s2">    try:</span>
+<a id="__codelineno-30-8" name="__codelineno-30-8" href="#__codelineno-30-8"></a><span class="s2">        t=datetime.datetime.fromisoformat(str(e).replace('Z','+00:00'))</span>
+<a id="__codelineno-30-9" name="__codelineno-30-9" href="#__codelineno-30-9"></a><span class="s2">        st='EXPIRED' if t&lt;now else 'VALID'</span>
+<a id="__codelineno-30-10" name="__codelineno-30-10" href="#__codelineno-30-10"></a><span class="s2">    except Exception: st='?'</span>
+<a id="__codelineno-30-11" name="__codelineno-30-11" href="#__codelineno-30-11"></a><span class="s2">    print(f'{st:8} {e}  {f}')</span>
+<a id="__codelineno-30-12" name="__codelineno-30-12" href="#__codelineno-30-12"></a><span class="s2">"</span>
+</code></pre></div>
+<p>修：从 Kiro CLI 重新提取凭据并用 <code>/api/kiro/import-aws-credentials</code> 导入（见上方）。</p>
+<blockquote>
+<p><strong><code>isHealthy=false</code> 的节点仍会被刷新 cron 轮到</strong>，光把它标成不健康并不会停止 400 噪音 —— 必须置 <code>isDisabled: true</code> 或直接把节点从 pool 里删掉，再 <code>reload-config</code>。</p>
+</blockquote>
+<h3 id="3curl-35-tlsv1-alert-internal-error">症状 3：<code>curl: (35) tlsv1 alert internal error</code><a class="headerlink" href="#3curl-35-tlsv1-alert-internal-error" title="Permanent link">¶</a></h3>
+<p>不是 TLS 版本/cipher 不匹配，而是<strong>服务端根本没有证书</strong>。直接看：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-31-1" name="__codelineno-31-1" href="#__codelineno-31-1"></a>sudo<span class="w"> </span>ls<span class="w"> </span>/var/lib/caddy/.local/share/caddy/certificates/acme-v02.api.letsencrypt.org-directory/
+</code></pre></div>
+<p>目录为空说明 Caddy 一直没签发成功，常见原因是 ACME challenge 被安全组挡了 —— 详见「<a href="./#配置-caddy-https-反向代理">Caddy 反向代理</a>」里的 DNS-01 说明。</p>
+<h3 id="_11">清理死凭证<a class="headerlink" href="#_11" title="Permanent link">¶</a></h3>
+<p>过期凭据留着只会产生 400 噪音，且可能被 pool 误选。<strong>先备份再删</strong>：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-32-1" name="__codelineno-32-1" href="#__codelineno-32-1"></a><span class="nb">cd</span><span class="w"> </span>/home/ubuntu/AIClient-2-API/docker
+<a id="__codelineno-32-2" name="__codelineno-32-2" href="#__codelineno-32-2"></a><span class="nv">DEAD</span><span class="o">=</span><span class="s2">"configs/kiro/&lt;ts1&gt;_kiro-auth-token configs/kiro/&lt;ts2&gt;_kiro-auth-token"</span>
+<a id="__codelineno-32-3" name="__codelineno-32-3" href="#__codelineno-32-3"></a>
+<a id="__codelineno-32-4" name="__codelineno-32-4" href="#__codelineno-32-4"></a><span class="c1"># 1. 备份（连 provider_pools.json 一起打包，方便整体回滚）</span>
+<a id="__codelineno-32-5" name="__codelineno-32-5" href="#__codelineno-32-5"></a>sudo<span class="w"> </span>tar<span class="w"> </span>czf<span class="w"> </span>/home/ubuntu/kiro-dead-creds-backup-<span class="k">$(</span>date<span class="w"> </span>+%Y%m%d<span class="k">)</span>.tar.gz<span class="w"> </span><span class="nv">$DEAD</span><span class="w"> </span>configs/provider_pools.json
+<a id="__codelineno-32-6" name="__codelineno-32-6" href="#__codelineno-32-6"></a>sudo<span class="w"> </span>chmod<span class="w"> </span><span class="m">600</span><span class="w"> </span>/home/ubuntu/kiro-dead-creds-backup-*.tar.gz
+<a id="__codelineno-32-7" name="__codelineno-32-7" href="#__codelineno-32-7"></a>
+<a id="__codelineno-32-8" name="__codelineno-32-8" href="#__codelineno-32-8"></a><span class="c1"># 2. 从 pool 移除对应节点（按 uuid 前缀匹配）</span>
+<a id="__codelineno-32-9" name="__codelineno-32-9" href="#__codelineno-32-9"></a>sudo<span class="w"> </span>cp<span class="w"> </span>configs/provider_pools.json<span class="w"> </span>configs/provider_pools.json.bak
+<a id="__codelineno-32-10" name="__codelineno-32-10" href="#__codelineno-32-10"></a>sudo<span class="w"> </span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">"</span>
+<a id="__codelineno-32-11" name="__codelineno-32-11" href="#__codelineno-32-11"></a><span class="s2">import json</span>
+<a id="__codelineno-32-12" name="__codelineno-32-12" href="#__codelineno-32-12"></a><span class="s2">p='configs/provider_pools.json'; d=json.load(open(p))</span>
+<a id="__codelineno-32-13" name="__codelineno-32-13" href="#__codelineno-32-13"></a><span class="s2">DEAD_UUIDS=('&lt;uuid-prefix-1&gt;','&lt;uuid-prefix-2&gt;')</span>
+<a id="__codelineno-32-14" name="__codelineno-32-14" href="#__codelineno-32-14"></a><span class="s2">for prov in list(d):</span>
+<a id="__codelineno-32-15" name="__codelineno-32-15" href="#__codelineno-32-15"></a><span class="s2">    before=len(d[prov])</span>
+<a id="__codelineno-32-16" name="__codelineno-32-16" href="#__codelineno-32-16"></a><span class="s2">    d[prov]=[e for e in d[prov] if not str(e.get('uuid','')).startswith(DEAD_UUIDS)]</span>
+<a id="__codelineno-32-17" name="__codelineno-32-17" href="#__codelineno-32-17"></a><span class="s2">    print(f'{prov}: {before} -&gt; {len(d[prov])}')</span>
+<a id="__codelineno-32-18" name="__codelineno-32-18" href="#__codelineno-32-18"></a><span class="s2">json.dump(d,open(p,'w'),indent=2)</span>
+<a id="__codelineno-32-19" name="__codelineno-32-19" href="#__codelineno-32-19"></a><span class="s2">"</span>
+<a id="__codelineno-32-20" name="__codelineno-32-20" href="#__codelineno-32-20"></a>
+<a id="__codelineno-32-21" name="__codelineno-32-21" href="#__codelineno-32-21"></a><span class="c1"># 3. 删文件</span>
+<a id="__codelineno-32-22" name="__codelineno-32-22" href="#__codelineno-32-22"></a>sudo<span class="w"> </span>rm<span class="w"> </span>-rf<span class="w"> </span><span class="nv">$DEAD</span>
+<a id="__codelineno-32-23" name="__codelineno-32-23" href="#__codelineno-32-23"></a>
+<a id="__codelineno-32-24" name="__codelineno-32-24" href="#__codelineno-32-24"></a><span class="c1"># 4. 热加载（见上方 reload-config），然后确认噪音归零</span>
+<a id="__codelineno-32-25" name="__codelineno-32-25" href="#__codelineno-32-25"></a>sudo<span class="w"> </span>docker<span class="w"> </span>logs<span class="w"> </span>--since<span class="w"> </span>75s<span class="w"> </span>aiclient2api<span class="w"> </span><span class="m">2</span>&gt;<span class="p">&amp;</span><span class="m">1</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>-icE<span class="w"> </span><span class="s2">"refresh failed|Token Refresh Error"</span>
+</code></pre></div>
+<p>最后一条命令输出 <code>0</code> 才算干净。</p>
+<blockquote>
+<p>删之前务必确认哪些文件<strong>没被引用</strong>：<code>grep -o 'configs/kiro[^"]*' configs/provider_pools.json | sort -u</code>。不在这个列表里、且 <code>config.json</code> 也没有 <code>KIRO_OAUTH_CREDS_*</code> 指向它的，就是孤儿文件，可以安全删除。</p>
+</blockquote>
+<h2 id="device-code">用 device code 重新授权（备选方案）<a class="headerlink" href="#device-code" title="Permanent link">¶</a></h2>
+<p>如果没有可用的 Kiro CLI 可提取凭据，可以让网关自己跑一遍 AWS SSO OIDC device code 流程。</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-33-1" name="__codelineno-33-1" href="#__codelineno-33-1"></a><span class="nv">TOKEN</span><span class="o">=</span><span class="k">$(</span>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://&lt;your-domain&gt;/api/login<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-33-2" name="__codelineno-33-2" href="#__codelineno-33-2"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-33-3" name="__codelineno-33-3" href="#__codelineno-33-3"></a><span class="w">  </span>-d<span class="w"> </span><span class="s1">'{"password":"&lt;your-password&gt;"}'</span><span class="w"> </span><span class="p">|</span><span class="w"> </span>python3<span class="w"> </span>-c<span class="w"> </span><span class="s2">"import sys,json; print(json.load(sys.stdin)['token'])"</span><span class="k">)</span>
+<a id="__codelineno-33-4" name="__codelineno-33-4" href="#__codelineno-33-4"></a>
+<a id="__codelineno-33-5" name="__codelineno-33-5" href="#__codelineno-33-5"></a>curl<span class="w"> </span>-s<span class="w"> </span>-X<span class="w"> </span>POST<span class="w"> </span>https://&lt;your-domain&gt;/api/providers/claude-kiro-oauth/generate-auth-url<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-33-6" name="__codelineno-33-6" href="#__codelineno-33-6"></a><span class="w">  </span>-H<span class="w"> </span><span class="s2">"Authorization: Bearer </span><span class="nv">$TOKEN</span><span class="s2">"</span><span class="w"> </span>-H<span class="w"> </span><span class="s2">"Content-Type: application/json"</span><span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-33-7" name="__codelineno-33-7" href="#__codelineno-33-7"></a><span class="w">  </span>-d<span class="w"> </span><span class="s1">'{"method":"builder-id","saveToConfigs":true}'</span>
+</code></pre></div>
+<p>返回的 <code>authUrl</code>（即 <code>verificationUriComplete</code>，已内嵌 user code）在浏览器打开并批准，服务端后台轮询拿到 token 后自动落盘 + 关联到 pool。</p>
+<p><strong>三个坑</strong>：</p>
+<ol>
+<li><strong>必须传 <code>saveToConfigs: true</code></strong>。否则凭据会落到 <code>~/.kiro/oauth_creds.json</code>，不进 <code>configs/kiro/</code>，也不会关联到 provider pool。</li>
+<li><strong>授权窗口硬编码 5 分钟</strong>。轮询参数是字面量 <code>interval=5, expiresIn=300</code>，<strong>没有使用 AWS 返回的 <code>expiresIn</code>/<code>interval</code></strong> —— 超时就得整个流程重来。发起前先把浏览器准备好。</li>
+<li>每次调用会先 <code>stopKiroPollingTask()</code> 掉所有进行中的 kiro 轮询任务，<strong>不能并发跑两个授权流程</strong>。</li>
+</ol>
+<blockquote>
+<p>授权页在 AWS 域名下（<code>view.awsapps.com</code>），不受网关所在安全组的入站规则限制 —— 所以即使你的 IP 不在 443 白名单里、打不开管理界面，这个流程依然可用（前提是能用 API 拿到 token）。</p>
+</blockquote>
+<h3 id="idc-identity-center">IdC（企业版 Identity Center）不被支持<a class="headerlink" href="#idc-identity-center" title="Permanent link">¶</a></h3>
+<p><code>authMethod</code> 只能是 <code>builder-id</code> 或 <code>social</code>。走 IdC 登录的 Kiro 账号，CodeWhisperer 请求需要携带 <code>profileArn</code>，而网关只在 <code>authMethod === 'social'</code> 分支才会注入 <code>profileArn</code>（<code>claude-kiro.js</code>），<code>builder-id</code> 分支不发 —— 所以 IdC 的 profile 绑定信息会丢失。</p>
+<p>不过 <strong>Kiro CLI 即使用 IdC 登录，它注册的 OIDC device client 也带 <code>clientId</code>/<code>clientSecret</code>，按 <code>builder-id</code> 导入即可正常工作</strong> —— 这就是第三步脚本里把 <code>authMethod</code> 写死成 <code>builder-id</code> 的原因。</p>
 <h2 id="caddy-https">配置 Caddy HTTPS 反向代理<a class="headerlink" href="#caddy-https" title="Permanent link">¶</a></h2>
 <p>通过 Caddy 在 443 端口提供 HTTPS，反代到 AIClient-2-API 的 3000 端口。80 端口保留给 Nginx（code-server）。</p>
-<h3 id="_8">前置条件<a class="headerlink" href="#_8" title="Permanent link">¶</a></h3>
+<h3 id="_12">前置条件<a class="headerlink" href="#_12" title="Permanent link">¶</a></h3>
 <ul>
 <li>安装 Caddy：参考 <a href="https://caddyserver.com/docs/install">https://caddyserver.com/docs/install</a></li>
-<li>域名 A 记录指向本机公网 IP</li>
-<li>安全组放行 443 端口入站</li>
+<li>域名 A 记录指向本机公网 IP（<strong>注意</strong>：非 EIP 的公网 IP 在实例 stop/start 后会变，需手动更新 A 记录）</li>
+<li>安全组放行 443 端口入站 —— 若这里按 IP 白名单收紧，<strong>必须改用 DNS-01</strong>，见下方说明</li>
 </ul>
 <h3 id="caddyfile-etccaddycaddyfile">Caddyfile 配置（<code>/etc/caddy/Caddyfile</code>）<a class="headerlink" href="#caddyfile-etccaddycaddyfile" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-21-1" name="__codelineno-21-1" href="#__codelineno-21-1"></a>{
-<a id="__codelineno-21-2" name="__codelineno-21-2" href="#__codelineno-21-2"></a>    http_port 444
-<a id="__codelineno-21-3" name="__codelineno-21-3" href="#__codelineno-21-3"></a>}
-<a id="__codelineno-21-4" name="__codelineno-21-4" href="#__codelineno-21-4"></a>
-<a id="__codelineno-21-5" name="__codelineno-21-5" href="#__codelineno-21-5"></a>&lt;your-domain&gt; {
-<a id="__codelineno-21-6" name="__codelineno-21-6" href="#__codelineno-21-6"></a>    reverse_proxy localhost:3000
-<a id="__codelineno-21-7" name="__codelineno-21-7" href="#__codelineno-21-7"></a>}
+<div class="highlight"><pre><span></span><code><a id="__codelineno-34-1" name="__codelineno-34-1" href="#__codelineno-34-1"></a>{
+<a id="__codelineno-34-2" name="__codelineno-34-2" href="#__codelineno-34-2"></a>    http_port 444
+<a id="__codelineno-34-3" name="__codelineno-34-3" href="#__codelineno-34-3"></a>}
+<a id="__codelineno-34-4" name="__codelineno-34-4" href="#__codelineno-34-4"></a>
+<a id="__codelineno-34-5" name="__codelineno-34-5" href="#__codelineno-34-5"></a>&lt;your-domain&gt; {
+<a id="__codelineno-34-6" name="__codelineno-34-6" href="#__codelineno-34-6"></a>    reverse_proxy localhost:3000
+<a id="__codelineno-34-7" name="__codelineno-34-7" href="#__codelineno-34-7"></a>}
 </code></pre></div>
 <p><code>http_port 444</code> 避免与 Nginx 80 端口冲突，Caddy 通过 TLS-ALPN-01 在 443 端口自动申请和续期 Let’s Encrypt 证书。</p>
-<h3 id="_9">启动<a class="headerlink" href="#_9" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-22-1" name="__codelineno-22-1" href="#__codelineno-22-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>caddy
+<h3 id="ip-443-dns-01">⚠️ 如果安全组按 IP 白名单收紧了 443，必须改用 DNS-01<a class="headerlink" href="#ip-443-dns-01" title="Permanent link">¶</a></h3>
+<p>上面的配置有个隐藏前提：<strong>443 对公网开放</strong>。一旦把安全组 443 收成只允许特定源 IP，两种 HTTP 类 challenge 会同时失效：</p>
+<ul>
+<li><code>http-01</code> 需要公网 80 —— 但 <code>http_port 444</code> 已经让 Caddy 不听 80</li>
+<li><code>tls-alpn-01</code> 需要公网 443 —— Let’s Encrypt 的校验机不在白名单里</li>
+</ul>
+<p>结果是证书永远签不下来，且 Caddy 以 6 小时退避重试，<strong>不会自愈</strong>（实测日志 <code>tls.obtain ... attempt 49, elapsed 584297s, retrying_in 21600</code>，静默失效了两个月）。</p>
+<p>改用 DNS-01（443/80 都不需要对公网开放，以 Route53 为例）：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-35-1" name="__codelineno-35-1" href="#__codelineno-35-1"></a><span class="c1"># apt 装的 caddy 不含 route53 模块，需要重新下带模块的二进制</span>
+<a id="__codelineno-35-2" name="__codelineno-35-2" href="#__codelineno-35-2"></a>curl<span class="w"> </span>-fsSL<span class="w"> </span>-o<span class="w"> </span>/tmp/caddy-r53<span class="w"> </span><span class="se">\</span>
+<a id="__codelineno-35-3" name="__codelineno-35-3" href="#__codelineno-35-3"></a><span class="w">  </span><span class="s2">"https://caddyserver.com/api/download?os=linux&amp;arch=amd64&amp;p=github.com/caddy-dns/route53"</span>
+<a id="__codelineno-35-4" name="__codelineno-35-4" href="#__codelineno-35-4"></a>sudo<span class="w"> </span>install<span class="w"> </span>-m0755<span class="w"> </span>/tmp/caddy-r53<span class="w"> </span>/usr/local/bin/caddy
+<a id="__codelineno-35-5" name="__codelineno-35-5" href="#__codelineno-35-5"></a>sudo<span class="w"> </span>apt-mark<span class="w"> </span>hold<span class="w"> </span>caddy<span class="w">   </span><span class="c1"># 防止 apt 升级把无模块的二进制换回来</span>
 </code></pre></div>
-<h3 id="_10">验证<a class="headerlink" href="#_10" title="Permanent link">¶</a></h3>
-<div class="highlight"><pre><span></span><code><a id="__codelineno-23-1" name="__codelineno-23-1" href="#__codelineno-23-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s2">"HTTP %{http_code}"</span><span class="w"> </span>https://&lt;your-domain&gt;/
-<a id="__codelineno-23-2" name="__codelineno-23-2" href="#__codelineno-23-2"></a><span class="c1"># 返回 HTTP 200 即成功</span>
+<p>用 drop-in 覆盖 systemd 的 <code>ExecStart</code>/<code>ExecReload</code> 指向 <code>/usr/local/bin/caddy</code>（<code>/etc/systemd/system/caddy.service.d/override.conf</code>），Caddyfile 里加：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-36-1" name="__codelineno-36-1" href="#__codelineno-36-1"></a>&lt;your-domain&gt; {
+<a id="__codelineno-36-2" name="__codelineno-36-2" href="#__codelineno-36-2"></a>    reverse_proxy localhost:3000
+<a id="__codelineno-36-3" name="__codelineno-36-3" href="#__codelineno-36-3"></a>    tls {
+<a id="__codelineno-36-4" name="__codelineno-36-4" href="#__codelineno-36-4"></a>        dns route53 {
+<a id="__codelineno-36-5" name="__codelineno-36-5" href="#__codelineno-36-5"></a>            max_retries 10
+<a id="__codelineno-36-6" name="__codelineno-36-6" href="#__codelineno-36-6"></a>            hosted_zone_id &lt;your-zone-id&gt;
+<a id="__codelineno-36-7" name="__codelineno-36-7" href="#__codelineno-36-7"></a>        }
+<a id="__codelineno-36-8" name="__codelineno-36-8" href="#__codelineno-36-8"></a>        resolvers 1.1.1.1
+<a id="__codelineno-36-9" name="__codelineno-36-9" href="#__codelineno-36-9"></a>    }
+<a id="__codelineno-36-10" name="__codelineno-36-10" href="#__codelineno-36-10"></a>}
+</code></pre></div>
+<p>EC2 instance role 需要该 hosted zone 的 <code>route53:ChangeResourceRecordSets</code> / <code>ListHostedZones</code> / <code>GetChange</code> 权限。</p>
+<p>验证必须核对<strong>实际在跑的二进制</strong>，否则可能还是旧的：</p>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-37-1" name="__codelineno-37-1" href="#__codelineno-37-1"></a>sudo<span class="w"> </span>readlink<span class="w"> </span>-f<span class="w"> </span>/proc/<span class="k">$(</span>systemctl<span class="w"> </span>show<span class="w"> </span>-p<span class="w"> </span>MainPID<span class="w"> </span>--value<span class="w"> </span>caddy<span class="k">)</span>/exe<span class="w">   </span><span class="c1"># 应为 /usr/local/bin/caddy</span>
+<a id="__codelineno-37-2" name="__codelineno-37-2" href="#__codelineno-37-2"></a>sudo<span class="w"> </span>/usr/local/bin/caddy<span class="w"> </span>list-modules<span class="w"> </span><span class="p">|</span><span class="w"> </span>grep<span class="w"> </span>route53<span class="w">                   </span><span class="c1"># 应有输出</span>
+</code></pre></div>
+<blockquote>
+<p>Let’s Encrypt 的 failed-validation 限流是每账号每 hostname 每小时 5 次，签发失败不要循环重试。</p>
+</blockquote>
+<h3 id="_13">启动<a class="headerlink" href="#_13" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-38-1" name="__codelineno-38-1" href="#__codelineno-38-1"></a>sudo<span class="w"> </span>systemctl<span class="w"> </span>restart<span class="w"> </span>caddy
+</code></pre></div>
+<h3 id="_14">验证<a class="headerlink" href="#_14" title="Permanent link">¶</a></h3>
+<div class="highlight"><pre><span></span><code><a id="__codelineno-39-1" name="__codelineno-39-1" href="#__codelineno-39-1"></a>curl<span class="w"> </span>-s<span class="w"> </span>-o<span class="w"> </span>/dev/null<span class="w"> </span>-w<span class="w"> </span><span class="s2">"HTTP %{http_code}"</span><span class="w"> </span>https://&lt;your-domain&gt;/
+<a id="__codelineno-39-2" name="__codelineno-39-2" href="#__codelineno-39-2"></a><span class="c1"># 返回 HTTP 200 即成功</span>
 </code></pre></div>
 <h2 id="another-solution">another solution<a class="headerlink" href="#another-solution" title="Permanent link">¶</a></h2>
 <p><a href="https://github.com/jwadow/kiro-gateway">https://github.com/jwadow/kiro-gateway</a></p>
@@ -9662,7 +10232,7 @@
     <span class="md-icon" title="Last update">
       <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M21 13.1c-.1 0-.3.1-.4.2l-1 1 2.1 2.1 1-1c.2-.2.2-.6 0-.8l-1.3-1.3c-.1-.1-.2-.2-.4-.2m-1.9 1.8-6.1 6V23h2.1l6.1-6.1zM12.5 7v5.2l4 2.4-1 1L11 13V7zM11 21.9c-5.1-.5-9-4.8-9-9.9C2 6.5 6.5 2 12 2c5.3 0 9.6 4.1 10 9.3-.3-.1-.6-.2-1-.2s-.7.1-1 .2C19.6 7.2 16.2 4 12 4c-4.4 0-8 3.6-8 8 0 4.1 3.1 7.5 7.1 7.9l-.1.2z"></path></svg>
     </span>
-    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="July 7, 2026 19:49:31 CST"><span class="timeago" datetime="2026-07-07T19:49:31+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="July 7, 2026 19:49:31 CST">2026-07-07</span>
+    <span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-timeago" title="September 2, 2026 11:38:19 CST"><span class="timeago" datetime="2026-09-02T11:38:19+08:00" locale="en"></span></span><span class="git-revision-date-localized-plugin git-revision-date-localized-plugin-iso_date" title="September 2, 2026 11:38:19 CST">2026-09-02</span>
   </span>
 
     
